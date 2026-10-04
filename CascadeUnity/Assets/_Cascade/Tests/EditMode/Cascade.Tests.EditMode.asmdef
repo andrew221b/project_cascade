@@ -1,0 +1,7 @@
+{
+    "name": "Cascade.Tests.EditMode",
+    "rootNamespace": "Cascade.Tests",
+    "references": ["Cascade.Domain"],
+    "includePlatforms": ["Editor"],
+    "optionalUnityReferences": ["TestAssemblies"]
+}

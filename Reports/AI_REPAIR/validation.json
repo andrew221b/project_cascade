@@ -9,11 +9,17 @@
   "asset_refresh": "PASS",
   "console_errors": 0,
   "console_warnings": [
-    "AI Account API not accessible; built-in Assistant needs a Unity Cloud project link. Local MCP is working."
+    "Prior Account API warning retained in Console; cloud connection is now verified and Assistant input is enabled."
   ],
   "not_run": [
     "Cloud AI chat/generation request",
     "Player build",
     "Gameplay tests (gameplay not implemented yet)"
-  ]
+  ],
+  "cloud_link": {
+    "project_name": "CascadeUnity",
+    "organization": "shapeinc25",
+    "created_by": "user",
+    "assistant_input_enabled": true
+  }
 }

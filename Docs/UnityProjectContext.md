@@ -29,11 +29,12 @@
 Авторские `AGENTS.md`, `TASKS.md`, Docs/Data/Prompts/Tools/Reports находятся
 в родительском Git root, вне Unity Assets. Не создавать конкурирующие копии.
 
-`Assets/_Cascade/` подготовлен по C17: Domain, Solver, Application,
-Presentation, Content, Editor, Tests/EditMode и Tests/PlayMode. Игрового C#
-кода и собственных asmdef пока нет. Единственный script — Editor-only
-`ProjectBootstrap/PackageRepair.cs`, явно вызываемый helper восстановления
-первоначального Input System. Автоматических package-изменений он не делает.
+`Assets/_Cascade/` подготовлен по C17. P01 реализует immutable definitions,
+typed SymbolId и validator в чистой C# сборке Cascade.Domain
+(`noEngineReferences: true`). 40 EditMode cases прошли через живой Unity Editor.
+Editor/Validation содержит runner с XML отчётами; ProjectBootstrap/PackageRepair
+остаётся явно вызываемым helper первоначального Input System.
+Resolver, Solver, Application и Presentation ещё не реализованы.
 
 В build settings включена только штатная `Assets/Scenes/SampleScene.unity`.
 Это scene шаблона; boot/gameplay flow CASCADE ещё не существует.
@@ -72,7 +73,8 @@ Impeccable context выполнен один раз; PRODUCT/DESIGN и собс�
 - Live MCP теперь подтверждён для CASCADE: root probe, Editor state, Console,
   диагностическая C# команда и повторный импорт. Мост Running; Codex Accepted.
   До изменяющих MCP-команд после переключения проекта повторить root probe.
-  Встроенный облачный чат Assistant ждёт привязки отдельного Unity Cloud project.
+  Автор привязал CascadeUnity к отдельному Unity Cloud project в shapeinc25;
+  поле ввода встроенного Assistant активно. Облачный запрос не отправлялся.
 - Все проверки и package baseline: `Reports/P00/`. Причины восстановления
   шаблона: `Docs/P00_SETUP.md`. Новый Editor, второй MCP или другие SDK не
   устанавливались.
