@@ -1,0 +1,23 @@
+{
+  "phase": "P07",
+  "tests": {
+    "total": "138",
+    "passed": "138",
+    "failed": "0",
+    "skipped": "0"
+  },
+  "console_errors": 0,
+  "canonical_configurations": 40,
+  "python_metric_and_path_parity": "PASS",
+  "total_states": 4228,
+  "total_transitions": 16136,
+  "linked_choice_deduplication": "PASS",
+  "unknown_is_not_unsolvable": "PASS",
+  "not_run": [
+    "Production localized import/117 bindings P09",
+    "Publication UI P10",
+    "PlayMode",
+    "Player build",
+    "Visual/device QA"
+  ]
+}

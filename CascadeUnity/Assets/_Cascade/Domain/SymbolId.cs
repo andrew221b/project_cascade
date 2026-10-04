@@ -24,7 +24,7 @@ namespace Cascade.Domain
             PersistedId = persistedId;
         }
 
-        public static SymbolId Parse(string id)
+        public static SymbolId Parse(string id, string puzzleLocale = "en")
         {
             if (string.IsNullOrWhiteSpace(id)) throw new FormatException("Empty symbol ID.");
             var parts = id.Split(':');
@@ -33,14 +33,15 @@ namespace Cascade.Domain
                 if (string.IsNullOrWhiteSpace(parts[1])) throw new FormatException("Empty shape.");
                 return new SymbolId(SymbolKind.Shape, string.Empty, parts[1], id);
             }
-            if (parts.Length == 3 && (parts[0] == "g" || parts[0] == "glyph"))
+            if ((parts.Length == 2 || parts.Length == 3) && (parts[0] == "g" || parts[0] == "glyph"))
             {
-                if (parts[1] != "en" && parts[1] != "ru" && parts[1] != "uk")
-                    throw new FormatException("Unsupported puzzle locale: " + parts[1]);
-                var graphemes = GraphemeText.Split(parts[2]);
+                string locale = parts.Length == 3 ? parts[1] : puzzleLocale;
+                if (locale != "en" && locale != "ru" && locale != "uk")
+                    throw new FormatException("Unsupported puzzle locale: " + locale);
+                var graphemes = GraphemeText.Split(parts[parts.Length - 1]);
                 if (graphemes.Count != 1 || string.IsNullOrWhiteSpace(graphemes[0]))
                     throw new FormatException("A glyph ID must contain one visible grapheme.");
-                return new SymbolId(SymbolKind.Glyph, parts[1], graphemes[0], id);
+                return new SymbolId(SymbolKind.Glyph, locale, graphemes[0], id);
             }
             throw new FormatException("Unknown symbol namespace: " + id);
         }

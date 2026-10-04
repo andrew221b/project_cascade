@@ -1,6 +1,6 @@
 # CASCADE — TASKS
 
-P00–P05: COMPLETE. Unity AI/MCP: исправлено. P06: mechanics verified (dependent gates pending). P07: IN_PROGRESS. P08–P20: NOT_STARTED.
+P00–P05: COMPLETE. Unity AI/MCP: исправлено. P06: mechanics verified (dependent gates pending). P07: COMPLETE. P08: IN_PROGRESS. P09–P20: NOT_STARTED.
 Python reference проверен отдельно; это не реализация игровых систем Unity.
 
 Автор прямо разрешил выполнять все этапы подряд, отменив остановки между
@@ -15,7 +15,7 @@ P01–P20. После каждого этапа фиксировать резу�
 - [x] P04 — Ключ и ремонт
 - [x] P05 — Хрупкость и связанные пары
 - [ ] P06 — Мост и печать
-- [ ] P07 — Solver и метрики
+- [x] P07 — Solver и метрики
 - [ ] P08 — История и подсказки
 - [ ] P09 — 40 данных и три языка
 - [ ] P10 — Редактор уровней
@@ -147,3 +147,19 @@ P01–P20. После каждого этапа фиксировать резу�
 - Отчёты: `Reports/P06/`. Полная приёмка P06 зависит от следующих инструментов:
   production solver/publication reject (P07/P10) и настоящая Application Undo (P08).
   Они не объявлены выполненными. PlayMode/visual/build также не запускались.
+
+## P07 — результат 5 октября 2026
+
+- Pure C# Solver использует тот же Resolve: полный BFS graph/reverse distances
+  для authoring и ранний BFS из current snapshot для Hint. Бюджет 200000;
+  budget/cancel → Unknown без ложных dead-state claims. Инверсии не эвристика.
+- Все 40 реальных base JSON configs совпали с Python: minima, выбранные paths,
+  states/transitions, dead depth/count, near choices, forced ratio, terminal variants.
+  Итого 4228 states, 16136 transitions. Linked aliases считаются одной choice.
+- C35 production minima 2/4. Недостижимый контракт/Unknown не дают publication proof.
+- Unity EditMode: актуальная сборка 138/138 PASS, C# ошибок 0. При первом
+  импорте не хватало явной ссылки Newtonsoft в test adapter; исправлена,
+  runner теперь запрещает запуск после failed/incomplete compilation.
+- Отчёты: `Reports/P07/`. Publication UI/gate связывается в P10; настоящая Undo
+  проверяется P08. Localized production import/117 variants — P09.
+  Visual/PlayMode/mobile/player build пока не запускались.

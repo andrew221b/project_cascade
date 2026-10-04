@@ -23,6 +23,15 @@ P05 добавляет полный atomic linked set и проверяет об
 Предсказание эффекта использует pure Resolve и не присваивает состояние попытке;
 отдельный альтернативный resolver для preview не создаётся.
 
+## P07 — reference glyph shorthand
+
+Реальные base configurations C29/C30/C40 используют ещё более короткий `g:C`.
+Он импортируется в glyph namespace с явно заданной PuzzleLocale (EN по умолчанию),
+сохраняя исходный PersistedId. Localized `g:en:C`/`g:ru:К`/`g:uk:К` остаются
+явными. Исходные JSON, значения символов, IDs и схемы не переписываются.
+Test-only adapter генерирует target segment metadata для абстрактных base patterns;
+production word bindings/metadata внедряются отдельно в P09.
+
 ## Unity AI и MCP для CASCADE
 
 Пользователь установил официальный Assistant `2.20.0-pre.1`, Generators

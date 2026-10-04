@@ -1,0 +1,734 @@
+[
+  {
+    "id": "C01",
+    "status": "Solved",
+    "optimal_actions": 1,
+    "path": [
+      "0"
+    ],
+    "metrics": {
+      "States": 4,
+      "Transitions": 3,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C02",
+    "status": "Solved",
+    "optimal_actions": 2,
+    "path": [
+      "1",
+      "0"
+    ],
+    "metrics": {
+      "States": 8,
+      "Transitions": 9,
+      "DeadStates": 1,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C03",
+    "status": "Solved",
+    "optimal_actions": 2,
+    "path": [
+      "0",
+      "2"
+    ],
+    "metrics": {
+      "States": 14,
+      "Transitions": 20,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 0.6667,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C04",
+    "status": "Solved",
+    "optimal_actions": 2,
+    "path": [
+      "0",
+      "D"
+    ],
+    "metrics": {
+      "States": 13,
+      "Transitions": 16,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C05",
+    "status": "Solved",
+    "optimal_actions": 3,
+    "path": [
+      "0",
+      "2",
+      "D"
+    ],
+    "metrics": {
+      "States": 16,
+      "Transitions": 32,
+      "DeadStates": 3,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 3,
+      "ForcedRatio": 0.7143,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C06",
+    "status": "Solved",
+    "optimal_actions": 3,
+    "path": [
+      "0",
+      "D",
+      "2"
+    ],
+    "metrics": {
+      "States": 8,
+      "Transitions": 8,
+      "DeadStates": 1,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C07",
+    "status": "Solved",
+    "optimal_actions": 2,
+    "path": [
+      "D",
+      "0"
+    ],
+    "metrics": {
+      "States": 27,
+      "Transitions": 39,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 3,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C08",
+    "status": "Solved",
+    "optimal_actions": 2,
+    "path": [
+      "D",
+      "1"
+    ],
+    "metrics": {
+      "States": 8,
+      "Transitions": 8,
+      "DeadStates": 1,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C09",
+    "status": "Solved",
+    "optimal_actions": 2,
+    "path": [
+      "D",
+      "D"
+    ],
+    "metrics": {
+      "States": 34,
+      "Transitions": 52,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 4,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C10",
+    "status": "Solved",
+    "optimal_actions": 2,
+    "path": [
+      "2",
+      "D"
+    ],
+    "metrics": {
+      "States": 17,
+      "Transitions": 20,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 0.6667,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C11",
+    "status": "Solved",
+    "optimal_actions": 3,
+    "path": [
+      "2",
+      "D",
+      "D"
+    ],
+    "metrics": {
+      "States": 57,
+      "Transitions": 132,
+      "DeadStates": 23,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C12",
+    "status": "Solved",
+    "optimal_actions": 3,
+    "path": [
+      "3",
+      "D",
+      "D"
+    ],
+    "metrics": {
+      "States": 141,
+      "Transitions": 300,
+      "DeadStates": 44,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 5,
+      "ForcedRatio": 0.8,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C13",
+    "status": "Solved",
+    "optimal_actions": 2,
+    "path": [
+      "0",
+      "D"
+    ],
+    "metrics": {
+      "States": 9,
+      "Transitions": 8,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C14",
+    "status": "Solved",
+    "optimal_actions": 1,
+    "path": [
+      "0"
+    ],
+    "metrics": {
+      "States": 5,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C15",
+    "status": "Solved",
+    "optimal_actions": 2,
+    "path": [
+      "D",
+      "0"
+    ],
+    "metrics": {
+      "States": 41,
+      "Transitions": 58,
+      "DeadStates": 8,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 3,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 3
+    }
+  },
+  {
+    "id": "C16",
+    "status": "Solved",
+    "optimal_actions": 3,
+    "path": [
+      "D",
+      "0",
+      "2"
+    ],
+    "metrics": {
+      "States": 68,
+      "Transitions": 180,
+      "DeadStates": 26,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 4,
+      "ForcedRatio": 0.75,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C17",
+    "status": "Solved",
+    "optimal_actions": 2,
+    "path": [
+      "1",
+      "0"
+    ],
+    "metrics": {
+      "States": 9,
+      "Transitions": 10,
+      "DeadStates": 1,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C18",
+    "status": "Solved",
+    "optimal_actions": 3,
+    "path": [
+      "0",
+      "1",
+      "D"
+    ],
+    "metrics": {
+      "States": 20,
+      "Transitions": 32,
+      "DeadStates": 4,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 0.75,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C19",
+    "status": "Solved",
+    "optimal_actions": 4,
+    "path": [
+      "0",
+      "0",
+      "1",
+      "D"
+    ],
+    "metrics": {
+      "States": 44,
+      "Transitions": 91,
+      "DeadStates": 10,
+      "EarliestDeadDepth": 3,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C20",
+    "status": "Solved",
+    "optimal_actions": 1,
+    "path": [
+      "0"
+    ],
+    "metrics": {
+      "States": 5,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C21",
+    "status": "Solved",
+    "optimal_actions": 1,
+    "path": [
+      "0"
+    ],
+    "metrics": {
+      "States": 11,
+      "Transitions": 12,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C22",
+    "status": "Solved",
+    "optimal_actions": 1,
+    "path": [
+      "0"
+    ],
+    "metrics": {
+      "States": 5,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C23",
+    "status": "Solved",
+    "optimal_actions": 2,
+    "path": [
+      "0",
+      "2"
+    ],
+    "metrics": {
+      "States": 25,
+      "Transitions": 44,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C24",
+    "status": "Solved",
+    "optimal_actions": 2,
+    "path": [
+      "2",
+      "D"
+    ],
+    "metrics": {
+      "States": 31,
+      "Transitions": 44,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 4,
+      "ForcedRatio": 0.6667,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C25",
+    "status": "Solved",
+    "optimal_actions": 1,
+    "path": [
+      "0"
+    ],
+    "metrics": {
+      "States": 4,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C26",
+    "status": "Solved",
+    "optimal_actions": 1,
+    "path": [
+      "0"
+    ],
+    "metrics": {
+      "States": 4,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C27",
+    "status": "Solved",
+    "optimal_actions": 4,
+    "path": [
+      "1",
+      "1",
+      "0",
+      "D"
+    ],
+    "metrics": {
+      "States": 14,
+      "Transitions": 26,
+      "DeadStates": 3,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C28",
+    "status": "Solved",
+    "optimal_actions": 1,
+    "path": [
+      "0"
+    ],
+    "metrics": {
+      "States": 7,
+      "Transitions": 12,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C29",
+    "status": "Solved",
+    "optimal_actions": 2,
+    "path": [
+      "2",
+      "D"
+    ],
+    "metrics": {
+      "States": 20,
+      "Transitions": 30,
+      "DeadStates": 3,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 0.6667,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C30",
+    "status": "Solved",
+    "optimal_actions": 9,
+    "path": [
+      "0",
+      "2",
+      "1",
+      "3",
+      "2",
+      "1",
+      "5",
+      "4",
+      "D"
+    ],
+    "metrics": {
+      "States": 2898,
+      "Transitions": 13485,
+      "DeadStates": 1973,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 4,
+      "ForcedRatio": 0.2317,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C31",
+    "status": "Solved",
+    "optimal_actions": 2,
+    "path": [
+      "2",
+      "1"
+    ],
+    "metrics": {
+      "States": 13,
+      "Transitions": 17,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C32",
+    "status": "Solved",
+    "optimal_actions": 2,
+    "path": [
+      "0",
+      "6"
+    ],
+    "metrics": {
+      "States": 44,
+      "Transitions": 72,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 0.6667,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C33",
+    "status": "Solved",
+    "optimal_actions": 1,
+    "path": [
+      "0"
+    ],
+    "metrics": {
+      "States": 5,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C34",
+    "status": "Solved",
+    "optimal_actions": 2,
+    "path": [
+      "1",
+      "0"
+    ],
+    "metrics": {
+      "States": 13,
+      "Transitions": 15,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C35",
+    "status": "Solved",
+    "optimal_actions": 2,
+    "path": [
+      "1",
+      "D"
+    ],
+    "metrics": {
+      "States": 77,
+      "Transitions": 160,
+      "DeadStates": 14,
+      "EarliestDeadDepth": 3,
+      "NearOptimalFirstStatesPlusTwo": 3,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 2
+    }
+  },
+  {
+    "id": "C36",
+    "status": "Solved",
+    "optimal_actions": 2,
+    "path": [
+      "D",
+      "D"
+    ],
+    "metrics": {
+      "States": 36,
+      "Transitions": 52,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 4,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C37",
+    "status": "Solved",
+    "optimal_actions": 6,
+    "path": [
+      "0",
+      "3",
+      "1",
+      "0",
+      "3",
+      "2"
+    ],
+    "metrics": {
+      "States": 365,
+      "Transitions": 875,
+      "DeadStates": 163,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 0.75,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C38",
+    "status": "Solved",
+    "optimal_actions": 2,
+    "path": [
+      "1",
+      "0"
+    ],
+    "metrics": {
+      "States": 7,
+      "Transitions": 7,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C39",
+    "status": "Solved",
+    "optimal_actions": 1,
+    "path": [
+      "0"
+    ],
+    "metrics": {
+      "States": 4,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C40",
+    "status": "Solved",
+    "optimal_actions": 3,
+    "path": [
+      "1",
+      "D",
+      "D"
+    ],
+    "metrics": {
+      "States": 97,
+      "Transitions": 239,
+      "DeadStates": 30,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 5,
+      "ForcedRatio": 0.8,
+      "TerminalVariants": 1
+    }
+  }
+]
