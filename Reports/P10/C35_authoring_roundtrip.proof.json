@@ -1,0 +1,16 @@
+{
+  "proof_schema": "cascade.authoring-proof/1",
+  "puzzle_id": "C35",
+  "schema_version": "2.0",
+  "rules_version": "2.0",
+  "content_hash": "231ed6edd89c7654731873e6c6897179cfbb4536c78adff3d196f338303de23f",
+  "required_stamp_bits": 1,
+  "optimal_actions": 4,
+  "path": [
+    "0",
+    "0",
+    "1",
+    "D"
+  ],
+  "explored_states": 77
+}

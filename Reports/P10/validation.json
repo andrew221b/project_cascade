@@ -1,0 +1,20 @@
+{
+  "phase": "P10",
+  "compilation": "PASS",
+  "editmode": {
+    "passed": 291,
+    "failed": 0
+  },
+  "workshop_UI": "Visually inspected through native MCP; fields and pointer press/release dispatched through official Unity MCP. Native coordinate clicks returned noWindowsAvailable; native menu/save-dialog AX actions worked.",
+  "UI_created_level": "QA_P10_001, fields only, Validate/Solve/Replay Won/Export native save panel confirmed",
+  "optional_objective_UI": "C35 required stamp: Solved, minimum4,77states",
+  "scene": "unchanged by tests and workshop",
+  "publication_gate": "stale/Unknown/unreachable contract rejected, proof replay verified",
+  "not_run": [
+    "physical mouse/touch input",
+    "gameplay PlayMode",
+    "player build",
+    "mobile",
+    "human fun playtest"
+  ]
+}

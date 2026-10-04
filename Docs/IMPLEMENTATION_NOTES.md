@@ -56,3 +56,12 @@ Generators deprecated и прямо сообщает, что Assistant вклю�
 Без переименования GUID, удаления пользовательских ассетов или второго MCP
 провайдера. Прочие пакеты не обновлять. До MCP мутаций подтвердить project root
 CASCADE; подключение ShapeMania не использовать для изменений нового проекта.
+
+## P10 — authoring proof
+
+Новый Editor-only черновик хранит editable данные в hidden ScriptableObject с Unity Undo.
+Экспорт использует прежнюю JSON структуру уровня; отдельный `*.proof.json` имеет
+новый локальный формат `cascade.authoring-proof/1` с schema/rules/hash, goal bits,
+minimum и command path. Он не меняет исходные Data, ID или runtime schema.
+Proof проверяется повторным Resolve replay и отклоняется после изменения draft/goal,
+при Unknown или Unsolvable. Поиск работает вне Editor thread с бюджетом и cancel.

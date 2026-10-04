@@ -1,6 +1,6 @@
 # CASCADE — TASKS
 
-P00–P05: COMPLETE. Unity AI/MCP: исправлено. P06: mechanics verified (dependent gates pending). P07–P09: COMPLETE. P10: IN_PROGRESS. P11–P20: NOT_STARTED.
+P00–P10: COMPLETE. Unity AI/MCP: исправлено. P11: IN_PROGRESS. P12–P20: NOT_STARTED.
 Python reference проверен отдельно; это не реализация игровых систем Unity.
 
 Автор прямо разрешил выполнять все этапы подряд, отменив остановки между
@@ -14,11 +14,11 @@ P01–P20. После каждого этапа фиксировать резу�
 - [x] P03 — Конвейер и бомба
 - [x] P04 — Ключ и ремонт
 - [x] P05 — Хрупкость и связанные пары
-- [ ] P06 — Мост и печать
+- [x] P06 — Мост и печать
 - [x] P07 — Solver и метрики
 - [x] P08 — История и подсказки
 - [x] P09 — 40 данных и три языка
-- [ ] P10 — Редактор уровней
+- [x] P10 — Редактор уровней
 - [ ] P11 — Серый playable и ввод
 - [ ] P12 — Визуальный эталон
 - [ ] P13 — Event player и juice
@@ -194,3 +194,21 @@ P01–P20. После каждого этапа фиксировать резу�
   source/asset bytes совпали. Отчёты: `Reports/P09/`.
 - Не запускались fonts/glyph rendering, native-language review, PlayMode, mobile
   и player build. Editor/gameplay/UI следующие этапы.
+
+## P10 — результат 5 октября 2026
+
+- UI Toolkit Workshop: row 3–8, floors 1–4, edges/fragile/linked, entry, все
+  устройства, dictionary word placement, Undo/Redo, Validate/Solve/Replay/Export.
+- Solver выполняется вне Editor thread; 200000 states, cancel и stale draft gate.
+  Warnings показывают on-entry и обходной ключ; метрики не объявляют fun доказанным.
+- Export pin-ит schema/rules/hash и goal в отдельном proof, повторно проигрывает
+  путь через Resolve. Unknown, unreachable stamp и устаревший proof отвергаются.
+  Это закрывает publication gate P06; actual Undo проверена P08/P10.
+- Unity текущая compilation; EditMode 291/291 PASS. Через UI создан QA_P10_001,
+  Validate/Solve/Replay Won и настоящий Save dialog сохранили source + proof.
+  C35 optional UI показал minimum4. Окно визуально проверено через native MCP.
+- Координатные native clicks вернули noWindowsAvailable; для UITK buttons/fields
+  использован официальный Unity MCP (настоящие pointer/value events). AX menu/save
+  actions работали. Это не физический mouse/touch QA. Отчёты: Reports/P10/.
+- Scene и Data сохранены. Не запускались gameplay PlayMode, mobile/player build
+  и человеческий плейтест. Следующий этап P11 начат по разрешению автора.

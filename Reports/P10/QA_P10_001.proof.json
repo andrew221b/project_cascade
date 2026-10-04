@@ -1,0 +1,13 @@
+{
+  "proof_schema": "cascade.authoring-proof/1",
+  "puzzle_id": "QA_P10_001",
+  "schema_version": "2.0",
+  "rules_version": "2.0",
+  "content_hash": "17c3a4063c119170ba5d65415fafa5c762d9fac7f164cd2769f4f1d21248a1ab",
+  "required_stamp_bits": 0,
+  "optimal_actions": 1,
+  "path": [
+    "0"
+  ],
+  "explored_states": 4
+}

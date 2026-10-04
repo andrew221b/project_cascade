@@ -1,0 +1,31 @@
+.workshop { flex-grow: 1; background-color: #23282d; color: #eef0ec; }
+.masthead { padding: 14px 18px 8px 18px; }
+.workshop-title { font-size: 22px; -unity-font-style: bold; color: #e6dfb8; }
+.subtitle { margin-top: 4px; color: #bdc6cb; white-space: normal; }
+.toolbar { flex-direction: row; flex-wrap: wrap; padding: 8px 14px; background-color: #30383e; }
+.toolbar > Button { margin: 3px; min-height: 28px; padding-left: 10px; padding-right: 10px; }
+.toolbar > DropdownField { flex-grow: 1; min-width: 210px; margin: 3px; }
+.columns { flex-grow: 1; flex-direction: row; }
+.draft-scroll { flex-grow: 1; flex-basis: 0; min-width: 360px; }
+.draft-body { padding: 12px 16px; }
+.report-scroll { flex-basis: 320px; flex-shrink: 1; background-color: #1b2025; }
+.report-body { padding: 14px; }
+.section-title { font-size: 15px; -unity-font-style: bold; margin-top: 10px; margin-bottom: 8px; color: #e6dfb8; }
+.form-field { margin-top: 4px; margin-bottom: 4px; }
+.form-field > .unity-base-field__label { min-width: 130px; }
+.card { background-color: #30383e; border-width: 1px; border-color: #46515a; border-radius: 6px; padding: 10px; margin-top: 10px; margin-bottom: 4px; }
+.row { flex-direction: row; flex-wrap: wrap; margin-top: 4px; margin-bottom: 4px; }
+.row > Button { min-height: 26px; margin-right: 5px; margin-bottom: 4px; }
+.symbol-picker { flex-grow: 1; flex-basis: 76px; min-width: 72px; margin-right: 4px; margin-bottom: 5px; }
+.slot-caption { font-size: 10px; color: #bdc6cb; margin-bottom: 3px; }
+.edge-card { padding: 6px; margin: 3px; border-width: 1px; border-color: #5b6974; border-radius: 4px; }
+.edge-card > Toggle { margin-top: 4px; }
+.report-text { white-space: normal; margin-bottom: 10px; }
+.hint-text { white-space: normal; color: #bdc6cb; font-size: 11px; margin-top: 5px; margin-bottom: 8px; }
+.report-row { flex-direction: row; flex-wrap: wrap; }
+.report-row > Button { min-height: 28px; margin-right: 5px; margin-bottom: 5px; }
+.replay-row { flex-direction: row; flex-wrap: wrap; margin-top: 6px; margin-bottom: 10px; }
+.replay-token { font-size: 16px; -unity-font-style: bold; padding: 8px; margin-right: 4px; margin-bottom: 4px; background-color: #405866; border-radius: 4px; }
+.warning { border-left-width: 3px; border-left-color: #d6af62; padding-left: 8px; margin-top: 8px; white-space: normal; }
+.primary-button { background-color: #779486; color: #111c17; -unity-font-style: bold; }
+.primary-button:hover { background-color: #8fac9e; }
