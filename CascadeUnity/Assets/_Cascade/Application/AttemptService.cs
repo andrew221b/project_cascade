@@ -8,8 +8,6 @@ using Cascade.Solver;
 
 namespace Cascade.Application
 {
-    public enum PuzzleMode { Shapes, Words, Mixed }
-
     public sealed class HistoryEntry
     {
         public PuzzleState Before { get; }

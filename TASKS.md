@@ -1,6 +1,6 @@
 # CASCADE — TASKS
 
-P00–P05: COMPLETE. Unity AI/MCP: исправлено. P06: mechanics verified (dependent gates pending). P07–P08: COMPLETE. P09: IN_PROGRESS. P10–P20: NOT_STARTED.
+P00–P05: COMPLETE. Unity AI/MCP: исправлено. P06: mechanics verified (dependent gates pending). P07–P09: COMPLETE. P10: IN_PROGRESS. P11–P20: NOT_STARTED.
 Python reference проверен отдельно; это не реализация игровых систем Unity.
 
 Автор прямо разрешил выполнять все этапы подряд, отменив остановки между
@@ -17,7 +17,7 @@ P01–P20. После каждого этапа фиксировать резу�
 - [ ] P06 — Мост и печать
 - [x] P07 — Solver и метрики
 - [x] P08 — История и подсказки
-- [ ] P09 — 40 данных и три языка
+- [x] P09 — 40 данных и три языка
 - [ ] P10 — Редактор уровней
 - [ ] P11 — Серый playable и ввод
 - [ ] P12 — Визуальный эталон
@@ -178,3 +178,19 @@ P01–P20. После каждого этапа фиксировать резу�
   два старых unqualified Application обращения в P00 helper при появлении namespace.
 - Отчёты: `Reports/P08/`. Не запускались lifecycle/animation interruptions,
   visual/device input, PlayMode, save persistence и player build.
+
+## P09 — результат 5 октября 2026
+
+- Пять source JSON импортированы как Resources byte-for-byte. Чистый Content
+  adapter создаёт immutable definitions, реальные WordId segments и SHA256,
+  наследуя rules 2.0 от primary node. Исходные IDs/пакеты/схемы не переписаны.
+- 40 primary, 117 localized, 111 words (EN40/RU35/UK36). Default locale en.
+  C26 явно shape-only; отсутствует fabricated AAAB word/binding.
+- Все 117 concrete graphs совпали с Python по minima/paths/полным метрикам:
+  12672 states, 48396 transitions. 40 primary minima также проверены production import.
+- Mixed7, Mixed8/two words и общие A между words проверены. Metadata сохраняет
+  draft native-review и license-review flags. Это не редакторская release-приёмка.
+- Unity актуальная compilation; EditMode 277/277 PASS. Resources реально загружены,
+  source/asset bytes совпали. Отчёты: `Reports/P09/`.
+- Не запускались fonts/glyph rendering, native-language review, PlayMode, mobile
+  и player build. Editor/gameplay/UI следующие этапы.

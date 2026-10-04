@@ -1,0 +1,32 @@
+[
+  {
+    "source": "Data/levels.json",
+    "asset": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeContent/levels.json",
+    "sha256": "b69fa4e774b17290c66fa5fa6dc3306c28db2bdac8646ca442fac77200cb5948",
+    "bytes": 34043
+  },
+  {
+    "source": "Data/localized_levels.json",
+    "asset": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeContent/localized_levels.json",
+    "sha256": "e861d2482b36dbe67d37ee5ee4e3ced3e22a7c710122db839bf93e1c56d15b33",
+    "bytes": 104013
+  },
+  {
+    "source": "Data/words_en.json",
+    "asset": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeContent/words_en.json",
+    "sha256": "0c92dc0ef70a6fbf78c1907f4835e36c71317ffdffbe6be32f86cca1854e23c5",
+    "bytes": 14898
+  },
+  {
+    "source": "Data/words_ru.json",
+    "asset": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeContent/words_ru.json",
+    "sha256": "613e1b4b80b697e66697b33ec536ff64d359289a1df7f1d6827e420436557fb5",
+    "bytes": 13467
+  },
+  {
+    "source": "Data/words_uk.json",
+    "asset": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeContent/words_uk.json",
+    "sha256": "48f65cc8df3be0539023b937e7e2cec1c59c12f3423ccc255c7bf23f5192792f",
+    "bytes": 13861
+  }
+]

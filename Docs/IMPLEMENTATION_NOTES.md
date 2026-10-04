@@ -32,6 +32,17 @@ P05 добавляет полный atomic linked set и проверяет об
 Test-only adapter генерирует target segment metadata для абстрактных base patterns;
 production word bindings/metadata внедряются отдельно в P09.
 
+## P09 — content adapter и общие типы
+
+Исходные пять JSON копируются в Resources без изменения байтов. Отдельный
+чистый C# адаптер выводит immutable metadata (schema/rules 2.0 и SHA256),
+segment boundaries из существующих word_ids/словарей. Existing IDs сохраняются.
+Localized rules наследуются от parent node, как в исходном reference-пакете.
+PuzzleMode перенесён из Application в Domain для общих consumers, значения
+Shapes=0/Words=1/Mixed=2 сохранены; сериализованных usage этого нового enum нет.
+C26 остаётся shape-only, без искусственного binding. Права/редакторские статусы
+словарей сохраняются; технический импорт не объявляет их release-ready.
+
 ## Unity AI и MCP для CASCADE
 
 Пользователь установил официальный Assistant `2.20.0-pre.1`, Generators

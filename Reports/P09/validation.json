@@ -1,0 +1,31 @@
+{
+  "phase": "P09",
+  "tests": {
+    "total": "277",
+    "passed": "277",
+    "failed": "0",
+    "skipped": "0"
+  },
+  "script_compilation_failed": false,
+  "primary": 40,
+  "localized": 117,
+  "words": {
+    "en": 40,
+    "ru": 35,
+    "uk": 36
+  },
+  "python_localized_graph_parity": "PASS",
+  "total_localized_states": 12672,
+  "total_localized_transitions": 48396,
+  "source_assets_byte_equality": "PASS",
+  "resources_loading": "PASS",
+  "default_locale": "en",
+  "C26": "SHAPE_ONLY_NO_FABRICATED_BINDING",
+  "not_run": [
+    "Fonts/glyph rendering",
+    "Native-language/editorial/license release review",
+    "PlayMode",
+    "Mobile",
+    "Player build"
+  ]
+}

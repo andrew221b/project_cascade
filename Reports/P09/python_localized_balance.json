@@ -1,0 +1,2147 @@
+[
+  {
+    "id": "C01_en",
+    "node_id": "C01",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 4,
+    "transitions": 3,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C01_ru",
+    "node_id": "C01",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 4,
+    "transitions": 3,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C01_uk",
+    "node_id": "C01",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 4,
+    "transitions": 3,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C02_en",
+    "node_id": "C02",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      1,
+      0
+    ],
+    "states": 8,
+    "transitions": 9,
+    "dead_states": 1,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C02_ru",
+    "node_id": "C02",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      1,
+      0
+    ],
+    "states": 8,
+    "transitions": 9,
+    "dead_states": 1,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C02_uk",
+    "node_id": "C02",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      1,
+      0
+    ],
+    "states": 8,
+    "transitions": 9,
+    "dead_states": 1,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C03_en",
+    "node_id": "C03",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      0,
+      2
+    ],
+    "states": 14,
+    "transitions": 20,
+    "dead_states": 2,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 0.6667,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C03_ru",
+    "node_id": "C03",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      0,
+      2
+    ],
+    "states": 14,
+    "transitions": 20,
+    "dead_states": 2,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 0.6667,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C03_uk",
+    "node_id": "C03",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      0,
+      2
+    ],
+    "states": 14,
+    "transitions": 20,
+    "dead_states": 2,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 0.6667,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C04_en",
+    "node_id": "C04",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      0,
+      "D"
+    ],
+    "states": 13,
+    "transitions": 16,
+    "dead_states": 2,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C04_ru",
+    "node_id": "C04",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      0,
+      "D"
+    ],
+    "states": 13,
+    "transitions": 16,
+    "dead_states": 2,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C04_uk",
+    "node_id": "C04",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      0,
+      "D"
+    ],
+    "states": 13,
+    "transitions": 16,
+    "dead_states": 2,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C05_en",
+    "node_id": "C05",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 3,
+    "path": [
+      0,
+      2,
+      "D"
+    ],
+    "states": 16,
+    "transitions": 32,
+    "dead_states": 3,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 3,
+    "forced_ratio": 0.7143,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C05_ru",
+    "node_id": "C05",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 3,
+    "path": [
+      0,
+      2,
+      "D"
+    ],
+    "states": 16,
+    "transitions": 32,
+    "dead_states": 3,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 3,
+    "forced_ratio": 0.7143,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C05_uk",
+    "node_id": "C05",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 3,
+    "path": [
+      0,
+      2,
+      "D"
+    ],
+    "states": 16,
+    "transitions": 32,
+    "dead_states": 3,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 3,
+    "forced_ratio": 0.7143,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C06_en",
+    "node_id": "C06",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 3,
+    "path": [
+      0,
+      "D",
+      2
+    ],
+    "states": 8,
+    "transitions": 8,
+    "dead_states": 1,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C06_ru",
+    "node_id": "C06",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 3,
+    "path": [
+      0,
+      "D",
+      2
+    ],
+    "states": 8,
+    "transitions": 8,
+    "dead_states": 1,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C06_uk",
+    "node_id": "C06",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 3,
+    "path": [
+      0,
+      "D",
+      2
+    ],
+    "states": 8,
+    "transitions": 8,
+    "dead_states": 1,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C07_en",
+    "node_id": "C07",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      "D",
+      0
+    ],
+    "states": 27,
+    "transitions": 39,
+    "dead_states": 6,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 3,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C07_ru",
+    "node_id": "C07",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      "D",
+      0
+    ],
+    "states": 27,
+    "transitions": 39,
+    "dead_states": 6,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 3,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C07_uk",
+    "node_id": "C07",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      "D",
+      0
+    ],
+    "states": 27,
+    "transitions": 39,
+    "dead_states": 6,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 3,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C08_en",
+    "node_id": "C08",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      "D",
+      1
+    ],
+    "states": 8,
+    "transitions": 8,
+    "dead_states": 1,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C08_ru",
+    "node_id": "C08",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      "D",
+      1
+    ],
+    "states": 8,
+    "transitions": 8,
+    "dead_states": 1,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C08_uk",
+    "node_id": "C08",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      "D",
+      1
+    ],
+    "states": 8,
+    "transitions": 8,
+    "dead_states": 1,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C09_en",
+    "node_id": "C09",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      "D",
+      "D"
+    ],
+    "states": 34,
+    "transitions": 52,
+    "dead_states": 6,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 4,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C09_ru",
+    "node_id": "C09",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      "D",
+      "D"
+    ],
+    "states": 34,
+    "transitions": 52,
+    "dead_states": 6,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 4,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C09_uk",
+    "node_id": "C09",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      "D",
+      "D"
+    ],
+    "states": 34,
+    "transitions": 52,
+    "dead_states": 6,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 4,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C10_en",
+    "node_id": "C10",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      2,
+      "D"
+    ],
+    "states": 17,
+    "transitions": 20,
+    "dead_states": 2,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 0.6667,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C10_ru",
+    "node_id": "C10",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      2,
+      "D"
+    ],
+    "states": 17,
+    "transitions": 20,
+    "dead_states": 2,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 0.6667,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C10_uk",
+    "node_id": "C10",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      2,
+      "D"
+    ],
+    "states": 17,
+    "transitions": 20,
+    "dead_states": 2,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 0.6667,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C11_en",
+    "node_id": "C11",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 3,
+    "path": [
+      2,
+      "D",
+      "D"
+    ],
+    "states": 57,
+    "transitions": 132,
+    "dead_states": 23,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C11_ru",
+    "node_id": "C11",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 3,
+    "path": [
+      2,
+      "D",
+      "D"
+    ],
+    "states": 57,
+    "transitions": 132,
+    "dead_states": 23,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C11_uk",
+    "node_id": "C11",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 3,
+    "path": [
+      2,
+      "D",
+      "D"
+    ],
+    "states": 57,
+    "transitions": 132,
+    "dead_states": 23,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C12_en",
+    "node_id": "C12",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 3,
+    "path": [
+      3,
+      "D",
+      "D"
+    ],
+    "states": 141,
+    "transitions": 300,
+    "dead_states": 44,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 5,
+    "forced_ratio": 0.8,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C12_ru",
+    "node_id": "C12",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 3,
+    "path": [
+      3,
+      "D",
+      "D"
+    ],
+    "states": 141,
+    "transitions": 300,
+    "dead_states": 44,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 5,
+    "forced_ratio": 0.8,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C12_uk",
+    "node_id": "C12",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 3,
+    "path": [
+      3,
+      "D",
+      "D"
+    ],
+    "states": 141,
+    "transitions": 300,
+    "dead_states": 44,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 5,
+    "forced_ratio": 0.8,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C13_en",
+    "node_id": "C13",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      0,
+      "D"
+    ],
+    "states": 9,
+    "transitions": 8,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C13_ru",
+    "node_id": "C13",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      0,
+      "D"
+    ],
+    "states": 9,
+    "transitions": 8,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C13_uk",
+    "node_id": "C13",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      0,
+      "D"
+    ],
+    "states": 9,
+    "transitions": 8,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C14_en",
+    "node_id": "C14",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 5,
+    "transitions": 4,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C14_ru",
+    "node_id": "C14",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 5,
+    "transitions": 4,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C14_uk",
+    "node_id": "C14",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 5,
+    "transitions": 4,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C15_en",
+    "node_id": "C15",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      "D",
+      0
+    ],
+    "states": 41,
+    "transitions": 58,
+    "dead_states": 8,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 3,
+    "forced_ratio": 1.0,
+    "terminal_variants": 3
+  },
+  {
+    "id": "C15_ru",
+    "node_id": "C15",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      "D",
+      0
+    ],
+    "states": 41,
+    "transitions": 58,
+    "dead_states": 8,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 3,
+    "forced_ratio": 1.0,
+    "terminal_variants": 3
+  },
+  {
+    "id": "C15_uk",
+    "node_id": "C15",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      "D",
+      0
+    ],
+    "states": 41,
+    "transitions": 58,
+    "dead_states": 8,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 3,
+    "forced_ratio": 1.0,
+    "terminal_variants": 3
+  },
+  {
+    "id": "C16_en",
+    "node_id": "C16",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 3,
+    "path": [
+      "D",
+      0,
+      2
+    ],
+    "states": 68,
+    "transitions": 180,
+    "dead_states": 26,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 4,
+    "forced_ratio": 0.75,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C16_ru",
+    "node_id": "C16",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 3,
+    "path": [
+      "D",
+      0,
+      2
+    ],
+    "states": 68,
+    "transitions": 180,
+    "dead_states": 26,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 4,
+    "forced_ratio": 0.75,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C16_uk",
+    "node_id": "C16",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 3,
+    "path": [
+      "D",
+      0,
+      2
+    ],
+    "states": 68,
+    "transitions": 180,
+    "dead_states": 26,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 4,
+    "forced_ratio": 0.75,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C17_en",
+    "node_id": "C17",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      1,
+      0
+    ],
+    "states": 9,
+    "transitions": 10,
+    "dead_states": 1,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C17_ru",
+    "node_id": "C17",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      1,
+      0
+    ],
+    "states": 9,
+    "transitions": 10,
+    "dead_states": 1,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C17_uk",
+    "node_id": "C17",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      1,
+      0
+    ],
+    "states": 9,
+    "transitions": 10,
+    "dead_states": 1,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C18_en",
+    "node_id": "C18",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 3,
+    "path": [
+      0,
+      1,
+      "D"
+    ],
+    "states": 20,
+    "transitions": 32,
+    "dead_states": 4,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 0.75,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C18_ru",
+    "node_id": "C18",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 3,
+    "path": [
+      0,
+      1,
+      "D"
+    ],
+    "states": 20,
+    "transitions": 32,
+    "dead_states": 4,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 0.75,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C18_uk",
+    "node_id": "C18",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 3,
+    "path": [
+      0,
+      1,
+      "D"
+    ],
+    "states": 20,
+    "transitions": 32,
+    "dead_states": 4,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 0.75,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C19_en",
+    "node_id": "C19",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 4,
+    "path": [
+      0,
+      0,
+      1,
+      "D"
+    ],
+    "states": 44,
+    "transitions": 91,
+    "dead_states": 10,
+    "earliest_dead_depth": 3,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C19_ru",
+    "node_id": "C19",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 4,
+    "path": [
+      0,
+      0,
+      1,
+      "D"
+    ],
+    "states": 44,
+    "transitions": 91,
+    "dead_states": 10,
+    "earliest_dead_depth": 3,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C19_uk",
+    "node_id": "C19",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 4,
+    "path": [
+      0,
+      0,
+      1,
+      "D"
+    ],
+    "states": 44,
+    "transitions": 91,
+    "dead_states": 10,
+    "earliest_dead_depth": 3,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C20_en",
+    "node_id": "C20",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 5,
+    "transitions": 4,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C20_ru",
+    "node_id": "C20",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 5,
+    "transitions": 4,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C20_uk",
+    "node_id": "C20",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 5,
+    "transitions": 4,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C21_en",
+    "node_id": "C21",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 11,
+    "transitions": 12,
+    "dead_states": 2,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C21_ru",
+    "node_id": "C21",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 11,
+    "transitions": 12,
+    "dead_states": 2,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C21_uk",
+    "node_id": "C21",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 11,
+    "transitions": 12,
+    "dead_states": 2,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C22_en",
+    "node_id": "C22",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 5,
+    "transitions": 4,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C22_ru",
+    "node_id": "C22",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 5,
+    "transitions": 4,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C22_uk",
+    "node_id": "C22",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 5,
+    "transitions": 4,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C23_en",
+    "node_id": "C23",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      0,
+      2
+    ],
+    "states": 25,
+    "transitions": 44,
+    "dead_states": 6,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C23_ru",
+    "node_id": "C23",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      0,
+      2
+    ],
+    "states": 25,
+    "transitions": 44,
+    "dead_states": 6,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C23_uk",
+    "node_id": "C23",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      0,
+      2
+    ],
+    "states": 25,
+    "transitions": 44,
+    "dead_states": 6,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C24_en",
+    "node_id": "C24",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      2,
+      "D"
+    ],
+    "states": 31,
+    "transitions": 44,
+    "dead_states": 6,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 4,
+    "forced_ratio": 0.6667,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C24_ru",
+    "node_id": "C24",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      2,
+      "D"
+    ],
+    "states": 31,
+    "transitions": 44,
+    "dead_states": 6,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 4,
+    "forced_ratio": 0.6667,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C24_uk",
+    "node_id": "C24",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      2,
+      "D"
+    ],
+    "states": 31,
+    "transitions": 44,
+    "dead_states": 6,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 4,
+    "forced_ratio": 0.6667,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C25_en",
+    "node_id": "C25",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 4,
+    "transitions": 4,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C25_ru",
+    "node_id": "C25",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 4,
+    "transitions": 4,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C25_uk",
+    "node_id": "C25",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 4,
+    "transitions": 4,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C27_en",
+    "node_id": "C27",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 4,
+    "path": [
+      1,
+      1,
+      0,
+      "D"
+    ],
+    "states": 14,
+    "transitions": 26,
+    "dead_states": 3,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C27_ru",
+    "node_id": "C27",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 4,
+    "path": [
+      1,
+      1,
+      0,
+      "D"
+    ],
+    "states": 14,
+    "transitions": 26,
+    "dead_states": 3,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C27_uk",
+    "node_id": "C27",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 4,
+    "path": [
+      1,
+      1,
+      0,
+      "D"
+    ],
+    "states": 14,
+    "transitions": 26,
+    "dead_states": 3,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C28_en",
+    "node_id": "C28",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 7,
+    "transitions": 12,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C28_ru",
+    "node_id": "C28",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 7,
+    "transitions": 12,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C28_uk",
+    "node_id": "C28",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 7,
+    "transitions": 12,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C29_en",
+    "node_id": "C29",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      2,
+      "D"
+    ],
+    "states": 20,
+    "transitions": 30,
+    "dead_states": 3,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 0.6667,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C29_ru",
+    "node_id": "C29",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      2,
+      "D"
+    ],
+    "states": 20,
+    "transitions": 30,
+    "dead_states": 3,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 0.6667,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C29_uk",
+    "node_id": "C29",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      2,
+      "D"
+    ],
+    "states": 20,
+    "transitions": 30,
+    "dead_states": 3,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 0.6667,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C30_en",
+    "node_id": "C30",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 9,
+    "path": [
+      0,
+      2,
+      1,
+      3,
+      2,
+      1,
+      5,
+      4,
+      "D"
+    ],
+    "states": 2898,
+    "transitions": 13485,
+    "dead_states": 1973,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 4,
+    "forced_ratio": 0.2317,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C30_ru",
+    "node_id": "C30",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 9,
+    "path": [
+      0,
+      2,
+      1,
+      3,
+      2,
+      1,
+      5,
+      4,
+      "D"
+    ],
+    "states": 2898,
+    "transitions": 13485,
+    "dead_states": 1973,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 4,
+    "forced_ratio": 0.2317,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C30_uk",
+    "node_id": "C30",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 9,
+    "path": [
+      0,
+      2,
+      1,
+      3,
+      2,
+      1,
+      5,
+      4,
+      "D"
+    ],
+    "states": 2898,
+    "transitions": 13485,
+    "dead_states": 1973,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 4,
+    "forced_ratio": 0.2317,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C31_en",
+    "node_id": "C31",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      2,
+      1
+    ],
+    "states": 13,
+    "transitions": 17,
+    "dead_states": 2,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C31_ru",
+    "node_id": "C31",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      2,
+      1
+    ],
+    "states": 13,
+    "transitions": 17,
+    "dead_states": 2,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C31_uk",
+    "node_id": "C31",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      2,
+      1
+    ],
+    "states": 13,
+    "transitions": 17,
+    "dead_states": 2,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C32_en",
+    "node_id": "C32",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      0,
+      6
+    ],
+    "states": 44,
+    "transitions": 72,
+    "dead_states": 6,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 0.6667,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C32_ru",
+    "node_id": "C32",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      0,
+      6
+    ],
+    "states": 44,
+    "transitions": 72,
+    "dead_states": 6,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 0.6667,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C32_uk",
+    "node_id": "C32",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      0,
+      6
+    ],
+    "states": 44,
+    "transitions": 72,
+    "dead_states": 6,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 0.6667,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C33_en",
+    "node_id": "C33",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 5,
+    "transitions": 4,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C33_ru",
+    "node_id": "C33",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 5,
+    "transitions": 4,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C33_uk",
+    "node_id": "C33",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 5,
+    "transitions": 4,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C34_en",
+    "node_id": "C34",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      1,
+      0
+    ],
+    "states": 13,
+    "transitions": 15,
+    "dead_states": 2,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C34_ru",
+    "node_id": "C34",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      1,
+      0
+    ],
+    "states": 13,
+    "transitions": 15,
+    "dead_states": 2,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C34_uk",
+    "node_id": "C34",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      1,
+      0
+    ],
+    "states": 13,
+    "transitions": 15,
+    "dead_states": 2,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C35_en",
+    "node_id": "C35",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      1,
+      "D"
+    ],
+    "states": 77,
+    "transitions": 160,
+    "dead_states": 14,
+    "earliest_dead_depth": 3,
+    "near_optimal_first_states_plus2": 3,
+    "forced_ratio": 1.0,
+    "terminal_variants": 2
+  },
+  {
+    "id": "C35_ru",
+    "node_id": "C35",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      1,
+      "D"
+    ],
+    "states": 77,
+    "transitions": 160,
+    "dead_states": 14,
+    "earliest_dead_depth": 3,
+    "near_optimal_first_states_plus2": 3,
+    "forced_ratio": 1.0,
+    "terminal_variants": 2
+  },
+  {
+    "id": "C35_uk",
+    "node_id": "C35",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      1,
+      "D"
+    ],
+    "states": 77,
+    "transitions": 160,
+    "dead_states": 14,
+    "earliest_dead_depth": 3,
+    "near_optimal_first_states_plus2": 3,
+    "forced_ratio": 1.0,
+    "terminal_variants": 2
+  },
+  {
+    "id": "C36_en",
+    "node_id": "C36",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      "D",
+      "D"
+    ],
+    "states": 36,
+    "transitions": 52,
+    "dead_states": 6,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 4,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C36_ru",
+    "node_id": "C36",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      "D",
+      "D"
+    ],
+    "states": 36,
+    "transitions": 52,
+    "dead_states": 6,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 4,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C36_uk",
+    "node_id": "C36",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      "D",
+      "D"
+    ],
+    "states": 36,
+    "transitions": 52,
+    "dead_states": 6,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 4,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C37_en",
+    "node_id": "C37",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 6,
+    "path": [
+      0,
+      3,
+      1,
+      0,
+      3,
+      2
+    ],
+    "states": 365,
+    "transitions": 875,
+    "dead_states": 163,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 0.75,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C37_ru",
+    "node_id": "C37",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 6,
+    "path": [
+      0,
+      3,
+      1,
+      0,
+      3,
+      2
+    ],
+    "states": 365,
+    "transitions": 875,
+    "dead_states": 163,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 0.75,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C37_uk",
+    "node_id": "C37",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 6,
+    "path": [
+      0,
+      3,
+      1,
+      0,
+      3,
+      2
+    ],
+    "states": 365,
+    "transitions": 875,
+    "dead_states": 163,
+    "earliest_dead_depth": 1,
+    "near_optimal_first_states_plus2": 2,
+    "forced_ratio": 0.75,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C38_en",
+    "node_id": "C38",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      1,
+      0
+    ],
+    "states": 7,
+    "transitions": 7,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C38_ru",
+    "node_id": "C38",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      1,
+      0
+    ],
+    "states": 7,
+    "transitions": 7,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C38_uk",
+    "node_id": "C38",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 2,
+    "path": [
+      1,
+      0
+    ],
+    "states": 7,
+    "transitions": 7,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C39_en",
+    "node_id": "C39",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 4,
+    "transitions": 4,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C39_ru",
+    "node_id": "C39",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 4,
+    "transitions": 4,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C39_uk",
+    "node_id": "C39",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 1,
+    "path": [
+      0
+    ],
+    "states": 4,
+    "transitions": 4,
+    "dead_states": 0,
+    "earliest_dead_depth": null,
+    "near_optimal_first_states_plus2": 1,
+    "forced_ratio": 1.0,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C40_en",
+    "node_id": "C40",
+    "locale": "en",
+    "solvable": true,
+    "optimal_actions": 3,
+    "path": [
+      1,
+      "D",
+      "D"
+    ],
+    "states": 97,
+    "transitions": 239,
+    "dead_states": 30,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 5,
+    "forced_ratio": 0.8,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C40_ru",
+    "node_id": "C40",
+    "locale": "ru",
+    "solvable": true,
+    "optimal_actions": 3,
+    "path": [
+      1,
+      "D",
+      "D"
+    ],
+    "states": 97,
+    "transitions": 239,
+    "dead_states": 30,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 5,
+    "forced_ratio": 0.8,
+    "terminal_variants": 1
+  },
+  {
+    "id": "C40_uk",
+    "node_id": "C40",
+    "locale": "uk",
+    "solvable": true,
+    "optimal_actions": 3,
+    "path": [
+      1,
+      "D",
+      "D"
+    ],
+    "states": 97,
+    "transitions": 239,
+    "dead_states": 30,
+    "earliest_dead_depth": 2,
+    "near_optimal_first_states_plus2": 5,
+    "forced_ratio": 0.8,
+    "terminal_variants": 1
+  }
+]

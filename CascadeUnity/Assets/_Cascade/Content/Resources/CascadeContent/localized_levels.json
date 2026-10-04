@@ -1,0 +1,6233 @@
+[
+  {
+    "id": "C01_en",
+    "node_id": "C01",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_CAT"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:C",
+      "g:en:T"
+    ],
+    "target": [
+      "g:en:C",
+      "g:en:A",
+      "g:en:T"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C01_ru",
+    "node_id": "C01",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_КОТ"
+    ],
+    "start": [
+      "g:ru:О",
+      "g:ru:К",
+      "g:ru:Т"
+    ],
+    "target": [
+      "g:ru:К",
+      "g:ru:О",
+      "g:ru:Т"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C01_uk",
+    "node_id": "C01",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_КІТ"
+    ],
+    "start": [
+      "g:uk:І",
+      "g:uk:К",
+      "g:uk:Т"
+    ],
+    "target": [
+      "g:uk:К",
+      "g:uk:І",
+      "g:uk:Т"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C02_en",
+    "node_id": "C02",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_CAT"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:T",
+      "g:en:C"
+    ],
+    "target": [
+      "g:en:C",
+      "g:en:A",
+      "g:en:T"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C02_ru",
+    "node_id": "C02",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_КОТ"
+    ],
+    "start": [
+      "g:ru:О",
+      "g:ru:Т",
+      "g:ru:К"
+    ],
+    "target": [
+      "g:ru:К",
+      "g:ru:О",
+      "g:ru:Т"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C02_uk",
+    "node_id": "C02",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_КІТ"
+    ],
+    "start": [
+      "g:uk:І",
+      "g:uk:Т",
+      "g:uk:К"
+    ],
+    "target": [
+      "g:uk:К",
+      "g:uk:І",
+      "g:uk:Т"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C03_en",
+    "node_id": "C03",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:L",
+      "g:en:P",
+      "g:en:M"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C03_ru",
+    "node_id": "C03",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:У",
+      "g:ru:Л",
+      "g:ru:А",
+      "g:ru:Н"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C03_uk",
+    "node_id": "C03",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Л",
+      "g:uk:М",
+      "g:uk:Н",
+      "g:uk:И"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C04_en",
+    "node_id": "C04",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:L",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C04_ru",
+    "node_id": "C04",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:У",
+      "g:ru:Л",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C04_uk",
+    "node_id": "C04",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Л",
+      "g:uk:М",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C05_en",
+    "node_id": "C05",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_MAMA"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:M",
+      "g:en:A",
+      "g:en:M"
+    ],
+    "target": [
+      "g:en:M",
+      "g:en:A",
+      "g:en:M",
+      "g:en:A"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C05_ru",
+    "node_id": "C05",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_МАМА"
+    ],
+    "start": [
+      "g:ru:А",
+      "g:ru:М",
+      "g:ru:А",
+      "g:ru:М"
+    ],
+    "target": [
+      "g:ru:М",
+      "g:ru:А",
+      "g:ru:М",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C05_uk",
+    "node_id": "C05",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МАМА"
+    ],
+    "start": [
+      "g:uk:А",
+      "g:uk:М",
+      "g:uk:А",
+      "g:uk:М"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:А",
+      "g:uk:М",
+      "g:uk:А"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C06_en",
+    "node_id": "C06",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:L",
+      "g:en:P",
+      "g:en:M"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          false,
+          false
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          false,
+          false,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C06_ru",
+    "node_id": "C06",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:У",
+      "g:ru:Л",
+      "g:ru:А",
+      "g:ru:Н"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          false,
+          false
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          false,
+          false,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C06_uk",
+    "node_id": "C06",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Л",
+      "g:uk:М",
+      "g:uk:Н",
+      "g:uk:И"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          false,
+          false
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          false,
+          false,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C07_en",
+    "node_id": "C07",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:L",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 4,
+        "edges": [
+          false,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          false,
+          false
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C07_ru",
+    "node_id": "C07",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:У",
+      "g:ru:Л",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 4,
+        "edges": [
+          false,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          false,
+          false
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C07_uk",
+    "node_id": "C07",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Л",
+      "g:uk:М",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 4,
+        "edges": [
+          false,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          false,
+          false
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C08_en",
+    "node_id": "C08",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:L",
+      "g:en:M",
+      "g:en:A",
+      "g:en:P"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          false,
+          false,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          false,
+          true,
+          false
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C08_ru",
+    "node_id": "C08",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:Л",
+      "g:ru:Н",
+      "g:ru:У",
+      "g:ru:А"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          false,
+          false,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          false,
+          true,
+          false
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C08_uk",
+    "node_id": "C08",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:М",
+      "g:uk:И",
+      "g:uk:Л",
+      "g:uk:Н"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          false,
+          false,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          false,
+          true,
+          false
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C09_en",
+    "node_id": "C09",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:P",
+      "g:en:L",
+      "g:en:A",
+      "g:en:M"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": -1,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C09_ru",
+    "node_id": "C09",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:А",
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": -1,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C09_uk",
+    "node_id": "C09",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Н",
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": -1,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C10_en",
+    "node_id": "C10",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:P",
+      "g:en:L",
+      "g:en:M",
+      "g:en:A"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": -1,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C10_ru",
+    "node_id": "C10",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:А",
+      "g:ru:Л",
+      "g:ru:Н",
+      "g:ru:У"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": -1,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C10_uk",
+    "node_id": "C10",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Н",
+      "g:uk:М",
+      "g:uk:И",
+      "g:uk:Л"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": -1,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C11_en",
+    "node_id": "C11",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:M",
+      "g:en:L",
+      "g:en:P"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 1,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C11_ru",
+    "node_id": "C11",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:Л",
+      "g:ru:А"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 1,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C11_uk",
+    "node_id": "C11",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:М",
+      "g:uk:Н"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 1,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C12_en",
+    "node_id": "C12",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_PLANT"
+    ],
+    "start": [
+      "g:en:T",
+      "g:en:P",
+      "g:en:L",
+      "g:en:N",
+      "g:en:A"
+    ],
+    "target": [
+      "g:en:P",
+      "g:en:L",
+      "g:en:A",
+      "g:en:N",
+      "g:en:T"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": -1,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C12_ru",
+    "node_id": "C12",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ВЕСНА"
+    ],
+    "start": [
+      "g:ru:А",
+      "g:ru:В",
+      "g:ru:Е",
+      "g:ru:Н",
+      "g:ru:С"
+    ],
+    "target": [
+      "g:ru:В",
+      "g:ru:Е",
+      "g:ru:С",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": -1,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C12_uk",
+    "node_id": "C12",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_КНИГА"
+    ],
+    "start": [
+      "g:uk:А",
+      "g:uk:К",
+      "g:uk:Н",
+      "g:uk:Г",
+      "g:uk:И"
+    ],
+    "target": [
+      "g:uk:К",
+      "g:uk:Н",
+      "g:uk:И",
+      "g:uk:Г",
+      "g:uk:А"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": -1,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C13_en",
+    "node_id": "C13",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:L",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": {
+          "slot": 0,
+          "symbol": "g:en:L",
+          "ticks": 1,
+          "damage": 2
+        },
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C13_ru",
+    "node_id": "C13",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:У",
+      "g:ru:Л",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": {
+          "slot": 0,
+          "symbol": "g:ru:Л",
+          "ticks": 1,
+          "damage": 2
+        },
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C13_uk",
+    "node_id": "C13",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Л",
+      "g:uk:М",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": {
+          "slot": 0,
+          "symbol": "g:uk:М",
+          "ticks": 1,
+          "damage": 2
+        },
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C14_en",
+    "node_id": "C14",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:L",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": {
+          "slot": 3,
+          "symbol": "g:en:L",
+          "ticks": 1,
+          "damage": 2
+        },
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C14_ru",
+    "node_id": "C14",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:У",
+      "g:ru:Л",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": {
+          "slot": 3,
+          "symbol": "g:ru:Л",
+          "ticks": 1,
+          "damage": 2
+        },
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C14_uk",
+    "node_id": "C14",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Л",
+      "g:uk:М",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": {
+          "slot": 3,
+          "symbol": "g:uk:М",
+          "ticks": 1,
+          "damage": 2
+        },
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C15_en",
+    "node_id": "C15",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:L",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 4,
+        "edges": [
+          false,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": {
+          "slot": 3,
+          "symbol": "g:en:L",
+          "ticks": 2,
+          "damage": 2
+        },
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C15_ru",
+    "node_id": "C15",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:У",
+      "g:ru:Л",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 4,
+        "edges": [
+          false,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": {
+          "slot": 3,
+          "symbol": "g:ru:Л",
+          "ticks": 2,
+          "damage": 2
+        },
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C15_uk",
+    "node_id": "C15",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Л",
+      "g:uk:М",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 4,
+        "edges": [
+          false,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": {
+          "slot": 3,
+          "symbol": "g:uk:М",
+          "ticks": 2,
+          "damage": 2
+        },
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C16_en",
+    "node_id": "C16",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:L",
+      "g:en:P",
+      "g:en:M"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C16_ru",
+    "node_id": "C16",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:У",
+      "g:ru:Л",
+      "g:ru:А",
+      "g:ru:Н"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C16_uk",
+    "node_id": "C16",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Л",
+      "g:uk:М",
+      "g:uk:Н",
+      "g:uk:И"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C17_en",
+    "node_id": "C17",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:M",
+      "g:en:L",
+      "g:en:P"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          false,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": {
+          "slot": 1,
+          "symbol": "g:en:L",
+          "value": 0
+        },
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C17_ru",
+    "node_id": "C17",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:Л",
+      "g:ru:А"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          false,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": {
+          "slot": 1,
+          "symbol": "g:ru:Л",
+          "value": 0
+        },
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C17_uk",
+    "node_id": "C17",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:М",
+      "g:uk:Н"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          false,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": {
+          "slot": 1,
+          "symbol": "g:uk:М",
+          "value": 0
+        },
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C18_en",
+    "node_id": "C18",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:M",
+      "g:en:L",
+      "g:en:A",
+      "g:en:P"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": {
+          "slot": 0,
+          "symbol": "g:en:L",
+          "value": 1
+        },
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C18_ru",
+    "node_id": "C18",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:Н",
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:А"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": {
+          "slot": 0,
+          "symbol": "g:ru:Л",
+          "value": 1
+        },
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C18_uk",
+    "node_id": "C18",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:И",
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:Н"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": {
+          "slot": 0,
+          "symbol": "g:uk:М",
+          "value": 1
+        },
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C19_en",
+    "node_id": "C19",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:L",
+      "g:en:M",
+      "g:en:A",
+      "g:en:P"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 5,
+        "edges": [
+          true,
+          false,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": {
+          "slot": 0,
+          "symbol": "g:en:M",
+          "value": 1
+        },
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C19_ru",
+    "node_id": "C19",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:Л",
+      "g:ru:Н",
+      "g:ru:У",
+      "g:ru:А"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 5,
+        "edges": [
+          true,
+          false,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": {
+          "slot": 0,
+          "symbol": "g:ru:Н",
+          "value": 1
+        },
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C19_uk",
+    "node_id": "C19",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:М",
+      "g:uk:И",
+      "g:uk:Л",
+      "g:uk:Н"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 5,
+        "edges": [
+          true,
+          false,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": {
+          "slot": 0,
+          "symbol": "g:uk:И",
+          "value": 1
+        },
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C20_en",
+    "node_id": "C20",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:L",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": {
+          "slot": 0,
+          "symbol": "g:en:L",
+          "value": 1
+        },
+        "bomb": {
+          "slot": 3,
+          "symbol": "g:en:L",
+          "ticks": 1,
+          "damage": 2
+        },
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C20_ru",
+    "node_id": "C20",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:У",
+      "g:ru:Л",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": {
+          "slot": 0,
+          "symbol": "g:ru:Л",
+          "value": 1
+        },
+        "bomb": {
+          "slot": 3,
+          "symbol": "g:ru:Л",
+          "ticks": 1,
+          "damage": 2
+        },
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C20_uk",
+    "node_id": "C20",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Л",
+      "g:uk:М",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": {
+          "slot": 0,
+          "symbol": "g:uk:М",
+          "value": 1
+        },
+        "bomb": {
+          "slot": 3,
+          "symbol": "g:uk:М",
+          "ticks": 1,
+          "damage": 2
+        },
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C21_en",
+    "node_id": "C21",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:L",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [
+          0
+        ],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C21_ru",
+    "node_id": "C21",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:У",
+      "g:ru:Л",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [
+          0
+        ],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C21_uk",
+    "node_id": "C21",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Л",
+      "g:uk:М",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [
+          0
+        ],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C22_en",
+    "node_id": "C22",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:L",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [
+          0
+        ],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": {
+          "slot": 0,
+          "symbol": "g:en:L",
+          "value": 1
+        },
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C22_ru",
+    "node_id": "C22",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:У",
+      "g:ru:Л",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [
+          0
+        ],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": {
+          "slot": 0,
+          "symbol": "g:ru:Л",
+          "value": 1
+        },
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C22_uk",
+    "node_id": "C22",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Л",
+      "g:uk:М",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [
+          0
+        ],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": {
+          "slot": 0,
+          "symbol": "g:uk:М",
+          "value": 1
+        },
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C23_en",
+    "node_id": "C23",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:L",
+      "g:en:P",
+      "g:en:M"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [
+          0
+        ],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C23_ru",
+    "node_id": "C23",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:У",
+      "g:ru:Л",
+      "g:ru:А",
+      "g:ru:Н"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [
+          0
+        ],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C23_uk",
+    "node_id": "C23",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Л",
+      "g:uk:М",
+      "g:uk:Н",
+      "g:uk:И"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [
+          0
+        ],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C24_en",
+    "node_id": "C24",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:P",
+      "g:en:L",
+      "g:en:M",
+      "g:en:A"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [
+          2
+        ],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": -1,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C24_ru",
+    "node_id": "C24",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:А",
+      "g:ru:Л",
+      "g:ru:Н",
+      "g:ru:У"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [
+          2
+        ],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": -1,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C24_uk",
+    "node_id": "C24",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Н",
+      "g:uk:М",
+      "g:uk:И",
+      "g:uk:Л"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [
+          2
+        ],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": -1,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C25_en",
+    "node_id": "C25",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:L",
+      "g:en:P",
+      "g:en:M"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": [
+          0,
+          2
+        ],
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C25_ru",
+    "node_id": "C25",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:У",
+      "g:ru:Л",
+      "g:ru:А",
+      "g:ru:Н"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": [
+          0,
+          2
+        ],
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C25_uk",
+    "node_id": "C25",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Л",
+      "g:uk:М",
+      "g:uk:Н",
+      "g:uk:И"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": [
+          0,
+          2
+        ],
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C27_en",
+    "node_id": "C27",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:L",
+      "g:en:P",
+      "g:en:M"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 4,
+        "edges": [
+          false,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": [
+          0,
+          2
+        ],
+        "shift": 0,
+        "mirror": false,
+        "key": {
+          "slot": 1,
+          "symbol": "g:en:P",
+          "value": 0
+        },
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C27_ru",
+    "node_id": "C27",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:У",
+      "g:ru:Л",
+      "g:ru:А",
+      "g:ru:Н"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 4,
+        "edges": [
+          false,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": [
+          0,
+          2
+        ],
+        "shift": 0,
+        "mirror": false,
+        "key": {
+          "slot": 1,
+          "symbol": "g:ru:А",
+          "value": 0
+        },
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C27_uk",
+    "node_id": "C27",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Л",
+      "g:uk:М",
+      "g:uk:Н",
+      "g:uk:И"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 4,
+        "edges": [
+          false,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": [
+          0,
+          2
+        ],
+        "shift": 0,
+        "mirror": false,
+        "key": {
+          "slot": 1,
+          "symbol": "g:uk:Н",
+          "value": 0
+        },
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C28_en",
+    "node_id": "C28",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:L",
+      "g:en:P",
+      "g:en:M"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [
+          0,
+          2
+        ],
+        "linked": [
+          0,
+          2
+        ],
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C28_ru",
+    "node_id": "C28",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:У",
+      "g:ru:Л",
+      "g:ru:А",
+      "g:ru:Н"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [
+          0,
+          2
+        ],
+        "linked": [
+          0,
+          2
+        ],
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C28_uk",
+    "node_id": "C28",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Л",
+      "g:uk:М",
+      "g:uk:Н",
+      "g:uk:И"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [
+          0,
+          2
+        ],
+        "linked": [
+          0,
+          2
+        ],
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C29_en",
+    "node_id": "C29",
+    "locale": "en",
+    "mode": "mixed",
+    "word_ids": [
+      "en_CAT"
+    ],
+    "start": [
+      "s:T",
+      "g:en:C",
+      "g:en:T",
+      "g:en:A",
+      "s:O"
+    ],
+    "target": [
+      "s:T",
+      "g:en:C",
+      "g:en:A",
+      "g:en:T",
+      "s:O"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C29_ru",
+    "node_id": "C29",
+    "locale": "ru",
+    "mode": "mixed",
+    "word_ids": [
+      "ru_КОТ"
+    ],
+    "start": [
+      "s:T",
+      "g:ru:К",
+      "g:ru:Т",
+      "g:ru:О",
+      "s:O"
+    ],
+    "target": [
+      "s:T",
+      "g:ru:К",
+      "g:ru:О",
+      "g:ru:Т",
+      "s:O"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C29_uk",
+    "node_id": "C29",
+    "locale": "uk",
+    "mode": "mixed",
+    "word_ids": [
+      "uk_КІТ"
+    ],
+    "start": [
+      "s:T",
+      "g:uk:К",
+      "g:uk:Т",
+      "g:uk:І",
+      "s:O"
+    ],
+    "target": [
+      "s:T",
+      "g:uk:К",
+      "g:uk:І",
+      "g:uk:Т",
+      "s:O"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C30_en",
+    "node_id": "C30",
+    "locale": "en",
+    "mode": "mixed",
+    "word_ids": [
+      "en_CAT"
+    ],
+    "start": [
+      "g:en:A",
+      "s:T",
+      "s:O",
+      "g:en:C",
+      "s:T",
+      "s:O",
+      "g:en:T"
+    ],
+    "target": [
+      "s:T",
+      "s:T",
+      "g:en:C",
+      "g:en:A",
+      "g:en:T",
+      "s:O",
+      "s:O"
+    ],
+    "floors": [
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C30_ru",
+    "node_id": "C30",
+    "locale": "ru",
+    "mode": "mixed",
+    "word_ids": [
+      "ru_КОТ"
+    ],
+    "start": [
+      "g:ru:О",
+      "s:T",
+      "s:O",
+      "g:ru:К",
+      "s:T",
+      "s:O",
+      "g:ru:Т"
+    ],
+    "target": [
+      "s:T",
+      "s:T",
+      "g:ru:К",
+      "g:ru:О",
+      "g:ru:Т",
+      "s:O",
+      "s:O"
+    ],
+    "floors": [
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C30_uk",
+    "node_id": "C30",
+    "locale": "uk",
+    "mode": "mixed",
+    "word_ids": [
+      "uk_КІТ"
+    ],
+    "start": [
+      "g:uk:І",
+      "s:T",
+      "s:O",
+      "g:uk:К",
+      "s:T",
+      "s:O",
+      "g:uk:Т"
+    ],
+    "target": [
+      "s:T",
+      "s:T",
+      "g:uk:К",
+      "g:uk:І",
+      "g:uk:Т",
+      "s:O",
+      "s:O"
+    ],
+    "floors": [
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C31_en",
+    "node_id": "C31",
+    "locale": "en",
+    "mode": "mixed",
+    "word_ids": [
+      "en_CAT"
+    ],
+    "start": [
+      "s:T",
+      "g:en:A",
+      "g:en:T",
+      "g:en:C",
+      "s:O"
+    ],
+    "target": [
+      "s:T",
+      "g:en:C",
+      "g:en:A",
+      "g:en:T",
+      "s:O"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          false,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": {
+          "slot": 2,
+          "symbol": "g:en:C",
+          "value": 1
+        },
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C31_ru",
+    "node_id": "C31",
+    "locale": "ru",
+    "mode": "mixed",
+    "word_ids": [
+      "ru_КОТ"
+    ],
+    "start": [
+      "s:T",
+      "g:ru:О",
+      "g:ru:Т",
+      "g:ru:К",
+      "s:O"
+    ],
+    "target": [
+      "s:T",
+      "g:ru:К",
+      "g:ru:О",
+      "g:ru:Т",
+      "s:O"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          false,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": {
+          "slot": 2,
+          "symbol": "g:ru:К",
+          "value": 1
+        },
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C31_uk",
+    "node_id": "C31",
+    "locale": "uk",
+    "mode": "mixed",
+    "word_ids": [
+      "uk_КІТ"
+    ],
+    "start": [
+      "s:T",
+      "g:uk:І",
+      "g:uk:Т",
+      "g:uk:К",
+      "s:O"
+    ],
+    "target": [
+      "s:T",
+      "g:uk:К",
+      "g:uk:І",
+      "g:uk:Т",
+      "s:O"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          false,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": {
+          "slot": 2,
+          "symbol": "g:uk:К",
+          "value": 1
+        },
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C32_en",
+    "node_id": "C32",
+    "locale": "en",
+    "mode": "mixed",
+    "word_ids": [
+      "en_CAT",
+      "en_DOG"
+    ],
+    "start": [
+      "g:en:C",
+      "s:T",
+      "g:en:A",
+      "g:en:T",
+      "s:O",
+      "g:en:D",
+      "g:en:G",
+      "g:en:O"
+    ],
+    "target": [
+      "s:T",
+      "g:en:C",
+      "g:en:A",
+      "g:en:T",
+      "s:O",
+      "g:en:D",
+      "g:en:O",
+      "g:en:G"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C32_ru",
+    "node_id": "C32",
+    "locale": "ru",
+    "mode": "mixed",
+    "word_ids": [
+      "ru_КОТ",
+      "ru_СЫР"
+    ],
+    "start": [
+      "g:ru:К",
+      "s:T",
+      "g:ru:О",
+      "g:ru:Т",
+      "s:O",
+      "g:ru:С",
+      "g:ru:Р",
+      "g:ru:Ы"
+    ],
+    "target": [
+      "s:T",
+      "g:ru:К",
+      "g:ru:О",
+      "g:ru:Т",
+      "s:O",
+      "g:ru:С",
+      "g:ru:Ы",
+      "g:ru:Р"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C32_uk",
+    "node_id": "C32",
+    "locale": "uk",
+    "mode": "mixed",
+    "word_ids": [
+      "uk_КІТ",
+      "uk_СИР"
+    ],
+    "start": [
+      "g:uk:К",
+      "s:T",
+      "g:uk:І",
+      "g:uk:Т",
+      "s:O",
+      "g:uk:С",
+      "g:uk:Р",
+      "g:uk:И"
+    ],
+    "target": [
+      "s:T",
+      "g:uk:К",
+      "g:uk:І",
+      "g:uk:Т",
+      "s:O",
+      "g:uk:С",
+      "g:uk:И",
+      "g:uk:Р"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C33_en",
+    "node_id": "C33",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:L",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": 0,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C33_ru",
+    "node_id": "C33",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:У",
+      "g:ru:Л",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": 0,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C33_uk",
+    "node_id": "C33",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Л",
+      "g:uk:М",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": 0,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C34_en",
+    "node_id": "C34",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:M",
+      "g:en:L",
+      "g:en:P"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": 0,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C34_ru",
+    "node_id": "C34",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:Л",
+      "g:ru:А"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": 0,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C34_uk",
+    "node_id": "C34",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:М",
+      "g:uk:Н"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": 0,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C35_en",
+    "node_id": "C35",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:L",
+      "g:en:M",
+      "g:en:A",
+      "g:en:P"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 5,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": {
+          "slot": 0,
+          "symbol": "g:en:M",
+          "value": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "C35_ru",
+    "node_id": "C35",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:Л",
+      "g:ru:Н",
+      "g:ru:У",
+      "g:ru:А"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 5,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": {
+          "slot": 0,
+          "symbol": "g:ru:Н",
+          "value": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "C35_uk",
+    "node_id": "C35",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:М",
+      "g:uk:И",
+      "g:uk:Л",
+      "g:uk:Н"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 5,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": {
+          "slot": 0,
+          "symbol": "g:uk:И",
+          "value": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "C36_en",
+    "node_id": "C36",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:P",
+      "g:en:L",
+      "g:en:A",
+      "g:en:M"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": -1,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": {
+          "slot": 0,
+          "symbol": "g:en:L",
+          "value": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "C36_ru",
+    "node_id": "C36",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:А",
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": -1,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": {
+          "slot": 0,
+          "symbol": "g:ru:Л",
+          "value": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "C36_uk",
+    "node_id": "C36",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Н",
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": -1,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": {
+          "slot": 0,
+          "symbol": "g:uk:М",
+          "value": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "C37_en",
+    "node_id": "C37",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_PLANT"
+    ],
+    "start": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:N",
+      "g:en:T",
+      "g:en:P"
+    ],
+    "target": [
+      "g:en:P",
+      "g:en:L",
+      "g:en:A",
+      "g:en:N",
+      "g:en:T"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": -1,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": {
+          "slot": 0,
+          "symbol": "g:en:P",
+          "ticks": 2,
+          "damage": 2
+        },
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C37_ru",
+    "node_id": "C37",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ВЕСНА"
+    ],
+    "start": [
+      "g:ru:Е",
+      "g:ru:С",
+      "g:ru:Н",
+      "g:ru:А",
+      "g:ru:В"
+    ],
+    "target": [
+      "g:ru:В",
+      "g:ru:Е",
+      "g:ru:С",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": -1,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": {
+          "slot": 0,
+          "symbol": "g:ru:В",
+          "ticks": 2,
+          "damage": 2
+        },
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C37_uk",
+    "node_id": "C37",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_КНИГА"
+    ],
+    "start": [
+      "g:uk:Н",
+      "g:uk:И",
+      "g:uk:Г",
+      "g:uk:А",
+      "g:uk:К"
+    ],
+    "target": [
+      "g:uk:К",
+      "g:uk:Н",
+      "g:uk:И",
+      "g:uk:Г",
+      "g:uk:А"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": -1,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": {
+          "slot": 0,
+          "symbol": "g:uk:К",
+          "ticks": 2,
+          "damage": 2
+        },
+        "bridge": null,
+        "stamp": null
+      },
+      {
+        "hp": 1,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C38_en",
+    "node_id": "C38",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:M",
+      "g:en:L",
+      "g:en:P"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          false,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": {
+          "slot": 1,
+          "symbol": "g:en:L",
+          "value": 0
+        },
+        "repair": {
+          "slot": 1,
+          "symbol": "g:en:L",
+          "value": 1
+        },
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C38_ru",
+    "node_id": "C38",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:Л",
+      "g:ru:А"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          false,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": {
+          "slot": 1,
+          "symbol": "g:ru:Л",
+          "value": 0
+        },
+        "repair": {
+          "slot": 1,
+          "symbol": "g:ru:Л",
+          "value": 1
+        },
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C38_uk",
+    "node_id": "C38",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:М",
+      "g:uk:Н"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 1,
+        "edges": [
+          false,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": {
+          "slot": 1,
+          "symbol": "g:uk:М",
+          "value": 0
+        },
+        "repair": {
+          "slot": 1,
+          "symbol": "g:uk:М",
+          "value": 1
+        },
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C39_en",
+    "node_id": "C39",
+    "locale": "en",
+    "mode": "words",
+    "word_ids": [
+      "en_LAMP"
+    ],
+    "start": [
+      "g:en:A",
+      "g:en:L",
+      "g:en:P",
+      "g:en:M"
+    ],
+    "target": [
+      "g:en:L",
+      "g:en:A",
+      "g:en:M",
+      "g:en:P"
+    ],
+    "floors": [
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": [
+          0,
+          2
+        ],
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": {
+          "slot": 3,
+          "symbol": "g:en:L",
+          "ticks": 1,
+          "damage": 2
+        },
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C39_ru",
+    "node_id": "C39",
+    "locale": "ru",
+    "mode": "words",
+    "word_ids": [
+      "ru_ЛУНА"
+    ],
+    "start": [
+      "g:ru:У",
+      "g:ru:Л",
+      "g:ru:А",
+      "g:ru:Н"
+    ],
+    "target": [
+      "g:ru:Л",
+      "g:ru:У",
+      "g:ru:Н",
+      "g:ru:А"
+    ],
+    "floors": [
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": [
+          0,
+          2
+        ],
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": {
+          "slot": 3,
+          "symbol": "g:ru:Л",
+          "ticks": 1,
+          "damage": 2
+        },
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C39_uk",
+    "node_id": "C39",
+    "locale": "uk",
+    "mode": "words",
+    "word_ids": [
+      "uk_МЛИН"
+    ],
+    "start": [
+      "g:uk:Л",
+      "g:uk:М",
+      "g:uk:Н",
+      "g:uk:И"
+    ],
+    "target": [
+      "g:uk:М",
+      "g:uk:Л",
+      "g:uk:И",
+      "g:uk:Н"
+    ],
+    "floors": [
+      {
+        "hp": 3,
+        "edges": [
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": [
+          0,
+          2
+        ],
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": {
+          "slot": 3,
+          "symbol": "g:uk:М",
+          "ticks": 1,
+          "damage": 2
+        },
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C40_en",
+    "node_id": "C40",
+    "locale": "en",
+    "mode": "mixed",
+    "word_ids": [
+      "en_CAT"
+    ],
+    "start": [
+      "s:T",
+      "g:en:A",
+      "g:en:C",
+      "g:en:T",
+      "s:O"
+    ],
+    "target": [
+      "s:T",
+      "g:en:C",
+      "g:en:A",
+      "g:en:T",
+      "s:O"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": 1,
+        "stamp": null
+      },
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C40_ru",
+    "node_id": "C40",
+    "locale": "ru",
+    "mode": "mixed",
+    "word_ids": [
+      "ru_КОТ"
+    ],
+    "start": [
+      "s:T",
+      "g:ru:О",
+      "g:ru:К",
+      "g:ru:Т",
+      "s:O"
+    ],
+    "target": [
+      "s:T",
+      "g:ru:К",
+      "g:ru:О",
+      "g:ru:Т",
+      "s:O"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": 1,
+        "stamp": null
+      },
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  },
+  {
+    "id": "C40_uk",
+    "node_id": "C40",
+    "locale": "uk",
+    "mode": "mixed",
+    "word_ids": [
+      "uk_КІТ"
+    ],
+    "start": [
+      "s:T",
+      "g:uk:І",
+      "g:uk:К",
+      "g:uk:Т",
+      "s:O"
+    ],
+    "target": [
+      "s:T",
+      "g:uk:К",
+      "g:uk:І",
+      "g:uk:Т",
+      "s:O"
+    ],
+    "floors": [
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": 1,
+        "stamp": null
+      },
+      {
+        "hp": 2,
+        "edges": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "fragile": [],
+        "linked": null,
+        "shift": 0,
+        "mirror": false,
+        "key": null,
+        "repair": null,
+        "bomb": null,
+        "bridge": null,
+        "stamp": null
+      }
+    ]
+  }
+]

@@ -1,0 +1,858 @@
+[
+  {
+    "id": "en_CAT",
+    "locale": "en",
+    "text": "CAT",
+    "tokens": [
+      "C",
+      "A",
+      "T"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_LAMP",
+    "locale": "en",
+    "text": "LAMP",
+    "tokens": [
+      "L",
+      "A",
+      "M",
+      "P"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_MAMA",
+    "locale": "en",
+    "text": "MAMA",
+    "tokens": [
+      "M",
+      "A",
+      "M",
+      "A"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_PLANT",
+    "locale": "en",
+    "text": "PLANT",
+    "tokens": [
+      "P",
+      "L",
+      "A",
+      "N",
+      "T"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_DOG",
+    "locale": "en",
+    "text": "DOG",
+    "tokens": [
+      "D",
+      "O",
+      "G"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_SUN",
+    "locale": "en",
+    "text": "SUN",
+    "tokens": [
+      "S",
+      "U",
+      "N"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_MAP",
+    "locale": "en",
+    "text": "MAP",
+    "tokens": [
+      "M",
+      "A",
+      "P"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_CUP",
+    "locale": "en",
+    "text": "CUP",
+    "tokens": [
+      "C",
+      "U",
+      "P"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_BOOK",
+    "locale": "en",
+    "text": "BOOK",
+    "tokens": [
+      "B",
+      "O",
+      "O",
+      "K"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      1,
+      2
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_TREE",
+    "locale": "en",
+    "text": "TREE",
+    "tokens": [
+      "T",
+      "R",
+      "E",
+      "E"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      2
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_BOAT",
+    "locale": "en",
+    "text": "BOAT",
+    "tokens": [
+      "B",
+      "O",
+      "A",
+      "T"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_FISH",
+    "locale": "en",
+    "text": "FISH",
+    "tokens": [
+      "F",
+      "I",
+      "S",
+      "H"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_DESK",
+    "locale": "en",
+    "text": "DESK",
+    "tokens": [
+      "D",
+      "E",
+      "S",
+      "K"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_MILK",
+    "locale": "en",
+    "text": "MILK",
+    "tokens": [
+      "M",
+      "I",
+      "L",
+      "K"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_BIRD",
+    "locale": "en",
+    "text": "BIRD",
+    "tokens": [
+      "B",
+      "I",
+      "R",
+      "D"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_MOON",
+    "locale": "en",
+    "text": "MOON",
+    "tokens": [
+      "M",
+      "O",
+      "O",
+      "N"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      1,
+      2
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_STAR",
+    "locale": "en",
+    "text": "STAR",
+    "tokens": [
+      "S",
+      "T",
+      "A",
+      "R"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_TRAIN",
+    "locale": "en",
+    "text": "TRAIN",
+    "tokens": [
+      "T",
+      "R",
+      "A",
+      "I",
+      "N"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_HOUSE",
+    "locale": "en",
+    "text": "HOUSE",
+    "tokens": [
+      "H",
+      "O",
+      "U",
+      "S",
+      "E"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_BREAD",
+    "locale": "en",
+    "text": "BREAD",
+    "tokens": [
+      "B",
+      "R",
+      "E",
+      "A",
+      "D"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_WATER",
+    "locale": "en",
+    "text": "WATER",
+    "tokens": [
+      "W",
+      "A",
+      "T",
+      "E",
+      "R"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_CHAIR",
+    "locale": "en",
+    "text": "CHAIR",
+    "tokens": [
+      "C",
+      "H",
+      "A",
+      "I",
+      "R"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_LIGHT",
+    "locale": "en",
+    "text": "LIGHT",
+    "tokens": [
+      "L",
+      "I",
+      "G",
+      "H",
+      "T"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_APPLE",
+    "locale": "en",
+    "text": "APPLE",
+    "tokens": [
+      "A",
+      "P",
+      "P",
+      "L",
+      "E"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      1,
+      2,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_CLOUD",
+    "locale": "en",
+    "text": "CLOUD",
+    "tokens": [
+      "C",
+      "L",
+      "O",
+      "U",
+      "D"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_RIVER",
+    "locale": "en",
+    "text": "RIVER",
+    "tokens": [
+      "R",
+      "I",
+      "V",
+      "E",
+      "R"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      0
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_MUSIC",
+    "locale": "en",
+    "text": "MUSIC",
+    "tokens": [
+      "M",
+      "U",
+      "S",
+      "I",
+      "C"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_PAPER",
+    "locale": "en",
+    "text": "PAPER",
+    "tokens": [
+      "P",
+      "A",
+      "P",
+      "E",
+      "R"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      0,
+      2,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_GREEN",
+    "locale": "en",
+    "text": "GREEN",
+    "tokens": [
+      "G",
+      "R",
+      "E",
+      "E",
+      "N"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      2,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_STONE",
+    "locale": "en",
+    "text": "STONE",
+    "tokens": [
+      "S",
+      "T",
+      "O",
+      "N",
+      "E"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_PLANET",
+    "locale": "en",
+    "text": "PLANET",
+    "tokens": [
+      "P",
+      "L",
+      "A",
+      "N",
+      "E",
+      "T"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_GARDEN",
+    "locale": "en",
+    "text": "GARDEN",
+    "tokens": [
+      "G",
+      "A",
+      "R",
+      "D",
+      "E",
+      "N"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_FOREST",
+    "locale": "en",
+    "text": "FOREST",
+    "tokens": [
+      "F",
+      "O",
+      "R",
+      "E",
+      "S",
+      "T"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_POCKET",
+    "locale": "en",
+    "text": "POCKET",
+    "tokens": [
+      "P",
+      "O",
+      "C",
+      "K",
+      "E",
+      "T"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_ORANGE",
+    "locale": "en",
+    "text": "ORANGE",
+    "tokens": [
+      "O",
+      "R",
+      "A",
+      "N",
+      "G",
+      "E"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_BANANA",
+    "locale": "en",
+    "text": "BANANA",
+    "tokens": [
+      "B",
+      "A",
+      "N",
+      "A",
+      "N",
+      "A"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      1,
+      2,
+      1
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_WINDOW",
+    "locale": "en",
+    "text": "WINDOW",
+    "tokens": [
+      "W",
+      "I",
+      "N",
+      "D",
+      "O",
+      "W"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      0
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_BUTTON",
+    "locale": "en",
+    "text": "BUTTON",
+    "tokens": [
+      "B",
+      "U",
+      "T",
+      "T",
+      "O",
+      "N"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      2,
+      3,
+      4
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_CANDLE",
+    "locale": "en",
+    "text": "CANDLE",
+    "tokens": [
+      "C",
+      "A",
+      "N",
+      "D",
+      "L",
+      "E"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "en_ROBOT",
+    "locale": "en",
+    "text": "ROBOT",
+    "tokens": [
+      "R",
+      "O",
+      "B",
+      "O",
+      "T"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      1,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  }
+]

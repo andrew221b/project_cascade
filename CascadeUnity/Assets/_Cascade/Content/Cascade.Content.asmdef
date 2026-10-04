@@ -1,0 +1,8 @@
+{
+    "name": "Cascade.Content",
+    "rootNamespace": "Cascade.Content",
+    "references": ["Cascade.Domain"],
+    "overrideReferences": true,
+    "precompiledReferences": ["Newtonsoft.Json.dll"],
+    "noEngineReferences": true
+}
