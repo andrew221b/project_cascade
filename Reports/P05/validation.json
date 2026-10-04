@@ -1,0 +1,22 @@
+{
+  "phase": "P05",
+  "tests": {
+    "total": "82",
+    "passed": "82",
+    "failed": "0",
+    "skipped": "0"
+  },
+  "console_errors": 0,
+  "canonical_fixtures": [
+    "C25",
+    "C26",
+    "C27",
+    "C28"
+  ],
+  "not_run": [
+    "PlayMode",
+    "Player build",
+    "Visual/device QA",
+    "Content parity"
+  ]
+}

@@ -1,6 +1,6 @@
 # CASCADE — TASKS
 
-P00–P04: COMPLETE. Unity AI/MCP: исправлено. P05: IN_PROGRESS. P06–P20: NOT_STARTED.
+P00–P05: COMPLETE. Unity AI/MCP: исправлено. P06: IN_PROGRESS. P07–P20: NOT_STARTED.
 Python reference проверен отдельно; это не реализация игровых систем Unity.
 
 Автор прямо разрешил выполнять все этапы подряд, отменив остановки между
@@ -13,7 +13,7 @@ P01–P20. После каждого этапа фиксировать резу�
 - [x] P02 — Базовый resolver
 - [x] P03 — Конвейер и бомба
 - [x] P04 — Ключ и ремонт
-- [ ] P05 — Хрупкость и связанные пары
+- [x] P05 — Хрупкость и связанные пары
 - [ ] P06 — Мост и печать
 - [ ] P07 — Solver и метрики
 - [ ] P08 — История и подсказки
@@ -125,3 +125,13 @@ P01–P20. После каждого этапа фиксировать резу�
 - Unity EditMode: 72/72 PASS, C# ошибок 0. Включены составной defuse+key+repair,
   repair+blast, force Drop и one-shot. Отчёты: `Reports/P04/`.
 - Не запускались: игровые PlayMode, visual/device QA, player build, data parity.
+
+## P05 — результат 5 октября 2026
+
+- Linked set проверяется полностью до движения; обе перестановки атомарны,
+  contacts видят final row. No-op определяется по всему ряду.
+- Цена 1+crossedFragileCount одинакова в preview/apply: обе fragile дают 3,
+  включая одинаковую подпару. Один linked ход даёт один command/event/tick.
+- C25/C26/C28 победные fixtures и C27 unlock-before-linked проверены.
+- Unity EditMode: 82/82 PASS, C# ошибок 0. Отчёты: `Reports/P05/`.
+  Визуальная читаемость/ввод, PlayMode, build и общий JSON parity ещё не проверены.
