@@ -1,6 +1,6 @@
 # CASCADE — TASKS
 
-P00–P01: COMPLETE. Unity AI/MCP: исправлено. P02: IN_PROGRESS. P03–P20: NOT_STARTED.
+P00–P02: COMPLETE. Unity AI/MCP: исправлено. P03: IN_PROGRESS. P04–P20: NOT_STARTED.
 Python reference проверен отдельно; это не реализация игровых систем Unity.
 
 Автор прямо разрешил выполнять все этапы подряд, отменив остановки между
@@ -10,7 +10,7 @@ P01–P20. После каждого этапа фиксировать резу�
 
 - [x] P00 — Зафиксировать проект
 - [x] P01 — Формат уровня и символы
-- [ ] P02 — Базовый resolver
+- [x] P02 — Базовый resolver
 - [ ] P03 — Конвейер и бомба
 - [ ] P04 — Ключ и ремонт
 - [ ] P05 — Хрупкость и связанные пары
@@ -90,3 +90,15 @@ P01–P20. После каждого этапа фиксировать резу�
   не проверены. JSON import/parity относятся к следующим этапам.
 - .meta созданы Unity; целостность и результаты: `Reports/P01/`.
   Следующий этап P02 начат по прямому разрешению автора продолжать подряд.
+
+## P02 — результат 5 октября 2026
+
+- Pure C# resolver: adjacent Swap/Early Drop, signed durability, общий вход,
+  точный receiver и immutable snapshots/events. Invalid/locked/no-op и terminal
+  команды возвращают тот же snapshot без цены и событий.
+- Последний Swap сохраняет весь ряд и доставляет его в receiver; автоматическое
+  обрушение не добавляет вторую команду. Drop принят один раз и стоит 0 HP.
+- Unity EditMode: 50/50 PASS, включая 4200 команд проверки multiset/stable HP.
+  Компиляция и свежая Console без ошибок. Отчёты: `Reports/P02/`.
+- Устройства добавляются P03–P06; gameplay scene, visual, PlayMode, player build
+  и C#/Python content parity ещё не запускались.
