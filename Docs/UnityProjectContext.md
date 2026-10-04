@@ -1,8 +1,8 @@
-# CASCADE — контекст Unity после P00
+# CASCADE — текущий контекст Unity
 
 <!-- unity-onboarding:generated:start -->
 
-Проверено: 4 октября 2026, Europe/Sofia. Этап: P00 COMPLETE.
+Обновлено: 5 октября 2026, Europe/Sofia. P00–P10 COMPLETE; P11 IN_PROGRESS.
 
 ## Проект и окружение
 
@@ -18,7 +18,8 @@
 - URP фактически `17.3.0` builtin; Test Framework `1.6.0` builtin;
   uGUI `2.0.0` builtin. Исходные запросы шаблона для первых двух —
   `17.0.1` и `1.4.2`; фактические версии фиксируются Editor и lock.
-- Остальные прямые зависимости — неизменённые defaults локального шаблона.
+- Прямые зависимости шаблона сохранены; установленные автором Assistant и
+  Inference сохранены, отдельный deprecated Generators удалён при AI repair.
   Не считать Navigation/Timeline/Visual Scripting частью архитектуры CASCADE
   только из-за их наличия в defaults. SDK рекламы/IAP/сервисов не добавлялись.
 - Последний проверочный импорт запускался с `StandaloneOSX` и `-nographics`.
@@ -29,19 +30,23 @@
 Авторские `AGENTS.md`, `TASKS.md`, Docs/Data/Prompts/Tools/Reports находятся
 в родительском Git root, вне Unity Assets. Не создавать конкурирующие копии.
 
-`Assets/_Cascade/` подготовлен по C17. P01 реализует immutable definitions,
-typed SymbolId и validator в чистой C# сборке Cascade.Domain
-(`noEngineReferences: true`). 40 EditMode cases прошли через живой Unity Editor.
-Editor/Validation содержит runner с XML отчётами; ProjectBootstrap/PackageRepair
-остаётся явно вызываемым helper первоначального Input System.
-Resolver, Solver, Application и Presentation ещё не реализованы.
+`Assets/_Cascade/` следует C17. Domain, Solver, Application и Content — чистые
+C# сборки без UnityEngine. Один Resolver обслуживает gameplay, preview и BFS.
+Typed SymbolId, immutable states/definitions, все устройства, Attempt/Undo/Hint,
+40 primary/117 localized/111 words и production import реализованы P01–P09.
+Editor/Authoring содержит UI Toolkit Workshop: Validate/Solve/Replay/Export и
+version/hash/goal proof gate. Editor/Validation пишет EditMode/PlayMode XML.
+ProjectBootstrap/PackageRepair остаётся только явно вызываемым helper.
 
-В build settings включена только штатная `Assets/Scenes/SampleScene.unity`.
-Это scene шаблона; boot/gameplay flow CASCADE ещё не существует.
+Первой в build settings добавлена `Assets/_Cascade/Scenes/CascadePlayable.unity`;
+SampleScene сохранена следом. Gray Presentation использует uGUI/TMP, один
+EventSystem/InputSystemUIInputModule и pure input gate. Один persistent row,
+видимые этажи/полный target, drag/tap-tap, precise focus и бесплатные hint/Undo.
+Home/onboarding/save/meta, окончательный визуал и event juice ещё не реализованы.
 
-Плановая архитектура по C17: чистые C# Domain и Solver, один общий resolver;
-Application управляет попытками/историей, Presentation показывает final-state.
-uGUI/TMP, input adapter и один tween adapter. Эта архитектура пока не реализована.
+Application commit предшествует presentation. P11 gray gate не меняет core-state;
+полноценный единый event/tween player относится к P13. Новые ассеты P12 ещё не
+генерировались. TMP essentials импортированы штатным API, с OFL/attribution.
 
 ## Канон и визуальный источник
 
@@ -54,16 +59,18 @@ Atomic swaps сохраняют multiset; contacts проверяются по f
 `/Users/andrew/Desktop/unity projects/unity_projects/shape_sorting-final`.
 Его Assets просматривались только для определения источника; они не переносились.
 Фактические модели, материалы, шрифты и текущие экраны нужно проверить в P12.
-Impeccable context выполнен один раз; PRODUCT/DESIGN и собственный UI отсутствуют.
+Impeccable context выполнен один раз; PRODUCT/DESIGN ещё не созданы. Gray UI
+служит проверке ввода; окончательное визуальное направление относится к P12.
 
 ## Проверки и инструменты
 
-- Итоговый Unity headless import/compile: exit 0, C# ошибок 0.
-- Asset integrity: 32 .meta GUID, нет missing/orphan .meta и duplicate GUID.
+- P00 Unity headless import/compile: exit 0, C# ошибок 0.
+- .meta создаёт Unity; последняя проверка Assets не нашла missing/orphan.
 - Python reference: 39 тестов OK; existing data audit — 801 assertion,
   40 конфигураций, 117 решаемых языковых вариантов, 111 слов.
-- EditMode/PlayMode tests, C# parity, player builds и device/visual/glyph QA
-  не выполнялись: игровой реализации CASCADE и её tests пока нет.
+- P11 EditMode 305/305 и PlayMode 5/5 PASS. C# совпал с Python по всем 40/117
+  графам, минимумам/путям/метрикам. Виртуальные Mouse/Touchscreen прошли через
+  настоящий Input System/EventSystem; физический телефон и player build не проверены.
 - Unity CLI `1.0.0-beta.5` доступен. Команды `projects verify` в этой версии нет;
   проверка .meta/GUID выполнена напрямую по файлам, CLI не обновлялся.
 - 5 октября Unity AI конфликт исправлен: удалён deprecated отдельный Generators,
@@ -79,9 +86,17 @@ Impeccable context выполнен один раз; PRODUCT/DESIGN и собс�
   шаблона: `Docs/P00_SETUP.md`. Новый Editor, второй MCP или другие SDK не
   устанавливались.
 
-Пока неизвестны: конечная пригодность визуала, производительность на телефоне,
-поведение drag, glyph coverage и C#/Python parity. Headless-импорт не является
-визуальной или игровой приёмкой. Следующий этап по TASKS — P01; он не начат.
+P11 остаётся незавершённым: после успешных тестов и camera MCP gray inspection
+Device Simulator начал повторять NRE в DevicePackage.HandleList line65. Окно
+закрыто; callback сохранялся. Импорт portrait capture helper/RefreshLayout
+запрошен, но completion/последняя compilation ещё не подтверждены.
+Native MCP сообщил, что Mac заблокирован; запрос ручного unlock отправлен автору.
+Продолжить с root probe, Editor Refresh/reload, Console, portrait visual QA.
+Не объявлять Device Simulator error исправленной до свежей проверки.
+
+Пока неизвестны: окончательный визуал, glyph coverage, mobile performance,
+реальный device drag и человеческая оценка интереса. Отчёты: Reports/P00–P11.
+Следующий этап после завершения P11 — P12, он ещё не начат.
 
 Источники: AGENTS, README, TASKS, P00, C01/C02/C17/C20, реальные Unity
 ProjectSettings/Packages/Assets и журналы выполненных проверок.

@@ -65,3 +65,13 @@ CASCADE; подключение ShapeMania не использовать для 
 minimum и command path. Он не меняет исходные Data, ID или runtime schema.
 Proof проверяется повторным Resolve replay и отклоняется после изменения draft/goal,
 при Unknown или Unsolvable. Поиск работает вне Editor thread с бюджетом и cancel.
+
+## P11 — UI и ввод
+
+uGUI/TMP используют штатные TMP essentials, импортированные официальным API
+без examples и без package changes. New playable имеет отдельный scene, одну
+Camera/Canvas/EventSystem и стандартный InputSystemUIInputModule. SampleScene
+сохранена в build list после новой CASCADE сцены. Введён pure Application input
+gate: один pointer, один accepted command, без очереди. Gray presentation только
+закрывает/открывает gate; commit выполняется до visual callback. Target не меняется
+из-за жестов. Временные [A] placeholders различают shapes и glyphs до P12.

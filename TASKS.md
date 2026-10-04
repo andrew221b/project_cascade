@@ -212,3 +212,22 @@ P01–P20. После каждого этапа фиксировать резу�
   actions работали. Это не физический mouse/touch QA. Отчёты: Reports/P10/.
 - Scene и Data сохранены. Не запускались gameplay PlayMode, mobile/player build
   и человеческий плейтест. Следующий этап P11 начат по разрешению автора.
+
+## P11 — текущая проверка 5 октября 2026
+
+- Gray playable добавлен в отдельную CascadePlayable scene (SampleScene сохранена).
+  Один persistent row, полный стабильный target, видимые этажи, drag/tap-tap,
+  precise focus + соседние кнопки, Drop/Undo/Retry/Hint/Pause/target zoom.
+- Pure input gate исключает второй pointer и скрытую очередь; accepted commit
+  предшествует presentation. Mouse/Touchscreen виртуальные события проходят
+  через реальный Input System/EventSystem/GraphicRaycaster.
+- EditMode 305/305 PASS; PlayMode 5/5 PASS. Включены win/Undo, drag cancel,
+  отдельные bounds Mixed8, focus/pause/disable interruption. Физическое устройство
+  и player build не проверены. Математика не объявлена оценкой удовольствия.
+- Gray экран проверен официальной камерой MCP. Возник отдельный поток ошибок
+  Unity Device Simulator: DevicePackage.HandleList line65. Закрытие окна не
+  сняло callback; импорт сборок/перезагрузка ещё ожидаются.
+- Native MCP сообщил, что Mac заблокирован. Автору отправлен запрос разблокировать
+  вручную; дальнейшая визуальная проверка и native Refresh ждут unlock.
+  Portrait capture helper/RefreshLayout добавлены, но последняя compilation
+  после них ещё не подтверждена. P11 остаётся IN_PROGRESS, P12 не начат.

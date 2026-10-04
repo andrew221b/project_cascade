@@ -1,0 +1,6 @@
+{
+    "name": "Cascade.Tests.PlayMode",
+    "rootNamespace": "Cascade.Tests",
+    "references": ["Cascade.Domain", "Cascade.Solver", "Cascade.Application", "Cascade.Content", "Cascade.Presentation", "Unity.ugui", "Unity.TextMeshPro", "Unity.InputSystem"],
+    "optionalUnityReferences": ["TestAssemblies"]
+}

@@ -1,0 +1,15 @@
+{
+    "name": "Cascade.Editor.Playable",
+    "rootNamespace": "Cascade.Editor.Playable",
+    "references": [
+        "Cascade.Presentation",
+        "Unity.TextMeshPro",
+        "Unity.ugui",
+        "Unity.InputSystem",
+        "Cascade.Application",
+        "Cascade.Domain"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ]
+}

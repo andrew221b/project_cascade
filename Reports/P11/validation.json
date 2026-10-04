@@ -1,0 +1,26 @@
+{
+  "phase": "P11",
+  "status": "IN_PROGRESS",
+  "editmode": {
+    "passed": 305,
+    "failed": 0
+  },
+  "playmode": {
+    "passed": 5,
+    "failed": 0
+  },
+  "input_validation": "Real InputSystem events from virtual Mouse/Touchscreen through EventSystem and GraphicRaycaster; actual device not tested",
+  "visual": "Official MCP camera capture inspected the gray playable at1920x1080; portrait capture pending",
+  "new_editor_issue": "Repeating NullReferenceException in UnityEditor.DeviceSimulation.DevicePackage.HandleList line65. Simulator window closed but update callback kept repeating. Script import/reload queued; completion pending.",
+  "blocking_visual_state": "Native MCP reports Mac is locked and requests manual unlock. User asked to unlock; credential entry not attempted.",
+  "latest_unverified_changes": [
+    "RefreshLayout view-only method",
+    "PlayableCapture portrait helper and added editor assembly refs"
+  ],
+  "not_run": [
+    "physical iPhone/Android input",
+    "player build",
+    "completed portrait/glyph/device UI QA",
+    "human fun playtest"
+  ]
+}
