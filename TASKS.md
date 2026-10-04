@@ -1,6 +1,6 @@
 # CASCADE — TASKS
 
-P00–P02: COMPLETE. Unity AI/MCP: исправлено. P03: IN_PROGRESS. P04–P20: NOT_STARTED.
+P00–P03: COMPLETE. Unity AI/MCP: исправлено. P04: IN_PROGRESS. P05–P20: NOT_STARTED.
 Python reference проверен отдельно; это не реализация игровых систем Unity.
 
 Автор прямо разрешил выполнять все этапы подряд, отменив остановки между
@@ -11,7 +11,7 @@ P01–P20. После каждого этапа фиксировать резу�
 - [x] P00 — Зафиксировать проект
 - [x] P01 — Формат уровня и символы
 - [x] P02 — Базовый resolver
-- [ ] P03 — Конвейер и бомба
+- [x] P03 — Конвейер и бомба
 - [ ] P04 — Ключ и ремонт
 - [ ] P05 — Хрупкость и связанные пары
 - [ ] P06 — Мост и печать
@@ -102,3 +102,15 @@ P01–P20. После каждого этапа фиксировать резу�
   Компиляция и свежая Console без ошибок. Отчёты: `Reports/P02/`.
 - Устройства добавляются P03–P06; gameplay scene, visual, PlayMode, player build
   и C#/Python content parity ещё не запускались.
+
+## P03 — результат 5 октября 2026
+
+- EntryTransform выполняется один раз до contacts: left/right shift и mirror,
+  как в immutable enum и Python reference. Вход не снимает такт бомбы.
+- BombPhase/счётчики разделены: Defused, Exploded и Abandoned. Defuse раньше
+  tick; Drop обрабатывает старую бомбу, overkill не переносится на новый этаж.
+- Unity EditMode: 62/62 PASS. Last-tick defuse, useful blast, вход/посадка,
+  no-op/preview invariants и один FloorExited проверены; C# ошибок нет.
+- Пауза проверена на уровне pure state (нет clock callbacks), но фактический
+  lifecycle/pause в playable, visual, PlayMode и player build ещё не запускались.
+  Отчёты: `Reports/P03/`.

@@ -67,10 +67,42 @@ namespace Cascade.Domain
             return row;
         }
 
-        PuzzleState ResolveContacts(PuzzleState state, List<PuzzleEvent> events) => state;
-        PuzzleState TickBomb(PuzzleState state, List<PuzzleEvent> events) => state;
+        PuzzleState ResolveContacts(PuzzleState state, List<PuzzleEvent> events)
+        {
+            var bomb = Level.Floors[state.ActiveFloor].Bomb;
+            if (bomb != null && state.BombPhase == BombPhase.Armed && state.Row[bomb.Slot] == bomb.RequiredSymbol)
+            {
+                state = state.With(bombPhase: BombPhase.Defused, bombTicks: 0, defusedCount: state.DefusedCount + 1);
+                events.Add(new PuzzleEvent(PuzzleEventKind.BombDefused, state, bomb.Slot));
+            }
+            return state;
+        }
+
+        PuzzleState TickBomb(PuzzleState state, List<PuzzleEvent> events)
+        {
+            if (state.BombPhase != BombPhase.Armed) return state;
+            var bomb = Level.Floors[state.ActiveFloor].Bomb;
+            state = state.With(bombTicks: state.BombTicks - 1);
+            events.Add(new PuzzleEvent(PuzzleEventKind.BombTicked, state, state.BombTicks));
+            if (state.BombTicks == 0)
+            {
+                state = state.With(bombPhase: BombPhase.Exploded, durability: state.Durability - bomb.Damage,
+                    explodedCount: state.ExplodedCount + 1);
+                events.Add(new PuzzleEvent(PuzzleEventKind.BombExploded, state, bomb.Damage));
+            }
+            return state;
+        }
+
         PuzzleState LeaveFloor(PuzzleState state, List<PuzzleEvent> events)
-        { events.Add(new PuzzleEvent(PuzzleEventKind.FloorExited, state)); return state; }
+        {
+            if (state.BombPhase == BombPhase.Armed)
+            {
+                state = state.With(bombPhase: BombPhase.Abandoned, abandonedCount: state.AbandonedCount + 1);
+                events.Add(new PuzzleEvent(PuzzleEventKind.BombAbandoned, state));
+            }
+            events.Add(new PuzzleEvent(PuzzleEventKind.FloorExited, state));
+            return state;
+        }
 
         PuzzleState EnterFloor(PuzzleState state, int floorIndex, List<PuzzleEvent> events)
         {
@@ -84,8 +116,21 @@ namespace Cascade.Domain
             }
             var floor = Level.Floors[floorIndex];
             var entered = state.With(activeFloor: floorIndex, durability: floor.BaseDurability,
-                bombPhase: BombPhase.Absent, bombTicks: 0, keyUsed: false, repairUsed: false, bridgeUsed: false);
+                bombPhase: floor.Bomb == null ? BombPhase.Absent : BombPhase.Armed,
+                bombTicks: floor.Bomb == null ? 0 : floor.Bomb.Ticks, keyUsed: false, repairUsed: false, bridgeUsed: false);
             events.Add(new PuzzleEvent(PuzzleEventKind.FloorEntered, entered, floor.BaseDurability));
+            if (floor.EntryTransform != EntryTransform.None)
+            {
+                var row = entered.Row.ToArray();
+                switch (floor.EntryTransform)
+                {
+                    case EntryTransform.ShiftLeftOne: row = row.Skip(1).Concat(row.Take(1)).ToArray(); break;
+                    case EntryTransform.ShiftRightOne: row = row.Skip(row.Length - 1).Concat(row.Take(row.Length - 1)).ToArray(); break;
+                    case EntryTransform.MirrorNext: Array.Reverse(row); break;
+                }
+                entered = entered.With(row: row);
+                events.Add(new PuzzleEvent(PuzzleEventKind.EntryPermuted, entered, (int)floor.EntryTransform));
+            }
             return ResolveContacts(entered, events);
         }
     }
