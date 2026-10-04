@@ -65,9 +65,14 @@ Impeccable context выполнен один раз; PRODUCT/DESIGN и собс�
   не выполнялись: игровой реализации CASCADE и её tests пока нет.
 - Unity CLI `1.0.0-beta.5` доступен. Команды `projects verify` в этой версии нет;
   проверка .meta/GUID выполнена напрямую по файлам, CLI не обновлялся.
-- В начале Unity MCP отвечал для ShapeMania, а не CASCADE. Позднее live-запрос
-  перестал отвечать. Для CASCADE live MCP не подтверждён. До любых будущих
-  изменяющих MCP-команд обязательно повторно проверить project root.
+- 5 октября Unity AI конфликт исправлен: удалён deprecated отдельный Generators,
+  который дублировал 1365 GUID встроенных в Assistant генераторов. Установлены
+  Assistant 2.20.0-pre.1 и Inference 2.6.1; свежая Console: 0 ошибок и один
+  warning облачного Account API. 16573 активных GUID проверены без дубликатов.
+- Live MCP теперь подтверждён для CASCADE: root probe, Editor state, Console,
+  диагностическая C# команда и повторный импорт. Мост Running; Codex Accepted.
+  До изменяющих MCP-команд после переключения проекта повторить root probe.
+  Встроенный облачный чат Assistant ждёт привязки отдельного Unity Cloud project.
 - Все проверки и package baseline: `Reports/P00/`. Причины восстановления
   шаблона: `Docs/P00_SETUP.md`. Новый Editor, второй MCP или другие SDK не
   устанавливались.

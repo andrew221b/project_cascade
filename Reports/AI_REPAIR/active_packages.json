@@ -1,0 +1,207 @@
+[
+  {
+    "name": "com.unity.ai.assistant",
+    "version": "2.20.0-pre.1",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.ai.assistant@ceb45b7b3ebd"
+  },
+  {
+    "name": "com.unity.ai.inference",
+    "version": "2.6.1",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.ai.inference@9a123aee5df7"
+  },
+  {
+    "name": "com.unity.ai.navigation",
+    "version": "2.0.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.ai.navigation@f6367599281e"
+  },
+  {
+    "name": "com.unity.collab-proxy",
+    "version": "2.2.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.collab-proxy@b26119cdd155"
+  },
+  {
+    "name": "com.unity.ide.rider",
+    "version": "3.0.27",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.ide.rider@8ca554ad34c2"
+  },
+  {
+    "name": "com.unity.ide.visualstudio",
+    "version": "2.0.22",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.ide.visualstudio@8140e851d83e"
+  },
+  {
+    "name": "com.unity.inputsystem",
+    "version": "1.18.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.inputsystem@57d0e36f6123"
+  },
+  {
+    "name": "com.unity.render-pipelines.universal",
+    "version": "17.3.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.render-pipelines.universal@a6e30d1f59f5"
+  },
+  {
+    "name": "com.unity.test-framework",
+    "version": "1.6.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.test-framework@0b7a23ab2e1d"
+  },
+  {
+    "name": "com.unity.timeline",
+    "version": "1.8.6",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.timeline@9ac0df085fa8"
+  },
+  {
+    "name": "com.unity.ugui",
+    "version": "2.0.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.ugui@bb329a87fcdc"
+  },
+  {
+    "name": "com.unity.visualscripting",
+    "version": "1.9.1",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.visualscripting@80ee0eef820c"
+  },
+  {
+    "name": "com.unity.modules.jsonserialize",
+    "version": "1.0.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.jsonserialize"
+  },
+  {
+    "name": "com.unity.modules.ui",
+    "version": "1.0.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.ui"
+  },
+  {
+    "name": "com.unity.modules.imgui",
+    "version": "1.0.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.imgui"
+  },
+  {
+    "name": "com.unity.modules.audio",
+    "version": "1.0.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.audio"
+  },
+  {
+    "name": "com.unity.modules.director",
+    "version": "1.0.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.director"
+  },
+  {
+    "name": "com.unity.modules.animation",
+    "version": "1.0.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.animation"
+  },
+  {
+    "name": "com.unity.modules.particlesystem",
+    "version": "1.0.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.particlesystem"
+  },
+  {
+    "name": "com.unity.ext.nunit",
+    "version": "2.0.5",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.ext.nunit@d8c07649098d"
+  },
+  {
+    "name": "com.unity.render-pipelines.core",
+    "version": "17.3.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.render-pipelines.core@d6dfd1e235d5"
+  },
+  {
+    "name": "com.unity.shadergraph",
+    "version": "17.3.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.shadergraph@d44b48771ebb"
+  },
+  {
+    "name": "com.unity.render-pipelines.universal-config",
+    "version": "17.0.3",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.render-pipelines.universal-config@8dc1aab4af1d"
+  },
+  {
+    "name": "com.unity.modules.uielements",
+    "version": "1.0.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.uielements"
+  },
+  {
+    "name": "com.unity.modules.ai",
+    "version": "1.0.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.ai"
+  },
+  {
+    "name": "com.unity.burst",
+    "version": "1.8.27",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.burst@973857688024"
+  },
+  {
+    "name": "com.unity.dt.app-ui",
+    "version": "2.1.1",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.dt.app-ui@8ac7e730dd5d"
+  },
+  {
+    "name": "com.unity.collections",
+    "version": "2.6.2",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.collections@aea9d3bd5e19"
+  },
+  {
+    "name": "com.unity.nuget.newtonsoft-json",
+    "version": "3.2.2",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.nuget.newtonsoft-json@4dfd81071c64"
+  },
+  {
+    "name": "com.unity.modules.imageconversion",
+    "version": "1.0.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.imageconversion"
+  },
+  {
+    "name": "com.unity.2d.sprite",
+    "version": "1.0.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.2d.sprite@08e067ec1643"
+  },
+  {
+    "name": "com.unity.mathematics",
+    "version": "1.3.3",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.mathematics@19a9377c4ffa"
+  },
+  {
+    "name": "com.unity.nuget.mono-cecil",
+    "version": "1.11.6",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.nuget.mono-cecil@ecb9724e46ff"
+  },
+  {
+    "name": "com.unity.modules.unitywebrequest",
+    "version": "1.0.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.unitywebrequest"
+  },
+  {
+    "name": "com.unity.searcher",
+    "version": "4.9.4",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.searcher@d45a78918735"
+  },
+  {
+    "name": "com.unity.modules.physics",
+    "version": "1.0.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.physics"
+  },
+  {
+    "name": "com.unity.modules.terrain",
+    "version": "1.0.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.terrain"
+  },
+  {
+    "name": "com.unity.modules.hierarchycore",
+    "version": "1.0.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.hierarchycore"
+  },
+  {
+    "name": "com.unity.test-framework.performance",
+    "version": "3.2.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.test-framework.performance@0840f58e4562"
+  },
+  {
+    "name": "com.unity.modules.androidjni",
+    "version": "1.0.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.androidjni"
+  },
+  {
+    "name": "com.unity.modules.screencapture",
+    "version": "1.0.0",
+    "path": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.screencapture"
+  }
+]

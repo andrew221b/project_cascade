@@ -1,0 +1,19 @@
+{
+  "active_meta_guids": 16573,
+  "duplicate_guids": {},
+  "duplicate_guid_count": 0,
+  "assistant": "2.20.0-pre.1",
+  "generators_installed": false,
+  "mcp_project_root": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity",
+  "live_mcp_read_and_compiled_command": "PASS",
+  "asset_refresh": "PASS",
+  "console_errors": 0,
+  "console_warnings": [
+    "AI Account API not accessible; built-in Assistant needs a Unity Cloud project link. Local MCP is working."
+  ],
+  "not_run": [
+    "Cloud AI chat/generation request",
+    "Player build",
+    "Gameplay tests (gameplay not implemented yet)"
+  ]
+}
