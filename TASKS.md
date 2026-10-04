@@ -1,6 +1,6 @@
 # CASCADE — TASKS
 
-P00–P03: COMPLETE. Unity AI/MCP: исправлено. P04: IN_PROGRESS. P05–P20: NOT_STARTED.
+P00–P04: COMPLETE. Unity AI/MCP: исправлено. P05: IN_PROGRESS. P06–P20: NOT_STARTED.
 Python reference проверен отдельно; это не реализация игровых систем Unity.
 
 Автор прямо разрешил выполнять все этапы подряд, отменив остановки между
@@ -12,7 +12,7 @@ P01–P20. После каждого этапа фиксировать резу�
 - [x] P01 — Формат уровня и символы
 - [x] P02 — Базовый resolver
 - [x] P03 — Конвейер и бомба
-- [ ] P04 — Ключ и ремонт
+- [x] P04 — Ключ и ремонт
 - [ ] P05 — Хрупкость и связанные пары
 - [ ] P06 — Мост и печать
 - [ ] P07 — Solver и метрики
@@ -114,3 +114,14 @@ P01–P20. После каждого этапа фиксировать резу�
 - Пауза проверена на уровне pure state (нет clock callbacks), но фактический
   lifecycle/pause в playable, visual, PlayMode и player build ещё не запускались.
   Отчёты: `Reports/P03/`.
+
+## P04 — результат 5 октября 2026
+
+- Key/Repair одноразовые на этаж; общий вход проверяет их после transform.
+  Закрытый PRE-edge нельзя открыть задним числом; новый этаж сбрасывает флаги.
+- Signed deltas суммируются до одной проверки collapse. Обязательный
+  HP1−cost2+repair1=0 проверен через каноническую цену хрупкого ребра (см. note).
+- Predict/apply используют один pure Resolve; preview цены не меняет snapshot.
+- Unity EditMode: 72/72 PASS, C# ошибок 0. Включены составной defuse+key+repair,
+  repair+blast, force Drop и one-shot. Отчёты: `Reports/P04/`.
+- Не запускались: игровые PlayMode, visual/device QA, player build, data parity.

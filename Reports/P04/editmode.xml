@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="72" result="Passed" total="72" passed="72" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.066906">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="72" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.066906" total="72" passed="72" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1086" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="72" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.064361" total="72" passed="72" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="84036" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1087" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="72" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.064273" total="72" passed="72" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1088" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="72" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.064218" total="72" passed="72" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1002" name="ConveyorBombTests" fullname="Cascade.Tests.ConveyorBombTests" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.020391" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1005" name="BlastDamageNeverCarriesToNextFloor" fullname="Cascade.Tests.ConveyorBombTests.BlastDamageNeverCarriesToNextFloor" methodname="BlastDamageNeverCarriesToNextFloor" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="390444630" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.011275" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1016" name="DefusedBombNeverCountsAgain" fullname="Cascade.Tests.ConveyorBombTests.DefusedBombNeverCountsAgain" methodname="DefusedBombNeverCountsAgain" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="712911833" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000122" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1003" name="DefuseOnLastTickPrecedesExplosion" fullname="Cascade.Tests.ConveyorBombTests.DefuseOnLastTickPrecedesExplosion" methodname="DefuseOnLastTickPrecedesExplosion" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="714314087" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000492" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1008" name="DropTicksOldBombThenExplodesOrAbandons" fullname="Cascade.Tests.ConveyorBombTests.DropTicksOldBombThenExplodesOrAbandons" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000687" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1006" name="DropTicksOldBombThenExplodesOrAbandons(1,1,0)" fullname="Cascade.Tests.ConveyorBombTests.DropTicksOldBombThenExplodesOrAbandons(1,1,0)" methodname="DropTicksOldBombThenExplodesOrAbandons" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="149962417" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000121" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1007" name="DropTicksOldBombThenExplodesOrAbandons(2,0,1)" fullname="Cascade.Tests.ConveyorBombTests.DropTicksOldBombThenExplodesOrAbandons(2,0,1)" methodname="DropTicksOldBombThenExplodesOrAbandons" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="400005928" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000044" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="ParameterizedMethod" id="1013" name="EntryAppliesExactlyOneTransform" fullname="Cascade.Tests.ConveyorBombTests.EntryAppliesExactlyOneTransform" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.001497" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1010" name="EntryAppliesExactlyOneTransform(ShiftLeftOne,&quot;ABCD&quot;)" fullname="Cascade.Tests.ConveyorBombTests.EntryAppliesExactlyOneTransform(ShiftLeftOne,&quot;ABCD&quot;)" methodname="EntryAppliesExactlyOneTransform" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="123691339" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.001081" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1011" name="EntryAppliesExactlyOneTransform(ShiftRightOne,&quot;CDAB&quot;)" fullname="Cascade.Tests.ConveyorBombTests.EntryAppliesExactlyOneTransform(ShiftRightOne,&quot;CDAB&quot;)" methodname="EntryAppliesExactlyOneTransform" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="874524235" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000052" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1012" name="EntryAppliesExactlyOneTransform(MirrorNext,&quot;CBAD&quot;)" fullname="Cascade.Tests.ConveyorBombTests.EntryAppliesExactlyOneTransform(MirrorNext,&quot;CBAD&quot;)" methodname="EntryAppliesExactlyOneTransform" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="414542370" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000127" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1009" name="EntryTransformRunsBeforeContactWithoutTick" fullname="Cascade.Tests.ConveyorBombTests.EntryTransformRunsBeforeContactWithoutTick" methodname="EntryTransformRunsBeforeContactWithoutTick" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="328295953" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000117" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1014" name="NextFloorBombDoesNotTickOnLanding" fullname="Cascade.Tests.ConveyorBombTests.NextFloorBombDoesNotTickOnLanding" methodname="NextFloorBombDoesNotTickOnLanding" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="509965061" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000518" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1015" name="NoOpAndPreviewCannotAdvanceBomb" fullname="Cascade.Tests.ConveyorBombTests.NoOpAndPreviewCannotAdvanceBomb" methodname="NoOpAndPreviewCannotAdvanceBomb" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="869222559" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.001295" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1004" name="UsefulBlastDeliversTargetAndPreservesSymbols" fullname="Cascade.Tests.ConveyorBombTests.UsefulBlastDeliversTargetAndPreservesSymbols" methodname="UsefulBlastDeliversTargetAndPreservesSymbols" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="1416197960" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000163" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1017" name="KeyRepairTests" fullname="Cascade.Tests.KeyRepairTests" classname="Cascade.Tests.KeyRepairTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.002511" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1026" name="CompositeContactAndPredictionUseIdenticalTransition" fullname="Cascade.Tests.KeyRepairTests.CompositeContactAndPredictionUseIdenticalTransition" methodname="CompositeContactAndPredictionUseIdenticalTransition" classname="Cascade.Tests.KeyRepairTests" runstate="Runnable" seed="1477227373" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000516" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1027" name="DeviceUseFlagsResetOnNewFloor" fullname="Cascade.Tests.KeyRepairTests.DeviceUseFlagsResetOnNewFloor" methodname="DeviceUseFlagsResetOnNewFloor" classname="Cascade.Tests.KeyRepairTests" runstate="Runnable" seed="954444288" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000214" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1025" name="DropRemainsForcedEvenWhenRepairHasAddedDurability" fullname="Cascade.Tests.KeyRepairTests.DropRemainsForcedEvenWhenRepairHasAddedDurability" methodname="DropRemainsForcedEvenWhenRepairHasAddedDurability" classname="Cascade.Tests.KeyRepairTests" runstate="Runnable" seed="1719932488" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000093" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1018" name="KeyCannotRetroactivelyAuthorizeClosedSwap" fullname="Cascade.Tests.KeyRepairTests.KeyCannotRetroactivelyAuthorizeClosedSwap" methodname="KeyCannotRetroactivelyAuthorizeClosedSwap" classname="Cascade.Tests.KeyRepairTests" runstate="Runnable" seed="2105341767" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000106" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1019" name="KeyContactOpensOnlyFutureCommands" fullname="Cascade.Tests.KeyRepairTests.KeyContactOpensOnlyFutureCommands" methodname="KeyContactOpensOnlyFutureCommands" classname="Cascade.Tests.KeyRepairTests" runstate="Runnable" seed="1556847018" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000125" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1022" name="OneShotRepairCannotBeFarmedByReturningToContact" fullname="Cascade.Tests.KeyRepairTests.OneShotRepairCannotBeFarmedByReturningToContact" methodname="OneShotRepairCannotBeFarmedByReturningToContact" classname="Cascade.Tests.KeyRepairTests" runstate="Runnable" seed="182197694" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000112" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1023" name="RepairAndBlastAreSummedBeforeOneCollapse" fullname="Cascade.Tests.KeyRepairTests.RepairAndBlastAreSummedBeforeOneCollapse" methodname="RepairAndBlastAreSummedBeforeOneCollapse" classname="Cascade.Tests.KeyRepairTests" runstate="Runnable" seed="1859367263" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000203" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1021" name="RepairCanSaveFloorAndIsOneShot" fullname="Cascade.Tests.KeyRepairTests.RepairCanSaveFloorAndIsOneShot" methodname="RepairCanSaveFloorAndIsOneShot" classname="Cascade.Tests.KeyRepairTests" runstate="Runnable" seed="105289437" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000151" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1024" name="ShiftPrecedesBothEntrySensors" fullname="Cascade.Tests.KeyRepairTests.ShiftPrecedesBothEntrySensors" methodname="ShiftPrecedesBothEntrySensors" classname="Cascade.Tests.KeyRepairTests" runstate="Runnable" seed="1409664543" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000112" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1020" name="SignedRepairDoesNotClampNegativeIntermediateHp" fullname="Cascade.Tests.KeyRepairTests.SignedRepairDoesNotClampNegativeIntermediateHp" methodname="SignedRepairDoesNotClampNegativeIntermediateHp" classname="Cascade.Tests.KeyRepairTests" runstate="Runnable" seed="538660602" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000147" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1028" name="LevelDefinitionTests" fullname="Cascade.Tests.LevelDefinitionTests" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" testcasecount="40" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.010340" total="40" passed="40" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1056" name="BombBoundaries" fullname="Cascade.Tests.LevelDefinitionTests.BombBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000711" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1051" name="BombBoundaries(0,1,False)" fullname="Cascade.Tests.LevelDefinitionTests.BombBoundaries(0,1,False)" methodname="BombBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="815738919" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000284" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1052" name="BombBoundaries(1,1,True)" fullname="Cascade.Tests.LevelDefinitionTests.BombBoundaries(1,1,True)" methodname="BombBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="2074198893" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000023" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1053" name="BombBoundaries(6,4,True)" fullname="Cascade.Tests.LevelDefinitionTests.BombBoundaries(6,4,True)" methodname="BombBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="219366888" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000022" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1054" name="BombBoundaries(7,4,False)" fullname="Cascade.Tests.LevelDefinitionTests.BombBoundaries(7,4,False)" methodname="BombBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1692892893" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000022" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1055" name="BombBoundaries(2,5,False)" fullname="Cascade.Tests.LevelDefinitionTests.BombBoundaries(2,5,False)" methodname="BombBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1445949659" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000021" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1029" name="CopiesInputCollectionsAndExposesReadOnlyViews" fullname="Cascade.Tests.LevelDefinitionTests.CopiesInputCollectionsAndExposesReadOnlyViews" methodname="CopiesInputCollectionsAndExposesReadOnlyViews" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="2053221237" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.001377" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1074" name="DefaultSymbolAndUnknownTransformAreRejected" fullname="Cascade.Tests.LevelDefinitionTests.DefaultSymbolAndUnknownTransformAreRejected" methodname="DefaultSymbolAndUnknownTransformAreRejected" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="201115159" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000252" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1046" name="DurabilityBoundaries" fullname="Cascade.Tests.LevelDefinitionTests.DurabilityBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000420" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1042" name="DurabilityBoundaries(0,False)" fullname="Cascade.Tests.LevelDefinitionTests.DurabilityBoundaries(0,False)" methodname="DurabilityBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="850150081" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000086" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1043" name="DurabilityBoundaries(1,True)" fullname="Cascade.Tests.LevelDefinitionTests.DurabilityBoundaries(1,True)" methodname="DurabilityBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1679550641" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000023" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1044" name="DurabilityBoundaries(12,True)" fullname="Cascade.Tests.LevelDefinitionTests.DurabilityBoundaries(12,True)" methodname="DurabilityBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="404399409" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000020" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1045" name="DurabilityBoundaries(13,False)" fullname="Cascade.Tests.LevelDefinitionTests.DurabilityBoundaries(13,False)" methodname="DurabilityBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1978718961" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000022" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="ParameterizedMethod" id="1041" name="FloorBoundaries" fullname="Cascade.Tests.LevelDefinitionTests.FloorBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000705" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1037" name="FloorBoundaries(0,False)" fullname="Cascade.Tests.LevelDefinitionTests.FloorBoundaries(0,False)" methodname="FloorBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="804067352" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000203" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1038" name="FloorBoundaries(1,True)" fullname="Cascade.Tests.LevelDefinitionTests.FloorBoundaries(1,True)" methodname="FloorBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="594208243" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000166" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1039" name="FloorBoundaries(4,True)" fullname="Cascade.Tests.LevelDefinitionTests.FloorBoundaries(4,True)" methodname="FloorBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1245705485" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000032" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1040" name="FloorBoundaries(5,False)" fullname="Cascade.Tests.LevelDefinitionTests.FloorBoundaries(5,False)" methodname="FloorBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="687380087" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000026" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1048" name="LinkedPairsMustBeDisjointAndInRange" fullname="Cascade.Tests.LevelDefinitionTests.LinkedPairsMustBeDisjointAndInRange" methodname="LinkedPairsMustBeDisjointAndInRange" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1028367885" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000123" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1069" name="NormalizesCombiningTextAndDoesNotSplitSurrogatePairs" fullname="Cascade.Tests.LevelDefinitionTests.NormalizesCombiningTextAndDoesNotSplitSurrogatePairs" methodname="NormalizesCombiningTextAndDoesNotSplitSurrogatePairs" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="146010016" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.001599" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1071" name="PositionalWordSignaturesDiffer" fullname="Cascade.Tests.LevelDefinitionTests.PositionalWordSignaturesDiffer" methodname="PositionalWordSignaturesDiffer" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="586002069" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000559" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1031" name="RejectsChangedMultiset" fullname="Cascade.Tests.LevelDefinitionTests.RejectsChangedMultiset" methodname="RejectsChangedMultiset" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1067822275" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000031" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1049" name="RejectsInvalidBridgeAndKeyConfiguration" fullname="Cascade.Tests.LevelDefinitionTests.RejectsInvalidBridgeAndKeyConfiguration" methodname="RejectsInvalidBridgeAndKeyConfiguration" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="307828269" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000147" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1068" name="RejectsInvalidIds" fullname="Cascade.Tests.LevelDefinitionTests.RejectsInvalidIds" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000450" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1064" name="RejectsInvalidIds(&quot;g:ua:І&quot;)" fullname="Cascade.Tests.LevelDefinitionTests.RejectsInvalidIds(&quot;g:ua:І&quot;)" methodname="RejectsInvalidIds" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1623304589" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000104" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1065" name="RejectsInvalidIds(&quot;glyph:en:AB&quot;)" fullname="Cascade.Tests.LevelDefinitionTests.RejectsInvalidIds(&quot;glyph:en:AB&quot;)" methodname="RejectsInvalidIds" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="206209351" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000018" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1066" name="RejectsInvalidIds(&quot;s:&quot;)" fullname="Cascade.Tests.LevelDefinitionTests.RejectsInvalidIds(&quot;s:&quot;)" methodname="RejectsInvalidIds" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1944835637" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000015" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1067" name="RejectsInvalidIds(&quot;other:A&quot;)" fullname="Cascade.Tests.LevelDefinitionTests.RejectsInvalidIds(&quot;other:A&quot;)" methodname="RejectsInvalidIds" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="435329821" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000015" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1047" name="RejectsWrongEdgeCountAndDuplicateFragileEdges" fullname="Cascade.Tests.LevelDefinitionTests.RejectsWrongEdgeCountAndDuplicateFragileEdges" methodname="RejectsWrongEdgeCountAndDuplicateFragileEdges" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="608681243" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000084" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1061" name="RepairBoundaries" fullname="Cascade.Tests.LevelDefinitionTests.RepairBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000452" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1057" name="RepairBoundaries(0,False)" fullname="Cascade.Tests.LevelDefinitionTests.RepairBoundaries(0,False)" methodname="RepairBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="522182172" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000080" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1058" name="RepairBoundaries(1,True)" fullname="Cascade.Tests.LevelDefinitionTests.RepairBoundaries(1,True)" methodname="RepairBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="875427661" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000032" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1059" name="RepairBoundaries(3,True)" fullname="Cascade.Tests.LevelDefinitionTests.RepairBoundaries(3,True)" methodname="RepairBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1709972482" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000022" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1060" name="RepairBoundaries(4,False)" fullname="Cascade.Tests.LevelDefinitionTests.RepairBoundaries(4,False)" methodname="RepairBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1678812658" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000022" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1030" name="RepeatedSymbolsUseEqualityRatherThanPosition" fullname="Cascade.Tests.LevelDefinitionTests.RepeatedSymbolsUseEqualityRatherThanPosition" methodname="RepeatedSymbolsUseEqualityRatherThanPosition" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1242392811" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000046" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1036" name="RowBoundaries" fullname="Cascade.Tests.LevelDefinitionTests.RowBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000535" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1032" name="RowBoundaries(2,False)" fullname="Cascade.Tests.LevelDefinitionTests.RowBoundaries(2,False)" methodname="RowBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="401425516" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000181" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1033" name="RowBoundaries(3,True)" fullname="Cascade.Tests.LevelDefinitionTests.RowBoundaries(3,True)" methodname="RowBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1590873260" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000021" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1034" name="RowBoundaries(8,True)" fullname="Cascade.Tests.LevelDefinitionTests.RowBoundaries(8,True)" methodname="RowBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="603626017" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000020" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1035" name="RowBoundaries(9,False)" fullname="Cascade.Tests.LevelDefinitionTests.RowBoundaries(9,False)" methodname="RowBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1664497985" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000019" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1073" name="SegmentsMustCoverTargetWithoutOverlapAndMatchNamespace" fullname="Cascade.Tests.LevelDefinitionTests.SegmentsMustCoverTargetWithoutOverlapAndMatchNamespace" methodname="SegmentsMustCoverTargetWithoutOverlapAndMatchNamespace" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1612481549" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000088" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1050" name="SensorMustFitRowAndReferenceItsTarget" fullname="Cascade.Tests.LevelDefinitionTests.SensorMustFitRowAndReferenceItsTarget" methodname="SensorMustFitRowAndReferenceItsTarget" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="767956209" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000076" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1072" name="SevenSymbolMixedTargetIsAccepted" fullname="Cascade.Tests.LevelDefinitionTests.SevenSymbolMixedTargetIsAccepted" methodname="SevenSymbolMixedTargetIsAccepted" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1744628067" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000893" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1062" name="ShapeAndGlyphRemainDifferent" fullname="Cascade.Tests.LevelDefinitionTests.ShapeAndGlyphRemainDifferent" methodname="ShapeAndGlyphRemainDifferent" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="540078920" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000068" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1063" name="ShortAndLongNamespacesAgreeAndPreserveOriginalId" fullname="Cascade.Tests.LevelDefinitionTests.ShortAndLongNamespacesAgreeAndPreserveOriginalId" methodname="ShortAndLongNamespacesAgreeAndPreserveOriginalId" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="100964176" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000079" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1070" name="UkrainianAndRussianDistinctLettersRemainDistinct" fullname="Cascade.Tests.LevelDefinitionTests.UkrainianAndRussianDistinctLettersRemainDistinct" methodname="UkrainianAndRussianDistinctLettersRemainDistinct" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1943478110" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000111" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1075" name="ResolverBaseTests" fullname="Cascade.Tests.ResolverBaseTests" classname="Cascade.Tests.ResolverBaseTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.030563" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1080" name="EqualPairIsFree" fullname="Cascade.Tests.ResolverBaseTests.EqualPairIsFree" methodname="EqualPairIsFree" classname="Cascade.Tests.ResolverBaseTests" runstate="Runnable" seed="1852560624" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000200" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1082" name="FourFloorsKeepOnePersistentRowAndResetLocalDurability" fullname="Cascade.Tests.ResolverBaseTests.FourFloorsKeepOnePersistentRowAndResetLocalDurability" methodname="FourFloorsKeepOnePersistentRowAndResetLocalDurability" classname="Cascade.Tests.ResolverBaseTests" runstate="Runnable" seed="1045787834" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000177" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1079" name="InvalidAndClosedCommandsAreFreeAndReturnSameSnapshot" fullname="Cascade.Tests.ResolverBaseTests.InvalidAndClosedCommandsAreFreeAndReturnSameSnapshot" methodname="InvalidAndClosedCommandsAreFreeAndReturnSameSnapshot" classname="Cascade.Tests.ResolverBaseTests" runstate="Runnable" seed="1716375521" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000157" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1076" name="LastSwapPreservesWholeRowAndWins" fullname="Cascade.Tests.ResolverBaseTests.LastSwapPreservesWholeRowAndWins" methodname="LastSwapPreservesWholeRowAndWins" classname="Cascade.Tests.ResolverBaseTests" runstate="Runnable" seed="1611783613" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000250" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1084" name="RandomCommandsConserveMultisetAndStableDurability" fullname="Cascade.Tests.ResolverBaseTests.RandomCommandsConserveMultisetAndStableDurability" methodname="RandomCommandsConserveMultisetAndStableDurability" classname="Cascade.Tests.ResolverBaseTests" runstate="Runnable" seed="1444898269" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.028232" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1078" name="ReceiverComparesEverySlot" fullname="Cascade.Tests.ResolverBaseTests.ReceiverComparesEverySlot" methodname="ReceiverComparesEverySlot" classname="Cascade.Tests.ResolverBaseTests" runstate="Runnable" seed="1050980971" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000123" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1083" name="SameInputGivesEqualStateAndStableEvents" fullname="Cascade.Tests.ResolverBaseTests.SameInputGivesEqualStateAndStableEvents" methodname="SameInputGivesEqualStateAndStableEvents" classname="Cascade.Tests.ResolverBaseTests" runstate="Runnable" seed="1576259095" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000286" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1085" name="StateFromDifferentMultisetIsRejected" fullname="Cascade.Tests.ResolverBaseTests.StateFromDifferentMultisetIsRejected" methodname="StateFromDifferentMultisetIsRejected" classname="Cascade.Tests.ResolverBaseTests" runstate="Runnable" seed="74997176" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000071" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1077" name="TargetOnPlatformDoesNotWinUntilReceiver" fullname="Cascade.Tests.ResolverBaseTests.TargetOnPlatformDoesNotWinUntilReceiver" methodname="TargetOnPlatformDoesNotWinUntilReceiver" classname="Cascade.Tests.ResolverBaseTests" runstate="Runnable" seed="221086908" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000192" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1081" name="TerminalSnapshotsRejectFurtherCommands" fullname="Cascade.Tests.ResolverBaseTests.TerminalSnapshotsRejectFurtherCommands" methodname="TerminalSnapshotsRejectFurtherCommands" classname="Cascade.Tests.ResolverBaseTests" runstate="Runnable" seed="1638685196" result="Passed" start-time="2026-10-04 21:28:07Z" end-time="2026-10-04 21:28:07Z" duration="0.000092" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

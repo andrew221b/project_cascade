@@ -1,0 +1,16 @@
+{
+  "phase": "P04",
+  "tests": {
+    "total": "72",
+    "passed": "72",
+    "failed": "0",
+    "skipped": "0"
+  },
+  "console_errors": 0,
+  "not_run": [
+    "PlayMode",
+    "Player build",
+    "Visual/device QA",
+    "Content parity"
+  ]
+}

@@ -57,8 +57,9 @@ namespace Cascade.Domain
         }
 
         static int[] AffectedEdges(FloorDefinition floor, int edge) => new[] { edge };
-        static int SwapCost(FloorDefinition floor, IEnumerable<int> edges) => 1;
-        static bool IsEdgeOpen(FloorDefinition floor, PuzzleState state, int edge) => floor.OpenEdges[edge];
+        static int SwapCost(FloorDefinition floor, IEnumerable<int> edges) => 1 + edges.Count(e => floor.FragileEdges.Contains(e));
+        static bool IsEdgeOpen(FloorDefinition floor, PuzzleState state, int edge) => floor.OpenEdges[edge]
+            || (floor.Key != null && state.KeyUsed && floor.Key.EdgeToOpen == edge);
 
         static SymbolId[] Permute(IEnumerable<SymbolId> symbols, IEnumerable<int> edges)
         {
@@ -69,11 +70,22 @@ namespace Cascade.Domain
 
         PuzzleState ResolveContacts(PuzzleState state, List<PuzzleEvent> events)
         {
-            var bomb = Level.Floors[state.ActiveFloor].Bomb;
+            var floor = Level.Floors[state.ActiveFloor];
+            var bomb = floor.Bomb;
             if (bomb != null && state.BombPhase == BombPhase.Armed && state.Row[bomb.Slot] == bomb.RequiredSymbol)
             {
                 state = state.With(bombPhase: BombPhase.Defused, bombTicks: 0, defusedCount: state.DefusedCount + 1);
                 events.Add(new PuzzleEvent(PuzzleEventKind.BombDefused, state, bomb.Slot));
+            }
+            if (floor.Key != null && !state.KeyUsed && state.Row[floor.Key.Slot] == floor.Key.RequiredSymbol)
+            {
+                state = state.With(keyUsed: true);
+                events.Add(new PuzzleEvent(PuzzleEventKind.KeyOpened, state, floor.Key.EdgeToOpen));
+            }
+            if (floor.Repair != null && !state.RepairUsed && state.Row[floor.Repair.Slot] == floor.Repair.RequiredSymbol)
+            {
+                state = state.With(repairUsed: true, durability: state.Durability + floor.Repair.Amount);
+                events.Add(new PuzzleEvent(PuzzleEventKind.Repaired, state, floor.Repair.Amount));
             }
             return state;
         }
