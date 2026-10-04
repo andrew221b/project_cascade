@@ -1,6 +1,6 @@
 # CASCADE — TASKS
 
-P00–P05: COMPLETE. Unity AI/MCP: исправлено. P06: mechanics verified (dependent gates pending). P07: COMPLETE. P08: IN_PROGRESS. P09–P20: NOT_STARTED.
+P00–P05: COMPLETE. Unity AI/MCP: исправлено. P06: mechanics verified (dependent gates pending). P07–P08: COMPLETE. P09: IN_PROGRESS. P10–P20: NOT_STARTED.
 Python reference проверен отдельно; это не реализация игровых систем Unity.
 
 Автор прямо разрешил выполнять все этапы подряд, отменив остановки между
@@ -16,7 +16,7 @@ P01–P20. После каждого этапа фиксировать резу�
 - [x] P05 — Хрупкость и связанные пары
 - [ ] P06 — Мост и печать
 - [x] P07 — Solver и метрики
-- [ ] P08 — История и подсказки
+- [x] P08 — История и подсказки
 - [ ] P09 — 40 данных и три языка
 - [ ] P10 — Редактор уровней
 - [ ] P11 — Серый playable и ввод
@@ -163,3 +163,18 @@ P01–P20. После каждого этапа фиксировать резу�
 - Отчёты: `Reports/P07/`. Publication UI/gate связывается в P10; настоящая Undo
   проверяется P08. Localized production import/117 variants — P09.
   Visual/PlayMode/mobile/player build пока не запускались.
+
+## P08 — результат 5 октября 2026
+
+- AttemptService commit-ит только принятые команды. Predict не меняет состояние;
+  History хранит стабильные immutable snapshots, RouteLength откатывается,
+  UndoCount хранится отдельно. Retry сохраняет concrete Level/rules/content/locale.
+- Undo через collapse восстановил этаж, HP, bomb phase/ticks/counts, bridge,
+  key, repair и stamp. Это закрывает Undo-проверку P06. Publication UI остаётся P10.
+- HintRequest можно вычислять отдельно от mutable attempt. SHA256 stateHash
+  включает pinned content и все core поля; stale/другая attempt hint не исполняется.
+  HintUsed монотонен до Retry. DeadEnd предлагает Undo; Unknown ничего не расходует.
+- Unity EditMode: 151/151 PASS, успешная актуальная compilation. Исправлены
+  два старых unqualified Application обращения в P00 helper при появлении namespace.
+- Отчёты: `Reports/P08/`. Не запускались lifecycle/animation interruptions,
+  visual/device input, PlayMode, save persistence и player build.

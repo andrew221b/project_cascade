@@ -9,7 +9,7 @@ namespace Cascade.Tests
 {
     internal static class ReferenceFixtures
     {
-        internal static string PackageRoot => Directory.GetParent(Application.dataPath).Parent.FullName;
+        internal static string PackageRoot => Directory.GetParent(UnityEngine.Application.dataPath).Parent.FullName;
         internal static JArray Levels => JArray.Parse(File.ReadAllText(Path.Combine(PackageRoot, "Data", "levels.json")));
         internal static JObject Balance => JObject.Parse(File.ReadAllText(Path.Combine(PackageRoot, "Reports", "balance.json")));
         static bool Present(JToken value) => value != null && value.Type != JTokenType.Null;

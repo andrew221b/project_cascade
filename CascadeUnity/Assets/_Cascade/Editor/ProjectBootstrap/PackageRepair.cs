@@ -16,7 +16,7 @@ namespace Cascade.Editor.Bootstrap
 
         public static void PinInputSystem()
         {
-            string projectRoot = Path.GetFullPath(Path.Combine(Application.dataPath, ".."));
+            string projectRoot = Path.GetFullPath(Path.Combine(UnityEngine.Application.dataPath, ".."));
             string embedded = Path.Combine(projectRoot, "Packages/com.unity.inputsystem");
             string archive = Path.GetFullPath(Path.Combine(projectRoot, "../Reports/P00/temporary_inputsystem_1.18.0~"));
             if (Directory.Exists(embedded))
@@ -60,7 +60,7 @@ namespace Cascade.Editor.Bootstrap
                 return;
             }
 
-            string manifest = File.ReadAllText(Path.Combine(Application.dataPath, "../Packages/manifest.json"));
+            string manifest = File.ReadAllText(Path.Combine(UnityEngine.Application.dataPath, "../Packages/manifest.json"));
             if (!manifest.Contains("\"com.unity.inputsystem\": \"1.18.0\""))
             {
                 Debug.LogError("[Cascade P00] Registry pin was not written to the manifest.");

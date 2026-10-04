@@ -14,7 +14,7 @@ namespace Cascade.Editor.Validation
                 throw new InvalidOperationException("Tests require a completed, successful Unity script compilation.");
             if (string.IsNullOrEmpty(phase) || phase.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0 || phase.Contains(".."))
                 throw new ArgumentException("Expected a report folder name.", nameof(phase));
-            var packageRoot = Directory.GetParent(Application.dataPath).Parent.FullName;
+            var packageRoot = Directory.GetParent(UnityEngine.Application.dataPath).Parent.FullName;
             string report = Path.Combine(packageRoot, "Reports", phase, "editmode.xml");
             Directory.CreateDirectory(Path.GetDirectoryName(report));
             var runner = ScriptableObject.CreateInstance<TestRunnerApi>();
