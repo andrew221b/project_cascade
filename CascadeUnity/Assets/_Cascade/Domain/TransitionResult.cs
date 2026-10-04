@@ -6,7 +6,7 @@ namespace Cascade.Domain
     public enum PuzzleEventKind
     {
         CommandAccepted, RowPermuted, BombDefused, KeyOpened, Repaired, StampCollected,
-        BombTicked, BombExploded, BombAbandoned, DurabilityResolved,
+        BombTicked, BombExploded, BombAbandoned, DurabilityResolved, BridgeConsumed,
         FloorExited, FloorEntered, EntryPermuted, ReceiverEvaluated
     }
     public enum RejectionReason { None, Terminal, InvalidCommand, InvalidState, ClosedEdge, NoOp }

@@ -42,12 +42,16 @@ namespace Cascade.Domain
             var next = state;
             if (command.Kind == CommandKind.Swap)
             {
-                next = state.With(row: Permute(state.Row, preview.AffectedEdges), durability: state.Durability - preview.DurabilityCost);
+                var bridge = Level.Floors[state.ActiveFloor].OneUseBridgeEdge;
+                bool consumed = state.BridgeUsed || (bridge.HasValue && preview.AffectedEdges.Contains(bridge.Value));
+                next = state.With(row: Permute(state.Row, preview.AffectedEdges), durability: state.Durability - preview.DurabilityCost, bridgeUsed: consumed);
                 events.Add(new PuzzleEvent(PuzzleEventKind.RowPermuted, next, edges: preview.AffectedEdges));
             }
             next = ResolveContacts(next, events);
             next = TickBomb(next, events);
             events.Add(new PuzzleEvent(PuzzleEventKind.DurabilityResolved, next, next.Durability));
+            if (!state.BridgeUsed && next.BridgeUsed)
+                events.Add(new PuzzleEvent(PuzzleEventKind.BridgeConsumed, next, Level.Floors[state.ActiveFloor].OneUseBridgeEdge.Value));
             if (command.Kind == CommandKind.EarlyDrop || next.Durability <= 0)
             {
                 next = LeaveFloor(next, events);
@@ -59,8 +63,9 @@ namespace Cascade.Domain
         static int[] AffectedEdges(FloorDefinition floor, int edge) => floor.LinkedPair.HasValue && floor.LinkedPair.Value.Contains(edge)
             ? new[] { floor.LinkedPair.Value.FirstEdge, floor.LinkedPair.Value.SecondEdge } : new[] { edge };
         static int SwapCost(FloorDefinition floor, IEnumerable<int> edges) => 1 + edges.Count(e => floor.FragileEdges.Contains(e));
-        static bool IsEdgeOpen(FloorDefinition floor, PuzzleState state, int edge) => floor.OpenEdges[edge]
-            || (floor.Key != null && state.KeyUsed && floor.Key.EdgeToOpen == edge);
+        static bool IsEdgeOpen(FloorDefinition floor, PuzzleState state, int edge) =>
+            !(floor.OneUseBridgeEdge == edge && state.BridgeUsed) && (floor.OpenEdges[edge]
+            || (floor.Key != null && state.KeyUsed && floor.Key.EdgeToOpen == edge));
 
         static SymbolId[] Permute(IEnumerable<SymbolId> symbols, IEnumerable<int> edges)
         {
@@ -87,6 +92,13 @@ namespace Cascade.Domain
             {
                 state = state.With(repairUsed: true, durability: state.Durability + floor.Repair.Amount);
                 events.Add(new PuzzleEvent(PuzzleEventKind.Repaired, state, floor.Repair.Amount));
+            }
+            int stampBit = 1 << state.ActiveFloor;
+            if (floor.OptionalStamp != null && (state.StampBits & stampBit) == 0
+                && state.Row[floor.OptionalStamp.Slot] == floor.OptionalStamp.RequiredSymbol)
+            {
+                state = state.With(stampBits: state.StampBits | stampBit);
+                events.Add(new PuzzleEvent(PuzzleEventKind.StampCollected, state, stampBit));
             }
             return state;
         }

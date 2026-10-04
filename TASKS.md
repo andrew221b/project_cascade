@@ -1,6 +1,6 @@
 # CASCADE — TASKS
 
-P00–P05: COMPLETE. Unity AI/MCP: исправлено. P06: IN_PROGRESS. P07–P20: NOT_STARTED.
+P00–P05: COMPLETE. Unity AI/MCP: исправлено. P06: mechanics verified (dependent gates pending). P07: IN_PROGRESS. P08–P20: NOT_STARTED.
 Python reference проверен отдельно; это не реализация игровых систем Unity.
 
 Автор прямо разрешил выполнять все этапы подряд, отменив остановки между
@@ -135,3 +135,15 @@ P01–P20. После каждого этапа фиксировать резу�
 - C25/C26/C28 победные fixtures и C27 unlock-before-linked проверены.
 - Unity EditMode: 82/82 PASS, C# ошибок 0. Отчёты: `Reports/P05/`.
   Визуальная читаемость/ввод, PlayMode, build и общий JSON parity ещё не проверены.
+
+## P06 — механики проверены 5 октября 2026
+
+- Single-use bridge расходуется только принятой полной перестановкой,
+  закрывается после linked set. Drop/invalid/no-op его не расходуют.
+- StampBits собираются после final row/entry transform, не меняют tokens/HP.
+  PuzzleGoal оценивает stamped delivery отдельно; базовый receiver не требует stamp.
+- Unity EditMode: 90/90 PASS, C# ошибок 0. Независимый test-only BFS подтвердил
+  C35 minima 2/4 и недостижимую печать; immutable snapshots восстанавливают bits.
+- Отчёты: `Reports/P06/`. Полная приёмка P06 зависит от следующих инструментов:
+  production solver/publication reject (P07/P10) и настоящая Application Undo (P08).
+  Они не объявлены выполненными. PlayMode/visual/build также не запускались.
