@@ -1,0 +1,19 @@
+{
+  "created": "2026-10-04",
+  "project": "CASCADE",
+  "version": "2.0",
+  "source_files_inspected": [
+    "PROJECT_CASCADE_MASTER_GDD.md",
+    "PROJECT_CASCADE_Codex_Pack.zip"
+  ],
+  "priority": "Latest direct user corrections override earlier drafts",
+  "executed": "Python reference and local data validation only",
+  "not_executed": [
+    "Unity build",
+    "C# parity",
+    "device QA",
+    "payments",
+    "native-language editorial review"
+  ],
+  "other_basis": "Earlier specifications and latest corrections visible in the conversation; source list above is limited to directly inspected mounted files."
+}

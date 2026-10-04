@@ -1,0 +1,44 @@
+test_blast_preserves_row (__main__.Tests.test_blast_preserves_row) ... ok
+test_bridge_consumed (__main__.Tests.test_bridge_consumed) ... ok
+test_cancel_invalid_returns_same (__main__.Tests.test_cancel_invalid_returns_same) ... ok
+test_defuse_last_tick (__main__.Tests.test_defuse_last_tick) ... ok
+test_drop_abandons_not_defuses (__main__.Tests.test_drop_abandons_not_defuses) ... ok
+test_drop_not_cancelled_by_repair (__main__.Tests.test_drop_not_cancelled_by_repair) ... ok
+test_drop_ticks_old_bomb (__main__.Tests.test_drop_ticks_old_bomb) ... ok
+test_eight_tokens (__main__.Tests.test_eight_tokens) ... ok
+test_entry_contacts_after_transform (__main__.Tests.test_entry_contacts_after_transform) ... ok
+test_entry_no_tick (__main__.Tests.test_entry_no_tick) ... ok
+test_exact_graph_minimum (__main__.Tests.test_exact_graph_minimum) ... ok
+test_four_floors (__main__.Tests.test_four_floors) ... ok
+test_invalid_bridge_move_does_not_consume (__main__.Tests.test_invalid_bridge_move_does_not_consume) ... ok
+test_key_not_retroactive (__main__.Tests.test_key_not_retroactive) ... ok
+test_key_then_exchange (__main__.Tests.test_key_then_exchange) ... ok
+test_linked_atomic (__main__.Tests.test_linked_atomic) ... ok
+test_linked_equivalent_commands (__main__.Tests.test_linked_equivalent_commands) ... ok
+test_linked_fragile_additive (__main__.Tests.test_linked_fragile_additive) ... ok
+test_linked_same_pair_still_meaningful (__main__.Tests.test_linked_same_pair_still_meaningful) ... ok
+test_noop_no_tick (__main__.Tests.test_noop_no_tick) ... ok
+test_optional_stamp_route (__main__.Tests.test_optional_stamp_route) ... ok
+test_overkill_does_not_carry (__main__.Tests.test_overkill_does_not_carry) ... ok
+test_repair_bomb_aggregate (__main__.Tests.test_repair_bomb_aggregate) ... ok
+test_repair_one_shot (__main__.Tests.test_repair_one_shot) ... ok
+test_repair_saves_one_hp (__main__.Tests.test_repair_saves_one_hp) ... ok
+test_same_input_same_state (__main__.Tests.test_same_input_same_state) ... ok
+test_search_budget_is_unknown (__main__.Tests.test_search_budget_is_unknown) ... ok
+test_serialization_model (__main__.Tests.test_serialization_model) ... ok
+test_signed_repair (__main__.Tests.test_signed_repair) ... ok
+test_snapshot_restore_replay (__main__.Tests.test_snapshot_restore_replay) ... ok
+test_stamp_does_not_affect_win (__main__.Tests.test_stamp_does_not_affect_win) ... ok
+test_stamp_records_once (__main__.Tests.test_stamp_records_once) ... ok
+test_terminal_immutable (__main__.Tests.test_terminal_immutable) ... ok
+test_two_namespaces_not_equal (__main__.Tests.test_two_namespaces_not_equal) ... ok
+test_unsolvable_not_unknown (__main__.Tests.test_unsolvable_not_unknown) ... ok
+test_unsolvable_optional_not_attached (__main__.Tests.test_unsolvable_optional_not_attached) ... ok
+test_validate_multiset (__main__.Tests.test_validate_multiset) ... ok
+test_validate_overlap (__main__.Tests.test_validate_overlap) ... ok
+test_validate_transform (__main__.Tests.test_validate_transform) ... ok
+
+----------------------------------------------------------------------
+Ran 39 tests in 0.003s
+
+OK

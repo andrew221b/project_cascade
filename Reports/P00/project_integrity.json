@@ -1,0 +1,23 @@
+{
+  "meta_guids_checked": 32,
+  "missing_meta": [],
+  "orphan_meta": [],
+  "duplicate_guids": {},
+  "direct_dependency_changes": {
+    "com.unity.inputsystem": {
+      "before": "1.12.0",
+      "after": "1.18.0"
+    }
+  },
+  "temporary_input_override_present": false,
+  "original_pack_files_changed": [
+    "README.md",
+    "TASKS.md"
+  ],
+  "expected_original_file_changes": [
+    "README.md",
+    "TASKS.md"
+  ],
+  "unexpected_original_file_changes": [],
+  "original_data_tools_cxx_prompts_unchanged": true
+}

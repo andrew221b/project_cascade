@@ -1,0 +1,746 @@
+[
+  {
+    "id": "ru_КОТ",
+    "locale": "ru",
+    "text": "КОТ",
+    "tokens": [
+      "К",
+      "О",
+      "Т"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_ЛУНА",
+    "locale": "ru",
+    "text": "ЛУНА",
+    "tokens": [
+      "Л",
+      "У",
+      "Н",
+      "А"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_МАМА",
+    "locale": "ru",
+    "text": "МАМА",
+    "tokens": [
+      "М",
+      "А",
+      "М",
+      "А"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_ВЕСНА",
+    "locale": "ru",
+    "text": "ВЕСНА",
+    "tokens": [
+      "В",
+      "Е",
+      "С",
+      "Н",
+      "А"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_СЫР",
+    "locale": "ru",
+    "text": "СЫР",
+    "tokens": [
+      "С",
+      "Ы",
+      "Р"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_ДОМ",
+    "locale": "ru",
+    "text": "ДОМ",
+    "tokens": [
+      "Д",
+      "О",
+      "М"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_ЛЕС",
+    "locale": "ru",
+    "text": "ЛЕС",
+    "tokens": [
+      "Л",
+      "Е",
+      "С"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_НОС",
+    "locale": "ru",
+    "text": "НОС",
+    "tokens": [
+      "Н",
+      "О",
+      "С"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_ГОРА",
+    "locale": "ru",
+    "text": "ГОРА",
+    "tokens": [
+      "Г",
+      "О",
+      "Р",
+      "А"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_МОРЕ",
+    "locale": "ru",
+    "text": "МОРЕ",
+    "tokens": [
+      "М",
+      "О",
+      "Р",
+      "Е"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_НЕБО",
+    "locale": "ru",
+    "text": "НЕБО",
+    "tokens": [
+      "Н",
+      "Е",
+      "Б",
+      "О"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_РЕКА",
+    "locale": "ru",
+    "text": "РЕКА",
+    "tokens": [
+      "Р",
+      "Е",
+      "К",
+      "А"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_СОВА",
+    "locale": "ru",
+    "text": "СОВА",
+    "tokens": [
+      "С",
+      "О",
+      "В",
+      "А"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_РЫБА",
+    "locale": "ru",
+    "text": "РЫБА",
+    "tokens": [
+      "Р",
+      "Ы",
+      "Б",
+      "А"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_ЛИСА",
+    "locale": "ru",
+    "text": "ЛИСА",
+    "tokens": [
+      "Л",
+      "И",
+      "С",
+      "А"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_ЖАБА",
+    "locale": "ru",
+    "text": "ЖАБА",
+    "tokens": [
+      "Ж",
+      "А",
+      "Б",
+      "А"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      1
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_ПАПА",
+    "locale": "ru",
+    "text": "ПАПА",
+    "tokens": [
+      "П",
+      "А",
+      "П",
+      "А"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_КНИГА",
+    "locale": "ru",
+    "text": "КНИГА",
+    "tokens": [
+      "К",
+      "Н",
+      "И",
+      "Г",
+      "А"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_ШКОЛА",
+    "locale": "ru",
+    "text": "ШКОЛА",
+    "tokens": [
+      "Ш",
+      "К",
+      "О",
+      "Л",
+      "А"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_ВЕТЕР",
+    "locale": "ru",
+    "text": "ВЕТЕР",
+    "tokens": [
+      "В",
+      "Е",
+      "Т",
+      "Е",
+      "Р"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      1,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_ЛИМОН",
+    "locale": "ru",
+    "text": "ЛИМОН",
+    "tokens": [
+      "Л",
+      "И",
+      "М",
+      "О",
+      "Н"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_РОБОТ",
+    "locale": "ru",
+    "text": "РОБОТ",
+    "tokens": [
+      "Р",
+      "О",
+      "Б",
+      "О",
+      "Т"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      1,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_ПОЕЗД",
+    "locale": "ru",
+    "text": "ПОЕЗД",
+    "tokens": [
+      "П",
+      "О",
+      "Е",
+      "З",
+      "Д"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_СОЛНЦЕ",
+    "locale": "ru",
+    "text": "СОЛНЦЕ",
+    "tokens": [
+      "С",
+      "О",
+      "Л",
+      "Н",
+      "Ц",
+      "Е"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_МОЛОКО",
+    "locale": "ru",
+    "text": "МОЛОКО",
+    "tokens": [
+      "М",
+      "О",
+      "Л",
+      "О",
+      "К",
+      "О"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      1,
+      3,
+      1
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_МАШИНА",
+    "locale": "ru",
+    "text": "МАШИНА",
+    "tokens": [
+      "М",
+      "А",
+      "Ш",
+      "И",
+      "Н",
+      "А"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      1
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_РАКЕТА",
+    "locale": "ru",
+    "text": "РАКЕТА",
+    "tokens": [
+      "Р",
+      "А",
+      "К",
+      "Е",
+      "Т",
+      "А"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      1
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_КОЛЕСО",
+    "locale": "ru",
+    "text": "КОЛЕСО",
+    "tokens": [
+      "К",
+      "О",
+      "Л",
+      "Е",
+      "С",
+      "О"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      1
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_ДЕРЕВО",
+    "locale": "ru",
+    "text": "ДЕРЕВО",
+    "tokens": [
+      "Д",
+      "Е",
+      "Р",
+      "Е",
+      "В",
+      "О"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      1,
+      3,
+      4
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_КОРОВА",
+    "locale": "ru",
+    "text": "КОРОВА",
+    "tokens": [
+      "К",
+      "О",
+      "Р",
+      "О",
+      "В",
+      "А"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      1,
+      3,
+      4
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_ДОРОГА",
+    "locale": "ru",
+    "text": "ДОРОГА",
+    "tokens": [
+      "Д",
+      "О",
+      "Р",
+      "О",
+      "Г",
+      "А"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      1,
+      3,
+      4
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_СОБАКА",
+    "locale": "ru",
+    "text": "СОБАКА",
+    "tokens": [
+      "С",
+      "О",
+      "Б",
+      "А",
+      "К",
+      "А"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_ЁЛКА",
+    "locale": "ru",
+    "text": "ЁЛКА",
+    "tokens": [
+      "Ё",
+      "Л",
+      "К",
+      "А"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_ЙОГУРТ",
+    "locale": "ru",
+    "text": "ЙОГУРТ",
+    "tokens": [
+      "Й",
+      "О",
+      "Г",
+      "У",
+      "Р",
+      "Т"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  },
+  {
+    "id": "ru_СОЛЬ",
+    "locale": "ru",
+    "text": "СОЛЬ",
+    "tokens": [
+      "С",
+      "О",
+      "Л",
+      "Ь"
+    ],
+    "equality_signature": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "editorial_status": "draft_native_review_required",
+    "origin": "original_short_editorial_list",
+    "license_review": "required_before_release"
+  }
+]
