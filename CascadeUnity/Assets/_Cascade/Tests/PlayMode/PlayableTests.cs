@@ -362,8 +362,9 @@ namespace Cascade.Tests
         }
         [UnityTest] public IEnumerator RepeatedJourneyFailuresOfferNewWoodAndOrdinaryRetryKeepsTheSamePuzzle()
         {
-            typeof(CascadeGame).GetMethod("BeginJourney",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic).Invoke(game,new object[]{80});
-            if(game.CurrentScreen==GameScreen.Dialogue)yield return ClickButton("Skipstory");
+            // Pinned single attempts retain their recovery flow; fresh journeys now have checkpoints.
+            game.LoadNode("C81");game.ShowGame();
+            typeof(CascadeGame).GetField("journeyActive",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic).SetValue(game,true);
             yield return AwaitPreparation();string pin=game.Interaction.Attempt.PinnedContentHash;
             for(int failure=0;failure<2;failure++) {
                 yield return ClickButton("Drop");int pressure=game.Director.Struggle;game.Retry();
@@ -376,6 +377,66 @@ namespace Cascade.Tests
             yield return AwaitPreparation();Assert.That(game.Interaction.Attempt.Direction.Mood,Is.EqualTo(Cascade.Application.DeliveryMood.Recovery));
             Assert.That(game.Interaction.Attempt.Level.Floors[0].BaseDurability,Is.EqualTo(game.Catalog.GetPrimary("C81").Definition.Floors[0].BaseDurability+1));
             Assert.That(game.Interaction.Attempt.RouteLength,Is.Zero);Assert.That(game.JourneyClearCount,Is.Zero);
+        }
+        IEnumerator AwaitDescentReady()
+        {
+            double began=Time.realtimeSinceStartupAsDouble;
+            while((game.IsPlanningDescent||!game.PreparationReady)&&Time.realtimeSinceStartupAsDouble-began<30)yield return null;
+            Assert.That(game.IsPlanningDescent,Is.False);Assert.That(game.PreparationReady,Is.True);Assert.That(game.Descent,Is.Not.Null);
+        }
+        IEnumerator PlayDescentStage()
+        {
+            yield return AwaitDescentReady();game.RefreshLayout();yield return null;
+            foreach(string encoded in game.Descent.Stages[game.Descent.StageIndex].Witness) {
+                var command=encoded=="D"?PuzzleCommand.Drop:PuzzleCommand.Swap(int.Parse(encoded));
+                var predicted=game.Interaction.Attempt.Predict(command).State;
+                if(command.Kind==CommandKind.EarlyDrop)yield return ClickButton("Drop");
+                else {yield return MouseFrame(Point(command.Edge),true);yield return MouseFrame(Point(command.Edge+1),true);yield return MouseFrame(Point(command.Edge+1),false);}
+                Assert.That(game.Interaction.Attempt.Current,Is.EqualTo(predicted));yield return AwaitPresentation();yield return null;
+            }
+            Assert.That(game.Interaction.Attempt.Current.Status,Is.EqualTo(PuzzleStatus.Won));
+        }
+        [UnityTest] public IEnumerator DescentCheckpointSurvivesFocusInterruptionAndRetryWithoutGrantingAClear()
+        {
+            game.StartDescentLevel(game.Catalog.GetPrimary("C81").Definition);game.ShowGame();game.ReducedMotion=false;
+            Assert.That(game.Interaction.CanPlay,Is.False);Assert.That(game.Interaction.PointerDown(909,0),Is.False);
+            yield return PlayDescentStage();Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Checkpoint));
+            var saved=new ProfileStore(game.ProfilePath).Load().Profile;Assert.That(saved.Clears,Is.Empty);Assert.That(saved.Rewards.Records,Is.Empty);
+            var delivered=game.Interaction.Attempt.Current.Row.ToArray();yield return ClickButton("Nextdelivery");
+            Assert.That(game.Descent.StageIndex,Is.EqualTo(1));Assert.That(game.Interaction.Attempt.Level.InitialSymbolIds,Is.EqualTo(delivered));
+            game.SendMessage("OnApplicationFocus",false);yield return null;
+            string current=game.Interaction.Attempt.CurrentStateHash;
+            Assert.That(game.IsDescending,Is.False);Assert.That(UnityEngine.Object.FindObjectsByType<DescentGhost>(FindObjectsSortMode.None),Is.Empty);
+            saved=new ProfileStore(game.ProfilePath).Load().Profile;Assert.That(saved.Descent.StageIndex,Is.EqualTo(1));
+            Assert.That(saved.RestoreAttempt(game.Catalog).CurrentStateHash,Is.EqualTo(current));Assert.That(saved.Clears,Is.Empty);
+            game.SendMessage("OnApplicationFocus",true);yield return AwaitDescentReady();
+            string pin=game.Interaction.Attempt.PinnedContentHash;
+            game.Interaction.Execute(PuzzleCommand.Drop);yield return AwaitPresentation();game.Interaction.Execute(PuzzleCommand.Drop);yield return AwaitPresentation();yield return null;
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Fail));yield return ClickButton("Retry");
+            Assert.That(game.Descent.StageIndex,Is.EqualTo(1));Assert.That(game.Interaction.Attempt.PinnedContentHash,Is.EqualTo(pin));
+            Assert.That(game.Interaction.Attempt.RouteLength,Is.Zero);Assert.That(new ProfileStore(game.ProfilePath).Load().Profile.Clears,Is.Empty);
+        }
+        [UnityTest] public IEnumerator ThreeStagesUseRealInputAndOnlyTheFinalReceiverPublishesTheWholeDelivery()
+        {
+            game.ReducedMotion=true;game.StartDescentLevel(game.Catalog.GetPrimary("C81").Definition);game.ShowGame();
+            yield return PlayDescentStage();yield return ClickButton("Nextdelivery");
+            Assert.That(game.Descent.StageIndex,Is.EqualTo(1));Assert.That(game.IsDescending,Is.False);game.GoLower();Assert.That(game.Descent.StageIndex,Is.EqualTo(1));
+            yield return AwaitDescentReady();yield return ClickButton("Landing movement");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Devices));
+            Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Any(t=>t.text=="Wind on landing"),Is.True);game.CloseMenu();
+            yield return PlayDescentStage();Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Checkpoint));
+            Assert.That(new ProfileStore(game.ProfilePath).Load().Profile.Clears,Is.Empty);yield return ClickButton("Nextdelivery");
+            yield return PlayDescentStage();Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Win));
+            var saved=new ProfileStore(game.ProfilePath).Load().Profile;
+            Assert.That(saved.Clears.Count(c=>c.CampaignNodeId=="C81"),Is.EqualTo(1));
+            var record=saved.Rewards.Records.Single();Assert.That(record.BestRoute,Is.EqualTo(game.Descent.Stages.Sum(s=>s.Minimum)));
+            Assert.That(record.ContentHash,Is.EqualTo(game.Descent.ContentHash));Assert.That(saved.Descent.StageIndex,Is.EqualTo(2));
+            Assert.That(record.StageCount,Is.EqualTo(3));Assert.That(record.SourceHash,Is.EqualTo(game.Catalog.GetPrimary("C81").Definition.ContentHash));
+            Assert.That(saved.RestoreAttempt(game.Catalog).CurrentStateHash,Is.EqualTo(game.Interaction.Attempt.CurrentStateHash));
+            yield return null;Assert.That(UnityEngine.Object.FindObjectsByType<DescentGhost>(FindObjectsSortMode.None),Is.Empty);
+            game.ShowRecords();yield return null;
+            Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Any(t=>t.text=="Level 81 · 3 stages"),Is.True);
+            yield return ClickButton("Playthislevel");yield return AwaitDescentReady();
+            Assert.That(game.Descent.StageIndex,Is.Zero);Assert.That(new ProfileStore(game.ProfilePath).Load().Profile.Clears.Count(c=>c.CampaignNodeId=="C81"),Is.EqualTo(1));
         }
         [UnityTest] public IEnumerator HangingDevicesFollowDeckWindAndFreezeWithoutSpendingMoves()
         {

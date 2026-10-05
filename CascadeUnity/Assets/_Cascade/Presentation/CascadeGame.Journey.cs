@@ -63,7 +63,8 @@ namespace Cascade.Presentation
             var bottom=Rect("Journey task",menuRoot,new Vector2(.04f,.02f),new Vector2(.96f,.28f));Panel(bottom,Paper);
             bool future=selectedJourneyStop>unlocked;
             var task=Text("Next task",bottom,new Vector2(.06f,.70f),new Vector2(.94f,.97f),21,future?new UiCopy("Stops to this island: {0}",selectedJourneyStop-unlocked):JourneyStory.Task(mapPage));task.font=art.titleFont;
-            bool resume=journeyActive&&Interaction.Attempt.Current.Status==PuzzleStatus.Playing&&Interaction.Attempt.RouteLength>0&&Catalog.PrimaryLevels[selectedJourneyStop].Definition.CampaignNodeId==node;
+            bool resume=journeyActive&&(Interaction.Attempt.Current.Status==PuzzleStatus.Playing||descent!=null&&Interaction.Attempt.Current.Status!=PuzzleStatus.Won||IsCheckpoint)
+                &&(Interaction.Attempt.RouteLength>0||descent?.StageIndex>0)&&Catalog.PrimaryLevels[selectedJourneyStop].Definition.CampaignNodeId==node;
             var go=Button("Travel",bottom,new Vector2(.05f,.40f),new Vector2(.95f,.68f),()=>{if(future)ShowJourney();else if(resume)ShowGame();else BeginJourney(selectedJourneyStop);});
             go.GetComponentInChildren<TextMeshProUGUI>().SetCopy(future?"Back to my path":resume?"Continue":sessionClears.Contains(Catalog.PrimaryLevels[selectedJourneyStop].Definition.CampaignNodeId)?"Play again":"Let's go");go.GetComponent<Image>().color=new Color(.98f,.74f,.32f);
             Button("Lessons",bottom,new Vector2(.05f,.05f),new Vector2(.49f,.33f),ShowLessons);
@@ -129,7 +130,8 @@ namespace Cascade.Presentation
             if(pendingJourney==null){ShowJourney();return;}
             var content=pendingJourney;pendingJourney=null;
             if(sessionClears.Contains(content.Definition.CampaignNodeId))LoadLevel(content.Definition,content.Locale);
-            else LoadDirectedLevel(content.Definition,content.Locale,profile.Director.Choose(content.Definition));
+            else if(DeliveryDirector.CanDirect(content.Definition))StartDescentLevel(content.Definition,content.Locale,profile.Director.Choose(content.Definition));
+            else LoadLevel(content.Definition,content.Locale);
             journeyActive=true;
             PersistProgress();
             levelLabel.SetCopy(JourneyStory.Task(JourneyStory.PageFor(selectedJourneyStop)));levelLabel.fontSize=21;

@@ -25,6 +25,7 @@ namespace Cascade.Presentation
         bool gameplayVisible, holdingToken;
         public float Phase { get; private set; }
         public int Zone => zone;
+        public float DescentDepth {get;set;}
         public Vector3 CloudPosition => clouds[0]==null?Vector3.zero:clouds[0].position;
         public Vector3 GliderPosition => glider==null?Vector3.zero:glider.position;
         public Bounds GliderBounds => glider==null?default:glider.GetComponent<MeshRenderer>().bounds;
@@ -103,7 +104,7 @@ namespace Cascade.Presentation
             landscape.position=new Vector3(cx,cy,3.2f);landscape.localScale=new Vector3(w,h,1);
             // Fill every aspect ratio with the artwork instead of fading its sides.
             float imageHeight=Mathf.Max(1,w/ratio/h),imageWidth=Mathf.Max(1,h*ratio/w);
-            landscapeMaterial.SetVector("_ImageRect",new Vector4((1-imageWidth)*.5f,(1-imageHeight)*.5f,imageWidth,imageHeight));
+            landscapeMaterial.SetVector("_ImageRect",new Vector4((1-imageWidth)*.5f,(1-imageHeight)*.5f-(gameplayVisible?DescentDepth:0)*.022f,imageWidth,imageHeight));
             ActiveWeatherCount=0;
             for(int i=0;i<weather.Length;i++) {
                 var drop=weather[i];bool snow=zone==6;bool rain=zone==1||zone==4;bool pollen=zone==0||zone==2||zone==5;

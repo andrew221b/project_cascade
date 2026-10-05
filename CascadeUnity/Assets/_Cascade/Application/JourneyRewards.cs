@@ -20,6 +20,8 @@ namespace Cascade.Application
     public sealed class MasteryRecord
     {
         public string PuzzleId, ContentHash, Mode, Locale;
+        public string SourceHash;
+        public int StageCount;
         public int StampGoal, BestRoute;
         public int? BestWithoutHint, BestClean;
         public string Key=>string.Join("|",PuzzleId,ContentHash,Mode,Locale,StampGoal.ToString(CultureInfo.InvariantCulture));
@@ -95,7 +97,7 @@ namespace Cascade.Application
         public int EarnedCoins(IReadOnlyList<string> orderedNodes)
             =>orderedNodes.Count(SeenClearNodes.Contains)*40+Enumerable.Range(0,4).Count(c=>WorkshopCount(c,orderedNodes)==10)*100;
 
-        public void RecordDelivery(AttemptService attempt)
+        public void RecordDelivery(AttemptService attempt,DeliveryPerformance performance=null)
         {
             if(attempt.Current.Status!=PuzzleStatus.Won)return;
             int flags=attempt.Current.StampBits!=0?4:0;
@@ -106,18 +108,20 @@ namespace Cascade.Application
             }
             var facts=Deliveries.FirstOrDefault(d=>d.NodeId==attempt.Level.CampaignNodeId);
             if(facts==null){facts=new DeliveryFacts{NodeId=attempt.Level.CampaignNodeId};Deliveries.Add(facts);}facts.Flags|=flags;
-            Record(attempt,0);
-            if(attempt.Goal.RequiredStampBits!=0&&attempt.Goal.IsSatisfied(attempt.Current))Record(attempt,attempt.Goal.RequiredStampBits);
+            Record(attempt,0,performance);
+            if(attempt.Goal.RequiredStampBits!=0&&attempt.Goal.IsSatisfied(attempt.Current))Record(attempt,attempt.Goal.RequiredStampBits,performance);
         }
-        void Record(AttemptService attempt,int goal)
+        void Record(AttemptService attempt,int goal,DeliveryPerformance performance)
         {
-            var candidate=new MasteryRecord{PuzzleId=attempt.Level.PuzzleId,ContentHash=attempt.PinnedContentHash,
-                Mode=attempt.Mode.ToString(),Locale=attempt.ActiveLocale,StampGoal=goal,BestRoute=attempt.RouteLength};
+            int route=performance?.Route??attempt.RouteLength;bool hinted=performance?.HintUsed??attempt.HintUsed;int undos=performance?.Undos??attempt.UndoCount;
+            var candidate=new MasteryRecord{PuzzleId=attempt.Level.PuzzleId,ContentHash=performance?.ContentHash??attempt.PinnedContentHash,
+                SourceHash=performance?.SourceHash,StageCount=performance==null?0:3,
+                Mode=attempt.Mode.ToString(),Locale=attempt.ActiveLocale,StampGoal=goal,BestRoute=route};
             var record=Records.FirstOrDefault(r=>r.Key==candidate.Key);
             if(record==null){record=candidate;Records.Add(record);}
-            record.BestRoute=Math.Min(record.BestRoute,attempt.RouteLength);
-            if(!attempt.HintUsed)record.BestWithoutHint=Math.Min(record.BestWithoutHint??int.MaxValue,attempt.RouteLength);
-            if(!attempt.HintUsed&&attempt.UndoCount==0)record.BestClean=Math.Min(record.BestClean??int.MaxValue,attempt.RouteLength);
+            record.BestRoute=Math.Min(record.BestRoute,route);
+            if(!hinted)record.BestWithoutHint=Math.Min(record.BestWithoutHint??int.MaxValue,route);
+            if(!hinted&&undos==0)record.BestClean=Math.Min(record.BestClean??int.MaxValue,route);
         }
         public void Validate()
         {
@@ -133,7 +137,8 @@ namespace Cascade.Application
                 ||Records==null||Records.Count>20000||Records.Any(r=>r==null||string.IsNullOrWhiteSpace(r.PuzzleId)
                     ||r.ContentHash==null||r.ContentHash.Length!=64||!new[]{"Shapes","Words","Mixed"}.Contains(r.Mode)
                     ||!new[]{"en","ru","uk"}.Contains(r.Locale)||r.StampGoal<0||r.StampGoal>15||r.BestRoute<0
-                    ||r.BestWithoutHint<r.BestRoute||r.BestClean<r.BestRoute)
+                    ||r.BestWithoutHint<r.BestRoute||r.BestClean<r.BestRoute||r.StageCount!=0&&r.StageCount!=3
+                    ||r.StageCount==3&&(r.SourceHash==null||r.SourceHash.Length!=64))
                 ||Records.Select(r=>r.Key).Distinct().Count()!=Records.Count)
                 throw new ArgumentException("Invalid journey reward data.");
         }

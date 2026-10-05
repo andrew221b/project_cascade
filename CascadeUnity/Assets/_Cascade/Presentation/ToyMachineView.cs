@@ -64,6 +64,20 @@ namespace Cascade.Presentation
         public int TokenCount => tokens.Count;
         bool gameplayView;
         public void SetGameplayVisible(bool visible) { gameplayView=visible;if(machine!=null)machine.gameObject.SetActive(visible);livingWorld?.SetGameplayVisible(visible); }
+        public void SetRigVisible(bool visible){if(machine!=null)machine.gameObject.SetActive(visible);}
+        public DescentGhost CreateDescentGhost(string name)
+        {
+            var ghost=new GameObject(name).AddComponent<DescentGhost>();
+            foreach(var renderer in machine.GetComponentsInChildren<MeshRenderer>()) {
+                var filter=renderer.GetComponent<MeshFilter>();if(filter==null||filter.sharedMesh==null)continue;
+                var part=new GameObject(renderer.name,typeof(MeshFilter),typeof(MeshRenderer));part.transform.SetParent(ghost.transform,false);
+                part.transform.SetPositionAndRotation(renderer.transform.position,renderer.transform.rotation);part.transform.localScale=renderer.transform.lossyScale;
+                var mesh=Instantiate(filter.sharedMesh);ghost.OwnedMeshes.Add(mesh);part.GetComponent<MeshFilter>().sharedMesh=mesh;
+                var copy=part.GetComponent<MeshRenderer>();copy.sharedMaterials=renderer.sharedMaterials;
+                copy.shadowCastingMode=renderer.shadowCastingMode;copy.receiveShadows=renderer.receiveShadows;
+            }
+            GetComponent<CascadeGame>().AppendDescentGraphics(ghost);return ghost;
+        }
         public static float TokenFaceY(bool selected) => selected ? .48f : .38f;
         public PresentationFrame Frame { get; set; }
         readonly float[] floorOffsets = new float[4];
@@ -185,7 +199,7 @@ namespace Cascade.Presentation
                     rig.bridge.Add(P("Bridge hinge", art.disk, art.graphite, x, .46f, .024f, .045f, -.51f));
                 }
             }
-            if(interaction.Attempt.Direction?.WindFloor==floors.Count-1) {
+            if(GetComponent<CascadeGame>().IsWindFloor(floors.Count-1)) {
                 bool right=floor.EntryTransform==EntryTransform.ShiftRightOne;
                 float centre=.30f;
                 foreach(float candidate in new[]{.30f,.50f,.70f}) {

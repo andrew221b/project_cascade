@@ -78,11 +78,13 @@ namespace Cascade.Presentation
         void OnDisable()
         {
             PersistProgress();
+            SettleDescent();CancelDescentWork();
             EndTokenHold(); CancelHint(); CancelDeadEnd(); preparation.Cancel(); StopPresentation(); Interaction?.SetSuspended(true); feedback?.ClearTails();
         }
         void OnDestroy() { preparation.Dispose(); if (Interaction != null) Interaction.Committed -= OnCommitted; if(glyphMaterial!=null)Destroy(glyphMaterial); }
         void OnApplicationFocus(bool focused)
         {
+            if(!focused)SettleDescent();
             if(!focused)PersistProgress();
             if(!focused)absentSince=Time.realtimeSinceStartup;
             else if(absentSince>0 && Time.realtimeSinceStartup-absentSince>60 && CurrentScreen==GameScreen.Playing)Coach?.Advance(15,true);
@@ -91,6 +93,7 @@ namespace Cascade.Presentation
         }
         void OnApplicationPause(bool paused)
         {
+            if(paused)SettleDescent();
             if(paused)PersistProgress();
             applicationPaused = paused; Interaction?.SetSuspended(applicationPaused || !applicationFocused); if (paused) { EndTokenHold(); StopPresentation(); }
             if (Interaction != null) RenderState();
@@ -98,10 +101,12 @@ namespace Cascade.Presentation
         void Update()
         {
             if (safeArea != Screen.safeArea || screenWidth != Screen.width || screenHeight != Screen.height) {
+                SettleDescent();
                 StopPresentation(); ApplySafeArea(); if (Interaction != null) RenderState();
             }
             UpdateFlow();
             UpdatePreparation();
+            UpdateDescent();
             if (hintTask == null || !hintTask.IsCompleted || !Interaction.CanPlay) return;
             var completed = hintTask; hintTask = null; hintCancellation?.Dispose(); hintCancellation = null;
             if (completed.IsFaulted) { var ignored = completed.Exception; status.SetCopy("Hint unavailable. You can keep playing."); RenderControls(); return; }
@@ -124,8 +129,9 @@ namespace Cascade.Presentation
         {
             MountAttempt(new AttemptService(level,locale));PersistProgress();
         }
-        void MountAttempt(AttemptService attempt)
+        void MountAttempt(AttemptService attempt,DescentRun run=null)
         {
+            SettleDescent();CancelDescentWork();descent=run;paintedDescentStage=-1;machine.LivingWorld.DescentDepth=run?.StageIndex??0;
             var level=attempt.Level;
             EndTokenHold(); CancelHint(); CancelDeadEnd(); StopPresentation(); if (Interaction != null) Interaction.Committed -= OnCommitted;
             Interaction = new PuzzleInteraction(attempt); Interaction.Committed += OnCommitted;
@@ -188,7 +194,7 @@ namespace Cascade.Presentation
             }
             if(!string.IsNullOrEmpty(exit.Key))effects.Add(exit);
             if(prediction.Events.Any(e=>e.Kind==PuzzleEventKind.EntryPermuted&&IsWindFloor(e.Floor)))
-                effects.Add(Interaction.Attempt.Direction.WindRight?"Wind slides the row right":"Wind slides the row left");
+                effects.Add(prediction.Events.First(e=>e.Kind==PuzzleEventKind.EntryPermuted&&IsWindFloor(e.Floor)).Value==(int)EntryTransform.ShiftRightOne?"Wind slides the row right":"Wind slides the row left");
             status.SetCopy(UiCopy.Join(" · ",effects));
             RenderFocus(); machine.PreviewForecast(prediction); PreviewDeviceDocks(prediction);
             if(command.Kind==CommandKind.LongReach){slotImages[command.Edge].color=Selected;slotImages[command.End].color=Selected;return;}
@@ -423,7 +429,7 @@ namespace Cascade.Presentation
                 if(resultRoot!=null)FixedBand(resultRoot,8*unit,160*unit);
                 receiverLabel.fontSize=16*unit; if(wrongRowLabel!=null)wrongRowLabel.fontSize=15*unit;
                 float receiverHeight = 100;
-                float receiverBottom = CurrentScreen==GameScreen.Fail ? 232 : CurrentScreen==GameScreen.Win || PreciseInputActive ? 184 : 82;
+                float receiverBottom = CurrentScreen==GameScreen.Fail ? 232 : CurrentScreen==GameScreen.Win || CurrentScreen==GameScreen.Checkpoint || PreciseInputActive ? 184 : 82;
                 FixedBand(receiver, receiverBottom * unit, receiverHeight);
                 floorArea.anchorMin = new Vector2(.045f, 0); floorArea.anchorMax = new Vector2(.955f, 0);
                 floorArea.offsetMin = new Vector2(0, receiverBottom * unit + receiverHeight + 38 * unit);

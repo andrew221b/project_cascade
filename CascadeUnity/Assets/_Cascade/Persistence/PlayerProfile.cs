@@ -21,25 +21,28 @@ namespace Cascade.Persistence
         public List<int> HeardStory=new List<int>();
         public bool FirstGestureShown, JourneyAttempt;
         public AttemptRecord Attempt;
+        public DescentRun Descent;
         public JourneyRewards Rewards=new JourneyRewards();
         public DirectorMemory Director=new DirectorMemory();
         public MonetizationLedger Monetization=new MonetizationLedger();
 
         public bool RecordClear(AttemptService attempt)
         {
+            if(Descent!=null&&(!Descent.IsFinal||attempt.PinnedContentHash!=Descent.StageHash(2)))return false;
             if(attempt.Current.Status!=PuzzleStatus.Won || Clears.Any(r=>r.CampaignNodeId==attempt.Level.CampaignNodeId))return false;
             Clears.Add(new ClearReceipt {CampaignNodeId=attempt.Level.CampaignNodeId,
-                AttemptId=attempt.AttemptId.ToString("D"),ContentHash=attempt.PinnedContentHash});
+                AttemptId=attempt.AttemptId.ToString("D"),ContentHash=Descent?.ContentHash??attempt.PinnedContentHash});
             return true;
         }
         public AttemptService RestoreAttempt(ContentCatalog catalog, IEnumerable<LevelContent> legacy = null)
         {
             if(Attempt==null)return null;
             var content=catalog.PrimaryLevels.Concat(catalog.LocalizedLevels).Concat(catalog.BonusLevels).Concat(legacy??Enumerable.Empty<LevelContent>()).FirstOrDefault(c=>
-                c.Definition.PuzzleId==Attempt.PuzzleId && c.Definition.ContentHash==(Attempt.Direction?.SourceHash??Attempt.ContentHash)
+                c.Definition.PuzzleId==Attempt.PuzzleId && c.Definition.ContentHash==(Descent?.SourceHash??Attempt.Direction?.SourceHash??Attempt.ContentHash)
                 && c.Definition.RulesVersion==Attempt.RulesVersion && c.Locale==Attempt.Locale);
             if(content==null)throw new InvalidDataException("Pinned puzzle content is unavailable.");
-            var level=Attempt.Direction==null?content.Definition:Attempt.Direction.Apply(content.Definition);
+            if(Descent!=null)Descent.Validate(content.Definition,Attempt.Locale);
+            var level=Descent!=null?Descent.Level(content.Definition,Descent.StageIndex):Attempt.Direction==null?content.Definition:Attempt.Direction.Apply(content.Definition);
             return AttemptService.Restore(level,Attempt);
         }
         public void Validate()

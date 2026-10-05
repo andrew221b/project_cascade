@@ -6,7 +6,9 @@ namespace Cascade.Presentation
     public sealed partial class CascadeGame
     {
         public DirectorMemory Director=>profile.Director;
-        public bool IsWindFloor(int floor)=>Interaction?.Attempt.Direction?.WindFloor==floor;
+        public bool IsWindFloor(int floor)=>descent!=null?(floor==0&&(descent.Stages[descent.StageIndex].Arrival==EntryTransform.ShiftLeftOne||descent.Stages[descent.StageIndex].Arrival==EntryTransform.ShiftRightOne)
+            ||descent.IsFinal&&descent.Direction?.WindFloor==floor):Interaction?.Attempt.Direction?.WindFloor==floor;
+        bool CurrentWindRight=>Interaction.Attempt.Level.Floors[Enumerable.Range(0,Interaction.Attempt.Level.Floors.Count).First(IsWindFloor)].EntryTransform==EntryTransform.ShiftRightOne;
         static LevelDefinition WindGuide(bool right)
         {
             var row=Enumerable.Range(0,4).Select(i=>SymbolId.Parse("s:"+(char)('A'+i))).ToArray();
@@ -18,6 +20,7 @@ namespace Cascade.Presentation
         }
         LevelDefinition DirectedSource()
         {
+            if(descent!=null)return DescentPublishedSource();
             var attempt=Interaction.Attempt;string hash=attempt.Direction?.SourceHash??attempt.PinnedContentHash;
             return Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(legacyContent)
                 .FirstOrDefault(c=>c.Definition.PuzzleId==attempt.Level.PuzzleId&&c.Definition.ContentHash==hash)?.Definition;
@@ -34,7 +37,7 @@ namespace Cascade.Presentation
             bool travel=journeyActive;string locale=Interaction.Attempt.ActiveLocale;
             MountAttempt(new AttemptService(source,locale,Interaction.Attempt.Goal));journeyActive=travel;PersistProgress();return true;
         }
-        bool CanOfferStrongerWood=>journeyActive&&Interaction.Attempt.Current.Status==PuzzleStatus.Lost
+        bool CanOfferStrongerWood=>descent==null&&journeyActive&&Interaction.Attempt.Current.Status==PuzzleStatus.Lost
             &&DeliveryDirector.CanDirect(Interaction.Attempt.Level)&&profile.Director.Struggle>=4
             &&Interaction.Attempt.Direction?.Mood!=DeliveryMood.Recovery;
         void RestartWithStrongerWood()

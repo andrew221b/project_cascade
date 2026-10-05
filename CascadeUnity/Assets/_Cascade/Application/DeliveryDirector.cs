@@ -60,14 +60,14 @@ namespace Cascade.Application
             if(CleanWins<2||SincePeak<2)return DeliveryMood.Steady;
             return SinceWind>=3&&DeliveryDirector.WindFloor(source)>=1?DeliveryMood.Wind:DeliveryMood.Tight;
         }
-        public void ObserveTerminal(AttemptService attempt,int? minimum)
+        public void ObserveTerminal(AttemptService attempt,int? minimum,DeliveryPerformance performance=null)
         {
             string id=attempt.AttemptId.ToString("D");
             if(attempt.Current.Status==PuzzleStatus.Playing||LastTerminalAttempt==id)return;
             LastTerminalAttempt=id;
             if(attempt.Current.Status==PuzzleStatus.Lost){Struggle=Math.Min(6,Struggle+2);CleanWins=0;return;}
-            bool clean=minimum.HasValue&&attempt.RouteLength<=minimum.Value+1&&!attempt.HintUsed
-                &&attempt.UndoCount<=1&&attempt.Current.ExplodedCount==0;
+            bool clean=performance!=null?performance.Route<=performance.Minimum+1&&!performance.HintUsed&&performance.Undos<=1&&performance.Exploded==0
+                :minimum.HasValue&&attempt.RouteLength<=minimum.Value+1&&!attempt.HintUsed&&attempt.UndoCount<=1&&attempt.Current.ExplodedCount==0;
             CleanWins=clean?Math.Min(6,CleanWins+1):0;Struggle=Math.Max(0,Struggle-(clean?2:1));
             Deliveries=Math.Min(10000,Deliveries+1);SincePeak=Math.Min(9,SincePeak+1);SinceWind=Math.Min(9,SinceWind+1);
             if(attempt.Direction?.Mood==DeliveryMood.Tight||attempt.Direction?.Mood==DeliveryMood.Wind)SincePeak=0;

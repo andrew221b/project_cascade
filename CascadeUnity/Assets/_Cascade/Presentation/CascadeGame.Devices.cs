@@ -66,9 +66,11 @@ namespace Cascade.Presentation
             }
             UiCopy landing=floor.EntryTransform==EntryTransform.MirrorNext?"Reverse on landing":floor.EntryTransform==EntryTransform.ShiftLeftOne?"Slide left on landing":"Slide right on landing";
             if(IsWindFloor(floorIndex))landing=floor.EntryTransform==EntryTransform.ShiftLeftOne?"Wind on landing: row slides left":"Wind on landing: row slides right";
+            if(descent!=null&&floorIndex==0&&IsWindFloor(0))landing=floor.EntryTransform==EntryTransform.ShiftLeftOne?"Arrival wind: row moved left":"Arrival wind: row moved right";
             if(floor.EntryTransform!=EntryTransform.None||floor.LinkedPair.HasValue) {
                 UiCopy description=floor.LinkedPair.HasValue?(floor.EntryTransform==EntryTransform.None?new UiCopy("Paired swaps"):UiCopy.Join(" · ",new[]{landing,new UiCopy("Paired swaps")})):landing;
-                var label=Text("Landing movement",card,new Vector2(.02f,-.16f),new Vector2(.98f,.01f),12,description);
+                bool belowTools=descent!=null&&contacts.Count>0;
+                var label=Text("Landing movement",card,new Vector2(.02f,belowTools?-.44f:-.16f),new Vector2(.98f,belowTools?-.27f:.01f),12,description);
                 var b=label.gameObject.AddComponent<Button>();b.onClick.AddListener(()=>OpenDevice(floor.LinkedPair.HasValue?6:1));label.raycastTarget=true;
             }
             if(floor.LinkedPair.HasValue) {

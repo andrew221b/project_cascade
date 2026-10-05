@@ -104,9 +104,13 @@ embedded prompt metadata; prompts and hashes are in Docs/AssetPrompts/Craft.
 Prices, packages and existing campaign IDs remain stable; there is no gameplay
 physics. Online remains design-only.
 
-Fresh campaign deliveries after C40 now have a local director that observes completed attempts and deliberate retries. Two confident deliveries can lead to a tighter wood allowance or a wind passage; a peak is followed by recovery. Thinking time and purchases are never difficulty inputs. Replays and ordinary Retry retain their pinned conditions. After repeated failures, More wood starts a separate, clearly offered attempt with stronger planks.
+Fresh campaign deliveries after C40 now have a local director that observes completed attempts and deliberate retries. Two confident deliveries can lead to a tighter wood allowance or a wind passage; a peak is followed by recovery. Thinking time and purchases are never difficulty inputs. Ordinary Retry retains pinned conditions. After repeated failures, existing single attempts offer More wood as a separate attempt with stronger planks; a descent retains its checkpoints and its pinned stages, with free Retry/Hint and director recovery on the next fresh delivery.
 
 Directed conditions are fixed before input and proved by the same exact solver. Unproven fresh variants fall back to the published source. Wind reuses the existing one-place entry shift on a lower board: its arrow and guide show what will happen on landing. A saved recipe reconstructs the exact variant and its commands; local records remain separated by content hash. Irregular breeze and bounded landing gusts only animate the connected toy world.
+
+Fresh uncleared journey deliveries C41–C160 have three stages sharing one exact receiver target and symbol multiset: a two-command warm-up, an arrival wind passage, and a device finale. The solver proves the complete plan before input; starting minima satisfy stage 1 < stage 2 <= stage 3. Completing a receiver enables Go lower, carries the row to a new wooden rig, and preserves that checkpoint. Retry affects the current stage. Stage 1/2 grant no campaign clear or parcel progress; the final delivery grants one level clear. Lessons, standalone contracts and legacy single saves keep their original flow.
+
+Optional versioned descent recipes preserve all three stage definitions and completed command replays. Interruption during camera travel resumes the already committed next stage; motion cannot advance state. Full-descent records aggregate moves, hints and Undo over all stages, identify their original level and show three stages. Play this level starts a fresh descent; it does not claim an exact replay of an older adaptive recipe. No price, package or Domain rule version changed.
 
 Ribbon Reach is implemented as six separate optional workshop trials R01–R06,
 accessible through Power-ups in the bag. Their rules version is 2.1-longreach. One charge permits

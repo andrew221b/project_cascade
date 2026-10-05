@@ -157,15 +157,18 @@ namespace Cascade.Presentation
             var records=Rewards.Records.OrderBy(r=>r.PuzzleId,StringComparer.Ordinal).ThenBy(r=>r.StampGoal).ToArray();
             if(records.Length==0){MenuTitle("My routes","Your own best paths.");Text("Empty journal",menuRoot,new Vector2(.10f,.38f),new Vector2(.90f,.65f),22,"Finish a puzzle to leave a note here.");MenuButton("Back",.10f,ShowTravelBag);return;}
             recordPage=Math.Min(recordPage,records.Length-1);var record=records[recordPage];
-            var content=Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).FirstOrDefault(c=>c.Definition.PuzzleId==record.PuzzleId&&c.Definition.ContentHash==record.ContentHash);
-            MenuTitle("My routes",content==null?"A note from an earlier journey.":new UiCopy("Level {0}",content.Definition.CampaignNodeId.TrimStart('C','0')));
+            var content=Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).FirstOrDefault(c=>c.Definition.PuzzleId==record.PuzzleId&&c.Definition.ContentHash==(record.SourceHash??record.ContentHash));
+            MenuTitle("My routes",content==null?"A note from an earlier journey.":new UiCopy(record.StageCount==3?"Level {0} · 3 stages":"Level {0}",content.Definition.CampaignNodeId.TrimStart('C','0')));
             if(content!=null)MiniMachine(Rect("Record target",menuRoot,new Vector2(.23f,.47f),new Vector2(.77f,.64f)),content.Definition.InitialSymbolIds,content.Definition.TargetSymbolIds);
             MetaArrows(()=>{recordPage=(recordPage+records.Length-1)%records.Length;DrawMenu();},()=>{recordPage=(recordPage+1)%records.Length;DrawMenu();});
             Text("Record identity",menuRoot,new Vector2(.08f,.61f),new Vector2(.92f,.70f),18,UiCopy.Join(" · ",new[]{new UiCopy(record.Mode),LanguageName(record.Locale),new UiCopy(record.StampGoal==0?"Delivery":"With stamp")}));
             Text("Record route",menuRoot,new Vector2(.08f,.36f),new Vector2(.92f,.45f),23,new UiCopy("Best route: {0} moves",record.BestRoute));
             Text("Record help",menuRoot,new Vector2(.10f,.26f),new Vector2(.90f,.35f),18,record.BestWithoutHint.HasValue?new UiCopy("Without a hint: {0}",record.BestWithoutHint.Value):"Try again without a hint.");
             Text("Record clean",menuRoot,new Vector2(.10f,.19f),new Vector2(.90f,.27f),16,record.BestClean.HasValue?new UiCopy("Without hint or Undo: {0}",record.BestClean.Value):"Undo is always welcome.");
-            if(content!=null)MenuButton("Try again",.10f,()=>{if(record.StampGoal!=0)StartExactTrail(content,record.StampGoal);else StartContent(content);},true);
+            if(content!=null)MenuButton(record.StageCount==3?"Play this level":"Try again",.10f,()=>{
+                if(record.StageCount==3){StartDescentLevel(content.Definition,content.Locale);ShowGame();}
+                else if(record.StampGoal!=0)StartExactTrail(content,record.StampGoal);else StartContent(content);
+            },true);
             MenuButton("Back",.01f,ShowTravelBag);
         }
     }

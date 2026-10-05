@@ -174,7 +174,7 @@ This way is closed. Try the other side or Descend.	This way is closed. Try the o
 Put the same piece on the key to open the gate.	Put the same piece on the key to open the gate.	Подведи такую же фигурку к ключу.	Підведи таку саму фігурку до ключа.
 Put the same piece on the bomb to stop it.	Put the same piece on the bomb to stop it.	Подведи такую же фигурку к бомбе.	Підведи таку саму фігурку до бомби.
 Put the same piece on the key.	Put the same piece on the key.	Подведи такую же фигурку к ключу.	Підведи таку саму фігурку до ключа.
-Put the same piece on the patch to mend the board.	Put the same piece on the patch to mend the board.	Подведи такую же фигурку к заплатке.	Підведи таку саму фігурку до латки.
+Put the same piece on the patch to mend the board.	Put the same piece on the patch to mend the board.	Подведи такую же деталь к заплатке.	Підведи таку саму деталь до латки.
 These two pairs swap together.	These two pairs swap together.	Эти две пары меняются вместе.	Ці дві пари міняються разом.
 You can use this bridge once.	You can use this bridge once.	Мост можно пройти один раз.	Міст можна пройти один раз.
 Can you reach the stamp too?	Can you reach the stamp too?	Сможешь собрать ещё и марку?	Зможеш зібрати ще й марку?
@@ -449,3 +449,16 @@ Wind on landing	Wind on landing	Ветер при посадке	Вітер пі
 Wind moves the row on the next board. Tap its arrow to see how.	Wind will slide the row below. Tap the arrow.	Ветер сдвинет ряд внизу. Нажми на стрелку.	Вітер зсуне ряд унизу. Натисни на стрілку.
 Wind pushes the whole row one place when it lands. Follow the arrow. Take your time to think.	On landing, wind slides the whole row one place. Follow the arrow. Take your time to think.	При посадке ветер сдвигает весь ряд на одно место. Смотри на стрелку. Думать можно сколько хочешь.	Під час посадки вітер зсуває весь ряд на одне місце. Дивись на стрілку. Думати можна скільки хочеш.
 Back to puzzle	Back to puzzle	К задаче	До задачі
+Checking all three stages…	Checking all three stages…	Проверяем три этапа…	Перевіряємо три етапи…
+Level {0} · {1}/3	Level {0} · {1}/3	Уровень {0} · {1}/3	Рівень {0} · {1}/3
+Going lower…	Going lower…	Спускаемся ниже…	Спускаємося нижче…
+Go lower	Go lower	Спуститься	Спуститися
+Row ready! Below, wind will move it one place.	Row ready! Below, wind will move it one place.	Ряд готов! Внизу ветер сдвинет его на одно место.	Ряд готовий! Унизу вітер зсуне його на одне місце.
+Row ready! The last stage has devices.	Row ready! The last stage has devices.	Ряд готов! Впереди последний этап с устройствами.	Ряд готовий! Попереду останній етап із пристроями.
+Wind moved the row. Put it back in order.	Wind moved the row. Put it back in order.	Ветер сдвинул ряд. Собери его по образцу.	Вітер зсунув ряд. Збери його за зразком.
+Arrival wind: row moved left	Wind moved the row left	Ветер сдвинул ряд влево	Вітер зсунув ряд ліворуч
+Arrival wind: row moved right	Wind moved the row right	Ветер сдвинул ряд вправо	Вітер зсунув ряд праворуч
+Row ready! Wind is next.	Row ready! Wind is next.	Ряд готов! Дальше — ветер.	Ряд готовий! Далі — вітер.
+Row ready! Devices are next.	Row ready! Devices are next.	Ряд готов! Впереди устройства.	Ряд готовий! Попереду пристрої.
+Level {0} · 3 stages	Level {0} · 3 stages	Уровень {0} · 3 этапа	Рівень {0} · 3 етапи
+Play this level	Play this level	Пройти уровень	Пройти рівень

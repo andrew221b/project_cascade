@@ -62,6 +62,7 @@ namespace Cascade.Application
             }
             if(windFloor==state.ActiveFloor+1&&state.BombPhase!=BombPhase.Armed)
                 return "Wind moves the row on the next board. Tap its arrow to see how.";
+            if(lesson=="arrival_wind"&&!LessonCompleted)return "Wind moved the row. Put it back in order.";
             if (state.Row.SequenceEqual(level.TargetSymbolIds)) return state.ActiveFloor == level.Floors.Count-1
                 ? "Ready! Tap Deliver." : "Ready here. Check the board below.";
             if (LessonCompleted && !HighlightRequested && level.Floors[state.ActiveFloor].Powerup==null) return "";

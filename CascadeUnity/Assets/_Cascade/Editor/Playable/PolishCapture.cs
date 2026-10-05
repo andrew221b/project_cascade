@@ -23,6 +23,50 @@ namespace Cascade.Editor.Playable
   public static void ReceiverPolishCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(ReceiverPolishShots());}
   public static void WindCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(WindShots());}
   public static void DirectorCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(DirectorShots());}
+  public static void DescentCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(DescentShots());}
+  public static void DescentTravelCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(DescentShots(true));}
+  static IEnumerator DescentReady(CascadeGame g)
+  {
+   double start=Time.realtimeSinceStartupAsDouble;
+   while((g.IsPlanningDescent||g.IsDescending||!g.PreparationReady)&&Time.realtimeSinceStartupAsDouble-start<30)yield return null;
+   if(g.IsPlanningDescent||g.IsDescending||!g.PreparationReady||g.Descent==null)throw new InvalidOperationException("Descent did not become ready");
+  }
+  static IEnumerator DescentSolve(CascadeGame g)
+  {
+   yield return DescentReady(g);
+   foreach(string code in g.Descent.Stages[g.Descent.StageIndex].Witness) {
+    var command=code=="D"?PuzzleCommand.Drop:PuzzleCommand.Swap(int.Parse(code));g.Interaction.Execute(command);
+    while(g.Interaction.IsPresenting)yield return null;yield return null;
+   }
+  }
+  static IEnumerator DescentShots(bool travelOnly=false)
+  {
+   var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);g.Feedback.MusicEnabled=g.Feedback.SoundEnabled=false;
+   bool background=UnityEngine.Application.runInBackground;UnityEngine.Application.runInBackground=true;
+   var camera=Camera.main;var scaler=g.GetComponentInChildren<UnityEngine.UI.CanvasScaler>();var oldTarget=camera.targetTexture;
+   var phone=new RenderTexture(390,844,24);scaler.enabled=false;camera.targetTexture=phone;scaler.enabled=true;
+   try {
+    g.SendMessage("OnApplicationFocus",true);g.SendMessage("OnApplicationPause",false);g.ReducedMotion=true;g.SetUiLocale("en");
+    g.StartDescentLevel(g.Catalog.GetPrimary("C81").Definition);g.ShowGame();yield return DescentReady(g);
+    if(!travelOnly)yield return PlayableCapture.CaptureSettled("Descent","stage-one.png",390,844);
+    yield return DescentSolve(g);g.SetUiLocale("ru");if(!travelOnly)yield return PlayableCapture.CaptureSettled("Descent","checkpoint-ru.png",320,693);
+    g.SetUiLocale("en");g.ReducedMotion=false;g.GoLower();g.GetComponent<DescentTransition>().SetPreview(.48f);
+    yield return PlayableCapture.CaptureSettled("Descent","descent-mid.png",390,844);g.GetComponent<DescentTransition>().SetPreview(-1);
+    yield return DescentReady(g);g.ReducedMotion=true;g.SetUiLocale("ru");
+    if(!travelOnly)yield return PlayableCapture.CaptureSettled("Descent","stage-wind-ru.png",320,693);
+    if(!g.Catalog.TryGetLocalizedBinding("C81","ru",out var words))throw new InvalidOperationException("Missing word binding");
+    g.StartDescentLevel(words.Definition,"ru");g.ShowGame();yield return DescentSolve(g);g.GoLower();
+    yield return DescentSolve(g);g.ReducedMotion=false;g.GoLower();g.GetComponent<DescentTransition>().SetPreview(.48f);
+    yield return PlayableCapture.CaptureSettled("Descent","descent-words-mid.png",390,844);g.GetComponent<DescentTransition>().SetPreview(-1);
+    yield return DescentReady(g);g.ReducedMotion=true;
+    if(!travelOnly){
+     yield return PlayableCapture.CaptureSettled("Descent","stage-devices-words-ru.png",320,693);
+     yield return DescentSolve(g);g.ShowRecords();Field(g,"recordPage",g.Rewards.Records.FindIndex(r=>r.ContentHash==g.Descent.ContentHash));Redraw(g);
+     yield return PlayableCapture.CaptureSettled("Descent","stage-routes-ru.png",320,693);
+    }
+    Debug.Log("CASCADE descent: warm-up, checkpoint, travel, wind and word finale captured");
+   }finally{scaler.enabled=false;camera.targetTexture=oldTarget;scaler.enabled=true;phone.Release();UnityEngine.Object.Destroy(phone);UnityEngine.Application.runInBackground=background;g.RefreshLayout();}
+  }
   static IEnumerator DirectorShots()
   {
    var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);g.Feedback.MusicEnabled=g.Feedback.SoundEnabled=false;

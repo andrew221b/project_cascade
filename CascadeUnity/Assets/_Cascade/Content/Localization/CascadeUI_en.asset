@@ -1836,6 +1836,58 @@ MonoBehaviour:
     m_Localized: Back to puzzle
     m_Metadata:
       m_Items: []
+  - m_Id: 200727195541504
+    m_Localized: "Checking all three stages\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 200727199735808
+    m_Localized: "Level {0} \xB7 {1}/3"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 200727199735809
+    m_Localized: "Going lower\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 200727199735810
+    m_Localized: Go lower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 200727199735811
+    m_Localized: Row ready! Below, wind will move it one place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 200727199735812
+    m_Localized: Row ready! The last stage has devices.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 200727199735813
+    m_Localized: Wind moved the row. Put it back in order.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 200727199735814
+    m_Localized: Wind moved the row left
+    m_Metadata:
+      m_Items: []
+  - m_Id: 200727199735815
+    m_Localized: Wind moved the row right
+    m_Metadata:
+      m_Items: []
+  - m_Id: 205454130012160
+    m_Localized: Row ready! Wind is next.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 205454146789376
+    m_Localized: Row ready! Devices are next.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 205454146789377
+    m_Localized: "Level {0} \xB7 3 stages"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 205454146789378
+    m_Localized: Play this level
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

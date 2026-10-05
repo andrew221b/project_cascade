@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Cascade.Presentation
 {
-    public enum GameScreen { Home, Playing, Pause, Win, Fail, Settings, Devices, Lessons, Dialogue, WordLanguage, SaveRecovery, TravelBag, Journal, Collection, Workshop, Requests, Records, Contracts, Parcel, JourneyEnd, ReachChallenges, PowerupChallenges }
+    public enum GameScreen { Home, Playing, Pause, Win, Fail, Settings, Devices, Lessons, Dialogue, WordLanguage, SaveRecovery, TravelBag, Journal, Collection, Workshop, Requests, Records, Contracts, Parcel, JourneyEnd, ReachChallenges, PowerupChallenges, Checkpoint }
     public sealed partial class CascadeGame
     {
         public GameScreen CurrentScreen { get; private set; } = GameScreen.Playing;
@@ -83,7 +83,7 @@ namespace Cascade.Presentation
         public void ShowGame()
         {
             machine.SetZone(JourneyStory.Zone(Catalog.PrimaryLevels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==node)));
-            SetScreen(Interaction.Attempt.Current.Status==PuzzleStatus.Won ? GameScreen.Win
+            SetScreen(Interaction.Attempt.Current.Status==PuzzleStatus.Won ? (IsCheckpoint?GameScreen.Checkpoint:GameScreen.Win)
                 : Interaction.Attempt.Current.Status==PuzzleStatus.Lost ? GameScreen.Fail : GameScreen.Playing);
         }
         public void ShowSettings()
@@ -99,25 +99,28 @@ namespace Cascade.Presentation
         void SetScreen(GameScreen screen)
         {
             if (!flowReady) return;
+            if(screen!=GameScreen.Playing)SettleDescent();
             if(screen!=GameScreen.Playing) { CancelHint(); StopPresentation(); }
             bool changed=CurrentScreen!=screen;
             CurrentScreen=screen; machine.LivingWorld.SetWorkshop(screen==GameScreen.TravelBag||screen==GameScreen.Workshop||screen==GameScreen.Collection||screen==GameScreen.Parcel); userPaused=screen==GameScreen.Pause;
             if(resultFriend!=null)resultFriend.gameObject.SetActive(screen==GameScreen.Win);
-            Interaction.SetPaused(screen!=GameScreen.Playing && screen!=GameScreen.Win && screen!=GameScreen.Fail);
-            bool machineVisible=screen==GameScreen.Playing || screen==GameScreen.Win || screen==GameScreen.Fail;
+            Interaction.SetPaused(screen!=GameScreen.Playing && screen!=GameScreen.Win && screen!=GameScreen.Fail && screen!=GameScreen.Checkpoint);
+            bool machineVisible=screen==GameScreen.Playing || screen==GameScreen.Win || screen==GameScreen.Fail || screen==GameScreen.Checkpoint;
             machine.SetGameplayVisible(machineVisible);machine.SetAmbientPaused(screen==GameScreen.Pause||screen==GameScreen.SaveRecovery);
             header.gameObject.SetActive(machineVisible); status.gameObject.SetActive(machineVisible);statusPaper.gameObject.SetActive(machineVisible);
             floorArea.gameObject.SetActive(machineVisible); receiver.gameObject.SetActive(machineVisible);
             actions.gameObject.SetActive(machineVisible); precise.gameObject.SetActive(machineVisible && PreciseInputActive);
             coachRoot.gameObject.SetActive(false); tutorialHand.gameObject.SetActive(false);coachRing.gameObject.SetActive(false);
-            menuRoot.gameObject.SetActive(!machineVisible); resultRoot.gameObject.SetActive(screen==GameScreen.Win||screen==GameScreen.Fail);
+            menuRoot.gameObject.SetActive(!machineVisible); resultRoot.gameObject.SetActive(screen==GameScreen.Win||screen==GameScreen.Fail||screen==GameScreen.Checkpoint);
             if(machineVisible) { RenderState(); ArrangeResultControls(); } else {DrawMenu();if(changed)menuTransition.Arrive();}
             Canvas.ForceUpdateCanvases();
         }
         void StartCoach()
         {
             string lesson = Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).FirstOrDefault(c=>c.Definition.CampaignNodeId==node)?.Lesson ?? "swap";
-            Coach=new TutorialCoach(Interaction.Attempt.Level,lesson,Interaction.Attempt.Direction?.WindFloor??-1) {Enabled=Preferences.Tutorials};
+            if(descent!=null&&descent.StageIndex<2)lesson=descent.StageIndex==0?"swap":"arrival_wind";
+            int wind=Enumerable.Range(0,Interaction.Attempt.Level.Floors.Count).Where(IsWindFloor).DefaultIfEmpty(-1).First();
+            Coach=new TutorialCoach(Interaction.Attempt.Level,lesson,wind) {Enabled=Preferences.Tutorials};
             Coach.Observe(Interaction.Attempt.Current,Interaction.Attempt.RouteLength); gestureTime=0;
         }
         void UpdateFlow()
@@ -136,7 +139,7 @@ namespace Cascade.Presentation
         {
             if(!flowReady || !applicationFocused || applicationPaused)return;
             if(CurrentScreen==GameScreen.Playing && !Interaction.IsPresenting) {
-                if(Interaction.Attempt.Current.Status==PuzzleStatus.Won) { SetScreen(GameScreen.Win); }
+                if(Interaction.Attempt.Current.Status==PuzzleStatus.Won) { SetScreen(IsCheckpoint?GameScreen.Checkpoint:GameScreen.Win); }
                 else if(Interaction.Attempt.Current.Status==PuzzleStatus.Lost) {
                     sessionLosses[node]=sessionLosses.TryGetValue(node,out var n)?n+1:1; SetScreen(GameScreen.Fail);
                 }
@@ -181,22 +184,23 @@ namespace Cascade.Presentation
         }
         void ArrangeResultControls()
         {
-            bool result=CurrentScreen==GameScreen.Win||CurrentScreen==GameScreen.Fail;
+            bool result=CurrentScreen==GameScreen.Win||CurrentScreen==GameScreen.Fail||CurrentScreen==GameScreen.Checkpoint;
             resultRoot.gameObject.SetActive(result);
             PlaceControl(undo,result?resultRoot:actions,result?Vector2.zero:Vector2.zero,result?new Vector2(.48f,.30f):new Vector2(.30f,1));
             PlaceControl(retry,result?resultRoot:safeRoot,result?new Vector2(0,.35f):new Vector2(.05f,.09f),result?new Vector2(.48f,.65f):new Vector2(.43f,.155f));
             retry.gameObject.SetActive(result||preparation.HasFailed); hint.gameObject.SetActive(!result&&!preparation.HasFailed); drop.gameObject.SetActive(!result&&!preparation.HasFailed); precise.gameObject.SetActive(!result&&PreciseInputActive);
             if(preparation.HasFailed)PlaceControl(retry,actions,new Vector2(.35f,0),new Vector2(.65f,1));
             if(result) {
-                resultText.SetCopy(CurrentScreen==GameScreen.Win ? "You did it! The way is clear." : "Not quite. Undo and try again.");
+                resultText.gameObject.SetActive(CurrentScreen!=GameScreen.Checkpoint);
+                resultText.SetCopy(CurrentScreen==GameScreen.Checkpoint?(descent.StageIndex==0?"Row ready! Below, wind will move it one place.":"Row ready! The last stage has devices."):CurrentScreen==GameScreen.Win ? "You did it! The way is clear." : "Not quite. Undo and try again.");
                 if(CurrentScreen==GameScreen.Win && !Interaction.Attempt.Goal.IsSatisfied(Interaction.Attempt.Current))resultText.SetCopy("The row is home. The stamp is still missing.");
                 resultRoot.Find("Resulthome").GetComponentInChildren<TextMeshProUGUI>().SetCopy(WaitingParcel!=null?"Open parcel":"Home");
                 if(CurrentScreen==GameScreen.Fail && sessionLosses.TryGetValue(node,out var losses)&&losses>=3)
                     resultText.SetCopy("Try the device guide. Undo and retry stay free.");
-                resultRoot.Find("Nextdelivery").gameObject.SetActive(CurrentScreen==GameScreen.Win||CanOfferStrongerWood);
+                resultRoot.Find("Nextdelivery").gameObject.SetActive(CurrentScreen==GameScreen.Win||CurrentScreen==GameScreen.Checkpoint||CanOfferStrongerWood);
                 resultRoot.Find("Nextdelivery").GetComponent<Image>().color=new Color(.98f,.74f,.32f);
                 retry.GetComponent<Image>().color=CurrentScreen==GameScreen.Fail&&!CanOfferStrongerWood?new Color(.98f,.74f,.32f):Paper;
-                resultRoot.Find("Nextdelivery").GetComponentInChildren<TextMeshProUGUI>().SetCopy(CanOfferStrongerWood?"More wood":journeyActive&&node=="C160"?"Light the beacon":"Next delivery");
+                resultRoot.Find("Nextdelivery").GetComponentInChildren<TextMeshProUGUI>().SetCopy(CurrentScreen==GameScreen.Checkpoint?"Go lower":CanOfferStrongerWood?"More wood":journeyActive&&node=="C160"?"Light the beacon":"Next delivery");
             }
         }
         static void PlaceControl(Button button,Transform parent,Vector2 min,Vector2 max)
@@ -303,6 +307,7 @@ namespace Cascade.Presentation
         void StartContent(LevelContent content) { LoadLevel(content.Definition,content.Locale); ShowGame(); }
         void StartNextPreferred()
         {
+            if(CurrentScreen==GameScreen.Checkpoint){GoLower();return;}
             if(CanOfferStrongerWood){RestartWithStrongerWood();return;}
             int bonus=Catalog.BonusLevels.ToList().FindIndex(c=>c.Definition.PuzzleId==Interaction.Attempt.Level.PuzzleId);
             if(bonus>=0){if(bonus+1<Catalog.BonusLevels.Count)StartContent(Catalog.BonusLevels[bonus+1]);else ShowReachChallenges();return;}
@@ -317,11 +322,11 @@ namespace Cascade.Presentation
         }
         void DrawDevices()
         {
-            bool wind=deviceIndex==1&&Interaction.Attempt.Direction?.WindFloor>=1;
+            bool wind=deviceIndex==1&&Enumerable.Range(0,Interaction.Attempt.Level.Floors.Count).Any(IsWindFloor);
             MenuTitle(wind?"Wind on landing":DeviceTitles[deviceIndex],new UiCopy("Device guide · {0} / {1}",deviceIndex+1,DeviceTitles.Length));
             var guideCaption=(RectTransform)menuRoot.Find("Menu description");guideCaption.anchorMin=new Vector2(.08f,.75f);guideCaption.anchorMax=new Vector2(.92f,.80f);
             var fixture=Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).First(c=>c.Definition.CampaignNodeId==DeviceNodes[deviceIndex]).Definition;
-            if(wind)fixture=WindGuide(Interaction.Attempt.Direction.WindRight);
+            if(wind)fixture=WindGuide(CurrentWindRight);
             LiveDeviceDemo(Rect("Device example",menuRoot,new Vector2(.10f,.555f),new Vector2(.90f,.735f)),fixture,deviceIndex);
             var explanation=Text("Device explanation",menuRoot,new Vector2(.10f,.38f),new Vector2(.90f,.59f),20,wind?"Wind pushes the whole row one place when it lands. Follow the arrow. Take your time to think.":DeviceCopy[deviceIndex]);explanation.alignment=TextAlignmentOptions.MidlineLeft;
             MenuButton("Previous",.29f,()=>{deviceIndex=(deviceIndex+DeviceTitles.Length-1)%DeviceTitles.Length;DrawMenu();},false,.10f,.47f);

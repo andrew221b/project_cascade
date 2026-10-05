@@ -40,13 +40,13 @@ namespace Cascade.Presentation
         void RestoreProfile()
         {
             try {
-                if(profile.Attempt!=null && !Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).Any(c=>c.Definition.ContentHash==(profile.Attempt.Direction?.SourceHash??profile.Attempt.ContentHash)))
+                if(profile.Attempt!=null && !Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).Any(c=>c.Definition.ContentHash==(profile.Descent?.SourceHash??profile.Attempt.Direction?.SourceHash??profile.Attempt.ContentHash)))
                     legacyContent=ContentImporter.ImportLegacyDurability(Catalog,Source("campaign_extension"),Source("campaign_durability_v1"));
                 var restored=profile.RestoreAttempt(Catalog,legacyContent);
                 if(restored!=null) {
-                    MountAttempt(restored);journeyActive=profile.JourneyAttempt;
+                    MountAttempt(restored,profile.Descent);journeyActive=profile.JourneyAttempt;
                     selectedJourneyStop=Math.Max(0,Catalog.PrimaryLevels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==node));
-                    if(journeyActive){levelLabel.SetCopy(JourneyStory.Task(JourneyStory.PageFor(selectedJourneyStop)));levelLabel.fontSize=21;}
+                    if(journeyActive&&descent==null){levelLabel.SetCopy(JourneyStory.Task(JourneyStory.PageFor(selectedJourneyStop)));levelLabel.fontSize=21;}
                 }
             }
             catch(Exception e) when(e is ArgumentException || e is InvalidDataException) {
@@ -62,7 +62,7 @@ namespace Cascade.Presentation
             if(!persistenceReady || saveBlocked || Interaction==null)return;
             profile.Preferences=Preferences;profile.PreferredMode=PreferredMode.ToString();
             profile.HeardStory=heardStory.OrderBy(p=>p).ToList();profile.FirstGestureShown=firstGestureShown;
-            profile.JourneyAttempt=journeyActive;profile.Attempt=AttemptRecord.Capture(Interaction.Attempt);
+            profile.JourneyAttempt=journeyActive;profile.Attempt=AttemptRecord.Capture(Interaction.Attempt);profile.Descent=descent;
             try {profileStore.Save(profile);HasSaveError=false;}
             catch(Exception e) when(e is IOException || e is UnauthorizedAccessException || e is InvalidOperationException) {
                 HasSaveError=true;
@@ -73,11 +73,16 @@ namespace Cascade.Presentation
         {
             var attempt=Interaction.Attempt;
             // QA/custom drafts are playable but do not grant campaign receipts.
-            bool published=Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).Concat(legacyContent).Any(c=>DeliveryDirector.MatchesSource(attempt,c.Definition));
+            bool published=Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).Concat(legacyContent).Any(c=>descent==null?DeliveryDirector.MatchesSource(attempt,c.Definition)
+                :c.Definition.ContentHash==descent.SourceHash&&attempt.PinnedContentHash==descent.Level(c.Definition,descent.StageIndex).ContentHash);
             if(published) {
-                if(journeyActive&&!sessionClears.Contains(node))profile.Director.ObserveTerminal(attempt,MinimumMoves);
-                if(profile.RecordClear(attempt))sessionClears.Add(node);
-                InitializeRewards();profile.Rewards.RecordDelivery(attempt);
+                bool full=descent==null||descent.IsFinal;
+                if(journeyActive&&!sessionClears.Contains(node)&&(full||attempt.Current.Status==PuzzleStatus.Lost))profile.Director.ObserveTerminal(attempt,MinimumMoves,descent?.Performance(attempt));
+                profile.Descent=descent;
+                if(full) {
+                    if(profile.RecordClear(attempt))sessionClears.Add(node);
+                    InitializeRewards();profile.Rewards.RecordDelivery(attempt,descent?.Performance(attempt));
+                }
             }
             PersistProgress();
         }
@@ -97,7 +102,7 @@ namespace Cascade.Presentation
             }
             bool restart=Recovery==SaveRecovery.AttemptUnavailable||Recovery==SaveRecovery.Unreadable;
             Recovery=SaveRecovery.None;saveBlocked=false;
-            if(restart){profile.Attempt=null;LoadNode(initialNode);}
+            if(restart){profile.Attempt=null;profile.Descent=null;LoadNode(initialNode);}
             ShowHome();PersistProgress();
         }
         void DrawSaveRecovery()
