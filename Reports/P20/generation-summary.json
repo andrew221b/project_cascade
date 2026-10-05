@@ -1,0 +1,11 @@
+{
+  "seed": 24051005,
+  "trials": 884,
+  "new_levels": 120,
+  "word_bindings": 360,
+  "minimum": 5,
+  "maximum": 12,
+  "mean": 7.866666666666666,
+  "stamp_contracts": 10,
+  "note": "Solver evidence, not human enjoyment."
+}

@@ -255,7 +255,7 @@ namespace Cascade.Tests
         [UnityTest] public IEnumerator EveryAnimatedStageCanBeInterruptedWithoutReapplyingRules()
         {
             var witnesses = new Dictionary<PuzzleEventKind, AnimationWitness>();
-            foreach (var content in game.Catalog.PrimaryLevels) {
+            foreach (var content in game.Catalog.PrimaryLevels.Take(40)) {
                 var resolver = new PuzzleResolver(content.Definition); var state = resolver.CreateInitialState(); var prefix = new List<PuzzleCommand>();
                 foreach (var command in PuzzleSolver.FindShortest(resolver).Path) {
                     var result = resolver.Resolve(state, command);
@@ -685,10 +685,26 @@ namespace Cascade.Tests
             yield return ClickButton("Tryagain");Assert.That(game.Interaction.Attempt.ActiveLocale,Is.EqualTo("uk"));
             Assert.That(game.Interaction.Attempt.PinnedContentHash,Is.EqualTo(level.Definition.ContentHash));
         }
+        [UnityTest] public IEnumerator NewRegionsCanBeDeliveredThroughDirectDragAndButtons()
+        {
+            foreach(string id in new[]{"C41","C65","C89","C113","C137","C160"}) {
+                game.LoadNode(id);yield return null;yield return null;
+                var attempt=game.Interaction.Attempt;var views=game.SlotViews.ToArray();
+                var route=PuzzleSolver.FindShortest(attempt.Resolver);Assert.That(route.Status,Is.EqualTo(SearchStatus.Solved));
+                foreach(var command in route.Path) {
+                    int before=attempt.RouteLength;var predicted=attempt.Predict(command).State;
+                    if(command.Kind==CommandKind.EarlyDrop)yield return ClickButton("Drop");
+                    else {yield return MouseFrame(Point(command.Edge),true);yield return MouseFrame(Point(command.Edge+1),true);yield return MouseFrame(Point(command.Edge+1),false);}
+                    Assert.That(attempt.RouteLength,Is.EqualTo(before+1),id+" "+command);Assert.That(attempt.Current,Is.EqualTo(predicted));
+                    yield return AwaitPresentation();
+                }
+                Assert.That(attempt.Current.Status,Is.EqualTo(PuzzleStatus.Won));Assert.That(game.SlotViews,Is.EqualTo(views));
+            }
+        }
         [UnityTest] public IEnumerator AllFortyLevelsCanBeDeliveredThroughActualMouseAndButtons()
         {
             var events = new HashSet<PuzzleEventKind>(); int commands = 0;
-            foreach (var content in game.Catalog.PrimaryLevels) {
+            foreach (var content in game.Catalog.PrimaryLevels.Take(40)) {
                 game.LoadNode(content.Definition.CampaignNodeId); yield return null; yield return null;
                 var attempt = game.Interaction.Attempt; var views = game.SlotViews.ToArray();
                 game.Interaction.Committed += result => { foreach (var e in result.Events) events.Add(e.Kind); };

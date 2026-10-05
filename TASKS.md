@@ -1,6 +1,6 @@
 # CASCADE — TASKS
 
-P00–P19: COMPLETE в доступном объёме. Unity AI/MCP: работает. P20: IN_PROGRESS.
+P00–P20: COMPLETE в доступном объёме. Unity AI/MCP: работает. Авторская visual/motion/world доработка: IN_PROGRESS.
 Python reference проверен отдельно; это не реализация игровых систем Unity.
 
 Автор прямо разрешил выполнять все этапы подряд, отменив остановки между
@@ -28,7 +28,7 @@ P01–P20. После каждого этапа фиксировать резу�
 - [x] P17 — Мастерство и маленькая мета
 - [x] P18 — Интеграционная приёмка
 - [x] P19 — Реклама и IAP позже (локальные границы; реальные SDK выключены)
-- [ ] P20 — Расширять задачами
+- [x] P20 — Расширять задачами (120 новых задач;8-region визуал — следующая доработка)
 
 ## P18 — доступная интеграционная приёмка завершена, 5 октября 2026
 
@@ -443,3 +443,21 @@ P01–P20. После каждого этапа фиксировать резу�
 - Официальные Unity IAP/LevelPlay руководства просмотрены; real SDK, sandbox
   purchase/restore/receipts, consent age/device и настоящие показы NOT RUN.
   Core author acceptance отсутствует; ни одного live monetization entrypoint.
+
+## P20 — содержание завершено, 5 октября 2026
+
+- C41–C160:120 структурно разных задач на прежних правилах2.0;360 bindings
+  EN/RU/UK из existing dictionary. Original5JSON/C01–C40/hash сохраняются.
+  Seeded884кандидата,5–12actions,mean7.8667,10stampdetours; duplicates/
+  reflection/Unknown/trivial/fullyforced отфильтрованы. Design note доIDs:
+  Docs/P20_CAMPAIGN.md. Это solver-backed authoring, не humanfun доказательство.
+- Каждый новый completed graph совпал Python/C#, все locale routes проиграны,
+  stamped objectives отдельно, multiset сохраняется, terminalsave replay совпадает.
+  EditMode466/466PASS,10:09:24–10:10:42UTC. Reports/P20.
+- FocusedPlayMode1/1PASS,10:14:00–10:14:22UTC:6newpaths через actualInputSystem
+  directdrag/buttons, predictedstate/rowviews совпадают. Reports/P20Focused.
+  Первое имя теста ошибочно выбрало0cases; это не PASS, повтор с точным именем
+  дал настоящий1/1. Baseline all40 test и stage witnesses явно ограничены40.
+- В playable импортирован extension;8регионов,новый сюжет/карты/погода/wooden
+  motion — следующий уже разрешённый автором шаг, не объявлены готовыми.
+  Нет полного PlayMode/build rerun; physicaldevices/nativeeditorial/humanfun NOTRUN.

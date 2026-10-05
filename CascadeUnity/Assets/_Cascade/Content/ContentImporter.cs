@@ -34,15 +34,22 @@ namespace Cascade.Content
             return token.DeepClone();
         }
 
-        public static ContentCatalog Import(string primaryJson, string localizedJson, string enWordsJson, string ruWordsJson, string ukWordsJson)
+        public static ContentCatalog Import(string primaryJson, string localizedJson, string enWordsJson, string ruWordsJson, string ukWordsJson, string extensionJson=null)
         {
+            var primarySources=JArray.Parse(primaryJson);var bindingSources=JArray.Parse(localizedJson);
+            if(extensionJson!=null) {
+                var extension=JObject.Parse(extensionJson);
+                if(!(extension["levels"] is JArray levels)||!(extension["bindings"] is JArray bindings))throw new InvalidDataException("Invalid campaign extension.");
+                foreach(var source in levels)primarySources.Add(source.DeepClone());
+                foreach(var source in bindings)bindingSources.Add(source.DeepClone());
+            }
             var entries = new Dictionary<string, WordEntry>(StringComparer.Ordinal);
             ImportWords(enWordsJson, "en", entries); ImportWords(ruWordsJson, "ru", entries); ImportWords(ukWordsJson, "uk", entries);
             var words = entries.ToDictionary(p => p.Key, p => p.Value.Definition);
             var primary = new List<LevelContent>(); var localized = new List<LevelContent>();
             var sourceByNode = new Dictionary<string, JObject>(StringComparer.Ordinal);
             var puzzleIds = new HashSet<string>(StringComparer.Ordinal);
-            foreach (JObject source in JArray.Parse(primaryJson))
+            foreach (JObject source in primarySources)
             {
                 string id = Required(source, "id");
                 if (sourceByNode.ContainsKey(id)) throw new InvalidDataException("Duplicate primary ID: " + id);
@@ -52,7 +59,7 @@ namespace Cascade.Content
                 primary.Add(new LevelContent(level, "en", Required(source, "title"), Required(source, "lesson"), true));
             }
             var bindingKeys = new HashSet<string>(StringComparer.Ordinal);
-            foreach (JObject source in JArray.Parse(localizedJson))
+            foreach (JObject source in bindingSources)
             {
                 string node = Required(source, "node_id"); string locale = Required(source, "locale");
                 if (!puzzleIds.Add(Required(source, "id"))) throw new InvalidDataException("Duplicate PuzzleId.");
@@ -68,6 +75,7 @@ namespace Cascade.Content
             if (primary.Count == 0) throw new InvalidDataException("Empty primary content.");
             string bundle = string.Join("\n", new[] { primaryJson, localizedJson, enWordsJson, ruWordsJson, ukWordsJson }
                 .Select(text => Canonical(JToken.Parse(text)).ToString(Formatting.None)));
+            if(extensionJson!=null)bundle+="\n"+Canonical(JToken.Parse(extensionJson)).ToString(Formatting.None);
             return new ContentCatalog(primary, localized, entries, Hash(bundle));
         }
 

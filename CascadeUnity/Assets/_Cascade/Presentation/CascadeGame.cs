@@ -65,7 +65,7 @@ namespace Cascade.Presentation
         {
             ReadProfile();
             InitializeUiLanguage();
-            Catalog = ContentImporter.Import(Source("levels"), Source("localized_levels"), Source("words_en"), Source("words_ru"), Source("words_uk"));
+            Catalog = ContentImporter.Import(Source("levels"), Source("localized_levels"), Source("words_en"), Source("words_ru"), Source("words_uk"),Source("campaign_extension"));
             art = ToyArt.Load(); font = art.bodyFont;
             if (uiCamera == null) uiCamera = Camera.main;
             machine = gameObject.AddComponent<ToyMachineView>(); machine.Initialize(art, uiCamera);
