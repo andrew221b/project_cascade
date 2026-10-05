@@ -217,7 +217,7 @@ namespace Cascade.Presentation
                 float inset=uiCamera.orthographicSize*2/Mathf.Max(1,uiCamera.pixelHeight)*6;
                 machine.LivingWorld.SetFlightBand(floorTop+inset,statusBottom-inset);
             }
-            machine?.Sync(); SyncTokenFaces(); RenderControls();
+            machine?.Sync(); SyncTokenFaces(); SyncDeviceSuspension(0); RenderControls();
             if(IsHoldingToken)PaintHeldToken(true);
         }
         void CancelHint()

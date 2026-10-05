@@ -29,7 +29,7 @@ namespace Cascade.Presentation
         public void ResetWoodPoses()
         {
             heldWeight=-1;forecastHp=null;
-            if(reducedMotion)foreach(var rig in floors){rig.sag=rig.sagVelocity=rig.sway=rig.swayVelocity=0;}
+            if(reducedMotion)foreach(var rig in floors){rig.sag=rig.sagVelocity=rig.sway=rig.swayVelocity=rig.roll=rig.rollVelocity=0;}
             for(int i=0;i<tokens.Count;i++){dynamicOffsets[i]=Vector3.zero;visualAngles[i]=0;piecePoses[i]=Frame.Status==PuzzleStatus.Playing?PiecePose.Resting:PiecePose.Delivered;}
         }
         public void PreviewForecast(TransitionResult prediction)
@@ -66,35 +66,46 @@ namespace Cascade.Presentation
             int steps=Mathf.Max(1,Mathf.CeilToInt(seconds/.012f));float dt=seconds/steps;
             for(int i=0;i<steps;i++){velocity+=(target-position)*stiffness*dt;velocity*=Mathf.Exp(-damping*dt);position+=velocity*dt;}
         }
+        Vector3 FloorPointOffset(int floor,Vector3 point,bool bend)
+        {
+            var rig=floors[floor];var local=point-rig.board.basePosition;
+            var rotation=Quaternion.Euler(0,0,rig.roll);
+            float x=Mathf.Clamp01(local.x/Mathf.Max(.01f,rig.board.baseScale.x)+.5f);
+            var bowed=local+(bend?Vector3.down*Mathf.Sin(x*Mathf.PI)*rig.sag:Vector3.zero);
+            return rotation*bowed-local+new Vector3(rig.sway,floorOffsets[floor],0);
+        }
         public void TickWoodDynamics(float seconds)
         {
-            if(interaction==null||Frame==null||interaction.IsPaused||interaction.IsSuspended)return;
+            if(interaction==null||Frame==null||!gameplayView)return;
+            if(seconds>0&&(interaction.IsPaused||interaction.IsSuspended||ambientPaused))return;
             float dt=Mathf.Clamp(seconds,0,.05f);
             for(int f=0;f<floors.Count;f++) {
                 var rig=floors[f];bool loaded=Frame.Status==PuzzleStatus.Playing&&Frame.ActiveFloor==f;
                 int grounded=0;for(int i=0;i<tokens.Count;i++)if(heldWeight!=i&&piecePoses[i]!=PiecePose.Falling)grounded++;
                 float weight=loaded?grounded/(float)Mathf.Max(1,tokens.Count):0;
-                float targetSag=reducedMotion?0:.045f*weight;float wind=reducedMotion?0:Mathf.Sin(windTime*.65f+f*.52f)*.025f;
-                Spring(ref rig.sag,ref rig.sagVelocity,targetSag,120,14,dt);Spring(ref rig.sway,ref rig.swayVelocity,wind,45,9,dt);
+                float targetSag=reducedMotion?0:.045f*weight;float wind=WindAt(f);
+                float tilt=reducedMotion?0:wind*.8f+(loaded&&heldWeight>=0?((heldWeight+.5f)/tokens.Count-.5f)*.45f:0);
+                if(reducedMotion)rig.sag=rig.sagVelocity=rig.sway=rig.swayVelocity=rig.roll=rig.rollVelocity=0;
+                Spring(ref rig.sag,ref rig.sagVelocity,targetSag,120,14,dt);
+                Spring(ref rig.sway,ref rig.swayVelocity,wind*.055f,38,8,dt);
+                Spring(ref rig.roll,ref rig.rollVelocity,tilt,32,7.5f,dt);
                 for(int i=0;i<rig.vertices.Length;i++){float x=(i/2)/16f;rig.vertices[i].y=(i%2)-.5f-Mathf.Sin(x*Mathf.PI)*rig.sag/Mathf.Max(.01f,rig.board.transform.localScale.y);}
                 rig.bendMesh.vertices=rig.vertices; // Static bounds already enclose the small cosmetic deflection.
                 foreach(var part in rig.parts) {
-                    float bend=part==rig.board||rig.rope.Contains(part)?0:-Mathf.Sin(Mathf.Clamp01(part.point.x)*Mathf.PI)*rig.sag;
                     if(rig.rope.Contains(part)) {
                         part.transform.position=part.basePosition+new Vector3(rig.sway*.5f,floorOffsets[f]*.5f,0);
                         part.transform.rotation=Quaternion.Euler(0,0,Mathf.Atan2(rig.sway,Mathf.Max(.01f,part.baseScale.y))*Mathf.Rad2Deg);
                     } else {
-                        part.transform.position=part.basePosition+new Vector3(part.transform.name=="Upper rope peg"?0:rig.sway,bend+floorOffsets[f],0);
-                        part.transform.rotation=part.baseRotation;
+                        part.transform.position=part.basePosition+FloorPointOffset(f,part.basePosition,part!=rig.board);
+                        part.transform.rotation=Quaternion.Euler(0,0,rig.roll)*part.baseRotation;
                     }
                 }
                 if(rig.bombFlame!=null&&!reducedMotion)rig.bombFlame.transform.localScale=rig.bombFlame.baseScale*(1+Mathf.Sin(windTime*7)*.025f);
             }
-            UpdateRopeRig();
+            UpdateRopeRig(dt);
             for(int i=0;i<tokens.Count;i++) {
                 if(Frame.Status==PuzzleStatus.Playing&&piecePoses[i]!=PiecePose.Falling&&piecePoses[i]!=PiecePose.Exchanging) {
-                    var rig=floors[Frame.ActiveFloor];float x=(i+.5f)/tokens.Count;
-                    dynamicOffsets[i]=new Vector3(rig.sway,heldWeight==i?0:-Mathf.Sin(x*Mathf.PI)*rig.sag,0);
+                    dynamicOffsets[i]=FloorPointOffset(Frame.ActiveFloor,restPositions[i],heldWeight!=i);
                 } else dynamicOffsets[i]=Vector3.zero;
                 ApplyPiece(i);
             }
@@ -104,10 +115,13 @@ namespace Cascade.Presentation
             if(index>=tokens.Count)return;
             var stretch=visualStretch[index];if(stretch==Vector2.zero)stretch=Vector2.one;
             var token=tokens[index].transform;token.position=restPositions[index]+dynamicOffsets[index]+visualOffsets[index];
-            token.localScale=Vector3.Scale(restScales[index],new Vector3(stretch.x,stretch.y,1));token.rotation=Quaternion.Euler(0,0,visualAngles[index]);
+            bool supported=Frame.Status==PuzzleStatus.Playing&&piecePoses[index]!=PiecePose.Falling&&piecePoses[index]!=PiecePose.Exchanging;
+            token.localScale=Vector3.Scale(restScales[index],new Vector3(stretch.x,stretch.y,1));token.rotation=Quaternion.Euler(0,0,visualAngles[index]+(supported?floors[Frame.ActiveFloor].roll:0));
             if(index<tokenShadows.Count) {
                 var shadow=tokenShadows[index];float lift=Mathf.Max(0,visualOffsets[index].y);
-                shadow.transform.position=shadow.basePosition+dynamicOffsets[index]+Vector3.right*visualOffsets[index].x*.25f;
+                var shadowOffset=supported?FloorPointOffset(Frame.ActiveFloor,shadow.basePosition,true):dynamicOffsets[index];
+                shadow.transform.position=shadow.basePosition+shadowOffset+Vector3.right*visualOffsets[index].x*.25f;
+                shadow.transform.rotation=Quaternion.Euler(0,0,supported?floors[Frame.ActiveFloor].roll:0);
                 shadow.transform.localScale=shadow.baseScale*(1+Mathf.Min(lift,.6f)*.45f);
                 shadow.renderer.enabled=piecePoses[index]!=PiecePose.Falling&&lift<.9f;
             }

@@ -12,10 +12,13 @@ namespace Cascade.Presentation
         {
             public int floor, kind;
             public RectTransform root;
+            public RectTransform socket;
             public Image icon;
             public TextMeshProUGUI caption;
             public ContactDefinition contact;
             public float slotX,dockX,angle,angleVelocity;
+            public Vector2 anchorPosition,anchorVelocity;
+            public bool anchorReady;
             public DemoLine leftStrap,rightStrap;
         }
         readonly List<RectTransform> deviceOverlays=new List<RectTransform>();
@@ -45,11 +48,11 @@ namespace Cascade.Presentation
                 DemoLine leftStrap=null,rightStrap=null;
                 for(int side=-1;side<=1;side+=2) {
                     var strap=Rect("Device leather strap",card,Vector2.zero,Vector2.zero);
-                    Background(strap,new Color(.55f,.36f,.18f),false);
-                    var line=strap.gameObject.AddComponent<DemoLine>();line.Initialize(card,new Vector2(slotX+side*.018f,.32f),new Vector2(x+side*.055f,.23f),2.2f);
+                    var leather=Background(strap,new Color(.55f,.36f,.18f),false);leather.sprite=art.panel;leather.type=Image.Type.Sliced;
+                    var line=strap.gameObject.AddComponent<DemoLine>();line.Initialize(card,new Vector2(slotX+side*.018f,.32f),new Vector2(x+side*.055f,.10f),2.2f);
                     if(side<0)leftStrap=line;else rightStrap=line;
                 }
-                var button=Button(UiCopy.Raw("Device "+DeviceAsset(item.kind)),card,new Vector2(x,.07f),new Vector2(x,.07f),()=>OpenDevice(item.kind));
+                var button=Button(UiCopy.Raw("Device "+DeviceAsset(item.kind)),card,new Vector2(x,-.075f),new Vector2(x,-.075f),()=>OpenDevice(item.kind));
                 var root=(RectTransform)button.transform;root.sizeDelta=new Vector2(88,55);
                 button.GetComponent<Image>().color=Color.clear;button.GetComponentInChildren<TextMeshProUGUI>().SetCopy("");
                 var icon=Picture("Recognizable device",root,new Vector2(0,.16f),new Vector2(.57f,1),Resources.Load<Sprite>("CascadeArt/Devices/"+DeviceAsset(item.kind)),true);
@@ -59,7 +62,7 @@ namespace Cascade.Presentation
                 face.SetShape(art.SymbolMesh(item.contact.RequiredSymbol),art.SymbolMaterial(item.contact.RequiredSymbol).GetColor("_BaseColor"));face.raycastTarget=false;
                 if(item.contact.RequiredSymbol.Kind==SymbolKind.Glyph)Text("Required letter",pocket,Vector2.zero,Vector2.one,18,UiCopy.Raw(FaceText(item.contact.RequiredSymbol)));
                 var caption=Text("Device state",root,new Vector2(-.08f,-.03f),new Vector2(1.08f,.24f),12,"");caption.font=art.titleFont;
-                deviceDocks.Add(new DeviceDock{floor=floorIndex,kind=item.kind,root=root,icon=icon,caption=caption,contact=item.contact,slotX=slotX,dockX=x,leftStrap=leftStrap,rightStrap=rightStrap});
+                deviceDocks.Add(new DeviceDock{floor=floorIndex,kind=item.kind,root=root,socket=socket,icon=icon,caption=caption,contact=item.contact,slotX=slotX,dockX=x,leftStrap=leftStrap,rightStrap=rightStrap});
             }
             UiCopy landing=floor.EntryTransform==EntryTransform.MirrorNext?"Reverse on landing":floor.EntryTransform==EntryTransform.ShiftLeftOne?"Slide left on landing":"Slide right on landing";
             if(floor.EntryTransform!=EntryTransform.None||floor.LinkedPair.HasValue) {

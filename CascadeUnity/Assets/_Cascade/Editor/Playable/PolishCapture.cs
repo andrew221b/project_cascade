@@ -21,6 +21,17 @@ namespace Cascade.Editor.Playable
   public static void LagoonCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(LagoonShot());}
   public static void MorningMistCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(MorningMistShots());}
   public static void ReceiverPolishCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(ReceiverPolishShots());}
+  public static void WindCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(WindShots());}
+  static IEnumerator WindShots()
+  {
+   var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);g.ReducedMotion=false;g.SetUiLocale("en");g.Feedback.MusicEnabled=g.Feedback.SoundEnabled=false;
+   g.LoadNode("C13");g.ShowGame();yield return Ready(g);g.SendMessage("OnApplicationFocus",true);g.Interaction.SetSuspended(false);
+   yield return new WaitForSecondsRealtime(1);
+   for(int i=0;i<3;i++) {yield return PlayableCapture.CaptureSettled("Wind","bomb-"+i+".png",390,844);yield return new WaitForSecondsRealtime(1.2f);}
+   g.LoadNode("C81");g.ShowGame();yield return Ready(g);yield return new WaitForSecondsRealtime(.7f);
+   yield return PlayableCapture.CaptureSettled("Wind","crate-small.png",320,693);
+   Debug.Log("CASCADE wind: three successive bomb/deck poses and compact crate captured");
+  }
   static IEnumerator ReceiverPolishShots()
   {
    var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);g.ReducedMotion=true;g.SetUiLocale("en");

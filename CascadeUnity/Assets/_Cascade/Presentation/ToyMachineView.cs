@@ -30,8 +30,9 @@ namespace Cascade.Presentation
             public readonly List<Part> key = new List<Part>();
             public readonly List<Part> stamp = new List<Part>();
             public readonly List<Part> fuse = new List<Part>(), durability = new List<Part>(), rope = new List<Part>();
+            public readonly Part[] knots=new Part[2];
             public Part board, bombFlame; public Mesh bendMesh;
-            public Vector3[] vertices; public float sag,sagVelocity,sway,swayVelocity;
+            public Vector3[] vertices; public float sag,sagVelocity,sway,swayVelocity,roll,rollVelocity;
         }
         ToyArt art;
         Camera viewCamera;
@@ -68,7 +69,10 @@ namespace Cascade.Presentation
         public Vector3 TokenPosition(int index) => restPositions[index];
         public Vector3 PresentedTokenPosition(int index) => tokens[index].transform.position;
         public float SelectionLiftWorld(int index) { tokens[index].anchor.GetWorldCorners(corners); return (corners[2].y-corners[0].y)*.1f; }
-        public Vector3 FloorVisualOffset(int floor)=>new Vector3(floors[floor].sway,-floors[floor].sag+floorOffsets[floor],0);
+        public float FloorVisualAngle(int floor)=>floors[floor].roll;
+        public float FloorSag(int floor)=>floors[floor].sag;
+        public Vector3 FloorVisualOffset(int floor)=>FloorPointOffset(floor,floors[floor].board.anchor.position,false);
+        public float WindAt(int floor)=>reducedMotion?0:Mathf.Sin(windTime*.62f-floor*.12f)*.72f+Mathf.Sin(windTime*1.13f+.6f)*.20f+Mathf.Sin(windTime*.21f)*.08f;
         public Vector3 FloorPosition(int floor)
         {
             var anchor = floors[floor].parts[0].anchor; anchor.GetWorldCorners(corners);
@@ -78,7 +82,8 @@ namespace Cascade.Presentation
         {
             var anchor = floors[floor].parts[0].anchor; anchor.GetWorldCorners(corners);
             float x=.045f+.91f*(slot+.5f)/tokens.Count;
-            return new Vector3(Mathf.Lerp(corners[0].x,corners[2].x,x)+floors[floor].sway,Mathf.Lerp(corners[0].y,corners[2].y,.31f)-Mathf.Sin(x*Mathf.PI)*floors[floor].sag+floorOffsets[floor],-.5f);
+            var point=new Vector3(Mathf.Lerp(corners[0].x,corners[2].x,x),Mathf.Lerp(corners[0].y,corners[2].y,.31f),-.5f);
+            return point+FloorPointOffset(floor,point,true);
         }
         public void RecoilFloor(int floor, float offset)
         {
@@ -153,7 +158,7 @@ namespace Cascade.Presentation
             for(int end=0;end<2;end++) {
                 float x=end==0?.025f:.975f;
                 // Continuous ropes are shared by the whole hanging machine.
-                P("Rope knot",art.disk,ropeMaterial,x,.38f,.05f,.09f,-.14f);
+                rig.knots[end]=P("Rope knot",art.disk,ropeMaterial,x,.38f,.05f,.09f,-.14f);
 
             }
 
@@ -268,7 +273,7 @@ namespace Cascade.Presentation
                 support.transform.rotation = Quaternion.Euler(0, 0, 90);
                 support.transform.localScale = new Vector3((top - bottom) / art.beam.bounds.size.x, .035f, .24f);
             }
-            UpdateRopeRig();
+            TickWoodDynamics(0); UpdateRopeRig();
         }
         static void SetVisible(List<Part> parts, bool visible) { foreach (var p in parts) p.transform.gameObject.SetActive(visible); }
         void LateUpdate()

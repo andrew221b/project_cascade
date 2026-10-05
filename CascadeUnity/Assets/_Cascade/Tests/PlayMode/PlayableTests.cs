@@ -162,8 +162,8 @@ namespace Cascade.Tests
         }
         [UnityTest] public IEnumerator ConnectedRopesSurviveReducedMotionAndResize()
         {
-            game.LoadNode("C03");game.ReducedMotion=true;yield return null;game.RefreshLayout();
-            var ropes=game.Machine.GetComponentsInChildren<LineRenderer>().Where(l=>l.name.Contains("continuous hemp")).ToArray();
+            game.LoadNode("C03");game.ShowGame();game.ReducedMotion=true;yield return AwaitPreparation();game.RefreshLayout();
+            var ropes=game.Machine.GetComponentsInChildren<LineRenderer>().Where(l=>l.name.Contains("braided rope")).ToArray();
             Assert.That(ropes.Length,Is.EqualTo(2));string hash=game.Interaction.Attempt.CurrentStateHash;
             foreach(var rope in ropes){Assert.That(rope.enabled,Is.True);Assert.That(rope.positionCount,Is.GreaterThan(25));Assert.That(rope.bounds.size.y,Is.GreaterThan(1));}
             game.SetEditorSafeInsets(new Vector4(.06f,.045f,.06f,.07f));yield return null;
@@ -328,6 +328,34 @@ namespace Cascade.Tests
             yield return null;Canvas.ForceUpdateCanvases();var weather=game.GetComponentsInChildren<WorldWeatherGraphic>();Assert.That(weather.Length,Is.EqualTo(1));
             Assert.That(weather[0].canvasRenderer,Is.Not.Null);Assert.That(weather[0].canvasRenderer.GetMesh().vertexCount,Is.GreaterThan(0));
             Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+        }
+        [UnityTest] public IEnumerator HangingDevicesFollowDeckWindAndFreezeWithoutSpendingMoves()
+        {
+            game.LoadNode("C13");game.ShowGame();game.ReducedMotion=false;yield return AwaitPreparation();game.RefreshLayout();
+            string hash=game.Interaction.Attempt.CurrentStateHash;
+            var device=(RectTransform)game.GetComponentsInChildren<UnityEngine.UI.Button>().First(b=>b.name=="DeviceBomb").transform;
+            var board=game.Machine.GetComponentsInChildren<MeshRenderer>().First(r=>r.name=="Wooden suspended board").transform;
+            var start=device.position;var rotation=board.rotation;float maxTravel=0,maxTilt=0;
+            double until=Time.realtimeSinceStartupAsDouble+2;
+            while(Time.realtimeSinceStartupAsDouble<until) {
+                maxTravel=Mathf.Max(maxTravel,Vector2.Distance(start,device.position));
+                maxTilt=Mathf.Max(maxTilt,Quaternion.Angle(rotation,board.rotation));yield return null;
+            }
+            Assert.That(maxTravel,Is.GreaterThan(.002f));Assert.That(maxTilt,Is.GreaterThan(.02f));
+            var ropes=game.Machine.GetComponentsInChildren<LineRenderer>().Where(r=>r.name.Contains("braided rope")).ToArray();
+            var knots=game.Machine.GetComponentsInChildren<MeshRenderer>().Where(r=>r.name=="Rope knot").ToArray();
+            foreach(var rope in ropes)
+                Assert.That(knots.Min(k=>Vector2.Distance(k.transform.position,rope.GetPosition(24))),Is.LessThan(.002f));
+            var straps=game.GetComponentsInChildren<DemoLine>().Where(l=>l.name=="Device leather strap").ToArray();
+            Assert.That(straps.Length,Is.GreaterThanOrEqualTo(2));
+            Assert.That(straps.All(l=>((RectTransform)l.transform).rect.width>12),Is.True,"Visible longer suspension, not a short hinge");
+            game.Interaction.SetPaused(true);var held=device.position;var heldRotation=device.rotation;var heldBoard=board.position;
+            yield return new WaitForSecondsRealtime(.15f);
+            Assert.That(device.position,Is.EqualTo(held));Assert.That(device.rotation,Is.EqualTo(heldRotation));Assert.That(board.position,Is.EqualTo(heldBoard));
+            game.Interaction.SetPaused(false);game.ReducedMotion=true;game.RefreshLayout();yield return null;
+            Assert.That(Quaternion.Angle(device.rotation,Quaternion.identity),Is.LessThan(.001f));
+            var quiet=device.position;yield return new WaitForSecondsRealtime(.15f);Assert.That(device.position,Is.EqualTo(quiet));
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));Assert.That(game.Interaction.Attempt.RouteLength,Is.Zero);
         }
         [UnityTest] public IEnumerator WoodWeightAndGlyphDepthRemainPresentationOnly()
         {

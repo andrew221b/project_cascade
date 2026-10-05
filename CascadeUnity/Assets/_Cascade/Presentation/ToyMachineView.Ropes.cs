@@ -20,7 +20,7 @@ namespace Cascade.Presentation
                 line.shadowCastingMode=UnityEngine.Rendering.ShadowCastingMode.Off;line.receiveShadows=false;
             }
         }
-        void UpdateRopeRig()
+        void UpdateRopeRig(float seconds=0)
         {
             if(floors.Count==0||suspension[0]==null)return;
             for(int side=0;side<2;side++) {
@@ -33,15 +33,18 @@ namespace Cascade.Presentation
                     Vector3 next;
                     if(segment<floors.Count) {
                         if(!Frame.FloorVisible(segment))continue;
-                        var rig=floors[segment];next=rig.board.basePosition+new Vector3(sign*rig.board.baseScale.x*.475f+rig.sway,rig.board.baseScale.y*.24f+floorOffsets[segment],-.05f);
+                        var rig=floors[segment];var point=rig.knots[side].basePosition;
+                        next=point+FloorPointOffset(segment,point,true);next.z=.1f;
                     } else {
                         lowerAnchor.GetWorldCorners(corners);next=new Vector3(Mathf.Lerp(corners[0].x,corners[2].x,side==0?.035f:.965f),Mathf.Lerp(corners[0].y,corners[2].y,.48f),.10f);
                     }
                     float span=Vector3.Distance(previous,next);
-                    float wind=reducedMotion?0:Mathf.Sin(windTime*.7f+segment*.64f+side*.5f)*.045f;
+                    float wind=WindAt(Mathf.Min(segment,floors.Count-1))*.045f;
                     float wanted=reducedMotion?0:-sign*.08f+wind+(next.x-previous.x)*.08f;
                     float bow=ropeBow[side,segment],velocity=ropeVelocity[side,segment];
-                    Spring(ref bow,ref velocity,wanted,28,8,Mathf.Clamp(Time.unscaledDeltaTime,0,.05f));
+                    if(reducedMotion){bow=velocity=0;}
+                    else if(!interaction.IsPaused&&!interaction.IsSuspended&&!ambientPaused&&gameplayView)
+                        Spring(ref bow,ref velocity,wanted,28,8,Mathf.Clamp(seconds,0,.05f));
                     ropeBow[side,segment]=bow;ropeVelocity[side,segment]=velocity;
                     for(int p=1;p<=24;p++) {
                         float t=p/24f;var point=Vector3.Lerp(previous,next,t);
