@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Cascade.Presentation
 {
-    public enum GameScreen { Home, Playing, Pause, Win, Fail, Settings, Devices, Lessons, Dialogue, WordLanguage, SaveRecovery, TravelBag, Journal, Collection, Workshop, Requests, Records, Contracts, Parcel }
+    public enum GameScreen { Home, Playing, Pause, Win, Fail, Settings, Devices, Lessons, Dialogue, WordLanguage, SaveRecovery, TravelBag, Journal, Collection, Workshop, Requests, Records, Contracts, Parcel, JourneyEnd }
     public sealed partial class CascadeGame
     {
         public GameScreen CurrentScreen { get; private set; } = GameScreen.Playing;
@@ -40,15 +40,15 @@ namespace Cascade.Presentation
         static readonly string[] DeviceTitles = { "Durability", "Entry rollers", "Bomb", "Key", "Repair", "Fragile edge", "Linked pairs", "One-use bridge", "Stamp" };
         static readonly string[] DeviceNodes = { "C03", "C09", "C13", "C17", "C18", "C21", "C25", "C33", "C35" };
         static readonly string[] DeviceCopy = {
-            "Each swap wears the board down. At zero, the row drops. Descend leaves this board early.",
-            "The rollers move the whole row when it lands. Look which way they point.",
-            "Put the same piece on the bomb to stop it. Each move lowers its number. At zero, it breaks the board.",
-            "Put the same piece on the key. It opens the gate. Then you can swap through it.",
-            "Put the same piece on the patch. It mends the board once.",
-            "A crack wears the board down faster. Check the cost before you let go.",
-            "Two pairs are tied together. Swap one pair and the other pair swaps too.",
-            "You can swap across this bridge once. Then it closes.",
-            "Put the same piece on the stamp to earn it. You can still finish without it."
+            "Each swap uses a dot. No dots? The row falls. Down leaves early.",
+            "The arrows move the whole row when it lands.",
+            "Put this piece on the bomb. A move uses a spark. No sparks? The board breaks.",
+            "Put this piece on the key to open its gate.",
+            "Put this piece on the patch. It fixes the board once.",
+            "A crack uses an extra dot.",
+            "Swap one tied pair. Both pairs swap.",
+            "This bridge works once. Then it folds shut.",
+            "Put this piece on the stamp. Bring the row home to keep it."
         };
 
         void BuildFlow()
@@ -99,7 +99,7 @@ namespace Cascade.Presentation
             if(resultFriend!=null)resultFriend.gameObject.SetActive(screen==GameScreen.Win);
             Interaction.SetPaused(screen!=GameScreen.Playing && screen!=GameScreen.Win && screen!=GameScreen.Fail);
             bool machineVisible=screen==GameScreen.Playing || screen==GameScreen.Win || screen==GameScreen.Fail;
-            machine.SetGameplayVisible(machineVisible);
+            machine.SetGameplayVisible(machineVisible);machine.SetAmbientPaused(screen==GameScreen.Pause||screen==GameScreen.SaveRecovery);
             header.gameObject.SetActive(machineVisible); status.gameObject.SetActive(machineVisible);
             floorArea.gameObject.SetActive(machineVisible); receiver.gameObject.SetActive(machineVisible);
             actions.gameObject.SetActive(machineVisible); precise.gameObject.SetActive(machineVisible && PreciseInputActive);
@@ -184,6 +184,7 @@ namespace Cascade.Presentation
                 if(CurrentScreen==GameScreen.Fail && sessionLosses.TryGetValue(node,out var losses)&&losses>=3)
                     resultText.SetCopy("Try the device guide. Undo and retry stay free.");
                 resultRoot.Find("Nextdelivery").gameObject.SetActive(CurrentScreen==GameScreen.Win);
+                resultRoot.Find("Nextdelivery").GetComponentInChildren<TextMeshProUGUI>().SetCopy(journeyActive&&node=="C160"?"Light the beacon":"Next delivery");
             }
         }
         static void PlaceControl(Button button,Transform parent,Vector2 min,Vector2 max)
@@ -191,7 +192,7 @@ namespace Cascade.Presentation
         void ResetMenu()
         {
             foreach(Transform child in menuRoot){ child.gameObject.SetActive(false); Destroy(child.gameObject); }
-            var wash=Rect("Warm paper",menuRoot,Vector2.zero,Vector2.one); menuWash=Background(wash,new Color(1,.96f,.84f,.96f),true);
+            var wash=Rect("Warm paper",menuRoot,new Vector2(.018f,.012f),new Vector2(.982f,.988f));menuWash=Background(wash,new Color(1,.96f,.84f,.96f),true);menuWash.sprite=art.panel;menuWash.type=Image.Type.Sliced;
         }
         void DrawMenu()
         {
@@ -210,6 +211,7 @@ namespace Cascade.Presentation
             else if(CurrentScreen==GameScreen.Records) DrawRecords();
             else if(CurrentScreen==GameScreen.Contracts) DrawContracts();
             else if(CurrentScreen==GameScreen.Parcel) DrawParcel();
+            else if(CurrentScreen==GameScreen.JourneyEnd)DrawJourneyEnd();
             else if(CurrentScreen==GameScreen.Devices) DrawDevices();
             else if(CurrentScreen==GameScreen.Pause) {
                 MenuTitle("Take a break", "Your puzzle will wait.");
@@ -272,7 +274,7 @@ namespace Cascade.Presentation
         void StartContent(LevelContent content) { LoadLevel(content.Definition,content.Locale); ShowGame(); }
         void StartNextPreferred()
         {
-            if(journeyActive) { int nextStop=selectedJourneyStop+1; if(PreferredMode==PuzzleMode.Words && nextStop==25)nextStop++; if(nextStop<Catalog.PrimaryLevels.Count)BeginJourney(nextStop);else ShowJourney();return; }
+            if(journeyActive) { int nextStop=selectedJourneyStop+1; if(PreferredMode==PuzzleMode.Words && nextStop==25)nextStop++; if(nextStop<Catalog.PrimaryLevels.Count)BeginJourney(nextStop);else SetScreen(GameScreen.JourneyEnd);return; }
             var levels=PreferredLevels();int index=levels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==node);
             if(index>=0&&index+1<levels.Count)StartContent(levels[index+1]);else ShowHome();
         }
@@ -284,8 +286,9 @@ namespace Cascade.Presentation
         void DrawDevices()
         {
             MenuTitle(DeviceTitles[deviceIndex],new UiCopy("Device guide · {0} / {1}",deviceIndex+1,DeviceTitles.Length));
+            var guideCaption=(RectTransform)menuRoot.Find("Menu description");guideCaption.anchorMin=new Vector2(.08f,.75f);guideCaption.anchorMax=new Vector2(.92f,.80f);
             var fixture=Catalog.GetPrimary(DeviceNodes[deviceIndex]).Definition;
-            MiniMachine(Rect("Device example",menuRoot,new Vector2(.16f,.595f),new Vector2(.84f,.72f)),fixture.InitialSymbolIds,fixture.TargetSymbolIds);
+            LiveDeviceDemo(Rect("Device example",menuRoot,new Vector2(.10f,.555f),new Vector2(.90f,.735f)),fixture,deviceIndex);
             var explanation=Text("Device explanation",menuRoot,new Vector2(.10f,.38f),new Vector2(.90f,.59f),20,DeviceCopy[deviceIndex]);explanation.alignment=TextAlignmentOptions.MidlineLeft;
             MenuButton("Previous",.29f,()=>{deviceIndex=(deviceIndex+DeviceTitles.Length-1)%DeviceTitles.Length;DrawMenu();},false,.10f,.47f);
             MenuButton("Next",.29f,()=>{deviceIndex=(deviceIndex+1)%DeviceTitles.Length;DrawMenu();},false,.53f,.90f);
@@ -324,7 +327,7 @@ namespace Cascade.Presentation
         }
         void MiniMachine(RectTransform root,IReadOnlyList<SymbolId> row,IReadOnlyList<SymbolId> target)
         {
-            var upper=Rect("Mint rail",root,new Vector2(0,.51f),new Vector2(1,.57f));var rail=Background(upper,new Color(.32f,.68f,.61f),false);rail.sprite=art.panel;rail.type=Image.Type.Sliced;
+            var upper=Rect("Wood rail",root,new Vector2(0,.47f),new Vector2(1,.57f));upper.gameObject.AddComponent<WoodBoardGraphic>();
             var lower=Rect("Gold receiver",root,new Vector2(0,0),new Vector2(1,.31f));var rim=Background(lower,new Color(.94f,.73f,.32f),false);rim.sprite=art.panel;rim.type=Image.Type.Sliced;
             Draw(row,.58f,.97f);Draw(target,.035f,.275f);
             void Draw(IReadOnlyList<SymbolId> symbols,float low,float high)

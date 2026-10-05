@@ -1217,6 +1217,391 @@ MonoBehaviour:
     m_Localized: The row is home. The stamp is still missing.
     m_Metadata:
       m_Items: []
+  - m_Id: 49797221310464
+    m_Localized: Tie the mail bridge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797242281984
+    m_Localized: Catch the lost letters
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797242281985
+    m_Localized: Open the post gate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797242281986
+    m_Localized: Lift the mail basket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797242281987
+    m_Localized: Send Gran's letter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797242281988
+    m_Localized: Mend the little pier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797242281989
+    m_Localized: Turn the water gate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797242281990
+    m_Localized: Wake the glass lamps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797242281991
+    m_Localized: Carry the pond light
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797242281992
+    m_Localized: Help Rue's garden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797242281993
+    m_Localized: Open the leaf door
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797242281994
+    m_Localized: Untie the old shelves
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797242281995
+    m_Localized: Find the storm map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797242281996
+    m_Localized: Keep the page dry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797242281997
+    m_Localized: Read Gran's note
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797242281998
+    m_Localized: Light the snow steps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797242281999
+    m_Localized: Fix the warm shelter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797242282000
+    m_Localized: Cross the frozen arch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797242282001
+    m_Localized: Carry Pip's blanket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476288
+    m_Localized: Find the beacon road
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476289
+    m_Localized: Open the last bridge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476290
+    m_Localized: Mend the lantern lift
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476291
+    m_Localized: Light the beacon stairs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476292
+    m_Localized: Lift the sky lantern
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476293
+    m_Localized: Bring the light home
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476294
+    m_Localized: Pip brought a bag of letters.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476295
+    m_Localized: One is for Gran. Let's fix the mail bridge.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476296
+    m_Localized: The wind scattered our letters.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476297
+    m_Localized: I'll hold the bag. You fix the pattern.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476298
+    m_Localized: This gate is tied shut.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476299
+    m_Localized: The little key can help us.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476300
+    m_Localized: The basket is too heavy for me.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476301
+    m_Localized: We can lift it together.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476302
+    m_Localized: There goes Gran's letter!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476303
+    m_Localized: Pip drew a heart on the bag.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476304
+    m_Localized: Rue is waiting by the water.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476305
+    m_Localized: Her little pier has a crack.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476306
+    m_Localized: The pond has gone quiet.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476307
+    m_Localized: Open the gate and let the water flow.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476308
+    m_Localized: These lamps look like tiny stars.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476309
+    m_Localized: They need their patterns back.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476310
+    m_Localized: A frog came out to watch us.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476311
+    m_Localized: Easy, little light. We are almost there.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476312
+    m_Localized: The flowers have water again!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476313
+    m_Localized: Rue gave me a leaf for my pocket.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476314
+    m_Localized: This old library smells of leaves.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476315
+    m_Localized: A small door hides the storm map.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476316
+    m_Localized: These shelves move in pairs.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476317
+    m_Localized: I will watch both ends this time.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476318
+    m_Localized: Here is the road through the snow.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476319
+    m_Localized: The beacon is still far, but we know the way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476320
+    m_Localized: A drop of rain fell on the page.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476321
+    m_Localized: My scarf will keep it dry.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476322
+    m_Localized: Gran left a note here for me.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476323
+    m_Localized: One small step is enough to begin.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476324
+    m_Localized: My paws are cold.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797246476325
+    m_Localized: I can see a warm lamp up ahead.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670592
+    m_Localized: Someone left us a little shelter.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670593
+    m_Localized: We can mend its steps before we rest.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670594
+    m_Localized: The icy arch turns the whole row around.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670595
+    m_Localized: I will think about the landing first.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670596
+    m_Localized: Pip sent a blanket after us.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670597
+    m_Localized: He remembered that I get cold.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670598
+    m_Localized: The clouds are opening.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670599
+    m_Localized: I can see the beacon at last!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670600
+    m_Localized: The last bridge is very high.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670601
+    m_Localized: I am scared. But my friends are with me.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670602
+    m_Localized: The lantern lift needs a patch.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670603
+    m_Localized: I have mended so many boards. I can do this.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670604
+    m_Localized: A light for every step.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670605
+    m_Localized: Now no one has to walk alone in the dark.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670606
+    m_Localized: I kept our little light safe.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670607
+    m_Localized: Just one more landing.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670608
+    m_Localized: Gran, I am bringing the light home.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670609
+    m_Localized: We found the way together.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670610
+    m_Localized: Cloud Post
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670611
+    m_Localized: Glass Lagoon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670612
+    m_Localized: Moss Archive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670613
+    m_Localized: Snow Spire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670614
+    m_Localized: Great Beacon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670615
+    m_Localized: Our little light is home.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670616
+    m_Localized: The beacon is lit!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670617
+    m_Localized: Look at our journey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670618
+    m_Localized: A stamp for this trail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670619
+    m_Localized: 'Trail seals: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670620
+    m_Localized: Each swap uses a dot. No dots? The row falls. Down leaves early.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670621
+    m_Localized: The arrows move the whole row when it lands.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797250670622
+    m_Localized: Put this piece on the bomb. A move uses a spark. No sparks? The
+      board breaks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797254864896
+    m_Localized: Put this piece on the key to open its gate.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797254864897
+    m_Localized: Put this piece on the patch. It fixes the board once.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797254864898
+    m_Localized: A crack uses an extra dot.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797254864899
+    m_Localized: Swap one tied pair. Both pairs swap.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797254864900
+    m_Localized: This bridge works once. Then it folds shut.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797254864901
+    m_Localized: Put this piece on the stamp. Bring the row home to keep it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797254864902
+    m_Localized: Board breaks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49797254864903
+    m_Localized: Light the beacon
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

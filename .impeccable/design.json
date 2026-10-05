@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-05T07:17:01.086696+00:00",
+  "generatedAt": "2026-10-05T11:31:06.327183+00:00",
   "title": "Design System: CASCADE",
   "extensions": {
     "colorMeta": {
@@ -423,6 +423,62 @@
           "oklch(0.836 0.03742 209.46)",
           "oklch(0.950 0.03742 209.46)"
         ]
+      },
+      "wood-fallback": {
+        "role": "neutral",
+        "displayName": "Wood Fallback",
+        "tonalRamp": [
+          "oklch(0.150 0.12089 52.73)",
+          "oklch(0.264 0.12089 52.73)",
+          "oklch(0.379 0.12089 52.73)",
+          "oklch(0.493 0.12089 52.73)",
+          "oklch(0.607 0.12089 52.73)",
+          "oklch(0.721 0.12089 52.73)",
+          "oklch(0.836 0.12089 52.73)",
+          "oklch(0.950 0.12089 52.73)"
+        ]
+      },
+      "hemp-rope": {
+        "role": "primary",
+        "displayName": "Hemp Rope",
+        "tonalRamp": [
+          "oklch(0.150 0.10602 67.47)",
+          "oklch(0.264 0.10602 67.47)",
+          "oklch(0.379 0.10602 67.47)",
+          "oklch(0.493 0.10602 67.47)",
+          "oklch(0.607 0.10602 67.47)",
+          "oklch(0.721 0.10602 67.47)",
+          "oklch(0.836 0.10602 67.47)",
+          "oklch(0.950 0.10602 67.47)"
+        ]
+      },
+      "wood-chip-dark": {
+        "role": "neutral",
+        "displayName": "Wood Chip Dark",
+        "tonalRamp": [
+          "oklch(0.150 0.12443 48.77)",
+          "oklch(0.264 0.12443 48.77)",
+          "oklch(0.379 0.12443 48.77)",
+          "oklch(0.493 0.12443 48.77)",
+          "oklch(0.607 0.12443 48.77)",
+          "oklch(0.721 0.12443 48.77)",
+          "oklch(0.836 0.12443 48.77)",
+          "oklch(0.950 0.12443 48.77)"
+        ]
+      },
+      "wood-chip-light": {
+        "role": "neutral",
+        "displayName": "Wood Chip Light",
+        "tonalRamp": [
+          "oklch(0.150 0.13099 65.80)",
+          "oklch(0.264 0.13099 65.80)",
+          "oklch(0.379 0.13099 65.80)",
+          "oklch(0.493 0.13099 65.80)",
+          "oklch(0.607 0.13099 65.80)",
+          "oklch(0.721 0.13099 65.80)",
+          "oklch(0.836 0.13099 65.80)",
+          "oklch(0.950 0.13099 65.80)"
+        ]
       }
     },
     "typographyMeta": {
@@ -509,8 +565,8 @@
       },
       {
         "name": "fall-and-land",
-        "value": "300ms smoothstep + 110ms landing",
-        "purpose": "Whole-row travel down guides with at most 8% landing squash. Complete target remains visible."
+        "value": "300ms quadratic vertical fall + 110ms damped settling",
+        "purpose": "Map source pieces to committed destinations; local stagger up to 0.07 phase, fall rotation up to 7deg, settling up to 2deg and 8% squash. Presentation only; complete target stays visible."
       },
       {
         "name": "delivery",
@@ -525,7 +581,7 @@
       {
         "name": "ambient-wheel",
         "value": "18deg + phase * 7deg/s",
-        "purpose": "Lower-right native windwheel. Reduced Motion fixes 18deg; pause/suspension stop phase progression."
+        "purpose": "Legacy wheel phase remains in source, but the incidental lower-right wheel is hidden in the current surface."
       },
       {
         "name": "ambient-clouds",
@@ -545,7 +601,22 @@
       {
         "name": "ambient-lifecycle",
         "value": "unscaled presentation phase; stop while paused or suspended",
-        "purpose": "Presentation-only. Map and dialogue pause interaction and therefore retain a static ambient phase. Reduced Motion paints phase zero."
+        "purpose": "Presentation-only. Explicit pause and suspension stop phase; map/dialogue decoration can continue while puzzle input is paused. Reduced Motion paints phase zero."
+      },
+      {
+        "name": "wood-load-and-wind",
+        "value": "target sag 0.030 world units × grounded weight; wind sin(phase × 0.65 + floor × 0.52) × 0.025",
+        "purpose": "Bounded springs bend the native painted strip and sway hemp suspension. Holding releases apparent weight; fixed pegs, deterministic puzzle state."
+      },
+      {
+        "name": "pictorial-guide",
+        "value": "7s demonstration loop; Reduced Motion fixed at 2s",
+        "purpose": "Source-piece cause/effect over precomputed resolver outcomes. Reduced Motion shows stationary before ghosts and settled after pose; no playable commands."
+      },
+      {
+        "name": "regional-weather",
+        "value": "native separate rain/snow/pollen meshes and map UI; presentation-clock phase",
+        "purpose": "Eight original regional backgrounds; live layer movement follows explicit pause/suspension and Reduced Motion. No gameplay-state authority."
       }
     ],
     "breakpoints": [
@@ -600,7 +671,7 @@
       "name": "Regional platform",
       "kind": "custom",
       "refersTo": "platform",
-      "description": "Native compact beam with brass caps and graphite damage seams. Wind Gardens uses Platform Mint, Rain Mill Star Sky, Copper Orchard Device Coral. Shared device faces retain stable SymbolId identity. Documentation is native-only; HTML/CSS preview intentionally absent.",
+      "description": "Native compact WoodBoard strip with body-band UV framing, braided hemp suspension, fixed upper pegs, brass hardware, strength pips and graphite seams. platform backgroundColor is only the missing-texture fallback; the shipped surface is painted raster grain. Reuses stable SymbolId contact faces. Source-piece falls, bounded springs and wood chips consume committed events. Native-only; HTML/CSS preview intentionally absent.",
       "html": "",
       "css": ""
     },
@@ -616,7 +687,7 @@
       "name": "Journey route and stop",
       "kind": "nav",
       "refersTo": "map-stop",
-      "description": "Native uGUI over original isometric regional raster art. Five numbered stops per page, progress pebbles and Mika at the actual next session stop. Current/restored variants follow the frontmatter; future pages explain distance and return to the current path. Documentation is native-only; HTML/CSS preview intentionally absent.",
+      "description": "Native uGUI over eight original regional art kits and 33 pages for 160 nodes. Usually five plaza-aligned stops; four on final pages of new 24-node regions. Mika marks the actual current stop; saved stamp goals derive map seals. Separate clouds and rain/snow move on the presentation clock. Native-only; HTML/CSS preview intentionally absent.",
       "html": "",
       "css": ""
     },
@@ -632,7 +703,7 @@
       "name": "Comfort and sound setting",
       "kind": "custom",
       "refersTo": "setting",
-      "description": "Native labelled paper row with track color and positional knob. Preferences are in memory; no save claim. Larger text excludes symbol faces and explicit font/layout overrides remain. Documentation is native-only; HTML/CSS preview intentionally absent.",
+      "description": "Native labelled paper row with track color and positional knob. Preferences persist in the checksum-protected local schema1 profile. Larger text excludes symbol faces and explicit font/layout overrides remain. Documentation is native-only; HTML/CSS preview intentionally absent.",
       "html": "",
       "css": ""
     },
@@ -647,14 +718,14 @@
   ],
   "narrative": {
     "northStar": "The Sky Wind Workshop",
-    "overview": "A small keeper carries light through floating islands and wind-powered toy machines. Mint enamel, warm brass, ivory letter tiles and six colored silhouettes make the puzzle tangible. Mika's patched overalls, saffron scarf and lantern connect the mechanism to a warm, imperfect character. Painted regional skies and isometric routes give each delivery a place and a neighbour.\n\nReal beveled meshes, an orthographic view, live lettering and separate illustrated scenery share the same bright storybook world. The hand touches the row directly; quiet controls leave room for the machine and its complete gold destination. Paper panels support short dialogue and navigation. This is the author-delegated, code-led extension of the established world; no approved composite image exists for pixel-perfect fidelity claims.\n\nThis record merges the implemented P14 journey revision into the P12/P13 system. Sources are `CascadeGame.cs`, `.Flow.cs`, `.Journey.cs`, `.Touch.cs`, `TokenSlot.cs`, `ToyMachineView.cs`, `LayeredWorld.cs`, `JourneyStory.cs`, `ToyAssetBuilder.cs` and `MotionProfile.asset`. `Docs/JOURNEY_SURFACE_BRIEF.md` owns the surface contract; `Docs/P14_FLOW.md` owns implementation scope and validation limits. Native captures and review live in `Reports/Journey`. `Docs/JOURNEY_ASSET_PROVENANCE.md` records the 12 original regional/character rasters; earlier mesh, font and audio provenance remains in the P12/P13 documents. The sidecar records native components and motion, with no fabricated HTML/CSS counterparts. Its synthesized tonal ramps are preview aids, not shipped palette additions.",
+    "overview": "A small keeper carries light through floating islands and wind-powered toy machines. Painted honey wood, braided hemp, warm brass, ivory letter tiles and six colored silhouettes make the puzzle tangible. Mika's patched overalls, saffron scarf and lantern connect the mechanism to a warm, imperfect character. Painted regional skies and isometric routes give each delivery a place and a neighbour.\n\nReal beveled meshes, an orthographic view, live lettering and separate illustrated scenery share the same bright storybook world. The hand touches the row directly; quiet controls leave room for the machine and its complete gold destination. Paper panels support short dialogue and navigation. This is the author-delegated, code-led extension of the established world; no approved composite image exists for pixel-perfect fidelity claims.\n\nThis record merges the implemented P14 journey revision into the P12/P13 system. Sources are `CascadeGame.cs`, `.Flow.cs`, `.Journey.cs`, `.Touch.cs`, `TokenSlot.cs`, `ToyMachineView.cs`, `LayeredWorld.cs`, `JourneyStory.cs`, `ToyAssetBuilder.cs` and `MotionProfile.asset`. `Docs/JOURNEY_SURFACE_BRIEF.md` owns the surface contract; `Docs/P14_FLOW.md` owns implementation scope and validation limits. Native captures and review live in `Reports/Journey`. `Docs/JOURNEY_ASSET_PROVENANCE.md` records the 12 original regional/character rasters; earlier mesh, font and audio provenance remains in the P12/P13 documents. The sidecar records native components and motion, with no fabricated HTML/CSS counterparts. Its synthesized tonal ramps are preview aids, not shipped palette additions.\n\nThe current extension uses `ToyMachineView.Woodland.cs`, `PuzzleEventPlayer.cs`,\n`CascadeGame.DeviceDemo.cs`, `WoodBoardGraphic.cs`, `WorldMotion.cs`,\n`WorldWeatherGraphic.cs`, `LayeredWorld.cs` and the expanded `JourneyStory.cs`.\nEight regional art kits now cover 160 stops over 33 pages; three original kits\nare retained and five original Base/Map pairs plus WoodBoard are documented in\n`Docs/WOODLAND_ASSET_PROVENANCE.md`. Source-piece trajectories and board springs\nare presentation effects over the unchanged deterministic rule core. Native\nstills and sampled motion live in `Reports/Woodland`; the 5/5 EditMode and\n16/16 focused PlayMode checkpoint predates the final guide/CanvasRenderer fix.\nThe final renderer correction passed 4/4 affected UI regressions in\n`Reports/WoodlandFix/playmode.xml` at 11:29:09–11:29:16 UTC; fresh native guide,\nmap and bag captures show wood/weather. Independent final disposition remains\npending at this pass; player-build status is tracked in the validation report. Physical iOS/Android, haptics, performance,\nnon-reader understanding, native editorial, live Ads/IAP and human enjoyment\nremain NOT RUN. The service boundary is disabled mock code; online and Long\nReach remain design-only.",
     "keyCharacteristics": [
       "Direct touch lifts a piece and its live glyph together; the receiver stays visible.",
-      "Six stable silhouettes and colors remain readable across all three regions.",
-      "Enamel rails, brass joints and soft contact shadows make the machine tangible.",
+      "Six stable silhouettes and colors retain their identity across eight regions.",
+      "Wood grain, hemp suspension, brass joints and soft contact shadows make the machine tangible.",
       "Mika, Pip and Rue connect short optional dialogue to a concrete destination.",
       "Illustrated routes distinguish the current path from future-region browsing.",
-      "Clouds, rooted plants, a glider and the lower-right windwheel give the sky restrained life."
+      "Separate clouds, rooted plants, a glider and regional weather give the sky restrained life."
     ],
     "rules": [
       {
@@ -688,7 +759,7 @@
       "**Do** move and scale the live glyph with its selected or held body.",
       "**Do** preserve the complete target and the direct-touch default.",
       "**Do** keep precision controls an explicit Comfort preference.",
-      "**Do** bind the map marker to actual session progress and label future previews honestly.",
+      "**Do** bind the map marker to saved first-clear campaign receipts and label future previews honestly.",
       "**Do** select the story's region before showing its character and dialogue.",
       "**Do** bound ambient art outside gameplay information and freeze its phase while paused or suspended.",
       "**Do** inspect native 390 × 844, 320 × 693 and wide Editor captures after layout changes.",
@@ -698,8 +769,9 @@
       "**Don't** turn physical rails into full-width rectangular cards or restore the crowded default toolbar.",
       "**Don't** bake gameplay text into imagery or change symbol identity to indicate state.",
       "**Don't** let presentation, animation completion, scenery, physics or ad callbacks change puzzle state.",
-      "**Don't** portray browsed islands as reached or session memory as durable saving.",
-      "**Don't** describe the 160-stop target, ranks, parcels, keepsakes, Long Reach or online concept as implemented.",
+      "**Don't** portray browsed islands as reached or unsaved previews as durable progress.",
+      "**Don't** describe Long Reach, online concepts or disabled mock Ads/IAP boundaries as live integration.",
+      "**Don't** describe local ranks, known parcels or keepsakes as global online services; their saved local implementations are documented in PRODUCT.md.",
       "**Don't** copy ShapeMania screens, characters, sprites, props or materials into this world.",
       "**Don't** equate Editor captures and automated tests with device, haptic, performance, build, native-language or human-enjoyment proof."
     ]

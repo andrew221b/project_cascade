@@ -42,7 +42,7 @@ namespace Cascade.Presentation
                 if(restored!=null) {
                     MountAttempt(restored);journeyActive=profile.JourneyAttempt;
                     selectedJourneyStop=Math.Max(0,Catalog.PrimaryLevels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==node));
-                    if(journeyActive){levelLabel.SetCopy(JourneyStory.Task(selectedJourneyStop/5));levelLabel.fontSize=21;}
+                    if(journeyActive){levelLabel.SetCopy(JourneyStory.Task(JourneyStory.PageFor(selectedJourneyStop)));levelLabel.fontSize=21;}
                 }
             }
             catch(Exception e) when(e is ArgumentException || e is InvalidDataException) {

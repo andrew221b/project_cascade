@@ -9,11 +9,13 @@ namespace Cascade.Presentation
     {
         readonly List<Material> owned = new List<Material>();
         readonly Transform[] clouds = new Transform[3];
-        Transform landscape, plantsLeft, plantsRight, glider;
+        Transform landscape, plantsLeft, plantsRight, glider,leftWing,rightWing,wideMika;
         Camera cameraView;
         Material landscapeMaterial;
-        readonly Texture2D[] backgrounds = new Texture2D[3];
+        readonly Texture2D[] backgrounds = new Texture2D[8];
         int zone;
+        readonly Transform[] weather=new Transform[18];
+        ToyArt artwork;
         float flightBottom, flightTop;
         bool gameplayVisible, holdingToken;
         public float Phase { get; private set; }
@@ -29,12 +31,19 @@ namespace Cascade.Presentation
 
         public void Initialize(ToyArt art,Camera camera)
         {
-            cameraView=camera;
-            string[] names={"WindGardenBase","RainMillBase","CopperOrchardBase"};
-            for(int i=0;i<names.Length;i++)backgrounds[i]=Resources.Load<Texture2D>("CascadeArt/Journey/"+names[i]);
+            cameraView=camera;artwork=art;
+            string[] names={"WindGardenBase","RainMillBase","CopperOrchardBase","CloudPostBase","GlassLagoonBase","MossArchiveBase","SnowSpireBase","GreatBeaconBase"};
+            for(int i=0;i<names.Length;i++)backgrounds[i]=Resources.Load<Texture2D>("CascadeArt/"+(i<3?"Journey/":"Woodland/")+names[i]);
             if(backgrounds[0]==null)return;
             landscape=Plate("Far island sky",backgrounds[0],art.quad,false);
             landscapeMaterial=landscape.GetComponent<MeshRenderer>().sharedMaterial;
+            leftWing=Plate("Left architectural wing",backgrounds[0],art.quad,false);rightWing=Plate("Right architectural wing",backgrounds[0],art.quad,false);
+            wideMika=Plate("Mika beside the workshop",Resources.Load<Texture2D>("CascadeArt/Journey/Mika"),art.quad,true);
+            for(int i=0;i<weather.Length;i++) {
+                var go=new GameObject("Region weather "+i,typeof(MeshFilter),typeof(MeshRenderer));go.transform.SetParent(transform,false);
+                go.GetComponent<MeshFilter>().sharedMesh=art.disk;go.GetComponent<MeshRenderer>().sharedMaterial=art.cream;
+                weather[i]=go.transform;go.GetComponent<MeshRenderer>().shadowCastingMode=ShadowCastingMode.Off;
+            }
             var cloud=Resources.Load<Texture2D>("CascadeArt/Journey/Cloud");
             for(int i=0;i<clouds.Length;i++)clouds[i]=Plate("Moving cloud "+i,cloud,art.quad,true);
             var plants=Resources.Load<Texture2D>("CascadeArt/Journey/GardenPlants");
@@ -60,9 +69,10 @@ namespace Cascade.Presentation
         }
         public void SetZone(int value)
         {
-            zone=Mathf.Clamp(value,0,2);
+            zone=Mathf.Clamp(value,0,7);
             if(landscapeMaterial!=null)landscapeMaterial.SetTexture("_BaseMap",backgrounds[zone]??backgrounds[0]);
-            var tint=zone==0?Color.white:zone==1?new Color(.77f,.92f,.95f):new Color(1,.85f,.67f);
+            foreach(var wing in new[]{leftWing,rightWing})if(wing!=null)wing.GetComponent<MeshRenderer>().sharedMaterial.SetTexture("_BaseMap",backgrounds[zone]??backgrounds[0]);
+            var tint=zone==1||zone==4||zone==6?new Color(.83f,.94f,1):zone==2||zone==7?new Color(1,.88f,.74f):Color.white;
             foreach(var cloud in clouds)if(cloud!=null)cloud.GetComponent<MeshRenderer>().sharedMaterial.SetColor("_BaseColor",tint);
             foreach(var plant in new[]{plantsLeft,plantsRight})if(plant!=null)plant.GetComponent<MeshRenderer>().sharedMaterial.SetColor("_BaseColor",tint);
         }
@@ -72,11 +82,35 @@ namespace Cascade.Presentation
             float h=cameraView.orthographicSize*2,w=h*cameraView.aspect;
             float cx=cameraView.transform.position.x,cy=cameraView.transform.position.y;
             var texture=landscapeMaterial.mainTexture;float ratio=(float)texture.width/texture.height;
-            float coverH=Mathf.Max(h,w/ratio);
-            landscape.position=new Vector3(cx,cy,3.2f);landscape.localScale=new Vector3(coverH*ratio,coverH,1);
+            bool wide=cameraView.aspect>1.05f;
+            landscape.position=new Vector3(cx,cy,3.2f);
+            landscapeMaterial.SetTextureScale("_BaseMap",wide?new Vector2(.30f,1):Vector2.one);landscapeMaterial.SetTextureOffset("_BaseMap",wide?new Vector2(.35f,0):Vector2.zero);
+            landscape.localScale=wide?new Vector3(w,h,1):new Vector3(Mathf.Max(h,w/ratio)*ratio,Mathf.Max(h,w/ratio),1);
+            Wings(leftWing,false);Wings(rightWing,true);
+            if(wideMika!=null) {
+                wideMika.gameObject.SetActive(wide);float size=h*.28f;
+                wideMika.position=new Vector3(cx-w*.32f,cy-h*.25f,1.6f);wideMika.localScale=new Vector3(size*.65f,size,1);
+                wideMika.rotation=Quaternion.Euler(0,0,Mathf.Sin(phase*.7f)*.7f);
+            }
+            for(int i=0;i<weather.Length;i++) {
+                var drop=weather[i];bool snow=zone==6;bool rain=zone==1||zone==4;bool pollen=zone==0||zone==2||zone==5;
+                drop.gameObject.SetActive(snow||rain||pollen);
+                float x=Mathf.Repeat(i*.618f+phase*(snow?.005f:rain?.018f:.008f),1);
+                float y=Mathf.Repeat(i*.317f-phase*(snow?.025f:rain?.12f:.007f),1);
+                drop.position=new Vector3(cx+(x-.5f)*w,cy+(y-.5f)*h,2.3f);
+                drop.localScale=snow?new Vector3(.018f,.018f,.01f):rain?new Vector3(.009f,.10f,.01f):new Vector3(.009f,.012f,.01f);
+                drop.rotation=Quaternion.Euler(0,0,rain?-15:phase*(i%2==0?4:-3));
+                drop.GetComponent<MeshRenderer>().sharedMaterial=rain?artwork.colors[4]:artwork.cream;
+            }
+            void Wings(Transform wing,bool right) {
+                if(wing==null)return;wing.gameObject.SetActive(wide);
+                float wingWidth=h*ratio*.30f;
+                wing.position=new Vector3(cx+(right?1:-1)*(w*.5f-wingWidth*.5f),cy,3.1f);wing.localScale=new Vector3(wingWidth,h,1);
+                var material=wing.GetComponent<MeshRenderer>().sharedMaterial;material.SetTextureScale("_BaseMap",new Vector2(.30f,1));material.SetTextureOffset("_BaseMap",new Vector2(right?.70f:0,0));
+            }
             for(int i=0;i<clouds.Length;i++) {
                 var cloud=clouds[i];if(cloud==null)continue;
-                float cw=w*(i==0?.60f:i==1?.42f:.75f);
+                float cw=Mathf.Min(w,h)*(i==0?.60f:i==1?.42f:.75f);
                 float x=Mathf.Repeat(phase*(.017f+i*.009f)+i*.42f,1.7f)-.85f;
                 cloud.position=new Vector3(cx+x*w,cy+h*(i==0?.29f:i==1?.43f:-.27f),2.9f-i*.05f);
                 cloud.localScale=new Vector3(cw,cw*.5f,1);

@@ -182,7 +182,7 @@ namespace Cascade.Presentation
             }
             if(!string.IsNullOrEmpty(exit.Key))effects.Add(exit);
             status.SetCopy(UiCopy.Join(" · ",effects));
-            RenderFocus(); foreach (int edge in preview.AffectedEdges) { slotImages[edge].color = Selected; slotImages[edge + 1].color = Selected; }
+            RenderFocus(); machine.PreviewForecast(prediction);foreach (int edge in preview.AffectedEdges) { slotImages[edge].color = Selected; slotImages[edge + 1].color = Selected; }
         }
         public void Undo()
         {
@@ -310,14 +310,14 @@ namespace Cascade.Presentation
             foreach (var view in floorViews) Destroy(view.gameObject);
             foreach (Transform child in targetRow) Destroy(child.gameObject);
             if (tokenRow != null) Destroy(tokenRow.gameObject);
-            floorViews.Clear(); floorLabels.Clear(); deviceLabels.Clear(); slots.Clear(); slotImages.Clear(); tokenLabels.Clear(); targetLabels.Clear();
+            floorViews.Clear(); floorLabels.Clear(); deviceLabels.Clear(); contactFaces.Clear(); slots.Clear(); slotImages.Clear(); tokenLabels.Clear(); targetLabels.Clear();
             int count = level.Floors.Count;
             for (int i = 0; i < count; i++) {
                 float y = count == 1 ? .56f : .87f - i * .74f / (count - 1);
                 var card = Rect("Floor" + (i + 1), floorArea, new Vector2(.5f, y), new Vector2(.5f, y));
                 card.sizeDelta = new Vector2(Mathf.Min(342, level.InitialSymbolIds.Count * 76 + 24), count == 4 ? 110 : 132); floorViews.Add(card);
-                var title = Text("Durability", card, new Vector2(.02f, -.01f), new Vector2(.40f, .24f), 15, ""); title.alignment = TextAlignmentOptions.Left; title.font = art.titleFont; floorLabels.Add(title);
-                var devices = Text("Devices", card, new Vector2(.40f, -.20f), new Vector2(.98f, .22f), 16, ""); devices.alignment = TextAlignmentOptions.TopRight; deviceLabels.Add(devices);
+                var title = Text("Durability", card, new Vector2(.025f, -.01f), new Vector2(.15f, .22f), 15, ""); title.alignment = TextAlignmentOptions.Left; title.font = art.titleFont; floorLabels.Add(title);
+                var devices = Text("Devices", card, new Vector2(.64f, -.01f), new Vector2(.98f, .22f), 15, ""); devices.alignment = TextAlignmentOptions.TopRight; deviceLabels.Add(devices);
                 AddContactGlyph(card, level.Floors[i].Bomb, level.InitialSymbolIds.Count);
                 AddContactGlyph(card, level.Floors[i].Key, level.InitialSymbolIds.Count);
                 AddContactGlyph(card, level.Floors[i].Repair, level.InitialSymbolIds.Count);
@@ -340,7 +340,7 @@ namespace Cascade.Presentation
             if (contact == null || contact.RequiredSymbol.Kind != SymbolKind.Glyph) return;
             float x = .045f + .91f * (contact.Slot + .5f) / count;
             var label = Text("DeviceGlyph", card, new Vector2(x - .039f, .188f), new Vector2(x + .039f, .432f), 16, contact.RequiredSymbol.Value);
-            label.font = art.titleFont;
+            label.font = art.titleFont;contactFaces.Add(new ContactFace{floor=floorViews.IndexOf(card),slot=contact.Slot,label=label});
         }
         void AddSymbolLabels(RectTransform parent, IEnumerable<SymbolId> symbols, int size, List<TextMeshProUGUI> labels)
         {
@@ -405,8 +405,8 @@ namespace Cascade.Presentation
             for (int i = 0; i < level.Floors.Count; i++) {
                 var floor = level.Floors[i]; bool active = state.Status == PuzzleStatus.Playing && i == state.ActiveFloor;
                 bool past = !state.FloorVisible(i);
-                floorLabels[i].SetCopy(past ? "" : new UiCopy("Board {0}",active ? state.Durability : floor.BaseDurability));
-                deviceLabels[i].SetCopy(past ? "" : DescribeFloor(floor, active ? state : null));
+                floorLabels[i].SetCopy(past ? "" : UiCopy.Raw((active?state.Durability:floor.BaseDurability).ToString()));
+                deviceLabels[i].SetCopy(past ? "" : floor.Bomb!=null?new UiCopy("Bomb {0}",active&&state.BombPhase!=BombPhase.Armed?new UiCopy(state.BombPhase.ToString()):UiCopy.Raw((active?state.BombTicks:floor.Bomb.Ticks).ToString())):"");
                 foreach (Transform child in floorViews[i]) if (child.name == "DeviceGlyph") child.gameObject.SetActive(!past);
             }
             tokenRow.SetParent(state.Status == PuzzleStatus.Playing ? floorViews[state.ActiveFloor] : receiver, false);
@@ -434,11 +434,11 @@ namespace Cascade.Presentation
         public void OffsetPresentedToken(int index, Vector3 offset, Vector2 stretch)
         {
             machine.OffsetToken(index, offset, stretch);
-            tokenLabels[index].rectTransform.position = glyphPositions[index] + offset;
+            var face=tokenLabels[index].rectTransform;var position=machine.TokenVisualPosition(index);position.z=face.position.z;face.position=position;
             tokenLabels[index].rectTransform.localScale = new Vector3(stretch.x, stretch.y, 1);
         }
         public void SetPresentationFeedback(UiCopy text) { status.SetCopy(text); }
-        public void SyncPresentation() { RenderState(); FinalizeScreenIfNeeded(); }
+        public void SyncPresentation() { machine.ResetWoodPoses();RenderState(); FinalizeScreenIfNeeded(); }
         public void CompleteDeliveryPose()
         {
             if (VisibleFrame.Status == PuzzleStatus.Won) { tokenRow.gameObject.SetActive(false); machine.Sync(); }

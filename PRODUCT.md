@@ -67,15 +67,34 @@ restored lights and three requests based on repair, bridge and stamp outcomes
 in successful deliveries. Seven distinct local visit dates accumulate without
 missed-day loss. Personal route records distinguish puzzle, content, mode,
 puzzle locale and objective; optional solver-proved stamp trails keep ordinary
-travel open. These are local milestones for the existing forty lessons.
+travel open. These local milestones remain available across the expanded campaign; the four workshop miniatures still refer to their original ten-lesson ranges.
 
 First-clear and reward changes enter the same local profile transaction before
 command presentation; parcel claims call the save path before their arrival
 animation. Failed writes remain explicit and do not become a durable-save claim.
-The existing 40 lessons remain short. The eight-region/160-stop campaign and
-Long Reach remain staged design work. Online remains design-only. The later
-wooden/rope, weight/fall, pictorial-device, wide-screen and menu revision in
-Docs/VISUAL_MOTION_REWORK.md is pending after P17–P20.
+The original 40 lessons remain the tutorial route. P20 adds 120 primary puzzles
+C41–C160 with solver minima of 5–12 actions (mean 7.8667), plus ten optional
+stamp detours in the new content. The catalog contains 160 primary puzzles and
+477 localized bindings, 637 concrete definitions; locale bindings are alternate
+renderings of campaign nodes, not 637 distinct campaign stops. The eight-region
+journey spans 33 map pages. Wind Gardens, Rain Mill and Copper Orchard retain
+their original art; five new original Base/Map pairs introduce Cloud Post,
+Glass Lagoon, Moss Archive, Snow Spire and Great Beacon. Mika's optional story
+now follows all 33 pages and ends at the beacon.
+
+The wooden workshop revision in Docs/VISUAL_MOTION_REWORK.md and
+Docs/WOODLAND_SURFACE_BRIEF.md is implemented in presentation: honey-wood
+platforms with hemp suspension, visible strength pips, held-command forecasts,
+source-piece falling and settling, pictorial device demonstrations and stationary
+before/after ghosts under Reduced Motion. Separate cloud, foliage and regional
+weather layers use the presentation clock; maps have live cloud/weather motion,
+and wide gameplay uses architectural side wings. The travel bag places Mika
+on a wooden bench. A map seal derives from an already proven saved stamp goal;
+it adds no reward currency or new save field. These visuals consume committed
+state and do not change Domain rules, gameplay physics, schemas, prices or
+packages. Existing IDs remain stable. Long Reach and online remain design-only.
+P19 provides disabled mock monetization service boundaries; it has no live ads,
+IAP provider, store UI or validated production receipts.
 
 ## Evidence on Hand
 
@@ -118,6 +137,21 @@ transparent illustrations and exact generation prompts are recorded in
 Docs/META_ASSET_PROVENANCE.md. The independent verdict scores the two listed findings resolved, disposition ship at P17 scope;
 these checks do not certify a player build, physical-device behavior, native
 editorial approval, enjoyment or retention.
+
+Current expansion evidence is in Reports/P20, Reports/Woodland and
+Reports/WoodlandFocused. P20 records 466/466 EditMode and a focused 1/1 native
+input PlayMode pass. The Woodland checkpoint records 5/5 EditMode and 16/16
+focused PlayMode before the final device-guide/CanvasRenderer correction.
+Native full-size PNG stills and sampled motion frames exist. The final renderer
+correction passed four affected UI regressions (Reports/WoodlandFix/playmode.xml,
+11:29:09–11:29:16 UTC); fresh guide/map/bag captures show native wood and weather.
+Independent final disposition is pending at this documentation pass. A local
+player build is also pending. Earlier phase
+results above remain historical checkpoints, not a final expanded full-suite run.
+Physical iOS/Android touch, haptics, performance, speaker/headphone listening,
+human enjoyment/retention, non-reader comprehension, native-language editorial
+approval and live Ads/IAP remain NOT RUN. No no-bugs or enjoyment claim follows
+from these tests or captures.
 
 ## Product Principles
 

@@ -37,11 +37,15 @@ namespace Cascade.Presentation
         void DrawTravelBag()
         {
             MenuTitle("Your travel bag",JourneyClearCount<3?"Restore three lights to open your journal.":"Small things for a long road.");
+            var description=(RectTransform)menuRoot.Find("Menu description");description.anchorMin=new Vector2(.08f,.735f);description.anchorMax=new Vector2(.92f,.81f);
+            var mika=Picture("Mika in her workshop",menuRoot,new Vector2(.29f,.53f),new Vector2(.71f,.72f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
+            mika.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,2),0,.7f);
+            Rect("Mika's wooden bench",menuRoot,new Vector2(.25f,.53f),new Vector2(.75f,.555f)).gameObject.AddComponent<WoodBoardGraphic>();
             if(JourneyClearCount>=3) {
-                MenuButton("My journal",.61f,ShowJournal,true);MenuButton("Workshop",.51f,ShowWorkshop);
-                MenuButton("Stamp trails",.41f,ShowContracts);MenuButton("My routes",.31f,ShowRecords);
+                MenuButton("My journal",.48f,ShowJournal,true);MenuButton("Workshop",.39f,ShowWorkshop);
+                MenuButton("Stamp trails",.30f,ShowContracts);MenuButton("My routes",.21f,ShowRecords);
             }
-            MenuButton("Settings",.21f,ShowSettings);MenuButton("Back to map",.11f,ShowJourney);
+            MenuButton("Settings",.12f,ShowSettings);MenuButton("Back to map",.025f,ShowJourney);
         }
         void DrawJournal()
         {

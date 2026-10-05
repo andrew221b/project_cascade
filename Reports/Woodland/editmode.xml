@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Passed" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-05 11:00:14Z" end-time="2026-10-05 11:00:14Z" duration="0.8345959">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="468" result="Passed" start-time="2026-10-05 11:00:14Z" end-time="2026-10-05 11:00:14Z" duration="0.834596" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1502" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="467" result="Passed" start-time="2026-10-05 11:00:14Z" end-time="2026-10-05 11:00:14Z" duration="0.666263" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="84036" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1503" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="467" result="Passed" start-time="2026-10-05 11:00:14Z" end-time="2026-10-05 11:00:14Z" duration="0.665134" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1504" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="467" result="Passed" start-time="2026-10-05 11:00:14Z" end-time="2026-10-05 11:00:14Z" duration="0.664620" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1337" name="JourneyStoryTests" fullname="Cascade.Tests.JourneyStoryTests" classname="Cascade.Tests.JourneyStoryTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-05 11:00:14Z" end-time="2026-10-05 11:00:14Z" duration="0.217119" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1338" name="All160StopsBelongToOnePageAndRegionWithoutCrossingBorders" fullname="Cascade.Tests.JourneyStoryTests.All160StopsBelongToOnePageAndRegionWithoutCrossingBorders" methodname="All160StopsBelongToOnePageAndRegionWithoutCrossingBorders" classname="Cascade.Tests.JourneyStoryTests" runstate="Runnable" seed="594220331" result="Passed" start-time="2026-10-05 11:00:14Z" end-time="2026-10-05 11:00:14Z" duration="0.191085" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1409" name="LocalizationTests" fullname="Cascade.Tests.LocalizationTests" classname="Cascade.Tests.LocalizationTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-05 11:00:14Z" end-time="2026-10-05 11:00:14Z" duration="0.445290" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1410" name="AllThreeUiTablesAreCompleteAndKeepFormatArguments" fullname="Cascade.Tests.LocalizationTests.AllThreeUiTablesAreCompleteAndKeepFormatArguments" methodname="AllThreeUiTablesAreCompleteAndKeepFormatArguments" classname="Cascade.Tests.LocalizationTests" runstate="Runnable" seed="899698800" result="Passed" start-time="2026-10-05 11:00:14Z" end-time="2026-10-05 11:00:14Z" duration="0.079617" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1411" name="BothFontsCoverEveryUiAndPuzzleCharacterWithoutFallback" fullname="Cascade.Tests.LocalizationTests.BothFontsCoverEveryUiAndPuzzleCharacterWithoutFallback" methodname="BothFontsCoverEveryUiAndPuzzleCharacterWithoutFallback" classname="Cascade.Tests.LocalizationTests" runstate="Runnable" seed="236285356" result="Passed" start-time="2026-10-05 11:00:14Z" end-time="2026-10-05 11:00:14Z" duration="0.165403" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1413" name="EveryWordIsUppercaseNfcAndLowercasePackIsRejected" fullname="Cascade.Tests.LocalizationTests.EveryWordIsUppercaseNfcAndLowercasePackIsRejected" methodname="EveryWordIsUppercaseNfcAndLowercasePackIsRejected" classname="Cascade.Tests.LocalizationTests" runstate="Runnable" seed="1227493910" result="Passed" start-time="2026-10-05 11:00:14Z" end-time="2026-10-05 11:00:14Z" duration="0.193638" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1412" name="SupportedNfcGraphemesAndDistinctCyrillicLettersStayExact" fullname="Cascade.Tests.LocalizationTests.SupportedNfcGraphemesAndDistinctCyrillicLettersStayExact" methodname="SupportedNfcGraphemesAndDistinctCyrillicLettersStayExact" classname="Cascade.Tests.LocalizationTests" runstate="Runnable" seed="1159034316" result="Passed" start-time="2026-10-05 11:00:14Z" end-time="2026-10-05 11:00:14Z" duration="0.003502" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

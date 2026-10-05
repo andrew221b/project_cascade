@@ -9,6 +9,8 @@ namespace Cascade.Editor.Validation
     public static class CascadeTestRunner
     {
         public static void RunEditMode(string phase)
+            =>RunSelectedEditMode(phase,null);
+        public static void RunSelectedEditMode(string phase,string[] tests)
         {
             if (EditorApplication.isCompiling || EditorApplication.isUpdating || EditorUtility.scriptCompilationFailed)
                 throw new InvalidOperationException("Tests require a completed, successful Unity script compilation.");
@@ -25,7 +27,7 @@ namespace Cascade.Editor.Validation
             try
             {
                 runner.Execute(new ExecutionSettings(new Filter
-                { testMode = TestMode.EditMode, assemblyNames = new[] { "Cascade.Tests.EditMode" } })
+                { testMode = TestMode.EditMode, assemblyNames = new[] { "Cascade.Tests.EditMode" },testNames=tests })
                 { runSynchronously = true });
                 if (!callback.Completed) throw new InvalidOperationException("Test runner returned without results.");
                 if (callback.TestCount == 0 || callback.Failures != 0)

@@ -14,7 +14,7 @@ namespace Cascade.Presentation
         {
             EndTokenHold();
             heldToken = slot; previewNeighbour = -1; Coach?.Activity();
-            machine.LivingWorld.SetTokenHeld(true);
+            machine.LivingWorld.SetTokenHeld(true);machine.SetHeldWeight(slot);machine.SetPiecePose(slot,PiecePose.Held);
             if(tutorialHand!=null)tutorialHand.gameObject.SetActive(false);
             RectTransformUtility.ScreenPointToWorldPointInRectangle(tokenRow, screenPoint, uiCamera, out holdOrigin);
             holdOffset = wantedOffset = Vector3.zero;
@@ -48,7 +48,7 @@ namespace Cascade.Presentation
         {
             if (heldToken < 0) return;
             int old = heldToken; heldToken = previewNeighbour = -1;
-            machine?.LivingWorld.SetTokenHeld(false);
+            machine?.LivingWorld.SetTokenHeld(false);machine?.SetHeldWeight(-1);machine?.SetPiecePose(old,PiecePose.Resting);machine?.PreviewForecast(null);
             if (old < tokenLabels.Count && machine != null) OffsetPresentedToken(old,Vector3.zero,Vector2.one);
             for(int i=0;i<slotImages.Count;i++)slotImages[i].color=Color.clear;
         }

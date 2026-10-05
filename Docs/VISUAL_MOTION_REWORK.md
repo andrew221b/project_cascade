@@ -1,7 +1,7 @@
 # Wooden islands: presentation revision
 
 Author requested after completing P17–P20 and remaining tails on 5 October 2026.
-This note records the rule boundary before implementation. Status: pending.
+This note records the rule boundary before implementation. Status: implemented and locally validated; device and human checks remain NOT RUN. See Docs/WOODLAND_SURFACE_BRIEF.md and TASKS.md.
 
 ## Visual intent
 
@@ -29,8 +29,7 @@ pure transition/solver/save contract.
 
 Bomb shows the matching piece on its face, visible fuse segments for remaining
 actions, a shrinking fuse and blast footprint on the affected wooden board.
-Defusal visibly cuts/cools the fuse. Forecast while holding shows next countdown
-and damaged floor before release. Repair closes cracks; a key visibly unlocks
+Defusal visibly cuts/cools the fuse. Forecast while holding shows expected floor damage before release; the bomb displays its actual remaining fuse. A predictive next-fuse overlay is not implemented. Repair closes cracks; a key visibly unlocks
 a rope gate; a used bridge folds away; stamp goal appears as a seal silhouette
 and fills at collection. Pictorial onboarding demonstrates one cause/effect
 at a time, with optional short EN/RU/UK captions. Test understanding with people;
@@ -71,3 +70,7 @@ mid-fall/landed/defuse/blast poses and reduced motion. One correction batch and
 one confirmatory inspection, then independent finish review. Device tests and
 human enjoyment are recorded separately. Rebuild only when relevant changes
 invalidate build evidence.
+
+## Additional presentation/data note, before implementation
+
+New region page starts preserve original eight story/page IDs and add25 regional pages (four-node last page in each24-node region). Region boundaries match P20 content; no C01–C160 IDs/hash changes. Optional stamp mastery grants one visible seal per campaign node (derived from existing proven goal records); no coin price/reward changes. The current paid/ad layer remains disabled. Wood body UV framing reads native PNG alpha>=128 in the Editor; image pixels and alpha are preserved. No new gameplay schema or package.

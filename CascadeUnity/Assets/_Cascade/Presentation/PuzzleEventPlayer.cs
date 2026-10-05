@@ -50,8 +50,7 @@ namespace Cascade.Presentation
                         CaptureRow(frame); frame.Read(e, level); game.RenderFrame(frame); MapRow(frame);
                         feedback.Sound(ToyCue.Swap); yield return Travel(profile.swap, !reduced, false);
                     } else if (e.Kind == PuzzleEventKind.FloorExited) {
-                        feedback.Sound(ToyCue.Fragile);
-                        feedback.Burst(game.Machine.FloorPosition(e.Floor), new Color(1, .9f, .63f, .75f), 9, reduced);
+                        if(frame.Durability<=0){feedback.Sound(ToyCue.Fragile);feedback.WoodChips(game.Machine.FloorPosition(e.Floor),9,reduced);}
                         yield return Recoil(e.Floor, profile.fracture);
                         frame.Read(e, level); game.RenderFrame(frame);
                     } else if (e.Kind == PuzzleEventKind.FloorEntered || e.Kind == PuzzleEventKind.ReceiverEvaluated) {
@@ -114,18 +113,22 @@ namespace Cascade.Presentation
         IEnumerator Travel(float duration, bool arcs, bool falling)
         {
             if (game.ReducedMotion) { yield return Hold(profile.reducedStep); yield break; }
-            float time = 0;
+            float time = 0;int count=game.VisibleFrame.Row.Count;
+            for(int i=0;i<count;i++)game.Machine.SetPiecePose(i,falling?PiecePose.Falling:PiecePose.Exchanging);
             while (time < duration) {
-                float t = Mathf.Clamp01(time / duration), eased = falling ? t*t*(3-2*t) : 1-Mathf.Pow(1-t,3);
+                float t = Mathf.Clamp01(time / duration), eased = 1-Mathf.Pow(1-t,3);
                 for (int i = 0; i < game.VisibleFrame.Row.Count; i++) {
+                    float local=falling?Mathf.Clamp01((t-(i%3)*.035f)/(1-(i%3)*.035f)):t;
                     Vector3 position = Vector3.Lerp(from[i], to[i], eased);
+                    if(falling)position.y=Mathf.Lerp(from[i].y,to[i].y,local*local);
                     if (arcs && !game.ReducedMotion && Mathf.Abs(from[i].x-to[i].x) > .01f)
                         position.y += Mathf.Sin(t*Mathf.PI) * profile.swapArc * (from[i].x < to[i].x ? 1 : -.45f);
                     game.OffsetPresentedToken(i, position-to[i], Vector2.one);
+                    game.Machine.SetPiecePose(i,falling?PiecePose.Falling:PiecePose.Exchanging,Mathf.Sin(local*Mathf.PI)*(i%2==0?1:-1)*(falling?7:3));
                 }
                 time += Time.unscaledDeltaTime; yield return null;
             }
-            for (int i = 0; i < game.VisibleFrame.Row.Count; i++) game.OffsetPresentedToken(i, Vector3.zero, Vector2.one);
+            for (int i = 0; i < game.VisibleFrame.Row.Count; i++){game.OffsetPresentedToken(i, Vector3.zero, Vector2.one);game.Machine.SetPiecePose(i,falling?PiecePose.Settling:PiecePose.Resting);}
         }
         IEnumerator Recoil(int floor, float duration)
         {
@@ -139,10 +142,15 @@ namespace Cascade.Presentation
         }
         IEnumerator Land(bool arrival)
         {
+            game.Machine.LandWeight(game.VisibleFrame.ActiveFloor);
             float duration = game.ReducedMotion ? profile.reducedStep : profile.landing, time = 0;
             while (time < duration) {
-                float squash = game.ReducedMotion ? 0 : Mathf.Sin(time/duration*Mathf.PI)*profile.landingSquash;
-                for (int i = 0; i < game.VisibleFrame.Row.Count; i++) game.OffsetPresentedToken(i, Vector3.zero, new Vector2(1+squash*.5f,1-squash));
+                for (int i = 0; i < game.VisibleFrame.Row.Count; i++){
+                    float t=Mathf.Clamp01(time/duration),pulse=game.ReducedMotion?0:Mathf.Sin(t*Mathf.PI*2)*Mathf.Exp(-t*3);
+                    float squash=pulse*profile.landingSquash;
+                    game.OffsetPresentedToken(i,Vector3.up*Mathf.Max(0,-pulse)*.05f,new Vector2(1+squash*.5f,1-squash));
+                    game.Machine.SetPiecePose(i,PiecePose.Settling,pulse*(i%2==0?1:-1)*2);
+                }
                 time += Time.unscaledDeltaTime; yield return null;
             }
             game.RenderFrame(game.VisibleFrame, arrival);

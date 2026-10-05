@@ -32,6 +32,10 @@ colors:
   platform-mint: "#53AE9E"
   device-coral: "#E38370"
   contact-shadow: "rgb(11% 23% 25% / 28%)"
+  wood-fallback: "rgb(65% 35% 13%)"
+  hemp-rope: "rgb(73% 51% 26%)"
+  wood-chip-dark: "rgb(64% 32% 12%)"
+  wood-chip-light: "rgb(89% 60% 28%)"
 typography:
   menu-title:
     fontFamily: "Balsamiq Sans"
@@ -157,7 +161,7 @@ components:
   shape-token:
     backgroundColor: "{colors.triangle-yellow}"
   platform:
-    backgroundColor: "{colors.platform-mint}"
+    backgroundColor: "{colors.wood-fallback}"
     textColor: "{colors.ui-ink}"
   receiver:
     backgroundColor: "{colors.receiver-ivory}"
@@ -174,7 +178,7 @@ components:
 
 **Creative North Star: "The Sky Wind Workshop"**
 
-A small keeper carries light through floating islands and wind-powered toy machines. Mint enamel, warm brass, ivory letter tiles and six colored silhouettes make the puzzle tangible. Mika's patched overalls, saffron scarf and lantern connect the mechanism to a warm, imperfect character. Painted regional skies and isometric routes give each delivery a place and a neighbour.
+A small keeper carries light through floating islands and wind-powered toy machines. Painted honey wood, braided hemp, warm brass, ivory letter tiles and six colored silhouettes make the puzzle tangible. Mika's patched overalls, saffron scarf and lantern connect the mechanism to a warm, imperfect character. Painted regional skies and isometric routes give each delivery a place and a neighbour.
 
 Real beveled meshes, an orthographic view, live lettering and separate illustrated scenery share the same bright storybook world. The hand touches the row directly; quiet controls leave room for the machine and its complete gold destination. Paper panels support short dialogue and navigation. This is the author-delegated, code-led extension of the established world; no approved composite image exists for pixel-perfect fidelity claims.
 
@@ -192,9 +196,8 @@ alpha/margin limitations are in `Docs/META_ASSET_PROVENANCE.md`. This ordinary
 extension adds no shared visual tokens. `Reports/P17/README.md` records 333/333
 EditMode, 46/47 full PlayMode and a corrected focused 1/1 navigation result,
 plus 44 inspected native frames, including three requested carousel views. The
-independent verdict scores both listed findings resolved, disposition ship at P17 scope. The wooden/rope,
-weight/fall, pictorial-device, wide-screen and menu revision in
-`Docs/VISUAL_MOTION_REWORK.md` is later pending work, not this implemented world.
+independent verdict scores both listed findings resolved, disposition ship at P17 scope. The approved wooden workshop extension now follows the contracts in
+`Docs/VISUAL_MOTION_REWORK.md` and `Docs/WOODLAND_SURFACE_BRIEF.md`.
 
 P18 makes two narrow clarity corrections within this world: the stable `Hint`
 key displays `Помощь`/`Поміч` in RU/UK, and map paging reuses the authored
@@ -205,16 +208,33 @@ and UK map against the existing system. The 3/3 focused tests and matching
 157-puzzle traces establish their stated behavior boundaries; the roughly
 100 ms whole-Editor frame observation is not a device performance pass.
 Physical devices, final player build, child comprehension and human enjoyment
-remain unverified. This phase adds no visual tokens or artwork and leaves the
-wooden/rope, motion, pictorial-device, wide-screen and menu revision pending.
+remain unverified. This historical phase added no visual tokens or artwork. The current wood,
+motion and world extension is recorded below.
+
+The current extension uses `ToyMachineView.Woodland.cs`, `PuzzleEventPlayer.cs`,
+`CascadeGame.DeviceDemo.cs`, `WoodBoardGraphic.cs`, `WorldMotion.cs`,
+`WorldWeatherGraphic.cs`, `LayeredWorld.cs` and the expanded `JourneyStory.cs`.
+Eight regional art kits now cover 160 stops over 33 pages; three original kits
+are retained and five original Base/Map pairs plus WoodBoard are documented in
+`Docs/WOODLAND_ASSET_PROVENANCE.md`. Source-piece trajectories and board springs
+are presentation effects over the unchanged deterministic rule core. Native
+stills and sampled motion live in `Reports/Woodland`; the 5/5 EditMode and
+16/16 focused PlayMode checkpoint predates the final guide/CanvasRenderer fix.
+The final renderer correction passed 4/4 affected UI regressions in
+`Reports/WoodlandFix/playmode.xml` at 11:29:09–11:29:16 UTC; fresh native guide,
+map and bag captures show wood/weather. Independent final disposition remains
+pending at this pass; player-build status is tracked in the validation report. Physical iOS/Android, haptics, performance,
+non-reader understanding, native editorial, live Ads/IAP and human enjoyment
+remain NOT RUN. The service boundary is disabled mock code; online and Long
+Reach remain design-only.
 
 **Key Characteristics:**
 - Direct touch lifts a piece and its live glyph together; the receiver stays visible.
-- Six stable silhouettes and colors remain readable across all three regions.
-- Enamel rails, brass joints and soft contact shadows make the machine tangible.
+- Six stable silhouettes and colors retain their identity across eight regions.
+- Wood grain, hemp suspension, brass joints and soft contact shadows make the machine tangible.
 - Mika, Pip and Rue connect short optional dialogue to a concrete destination.
 - Illustrated routes distinguish the current path from future-region browsing.
-- Clouds, rooted plants, a glider and the lower-right windwheel give the sky restrained life.
+- Separate clouds, rooted plants, a glider and regional weather give the sky restrained life.
 
 ## Colors
 
@@ -224,7 +244,9 @@ Warm paper and brass anchor a mint, coral, lilac, yellow, sky and apricot toy pa
 
 - **Hardware Gold** marks receiving rims, sockets, selection frames and mechanical joints.
 - **Drop Gold** marks the committed Descend/Deliver action and primary travel/dialogue actions; the historical token name remains stable.
-- **Platform Mint** is the Wind Gardens rail, repair body and alternating windwheel sail. Rain Mill rails use Star Sky; Copper Orchard rails use Device Coral with Receiver Ivory highlights.
+- **Painted honey wood** is the native WoodBoard texture, framed to its solid body band; its grain is not represented by a flat color token. **Wood Fallback** is used only if that texture is unavailable. The platform component's flat fill reference records that fallback, not a measured average of the painted plank.
+- **Hemp Rope** colors suspension and knots. **Wood Chip Dark** and **Wood Chip Light** alternate in short collapse debris.
+- **Platform Mint** retains its existing ID for legacy assets and enamel details; it no longer describes the current plank surface. Hardware and symbol colors remain independent of regional scenery.
 
 ### Secondary
 
@@ -261,7 +283,7 @@ Frontmatter `px` type values describe Unity reference-canvas units, not measured
 
 ## Layout
 
-The camera-space uGUI canvas uses a 390 × 844 reference resolution with height scaling and `Screen.safeArea`. Wide Editor views cap content at 430 reference units while the scenery fills the viewport. The composition remains portrait; there is no separate landscape machine layout.
+The camera-space uGUI canvas uses a 390 × 844 reference resolution with height scaling and `Screen.safeArea`. Wide Editor views cap content at 430 reference units while the scenery fills the viewport. The machine composition remains portrait. At camera aspect ratios above 1.05, full-height architectural side wings flank a quiet central sky crop, with Mika beside the workshop; this is the current composed wide scenery.
 
 ### Direct play
 
@@ -273,13 +295,13 @@ Precision input is explicitly enabled in Comfort and is off by default, includin
 
 ### Journey and dialogue
 
-The map uses a tall illustrated five-stop route between a compact paper heading and a lower task panel. A map stop is 62 × 60 reference units; page controls are 76 × 60. The source image is stretched into its normalized map rectangle by the current uGUI implementation; this is not a cover-fit or pixel-perfect raster-registration guarantee. The current map reuses each regional illustration over its five-stop pages. Mika appears only on the actual next stop from local first-clear receipts, never on a locked future preview. The future footer gives distance and a return action.
+The map uses a tall illustrated five-stop route between a compact paper heading and a lower task panel. A map stop is 62 × 60 reference units; page controls are 76 × 60. The source image is stretched into its normalized map rectangle by the current uGUI implementation; this is not a cover-fit or pixel-perfect raster-registration guarantee. The current map reuses each of eight regional illustrations over its regional pages. There are 33 pages: usually five stops, with four on the final page of each new 24-stop region. Stop placement follows the painted plazas using region-specific anchors. Mika appears only on the actual next stop from local first-clear receipts, never on a locked future preview. The future footer gives distance and a return action.
 
 Dialogue places a large transparent character above/behind a low paper frame. A thin brass line, Bold speaker name, short Regular sentence and separate Continue/Skip story actions provide hierarchy. Story entry explicitly selects the character's region. Dialogue blocks puzzle input.
 
 ### Travel bag and earned objects
 
-Map Menu opens the travel bag. Journal, workshop, stamp trails and personal
+Map Menu opens the travel bag, where Mika sits above a WoodBoard bench in the authored world. Journal, workshop, stamp trails and personal
 routes become available after three restored lights; Settings and Back to map
 remain in the same bag. Item views use one large alpha illustration, short live
 copy, separate previous/next controls and a clear lower action. The journal
@@ -303,9 +325,9 @@ Soft contact quads use `(1 − smoothstep(0.25, 1, radius))²` alpha, tinted by 
 
 A held piece lifts immediately with its glyph. Its preview scales toward a 64-rendered-pixel face, clamped to 1.10–2.5 times the base size. Horizontal travel is bounded to 1.15 cell spacings; upward drag adds at most 0.45 spacings above its hold lift. The input cells remain stationary. Releasing elsewhere, pointer cancellation, pause or focus loss returns the presentation without spending a move.
 
-Committed exchanges use 190 ms cubic ease-out with short opposing arcs. Contact, bomb and fracture steps last 180, 240 and 130 ms. A whole-row fall uses 300 ms smoothstep followed by 110 ms landing, at most 8% squash and 0.025 world-unit local recoil. Delivery holds for 340 ms. Reduced Motion substitutes 55 ms state holds and at most two stationary dust fades per burst. Selection focus uses 100 ms or an immediate reduced-motion state. Screen shake is opt-in and off by default; Reduced Motion suppresses it. Dust and audio tails never determine command completion.
+Committed exchanges use 190 ms cubic ease-out with short opposing arcs. Contact, bomb and fracture steps last 180, 240 and 130 ms. A 300 ms fall maps each source piece to its committed destination, with quadratic vertical travel, small stagger and bounded opposing rotation. A 110 ms damped settling pulse follows, with at most 8% squash and 0.025 world-unit local recoil. The loaded wood strip bends and suspension sways through bounded decorative springs; holding a piece removes its apparent weight. Delivery holds for 340 ms. Reduced Motion substitutes 55 ms state holds and at most two stationary dust fades per burst. Selection focus uses 100 ms or an immediate reduced-motion state. Screen shake is opt-in and off by default; Reduced Motion suppresses it. Dust and audio tails never determine command completion.
 
-Three distinct far landscapes cover the viewport. Shared transparent clouds move at three speeds, lower-edge plants sway about their stems, and the original windwheel turns at 7 degrees per second from an 18-degree base. Regional tints adapt the shared cloud/plant layers. The whole rotated glider is bounded to the empty gap between feedback and the top floor; it hides during a held-token gesture and if no gap remains. All ambient motion is view-only. Pause and suspension stop phase progression; Reduced Motion displays phase zero and the fixed wheel angle. Map and dialogue use a static ambient phase because they pause the puzzle interaction.
+Eight distinct far landscapes cover the viewport. Shared transparent clouds move at three speeds, lower-edge plants sway about their stems, and rain, snow or pollen occupy separate scenery layers by region. The incidental lower-right windwheel is hidden. Regional tints adapt cloud/plant layers. The whole rotated glider is bounded to the empty gap between feedback and the top floor; it hides during a held-token gesture and if no gap remains. All ambient motion is view-only. Explicit pause and suspension stop phase progression; Reduced Motion displays phase zero. Map and dialogue can keep their decorative clock running while puzzle input is paused. Quiet generated wind/rain beds follow Sound and explicit pause/suspension preferences; physical listening has not been verified.
 
 **The Clear Flight Rule.** Decorative motion must fit wholly outside the row, receiver and feedback; a lower render layer alone is not sufficient separation.
 
@@ -327,11 +349,13 @@ Pressing a shape or letter gives immediate lift and a larger held face; legal ad
 
 ### Platforms and devices
 
-Thin colored enamel beams, ivory highlights and gold caps carry the original lock, bomb, key, repair, stamp, fragile, linked and bridge hardware. Up to three graphite seams show damage. Contact faces use the shared symbol identity; visibility follows committed state. Rain Mill and Copper Orchard change the rail material without changing symbol colors or puzzle rules.
+Compact painted wood strips carry the original lock, bomb, key, repair, stamp, fragile, linked and bridge hardware. Hemp strands run from the board end attachments toward fixed upper pegs; the native WoodBoard body-band framing preserves its alpha and grain. Warm strength pips and up to three graphite seams disclose damage. Forecast pips turn coral when the held command would consume strength. Bomb contacts carry the required face and remaining fuse beads; their state follows the committed resolver events. Collapse emits bounded wood chips, and source pieces travel to their exact destination before settling. Contact faces retain shared SymbolId identity and live glyphs. The wood texture is unlit; shape plastics and brass retain their incumbent material treatment.
+
+The nine device-guide demonstrations read precomputed transitions from the same resolver without owning the playable attempt. Entry shows landing and row rotation; linked pairs move together, fragile crossings lose strength, bridge folds, gate opens, repair mends and bomb defuse/blast change the board. Optional captions stay live in EN/RU/UK. Reduced Motion presents stationary translucent before silhouettes and the settled after state; it does not animate a causal path. Non-reader understanding remains a human-test question.
 
 ### Map route
 
-The isometric illustration, numbered stop buttons, small path pebbles and Mika marker express travel. Restored count and unlocked stop come from the existing 40-puzzle catalog and durable local first-clear receipts, deduplicated by campaign node across modes and locales. The gold action says Let's go, Continue or Play again where available; future pages explain remaining stops and offer Back to my path. Lessons retains the existing level/mode browser. These are three regional art kits and eight five-stop pages, not 160 new campaign puzzles.
+The isometric illustration, numbered stop buttons, small path pebbles and Mika marker express travel. Restored count and unlocked stop come from the expanded 160-node catalog and durable local first-clear receipts, deduplicated by campaign node across modes and locales. The gold action says Let's go, Continue or Play again where available; future pages explain remaining stops and offer Back to my path. Lessons retains the existing level/mode browser. Eight regional kits span 33 pages. Only Mika at the actual current stop moves softly; restored path pebbles stay lit. Clouds and rain/snow use separate live UI layers. An earned seal marks a saved solver-proven stamp-goal record, without adding a reward field or restricting ordinary travel. Ten late optional detours belong to the new campaign content.
 
 Map paging uses the same native `DirectionButton` and `ChevronGraphic` as
 precision focus controls. A dark authored left/right chevron replaces the
@@ -395,6 +419,6 @@ Comfort enables large previous/next focus controls and left/right exchanges with
 - **Don't** bake gameplay text into imagery or change symbol identity to indicate state.
 - **Don't** let presentation, animation completion, scenery, physics or ad callbacks change puzzle state.
 - **Don't** portray browsed islands as reached, an unsuccessful write as saved, or unreadable progress as restored.
-- **Don't** describe the 160-stop target, Long Reach, online concept or pending wooden-island presentation revision as implemented.
+- **Don't** describe Long Reach, online concepts or disabled mock Ads/IAP boundaries as live integration.
 - **Don't** copy ShapeMania screens, characters, sprites, props or materials into this world.
 - **Don't** equate Editor captures and automated tests with device, haptic, performance, build, native-language or human-enjoyment proof.

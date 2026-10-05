@@ -214,10 +214,41 @@ namespace Cascade.Tests
             yield return MouseFrame(Point(1), true); yield return MouseFrame(Point(1), false);
             yield return MouseFrame(Point(2), true); yield return MouseFrame(Point(2), false); yield return AwaitPresentation();
             Assert.That(game.Interaction.Attempt.Current.BridgeUsed, Is.True);
-            Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Any(t => t.name == "Devices" && t.text.Contains("Locked 2")), Is.True);
+            Assert.That(game.Machine.GetComponentsInChildren<MeshRenderer>().Any(t => t.name == "Edge latch 1" && t.enabled && t.gameObject.activeInHierarchy), Is.True);
             yield return ClickButton("Undo");
             Assert.That(game.Interaction.Attempt.Current.BridgeUsed, Is.False);
             Assert.That(game.Interaction.Attempt.Resolver.IsEdgeOpen(game.Interaction.Attempt.Current, 1), Is.True);
+        }
+        [UnityTest] public IEnumerator DeviceGuidesAndWeatherHaveNativeRenderersWithoutChangingTheAttempt()
+        {
+            game.LoadNode("C13");yield return null;string hash=game.Interaction.Attempt.CurrentStateHash;
+            game.ReducedMotion=true;game.ShowDevices();
+            for(int i=0;i<9;i++){
+                yield return null;yield return null;Canvas.ForceUpdateCanvases();
+                foreach(var graphic in game.GetComponentsInChildren<WoodBoardGraphic>()){
+                    Assert.That(graphic.canvasRenderer,Is.Not.Null);Assert.That(graphic.canvasRenderer.GetMesh().vertexCount,Is.EqualTo(4));
+                    Assert.That(graphic.mainTexture.name,Is.EqualTo("WoodBoard"));
+                }
+                Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));yield return ClickButton("Next");
+            }
+            game.ShowJourney();yield return ClickButton("Later");yield return ClickButton("Later");yield return ClickButton("Later");
+            yield return null;Canvas.ForceUpdateCanvases();var weather=game.GetComponentsInChildren<WorldWeatherGraphic>();Assert.That(weather.Length,Is.EqualTo(1));
+            Assert.That(weather[0].canvasRenderer,Is.Not.Null);Assert.That(weather[0].canvasRenderer.GetMesh().vertexCount,Is.GreaterThan(0));
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+        }
+        [UnityTest] public IEnumerator WoodWeightAndGlyphDepthRemainPresentationOnly()
+        {
+            game.LoadNode("C37");var words=game.Catalog.LocalizedLevels.First(c=>c.Definition.CampaignNodeId=="C37"&&c.Locale=="ru");game.LoadLevel(words.Definition,"ru");
+            yield return null;game.RefreshLayout();yield return new WaitForSecondsRealtime(.7f);
+            string hash=game.Interaction.Attempt.CurrentStateHash;float loaded=game.Machine.LoadedSag;
+            Assert.That(loaded,Is.GreaterThan(.015f));
+            var label=game.SlotViews[0].GetComponentInChildren<TextMeshProUGUI>();
+            Assert.That(label.text,Is.Not.Empty);Assert.That(label.transform.position.z,Is.LessThan(game.Machine.TokenVisualPosition(0).z));
+            game.Machine.SetHeldWeight(0);game.Machine.SetPiecePose(0,PiecePose.Held);
+            yield return new WaitForSecondsRealtime(.7f);Assert.That(game.Machine.LoadedSag,Is.LessThan(loaded-.002f));
+            game.Interaction.SetPaused(true);float paused=game.Machine.LoadedSag;
+            yield return new WaitForSecondsRealtime(.1f);Assert.That(game.Machine.LoadedSag,Is.EqualTo(paused));
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
         }
         [UnityTest] public IEnumerator ToyPresentationFreezesAmbientAndNeverChangesPuzzleState()
         {

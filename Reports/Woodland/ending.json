@@ -1,0 +1,21 @@
+{
+    "width": 390,
+    "height": 844,
+    "minimumDeviceTextPixels": 0.0,
+    "buttons": [
+        {
+            "name": "Lookatourjourney",
+            "x": 39.00000762939453,
+            "y": 109.72002410888672,
+            "width": 312.0,
+            "height": 59.99999237060547
+        },
+        {
+            "name": "Myjournal",
+            "x": 39.00000762939453,
+            "y": 21.10003089904785,
+            "width": 312.0,
+            "height": 60.0
+        }
+    ]
+}

@@ -8,7 +8,7 @@ namespace Cascade.Presentation
     public sealed class ShapeFaceGraphic : MaskableGraphic
     {
         Mesh source;
-        public void SetShape(Mesh mesh, Color shade) { source = mesh; color = shade; raycastTarget = false; SetVerticesDirty(); }
+        public void SetShape(Mesh mesh, Color shade) { if(source==mesh&&color==shade)return;source = mesh; color = shade; raycastTarget = false; SetVerticesDirty(); }
         protected override void OnPopulateMesh(VertexHelper helper)
         {
             helper.Clear(); if (source == null) return;
