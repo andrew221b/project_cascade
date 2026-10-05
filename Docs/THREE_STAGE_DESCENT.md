@@ -1,3 +1,7 @@
+# Current extension — 6 October 2026
+
+New version-2 plans add repair to the first stage, a bomb and a lower-deck stamp to the second. The published finale stays intact. Exact tested minima stay 2 → 5–6 → 6–11, 132 sampled definitions proven/replayed with no fallback. The version participates in the content hash. Version-1 saved plans still reconstruct their original first two stages and exact witnesses; partial checkpoints remain unrewarded. Completed explosions are captured and validated from replay so a bomb in stage 2 cannot count as a clean full run. See OUTCOME_AND_WORKSHOP_MOTION.md and Reports/OutcomeMotion/README.md.
+
 # Three-stage descent — 5 October 2026
 
 Record metadata gains optional SourceHash and StageCount (0 legacy / 3 descent). This lets the route journal show the published level/receiver and the full-run move total. Play this level starts a fresh three-stage delivery, not an alleged exact replay of an old adaptive recipe. Stronger-wood single-attempt recovery remains available for legacy pins; descent checkpoints keep their pinned recipes and free Retry/Hint, with director recovery applied to the next fresh descent.

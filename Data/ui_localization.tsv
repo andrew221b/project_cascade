@@ -436,7 +436,7 @@ Paired swaps	Paired swaps	Парные обмены	Парні обміни
 Tool challenge {0}	Tool challenge {0}	Задача с бонусом {0}	Задача з бонусом {0}
 Match the spool picture. Then drag past a neighbour.	Match the spool picture. Then drag past a neighbour.	Собери картинку катушки. Теперь можно обменять дальние фигуры.	Збери малюнок котушки. Тепер можна обміняти далекі фігури.
 Match the hourglass picture. The bomb waits for two swaps.	Match the hourglass picture. The bomb waits for two swaps.	Собери картинку часов. Бомба пропустит два обмена.	Збери малюнок годинника. Бомба пропустить два обміни.
-Shortest route: {0} moves	Shortest route: {0} moves	Кратчайший путь: {0} ходов	Найкоротший шлях: {0} ходів
+Shortest route: {0} moves	Shortest route: {0}	Кратчайший путь: {0} ходов	Найкоротший шлях: {0} ходів
 Wood strength: {0}	Wood strength: {0}	Прочность: {0}	Міцність: {0}
 Checking your puzzle…	Checking your puzzle…	Проверяем задачу…	Перевіряємо задачу…
 Could not check this puzzle. Try again or choose another.	Could not check this puzzle. Try again or choose another.	Не удалось проверить задачу. Попробуй ещё раз или выбери другую.	Не вдалося перевірити задачу. Спробуй ще раз або вибери іншу.
@@ -462,3 +462,11 @@ Row ready! Wind is next.	Row ready! Wind is next.	Ряд готов! Дальш�
 Row ready! Devices are next.	Row ready! Devices are next.	Ряд готов! Впереди устройства.	Ряд готовий! Попереду пристрої.
 Level {0} · 3 stages	Level {0} · 3 stages	Уровень {0} · 3 этапа	Рівень {0} · 3 етапи
 Play this level	Play this level	Пройти уровень	Пройти рівень
+Light delivered!	Light delivered!	Свет доставлен!	Світло доставлено!
+Let's try another way.	Let's try another way.	Попробуем иначе.	Спробуймо інакше.
+How to play	How to play	Как играть	Як грати
+Tools & effects	Tools & effects	Предметы и эффекты	Предмети й ефекти
+Drag a piece onto its neighbour. They change places.	Drag a piece onto its neighbour. They change places.	Перетащи деталь на соседнюю. Они поменяются местами.	Перетягни деталь на сусідню. Вони поміняються місцями.
+The little tag shows which piece the tool needs. Move that piece directly above the tool.	The little tag shows which piece the tool needs. Move that piece directly above the tool.	На табличке — нужная деталь. Поставь такую же прямо над предметом.	На табличці — потрібна деталь. Постав таку саму просто над предметом.
+The little tag shows which piece this tool needs.	The little tag shows which piece this tool needs.	Табличка показывает нужную деталь.	Табличка показує потрібну деталь.
+Make the row below. Then bring your row down.	Make the row below. Then bring your row down.	Собери ряд как внизу. Затем опусти его.	Склади ряд як унизу. Потім опусти його.

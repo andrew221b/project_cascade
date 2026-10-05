@@ -39,7 +39,7 @@ colors:
 typography:
   menu-title:
     fontFamily: "Balsamiq Sans"
-    fontSize: "32px"
+    fontSize: "30px"
     fontWeight: 700
   region-speaker:
     fontFamily: "Balsamiq Sans"
@@ -468,7 +468,7 @@ Comfort enables large previous/next focus controls and left/right exchanges with
 
 ### UI and motion polish — 2026-10-05
 
-Shared menu headings use left-aligned 32-point Balsamiq titles and 17-point descriptions on the same inset. Standard actions are 52 reference units high: warm gold for the next action, quieter cream for alternatives, plain Back links. Workshop paper is nearly opaque so the scenery does not create false dividers behind content. Settings uses full-width language choices, including the next-puzzle language. The collection keeps the cosmetic sky ribbon distinct from the functional blue spool. Selected/equipped gifts no longer offer a redundant action.
+Shared menu headings use centered 30-point Balsamiq titles and 17-point descriptions inside a 15% side inset, clear of the carved window frame. Standard actions are 52 reference units high: warm gold for the next action and quieter cream for alternatives, including Back. The opaque yellow menu sheet is removed. A portrait painted workshop window fills the phone, with quiet cool sky behind content and timber, cloth, tools and lanterns at the edges. Wide menus retain the complete landscape workshop. Cloud drift, distant light and sparse dust stay behind the UI; darker menu ink preserves reading contrast. Settings uses full-width language choices, including the next-puzzle language. The collection keeps the cosmetic sky ribbon distinct from the functional blue spool. Selected/equipped gifts no longer offer a redundant action.
 
 Gameplay guidance has a quiet cream backing, and wood/fuse counters use number-safe EN/RU/UK wording. Victory emphasizes Next delivery; failure emphasizes Retry. Menu arrival takes 160 ms without blocking input, button press compresses to 97.8%, and reduced motion skips both. Filled buttons expose a focus outline.
 
@@ -481,3 +481,7 @@ Wind now combines smooth irregular breeze with a bounded gust envelope; a landin
 Atmosphere uses slower cloud layers, a glider fade while holding a piece, and soft weather with edge fades. UI weather updates at most 30 times per second; world weather is bounded to 8/18 particles for Low/Full. Off removes both world and UI weather. Existing pause/suspension and reduced-motion clocks remain authoritative for scenery. No new bitmap assets or packages were needed.
 
 Three-stage gameplay keeps one receiver target and a compact level/1–3 counter in the existing header. Checkpoint feedback lives in the cream status band, with one gold Go lower action and the same free Retry/Undo controls. Short EN/RU/UK text describes the next stage. The finale's entry caption sits below hanging tools, including their sway clearance. During a 650 ms descent the old connected wooden rig rises away and the next arrives from below; mesh snapshots carry shapes, raised lettering, straps and device artwork together. The distant composition shifts more slowly, without blur or full-screen shake. The next stage is committed and saved before this cosmetic sequence. Reduced Motion replaces travel with a settled rig; focus loss, resize, menus and disable settle without replaying progression. The minimum counter is hidden during travel. Route notes name the level and three stages, and count the whole delivery.
+
+Outcome motion now has an authored lantern sequence: a finite staggered receiver bounce, warm receiver emission and pooled rising colored light seeds, followed by Mika and the result controls. Failure has a smaller uncertain wobble and the new thoughtful Mika; Retry fills the primary row when no stronger-wood action is offered. Receiver height interpolates into the result layout before the buttons appear. The glider stays clear of outcome copy. Reduced Motion preserves the result, color and visible static wood load while removing spatial motion. The required device symbol sits inside a bolted ivory tag on the tool's wooden crossbar, and the pause screen's How to play page explains it with the same animated assembly.
+
+Wood bow grows from about .10 to .27 world units with wear and relaxes after repair. The original logical strip thickness is independent of its expanded deformation/culling bounds. At exhaustion the duplicated center seam lets two halves release from their rope ends, followed by textured splinters. Shapes, letter faces, shadows, knots and hanging sockets follow their corresponding cosmetic deformation; the Domain never sees this simulation.

@@ -43,13 +43,29 @@ namespace Cascade.Tests
                     Assert.That(LevelValidator.SameMultiset(level.InitialSymbolIds,source.TargetSymbolIds),Is.True);
                     if(s>0)Assert.That(level.InitialSymbolIds,Is.EqualTo(source.TargetSymbolIds),"Carry the delivered row before its atomic arrival transform");
                 }
+                Assert.That(run.Version,Is.EqualTo(2));
+                Assert.That(run.Level(source,0).Floors[0].Repair,Is.Not.Null);
+                Assert.That(run.Level(source,1).Floors[0].Bomb,Is.Not.Null);
+                Assert.That(run.Level(source,1).Floors[1].OptionalStamp,Is.Not.Null);
                 var final=run.Level(source,2);for(int f=0;f<source.Floors.Count;f++) {
                     Assert.That(final.Floors[f].Bomb,Is.SameAs(source.Floors[f].Bomb));Assert.That(final.Floors[f].Key,Is.SameAs(source.Floors[f].Key));
                     Assert.That(final.Floors[f].Repair,Is.SameAs(source.Floors[f].Repair));Assert.That(final.Floors[f].Powerup,Is.SameAs(source.Floors[f].Powerup));
                 }
             }
-            string dir=Path.Combine(ReferenceFixtures.PackageRoot,"Reports","Descent");Directory.CreateDirectory(dir);File.WriteAllLines(Path.Combine(dir,"curves.csv"),lines);
+            string dir=Path.Combine(ReferenceFixtures.PackageRoot,"Reports","OutcomeMotion");Directory.CreateDirectory(dir);File.WriteAllLines(Path.Combine(dir,"curves.csv"),lines);
             Assert.That(proven,Is.GreaterThanOrEqualTo(120));
+        }
+        [Test] public void VersionOneRecipesKeepTheirExactDeviceFreeStagesAndOldHashFormula()
+        {
+            var source=catalog.GetPrimary("C81").Definition;var old=DescentRun.Build(source,version:1);
+            Assert.That(old.Version,Is.EqualTo(1));Assert.That(old.Level(source,0).Floors[0].Repair,Is.Null);
+            Assert.That(old.Level(source,1).Floors.All(f=>f.Bomb==null&&f.OptionalStamp==null),Is.True);
+            var first=Solve(old,source);old.AcceptCheckpoint(source,first);old.Validate(source,"en");
+            var current=new AttemptService(old.Level(source,1),direction:old.Direction);current.Execute(Command(old.Stages[1].Witness[0]));
+            var profile=new PlayerProfile{Descent=old,Attempt=AttemptRecord.Capture(current)};
+            Assert.That(profile.RestoreAttempt(catalog).CurrentStateHash,Is.EqualTo(current.CurrentStateHash));
+            var modern=DescentRun.Build(source);Assert.That(modern.ContentHash,Is.Not.EqualTo(old.ContentHash));
+            old.Version=2;Assert.Throws<ArgumentException>(()=>profile.RestoreAttempt(catalog));
         }
         [Test] public void CheckpointSaveRestoresExactlyAndRejectsAChangedFutureRecipe()
         {

@@ -110,6 +110,8 @@ Directed conditions are fixed before input and proved by the same exact solver. 
 
 Fresh uncleared journey deliveries C41–C160 have three stages sharing one exact receiver target and symbol multiset: a two-command warm-up, an arrival wind passage, and a device finale. The solver proves the complete plan before input; starting minima satisfy stage 1 < stage 2 <= stage 3. Completing a receiver enables Go lower, carries the row to a new wooden rig, and preserves that checkpoint. Retry affects the current stage. Stage 1/2 grant no campaign clear or parcel progress; the final delivery grants one level clear. Lessons, standalone contracts and legacy single saves keep their original flow.
 
+New version-2 descents put a repair tool in the two-command warm-up and a bomb plus lower-board stamp in the wind stage. The same exact solver proves all three stages before play. Earlier version-1 saved recipes retain their exact original definitions and route proofs; completed-stage explosion totals participate in full-run clean performance.
+
 Optional versioned descent recipes preserve all three stage definitions and completed command replays. Interruption during camera travel resumes the already committed next stage; motion cannot advance state. Full-descent records aggregate moves, hints and Undo over all stages, identify their original level and show three stages. Play this level starts a fresh descent; it does not claim an exact replay of an older adaptive recipe. No price, package or Domain rule version changed.
 
 Ribbon Reach is implemented as six separate optional workshop trials R01–R06,
@@ -260,3 +262,5 @@ remain unverified.
 - Recover from mistakes without coercion or payment.
 - Prefer useful choices over added device count or padded move count.
 - Inspect the running game, and state what remains unverified.
+
+The outcome pass removes the full yellow menu sheet in favor of a complete painted workshop window, animated clouds, gentle lantern daylight and quiet dust behind controls. Victory and failure have distinct finite lantern/Mika ceremonies; result buttons follow the ceremony, and receiver layout moves continuously into place. Hanging tool tags physically attach to their wooden carrier and an accessible How to play page explains the tag, direct dragging and receiver goal. Wood carries a visible static load, bows more with wear and splits into textured splinters when spent. These are cosmetic springs and event-driven poses, not gameplay physics. Two original raster assets were generated: WorkshopPortrait and MikaThinking; existing assets were preserved.

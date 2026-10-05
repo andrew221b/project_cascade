@@ -783,6 +783,44 @@ namespace Cascade.Tests
             var before=game.Interaction.Attempt.Current;game.SelectMode(PuzzleMode.Shapes);
             Assert.That(game.Interaction.Attempt.Current,Is.SameAs(before));
         }
+        [UnityTest] public IEnumerator OutcomeCeremoniesKeepControlsBackAndInterruptionSettlesBothResults()
+        {
+            foreach(bool success in new[]{true,false})foreach(bool reduced in new[]{false,true}){
+                game.LoadNode("C01");game.ShowGame();game.ReducedMotion=reduced;yield return AwaitPreparation();
+                game.Interaction.Execute(success?PuzzleCommand.Swap(0):PuzzleCommand.Drop);
+                string hash=game.Interaction.Attempt.CurrentStateHash;int moves=game.Interaction.Attempt.RouteLength;
+                double started=Time.realtimeSinceStartupAsDouble;
+                while(!game.Outcome.Running&&game.Interaction.IsPresenting&&PresentationBudget(started))yield return null;
+                Assert.That(game.Outcome.Running,Is.True);Assert.That(game.Outcome.Success,Is.EqualTo(success));
+                Assert.That(game.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b=>b.name=="Retry"),Is.False);
+                game.SendMessage("OnApplicationFocus",false);yield return null;
+                Assert.That(game.Outcome.Running,Is.False);Assert.That(game.Interaction.IsPresenting,Is.False);
+                Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));Assert.That(game.Interaction.Attempt.RouteLength,Is.EqualTo(moves));
+                game.SendMessage("OnApplicationFocus",true);yield return null;
+                Assert.That(game.CurrentScreen,Is.EqualTo(success?GameScreen.Win:GameScreen.Fail));AssertResultControlsClearReceiver();
+                game.ShowHowToPlay();yield return null;
+                Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Any(t=>t.text=="How to play"),Is.True);
+                game.CloseMenu();yield return null;Assert.That(game.Outcome.Running,Is.False);Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+            }
+        }
+        [UnityTest] public IEnumerator WearDeepensTheSupportedDeckAndReducedMotionKeepsItsStaticWeight()
+        {
+            var source=game.Catalog.GetPrimary("C03").Definition;
+            var floors=source.Floors.Select((f,i)=>i==0?new FloorDefinition(4,f.OpenEdges):f).ToArray();
+            game.LoadLevel(new LevelDefinition(source.PuzzleId,source.CampaignNodeId,source.SchemaVersion,source.RulesVersion,"presentation-weight-fixture",source.InitialSymbolIds,source.TargetSymbolIds,source.TargetSegments,floors));
+            game.ShowGame();game.ReducedMotion=false;yield return AwaitPreparation();yield return new WaitForSecondsRealtime(.5f);
+            float fresh=game.Machine.LoadedSag;
+            var board=game.Machine.GetComponentsInChildren<MeshRenderer>().First(r=>r.name=="Wooden suspended board").transform;
+            var vertices=board.GetComponent<MeshFilter>().sharedMesh.vertices;
+            float thickness=Vector2.Distance(Camera.main.WorldToScreenPoint(board.TransformPoint(vertices[0])),Camera.main.WorldToScreenPoint(board.TransformPoint(vertices[1])));
+            Assert.That(thickness,Is.GreaterThan(4),"The rendered wood must retain visible thickness even with an expanded culling bound.");
+            for(int i=0;i<3;i++){game.Interaction.Execute(PuzzleCommand.Swap(0));yield return AwaitPresentation();}
+            yield return new WaitForSecondsRealtime(.5f);Assert.That(game.Machine.LoadedSag,Is.GreaterThan(fresh+.07f));
+            string hash=game.Interaction.Attempt.CurrentStateHash;game.ReducedMotion=true;yield return null;
+            Assert.That(game.Machine.LoadedSag,Is.GreaterThan(.20f));Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+            game.Interaction.Execute(PuzzleCommand.Swap(0));yield return AwaitPresentation();
+            Assert.That(game.Feedback.ActiveParticleCount,Is.LessThanOrEqualTo(32));
+        }
         [UnityTest] public IEnumerator FailureOffersFreeRetryAndUndo()
         {
             game.Interaction.Execute(PuzzleCommand.Drop);yield return AwaitPresentation();

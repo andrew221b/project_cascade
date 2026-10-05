@@ -23,13 +23,14 @@ namespace Cascade.Presentation
         public float LoadedSag=>Frame!=null&&Frame.ActiveFloor<floors.Count?floors[Frame.ActiveFloor].sag:0;
         public void SetHeldWeight(int index){heldWeight=index;}
         public void LandWeight(int floor)
-        {if(!reducedMotion&&floor>=0&&floor<floors.Count)floors[floor].sagVelocity+=.25f;}
+        {if(!reducedMotion&&floor>=0&&floor<floors.Count)floors[floor].sagVelocity+=.55f;}
         public void SetPiecePose(int index,PiecePose pose,float angle=0)
-        {piecePoses[index]=pose;visualAngles[index]=reducedMotion?0:angle;ApplyPiece(index);}
+        {piecePoses[index]=pose;dynamicOffsets[index]=(pose==PiecePose.Falling||pose==PiecePose.Exchanging)?Vector3.zero:TokenSupportOffset(index);visualAngles[index]=reducedMotion?0:angle;ApplyPiece(index);}
+        public Vector3 TokenSupportOffset(int index)=>Frame.Status==PuzzleStatus.Playing?FloorPointOffset(Frame.ActiveFloor,restPositions[index],heldWeight!=index):Vector3.zero;
         public void ResetWoodPoses()
         {
             heldWeight=-1;forecastHp=null;
-            if(reducedMotion)foreach(var rig in floors){rig.sag=rig.sagVelocity=rig.sway=rig.swayVelocity=rig.roll=rig.rollVelocity=0;}
+            foreach(var rig in floors)rig.fracture=0;
             for(int i=0;i<tokens.Count;i++){dynamicOffsets[i]=Vector3.zero;visualAngles[i]=0;piecePoses[i]=Frame.Status==PuzzleStatus.Playing?PiecePose.Resting:PiecePose.Delivered;}
         }
         public void PreviewForecast(TransitionResult prediction)
@@ -55,10 +56,11 @@ namespace Cascade.Presentation
         }
         Mesh BoardMesh()
         {
-            const int columns=17;var vertices=new Vector3[columns*2];var uv=new Vector2[vertices.Length];var triangles=new int[(columns-1)*6];
-            for(int x=0;x<columns;x++)for(int y=0;y<2;y++){int i=x*2+y;vertices[i]=new Vector3(x/(columns-1f)-.5f,y-.5f,0);uv[i]=new Vector2(x/(columns-1f),y);}
-            for(int x=0;x<columns-1;x++){int i=x*6,v=x*2;triangles[i]=v;triangles[i+1]=v+1;triangles[i+2]=v+2;triangles[i+3]=v+1;triangles[i+4]=v+3;triangles[i+5]=v+2;}
-            var mesh=new Mesh{name="Flexible wooden strip"};mesh.vertices=vertices;mesh.uv=uv;mesh.triangles=triangles;mesh.RecalculateNormals();mesh.bounds=new Bounds(Vector3.zero,new Vector3(1,2,1));woodMeshes.Add(mesh);return mesh;
+            // Duplicate the centre seam: the halves can release from their rope hinges cleanly.
+            const int columns=18;var vertices=new Vector3[columns*2];var uv=new Vector2[vertices.Length];var triangles=new int[16*6];int triangle=0;
+            for(int x=0;x<columns;x++)for(int y=0;y<2;y++){int i=x*2+y;float u=(x<9?x:x-1)/16f;vertices[i]=new Vector3(u-.5f,y-.5f,0);uv[i]=new Vector2(u,y);}
+            for(int x=0;x<columns-1;x++){if(x==8)continue;int v=x*2;triangles[triangle++]=v;triangles[triangle++]=v+1;triangles[triangle++]=v+2;triangles[triangle++]=v+1;triangles[triangle++]=v+3;triangles[triangle++]=v+2;}
+            var mesh=new Mesh{name="Flexible wooden strip"};mesh.vertices=vertices;mesh.uv=uv;mesh.triangles=triangles;mesh.RecalculateNormals();mesh.bounds=new Bounds(Vector3.zero,new Vector3(1.1f,22,1));woodMeshes.Add(mesh);return mesh;
         }
         static void Spring(ref float position,ref float velocity,float target,float stiffness,float damping,float seconds)
         {
@@ -72,6 +74,10 @@ namespace Cascade.Presentation
             var rotation=Quaternion.Euler(0,0,rig.roll);
             float x=Mathf.Clamp01(local.x/Mathf.Max(.01f,rig.board.baseScale.x)+.5f);
             var bowed=local+(bend?Vector3.down*Mathf.Sin(x*Mathf.PI)*rig.sag:Vector3.zero);
+            if(bend&&rig.fracture>0){
+                float side=local.x<0?-1:1;var hinge=Vector3.right*side*.475f*rig.board.baseScale.x;
+                bowed=hinge+Quaternion.Euler(0,0,side*rig.fracture*11)*(bowed-hinge);
+            }
             return rotation*bowed-local+new Vector3(rig.sway,floorOffsets[floor],0);
         }
         public void TickWoodDynamics(float seconds)
@@ -83,13 +89,20 @@ namespace Cascade.Presentation
                 var rig=floors[f];bool loaded=Frame.Status==PuzzleStatus.Playing&&Frame.ActiveFloor==f;
                 int grounded=0;for(int i=0;i<tokens.Count;i++)if(heldWeight!=i&&piecePoses[i]!=PiecePose.Falling)grounded++;
                 float weight=loaded?grounded/(float)Mathf.Max(1,tokens.Count):0;
-                float targetSag=reducedMotion?0:.045f*weight;float wind=WindAt(f);
+                float targetSag=(.10f+.17f*rig.wear)*weight+rig.fracture*.09f;float wind=WindAt(f);
                 float tilt=reducedMotion?0:wind*.8f+(loaded&&heldWeight>=0?((heldWeight+.5f)/tokens.Count-.5f)*.45f:0);
-                if(reducedMotion)rig.sag=rig.sagVelocity=rig.sway=rig.swayVelocity=rig.roll=rig.rollVelocity=0;
+                if(reducedMotion){rig.sag=targetSag;rig.sagVelocity=rig.sway=rig.swayVelocity=rig.roll=rig.rollVelocity=0;}
                 Spring(ref rig.sag,ref rig.sagVelocity,targetSag,120,14,dt);
                 Spring(ref rig.sway,ref rig.swayVelocity,wind*.055f,38,8,dt);
                 Spring(ref rig.roll,ref rig.rollVelocity,tilt,32,7.5f,dt);
-                for(int i=0;i<rig.vertices.Length;i++){float x=(i/2)/16f;rig.vertices[i].y=(i%2)-.5f-Mathf.Sin(x*Mathf.PI)*rig.sag/Mathf.Max(.01f,rig.board.transform.localScale.y);}
+                for(int i=0;i<rig.vertices.Length;i++){
+                    int column=i/2;float x=(column<9?column:column-1)/16f;
+                    float width=rig.board.baseScale.x,height=Mathf.Max(.01f,rig.board.baseScale.y);
+                    float side=column<9?-1:1,pivot=side*.475f;
+                    var point=new Vector3((x-.5f-pivot)*width,((i%2)-.5f)*height-Mathf.Sin(x*Mathf.PI)*rig.sag,0);
+                    point=Quaternion.Euler(0,0,side*rig.fracture*11)*point;
+                    rig.vertices[i]=new Vector3(pivot+point.x/width,point.y/height,0);
+                }
                 rig.bendMesh.vertices=rig.vertices; // Static bounds already enclose the small cosmetic deflection.
                 foreach(var part in rig.parts) {
                     if(rig.rope.Contains(part)) {
@@ -116,7 +129,8 @@ namespace Cascade.Presentation
             var stretch=visualStretch[index];if(stretch==Vector2.zero)stretch=Vector2.one;
             var token=tokens[index].transform;token.position=restPositions[index]+dynamicOffsets[index]+visualOffsets[index];
             bool supported=Frame.Status==PuzzleStatus.Playing&&piecePoses[index]!=PiecePose.Falling&&piecePoses[index]!=PiecePose.Exchanging;
-            token.localScale=Vector3.Scale(restScales[index],new Vector3(stretch.x,stretch.y,1));token.rotation=Quaternion.Euler(0,0,visualAngles[index]+(supported?floors[Frame.ActiveFloor].roll:0));
+            float supportAngle=supported?floors[Frame.ActiveFloor].roll+((restPositions[index].x<floors[Frame.ActiveFloor].board.basePosition.x?-1:1)*floors[Frame.ActiveFloor].fracture*11):0;
+            token.localScale=Vector3.Scale(restScales[index],new Vector3(stretch.x,stretch.y,1));token.rotation=Quaternion.Euler(0,0,visualAngles[index]+supportAngle);
             if(index<tokenShadows.Count) {
                 var shadow=tokenShadows[index];float lift=Mathf.Max(0,visualOffsets[index].y);
                 var shadowOffset=supported?FloorPointOffset(Frame.ActiveFloor,shadow.basePosition,true):dynamicOffsets[index];

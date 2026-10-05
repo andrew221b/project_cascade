@@ -9,9 +9,18 @@ namespace Cascade.Presentation
         Material letterMaterial;
         Material targetSocketMaterial;
         Texture2D letterGrain;
+        MaterialPropertyBlock receiverLight;
+
+        public void SetReceiverLight(float value)
+        {
+            if(receiverLight==null)return;
+            receiverLight.SetColor("_EmissionColor",new Color(1,.70f,.28f)*Mathf.Clamp01(value)*.30f);
+            foreach(var body in targetBodies)body.renderer.SetPropertyBlock(receiverLight);
+        }
 
         void InitializePieceMaterials()
         {
+            receiverLight=new MaterialPropertyBlock();
             candyMaterials = new Material[art.colors.Length];
             for (int i = 0; i < candyMaterials.Length; i++) {
                 var material = new Material(art.colors[i]) { name = "Glazed " + art.colors[i].name };
@@ -22,6 +31,7 @@ namespace Cascade.Presentation
                 material.SetFloat("_ClearCoatMask", .64f);
                 material.SetFloat("_ClearCoatSmoothness", .87f);
                 material.EnableKeyword("_CLEARCOAT");
+                material.EnableKeyword("_EMISSION");
                 candyMaterials[i] = material;
             }
             targetSocketMaterial=new Material(art.teal){name="Deep lagoon target socket"};
@@ -37,6 +47,7 @@ namespace Cascade.Presentation
             letterMaterial.SetFloat("_ClearCoatMask", .38f);
             letterMaterial.SetFloat("_ClearCoatSmoothness", .82f);
             letterMaterial.EnableKeyword("_CLEARCOAT");
+            letterMaterial.EnableKeyword("_EMISSION");
             // Soft marbled ceramic, kept broad enough to survive phone downsampling.
             letterGrain = new Texture2D(128, 128, TextureFormat.RGB24, true, false) { name = "Warm ivory glaze", wrapMode = TextureWrapMode.Clamp, filterMode = FilterMode.Trilinear };
             var pixels = new Color32[128 * 128];

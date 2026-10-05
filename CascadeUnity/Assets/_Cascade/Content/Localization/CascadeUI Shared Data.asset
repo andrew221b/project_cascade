@@ -1880,6 +1880,39 @@ MonoBehaviour:
     m_Key: Play this level
     m_Metadata:
       m_Items: []
+  - m_Id: 214820774207488
+    m_Key: Light delivered!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 214820778401792
+    m_Key: Let's try another way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 214820778401793
+    m_Key: How to play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 214820778401794
+    m_Key: Tools & effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 214820778401795
+    m_Key: Drag a piece onto its neighbour. They change places.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 214820778401796
+    m_Key: The little tag shows which piece the tool needs. Move that piece directly
+      above the tool.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 214820778401797
+    m_Key: The little tag shows which piece this tool needs.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 214820778401798
+    m_Key: Make the row below. Then bring your row down.
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

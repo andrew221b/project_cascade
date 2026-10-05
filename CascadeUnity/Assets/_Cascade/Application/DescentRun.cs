@@ -28,14 +28,15 @@ namespace Cascade.Application
     // A checkpoint sequence owns only recipes and replay proofs. Each stage uses the same resolver.
     public sealed class DescentRun
     {
-        public int Version=1;
+        public int Version=2;
+        public int CompletedExplosions;
         public string SourceHash;
         public DirectionRecipe Direction;
         public DescentStage[] Stages;
         public List<AttemptRecord> Completed=new List<AttemptRecord>();
         public int StageIndex=>Completed.Count;
         public bool IsFinal=>StageIndex==2;
-        public string ContentHash=>Hash("descent-v1|"+SourceHash+"|"+DirectionKey()+"|"+string.Join("|",Stages.Select(s=>s?.Fingerprint??"pending")));
+        public string ContentHash=>Hash("descent-v"+Version+"|"+SourceHash+"|"+DirectionKey()+"|"+string.Join("|",Stages.Select(s=>s?.Fingerprint??"pending")));
         public string StageHash(int stage)=>Hash(ContentHash+"|stage|"+stage);
         string DirectionKey()=>Direction==null?"steady":((int)Direction.Mood+":"+string.Join(",",Direction.Durability)+":"+Direction.WindFloor+":"+Direction.WindRight);
         static string Hash(string value){using(var sha=SHA256.Create())return BitConverter.ToString(sha.ComputeHash(Encoding.UTF8.GetBytes(value))).Replace("-","").ToLowerInvariant();}
@@ -51,8 +52,25 @@ namespace Cascade.Application
                 if(second!=first&&initial[second]!=initial[second+1])Swap(initial,second);
             }
             FloorDefinition[] floors;
-            if(stage==0)floors=new[]{new FloorDefinition(recipe.Wood[0],open)};
-            else if(stage==1)floors=new[]{new FloorDefinition(recipe.Wood[0],open,entryTransform:recipe.Arrival),new FloorDefinition(recipe.Wood[1],open)};
+            if(stage==0) {
+                RepairDefinition repair=null;
+                if(Version>=2) {
+                    // Undoing the second warm-up exchange restores this displaced symbol first.
+                    var restored=initial.ToArray();int first=Enumerable.Range(0,n-1).First(i=>basis.TargetSymbolIds[i]!=basis.TargetSymbolIds[i+1]);
+                    var once=basis.TargetSymbolIds.ToArray();Swap(once,first);
+                    int second=Enumerable.Range(0,n-1).FirstOrDefault(i=>i!=first&&once[i]!=once[i+1]);
+                    Swap(restored,second);
+                    int slot=Enumerable.Range(0,n).First(i=>initial[i]!=basis.TargetSymbolIds[i]&&restored[i]==basis.TargetSymbolIds[i]);
+                    repair=new RepairDefinition(slot,basis.TargetSymbolIds[slot],1);
+                }
+                floors=new[]{new FloorDefinition(recipe.Wood[0],open,repair:repair)};
+            }
+            else if(stage==1) {
+                int slot=recipe.Arrival==EntryTransform.ShiftRightOne?0:n-1;
+                var bomb=Version>=2?new BombDefinition(slot,basis.TargetSymbolIds[slot],Math.Min(6,n+1),1):null;
+                var stamp=Version>=2?new ContactDefinition(n/2,basis.TargetSymbolIds[n/2]):null;
+                floors=new[]{new FloorDefinition(recipe.Wood[0],open,entryTransform:recipe.Arrival,bomb:bomb),new FloorDefinition(recipe.Wood[1],open,optionalStamp:stamp)};
+            }
             else floors=basis.Floors.Select((f,i)=>new FloorDefinition(recipe.Wood[i],f.OpenEdges,f.FragileEdges,f.LinkedPair,
                 i==0?recipe.Arrival:f.EntryTransform,f.Bomb,f.Key,f.Repair,f.OneUseBridgeEdge,f.OptionalStamp,f.Powerup)).ToArray();
             return new LevelDefinition(basis.PuzzleId,basis.CampaignNodeId,basis.SchemaVersion,basis.RulesVersion,
@@ -66,13 +84,13 @@ namespace Cascade.Application
             run.Stages[stage].Minimum=result.OptimalActions.Value;run.Stages[stage].Witness=result.Path.Select(c=>c.ToString()).ToArray();return true;
         }
         public static DescentRun Build(LevelDefinition source,DeliveryMood mood=DeliveryMood.Steady,
-            CancellationToken cancellation=default,int budget=PuzzleSolver.DefaultStateBudget)
+            CancellationToken cancellation=default,int budget=PuzzleSolver.DefaultStateBudget,int version=2)
         {
-            if(!DeliveryDirector.CanDirect(source)||source.TargetSymbolIds.Distinct().Count()<2)return null;
+            if((version!=1&&version!=2)||!DeliveryDirector.CanDirect(source)||source.TargetSymbolIds.Distinct().Count()<2)return null;
             var direction=DeliveryDirector.Plan(source,mood);
-            var run=new DescentRun {SourceHash=source.ContentHash,Direction=direction,Stages=new DescentStage[3]};
+            var run=new DescentRun {Version=version,SourceHash=source.ContentHash,Direction=direction,Stages=new DescentStage[3]};
             var basis=run.Directed(source);int n=basis.TargetSymbolIds.Count;
-            run.Stages[0]=new DescentStage{Wood=new[]{2}};
+            run.Stages[0]=new DescentStage{Wood=new[]{version==1?2:1}};
             run.Stages[1]=new DescentStage{Arrival=int.Parse(source.CampaignNodeId.Substring(1))%2==0?EntryTransform.ShiftRightOne:EntryTransform.ShiftLeftOne,
                 Wood=new[]{Math.Max(1,(n-1)/2),Math.Max(1,n-(n-1)/2)}};
             if(!Prove(run,source,0,cancellation,budget)||!Prove(run,source,1,cancellation,budget)
@@ -103,9 +121,10 @@ namespace Cascade.Application
         }
         public void Validate(LevelDefinition source,string locale)
         {
-            if(Version!=1||source.ContentHash!=SourceHash||!DeliveryDirector.CanDirect(source)||Stages==null||Stages.Length!=3
+            if((Version!=1&&Version!=2)||CompletedExplosions<0||source.ContentHash!=SourceHash||!DeliveryDirector.CanDirect(source)||Stages==null||Stages.Length!=3
                 ||Completed==null||Completed.Count>2||source.TargetSymbolIds.Distinct().Count()<2)throw new ArgumentException("Invalid descent checkpoint.");
             Directed(source);
+            int explosions=0;
             for(int i=0;i<3;i++) {
                 var s=Stages[i];if(s==null||s.Wood==null||s.Wood.Length!=(i==0?1:i==1?2:source.Floors.Count)
                     ||s.Wood.Any(w=>w<1||w>12)||!Enum.IsDefined(typeof(EntryTransform),s.Arrival)
@@ -114,10 +133,11 @@ namespace Cascade.Application
                     throw new ArgumentException("Invalid descent stage recipe.");
                 Replay(Level(source,i),locale,s.Witness);
                 if(i<Completed.Count) {
-                    var done=AttemptService.Restore(Level(source,i),Completed[i]);
+                    var done=AttemptService.Restore(Level(source,i),Completed[i]);explosions+=done.Current.ExplodedCount;
                     if(done.Current.Status!=PuzzleStatus.Won||done.Goal.RequiredStampBits!=0||!done.Current.Row.SequenceEqual(source.TargetSymbolIds))throw new ArgumentException("Unfinished descent checkpoint.");
                 }
             }
+            if(explosions!=CompletedExplosions)throw new ArgumentException("Invalid descent outcome totals.");
             if(Stages[0].Minimum>=Stages[1].Minimum||Stages[1].Minimum>Stages[2].Minimum)throw new ArgumentException("Invalid descent curve.");
         }
         static void Replay(LevelDefinition level,string locale,string[] commands)
@@ -137,12 +157,13 @@ namespace Cascade.Application
         {
             if(IsFinal||attempt.PinnedContentHash!=Level(source,StageIndex).ContentHash||attempt.Current.Status!=PuzzleStatus.Won
                 ||attempt.Goal.RequiredStampBits!=0)throw new InvalidOperationException("The row must be delivered before going lower.");
+            CompletedExplosions+=attempt.Current.ExplodedCount;
             Completed.Add(AttemptRecord.Capture(attempt));
         }
         public DeliveryPerformance Performance(AttemptService attempt)=>new DeliveryPerformance {
             Route=Completed.Sum(a=>a.Commands.Length)+attempt.RouteLength,Undos=Completed.Sum(a=>a.UndoCount)+attempt.UndoCount,
             HintUsed=Completed.Any(a=>a.HintUsed)||attempt.HintUsed,Minimum=Stages.Sum(s=>s.Minimum),
-            Exploded=attempt.Current.ExplodedCount,ContentHash=ContentHash,SourceHash=SourceHash
+            Exploded=CompletedExplosions+attempt.Current.ExplodedCount,ContentHash=ContentHash,SourceHash=SourceHash
         };
     }
 }

@@ -8,7 +8,7 @@ namespace Cascade.Presentation
         sealed class Dust
         {
             public Transform transform; public MeshRenderer renderer; public MaterialPropertyBlock properties;
-            public Vector3 origin, velocity; public Color color; public float age, life, size,spin; public bool reduced,wood;
+            public Vector3 origin, velocity; public Color color; public float age, life, size,spin; public bool reduced,wood,seed;
         }
         Dust[] particles;
         AudioSource[] voices;
@@ -16,6 +16,7 @@ namespace Cascade.Presentation
         AudioSource ambience;
         AudioClip windBed,rainBed;
         ToyAudioLibrary library;
+        Material dustMaterial,chipMaterial;
         int nextParticle, nextVoice, variant;
         float duck;
         CascadeGame game;
@@ -28,6 +29,14 @@ namespace Cascade.Presentation
         public void Initialize(CascadeGame owner, ToyArt art, MotionProfile profile)
         {
             game = owner; library = Resources.Load<ToyAudioLibrary>("CascadeArt/ToyAudio");
+            dustMaterial=art.shadow;
+            chipMaterial=new Material(Shader.Find("Universal Render Pipeline/Lit")){name="Carved wood splinters"};
+            chipMaterial.SetTexture("_BaseMap",Resources.Load<Texture2D>("CascadeArt/Woodland/WoodBoard"));
+            var woodFrame=JsonUtility.FromJson<WoodBodyFrame>(Resources.Load<TextAsset>("CascadeArt/Woodland/WoodBoardFrame").text);
+            chipMaterial.SetTextureScale("_BaseMap",new Vector2(woodFrame.width*.35f,woodFrame.height*.65f));
+            chipMaterial.SetTextureOffset("_BaseMap",new Vector2(woodFrame.left+woodFrame.width*.3f,woodFrame.bottom+woodFrame.height*.2f));
+            chipMaterial.SetFloat("_Smoothness",.24f);chipMaterial.SetFloat("_Cull",(float)CullMode.Off);
+            chipMaterial.SetFloat("_Surface",1);chipMaterial.SetFloat("_ZWrite",0);chipMaterial.SetFloat("_SrcBlend",(float)BlendMode.SrcAlpha);chipMaterial.SetFloat("_DstBlend",(float)BlendMode.OneMinusSrcAlpha);chipMaterial.EnableKeyword("_SURFACE_TYPE_TRANSPARENT");chipMaterial.renderQueue=3000;
             particles = new Dust[Mathf.Clamp(profile.dustCapacity, 0, 64)];
             for (int i = 0; i < particles.Length; i++) {
                 var go = new GameObject("Pooled workshop dust " + i, typeof(MeshFilter), typeof(MeshRenderer)); go.transform.SetParent(transform, false);
@@ -59,19 +68,19 @@ namespace Cascade.Presentation
             for (int i = 0; i < count; i++) {
                 var p = particles[nextParticle++ % particles.Length]; float angle = i * 2.399963f;
                 p.origin = origin; p.origin.z = -.7f; p.color = color; p.age = 0; p.life = .38f + (i % 3) * .10f; p.size = .08f + (i % 4) * .02f; p.reduced = reduced;
-                p.wood=false;p.spin=0;p.transform.rotation=Quaternion.identity;
+                p.wood=p.seed=false;p.spin=0;p.renderer.sharedMaterial=dustMaterial;p.transform.rotation=Quaternion.identity;
                 p.velocity = new Vector3(Mathf.Cos(angle) * .45f, Mathf.Sin(angle) * .28f + .12f, 0);
                 p.transform.position = p.origin; p.transform.localScale = Vector3.one * p.size; p.transform.gameObject.SetActive(true);
             }
         }
-        public void WoodChips(Vector3 origin,int count,bool reduced)
+        public void WoodChips(Vector3 origin,int count,bool reduced,float span=1.4f)
         {
             if(particles==null||particles.Length==0||Quality<=0)return;
             count=Mathf.Min(count,Quality==1?4:particles.Length);if(reduced)count=Mathf.Min(2,count);
             for(int i=0;i<count;i++){
-                var p=particles[nextParticle++%particles.Length];p.origin=origin+Vector3.right*((i-(count-1)*.5f)*.16f);p.origin.z=-.7f;
-                p.color=i%2==0?new Color(.64f,.32f,.12f):new Color(.89f,.60f,.28f);p.age=0;p.life=.5f+(i%3)*.08f;p.size=.10f+(i%4)*.02f;
-                p.reduced=reduced;p.wood=true;p.spin=(i%2==0?1:-1)*(150+i*19);
+                var p=particles[nextParticle++%particles.Length];p.origin=origin+Vector3.right*((i/(float)Mathf.Max(1,count-1)-.5f)*span);p.origin.z=-.7f;
+                p.renderer.sharedMaterial=chipMaterial;p.color=i%2==0?new Color(.84f,.71f,.52f):Color.white;p.age=0;p.life=.85f+(i%3)*.08f;p.size=.14f+(i%4)*.025f;
+                p.reduced=reduced;p.wood=true;p.seed=false;p.spin=(i%2==0?1:-1)*(150+i*19);
                 p.velocity=new Vector3((i-(count-1)*.5f)*.14f,.5f+(i%3)*.11f,0);
                 p.transform.position=p.origin;p.transform.localScale=new Vector3(p.size,p.size*.22f,1);p.transform.rotation=Quaternion.Euler(0,0,i*31);p.transform.gameObject.SetActive(true);
             }
@@ -83,6 +92,19 @@ namespace Cascade.Presentation
 #if (UNITY_IOS || UNITY_ANDROID) && !UNITY_EDITOR
             Handheld.Vibrate();
 #endif
+        }
+        public void LanternSeeds(Vector3 origin,bool reduced)
+        {
+            if(Quality<=0||particles==null||particles.Length==0)return;
+            int count=reduced?2:Quality==1?6:18;
+            for(int i=0;i<count;i++){
+                var p=particles[nextParticle++%particles.Length];float angle=i*2.399963f;
+                p.origin=origin+Vector3.right*Mathf.Sin(angle)*.22f;p.origin.z=-.7f;
+                p.age=0;p.life=1.10f+(i%3)*.12f;p.size=.045f+(i%3)*.018f;p.reduced=reduced;p.wood=false;p.seed=true;p.spin=angle;
+                p.color=i%3==0?new Color(.51f,.89f,.77f):i%3==1?new Color(1,.78f,.31f):new Color(.68f,.74f,1);
+                p.velocity=new Vector3(Mathf.Cos(angle)*.65f,1.55f+(i%4)*.16f,0);p.renderer.sharedMaterial=dustMaterial;
+                p.transform.position=p.origin;p.transform.localScale=Vector3.one*p.size;p.transform.rotation=Quaternion.identity;p.transform.gameObject.SetActive(true);
+            }
         }
         void Update()
         {
@@ -105,10 +127,10 @@ namespace Cascade.Presentation
                 p.age += Time.unscaledDeltaTime; float t = p.age / p.life;
                 if (t >= 1) { p.transform.gameObject.SetActive(false); continue; }
                 ActiveParticleCount++;
-                p.transform.position = p.reduced ? p.origin : p.origin + p.velocity * p.age + Vector3.down * ((p.wood?2.8f:.38f) * p.age * p.age);
+                p.transform.position = p.reduced ? p.origin : p.origin + p.velocity * p.age + (p.seed?Vector3.right*Mathf.Sin(p.age*5+p.spin)*p.age*.12f:Vector3.down*((p.wood?2.8f:.38f)*p.age*p.age));
                 p.transform.localScale=p.wood?new Vector3(p.size,p.size*.22f,1):Vector3.one*(p.size*(1+t));
                 if(p.wood&&!p.reduced)p.transform.rotation=Quaternion.Euler(0,0,p.spin*p.age);
-                var color = p.color; color.a *= (1-t)*(1-t);
+                var color = p.color; color.a *= p.wood?1-Mathf.SmoothStep(0,1,Mathf.Clamp01((t-.45f)/.55f)):(1-t)*(1-t);
                 p.properties.SetColor("_BaseColor", color); p.renderer.SetPropertyBlock(p.properties);
             }
         }
@@ -117,5 +139,6 @@ namespace Cascade.Presentation
             if (particles != null) foreach (var p in particles) p.transform.gameObject.SetActive(false);
             if (voices != null) foreach (var voice in voices) voice.Stop(); ActiveParticleCount = 0;
         }
+        void OnDestroy(){if(chipMaterial!=null)Destroy(chipMaterial);}
     }
 }

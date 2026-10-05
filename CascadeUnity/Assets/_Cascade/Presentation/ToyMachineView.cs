@@ -32,7 +32,7 @@ namespace Cascade.Presentation
             public readonly List<Part> fuse = new List<Part>(), durability = new List<Part>(), rope = new List<Part>();
             public readonly Part[] knots=new Part[2];
             public Part board, bombFlame; public Mesh bendMesh;
-            public Vector3[] vertices; public float sag,sagVelocity,sway,swayVelocity,roll,rollVelocity;
+            public Vector3[] vertices; public float sag,sagVelocity,sway,swayVelocity,roll,rollVelocity,wear,fracture;
         }
         ToyArt art;
         Camera viewCamera;
@@ -86,7 +86,10 @@ namespace Cascade.Presentation
         public Vector3 PresentedTokenPosition(int index) => tokens[index].transform.position;
         public float SelectionLiftWorld(int index) { tokens[index].anchor.GetWorldCorners(corners); return (corners[2].y-corners[0].y)*.1f; }
         public float FloorVisualAngle(int floor)=>floors[floor].roll;
+        public float FloorBreakProgress(int floor)=>floors[floor].fracture;
         public float FloorSag(int floor)=>floors[floor].sag;
+        public float FloorSpan(int floor)=>floors[floor].board.baseScale.x;
+        public void FractureFloor(int floor,float progress){floors[floor].fracture=Mathf.Clamp01(progress);TickWoodDynamics(0);}
         public Vector3 FloorVisualOffset(int floor)=>FloorPointOffset(floor,floors[floor].board.anchor.position,false);
         public float WindAt(int floor)
         {
@@ -102,10 +105,11 @@ namespace Cascade.Presentation
             return new Vector3((corners[0].x + corners[2].x) * .5f, Mathf.Lerp(corners[0].y, corners[2].y, .33f), -.3f);
         }
         public Vector3 ContactPosition(int floor, int slot)
+            =>SurfacePoint(floor,.045f+.91f*(slot+.5f)/tokens.Count,.31f);
+        public Vector3 SurfacePoint(int floor,float x,float y)
         {
             var anchor = floors[floor].parts[0].anchor; anchor.GetWorldCorners(corners);
-            float x=.045f+.91f*(slot+.5f)/tokens.Count;
-            var point=new Vector3(Mathf.Lerp(corners[0].x,corners[2].x,x),Mathf.Lerp(corners[0].y,corners[2].y,.31f),-.5f);
+            var point=new Vector3(Mathf.Lerp(corners[0].x,corners[2].x,x),Mathf.Lerp(corners[0].y,corners[2].y,y),-.5f);
             return point+FloorPointOffset(floor,point,true);
         }
         public void RecoilFloor(int floor, float offset)
@@ -229,7 +233,7 @@ namespace Cascade.Presentation
             part.anchor.GetWorldCorners(corners); var size = corners[2] - corners[0];
             part.transform.position = new Vector3(corners[0].x + size.x * part.point.x, corners[0].y + size.y * part.point.y, part.z);
             part.transform.rotation = Quaternion.Euler(0, 0, part.angle);
-            var bounds = part.mesh.bounds.size;
+            var bounds = part.stretch?new Vector3(1,2,1):part.mesh.bounds.size;
             float width = size.x * part.size.x, height = size.y * part.size.y;
             if (!part.stretch && part.mesh != art.beam && part.mesh != art.quad) { float fit = Mathf.Min(width / bounds.x, height / bounds.y); width = fit * bounds.x; height = fit * bounds.y; }
             part.transform.localScale = new Vector3(width / bounds.x, height / bounds.y, part.depth / Mathf.Max(.01f, bounds.z));
@@ -264,6 +268,7 @@ namespace Cascade.Presentation
                 bool active = f == state.ActiveFloor && state.Status == PuzzleStatus.Playing;
                 foreach (var p in rig.parts) p.transform.gameObject.SetActive(!past);
                 int hp = active ? state.Durability : interaction.Attempt.Level.Floors[f].BaseDurability;
+                rig.wear=active?Mathf.Clamp01(1-hp/(float)interaction.Attempt.Level.Floors[f].BaseDurability):0;
                 int damage = Mathf.Clamp(interaction.Attempt.Level.Floors[f].BaseDurability - hp, 0, 3);
                 for (int j = 0; j < rig.cracks.Count; j++) rig.cracks[j].transform.gameObject.SetActive(!past && j < damage);
                 for (int edge = 0; edge < rig.locks.Count; edge++) {

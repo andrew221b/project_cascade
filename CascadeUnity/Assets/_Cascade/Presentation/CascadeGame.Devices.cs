@@ -19,6 +19,7 @@ namespace Cascade.Presentation
             public float slotX,dockX,angle,angleVelocity;
             public Vector2 anchorPosition,anchorVelocity;
             public bool anchorReady;
+            public float responseTime;
             public DemoLine leftStrap,rightStrap;
         }
         readonly List<RectTransform> deviceOverlays=new List<RectTransform>();
@@ -36,6 +37,7 @@ namespace Cascade.Presentation
             if(floor.Powerup!=null)contacts.Add((floor.Powerup,floor.Powerup.Kind==PowerupKind.Ribbon?9:10));
             contacts.Sort((a,b)=>a.contact.Slot.CompareTo(b.contact.Slot));
             var woodLabel=floorLabels[floorIndex].rectTransform;
+            woodLabel.SetParent(card,false);
             float labelX=contacts.Count==0?.5f:contacts.Count==1?(contacts[0].contact.Slot<count*.5f?.76f:.24f):.5f;
             woodLabel.anchorMin=new Vector2(labelX-.23f,.09f);woodLabel.anchorMax=new Vector2(labelX+.23f,.27f);
             float previous=-1;int dockIndex=0;
@@ -55,12 +57,8 @@ namespace Cascade.Presentation
                 var button=Button(UiCopy.Raw("Device "+DeviceAsset(item.kind)),card,new Vector2(x,-.075f),new Vector2(x,-.075f),()=>OpenDevice(item.kind));
                 var root=(RectTransform)button.transform;root.sizeDelta=new Vector2(88,55);
                 button.GetComponent<Image>().color=Color.clear;button.GetComponentInChildren<TextMeshProUGUI>().SetCopy("");
+                BuildToolTag(root,item.contact.RequiredSymbol);
                 var icon=Picture("Recognizable device",root,new Vector2(0,.16f),new Vector2(.57f,1),Resources.Load<Sprite>("CascadeArt/Devices/"+DeviceAsset(item.kind)),true);
-                var pocket=Rect("Match this piece",root,new Vector2(.59f,.34f),new Vector2(.93f,.87f));
-                Background(pocket,new Color(.99f,.91f,.70f,.96f),false).sprite=art.panel;
-                var face=Rect("Required symbol",pocket,new Vector2(.13f,.13f),new Vector2(.87f,.87f)).gameObject.AddComponent<ShapeFaceGraphic>();
-                face.SetShape(art.SymbolMesh(item.contact.RequiredSymbol),art.SymbolMaterial(item.contact.RequiredSymbol).GetColor("_BaseColor"));face.raycastTarget=false;
-                if(item.contact.RequiredSymbol.Kind==SymbolKind.Glyph)Text("Required letter",pocket,Vector2.zero,Vector2.one,18,UiCopy.Raw(FaceText(item.contact.RequiredSymbol)));
                 var caption=Text("Device state",root,new Vector2(-.08f,-.03f),new Vector2(1.08f,.24f),12,"");caption.font=art.titleFont;
                 deviceDocks.Add(new DeviceDock{floor=floorIndex,kind=item.kind,root=root,socket=socket,icon=icon,caption=caption,contact=item.contact,slotX=slotX,dockX=x,leftStrap=leftStrap,rightStrap=rightStrap});
             }
@@ -78,6 +76,28 @@ namespace Cascade.Presentation
                 void Cord(Vector2 from,Vector2 to,float width) {var r=Rect("Linked pair cord",card,Vector2.zero,Vector2.zero);Background(r,new Color(.48f,.28f,.62f),false);r.gameObject.AddComponent<DemoLine>().Initialize(card,from,to,width);}
                 Cord(new Vector2(a,.34f),new Vector2(a,.28f),3);Cord(new Vector2(a,.28f),new Vector2(b,.28f),3);Cord(new Vector2(b,.28f),new Vector2(b,.34f),3);
 
+            }
+        }
+        void BuildToolTag(RectTransform root,SymbolId required)
+        {
+            Rect("Tool's carved crossbar",root,new Vector2(.30f,.25f),new Vector2(.96f,.42f)).gameObject.AddComponent<WoodBoardGraphic>();
+            var bezel=Rect("Bolted matching tag",root,new Vector2(.57f,.36f),new Vector2(.97f,.94f));
+            var border=Background(bezel,new Color(.50f,.31f,.12f),false);border.sprite=art.panel;
+            var pocket=Rect("Tag ivory inset",bezel,new Vector2(.09f,.09f),new Vector2(.91f,.91f));Background(pocket,new Color(1,.95f,.78f),false).sprite=art.panel;
+            var face=Rect("Required symbol",pocket,new Vector2(.13f,.13f),new Vector2(.87f,.87f)).gameObject.AddComponent<ShapeFaceGraphic>();
+            face.SetShape(art.SymbolMesh(required),art.SymbolMaterial(required).GetColor("_BaseColor"));
+            if(required.Kind==SymbolKind.Glyph){var letter=Text("Required letter",pocket,Vector2.zero,Vector2.one,18,UiCopy.Raw(FaceText(required)));letter.font=art.titleFont;FinishLetter(letter);}
+            foreach(float x in new[]{.06f,.94f}){
+                var bolt=Rect("Tag brass rivet",bezel,new Vector2(x-.028f,.44f),new Vector2(x+.028f,.56f)).gameObject.AddComponent<ShapeFaceGraphic>();bolt.SetShape(art.disk,new Color(.93f,.72f,.34f));
+            }
+        }
+        public void CueDevice(PuzzleEvent e)
+        {
+            foreach(var d in deviceDocks)if(d.floor==e.Floor){
+                bool reacts=d.kind==2&&(e.Kind==PuzzleEventKind.BombTicked||e.Kind==PuzzleEventKind.BombExploded||e.Kind==PuzzleEventKind.BombDefused)
+                    ||d.kind==3&&e.Kind==PuzzleEventKind.KeyOpened||d.kind==4&&e.Kind==PuzzleEventKind.Repaired
+                    ||d.kind==8&&e.Kind==PuzzleEventKind.StampCollected||d.kind==9&&e.Kind==PuzzleEventKind.RibbonCollected||d.kind==10&&e.Kind==PuzzleEventKind.HourglassCollected;
+                if(reacts){d.responseTime=.32f;if(!ReducedMotion)d.angleVelocity+=(e.Kind==PuzzleEventKind.BombExploded?-32:16);}
             }
         }
         bool deviceForecast;
@@ -108,7 +128,7 @@ namespace Cascade.Presentation
                 d.root.gameObject.SetActive(!past);
                 bool used=active&&(d.kind==2?frame.BombPhase!=BombPhase.Armed:d.kind==3?frame.KeyUsed:d.kind==4?frame.RepairUsed:d.kind==8?(frame.StampBits&(1<<floorIndex))!=0:frame.PowerupUsed);
                 d.icon.color=used?new Color(.62f,.72f,.66f,.70f):Color.white;
-                UiCopy copy=used?new UiCopy(d.kind==2?(frame.BombPhase==BombPhase.Defused?"Safe":"Burst"):"Collected"):d.kind==2?new UiCopy("{0} moves",active?frame.BombTicks:floor.Bomb.Ticks):d.kind==9?new UiCopy("Far swap"):d.kind==10?new UiCopy("Pause bomb"):UiCopy.Raw("");
+                UiCopy copy=used?new UiCopy(d.kind==2?(frame.BombPhase==BombPhase.Defused?"Safe":"Burst"):d.kind==3?"Unlocked":d.kind==4?"Repaired":"Collected"):d.kind==2?new UiCopy("{0} moves",active?frame.BombTicks:floor.Bomb.Ticks):d.kind==9?new UiCopy("Far swap"):d.kind==10?new UiCopy("Pause bomb"):UiCopy.Raw("");
                 if(d.kind==2&&active&&frame.BombPhase==BombPhase.Armed&&frame.FrozenTicks>0){copy=new UiCopy("Paused: {0}",frame.FrozenTicks);d.icon.color=new Color(.65f,.86f,1);}
                 d.caption.SetCopy(copy);
             }

@@ -11,8 +11,6 @@ namespace Cascade.Presentation
         int reachPage;
         void CraftTitle(UiCopy title,UiCopy body)
         {
-            Rect("Workshop sun dust",menuRoot,Vector2.zero,Vector2.one).gameObject.AddComponent<WorldWeatherGraphic>().InitializeRegion(this,7);
-            menuWash.color=new Color(1,.965f,.86f,.975f);
             MenuTitle(title,body);
         }
         void Shelf(float bottom)

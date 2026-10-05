@@ -59,9 +59,8 @@ namespace Cascade.Presentation
             if(contact!=null) {
                 float x=Mathf.Clamp((contact.Slot+.5f)/row.Length,.18f,.82f);
                 var body=Rect("Demo device",root,new Vector2(x-.13f,.20f),new Vector2(x+.13f,.49f));
+                BuildToolTag(body,contact.RequiredSymbol);
                 mount=Picture("Tool",body,Vector2.zero,new Vector2(.58f,1),Resources.Load<Sprite>("CascadeArt/Devices/"+DeviceAsset(kind)),true);
-                var pocket=Rect("Required piece",body,new Vector2(.62f,.18f),new Vector2(.99f,.83f));Background(pocket,Paper,false).sprite=art.panel;
-                Rect("Required shape",pocket,new Vector2(.1f,.1f),new Vector2(.9f,.9f)).gameObject.AddComponent<ShapeFaceGraphic>().SetShape(art.SymbolMesh(contact.RequiredSymbol),art.SymbolMaterial(contact.RequiredSymbol).GetColor("_BaseColor"));
                 Line("Device strap",new Vector2(x,.45f),new Vector2(x,.51f),new Color(.4f,.27f,.15f),3);
             }
             var handSprite=Resources.Load<Sprite>("CascadeArt/TutorialHand");var hand=handSprite==null?null:Picture("Demo hand",root,new Vector2(.02f,.54f),new Vector2(.18f,.96f),handSprite,true);

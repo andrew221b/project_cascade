@@ -75,7 +75,7 @@ namespace Cascade.Presentation
         }
         void DrawJourneyEnd()
         {
-            machine.SetZone(7);menuWash.color=new Color(1,.96f,.84f,.92f);
+            machine.SetZone(7);
             MenuTitle("The beacon is lit!","Our little light is home.");
             var hero=Picture("Mika at home",menuRoot,new Vector2(.24f,.35f),new Vector2(.76f,.75f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
             hero.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,3),0,1);
@@ -144,7 +144,7 @@ namespace Cascade.Presentation
         }
         void DrawDialogue()
         {
-            menuWash.color=new Color(1,.96f,.84f,.13f);int zone=JourneyStory.Zone(selectedJourneyStop);
+            int zone=JourneyStory.Zone(selectedJourneyStop);
             var portrait=Resources.Load<Sprite>("CascadeArt/Journey/"+JourneyStory.Portrait(zone));
             if(portrait!=null)Picture("Speaking friend",menuRoot,new Vector2(.12f,.39f),new Vector2(.88f,.92f),portrait,true);
             var panel=Rect("Dialogue frame",menuRoot,new Vector2(.04f,.08f),new Vector2(.96f,.46f));Panel(panel,Paper);

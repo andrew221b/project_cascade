@@ -36,6 +36,7 @@ namespace Cascade.Presentation
         void Finish()
         {
             if (!IsRunning) return; IsRunning = false; playback = null; CompletedPresentations++;
+            game?.SettleOutcome();
             if (game != null && game.Interaction != null) { game.Interaction.FinishPresentation(); game.SyncPresentation(); }
         }
         IEnumerator Run(TransitionResult result)
@@ -54,8 +55,9 @@ namespace Cascade.Presentation
                         CaptureRow(frame); frame.Read(e, level); game.RenderFrame(frame); MapRow(frame);
                         feedback.Sound(ToyCue.Swap); yield return Travel(profile.swap, !reduced, false);
                     } else if (e.Kind == PuzzleEventKind.FloorExited) {
-                        if(frame.Durability<=0){feedback.Sound(ToyCue.Fragile);feedback.WoodChips(game.Machine.FloorPosition(e.Floor),9,reduced);}
-                        yield return Recoil(e.Floor, profile.fracture);
+                        if(frame.Durability<=0){
+                            feedback.Sound(ToyCue.Fragile);yield return BreakWood(e.Floor);
+                        }else yield return Recoil(e.Floor, profile.fracture);
                         frame.Read(e, level); game.RenderFrame(frame);
                     } else if (e.Kind == PuzzleEventKind.FloorEntered || e.Kind == PuzzleEventKind.ReceiverEvaluated) {
                         CaptureRow(frame); frame.Read(e, level); bool arrival = e.Kind == PuzzleEventKind.ReceiverEvaluated;
@@ -63,15 +65,13 @@ namespace Cascade.Presentation
                         yield return Travel(profile.fall, false, true); feedback.Sound(ToyCue.Land);
                         yield return Land(arrival);
                         if (arrival) {
-                            game.CompleteDeliveryPose();
                             feedback.Sound(e.Value == 1 ? ToyCue.Success : ToyCue.Reject);
-                            if (e.Value == 1) {
-                                feedback.Burst(game.Machine.TokenPosition(frame.Row.Count / 2), new Color(1, .72f, .28f, .85f), 12, reduced); feedback.Haptic();
-                            }
-                            yield return Hold(profile.delivery);
+                            yield return game.PlayOutcome(e.Value==1);
+                            game.CompleteDeliveryPose();
                         }
                     } else {
                         Vector3 origin = EventOrigin(e, level); frame.Read(e, level); game.RenderFrame(frame);
+                        game.CueDevice(e);
                         switch (e.Kind) {
                             case PuzzleEventKind.BombTicked:
                                 game.SetPresentationFeedback(new UiCopy("Bomb: {0} moves left",e.Value)); yield return Hold(.07f); break;
@@ -109,15 +109,16 @@ namespace Cascade.Presentation
         }
         void CaptureRow(PresentationFrame frame)
         {
-            for (int i = 0; i < frame.Row.Count; i++) { oldRow[i] = frame.Row[i]; oldPositions[i] = game.Machine.TokenPosition(i); used[i] = false; }
+            for (int i = 0; i < frame.Row.Count; i++) { oldRow[i] = frame.Row[i]; oldPositions[i] = game.Machine.TokenVisualPosition(i); used[i] = false; }
         }
         void MapRow(PresentationFrame frame)
         {
             for (int destination = 0; destination < frame.Row.Count; destination++) {
                 int source = 0; while (source < frame.Row.Count && (used[source] || oldRow[source] != frame.Row[destination])) source++;
                 if (source == frame.Row.Count) source = destination; // Defensive view fallback; never invent a gameplay permutation.
-                used[source] = true; from[destination] = oldPositions[source]; to[destination] = game.Machine.TokenPosition(destination);
-                game.OffsetPresentedToken(destination, game.ReducedMotion ? Vector3.zero : from[destination]-to[destination], Vector2.one);
+                used[source] = true; from[destination] = oldPositions[source]; to[destination] = game.Machine.TokenPosition(destination)+game.Machine.TokenSupportOffset(destination);
+                game.Machine.SetPiecePose(destination,PiecePose.Exchanging);
+                game.OffsetPresentedToken(destination, game.ReducedMotion ? Vector3.zero : from[destination]-game.Machine.TokenPosition(destination), Vector2.one);
             }
         }
         IEnumerator Travel(float duration, bool arcs, bool falling)
@@ -133,12 +134,23 @@ namespace Cascade.Presentation
                     if(falling)position.y=Mathf.Lerp(from[i].y,to[i].y,local*local);
                     if (arcs && !game.ReducedMotion && Mathf.Abs(from[i].x-to[i].x) > .01f)
                         position.y += Mathf.Sin(t*Mathf.PI) * profile.swapArc * (from[i].x < to[i].x ? 1 : .35f);
-                    game.OffsetPresentedToken(i, position-to[i], Vector2.one);
+                    game.OffsetPresentedToken(i, position-game.Machine.TokenPosition(i), Vector2.one);
                     game.Machine.SetPiecePose(i,falling?PiecePose.Falling:PiecePose.Exchanging,Mathf.Sin(local*Mathf.PI)*(i%2==0?1:-1)*(falling?13:9));
                 }
                 time += Time.unscaledDeltaTime; yield return null;
             }
             for (int i = 0; i < game.VisibleFrame.Row.Count; i++){game.OffsetPresentedToken(i, Vector3.zero, Vector2.one);game.Machine.SetPiecePose(i,falling?PiecePose.Settling:PiecePose.Resting);}
+            if(arcs)game.Machine.LandWeight(game.VisibleFrame.ActiveFloor);
+        }
+        IEnumerator BreakWood(int floor)
+        {
+            if(game.ReducedMotion){feedback.WoodChips(game.Machine.FloorPosition(floor),2,true,game.Machine.FloorSpan(floor));yield return Hold(profile.reducedStep);yield break;}
+            float time=0;const float duration=.34f;bool splintered=false;
+            while(time<duration){
+                float t=Mathf.Clamp01(time/duration);game.Machine.FractureFloor(floor,Mathf.SmoothStep(0,1,t));
+                if(!splintered&&t>=.45f){splintered=true;feedback.WoodChips(game.Machine.FloorPosition(floor),14,false,game.Machine.FloorSpan(floor)*.76f);}
+                time+=Time.unscaledDeltaTime;yield return null;
+            }
         }
         IEnumerator Recoil(int floor, float duration)
         {

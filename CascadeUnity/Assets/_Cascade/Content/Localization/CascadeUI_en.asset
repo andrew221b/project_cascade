@@ -1784,7 +1784,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 171004419629056
-    m_Localized: 'Shortest route: {0} moves'
+    m_Localized: 'Shortest route: {0}'
     m_Metadata:
       m_Items: []
   - m_Id: 171004440600576
@@ -1886,6 +1886,39 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 205454146789378
     m_Localized: Play this level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 214820774207488
+    m_Localized: Light delivered!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 214820778401792
+    m_Localized: Let's try another way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 214820778401793
+    m_Localized: How to play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 214820778401794
+    m_Localized: Tools & effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 214820778401795
+    m_Localized: Drag a piece onto its neighbour. They change places.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 214820778401796
+    m_Localized: The little tag shows which piece the tool needs. Move that piece
+      directly above the tool.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 214820778401797
+    m_Localized: The little tag shows which piece this tool needs.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 214820778401798
+    m_Localized: Make the row below. Then bring your row down.
     m_Metadata:
       m_Items: []
   references:

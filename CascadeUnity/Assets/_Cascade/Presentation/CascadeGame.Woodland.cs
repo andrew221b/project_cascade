@@ -21,17 +21,22 @@ namespace Cascade.Presentation
             for(int i=0;i<deviceOverlays.Count;i++) {
                 deviceOverlays[i].position=floorViews[i].position+machine.FloorVisualOffset(i);
                 deviceOverlays[i].rotation=Quaternion.Euler(0,0,machine.FloorVisualAngle(i));
+                floorLabels[i].rectTransform.anchoredPosition=Vector2.down*(machine.FloorSag(i)/Mathf.Max(.0001f,deviceOverlays[i].lossyScale.y)*.65f);
+                floorLabels[i].alpha=machine.FloorBreakProgress(i)>0?0:1;
             }
             float dt=Mathf.Clamp(seconds,0,.05f);
             bool moving=!Interaction.IsPaused&&!Interaction.IsSuspended;
+            bool movingDevice(DeviceDock d)=>moving&&d.responseTime>0;
             foreach(var dock in deviceDocks) {
                 if(dock.root==null||!dock.root.gameObject.activeInHierarchy)continue;
+                if(movingDevice(dock)){dock.responseTime=Mathf.Max(0,dock.responseTime-dt);}
+                float response=ReducedMotion?0:Mathf.Sin((1-dock.responseTime/.32f)*Mathf.PI)*dock.responseTime/.32f;
+                dock.icon.transform.localScale=Vector3.one*(1+.10f*response);
                 var card=deviceOverlays[dock.floor];float height=Mathf.Max(1,card.rect.height);
-                float worldHeight=Mathf.Max(.01f,height*card.lossyScale.y);
-                float sag=-Mathf.Sin(dock.slotX*Mathf.PI)*machine.FloorSag(dock.floor)/worldHeight;
-                var hook=new Vector2(dock.slotX,.32f+sag);
-                var hookLocal=card.rect.min+Vector2.Scale(card.rect.size,hook);
-                var anchor=(Vector2)card.TransformPoint(hookLocal);
+                var hookWorld=machine.SurfacePoint(dock.floor,dock.slotX,.32f);
+                var hookLocal=(Vector2)card.InverseTransformPoint(hookWorld);
+                var hook=new Vector2((hookLocal.x-card.rect.xMin)/card.rect.width,(hookLocal.y-card.rect.yMin)/height);
+                var anchor=(Vector2)hookWorld;
                 if(ReducedMotion){dock.angle=dock.angleVelocity=0;dock.anchorReady=false;}
                 else if(moving&&dt>0) {
                     var velocity=dock.anchorReady?(anchor-dock.anchorPosition)/dt:Vector2.zero;
@@ -53,7 +58,7 @@ namespace Cascade.Presentation
                 var centre=hookLocal+(Vector2)(rotation*(Vector3)(rest-(card.rect.min+Vector2.Scale(card.rect.size,new Vector2(dock.slotX,.32f)))));
                 dock.root.anchoredPosition=centre-rest;
                 dock.root.localRotation=Quaternion.Euler(0,0,dock.angle);
-                dock.socket.anchoredPosition=new Vector2(0,sag*height);
+                dock.socket.anchoredPosition=Vector2.Scale(card.rect.size,hook-new Vector2(dock.slotX,.32f));
                 Vector2 Grip(Vector2 attachment) {
                     var point=card.InverseTransformPoint(dock.root.TransformPoint(dock.root.rect.min+Vector2.Scale(dock.root.rect.size,attachment)));
                     return new Vector2((point.x-card.rect.xMin)/card.rect.width,(point.y-card.rect.yMin)/height);
