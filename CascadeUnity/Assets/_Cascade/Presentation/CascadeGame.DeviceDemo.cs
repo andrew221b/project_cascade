@@ -52,18 +52,17 @@ namespace Cascade.Presentation
                 float x=(i+.5f)/row.Length;var cell=Rect("Demo goal "+i,root,new Vector2(x-.30f/row.Length,.02f),new Vector2(x+.30f/row.Length,.14f));
                 cell.gameObject.AddComponent<ShapeFaceGraphic>().SetShape(art.SymbolMesh(level.TargetSymbolIds[i]),art.SymbolMaterial(level.TargetSymbolIds[i]).GetColor("_BaseColor"));
             }
-            ContactDefinition contact=kind==2?floor.Bomb:kind==3?floor.Key:kind==4?floor.Repair:kind==8?floor.OptionalStamp:null;
-            Image mount=null;ShapeFaceGraphic contactFace=null;Image[] pips=new Image[12],fuse=new Image[6];
-            for(int i=0;i<pips.Length;i++)pips[i]=Background(Rect("Demo strength "+i,root,new Vector2(.03f+i*.042f,.30f),new Vector2(.057f+i*.042f,.34f)),new Color(.93f,.66f,.25f),false);
+            ContactDefinition contact=kind==2?floor.Bomb:kind==3?floor.Key:kind==4?floor.Repair:kind==8?floor.OptionalStamp:kind>=9?floor.Powerup:null;
+            Image mount=null;
+            var woodCount=Text("Wood moves",root,new Vector2(.01f,.20f),new Vector2(.48f,.35f),13,"");
+            woodCount.gameObject.SetActive(kind==0);
             if(contact!=null) {
-                float x=(contact.Slot+.5f)/row.Length;
-                var body=Rect("Demo device",root,new Vector2(x-.075f,.32f),new Vector2(x+.075f,.54f));mount=Background(body,kind==2?new Color(.9f,.35f,.22f):Selected,false);mount.sprite=art.panel;
-                contactFace=Rect("Required piece",body,new Vector2(.2f,.2f),new Vector2(.8f,.8f)).gameObject.AddComponent<ShapeFaceGraphic>();
-                contactFace.SetShape(art.SymbolMesh(contact.RequiredSymbol),art.SymbolMaterial(contact.RequiredSymbol).GetColor("_BaseColor"));contactFace.raycastTarget=false;
-                if(kind==2)for(int i=0;i<fuse.Length;i++) {
-                    float fx=x+(i-(floor.Bomb.Ticks-1)*.5f)*.04f;
-                    fuse[i]=Background(Rect("Demo fuse "+i,root,new Vector2(fx-.012f,.22f),new Vector2(fx+.012f,.26f)),new Color(1,.70f,.20f),false);fuse[i].sprite=art.panel;
-                }
+                float x=Mathf.Clamp((contact.Slot+.5f)/row.Length,.18f,.82f);
+                var body=Rect("Demo device",root,new Vector2(x-.13f,.20f),new Vector2(x+.13f,.49f));
+                mount=Picture("Tool",body,Vector2.zero,new Vector2(.58f,1),Resources.Load<Sprite>("CascadeArt/Devices/"+DeviceAsset(kind)),true);
+                var pocket=Rect("Required piece",body,new Vector2(.62f,.18f),new Vector2(.99f,.83f));Background(pocket,Paper,false).sprite=art.panel;
+                Rect("Required shape",pocket,new Vector2(.1f,.1f),new Vector2(.9f,.9f)).gameObject.AddComponent<ShapeFaceGraphic>().SetShape(art.SymbolMesh(contact.RequiredSymbol),art.SymbolMaterial(contact.RequiredSymbol).GetColor("_BaseColor"));
+                Line("Device strap",new Vector2(x,.45f),new Vector2(x,.51f),new Color(.4f,.27f,.15f),3);
             }
             var handSprite=Resources.Load<Sprite>("CascadeArt/TutorialHand");var hand=handSprite==null?null:Picture("Demo hand",root,new Vector2(.02f,.54f),new Vector2(.18f,.96f),handSprite,true);
             if(kind==6&&floor.LinkedPair.HasValue){
@@ -112,16 +111,12 @@ namespace Cascade.Presentation
 
                 }
                 int hp=floor.BaseDurability;foreach(var e in result.Events)if(e.Kind==PuzzleEventKind.DurabilityResolved&&e.Floor==0&&after)hp=Mathf.Max(0,e.Value);
-                for(int i=0;i<pips.Length;i++){
-                    pips[i].gameObject.SetActive(i<Mathf.Max(floor.BaseDurability,hp));
-                    pips[i].color=after&&i>=hp?new Color(.83f,.31f,.20f,.45f):new Color(.93f,.66f,.25f);
-                }
+                woodCount.SetCopy(new UiCopy("Wood: {0} moves",hp));
                 bool blast=after&&result.Events.Any(e=>e.Kind==PuzzleEventKind.BombExploded),defused=after&&result.Events.Any(e=>e.Kind==PuzzleEventKind.BombDefused);
-                if(mount!=null)mount.color=defused?new Color(.30f,.70f,.62f):blast?Ink:kind==2?new Color(.90f,.35f,.22f):new Color(.94f,.73f,.32f);
-                if(kind==2)for(int i=0;i<fuse.Length;i++)fuse[i].gameObject.SetActive(!after&&i<floor.Bomb.Ticks);
+                if(mount!=null)mount.color=after?new Color(.65f,.8f,.73f,.7f):Color.white;
                 board.gameObject.SetActive(!blast&&(kind!=1||!after));latch.gameObject.SetActive(kind==3?!after:kind==7&&after);
                 if(bridge!=null)bridge.localRotation=Quaternion.Euler(0,0,-78*(ReducedMotion?1:Mathf.Clamp01((local-1.7f)/.4f)));
-                int stage=(after?1:0)+(bad?2:0);if(stage!=lastStage){lastStage=stage;outcome.SetCopy(after?(blast?"Board breaks":defused?"Bomb defused":kind==3?"Unlocked":kind==4?"Repaired":kind==8?"Stamp collected":"then down"):"");}
+                int stage=(after?1:0)+(bad?2:0);if(stage!=lastStage){lastStage=stage;outcome.SetCopy(after?(blast?"Board breaks":defused?"Bomb defused":kind==3?"Unlocked":kind==4?"Repaired":kind==8?"Stamp collected":kind==9?"One far swap ready":kind==10?"Bomb paused for two swaps":"then down"):"");}
                 if(hand!=null) {
                     hand.gameObject.SetActive(!ReducedMotion&&local<2.3f);
                     int start=command.Kind==CommandKind.Swap?command.Edge:0;float x=(start+.5f+blend)/row.Length;

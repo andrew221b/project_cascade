@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Cascade.Presentation
 {
-    public enum GameScreen { Home, Playing, Pause, Win, Fail, Settings, Devices, Lessons, Dialogue, WordLanguage, SaveRecovery, TravelBag, Journal, Collection, Workshop, Requests, Records, Contracts, Parcel, JourneyEnd, ReachChallenges }
+    public enum GameScreen { Home, Playing, Pause, Win, Fail, Settings, Devices, Lessons, Dialogue, WordLanguage, SaveRecovery, TravelBag, Journal, Collection, Workshop, Requests, Records, Contracts, Parcel, JourneyEnd, ReachChallenges, PowerupChallenges }
     public sealed partial class CascadeGame
     {
         public GameScreen CurrentScreen { get; private set; } = GameScreen.Playing;
@@ -37,18 +37,20 @@ namespace Cascade.Presentation
         Task<HintOffer> deadEndTask;
         CancellationTokenSource deadEndCancellation;
         bool knownDeadEnd;
-        static readonly string[] DeviceTitles = { "Durability", "Entry rollers", "Bomb", "Key", "Repair", "Fragile edge", "Linked pairs", "One-use bridge", "Stamp" };
-        static readonly string[] DeviceNodes = { "C03", "C09", "C13", "C17", "C18", "C21", "C25", "C33", "C35" };
+        static readonly string[] DeviceTitles = { "Durability", "Entry rollers", "Bomb", "Key", "Repair", "Fragile edge", "Linked pairs", "One-use bridge", "Stamp", "Ribbon spool", "Hourglass" };
+        static readonly string[] DeviceNodes = { "C03", "C09", "C13", "C17", "C18", "C21", "C25", "C33", "C35", "B01", "B04" };
         static readonly string[] DeviceCopy = {
-            "Each swap wears the wood. Empty marks? The board breaks. Down leaves early.",
-            "The arrows move the whole row when it lands.",
-            "Put this piece on the bomb. A move uses a spark. No sparks? The board breaks.",
+            "Each swap uses a move. At zero, the wood breaks. Descend leaves early.",
+            "On landing, this board slides or reverses the whole row.",
+            "Move the pictured piece above the bomb to stop it. Each swap counts down. At zero, the blast damages the wood.",
             "Put this piece on the key to open its gate.",
             "Put this piece on the patch. It fixes the board once.",
             "A cracked spot wears the board twice as fast.",
             "Swap one tied pair. Both pairs swap.",
             "This bridge works once. Then it folds shut.",
-            "Put this piece on the stamp. Bring the row home to keep it."
+            "Put this piece on the stamp. Bring the row home to keep it.",
+            "Move the pictured piece above the spool. You get one swap across one or two pieces. Save it for a lower board if you like.",
+            "Move the pictured piece above the hourglass. The bomb waits for two swaps, including this one. The wood still wears down."
         };
 
         void BuildFlow()
@@ -72,7 +74,7 @@ namespace Cascade.Presentation
             var mika=Resources.Load<Sprite>("CascadeArt/Journey/Mika");
             if(mika!=null) { resultFriend=Picture("Mika celebrates",safeRoot,new Vector2(.31f,.43f),new Vector2(.69f,.72f),mika,true);resultFriend.gameObject.SetActive(false); }
             menuRoot = Rect("Menu",safeRoot,Vector2.zero,Vector2.one);
-            reachBadge=Picture("Ribbon charge",header,new Vector2(.69f,.05f),new Vector2(.80f,.95f),Resources.Load<Sprite>("CascadeArt/Workshop/SkyRibbon"),true);
+            reachBadge=Picture("Ribbon charge",header,new Vector2(.69f,.05f),new Vector2(.80f,.95f),Resources.Load<Sprite>("CascadeArt/Devices/RibbonSpool"),true);
             flowReady=true; ApplyPreferences();
         }
         public void ShowHome() { ShowJourney(); }
@@ -111,7 +113,7 @@ namespace Cascade.Presentation
         }
         void StartCoach()
         {
-            string lesson = Catalog.PrimaryLevels.FirstOrDefault(c=>c.Definition.CampaignNodeId==node)?.Lesson ?? "swap";
+            string lesson = Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).FirstOrDefault(c=>c.Definition.CampaignNodeId==node)?.Lesson ?? "swap";
             Coach=new TutorialCoach(Interaction.Attempt.Level,lesson) {Enabled=Preferences.Tutorials};
             Coach.Observe(Interaction.Attempt.Current,Interaction.Attempt.RouteLength); gestureTime=0;
         }
@@ -119,7 +121,7 @@ namespace Cascade.Presentation
         {
             if(!flowReady || Interaction==null) return;
             bool foreground=applicationFocused&&!applicationPaused&&!Interaction.IsSuspended;
-            reachBadge.gameObject.SetActive(Interaction.Attempt.Level.ReachCharges>0);reachBadge.color=Interaction.Attempt.Current.ReachCharges>0?Color.white:new Color(.5f,.5f,.5f,.5f);
+            reachBadge.gameObject.SetActive(Interaction.Attempt.Level.ReachCharges>0||Interaction.Attempt.Current.ReachCharges>0);reachBadge.color=Interaction.Attempt.Current.ReachCharges>0?Color.white:new Color(.5f,.5f,.5f,.5f);
             Coach?.Observe(Interaction.Attempt.Current,Interaction.Attempt.RouteLength);
             Coach?.Advance(Time.unscaledDeltaTime,foreground && CurrentScreen==GameScreen.Playing && Interaction.CanPlay && !zoomOpen);
             UpdateDeadEnd();
@@ -141,7 +143,7 @@ namespace Cascade.Presentation
         {
             bool show=foreground && CurrentScreen==GameScreen.Playing && Interaction.CanPlay && !zoomOpen && !IsHoldingToken && Coach!=null && Coach.Enabled;
             string prompt=show ? Coach.Prompt(Interaction.Attempt.Current) : "";
-            if(show&&Interaction.Attempt.Level.ReachCharges>0)prompt=Interaction.Attempt.Current.ReachCharges>0?"Drag past a neighbour. The ribbon works once.":"Ribbon used. You can still swap neighbours.";
+            if(show&&(Interaction.Attempt.Level.ReachCharges>0||Interaction.Attempt.Current.ReachCharges>0))prompt=Interaction.Attempt.Current.ReachCharges>0?"Drag past a neighbour. The ribbon works once.":"Ribbon used. You can still swap neighbours.";
             if(show&&knownDeadEnd)prompt="Stuck? Undo and try another move.";
             coachRoot.gameObject.SetActive(false);
             if(prompt.Length>0) {
@@ -153,7 +155,8 @@ namespace Cascade.Presentation
             coachRing.gameObject.SetActive(show&&!knownDeadEnd&&Coach.HighlightRequested);
             if(coachRing.gameObject.activeSelf) {
                 var state=Interaction.Attempt.Current;var f=Interaction.Attempt.Level.Floors[state.ActiveFloor];ContactDefinition contact=null;
-                if(f.Bomb!=null&&state.BombPhase==BombPhase.Armed)contact=f.Bomb;
+                if(f.Powerup!=null&&!state.PowerupUsed)contact=f.Powerup;
+                else if(f.Bomb!=null&&state.BombPhase==BombPhase.Armed)contact=f.Bomb;
                 else if(f.Key!=null&&!state.KeyUsed)contact=f.Key;
                 else if(f.Repair!=null&&!state.RepairUsed)contact=f.Repair;
                 else if(f.OptionalStamp!=null&&(state.StampBits&(1<<state.ActiveFloor))==0)contact=f.OptionalStamp;
@@ -218,6 +221,7 @@ namespace Cascade.Presentation
             else if(CurrentScreen==GameScreen.Parcel) DrawParcel();
             else if(CurrentScreen==GameScreen.JourneyEnd)DrawJourneyEnd();
             else if(CurrentScreen==GameScreen.Devices) DrawDevices();
+            else if(CurrentScreen==GameScreen.PowerupChallenges) DrawReachChallenges();
             else if(CurrentScreen==GameScreen.Pause) {
                 MenuTitle("Take a break", "Your puzzle will wait.");
                 MenuButton("Resume",.58f,ShowGame,true); MenuButton("Retry",.47f,()=>{SetScreen(GameScreen.Playing);Retry();});
@@ -288,18 +292,18 @@ namespace Cascade.Presentation
         int DeviceForCurrentFloor()
         {
             var state=Interaction.Attempt.Current;if(state.Status!=PuzzleStatus.Playing)return 0;var f=Interaction.Attempt.Level.Floors[state.ActiveFloor];
-            return f.Bomb!=null?2:f.Key!=null?3:f.Repair!=null?4:f.LinkedPair.HasValue?6:f.OneUseBridgeEdge.HasValue?7:f.OptionalStamp!=null?8:f.FragileEdges.Count>0?5:f.EntryTransform!=EntryTransform.None?1:0;
+            return f.Powerup!=null?(f.Powerup.Kind==PowerupKind.Ribbon?9:10):f.Bomb!=null?2:f.Key!=null?3:f.Repair!=null?4:f.LinkedPair.HasValue?6:f.OneUseBridgeEdge.HasValue?7:f.OptionalStamp!=null?8:f.FragileEdges.Count>0?5:f.EntryTransform!=EntryTransform.None?1:0;
         }
         void DrawDevices()
         {
             MenuTitle(DeviceTitles[deviceIndex],new UiCopy("Device guide · {0} / {1}",deviceIndex+1,DeviceTitles.Length));
             var guideCaption=(RectTransform)menuRoot.Find("Menu description");guideCaption.anchorMin=new Vector2(.08f,.75f);guideCaption.anchorMax=new Vector2(.92f,.80f);
-            var fixture=Catalog.GetPrimary(DeviceNodes[deviceIndex]).Definition;
+            var fixture=Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).First(c=>c.Definition.CampaignNodeId==DeviceNodes[deviceIndex]).Definition;
             LiveDeviceDemo(Rect("Device example",menuRoot,new Vector2(.10f,.555f),new Vector2(.90f,.735f)),fixture,deviceIndex);
             var explanation=Text("Device explanation",menuRoot,new Vector2(.10f,.38f),new Vector2(.90f,.59f),20,DeviceCopy[deviceIndex]);explanation.alignment=TextAlignmentOptions.MidlineLeft;
             MenuButton("Previous",.29f,()=>{deviceIndex=(deviceIndex+DeviceTitles.Length-1)%DeviceTitles.Length;DrawMenu();},false,.10f,.47f);
             MenuButton("Next",.29f,()=>{deviceIndex=(deviceIndex+1)%DeviceTitles.Length;DrawMenu();},false,.53f,.90f);
-            MenuButton(new UiCopy("Try level {0}",DeviceNodes[deviceIndex].TrimStart('C','0')),.18f,()=>{LoadNode(DeviceNodes[deviceIndex]);ShowGame();},true);
+            MenuButton(new UiCopy("Try level {0}",DeviceNodes[deviceIndex].TrimStart('C','0')),.18f,()=>{StartContent(Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).First(c=>c.Definition.CampaignNodeId==DeviceNodes[deviceIndex]));},true);
             MenuButton("Back",.07f,CloseMenu);
         }
         void DrawSettings()

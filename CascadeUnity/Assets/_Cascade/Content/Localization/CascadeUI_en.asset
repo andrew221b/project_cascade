@@ -1643,6 +1643,146 @@ MonoBehaviour:
     m_Localized: A cracked spot wears the board twice as fast.
     m_Metadata:
       m_Items: []
+  - m_Id: 96949670764544
+    m_Localized: 'Wood: {0} moves'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958848
+    m_Localized: '{0} moves'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958849
+    m_Localized: Safe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958850
+    m_Localized: Burst
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958851
+    m_Localized: Collected
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958852
+    m_Localized: Far swap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958853
+    m_Localized: Pause bomb
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958854
+    m_Localized: 'Paused: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958855
+    m_Localized: 'Landing: reverse row'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958856
+    m_Localized: 'Landing: slide left'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958857
+    m_Localized: 'Landing: slide right'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958858
+    m_Localized: You are here
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958859
+    m_Localized: Ribbon spool
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958860
+    m_Localized: Hourglass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958861
+    m_Localized: Power-ups
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958862
+    m_Localized: Pick up a tool. Find a new way home.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958863
+    m_Localized: Each swap uses a move. At zero, the wood breaks. Descend leaves
+      early.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958864
+    m_Localized: On landing, this board slides or reverses the whole row.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958865
+    m_Localized: Move the pictured piece above the bomb to stop it. Each swap counts
+      down. At zero, the blast damages the wood.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958866
+    m_Localized: Move the pictured piece above the spool. You get one swap across
+      one or two pieces. Save it for a lower board if you like.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958867
+    m_Localized: Move the pictured piece above the hourglass. The bomb waits for
+      two swaps, including this one. The wood still wears down.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958868
+    m_Localized: Match the spool picture to earn one far swap.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958869
+    m_Localized: Match the hourglass picture to pause the bomb.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958870
+    m_Localized: The bomb is paused. The wood still wears down.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958871
+    m_Localized: One far swap ready
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958872
+    m_Localized: Bomb paused for two swaps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96949674958873
+    m_Localized: The bomb waits. The wood still wears down.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 97734622175232
+    m_Localized: Reverse on landing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 97734622175233
+    m_Localized: Slide left on landing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 97734622175234
+    m_Localized: Slide right on landing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 97734622175235
+    m_Localized: Paired swaps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99091722788864
+    m_Localized: Tool challenge {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99091726983168
+    m_Localized: Match the spool picture. Then drag past a neighbour.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99091726983169
+    m_Localized: Match the hourglass picture. The bomb waits for two swaps.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

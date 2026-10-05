@@ -39,7 +39,7 @@ namespace Cascade.Content
     {
         public const string DefaultLocale = "en";
         public ReadOnlyCollection<LevelContent> PrimaryLevels { get; }
-        public ReadOnlyCollection<LevelContent> BonusLevels { get; } = Array.AsReadOnly(ReachChallenges.Create());
+        public ReadOnlyCollection<LevelContent> BonusLevels { get; } = Array.AsReadOnly(ReachChallenges.Create().Concat(PowerupChallenges.Create()).ToArray());
         public ReadOnlyCollection<LevelContent> LocalizedLevels { get; }
         public ReadOnlyDictionary<string, WordEntry> WordEntries { get; }
         public ReadOnlyDictionary<string, WordDefinition> Words { get; }

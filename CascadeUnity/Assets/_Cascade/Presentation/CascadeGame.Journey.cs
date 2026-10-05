@@ -33,7 +33,7 @@ namespace Cascade.Presentation
             menuWash.color=Color.clear;
             int first=JourneyStory.FirstStop(mapPage),zone=JourneyStory.Zone(first);machine.SetZone(zone);
             var map=Resources.Load<Sprite>("CascadeArt/"+(zone<3?"Journey/":"Woodland/")+JourneyStory.MapAsset(zone));
-            if(map!=null)Rect("Island map",menuRoot,new Vector2(0,.19f),new Vector2(1,.89f)).gameObject.AddComponent<SoftSceneryGraphic>().Initialize(map);
+            if(map!=null){var scenery=Rect("Island map",menuRoot,new Vector2(0,.19f),new Vector2(1,.89f)).gameObject.AddComponent<SoftSceneryGraphic>();scenery.Initialize(map);scenery.SetAvailability(MapPlaces(zone).Select(p=>new Vector2(p.x,(p.y-.19f)/.70f)).ToArray(),NextJourneyStop()-first);}
             DrawMapAtmosphere(zone);
             var top=Rect("Map heading",menuRoot,new Vector2(.04f,.86f),new Vector2(.96f,.98f));Panel(top,Paper);
             var title=Text("Region",top,new Vector2(.05f,.50f),new Vector2(.78f,.98f),27,JourneyStory.ZoneName(zone));title.font=art.titleFont;title.alignment=TextAlignmentOptions.MidlineLeft;
@@ -44,26 +44,18 @@ namespace Cascade.Presentation
             for(int i=0;i<JourneyStory.StopsOnPage(mapPage)&&first+i<Catalog.PrimaryLevels.Count;i++) {
                 int index=first+i;var content=Catalog.PrimaryLevels[index];bool done=sessionClears.Contains(content.Definition.CampaignNodeId);
                 var point=places[i];
-                if(i>0)MapPath(places[i-1],point,first+i<=unlocked);
-                var stone=Rect("Stop stone shadow",menuRoot,point,point);stone.sizeDelta=new Vector2(67,36);stone.anchoredPosition=new Vector2(0,-15);var stoneFace=stone.gameObject.AddComponent<ShapeFaceGraphic>();stoneFace.SetShape(art.disk,new Color(.18f,.36f,.32f,.30f));
                 var b=Button(UiCopy.Raw("Stop"+(index+1)),menuRoot,point,point,()=>{selectedJourneyStop=index;DrawMenu();});
-                var rect=(RectTransform)b.transform;rect.sizeDelta=new Vector2(62,60);b.GetComponentInChildren<TextMeshProUGUI>().SetCopy((index+1).ToString());
-                b.GetComponent<Image>().color=done?new Color(.49f,.78f,.66f):index==selectedJourneyStop&&index<=unlocked?new Color(.99f,.76f,.32f):Paper;
-                b.interactable=index<=unlocked;
-                if(index==selectedJourneyStop&&index<=unlocked){
-                    var halo=Rect("Current stop beacon",b.transform,new Vector2(.5f,.5f),new Vector2(.5f,.5f));halo.sizeDelta=new Vector2(76,72);
-                    var ring=halo.gameObject.AddComponent<CoachRingGraphic>();ring.raycastTarget=false;ring.color=new Color(.95f,.72f,.24f,.8f);
-                    halo.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,1),0,1);
-                }
-                if(Rewards.Records.Any(r=>r.StampGoal!=0&&r.PuzzleId.Split('_')[0]==content.Definition.CampaignNodeId)) {
-                    var seal=Rect("Earned trail seal",b.transform,new Vector2(.76f,.78f),new Vector2(.76f,.78f));seal.sizeDelta=new Vector2(20,20);
-                    seal.gameObject.AddComponent<ShapeFaceGraphic>().SetShape(art.shapes[4],new Color(.77f,.47f,.08f));
-                }
+                var rect=(RectTransform)b.transform;rect.sizeDelta=new Vector2(76,72);b.GetComponentInChildren<TextMeshProUGUI>().SetCopy("");
+                b.GetComponent<Image>().color=Color.clear;b.interactable=index<=unlocked;
                 if(index==unlocked) {
+                    var marker=Rect("You are here marker",menuRoot,point+new Vector2(0,.085f),point+new Vector2(0,.085f));marker.sizeDelta=new Vector2(128,43);
+                    var caption=Text("You are here",marker,new Vector2(0,.40f),Vector2.one,17,"You are here");caption.font=art.titleFont;
+                    var arrow=Rect("Here arrow",marker,new Vector2(.44f,.03f),new Vector2(.56f,.34f));arrow.gameObject.AddComponent<ShapeFaceGraphic>().SetShape(art.shapes[0],Ink);arrow.localRotation=Quaternion.Euler(0,0,180);
+                    marker.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,2),0,.7f);
                     var portrait=Resources.Load<Sprite>("CascadeArt/Journey/Mika");
                     if(portrait!=null) {
-                        var m=Picture("Mika on the path",menuRoot,point+new Vector2(-.19f,.01f),point+new Vector2(-.04f,.14f),portrait,true);m.raycastTarget=false;m.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,3),0,.9f);
-                        if(Rewards.EquippedGift!=null)Picture("Mika's keepsake",menuRoot,point+new Vector2(-.085f,.075f),point+new Vector2(.015f,.13f),
+                        var m=Picture("Mika on the path",menuRoot,point+new Vector2(-.17f,-.04f),point+new Vector2(-.04f,.06f),portrait,true);m.raycastTarget=false;m.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,3),0,.9f);
+                        if(Rewards.EquippedGift!=null)Picture("Mika's keepsake",menuRoot,point+new Vector2(-.10f,.005f),point+new Vector2(-.04f,.045f),
                             Resources.Load<Sprite>("CascadeArt/Workshop/"+GiftAssets[Array.IndexOf(JourneyRewards.Gifts,Rewards.EquippedGift)]),true);
                     }
                 }

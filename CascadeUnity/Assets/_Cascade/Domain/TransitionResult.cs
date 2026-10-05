@@ -7,7 +7,7 @@ namespace Cascade.Domain
     {
         CommandAccepted, RowPermuted, BombDefused, KeyOpened, Repaired, StampCollected,
         BombTicked, BombExploded, BombAbandoned, DurabilityResolved, BridgeConsumed,
-        FloorExited, FloorEntered, EntryPermuted, ReceiverEvaluated
+        FloorExited, FloorEntered, EntryPermuted, ReceiverEvaluated, RibbonCollected, HourglassCollected, BombFrozen
     }
     public enum RejectionReason { None, Terminal, InvalidCommand, InvalidState, ClosedEdge, NoOp }
 

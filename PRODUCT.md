@@ -88,13 +88,14 @@ now follows all 33 pages and ends at the beacon.
 
 The wooden workshop revision in Docs/VISUAL_MOTION_REWORK.md and
 Docs/WOODLAND_SURFACE_BRIEF.md is implemented in presentation: honey-wood
-platforms with hemp suspension, visible strength pips, held-command forecasts,
+platforms with hemp suspension, held-command forecasts,
 source-piece falling and settling, pictorial device demonstrations and stationary
 before/after ghosts under Reduced Motion. Separate cloud, foliage and regional
 weather layers use the presentation clock; maps have live cloud/weather motion,
 and scenery now uses a continuous viewport sky composition. The travel bag
-places Mika and a parcel on a bench above two object shelves. A map seal derives from an already proven saved stamp goal;
-it adds no reward currency or new save field. These visuals consume committed
+places Mika and a parcel on a bench above two object shelves. The earlier map
+seal derived from an already proven saved stamp goal; the current device/map
+revision omits that overlay. These visuals consume committed
 state and do not change gameplay rules. The Craft revision in
 Docs/CRAFT_REWORK.md adds a continuous hanging rope rig, bounded visual spring
 weight, a two-stage landing bounce, and warm key/sky fill. Its two original
@@ -104,7 +105,7 @@ Prices, packages and existing campaign IDs remain stable; there is no gameplay
 physics. Online remains design-only.
 
 Ribbon Reach is implemented as six separate optional workshop trials R01–R06,
-accessible from the bag. Their rules version is 2.1-longreach. One charge permits
+accessible through Power-ups in the bag. Their rules version is 2.1-longreach. One charge permits
 one atomic endpoint exchange across one or two intervening pieces; the middle
 pieces stay in place and the multiset is preserved. Every crossed edge must be
 open, and a corridor containing a linked-pair edge rejects Reach. Cost is one
@@ -113,6 +114,29 @@ the final row and the bomb ticks once. Undo restores the charge; Retry resets
 it. The same transition supplies the solver, command replay and state identity.
 Bonus records/receipts stay separate from campaign progression. C01–C160 retain
 their existing rules2.0 content and hashes. There is no charge purchase.
+
+The device revision in Docs/DEVICES_REWORK.md adds six optional B01–B06
+workshop lessons under rules2.2-pickups. Matching a final-row contact collects
+its tool once on that floor; entry contacts also apply. Ribbon grants one Reach
+charge, capped at one and carried to the next floor. Hourglass skips two bomb
+tick opportunities on its floor, including the collection move's tick. Wood
+still wears; the hourglass neither defuses the bomb nor freezes real time.
+Defusing takes priority, and entering the next floor resets the pickup-used and
+bomb-freeze state. Undo, Retry and replay restore the corresponding state. The
+same transition supplies the solver. Existing C01–C160 and R01–R06 definitions
+and hashes remain unchanged; no prices, packages or existing save schema change.
+
+Six original transparent illustrations—Bomb, RepairKit, BrassKey, Stamp,
+RibbonSpool and Hourglass—occupy attached wooden sockets with a separate
+matching-piece pocket and explicit wood/bomb counters. Their exact prompts,
+hashes and alpha bounds are recorded in Docs/AssetPrompts/Devices. Tapping a
+tool opens its entry in the eleven-part animated device guide. The Power-ups
+workshop menu presents six lessons with animated pickup demonstrations and a
+link to the retained Ribbon Reach trials. Map islands are the destinations:
+invisible hit targets replace numbered stop panels and path pebbles; available
+scenery remains colored, locked scenery is desaturated, and the current island
+has a localized You are here arrow with Mika.
+
 P19 provides disabled mock monetization service boundaries; it has no live ads,
 IAP provider, store UI or validated production receipts.
 
@@ -205,6 +229,21 @@ unavailable, not zero allocations. This short sample does not establish sustaine
 performance or mobile performance. Native app visual confirmation remains
 blocked by the locked Mac. Device, human enjoyment, AAA quality and release
 readiness remain unproven.
+
+The device revision checkpoint is recorded in Reports/Devices and
+Reports/DevicesRegression. 137/137 regression EditMode and21/21 preliminary
+focused cases passed (146 distinct). Initial PlayMode3/5 had two animation
+completion timeouts; unchanged focused reproduction2/2 passed under the same
+deadline. A separate literal-letter regression1/1 passed in EN/RU/UK. Native
+MCP screenshots cover the changed device, tutorial and map surfaces, including
+320px UK shared contacts. The five scored Impeccable visual corrections have a
+scoped ship confirmation. Prior Craft performance results remain historical;
+physical-device behavior, non-reader comprehension, native-language editing,
+performance and human enjoyment remain unverified. See the Devices report for
+final preview checks (2/2 PASS) and actual new build outcome: CASCADE-Devices.app
+built successfully with0 errors /346 package/config warnings. CUA could not
+inspect its native window because the Mac is locked; standalone UI/performance
+remain unverified.
 
 ## Product Principles
 

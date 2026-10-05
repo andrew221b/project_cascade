@@ -7,6 +7,15 @@ namespace Cascade.Presentation
     public sealed class SoftSceneryGraphic : MaskableGraphic
     {
         Sprite source;
+        Material availability;
+        public void SetAvailability(Vector2[] points,int unlocked)
+        {
+            var shader=Resources.Load<Shader>("CascadeArt/MapAvailability");if(shader==null)return;
+            availability=new Material(shader);material=availability;
+            for(int i=0;i<5;i++)availability.SetVector("_Island"+i,new Vector4(points[i].x,points[i].y,0,0));
+            availability.SetFloat("_Unlocked",unlocked);
+        }
+        protected override void OnDestroy(){if(availability!=null)Destroy(availability);base.OnDestroy();}
         public override Texture mainTexture=>source==null?base.mainTexture:source.texture;
         public void Initialize(Sprite sprite){source=sprite;raycastTarget=false;SetAllDirty();}
         protected override void OnPopulateMesh(VertexHelper vh)

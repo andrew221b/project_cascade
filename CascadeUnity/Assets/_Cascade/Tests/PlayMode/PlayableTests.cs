@@ -94,6 +94,48 @@ namespace Cascade.Tests
             Assert.That(game.Interaction.Attempt.Current.Status, Is.EqualTo(PuzzleStatus.Playing));
             Assert.That(game.Interaction.Attempt.RouteLength, Is.Zero);
         }
+        [UnityTest] public IEnumerator WordDeviceSocketsShowLiteralLettersInEveryUiLocale()
+        {
+            foreach(var locale in new[]{"en","ru","uk"}) {
+                game.SetUiLocale(locale);Assert.That(game.Catalog.TryGetLocalizedBinding("C38",locale,out var binding),Is.True);
+                game.LoadLevel(binding.Definition,locale);game.ShowGame();yield return null;
+                var letters=game.GetComponentsInChildren<TextMeshProUGUI>().Where(t=>t.name=="Required letter").ToArray();
+                Assert.That(letters.Length,Is.EqualTo(2));
+                foreach(var letter in letters){Assert.That(letter.text,Is.EqualTo(binding.Definition.Floors[0].Key.RequiredSymbol.Value));Assert.That(letter.isTextOverflowing,Is.False);}
+            }
+        }
+        [UnityTest] public IEnumerator PickupDragThenFarSwapWinsAndUndoRestoresTool()
+        {
+            game.LoadLevel(game.Catalog.BonusLevels[6].Definition);game.ShowGame();yield return null;game.RefreshLayout();
+            yield return TouchFrame(21,Point(0),UnityEngine.InputSystem.TouchPhase.Began);
+            yield return TouchFrame(21,Point(1),UnityEngine.InputSystem.TouchPhase.Moved);
+            Assert.That(game.Interaction.Attempt.Current.ReachCharges,Is.Zero,"Preview cannot grant a tool");
+            Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Any(t=>t.name=="Device state"&&t.text=="Far swap"),Is.True);
+            yield return TouchFrame(21,Point(1),UnityEngine.InputSystem.TouchPhase.Ended);yield return AwaitPresentation();
+            Assert.That(game.Interaction.Attempt.Current.ReachCharges,Is.EqualTo(1));
+            yield return TouchFrame(22,Point(1),UnityEngine.InputSystem.TouchPhase.Began);
+            yield return TouchFrame(22,Point(3),UnityEngine.InputSystem.TouchPhase.Moved);
+            yield return TouchFrame(22,Point(3),UnityEngine.InputSystem.TouchPhase.Ended);yield return AwaitPresentation();
+            Assert.That(game.Interaction.Attempt.Current.Status,Is.EqualTo(PuzzleStatus.Won));
+            game.Undo();Assert.That(game.Interaction.Attempt.Current.ReachCharges,Is.EqualTo(1));
+        }
+        [UnityTest] public IEnumerator DeviceTapExplainsWithoutMovingAndClockSurvivesReload()
+        {
+            game.LoadLevel(game.Catalog.BonusLevels[9].Definition);game.ShowGame();yield return null;game.RefreshLayout();
+            string before=game.Interaction.Attempt.CurrentStateHash;
+            yield return ClickButton("DeviceHourglass");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Devices));
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(before));
+            yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Playing));
+            yield return TouchFrame(23,Point(0),UnityEngine.InputSystem.TouchPhase.Began);
+            yield return TouchFrame(23,Point(1),UnityEngine.InputSystem.TouchPhase.Moved);
+            yield return TouchFrame(23,Point(1),UnityEngine.InputSystem.TouchPhase.Ended);yield return AwaitPresentation();
+            Assert.That(game.Interaction.Attempt.Current.FrozenTicks,Is.EqualTo(1));Assert.That(game.VisibleFrame.FrozenTicks,Is.EqualTo(1));
+            string saved=game.Interaction.Attempt.CurrentStateHash;
+            yield return SceneManager.LoadSceneAsync("Assets/_Cascade/Scenes/CascadePlayable.unity");game=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(saved));
+            Assert.That(game.Interaction.Attempt.Current.FrozenTicks,Is.EqualTo(1));game.ShowGame();game.SendMessage("OnApplicationFocus",true);game.Undo();
+            Assert.That(game.Interaction.Attempt.Current.PowerupUsed,Is.False);Assert.That(game.Interaction.Attempt.Current.FrozenTicks,Is.Zero);
+        }
         [UnityTest] public IEnumerator RibbonDragPersistsAndUndoRestoresCharge()
         {
             game.LoadLevel(game.Catalog.BonusLevels[2].Definition);game.ShowGame();yield return null;game.RefreshLayout();

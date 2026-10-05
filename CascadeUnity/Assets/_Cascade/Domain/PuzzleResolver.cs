@@ -107,6 +107,11 @@ namespace Cascade.Domain
                 state = state.With(repairUsed: true, durability: state.Durability + floor.Repair.Amount);
                 events.Add(new PuzzleEvent(PuzzleEventKind.Repaired, state, floor.Repair.Amount));
             }
+            if(floor.Powerup!=null && !state.PowerupUsed && state.Row[floor.Powerup.Slot]==floor.Powerup.RequiredSymbol) {
+                bool ribbon=floor.Powerup.Kind==PowerupKind.Ribbon;
+                state=state.With(powerupUsed:true,reachCharges:ribbon?1:state.ReachCharges,frozenTicks:ribbon?state.FrozenTicks:2);
+                events.Add(new PuzzleEvent(ribbon?PuzzleEventKind.RibbonCollected:PuzzleEventKind.HourglassCollected,state,ribbon?1:2));
+            }
             int stampBit = 1 << state.ActiveFloor;
             if (floor.OptionalStamp != null && (state.StampBits & stampBit) == 0
                 && state.Row[floor.OptionalStamp.Slot] == floor.OptionalStamp.RequiredSymbol)
@@ -120,6 +125,7 @@ namespace Cascade.Domain
         PuzzleState TickBomb(PuzzleState state, List<PuzzleEvent> events)
         {
             if (state.BombPhase != BombPhase.Armed) return state;
+            if(state.FrozenTicks>0){state=state.With(frozenTicks:state.FrozenTicks-1);events.Add(new PuzzleEvent(PuzzleEventKind.BombFrozen,state,state.FrozenTicks));return state;}
             var bomb = Level.Floors[state.ActiveFloor].Bomb;
             state = state.With(bombTicks: state.BombTicks - 1);
             events.Add(new PuzzleEvent(PuzzleEventKind.BombTicked, state, state.BombTicks));
@@ -148,7 +154,7 @@ namespace Cascade.Domain
             if (floorIndex == Level.Floors.Count)
             {
                 var terminal = state.With(activeFloor: floorIndex, durability: 0, bombPhase: BombPhase.Absent,
-                    bombTicks: 0, keyUsed: false, repairUsed: false, bridgeUsed: false,
+                    bombTicks: 0, keyUsed: false, repairUsed: false, bridgeUsed: false, powerupUsed:false,frozenTicks:0,
                     status: state.Row.SequenceEqual(Level.TargetSymbolIds) ? PuzzleStatus.Won : PuzzleStatus.Lost);
                 events.Add(new PuzzleEvent(PuzzleEventKind.ReceiverEvaluated, terminal, terminal.Status == PuzzleStatus.Won ? 1 : 0));
                 return terminal;
@@ -156,7 +162,7 @@ namespace Cascade.Domain
             var floor = Level.Floors[floorIndex];
             var entered = state.With(activeFloor: floorIndex, durability: floor.BaseDurability,
                 bombPhase: floor.Bomb == null ? BombPhase.Absent : BombPhase.Armed,
-                bombTicks: floor.Bomb == null ? 0 : floor.Bomb.Ticks, keyUsed: false, repairUsed: false, bridgeUsed: false);
+                bombTicks: floor.Bomb == null ? 0 : floor.Bomb.Ticks, keyUsed: false, repairUsed: false, bridgeUsed: false,powerupUsed:false,frozenTicks:0);
             events.Add(new PuzzleEvent(PuzzleEventKind.FloorEntered, entered, floor.BaseDurability));
             if (floor.EntryTransform != EntryTransform.None)
             {

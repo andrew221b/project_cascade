@@ -66,7 +66,8 @@ namespace Cascade.Domain
                         path + "." + name, "Required symbol is absent from target.");
                 }
                 Contact(floor.Bomb, "Bomb"); Contact(floor.Key, "Key");
-                Contact(floor.Repair, "Repair"); Contact(floor.OptionalStamp, "OptionalStamp");
+                Contact(floor.Repair, "Repair"); Contact(floor.OptionalStamp, "OptionalStamp");Contact(floor.Powerup,"Powerup");
+                if(floor.Powerup!=null)Check(Enum.IsDefined(typeof(PowerupKind),floor.Powerup.Kind),path+".Powerup.Kind","Unknown pickup.");
                 if (floor.Key != null)
                 {
                     int edge = floor.Key.EdgeToOpen;

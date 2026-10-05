@@ -83,6 +83,12 @@ namespace Cascade.Presentation
                             case PuzzleEventKind.Repaired:
                                 game.SetPresentationFeedback(new UiCopy("Repair +{0}",e.Value)); feedback.Sound(ToyCue.Repair);
                                 feedback.Burst(origin, new Color(.4f, .88f, .73f, .8f), 5, reduced); yield return Recoil(e.Floor, profile.contact); break;
+                            case PuzzleEventKind.RibbonCollected:
+                            case PuzzleEventKind.HourglassCollected:
+                                game.SetPresentationFeedback(e.Kind==PuzzleEventKind.RibbonCollected?"One far swap ready":"Bomb paused for two swaps");feedback.Sound(ToyCue.Stamp);feedback.Haptic();
+                                feedback.Burst(origin,new Color(.5f,.8f,1,.85f),5,reduced);yield return Hold(profile.contact);break;
+                            case PuzzleEventKind.BombFrozen:
+                                game.SetPresentationFeedback("The bomb waits. The wood still wears down.");yield return Hold(.12f);break;
                             case PuzzleEventKind.StampCollected:
                                 game.SetPresentationFeedback("Stamp collected"); feedback.Sound(ToyCue.Stamp);
                                 feedback.Burst(origin, new Color(.74f, .61f, .86f, .8f), 4, reduced); yield return Hold(profile.contact); break;
@@ -168,6 +174,8 @@ namespace Cascade.Presentation
             else if (e.Kind == PuzzleEventKind.KeyOpened) contact = floor.Key;
             else if (e.Kind == PuzzleEventKind.Repaired) contact = floor.Repair;
             else if (e.Kind == PuzzleEventKind.StampCollected) contact = floor.OptionalStamp;
+            else if(e.Kind==PuzzleEventKind.RibbonCollected||e.Kind==PuzzleEventKind.HourglassCollected)contact=floor.Powerup;
+            else if(e.Kind==PuzzleEventKind.BombFrozen)contact=floor.Bomb;
             return contact == null ? game.Machine.FloorPosition(e.Floor) : game.Machine.ContactPosition(e.Floor, contact.Slot);
         }
         void LateUpdate()

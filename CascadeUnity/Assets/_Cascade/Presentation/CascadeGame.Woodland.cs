@@ -11,6 +11,7 @@ namespace Cascade.Presentation
         {
             if(machine==null||Interaction==null)return;
             machine.TickWoodDynamics(Time.unscaledDeltaTime);
+            for(int i=0;i<deviceOverlays.Count;i++)deviceOverlays[i].position=floorViews[i].position+machine.FloorVisualOffset(i);
             for(int i=0;i<tokenLabels.Count;i++) {
                 var rect=tokenLabels[i].rectTransform;var position=machine.TokenVisualPosition(i);position.z=rect.position.z;rect.position=position;
                 rect.rotation=Quaternion.Euler(0,0,machine.TokenVisualAngle(i));

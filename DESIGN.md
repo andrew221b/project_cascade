@@ -249,6 +249,17 @@ short sample is neither verified foreground nor mobile performance. Native
 player visual confirmation is blocked by the locked Mac; physical devices,
 human enjoyment and release readiness remain unverified.
 
+The device/map extension follows `Docs/DEVICES_REWORK.md` and the implemented
+`CascadeGame.Devices.cs`, `CascadeGame.DeviceDemo.cs`, `CascadeGame.Craft.cs`,
+`CascadeGame.Journey.cs` and `MapAvailability.shader`. Six original tool rasters
+retain generated pixels and provenance in `Docs/AssetPrompts/Devices`. Mounted
+matching-piece sockets, explicit counters and an eleven-part guide replace the
+coded beads and floating contact faces. The map uses the island artwork itself
+for availability and current-location cues. Palette, typography and SymbolId
+identity stay intact. Current native captures and validation status belong to
+`Reports/Devices` and `Reports/DevicesRegression`; the pending final confirmation
+must not inherit the earlier Craft review or build verdict.
+
 **Key Characteristics:**
 - Direct touch lifts a piece and its live glyph together; the receiver stays visible.
 - Six stable silhouettes and colors retain their identity across eight regions.
@@ -272,9 +283,9 @@ Warm paper and brass anchor a mint, coral, lilac, yellow, sky and apricot toy pa
 ### Secondary
 
 - **Triangle Yellow, Circle Mint, Square Coral, Diamond Lilac, Star Sky and Hexagon Apricot** preserve the six shape identities in the row, contacts, destination and magnifier.
-- **Device Coral** also marks bomb bodies and fragile notches. Lilac links paired edges and stamp hardware.
+- **Device Coral** retains fragile-edge feedback. New bomb, repair, key, stamp, ribbon and hourglass rasters carry their own painted colors; lilac connecting cords disclose paired edges.
 - **Legal Landing** and **Blocked Landing** tint the adjacent destination during a drag. **Preview Gold** washes affected slots during a command preview; the solid selection frame remains distinct.
-- **Map Current** identifies an available selected stop; **Map Restored** identifies a completed stop. **Path Open** and **Path Future** distinguish connecting pebbles. Mika marks actual locally saved progress, independently of browsing.
+- **Map Current**, **Map Restored**, **Path Open** and **Path Future** remain historical tokens. The current map conveys availability through colored/desaturated island artwork and a localized arrow with Mika; stop fills and connecting pebbles are absent. The retained `map-stop` frontmatter variants describe the earlier surface and must not be used to recreate its visible cards.
 
 ### Neutral
 
@@ -316,16 +327,17 @@ Precision input is explicitly enabled in Comfort and is off by default, includin
 
 ### Journey and dialogue
 
-The map uses a tall illustrated five-stop route between a compact paper heading and a lower task panel. A map stop is 62 × 60 reference units; page controls are 76 × 60. The source image is stretched into its normalized map rectangle by the current uGUI implementation; this is not a cover-fit or pixel-perfect raster-registration guarantee. The current map reuses each of eight regional illustrations over its regional pages. There are 33 pages: usually five stops, with four on the final page of each new 24-stop region. Stop placement follows the painted plazas using region-specific anchors. Mika appears only on the actual next stop from local first-clear receipts, never on a locked future preview. The future footer gives distance and a return action.
+The map uses a tall illustrated five-stop route between a compact paper heading and a lower task panel. An invisible island hit target is 76 × 72 reference units; page controls are 64 × 44. The source image is stretched into its normalized map rectangle by the current uGUI implementation; this is not a cover-fit or pixel-perfect raster-registration guarantee. The current map reuses each of eight regional illustrations over its regional pages. There are 33 pages: usually five stops, with four on the final page of each new 24-stop region. Stop placement follows the painted plazas using region-specific anchors. Mika and the localized You are here arrow appear only on the actual next stop from local first-clear receipts, never on a locked future preview. The future footer gives distance and a return action.
 
 Dialogue places a large transparent character above/behind a low paper frame. A thin brass line, Bold speaker name, short Regular sentence and separate Continue/Skip story actions provide hierarchy. Story entry explicitly selects the character's region. Dialogue blocks puzzle input.
 
 ### Travel bag and earned objects
 
 Map Menu opens the travel bag: Mika and a parcel share the upper bench, with
-Keepsakes/Workshop and My journal/Ribbon reach arranged on two object shelves.
-The journal unlocks after three restored lights; the separate Ribbon Reach
-trials are available from the bag at any time. Settings and Back to map share
+Keepsakes/Workshop and My journal/Power-ups arranged on two object shelves.
+The journal unlocks after three restored lights; Power-ups opens six optional
+pickup lessons with a live animated example, lesson selectors and a Try this
+trail action. A separate Ribbon reach action retains access to the six R trials. Settings and Back to map share
 the lower band. Collection and workshop place four selectable thumbnails on
 one shelf above a larger selected alpha illustration, short live progress
 copy and a clear lower action. Requests retain separate previous/next controls. The journal
@@ -369,23 +381,27 @@ Warm paper controls carry dark Bold labels and Unity multiply tints for hover, p
 
 ### Persistent token and receiver
 
-Pressing a shape or letter gives immediate lift and a larger held face; legal adjacent landing highlights and the feedback line explain command cost. Release commits one atomic exchange through the shared resolver. Ordinary play exchanges adjacent pieces; the six R trials additionally permit one charged endpoint swap across one or two intervening pieces. All crossed edges must be open, linked-pair corridors reject Reach, and crossed fragile/bridge rules still apply. Contacts use the final row. The charge and state are undoable; Retry restores the initial charge. Charge-aware live guidance distinguishes available and spent ribbon states. Tap-then-tap remains available; a long swipe does not chain exchanges. The gold rim and ivory inset retain the complete ordered destination. Magnifier faces derive from the same shapes and live glyphs. Failure shows the goal and delivered row separately; success seats the row before result actions appear.
+Pressing a shape or letter gives immediate lift and a larger held face; legal adjacent landing highlights and the feedback line explain command cost. Release commits one atomic exchange through the shared resolver. Ordinary play exchanges adjacent pieces; the six R trials and a collected ribbon in the B lessons additionally permit one charged endpoint swap across one or two intervening pieces. All crossed edges must be open, linked-pair corridors reject Reach, and crossed fragile/bridge rules still apply. Contacts use the final row. The charge and state are undoable; Retry restores the initial charge. Charge-aware live guidance distinguishes available and spent ribbon states. Tap-then-tap remains available; a long swipe does not chain exchanges. The gold rim and ivory inset retain the complete ordered destination. Magnifier faces derive from the same shapes and live glyphs. Failure shows the goal and delivered row separately; success seats the row before result actions appear.
 
 ### Platforms and devices
 
-Compact painted wood strips carry the original lock, bomb, key, repair, stamp, fragile, linked and bridge hardware. Two continuous hemp strands connect the upper suspension through board end attachments to the receiver; the native WoodBoard body-band framing preserves its alpha and grain. Warm strength pips and up to three graphite seams disclose damage. Forecast pips turn coral when the held command would consume strength. Bomb contacts carry the required face and remaining fuse beads; their state follows the committed resolver events. Collapse emits bounded wood chips, and source pieces travel to their exact destination before settling. Contact faces retain shared SymbolId identity and live glyphs. The wood texture is unlit; shape plastics and brass retain their incumbent material treatment.
+Compact painted wood strips retain the original grain and continuous hemp suspension. Up to three graphite seams show wear, while localized Wood: N moves copy reports remaining durability. Strength pips, fuse beads and isolated entry arrows are absent from the playable rails. Contact tools use the original transparent Bomb, RepairKit, BrassKey, Stamp, RibbonSpool and Hourglass art, suspended from a wooden socket by two straps. Each attached tool has a separate matching-piece pocket using the shared SymbolId silhouette and live glyph. Device hit areas are 88 × 55 reference units. Tapping one opens its guide without spending a move. A lilac cord connects linked edges; a landing-movement label opens the relevant explanation. The wood remains unlit, with the existing satin shape and brass materials.
 
-The nine device-guide demonstrations read precomputed transitions from the same resolver without owning the playable attempt. Entry shows landing and row rotation; linked pairs move together, fragile crossings lose strength, bridge folds, gate opens, repair mends and bomb defuse/blast change the board. Optional captions stay live in EN/RU/UK. Reduced Motion presents stationary translucent before silhouettes and the settled after state; it does not animate a causal path. Non-reader understanding remains a human-test question.
+A bomb reports remaining moves, Paused: N, Safe or Burst from committed state. Collected tools become subdued and show Collected. Ribbon and hourglass labels disclose Far swap and Pause bomb before collection. An hourglass pauses bomb ticks while the wood continues wearing; it does not imply stopped animation or a real-time countdown. Collapse still emits bounded wood chips, and source pieces travel to their exact destination before settling.
+
+The eleven device-guide demonstrations read precomputed transitions from the same resolver without owning the playable attempt. Entry shows landing and row rotation; linked pairs move together, fragile crossings lose strength, a bridge folds, a key opens its gate, repair mends, bomb defuse/blast change the board, and pickup examples show the corresponding tool outcome. The guide retains roller-mounted direction marks within the entry demonstration; these are distinct from the removed isolated arrows on playable floors. Optional captions stay live in EN/RU/UK. Reduced Motion presents stationary translucent before silhouettes and the settled after state. The workshop Power-ups menu reuses the animated pickup examples. Non-reader understanding remains a human-test question.
 
 ### Map route
 
-The isometric illustration, numbered stop buttons, small path pebbles and Mika marker express travel. Restored count and unlocked stop come from the expanded 160-node catalog and durable local first-clear receipts, deduplicated by campaign node across modes and locales. The gold action says Let's go, Continue or Play again where available; future pages explain remaining stops and offer Back to my path. Lessons retains the existing level/mode browser. Eight regional kits span 33 pages. Only Mika at the actual current stop moves softly; restored path pebbles stay lit. Clouds and rain/snow use separate live UI layers. An earned seal marks a saved solver-proven stamp-goal record, without adding a reward field or restricting ordinary travel. Ten late optional detours belong to the new campaign content.
+The isometric islands themselves express travel. Invisible plaza-aligned buttons retain stop identities; they have no numbered captions, filled cards, shadows or added path pebbles. Locked buttons reject travel. A dedicated map material desaturates scenery assigned to locked destinations while retaining colored available scenery and the blue sky. Its nearest-island/color mask is shader-based, not separately authored island cutouts. The actual next stop has one localized You are here arrow and Mika, both with restrained view-only motion.
+
+Restored count and unlocked stop come from the 160-node catalog and durable local first-clear receipts, deduplicated across modes and locales. The gold action says Let's go, Continue or Play again where available; future pages explain remaining stops and offer Back to my path. Lessons retains the level/mode browser. Eight regional kits span 33 pages. Clouds and rain/snow retain separate live UI layers. The earlier saved stamp-seal overlay is absent from the current map; saved stamp-goal records and the ten late optional detours remain part of progression.
 
 Map paging uses the same native `DirectionButton` and `ChevronGraphic` as
 precision focus controls. A dark authored left/right chevron replaces the
 caption inside the paper target; its graphic does not intercept input. The
 `Earlier`/`Later` button identities and existing handlers remain, with the
-map's 76 × 60 reference-unit geometry. This local size override does not change
+map's 64 × 44 reference-unit geometry. This local size override does not change
 the shared direction-button token or introduce a new visual primitive.
 
 ### Dialogue and results

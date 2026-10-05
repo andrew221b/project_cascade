@@ -66,6 +66,13 @@ namespace Cascade.Domain
         { Ticks = ticks; Damage = damage; }
     }
 
+    public enum PowerupKind { Ribbon, Hourglass }
+    public sealed class PowerupDefinition : ContactDefinition
+    {
+        public PowerupKind Kind { get; }
+        public PowerupDefinition(int slot, SymbolId symbol, PowerupKind kind) : base(slot,symbol) { Kind=kind; }
+    }
+
     public sealed class FloorDefinition
     {
         public int BaseDurability { get; }
@@ -78,12 +85,13 @@ namespace Cascade.Domain
         public RepairDefinition Repair { get; }
         public int? OneUseBridgeEdge { get; }
         public ContactDefinition OptionalStamp { get; }
+        public PowerupDefinition Powerup { get; }
 
         public FloorDefinition(int baseDurability, IEnumerable<bool> openEdges,
             IEnumerable<int> fragileEdges = null, LinkedPair? linkedPair = null,
             EntryTransform entryTransform = EntryTransform.None, BombDefinition bomb = null,
             KeyDefinition key = null, RepairDefinition repair = null,
-            int? oneUseBridgeEdge = null, ContactDefinition optionalStamp = null)
+            int? oneUseBridgeEdge = null, ContactDefinition optionalStamp = null, PowerupDefinition powerup = null)
         {
             BaseDurability = baseDurability;
             OpenEdges = Frozen.Copy(openEdges);
@@ -91,7 +99,7 @@ namespace Cascade.Domain
             LinkedPair = linkedPair;
             EntryTransform = entryTransform;
             Bomb = bomb; Key = key; Repair = repair;
-            OneUseBridgeEdge = oneUseBridgeEdge; OptionalStamp = optionalStamp;
+            OneUseBridgeEdge = oneUseBridgeEdge; OptionalStamp = optionalStamp; Powerup=powerup;
         }
     }
 

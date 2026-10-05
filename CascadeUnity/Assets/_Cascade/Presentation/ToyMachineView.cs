@@ -68,6 +68,7 @@ namespace Cascade.Presentation
         public Vector3 TokenPosition(int index) => restPositions[index];
         public Vector3 PresentedTokenPosition(int index) => tokens[index].transform.position;
         public float SelectionLiftWorld(int index) { tokens[index].anchor.GetWorldCorners(corners); return (corners[2].y-corners[0].y)*.1f; }
+        public Vector3 FloorVisualOffset(int floor)=>new Vector3(floors[floor].sway,-floors[floor].sag+floorOffsets[floor],0);
         public Vector3 FloorPosition(int floor)
         {
             var anchor = floors[floor].parts[0].anchor; anchor.GetWorldCorners(corners);
@@ -153,55 +154,22 @@ namespace Cascade.Presentation
                 P("Rope knot",art.disk,ropeMaterial,x,.38f,.05f,.09f,-.14f);
 
             }
-            for(int pip=0;pip<15;pip++)rig.durability.Add(P("Wood strength "+pip,art.disk,art.gold,.15f+pip*.048f,.33f,.020f,.052f,-.20f));
+
             for (int i = 0; i < 3; i++) rig.cracks.Add(P("Damage seam " + i, art.beam, art.graphite, .28f + i * .23f, .33f, .055f, .023f, -.17f, i % 2 == 0 ? 65 : -58));
             for (int i = 0; i < count - 1; i++) {
                 float x = .045f + .91f * (i + 1f) / count;
                 var gate = P("Edge latch " + i, art.tile, art.gold, x, .55f, .025f, .18f, -.4f); rig.locks.Add(gate);
                 if (floor.FragileEdges.Contains(i)) {
-                    P("Fragile notch", art.beam, art.coral, x - .008f, .35f, .06f, .032f, -.21f, -45);
-                    P("Fragile notch", art.beam, art.coral, x + .007f, .29f, .05f, .032f, -.22f, 45);
-                }
-                if (floor.LinkedPair.HasValue && floor.LinkedPair.Value.Contains(i)) {
-                    P("Linked loop", art.disk, art.colors[3], x, .31f, .066f, .14f, -.23f);
-                    P("Linked loop inset", art.disk, art.cream, x, .31f, .035f, .07f, -.33f);
+                    P("Fragile notch", art.beam, art.graphite, x - .008f, .35f, .06f, .032f, -.21f, -45);
+                    P("Fragile notch", art.beam, art.graphite, x + .007f, .29f, .05f, .032f, -.22f, 45);
                 }
                 if (floor.OneUseBridgeEdge == i) {
                     rig.bridge.Add(P("One use bridge", art.beam, art.gold, x, .46f, .12f, .055f, -.4f));
                     rig.bridge.Add(P("Bridge hinge", art.disk, art.graphite, x, .46f, .024f, .045f, -.51f));
                 }
             }
-            if (floor.Bomb != null) Device("Bomb", floor.Bomb, rig.bomb, art.coral);
-            if (floor.Key != null) Device("Key", floor.Key, rig.key, art.gold);
-            if (floor.Repair != null) Device("Repair", floor.Repair, rig.repair, art.teal);
-            if (floor.OptionalStamp != null) Device("Stamp", floor.OptionalStamp, rig.stamp, art.colors[3]);
-            if (floor.EntryTransform != EntryTransform.None) {
-                float angle = floor.EntryTransform == EntryTransform.ShiftLeftOne ? 180 : 0;
-                P("Entry roller", art.disk, art.graphite, .10f, .30f, .045f, .10f, -.3f);
-                P("Entry roller", art.disk, art.graphite, .90f, .30f, .045f, .10f, -.3f);
-                P("Entry direction", art.shapes[0], art.gold, .5f, .31f, .06f, .1f, -.3f, -90 + angle);
-                if (floor.EntryTransform == EntryTransform.MirrorNext) P("Mirror direction", art.shapes[0], art.gold, .43f, .31f, .06f, .1f, -.3f, 90);
-            }
-            void Device(string name, ContactDefinition contact, List<Part> parts, Material color) {
-                float x = .045f + .91f * (contact.Slot + .5f) / count;
-                parts.Add(P(name + " mount", art.disk, color, x, .31f, .12f, .34f, -.4f));
-                parts.Add(P(name + " face", art.SymbolMesh(contact.RequiredSymbol), art.SymbolMaterial(contact.RequiredSymbol), x, .31f, .077f, .245f, -.54f));
-                if (name == "Bomb") {
-                    parts.Add(P("Bomb fuse stem",art.beam,art.graphite,x,.50f,.018f,.12f,-.41f));
-                    rig.bombFlame=P("Bomb fuse flame",art.shapes[0],art.gold,x,.59f,.04f,.095f,-.43f);
-                    for(int t=0;t<((BombDefinition)contact).Ticks;t++)rig.fuse.Add(P("Fuse move "+t,art.disk,art.gold,x+(t-(((BombDefinition)contact).Ticks-1)*.5f)*.032f,.16f,.022f,.06f,-.53f));
-                }
-                if (name == "Repair") {
-                    parts.Add(P("Repair cross", art.beam, art.cream, x + .06f, .3f, .037f, .03f, -.5f));
-                    parts.Add(P("Repair cross", art.beam, art.cream, x + .06f, .3f, .01f, .09f, -.51f));
-                }
-                if (name == "Key") {
-                    parts.Add(P("Key shaft", art.beam, art.gold, x + .067f, .3f, .06f, .055f, -.4f));
-                    parts.Add(P("Key tooth", art.tile, art.gold, x + .09f, .27f, .018f, .1f, -.4f));
-                }
-                if (name == "Stamp") parts.Add(P("Stamp handle", art.tile, art.colors[3], x, .16f, .03f, .09f, -.4f));
-            }
         }
+
         Part Add(string name, RectTransform anchor, Mesh mesh, Material material, Vector2 point, Vector2 size, float z, float depth, float angle = 0)
         {
             var part = Create(name, machine, anchor, mesh, material, point, size, z, depth, angle); all.Add(part); return part;

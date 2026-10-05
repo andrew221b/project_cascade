@@ -11,6 +11,7 @@ namespace Cascade.Editor.Validation
     public static class FinalPlayerBuild
     {
         public static void BuildMac()=>BuildMacTo("FinalPlayer","CASCADE.app");
+        public static void BuildDevicesMac()=>BuildMacTo("Devices","CASCADE-Devices.app");
         public static void BuildCraftMac()=>BuildMacTo("Craft","CASCADE-Craft.app");
         static void BuildMacTo(string reportFolder,string appName)
         {

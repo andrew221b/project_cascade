@@ -61,8 +61,10 @@ namespace Cascade.Application
             }
             if (state.Row.SequenceEqual(level.TargetSymbolIds)) return state.ActiveFloor == level.Floors.Count-1
                 ? "Ready! Tap Deliver." : "Ready here. Check the board below.";
-            if (LessonCompleted && !HighlightRequested) return "";
+            if (LessonCompleted && !HighlightRequested && level.Floors[state.ActiveFloor].Powerup==null) return "";
             var f = level.Floors[state.ActiveFloor];
+            if(f.Powerup!=null&&!state.PowerupUsed)return f.Powerup.Kind==PowerupKind.Ribbon?"Match the spool picture to earn one far swap.":"Match the hourglass picture to pause the bomb.";
+            if(state.FrozenTicks>0)return "The bomb is paused. The wood still wears down.";
             if (f.Bomb != null && state.BombPhase == BombPhase.Armed) return "Put the same piece on the bomb to stop it.";
             if (f.Key != null && !state.KeyUsed) return "Put the same piece on the key.";
             if (f.Repair != null && !state.RepairUsed) return "Put the same piece on the patch to mend the board.";

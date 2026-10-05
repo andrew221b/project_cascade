@@ -24,36 +24,38 @@ namespace Cascade.Domain
         public int AbandonedCount { get; }
         public PuzzleStatus Status { get; }
         public int ReachCharges { get; }
+        public bool PowerupUsed { get; }
+        public int FrozenTicks { get; }
 
         internal PuzzleState(IEnumerable<SymbolId> row, int activeFloor, int durability,
             BombPhase bombPhase = BombPhase.Absent, int bombTicks = 0, bool keyUsed = false,
             bool repairUsed = false, bool bridgeUsed = false, int stampBits = 0,
             int defusedCount = 0, int explodedCount = 0, int abandonedCount = 0,
-            PuzzleStatus status = PuzzleStatus.Playing, int reachCharges = 0)
+            PuzzleStatus status = PuzzleStatus.Playing, int reachCharges = 0, bool powerupUsed = false, int frozenTicks = 0)
         {
             Row = Frozen.Copy(row); ActiveFloor = activeFloor; Durability = durability;
             BombPhase = bombPhase; BombTicks = bombTicks; KeyUsed = keyUsed; RepairUsed = repairUsed;
             BridgeUsed = bridgeUsed; StampBits = stampBits; DefusedCount = defusedCount;
-            ExplodedCount = explodedCount; AbandonedCount = abandonedCount; Status = status; ReachCharges = reachCharges;
+            ExplodedCount = explodedCount; AbandonedCount = abandonedCount; Status = status; ReachCharges = reachCharges; PowerupUsed=powerupUsed; FrozenTicks=frozenTicks;
         }
 
         internal PuzzleState With(IEnumerable<SymbolId> row = null, int? activeFloor = null,
             int? durability = null, BombPhase? bombPhase = null, int? bombTicks = null,
             bool? keyUsed = null, bool? repairUsed = null, bool? bridgeUsed = null,
             int? stampBits = null, int? defusedCount = null, int? explodedCount = null,
-            int? abandonedCount = null, PuzzleStatus? status = null, int? reachCharges = null) =>
+            int? abandonedCount = null, PuzzleStatus? status = null, int? reachCharges = null, bool? powerupUsed = null, int? frozenTicks = null) =>
             new PuzzleState(row ?? Row, activeFloor ?? ActiveFloor, durability ?? Durability,
                 bombPhase ?? BombPhase, bombTicks ?? BombTicks, keyUsed ?? KeyUsed,
                 repairUsed ?? RepairUsed, bridgeUsed ?? BridgeUsed, stampBits ?? StampBits,
                 defusedCount ?? DefusedCount, explodedCount ?? ExplodedCount,
-                abandonedCount ?? AbandonedCount, status ?? Status, reachCharges ?? ReachCharges);
+                abandonedCount ?? AbandonedCount, status ?? Status, reachCharges ?? ReachCharges, powerupUsed ?? PowerupUsed, frozenTicks ?? FrozenTicks);
 
         public bool Equals(PuzzleState other) => other != null && ActiveFloor == other.ActiveFloor
             && Durability == other.Durability && BombPhase == other.BombPhase && BombTicks == other.BombTicks
             && KeyUsed == other.KeyUsed && RepairUsed == other.RepairUsed && BridgeUsed == other.BridgeUsed
             && StampBits == other.StampBits && DefusedCount == other.DefusedCount
             && ExplodedCount == other.ExplodedCount && AbandonedCount == other.AbandonedCount
-            && ReachCharges == other.ReachCharges && Status == other.Status && Row.SequenceEqual(other.Row);
+            && PowerupUsed==other.PowerupUsed && FrozenTicks==other.FrozenTicks && ReachCharges == other.ReachCharges && Status == other.Status && Row.SequenceEqual(other.Row);
         public override bool Equals(object obj) => Equals(obj as PuzzleState);
         public override int GetHashCode()
         {
@@ -66,7 +68,7 @@ namespace Cascade.Domain
                 hash = hash * 31 + (KeyUsed ? 1 : 0); hash = hash * 31 + (RepairUsed ? 1 : 0);
                 hash = hash * 31 + (BridgeUsed ? 1 : 0); hash = hash * 31 + StampBits;
                 hash = hash * 31 + DefusedCount; hash = hash * 31 + ExplodedCount;
-                hash = hash * 31 + AbandonedCount; return (hash * 31 + (int)Status) ^ ReachCharges * 7919;
+                hash = hash * 31 + AbandonedCount; return (hash * 31 + (int)Status) ^ ReachCharges * 7919 ^ (PowerupUsed?104729:0) ^ FrozenTicks*13007;
             }
         }
     }

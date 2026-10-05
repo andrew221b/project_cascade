@@ -402,3 +402,37 @@ Drag past a neighbour. The ribbon works once.	Drag past a neighbour. The ribbon 
 Ribbon used. You can still swap neighbours.	Ribbon used. You can still swap neighbours.	Лента потрачена. Соседние фигуры можно менять.	Стрічку використано. Сусідні фігури можна міняти.
 Each swap wears the wood. Empty marks? The board breaks. Down leaves early.	Each swap wears the wood. Empty marks? The board breaks. Down leaves early.	Обмен изнашивает доску. Метки погасли — доска сломается. Кнопка «Вниз» спустит ряд раньше.	Обмін зношує дошку. Мітки згасли — дошка зламається. Кнопка «Вниз» опустить ряд раніше.
 A cracked spot wears the board twice as fast.	A cracked spot wears the board twice as fast.	Обмен у трещины сильнее изнашивает доску.	Обмін біля тріщини сильніше зношує дошку.
+Wood: {0} moves	Wood: {0} moves	Доска: {0} ходов	Дошка: {0} ходів
+{0} moves	{0} moves	{0} ходов	{0} ходів
+Safe	Safe	Обезврежена	Знешкоджена
+Burst	Burst	Взорвалась	Вибухнула
+Collected	Collected	Получено	Отримано
+Far swap	Far swap	Дальний обмен	Далекий обмін
+Pause bomb	Pause bomb	Пауза бомбы	Пауза бомби
+Paused: {0}	Paused: {0}	Пауза: {0}	Пауза: {0}
+Landing: reverse row	Landing: reverse row	При посадке: ряд наоборот	При посадці: ряд навпаки
+Landing: slide left	Landing: slide left	При посадке: сдвиг влево	При посадці: зсув ліворуч
+Landing: slide right	Landing: slide right	При посадке: сдвиг вправо	При посадці: зсув праворуч
+You are here	You are here	Вы здесь	Ви тут
+Ribbon spool	Ribbon spool	Катушка	Котушка
+Hourglass	Hourglass	Песочные часы	Пісочний годинник
+Power-ups	Power-ups	Полезные вещи	Корисні речі
+Pick up a tool. Find a new way home.	Pick up a tool. Find a new way home.	Собирай полезные вещи и найди путь домой.	Збирай корисні речі та знайди шлях додому.
+Each swap uses a move. At zero, the wood breaks. Descend leaves early.	Each swap uses a move. At zero, the wood breaks. Descend leaves early.	Каждый обмен тратит ход. На нуле доска ломается. Кнопка «Спуститься» перенесёт ряд вниз раньше.	Кожен обмін витрачає хід. На нулі дошка ламається. Кнопка «Спуститися» перенесе ряд униз раніше.
+On landing, this board slides or reverses the whole row.	On landing, this board slides or reverses the whole row.	При посадке эта доска сдвинет или развернёт весь ряд.	При посадці ця дошка зсуне або розверне весь ряд.
+Move the pictured piece above the bomb to stop it. Each swap counts down. At zero, the blast damages the wood.	Move the pictured piece above the bomb to stop it. Each swap counts down. At zero, the blast damages the wood.	Поставь над бомбой фигуру с её картинки. Тогда бомба погаснет. Каждый обмен уменьшает счётчик. На нуле взрыв повредит доску.	Постав над бомбою фігуру з її малюнка. Тоді бомба згасне. Кожен обмін зменшує лічильник. На нулі вибух пошкодить дошку.
+Move the pictured piece above the spool. You get one swap across one or two pieces. Save it for a lower board if you like.	Move the pictured piece above the spool. You get one swap across one or two pieces. Save it for a lower board if you like.	Поставь над катушкой фигуру с её картинки. Получишь один обмен через одну или две фигуры. Его можно сберечь для нижней доски.	Постав над котушкою фігуру з її малюнка. Отримаєш один обмін через одну чи дві фігури. Його можна зберегти для нижньої дошки.
+Move the pictured piece above the hourglass. The bomb waits for two swaps, including this one. The wood still wears down.	Move the pictured piece above the hourglass. The bomb waits for two swaps, including this one. The wood still wears down.	Поставь над часами фигуру с их картинки. Бомба пропустит два обмена, включая этот. Доска всё равно изнашивается.	Постав над годинником фігуру з його малюнка. Бомба пропустить два обміни, включно з цим. Дошка все одно зношується.
+Match the spool picture to earn one far swap.	Match the spool picture to earn one far swap.	Собери картинку катушки — получишь дальний обмен.	Збери малюнок котушки — отримаєш далекий обмін.
+Match the hourglass picture to pause the bomb.	Match the hourglass picture to pause the bomb.	Собери картинку часов — бомба подождёт.	Збери малюнок годинника — бомба зачекає.
+The bomb is paused. The wood still wears down.	The bomb is paused. The wood still wears down.	Бомба ждёт. Доска всё ещё изнашивается.	Бомба чекає. Дошка досі зношується.
+One far swap ready	One far swap ready	Есть один дальний обмен	Є один далекий обмін
+Bomb paused for two swaps	Bomb paused for two swaps	Бомба подождёт два обмена	Бомба зачекає два обміни
+The bomb waits. The wood still wears down.	The bomb waits. The wood still wears down.	Бомба ждёт. Доска всё ещё изнашивается.	Бомба чекає. Дошка досі зношується.
+Reverse on landing	Reverse on landing	При посадке: ряд наоборот	При посадці: ряд навпаки
+Slide left on landing	Slide left on landing	При посадке: сдвиг влево	При посадці: зсув ліворуч
+Slide right on landing	Slide right on landing	При посадке: сдвиг вправо	При посадці: зсув праворуч
+Paired swaps	Paired swaps	Парные обмены	Парні обміни
+Tool challenge {0}	Tool challenge {0}	Задача с бонусом {0}	Задача з бонусом {0}
+Match the spool picture. Then drag past a neighbour.	Match the spool picture. Then drag past a neighbour.	Собери картинку катушки. Теперь можно обменять дальние фигуры.	Збери малюнок котушки. Тепер можна обміняти далекі фігури.
+Match the hourglass picture. The bomb waits for two swaps.	Match the hourglass picture. The bomb waits for two swaps.	Собери картинку часов. Бомба пропустит два обмена.	Збери малюнок годинника. Бомба пропустить два обміни.

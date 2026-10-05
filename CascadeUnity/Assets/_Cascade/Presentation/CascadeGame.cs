@@ -170,6 +170,7 @@ namespace Cascade.Presentation
         }
         void ShowPreview(PuzzleCommand command)
         {
+            ClearDeviceForecast();
             var preview = Interaction.Attempt.Resolver.Preview(Interaction.Attempt.Current, command);
             if (!preview.IsLegal) { status.SetCopy(preview.Rejection == RejectionReason.NoOp ? "No change · free to cancel" : "Locked edge · free to cancel"); return; }
             var prediction = Interaction.Attempt.Predict(command);
@@ -180,10 +181,12 @@ namespace Cascade.Presentation
                 if (e.Kind == PuzzleEventKind.BombExploded) effects.Add(new UiCopy("bomb −{0}",e.Value));
                 if (e.Kind == PuzzleEventKind.BombDefused) effects.Add("defuse");
                 if (e.Kind == PuzzleEventKind.KeyOpened) effects.Add("unlock");
+                if(e.Kind==PuzzleEventKind.RibbonCollected)effects.Add("One far swap ready");
+                if(e.Kind==PuzzleEventKind.HourglassCollected)effects.Add("Bomb paused for two swaps");
             }
             if(!string.IsNullOrEmpty(exit.Key))effects.Add(exit);
             status.SetCopy(UiCopy.Join(" · ",effects));
-            RenderFocus(); machine.PreviewForecast(prediction);
+            RenderFocus(); machine.PreviewForecast(prediction); PreviewDeviceDocks(prediction);
             if(command.Kind==CommandKind.LongReach){slotImages[command.Edge].color=Selected;slotImages[command.End].color=Selected;return;}
             foreach (int edge in preview.AffectedEdges) { slotImages[edge].color = Selected; slotImages[edge + 1].color = Selected; }
         }
@@ -313,18 +316,16 @@ namespace Cascade.Presentation
             foreach (var view in floorViews) Destroy(view.gameObject);
             foreach (Transform child in targetRow) Destroy(child.gameObject);
             if (tokenRow != null) Destroy(tokenRow.gameObject);
-            floorViews.Clear(); floorLabels.Clear(); deviceLabels.Clear(); contactFaces.Clear(); slots.Clear(); slotImages.Clear(); tokenLabels.Clear(); targetLabels.Clear();
+            floorViews.Clear(); floorLabels.Clear(); deviceLabels.Clear(); contactFaces.Clear(); deviceDocks.Clear(); deviceOverlays.Clear(); slots.Clear(); slotImages.Clear(); tokenLabels.Clear(); targetLabels.Clear();
             int count = level.Floors.Count;
             for (int i = 0; i < count; i++) {
                 float y = count == 1 ? .56f : .87f - i * .74f / (count - 1);
                 var card = Rect("Floor" + (i + 1), floorArea, new Vector2(.5f, y), new Vector2(.5f, y));
                 card.sizeDelta = new Vector2(Mathf.Min(342, level.InitialSymbolIds.Count * 76 + 24), count == 4 ? 110 : 132); floorViews.Add(card);
-                var title = Text("Durability", card, new Vector2(.025f, -.01f), new Vector2(.15f, .22f), 15, ""); title.alignment = TextAlignmentOptions.Left; title.font = art.titleFont; floorLabels.Add(title);
-                var devices = Text("Devices", card, new Vector2(.38f, -.105f), new Vector2(.88f, .105f), 15, ""); devices.alignment = TextAlignmentOptions.TopRight; deviceLabels.Add(devices);
-                AddContactGlyph(card, level.Floors[i].Bomb, level.InitialSymbolIds.Count);
-                AddContactGlyph(card, level.Floors[i].Key, level.InitialSymbolIds.Count);
-                AddContactGlyph(card, level.Floors[i].Repair, level.InitialSymbolIds.Count);
-                AddContactGlyph(card, level.Floors[i].OptionalStamp, level.InitialSymbolIds.Count);
+                var title = Text("Durability", card, new Vector2(.02f, .09f), new Vector2(.42f, .27f), 13, ""); title.alignment = TextAlignmentOptions.Center; floorLabels.Add(title);
+                var devices = Text("Devices", card, Vector2.zero, Vector2.zero, 13, ""); deviceLabels.Add(devices);
+                BuildDeviceDocks(card, level.Floors[i], level.InitialSymbolIds.Count, i);
+
             }
             tokenRow = Rect("PersistentRow", floorViews[0], new Vector2(.045f, .43f), new Vector2(.955f, 1.03f));
             var layout = tokenRow.gameObject.AddComponent<UnityEngine.UI.HorizontalLayoutGroup>();
@@ -415,8 +416,10 @@ namespace Cascade.Presentation
             for (int i = 0; i < level.Floors.Count; i++) {
                 var floor = level.Floors[i]; bool active = state.Status == PuzzleStatus.Playing && i == state.ActiveFloor;
                 bool past = !state.FloorVisible(i);
-                floorLabels[i].SetCopy(past ? "" : UiCopy.Raw((active?state.Durability:floor.BaseDurability).ToString()));
-                deviceLabels[i].SetCopy(past ? "" : floor.Bomb!=null?new UiCopy("Bomb {0}",active&&state.BombPhase!=BombPhase.Armed?new UiCopy(state.BombPhase.ToString()):UiCopy.Raw((active?state.BombTicks:floor.Bomb.Ticks).ToString())):"");
+                floorLabels[i].SetCopy(past ? "" : new UiCopy("Wood: {0} moves",active?state.Durability:floor.BaseDurability));
+                deviceLabels[i].SetCopy("");
+                deviceOverlays[i].gameObject.SetActive(!past);
+                PaintDeviceDocks(state,i,past,active);
                 foreach (Transform child in floorViews[i]) if (child.name == "DeviceGlyph") child.gameObject.SetActive(!past);
             }
             tokenRow.SetParent(state.Status == PuzzleStatus.Playing ? floorViews[state.ActiveFloor] : receiver, false);
@@ -470,6 +473,7 @@ namespace Cascade.Presentation
         }
         void RenderFocus()
         {
+            ClearDeviceForecast();
             if (Interaction == null) return;
             for (int i = 0; i < slotImages.Count; i++) slotImages[i].color = Color.clear;
             for (int i = 0; i < tokenLabels.Count; i++) {

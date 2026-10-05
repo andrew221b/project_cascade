@@ -15,13 +15,15 @@ namespace Cascade.Presentation
         public bool RepairUsed { get; private set; }
         public bool BridgeUsed { get; private set; }
         public int StampBits { get; private set; }
+        public bool PowerupUsed { get; private set; }
+        public int FrozenTicks { get; private set; }
         public PuzzleStatus Status { get; private set; }
         public int HiddenFloors { get; private set; }
         public PresentationFrame(PuzzleState state)
         {
             Row = state.Row; ActiveFloor = state.ActiveFloor; Durability = state.Durability;
             BombPhase = state.BombPhase; BombTicks = state.BombTicks; KeyUsed = state.KeyUsed;
-            RepairUsed = state.RepairUsed; BridgeUsed = state.BridgeUsed; StampBits = state.StampBits; Status = state.Status;
+            PowerupUsed=state.PowerupUsed;FrozenTicks=state.FrozenTicks;RepairUsed = state.RepairUsed; BridgeUsed = state.BridgeUsed; StampBits = state.StampBits; Status = state.Status;
             HiddenFloors = (1 << state.ActiveFloor) - 1;
         }
         public void Read(PuzzleEvent e, LevelDefinition level)
@@ -29,10 +31,13 @@ namespace Cascade.Presentation
             Row = e.Row;
             switch (e.Kind) {
                 case PuzzleEventKind.FloorEntered:
-                    ActiveFloor = e.Floor; Durability = e.Value; KeyUsed = RepairUsed = BridgeUsed = false;
+                    ActiveFloor = e.Floor; Durability = e.Value; KeyUsed = RepairUsed = BridgeUsed = PowerupUsed = false; FrozenTicks=0;
                     var bomb = level.Floors[e.Floor].Bomb;
                     BombPhase = bomb == null ? BombPhase.Absent : BombPhase.Armed; BombTicks = bomb == null ? 0 : bomb.Ticks; break;
                 case PuzzleEventKind.FloorExited: HiddenFloors |= 1 << e.Floor; break;
+                case PuzzleEventKind.RibbonCollected: PowerupUsed=true;break;
+                case PuzzleEventKind.HourglassCollected: PowerupUsed=true;FrozenTicks=2;break;
+                case PuzzleEventKind.BombFrozen: FrozenTicks=e.Value;break;
                 case PuzzleEventKind.BombTicked: BombTicks = e.Value; break;
                 case PuzzleEventKind.BombDefused: BombPhase = BombPhase.Defused; BombTicks = 0; break;
                 case PuzzleEventKind.BombExploded: BombPhase = BombPhase.Exploded; break;
