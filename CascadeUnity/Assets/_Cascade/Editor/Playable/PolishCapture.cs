@@ -16,6 +16,17 @@ namespace Cascade.Editor.Playable
   static void Screen(CascadeGame g,GameScreen screen)=>typeof(CascadeGame).GetMethod("SetScreen",Flags).Invoke(g,new object[]{screen});
   static void Redraw(CascadeGame g)=>typeof(CascadeGame).GetMethod("DrawMenu",Flags).Invoke(g,null);
   public static void Run(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(Capture());}
+  public static void FinishPass(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(FinishShots());}
+  public static void VerifyOneSwap()
+  {
+   var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);g.LoadNode("C13");g.ShowGame();g.SendMessage("OnApplicationFocus",true);g.Interaction.SetSuspended(false);
+   var before=g.Interaction.Attempt.Current.Row.Select(s=>s.Value).OrderBy(s=>s).ToArray();
+   int edge=Enumerable.Range(0,before.Length-1).First(i=>g.Interaction.Attempt.Resolver.Preview(g.Interaction.Attempt.Current,PuzzleCommand.Swap(i)).IsLegal);
+   g.Interaction.Execute(PuzzleCommand.Swap(edge));
+   var after=g.Interaction.Attempt.Current.Row.Select(s=>s.Value).OrderBy(s=>s).ToArray();
+   if(!before.SequenceEqual(after)||g.Interaction.Attempt.RouteLength!=1)throw new InvalidOperationException("Swap did not preserve the row and commit exactly once");
+   Debug.Log("CASCADE focused swap PASS: one atomic move, same symbol multiset, animation="+g.Interaction.IsPresenting);
+  }
   public static void Confirm(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(Confirmation());}
   public static void DiagnoseTiming(){UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(Timing());}
   static IEnumerator Timing()
@@ -66,7 +77,7 @@ namespace Cascade.Editor.Playable
     for(int frame=0;frame<32;frame++){
      yield return new WaitForEndOfFrame();camera.Render();RenderTexture.active=rt;pixels.ReadPixels(new Rect(0,0,390,844),0,0);pixels.Apply();
      File.WriteAllBytes(Path.Combine(folder,frame.ToString("00")+".png"),pixels.EncodeToPNG());
-     int points=g.Machine.GetComponentsInChildren<LineRenderer>().First(l=>l.name.Contains("continuous hemp")).positionCount;
+     int points=g.Machine.GetComponentsInChildren<LineRenderer>().First(l=>l.name.Contains("wooden rail")).positionCount;
      rows.AppendLine(frame+","+g.GetComponent<PuzzleEventPlayer>().CurrentEvent+","+g.Machine.TokenPose(0)+","+g.Machine.LoadedSag+","+points+","+g.Interaction.Attempt.CurrentStateHash);
      if(g.Interaction.Attempt.CurrentStateHash!=committed)throw new InvalidOperationException("Animation changed the committed puzzle state");
      yield return null;
@@ -75,6 +86,18 @@ namespace Cascade.Editor.Playable
    }finally{scaler.enabled=false;camera.targetTexture=previous;scaler.enabled=true;RenderTexture.active=active;g.RefreshLayout();UnityEngine.Application.runInBackground=background;UnityEngine.Object.DestroyImmediate(pixels);rt.Release();UnityEngine.Object.DestroyImmediate(rt);}
   }
   static IEnumerator Shot(string name,int width=390,int height=844){yield return new WaitForSecondsRealtime(.18f);yield return PlayableCapture.CaptureSettled("Polish",name+".png",width,height);}
+  static IEnumerator FinishShots()
+  {
+   var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);g.Feedback.SoundEnabled=g.Feedback.MusicEnabled=false;g.ReducedMotion=false;g.SetUiLocale("en");
+   g.LoadNode("C13");g.ShowGame();yield return Shot("finish-game");
+   g.ShowJourney();yield return Shot("finish-map");
+   Screen(g,GameScreen.Pause);yield return Shot("finish-pause");
+   g.ShowTravelBag();yield return Shot("finish-bag");
+   g.ShowSettings();yield return Shot("finish-settings");
+   if(g.Catalog.TryGetLocalizedBinding("C38","en",out var words))g.LoadLevel(words.Definition,"en");else g.LoadNode("C38");g.ShowGame();yield return Shot("finish-letters");
+   g.SetEditorSafeInsets(new Vector4(0,.045f,0,.07f));yield return Shot("finish-notch",320,693);g.SetEditorSafeInsets(Vector4.zero);
+   Debug.Log("CASCADE finish pass: seven focused captures complete");
+  }
   static IEnumerator Capture()
   {
    var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);g.Feedback.SoundEnabled=g.Feedback.MusicEnabled=false;g.ReducedMotion=true;g.SetUiLocale("en");

@@ -101,6 +101,7 @@ namespace Cascade.Presentation
             ActiveWeatherCount=0;
             for(int i=0;i<weather.Length;i++) {
                 var drop=weather[i];bool snow=zone==6;bool rain=zone==1||zone==4;bool pollen=zone==0||zone==2||zone==5;
+                if(drop==null)continue; // Editor hot reload can invalidate transient weather objects before the scene restarts.
                 bool active=!workshop&&EffectQuality>0&&i<(EffectQuality==1?8:18)&&(snow||rain||pollen);
                 drop.gameObject.SetActive(active);if(!active)continue;ActiveWeatherCount++;
                 float x=Mathf.Repeat(i*.618f+phase*(snow?.004f:rain?.012f:.003f),1);
@@ -126,7 +127,7 @@ namespace Cascade.Presentation
                 glider.gameObject.SetActive(!workshop&&(!gameplayVisible||band>0));
                 gliderAlpha=phase==0?1:Mathf.MoveTowards(gliderAlpha,holdingToken?0:1,delta*(holdingToken?8:3));
                 gliderMaterial.SetColor("_BaseColor",new Color(1,1,1,gliderAlpha));
-                float height=gameplayVisible?Mathf.Min(h*.05f,band*.5f):Mathf.Min(w,8)*.12f;
+                float height=gameplayVisible?Mathf.Min(h*.078f,band*.58f):Mathf.Min(w,8)*.17f;
                 float y=gameplayVisible?(flightBottom+flightTop)*.5f+Mathf.Sin(angle*.8f)*band*.08f:cy+h*(.255f+Mathf.Sin(angle*.8f)*.022f);
                 glider.position=new Vector3(cx+Mathf.Sin(angle)*w*.34f,y,2.45f);
                 // The whole rotated 3:2 illustration fits in the empty strip above the machine.

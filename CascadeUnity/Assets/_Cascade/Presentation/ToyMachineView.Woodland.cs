@@ -43,11 +43,12 @@ namespace Cascade.Presentation
         {
             if(woodMaterial!=null)return;
             var texture=Resources.Load<Texture2D>("CascadeArt/Woodland/WoodBoard");
-            woodMaterial=new Material(Shader.Find("Universal Render Pipeline/Unlit")){name="Painted honey wood"};
+            woodMaterial=new Material(Shader.Find("Universal Render Pipeline/Lit")){name="Painted honey wood"};
             woodMaterial.SetTexture("_BaseMap",texture);
             var frameSource=Resources.Load<TextAsset>("CascadeArt/Woodland/WoodBoardFrame");
             if(frameSource!=null){var frame=JsonUtility.FromJson<WoodBodyFrame>(frameSource.text);woodMaterial.SetTextureScale("_BaseMap",new Vector2(frame.width,frame.height));woodMaterial.SetTextureOffset("_BaseMap",new Vector2(frame.left,frame.bottom));}
             woodMaterial.SetColor("_BaseColor",texture!=null?Color.white:new Color(.65f,.35f,.13f));
+            woodMaterial.SetFloat("_Smoothness",.32f);
             woodMaterial.SetFloat("_Surface",1);woodMaterial.SetFloat("_ZWrite",0);woodMaterial.SetFloat("_SrcBlend",(float)BlendMode.SrcAlpha);
             woodMaterial.SetFloat("_DstBlend",(float)BlendMode.OneMinusSrcAlpha);woodMaterial.EnableKeyword("_SURFACE_TYPE_TRANSPARENT");woodMaterial.renderQueue=3000;
             ropeMaterial=new Material(art.gold){name="Warm braided hemp"};ropeMaterial.SetColor("_BaseColor",new Color(.73f,.51f,.26f));
@@ -113,7 +114,8 @@ namespace Cascade.Presentation
         }
         void OnDestroy()
         {
-            if(continuousRopeMaterial!=null)Destroy(continuousRopeMaterial);if(woodMaterial!=null)Destroy(woodMaterial);if(ropeMaterial!=null)Destroy(ropeMaterial);
+            if(continuousRopeMaterial!=null)Destroy(continuousRopeMaterial);if(railGrain!=null)Destroy(railGrain);if(woodMaterial!=null)Destroy(woodMaterial);if(ropeMaterial!=null)Destroy(ropeMaterial);
+            DisposePieceMaterials();
             foreach(var mesh in woodMeshes)if(mesh!=null)Destroy(mesh);
         }
     }

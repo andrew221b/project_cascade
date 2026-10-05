@@ -36,9 +36,9 @@ namespace Cascade.Presentation
             if(map!=null){var scenery=Rect("Island map",menuRoot,new Vector2(0,.19f),new Vector2(1,.89f)).gameObject.AddComponent<SoftSceneryGraphic>();scenery.Initialize(map);scenery.SetAvailability(MapPlaces(zone).Select(p=>new Vector2(p.x,(p.y-.19f)/.70f)).ToArray(),NextJourneyStop()-first);}
             DrawMapAtmosphere(zone);
             var top=Rect("Map heading",menuRoot,new Vector2(.04f,.86f),new Vector2(.96f,.98f));Panel(top,Paper);
-            var title=Text("Region",top,new Vector2(.05f,.50f),new Vector2(.78f,.98f),27,JourneyStory.ZoneName(zone));title.font=art.titleFont;title.alignment=TextAlignmentOptions.MidlineLeft;
-            var count=Text("Restored lights",top,new Vector2(.05f,.04f),new Vector2(.50f,.46f),14,new UiCopy("{0} / {1} lights restored",JourneyClearCount,Catalog.PrimaryLevels.Count));count.alignment=TextAlignmentOptions.MidlineLeft;
-            Button("Settings",top,new Vector2(.79f,.53f),new Vector2(.98f,.96f),ShowTravelBag).GetComponentInChildren<TextMeshProUGUI>().SetCopy("Menu");
+            var title=Text("Region",top,new Vector2(.05f,.50f),new Vector2(.75f,.98f),27,JourneyStory.ZoneName(zone));title.font=art.titleFont;title.alignment=TextAlignmentOptions.MidlineLeft;title.enableAutoSizing=true;title.fontSizeMin=21;title.fontSizeMax=27;
+            var count=Text("Restored lights",top,new Vector2(.05f,.04f),new Vector2(.60f,.46f),15,new UiCopy("{0} / {1} lights restored",JourneyClearCount,Catalog.PrimaryLevels.Count));count.alignment=TextAlignmentOptions.MidlineLeft;
+            Button("Settings",top,new Vector2(.76f,.52f),new Vector2(.98f,.96f),ShowTravelBag).GetComponentInChildren<TextMeshProUGUI>().SetCopy("Menu");
             Vector2[] places=MapPlaces(zone);
             int unlocked=NextJourneyStop();
             for(int i=0;i<JourneyStory.StopsOnPage(mapPage)&&first+i<Catalog.PrimaryLevels.Count;i++) {
@@ -48,9 +48,9 @@ namespace Cascade.Presentation
                 var rect=(RectTransform)b.transform;rect.sizeDelta=new Vector2(76,72);b.GetComponentInChildren<TextMeshProUGUI>().SetCopy("");
                 b.GetComponent<Image>().color=Color.clear;b.interactable=index<=unlocked;
                 if(index==unlocked) {
-                    var marker=Rect("You are here marker",menuRoot,point+new Vector2(0,.085f),point+new Vector2(0,.085f));marker.sizeDelta=new Vector2(128,43);
-                    var caption=Text("You are here",marker,new Vector2(0,.40f),Vector2.one,17,"You are here");caption.font=art.titleFont;
-                    var arrow=Rect("Here arrow",marker,new Vector2(.44f,.03f),new Vector2(.56f,.34f));arrow.gameObject.AddComponent<ShapeFaceGraphic>().SetShape(art.shapes[0],Ink);arrow.localRotation=Quaternion.Euler(0,0,180);
+                    var marker=Rect("You are here marker",menuRoot,point+new Vector2(0,.10f),point+new Vector2(0,.10f));marker.sizeDelta=new Vector2(124,44);Panel(marker,new Color(1,.91f,.66f,.96f));
+                    var caption=Text("You are here",marker,new Vector2(.05f,.42f),new Vector2(.95f,.98f),15,"You are here");caption.font=art.titleFont;
+                    var arrow=Rect("Here arrow",marker,new Vector2(.44f,-.22f),new Vector2(.56f,.34f));arrow.gameObject.AddComponent<ShapeFaceGraphic>().SetShape(art.shapes[0],Ink);arrow.localRotation=Quaternion.Euler(0,0,180);
                     marker.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,2),0,.7f);
                     var portrait=Resources.Load<Sprite>("CascadeArt/Journey/Mika");
                     if(portrait!=null) {

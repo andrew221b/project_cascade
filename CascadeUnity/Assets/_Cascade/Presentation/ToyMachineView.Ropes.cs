@@ -4,15 +4,30 @@ namespace Cascade.Presentation
     public sealed partial class ToyMachineView
     {
         Material continuousRopeMaterial;
+        Texture2D railGrain;
         readonly LineRenderer[] suspension=new LineRenderer[2];
         readonly Vector3[] ropePoints=new Vector3[121];
         void InitializeRopeRig()
         {
-            if(continuousRopeMaterial==null){continuousRopeMaterial=new Material(Resources.Load<Shader>("CascadeArt/HempRope"));continuousRopeMaterial.SetColor("_Color",new Color(.88f,.68f,.39f));}
+            if(continuousRopeMaterial==null){
+                railGrain=new Texture2D(128,16,TextureFormat.RGB24,false,true){name="Carved rail grain",wrapMode=TextureWrapMode.Repeat,filterMode=FilterMode.Bilinear};
+                var pixels=new Color32[128*16];
+                for(int y=0;y<16;y++)for(int x=0;x<128;x++){
+                    float grain=Mathf.Sin(y*2.4f+Mathf.Sin(x*.095f+y)*.8f)*.07f+Mathf.Sin(x*.31f+y*.57f)*.025f;
+                    float edge=1-Mathf.Abs(y-7.5f)/7.5f;
+                    float value=Mathf.Clamp01(.76f+grain+edge*.10f);
+                    pixels[y*128+x]=new Color32((byte)(value*255),(byte)(value*228),(byte)(value*190),255);
+                }
+                railGrain.SetPixels32(pixels);railGrain.Apply(false,true);
+                continuousRopeMaterial=new Material(Shader.Find("Universal Render Pipeline/Lit")){name="Carved flexible wooden rails"};
+                continuousRopeMaterial.SetTexture("_BaseMap",railGrain);
+                continuousRopeMaterial.SetColor("_BaseColor",new Color(.66f,.43f,.23f));
+                continuousRopeMaterial.SetFloat("_Smoothness",.29f);
+            }
             for(int side=0;side<2;side++) {
-                var go=new GameObject(side==0?"Left continuous hemp rope":"Right continuous hemp rope",typeof(LineRenderer));go.transform.SetParent(machine,false);
+                var go=new GameObject(side==0?"Left articulated wooden rail":"Right articulated wooden rail",typeof(LineRenderer));go.transform.SetParent(machine,false);
                 var line=go.GetComponent<LineRenderer>();suspension[side]=line;line.sharedMaterial=continuousRopeMaterial;line.useWorldSpace=true;
-                line.generateLightingData=false;line.startWidth=line.endWidth=.065f;line.numCapVertices=6;line.numCornerVertices=6;line.textureMode=LineTextureMode.Tile;line.alignment=LineAlignment.View;
+                line.generateLightingData=true;line.startWidth=line.endWidth=.086f;line.numCapVertices=8;line.numCornerVertices=8;line.textureMode=LineTextureMode.Tile;line.alignment=LineAlignment.View;
                 line.shadowCastingMode=UnityEngine.Rendering.ShadowCastingMode.Off;line.receiveShadows=false;
             }
         }
@@ -37,8 +52,8 @@ namespace Cascade.Presentation
                     float span=Vector3.Distance(previous,next);
                     for(int p=1;p<=24;p++) {
                         float t=p/24f;var point=Vector3.Lerp(previous,next,t);
-                        float wave=reducedMotion?0:Mathf.Sin(windTime*1.4f+segment*.7f+side)*.035f*Mathf.Min(1,span);
-                        point.x+=Mathf.Sin(t*Mathf.PI)*(sign*.016f+wave);ropePoints[index++]=point;
+                        float wave=reducedMotion?0:Mathf.Sin(windTime*.85f+segment*.7f+side)*.018f*Mathf.Min(1,span);
+                        point.x+=Mathf.Sin(t*Mathf.PI)*(sign*.01f+wave);ropePoints[index++]=point;
                     }
                     previous=next;
                 }

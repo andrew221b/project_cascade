@@ -80,7 +80,7 @@ namespace Cascade.Presentation
             PersistProgress();
             EndTokenHold(); CancelHint(); CancelDeadEnd(); StopPresentation(); Interaction?.SetSuspended(true); feedback?.ClearTails();
         }
-        void OnDestroy() { if (Interaction != null) Interaction.Committed -= OnCommitted; }
+        void OnDestroy() { if (Interaction != null) Interaction.Committed -= OnCommitted; if(glyphMaterial!=null)Destroy(glyphMaterial); }
         void OnApplicationFocus(bool focused)
         {
             if(!focused)PersistProgress();
@@ -260,6 +260,22 @@ namespace Cascade.Presentation
         static string FaceText(SymbolId symbol) => symbol.Kind == SymbolKind.Glyph ? symbol.Value : "";
         static UiCopy CommandText(PuzzleCommand command) => command.Kind == CommandKind.EarlyDrop ? "Drop the row" : new UiCopy("swap slots {0} & {1}",command.Edge+1,command.Kind==CommandKind.LongReach?command.End+1:command.Edge+2);
         RectTransform statusPaper;
+        Material glyphMaterial;
+        void FinishLetter(TextMeshProUGUI label)
+        {
+            if(glyphMaterial==null){
+                glyphMaterial=new Material(art.titleFont.material){name="Raised ink on ivory"};
+                glyphMaterial.EnableKeyword("UNDERLAY_ON");
+                glyphMaterial.SetColor("_UnderlayColor",new Color(.29f,.19f,.10f,.62f));
+                glyphMaterial.SetFloat("_UnderlayOffsetX",.08f);
+                glyphMaterial.SetFloat("_UnderlayOffsetY",-.13f);
+                glyphMaterial.SetFloat("_UnderlaySoftness",.09f);
+            }
+            label.fontSharedMaterial=glyphMaterial;
+            label.fontStyle=FontStyles.Bold;
+            label.enableVertexGradient=true;
+            label.colorGradient=new VertexGradient(new Color(.29f,.39f,.36f),new Color(.29f,.39f,.36f),new Color(.10f,.22f,.23f),new Color(.10f,.22f,.23f));
+        }
         void BuildScreen()
         {
             var canvasRect = Rect("GameCanvas", transform, Vector2.zero, Vector2.one);
@@ -270,7 +286,8 @@ namespace Cascade.Presentation
             canvasRect.gameObject.AddComponent<UnityEngine.UI.GraphicRaycaster>();
             safeRoot = Rect("SafeArea", canvasRect, Vector2.zero, Vector2.one); ApplySafeArea();
             header = Rect("Header", safeRoot, new Vector2(.05f, 1), new Vector2(.95f, 1));
-            levelLabel = Text("Level", header, Vector2.zero, new Vector2(.78f, 1), 26, "CASCADE"); levelLabel.alignment = TextAlignmentOptions.Left; levelLabel.font = art.titleFont;
+            var chapterPlaque=Rect("Carved chapter plaque",header,Vector2.zero,new Vector2(.76f,1));var plaque=Background(chapterPlaque,new Color(1,.96f,.84f,.91f),false);plaque.sprite=art.panel;plaque.type=UnityEngine.UI.Image.Type.Sliced;
+            levelLabel = Text("Level", header, new Vector2(.045f,0), new Vector2(.74f,1), 24, "CASCADE"); levelLabel.alignment = TextAlignmentOptions.Left; levelLabel.font = art.titleFont;levelLabel.enableAutoSizing=true;levelLabel.fontSizeMin=18;levelLabel.fontSizeMax=24;
             pause = Button("Pause", header, new Vector2(.82f, 0), Vector2.one, TogglePause);
             previous = Button("Home", header, Vector2.zero, new Vector2(.28f, 48f/104), ShowHome);
 
@@ -283,7 +300,7 @@ namespace Cascade.Presentation
             floorArea = Rect("Floors", safeRoot, new Vector2(.045f, .37f), new Vector2(.955f, .78f));
             receiver = Rect("Receiver", safeRoot, new Vector2(.5f, .245f), new Vector2(.5f, .365f)); receiver.sizeDelta = new Vector2(350, 0); Background(receiver, Color.clear, true);
             receiver.gameObject.AddComponent<UnityEngine.UI.Button>().onClick.AddListener(ToggleTargetZoom);
-            receiverLabel = Text("ReceiverLabel", receiver, new Vector2(.02f, .76f), new Vector2(.98f, 1.05f), 16, "Make this row"); receiverLabel.font = art.titleFont;
+            receiverLabel = Text("ReceiverLabel", receiver, new Vector2(.02f, .94f), new Vector2(.98f, 1.22f), 16, "Make this row"); receiverLabel.font = art.titleFont;
             wrongRowLabel = Text("Your row", receiver, new Vector2(.02f,-.69f),new Vector2(.98f,-.46f),15,"Your row"); wrongRowLabel.gameObject.SetActive(false);
             targetRow = Rect("TargetRow", receiver, new Vector2(.07f, .20f), new Vector2(.93f, .70f));
             precise = Rect("PreciseInput", safeRoot, new Vector2(.05f, .09f), new Vector2(.95f, .225f));
@@ -336,7 +353,7 @@ namespace Cascade.Presentation
                 var cell = Rect("Slot" + (i + 1), tokenRow, Vector2.zero, Vector2.one);
                 var image = Background(cell, Color.clear, true); image.sprite = art.panel; image.type = UnityEngine.UI.Image.Type.Sliced; slotImages.Add(image);
                 var slot = cell.gameObject.AddComponent<TokenSlot>(); slot.Game = this; slot.Slot = i; slots.Add(slot);
-                var glyph = Text("Symbol", cell, Vector2.zero, Vector2.one, 28, ""); glyph.font = art.titleFont; tokenLabels.Add(glyph);
+                var glyph = Text("Symbol", cell, Vector2.zero, Vector2.one, 28, ""); glyph.font = art.titleFont; FinishLetter(glyph); tokenLabels.Add(glyph);
             }
             AddSymbolLabels(targetRow, level.TargetSymbolIds, 24, targetLabels); Canvas.ForceUpdateCanvases();
             machine.Bind(Interaction, floorViews, slots, targetLabels, receiver);
@@ -353,7 +370,7 @@ namespace Cascade.Presentation
             var layout = parent.GetComponent<UnityEngine.UI.HorizontalLayoutGroup>() ?? parent.gameObject.AddComponent<UnityEngine.UI.HorizontalLayoutGroup>();
             layout.spacing = 3; layout.childControlWidth = layout.childControlHeight = true; layout.childForceExpandWidth = layout.childForceExpandHeight = true;
             foreach (var symbol in symbols) {
-                var label = Text("TargetSymbol", parent, Vector2.zero, Vector2.one, size, FaceText(symbol)); label.font = art.titleFont;
+                var label = Text("TargetSymbol", parent, Vector2.zero, Vector2.one, size, FaceText(symbol)); label.font = art.titleFont; FinishLetter(label);
                 var sizing = label.gameObject.AddComponent<UnityEngine.UI.LayoutElement>(); sizing.minWidth = sizing.preferredWidth = 0; sizing.flexibleWidth = 1; labels.Add(label);
             }
         }

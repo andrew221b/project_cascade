@@ -101,7 +101,7 @@ namespace Cascade.Presentation
             if (!flowReady) return;
             if(screen!=GameScreen.Playing) { CancelHint(); StopPresentation(); }
             bool changed=CurrentScreen!=screen;
-            CurrentScreen=screen; machine.LivingWorld.SetWorkshop(screen!=GameScreen.Playing&&screen!=GameScreen.Win&&screen!=GameScreen.Fail&&screen!=GameScreen.Home&&screen!=GameScreen.Dialogue&&screen!=GameScreen.JourneyEnd); userPaused=screen==GameScreen.Pause;
+            CurrentScreen=screen; machine.LivingWorld.SetWorkshop(screen==GameScreen.TravelBag||screen==GameScreen.Workshop||screen==GameScreen.Collection||screen==GameScreen.Parcel); userPaused=screen==GameScreen.Pause;
             if(resultFriend!=null)resultFriend.gameObject.SetActive(screen==GameScreen.Win);
             Interaction.SetPaused(screen!=GameScreen.Playing && screen!=GameScreen.Win && screen!=GameScreen.Fail);
             bool machineVisible=screen==GameScreen.Playing || screen==GameScreen.Win || screen==GameScreen.Fail;
@@ -204,7 +204,11 @@ namespace Cascade.Presentation
         {
             foreach(var key in baseTextSizes.Keys.Where(k=>k==null||k.transform.IsChildOf(menuRoot)).ToArray())baseTextSizes.Remove(key);
             foreach(Transform child in menuRoot){ child.gameObject.SetActive(false); Destroy(child.gameObject); }
-            var wash=Rect("Warm paper",menuRoot,new Vector2(.018f,.012f),new Vector2(.982f,.988f));menuWash=Background(wash,new Color(1,.96f,.84f,.985f),true);menuWash.sprite=art.panel;menuWash.type=Image.Type.Sliced;
+            var wash=Rect("Warm paper",menuRoot,new Vector2(.018f,.012f),new Vector2(.982f,.988f));menuWash=Background(wash,new Color(1,.96f,.84f,.965f),true);menuWash.sprite=art.panel;menuWash.type=Image.Type.Sliced;
+            if(CurrentScreen!=GameScreen.Home&&CurrentScreen!=GameScreen.Dialogue){
+                var motes=Rect("Window light and drifting dust",menuRoot,new Vector2(.035f,.03f),new Vector2(.965f,.97f)).gameObject.AddComponent<WorldWeatherGraphic>();
+                motes.InitializeRegion(this,machine.LivingWorld.Zone);motes.color=new Color(1,.79f,.44f,.20f);
+            }
         }
         void DrawMenu()
         {
@@ -229,8 +233,11 @@ namespace Cascade.Presentation
             else if(CurrentScreen==GameScreen.PowerupChallenges) DrawReachChallenges();
             else if(CurrentScreen==GameScreen.Pause) {
                 MenuTitle("Take a break", "Your puzzle will wait.");
-                MenuButton("Resume",.58f,ShowGame,true); MenuButton("Retry",.47f,()=>{SetScreen(GameScreen.Playing);Retry();});
-                MenuButton("Devices",.36f,ShowDevices); MenuButton("Settings",.25f,ShowSettings); MenuButton("Home",.14f,ShowHome);
+                var friend=Picture("Mika rests beside the puzzle",menuRoot,new Vector2(.34f,.615f),new Vector2(.66f,.77f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
+                friend.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,2),0,.8f);
+                Rect("Mika's wooden shelf",menuRoot,new Vector2(.24f,.602f),new Vector2(.76f,.62f)).gameObject.AddComponent<WoodBoardGraphic>();
+                MenuButton("Resume",.50f,ShowGame,true); MenuButton("Retry",.40f,()=>{SetScreen(GameScreen.Playing);Retry();});
+                MenuButton("Devices",.30f,ShowDevices); MenuButton("Settings",.20f,ShowSettings); MenuButton("Home",.10f,ShowHome);
             }
         }
         void MenuTitle(UiCopy title,UiCopy body)
@@ -238,7 +245,7 @@ namespace Cascade.Presentation
             var label=Text("Menu title",menuRoot,new Vector2(.08f,.865f),new Vector2(.92f,.955f),32,title);label.font=art.titleFont;label.alignment=TextAlignmentOptions.MidlineLeft;
             var description=Text("Menu description",menuRoot,new Vector2(.08f,.77f),new Vector2(.92f,.855f),17,body);description.alignment=TextAlignmentOptions.MidlineLeft;
         }
-        Button MenuButton(UiCopy label,float bottom,Action action,bool primary=false,float left=.10f,float right=.90f)
+        Button MenuButton(UiCopy label,float bottom,Action action,bool primary=false,float left=.08f,float right=.92f)
         {
             var button=Button(label,menuRoot,new Vector2(left,bottom),new Vector2(right,bottom),()=>{feedback.Sound(ToyCue.Select);action();});
             var r=(RectTransform)button.transform;r.pivot=new Vector2(.5f,0);r.sizeDelta=new Vector2(0,52);
@@ -315,6 +322,11 @@ namespace Cascade.Presentation
         void DrawSettings()
         {
             MenuTitle("Make yourself at home",settingsPage==0?"Sound & motion":settingsPage==1?"Comfort & help":"Languages");
+            if(settingsPage<2){
+                var friend=Picture("Mika by the settings",menuRoot,new Vector2(.41f,.672f),new Vector2(.59f,.766f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
+                friend.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,1.5f),0,.85f);
+                Rect("Settings shelf",menuRoot,new Vector2(.34f,.664f),new Vector2(.66f,.674f)).gameObject.AddComponent<WoodBoardGraphic>();
+            }
             if(settingsPage==0) {
                 Setting("Music",Preferences.Music,.60f,()=>Preferences.Music=!Preferences.Music);
                 Setting("Sound effects",Preferences.Sound,.515f,()=>Preferences.Sound=!Preferences.Sound);

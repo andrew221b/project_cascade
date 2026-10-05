@@ -103,10 +103,12 @@ namespace Cascade.Presentation
             var lightObject = new GameObject("Warm workshop key light", typeof(Light)); lightObject.transform.SetParent(transform, false);
             lightObject.transform.rotation = Quaternion.Euler(32, -24, 0);
             var keyLight = lightObject.GetComponent<Light>(); keyLight.type = LightType.Directional;
-            keyLight.color = new Color(1, .96f, .88f); keyLight.intensity = 1.05f; keyLight.shadows = LightShadows.None;
+            keyLight.color = new Color(1, .96f, .88f); keyLight.intensity = 1.18f; keyLight.shadows = LightShadows.Soft;
+            keyLight.shadowStrength = .42f; keyLight.shadowBias = .035f; keyLight.shadowNormalBias = .15f;
             var fillObject=new GameObject("Soft sky rim",typeof(Light));fillObject.transform.SetParent(transform,false);fillObject.transform.rotation=Quaternion.Euler(-18,155,0);
             var fill=fillObject.GetComponent<Light>();fill.type=LightType.Directional;fill.color=new Color(.64f,.85f,1);fill.intensity=.35f;fill.shadows=LightShadows.None;
             RenderSettings.ambientMode = AmbientMode.Flat; RenderSettings.ambientLight = new Color(.69f, .79f, .80f);
+            InitializePieceMaterials();
 
         }
 
@@ -129,7 +131,7 @@ namespace Cascade.Presentation
                 var anchor = targets[i].rectTransform;
                 Add("Target socket", anchor, art.tile, art.gold, new Vector2(.5f, .5f), new Vector2(.83f, .90f), -.06f, .06f);
                 var symbol = model.Attempt.Level.TargetSymbolIds[i];
-                targetBodies.Add(Add("Target " + i, anchor, art.SymbolMesh(symbol), art.SymbolMaterial(symbol), new Vector2(.5f, .5f), new Vector2(.66f, .72f), -.12f, .10f));
+                targetBodies.Add(Add("Target " + i, anchor, art.SymbolMesh(symbol), PieceMaterial(symbol), new Vector2(.5f, .5f), new Vector2(.66f, .72f), -.12f, .10f));
             }
             for (int i = 0; i < slots.Count; i++) {
                 var anchor = (RectTransform)slots[i].transform;
@@ -178,7 +180,9 @@ namespace Cascade.Presentation
         {
             var go = new GameObject(name, typeof(MeshFilter), typeof(MeshRenderer)); go.transform.SetParent(parent, false);
             go.GetComponent<MeshFilter>().sharedMesh = mesh; var renderer = go.GetComponent<MeshRenderer>(); renderer.sharedMaterial = material;
-            renderer.shadowCastingMode = ShadowCastingMode.Off; renderer.receiveShadows = false;
+            bool solidPiece = name.StartsWith("Persistent token") || name.StartsWith("Target ");
+            renderer.shadowCastingMode = solidPiece ? ShadowCastingMode.On : ShadowCastingMode.Off;
+            renderer.receiveShadows = name == "Wooden suspended board" || solidPiece;
             return new Part { transform = go.transform, renderer = renderer, material=material, mesh = mesh, anchor = anchor, point = point, size = size, z = z, depth = depth, angle = angle };
         }
         void Place(Part part)
@@ -208,7 +212,7 @@ namespace Cascade.Presentation
             for (int i = 0; i < tokens.Count; i++) {
                 var token = tokens[i]; var mesh = art.SymbolMesh(state.Row[i]);
                 token.mesh = mesh; token.transform.GetComponent<MeshFilter>().sharedMesh = mesh;
-                token.renderer.sharedMaterial = art.SymbolMaterial(state.Row[i]);
+                token.renderer.sharedMaterial = PieceMaterial(state.Row[i]);
                 token.point = new Vector2(.5f, state.Status == PuzzleStatus.Won ? .5f : TokenFaceY(interaction.SelectedSlot == i));
                 token.size = state.Status == PuzzleStatus.Won ? new Vector2(.66f, .72f)
                     : interaction.SelectedSlot == i ? new Vector2(.81f, .915f) : new Vector2(.78f, .88f);
