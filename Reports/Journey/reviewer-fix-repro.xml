@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="36" result="Failed(Child)" total="36" passed="33" failed="3" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-05 07:09:40Z" end-time="2026-10-05 07:11:28Z" duration="107.6593359">
+  <test-suite type="TestSuite" id="1044" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="36" result="Failed" site="Child" start-time="2026-10-05 07:09:40Z" end-time="2026-10-05 07:11:28Z" duration="107.659336" total="36" passed="33" failed="3" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1038" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="36" result="Failed" site="Child" start-time="2026-10-05 07:09:40Z" end-time="2026-10-05 07:11:28Z" duration="107.637632" total="36" passed="33" failed="3" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="84036" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1039" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="36" result="Failed" site="Child" start-time="2026-10-05 07:09:40Z" end-time="2026-10-05 07:11:28Z" duration="107.636089" total="36" passed="33" failed="3" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1040" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="36" result="Failed" site="Child" start-time="2026-10-05 07:09:40Z" end-time="2026-10-05 07:11:28Z" duration="107.635031" total="36" passed="33" failed="3" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1001" name="PlayableTests" fullname="Cascade.Tests.PlayableTests" classname="Cascade.Tests.PlayableTests" runstate="Runnable" testcasecount="36" result="Failed" site="Child" start-time="2026-10-05 07:09:40Z" end-time="2026-10-05 07:11:28Z" duration="107.633372" total="36" passed="33" failed="3" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1037" name="AllFortyLevelsCanBeDeliveredThroughActualMouseAndButtons" fullname="Cascade.Tests.PlayableTests.AllFortyLevelsCanBeDeliveredThroughActualMouseAndButtons" methodname="AllFortyLevelsCanBeDeliveredThroughActualMouseAndButtons" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="58436072" result="Passed" start-time="2026-10-05 07:09:40Z" end-time="2026-10-05 07:10:48Z" duration="67.947394" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[CASCADE actual UI acceptance: 40 levels, 92 commands; events: CommandAccepted, RowPermuted, DurabilityResolved, FloorExited, ReceiverEvaluated, FloorEntered, EntryPermuted, BombDefused, BombTicked, BombExploded, BombAbandoned, KeyOpened, Repaired, BridgeConsumed, StampCollected
+]]></output>
+            </test-case>
+            <test-case id="1023" name="DefaultHudHasOneMenuAndNoForcedSlotSelection" fullname="Cascade.Tests.PlayableTests.DefaultHudHasOneMenuAndNoForcedSlotSelection" methodname="DefaultHudHasOneMenuAndNoForcedSlotSelection" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="190019562" result="Passed" start-time="2026-10-05 07:10:48Z" end-time="2026-10-05 07:10:48Z" duration="0.359551" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1021" name="DeliveryKeepsTargetVisibleAndWaitsBeforeShowingResultControls" fullname="Cascade.Tests.PlayableTests.DeliveryKeepsTargetVisibleAndWaitsBeforeShowingResultControls" methodname="DeliveryKeepsTargetVisibleAndWaitsBeforeShowingResultControls" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1105432152" result="Passed" start-time="2026-10-05 07:10:48Z" end-time="2026-10-05 07:10:51Z" duration="2.112251" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1016" name="DestroyingEventPlayerSynchronizesTheCommittedResult" fullname="Cascade.Tests.PlayableTests.DestroyingEventPlayerSynchronizesTheCommittedResult" methodname="DestroyingEventPlayerSynchronizesTheCommittedResult" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1402063701" result="Passed" start-time="2026-10-05 07:10:51Z" end-time="2026-10-05 07:10:51Z" duration="0.307737" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1017" name="DustTailsDoNotKeepUndoLockedAndFeedbackStaysBounded" fullname="Cascade.Tests.PlayableTests.DustTailsDoNotKeepUndoLockedAndFeedbackStaysBounded" methodname="DustTailsDoNotKeepUndoLockedAndFeedbackStaysBounded" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1176155533" result="Passed" start-time="2026-10-05 07:10:51Z" end-time="2026-10-05 07:10:52Z" duration="1.381515" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1009" name="EightMixedSymbolsHaveSeparateBoundsAndStableFullTarget" fullname="Cascade.Tests.PlayableTests.EightMixedSymbolsHaveSeparateBoundsAndStableFullTarget" methodname="EightMixedSymbolsHaveSeparateBoundsAndStableFullTarget" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="919315773" result="Passed" start-time="2026-10-05 07:10:52Z" end-time="2026-10-05 07:10:53Z" duration="1.045036" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1015" name="EveryAnimatedStageCanBeInterruptedWithoutReapplyingRules" fullname="Cascade.Tests.PlayableTests.EveryAnimatedStageCanBeInterruptedWithoutReapplyingRules" methodname="EveryAnimatedStageCanBeInterruptedWithoutReapplyingRules" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="775963540" result="Passed" start-time="2026-10-05 07:10:53Z" end-time="2026-10-05 07:11:08Z" duration="14.638177" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[CASCADE P13 interruption matrix: 13 stages × 4 interruption paths verified.
+]]></output>
+            </test-case>
+            <test-case id="1032" name="FailureOffersFreeRetryAndUndo" fullname="Cascade.Tests.PlayableTests.FailureOffersFreeRetryAndUndo" methodname="FailureOffersFreeRetryAndUndo" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1672431483" result="Passed" start-time="2026-10-05 07:11:08Z" end-time="2026-10-05 07:11:10Z" duration="2.083979" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1010" name="FocusPauseAndDisableCannotRepeatCommittedCommand" fullname="Cascade.Tests.PlayableTests.FocusPauseAndDisableCannotRepeatCommittedCommand" methodname="FocusPauseAndDisableCannotRepeatCommittedCommand" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="378597379" result="Passed" start-time="2026-10-05 07:11:10Z" end-time="2026-10-05 07:11:11Z" duration="0.557942" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1027" name="FutureMapIsAPreviewAndReturnRestoresTheActualWorld" fullname="Cascade.Tests.PlayableTests.FutureMapIsAPreviewAndReturnRestoresTheActualWorld" methodname="FutureMapIsAPreviewAndReturnRestoresTheActualWorld" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1694235194" result="Passed" start-time="2026-10-05 07:11:11Z" end-time="2026-10-05 07:11:11Z" duration="0.340876" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1029" name="FutureStoryFixtureSelectsItsOwnRegionWithoutRewards" fullname="Cascade.Tests.PlayableTests.FutureStoryFixtureSelectsItsOwnRegionWithoutRewards" methodname="FutureStoryFixtureSelectsItsOwnRegionWithoutRewards" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="178334490" result="Passed" start-time="2026-10-05 07:11:11Z" end-time="2026-10-05 07:11:11Z" duration="0.309201" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1028" name="GliderWholeSilhouetteStaysInTheEmptyFlightBand" fullname="Cascade.Tests.PlayableTests.GliderWholeSilhouetteStaysInTheEmptyFlightBand" methodname="GliderWholeSilhouetteStaysInTheEmptyFlightBand" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="2083400728" result="Passed" start-time="2026-10-05 07:11:11Z" end-time="2026-10-05 07:11:12Z" duration="0.320543" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1022" name="HeldPieceAndLetterFollowPointerWithoutCommittingUntilRelease" fullname="Cascade.Tests.PlayableTests.HeldPieceAndLetterFollowPointerWithoutCommittingUntilRelease" methodname="HeldPieceAndLetterFollowPointerWithoutCommittingUntilRelease" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1283111361" result="Passed" start-time="2026-10-05 07:11:12Z" end-time="2026-10-05 07:11:12Z" duration="0.319268" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1034" name="HomeDuringAnimationKeepsTheCommittedRow" fullname="Cascade.Tests.PlayableTests.HomeDuringAnimationKeepsTheCommittedRow" methodname="HomeDuringAnimationKeepsTheCommittedRow" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1677904802" result="Passed" start-time="2026-10-05 07:11:12Z" end-time="2026-10-05 07:11:12Z" duration="0.308343" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1030" name="HomePauseAndSettingsPreserveAttemptAndFreezeCoaching" fullname="Cascade.Tests.PlayableTests.HomePauseAndSettingsPreserveAttemptAndFreezeCoaching" methodname="HomePauseAndSettingsPreserveAttemptAndFreezeCoaching" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1963911740" result="Passed" start-time="2026-10-05 07:11:12Z" end-time="2026-10-05 07:11:13Z" duration="0.398419" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1031" name="HomeWordsChoiceStartsAnExistingPinnedBinding" fullname="Cascade.Tests.PlayableTests.HomeWordsChoiceStartsAnExistingPinnedBinding" methodname="HomeWordsChoiceStartsAnExistingPinnedBinding" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1680359680" result="Passed" start-time="2026-10-05 07:11:13Z" end-time="2026-10-05 07:11:13Z" duration="0.342864" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1024" name="JourneyDialogueBlocksPuzzleThenClearOpensNextStop" fullname="Cascade.Tests.PlayableTests.JourneyDialogueBlocksPuzzleThenClearOpensNextStop" methodname="JourneyDialogueBlocksPuzzleThenClearOpensNextStop" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1688779451" result="Passed" start-time="2026-10-05 07:11:13Z" end-time="2026-10-05 07:11:14Z" duration="1.407704" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1026" name="JourneyMapContinuePreservesAnUnfinishedRoute" fullname="Cascade.Tests.PlayableTests.JourneyMapContinuePreservesAnUnfinishedRoute" methodname="JourneyMapContinuePreservesAnUnfinishedRoute" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1325316013" result="Passed" start-time="2026-10-05 07:11:14Z" end-time="2026-10-05 07:11:18Z" duration="3.403790" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1025" name="LayeredCloudsMoveWithoutStateChangesAndFreezeWhenPaused" fullname="Cascade.Tests.PlayableTests.LayeredCloudsMoveWithoutStateChangesAndFreezeWhenPaused" methodname="LayeredCloudsMoveWithoutStateChangesAndFreezeWhenPaused" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1725484010" result="Passed" start-time="2026-10-05 07:11:18Z" end-time="2026-10-05 07:11:18Z" duration="0.551463" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1004" name="LongTouchDragAndCancelledTouchAreFree" fullname="Cascade.Tests.PlayableTests.LongTouchDragAndCancelledTouchAreFree" methodname="LongTouchDragAndCancelledTouchAreFree" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="602672085" result="Passed" start-time="2026-10-05 07:11:18Z" end-time="2026-10-05 07:11:19Z" duration="0.324578" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1002" name="MouseTapTapWinsAndUndoRestores" fullname="Cascade.Tests.PlayableTests.MouseTapTapWinsAndUndoRestores" methodname="MouseTapTapWinsAndUndoRestores" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="74597173" result="Passed" start-time="2026-10-05 07:11:19Z" end-time="2026-10-05 07:11:20Z" duration="1.402010" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1008" name="NewGestureRecoversAfterFocusCancelledOldCapture" fullname="Cascade.Tests.PlayableTests.NewGestureRecoversAfterFocusCancelledOldCapture" methodname="NewGestureRecoversAfterFocusCancelledOldCapture" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="735424040" result="Passed" start-time="2026-10-05 07:11:20Z" end-time="2026-10-05 07:11:20Z" duration="0.328226" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1011" name="PrecisionButtonsAndHintRemainUsableTogether" fullname="Cascade.Tests.PlayableTests.PrecisionButtonsAndHintRemainUsableTogether" methodname="PrecisionButtonsAndHintRemainUsableTogether" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1093474792" result="Failed" start-time="2026-10-05 07:11:20Z" end-time="2026-10-05 07:11:21Z" duration="0.305061" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[SetUp : Unhandled log message: '[Exception] MissingReferenceException: The object of type 'UnityEngine.Camera' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/UnityEngineObject.bindings.cs:1059)
+UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/BindingsHelpers.cs:61)
+UnityEngine.Camera.get_orthographicSize () (at <cceaa8dc4be246b8863c05d5431ef574>:0)
+Cascade.Presentation.CascadeGame.RefreshLayout () (at Assets/_Cascade/Presentation/CascadeGame.cs:195)
+Cascade.Presentation.CascadeGame.RenderFrame (Cascade.Presentation.PresentationFrame state, System.Boolean arriving) (at Assets/_Cascade/Presentation/CascadeGame.cs:418)
+Cascade.Presentation.CascadeGame.RenderState () (at Assets/_Cascade/Presentation/CascadeGame.cs:386)
+Cascade.Presentation.CascadeGame.SyncPresentation () (at Assets/_Cascade/Presentation/CascadeGame.cs:428)
+Cascade.Presentation.PuzzleEventPlayer.Finish () (at Assets/_Cascade/Presentation/PuzzleEventPlayer.cs:39)
+Cascade.Presentation.PuzzleEventPlayer.Skip () (at Assets/_Cascade/Presentation/PuzzleEventPlayer.cs:33)
+Cascade.Presentation.CascadeGame.StopPresentation () (at Assets/_Cascade/Presentation/CascadeGame.cs:134)
+Cascade.Presentation.CascadeGame.OnDisable () (at Assets/_Cascade/Presentation/CascadeGame.cs:78)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[MissingReferenceException: The object of type 'UnityEngine.Camera' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/UnityEngineObject.bindings.cs:1059)
+UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/BindingsHelpers.cs:61)
+UnityEngine.Camera.get_orthographicSize () (at <cceaa8dc4be246b8863c05d5431ef574>:0)
+Cascade.Presentation.CascadeGame.RefreshLayout () (at Assets/_Cascade/Presentation/CascadeGame.cs:195)
+Cascade.Presentation.CascadeGame.RenderFrame (Cascade.Presentation.PresentationFrame state, System.Boolean arriving) (at Assets/_Cascade/Presentation/CascadeGame.cs:418)
+Cascade.Presentation.CascadeGame.RenderState () (at Assets/_Cascade/Presentation/CascadeGame.cs:386)
+Cascade.Presentation.CascadeGame.SyncPresentation () (at Assets/_Cascade/Presentation/CascadeGame.cs:428)
+Cascade.Presentation.PuzzleEventPlayer.Finish () (at Assets/_Cascade/Presentation/PuzzleEventPlayer.cs:39)
+Cascade.Presentation.PuzzleEventPlayer.Skip () (at Assets/_Cascade/Presentation/PuzzleEventPlayer.cs:33)
+Cascade.Presentation.CascadeGame.StopPresentation () (at Assets/_Cascade/Presentation/CascadeGame.cs:134)
+Cascade.Presentation.CascadeGame.OnDisable () (at Assets/_Cascade/Presentation/CascadeGame.cs:78)
+
+]]></output>
+            </test-case>
+            <test-case id="1036" name="ProvenDeadEndDoesNotConsumeOrRevealAHint" fullname="Cascade.Tests.PlayableTests.ProvenDeadEndDoesNotConsumeOrRevealAHint" methodname="ProvenDeadEndDoesNotConsumeOrRevealAHint" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="88360385" result="Passed" start-time="2026-10-05 07:11:21Z" end-time="2026-10-05 07:11:21Z" duration="0.497801" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1019" name="ReducedMotionKeepsPosesStillThroughoutCommittedEvents" fullname="Cascade.Tests.PlayableTests.ReducedMotionKeepsPosesStillThroughoutCommittedEvents" methodname="ReducedMotionKeepsPosesStillThroughoutCommittedEvents" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="95242340" result="Passed" start-time="2026-10-05 07:11:21Z" end-time="2026-10-05 07:11:23Z" duration="1.354054" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1020" name="SceneReloadDuringAnimationReleasesOldAttemptWithoutExceptions" fullname="Cascade.Tests.PlayableTests.SceneReloadDuringAnimationReleasesOldAttemptWithoutExceptions" methodname="SceneReloadDuringAnimationReleasesOldAttemptWithoutExceptions" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1507017830" result="Passed" start-time="2026-10-05 07:11:23Z" end-time="2026-10-05 07:11:23Z" duration="0.598080" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1007" name="SecondaryMouseButtonCannotReleasePrimaryGesture" fullname="Cascade.Tests.PlayableTests.SecondaryMouseButtonCannotReleasePrimaryGesture" methodname="SecondaryMouseButtonCannotReleasePrimaryGesture" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1953028744" result="Passed" start-time="2026-10-05 07:11:23Z" end-time="2026-10-05 07:11:23Z" duration="0.328255" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1005" name="SecondFingerOnSameSlotCannotStealFirstGesture" fullname="Cascade.Tests.PlayableTests.SecondFingerOnSameSlotCannotStealFirstGesture" methodname="SecondFingerOnSameSlotCannotStealFirstGesture" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1618627348" result="Failed" start-time="2026-10-05 07:11:23Z" end-time="2026-10-05 07:11:24Z" duration="0.299764" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[SetUp : Unhandled log message: '[Exception] MissingReferenceException: The object of type 'UnityEngine.Camera' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/UnityEngineObject.bindings.cs:1059)
+UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/BindingsHelpers.cs:61)
+UnityEngine.Camera.get_orthographicSize () (at <cceaa8dc4be246b8863c05d5431ef574>:0)
+Cascade.Presentation.CascadeGame.RefreshLayout () (at Assets/_Cascade/Presentation/CascadeGame.cs:195)
+Cascade.Presentation.CascadeGame.RenderFrame (Cascade.Presentation.PresentationFrame state, System.Boolean arriving) (at Assets/_Cascade/Presentation/CascadeGame.cs:418)
+Cascade.Presentation.CascadeGame.RenderState () (at Assets/_Cascade/Presentation/CascadeGame.cs:386)
+Cascade.Presentation.CascadeGame.SyncPresentation () (at Assets/_Cascade/Presentation/CascadeGame.cs:428)
+Cascade.Presentation.PuzzleEventPlayer.Finish () (at Assets/_Cascade/Presentation/PuzzleEventPlayer.cs:39)
+Cascade.Presentation.PuzzleEventPlayer.Skip () (at Assets/_Cascade/Presentation/PuzzleEventPlayer.cs:33)
+Cascade.Presentation.CascadeGame.StopPresentation () (at Assets/_Cascade/Presentation/CascadeGame.cs:134)
+Cascade.Presentation.CascadeGame.OnDisable () (at Assets/_Cascade/Presentation/CascadeGame.cs:78)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[MissingReferenceException: The object of type 'UnityEngine.Camera' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/UnityEngineObject.bindings.cs:1059)
+UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/BindingsHelpers.cs:61)
+UnityEngine.Camera.get_orthographicSize () (at <cceaa8dc4be246b8863c05d5431ef574>:0)
+Cascade.Presentation.CascadeGame.RefreshLayout () (at Assets/_Cascade/Presentation/CascadeGame.cs:195)
+Cascade.Presentation.CascadeGame.RenderFrame (Cascade.Presentation.PresentationFrame state, System.Boolean arriving) (at Assets/_Cascade/Presentation/CascadeGame.cs:418)
+Cascade.Presentation.CascadeGame.RenderState () (at Assets/_Cascade/Presentation/CascadeGame.cs:386)
+Cascade.Presentation.CascadeGame.SyncPresentation () (at Assets/_Cascade/Presentation/CascadeGame.cs:428)
+Cascade.Presentation.PuzzleEventPlayer.Finish () (at Assets/_Cascade/Presentation/PuzzleEventPlayer.cs:39)
+Cascade.Presentation.PuzzleEventPlayer.Skip () (at Assets/_Cascade/Presentation/PuzzleEventPlayer.cs:33)
+Cascade.Presentation.CascadeGame.StopPresentation () (at Assets/_Cascade/Presentation/CascadeGame.cs:134)
+Cascade.Presentation.CascadeGame.OnDisable () (at Assets/_Cascade/Presentation/CascadeGame.cs:78)
+
+]]></output>
+            </test-case>
+            <test-case id="1018" name="SelectedLetterTracksItsBodyThroughoutSelectionMotion" fullname="Cascade.Tests.PlayableTests.SelectedLetterTracksItsBodyThroughoutSelectionMotion" methodname="SelectedLetterTracksItsBodyThroughoutSelectionMotion" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1394508413" result="Passed" start-time="2026-10-05 07:11:24Z" end-time="2026-10-05 07:11:24Z" duration="0.334061" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1033" name="SettingsChangeActualPresentationPreferences" fullname="Cascade.Tests.PlayableTests.SettingsChangeActualPresentationPreferences" methodname="SettingsChangeActualPresentationPreferences" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1600455937" result="Passed" start-time="2026-10-05 07:11:24Z" end-time="2026-10-05 07:11:24Z" duration="0.351944" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1006" name="SystemCancelledDragOverNeighbourCannotCommit" fullname="Cascade.Tests.PlayableTests.SystemCancelledDragOverNeighbourCannotCommit" methodname="SystemCancelledDragOverNeighbourCannotCommit" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="867667202" result="Passed" start-time="2026-10-05 07:11:24Z" end-time="2026-10-05 07:11:25Z" duration="0.318885" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1014" name="TargetMagnifierKeepsShapesAndGlyphsVisibleAndBlocksInput" fullname="Cascade.Tests.PlayableTests.TargetMagnifierKeepsShapesAndGlyphsVisibleAndBlocksInput" methodname="TargetMagnifierKeepsShapesAndGlyphsVisibleAndBlocksInput" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="109130708" result="Passed" start-time="2026-10-05 07:11:25Z" end-time="2026-10-05 07:11:25Z" duration="0.329736" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1003" name="TouchAdjacentDragWinsWithoutSpawningTokens" fullname="Cascade.Tests.PlayableTests.TouchAdjacentDragWinsWithoutSpawningTokens" methodname="TouchAdjacentDragWinsWithoutSpawningTokens" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="448528414" result="Passed" start-time="2026-10-05 07:11:25Z" end-time="2026-10-05 07:11:25Z" duration="0.319648" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1013" name="ToyPresentationFreezesAmbientAndNeverChangesPuzzleState" fullname="Cascade.Tests.PlayableTests.ToyPresentationFreezesAmbientAndNeverChangesPuzzleState" methodname="ToyPresentationFreezesAmbientAndNeverChangesPuzzleState" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="369883139" result="Failed" start-time="2026-10-05 07:11:25Z" end-time="2026-10-05 07:11:26Z" duration="0.302218" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[SetUp : Unhandled log message: '[Exception] MissingReferenceException: The object of type 'UnityEngine.Camera' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                <stack-trace><![CDATA[UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/UnityEngineObject.bindings.cs:1059)
+UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/BindingsHelpers.cs:61)
+UnityEngine.Camera.get_orthographicSize () (at <cceaa8dc4be246b8863c05d5431ef574>:0)
+Cascade.Presentation.CascadeGame.RefreshLayout () (at Assets/_Cascade/Presentation/CascadeGame.cs:195)
+Cascade.Presentation.CascadeGame.RenderFrame (Cascade.Presentation.PresentationFrame state, System.Boolean arriving) (at Assets/_Cascade/Presentation/CascadeGame.cs:418)
+Cascade.Presentation.CascadeGame.RenderState () (at Assets/_Cascade/Presentation/CascadeGame.cs:386)
+Cascade.Presentation.CascadeGame.SyncPresentation () (at Assets/_Cascade/Presentation/CascadeGame.cs:428)
+Cascade.Presentation.PuzzleEventPlayer.Finish () (at Assets/_Cascade/Presentation/PuzzleEventPlayer.cs:39)
+Cascade.Presentation.PuzzleEventPlayer.Skip () (at Assets/_Cascade/Presentation/PuzzleEventPlayer.cs:33)
+Cascade.Presentation.CascadeGame.StopPresentation () (at Assets/_Cascade/Presentation/CascadeGame.cs:134)
+Cascade.Presentation.CascadeGame.OnDisable () (at Assets/_Cascade/Presentation/CascadeGame.cs:78)
+
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[MissingReferenceException: The object of type 'UnityEngine.Camera' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/UnityEngineObject.bindings.cs:1059)
+UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/BindingsHelpers.cs:61)
+UnityEngine.Camera.get_orthographicSize () (at <cceaa8dc4be246b8863c05d5431ef574>:0)
+Cascade.Presentation.CascadeGame.RefreshLayout () (at Assets/_Cascade/Presentation/CascadeGame.cs:195)
+Cascade.Presentation.CascadeGame.RenderFrame (Cascade.Presentation.PresentationFrame state, System.Boolean arriving) (at Assets/_Cascade/Presentation/CascadeGame.cs:418)
+Cascade.Presentation.CascadeGame.RenderState () (at Assets/_Cascade/Presentation/CascadeGame.cs:386)
+Cascade.Presentation.CascadeGame.SyncPresentation () (at Assets/_Cascade/Presentation/CascadeGame.cs:428)
+Cascade.Presentation.PuzzleEventPlayer.Finish () (at Assets/_Cascade/Presentation/PuzzleEventPlayer.cs:39)
+Cascade.Presentation.PuzzleEventPlayer.Skip () (at Assets/_Cascade/Presentation/PuzzleEventPlayer.cs:33)
+Cascade.Presentation.CascadeGame.StopPresentation () (at Assets/_Cascade/Presentation/CascadeGame.cs:134)
+Cascade.Presentation.CascadeGame.OnDisable () (at Assets/_Cascade/Presentation/CascadeGame.cs:78)
+
+]]></output>
+            </test-case>
+            <test-case id="1035" name="TutorialGestureCannotExecuteACommand" fullname="Cascade.Tests.PlayableTests.TutorialGestureCannotExecuteACommand" methodname="TutorialGestureCannotExecuteACommand" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="366093307" result="Passed" start-time="2026-10-05 07:11:26Z" end-time="2026-10-05 07:11:27Z" duration="1.382643" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1012" name="UsedBridgeIsShownClosedAndUndoRestoresIt" fullname="Cascade.Tests.PlayableTests.UsedBridgeIsShownClosedAndUndoRestoresIt" methodname="UsedBridgeIsShownClosedAndUndoRestoresIt" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="980583169" result="Passed" start-time="2026-10-05 07:11:27Z" end-time="2026-10-05 07:11:28Z" duration="0.701648" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/Journey/playmode.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

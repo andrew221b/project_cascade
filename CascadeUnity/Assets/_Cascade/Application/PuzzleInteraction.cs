@@ -11,6 +11,7 @@ namespace Cascade.Application
         public bool IsPresenting { get; private set; }
         public bool IsPaused { get; private set; }
         public bool IsSuspended { get; private set; }
+        public PuzzleCommand? LastRequestedCommand { get; private set; }
         public bool CanControl => !IsPresenting && !IsPaused && !IsSuspended;
         public bool CanPlay => CanControl && Attempt.Current.Status == PuzzleStatus.Playing;
         public event Action<TransitionResult> Committed;
@@ -61,6 +62,7 @@ namespace Cascade.Application
         public TransitionResult Execute(PuzzleCommand command)
         {
             if (!CanPlay || pointer.HasValue) return null;
+            LastRequestedCommand = command;
             var result = Attempt.Execute(command);
             if (result.Accepted) Present(result); return result;
         }

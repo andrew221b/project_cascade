@@ -1,13 +1,12 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-05T05:12:30.078885+00:00",
+  "generatedAt": "2026-10-05T07:17:01.086696+00:00",
   "title": "Design System: CASCADE",
   "extensions": {
     "colorMeta": {
       "ui-ink": {
         "role": "neutral",
         "displayName": "UI Ink",
-        "canonical": "rgb(16% 28% 29%)",
         "tonalRamp": [
           "oklch(0.150 0.03663 202.53)",
           "oklch(0.264 0.03663 202.53)",
@@ -19,10 +18,23 @@
           "oklch(0.950 0.03663 202.53)"
         ]
       },
+      "high-contrast-ink": {
+        "role": "neutral",
+        "displayName": "High Contrast Ink",
+        "tonalRamp": [
+          "oklch(0.150 0.03396 203.35)",
+          "oklch(0.264 0.03396 203.35)",
+          "oklch(0.379 0.03396 203.35)",
+          "oklch(0.493 0.03396 203.35)",
+          "oklch(0.607 0.03396 203.35)",
+          "oklch(0.721 0.03396 203.35)",
+          "oklch(0.836 0.03396 203.35)",
+          "oklch(0.950 0.03396 203.35)"
+        ]
+      },
       "ui-paper": {
         "role": "neutral",
         "displayName": "UI Paper",
-        "canonical": "rgb(100% 96% 84%)",
         "tonalRamp": [
           "oklch(0.150 0.04135 91.72)",
           "oklch(0.264 0.04135 91.72)",
@@ -36,8 +48,7 @@
       },
       "drop-gold": {
         "role": "primary",
-        "displayName": "Drop Gold",
-        "canonical": "rgb(98% 74% 32%)",
+        "displayName": "Descend / travel gold",
         "tonalRamp": [
           "oklch(0.150 0.14040 78.55)",
           "oklch(0.264 0.14040 78.55)",
@@ -52,7 +63,6 @@
       "hover-tint": {
         "role": "neutral",
         "displayName": "Hover Tint",
-        "canonical": "rgb(100% 94% 78%)",
         "tonalRamp": [
           "oklch(0.150 0.05536 89.91)",
           "oklch(0.264 0.05536 89.91)",
@@ -67,7 +77,6 @@
       "pressed-tint": {
         "role": "neutral",
         "displayName": "Pressed Tint",
-        "canonical": "rgb(82% 88% 81%)",
         "tonalRamp": [
           "oklch(0.150 0.02911 141.21)",
           "oklch(0.264 0.02911 141.21)",
@@ -82,7 +91,6 @@
       "disabled-tint": {
         "role": "neutral",
         "displayName": "Disabled Tint",
-        "canonical": "rgb(88% 90% 84% / 70%)",
         "tonalRamp": [
           "oklch(0.150 0.02114 121.87)",
           "oklch(0.264 0.02114 121.87)",
@@ -97,7 +105,6 @@
       "preview-gold": {
         "role": "neutral",
         "displayName": "Preview Gold",
-        "canonical": "rgb(95% 73% 29% / 30%)",
         "tonalRamp": [
           "oklch(0.150 0.14127 81.54)",
           "oklch(0.264 0.14127 81.54)",
@@ -109,10 +116,135 @@
           "oklch(0.950 0.14127 81.54)"
         ]
       },
+      "legal-landing": {
+        "role": "secondary",
+        "displayName": "Legal Landing",
+        "tonalRamp": [
+          "oklch(0.150 0.10469 174.97)",
+          "oklch(0.264 0.10469 174.97)",
+          "oklch(0.379 0.10469 174.97)",
+          "oklch(0.493 0.10469 174.97)",
+          "oklch(0.607 0.10469 174.97)",
+          "oklch(0.721 0.10469 174.97)",
+          "oklch(0.836 0.10469 174.97)",
+          "oklch(0.950 0.10469 174.97)"
+        ]
+      },
+      "blocked-landing": {
+        "role": "secondary",
+        "displayName": "Blocked Landing",
+        "tonalRamp": [
+          "oklch(0.150 0.18247 33.01)",
+          "oklch(0.264 0.18247 33.01)",
+          "oklch(0.379 0.18247 33.01)",
+          "oklch(0.493 0.18247 33.01)",
+          "oklch(0.607 0.18247 33.01)",
+          "oklch(0.721 0.18247 33.01)",
+          "oklch(0.836 0.18247 33.01)",
+          "oklch(0.950 0.18247 33.01)"
+        ]
+      },
+      "map-current": {
+        "role": "primary",
+        "displayName": "Map Current",
+        "tonalRamp": [
+          "oklch(0.150 0.14293 80.71)",
+          "oklch(0.264 0.14293 80.71)",
+          "oklch(0.379 0.14293 80.71)",
+          "oklch(0.493 0.14293 80.71)",
+          "oklch(0.607 0.14293 80.71)",
+          "oklch(0.721 0.14293 80.71)",
+          "oklch(0.836 0.14293 80.71)",
+          "oklch(0.950 0.14293 80.71)"
+        ]
+      },
+      "map-restored": {
+        "role": "secondary",
+        "displayName": "Map Restored",
+        "tonalRamp": [
+          "oklch(0.150 0.08667 166.07)",
+          "oklch(0.264 0.08667 166.07)",
+          "oklch(0.379 0.08667 166.07)",
+          "oklch(0.493 0.08667 166.07)",
+          "oklch(0.607 0.08667 166.07)",
+          "oklch(0.721 0.08667 166.07)",
+          "oklch(0.836 0.08667 166.07)",
+          "oklch(0.950 0.08667 166.07)"
+        ]
+      },
+      "path-open": {
+        "role": "primary",
+        "displayName": "Path Open",
+        "tonalRamp": [
+          "oklch(0.150 0.13788 70.32)",
+          "oklch(0.264 0.13788 70.32)",
+          "oklch(0.379 0.13788 70.32)",
+          "oklch(0.493 0.13788 70.32)",
+          "oklch(0.607 0.13788 70.32)",
+          "oklch(0.721 0.13788 70.32)",
+          "oklch(0.836 0.13788 70.32)",
+          "oklch(0.950 0.13788 70.32)"
+        ]
+      },
+      "path-future": {
+        "role": "neutral",
+        "displayName": "Path Future",
+        "tonalRamp": [
+          "oklch(0.150 0.03687 151.90)",
+          "oklch(0.264 0.03687 151.90)",
+          "oklch(0.379 0.03687 151.90)",
+          "oklch(0.493 0.03687 151.90)",
+          "oklch(0.607 0.03687 151.90)",
+          "oklch(0.721 0.03687 151.90)",
+          "oklch(0.836 0.03687 151.90)",
+          "oklch(0.950 0.03687 151.90)"
+        ]
+      },
+      "setting-paper": {
+        "role": "neutral",
+        "displayName": "Setting Paper",
+        "tonalRamp": [
+          "oklch(0.150 0.04863 90.69)",
+          "oklch(0.264 0.04863 90.69)",
+          "oklch(0.379 0.04863 90.69)",
+          "oklch(0.493 0.04863 90.69)",
+          "oklch(0.607 0.04863 90.69)",
+          "oklch(0.721 0.04863 90.69)",
+          "oklch(0.836 0.04863 90.69)",
+          "oklch(0.950 0.04863 90.69)"
+        ]
+      },
+      "switch-on": {
+        "role": "secondary",
+        "displayName": "Switch On",
+        "tonalRamp": [
+          "oklch(0.150 0.09204 178.91)",
+          "oklch(0.264 0.09204 178.91)",
+          "oklch(0.379 0.09204 178.91)",
+          "oklch(0.493 0.09204 178.91)",
+          "oklch(0.607 0.09204 178.91)",
+          "oklch(0.721 0.09204 178.91)",
+          "oklch(0.836 0.09204 178.91)",
+          "oklch(0.950 0.09204 178.91)"
+        ]
+      },
+      "switch-off": {
+        "role": "neutral",
+        "displayName": "Switch Off",
+        "tonalRamp": [
+          "oklch(0.150 0.03427 122.35)",
+          "oklch(0.264 0.03427 122.35)",
+          "oklch(0.379 0.03427 122.35)",
+          "oklch(0.493 0.03427 122.35)",
+          "oklch(0.607 0.03427 122.35)",
+          "oklch(0.721 0.03427 122.35)",
+          "oklch(0.836 0.03427 122.35)",
+          "oklch(0.950 0.03427 122.35)"
+        ]
+      },
       "triangle-yellow": {
         "role": "secondary",
         "displayName": "Triangle Yellow",
-        "canonical": "#FFC856",
         "tonalRamp": [
           "oklch(0.150 0.14301 82.82)",
           "oklch(0.264 0.14301 82.82)",
@@ -127,7 +259,6 @@
       "circle-mint": {
         "role": "secondary",
         "displayName": "Circle Mint",
-        "canonical": "#59CAB1",
         "tonalRamp": [
           "oklch(0.150 0.10974 176.42)",
           "oklch(0.264 0.10974 176.42)",
@@ -142,7 +273,6 @@
       "square-coral": {
         "role": "secondary",
         "displayName": "Square Coral",
-        "canonical": "#EB8B7E",
         "tonalRamp": [
           "oklch(0.150 0.11951 28.50)",
           "oklch(0.264 0.11951 28.50)",
@@ -157,7 +287,6 @@
       "diamond-lilac": {
         "role": "secondary",
         "displayName": "Diamond Lilac",
-        "canonical": "#B496D9",
         "tonalRamp": [
           "oklch(0.150 0.10026 304.52)",
           "oklch(0.264 0.10026 304.52)",
@@ -172,7 +301,6 @@
       "star-sky": {
         "role": "secondary",
         "displayName": "Star Sky",
-        "canonical": "#64B9E1",
         "tonalRamp": [
           "oklch(0.150 0.10054 230.52)",
           "oklch(0.264 0.10054 230.52)",
@@ -187,7 +315,6 @@
       "hexagon-apricot": {
         "role": "secondary",
         "displayName": "Hexagon Apricot",
-        "canonical": "#F3A45D",
         "tonalRamp": [
           "oklch(0.150 0.12800 61.11)",
           "oklch(0.264 0.12800 61.11)",
@@ -202,7 +329,6 @@
       "tile-ivory": {
         "role": "neutral",
         "displayName": "Tile Ivory",
-        "canonical": "#FFF0CC",
         "tonalRamp": [
           "oklch(0.150 0.04953 88.08)",
           "oklch(0.264 0.04953 88.08)",
@@ -217,7 +343,6 @@
       "warm-graphite": {
         "role": "neutral",
         "displayName": "Warm Graphite",
-        "canonical": "#354C50",
         "tonalRamp": [
           "oklch(0.150 0.02904 209.42)",
           "oklch(0.264 0.02904 209.42)",
@@ -232,7 +357,6 @@
       "hardware-gold": {
         "role": "primary",
         "displayName": "Hardware Gold",
-        "canonical": "#EFB953",
         "tonalRamp": [
           "oklch(0.150 0.13328 80.77)",
           "oklch(0.264 0.13328 80.77)",
@@ -247,7 +371,6 @@
       "receiver-ivory": {
         "role": "neutral",
         "displayName": "Receiver Ivory",
-        "canonical": "#FBE2A3",
         "tonalRamp": [
           "oklch(0.150 0.08460 88.85)",
           "oklch(0.264 0.08460 88.85)",
@@ -262,7 +385,6 @@
       "platform-mint": {
         "role": "primary",
         "displayName": "Platform Mint",
-        "canonical": "#53AE9E",
         "tonalRamp": [
           "oklch(0.150 0.09067 180.44)",
           "oklch(0.264 0.09067 180.44)",
@@ -277,7 +399,6 @@
       "device-coral": {
         "role": "secondary",
         "displayName": "Device Coral",
-        "canonical": "#E38370",
         "tonalRamp": [
           "oklch(0.150 0.12227 32.15)",
           "oklch(0.264 0.12227 32.15)",
@@ -292,7 +413,6 @@
       "contact-shadow": {
         "role": "neutral",
         "displayName": "Contact Shadow",
-        "canonical": "rgb(11% 23% 25% / 28%)",
         "tonalRamp": [
           "oklch(0.150 0.03742 209.46)",
           "oklch(0.264 0.03742 209.46)",
@@ -306,13 +426,29 @@
       }
     },
     "typographyMeta": {
-      "title": {
-        "displayName": "Title",
-        "purpose": "Current-level title, Bold."
+      "menu-title": {
+        "displayName": "Menu Title",
+        "purpose": "Pause, guide and settings headings, Bold."
+      },
+      "region-speaker": {
+        "displayName": "Region Speaker",
+        "purpose": "Map region and dialogue speaker, Bold."
+      },
+      "level-title": {
+        "displayName": "Level Title",
+        "purpose": "Lesson header, Bold; journey uses the shorter task role."
+      },
+      "journey-task": {
+        "displayName": "Journey Task",
+        "purpose": "Journey gameplay destination and map task, Bold."
+      },
+      "dialogue": {
+        "displayName": "Dialogue",
+        "purpose": "Short dialogue sentences, Regular."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "State, instruction and preview copy, Regular."
+        "purpose": "Feedback, instruction, help and result copy, Regular."
       },
       "button": {
         "displayName": "Button",
@@ -320,190 +456,252 @@
       },
       "focus": {
         "displayName": "Focus",
-        "purpose": "Selected slot and symbol, Regular."
+        "purpose": "Selected symbol in optional precision controls, Regular."
+      },
+      "secondary": {
+        "displayName": "Secondary",
+        "purpose": "Map restored count, Regular; Skip story uses Bold at this size."
       },
       "receiver-label": {
         "displayName": "Receiver Label",
-        "purpose": "Stable destination label, Bold."
+        "purpose": "Complete destination label, Bold; compensated by canvas scale."
       },
       "device": {
         "displayName": "Device",
-        "purpose": "Compensated device explanation; 14-pixel minimum in supplied portrait Editor captures. Device glyphs use Bold at the same compensated size."
+        "purpose": "Explanation text, Regular, compensated by canvas scale; device glyphs use Bold."
       },
       "token-glyph": {
         "displayName": "Token Glyph",
-        "purpose": "Live Bold face anchored with the persistent token body."
+        "purpose": "Live Bold face that lifts and scales with the held token."
       },
       "target-glyph": {
         "displayName": "Target Glyph",
-        "purpose": "Live Bold face in the receiver."
+        "purpose": "Live Bold face in the complete receiver order."
       }
     },
     "shadows": [
       {
         "name": "soft-contact",
         "value": "alpha = (1 - smoothstep(0.25, 1, length((uv - 0.5) * 2)))^2",
-        "purpose": "Analytic native shader on fitted quads beneath tokens, platforms and receiver; tint is colors.contact-shadow. No CSS box-shadow token is implemented."
+        "purpose": "Native contact shader on fitted quads beneath tokens, platforms and receiver; references colors.contact-shadow. Cast Unity shadows are disabled."
       }
     ],
     "motion": [
       {
-        "name": "ambient-wheel",
-        "value": "18deg + elapsedUnscaledSeconds * 7deg/s",
-        "purpose": "View-only wheel rotation. Pause and suspension stop phase progression; Reduced Motion fixes rotation to 18deg. No moving cloud layer is implemented."
+        "name": "hold-preview",
+        "value": "immediate; clamp(64 / (screenCellSpan * 0.78), 1.10, 2.5)",
+        "purpose": "Native body and live glyph scale/lift together while fixed cells retain hit testing. X displacement is bounded to 1.15 cell spacings; upward pointer delta to 0.45 cell spacings."
       },
       {
         "name": "selection",
         "value": "100ms cubic ease-out",
-        "purpose": "Shared mesh and live glyph focus lift; Reduced Motion applies the final focus immediately."
+        "purpose": "Focus selection, distinct from immediate held feedback. Reduced Motion applies focus directly."
       },
       {
         "name": "exchange",
         "value": "190ms cubic ease-out",
-        "purpose": "Short opposing arcs explain adjacent and linked permutations of the same persistent row."
-      },
-      {
-        "name": "fall-and-land",
-        "value": "300ms smoothstep + 110ms landing",
-        "purpose": "The entire row travels down the guides; plastic compresses at most 8%. Target remains visible."
+        "purpose": "Short opposing arcs describe the committed atomic adjacent or linked exchange."
       },
       {
         "name": "device-response",
         "value": "180ms contact / 240ms bomb / 130ms fracture",
-        "purpose": "Local rail recoil is at most 0.025 world units; no camera shake."
+        "purpose": "Local rail recoil capped at 0.025 world units. Screen shake is opt-in, off by default, and suppressed by Reduced Motion."
+      },
+      {
+        "name": "fall-and-land",
+        "value": "300ms smoothstep + 110ms landing",
+        "purpose": "Whole-row travel down guides with at most 8% landing squash. Complete target remains visible."
       },
       {
         "name": "delivery",
         "value": "340ms hold",
-        "purpose": "Input unlock follows final visual synchronization, independently of remaining dust and audio."
+        "purpose": "Result UI follows final visual synchronization. Dust/audio tails do not determine gameplay or command completion."
       },
       {
         "name": "reduced-motion",
         "value": "55ms state hold",
-        "purpose": "No row travel, arcs, recoil or deformation. At most two stationary dust fades per burst."
+        "purpose": "No causal travel, recoil or deformation; at most two stationary dust fades per burst. Ambient layers show phase zero."
+      },
+      {
+        "name": "ambient-wheel",
+        "value": "18deg + phase * 7deg/s",
+        "purpose": "Lower-right native windwheel. Reduced Motion fixes 18deg; pause/suspension stop phase progression."
+      },
+      {
+        "name": "ambient-clouds",
+        "value": "normalized phase rates 0.017 / 0.026 / 0.035 per second; wrap span 1.7",
+        "purpose": "Three separate transparent cloud planes at different depths and widths; original art tinted by region."
+      },
+      {
+        "name": "ambient-plants",
+        "value": "sin(phase * 0.65 + sideOffset) * 1.6deg",
+        "purpose": "Mirrored lower-corner cutouts pivot about their stems; side offset is 0 or 1."
+      },
+      {
+        "name": "ambient-glider",
+        "value": "angle = phase * 0.07; x = sin(angle) * viewportWidth * 0.34; rotation = -6deg + sin(angle) * 9deg",
+        "purpose": "Whole rotated 3:2 image fits the bounded gap between feedback and top floor. Height is at most min(viewportHeight * 0.05, gap * 0.5), vertical drift is gap * 0.08. Hidden during held input or unavailable gap; menu pose is separate."
+      },
+      {
+        "name": "ambient-lifecycle",
+        "value": "unscaled presentation phase; stop while paused or suspended",
+        "purpose": "Presentation-only. Map and dialogue pause interaction and therefore retain a static ambient phase. Reduced Motion paints phase zero."
       }
     ],
     "breakpoints": [
       {
-        "name": "content-width-cap",
-        "value": "430px"
+        "name": "native-reference-canvas",
+        "value": "390 × 844 Unity reference units; height-scaled"
       },
       {
-        "name": "precision-input-width",
-        "value": "430px"
+        "name": "native-content-width-cap",
+        "value": "430 Unity reference units; Screen.safeArea"
+      },
+      {
+        "name": "precision-input",
+        "value": "explicit Comfort preference; no width or row-count breakpoint"
       }
     ]
   },
   "components": [
     {
-      "name": "Drop / Deliver",
+      "name": "Descend / Deliver and travel",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Reference-size uGUI panel translation. State fills resolve the native ColorBlock multiplication; the native selected state has no custom focus ring.",
-      "html": "<button class=\"ds-drop\">Drop</button>",
-      "css": ".ds-drop{font-family:'Balsamiq Sans',sans-serif;font-size:18px;font-weight:700;color:rgb(16% 28% 29%);background:rgb(98% 74% 32%);border:0;border-radius:13px;padding:2px 3px;min-height:48px;min-width:96px;cursor:pointer;} .ds-drop:hover{background:rgb(98% 69.56% 24.96%);} .ds-drop:focus-visible{background:rgb(98% 74% 32%);outline:none;} .ds-drop:active{background:rgb(80.36% 65.12% 25.92%);} .ds-drop:disabled{background:rgb(86.24% 66.6% 26.88% / 70%);cursor:default;}"
+      "description": "Native Unity Button with gold nine-slice Image, Bold TMP and ColorBlock tints. Gameplay height is compensated; menu/dialogue heights follow their native layout. Descend becomes Deliver only at a matching final-floor row. Documentation is native-only; HTML/CSS preview intentionally absent.",
+      "html": "",
+      "css": ""
     },
     {
-      "name": "Utility action",
+      "name": "Utility and menu action",
       "kind": "button",
       "refersTo": "button-secondary",
-      "description": "Reference-size uGUI panel translation. State fills resolve the native ColorBlock multiplication; the native selected state has no custom focus ring.",
-      "html": "<button class=\"ds-utility\">Hint</button>",
-      "css": ".ds-utility{font-family:'Balsamiq Sans',sans-serif;font-size:18px;font-weight:700;color:rgb(16% 28% 29%);background:rgb(100% 96% 84%);border:0;border-radius:13px;padding:2px 3px;min-height:48px;min-width:96px;cursor:pointer;} .ds-utility:hover{background:rgb(100% 90.24% 65.52%);} .ds-utility:focus-visible{background:rgb(100% 96% 84%);outline:none;} .ds-utility:active{background:rgb(82% 84.48% 68.04%);} .ds-utility:disabled{background:rgb(88% 86.4% 70.56% / 70%);cursor:default;}"
+      "description": "Native warm paper Button. Gameplay actions are compensated 48-unit bands; the button-menu variant uses 60 reference units. Custom keyboard focus treatment is not established. Documentation is native-only; HTML/CSS preview intentionally absent.",
+      "html": "",
+      "css": ""
     },
     {
-      "name": "Precision focus direction",
+      "name": "Optional precision control",
       "kind": "button",
       "refersTo": "button-direction",
-      "description": "Authored ChevronGraphic polygon; mirror the path for previous focus. This is geometry, not a font glyph.",
-      "html": "<button class=\"ds-direction\" aria-label=\"Focus next\"><svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><path d=\"M34 24 L42 17 L72 50 L42 83 L34 76 L58 50 Z\"/></svg></button>",
-      "css": ".ds-direction{background:rgb(100% 96% 84%);border:0;border-radius:13px;width:58px;height:48px;padding:0;color:rgb(16% 28% 29%);cursor:pointer;} .ds-direction svg{width:44%;height:60%;fill:currentColor;} .ds-direction:hover{background:rgb(100% 90.24% 65.52%);} .ds-direction:focus-visible{background:rgb(100% 96% 84%);outline:none;} .ds-direction:active{background:rgb(82% 84.48% 68.04%);}"
+      "description": "Native authored chevron focus controls and left/right exchange actions. Enabled explicitly in Comfort; never forced by row length. Documentation is native-only; HTML/CSS preview intentionally absent.",
+      "html": "",
+      "css": ""
     },
     {
-      "name": "Letter token and selected face",
+      "name": "Held persistent piece",
       "kind": "custom",
       "refersTo": "letter-token",
-      "description": "Flat diagram of the shared ivory tile and live Bold letter. The selected example places its body and glyph together inside a gold frame; native meshes supply the bevel.",
-      "html": "<div class=\"ds-letter-set\"><span class=\"ds-letter\">A</span><span class=\"ds-letter-selected\"><span class=\"ds-letter\">A</span></span></div>",
-      "css": ".ds-letter-set{display:flex;align-items:end;gap:18px;height:62px;} .ds-letter{font-family:'Balsamiq Sans',sans-serif;font-size:28px;font-weight:700;color:rgb(16% 28% 29%);display:flex;align-items:center;justify-content:center;background:#FFF0CC;width:48px;height:48px;border-radius:8.64px;} .ds-letter-selected{display:block;background:#EFB953;padding:4px;border-radius:10px;transform:translateY(-5px);}"
+      "description": "Native beveled symbol mesh plus live TMP glyph. Immediate lift, 1.10–2.5 scale toward a 64-pixel face, fixed input cells and adjacent legality preview. Body and glyph move together; release routes through the existing resolver. Documentation is native-only; HTML/CSS preview intentionally absent.",
+      "html": "",
+      "css": ""
     },
     {
-      "name": "Shape identity",
-      "kind": "custom",
-      "refersTo": "shape-token",
-      "description": "Flat front-face sample of the actual rounded-triangle contour and its material input. The Unity extrusion and lighting are intentionally not simulated by new CSS effects.",
-      "html": "<svg class=\"ds-shape\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Yellow triangle\"><path d=\"M56.480 15.360 L54.320 12.093 L52.160 10.133 L50.000 9.480 L47.840 10.133 L45.680 12.093 L43.520 15.360 L13.280 70.240 L11.660 73.833 L11.120 76.773 L11.660 79.060 L13.280 80.693 L15.980 81.673 L19.760 82.000 L80.240 82.000 L84.020 81.673 L86.720 80.693 L88.340 79.060 L88.880 76.773 L88.340 73.833 L86.720 70.240 Z\"/></svg>",
-      "css": ".ds-shape{display:block;width:72px;height:72px;fill:#FFC856;}"
-    },
-    {
-      "name": "Compact mint platform",
+      "name": "Regional platform",
       "kind": "custom",
       "refersTo": "platform",
-      "description": "Flat assembly diagram: thin mint support, ivory top edge and gold end caps. Native meshes provide depth and contact shading.",
-      "html": "<div class=\"ds-platform\"><span class=\"ds-platform-rail\"></span><span class=\"ds-platform-cap ds-platform-cap-left\"></span><span class=\"ds-platform-cap ds-platform-cap-right\"></span></div>",
-      "css": ".ds-platform{position:relative;width:220px;height:19px;background:#53AE9E;border-radius:6px;} .ds-platform-rail{position:absolute;left:3%;right:3%;top:0;height:4.5px;background:#FFF0CC;border-radius:2px;} .ds-platform-cap{position:absolute;width:10px;height:10px;top:4px;border-radius:50%;background:#EFB953;} .ds-platform-cap-left{left:1%;} .ds-platform-cap-right{right:1%;}"
+      "description": "Native compact beam with brass caps and graphite damage seams. Wind Gardens uses Platform Mint, Rain Mill Star Sky, Copper Orchard Device Coral. Shared device faces retain stable SymbolId identity. Documentation is native-only; HTML/CSS preview intentionally absent.",
+      "html": "",
+      "css": ""
     },
     {
-      "name": "Stable receiving cradle",
+      "name": "Complete receiving cradle",
       "kind": "custom",
       "refersTo": "receiver",
-      "description": "Flat diagram of the gold rim, ivory inset, sockets and shared symbols. Three symbols are shown only as a component sample; the native layout fits the complete target.",
-      "html": "<div class=\"ds-receiver-wrap\"><div class=\"ds-receiver-label\">Deliver this order</div><div class=\"ds-receiver\"><svg viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Triangle\"><path d=\"M56.480 15.360 L54.320 12.093 L52.160 10.133 L50.000 9.480 L47.840 10.133 L45.680 12.093 L43.520 15.360 L13.280 70.240 L11.660 73.833 L11.120 76.773 L11.660 79.060 L13.280 80.693 L15.980 81.673 L19.760 82.000 L80.240 82.000 L84.020 81.673 L86.720 80.693 L88.340 79.060 L88.880 76.773 L88.340 73.833 L86.720 70.240 Z\" fill=\"#FFC856\"/></svg><svg viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Circle\"><circle cx=\"50\" cy=\"50\" r=\"35\" fill=\"#59CAB1\"/></svg><span class=\"ds-receiver-letter\">A</span></div></div>",
-      "css": ".ds-receiver-wrap{width:250px;} .ds-receiver-label{font-family:'Balsamiq Sans',sans-serif;font-size:16px;font-weight:700;text-align:center;color:rgb(16% 28% 29%);margin-bottom:4px;} .ds-receiver{display:flex;justify-content:center;gap:3px;background:#FBE2A3;border:8px solid #EFB953;border-radius:18px;padding:8px;} .ds-receiver svg,.ds-receiver-letter{width:50px;height:50px;background:#EFB953;border-radius:9px;} .ds-receiver-letter{font-family:'Balsamiq Sans',sans-serif;font-size:24px;font-weight:700;color:rgb(16% 28% 29%);display:flex;align-items:center;justify-content:center;background:#FFF0CC;border:3px solid #EFB953;}"
+      "description": "Native gold rim, ivory inset, sockets and the complete ordered target. Inspectable through target zoom; fail compares target and delivered row, win seats the row before result actions. Documentation is native-only; HTML/CSS preview intentionally absent.",
+      "html": "",
+      "css": ""
+    },
+    {
+      "name": "Journey route and stop",
+      "kind": "nav",
+      "refersTo": "map-stop",
+      "description": "Native uGUI over original isometric regional raster art. Five numbered stops per page, progress pebbles and Mika at the actual next session stop. Current/restored variants follow the frontmatter; future pages explain distance and return to the current path. Documentation is native-only; HTML/CSS preview intentionally absent.",
+      "html": "",
+      "css": ""
+    },
+    {
+      "name": "Story frame",
+      "kind": "card",
+      "refersTo": "paper-panel",
+      "description": "Native paper nine-slice panel, thin brass detail, live speaker and short dialogue with Continue/Skip story. Original alpha portrait and regional background. Opening dialogue pauses puzzle input. Documentation is native-only; HTML/CSS preview intentionally absent.",
+      "html": "",
+      "css": ""
+    },
+    {
+      "name": "Comfort and sound setting",
+      "kind": "custom",
+      "refersTo": "setting",
+      "description": "Native labelled paper row with track color and positional knob. Preferences are in memory; no save claim. Larger text excludes symbol faces and explicit font/layout overrides remain. Documentation is native-only; HTML/CSS preview intentionally absent.",
+      "html": "",
+      "css": ""
     },
     {
       "name": "Exact-order magnifier",
       "kind": "custom",
       "refersTo": "target-zoom",
-      "description": "Static preview of the implemented inspection surface. Native symbols occupy a four-column grid with position numbers; the close control returns to play.",
-      "html": "<div class=\"ds-zoom\"><p class=\"ds-zoom-title\">Deliver this exact order</p><div class=\"ds-zoom-row\"><div><strong>P</strong><small>1</small></div><div><strong>L</strong><small>2</small></div><div><strong>A</strong><small>3</small></div><div><strong>N</strong><small>4</small></div></div><button class=\"ds-zoom-close\">Close target</button></div>",
-      "css": ".ds-zoom{font-family:'Balsamiq Sans',sans-serif;background:rgb(100% 96% 84%);color:rgb(16% 28% 29%);width:320px;padding:28px 16px;text-align:center;} .ds-zoom-title{font-size:22px;font-weight:400;margin:0 0 28px;} .ds-zoom-row{display:grid;grid-template-columns:repeat(4,1fr);margin-bottom:28px;} .ds-zoom-row strong{font-size:34px;font-weight:700;display:block;} .ds-zoom-row small{display:block;font-size:13px;} .ds-zoom-close{font-family:'Balsamiq Sans',sans-serif;font-size:18px;font-weight:700;color:rgb(16% 28% 29%);background:rgb(100% 96% 84%);border:0;border-radius:13px;min-height:48px;padding:2px 3px;cursor:pointer;} .ds-zoom-close:hover{background:rgb(100% 90.24% 65.52%);} .ds-zoom-close:focus-visible{background:rgb(100% 96% 84%);outline:none;} .ds-zoom-close:active{background:rgb(82% 84.48% 68.04%);}"
+      "description": "Native safe-area paper surface with four columns and up to two rows, original shape contours/live glyphs and position labels. Pauses gameplay; no browser counterpart. Documentation is native-only; HTML/CSS preview intentionally absent.",
+      "html": "",
+      "css": ""
     }
   ],
   "narrative": {
     "northStar": "The Sky Wind Workshop",
-    "overview": "A small wind-powered toy machine hangs above a painted cloud garden. Mint enamel rails, warm gold hardware, ivory letter tiles and six colored silhouettes make the mechanism feel manufactured, friendly and tangible. The center stays quiet enough to read the complete persistent row and its gold receiving cradle together.\n\nThe game uses real beveled meshes, a single orthographic view, live lettering and a separate illustrated backdrop. Compact platforms and visible joints establish the machine; soft buttons borrow its warm materials. This is the original, code-led P12 world chosen within the author's delegated direction. There is no approved composite image or user-research result to claim fidelity against.\n\nThis document records the implemented gameplay surface at P12. P13 event animation/audio and P14 full flow remain pending. The source of truth is `CascadeGame.cs`, `ToyMachineView.cs`, `ToyArt.cs`, `ShapeFaceGraphic.cs`, `ChevronGraphic.cs` and `ToyAssetBuilder.cs`; the relevant captures and layout measurements are in `Reports/P12`. Original-art and font provenance are recorded in `Docs/P12_ASSET_PROVENANCE.md`. Native glyph review, physical-device performance and human enjoyment remain unverified. Sidecar samples are flat, self-contained diagrams of the native components; synthesized color ramps are preview aids, not additional shipped palette values.",
+    "overview": "A small keeper carries light through floating islands and wind-powered toy machines. Mint enamel, warm brass, ivory letter tiles and six colored silhouettes make the puzzle tangible. Mika's patched overalls, saffron scarf and lantern connect the mechanism to a warm, imperfect character. Painted regional skies and isometric routes give each delivery a place and a neighbour.\n\nReal beveled meshes, an orthographic view, live lettering and separate illustrated scenery share the same bright storybook world. The hand touches the row directly; quiet controls leave room for the machine and its complete gold destination. Paper panels support short dialogue and navigation. This is the author-delegated, code-led extension of the established world; no approved composite image exists for pixel-perfect fidelity claims.\n\nThis record merges the implemented P14 journey revision into the P12/P13 system. Sources are `CascadeGame.cs`, `.Flow.cs`, `.Journey.cs`, `.Touch.cs`, `TokenSlot.cs`, `ToyMachineView.cs`, `LayeredWorld.cs`, `JourneyStory.cs`, `ToyAssetBuilder.cs` and `MotionProfile.asset`. `Docs/JOURNEY_SURFACE_BRIEF.md` owns the surface contract; `Docs/P14_FLOW.md` owns implementation scope and validation limits. Native captures and review live in `Reports/Journey`. `Docs/JOURNEY_ASSET_PROVENANCE.md` records the 12 original regional/character rasters; earlier mesh, font and audio provenance remains in the P12/P13 documents. The sidecar records native components and motion, with no fabricated HTML/CSS counterparts. Its synthesized tonal ramps are preview aids, not shipped palette additions.",
     "keyCharacteristics": [
-      "A calm painted sky surrounds a compact, fully visible toy machine.",
-      "Six beveled silhouettes retain consistent color identity; live letters sit on ivory tiles.",
-      "Thin mint platforms and gold joints give each floor a physical role.",
-      "The stable gold receiver carries the complete destination below the floors.",
-      "Warm rounded controls remain separate from the token bodies they operate."
+      "Direct touch lifts a piece and its live glyph together; the receiver stays visible.",
+      "Six stable silhouettes and colors remain readable across all three regions.",
+      "Enamel rails, brass joints and soft contact shadows make the machine tangible.",
+      "Mika, Pip and Rue connect short optional dialogue to a concrete destination.",
+      "Illustrated routes distinguish the current path from future-region browsing.",
+      "Clouds, rooted plants, a glider and the lower-right windwheel give the sky restrained life."
     ],
     "rules": [
       {
         "name": "The Shared Identity Rule",
-        "body": "Use the same silhouette and material for a SymbolId in the moving row, target, device contact and magnifier; glyph symbols use live text on ivory bodies.",
+        "body": "Use the same silhouette and material for a SymbolId in the row, target, device contact and magnifier; glyph symbols use live text on ivory bodies.",
         "section": "colors"
       },
       {
         "name": "The Live Face Rule",
-        "body": "Keep letters centered on the actual mesh face in every selection state; never bake game letters or labels into scenery.",
+        "body": "Move and scale a letter with its mesh face through selection, holding, exchange and landing; never bake gameplay letters into scenery.",
         "section": "typography"
       },
       {
         "name": "The Complete Machine Rule",
-        "body": "Keep the persistent row, remaining floors and complete receiver order visible together; preserve compact rail lengths when the symbol count changes.",
+        "body": "Keep the persistent row, remaining floors and complete receiver order visible together; changing row length must preserve clear physical rail proportions.",
         "section": "layout"
+      },
+      {
+        "name": "The Honest Path Rule",
+        "body": "Distinguish the browsed stop from the reached stop; future art must never imply unlocked or saved progress.",
+        "section": "layout"
+      },
+      {
+        "name": "The Clear Flight Rule",
+        "body": "Decorative motion must fit wholly outside the row, receiver and feedback; a lower render layer alone is not sufficient separation.",
+        "section": "elevation"
       }
     ],
     "dos": [
-      "**Do** reuse the same authored silhouette and material wherever a SymbolId appears.",
-      "**Do** move the live glyph and its body together when a token is selected.",
-      "**Do** retain the complete destination in the stable gold receiver below the remaining floors.",
-      "**Do** measure controls and device labels at the supplied small Editor reference size after layout changes.",
-      "**Do** use authored chevron geometry for precision focus controls.",
-      "**Do** keep ambient motion view-only and stop its phase progression during pause or application suspension.",
-      "**Do** preserve original assets, licenses, provenance and Unity meta identities."
+      "**Do** reuse each authored silhouette and material wherever its SymbolId appears.",
+      "**Do** move and scale the live glyph with its selected or held body.",
+      "**Do** preserve the complete target and the direct-touch default.",
+      "**Do** keep precision controls an explicit Comfort preference.",
+      "**Do** bind the map marker to actual session progress and label future previews honestly.",
+      "**Do** select the story's region before showing its character and dialogue.",
+      "**Do** bound ambient art outside gameplay information and freeze its phase while paused or suspended.",
+      "**Do** inspect native 390 × 844, 320 × 693 and wide Editor captures after layout changes.",
+      "**Do** preserve original assets, licenses, generation provenance and Unity meta identities."
     ],
     "donts": [
-      "**Don't** turn compact support rails into full-width rectangular cards.",
-      "**Don't** bake gameplay text into the painted background or token artwork.",
-      "**Don't** use color changes to replace the stable shape identities.",
-      "**Don't** let animation completion, scenery, physics or presentation callbacks determine gameplay state.",
+      "**Don't** turn physical rails into full-width rectangular cards or restore the crowded default toolbar.",
+      "**Don't** bake gameplay text into imagery or change symbol identity to indicate state.",
+      "**Don't** let presentation, animation completion, scenery, physics or ad callbacks change puzzle state.",
+      "**Don't** portray browsed islands as reached or session memory as durable saving.",
+      "**Don't** describe the 160-stop target, ranks, parcels, keepsakes, Long Reach or online concept as implemented.",
       "**Don't** copy ShapeMania screens, characters, sprites, props or materials into this world.",
-      "**Don't** treat the temporary P11 presentation gate or P12 utility navigation as the completed P13/P14 experience.",
-      "**Don't** claim physical-device validation, native-language editorial approval, measured enjoyment or approved-mockup fidelity from these Editor captures."
+      "**Don't** equate Editor captures and automated tests with device, haptic, performance, build, native-language or human-enjoyment proof."
     ]
   }
 }

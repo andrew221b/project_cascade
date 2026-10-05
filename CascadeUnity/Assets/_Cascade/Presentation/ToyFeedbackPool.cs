@@ -20,6 +20,7 @@ namespace Cascade.Presentation
         public bool SoundEnabled { get; set; } = true;
         public bool MusicEnabled { get; set; } = true;
         public bool HapticsEnabled { get; set; } = true;
+        public int Quality { get; set; } = 2;
         public int HapticRequests { get; private set; }
         public int ActiveParticleCount { get; private set; }
         public void Initialize(CascadeGame owner, ToyArt art, MotionProfile profile)
@@ -48,8 +49,8 @@ namespace Cascade.Presentation
         }
         public void Burst(Vector3 origin, Color color, int count, bool reduced)
         {
-            if (particles == null || particles.Length == 0) return;
-            count = Mathf.Min(count, particles.Length); if (reduced) count = Mathf.Min(2, count);
+            if (particles == null || particles.Length == 0 || Quality<=0) return;
+            count = Mathf.Min(count, Quality==1?4:particles.Length); if (reduced) count = Mathf.Min(2, count);
             for (int i = 0; i < count; i++) {
                 var p = particles[nextParticle++ % particles.Length]; float angle = i * 2.399963f;
                 p.origin = origin; p.origin.z = -.7f; p.color = color; p.age = 0; p.life = .38f + (i % 3) * .10f; p.size = .08f + (i % 4) * .02f; p.reduced = reduced;

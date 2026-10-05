@@ -26,6 +26,7 @@ namespace Cascade.Tests
         {
             yield return SceneManager.LoadSceneAsync("Assets/_Cascade/Scenes/CascadePlayable.unity");
             game = UnityEngine.Object.FindFirstObjectByType<CascadeGame>();
+            game.ShowGame();
             oldBackground = InputSystem.settings.backgroundBehavior;
             oldEditorInput = InputSystem.settings.editorInputBehaviorInPlayMode;
             // Virtual input must not depend on which desktop window the test runner focused.
@@ -354,6 +355,183 @@ namespace Cascade.Tests
                 Assert.That(game.EventPlayer.IsRunning, Is.False);
             }
             Assert.That(game.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b => b.name == "Retry" && b.interactable), Is.True);
+        }
+        [UnityTest] public IEnumerator HeldPieceAndLetterFollowPointerWithoutCommittingUntilRelease()
+        {
+            game.LoadNode("C32"); yield return null;
+            string hash=game.Interaction.Attempt.CurrentStateHash;
+            Vector3 start=game.Machine.PresentedTokenPosition(0);
+            yield return MouseFrame(Point(0),true);
+            Assert.That(game.IsHoldingToken,Is.True);
+            Assert.That(game.Machine.PresentedTokenPosition(0).y,Is.GreaterThan(start.y));
+            yield return MouseFrame(Point(1),true);
+            Assert.That(game.Machine.PresentedTokenPosition(0).x,Is.GreaterThan(start.x));
+            var face=game.SlotViews[0].GetComponentInChildren<TextMeshProUGUI>().rectTransform.position;
+            Assert.That(Mathf.Abs(face.x-game.Machine.PresentedTokenPosition(0).x),Is.LessThan(.0001f));
+            Assert.That(Mathf.Abs(face.y-game.Machine.PresentedTokenPosition(0).y),Is.LessThan(.0001f));
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+            yield return MouseFrame(Point(1),false);
+            Assert.That(game.IsHoldingToken,Is.False);Assert.That(game.Interaction.Attempt.RouteLength,Is.EqualTo(1));
+        }
+        [UnityTest] public IEnumerator DefaultHudHasOneMenuAndNoForcedSlotSelection()
+        {
+            game.LoadNode("C32");yield return null;
+            Assert.That(game.PreciseInputActive,Is.False);
+            var names=game.GetComponentsInChildren<UnityEngine.UI.Button>().Select(b=>b.name).ToArray();
+            foreach(var hidden in new[]{"Home","Settings","Devices","Swappleft","Swapright","Focusprevious","Focusnext","Retry"})
+                Assert.That(names,Does.Not.Contain(hidden));
+            foreach(var visible in new[]{"Pause","Undo","Hint","Drop","Receiver"})Assert.That(names,Does.Contain(visible));
+            yield return ClickButton("Pause");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Pause));
+            yield return ClickButton("Settings");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Settings));
+            yield return ClickButton("Back");yield return ClickButton("Resume");Assert.That(game.Interaction.CanPlay,Is.True);
+        }
+        [UnityTest] public IEnumerator JourneyDialogueBlocksPuzzleThenClearOpensNextStop()
+        {
+            game.ShowJourney();yield return null;var hash=game.Interaction.Attempt.CurrentStateHash;
+            yield return ClickButton("Travel");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Dialogue));
+            Assert.That(game.Interaction.CanPlay,Is.False);Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+            yield return ClickButton("Continue");yield return ClickButton("Continue");
+            Assert.That(game.IsJourneyAttempt,Is.True);Assert.That(game.Interaction.CanPlay,Is.True);
+            yield return MouseFrame(Point(0),true);yield return MouseFrame(Point(1),true);yield return MouseFrame(Point(1),false);
+            yield return AwaitPresentation();Assert.That(game.JourneyClearCount,Is.EqualTo(1));
+            game.ShowJourney();yield return null;
+            var stops=game.GetComponentsInChildren<UnityEngine.UI.Button>();
+            Assert.That(stops.Single(b=>b.name=="Stop2").interactable,Is.True);
+            Assert.That(stops.Single(b=>b.name=="Stop3").interactable,Is.False);
+        }
+        [UnityTest] public IEnumerator LayeredCloudsMoveWithoutStateChangesAndFreezeWhenPaused()
+        {
+            game.LoadNode("C02");yield return null;var world=game.Machine.LivingWorld;
+            Assert.That(world.Ready,Is.True);var hash=game.Interaction.Attempt.CurrentStateHash;
+            var cloud=world.CloudPosition;var glider=world.GliderPosition;
+            yield return new WaitForSecondsRealtime(.12f);
+            Assert.That(world.CloudPosition,Is.Not.EqualTo(cloud));Assert.That(world.GliderPosition,Is.Not.EqualTo(glider));
+            game.Interaction.SetPaused(true);cloud=world.CloudPosition;glider=world.GliderPosition;
+            yield return new WaitForSecondsRealtime(.12f);
+            Assert.That(world.CloudPosition,Is.EqualTo(cloud));Assert.That(world.GliderPosition,Is.EqualTo(glider));
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+        }
+        [UnityTest] public IEnumerator JourneyMapContinuePreservesAnUnfinishedRoute()
+        {
+            game.ShowJourney();yield return ClickButton("Travel");yield return ClickButton("Skipstory");
+            for(int level=0;level<2;level++) {
+                foreach(var command in PuzzleSolver.FindShortest(game.Interaction.Attempt.Resolver).Path) {
+                    game.Interaction.Execute(command);yield return AwaitPresentation();
+                }
+                yield return ClickButton("Nextdelivery");
+            }
+            Assert.That(game.Interaction.Attempt.Level.CampaignNodeId,Is.EqualTo("C03"));
+            game.Interaction.Execute(PuzzleCommand.Swap(0));yield return AwaitPresentation();
+            var before=game.Interaction.Attempt.Current;var route=game.Interaction.Attempt.RouteLength;
+            game.ShowJourney();yield return ClickButton("Travel");
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Playing));Assert.That(game.Interaction.Attempt.Current,Is.SameAs(before));
+            Assert.That(game.Interaction.Attempt.RouteLength,Is.EqualTo(route));
+        }
+        [UnityTest] public IEnumerator FutureMapIsAPreviewAndReturnRestoresTheActualWorld()
+        {
+            game.LoadNode("C22");var hash=game.Interaction.Attempt.CurrentStateHash;
+            game.ShowJourney();yield return ClickButton("Later");yield return ClickButton("Later");yield return ClickButton("Later");
+            Assert.That(game.Machine.LivingWorld.Zone,Is.EqualTo(1));
+            Assert.That(game.GetComponentsInChildren<Transform>().Any(t=>t.name=="Mika on the path"),Is.False);
+            var travel=game.GetComponentsInChildren<UnityEngine.UI.Button>().Single(b=>b.name=="Travel");
+            Assert.That(travel.GetComponentInChildren<TextMeshProUGUI>().text,Is.EqualTo("Back to my path"));
+            Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Any(t=>t.text=="15 stops to reach this island"),Is.True);
+            yield return ClickButton("Travel");
+            Assert.That(game.GetComponentsInChildren<Transform>().Any(t=>t.name=="Mika on the path"),Is.True);
+            Assert.That(game.JourneyClearCount,Is.Zero);game.ShowGame();
+            Assert.That(game.Machine.LivingWorld.Zone,Is.EqualTo(1));Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+        }
+        [UnityTest] public IEnumerator GliderWholeSilhouetteStaysInTheEmptyFlightBand()
+        {
+            foreach(var node in new[]{"C01","C22","C32","C37"}) {
+                game.LoadNode(node);yield return null;game.RefreshLayout();var world=game.Machine.LivingWorld;
+                Assert.That(world.FlightBand.y,Is.GreaterThan(world.FlightBand.x));
+                for(int phase=0;phase<400;phase+=2) {
+                    world.Paint(phase);var bounds=world.GliderBounds;
+                    Assert.That(bounds.min.y,Is.GreaterThanOrEqualTo(world.FlightBand.x),node+" bottom at "+phase);
+                    Assert.That(bounds.max.y,Is.LessThanOrEqualTo(world.FlightBand.y),node+" top at "+phase);
+                }
+            }
+        }
+        [UnityTest] public IEnumerator FutureStoryFixtureSelectsItsOwnRegionWithoutRewards()
+        {
+            var hash=game.Interaction.Attempt.CurrentStateHash;
+            var story=typeof(CascadeGame).GetMethod("OpenJourneyStory",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic);
+            foreach(int index in new[]{15,30,0}) {
+                story.Invoke(game,new object[]{index,false});yield return null;
+                Assert.That(game.Machine.LivingWorld.Zone,Is.EqualTo(Cascade.Content.JourneyStory.Zone(index)));
+                Assert.That(game.JourneyClearCount,Is.Zero);Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+            }
+        }
+        [UnityTest] public IEnumerator HomePauseAndSettingsPreserveAttemptAndFreezeCoaching()
+        {
+            game.LoadNode("C02"); game.Coach.Advance(6,true);float idle=game.Coach.IdleSeconds;
+            string hash=game.Interaction.Attempt.CurrentStateHash;
+            game.ShowHome();yield return new WaitForSecondsRealtime(.08f);
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Home));Assert.That(game.Interaction.CanPlay,Is.False);
+            Assert.That(game.Coach.IdleSeconds,Is.EqualTo(idle));
+            yield return ClickButton("Settings");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Settings));
+            yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Home));
+            game.ShowGame();Assert.That(game.Interaction.CanPlay,Is.True);
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+        }
+        [UnityTest] public IEnumerator HomeWordsChoiceStartsAnExistingPinnedBinding()
+        {
+            game.ShowHome();yield return ClickButton("Lessons");yield return ClickButton("Words");yield return ClickButton("PlayWords·1");
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Playing));Assert.That(game.Interaction.Attempt.Mode,Is.EqualTo(PuzzleMode.Words));
+            Assert.That(game.Interaction.Attempt.Current.Row.All(s=>s.Kind==SymbolKind.Glyph),Is.True);
+            game.ShowLessons();yield return ClickButton("2");Assert.That(game.Interaction.Attempt.Level.CampaignNodeId,Is.EqualTo("C02"));
+            var before=game.Interaction.Attempt.Current;game.SelectMode(PuzzleMode.Shapes);
+            Assert.That(game.Interaction.Attempt.Current,Is.SameAs(before));
+        }
+        [UnityTest] public IEnumerator FailureOffersFreeRetryAndUndo()
+        {
+            game.Interaction.Execute(PuzzleCommand.Drop);yield return AwaitPresentation();
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Fail));AssertResultControlsClearReceiver();yield return ClickButton("Retry");
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Playing));Assert.That(game.Interaction.Attempt.RouteLength,Is.Zero);
+            game.Interaction.Execute(PuzzleCommand.Drop);yield return AwaitPresentation();yield return ClickButton("Undo");
+            Assert.That(game.Interaction.Attempt.Current.Status,Is.EqualTo(PuzzleStatus.Playing));Assert.That(game.Interaction.Attempt.RouteLength,Is.Zero);
+        }
+        void AssertResultControlsClearReceiver()
+        {
+            var receiver=(RectTransform)game.TargetRow.parent;var receiverCorners=new Vector3[4];receiver.GetWorldCorners(receiverCorners);
+            foreach(var b in game.GetComponentsInChildren<UnityEngine.UI.Button>().Where(b=>b.name=="Retry"||b.name=="Undo"||b.name=="Nextdelivery"||b.name=="Resulthome")) {
+                var corners=new Vector3[4];((RectTransform)b.transform).GetWorldCorners(corners);
+                Assert.That(corners[2].y,Is.LessThan(receiverCorners[0].y),b.name+" cannot cover the target");
+            }
+        }
+        [UnityTest] public IEnumerator SettingsChangeActualPresentationPreferences()
+        {
+            game.ShowSettings();yield return ClickButton("Reducedmotion:Off");Assert.That(game.ReducedMotion,Is.True);
+            yield return ClickButton("Effects:Full");Assert.That(game.Feedback.Quality,Is.Zero);
+            yield return ClickButton("Comfort");yield return ClickButton("Highcontrast:Off");yield return ClickButton("Largertext:Off");
+            Assert.That(game.Preferences.HighContrast&&game.Preferences.LargeText,Is.True);
+            Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Where(t=>t.name=="Menu title").Single().color.r,Is.LessThan(.1f));
+            yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Playing));
+        }
+        [UnityTest] public IEnumerator HomeDuringAnimationKeepsTheCommittedRow()
+        {
+            game.LoadNode("C03");game.Interaction.Execute(PuzzleCommand.Swap(0));var committed=game.Interaction.Attempt.Current;
+            game.ShowHome();yield return null;Assert.That(game.Interaction.Attempt.Current,Is.SameAs(committed));
+            Assert.That(game.Interaction.IsPresenting,Is.False);Assert.That(game.Interaction.CanPlay,Is.False);
+            game.ShowGame();Assert.That(game.VisibleFrame.Row,Is.EqualTo(committed.Row));Assert.That(game.Interaction.CanPlay,Is.True);
+        }
+        [UnityTest] public IEnumerator TutorialGestureCannotExecuteACommand()
+        {
+            game.Coach.Advance(16,true);string hash=game.Interaction.Attempt.CurrentStateHash;yield return null;yield return null;
+            Assert.That(game.IsTutorialHandVisible,Is.True);Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+            game.Interaction.Execute(PuzzleCommand.Swap(0));yield return AwaitPresentation();
+            Assert.That(game.Coach.LessonCompleted,Is.True);Assert.That(game.IsTutorialHandVisible,Is.False);
+            Assert.That(game.Interaction.Attempt.HintUsed,Is.False);
+        }
+        [UnityTest] public IEnumerator ProvenDeadEndDoesNotConsumeOrRevealAHint()
+        {
+            game.LoadNode("C02");game.Interaction.Execute(PuzzleCommand.Swap(0));yield return AwaitPresentation();
+            string hash=game.Interaction.Attempt.CurrentStateHash;float until=Time.realtimeSinceStartup+3;
+            while(!game.HasDeadEndWarning&&Time.realtimeSinceStartup<until)yield return null;
+            Assert.That(game.HasDeadEndWarning,Is.True);Assert.That(game.Interaction.Attempt.HintUsed,Is.False);
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));yield return ClickButton("Undo");
+            Assert.That(game.Interaction.Attempt.RouteLength,Is.Zero);
         }
         [UnityTest] public IEnumerator AllFortyLevelsCanBeDeliveredThroughActualMouseAndButtons()
         {

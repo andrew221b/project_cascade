@@ -19,7 +19,7 @@ namespace Cascade.Editor.Playable
             var game = UnityEngine.Object.FindFirstObjectByType<CascadeGame>();
             game.StartCoroutine(CaptureSettled(phase, filename, width, height));
         }
-        static IEnumerator CaptureSettled(string phase, string filename, int width, int height)
+        public static IEnumerator CaptureSettled(string phase, string filename, int width, int height, Action<CascadeGame> pose = null)
         {
             if (!EditorApplication.isPlaying) throw new InvalidOperationException("Capture the running playable.");
             if (Path.GetFileName(filename) != filename || Path.GetFileName(phase) != phase || width < 1 || height < 1) throw new ArgumentException("Expected a report filename and positive dimensions.");
@@ -34,6 +34,7 @@ namespace Cascade.Editor.Playable
                 scaler.enabled = false; camera.targetTexture = render; scaler.enabled = true;
                 yield return null; game.RefreshLayout(); yield return null; game.RefreshLayout(); yield return new WaitForEndOfFrame();
                 game.Interaction.SetSuspended(false); game.RefreshLayout();
+                pose?.Invoke(game);
                 camera.Render(); RenderTexture.active = render; pixels.ReadPixels(new Rect(0, 0, width, height), 0, 0); pixels.Apply();
                 string folder = Path.Combine(Directory.GetParent(UnityEngine.Application.dataPath).Parent.FullName, "Reports", phase); Directory.CreateDirectory(folder);
                 File.WriteAllBytes(Path.Combine(folder, filename), pixels.EncodeToPNG());
@@ -52,6 +53,7 @@ namespace Cascade.Editor.Playable
                 if (game.Interaction.Attempt.CurrentStateHash != before) throw new InvalidOperationException("Rendering changed gameplay state.");
             }
             finally {
+                if(pose!=null)game.EndTokenHold();
                 scaler.enabled = false; camera.targetTexture = oldTarget; scaler.enabled = true; RenderTexture.active = oldActive;
                 game.Interaction.SetSuspended(oldSuspended); UnityEngine.Application.runInBackground = oldBackground;
                 game.RefreshLayout(); UnityEngine.Object.DestroyImmediate(pixels); render.Release(); UnityEngine.Object.DestroyImmediate(render);

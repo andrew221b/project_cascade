@@ -31,7 +31,13 @@ namespace Cascade.Presentation
         }
         ToyArt art;
         Camera viewCamera;
+        Vector3 cameraRestPosition;
+        public bool ScreenShakeEnabled { get; set; }
         Transform machine, scenery, windmill;
+        LayeredWorld livingWorld;
+        public LayeredWorld LivingWorld => livingWorld;
+        int theme;
+        public void SetZone(int zone) { theme=Mathf.Clamp(zone,0,2); livingWorld?.SetZone(theme); }
         Part backdrop;
         readonly List<Part> all = new List<Part>();
         readonly List<Part> tokens = new List<Part>();
@@ -48,6 +54,7 @@ namespace Cascade.Presentation
         public bool ReducedMotion { get => reducedMotion; set => reducedMotion = value; }
         public float AmbientPhase => windTime;
         public int TokenCount => tokens.Count;
+        public void SetGameplayVisible(bool visible) { if(machine!=null)machine.gameObject.SetActive(visible);livingWorld?.SetGameplayVisible(visible); }
         public static float TokenFaceY(bool selected) => selected ? .48f : .38f;
         public PresentationFrame Frame { get; set; }
         readonly float[] floorOffsets = new float[4];
@@ -69,6 +76,7 @@ namespace Cascade.Presentation
         {
             foreach (var p in floors[floor].parts) p.transform.position += Vector3.up * (offset - floorOffsets[floor]);
             floorOffsets[floor] = offset;
+            if(viewCamera!=null)viewCamera.transform.position=cameraRestPosition+(ScreenShakeEnabled&&!reducedMotion?Vector3.right*offset*.2f:Vector3.zero);
         }
         public void OffsetToken(int index, Vector3 offset, Vector2 stretch)
         {
@@ -78,13 +86,15 @@ namespace Cascade.Presentation
 
         public void Initialize(ToyArt artwork, Camera camera)
         {
-            art = artwork; viewCamera = camera;
+            art = artwork; viewCamera = camera;cameraRestPosition=camera.transform.position;
             scenery = new GameObject("Sky workshop scenery").transform; scenery.SetParent(transform, false);
             backdrop = Create("Painted cloud garden", scenery, null, art.quad, art.backdrop, Vector2.zero, Vector2.one, 3, .01f);
+            livingWorld = gameObject.AddComponent<LayeredWorld>(); livingWorld.Initialize(art,viewCamera);
+            if(livingWorld.Ready)backdrop.transform.gameObject.SetActive(false);
             var lightObject = new GameObject("Warm workshop key light", typeof(Light)); lightObject.transform.SetParent(transform, false);
             lightObject.transform.rotation = Quaternion.Euler(32, -24, 0);
             var keyLight = lightObject.GetComponent<Light>(); keyLight.type = LightType.Directional;
-            keyLight.color = new Color(1, .96f, .88f); keyLight.intensity = 1.05f; keyLight.shadows = LightShadows.None;
+            keyLight.color = new Color(1, .96f, .88f); keyLight.intensity = 1.20f; keyLight.shadows = LightShadows.None;
             RenderSettings.ambientMode = AmbientMode.Flat; RenderSettings.ambientLight = new Color(.69f, .79f, .80f);
             windmill = new GameObject("Quiet wind wheel").transform; windmill.SetParent(scenery, false);
             for (int i = 0; i < 4; i++) {
@@ -130,8 +140,8 @@ namespace Cascade.Presentation
                 var p = Add(name, anchor, mesh, material, new Vector2(x, y), new Vector2(w, h), z, .16f, angle); rig.parts.Add(p); return p;
             }
             P("Platform contact", art.quad, art.shadow, .51f, .25f, 1.05f, .29f, .65f);
-            P("Mint platform", art.beam, art.teal, .5f, .33f, 1, .19f, .15f);
-            P("Cream rail", art.beam, art.cream, .5f, .41f, .94f, .045f, -.02f);
+            P("Mint platform", art.beam, theme==0?art.teal:theme==1?art.colors[4]:art.coral, .5f, .33f, 1, .19f, .15f);
+            P("Cream rail", art.beam, theme==2?art.paleGold:art.cream, .5f, .41f, .94f, .045f, -.02f);
             P("Left brass end", art.disk, art.gold, .03f, .33f, .045f, .14f, -.12f);
             P("Right brass end", art.disk, art.gold, .97f, .33f, .045f, .14f, -.12f);
             for (int i = 0; i < 3; i++) rig.cracks.Add(P("Damage seam " + i, art.beam, art.graphite, .28f + i * .23f, .33f, .055f, .023f, -.17f, i % 2 == 0 ? 65 : -58));
@@ -202,12 +212,15 @@ namespace Cascade.Presentation
         public void Sync()
         {
             if (viewCamera == null) return;
+            viewCamera.transform.position=cameraRestPosition;
             float height = viewCamera.orthographicSize * 2, width = height * viewCamera.aspect;
             var texture = art.backdrop.mainTexture; float ratio = texture == null ? .6667f : (float)texture.width / texture.height;
             float coverH = Mathf.Max(height, width / ratio);
             backdrop.transform.position = new Vector3(viewCamera.transform.position.x, viewCamera.transform.position.y, 3);
             backdrop.transform.localScale = new Vector3(coverH * ratio, coverH, 1);
-            windmill.position = new Vector3(-Mathf.Min(width * .44f, 3.1f), -3.1f, 1.7f);
+            windmill.position = new Vector3(Mathf.Min(width * .36f, 3.1f), -height*.25f, 1.7f);
+            windmill.localScale=Vector3.one*.72f;
+            livingWorld?.Paint(windTime);
             if (interaction == null) return;
             var state = Frame;
             foreach (var target in targetBodies) target.transform.gameObject.SetActive(true);
@@ -246,6 +259,7 @@ namespace Cascade.Presentation
             float top = Mathf.Lerp(corners[0].y, corners[2].y, .34f);
             lowerAnchor.GetWorldCorners(corners); float bottom = Mathf.Lerp(corners[0].y, corners[2].y, .55f);
             for (int i = 0; i < supports.Count; i++) {
+                supports[i].transform.gameObject.SetActive(state.Status==PuzzleStatus.Playing);
                 var support = supports[i]; support.transform.position = new Vector3(Mathf.Lerp(left, right, i == 0 ? .035f : .965f), (top + bottom) * .5f, .65f);
                 support.transform.rotation = Quaternion.Euler(0, 0, 90);
                 support.transform.localScale = new Vector3((top - bottom) / art.beam.bounds.size.x, .035f, .24f);
@@ -255,6 +269,7 @@ namespace Cascade.Presentation
         void LateUpdate()
         {
             if (!reducedMotion && interaction != null && !interaction.IsPaused && !interaction.IsSuspended) windTime += Time.unscaledDeltaTime;
+            livingWorld?.Paint(reducedMotion ? 0 : windTime);
             if (windmill != null) windmill.localRotation = Quaternion.Euler(0, 0, reducedMotion ? 18 : 18 + windTime * 7);
         }
     }

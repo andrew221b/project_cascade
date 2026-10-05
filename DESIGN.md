@@ -1,14 +1,24 @@
 ---
 name: CASCADE — Sky Wind Workshop
-description: A bright suspended toy machine in a quiet painted cloud garden.
+description: A small keeper carries light through a living sky of tactile puzzle machines.
 colors:
   ui-ink: "rgb(16% 28% 29%)"
+  high-contrast-ink: "rgb(6% 17% 18%)"
   ui-paper: "rgb(100% 96% 84%)"
   drop-gold: "rgb(98% 74% 32%)"
   hover-tint: "rgb(100% 94% 78%)"
   pressed-tint: "rgb(82% 88% 81%)"
   disabled-tint: "rgb(88% 90% 84% / 70%)"
   preview-gold: "rgb(95% 73% 29% / 30%)"
+  legal-landing: "rgb(35% 76% 66% / 45%)"
+  blocked-landing: "rgb(92% 36% 25% / 25%)"
+  map-current: "rgb(99% 76% 32%)"
+  map-restored: "rgb(49% 78% 66%)"
+  path-open: "rgb(88% 60% 22%)"
+  path-future: "rgb(51% 60% 53%)"
+  setting-paper: "rgb(97% 92% 78%)"
+  switch-on: "rgb(32% 68% 61%)"
+  switch-off: "rgb(55% 58% 49%)"
   triangle-yellow: "#FFC856"
   circle-mint: "#59CAB1"
   square-coral: "#EB8B7E"
@@ -23,10 +33,26 @@ colors:
   device-coral: "#E38370"
   contact-shadow: "rgb(11% 23% 25% / 28%)"
 typography:
-  title:
+  menu-title:
     fontFamily: "Balsamiq Sans"
-    fontSize: "28px"
+    fontSize: "34px"
     fontWeight: 700
+  region-speaker:
+    fontFamily: "Balsamiq Sans"
+    fontSize: "27px"
+    fontWeight: 700
+  level-title:
+    fontFamily: "Balsamiq Sans"
+    fontSize: "26px"
+    fontWeight: 700
+  journey-task:
+    fontFamily: "Balsamiq Sans"
+    fontSize: "21px"
+    fontWeight: 700
+  dialogue:
+    fontFamily: "Balsamiq Sans"
+    fontSize: "22px"
+    fontWeight: 400
   body:
     fontFamily: "Balsamiq Sans"
     fontSize: "18px"
@@ -38,6 +64,10 @@ typography:
   focus:
     fontFamily: "Balsamiq Sans"
     fontSize: "20px"
+    fontWeight: 400
+  secondary:
+    fontFamily: "Balsamiq Sans"
+    fontSize: "16px"
     fontWeight: 400
   receiver-label:
     fontFamily: "Balsamiq Sans"
@@ -62,6 +92,7 @@ spacing:
   label-inline: "3px"
   label-block: "2px"
   control-band-gap: "8px"
+  setting-label-inset: "16px"
 components:
   button-secondary:
     backgroundColor: "{colors.ui-paper}"
@@ -77,11 +108,48 @@ components:
     rounded: "{rounded.panel-source}"
     padding: "2px 3px"
     height: "48px"
+  button-menu:
+    backgroundColor: "{colors.ui-paper}"
+    textColor: "{colors.ui-ink}"
+    typography: "{typography.button}"
+    rounded: "{rounded.panel-source}"
+    height: "60px"
   button-direction:
     backgroundColor: "{colors.ui-paper}"
     textColor: "{colors.ui-ink}"
     rounded: "{rounded.panel-source}"
     height: "48px"
+  map-stop:
+    backgroundColor: "{colors.ui-paper}"
+    textColor: "{colors.ui-ink}"
+    typography: "{typography.button}"
+    rounded: "{rounded.panel-source}"
+    width: "62px"
+    height: "60px"
+  map-stop-current:
+    backgroundColor: "{colors.map-current}"
+    textColor: "{colors.ui-ink}"
+    typography: "{typography.button}"
+    rounded: "{rounded.panel-source}"
+    width: "62px"
+    height: "60px"
+  map-stop-restored:
+    backgroundColor: "{colors.map-restored}"
+    textColor: "{colors.ui-ink}"
+    typography: "{typography.button}"
+    rounded: "{rounded.panel-source}"
+    width: "62px"
+    height: "60px"
+  paper-panel:
+    backgroundColor: "{colors.ui-paper}"
+    textColor: "{colors.ui-ink}"
+    rounded: "{rounded.panel-source}"
+  setting:
+    backgroundColor: "{colors.setting-paper}"
+    textColor: "{colors.ui-ink}"
+    typography: "{typography.button}"
+    rounded: "{rounded.panel-source}"
+    height: "60px"
   letter-token:
     backgroundColor: "{colors.tile-ivory}"
     textColor: "{colors.ui-ink}"
@@ -106,166 +174,153 @@ components:
 
 **Creative North Star: "The Sky Wind Workshop"**
 
-A small wind-powered toy machine hangs above a painted cloud garden. Mint enamel rails, warm gold hardware, ivory letter tiles and six colored silhouettes make the mechanism feel manufactured, friendly and tangible. The center stays quiet enough to read the complete persistent row and its gold receiving cradle together.
+A small keeper carries light through floating islands and wind-powered toy machines. Mint enamel, warm brass, ivory letter tiles and six colored silhouettes make the puzzle tangible. Mika's patched overalls, saffron scarf and lantern connect the mechanism to a warm, imperfect character. Painted regional skies and isometric routes give each delivery a place and a neighbour.
 
-The game uses real beveled meshes, a single orthographic view, live lettering and a separate illustrated backdrop. Compact platforms and visible joints establish the machine; soft buttons borrow its warm materials. This is the original, code-led P12 world chosen within the author's delegated direction. There is no approved composite image or user-research result to claim fidelity against.
+Real beveled meshes, an orthographic view, live lettering and separate illustrated scenery share the same bright storybook world. The hand touches the row directly; quiet controls leave room for the machine and its complete gold destination. Paper panels support short dialogue and navigation. This is the author-delegated, code-led extension of the established world; no approved composite image exists for pixel-perfect fidelity claims.
 
-This document records the implemented gameplay surface at P12. P13 event animation/audio and P14 full flow remain pending. The source of truth is `CascadeGame.cs`, `ToyMachineView.cs`, `ToyArt.cs`, `ShapeFaceGraphic.cs`, `ChevronGraphic.cs` and `ToyAssetBuilder.cs`; the relevant captures and layout measurements are in `Reports/P12`. Original-art and font provenance are recorded in `Docs/P12_ASSET_PROVENANCE.md`. Native glyph review, physical-device performance and human enjoyment remain unverified. Sidecar samples are flat, self-contained diagrams of the native components; synthesized color ramps are preview aids, not additional shipped palette values.
+This record merges the implemented P14 journey revision into the P12/P13 system. Sources are `CascadeGame.cs`, `.Flow.cs`, `.Journey.cs`, `.Touch.cs`, `TokenSlot.cs`, `ToyMachineView.cs`, `LayeredWorld.cs`, `JourneyStory.cs`, `ToyAssetBuilder.cs` and `MotionProfile.asset`. `Docs/JOURNEY_SURFACE_BRIEF.md` owns the surface contract; `Docs/P14_FLOW.md` owns implementation scope and validation limits. Native captures and review live in `Reports/Journey`. `Docs/JOURNEY_ASSET_PROVENANCE.md` records the 12 original regional/character rasters; earlier mesh, font and audio provenance remains in the P12/P13 documents. The sidecar records native components and motion, with no fabricated HTML/CSS counterparts. Its synthesized tonal ramps are preview aids, not shipped palette additions.
 
 **Key Characteristics:**
-- A calm painted sky surrounds a compact, fully visible toy machine.
-- Six beveled silhouettes retain consistent color identity; live letters sit on ivory tiles.
-- Thin mint platforms and gold joints give each floor a physical role.
-- The stable gold receiver carries the complete destination below the floors.
-- Warm rounded controls remain separate from the token bodies they operate.
+- Direct touch lifts a piece and its live glyph together; the receiver stays visible.
+- Six stable silhouettes and colors remain readable across all three regions.
+- Enamel rails, brass joints and soft contact shadows make the machine tangible.
+- Mika, Pip and Rue connect short optional dialogue to a concrete destination.
+- Illustrated routes distinguish the current path from future-region browsing.
+- Clouds, rooted plants, a glider and the lower-right windwheel give the sky restrained life.
 
 ## Colors
 
-Warm ivory and gold hardware hold a clear mint, coral, lilac, yellow, sky and apricot toy palette against the cooler painted sky. Frontmatter values are native UI colors or unlit material inputs; lighting and color-space conversion change their rendered appearance.
+Warm paper and brass anchor a mint, coral, lilac, yellow, sky and apricot toy palette. Native UI colors and lit material inputs retain their source notation in the frontmatter; rendered appearance also depends on lighting and color space.
 
 ### Primary
 
-- **Hardware Gold** defines the receiving rim, target sockets, selection frame, end caps and mechanical latches.
-- **Drop Gold** distinguishes the committed Drop/Deliver control from the surrounding utility controls.
-- **Platform Mint** identifies enamel platforms, repair bodies and alternating wind-wheel sails.
+- **Hardware Gold** marks receiving rims, sockets, selection frames and mechanical joints.
+- **Drop Gold** marks the committed Descend/Deliver action and primary travel/dialogue actions; the historical token name remains stable.
+- **Platform Mint** is the Wind Gardens rail, repair body and alternating windwheel sail. Rain Mill rails use Star Sky; Copper Orchard rails use Device Coral with Receiver Ivory highlights.
 
 ### Secondary
 
-- **Triangle Yellow, Circle Mint, Square Coral, Diamond Lilac, Star Sky and Hexagon Apricot** are the six stable shape identities. They belong to the same authored silhouette in the moving row, device contacts, destination and magnifier.
-- **Device Coral** marks bomb bodies and fragile notches. Lilac also connects linked-edge hardware and stamp parts.
+- **Triangle Yellow, Circle Mint, Square Coral, Diamond Lilac, Star Sky and Hexagon Apricot** preserve the six shape identities in the row, contacts, destination and magnifier.
+- **Device Coral** also marks bomb bodies and fragile notches. Lilac links paired edges and stamp hardware.
+- **Legal Landing** and **Blocked Landing** tint the adjacent destination during a drag. **Preview Gold** washes affected slots during a command preview; the solid selection frame remains distinct.
+- **Map Current** identifies an available selected stop; **Map Restored** identifies a completed stop. **Path Open** and **Path Future** distinguish connecting pebbles. Mika marks actual session progress, independently of browsing.
 
 ### Neutral
 
-- **UI Ink** is the live lettering and authored chevron color.
-- **UI Paper** is the button and target-magnifier surface.
-- **Tile Ivory** is the glyph body, rail highlight, wheel sail and small mechanical inset.
-- **Receiver Ivory** is the warm receiving inset and guide material.
-- **Warm Graphite** describes timer caps, damage seams, rollers and hinges.
-- **Contact Shadow** provides soft local grounding below tokens, rails and receiver; it is not a panel border.
+- **UI Ink** carries live lettering and authored control marks. **High Contrast Ink** is the implemented optional text override.
+- **UI Paper** carries controls, navigation panels, dialogue and magnifier; **Setting Paper** distinguishes setting rows.
+- **Tile Ivory** carries glyph bodies, highlights and small machine insets; **Receiver Ivory** carries the receiving inset and guides.
+- **Warm Graphite** carries damage seams, timers, rollers and hinges. **Contact Shadow** grounds the toy locally.
+- **Switch On** and **Switch Off** accompany knob position and the labelled setting. Button hover, pressed and disabled tokens are Unity ColorBlock multipliers over each base fill.
 
-Hover, pressed and disabled tokens are Unity `ColorBlock` multipliers applied to the button's base color, not standalone replacement fills. Preview Gold is the translucent affected-slot wash. Do not substitute that wash for the solid gold selected-token frame.
-
-**The Shared Identity Rule.** Use the same silhouette and material for a SymbolId in the moving row, target, device contact and magnifier; glyph symbols use live text on ivory bodies.
+**The Shared Identity Rule.** Use the same silhouette and material for a SymbolId in the row, target, device contact and magnifier; glyph symbols use live text on ivory bodies.
 
 ## Typography
 
-**Display and body font:** Balsamiq Sans, with independently sourced Regular and Bold files. The shipped TMP assets are static atlas derivatives; there is no established native fallback stack. The sidecar uses a browser fallback only when Balsamiq Sans is unavailable in its preview environment.
-
-The rounded hand-lettered character supports the manufactured toy world. The hierarchy comes from size and Regular/Bold weight, with dark ink across controls and content. Text remains live TMP. Source and SIL OFL licensing live under `CascadeUnity/Assets/_Cascade/Art/Fonts/`.
+Balsamiq Sans Regular and Bold provide the rounded hand-lettered voice. Text remains live TMP; the static atlas assets derive from the independently sourced font files and SIL OFL license under `CascadeUnity/Assets/_Cascade/Art/Fonts/`. No native fallback stack, custom tracking or line-height scale is established.
 
 ### Hierarchy
 
-- **Title** labels the current level; **body** explains state and previews; **button** labels actions. Their normative sizes are in the frontmatter.
-- **Focus** names the selected slot in the precision controls. **Receiver label** stays directly above the receiving cradle.
-- **Token glyph** and **target glyph** are Bold. World glyphs share the token body's vertical anchor, including its selected position. Device glyphs also use Bold.
-- **Device** text receives explicit small-screen compensation: the native font size is `14 × unit`, where `unit = 1 / min(1, canvasScale)`. The audited device labels render at 14 pixels at both supplied portrait capture sizes.
-- Durability uses Bold at 15 reference units. The target magnifier uses a Regular 22-unit title, Bold 34-unit glyphs, Regular 12-unit shape names and Regular 13-unit position numbers. Those small supplementary labels are current magnifier details, not a global minimum-size standard.
+- **Menu title** introduces pause, guide and settings. **Region/speaker** names a map region or dialogue speaker.
+- **Level title** is the lesson header; **journey task** is the shorter destination line and map task. The Lessons logo is a separate Bold 42-unit mark.
+- **Dialogue** uses larger Regular text with short sentences; **body** handles state and help; **button** handles actions. Map counts use **secondary** text; Skip story uses a Bold label at that size.
+- **Focus** names the symbol in optional precision controls. **Receiver label** belongs immediately above the cradle.
+- **Token glyph** and **target glyph** use Bold and stay centered on their mesh faces. Device glyphs use Bold at the same compensated size as **device** explanations.
 
-All `px` type tokens represent Unity reference-canvas units at its nominal scale. They are not a claim of equal physical size on every device. Auto sizing is off; ordinary labels wrap. No custom tracking or line-height system is established.
+Frontmatter `px` type values describe Unity reference-canvas units, not measured physical-device size. Auto sizing is off and ordinary labels wrap. Device and receiver text is compensated by `unit = 1 / min(1, canvasScale)`; device text therefore targets 14 rendered pixels at the supplied small reference scale. Larger text applies a 1.12 multiplier to eligible UI copy, excluding symbol faces; explicit layout/font overrides still exist, so it is not a promise that every label grows. Full localized editorial and glyph review remains P15 work.
 
-**The Live Face Rule.** Keep letters centered on the actual mesh face in every selection state; never bake game letters or labels into scenery.
+**The Live Face Rule.** Move and scale a letter with its mesh face through selection, holding, exchange and landing; never bake gameplay letters into scenery.
 
 ## Layout
 
-The screen uses a camera-space uGUI canvas with a 390 × 844 reference resolution and height-based scaling. `Screen.safeArea` bounds the content. On wide displays, the content column caps at 430 reference units while the background covers the entire viewport. There is no alternate landscape machine composition.
+The camera-space uGUI canvas uses a 390 × 844 reference resolution with height scaling and `Screen.safeArea`. Wide Editor views cap content at 430 reference units while the scenery fills the viewport. The composition remains portrait; there is no separate landscape machine layout.
 
-The header and lower actions use 5% horizontal insets. The top utility band is 104 compensated units high and contains two 48-unit control rows separated by 8 units. Feedback has a 48-unit band below it. The bottom action band begins 8 units above the safe-area bottom and is 48 units high. The optional precision band begins at 64 units and is 104 units high; its two rows use the same 48/8 rhythm. Compensation uses the same `unit` described in Typography, preserving approximately 48 rendered pixels for the measured controls at 320 × 693.
+### Direct play
 
-The receiver begins 184 compensated units above the safe-area bottom and has 100 reference units of height. Floors occupy the space between the receiver clearance and the feedback region. All floors remain visible; the row is reparented to the active floor after the committed state changes. Platforms are sized to `min(91% of the content width, symbolCount × 55 + 24)`; the receiver uses `min(90% of content width, symbolCount × 55 + 40)`. Three-symbol platforms therefore remain visibly shorter than eight-symbol platforms. Row cells share available width with a 3-unit gap.
+A destination and one pause control occupy a 48-unit compensated header, 12 units below the safe top. A 44-unit feedback band sits below. The bottom has three actions, Undo, Hint and Descend/Deliver, in a 48-unit compensated band 8 units above the safe bottom. Retry, map, settings and device help are reached through pause or result flow.
 
-For seven or more symbols below 430 reference units of usable width, precision controls expose previous/next focus and left/right exchange commands. They may also be forced on. These controls supply the large targets that narrow token bodies cannot supply. The receiver opens a full safe-area magnifier with four columns and up to two rows of ordered symbols.
+The complete receiver is 100 reference units high. Its bottom is normally 82 compensated units above the safe bottom, moving to 184 for enabled precision controls or win results and 232 for failure comparison. Floors occupy the remaining region above the receiver clearance and below the feedback area. Rail width is `min(91% of content width, symbolCount × 76 + 24)`; receiver width is `min(90% of content width, symbolCount × 68 + 40)`. Three-piece rows are expanded but retain shorter physical rails. Cells share a 3-unit gap.
 
-`Reports/P12/layout_audit.json` records no measured control overlaps, approximately 48-pixel minimum dimensions in the small reference captures, and 14-pixel device text. The captures include 390 × 844, 320 × 693 and wide Editor proportions. These are Editor-reference checks, not physical-device usability or performance evidence.
+Precision input is explicitly enabled in Comfort and is off by default, including on seven/eight-symbol rows. Its two rows use a 48/8/48 rhythm. Long rows instead retain stable hit regions and a lifted, enlarged held piece; no claim is made that eight narrow cells each meet a 48-pixel target. The receiver opens a full safe-area magnifier with four columns and up to two rows.
 
-**The Complete Machine Rule.** Keep the persistent row, remaining floors and complete receiver order visible together; preserve compact rail lengths when the symbol count changes.
+### Journey and dialogue
+
+The map uses a tall illustrated five-stop route between a compact paper heading and a lower task panel. A map stop is 62 × 60 reference units; page controls are 76 × 60. The source image is stretched into its normalized map rectangle by the current uGUI implementation; this is not a cover-fit or pixel-perfect raster-registration guarantee. The current map reuses each regional illustration over its five-stop pages. Mika appears only on the actual next session stop, never on a locked future preview. The future footer gives distance and a return action.
+
+Dialogue places a large transparent character above/behind a low paper frame. A thin brass line, Bold speaker name, short Regular sentence and separate Continue/Skip story actions provide hierarchy. Story entry explicitly selects the character's region. Dialogue blocks puzzle input.
+
+**The Complete Machine Rule.** Keep the persistent row, remaining floors and complete receiver order visible together; changing row length must preserve clear physical rail proportions.
+
+**The Honest Path Rule.** Distinguish the browsed stop from the reached stop; future art must never imply unlocked or saved progress.
 
 ## Elevation & Depth
 
-The system combines beveled mesh geometry, satin URP materials, a warm directional key and small analytic contact shadows. There are no cast Unity shadows in this view. Hardware sits on separate depth planes; the gold receiving rim surrounds a shallower ivory inset and individual target sockets. The raster backdrop is an unlit cover plane behind the mechanism.
+Beveled meshes, satin URP materials, a warm directional key and analytic contact shadows create depth. The key light is warm at intensity 1.20; ambient light is flat. Unity cast shadows are disabled for this view. The rounded extrusion uses contour rings at scale factors `0.88, 0.985, 1, 0.97, 0.89`. Shape plastics use smoothness 0.28 and metallic 0.02; other materials keep authored satin values.
 
-The mesh builder uses five contour rings, with scale factors `0.88, 0.985, 1, 0.97, 0.89`; that rounded extrusion is the reusable edge vocabulary. Shared shape plastics use smoothness 0.28 and metallic 0.02. Other materials retain their individually authored satin values rather than a universal gloss preset. The key light is warm, intensity 1.05, and the ambient light is flat.
+Soft contact quads use `(1 − smoothstep(0.25, 1, radius))²` alpha, tinted by Contact Shadow. Each token, platform and receiver fits its own quad. This is a native shader effect, not a CSS shadow. Selection raises body and glyph from normalized center 0.38 to 0.48, changes size from 0.78 × 0.88 to 0.81 × 0.915 of the cell and reveals a gold frame.
 
-### Shadow Vocabulary
+### Motion and living scenery
 
-- **Soft contact:** a camera-facing quad using the Contact Shadow token. Alpha follows `(1 − smoothstep(0.25, 1, radius))²`; this creates a soft elliptical contact when the quad is compressed. Tokens, platforms and receiver each size their own contact plane. This is a shader effect, not a CSS box shadow.
-- **Selection lift:** the body and live glyph share a normalized vertical center of 0.38 at rest and 0.48 when selected. Body size moves from 0.78 × 0.88 to 0.81 × 0.915 of its cell, with a gold frame behind it. Selection eases out over 100 ms; Reduced Motion applies the focus state directly.
+A held piece lifts immediately with its glyph. Its preview scales toward a 64-rendered-pixel face, clamped to 1.10–2.5 times the base size. Horizontal travel is bounded to 1.15 cell spacings; upward drag adds at most 0.45 spacings above its hold lift. The input cells remain stationary. Releasing elsewhere, pointer cancellation, pause or focus loss returns the presentation without spending a move.
 
-The live wind wheel turns at 7 degrees per second from an 18-degree base angle. Reduced Motion fixes it at that base angle; pause and application suspension stop its phase progression. The painted clouds do not move.
+Committed exchanges use 190 ms cubic ease-out with short opposing arcs. Contact, bomb and fracture steps last 180, 240 and 130 ms. A whole-row fall uses 300 ms smoothstep followed by 110 ms landing, at most 8% squash and 0.025 world-unit local recoil. Delivery holds for 340 ms. Reduced Motion substitutes 55 ms state holds and at most two stationary dust fades per burst. Selection focus uses 100 ms or an immediate reduced-motion state. Screen shake is opt-in and off by default; Reduced Motion suppresses it. Dust and audio tails never determine command completion.
 
-### Causal Motion
+Three distinct far landscapes cover the viewport. Shared transparent clouds move at three speeds, lower-edge plants sway about their stems, and the original windwheel turns at 7 degrees per second from an 18-degree base. Regional tints adapt the shared cloud/plant layers. The whole rotated glider is bounded to the empty gap between feedback and the top floor; it hides during a held-token gesture and if no gap remains. All ambient motion is view-only. Pause and suspension stop phase progression; Reduced Motion displays phase zero and the fixed wheel angle. Map and dialogue use a static ambient phase because they pause the puzzle interaction.
 
-The authored focal sequence is a whole row leaving a spent mint rail, travelling
-down its brass guides, and seating in the next rail or gold receiver. Supporting
-motion explains adjacent/linked exchanges and local device consequences. The
-event player reads already committed results; visual completion cannot apply
-damage, collect a stamp or execute another command.
-
-`MotionProfile` sets selection 100 ms, exchange 190 ms, contact 180 ms, bomb
-240 ms, fracture 130 ms, fall 300 ms, landing 110 ms and delivery hold 340 ms.
-Exchange uses cubic ease-out with short opposing arcs; fall uses smoothstep.
-Landing compresses plastic by at most 8%; rails recoil locally by 0.025 world
-units. The camera does not shake. A target stays visible throughout delivery;
-result controls appear only after the row settles.
-
-Reduced Motion replaces travel, recoil and deformation with 55 ms state holds.
-Dust reduces to at most two stationary fades per burst. Normal dust is capped
-at 32 pooled elements; sound has eight pooled voices. Their tails do not keep
-the command gate closed. Original mallet-like cues and a quiet 24-second loop
-share the workshop palette; `Docs/P13_AUDIO_PROVENANCE.md` records their source
-and the untested auditory/device limits.
+**The Clear Flight Rule.** Decorative motion must fit wholly outside the row, receiver and feedback; a lower render layer alone is not sufficient separation.
 
 ## Shapes
 
-Six original soft silhouettes are extruded into tokens: rounded triangle, circle, rounded square, rounded diamond, rounded star and hexagon. Letter tiles reuse the rounded-square contour. Rail and receiver parts reuse a long rounded beam; circular disks form mounts, caps and hinges. The square/tile source contour is one mesh unit wide with a 0.18-unit corner radius; the beam source is 6 × 1 units with a 0.3-unit corner radius. These are mesh coordinates, not UI pixels.
+Six original soft silhouettes form the row: rounded triangle, circle, square, diamond, star and hexagon. Letter tiles reuse the rounded square. The square/tile contour is one mesh unit wide with a 0.18-unit corner radius; the 6 × 1 beam has a 0.3-unit radius. Disks form mounts, caps and hinges. Mesh coordinates are not UI pixels.
 
-Buttons use the authored 64 × 64 nine-slice panel raster. The `panel-source` token describes its 13-source-pixel circular corner construction; the sprite has 22-pixel slice borders. It does not establish a 13-pixel radius for every world object. Direction controls use an authored six-vertex chevron mesh, mirrored for the opposite direction, rather than font symbols.
+Panels and buttons reuse the 64 × 64 nine-slice raster. The frontmatter `panel-source` token describes its 13-source-pixel corner construction with 22-pixel slice borders, not a universal runtime radius. Pause bars and precision chevrons use authored geometry. Mika, Pip, Rue, clouds, plants and glider use original raster cutouts with native alpha; preserve painted edges and transparent gaps rather than replacing them with vector approximations or runtime masks.
 
 ## Components
 
-### Buttons
+### Controls and settings
 
-Warm soft panels with dark Bold labels. Utility controls use UI Paper; Drop/Deliver uses Drop Gold. Text margins are 3 units inline and 2 units vertically. Standard action bands retain the 48-unit compensated height. Hover, pressed and disabled appearances are the multiply tints described in Colors. The current Unity button selected state keeps its default tint; a separate custom keyboard-focus treatment has not been established.
+Warm paper controls carry dark Bold labels and Unity multiply tints for hover, pressed and disabled states. Descend changes to Deliver when the final-floor row matches; Hint changes to Use hint only for a valid offer. A separate custom keyboard focus treatment is not established. Setting rows use a readable label, an on/off track and positional knob; sound, motion, effects, contrast, larger text, precision, tutorial and dead-end preferences currently live in memory.
 
-Labels expose the current action: Drop becomes Deliver when the final-floor row is ready, Hint becomes Use hint after a valid offer, and Pause becomes Resume while paused. Disabled states reflect current command availability. Do not describe prototype Previous/Next level browsing or the current Motion utility as the completed P14 navigation system.
+### Persistent token and receiver
 
-### Persistent token and selection
+Pressing a shape or letter gives immediate lift and a larger held face; legal adjacent landing highlights and the feedback line explain command cost. Release commits one atomic adjacent exchange through the shared resolver. Tap-then-tap remains available; a long swipe does not chain exchanges. The gold rim and ivory inset retain the complete ordered destination. Magnifier faces derive from the same shapes and live glyphs. Failure shows the goal and delivered row separately; success seats the row before result actions appear.
 
-A shape keeps its material identity; a glyph uses an ivory body with a centered Bold face. Selection raises the body and glyph together and reveals the gold frame. The gold translucent cell wash denotes affected edges during preview. The native view reads committed state and never resolves gameplay.
+### Platforms and devices
 
-### Platform and attached devices
+Thin colored enamel beams, ivory highlights and gold caps carry the original lock, bomb, key, repair, stamp, fragile, linked and bridge hardware. Up to three graphite seams show damage. Contact faces use the shared symbol identity; visibility follows committed state. Rain Mill and Copper Orchard change the rail material without changing symbol colors or puzzle rules.
 
-A thin mint beam carries an ivory top rail and two gold end caps. Durability is attached below its left edge, with device explanation below/right. Up to three graphite seams indicate damage. Bombs, keys, repair devices, stamps, locks, fragile notches, linked loops and one-use bridges are original assemblies of the same shared meshes and material vocabulary. Their required-symbol faces use the common symbol system. Device visibility follows committed state.
+### Map route
 
-### Receiver
+The isometric illustration, numbered stop buttons, small path pebbles and Mika marker express travel. Restored count and unlocked stop come from the existing 40-puzzle catalog and in-memory clears. The gold action says Let's go, Continue or Play again where available; future pages explain remaining stops and offer Back to my path. Lessons retains the existing level/mode browser. These are three regional art kits and eight five-stop pages, not 160 new campaign puzzles.
 
-The gold rim, ivory inset and gold sockets form a stable destination under the floors. The complete order remains visible with the same shape/glyph identities. The label changes on delivery; the target is inspectable through the magnifier. On loss, the current implementation additionally shows the delivered row below the target. Full terminal-flow composition remains P14 work.
+### Dialogue and results
 
-### Precision controls
+The paper-and-brass frame names one speaker and gives one short idea at a time. Continue and Skip story lead to the concrete pending puzzle or return to the map. Heard dialogue is session-only. Mika accompanies a successful delivery; win/fail actions preserve free Undo and Retry. The machine remains the visual evidence of the result.
 
-Two authored-chevron buttons change the focused slot; a central label names its position and symbol. Left/right exchange controls below them expose durability cost or the reason an exchange cannot change the row. Both rows have independently measured touch regions. These controls are especially important for seven/eight-symbol rows at narrow widths.
+### Precision and inspection
 
-### Target magnifier
-
-A full safe-area UI Paper surface pauses interaction and displays the exact ordered symbols in a four-column arrangement with position numbers. Shape faces derive from the same mesh contours using `ShapeFaceGraphic`; letters remain live Bold text. It is a gameplay inspection surface, not a general card or modal style for future product flows.
+Comfort enables large previous/next focus controls and left/right exchanges with cost or rejection copy. The selected symbol is named without the rejected default slot-coordinate toolbar. Target magnification pauses gameplay and displays exact order with position numbers. These are implemented access paths; physical-touch effectiveness remains unverified.
 
 ## Do's and Don'ts
 
 ### Do:
 
-- **Do** reuse the same authored silhouette and material wherever a SymbolId appears.
-- **Do** move the live glyph and its body together when a token is selected.
-- **Do** retain the complete destination in the stable gold receiver below the remaining floors.
-- **Do** measure controls and device labels at the supplied small Editor reference size after layout changes.
-- **Do** use authored chevron geometry for precision focus controls.
-- **Do** keep ambient motion view-only and stop its phase progression during pause or application suspension.
-- **Do** preserve original assets, licenses, provenance and Unity meta identities.
+- **Do** reuse each authored silhouette and material wherever its SymbolId appears.
+- **Do** move and scale the live glyph with its selected or held body.
+- **Do** preserve the complete target and the direct-touch default.
+- **Do** keep precision controls an explicit Comfort preference.
+- **Do** bind the map marker to actual session progress and label future previews honestly.
+- **Do** select the story's region before showing its character and dialogue.
+- **Do** bound ambient art outside gameplay information and freeze its phase while paused or suspended.
+- **Do** inspect native 390 × 844, 320 × 693 and wide Editor captures after layout changes.
+- **Do** preserve original assets, licenses, generation provenance and Unity meta identities.
 
 ### Don'ts:
 
-- **Don't** turn compact support rails into full-width rectangular cards.
-- **Don't** bake gameplay text into the painted background or token artwork.
-- **Don't** use color changes to replace the stable shape identities.
-- **Don't** let animation completion, scenery, physics or presentation callbacks determine gameplay state.
+- **Don't** turn physical rails into full-width rectangular cards or restore the crowded default toolbar.
+- **Don't** bake gameplay text into imagery or change symbol identity to indicate state.
+- **Don't** let presentation, animation completion, scenery, physics or ad callbacks change puzzle state.
+- **Don't** portray browsed islands as reached or session memory as durable saving.
+- **Don't** describe the 160-stop target, ranks, parcels, keepsakes, Long Reach or online concept as implemented.
 - **Don't** copy ShapeMania screens, characters, sprites, props or materials into this world.
-- **Don't** treat the temporary P11 presentation gate or P12 utility navigation as the completed P13/P14 experience.
-- **Don't** claim physical-device validation, native-language editorial approval, measured enjoyment or approved-mockup fidelity from these Editor captures.
+- **Don't** equate Editor captures and automated tests with device, haptic, performance, build, native-language or human-enjoyment proof.

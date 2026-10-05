@@ -13,7 +13,7 @@ using UnityEngine;
 
 namespace Cascade.Presentation
 {
-    public sealed class CascadeGame : MonoBehaviour
+    public sealed partial class CascadeGame : MonoBehaviour
     {
         [SerializeField] string initialNode = "C01";
         [SerializeField] Camera uiCamera;
@@ -28,6 +28,7 @@ namespace Cascade.Presentation
         public ToyMachineView Machine => machine;
         public PresentationFrame VisibleFrame { get; private set; }
         readonly Vector3[] glyphPositions = new Vector3[8];
+        readonly Vector3[] flightCorners = new Vector3[4];
         public bool ReducedMotion { get => machine != null && machine.ReducedMotion; set { if (machine != null) machine.ReducedMotion = value; } }
         public PuzzleInteraction Interaction { get; private set; }
         public ContentCatalog Catalog { get; private set; }
@@ -37,7 +38,7 @@ namespace Cascade.Presentation
         public IReadOnlyList<TokenSlot> SlotViews => slots;
         public RectTransform TargetRow => targetRow;
         RectTransform safeRoot, header, actions, floorArea, receiver, tokenRow, targetRow, precise, targetZoom;
-        TextMeshProUGUI levelLabel, status, focusLabel, receiverLabel;
+        TextMeshProUGUI levelLabel, status, focusLabel, receiverLabel, wrongRowLabel;
         UnityEngine.UI.Button undo, retry, drop, hint, pause, previous, next, swapLeft, swapRight;
         readonly List<RectTransform> floorViews = new List<RectTransform>();
         readonly List<TextMeshProUGUI> floorLabels = new List<TextMeshProUGUI>();
@@ -69,22 +70,24 @@ namespace Cascade.Presentation
             motion = Resources.Load<MotionProfile>("CascadeArt/MotionProfile") ?? throw new InvalidOperationException("Build CASCADE motion assets before playing.");
             feedback = gameObject.AddComponent<ToyFeedbackPool>(); feedback.Initialize(this, art, motion);
             eventPlayer = gameObject.AddComponent<PuzzleEventPlayer>(); eventPlayer.Initialize(this, motion, feedback);
-            BuildScreen(); LoadNode(initialNode);
+            BuildScreen(); LoadNode(initialNode); BuildFlow(); ShowHome();
         }
         void OnEnable() { if (Interaction != null) { Interaction.SetSuspended(applicationPaused || !applicationFocused); RenderState(); } }
         void OnDisable()
         {
-            CancelHint(); StopPresentation(); Interaction?.SetSuspended(true); feedback?.ClearTails();
+            EndTokenHold(); CancelHint(); CancelDeadEnd(); StopPresentation(); Interaction?.SetSuspended(true); feedback?.ClearTails();
         }
         void OnDestroy() { if (Interaction != null) Interaction.Committed -= OnCommitted; }
         void OnApplicationFocus(bool focused)
         {
-            applicationFocused = focused; Interaction?.SetSuspended(applicationPaused || !applicationFocused); if (!focused) StopPresentation();
+            if(!focused)absentSince=Time.realtimeSinceStartup;
+            else if(absentSince>0 && Time.realtimeSinceStartup-absentSince>60 && CurrentScreen==GameScreen.Playing)Coach?.Advance(15,true);
+            applicationFocused = focused; Interaction?.SetSuspended(applicationPaused || !applicationFocused); if (!focused) { EndTokenHold(); StopPresentation(); }
             if (Interaction != null) RenderState();
         }
         void OnApplicationPause(bool paused)
         {
-            applicationPaused = paused; Interaction?.SetSuspended(applicationPaused || !applicationFocused); if (paused) StopPresentation();
+            applicationPaused = paused; Interaction?.SetSuspended(applicationPaused || !applicationFocused); if (paused) { EndTokenHold(); StopPresentation(); }
             if (Interaction != null) RenderState();
         }
         void Update()
@@ -92,6 +95,7 @@ namespace Cascade.Presentation
             if (safeArea != Screen.safeArea || screenWidth != Screen.width || screenHeight != Screen.height) {
                 StopPresentation(); ApplySafeArea(); if (Interaction != null) RenderState();
             }
+            UpdateFlow();
             if (hintTask == null || !hintTask.IsCompleted || !Interaction.CanPlay) return;
             var completed = hintTask; hintTask = null; hintCancellation?.Dispose(); hintCancellation = null;
             if (completed.IsFaulted) { var ignored = completed.Exception; status.text = "Hint unavailable. You can keep playing."; RenderControls(); return; }
@@ -99,8 +103,8 @@ namespace Cascade.Presentation
             var offer = completed.Result;
             if (!Interaction.Attempt.RevealHint(offer)) return;
             offeredHint = offer;
-            status.text = offer.Result.Status == HintStatus.Step ? "Hint: " + CommandText(offer.Result.Command.Value)
-                : offer.Result.Status == HintStatus.DeadEnd ? "No route from here. Undo lets you try another order."
+            status.text = offer.Result.Status == HintStatus.Step ? "Try this: " + CommandText(offer.Result.Command.Value)
+                : offer.Result.Status == HintStatus.DeadEnd ? "Stuck? Undo and try a different move."
                 : offer.Result.Status == HintStatus.Unknown ? "Search limit reached. You can keep playing." : "Target delivered.";
             RenderControls();
         }
@@ -111,26 +115,31 @@ namespace Cascade.Presentation
         }
         public void LoadLevel(LevelDefinition level, string locale = "en")
         {
-            CancelHint(); StopPresentation(); if (Interaction != null) Interaction.Committed -= OnCommitted;
+            EndTokenHold(); CancelHint(); CancelDeadEnd(); StopPresentation(); if (Interaction != null) Interaction.Committed -= OnCommitted;
             Interaction = new PuzzleInteraction(new AttemptService(level, locale)); Interaction.Committed += OnCommitted;
             Interaction.SetSuspended(applicationPaused || !applicationFocused);
+            journeyActive=false; machine.SetZone(JourneyStory.Zone(Catalog.PrimaryLevels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==level.CampaignNodeId)));
             userPaused = zoomOpen = false; targetZoom.gameObject.SetActive(false);
             node = level.CampaignNodeId; levelLabel.text = "Level " + node.TrimStart('C', '0');
-            RebuildLevelViews(level); RenderState();
+            RebuildLevelViews(level); RenderState(); StartCoach(); if(flowReady)SetScreen(GameScreen.Playing);
         }
         void OnCommitted(TransitionResult result)
         {
-            CancelHint(); eventPlayer.Play(result); RenderControls();
+            CancelHint(); Coach?.Observe(result.State,Interaction.Attempt.RouteLength);
+            if(node=="C01")firstGestureShown=true;
+            eventPlayer.Play(result); ScheduleDeadEnd(); RenderControls();
         }
         void StopPresentation()
         {
-            if (eventPlayer != null) eventPlayer.Skip(); else Interaction?.FinishPresentation();
+            EndTokenHold(); if (eventPlayer != null) eventPlayer.Skip(); else Interaction?.FinishPresentation();
         }
         public void ReportInput(TransitionResult result)
         {
+            Coach?.Activity();
             if (result != null && !result.Accepted) {
+                Coach?.Invalid(result.Rejection,Interaction.LastRequestedCommand?.Edge??-1);
                 status.text = result.Rejection == RejectionReason.NoOp
-                    ? "This exchange leaves the row unchanged." : "That edge is locked. No durability spent.";
+                    ? "These pieces are the same." : "This way is closed. Try the other side.";
                 feedback.Sound(ToyCue.Reject);
             }
             else if (result == null) RenderFocus();
@@ -143,14 +152,15 @@ namespace Cascade.Presentation
         public void PreviewDrag(int from, int to)
         {
             if (Math.Abs(from - to) == 1 && to >= 0) ShowPreview(PuzzleCommand.Swap(Math.Min(from, to)));
-            else status.text = "Release over one adjacent symbol. A long swipe is cancelled.";
+            else status.text = "Move onto the piece next to it.";
+            HighlightDragNeighbour(from, to);
         }
         void ShowPreview(PuzzleCommand command)
         {
             var preview = Interaction.Attempt.Resolver.Preview(Interaction.Attempt.Current, command);
             if (!preview.IsLegal) { status.text = preview.Rejection == RejectionReason.NoOp ? "No change · free to cancel" : "Locked edge · free to cancel"; return; }
             var prediction = Interaction.Attempt.Predict(command);
-            string exit = prediction.State.ActiveFloor != Interaction.Attempt.Current.ActiveFloor || prediction.State.Status != PuzzleStatus.Playing ? " · row drops" : "";
+            string exit = prediction.State.ActiveFloor != Interaction.Attempt.Current.ActiveFloor || prediction.State.Status != PuzzleStatus.Playing ? " · then down" : "";
             var effects = new List<string>();
             foreach (var e in prediction.Events.Where(e => e.Floor == Interaction.Attempt.Current.ActiveFloor)) {
                 if (e.Kind == PuzzleEventKind.Repaired) effects.Add("repair +" + e.Value);
@@ -158,16 +168,16 @@ namespace Cascade.Presentation
                 if (e.Kind == PuzzleEventKind.BombDefused) effects.Add("defuse");
                 if (e.Kind == PuzzleEventKind.KeyOpened) effects.Add("unlock");
             }
-            status.text = "Durability −" + preview.DurabilityCost + (effects.Count == 0 ? "" : " · " + string.Join(" · ", effects)) + exit;
+            status.text = "Board loses " + preview.DurabilityCost + (effects.Count == 0 ? "" : " · " + string.Join(" · ", effects)) + exit;
             RenderFocus(); foreach (int edge in preview.AffectedEdges) { slotImages[edge].color = Selected; slotImages[edge + 1].color = Selected; }
         }
         public void Undo()
         {
-            if (!Interaction.Undo()) return; CancelHint(); RenderState();
+            if (!Interaction.Undo()) return; CancelHint(); ScheduleDeadEnd(); RenderState(); if(flowReady)ShowGame();
         }
         public void Retry()
         {
-            if (!Interaction.Retry()) return; CancelHint(); RenderState();
+            if (!Interaction.Retry()) return; CancelHint(); CancelDeadEnd(); StartCoach(); RenderState(); if(flowReady)ShowGame();
         }
         public void RequestHint()
         {
@@ -179,7 +189,14 @@ namespace Cascade.Presentation
         public void RefreshLayout() {
             Canvas.ForceUpdateCanvases(); ApplySafeArea();
             UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(safeRoot); Canvas.ForceUpdateCanvases();
+            if(uiCamera!=null&&machine!=null&&floorViews.Count>0&&floorViews[0]!=null&&status!=null) {
+                floorViews[0].GetWorldCorners(flightCorners);float floorTop=flightCorners[2].y;
+                status.rectTransform.GetWorldCorners(flightCorners);float statusBottom=flightCorners[0].y;
+                float inset=uiCamera.orthographicSize*2/Mathf.Max(1,uiCamera.pixelHeight)*6;
+                machine.LivingWorld.SetFlightBand(floorTop+inset,statusBottom-inset);
+            }
             machine?.Sync(); RenderControls();
+            if(IsHoldingToken)PaintHeldToken(true);
         }
         void CancelHint()
         {
@@ -194,6 +211,7 @@ namespace Cascade.Presentation
         }
         void TogglePause()
         {
+            if(flowReady) { if(CurrentScreen==GameScreen.Pause)ShowGame();else SetScreen(GameScreen.Pause);return; }
             userPaused = !userPaused; Interaction.SetPaused(userPaused || zoomOpen);
             if (userPaused) StopPresentation(); RenderState();
         }
@@ -232,18 +250,20 @@ namespace Cascade.Presentation
             canvasRect.gameObject.AddComponent<UnityEngine.UI.GraphicRaycaster>();
             safeRoot = Rect("SafeArea", canvasRect, Vector2.zero, Vector2.one); ApplySafeArea();
             header = Rect("Header", safeRoot, new Vector2(.05f, 1), new Vector2(.95f, 1));
-            levelLabel = Text("Level", header, new Vector2(0, 56f/104), new Vector2(.7f, 1), 28, "CASCADE"); levelLabel.alignment = TextAlignmentOptions.Left; levelLabel.font = art.titleFont;
-            pause = Button("Pause", header, new Vector2(.75f, 56f/104), Vector2.one, TogglePause);
-            previous = Button("Previous", header, Vector2.zero, new Vector2(.28f, 48f/104), () => ChangeNode(-1));
-            Button("Motion", header, new Vector2(.32f, 0), new Vector2(.68f, 48f/104), () => {
-                ReducedMotion = !ReducedMotion; header.Find("Motion/Label").GetComponent<TextMeshProUGUI>().text = ReducedMotion ? "Motion: low" : "Motion: full";
-            });
-            next = Button("Next", header, new Vector2(.72f, 0), new Vector2(1, 48f/104), () => ChangeNode(1));
+            levelLabel = Text("Level", header, Vector2.zero, new Vector2(.78f, 1), 26, "CASCADE"); levelLabel.alignment = TextAlignmentOptions.Left; levelLabel.font = art.titleFont;
+            pause = Button("Pause", header, new Vector2(.82f, 0), Vector2.one, TogglePause);
+            previous = Button("Home", header, Vector2.zero, new Vector2(.28f, 48f/104), ShowHome);
+
+            next = Button("Settings", header, new Vector2(.72f, 0), new Vector2(1, 48f/104), ShowSettings);
+            previous.gameObject.SetActive(false); next.gameObject.SetActive(false);
+            pause.GetComponentInChildren<TextMeshProUGUI>().text = "";
+            var pauseMark = Rect("Pause mark",pause.transform,Vector2.zero,Vector2.one).gameObject.AddComponent<PauseMark>(); pauseMark.raycastTarget=false;
             status = Text("Feedback", safeRoot, new Vector2(.08f, .79f), new Vector2(.92f, .86f), 18, "");
             floorArea = Rect("Floors", safeRoot, new Vector2(.045f, .37f), new Vector2(.955f, .78f));
             receiver = Rect("Receiver", safeRoot, new Vector2(.5f, .245f), new Vector2(.5f, .365f)); receiver.sizeDelta = new Vector2(350, 0); Background(receiver, Color.clear, true);
             receiver.gameObject.AddComponent<UnityEngine.UI.Button>().onClick.AddListener(ToggleTargetZoom);
-            receiverLabel = Text("ReceiverLabel", receiver, new Vector2(.02f, .76f), new Vector2(.98f, 1.05f), 16, "Deliver this order"); receiverLabel.font = art.titleFont;
+            receiverLabel = Text("ReceiverLabel", receiver, new Vector2(.02f, .76f), new Vector2(.98f, 1.05f), 16, "Make this row"); receiverLabel.font = art.titleFont;
+            wrongRowLabel = Text("Your row", receiver, new Vector2(.02f,-.69f),new Vector2(.98f,-.46f),15,"Your row"); wrongRowLabel.gameObject.SetActive(false);
             targetRow = Rect("TargetRow", receiver, new Vector2(.07f, .20f), new Vector2(.93f, .70f));
             precise = Rect("PreciseInput", safeRoot, new Vector2(.05f, .09f), new Vector2(.95f, .225f));
             DirectionButton("Focus previous", precise, new Vector2(0, 56f/104), new Vector2(.2f, 1), false, () => MoveFocus(-1));
@@ -262,7 +282,7 @@ namespace Cascade.Presentation
             drop.GetComponent<UnityEngine.UI.Image>().color = new Color(.98f, .74f, .32f);
             retry = Button("Retry", safeRoot, new Vector2(.05f, .09f), new Vector2(.43f, .155f), Retry);
             targetZoom = Rect("TargetZoom", safeRoot, Vector2.zero, Vector2.one); Background(targetZoom, Paper, true);
-            Text("ZoomTitle", targetZoom, new Vector2(.05f, .7f), new Vector2(.95f, .8f), 22, "Deliver this exact order");
+            Text("ZoomTitle", targetZoom, new Vector2(.05f, .7f), new Vector2(.95f, .8f), 22, "Make the same row");
             Button("Close target", targetZoom, new Vector2(.2f, .22f), new Vector2(.8f, .30f), ToggleTargetZoom);
             targetZoom.gameObject.SetActive(false);
         }
@@ -282,7 +302,7 @@ namespace Cascade.Presentation
             for (int i = 0; i < count; i++) {
                 float y = count == 1 ? .56f : .87f - i * .74f / (count - 1);
                 var card = Rect("Floor" + (i + 1), floorArea, new Vector2(.5f, y), new Vector2(.5f, y));
-                card.sizeDelta = new Vector2(Mathf.Min(342, level.InitialSymbolIds.Count * 55 + 24), count == 4 ? 88 : 102); floorViews.Add(card);
+                card.sizeDelta = new Vector2(Mathf.Min(342, level.InitialSymbolIds.Count * 76 + 24), count == 4 ? 110 : 132); floorViews.Add(card);
                 var title = Text("Durability", card, new Vector2(.02f, -.01f), new Vector2(.25f, .24f), 15, ""); title.alignment = TextAlignmentOptions.Left; title.font = art.titleFont; floorLabels.Add(title);
                 var devices = Text("Devices", card, new Vector2(.25f, -.20f), new Vector2(.98f, .22f), 16, ""); devices.alignment = TextAlignmentOptions.TopRight; deviceLabels.Add(devices);
                 AddContactGlyph(card, level.Floors[i].Bomb, level.InitialSymbolIds.Count);
@@ -290,7 +310,7 @@ namespace Cascade.Presentation
                 AddContactGlyph(card, level.Floors[i].Repair, level.InitialSymbolIds.Count);
                 AddContactGlyph(card, level.Floors[i].OptionalStamp, level.InitialSymbolIds.Count);
             }
-            tokenRow = Rect("PersistentRow", floorViews[0], new Vector2(.045f, .44f), new Vector2(.955f, .98f));
+            tokenRow = Rect("PersistentRow", floorViews[0], new Vector2(.045f, .43f), new Vector2(.955f, 1.03f));
             var layout = tokenRow.gameObject.AddComponent<UnityEngine.UI.HorizontalLayoutGroup>();
             layout.spacing = 3; layout.childControlWidth = layout.childControlHeight = true; layout.childForceExpandWidth = layout.childForceExpandHeight = true;
             for (int i = 0; i < level.InitialSymbolIds.Count; i++) {
@@ -334,22 +354,25 @@ namespace Cascade.Presentation
                 if (canvas == null) return; // Scene teardown can disable the hierarchy before the presentation is cancelled.
                 float scale = canvas.scaleFactor;
                 float unit = 1 / Mathf.Min(1, scale); // Preserve 48-pixel hit regions in the smallest reference capture.
-                FixedBand(header, safeRoot.rect.height - 112 * unit, 104 * unit);
-                FixedBand(status.rectTransform, safeRoot.rect.height - 168 * unit, 48 * unit);
+                FixedBand(header, safeRoot.rect.height - 60 * unit, 48 * unit);
+                FixedBand(status.rectTransform, safeRoot.rect.height - 114 * unit, 44 * unit);
                 FixedBand(actions, 8 * unit, 48 * unit); FixedBand(precise, 64 * unit, 104 * unit);
+                if(resultRoot!=null)FixedBand(resultRoot,8*unit,160*unit);
+                receiverLabel.fontSize=16*unit; if(wrongRowLabel!=null)wrongRowLabel.fontSize=15*unit;
                 float receiverHeight = 100;
-                FixedBand(receiver, 184 * unit, receiverHeight);
+                float receiverBottom = CurrentScreen==GameScreen.Fail ? 232 : CurrentScreen==GameScreen.Win || PreciseInputActive ? 184 : 82;
+                FixedBand(receiver, receiverBottom * unit, receiverHeight);
                 floorArea.anchorMin = new Vector2(.045f, 0); floorArea.anchorMax = new Vector2(.955f, 0);
-                floorArea.offsetMin = new Vector2(0, 184 * unit + receiverHeight + 32 * unit);
-                floorArea.offsetMax = new Vector2(0, safeRoot.rect.height - 196 * unit);
+                floorArea.offsetMin = new Vector2(0, receiverBottom * unit + receiverHeight + 38 * unit);
+                floorArea.offsetMax = new Vector2(0, safeRoot.rect.height - 150 * unit);
                 foreach (var label in deviceLabels) label.fontSize = 14 * unit;
                 foreach (var floor in floorViews) foreach (Transform child in floor)
                     if (child.name == "DeviceGlyph") child.GetComponent<TextMeshProUGUI>().fontSize = 14 * unit;
             }
             if (floorViews.Count != 0 && Interaction != null) {
-                float boardWidth = Mathf.Min(safeRoot.rect.width * .91f, Interaction.Attempt.Current.Row.Count * 55 + 24);
+                float boardWidth = Mathf.Min(safeRoot.rect.width * .91f, Interaction.Attempt.Current.Row.Count * 76 + 24);
                 foreach (var floor in floorViews) floor.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, boardWidth);
-                receiver.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Mathf.Min(safeRoot.rect.width * .9f, Interaction.Attempt.Current.Row.Count * 55 + 40));
+                receiver.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Mathf.Min(safeRoot.rect.width * .9f, Interaction.Attempt.Current.Row.Count * 68 + 40));
             }
         }
         static void FixedBand(RectTransform rect, float bottom, float height)
@@ -369,26 +392,27 @@ namespace Cascade.Presentation
             for (int i = 0; i < level.Floors.Count; i++) {
                 var floor = level.Floors[i]; bool active = state.Status == PuzzleStatus.Playing && i == state.ActiveFloor;
                 bool past = !state.FloorVisible(i);
-                floorLabels[i].text = past ? "" : (active ? state.Durability : floor.BaseDurability) + " HP";
+                floorLabels[i].text = past ? "" : "Board " + (active ? state.Durability : floor.BaseDurability);
                 deviceLabels[i].text = past ? "" : DescribeFloor(floor, active ? state : null);
                 foreach (Transform child in floorViews[i]) if (child.name == "DeviceGlyph") child.gameObject.SetActive(!past);
             }
             tokenRow.SetParent(state.Status == PuzzleStatus.Playing ? floorViews[state.ActiveFloor] : receiver, false);
-            tokenRow.anchorMin = new Vector2(state.Status == PuzzleStatus.Playing ? .045f : .07f, state.Status == PuzzleStatus.Playing ? .44f : .20f);
-            tokenRow.anchorMax = new Vector2(state.Status == PuzzleStatus.Playing ? .955f : .93f, state.Status == PuzzleStatus.Playing ? .98f : .70f); tokenRow.offsetMin = tokenRow.offsetMax = Vector2.zero;
+            tokenRow.anchorMin = new Vector2(state.Status == PuzzleStatus.Playing ? .045f : .07f, state.Status == PuzzleStatus.Playing ? .43f : .20f);
+            tokenRow.anchorMax = new Vector2(state.Status == PuzzleStatus.Playing ? .955f : .93f, state.Status == PuzzleStatus.Playing ? 1.03f : .70f); tokenRow.offsetMin = tokenRow.offsetMax = Vector2.zero;
             tokenRow.gameObject.SetActive(state.Status == PuzzleStatus.Playing || arriving);
             foreach (var label in targetLabels) label.color = Ink;
             for (int i = 0; i < tokenLabels.Count; i++) {
                 tokenLabels[i].text = FaceText(state.Row[i]); tokenLabels[i].fontSize = state.Status == PuzzleStatus.Won ? 24 : 28;
             }
-            receiverLabel.text = state.Status == PuzzleStatus.Won ? "Delivered!  ·  " + attempt.RouteLength + " actions" : "Deliver this order";
+            receiverLabel.text = state.Status == PuzzleStatus.Won ? "Delivered in " + attempt.RouteLength + (attempt.RouteLength==1 ? " move" : " moves") : "Make this row";
             status.text = userPaused ? "Paused. Devices wait for your next command." : state.Status == PuzzleStatus.Won ? "Exact order delivered." : state.Status == PuzzleStatus.Lost
-                ? "Delivered " + state.Row.Where((symbol, i) => symbol == level.TargetSymbolIds[i]).Count() + " of " + state.Row.Count + " in place. Undo or retry."
+                ? "The rows do not match yet."
                 : state.Row.SequenceEqual(level.TargetSymbolIds)
-                    ? state.ActiveFloor == level.Floors.Count - 1 ? "Order ready. Drop to deliver it." : "Order ready here. Check the lower platforms before dropping."
-                    : "Swap neighbours. Match the receiver below.";
+                    ? state.ActiveFloor == level.Floors.Count - 1 ? "Ready! Tap Deliver." : "Ready here. Check the board below."
+                    : "Drag a piece onto its neighbour.";
+            wrongRowLabel.gameObject.SetActive(state.Status==PuzzleStatus.Lost);
             if (state.Status == PuzzleStatus.Lost) {
-                receiverLabel.text = "DELIVERED ROW · target remains above";
+                receiverLabel.text = "Goal";
                 tokenRow.gameObject.SetActive(true); tokenRow.anchorMin = new Vector2(.02f, -.36f); tokenRow.anchorMax = new Vector2(.98f, .06f);
             }
             RenderFocus(); RefreshLayout();
@@ -401,7 +425,7 @@ namespace Cascade.Presentation
             tokenLabels[index].rectTransform.localScale = new Vector3(stretch.x, stretch.y, 1);
         }
         public void SetPresentationFeedback(string text) { status.text = text; }
-        public void SyncPresentation() { RenderState(); }
+        public void SyncPresentation() { RenderState(); FinalizeScreenIfNeeded(); }
         public void CompleteDeliveryPose()
         {
             if (VisibleFrame.Status == PuzzleStatus.Won) { tokenRow.gameObject.SetActive(false); machine.Sync(); }
@@ -433,7 +457,7 @@ namespace Cascade.Presentation
             }
             machine?.Sync();
             int? selected = Interaction.SelectedSlot;
-            focusLabel.text = selected.HasValue ? "Slot " + (selected.Value + 1) + "  " + DisplaySymbol(Interaction.Attempt.Current.Row[selected.Value]) : "Choose a symbol";
+            focusLabel.text = selected.HasValue ? DisplaySymbol(Interaction.Attempt.Current.Row[selected.Value]) : "Choose a symbol";
             swapLeft.interactable = Interaction.CanPlay && selected.HasValue && selected > 0;
             swapRight.interactable = Interaction.CanPlay && selected.HasValue && selected < slots.Count - 1;
             PrecisionLabel(swapLeft, "Left", selected.HasValue ? selected.Value - 1 : -1);
@@ -454,13 +478,14 @@ namespace Cascade.Presentation
             drop.interactable = Interaction.CanPlay; hint.interactable = Interaction.CanPlay && hintTask == null;
             drop.GetComponentInChildren<TextMeshProUGUI>().text = Interaction.Attempt.Current.Status == PuzzleStatus.Playing
                 && Interaction.Attempt.Current.ActiveFloor == Interaction.Attempt.Level.Floors.Count - 1
-                && Interaction.Attempt.Current.Row.SequenceEqual(Interaction.Attempt.Level.TargetSymbolIds) ? "Deliver" : "Drop";
+                && Interaction.Attempt.Current.Row.SequenceEqual(Interaction.Attempt.Level.TargetSymbolIds) ? "Deliver" : "Descend";
             hint.GetComponentInChildren<TextMeshProUGUI>().text = offeredHint?.Result.Status == HintStatus.Step ? "Use hint" : "Hint";
-            pause.GetComponentInChildren<TextMeshProUGUI>().text = userPaused ? "Resume" : "Pause";
+
             previous.interactable = next.interactable = Interaction.CanControl;
-            PreciseInputActive = ForcePreciseInput || PuzzleInteraction.NeedsPreciseInput(slots.Count, safeRoot.rect.width);
-            precise.gameObject.SetActive(PreciseInputActive && Interaction.Attempt.Current.Status == PuzzleStatus.Playing);
+            PreciseInputActive = ForcePreciseInput;
+            precise.gameObject.SetActive(PreciseInputActive && Interaction.Attempt.Current.Status == PuzzleStatus.Playing && (!flowReady||CurrentScreen==GameScreen.Playing));
             if (eventPlayer == null || !eventPlayer.IsRunning) RenderFocus();
+            if(flowReady && resultRoot!=null && actions!=null)ArrangeResultControls();
         }
         static RectTransform Rect(string name, Transform parent, Vector2 min, Vector2 max)
         {
@@ -474,7 +499,9 @@ namespace Cascade.Presentation
         TextMeshProUGUI Text(string name, Transform parent, Vector2 min, Vector2 max, int size, string content)
         {
             var rect = Rect(name, parent, min, max); var text = rect.gameObject.AddComponent<TextMeshProUGUI>();
-            text.font = font; text.fontSize = size; text.enableAutoSizing = false; text.color = Ink;
+            text.font = font; baseTextSizes[text]=size;
+            text.fontSize = size*(Preferences.LargeText&&!IsSymbolFace(name)?1.12f:1); text.enableAutoSizing = false;
+            text.color = Preferences.HighContrast?new Color(.06f,.17f,.18f):Ink;
             text.text = content; text.alignment = TextAlignmentOptions.Center; text.raycastTarget = false;
             text.textWrappingMode = TextWrappingModes.Normal; return text;
         }

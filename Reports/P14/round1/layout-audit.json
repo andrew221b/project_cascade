@@ -1,0 +1,68 @@
+{
+  "home-phone": {
+    "buttonOverlapPairs": [],
+    "minimumButtonPixels": 59.99999237060547
+  },
+  "fail-small": {
+    "buttonOverlapPairs": [
+      [
+        "Receiver",
+        "Retry"
+      ]
+    ],
+    "minimumButtonPixels": 47.99993896484375
+  },
+  "home-words": {
+    "buttonOverlapPairs": [],
+    "minimumButtonPixels": 59.99999237060547
+  },
+  "first-gesture": {
+    "buttonOverlapPairs": [],
+    "minimumButtonPixels": 48.00002670288086
+  },
+  "device-coaching": {
+    "buttonOverlapPairs": [],
+    "minimumButtonPixels": 48.00002670288086
+  },
+  "win-phone": {
+    "buttonOverlapPairs": [
+      [
+        "Receiver",
+        "Nextdelivery"
+      ],
+      [
+        "Receiver",
+        "Retry"
+      ]
+    ],
+    "minimumButtonPixels": 48.0
+  },
+  "settings-sound": {
+    "buttonOverlapPairs": [],
+    "minimumButtonPixels": 60.0
+  },
+  "device-guide": {
+    "buttonOverlapPairs": [],
+    "minimumButtonPixels": 59.99998474121094
+  },
+  "home-small": {
+    "buttonOverlapPairs": [],
+    "minimumButtonPixels": 49.26539611816406
+  },
+  "settings-comfort-small": {
+    "buttonOverlapPairs": [],
+    "minimumButtonPixels": 49.265380859375
+  },
+  "home-wide": {
+    "buttonOverlapPairs": [],
+    "minimumButtonPixels": 63.981040954589844
+  },
+  "mixed8-large-text": {
+    "buttonOverlapPairs": [],
+    "minimumButtonPixels": 47.99993896484375
+  },
+  "pause-phone": {
+    "buttonOverlapPairs": [],
+    "minimumButtonPixels": 60.0
+  }
+}

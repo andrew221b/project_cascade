@@ -15,7 +15,7 @@ namespace Cascade.Presentation
             if (eventData.button != PointerEventData.InputButton.Left) return;
             if (accepted && !released && Game.Interaction.OwnsPointer(capturedPointer)) return;
             accepted = Game.Interaction.PointerDown(eventData.pointerId, Slot); dragged = released = false;
-            if (accepted) { capturedPointer = eventData.pointerId; Game.PreviewSlot(Slot); }
+            if (accepted) { capturedPointer = eventData.pointerId; Game.PreviewSlot(Slot); Game.BeginTokenHold(Slot, eventData.position); }
         }
         public void OnBeginDrag(PointerEventData eventData) { if (Owns(eventData)) dragged = true; }
         public void OnDrag(PointerEventData eventData)
@@ -23,10 +23,11 @@ namespace Cascade.Presentation
             if (!Owns(eventData)) return;
             var target = eventData.pointerCurrentRaycast.gameObject?.GetComponentInParent<TokenSlot>();
             Game.PreviewDrag(Slot, target != null && target.Game == Game ? target.Slot : -1);
+            Game.MoveTokenHold(eventData.position);
         }
         void Release(PointerEventData eventData)
         {
-            if (!Owns(eventData)) return; released = true;
+            if (!Owns(eventData)) return; released = true; Game.EndTokenHold();
             if (WasCancelled(eventData)) { Game.Interaction.CancelPointer(); Game.ReportInput(null); return; }
             var target = eventData.pointerCurrentRaycast.gameObject?.GetComponentInParent<TokenSlot>();
             int destination = target != null && target.Game == Game ? target.Slot : -1;
@@ -45,7 +46,7 @@ namespace Cascade.Presentation
         }
         void OnDisable()
         {
-            if (accepted && !released && Game?.Interaction?.OwnsPointer(capturedPointer) == true) Game.Interaction.CancelPointer();
+            if (accepted && !released && Game?.Interaction?.OwnsPointer(capturedPointer) == true) { Game.EndTokenHold(); Game.Interaction.CancelPointer(); }
             accepted = false;
         }
     }
