@@ -1,0 +1,7 @@
+bomb-guide-ru | Demo result | Бомба погашена
+letter-tag-0 | Device state | До взрыва: 1
+letter-tag-0 | Label | Вернуть ход
+letter-tag-1 | Device state | До взрыва: 1
+letter-tag-1 | Label | Вернуть ход
+letter-tag-2 | Device state | До взрыва: 1
+letter-tag-2 | Label | Вернуть ход

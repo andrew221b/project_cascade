@@ -419,13 +419,18 @@ namespace Cascade.Presentation
                 if (canvas == null) return; // Scene teardown can disable the hierarchy before the presentation is cancelled.
                 float scale = canvas.scaleFactor;
                 float unit = 1 / Mathf.Min(1, scale); // Preserve 48-pixel hit regions in the smallest reference capture.
+                foreach(var button in menuActions)if(button!=null)button.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,48*unit);
                 FixedBand(header, safeRoot.rect.height - 60 * unit, 48 * unit);
                 FixedBand(status.rectTransform, safeRoot.rect.height - 114 * unit, 44 * unit);
                 FixedBand(statusPaper,safeRoot.rect.height-114*unit,44*unit);status.fontSize=16*unit*(Preferences.LargeText?1.12f:1);
                 FixedBand(minimumLabel.rectTransform,safeRoot.rect.height-140*unit,20*unit);minimumLabel.fontSize=13*unit;
                 foreach(var label in floorLabels)label.fontSize=14*unit;
                 foreach(var dock in deviceDocks)dock.caption.fontSize=13*unit;
-                FixedBand(actions, 8 * unit, 48 * unit); FixedBand(precise, 64 * unit, 104 * unit);
+                FixedBand(actions, 8 * unit, 52 * unit); FixedBand(precise, 64 * unit, 104 * unit);
+                foreach(var button in actions.GetComponentsInChildren<UnityEngine.UI.Button>()){
+                    var label=button.GetComponentInChildren<TextMeshProUGUI>();if(label==null)continue;
+                    label.fontSize=17*unit*(Preferences.LargeText?1.12f:1);label.margin=new Vector4(5,2,5,2);
+                }
                 if(resultRoot!=null)FixedBand(resultRoot,8*unit,160*unit);
                 receiverLabel.fontSize=16*unit; if(wrongRowLabel!=null)wrongRowLabel.fontSize=15*unit;
                 float receiverHeight = 100;
@@ -577,7 +582,7 @@ namespace Cascade.Presentation
             var rect = Rect(name, parent, min, max); var text = rect.gameObject.AddComponent<TextMeshProUGUI>();
             text.font = font; baseTextSizes[text]=size;
             text.fontSize = size*(Preferences.LargeText&&!IsSymbolFace(name)?1.12f:1); text.enableAutoSizing = false;
-            text.color = Preferences.HighContrast?new Color(.06f,.17f,.18f):Ink;
+            text.color = Preferences.HighContrast?new Color(.06f,.17f,.18f):menuRoot!=null&&rect.IsChildOf(menuRoot)?MenuInk:Ink;
             text.SetCopy(IsSymbolFace(name)||name=="Mini glyph"?UiCopy.Raw(content.English):content); text.alignment = TextAlignmentOptions.Center; text.raycastTarget = false;
             text.textWrappingMode = TextWrappingModes.Normal; return text;
         }

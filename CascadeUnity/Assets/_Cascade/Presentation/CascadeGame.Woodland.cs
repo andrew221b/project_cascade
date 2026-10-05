@@ -58,6 +58,7 @@ namespace Cascade.Presentation
                 var centre=hookLocal+(Vector2)(rotation*(Vector3)(rest-(card.rect.min+Vector2.Scale(card.rect.size,new Vector2(dock.slotX,.32f)))));
                 dock.root.anchoredPosition=centre-rest;
                 dock.root.localRotation=Quaternion.Euler(0,0,dock.angle);
+                dock.tag?.Tick(dt,machine.WindAt(dock.floor),dock.angle+machine.FloorVisualAngle(dock.floor),moving,ReducedMotion);
                 dock.socket.anchoredPosition=Vector2.Scale(card.rect.size,hook-new Vector2(dock.slotX,.32f));
                 Vector2 Grip(Vector2 attachment) {
                     var point=card.InverseTransformPoint(dock.root.TransformPoint(dock.root.rect.min+Vector2.Scale(dock.root.rect.size,attachment)));

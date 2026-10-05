@@ -53,13 +53,13 @@ namespace Cascade.Presentation
                 cell.gameObject.AddComponent<ShapeFaceGraphic>().SetShape(art.SymbolMesh(level.TargetSymbolIds[i]),art.SymbolMaterial(level.TargetSymbolIds[i]).GetColor("_BaseColor"));
             }
             ContactDefinition contact=kind==2?floor.Bomb:kind==3?floor.Key:kind==4?floor.Repair:kind==8?floor.OptionalStamp:kind>=9?floor.Powerup:null;
-            Image mount=null;
+            Image mount=null;HangingToolTag tag=null;
             var woodCount=Text("Wood moves",root,new Vector2(.01f,.20f),new Vector2(.48f,.35f),13,"");
             woodCount.gameObject.SetActive(kind==0);
             if(contact!=null) {
                 float x=Mathf.Clamp((contact.Slot+.5f)/row.Length,.18f,.82f);
                 var body=Rect("Demo device",root,new Vector2(x-.13f,.20f),new Vector2(x+.13f,.49f));
-                BuildToolTag(body,contact.RequiredSymbol);
+                tag=BuildToolTag(body,contact.RequiredSymbol);
                 mount=Picture("Tool",body,Vector2.zero,new Vector2(.58f,1),Resources.Load<Sprite>("CascadeArt/Devices/"+DeviceAsset(kind)),true);
                 Line("Device strap",new Vector2(x,.45f),new Vector2(x,.51f),new Color(.4f,.27f,.15f),3);
             }
@@ -91,8 +91,9 @@ namespace Cascade.Presentation
                     var arrow=Rect("Landing direction arrow",root,new Vector2(x-.022f,.21f),new Vector2(x+.022f,.29f));arrow.gameObject.AddComponent<ShapeFaceGraphic>().SetShape(art.shapes[0],new Color(.98f,.75f,.31f));arrow.localRotation=Quaternion.Euler(0,0,right?-90:90);
                 }
             }
-            var outcome=Text("Demo result",root,new Vector2(.51f,.20f),new Vector2(.99f,.32f),13,"");
+            var outcome=Text("Demo result",root,new Vector2(.51f,.19f),new Vector2(.99f,.40f),13,"");
             int lastStage=-1;var motion=root.gameObject.AddComponent<DeviceDemonstration>();motion.Initialize(this,(time,bad)=>{
+                tag?.Tick(Time.unscaledDeltaTime,Machine.WindAt(0),0,!Interaction.IsSuspended,ReducedMotion);
                 float local=bad?time-3.5f:time;var result=bad&&wrong!=null?wrong:correct;
                 bool after=local>=1.8f;float blend=ReducedMotion?1:Mathf.SmoothStep(0,1,Mathf.Clamp01((local-1.1f)/.7f));
                 for(int i=0;i<row.Length;i++) {

@@ -41,11 +41,13 @@ namespace Cascade.Presentation
         void DrawJournal()
         {
             MenuTitle("My journal",RankNames[Rewards.Rank]);
-            Picture("Mika reads",menuRoot,new Vector2(.06f,.44f),new Vector2(.47f,.75f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
-            Text("Journal lights",menuRoot,new Vector2(.48f,.60f),new Vector2(.94f,.70f),23,new UiCopy("Lights restored: {0}",JourneyClearCount)).font=art.titleFont;
-            Text("Visit stamps",menuRoot,new Vector2(.48f,.46f),new Vector2(.94f,.58f),18,new UiCopy("Visits: {0} / 7\nCome back when you like.",Rewards.VisitDates.Count));
+            Picture("Mika reads",menuRoot,new Vector2(.12f,.44f),new Vector2(.46f,.75f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
+            MenuReadingSurface("Journal visits cloth",new Vector2(.48f,.455f),new Vector2(.88f,.72f));
+            Text("Journal lights",menuRoot,new Vector2(.50f,.61f),new Vector2(.86f,.71f),19,new UiCopy("Lights restored: {0}",JourneyClearCount)).font=art.titleFont;
+            Text("Visit stamps",menuRoot,new Vector2(.51f,.475f),new Vector2(.85f,.60f),16,new UiCopy("Visits: {0} / 7\nCome back when you like.",Rewards.VisitDates.Count));
             UiCopy order=Rewards.AllGiftsEarned?"Every gift part is found!":new UiCopy("New lights for a parcel: {0} / 3",Rewards.OrderProgress);
-            Text("Current order",menuRoot,new Vector2(.08f,.35f),new Vector2(.92f,.44f),20,order);
+            MenuReadingSurface("Current order cloth",new Vector2(.12f,.345f),new Vector2(.88f,.445f));
+            Text("Current order",menuRoot,new Vector2(.15f,.36f),new Vector2(.85f,.43f),18,order);
             if(WaitingParcel!=null)MenuButton("Open parcel",.26f,ShowParcel,true);
             else MenuButton("Choose a gift",.26f,ShowCollection,true);
             MenuButton("Requests",.14f,ShowRequests,false,.08f,.48f);MenuButton("Keepsakes",.14f,ShowCollection,false,.52f,.92f);
@@ -66,8 +68,9 @@ namespace Cascade.Presentation
             Shelf(.64f);
             var selected=RewardPicture(GiftAssets[giftPage],new Vector2(.25f,.435f),new Vector2(.75f,.635f));
             selected.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,2),0,1.5f);
-            Text("Gift parts",menuRoot,new Vector2(.08f,.33f),new Vector2(.92f,.42f),22,owned?"You made it!":new UiCopy("Parts found: {0} / 3",Rewards.Fragments(id)));
-            Text("Gift plan",menuRoot,new Vector2(.08f,.23f),new Vector2(.92f,.32f),18,owned?"A little keepsake for Mika.":"Three parts make this gift.");
+            MenuReadingSurface("Keepsake progress cloth",new Vector2(.12f,.225f),new Vector2(.88f,.425f));
+            Text("Gift parts",menuRoot,new Vector2(.15f,.34f),new Vector2(.85f,.41f),22,owned?"You made it!":new UiCopy("Parts found: {0} / 3",Rewards.Fragments(id)));
+            Text("Gift plan",menuRoot,new Vector2(.16f,.24f),new Vector2(.84f,.32f),18,owned?"A little keepsake for Mika.":"Three parts make this gift.");
             if(owned)MenuButton(Rewards.EquippedGift==id?"With Mika":"Take along",.14f,()=>{Rewards.Equip(id);PersistProgress();DrawMenu();},true).interactable=Rewards.EquippedGift!=id;
             else if(Rewards.EarnedFragments(id)>=3)MenuButton("Open parcel",.14f,ShowParcel,true);
             else MenuButton(Rewards.SelectedGift==id?"Next gift":"Choose this gift",.14f,()=>{Rewards.SelectGift(id);PersistProgress();DrawMenu();},true).interactable=Rewards.SelectedGift!=id;
@@ -82,8 +85,9 @@ namespace Cascade.Presentation
             var picture=RewardPicture(WorkshopAssets[workshopPage],new Vector2(.20f,.39f),new Vector2(.80f,.63f));
             picture.color=built?Color.white:new Color(.90f,.91f,.84f,1);
             picture.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,1),0,.5f);
-            Text("Workshop progress",menuRoot,new Vector2(.10f,.29f),new Vector2(.90f,.38f),22,new UiCopy("Lights restored: {0} / 10",complete));
-            Text("Workshop range",menuRoot,new Vector2(.10f,.20f),new Vector2(.90f,.29f),18,new UiCopy("From stop {0} to stop {1}",workshopPage*10+1,workshopPage*10+10));
+            MenuReadingSurface("Model progress cloth",new Vector2(.12f,.19f),new Vector2(.88f,.385f));
+            Text("Workshop progress",menuRoot,new Vector2(.15f,.29f),new Vector2(.85f,.38f),21,new UiCopy("Lights restored: {0} / 10",complete));
+            Text("Workshop range",menuRoot,new Vector2(.16f,.21f),new Vector2(.84f,.28f),18,new UiCopy("From stop {0} to stop {1}",workshopPage*10+1,workshopPage*10+10));
             MenuButton("Back to map",.10f,ShowJourney,true);
             MenuButton("Travel bag",.01f,ShowTravelBag);
         }
@@ -95,8 +99,9 @@ namespace Cascade.Presentation
             MenuTitle(friends[requestPage],"A friend's request");
             Picture("Request friend",menuRoot,new Vector2(.27f,.43f),new Vector2(.73f,.72f),Resources.Load<Sprite>("CascadeArt/Journey/"+friends[requestPage]),true);
             MetaArrows(()=>{requestPage=(requestPage+2)%3;DrawMenu();},()=>{requestPage=(requestPage+1)%3;DrawMenu();});
-            Text("Request detail",menuRoot,new Vector2(.09f,.29f),new Vector2(.91f,.42f),20,requests[requestPage]);
-            Text("Request progress",menuRoot,new Vector2(.10f,.20f),new Vector2(.90f,.29f),20,progress==needs[requestPage]?"Thank you! You helped.":new UiCopy("Done: {0} / {1}",progress,needs[requestPage]));
+            MenuReadingSurface("Friend request cloth",new Vector2(.12f,.19f),new Vector2(.88f,.425f));
+            Text("Request detail",menuRoot,new Vector2(.16f,.29f),new Vector2(.84f,.415f),18,requests[requestPage]);
+            Text("Request progress",menuRoot,new Vector2(.16f,.21f),new Vector2(.84f,.285f),19,progress==needs[requestPage]?"Thank you! You helped.":new UiCopy("Done: {0} / {1}",progress,needs[requestPage]));
             MenuButton(requestPage==2?"Stamp trails":"Try a puzzle",.10f,()=>{if(requestPage==2)ShowContracts();else{LoadNode(requestPage==0?"C18":"C33");ShowGame();}},true);
             MenuButton("Back",.01f,ShowJournal);
         }
@@ -106,7 +111,8 @@ namespace Cascade.Presentation
             bool opened=parcelOpened||receipt.Claimed;
             MenuTitle(opened?"A little piece of home":"A parcel for Mika",new UiCopy("Inside: a part for {0}",new UiCopy(GiftNames[index])));
             var picture=RewardPicture(opened?GiftAssets[index]:"Parcel",new Vector2(.18f,.38f),new Vector2(.82f,.70f));
-            Text("Parcel promise",menuRoot,new Vector2(.10f,.25f),new Vector2(.90f,.36f),20,opened?
+            MenuReadingSurface("Parcel note cloth",new Vector2(.12f,.24f),new Vector2(.88f,.37f));
+            Text("Parcel promise",menuRoot,new Vector2(.16f,.255f),new Vector2(.84f,.355f),19,opened?
                 Rewards.Owns(receipt.GiftId)?"Your gift is ready!":new UiCopy("Parts found: {0} / 3",Rewards.Fragments(receipt.GiftId)):
                 "You earned this with three new lights.");
             MenuButton(opened?"Keep going":"Unwrap",.14f,()=>{
@@ -148,23 +154,26 @@ namespace Cascade.Presentation
             contractPage=Math.Min(contractPage,choices.Length-1);var content=choices[contractPage];
             MiniMachine(Rect("Stamp target",menuRoot,new Vector2(.23f,.48f),new Vector2(.77f,.65f)),content.Definition.InitialSymbolIds,content.Definition.TargetSymbolIds);
             MetaArrows(()=>{contractPage=(contractPage+choices.Length-1)%choices.Length;DrawMenu();},()=>{contractPage=(contractPage+1)%choices.Length;DrawMenu();});
-            Text("Contract stop",menuRoot,new Vector2(.10f,.34f),new Vector2(.90f,.45f),23,new UiCopy("Stamp trail {0}",content.Definition.CampaignNodeId.TrimStart('C','0')));
-            Text("Contract freedom",menuRoot,new Vector2(.10f,.22f),new Vector2(.90f,.34f),18,"This is an extra challenge. Your path stays open.");
+            MenuReadingSurface("Stamp trail note cloth",new Vector2(.12f,.215f),new Vector2(.88f,.455f));
+            Text("Contract stop",menuRoot,new Vector2(.16f,.345f),new Vector2(.84f,.44f),22,new UiCopy("Stamp trail {0}",content.Definition.CampaignNodeId.TrimStart('C','0')));
+            Text("Contract freedom",menuRoot,new Vector2(.16f,.235f),new Vector2(.84f,.33f),18,"This is an extra challenge. Your path stays open.");
             MenuButton("Try this trail",.12f,()=>StartStampTrail(content.Definition.CampaignNodeId),true);MenuButton("Back",.01f,ShowTravelBag);
         }
         void DrawRecords()
         {
             var records=Rewards.Records.OrderBy(r=>r.PuzzleId,StringComparer.Ordinal).ThenBy(r=>r.StampGoal).ToArray();
-            if(records.Length==0){MenuTitle("My routes","Your own best paths.");Text("Empty journal",menuRoot,new Vector2(.10f,.38f),new Vector2(.90f,.65f),22,"Finish a puzzle to leave a note here.");MenuButton("Back",.10f,ShowTravelBag);return;}
+            if(records.Length==0){MenuTitle("My routes","Your own best paths.");MenuReadingSurface("Empty route book cloth",new Vector2(.12f,.38f),new Vector2(.88f,.65f));Text("Empty journal",menuRoot,new Vector2(.16f,.40f),new Vector2(.84f,.63f),22,"Finish a puzzle to leave a note here.");MenuButton("Back",.10f,ShowTravelBag);return;}
             recordPage=Math.Min(recordPage,records.Length-1);var record=records[recordPage];
             var content=Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).FirstOrDefault(c=>c.Definition.PuzzleId==record.PuzzleId&&c.Definition.ContentHash==(record.SourceHash??record.ContentHash));
             MenuTitle("My routes",content==null?"A note from an earlier journey.":new UiCopy(record.StageCount==3?"Level {0} · 3 stages":"Level {0}",content.Definition.CampaignNodeId.TrimStart('C','0')));
             if(content!=null)MiniMachine(Rect("Record target",menuRoot,new Vector2(.23f,.47f),new Vector2(.77f,.64f)),content.Definition.InitialSymbolIds,content.Definition.TargetSymbolIds);
             MetaArrows(()=>{recordPage=(recordPage+records.Length-1)%records.Length;DrawMenu();},()=>{recordPage=(recordPage+1)%records.Length;DrawMenu();});
-            Text("Record identity",menuRoot,new Vector2(.08f,.61f),new Vector2(.92f,.70f),18,UiCopy.Join(" · ",new[]{new UiCopy(record.Mode),LanguageName(record.Locale),new UiCopy(record.StampGoal==0?"Delivery":"With stamp")}));
-            Text("Record route",menuRoot,new Vector2(.08f,.36f),new Vector2(.92f,.45f),23,new UiCopy("Best route: {0} moves",record.BestRoute));
-            Text("Record help",menuRoot,new Vector2(.10f,.26f),new Vector2(.90f,.35f),18,record.BestWithoutHint.HasValue?new UiCopy("Without a hint: {0}",record.BestWithoutHint.Value):"Try again without a hint.");
-            Text("Record clean",menuRoot,new Vector2(.10f,.19f),new Vector2(.90f,.27f),16,record.BestClean.HasValue?new UiCopy("Without hint or Undo: {0}",record.BestClean.Value):"Undo is always welcome.");
+            MenuReadingSurface("Route identity cloth",new Vector2(.12f,.655f),new Vector2(.88f,.72f));
+            Text("Record identity",menuRoot,new Vector2(.15f,.66f),new Vector2(.85f,.715f),16,UiCopy.Join(" · ",new[]{new UiCopy(record.Mode),LanguageName(record.Locale),new UiCopy(record.StampGoal==0?"Delivery":"With stamp")}));
+            MenuReadingSurface("Route notes cloth",new Vector2(.12f,.18f),new Vector2(.88f,.455f));
+            Text("Record route",menuRoot,new Vector2(.16f,.36f),new Vector2(.84f,.44f),22,new UiCopy("Best route: {0} moves",record.BestRoute));
+            Text("Record help",menuRoot,new Vector2(.16f,.28f),new Vector2(.84f,.355f),18,record.BestWithoutHint.HasValue?new UiCopy("Without a hint: {0}",record.BestWithoutHint.Value):"Try again without a hint.");
+            Text("Record clean",menuRoot,new Vector2(.16f,.195f),new Vector2(.84f,.275f),16,record.BestClean.HasValue?new UiCopy("Without hint or Undo: {0}",record.BestClean.Value):"Undo is always welcome.");
             if(content!=null)MenuButton(record.StageCount==3?"Play this level":"Try again",.10f,()=>{
                 if(record.StageCount==3){StartDescentLevel(content.Definition,content.Locale);ShowGame();}
                 else if(record.StampGoal!=0)StartExactTrail(content,record.StampGoal);else StartContent(content);

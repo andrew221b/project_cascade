@@ -21,6 +21,7 @@ namespace Cascade.Presentation
             public bool anchorReady;
             public float responseTime;
             public DemoLine leftStrap,rightStrap;
+            public HangingToolTag tag;
         }
         readonly List<RectTransform> deviceOverlays=new List<RectTransform>();
         readonly List<DeviceDock> deviceDocks = new List<DeviceDock>();
@@ -57,10 +58,10 @@ namespace Cascade.Presentation
                 var button=Button(UiCopy.Raw("Device "+DeviceAsset(item.kind)),card,new Vector2(x,-.075f),new Vector2(x,-.075f),()=>OpenDevice(item.kind));
                 var root=(RectTransform)button.transform;root.sizeDelta=new Vector2(88,55);
                 button.GetComponent<Image>().color=Color.clear;button.GetComponentInChildren<TextMeshProUGUI>().SetCopy("");
-                BuildToolTag(root,item.contact.RequiredSymbol);
+                var tag=BuildToolTag(root,item.contact.RequiredSymbol);
                 var icon=Picture("Recognizable device",root,new Vector2(0,.16f),new Vector2(.57f,1),Resources.Load<Sprite>("CascadeArt/Devices/"+DeviceAsset(item.kind)),true);
-                var caption=Text("Device state",root,new Vector2(-.08f,-.03f),new Vector2(1.08f,.24f),12,"");caption.font=art.titleFont;
-                deviceDocks.Add(new DeviceDock{floor=floorIndex,kind=item.kind,root=root,socket=socket,icon=icon,caption=caption,contact=item.contact,slotX=slotX,dockX=x,leftStrap=leftStrap,rightStrap=rightStrap});
+                var caption=Text("Device state",root,new Vector2(-.08f,-.50f),new Vector2(1.08f,-.10f),12,"");caption.font=art.titleFont;
+                deviceDocks.Add(new DeviceDock{floor=floorIndex,kind=item.kind,root=root,socket=socket,icon=icon,caption=caption,contact=item.contact,slotX=slotX,dockX=x,leftStrap=leftStrap,rightStrap=rightStrap,tag=tag});
             }
             UiCopy landing=floor.EntryTransform==EntryTransform.MirrorNext?"Reverse on landing":floor.EntryTransform==EntryTransform.ShiftLeftOne?"Slide left on landing":"Slide right on landing";
             if(IsWindFloor(floorIndex))landing=floor.EntryTransform==EntryTransform.ShiftLeftOne?"Wind on landing: row slides left":"Wind on landing: row slides right";
@@ -78,18 +79,21 @@ namespace Cascade.Presentation
 
             }
         }
-        void BuildToolTag(RectTransform root,SymbolId required)
+        HangingToolTag BuildToolTag(RectTransform root,SymbolId required)
         {
-            Rect("Tool's carved crossbar",root,new Vector2(.30f,.25f),new Vector2(.96f,.42f)).gameObject.AddComponent<WoodBoardGraphic>();
-            var bezel=Rect("Bolted matching tag",root,new Vector2(.57f,.36f),new Vector2(.97f,.94f));
+            Rect("Tool's carved crossbar",root,new Vector2(.26f,.74f),new Vector2(.99f,.86f)).gameObject.AddComponent<WoodBoardGraphic>();
+            var ropes=Rect("Tag hemp cords",root,Vector2.zero,Vector2.one).gameObject.AddComponent<ToolTagCordGraphic>();
+            var suspension=Rect("Tag pendulum",root,new Vector2(.60f,-.08f),new Vector2(.96f,.80f));suspension.pivot=new Vector2(.5f,1);
+            var bezel=Rect("Hanging matching tag",suspension,Vector2.zero,new Vector2(1,.62f));
             var border=Background(bezel,new Color(.50f,.31f,.12f),false);border.sprite=art.panel;
             var pocket=Rect("Tag ivory inset",bezel,new Vector2(.09f,.09f),new Vector2(.91f,.91f));Background(pocket,new Color(1,.95f,.78f),false).sprite=art.panel;
             var face=Rect("Required symbol",pocket,new Vector2(.13f,.13f),new Vector2(.87f,.87f)).gameObject.AddComponent<ShapeFaceGraphic>();
             face.SetShape(art.SymbolMesh(required),art.SymbolMaterial(required).GetColor("_BaseColor"));
             if(required.Kind==SymbolKind.Glyph){var letter=Text("Required letter",pocket,Vector2.zero,Vector2.one,18,UiCopy.Raw(FaceText(required)));letter.font=art.titleFont;FinishLetter(letter);}
-            foreach(float x in new[]{.06f,.94f}){
-                var bolt=Rect("Tag brass rivet",bezel,new Vector2(x-.028f,.44f),new Vector2(x+.028f,.56f)).gameObject.AddComponent<ShapeFaceGraphic>();bolt.SetShape(art.disk,new Color(.93f,.72f,.34f));
+            foreach(float x in new[]{.22f,.78f}){
+                var bolt=Rect("Tag brass rivet",bezel,new Vector2(x-.028f,.88f),new Vector2(x+.028f,.98f)).gameObject.AddComponent<ShapeFaceGraphic>();bolt.SetShape(art.disk,new Color(.93f,.72f,.34f));
             }
+            var tag=root.gameObject.AddComponent<HangingToolTag>();tag.Initialize(root,suspension,bezel,ropes);return tag;
         }
         public void CueDevice(PuzzleEvent e)
         {

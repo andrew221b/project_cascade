@@ -113,7 +113,8 @@ namespace Cascade.Presentation
                 :Recovery==SaveRecovery.NewerVersion?"This path needs a newer game. Update CASCADE to open it."
                 :"We could not read your saved path. You can start a new one.";
             MenuTitle("Your saved path","");
-            Text("Recovery explanation",menuRoot,new Vector2(.10f,.48f),new Vector2(.90f,.74f),20,body);
+            MenuReadingSurface("Saved path explanation cloth",new Vector2(.12f,.47f),new Vector2(.88f,.74f));
+            Text("Recovery explanation",menuRoot,new Vector2(.16f,.49f),new Vector2(.84f,.72f),20,body);
             if(Recovery!=SaveRecovery.NewerVersion)MenuButton(Recovery==SaveRecovery.WriteFailed?"Try saving again":Recovery==SaveRecovery.Backup?"Continue":Recovery==SaveRecovery.Unreadable?"Start a new path":"Start a new puzzle",.35f,AcknowledgeRecovery,true);
         }
         void OnApplicationQuit(){PersistProgress();}

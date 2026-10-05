@@ -18,8 +18,11 @@ namespace Cascade.Presentation
         Button ShelfChoice(string name,string asset,float left,float bottom,float width,float height,Action action,bool selected=false)
         {
             var b=Button(name,menuRoot,new Vector2(left,bottom),new Vector2(left+width,bottom+height),action);
-            b.GetComponent<Image>().color=selected?new Color(.91f,.75f,.40f,.55f):Color.clear;
-            var label=b.GetComponentInChildren<TextMeshProUGUI>();label.rectTransform.anchorMin=new Vector2(0,.13f);label.rectTransform.anchorMax=new Vector2(1,.35f);label.fontSize=17*(Preferences.LargeText?1.12f:1);
+            b.GetComponent<Image>().color=string.IsNullOrEmpty(name)?selected?new Color(.96f,.78f,.41f):new Color(.10f,.31f,.32f,.94f):Color.clear;
+            var label=b.GetComponentInChildren<TextMeshProUGUI>();label.rectTransform.anchorMin=new Vector2(.05f,.10f);label.rectTransform.anchorMax=new Vector2(.95f,.37f);label.fontSize=17*(Preferences.LargeText?1.12f:1);label.margin=new Vector4(3,0,3,0);
+            if(!string.IsNullOrEmpty(name)){
+                var plate=Rect("Shelf caption cloth",b.transform,new Vector2(.025f,.07f),new Vector2(.975f,.37f));var paper=Background(plate,MenuPaper,false);paper.sprite=art.panel;paper.type=Image.Type.Sliced;plate.SetAsFirstSibling();
+            }
             b.name=string.IsNullOrEmpty(name)?asset+"Choice":b.name;
             var icon=Picture("Shelf object",b.transform,new Vector2(.13f,.37f),new Vector2(.87f,.98f),Resources.Load<Sprite>(asset=="RibbonSpool"?"CascadeArt/Devices/RibbonSpool":"CascadeArt/Workshop/"+asset),true);
             return b;
@@ -48,10 +51,11 @@ namespace Cascade.Presentation
             var level=Catalog.BonusLevels[offset+reachPage].Definition;
             var example=Rect("Reach example",menuRoot,new Vector2(.15f,.43f),new Vector2(.85f,.63f));
             if(pickups)LiveDeviceDemo(example,level,reachPage<3?9:10);else MiniMachine(example,level.InitialSymbolIds,level.TargetSymbolIds);
-            Text("Reach number",menuRoot,new Vector2(.12f,.34f),new Vector2(.88f,.42f),23,new UiCopy(pickups?"Tool challenge {0}":"Try ribbon {0}",reachPage+1));
-            Text("Reach instruction",menuRoot,new Vector2(.12f,.23f),new Vector2(.88f,.34f),18,pickups?(reachPage<3?"Match the spool picture. Then drag past a neighbour.":"Match the hourglass picture. The bomb waits for two swaps."):"Drag past a neighbour. The ribbon works once. Undo brings it back.");
+            MenuReadingSurface("Tool lesson cloth",new Vector2(.12f,.225f),new Vector2(.88f,.425f));
+            Text("Reach number",menuRoot,new Vector2(.15f,.345f),new Vector2(.85f,.42f),22,new UiCopy(pickups?"Tool challenge {0}":"Try ribbon {0}",reachPage+1));
+            Text("Reach instruction",menuRoot,new Vector2(.16f,.24f),new Vector2(.84f,.34f),17,pickups?(reachPage<3?"Match the spool picture. Then drag past a neighbour.":"Match the hourglass picture. The bomb waits for two swaps."):"Drag past a neighbour. The ribbon works once. Undo brings it back.");
             for(int i=0;i<6;i++){int pick=i;float left=.09f+i*.14f;var b=Button(UiCopy.Raw((i+1).ToString()),menuRoot,new Vector2(left,.16f),new Vector2(left+.12f,.22f),()=>{reachPage=pick;DrawMenu();});if(i==reachPage)b.GetComponent<Image>().color=new Color(.97f,.73f,.3f);}
-            MenuButton("Try this trail",.075f,()=>StartContent(Catalog.BonusLevels[offset+reachPage]),true);
+            MenuButton("Try this trail",.082f,()=>StartContent(Catalog.BonusLevels[offset+reachPage]),true);
             MenuButton("Back",.005f,ShowTravelBag,false,.08f,.45f);
             if(pickups)MenuButton("Ribbon reach",.005f,ShowReachChallenges,false,.50f,.92f);
         }

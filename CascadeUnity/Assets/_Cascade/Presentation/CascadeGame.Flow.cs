@@ -25,6 +25,7 @@ namespace Cascade.Presentation
         RectTransform menuRoot, resultRoot, coachRoot;
         Image tutorialHand, reachBadge;
         Image menuWash;
+        readonly List<RectTransform> menuActions=new List<RectTransform>();
         MenuTransition menuTransition;
         CoachRingGraphic coachRing;
         TextMeshProUGUI coachText, resultText;
@@ -113,7 +114,6 @@ namespace Cascade.Presentation
             menuRoot.gameObject.SetActive(!machineVisible); resultRoot.gameObject.SetActive(screen==GameScreen.Win||screen==GameScreen.Fail||screen==GameScreen.Checkpoint);
             if(machineVisible) { RenderState(); ArrangeResultControls(); } else {DrawMenu();if(changed)menuTransition.Arrive();}
             outcome?.ShowResult(screen);
-            if(!machineVisible)foreach(var label in menuRoot.GetComponentsInChildren<TextMeshProUGUI>())if(!IsSymbolFace(label.name))label.color=new Color(.075f,.19f,.20f);
             Canvas.ForceUpdateCanvases();
         }
         void StartCoach()
@@ -208,6 +208,7 @@ namespace Cascade.Presentation
         { var r=(RectTransform)button.transform; r.SetParent(parent,false); r.anchorMin=min;r.anchorMax=max;r.offsetMin=r.offsetMax=Vector2.zero; }
         void ResetMenu()
         {
+            menuActions.Clear();
             foreach(var key in baseTextSizes.Keys.Where(k=>k==null||k.transform.IsChildOf(menuRoot)).ToArray())baseTextSizes.Remove(key);
             foreach(Transform child in menuRoot){ child.gameObject.SetActive(false); Destroy(child.gameObject); }
             // The illustrated scene is the menu surface; ink sits on its quiet sky window.
@@ -246,16 +247,34 @@ namespace Cascade.Presentation
                 MenuButton("Resume",.50f,ShowGame,true); MenuButton("Retry",.40f,()=>{SetScreen(GameScreen.Playing);Retry();});
                 MenuButton("How to play",.30f,ShowHowToPlay); MenuButton("Settings",.20f,ShowSettings); MenuButton("Home",.10f,ShowHome);
             }
+            FinishMenuContrast();
+        }
+        static readonly Color MenuInk=new Color(.055f,.16f,.17f);
+        static readonly Color MenuPaper=new Color(.99f,.98f,.92f);
+        void MenuReadingSurface(string name,Vector2 min,Vector2 max)
+        {
+            var surface=Rect(name,menuRoot,min,max);var image=Background(surface,MenuPaper,false);
+            image.sprite=art.panel;image.type=Image.Type.Sliced;
+        }
+        void FinishMenuContrast()
+        {
+            foreach(var label in menuRoot.GetComponentsInChildren<TextMeshProUGUI>())if(!IsSymbolFace(label.name)&&label.name!="Mini glyph")label.color=MenuInk;
+            foreach(var button in menuRoot.GetComponentsInChildren<Button>())if(!button.interactable){
+                var image=button.GetComponent<Image>();if(image!=null&&image.color.a>0)image.color=new Color(.86f,.91f,.87f);
+                var colors=button.colors;colors.disabledColor=Color.white;button.colors=colors;
+            }
         }
         void MenuTitle(UiCopy title,UiCopy body)
         {
+            MenuReadingSurface("Workshop title cloth",new Vector2(.12f,.756f),new Vector2(.88f,.958f));
             var label=Text("Menu title",menuRoot,new Vector2(.15f,.855f),new Vector2(.85f,.950f),30,title);label.font=art.titleFont;label.alignment=TextAlignmentOptions.Center;
             var description=Text("Menu description",menuRoot,new Vector2(.15f,.765f),new Vector2(.85f,.85f),17,body);description.alignment=TextAlignmentOptions.Center;
         }
         Button MenuButton(UiCopy label,float bottom,Action action,bool primary=false,float left=.08f,float right=.92f)
         {
             var button=Button(label,menuRoot,new Vector2(left,bottom),new Vector2(right,bottom),()=>{feedback.Sound(ToyCue.Select);action();});
-            var r=(RectTransform)button.transform;r.pivot=new Vector2(.5f,0);r.sizeDelta=new Vector2(0,52);
+            var r=(RectTransform)button.transform;r.pivot=new Vector2(.5f,0);r.sizeDelta=new Vector2(0,48/Mathf.Min(1,menuRoot.GetComponentInParent<Canvas>().scaleFactor));
+            menuActions.Add(r);var caption=button.GetComponentInChildren<TextMeshProUGUI>();caption.margin=new Vector4(6,0,6,0);caption.fontSize=18*(Preferences.LargeText?1.10f:1);
             button.GetComponent<Image>().color=primary?new Color(.98f,.74f,.32f):new Color(.94f,.885f,.75f);
             return button;
         }
@@ -320,12 +339,13 @@ namespace Cascade.Presentation
             if(deviceIndex<0){DrawBasics();return;}
             bool wind=deviceIndex==1&&Enumerable.Range(0,Interaction.Attempt.Level.Floors.Count).Any(IsWindFloor);
             MenuTitle(wind?"Wind on landing":DeviceTitles[deviceIndex],new UiCopy("Device guide · {0} / {1}",deviceIndex+1,DeviceTitles.Length));
-            var guideCaption=(RectTransform)menuRoot.Find("Menu description");guideCaption.anchorMin=new Vector2(.08f,.75f);guideCaption.anchorMax=new Vector2(.92f,.80f);
-            if(deviceIndex==2||deviceIndex==3||deviceIndex==4||deviceIndex>=8)Text("Tool tag meaning",menuRoot,new Vector2(.10f,.70f),new Vector2(.90f,.75f),14,"The little tag shows which piece this tool needs.");
+            var guideCaption=(RectTransform)menuRoot.Find("Menu description");guideCaption.anchorMin=new Vector2(.15f,.787f);guideCaption.anchorMax=new Vector2(.85f,.844f);
+            if(deviceIndex==2||deviceIndex==3||deviceIndex==4||deviceIndex>=8){MenuReadingSurface("Tag explanation cloth",new Vector2(.12f,.69f),new Vector2(.88f,.751f));Text("Tool tag meaning",menuRoot,new Vector2(.15f,.70f),new Vector2(.85f,.75f),14,"The little tag shows which piece this tool needs.");}
             var fixture=Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).First(c=>c.Definition.CampaignNodeId==DeviceNodes[deviceIndex]).Definition;
             if(wind)fixture=WindGuide(CurrentWindRight);
-            LiveDeviceDemo(Rect("Device example",menuRoot,new Vector2(.10f,.555f),new Vector2(.90f,.70f)),fixture,deviceIndex);
-            var explanation=Text("Device explanation",menuRoot,new Vector2(.10f,.38f),new Vector2(.90f,.59f),20,wind?"Wind pushes the whole row one place when it lands. Follow the arrow. Take your time to think.":DeviceCopy[deviceIndex]);explanation.alignment=TextAlignmentOptions.MidlineLeft;
+            LiveDeviceDemo(Rect("Device example",menuRoot,new Vector2(.15f,.58f),new Vector2(.85f,.69f)),fixture,deviceIndex);
+            MenuReadingSurface("Device instructions cloth",new Vector2(.12f,.375f),new Vector2(.88f,.567f));
+            var explanation=Text("Device explanation",menuRoot,new Vector2(.16f,.39f),new Vector2(.84f,.55f),17,wind?"Wind pushes the whole row one place when it lands. Follow the arrow. Take your time to think.":DeviceCopy[deviceIndex]);explanation.alignment=TextAlignmentOptions.MidlineLeft;
             MenuButton("Previous",.29f,()=>{deviceIndex=(deviceIndex+DeviceTitles.Length-1)%DeviceTitles.Length;DrawMenu();},false,.10f,.47f);
             MenuButton("Next",.29f,()=>{deviceIndex=(deviceIndex+1)%DeviceTitles.Length;DrawMenu();},false,.53f,.90f);
             MenuButton(wind?new UiCopy("Back to puzzle"):new UiCopy("Try level {0}",DeviceNodes[deviceIndex].TrimStart('C','0')),.18f,()=>{if(wind)CloseMenu();else StartContent(Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).First(c=>c.Definition.CampaignNodeId==DeviceNodes[deviceIndex]));},true);
@@ -335,9 +355,9 @@ namespace Cascade.Presentation
         {
             MenuTitle("Make yourself at home",settingsPage==0?"Sound & motion":settingsPage==1?"Comfort & help":"Languages");
             if(settingsPage<2){
-                var friend=Picture("Mika by the settings",menuRoot,new Vector2(.41f,.672f),new Vector2(.59f,.766f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
+                var friend=Picture("Mika by the settings",menuRoot,new Vector2(.41f,.683f),new Vector2(.59f,.766f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
                 friend.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,1.5f),0,.85f);
-                Rect("Settings shelf",menuRoot,new Vector2(.34f,.664f),new Vector2(.66f,.674f)).gameObject.AddComponent<WoodBoardGraphic>();
+                Rect("Settings shelf",menuRoot,new Vector2(.34f,.671f),new Vector2(.66f,.681f)).gameObject.AddComponent<WoodBoardGraphic>();
             }
             if(settingsPage==0) {
                 Setting("Music",Preferences.Music,.60f,()=>Preferences.Music=!Preferences.Music);
@@ -394,7 +414,7 @@ namespace Cascade.Presentation
             foreach(var entry in baseTextSizes.ToArray()) {
                 if(entry.Key==null){baseTextSizes.Remove(entry.Key);continue;}
                 entry.Key.fontSize=entry.Value*(Preferences.LargeText&&!IsSymbolFace(entry.Key.name)?1.12f:1);
-                entry.Key.color=Preferences.HighContrast?new Color(.06f,.17f,.18f):Ink;
+                entry.Key.color=Preferences.HighContrast?new Color(.06f,.17f,.18f):menuRoot!=null&&entry.Key.transform.IsChildOf(menuRoot)?MenuInk:Ink;
             }
         }
         static bool IsSymbolFace(string label)=>label=="Required letter"||label=="Symbol"||label=="TargetSymbol"||label=="DeviceGlyph"||label=="ZoomSymbol";
