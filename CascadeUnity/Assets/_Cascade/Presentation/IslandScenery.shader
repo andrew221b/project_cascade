@@ -15,12 +15,8 @@ Shader "CASCADE/IslandScenery"
  V Vert(A v){V o;o.positionCS=TransformObjectToHClip(v.positionOS.xyz);o.uv=v.uv;return o;}
  half4 Frag(V i):SV_Target{
  float2 p=(i.uv-_ImageRect.xy)/_ImageRect.zw;
- half3 sky=lerp(_SkyBottom.rgb,_SkyTop.rgb,smoothstep(0,1,i.uv.y));
  half3 island=SAMPLE_TEXTURE2D(_BaseMap,sampler_BaseMap,saturate(p)).rgb;
- float side=smoothstep(0,.10,p.x)*smoothstep(0,.10,1-p.x);
- float top=1-smoothstep(.86,1,p.y);
- float inside=step(0,p.x)*step(p.x,1)*step(0,p.y)*step(p.y,1);
- return half4(lerp(sky,island,inside*side*top),1);
+ return half4(island,1);
  }
  ENDHLSL
  }

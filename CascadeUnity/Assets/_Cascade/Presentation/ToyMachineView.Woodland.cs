@@ -114,7 +114,7 @@ namespace Cascade.Presentation
         }
         void OnDestroy()
         {
-            if(continuousRopeMaterial!=null)Destroy(continuousRopeMaterial);if(railGrain!=null)Destroy(railGrain);if(woodMaterial!=null)Destroy(woodMaterial);if(ropeMaterial!=null)Destroy(ropeMaterial);
+            if(continuousRopeMaterial!=null)Destroy(continuousRopeMaterial);if(woodMaterial!=null)Destroy(woodMaterial);if(ropeMaterial!=null)Destroy(ropeMaterial);
             DisposePieceMaterials();
             foreach(var mesh in woodMeshes)if(mesh!=null)Destroy(mesh);
         }

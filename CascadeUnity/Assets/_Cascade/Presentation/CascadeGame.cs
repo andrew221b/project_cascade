@@ -266,13 +266,16 @@ namespace Cascade.Presentation
             if(glyphMaterial==null){
                 glyphMaterial=new Material(art.titleFont.material){name="Raised ink on ivory"};
                 glyphMaterial.EnableKeyword("UNDERLAY_ON");
-                glyphMaterial.SetColor("_UnderlayColor",new Color(.29f,.19f,.10f,.62f));
-                glyphMaterial.SetFloat("_UnderlayOffsetX",.08f);
-                glyphMaterial.SetFloat("_UnderlayOffsetY",-.13f);
-                glyphMaterial.SetFloat("_UnderlaySoftness",.09f);
+                glyphMaterial.SetColor("_UnderlayColor",new Color(.30f,.22f,.13f,.95f));
+                glyphMaterial.SetFloat("_UnderlayOffsetX",.27f);
+                glyphMaterial.SetFloat("_UnderlayOffsetY",-.35f);
+                glyphMaterial.SetFloat("_UnderlayDilate",.20f);
+                glyphMaterial.SetFloat("_UnderlaySoftness",0);
             }
             label.fontSharedMaterial=glyphMaterial;
             label.fontStyle=FontStyles.Bold;
+            label.alignment=TextAlignmentOptions.Midline;
+            label.margin=new Vector4(0,8,0,0);
             label.enableVertexGradient=true;
             label.colorGradient=new VertexGradient(new Color(.29f,.39f,.36f),new Color(.29f,.39f,.36f),new Color(.10f,.22f,.23f),new Color(.10f,.22f,.23f));
         }
@@ -300,9 +303,9 @@ namespace Cascade.Presentation
             floorArea = Rect("Floors", safeRoot, new Vector2(.045f, .37f), new Vector2(.955f, .78f));
             receiver = Rect("Receiver", safeRoot, new Vector2(.5f, .245f), new Vector2(.5f, .365f)); receiver.sizeDelta = new Vector2(350, 0); Background(receiver, Color.clear, true);
             receiver.gameObject.AddComponent<UnityEngine.UI.Button>().onClick.AddListener(ToggleTargetZoom);
-            receiverLabel = Text("ReceiverLabel", receiver, new Vector2(.02f, .94f), new Vector2(.98f, 1.22f), 16, "Make this row"); receiverLabel.font = art.titleFont;
+            receiverLabel = Text("ReceiverLabel", receiver, new Vector2(0, .94f), new Vector2(1, 1.22f), 16, "Make this row"); receiverLabel.font = art.titleFont;receiverLabel.alignment=TextAlignmentOptions.Center;
             wrongRowLabel = Text("Your row", receiver, new Vector2(.02f,-.69f),new Vector2(.98f,-.46f),15,"Your row"); wrongRowLabel.gameObject.SetActive(false);
-            targetRow = Rect("TargetRow", receiver, new Vector2(.07f, .20f), new Vector2(.93f, .70f));
+            targetRow = Rect("TargetRow", receiver, new Vector2(.065f, .20f), new Vector2(.935f, .70f));
             precise = Rect("PreciseInput", safeRoot, new Vector2(.05f, .09f), new Vector2(.95f, .225f));
             DirectionButton("Focus previous", precise, new Vector2(0, 56f/104), new Vector2(.2f, 1), false, () => MoveFocus(-1));
             focusLabel = Text("Focus", precise, new Vector2(.22f, 56f/104), new Vector2(.78f, 1), 20, "Choose a symbol");

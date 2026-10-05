@@ -96,10 +96,9 @@ namespace Cascade.Presentation
             float cx=cameraView.transform.position.x,cy=cameraView.transform.position.y;
             var texture=landscapeMaterial.mainTexture;float ratio=(float)texture.width/texture.height;
             landscape.position=new Vector3(cx,cy,3.2f);landscape.localScale=new Vector3(w,h,1);
-            // One continuous sky surface. Preserve full artwork; softly extend its edges instead of stitching strips.
-            float imageHeight=workshop?Mathf.Max(1,w/ratio/h):zone==0&&panorama!=null?Mathf.Min(1,w/ratio/h):1;
-            float imageWidth=workshop?Mathf.Max(1,h*ratio/w):zone==0&&panorama!=null?1:Mathf.Min(1,h*ratio/w);
-            landscapeMaterial.SetVector("_ImageRect",new Vector4((1-imageWidth)*.5f,0,imageWidth,imageHeight));
+            // Fill every aspect ratio with the artwork instead of fading its sides.
+            float imageHeight=Mathf.Max(1,w/ratio/h),imageWidth=Mathf.Max(1,h*ratio/w);
+            landscapeMaterial.SetVector("_ImageRect",new Vector4((1-imageWidth)*.5f,(1-imageHeight)*.5f,imageWidth,imageHeight));
             ActiveWeatherCount=0;
             for(int i=0;i<weather.Length;i++) {
                 var drop=weather[i];bool snow=zone==6;bool rain=zone==1||zone==4;bool pollen=zone==0||zone==2||zone==5;

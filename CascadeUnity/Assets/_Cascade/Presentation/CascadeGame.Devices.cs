@@ -15,6 +15,8 @@ namespace Cascade.Presentation
             public Image icon;
             public TextMeshProUGUI caption;
             public ContactDefinition contact;
+            public float slotX,dockX,angle,angleVelocity;
+            public DemoLine leftStrap,rightStrap;
         }
         readonly List<RectTransform> deviceOverlays=new List<RectTransform>();
         readonly List<DeviceDock> deviceDocks = new List<DeviceDock>();
@@ -40,10 +42,12 @@ namespace Cascade.Presentation
                 // A wooden socket and its suspended tool share a real attachment point.
                 var socket=Rect("Device socket",card,new Vector2(slotX-.034f,.295f),new Vector2(slotX+.034f,.39f));
                 Background(socket,new Color(.31f,.22f,.15f),false).sprite=art.panel;
+                DemoLine leftStrap=null,rightStrap=null;
                 for(int side=-1;side<=1;side+=2) {
                     var strap=Rect("Device leather strap",card,Vector2.zero,Vector2.zero);
-                    Background(strap,new Color(.40f,.27f,.15f),false);
-                    strap.gameObject.AddComponent<DemoLine>().Initialize(card,new Vector2(slotX+side*.018f,.32f),new Vector2(x+side*.055f,.23f),2.5f);
+                    Background(strap,new Color(.55f,.36f,.18f),false);
+                    var line=strap.gameObject.AddComponent<DemoLine>();line.Initialize(card,new Vector2(slotX+side*.018f,.32f),new Vector2(x+side*.055f,.23f),2.2f);
+                    if(side<0)leftStrap=line;else rightStrap=line;
                 }
                 var button=Button(UiCopy.Raw("Device "+DeviceAsset(item.kind)),card,new Vector2(x,.07f),new Vector2(x,.07f),()=>OpenDevice(item.kind));
                 var root=(RectTransform)button.transform;root.sizeDelta=new Vector2(88,55);
@@ -55,7 +59,7 @@ namespace Cascade.Presentation
                 face.SetShape(art.SymbolMesh(item.contact.RequiredSymbol),art.SymbolMaterial(item.contact.RequiredSymbol).GetColor("_BaseColor"));face.raycastTarget=false;
                 if(item.contact.RequiredSymbol.Kind==SymbolKind.Glyph)Text("Required letter",pocket,Vector2.zero,Vector2.one,18,UiCopy.Raw(FaceText(item.contact.RequiredSymbol)));
                 var caption=Text("Device state",root,new Vector2(-.08f,-.03f),new Vector2(1.08f,.24f),12,"");caption.font=art.titleFont;
-                deviceDocks.Add(new DeviceDock{floor=floorIndex,kind=item.kind,root=root,icon=icon,caption=caption,contact=item.contact});
+                deviceDocks.Add(new DeviceDock{floor=floorIndex,kind=item.kind,root=root,icon=icon,caption=caption,contact=item.contact,slotX=slotX,dockX=x,leftStrap=leftStrap,rightStrap=rightStrap});
             }
             UiCopy landing=floor.EntryTransform==EntryTransform.MirrorNext?"Reverse on landing":floor.EntryTransform==EntryTransform.ShiftLeftOne?"Slide left on landing":"Slide right on landing";
             if(floor.EntryTransform!=EntryTransform.None||floor.LinkedPair.HasValue) {

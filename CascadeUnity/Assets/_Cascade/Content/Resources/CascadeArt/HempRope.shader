@@ -14,11 +14,12 @@ Shader "Cascade/HempRope" {
  fixed4 frag(v2f i):SV_Target {
  float across=i.uv.y*2-1;
  float cylinder=sqrt(saturate(1-across*across));
- float phase=i.uv.x*76+across*3.2;
- float detail=1-saturate(fwidth(phase)*.6);
- float braid=.5+.5*cos(phase);
- float light=.48+.44*cylinder-.12*across+detail*(braid-.5)*.22;
- float edge=1-smoothstep(.78,1,abs(across));
+ float phase=i.uv.x*110+across*2.7;
+ float aa=max(fwidth(phase),.001);
+ float braid=.5+.5*cos(phase)*saturate(1.2-aa*.34);
+ float strand=.5+.5*cos(across*8.4-phase*.33);
+ float light=.53+.37*cylinder-.08*across+(braid-.5)*.16+(strand-.5)*.08;
+ float edge=1-smoothstep(.52,1,abs(across));
  return fixed4(_Color.rgb*light,i.color.a*edge);
  }
  ENDCG }

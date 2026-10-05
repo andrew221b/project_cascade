@@ -19,6 +19,15 @@ namespace Cascade.Editor.Playable
   public static void FinishPass(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(FinishShots());}
   public static void MenuHeaderCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(HeaderShots());}
   public static void LagoonCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(LagoonShot());}
+  public static void SurfaceCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(SurfaceShots());}
+  static IEnumerator SurfaceShots()
+  {
+   var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);g.Feedback.SoundEnabled=g.Feedback.MusicEnabled=false;g.ReducedMotion=false;g.SetUiLocale("en");
+   if(g.Catalog.TryGetLocalizedBinding("C38","en",out var words))g.LoadLevel(words.Definition,"en");else g.LoadNode("C38");g.ShowGame();yield return Shot("surface-letters");
+   g.LoadNode("C81");g.ShowGame();yield return Shot("surface-lagoon");
+   g.LoadNode("C13");g.ShowGame();yield return Shot("surface-devices");
+   Debug.Log("CASCADE surface check: letters, lagoon and devices captured");
+  }
   public static void VerifyOneSwap()
   {
    var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);g.LoadNode("C13");g.ShowGame();g.SendMessage("OnApplicationFocus",true);g.Interaction.SetSuspended(false);
@@ -79,7 +88,7 @@ namespace Cascade.Editor.Playable
     for(int frame=0;frame<32;frame++){
      yield return new WaitForEndOfFrame();camera.Render();RenderTexture.active=rt;pixels.ReadPixels(new Rect(0,0,390,844),0,0);pixels.Apply();
      File.WriteAllBytes(Path.Combine(folder,frame.ToString("00")+".png"),pixels.EncodeToPNG());
-     int points=g.Machine.GetComponentsInChildren<LineRenderer>().First(l=>l.name.Contains("wooden rail")).positionCount;
+     int points=g.Machine.GetComponentsInChildren<LineRenderer>().First(l=>l.name.Contains("braided rope")).positionCount;
      rows.AppendLine(frame+","+g.GetComponent<PuzzleEventPlayer>().CurrentEvent+","+g.Machine.TokenPose(0)+","+g.Machine.LoadedSag+","+points+","+g.Interaction.Attempt.CurrentStateHash);
      if(g.Interaction.Attempt.CurrentStateHash!=committed)throw new InvalidOperationException("Animation changed the committed puzzle state");
      yield return null;
