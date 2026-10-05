@@ -126,12 +126,12 @@ namespace Cascade.Presentation
             for (int i = 0; i < anchors.Count; i++) BuildFloor(anchors[i], model.Attempt.Level.Floors[i], slots.Count);
             Add("Receiver contact", receiver, art.quad, art.shadow, new Vector2(.51f, .38f), new Vector2(1.07f, .96f), .7f, .01f);
             Add("Golden receiver rim", receiver, art.beam, art.gold, new Vector2(.5f, .48f), new Vector2(1, .76f), .35f, .30f);
-            Add("Ivory inset", receiver, art.beam, art.paleGold, new Vector2(.5f, .53f), new Vector2(.93f, .64f), .12f, .18f);
+            Add("Ivory inset", receiver, art.beam, art.cream, new Vector2(.5f, .53f), new Vector2(.93f, .64f), .12f, .18f);
             for (int i = 0; i < targets.Count; i++) {
                 var anchor = targets[i].rectTransform;
-                Add("Target socket", anchor, art.tile, art.gold, new Vector2(.5f, .5f), new Vector2(.83f, .90f), -.06f, .06f);
+                Add("Target socket", anchor, art.tile, TargetSocketMaterial, new Vector2(.5f, .5f), new Vector2(.92f, .94f), -.06f, .08f);
                 var symbol = model.Attempt.Level.TargetSymbolIds[i];
-                targetBodies.Add(Add("Target " + i, anchor, art.SymbolMesh(symbol), PieceMaterial(symbol), new Vector2(.5f, .5f), new Vector2(.66f, .72f), -.12f, .10f));
+                targetBodies.Add(Add("Target " + i, anchor, art.SymbolMesh(symbol), PieceMaterial(symbol), new Vector2(.5f, .5f), new Vector2(.72f, .78f), -.12f, .12f));
             }
             for (int i = 0; i < slots.Count; i++) {
                 var anchor = (RectTransform)slots[i].transform;

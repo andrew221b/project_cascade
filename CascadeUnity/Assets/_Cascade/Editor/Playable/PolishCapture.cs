@@ -20,6 +20,14 @@ namespace Cascade.Editor.Playable
   public static void MenuHeaderCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(HeaderShots());}
   public static void LagoonCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(LagoonShot());}
   public static void MorningMistCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(MorningMistShots());}
+  public static void ReceiverPolishCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(ReceiverPolishShots());}
+  static IEnumerator ReceiverPolishShots()
+  {
+   var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);g.ReducedMotion=true;g.SetUiLocale("en");
+   g.LoadNode("C81");g.ShowGame();yield return Shot("receiver-shapes");
+   if(g.Catalog.TryGetLocalizedBinding("C38","en",out var words))g.LoadLevel(words.Definition,"en");else g.LoadNode("C38");g.ShowGame();yield return Shot("receiver-letters");
+   Debug.Log("CASCADE receiver alignment and palette captured");
+  }
   static IEnumerator MorningMistShots()
   {
    var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);g.ReducedMotion=false;g.SetUiLocale("en");

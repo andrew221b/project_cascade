@@ -7,6 +7,7 @@ namespace Cascade.Presentation
     {
         Material[] candyMaterials;
         Material letterMaterial;
+        Material targetSocketMaterial;
         Texture2D letterGrain;
 
         void InitializePieceMaterials()
@@ -14,13 +15,22 @@ namespace Cascade.Presentation
             candyMaterials = new Material[art.colors.Length];
             for (int i = 0; i < candyMaterials.Length; i++) {
                 var material = new Material(art.colors[i]) { name = "Glazed " + art.colors[i].name };
+                Color.RGBToHSV(material.GetColor("_BaseColor"),out float hue,out float saturation,out float value);
+                material.SetColor("_BaseColor",Color.HSVToRGB(hue,Mathf.Min(1,saturation*1.14f+.02f),Mathf.Min(1,value*1.035f)));
                 material.SetFloat("_Metallic", .035f);
-                material.SetFloat("_Smoothness", .78f);
-                material.SetFloat("_ClearCoatMask", .58f);
+                material.SetFloat("_Smoothness", .81f);
+                material.SetFloat("_ClearCoatMask", .64f);
                 material.SetFloat("_ClearCoatSmoothness", .87f);
                 material.EnableKeyword("_CLEARCOAT");
                 candyMaterials[i] = material;
             }
+            targetSocketMaterial=new Material(art.teal){name="Deep lagoon target socket"};
+            targetSocketMaterial.SetColor("_BaseColor",new Color(.12f,.46f,.50f));
+            targetSocketMaterial.SetFloat("_Metallic",.025f);
+            targetSocketMaterial.SetFloat("_Smoothness",.62f);
+            targetSocketMaterial.SetFloat("_ClearCoatMask",.34f);
+            targetSocketMaterial.SetFloat("_ClearCoatSmoothness",.78f);
+            targetSocketMaterial.EnableKeyword("_CLEARCOAT");
             letterMaterial = new Material(art.cream) { name = "Glazed ivory letter tile" };
             letterMaterial.SetFloat("_Metallic", .015f);
             letterMaterial.SetFloat("_Smoothness", .68f);
@@ -44,11 +54,13 @@ namespace Cascade.Presentation
 
         Material PieceMaterial(SymbolId symbol) => symbol.Kind == SymbolKind.Glyph
             ? letterMaterial : candyMaterials[art.ShapeIndex(symbol)];
+        Material TargetSocketMaterial => targetSocketMaterial;
 
         void DisposePieceMaterials()
         {
             if (candyMaterials != null) foreach (var material in candyMaterials) if (material != null) Destroy(material);
             if (letterMaterial != null) Destroy(letterMaterial);
+            if (targetSocketMaterial != null) Destroy(targetSocketMaterial);
             if (letterGrain != null) Destroy(letterGrain);
         }
     }

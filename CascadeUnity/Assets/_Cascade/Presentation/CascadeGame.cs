@@ -305,7 +305,7 @@ namespace Cascade.Presentation
             receiver.gameObject.AddComponent<UnityEngine.UI.Button>().onClick.AddListener(ToggleTargetZoom);
             receiverLabel = Text("ReceiverLabel", receiver, new Vector2(0, .94f), new Vector2(1, 1.22f), 16, "Make this row"); receiverLabel.font = art.titleFont;receiverLabel.alignment=TextAlignmentOptions.Center;
             wrongRowLabel = Text("Your row", receiver, new Vector2(.02f,-.69f),new Vector2(.98f,-.46f),15,"Your row"); wrongRowLabel.gameObject.SetActive(false);
-            targetRow = Rect("TargetRow", receiver, new Vector2(.065f, .20f), new Vector2(.935f, .70f));
+            targetRow = Rect("TargetRow", receiver, new Vector2(.5f, .20f), new Vector2(.5f, .70f));
             precise = Rect("PreciseInput", safeRoot, new Vector2(.05f, .09f), new Vector2(.95f, .225f));
             DirectionButton("Focus previous", precise, new Vector2(0, 56f/104), new Vector2(.2f, 1), false, () => MoveFocus(-1));
             focusLabel = Text("Focus", precise, new Vector2(.22f, 56f/104), new Vector2(.78f, 1), 20, "Choose a symbol");
@@ -371,7 +371,8 @@ namespace Cascade.Presentation
         void AddSymbolLabels(RectTransform parent, IEnumerable<SymbolId> symbols, int size, List<TextMeshProUGUI> labels)
         {
             var layout = parent.GetComponent<UnityEngine.UI.HorizontalLayoutGroup>() ?? parent.gameObject.AddComponent<UnityEngine.UI.HorizontalLayoutGroup>();
-            layout.spacing = 3; layout.childControlWidth = layout.childControlHeight = true; layout.childForceExpandWidth = layout.childForceExpandHeight = true;
+            layout.spacing = 4; layout.padding = new RectOffset(0,0,0,0); layout.childAlignment = TextAnchor.MiddleCenter;
+            layout.childControlWidth = layout.childControlHeight = true; layout.childForceExpandWidth = layout.childForceExpandHeight = true;
             foreach (var symbol in symbols) {
                 var label = Text("TargetSymbol", parent, Vector2.zero, Vector2.one, size, FaceText(symbol)); label.font = art.titleFont; FinishLetter(label);
                 var sizing = label.gameObject.AddComponent<UnityEngine.UI.LayoutElement>(); sizing.minWidth = sizing.preferredWidth = 0; sizing.flexibleWidth = 1; labels.Add(label);
@@ -422,6 +423,9 @@ namespace Cascade.Presentation
                 float boardWidth = Mathf.Min(safeRoot.rect.width * .91f, Interaction.Attempt.Current.Row.Count * 76 + 24);
                 foreach (var floor in floorViews) floor.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, boardWidth);
                 receiver.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Mathf.Min(safeRoot.rect.width * .9f, Interaction.Attempt.Current.Row.Count * 68 + 40));
+                int targetCount=Mathf.Max(1,targetLabels.Count);
+                float targetWidth=Mathf.Min(receiver.rect.width*.87f,targetCount*64f+(targetCount-1)*4f);
+                targetRow.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,targetWidth);
             }
         }
         static void FixedBand(RectTransform rect, float bottom, float height)
