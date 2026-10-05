@@ -18,6 +18,7 @@ namespace Cascade.Editor.Playable
   public static void Run(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(Capture());}
   public static void FinishPass(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(FinishShots());}
   public static void MenuHeaderCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(HeaderShots());}
+  public static void LagoonCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(LagoonShot());}
   public static void VerifyOneSwap()
   {
    var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);g.LoadNode("C13");g.ShowGame();g.SendMessage("OnApplicationFocus",true);g.Interaction.SetSuspended(false);
@@ -88,6 +89,7 @@ namespace Cascade.Editor.Playable
   }
   static IEnumerator Shot(string name,int width=390,int height=844){yield return new WaitForSecondsRealtime(.18f);yield return PlayableCapture.CaptureSettled("Polish",name+".png",width,height);}
   static IEnumerator HeaderShots(){var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);g.SetUiLocale("en");g.ShowSettings();yield return Shot("finish-settings");Screen(g,GameScreen.Pause);yield return Shot("finish-pause");g.ShowTravelBag();yield return Shot("finish-bag");Debug.Log("CASCADE illustrated menu header captured");}
+  static IEnumerator LagoonShot(){var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);g.SetUiLocale("en");g.LoadNode("C81");g.ShowGame();yield return Shot("finish-lagoon");Debug.Log("CASCADE lagoon ambience captured");}
   static IEnumerator FinishShots()
   {
    var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);g.Feedback.SoundEnabled=g.Feedback.MusicEnabled=false;g.ReducedMotion=false;g.SetUiLocale("en");

@@ -9,7 +9,7 @@ namespace Cascade.Presentation
     {
         readonly List<Material> owned = new List<Material>();
         readonly Transform[] clouds = new Transform[3];
-        Transform landscape, plantsLeft, plantsRight, glider;
+        Transform landscape, plantsLeft, plantsRight, glider, lagoonSkiff;
         Texture2D panorama,workshopTexture;bool workshop;
         readonly MeshRenderer[] weatherRenderers=new MeshRenderer[18];
         Camera cameraView;
@@ -58,6 +58,8 @@ namespace Cascade.Presentation
             var plants=Resources.Load<Texture2D>("CascadeArt/Journey/GardenPlants");
             plantsLeft=Plate("Near leaves left",plants,art.quad,true);plantsRight=Plate("Near leaves right",plants,art.quad,true);
             glider=Plate("Travelling glider",Resources.Load<Texture2D>("CascadeArt/Journey/Glider"),art.quad,true);
+            lagoonSkiff=Plate("Glass Lagoon sky skiff",Resources.Load<Texture2D>("CascadeArt/Woodland/LagoonSkiff"),art.quad,true);
+            if(lagoonSkiff!=null)lagoonSkiff.GetComponent<MeshRenderer>().sharedMaterial.SetColor("_BaseColor",new Color(1,1,1,.84f));
             if(glider!=null)gliderMaterial=glider.GetComponent<MeshRenderer>().sharedMaterial;
             SetZone(0);Paint(0);
         }
@@ -121,6 +123,13 @@ namespace Cascade.Presentation
                 cloud.localScale=new Vector3(cw,cw*.5f,1);
             }
             Plants(plantsLeft,false);Plants(plantsRight,true);
+            if(lagoonSkiff!=null){
+                lagoonSkiff.gameObject.SetActive(zone==4&&!workshop&&gameplayVisible);
+                float width=Mathf.Min(w*.23f,h*.14f);
+                lagoonSkiff.position=new Vector3(cx+w*(.24f+Mathf.Sin(phase*.065f)*.035f),cy-h*.075f+Mathf.Sin(phase*.75f)*.045f,2.7f);
+                lagoonSkiff.localScale=new Vector3(width,width*.9f,1);
+                lagoonSkiff.rotation=Quaternion.Euler(0,0,Mathf.Sin(phase*.48f)*1.2f);
+            }
             if(glider!=null) {
                 float angle=phase*.07f;
                 float band=flightTop-flightBottom;
