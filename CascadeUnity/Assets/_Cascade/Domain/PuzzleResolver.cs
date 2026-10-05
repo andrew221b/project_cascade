@@ -63,6 +63,10 @@ namespace Cascade.Domain
         static int[] AffectedEdges(FloorDefinition floor, int edge) => floor.LinkedPair.HasValue && floor.LinkedPair.Value.Contains(edge)
             ? new[] { floor.LinkedPair.Value.FirstEdge, floor.LinkedPair.Value.SecondEdge } : new[] { edge };
         static int SwapCost(FloorDefinition floor, IEnumerable<int> edges) => 1 + edges.Count(e => floor.FragileEdges.Contains(e));
+        public bool IsEdgeOpen(PuzzleState state, int edge) => state != null && state.Status == PuzzleStatus.Playing
+            && state.ActiveFloor >= 0 && state.ActiveFloor < Level.Floors.Count
+            && edge >= 0 && edge < Level.Floors[state.ActiveFloor].OpenEdges.Count
+            && IsEdgeOpen(Level.Floors[state.ActiveFloor], state, edge);
         static bool IsEdgeOpen(FloorDefinition floor, PuzzleState state, int edge) =>
             !(floor.OneUseBridgeEdge == edge && state.BridgeUsed) && (floor.OpenEdges[edge]
             || (floor.Key != null && state.KeyUsed && floor.Key.EdgeToOpen == edge));

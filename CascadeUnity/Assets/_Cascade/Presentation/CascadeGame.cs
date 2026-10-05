@@ -20,13 +20,14 @@ namespace Cascade.Presentation
         [SerializeField] TMP_FontAsset font;
         public PuzzleInteraction Interaction { get; private set; }
         public ContentCatalog Catalog { get; private set; }
-        public bool ForcePreciseInput { get; set; }
+        bool forcePreciseInput;
+        public bool ForcePreciseInput { get => forcePreciseInput; set { forcePreciseInput = value; RenderControls(); } }
         public bool PreciseInputActive { get; private set; }
         public IReadOnlyList<TokenSlot> SlotViews => slots;
         public RectTransform TargetRow => targetRow;
         RectTransform safeRoot, floorArea, receiver, tokenRow, targetRow, precise, targetZoom;
         TextMeshProUGUI levelLabel, status, focusLabel, receiverLabel;
-        UnityEngine.UI.Button undo, retry, drop, hint, applyHint, pause, previous, next, swapLeft, swapRight;
+        UnityEngine.UI.Button undo, retry, drop, hint, pause, previous, next, swapLeft, swapRight;
         readonly List<RectTransform> floorViews = new List<RectTransform>();
         readonly List<TextMeshProUGUI> floorLabels = new List<TextMeshProUGUI>();
         readonly List<TextMeshProUGUI> deviceLabels = new List<TextMeshProUGUI>();
@@ -81,7 +82,7 @@ namespace Cascade.Presentation
             }
             if (hintTask == null || !hintTask.IsCompleted || !Interaction.CanPlay) return;
             var completed = hintTask; hintTask = null; hintCancellation?.Dispose(); hintCancellation = null;
-            if (completed.IsFaulted) { status.text = "Hint unavailable. You can keep playing."; return; }
+            if (completed.IsFaulted) { var ignored = completed.Exception; status.text = "Hint unavailable. You can keep playing."; RenderControls(); return; }
             if (completed.IsCanceled) return;
             var offer = completed.Result;
             if (!Interaction.Attempt.RevealHint(offer)) return;
@@ -89,7 +90,7 @@ namespace Cascade.Presentation
             status.text = offer.Result.Status == HintStatus.Step ? "Hint: " + CommandText(offer.Result.Command.Value)
                 : offer.Result.Status == HintStatus.DeadEnd ? "No route from here. Undo lets you try another order."
                 : offer.Result.Status == HintStatus.Unknown ? "Search limit reached. You can keep playing." : "Target delivered.";
-            applyHint.gameObject.SetActive(offer.Result.Status == HintStatus.Step); RenderControls();
+            RenderControls();
         }
         public void LoadNode(string campaignNode)
         {
@@ -102,6 +103,7 @@ namespace Cascade.Presentation
             Interaction = new PuzzleInteraction(new AttemptService(level, locale)); Interaction.Committed += OnCommitted;
             Interaction.SetSuspended(applicationPaused || !applicationFocused);
             userPaused = zoomOpen = false; targetZoom.gameObject.SetActive(false);
+            node = level.CampaignNodeId; levelLabel.text = "CASCADE  /  " + node;
             RebuildLevelViews(level); RenderState();
         }
         void OnCommitted(TransitionResult result)
@@ -140,7 +142,14 @@ namespace Cascade.Presentation
             if (!preview.IsLegal) { status.text = preview.Rejection == RejectionReason.NoOp ? "No change · free to cancel" : "Locked edge · free to cancel"; return; }
             var prediction = Interaction.Attempt.Predict(command);
             string exit = prediction.State.ActiveFloor != Interaction.Attempt.Current.ActiveFloor || prediction.State.Status != PuzzleStatus.Playing ? " · row drops" : "";
-            status.text = "Durability −" + preview.DurabilityCost + exit;
+            var effects = new List<string>();
+            foreach (var e in prediction.Events.Where(e => e.Floor == Interaction.Attempt.Current.ActiveFloor)) {
+                if (e.Kind == PuzzleEventKind.Repaired) effects.Add("repair +" + e.Value);
+                if (e.Kind == PuzzleEventKind.BombExploded) effects.Add("bomb −" + e.Value);
+                if (e.Kind == PuzzleEventKind.BombDefused) effects.Add("defuse");
+                if (e.Kind == PuzzleEventKind.KeyOpened) effects.Add("unlock");
+            }
+            status.text = "Durability −" + preview.DurabilityCost + (effects.Count == 0 ? "" : " · " + string.Join(" · ", effects)) + exit;
             RenderFocus(); foreach (int edge in preview.AffectedEdges) { slotImages[edge].color = Selected; slotImages[edge + 1].color = Selected; }
         }
         public void Undo()
@@ -163,7 +172,7 @@ namespace Cascade.Presentation
         {
             hintCancellation?.Cancel(); hintCancellation?.Dispose(); hintCancellation = null;
             if (hintTask != null) hintTask.ContinueWith(t => { var ignored = t.Exception; }, TaskContinuationOptions.OnlyOnFaulted);
-            hintTask = null; offeredHint = null; if (applyHint != null) applyHint.gameObject.SetActive(false);
+            hintTask = null; offeredHint = null;
         }
         void MoveFocus(int direction)
         {
@@ -216,14 +225,17 @@ namespace Cascade.Presentation
             swapRight = Button("Swap right", precise, new Vector2(.52f, 0), new Vector2(1, .45f), () => ReportInput(Interaction.SwapFocused(1)));
             var actions = Rect("Actions", safeRoot, new Vector2(.05f, .012f), new Vector2(.95f, .078f));
             undo = Button("Undo", actions, Vector2.zero, new Vector2(.30f, 1), Undo);
-            hint = Button("Hint", actions, new Vector2(.35f, 0), new Vector2(.65f, 1), RequestHint);
+            hint = Button("Hint", actions, new Vector2(.35f, 0), new Vector2(.65f, 1), () => {
+                if (offeredHint?.Result.Status == HintStatus.Step && Interaction.Attempt.IsCurrent(offeredHint))
+                    ReportInput(Interaction.ApplyHint(offeredHint));
+                else RequestHint();
+            });
             drop = Button("Drop", actions, new Vector2(.70f, 0), Vector2.one, () => ReportInput(Interaction.Execute(PuzzleCommand.Drop)));
             retry = Button("Retry", safeRoot, new Vector2(.05f, .09f), new Vector2(.43f, .155f), Retry);
-            applyHint = Button("Play hint", safeRoot, new Vector2(.55f, .16f), new Vector2(.95f, .22f), () => ReportInput(Interaction.ApplyHint(offeredHint)));
             targetZoom = Rect("TargetZoom", safeRoot, Vector2.zero, Vector2.one); Background(targetZoom, Paper, true);
             Text("ZoomTitle", targetZoom, new Vector2(.05f, .7f), new Vector2(.95f, .8f), 22, "Deliver this exact order");
             Button("Close target", targetZoom, new Vector2(.2f, .22f), new Vector2(.8f, .30f), ToggleTargetZoom);
-            targetZoom.gameObject.SetActive(false); applyHint.gameObject.SetActive(false);
+            targetZoom.gameObject.SetActive(false);
         }
         void ChangeNode(int direction)
         {
@@ -286,19 +298,23 @@ namespace Cascade.Presentation
             for (int i = 0; i < tokenLabels.Count; i++) tokenLabels[i].text = DisplaySymbol(state.Row[i]);
             receiverLabel.text = state.Status == PuzzleStatus.Won ? "DELIVERED · " + attempt.RouteLength + " actions" : "EXACT RECEIVER · tap to enlarge";
             status.text = userPaused ? "Paused. Devices wait for your next command." : state.Status == PuzzleStatus.Won ? "Exact order delivered." : state.Status == PuzzleStatus.Lost
-                ? "The delivered row differs from the target. Retry or Undo." : "Swap neighbours. Match the receiver below.";
+                ? "Delivered " + state.Row.Where((symbol, i) => symbol == level.TargetSymbolIds[i]).Count() + " of " + state.Row.Count + " in place. Undo or retry."
+                : state.Row.SequenceEqual(level.TargetSymbolIds)
+                    ? state.ActiveFloor == level.Floors.Count - 1 ? "Order ready. Drop to deliver it." : "Order ready here. Check the lower platforms before dropping."
+                    : "Swap neighbours. Match the receiver below.";
             if (state.Status == PuzzleStatus.Lost) {
                 receiverLabel.text = "DELIVERED ROW · target remains above";
                 tokenRow.gameObject.SetActive(true); tokenRow.anchorMin = new Vector2(.02f, -.36f); tokenRow.anchorMax = new Vector2(.98f, .06f);
             }
             RenderFocus(); RenderControls();
         }
-        static string DescribeFloor(FloorDefinition floor, PuzzleState state)
+        string DescribeFloor(FloorDefinition floor, PuzzleState state)
         {
             var parts = new List<string>();
             if (floor.EntryTransform != EntryTransform.None) parts.Add("Entry: " + floor.EntryTransform);
-            parts.Add("Edges: " + string.Join(" ", floor.OpenEdges.Select((open, i) => (i + 1) + (open || (state?.KeyUsed == true && floor.Key?.EdgeToOpen == i) ? " open" : " locked")
-                + (floor.FragileEdges.Contains(i) ? " −2" : ""))));
+            var closed = Enumerable.Range(0, floor.OpenEdges.Count).Where(i => state == null ? !floor.OpenEdges[i] : !Interaction.Attempt.Resolver.IsEdgeOpen(state, i)).ToArray();
+            parts.Add(closed.Length == 0 ? "All edges open" : "Locked " + string.Join(", ", closed.Select(i => (i + 1).ToString())));
+            if (floor.FragileEdges.Count != 0) parts.Add("Fragile " + string.Join(", ", floor.FragileEdges.Select(i => (i + 1).ToString())));
             if (floor.LinkedPair.HasValue) parts.Add("Linked " + (floor.LinkedPair.Value.FirstEdge + 1) + " + " + (floor.LinkedPair.Value.SecondEdge + 1));
             if (floor.Bomb != null) parts.Add("Bomb " + (state == null ? floor.Bomb.Ticks.ToString() : state.BombPhase == BombPhase.Armed ? state.BombTicks.ToString() : state.BombPhase.ToString()) + " / slot " + (floor.Bomb.Slot + 1) + DisplaySymbol(floor.Bomb.RequiredSymbol));
             if (floor.Key != null) parts.Add("Key slot " + (floor.Key.Slot + 1) + DisplaySymbol(floor.Key.RequiredSymbol) + " → edge " + (floor.Key.EdgeToOpen + 1));
@@ -315,6 +331,15 @@ namespace Cascade.Presentation
             focusLabel.text = selected.HasValue ? "Slot " + (selected.Value + 1) + "  " + DisplaySymbol(Interaction.Attempt.Current.Row[selected.Value]) : "Choose a symbol";
             swapLeft.interactable = Interaction.CanPlay && selected.HasValue && selected > 0;
             swapRight.interactable = Interaction.CanPlay && selected.HasValue && selected < slots.Count - 1;
+            PrecisionLabel(swapLeft, "Left", selected.HasValue ? selected.Value - 1 : -1);
+            PrecisionLabel(swapRight, "Right", selected ?? -1);
+        }
+        void PrecisionLabel(UnityEngine.UI.Button button, string direction, int edge)
+        {
+            var label = button.GetComponentInChildren<TextMeshProUGUI>();
+            if (!Interaction.SelectedSlot.HasValue || edge < 0 || edge >= slots.Count - 1) { label.text = direction; return; }
+            var preview = Interaction.Attempt.Resolver.Preview(Interaction.Attempt.Current, PuzzleCommand.Swap(edge));
+            label.text = direction + (preview.IsLegal ? " −" + preview.DurabilityCost : preview.Rejection == RejectionReason.NoOp ? " · same" : " · locked");
         }
         void RenderControls()
         {
@@ -322,7 +347,10 @@ namespace Cascade.Presentation
             undo.interactable = Interaction.CanControl && Interaction.Attempt.CanUndo;
             retry.interactable = Interaction.CanControl; retry.gameObject.SetActive(Interaction.Attempt.Current.Status != PuzzleStatus.Playing);
             drop.interactable = Interaction.CanPlay; hint.interactable = Interaction.CanPlay && hintTask == null;
-            applyHint.interactable = Interaction.CanPlay && offeredHint != null && Interaction.Attempt.IsCurrent(offeredHint);
+            drop.GetComponentInChildren<TextMeshProUGUI>().text = Interaction.Attempt.Current.Status == PuzzleStatus.Playing
+                && Interaction.Attempt.Current.ActiveFloor == Interaction.Attempt.Level.Floors.Count - 1
+                && Interaction.Attempt.Current.Row.SequenceEqual(Interaction.Attempt.Level.TargetSymbolIds) ? "Deliver" : "Drop";
+            hint.GetComponentInChildren<TextMeshProUGUI>().text = offeredHint?.Result.Status == HintStatus.Step ? "Use hint" : "Hint";
             pause.GetComponentInChildren<TextMeshProUGUI>().text = userPaused ? "Resume" : "Pause";
             previous.interactable = next.interactable = Interaction.CanControl;
             PreciseInputActive = ForcePreciseInput || PuzzleInteraction.NeedsPreciseInput(slots.Count, safeRoot.rect.width);

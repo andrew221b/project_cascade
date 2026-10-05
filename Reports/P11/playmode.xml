@@ -1,51 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<test-run id="2" testcasecount="5" result="Passed" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-04 22:34:26Z" end-time="2026-10-04 22:34:32Z" duration="6.072478">
-  <test-suite type="TestSuite" id="1013" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-04 22:34:26Z" end-time="2026-10-04 22:34:32Z" duration="6.072478" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+<test-run id="2" testcasecount="12" result="Passed" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-05 04:25:38Z" end-time="2026-10-05 04:25:59Z" duration="21.1019218">
+  <test-suite type="TestSuite" id="1020" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-05 04:25:38Z" end-time="2026-10-05 04:25:59Z" duration="21.101922" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
     <properties>
       <property name="platform" value="PlayMode" />
     </properties>
-    <test-suite type="Assembly" id="1007" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-04 22:34:26Z" end-time="2026-10-04 22:34:32Z" duration="6.015562" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <test-suite type="Assembly" id="1014" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-05 04:25:38Z" end-time="2026-10-05 04:25:59Z" duration="21.089954" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
       <properties>
         <property name="_PID" value="84036" />
         <property name="_APPDOMAIN" value="Unity Child Domain" />
         <property name="platform" value="PlayMode" />
         <property name="EditorOnly" value="False" />
       </properties>
-      <test-suite type="TestSuite" id="1008" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-04 22:34:26Z" end-time="2026-10-04 22:34:32Z" duration="6.014213" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <test-suite type="TestSuite" id="1015" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-05 04:25:38Z" end-time="2026-10-05 04:25:59Z" duration="21.087520" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
         <properties />
-        <test-suite type="TestSuite" id="1009" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-04 22:34:26Z" end-time="2026-10-04 22:34:32Z" duration="5.987052" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <test-suite type="TestSuite" id="1016" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-05 04:25:38Z" end-time="2026-10-05 04:25:59Z" duration="21.086270" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
           <properties />
-          <test-suite type="TestFixture" id="1001" name="PlayableTests" fullname="Cascade.Tests.PlayableTests" classname="Cascade.Tests.PlayableTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-04 22:34:26Z" end-time="2026-10-04 22:34:32Z" duration="5.985555" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <test-suite type="TestFixture" id="1001" name="PlayableTests" fullname="Cascade.Tests.PlayableTests" classname="Cascade.Tests.PlayableTests" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-05 04:25:38Z" end-time="2026-10-05 04:25:59Z" duration="21.084965" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
             <properties />
-            <test-case id="1005" name="EightMixedSymbolsHaveSeparateBoundsAndStableFullTarget" fullname="Cascade.Tests.PlayableTests.EightMixedSymbolsHaveSeparateBoundsAndStableFullTarget" methodname="EightMixedSymbolsHaveSeparateBoundsAndStableFullTarget" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1261715143" result="Passed" start-time="2026-10-04 22:34:26Z" end-time="2026-10-04 22:34:28Z" duration="1.213891" asserts="0">
+            <test-case id="1013" name="AllFortyLevelsCanBeDeliveredThroughActualMouseAndButtons" fullname="Cascade.Tests.PlayableTests.AllFortyLevelsCanBeDeliveredThroughActualMouseAndButtons" methodname="AllFortyLevelsCanBeDeliveredThroughActualMouseAndButtons" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="753986927" result="Passed" start-time="2026-10-05 04:25:38Z" end-time="2026-10-05 04:25:55Z" duration="16.609892" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[CASCADE actual UI acceptance: 40 levels, 92 commands; events: CommandAccepted, RowPermuted, DurabilityResolved, FloorExited, ReceiverEvaluated, FloorEntered, EntryPermuted, BombDefused, BombTicked, BombExploded, BombAbandoned, KeyOpened, Repaired, BridgeConsumed, StampCollected
+]]></output>
+            </test-case>
+            <test-case id="1009" name="EightMixedSymbolsHaveSeparateBoundsAndStableFullTarget" fullname="Cascade.Tests.PlayableTests.EightMixedSymbolsHaveSeparateBoundsAndStableFullTarget" methodname="EightMixedSymbolsHaveSeparateBoundsAndStableFullTarget" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="537294894" result="Passed" start-time="2026-10-05 04:25:55Z" end-time="2026-10-05 04:25:55Z" duration="0.508603" asserts="0">
               <properties>
                 <property name="_JOINTYPE" value="UnityCombinatorial" />
                 <property name="retryIteration" value="0" />
                 <property name="repeatIteration" value="0" />
               </properties>
             </test-case>
-            <test-case id="1006" name="FocusPauseAndDisableCannotRepeatCommittedCommand" fullname="Cascade.Tests.PlayableTests.FocusPauseAndDisableCannotRepeatCommittedCommand" methodname="FocusPauseAndDisableCannotRepeatCommittedCommand" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="91861187" result="Passed" start-time="2026-10-04 22:34:28Z" end-time="2026-10-04 22:34:29Z" duration="1.657928" asserts="0">
+            <test-case id="1010" name="FocusPauseAndDisableCannotRepeatCommittedCommand" fullname="Cascade.Tests.PlayableTests.FocusPauseAndDisableCannotRepeatCommittedCommand" methodname="FocusPauseAndDisableCannotRepeatCommittedCommand" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="758526669" result="Passed" start-time="2026-10-05 04:25:55Z" end-time="2026-10-05 04:25:56Z" duration="0.543131" asserts="0">
               <properties>
                 <property name="_JOINTYPE" value="UnityCombinatorial" />
                 <property name="retryIteration" value="0" />
                 <property name="repeatIteration" value="0" />
               </properties>
             </test-case>
-            <test-case id="1004" name="LongTouchDragAndCancelledTouchAreFree" fullname="Cascade.Tests.PlayableTests.LongTouchDragAndCancelledTouchAreFree" methodname="LongTouchDragAndCancelledTouchAreFree" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1868192627" result="Passed" start-time="2026-10-04 22:34:29Z" end-time="2026-10-04 22:34:31Z" duration="2.211915" asserts="0">
+            <test-case id="1004" name="LongTouchDragAndCancelledTouchAreFree" fullname="Cascade.Tests.PlayableTests.LongTouchDragAndCancelledTouchAreFree" methodname="LongTouchDragAndCancelledTouchAreFree" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1372004606" result="Passed" start-time="2026-10-05 04:25:56Z" end-time="2026-10-05 04:25:56Z" duration="0.301426" asserts="0">
               <properties>
                 <property name="_JOINTYPE" value="UnityCombinatorial" />
                 <property name="retryIteration" value="0" />
                 <property name="repeatIteration" value="0" />
               </properties>
             </test-case>
-            <test-case id="1002" name="MouseTapTapWinsAndUndoRestores" fullname="Cascade.Tests.PlayableTests.MouseTapTapWinsAndUndoRestores" methodname="MouseTapTapWinsAndUndoRestores" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1345033383" result="Passed" start-time="2026-10-04 22:34:31Z" end-time="2026-10-04 22:34:32Z" duration="0.514920" asserts="0">
+            <test-case id="1002" name="MouseTapTapWinsAndUndoRestores" fullname="Cascade.Tests.PlayableTests.MouseTapTapWinsAndUndoRestores" methodname="MouseTapTapWinsAndUndoRestores" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1123681170" result="Passed" start-time="2026-10-05 04:25:56Z" end-time="2026-10-05 04:25:57Z" duration="0.504013" asserts="0">
               <properties>
                 <property name="_JOINTYPE" value="UnityCombinatorial" />
                 <property name="retryIteration" value="0" />
                 <property name="repeatIteration" value="0" />
               </properties>
             </test-case>
-            <test-case id="1003" name="TouchAdjacentDragWinsWithoutSpawningTokens" fullname="Cascade.Tests.PlayableTests.TouchAdjacentDragWinsWithoutSpawningTokens" methodname="TouchAdjacentDragWinsWithoutSpawningTokens" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1308119792" result="Passed" start-time="2026-10-04 22:34:32Z" end-time="2026-10-04 22:34:32Z" duration="0.288210" asserts="0">
+            <test-case id="1008" name="NewGestureRecoversAfterFocusCancelledOldCapture" fullname="Cascade.Tests.PlayableTests.NewGestureRecoversAfterFocusCancelledOldCapture" methodname="NewGestureRecoversAfterFocusCancelledOldCapture" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="47273860" result="Passed" start-time="2026-10-05 04:25:57Z" end-time="2026-10-05 04:25:57Z" duration="0.301518" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1011" name="PrecisionButtonsAndHintRemainUsableTogether" fullname="Cascade.Tests.PlayableTests.PrecisionButtonsAndHintRemainUsableTogether" methodname="PrecisionButtonsAndHintRemainUsableTogether" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1045997325" result="Passed" start-time="2026-10-05 04:25:57Z" end-time="2026-10-05 04:25:58Z" duration="0.642520" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1007" name="SecondaryMouseButtonCannotReleasePrimaryGesture" fullname="Cascade.Tests.PlayableTests.SecondaryMouseButtonCannotReleasePrimaryGesture" methodname="SecondaryMouseButtonCannotReleasePrimaryGesture" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="131891877" result="Passed" start-time="2026-10-05 04:25:58Z" end-time="2026-10-05 04:25:58Z" duration="0.296546" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1005" name="SecondFingerOnSameSlotCannotStealFirstGesture" fullname="Cascade.Tests.PlayableTests.SecondFingerOnSameSlotCannotStealFirstGesture" methodname="SecondFingerOnSameSlotCannotStealFirstGesture" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="427704166" result="Passed" start-time="2026-10-05 04:25:58Z" end-time="2026-10-05 04:25:58Z" duration="0.300531" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1006" name="SystemCancelledDragOverNeighbourCannotCommit" fullname="Cascade.Tests.PlayableTests.SystemCancelledDragOverNeighbourCannotCommit" methodname="SystemCancelledDragOverNeighbourCannotCommit" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="538925856" result="Passed" start-time="2026-10-05 04:25:58Z" end-time="2026-10-05 04:25:59Z" duration="0.295532" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1003" name="TouchAdjacentDragWinsWithoutSpawningTokens" fullname="Cascade.Tests.PlayableTests.TouchAdjacentDragWinsWithoutSpawningTokens" methodname="TouchAdjacentDragWinsWithoutSpawningTokens" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1516462714" result="Passed" start-time="2026-10-05 04:25:59Z" end-time="2026-10-05 04:25:59Z" duration="0.305353" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1012" name="UsedBridgeIsShownClosedAndUndoRestoresIt" fullname="Cascade.Tests.PlayableTests.UsedBridgeIsShownClosedAndUndoRestoresIt" methodname="UsedBridgeIsShownClosedAndUndoRestoresIt" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1768566319" result="Passed" start-time="2026-10-05 04:25:59Z" end-time="2026-10-05 04:25:59Z" duration="0.466094" asserts="0">
               <properties>
                 <property name="_JOINTYPE" value="UnityCombinatorial" />
                 <property name="retryIteration" value="0" />

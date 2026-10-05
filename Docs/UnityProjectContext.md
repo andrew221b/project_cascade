@@ -2,7 +2,7 @@
 
 <!-- unity-onboarding:generated:start -->
 
-Обновлено: 5 октября 2026, Europe/Sofia. P00–P10 COMPLETE; P11 IN_PROGRESS.
+Обновлено: 5 октября 2026, Europe/Sofia. P00–P11 COMPLETE; P12–P20 NOT_STARTED.
 
 ## Проект и окружение
 
@@ -68,7 +68,7 @@ Impeccable context выполнен один раз; PRODUCT/DESIGN ещё не 
 - .meta создаёт Unity; последняя проверка Assets не нашла missing/orphan.
 - Python reference: 39 тестов OK; existing data audit — 801 assertion,
   40 конфигураций, 117 решаемых языковых вариантов, 111 слов.
-- P11 EditMode 305/305 и PlayMode 5/5 PASS. C# совпал с Python по всем 40/117
+- P11 EditMode 305/305 и PlayMode 12/12 PASS. Все 40 primary пройдены через UI: 92 команды. C# совпал с Python по всем 40/117
   графам, минимумам/путям/метрикам. Виртуальные Mouse/Touchscreen прошли через
   настоящий Input System/EventSystem; физический телефон и player build не проверены.
 - Unity CLI `1.0.0-beta.5` доступен. Команды `projects verify` в этой версии нет;
@@ -86,17 +86,23 @@ Impeccable context выполнен один раз; PRODUCT/DESIGN ещё не 
   шаблона: `Docs/P00_SETUP.md`. Новый Editor, второй MCP или другие SDK не
   устанавливались.
 
-P11 остаётся незавершённым: после успешных тестов и camera MCP gray inspection
-Device Simulator начал повторять NRE в DevicePackage.HandleList line65. Окно
-закрыто; callback сохранялся. Импорт portrait capture helper/RefreshLayout
-запрошен, но completion/последняя compilation ещё не подтверждены.
-Native MCP сообщил, что Mac заблокирован; запрос ручного unlock отправлен автору.
-Продолжить с root probe, Editor Refresh/reload, Console, portrait visual QA.
-Не объявлять Device Simulator error исправленной до свежей проверки.
+P11 завершён после повторной проверки. Mac разблокирован, Refresh завершил
+импорт; C# compiled, свежая Console без ошибок. Device Simulator закрыт,
+поток его NRE после domain reload не повторяется; повторное открытие самого
+Simulator не проверялось. Portrait captures C01/C38/C32 Mixed8/C37 Words
+проверены через официальный MCP. Это технический gray UI, не финальный visual.
+
+Исправлены второй палец на одном slot, отменённый touch над соседом, вторичная
+кнопка мыши при удерживаемом жесте, перекрытие precision controls кнопкой hint,
+устаревшая подпись использованного моста. Explicit Drop/Deliver сохраняет правила.
+POC audit: Docs/POC_REVIEW.md, Tools/audit_concept.py, Reports/P11/concept_audit.json.
+Автор требует будущие уникальные assets CASCADE: ShapeMania только reference
+рисовки/близкой палитры; яркая мультяшная тема, компактные платформы, явный
+приёмник и связная стилизация окружения/эффектов. Сначала завершить POC по плану.
 
 Пока неизвестны: окончательный визуал, glyph coverage, mobile performance,
 реальный device drag и человеческая оценка интереса. Отчёты: Reports/P00–P11.
-Следующий этап после завершения P11 — P12, он ещё не начат.
+Следующий этап — P12, он ещё не начат.
 
 Источники: AGENTS, README, TASKS, P00, C01/C02/C17/C20, реальные Unity
 ProjectSettings/Packages/Assets и журналы выполненных проверок.

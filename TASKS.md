@@ -1,6 +1,6 @@
 # CASCADE — TASKS
 
-P00–P10: COMPLETE. Unity AI/MCP: исправлено. P11: IN_PROGRESS. P12–P20: NOT_STARTED.
+P00–P11: COMPLETE. Unity AI/MCP: работает. P12–P20: NOT_STARTED.
 Python reference проверен отдельно; это не реализация игровых систем Unity.
 
 Автор прямо разрешил выполнять все этапы подряд, отменив остановки между
@@ -19,7 +19,7 @@ P01–P20. После каждого этапа фиксировать резу�
 - [x] P08 — История и подсказки
 - [x] P09 — 40 данных и три языка
 - [x] P10 — Редактор уровней
-- [ ] P11 — Серый playable и ввод
+- [x] P11 — Серый playable и ввод
 - [ ] P12 — Визуальный эталон
 - [ ] P13 — Event player и juice
 - [ ] P14 — Обучение и экраны
@@ -213,21 +213,36 @@ P01–P20. После каждого этапа фиксировать резу�
 - Scene и Data сохранены. Не запускались gameplay PlayMode, mobile/player build
   и человеческий плейтест. Следующий этап P11 начат по разрешению автора.
 
-## P11 — текущая проверка 5 октября 2026
+## P11 — завершено 5 октября 2026
 
-- Gray playable добавлен в отдельную CascadePlayable scene (SampleScene сохранена).
-  Один persistent row, полный стабильный target, видимые этажи, drag/tap-tap,
-  precise focus + соседние кнопки, Drop/Undo/Retry/Hint/Pause/target zoom.
-- Pure input gate исключает второй pointer и скрытую очередь; accepted commit
-  предшествует presentation. Mouse/Touchscreen виртуальные события проходят
-  через реальный Input System/EventSystem/GraphicRaycaster.
-- EditMode 305/305 PASS; PlayMode 5/5 PASS. Включены win/Undo, drag cancel,
-  отдельные bounds Mixed8, focus/pause/disable interruption. Физическое устройство
-  и player build не проверены. Математика не объявлена оценкой удовольствия.
-- Gray экран проверен официальной камерой MCP. Возник отдельный поток ошибок
-  Unity Device Simulator: DevicePackage.HandleList line65. Закрытие окна не
-  сняло callback; импорт сборок/перезагрузка ещё ожидаются.
-- Native MCP сообщил, что Mac заблокирован. Автору отправлен запрос разблокировать
-  вручную; дальнейшая визуальная проверка и native Refresh ждут unlock.
-  Portrait capture helper/RefreshLayout добавлены, но последняя compilation
-  после них ещё не подтверждена. P11 остаётся IN_PROGRESS, P12 не начат.
+- Один persistent row, полный target, видимые этажи, adjacent drag/tap-tap,
+  точный режим, Drop/Deliver, Undo/Retry/Hint/Pause/target zoom.
+- Повторный запуск выявил зависимость виртуального ввода от фокуса Editor.
+  Test fixture изолирует фокус InputSystem и возвращает настройки в teardown;
+  production pause/focus gate сохранён.
+- Два воспроизведённых бага исправлены: второй палец на том же slot больше
+  не перехватывает жест; системная отмена над соседом не делает ход. Также
+  вторичная кнопка мыши не завершает удерживаемый основной жест.
+- Hint не перекрывает precision controls; использованный мост виден закрытым;
+  preview показывает signed эффекты; готовый ряд явно предлагает Deliver.
+- Актуальные Unity EditMode: 305/305 PASS; PlayMode: 12/12 PASS.
+  Все 40 уровней пройдены через настоящий InputSystem/EventSystem/кнопки:
+  92 команды, все 15 domain event kinds, точный receiver, те же row views.
+  Нет missing/orphan .meta; пять JSON побайтно совпадают с Data.
+- Portrait capture через официальный Unity MCP проверен на 390×844 и 320×693:
+  C01, составной C38, Mixed8 C32, трёхэтажный Words C37. Это серые технические
+  свидетельства, не художественная приёмка. Console после прогонов: 0 ошибок.
+- Mac разблокирован; Refresh завершил импорт. Поток Device Simulator NRE
+  после reload не повторяется при закрытом Simulator. Повторное открытие
+  самого встроенного Simulator не проверялось; второй MCP/SDK не добавлялся.
+- По просьбе автора выполнен POC audit: 29/40 задач на 1–2 действия, среднее 2,3;
+  28 полностью вынужденных optimal DAG. Контрфактические проверки устройств
+  сохранены. Выводы и конкретные требования P14/P17/P20: Docs/POC_REVIEW.md.
+- Reports/P11 содержит итоговые XML/JSON/captures; Reports/P11_InputRepro —
+  сохранённое воспроизведение двух исправленных input bugs.
+- Не проверены: физические телефоны, player build, mobile performance,
+  окончательные glyph/visual/motion, человеческое удовольствие. P12–P20
+  сохраняют полный scope и ещё не объявлены выполненными.
+- Визуальные уточнения автора сохранены: уникальные CASCADE assets, яркая
+  мультяшная стилизация, близкие ShapeMania рисовка/палитра, компактные
+  платформы, явный приёмник, фон/ambient. Следующий этап по плану — P12.

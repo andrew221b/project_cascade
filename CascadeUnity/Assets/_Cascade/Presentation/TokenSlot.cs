@@ -1,4 +1,6 @@
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 
 namespace Cascade.Presentation
 {
@@ -7,27 +9,44 @@ namespace Cascade.Presentation
         public CascadeGame Game { get; set; }
         public int Slot { get; set; }
         bool accepted, dragged, released;
+        int capturedPointer;
         public void OnPointerDown(PointerEventData eventData)
         {
+            if (eventData.button != PointerEventData.InputButton.Left) return;
+            if (accepted && !released && Game.Interaction.OwnsPointer(capturedPointer)) return;
             accepted = Game.Interaction.PointerDown(eventData.pointerId, Slot); dragged = released = false;
-            if (accepted) Game.PreviewSlot(Slot);
+            if (accepted) { capturedPointer = eventData.pointerId; Game.PreviewSlot(Slot); }
         }
-        public void OnBeginDrag(PointerEventData eventData) { if (accepted) dragged = true; }
+        public void OnBeginDrag(PointerEventData eventData) { if (Owns(eventData)) dragged = true; }
         public void OnDrag(PointerEventData eventData)
         {
-            if (!accepted) return;
+            if (!Owns(eventData)) return;
             var target = eventData.pointerCurrentRaycast.gameObject?.GetComponentInParent<TokenSlot>();
             Game.PreviewDrag(Slot, target != null && target.Game == Game ? target.Slot : -1);
         }
         void Release(PointerEventData eventData)
         {
-            if (!accepted || released) return; released = true;
+            if (!Owns(eventData)) return; released = true;
+            if (WasCancelled(eventData)) { Game.Interaction.CancelPointer(); Game.ReportInput(null); return; }
             var target = eventData.pointerCurrentRaycast.gameObject?.GetComponentInParent<TokenSlot>();
             int destination = target != null && target.Game == Game ? target.Slot : -1;
             Game.ReportInput(Game.Interaction.PointerUp(eventData.pointerId, destination, dragged));
         }
         public void OnPointerUp(PointerEventData eventData) => Release(eventData);
         public void OnEndDrag(PointerEventData eventData) => Release(eventData);
-        void OnDisable() { if (accepted && !released) Game?.Interaction?.CancelPointer(); accepted = false; }
+        bool Owns(PointerEventData data) => accepted && !released && data.pointerId == capturedPointer
+            && data.button == PointerEventData.InputButton.Left && Game.Interaction.OwnsPointer(capturedPointer);
+        static bool WasCancelled(PointerEventData data)
+        {
+            if (!(data is ExtendedPointerEventData extended) || !(extended.device is Touchscreen screen)) return false;
+            foreach (var touch in screen.touches)
+                if (touch.touchId.ReadValue() == extended.touchId && touch.phase.ReadValue() == TouchPhase.Canceled) return true;
+            return false;
+        }
+        void OnDisable()
+        {
+            if (accepted && !released && Game?.Interaction?.OwnsPointer(capturedPointer) == true) Game.Interaction.CancelPointer();
+            accepted = false;
+        }
     }
 }

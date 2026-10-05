@@ -38,6 +38,7 @@ namespace Cascade.Application
             return TapSlot(releaseSlot);
         }
         public void CancelPointer() { pointer = null; }
+        public bool OwnsPointer(int pointerId) => pointer == pointerId;
         public TransitionResult TapSlot(int slot)
         {
             if (!CanPlay || pointer.HasValue || !ValidSlot(slot)) return null;
