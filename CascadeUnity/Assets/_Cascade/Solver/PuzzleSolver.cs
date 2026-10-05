@@ -13,6 +13,7 @@ namespace Cascade.Solver
         static IEnumerable<PuzzleCommand> Commands(PuzzleState state)
         {
             for (int edge = 0; edge < state.Row.Count - 1; edge++) yield return PuzzleCommand.Swap(edge);
+            if(state.ReachCharges>0)for(int first=0;first<state.Row.Count-2;first++)for(int span=2;span<=3 && first+span<state.Row.Count;span++)yield return PuzzleCommand.Reach(first,first+span);
             yield return PuzzleCommand.Drop;
         }
         static SearchResult Unknown(int count, string reason) => new SearchResult(SearchStatus.Unknown, null, Array.Empty<PuzzleCommand>(), count, reason);

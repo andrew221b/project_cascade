@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Cascade.Presentation
 {
-    public enum GameScreen { Home, Playing, Pause, Win, Fail, Settings, Devices, Lessons, Dialogue, WordLanguage, SaveRecovery, TravelBag, Journal, Collection, Workshop, Requests, Records, Contracts, Parcel, JourneyEnd }
+    public enum GameScreen { Home, Playing, Pause, Win, Fail, Settings, Devices, Lessons, Dialogue, WordLanguage, SaveRecovery, TravelBag, Journal, Collection, Workshop, Requests, Records, Contracts, Parcel, JourneyEnd, ReachChallenges }
     public sealed partial class CascadeGame
     {
         public GameScreen CurrentScreen { get; private set; } = GameScreen.Playing;
@@ -23,7 +23,7 @@ namespace Cascade.Presentation
         public bool HasDeadEndWarning => knownDeadEnd;
         public bool IsTutorialHandVisible => tutorialHand!=null&&tutorialHand.gameObject.activeInHierarchy;
         RectTransform menuRoot, resultRoot, coachRoot;
-        Image tutorialHand, resultFriend;
+        Image tutorialHand, resultFriend, reachBadge;
         Image menuWash;
         CoachRingGraphic coachRing;
         TextMeshProUGUI coachText, resultText;
@@ -40,12 +40,12 @@ namespace Cascade.Presentation
         static readonly string[] DeviceTitles = { "Durability", "Entry rollers", "Bomb", "Key", "Repair", "Fragile edge", "Linked pairs", "One-use bridge", "Stamp" };
         static readonly string[] DeviceNodes = { "C03", "C09", "C13", "C17", "C18", "C21", "C25", "C33", "C35" };
         static readonly string[] DeviceCopy = {
-            "Each swap uses a dot. No dots? The row falls. Down leaves early.",
+            "Each swap wears the wood. Empty marks? The board breaks. Down leaves early.",
             "The arrows move the whole row when it lands.",
             "Put this piece on the bomb. A move uses a spark. No sparks? The board breaks.",
             "Put this piece on the key to open its gate.",
             "Put this piece on the patch. It fixes the board once.",
-            "A crack uses an extra dot.",
+            "A cracked spot wears the board twice as fast.",
             "Swap one tied pair. Both pairs swap.",
             "This bridge works once. Then it folds shut.",
             "Put this piece on the stamp. Bring the row home to keep it."
@@ -72,6 +72,7 @@ namespace Cascade.Presentation
             var mika=Resources.Load<Sprite>("CascadeArt/Journey/Mika");
             if(mika!=null) { resultFriend=Picture("Mika celebrates",safeRoot,new Vector2(.31f,.43f),new Vector2(.69f,.72f),mika,true);resultFriend.gameObject.SetActive(false); }
             menuRoot = Rect("Menu",safeRoot,Vector2.zero,Vector2.one);
+            reachBadge=Picture("Ribbon charge",header,new Vector2(.69f,.05f),new Vector2(.80f,.95f),Resources.Load<Sprite>("CascadeArt/Workshop/SkyRibbon"),true);
             flowReady=true; ApplyPreferences();
         }
         public void ShowHome() { ShowJourney(); }
@@ -95,7 +96,7 @@ namespace Cascade.Presentation
         {
             if (!flowReady) return;
             if(screen!=GameScreen.Playing) { CancelHint(); StopPresentation(); }
-            CurrentScreen=screen; userPaused=screen==GameScreen.Pause;
+            CurrentScreen=screen; machine.LivingWorld.SetWorkshop(screen!=GameScreen.Playing&&screen!=GameScreen.Win&&screen!=GameScreen.Fail&&screen!=GameScreen.Home&&screen!=GameScreen.Dialogue&&screen!=GameScreen.JourneyEnd); userPaused=screen==GameScreen.Pause;
             if(resultFriend!=null)resultFriend.gameObject.SetActive(screen==GameScreen.Win);
             Interaction.SetPaused(screen!=GameScreen.Playing && screen!=GameScreen.Win && screen!=GameScreen.Fail);
             bool machineVisible=screen==GameScreen.Playing || screen==GameScreen.Win || screen==GameScreen.Fail;
@@ -118,6 +119,7 @@ namespace Cascade.Presentation
         {
             if(!flowReady || Interaction==null) return;
             bool foreground=applicationFocused&&!applicationPaused&&!Interaction.IsSuspended;
+            reachBadge.gameObject.SetActive(Interaction.Attempt.Level.ReachCharges>0);reachBadge.color=Interaction.Attempt.Current.ReachCharges>0?Color.white:new Color(.5f,.5f,.5f,.5f);
             Coach?.Observe(Interaction.Attempt.Current,Interaction.Attempt.RouteLength);
             Coach?.Advance(Time.unscaledDeltaTime,foreground && CurrentScreen==GameScreen.Playing && Interaction.CanPlay && !zoomOpen);
             UpdateDeadEnd();
@@ -139,6 +141,7 @@ namespace Cascade.Presentation
         {
             bool show=foreground && CurrentScreen==GameScreen.Playing && Interaction.CanPlay && !zoomOpen && !IsHoldingToken && Coach!=null && Coach.Enabled;
             string prompt=show ? Coach.Prompt(Interaction.Attempt.Current) : "";
+            if(show&&Interaction.Attempt.Level.ReachCharges>0)prompt=Interaction.Attempt.Current.ReachCharges>0?"Drag past a neighbour. The ribbon works once.":"Ribbon used. You can still swap neighbours.";
             if(show&&knownDeadEnd)prompt="Stuck? Undo and try another move.";
             coachRoot.gameObject.SetActive(false);
             if(prompt.Length>0) {
@@ -191,6 +194,7 @@ namespace Cascade.Presentation
         { var r=(RectTransform)button.transform; r.SetParent(parent,false); r.anchorMin=min;r.anchorMax=max;r.offsetMin=r.offsetMax=Vector2.zero; }
         void ResetMenu()
         {
+            foreach(var key in baseTextSizes.Keys.Where(k=>k==null||k.transform.IsChildOf(menuRoot)).ToArray())baseTextSizes.Remove(key);
             foreach(Transform child in menuRoot){ child.gameObject.SetActive(false); Destroy(child.gameObject); }
             var wash=Rect("Warm paper",menuRoot,new Vector2(.018f,.012f),new Vector2(.982f,.988f));menuWash=Background(wash,new Color(1,.96f,.84f,.96f),true);menuWash.sprite=art.panel;menuWash.type=Image.Type.Sliced;
         }
@@ -205,6 +209,7 @@ namespace Cascade.Presentation
             else if(CurrentScreen==GameScreen.SaveRecovery) DrawSaveRecovery();
             else if(CurrentScreen==GameScreen.TravelBag) DrawTravelBag();
             else if(CurrentScreen==GameScreen.Journal) DrawJournal();
+            else if(CurrentScreen==GameScreen.ReachChallenges) DrawReachChallenges();
             else if(CurrentScreen==GameScreen.Collection) DrawCollection();
             else if(CurrentScreen==GameScreen.Workshop) DrawWorkshop();
             else if(CurrentScreen==GameScreen.Requests) DrawRequests();
@@ -274,6 +279,8 @@ namespace Cascade.Presentation
         void StartContent(LevelContent content) { LoadLevel(content.Definition,content.Locale); ShowGame(); }
         void StartNextPreferred()
         {
+            int bonus=Catalog.BonusLevels.ToList().FindIndex(c=>c.Definition.PuzzleId==Interaction.Attempt.Level.PuzzleId);
+            if(bonus>=0){if(bonus+1<Catalog.BonusLevels.Count)StartContent(Catalog.BonusLevels[bonus+1]);else ShowReachChallenges();return;}
             if(journeyActive) { int nextStop=selectedJourneyStop+1; if(PreferredMode==PuzzleMode.Words && nextStop==25)nextStop++; if(nextStop<Catalog.PrimaryLevels.Count)BeginJourney(nextStop);else SetScreen(GameScreen.JourneyEnd);return; }
             var levels=PreferredLevels();int index=levels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==node);
             if(index>=0&&index+1<levels.Count)StartContent(levels[index+1]);else ShowHome();

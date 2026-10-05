@@ -1,0 +1,1 @@
+18 native captures; notched layouts are simulated safe insets. No gameplay commands from captures.

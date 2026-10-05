@@ -392,3 +392,13 @@ This bridge works once. Then it folds shut.	This bridge works once. Then it fold
 Put this piece on the stamp. Bring the row home to keep it.	Put this piece on the stamp. Bring the row home to keep it.	Поставь эту фигурку на печать. Доставь ряд домой — печать твоя.	Постав цю фігурку на печатку. Достав ряд додому — печатка твоя.
 Board breaks	Board breaks	Доска ломается	Дошка ламається
 Light the beacon	Light the beacon	Зажги маяк	Запали маяк
+Mika's workshop	Mika's workshop	Мастерская Мики	Майстерня Міки
+Pick something to make or take along.	Pick something to make or take along.	Что смастерим? Что возьмём с собой?	Що змайструємо? Що візьмемо з собою?
+Ribbon reach	Ribbon reach	Волшебная лента	Чарівна стрічка
+One ribbon. Swap across one or two pieces.	One ribbon. Swap across one or two pieces.	Одна лента — обмен через одну или две фигуры.	Одна стрічка — обмін через одну чи дві фігури.
+Try ribbon {0}	Try ribbon {0}	Задание с лентой {0}	Завдання зі стрічкою {0}
+Drag past a neighbour. The ribbon works once. Undo brings it back.	Drag past a neighbour. The ribbon works once. Undo brings it back.	Перетащи фигуру через соседнюю. Лента сработает один раз. Отмена вернёт её.	Перетягни фігуру через сусідню. Стрічка спрацює один раз. Скасування поверне її.
+Drag past a neighbour. The ribbon works once.	Drag past a neighbour. The ribbon works once.	Перетащи через соседнюю фигуру. Лента на один раз.	Перетягни через сусідню фігуру. Стрічка на один раз.
+Ribbon used. You can still swap neighbours.	Ribbon used. You can still swap neighbours.	Лента потрачена. Соседние фигуры можно менять.	Стрічку використано. Сусідні фігури можна міняти.
+Each swap wears the wood. Empty marks? The board breaks. Down leaves early.	Each swap wears the wood. Empty marks? The board breaks. Down leaves early.	Обмен изнашивает доску. Метки погасли — доска сломается. Кнопка «Вниз» спустит ряд раньше.	Обмін зношує дошку. Мітки згасли — дошка зламається. Кнопка «Вниз» опустить ряд раніше.
+A cracked spot wears the board twice as fast.	A cracked spot wears the board twice as fast.	Обмен у трещины сильнее изнашивает доску.	Обмін біля тріщини сильніше зношує дошку.

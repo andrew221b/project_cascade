@@ -1,0 +1,34 @@
+[
+  {
+    "asset": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Craft/WorkshopRoom.png",
+    "tool": "built-in image_gen.imagegen",
+    "intent": "generate",
+    "source": "/Users/andrew/.codex/generated_images/01a10c06-2e91-7512-99ac-7a7a63fd1b49/exec-a742b1e8-cebb-4f0d-a02f-d227cbfc6c24.png",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "original_png_sha256": "c6f12fd8a23c30eb5d600c4c52168bc93779cc74dfd683de34b9b76e7d25527d",
+    "saved_png_sha256": "e991d166c33b8df9a6ad7c17ab2a7c4e8fb5d136b37d0c7fd009ace349d9edd4",
+    "decoded_scanline_sha256": "eb58a66a693cb89ccfad47c98a4201422b9217e19b5e06d02b65e771c7f091be",
+    "pixel_data_identical_to_generation": true,
+    "embedded_prompt_verified": true,
+    "prompt_file": "Docs/AssetPrompts/Craft/WorkshopRoom.txt"
+  },
+  {
+    "asset": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Craft/WindGardenPanorama.png",
+    "tool": "built-in image_gen.imagegen",
+    "intent": "generate",
+    "source": "/Users/andrew/.codex/generated_images/01a10c06-2e91-7512-99ac-7a7a63fd1b49/exec-44102ea9-1368-461a-bce1-6efdfb493ecd.png",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "original_png_sha256": "5f9874a8c8ecbd659dc5d6f30a275c50d6ca36f6b6984aab53fc8d4d24ae9d79",
+    "saved_png_sha256": "200e5f5eacd57396c6ce1dd823766052e957e14830e463faf2398c5748786b65",
+    "decoded_scanline_sha256": "77e9d61d7e346a4fdd14c89357ba17aae0fdccb060c2637f21e68d65754ad4b5",
+    "pixel_data_identical_to_generation": true,
+    "embedded_prompt_verified": true,
+    "prompt_file": "Docs/AssetPrompts/Craft/WindGardenPanorama.txt"
+  }
+]

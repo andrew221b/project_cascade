@@ -211,7 +211,7 @@ Physical devices, final player build, child comprehension and human enjoyment
 remain unverified. This historical phase added no visual tokens or artwork. The current wood,
 motion and world extension is recorded below.
 
-The current extension uses `ToyMachineView.Woodland.cs`, `PuzzleEventPlayer.cs`,
+The Woodland checkpoint uses `ToyMachineView.Woodland.cs`, `PuzzleEventPlayer.cs`,
 `CascadeGame.DeviceDemo.cs`, `WoodBoardGraphic.cs`, `WorldMotion.cs`,
 `WorldWeatherGraphic.cs`, `LayeredWorld.cs` and the expanded `JourneyStory.cs`.
 Eight regional art kits now cover 160 stops over 33 pages; three original kits
@@ -222,11 +222,32 @@ stills and sampled motion live in `Reports/Woodland`; the 5/5 EditMode and
 16/16 focused PlayMode checkpoint predates the final guide/CanvasRenderer fix.
 The final renderer correction passed 4/4 affected UI regressions in
 `Reports/WoodlandFix/playmode.xml` at 11:29:09–11:29:16 UTC; fresh native guide,
-map and bag captures show wood/weather. Independent final disposition remains
-pending at this pass; player-build status is tracked in the validation report. Physical iOS/Android, haptics, performance,
+map and bag captures show wood/weather. Review/build were pending at that
+historical checkpoint; the Craft results below supersede those statuses. Physical iOS/Android, haptics, mobile performance,
 non-reader understanding, native editorial, live Ads/IAP and human enjoyment
-remain NOT RUN. The service boundary is disabled mock code; online and Long
-Reach remain design-only.
+remain NOT RUN. The service boundary is disabled mock code; online remains
+design-only. These Woodland results are historical checkpoints.
+
+The Craft extension follows `Docs/CRAFT_REWORK.md`: `CascadeGame.Craft.cs`,
+`CascadeGame.Rewards.cs`, `ToyMachineView.Ropes.cs`, `ToyMachineView.Woodland.cs`,
+`PuzzleEventPlayer.cs` and `LayeredWorld.cs` implement object shelves, simultaneous
+selection, continuous ropes, visual weight and composed scenery. Six optional
+R01–R06 Ribbon Reach trials now use the shared deterministic resolver under
+rules2.1-longreach; C01–C160 retain rules2.0 and their content hashes. The original
+WorkshopRoom and WindGardenPanorama generated rasters and metadata are recorded
+in `Docs/AssetPrompts/Craft/provenance.json`, with exact prompts alongside them.
+The palette, font, symbols and paper/wood/brass identity are preserved.
+`Reports/Craft/design-documentation.md` records source evidence and remaining
+validation limits. `Reports/Craft/impeccable-verdict.md` records ship for seven
+scored findings, including map edges and physical grounding; it does not approve
+the entire product. `Reports/CraftFinal/playmode.xml` passed three affected
+regressions, a subset of the earlier seven. The Mac standalone build succeeded
+with zero errors and 346 warnings. A locked-Mac C160 player sample at 1440 × 900
+on M4 Pro measured median 16.703 ms / p95 17.520 ms over 240 frames after 90
+warm-up frames. The invalid GC counter supplies no allocation evidence. This
+short sample is neither verified foreground nor mobile performance. Native
+player visual confirmation is blocked by the locked Mac; physical devices,
+human enjoyment and release readiness remain unverified.
 
 **Key Characteristics:**
 - Direct touch lifts a piece and its live glyph together; the receiver stays visible.
@@ -283,7 +304,7 @@ Frontmatter `px` type values describe Unity reference-canvas units, not measured
 
 ## Layout
 
-The camera-space uGUI canvas uses a 390 × 844 reference resolution with height scaling and `Screen.safeArea`. Wide Editor views cap content at 430 reference units while the scenery fills the viewport. The machine composition remains portrait. At camera aspect ratios above 1.05, full-height architectural side wings flank a quiet central sky crop, with Mika beside the workshop; this is the current composed wide scenery.
+The camera-space uGUI canvas uses a 390 × 844 reference resolution with height scaling and `Screen.safeArea`. Wide Editor views cap content at 430 reference units while the scenery fills the viewport. Mobile PlayerSettings enforce portrait; 844 × 390 landscape is a rejected diagnostic. Desktop 1440 × 900 remains the wide baseline; short desktop windows are unsupported. The machine stays in a portrait composition over a continuous viewport sky surface. WindGardenPanorama supplies the Wind Gardens scene and WorkshopRoom supplies the bag/workshop interior. Other regions keep their existing art. Scenery fitting preserves source aspect and extends its outer sky rather than stitching architectural strips. The final scoped review confirms the tablet map sky now feathers into the viewport without the previous hard boundary.
 
 ### Direct play
 
@@ -301,10 +322,13 @@ Dialogue places a large transparent character above/behind a low paper frame. A 
 
 ### Travel bag and earned objects
 
-Map Menu opens the travel bag, where Mika sits above a WoodBoard bench in the authored world. Journal, workshop, stamp trails and personal
-routes become available after three restored lights; Settings and Back to map
-remain in the same bag. Item views use one large alpha illustration, short live
-copy, separate previous/next controls and a clear lower action. The journal
+Map Menu opens the travel bag: Mika and a parcel share the upper bench, with
+Keepsakes/Workshop and My journal/Ribbon reach arranged on two object shelves.
+The journal unlocks after three restored lights; the separate Ribbon Reach
+trials are available from the bag at any time. Settings and Back to map share
+the lower band. Collection and workshop place four selectable thumbnails on
+one shelf above a larger selected alpha illustration, short live progress
+copy and a clear lower action. Requests retain separate previous/next controls. The journal
 pairs Mika with restored-light, forgiving visit and next-parcel summaries.
 Progress lives on these optional surfaces rather than adding meters to the
 puzzle HUD. Item artwork preserves aspect ratio inside its padded native UI
@@ -317,15 +341,15 @@ margins, must not be treated as permission to clip painted edges.
 
 ## Elevation & Depth
 
-Beveled meshes, satin URP materials, a warm directional key and analytic contact shadows create depth. The key light is warm at intensity 1.20; ambient light is flat. Unity cast shadows are disabled for this view. The rounded extrusion uses contour rings at scale factors `0.88, 0.985, 1, 0.97, 0.89`. Shape plastics use smoothness 0.28 and metallic 0.02; other materials keep authored satin values.
+Beveled meshes, satin URP materials, a warm directional key and analytic contact shadows create depth. The warm key has intensity 1.05 and color (1, 0.96, 0.88); the sky fill has intensity 0.35 and color (0.64, 0.85, 1). Flat ambient light uses (0.69, 0.79, 0.80). Unity cast shadows are disabled for this view. The rounded extrusion uses contour rings at scale factors `0.88, 0.985, 1, 0.97, 0.89`. Shape plastics use smoothness 0.28 and metallic 0.02; other materials keep authored satin values.
 
-Soft contact quads use `(1 − smoothstep(0.25, 1, radius))²` alpha, tinted by Contact Shadow. Each token, platform and receiver fits its own quad. This is a native shader effect, not a CSS shadow. Selection raises body and glyph from normalized center 0.38 to 0.48, changes size from 0.78 × 0.88 to 0.81 × 0.915 of the cell and reveals a gold frame.
+Soft contact quads use `(1 − smoothstep(0.25, 1, radius))²` alpha, tinted by Contact Shadow. Each token, platform and receiver fits its own quad. This is a native shader effect, not a CSS shadow. Playing pieces seat their mesh bottom at 0.365 of the padded floor rectangle, matching the visible painted wood. The contact shadow aligns just below this surface. Selection adds a world-space lift, changes size from 0.78 × 0.88 to 0.81 × 0.915 of the cell and reveals a gold frame; the live glyph follows the body. Final sampled landing frames confirm contact, while in-flight frames retain separation.
 
 ### Motion and living scenery
 
-A held piece lifts immediately with its glyph. Its preview scales toward a 64-rendered-pixel face, clamped to 1.10–2.5 times the base size. Horizontal travel is bounded to 1.15 cell spacings; upward drag adds at most 0.45 spacings above its hold lift. The input cells remain stationary. Releasing elsewhere, pointer cancellation, pause or focus loss returns the presentation without spending a move.
+A held piece lifts immediately with its glyph. Its preview scales toward a 64-rendered-pixel face, clamped to 1.10–2.5 times the base size. Horizontal travel is bounded to 1.15 cell spacings, or 3.15 while a Ribbon Reach charge is available; upward drag adds at most 0.45 spacings above its hold lift. The input cells remain stationary. Releasing elsewhere, pointer cancellation, pause or focus loss returns the presentation without spending a move.
 
-Committed exchanges use 190 ms cubic ease-out with short opposing arcs. Contact, bomb and fracture steps last 180, 240 and 130 ms. A 300 ms fall maps each source piece to its committed destination, with quadratic vertical travel, small stagger and bounded opposing rotation. A 110 ms damped settling pulse follows, with at most 8% squash and 0.025 world-unit local recoil. The loaded wood strip bends and suspension sways through bounded decorative springs; holding a piece removes its apparent weight. Delivery holds for 340 ms. Reduced Motion substitutes 55 ms state holds and at most two stationary dust fades per burst. Selection focus uses 100 ms or an immediate reduced-motion state. Screen shake is opt-in and off by default; Reduced Motion suppresses it. Dust and audio tails never determine command completion.
+Committed exchanges use 190 ms cubic ease-out with short opposing arcs. Contact, bomb and fracture steps last 180, 240 and 130 ms. A 300 ms fall maps each source piece to its committed destination, with quadratic vertical travel, small stagger and bounded opposing rotation. A landing lasts at least 240 ms, with two damped upward bounce lobes, at most 8% squash and bounded alternating rotation; local rail recoil remains 0.025 world units. The loaded wood strip bends toward 0.045 world units of apparent weight through bounded decorative springs; holding a piece removes its apparent weight. Two continuous hemp ropes run from above the viewport through each rail attachment to the receiver and respond to the same decorative sway. Delivery holds for 340 ms. Reduced Motion substitutes 55 ms state holds and at most two stationary dust fades per burst. Selection focus uses 100 ms or an immediate reduced-motion state. Screen shake is opt-in and off by default; Reduced Motion suppresses it. Dust and audio tails never determine command completion.
 
 Eight distinct far landscapes cover the viewport. Shared transparent clouds move at three speeds, lower-edge plants sway about their stems, and rain, snow or pollen occupy separate scenery layers by region. The incidental lower-right windwheel is hidden. Regional tints adapt cloud/plant layers. The whole rotated glider is bounded to the empty gap between feedback and the top floor; it hides during a held-token gesture and if no gap remains. All ambient motion is view-only. Explicit pause and suspension stop phase progression; Reduced Motion displays phase zero. Map and dialogue can keep their decorative clock running while puzzle input is paused. Quiet generated wind/rain beds follow Sound and explicit pause/suspension preferences; physical listening has not been verified.
 
@@ -345,11 +369,11 @@ Warm paper controls carry dark Bold labels and Unity multiply tints for hover, p
 
 ### Persistent token and receiver
 
-Pressing a shape or letter gives immediate lift and a larger held face; legal adjacent landing highlights and the feedback line explain command cost. Release commits one atomic adjacent exchange through the shared resolver. Tap-then-tap remains available; a long swipe does not chain exchanges. The gold rim and ivory inset retain the complete ordered destination. Magnifier faces derive from the same shapes and live glyphs. Failure shows the goal and delivered row separately; success seats the row before result actions appear.
+Pressing a shape or letter gives immediate lift and a larger held face; legal adjacent landing highlights and the feedback line explain command cost. Release commits one atomic exchange through the shared resolver. Ordinary play exchanges adjacent pieces; the six R trials additionally permit one charged endpoint swap across one or two intervening pieces. All crossed edges must be open, linked-pair corridors reject Reach, and crossed fragile/bridge rules still apply. Contacts use the final row. The charge and state are undoable; Retry restores the initial charge. Charge-aware live guidance distinguishes available and spent ribbon states. Tap-then-tap remains available; a long swipe does not chain exchanges. The gold rim and ivory inset retain the complete ordered destination. Magnifier faces derive from the same shapes and live glyphs. Failure shows the goal and delivered row separately; success seats the row before result actions appear.
 
 ### Platforms and devices
 
-Compact painted wood strips carry the original lock, bomb, key, repair, stamp, fragile, linked and bridge hardware. Hemp strands run from the board end attachments toward fixed upper pegs; the native WoodBoard body-band framing preserves its alpha and grain. Warm strength pips and up to three graphite seams disclose damage. Forecast pips turn coral when the held command would consume strength. Bomb contacts carry the required face and remaining fuse beads; their state follows the committed resolver events. Collapse emits bounded wood chips, and source pieces travel to their exact destination before settling. Contact faces retain shared SymbolId identity and live glyphs. The wood texture is unlit; shape plastics and brass retain their incumbent material treatment.
+Compact painted wood strips carry the original lock, bomb, key, repair, stamp, fragile, linked and bridge hardware. Two continuous hemp strands connect the upper suspension through board end attachments to the receiver; the native WoodBoard body-band framing preserves its alpha and grain. Warm strength pips and up to three graphite seams disclose damage. Forecast pips turn coral when the held command would consume strength. Bomb contacts carry the required face and remaining fuse beads; their state follows the committed resolver events. Collapse emits bounded wood chips, and source pieces travel to their exact destination before settling. Contact faces retain shared SymbolId identity and live glyphs. The wood texture is unlit; shape plastics and brass retain their incumbent material treatment.
 
 The nine device-guide demonstrations read precomputed transitions from the same resolver without owning the playable attempt. Entry shows landing and row rotation; linked pairs move together, fragile crossings lose strength, bridge folds, gate opens, repair mends and bomb defuse/blast change the board. Optional captions stay live in EN/RU/UK. Reduced Motion presents stationary translucent before silhouettes and the settled after state; it does not animate a causal path. Non-reader understanding remains a human-test question.
 
@@ -371,8 +395,10 @@ The paper-and-brass frame names one speaker and gives one short idea at a time. 
 ### Journal, workshop and keepsakes
 
 The journal reuses paper controls, Balsamiq live labels and Mika's existing alpha
-portrait. Collection and workshop show one distinct object at a time with
-separate carousel arrows. Collection names the gift and its three-part progress,
+portrait. Collection and workshop show all four selectable object thumbnails
+together, a larger selected object, and live progress/action copy. A warm gold
+selection wash identifies the chosen thumbnail. Collection names the gift and
+its three-part progress,
 then distinguishes choosing a future gift from equipping an owned keepsake.
 The map places the equipped keepsake beside Mika without changing symbol faces.
 Workshop pairs each of four illustrated miniatures with its exact ten-stop
@@ -419,6 +445,6 @@ Comfort enables large previous/next focus controls and left/right exchanges with
 - **Don't** bake gameplay text into imagery or change symbol identity to indicate state.
 - **Don't** let presentation, animation completion, scenery, physics or ad callbacks change puzzle state.
 - **Don't** portray browsed islands as reached, an unsuccessful write as saved, or unreadable progress as restored.
-- **Don't** describe Long Reach, online concepts or disabled mock Ads/IAP boundaries as live integration.
+- **Don't** describe online concepts or disabled mock Ads/IAP boundaries as live integration; Ribbon Reach is local optional play, not a purchased ability.
 - **Don't** copy ShapeMania screens, characters, sprites, props or materials into this world.
 - **Don't** equate Editor captures and automated tests with device, haptic, performance, build, native-language or human-enjoyment proof.

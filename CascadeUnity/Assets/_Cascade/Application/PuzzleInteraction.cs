@@ -33,8 +33,9 @@ namespace Cascade.Application
             if (!CanPlay || !ValidSlot(releaseSlot)) return null;
             if (dragged)
             {
-                if (Math.Abs(releaseSlot - first) != 1) return null;
-                return Execute(PuzzleCommand.Swap(Math.Min(first, releaseSlot)));
+                int span=Math.Abs(releaseSlot-first);
+                if(span==1)return Execute(PuzzleCommand.Swap(Math.Min(first,releaseSlot)));
+                return span>=2 && span<=3 && Attempt.Current.ReachCharges>0 ? Execute(PuzzleCommand.Reach(first,releaseSlot)) : null;
             }
             return TapSlot(releaseSlot);
         }
@@ -43,6 +44,7 @@ namespace Cascade.Application
         public TransitionResult TapSlot(int slot)
         {
             if (!CanPlay || pointer.HasValue || !ValidSlot(slot)) return null;
+            if(SelectedSlot.HasValue && Math.Abs(SelectedSlot.Value-slot)>=2 && Math.Abs(SelectedSlot.Value-slot)<=3 && Attempt.Current.ReachCharges>0) return Execute(PuzzleCommand.Reach(SelectedSlot.Value,slot));
             if (SelectedSlot.HasValue && Math.Abs(SelectedSlot.Value - slot) == 1)
                 return Execute(PuzzleCommand.Swap(Math.Min(SelectedSlot.Value, slot)));
             SelectedSlot = SelectedSlot == slot ? (int?)null : slot; return null;

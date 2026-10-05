@@ -163,7 +163,8 @@ namespace Cascade.Presentation
         }
         public void PreviewDrag(int from, int to)
         {
-            if (Math.Abs(from - to) == 1 && to >= 0) ShowPreview(PuzzleCommand.Swap(Math.Min(from, to)));
+            if(to>=0 && Math.Abs(from-to)>=2 && Math.Abs(from-to)<=3 && Interaction.Attempt.Current.ReachCharges>0)ShowPreview(PuzzleCommand.Reach(from,to));
+            else if (Math.Abs(from - to) == 1 && to >= 0) ShowPreview(PuzzleCommand.Swap(Math.Min(from, to)));
             else status.SetCopy("Move onto the piece next to it.");
             HighlightDragNeighbour(from, to);
         }
@@ -182,7 +183,9 @@ namespace Cascade.Presentation
             }
             if(!string.IsNullOrEmpty(exit.Key))effects.Add(exit);
             status.SetCopy(UiCopy.Join(" · ",effects));
-            RenderFocus(); machine.PreviewForecast(prediction);foreach (int edge in preview.AffectedEdges) { slotImages[edge].color = Selected; slotImages[edge + 1].color = Selected; }
+            RenderFocus(); machine.PreviewForecast(prediction);
+            if(command.Kind==CommandKind.LongReach){slotImages[command.Edge].color=Selected;slotImages[command.End].color=Selected;return;}
+            foreach (int edge in preview.AffectedEdges) { slotImages[edge].color = Selected; slotImages[edge + 1].color = Selected; }
         }
         public void Undo()
         {
@@ -252,7 +255,7 @@ namespace Cascade.Presentation
         }
         UiCopy DisplaySymbol(SymbolId symbol) => symbol.Kind == SymbolKind.Shape ? new[] { "triangle", "circle", "square", "diamond", "star", "hexagon" }[art.ShapeIndex(symbol)] : UiCopy.Raw(symbol.Value);
         static string FaceText(SymbolId symbol) => symbol.Kind == SymbolKind.Glyph ? symbol.Value : "";
-        static UiCopy CommandText(PuzzleCommand command) => command.Kind == CommandKind.EarlyDrop ? "Drop the row" : new UiCopy("swap slots {0} & {1}",command.Edge+1,command.Edge+2);
+        static UiCopy CommandText(PuzzleCommand command) => command.Kind == CommandKind.EarlyDrop ? "Drop the row" : new UiCopy("swap slots {0} & {1}",command.Edge+1,command.Kind==CommandKind.LongReach?command.End+1:command.Edge+2);
         void BuildScreen()
         {
             var canvasRect = Rect("GameCanvas", transform, Vector2.zero, Vector2.one);
@@ -317,7 +320,7 @@ namespace Cascade.Presentation
                 var card = Rect("Floor" + (i + 1), floorArea, new Vector2(.5f, y), new Vector2(.5f, y));
                 card.sizeDelta = new Vector2(Mathf.Min(342, level.InitialSymbolIds.Count * 76 + 24), count == 4 ? 110 : 132); floorViews.Add(card);
                 var title = Text("Durability", card, new Vector2(.025f, -.01f), new Vector2(.15f, .22f), 15, ""); title.alignment = TextAlignmentOptions.Left; title.font = art.titleFont; floorLabels.Add(title);
-                var devices = Text("Devices", card, new Vector2(.64f, -.01f), new Vector2(.98f, .22f), 15, ""); devices.alignment = TextAlignmentOptions.TopRight; deviceLabels.Add(devices);
+                var devices = Text("Devices", card, new Vector2(.38f, -.105f), new Vector2(.88f, .105f), 15, ""); devices.alignment = TextAlignmentOptions.TopRight; deviceLabels.Add(devices);
                 AddContactGlyph(card, level.Floors[i].Bomb, level.InitialSymbolIds.Count);
                 AddContactGlyph(card, level.Floors[i].Key, level.InitialSymbolIds.Count);
                 AddContactGlyph(card, level.Floors[i].Repair, level.InitialSymbolIds.Count);
@@ -351,12 +354,19 @@ namespace Cascade.Presentation
                 var sizing = label.gameObject.AddComponent<UnityEngine.UI.LayoutElement>(); sizing.minWidth = sizing.preferredWidth = 0; sizing.flexibleWidth = 1; labels.Add(label);
             }
         }
+#if UNITY_EDITOR
+        Vector4 editorSafeInsets;
+        public void SetEditorSafeInsets(Vector4 insets){editorSafeInsets=insets;RefreshLayout();}
+#endif
         void ApplySafeArea()
         {
             safeArea = Screen.safeArea; screenWidth = Screen.width; screenHeight = Screen.height;
             if (safeRoot == null || screenWidth == 0 || screenHeight == 0) return;
             safeRoot.anchorMin = new Vector2(safeArea.xMin / screenWidth, safeArea.yMin / screenHeight);
             safeRoot.anchorMax = new Vector2(safeArea.xMax / screenWidth, safeArea.yMax / screenHeight);
+#if UNITY_EDITOR
+            if(editorSafeInsets!=Vector4.zero){safeRoot.anchorMin=new Vector2(editorSafeInsets.x,editorSafeInsets.y);safeRoot.anchorMax=new Vector2(1-editorSafeInsets.z,1-editorSafeInsets.w);}
+#endif
             safeRoot.offsetMin = safeRoot.offsetMax = Vector2.zero;
             var canvasRect = (RectTransform)safeRoot.parent;
             float available = canvasRect.rect.width * (safeRoot.anchorMax.x - safeRoot.anchorMin.x);
@@ -422,7 +432,7 @@ namespace Cascade.Presentation
                 ? "The rows do not match yet."
                 : state.Row.SequenceEqual(level.TargetSymbolIds)
                     ? state.ActiveFloor == level.Floors.Count - 1 ? "Ready! Tap Deliver." : "Ready here. Check the board below."
-                    : "Drag a piece onto its neighbour.");
+                    : level.ReachCharges>0 ? Interaction.Attempt.Current.ReachCharges>0 ? "Drag past a neighbour. The ribbon works once." : "Ribbon used. You can still swap neighbours." : "Drag a piece onto its neighbour.");
             wrongRowLabel.gameObject.SetActive(state.Status==PuzzleStatus.Lost);
             if (state.Status == PuzzleStatus.Lost) {
                 receiverLabel.SetCopy("Goal");
@@ -523,6 +533,7 @@ namespace Cascade.Presentation
             var rect = Rect(label.English.Replace(" ", ""), parent, min, max); var image = Background(rect, Paper, true); image.sprite = art.panel; image.type = UnityEngine.UI.Image.Type.Sliced;
             var button = rect.gameObject.AddComponent<UnityEngine.UI.Button>(); button.onClick.AddListener(() => clicked());
             var colors = button.colors; colors.highlightedColor = new Color(1, .94f, .78f); colors.pressedColor = new Color(.82f, .88f, .81f); colors.disabledColor = new Color(.88f, .90f, .84f, .7f); button.colors = colors;
+            rect.gameObject.AddComponent<ButtonFeel>().Initialize(this);
             var text = Text("Label", rect, Vector2.zero, Vector2.one, 18, label); text.font = art.titleFont; text.margin = new Vector4(3, 2, 3, 2); return button;
         }
         UnityEngine.UI.Button DirectionButton(string name, Transform parent, Vector2 min, Vector2 max, bool right, Action clicked)

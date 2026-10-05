@@ -1,0 +1,6 @@
+hardware=Mac16,8 GPU=Apple M4 Pro
+context=Editor resolution=1793x1035
+frames=240 warmup=90 target=60
+median_ms=99.998 p95_ms=101.649
+allocated_start=2738259989 allocated_end=2734688509
+renderers=88

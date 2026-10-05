@@ -25,6 +25,7 @@ namespace Cascade.Presentation
         void ReadProfile()
         {
             string directory=UnityEngine.Application.persistentDataPath;
+            if(System.Array.IndexOf(System.Environment.GetCommandLineArgs(),"-cascade-perf")>=0)directory=Path.Combine(Path.GetTempPath(),"CascadeCraftBenchmark");
 #if UNITY_EDITOR
             if(!string.IsNullOrEmpty(EditorProfileDirectory))directory=EditorProfileDirectory;
 #endif
@@ -69,7 +70,7 @@ namespace Cascade.Presentation
         {
             var attempt=Interaction.Attempt;
             // QA/custom drafts are playable but do not grant campaign receipts.
-            bool published=Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Any(c=>
+            bool published=Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).Any(c=>
                 c.Definition.PuzzleId==attempt.Level.PuzzleId && c.Definition.ContentHash==attempt.PinnedContentHash);
             if(published) {
                 if(profile.RecordClear(attempt))sessionClears.Add(node);

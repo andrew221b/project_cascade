@@ -33,7 +33,7 @@ namespace Cascade.Presentation
             RectTransformUtility.ScreenPointToWorldPointInRectangle(tokenRow, screenPoint, uiCamera, out var world);
             float spacing = slots.Count > 1 ? Mathf.Abs(machine.TokenPosition(1).x-machine.TokenPosition(0).x) : .5f;
             var delta = world-holdOrigin;
-            wantedOffset = new Vector3(Mathf.Clamp(delta.x,-spacing*1.15f,spacing*1.15f),
+            wantedOffset = new Vector3(Mathf.Clamp(delta.x,-spacing*(Interaction.Attempt.Current.ReachCharges>0?3.15f:1.15f),spacing*(Interaction.Attempt.Current.ReachCharges>0?3.15f:1.15f)),
                 Mathf.Clamp(delta.y,0,spacing*.45f)+machine.SelectionLiftWorld(heldToken)*3.5f, -.3f);
             PaintHeldToken(true);
         }
@@ -54,12 +54,13 @@ namespace Cascade.Presentation
         }
         void HighlightDragNeighbour(int from,int to)
         {
-            bool adjacent = to >= 0 && Mathf.Abs(from-to)==1;
+            int span=Mathf.Abs(from-to);
+            bool adjacent = to >= 0 && (span==1 || Interaction.Attempt.Current.ReachCharges>0 && span>=2 && span<=3);
             if(previewNeighbour==to)return;
             previewNeighbour=to;
             for(int i=0;i<slotImages.Count;i++)slotImages[i].color=Color.clear;
             if(!adjacent)return;
-            bool legal=Interaction.Attempt.Resolver.Preview(Interaction.Attempt.Current,PuzzleCommand.Swap(Mathf.Min(from,to))).IsLegal;
+            bool legal=Interaction.Attempt.Resolver.Preview(Interaction.Attempt.Current,span==1?PuzzleCommand.Swap(Mathf.Min(from,to)):PuzzleCommand.Reach(from,to)).IsLegal;
             slotImages[to].color=legal?new Color(.35f,.76f,.66f,.45f):new Color(.92f,.36f,.25f,.25f);
             if(legal)feedback.Sound(ToyCue.Select);
         }

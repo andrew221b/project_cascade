@@ -88,6 +88,7 @@ namespace Cascade.Application
                 PuzzleCommand command;
                 if(encoded=="D")command=PuzzleCommand.Drop;
                 else if(int.TryParse(encoded,out int edge) && edge>=0 && edge<level.InitialSymbolIds.Count-1 && encoded==edge.ToString())command=PuzzleCommand.Swap(edge);
+                else if(encoded!=null && encoded.StartsWith("R",StringComparison.Ordinal) && encoded.Split(':').Length==2 && int.TryParse(encoded.Substring(1).Split(':')[0],out int first) && int.TryParse(encoded.Split(':')[1],out int last) && encoded==PuzzleCommand.Reach(first,last).ToString())command=PuzzleCommand.Reach(first,last);
                 else throw new ArgumentException("Invalid saved command.");
                 if(!attempt.Execute(command).Accepted)throw new ArgumentException("Saved route cannot be replayed.");
             }

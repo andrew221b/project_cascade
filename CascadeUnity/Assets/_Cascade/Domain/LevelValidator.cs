@@ -27,6 +27,7 @@ namespace Cascade.Domain
             Check(!string.IsNullOrWhiteSpace(level.SchemaVersion), "SchemaVersion", "Required.");
             Check(!string.IsNullOrWhiteSpace(level.RulesVersion), "RulesVersion", "Required.");
             Check(!string.IsNullOrWhiteSpace(level.ContentHash), "ContentHash", "Required.");
+            Check(level.ReachCharges >= 0 && level.ReachCharges <= 1, "ReachCharges", "Expected zero or one.");
             int n = level.InitialSymbolIds.Count;
             Check(n >= 3 && n <= 8, "InitialSymbolIds", "Row length must be 3–8.");
             Check(level.TargetSymbolIds.Count == n, "TargetSymbolIds", "Row lengths differ.");

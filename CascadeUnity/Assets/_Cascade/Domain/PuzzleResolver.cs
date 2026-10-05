@@ -12,7 +12,7 @@ namespace Cascade.Domain
 
         public PuzzleState CreateInitialState()
         {
-            var initial = new PuzzleState(Level.InitialSymbolIds, 0, 0);
+            var initial = new PuzzleState(Level.InitialSymbolIds, 0, 0, reachCharges: Level.ReachCharges);
             return EnterFloor(initial, 0, new List<PuzzleEvent>());
         }
 
@@ -24,6 +24,14 @@ namespace Cascade.Domain
             if (state.ActiveFloor < 0 || state.ActiveFloor >= Level.Floors.Count || state.Durability <= 0)
                 return new CommandPreview(RejectionReason.InvalidState);
             if (command.Kind == CommandKind.EarlyDrop) return new CommandPreview(RejectionReason.None);
+            if (command.Kind == CommandKind.LongReach) {
+                if (state.ReachCharges < 1 || command.Edge < 0 || command.End >= state.Row.Count || command.End-command.Edge < 2 || command.End-command.Edge > 3) return new CommandPreview(RejectionReason.InvalidCommand);
+                var reachFloor=Level.Floors[state.ActiveFloor];
+                var crossed=Enumerable.Range(command.Edge,command.End-command.Edge).ToArray();
+                if (crossed.Any(e=>!IsEdgeOpen(reachFloor,state,e) || reachFloor.LinkedPair.HasValue && reachFloor.LinkedPair.Value.Contains(e))) return new CommandPreview(RejectionReason.ClosedEdge);
+                if (state.Row[command.Edge]==state.Row[command.End]) return new CommandPreview(RejectionReason.NoOp);
+                return new CommandPreview(RejectionReason.None,SwapCost(reachFloor,crossed),crossed);
+            }
             if (command.Kind != CommandKind.Swap || command.Edge < 0 || command.Edge >= state.Row.Count - 1)
                 return new CommandPreview(RejectionReason.InvalidCommand);
             var floor = Level.Floors[state.ActiveFloor];
@@ -40,11 +48,13 @@ namespace Cascade.Domain
             if (!preview.IsLegal) return new TransitionResult(state, false, 0, preview.Rejection, Array.Empty<PuzzleEvent>());
             var events = new List<PuzzleEvent> { new PuzzleEvent(PuzzleEventKind.CommandAccepted, state, preview.DurabilityCost, preview.AffectedEdges) };
             var next = state;
-            if (command.Kind == CommandKind.Swap)
+            if (command.Kind == CommandKind.Swap || command.Kind == CommandKind.LongReach)
             {
                 var bridge = Level.Floors[state.ActiveFloor].OneUseBridgeEdge;
                 bool consumed = state.BridgeUsed || (bridge.HasValue && preview.AffectedEdges.Contains(bridge.Value));
-                next = state.With(row: Permute(state.Row, preview.AffectedEdges), durability: state.Durability - preview.DurabilityCost, bridgeUsed: consumed);
+                var row=Permute(state.Row, command.Kind==CommandKind.LongReach ? Array.Empty<int>() : preview.AffectedEdges);
+                if(command.Kind==CommandKind.LongReach){var symbol=row[command.Edge];row[command.Edge]=row[command.End];row[command.End]=symbol;}
+                next = state.With(row: row, durability: state.Durability - preview.DurabilityCost, bridgeUsed: consumed, reachCharges: state.ReachCharges-(command.Kind==CommandKind.LongReach?1:0));
                 events.Add(new PuzzleEvent(PuzzleEventKind.RowPermuted, next, edges: preview.AffectedEdges));
             }
             next = ResolveContacts(next, events);

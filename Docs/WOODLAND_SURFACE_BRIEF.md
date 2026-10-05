@@ -1,3 +1,5 @@
+> Current implementation update (2026-10-05): see [CRAFT_REWORK.md](CRAFT_REWORK.md). Six Ribbon Reach trials are implemented; wide scenery uses one continuous field. This document retains its earlier checkpoint.
+
 # CASCADE wooden workshop extension
 
 Existing visual world and user-pinned warm cartoon palette/Balsamiq fonts retained. Experience surface. Code-led native Unity build; no approved comp and no new identity round. Author explicitly delegates choices and requested wood/rope materials, pictorial cause/effect, living layered backgrounds, coherent wide scenery and menus with Mika. Material/world changes are authorized by that request.

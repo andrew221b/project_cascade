@@ -123,6 +123,7 @@ namespace Cascade.Domain
         public string SchemaVersion { get; }
         public string RulesVersion { get; }
         public string ContentHash { get; }
+        public int ReachCharges { get; }
         public ReadOnlyCollection<SymbolId> InitialSymbolIds { get; }
         public ReadOnlyCollection<SymbolId> TargetSymbolIds { get; }
         public ReadOnlyCollection<TargetSegment> TargetSegments { get; }
@@ -131,12 +132,12 @@ namespace Cascade.Domain
         public LevelDefinition(string puzzleId, string campaignNodeId, string schemaVersion,
             string rulesVersion, string contentHash, IEnumerable<SymbolId> initialSymbolIds,
             IEnumerable<SymbolId> targetSymbolIds, IEnumerable<TargetSegment> targetSegments,
-            IEnumerable<FloorDefinition> floors)
+            IEnumerable<FloorDefinition> floors, int reachCharges = 0)
         {
             PuzzleId = puzzleId; CampaignNodeId = campaignNodeId; SchemaVersion = schemaVersion;
             RulesVersion = rulesVersion; ContentHash = contentHash;
             InitialSymbolIds = Frozen.Copy(initialSymbolIds); TargetSymbolIds = Frozen.Copy(targetSymbolIds);
-            TargetSegments = Frozen.Copy(targetSegments); Floors = Frozen.Copy(floors);
+            TargetSegments = Frozen.Copy(targetSegments); Floors = Frozen.Copy(floors); ReachCharges = reachCharges;
         }
     }
 }

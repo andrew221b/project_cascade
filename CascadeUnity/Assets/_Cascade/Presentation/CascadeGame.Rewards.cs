@@ -36,16 +36,7 @@ namespace Cascade.Presentation
         }
         void DrawTravelBag()
         {
-            MenuTitle("Your travel bag",JourneyClearCount<3?"Restore three lights to open your journal.":"Small things for a long road.");
-            var description=(RectTransform)menuRoot.Find("Menu description");description.anchorMin=new Vector2(.08f,.735f);description.anchorMax=new Vector2(.92f,.81f);
-            var mika=Picture("Mika in her workshop",menuRoot,new Vector2(.29f,.53f),new Vector2(.71f,.72f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
-            mika.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,2),0,.7f);
-            Rect("Mika's wooden bench",menuRoot,new Vector2(.25f,.53f),new Vector2(.75f,.555f)).gameObject.AddComponent<WoodBoardGraphic>();
-            if(JourneyClearCount>=3) {
-                MenuButton("My journal",.48f,ShowJournal,true);MenuButton("Workshop",.39f,ShowWorkshop);
-                MenuButton("Stamp trails",.30f,ShowContracts);MenuButton("My routes",.21f,ShowRecords);
-            }
-            MenuButton("Settings",.12f,ShowSettings);MenuButton("Back to map",.025f,ShowJourney);
+            DrawCraftBag();
         }
         void DrawJournal()
         {
@@ -70,23 +61,27 @@ namespace Cascade.Presentation
         void DrawCollection()
         {
             string id=JourneyRewards.Gifts[giftPage];bool owned=Rewards.Owns(id);
-            MenuTitle(GiftNames[giftPage],"Your keepsakes");
-            RewardPicture(GiftAssets[giftPage],new Vector2(.24f,.43f),new Vector2(.76f,.70f));
-            MetaArrows(()=>{giftPage=(giftPage+3)%4;DrawMenu();},()=>{giftPage=(giftPage+1)%4;DrawMenu();});
+            CraftTitle(GiftNames[giftPage],"Your keepsakes");
+            for(int i=0;i<4;i++){int pick=i;ShelfChoice("",GiftAssets[i],.08f+i*.215f,.65f,.195f,.115f,()=>{giftPage=pick;DrawMenu();},i==giftPage);}
+            Shelf(.64f);
+            var selected=RewardPicture(GiftAssets[giftPage],new Vector2(.25f,.435f),new Vector2(.75f,.635f));
+            selected.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,2),0,1.5f);
             Text("Gift parts",menuRoot,new Vector2(.08f,.33f),new Vector2(.92f,.42f),22,owned?"You made it!":new UiCopy("Parts found: {0} / 3",Rewards.Fragments(id)));
             Text("Gift plan",menuRoot,new Vector2(.08f,.23f),new Vector2(.92f,.32f),18,owned?"A little keepsake for Mika.":"Three parts make this gift.");
             if(owned)MenuButton(Rewards.EquippedGift==id?"With Mika":"Take along",.14f,()=>{Rewards.Equip(id);PersistProgress();DrawMenu();},true);
             else if(Rewards.EarnedFragments(id)>=3)MenuButton("Open parcel",.14f,ShowParcel,true);
             else MenuButton(Rewards.SelectedGift==id?"Next gift":"Choose this gift",.14f,()=>{Rewards.SelectGift(id);PersistProgress();DrawMenu();},true);
-            MenuButton("Back",.025f,ShowJournal);
+            MenuButton("Back",.025f,ShowTravelBag);
         }
         void DrawWorkshop()
         {
             int complete=Rewards.WorkshopCount(workshopPage,OrderedNodes);bool built=complete==10;
-            MenuTitle(WorkshopNames[workshopPage],built?"Ready for the islands!":"This is what we are building.");
-            var picture=RewardPicture(WorkshopAssets[workshopPage],new Vector2(.20f,.37f),new Vector2(.80f,.71f));
-            picture.color=built?Color.white:new Color(.90f,.90f,.80f,.65f);
-            MetaArrows(()=>{workshopPage=(workshopPage+3)%4;DrawMenu();},()=>{workshopPage=(workshopPage+1)%4;DrawMenu();});
+            CraftTitle(WorkshopNames[workshopPage],built?"Ready for the islands!":"This is what we are building.");
+            for(int i=0;i<4;i++){int pick=i;ShelfChoice("",WorkshopAssets[i],.08f+i*.215f,.65f,.195f,.115f,()=>{workshopPage=pick;DrawMenu();},i==workshopPage);}
+            Shelf(.64f);
+            var picture=RewardPicture(WorkshopAssets[workshopPage],new Vector2(.20f,.39f),new Vector2(.80f,.63f));
+            picture.color=built?Color.white:new Color(.82f,.85f,.77f,.85f);
+            picture.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,1),0,.5f);
             Text("Workshop progress",menuRoot,new Vector2(.10f,.29f),new Vector2(.90f,.38f),22,new UiCopy("Lights restored: {0} / 10",complete));
             Text("Workshop range",menuRoot,new Vector2(.10f,.20f),new Vector2(.90f,.29f),18,new UiCopy("From stop {0} to stop {1}",workshopPage*10+1,workshopPage*10+10));
             MenuButton("Back to map",.10f,ShowJourney,true);
@@ -119,7 +114,7 @@ namespace Cascade.Presentation
                 if(Rewards.ClaimParcel(parcelOrder)){PersistProgress();parcelOpened=true;feedback.Sound(ToyCue.Success);DrawMenu();}
             },true);
             if(opened&&!ReducedMotion)StartCoroutine(GiftArrival(picture.rectTransform));
-            MenuButton("Back",.025f,ShowJournal);
+            MenuButton("Back",.025f,ShowTravelBag);
         }
         IEnumerator GiftArrival(RectTransform picture)
         {
@@ -162,7 +157,7 @@ namespace Cascade.Presentation
             var records=Rewards.Records.OrderBy(r=>r.PuzzleId,StringComparer.Ordinal).ThenBy(r=>r.StampGoal).ToArray();
             if(records.Length==0){MenuTitle("My routes","Your own best paths.");Text("Empty journal",menuRoot,new Vector2(.10f,.38f),new Vector2(.90f,.65f),22,"Finish a puzzle to leave a note here.");MenuButton("Back",.10f,ShowTravelBag);return;}
             recordPage=Math.Min(recordPage,records.Length-1);var record=records[recordPage];
-            var content=Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).FirstOrDefault(c=>c.Definition.PuzzleId==record.PuzzleId&&c.Definition.ContentHash==record.ContentHash);
+            var content=Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).FirstOrDefault(c=>c.Definition.PuzzleId==record.PuzzleId&&c.Definition.ContentHash==record.ContentHash);
             MenuTitle("My routes",content==null?"A note from an earlier journey.":new UiCopy("Level {0}",content.Definition.CampaignNodeId.TrimStart('C','0')));
             if(content!=null)MiniMachine(Rect("Record target",menuRoot,new Vector2(.23f,.47f),new Vector2(.77f,.64f)),content.Definition.InitialSymbolIds,content.Definition.TargetSymbolIds);
             MetaArrows(()=>{recordPage=(recordPage+records.Length-1)%records.Length;DrawMenu();},()=>{recordPage=(recordPage+1)%records.Length;DrawMenu();});

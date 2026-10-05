@@ -1,3 +1,5 @@
+> Current implementation update (2026-10-05): see [CRAFT_REWORK.md](CRAFT_REWORK.md). Six Ribbon Reach trials are implemented; wide scenery uses one continuous field. This document retains its earlier checkpoint.
+
 # P17 — rewards that belong to Mika's journey
 
 5 October 2026. Design note before adding optional profile fields and presentation.

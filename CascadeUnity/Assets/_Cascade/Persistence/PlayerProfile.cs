@@ -34,7 +34,7 @@ namespace Cascade.Persistence
         public AttemptService RestoreAttempt(ContentCatalog catalog)
         {
             if(Attempt==null)return null;
-            var content=catalog.PrimaryLevels.Concat(catalog.LocalizedLevels).FirstOrDefault(c=>
+            var content=catalog.PrimaryLevels.Concat(catalog.LocalizedLevels).Concat(catalog.BonusLevels).FirstOrDefault(c=>
                 c.Definition.PuzzleId==Attempt.PuzzleId && c.Definition.ContentHash==Attempt.ContentHash
                 && c.Definition.RulesVersion==Attempt.RulesVersion && c.Locale==Attempt.Locale);
             if(content==null)throw new InvalidDataException("Pinned puzzle content is unavailable.");

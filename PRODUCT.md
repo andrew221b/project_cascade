@@ -6,9 +6,11 @@
 
 adaptive
 
-Unity mobile game for iOS/Android with desktop Editor/mouse support. This is a
+Portrait-only Unity mobile game for iOS/Android with desktop Editor/mouse support. This is a
 custom game surface, not a native productivity app. Platform safe areas, touch
-targets and reduced motion apply; gameplay follows the user's game brief.
+targets and reduced motion apply; gameplay follows the user's game brief. Mobile
+PlayerSettings enforce portrait. The retained desktop-wide reference is
+1440×900; short desktop windows are not a supported layout baseline.
 
 ## Product Purpose
 
@@ -61,6 +63,8 @@ three new node clears earns one saved parcel fragment for a known gift; three
 claimed fragments make an owned Leaf Pin, Sun Button, Sky Ribbon or Moon Patch.
 Selection directs the next order, pending fragments count toward capacity, and
 opening a receipt is idempotent. An owned keepsake can accompany Mika on the map.
+Collection and workshop each show four selectable object thumbnails together,
+a large selected object, and its saved progress and available action.
 Four workshop miniatures each require their exact ten lesson-node receipts;
 Words skipping C26 does not complete its ten-node workshop. Keeper rank reflects
 restored lights and three requests based on repair, bridge and stamp outcomes
@@ -88,11 +92,27 @@ platforms with hemp suspension, visible strength pips, held-command forecasts,
 source-piece falling and settling, pictorial device demonstrations and stationary
 before/after ghosts under Reduced Motion. Separate cloud, foliage and regional
 weather layers use the presentation clock; maps have live cloud/weather motion,
-and wide gameplay uses architectural side wings. The travel bag places Mika
-on a wooden bench. A map seal derives from an already proven saved stamp goal;
+and scenery now uses a continuous viewport sky composition. The travel bag
+places Mika and a parcel on a bench above two object shelves. A map seal derives from an already proven saved stamp goal;
 it adds no reward currency or new save field. These visuals consume committed
-state and do not change Domain rules, gameplay physics, schemas, prices or
-packages. Existing IDs remain stable. Long Reach and online remain design-only.
+state and do not change gameplay rules. The Craft revision in
+Docs/CRAFT_REWORK.md adds a continuous hanging rope rig, bounded visual spring
+weight, a two-stage landing bounce, and warm key/sky fill. Its two original
+backgrounds, WorkshopRoom and WindGardenPanorama, retain generated pixels and
+embedded prompt metadata; prompts and hashes are in Docs/AssetPrompts/Craft.
+Prices, packages and existing campaign IDs remain stable; there is no gameplay
+physics. Online remains design-only.
+
+Ribbon Reach is implemented as six separate optional workshop trials R01–R06,
+accessible from the bag. Their rules version is 2.1-longreach. One charge permits
+one atomic endpoint exchange across one or two intervening pieces; the middle
+pieces stay in place and the multiset is preserved. Every crossed edge must be
+open, and a corridor containing a linked-pair edge rejects Reach. Cost is one
+plus crossed fragile edges; a crossed one-use bridge is consumed. Contacts use
+the final row and the bomb ticks once. Undo restores the charge; Retry resets
+it. The same transition supplies the solver, command replay and state identity.
+Bonus records/receipts stay separate from campaign progression. C01–C160 retain
+their existing rules2.0 content and hashes. There is no charge purchase.
 P19 provides disabled mock monetization service boundaries; it has no live ads,
 IAP provider, store UI or validated production receipts.
 
@@ -145,13 +165,46 @@ focused PlayMode before the final device-guide/CanvasRenderer correction.
 Native full-size PNG stills and sampled motion frames exist. The final renderer
 correction passed four affected UI regressions (Reports/WoodlandFix/playmode.xml,
 11:29:09–11:29:16 UTC); fresh guide/map/bag captures show native wood and weather.
-Independent final disposition is pending at this documentation pass. A local
-player build is also pending. Earlier phase
-results above remain historical checkpoints, not a final expanded full-suite run.
+Those Woodland review/build statuses were pending at their original checkpoint;
+the newer Craft results below supersede them. Earlier phase results above
+remain historical checkpoints, not a final expanded full-suite run.
 Physical iOS/Android touch, haptics, performance, speaker/headphone listening,
 human enjoyment/retention, non-reader comprehension, native-language editorial
 approval and live Ads/IAP remain NOT RUN. No no-bugs or enjoyment claim follows
 from these tests or captures.
+
+The current Craft evidence is in Reports/Craft and Reports/CraftReach. The
+initial EditMode run passed 475/476; after the Reach-test correction, all nine
+Reach tests passed in the focused rerun. Seven focused PlayMode tests passed;
+Reports/CraftFinal/playmode.xml then passed three affected regressions from that
+seven-test set. These are distinct checkpoints, not a subsequent full 476/476
+result or ten distinct PlayMode tests. The original review recorded fix;
+Reports/Craft/impeccable-verdict.md now records ship for seven scored findings,
+including map edges and piece contact with visible wood. That disposition covers
+the scored fixes, not the complete product or all interaction states. The 844×390 landscape capture is a rejected
+diagnostic, not a supported mobile view. Portrait safe areas are simulated;
+no physical iOS/Android device is connected.
+
+Reports/Craft/editor-performance.txt records 240 frames after 90 warm-up frames
+in the Editor at 1793×1035: median 99.998 ms and p95 101.649 ms. Background
+throttling is suspected, not established; this sample is neither a player nor a
+mobile performance pass. Total allocated-memory snapshots are not a measured
+per-frame allocation rate.
+
+Reports/Craft/build.txt records a successful Mac standalone build with zero
+errors, 346 warnings and 247,298,651 bytes. CascadeUnity/Builds/CASCADE-Craft.app
+preserves the previous app. Warnings include package shaders and missing iOS
+localization metadata; this Mac result is not an iOS build pass. The parent
+checked Player.log without recorded exceptions/errors.
+Reports/Craft/player-performance.txt records actual C160 standalone performance
+on Apple M4 Pro at 1440×900: 240 frames after 90 warm-up frames, median 16.703 ms
+and p95 17.520 ms. The Mac was locked during this benchmark; it is not verified
+foreground performance. Total allocated-memory snapshots are 106,835,389 and
+107,089,661 bytes. The GC counter is invalid, so its reported zeros mean
+unavailable, not zero allocations. This short sample does not establish sustained
+performance or mobile performance. Native app visual confirmation remains
+blocked by the locked Mac. Device, human enjoyment, AAA quality and release
+readiness remain unproven.
 
 ## Product Principles
 

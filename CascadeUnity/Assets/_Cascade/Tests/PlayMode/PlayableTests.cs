@@ -94,6 +94,31 @@ namespace Cascade.Tests
             Assert.That(game.Interaction.Attempt.Current.Status, Is.EqualTo(PuzzleStatus.Playing));
             Assert.That(game.Interaction.Attempt.RouteLength, Is.Zero);
         }
+        [UnityTest] public IEnumerator RibbonDragPersistsAndUndoRestoresCharge()
+        {
+            game.LoadLevel(game.Catalog.BonusLevels[2].Definition);game.ShowGame();yield return null;game.RefreshLayout();
+            yield return TouchFrame(11,Point(0),UnityEngine.InputSystem.TouchPhase.Began);
+            yield return TouchFrame(11,Point(3),UnityEngine.InputSystem.TouchPhase.Moved);
+            Assert.That(game.Interaction.Attempt.Current.ReachCharges,Is.EqualTo(1));
+            yield return TouchFrame(11,Point(3),UnityEngine.InputSystem.TouchPhase.Ended);yield return AwaitPresentation();
+            Assert.That(game.Interaction.Attempt.Current.ReachCharges,Is.Zero);
+            string hash=game.Interaction.Attempt.CurrentStateHash;
+            yield return SceneManager.LoadSceneAsync("Assets/_Cascade/Scenes/CascadePlayable.unity");game=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+            game.ShowGame();game.SendMessage("OnApplicationFocus",true);game.Undo();
+            Assert.That(game.Interaction.Attempt.Current.ReachCharges,Is.EqualTo(1));
+        }
+        [UnityTest] public IEnumerator ConnectedRopesSurviveReducedMotionAndResize()
+        {
+            game.LoadNode("C03");game.ReducedMotion=true;yield return null;game.RefreshLayout();
+            var ropes=game.Machine.GetComponentsInChildren<LineRenderer>().Where(l=>l.name.Contains("continuous hemp")).ToArray();
+            Assert.That(ropes.Length,Is.EqualTo(2));string hash=game.Interaction.Attempt.CurrentStateHash;
+            foreach(var rope in ropes){Assert.That(rope.enabled,Is.True);Assert.That(rope.positionCount,Is.EqualTo(25));Assert.That(rope.bounds.size.y,Is.GreaterThan(1));}
+            game.SetEditorSafeInsets(new Vector4(.06f,.045f,.06f,.07f));yield return null;
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+            foreach(var rope in ropes)for(int i=0;i<rope.positionCount;i++)Assert.That(float.IsNaN(rope.GetPosition(i).x),Is.False);
+            game.SetEditorSafeInsets(Vector4.zero);
+        }
         [UnityTest] public IEnumerator TouchAdjacentDragWinsWithoutSpawningTokens()
         {
             int views = game.SlotViews.Count; yield return TouchFrame(1, Point(0), UnityEngine.InputSystem.TouchPhase.Began);
@@ -688,7 +713,7 @@ namespace Cascade.Tests
         {
             foreach(string id in new[]{"C01","C02","C03"})yield return DeliverNode(id);
             game.LoadNode("C02");game.ShowCollection();var before=game.Interaction.Attempt.CurrentStateHash;
-            yield return ClickButton("Next");yield return ClickButton("Choosethisgift");
+            yield return ClickButton("SunButtonChoice");yield return ClickButton("Choosethisgift");
             Assert.That(game.Rewards.SelectedGift,Is.EqualTo("sun"));Assert.That(game.Rewards.Parcels[0].GiftId,Is.EqualTo("leaf"));
             Assert.That(game.Interaction.CanPlay,Is.False);Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(before));
             Assert.That(new ProfileStore(game.ProfilePath).Load().Profile.Rewards.SelectedGift,Is.EqualTo("sun"));

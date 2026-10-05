@@ -1596,6 +1596,46 @@ MonoBehaviour:
     m_Key: Light the beacon
     m_Metadata:
       m_Items: []
+  - m_Id: 77866548060160
+    m_Key: Mika's workshop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77866564837376
+    m_Key: Pick something to make or take along.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77866564837377
+    m_Key: Ribbon reach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77866564837378
+    m_Key: One ribbon. Swap across one or two pieces.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77866564837379
+    m_Key: Try ribbon {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77866564837380
+    m_Key: Drag past a neighbour. The ribbon works once. Undo brings it back.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77866564837381
+    m_Key: Drag past a neighbour. The ribbon works once.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77866564837382
+    m_Key: Ribbon used. You can still swap neighbours.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77866564837383
+    m_Key: Each swap wears the wood. Empty marks? The board breaks. Down leaves early.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77866564837384
+    m_Key: A cracked spot wears the board twice as fast.
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

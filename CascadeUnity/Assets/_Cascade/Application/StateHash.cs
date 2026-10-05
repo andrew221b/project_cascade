@@ -27,6 +27,7 @@ namespace Cascade.Application
                     writer.Write(state.KeyUsed); writer.Write(state.RepairUsed); writer.Write(state.BridgeUsed);
                     writer.Write(state.StampBits); writer.Write(state.DefusedCount);
                     writer.Write(state.ExplodedCount); writer.Write(state.AbandonedCount); writer.Write((int)state.Status);
+                    if(level.ReachCharges>0){writer.Write("longreach-v1");writer.Write(state.ReachCharges);}
                 }
                 using (var sha = SHA256.Create())
                     return BitConverter.ToString(sha.ComputeHash(stream.ToArray())).Replace("-", "").ToLowerInvariant();

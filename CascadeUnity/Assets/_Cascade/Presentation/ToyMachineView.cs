@@ -102,7 +102,9 @@ namespace Cascade.Presentation
             var lightObject = new GameObject("Warm workshop key light", typeof(Light)); lightObject.transform.SetParent(transform, false);
             lightObject.transform.rotation = Quaternion.Euler(32, -24, 0);
             var keyLight = lightObject.GetComponent<Light>(); keyLight.type = LightType.Directional;
-            keyLight.color = new Color(1, .96f, .88f); keyLight.intensity = 1.20f; keyLight.shadows = LightShadows.None;
+            keyLight.color = new Color(1, .96f, .88f); keyLight.intensity = 1.05f; keyLight.shadows = LightShadows.None;
+            var fillObject=new GameObject("Soft sky rim",typeof(Light));fillObject.transform.SetParent(transform,false);fillObject.transform.rotation=Quaternion.Euler(-18,155,0);
+            var fill=fillObject.GetComponent<Light>();fill.type=LightType.Directional;fill.color=new Color(.64f,.85f,1);fill.intensity=.35f;fill.shadows=LightShadows.None;
             RenderSettings.ambientMode = AmbientMode.Flat; RenderSettings.ambientLight = new Color(.69f, .79f, .80f);
 
         }
@@ -117,6 +119,7 @@ namespace Cascade.Presentation
             Frame = new PresentationFrame(model.Attempt.Current);
             upperAnchor = anchors[0]; lowerAnchor = receiver;
             InitializeWoodMaterials();
+            InitializeRopeRig();
             for (int i = 0; i < anchors.Count; i++) BuildFloor(anchors[i], model.Attempt.Level.Floors[i], slots.Count);
             Add("Receiver contact", receiver, art.quad, art.shadow, new Vector2(.51f, .38f), new Vector2(1.07f, .96f), .7f, .01f);
             Add("Golden receiver rim", receiver, art.beam, art.gold, new Vector2(.5f, .48f), new Vector2(1, .76f), .35f, .30f);
@@ -131,7 +134,7 @@ namespace Cascade.Presentation
                 var anchor = (RectTransform)slots[i].transform;
                 tokenShadows.Add(Add("Token contact " + i, anchor, art.quad, art.shadow, new Vector2(.53f, .22f), new Vector2(1.04f, .35f), .04f, .01f));
                 selections.Add(Add("Selection rim " + i, anchor, art.tile, art.gold, new Vector2(.5f, .48f), new Vector2(.94f, 1.04f), -.18f, .12f));
-                tokens.Add(Add("Persistent token " + i, anchor, art.tile, art.cream, new Vector2(.5f, .5f), new Vector2(.78f, .88f), -.35f, .22f));
+                tokens.Add(Add("Persistent token " + i, anchor, art.tile, art.cream, new Vector2(.5f, .5f), new Vector2(.82f, .90f), -.35f, .34f));
             }
             Sync();
         }
@@ -146,11 +149,11 @@ namespace Cascade.Presentation
             rig.board=P("Wooden suspended board",rig.bendMesh,woodMaterial,.5f,.33f,1,.19f,.15f);rig.board.stretch=true;
             for(int end=0;end<2;end++) {
                 float x=end==0?.025f:.975f;
-                rig.rope.Add(P("Hemp suspension",art.beam,ropeMaterial,x,.70f,.014f,.74f,.05f));
+                // Continuous ropes are shared by the whole hanging machine.
                 P("Rope knot",art.disk,ropeMaterial,x,.38f,.05f,.09f,-.14f);
-                P("Upper rope peg",art.disk,art.gold,x,1.07f,.035f,.09f,.05f);
+
             }
-            for(int pip=0;pip<15;pip++)rig.durability.Add(P("Wood strength "+pip,art.tile,art.gold,.17f+pip*.028f,.10f,.021f,.05f,-.12f));
+            for(int pip=0;pip<15;pip++)rig.durability.Add(P("Wood strength "+pip,art.disk,art.gold,.15f+pip*.048f,.33f,.020f,.052f,-.20f));
             for (int i = 0; i < 3; i++) rig.cracks.Add(P("Damage seam " + i, art.beam, art.graphite, .28f + i * .23f, .33f, .055f, .023f, -.17f, i % 2 == 0 ? 65 : -58));
             for (int i = 0; i < count - 1; i++) {
                 float x = .045f + .91f * (i + 1f) / count;
@@ -263,8 +266,8 @@ namespace Cascade.Presentation
                 if(rig.bombFlame!=null)rig.bombFlame.transform.gameObject.SetActive(!past&&(!active||state.BombPhase==BombPhase.Armed));
                 for(int t=0;t<rig.fuse.Count;t++)rig.fuse[t].transform.gameObject.SetActive(!past&&(!active||state.BombPhase==BombPhase.Armed)&&t<(active?state.BombTicks:rig.fuse.Count));
                 for(int pip=0;pip<rig.durability.Count;pip++) {
-                    var p=rig.durability[pip];p.transform.gameObject.SetActive(!past&&pip<hp);
-                    p.renderer.sharedMaterial=active&&forecastHp.HasValue&&pip>=forecastHp.Value?art.coral:art.gold;
+                    var p=rig.durability[pip];p.transform.gameObject.SetActive(!past&&pip<Mathf.Max(hp,interaction.Attempt.Level.Floors[f].BaseDurability));
+                    p.renderer.sharedMaterial=active&&forecastHp.HasValue&&pip>=forecastHp.Value?art.coral:pip<hp?art.paleGold:ropeMaterial;
                 }
                 SetVisible(rig.key, !past && !(active && state.KeyUsed));
                 SetVisible(rig.repair, !past && !(active && state.RepairUsed));
@@ -275,9 +278,12 @@ namespace Cascade.Presentation
             for (int i = 0; i < tokens.Count; i++) {
                 if(state.Status==PuzzleStatus.Playing) {
                     var p=tokens[i];var rig=floors[state.ActiveFloor];rig.board.anchor.GetWorldCorners(corners);
-                    float boardTop=Mathf.Lerp(corners[0].y,corners[2].y,.425f);
+                    // The painted plank occupies the middle of its padded mesh. Seat pieces on visible wood.
+                    float boardTop=Mathf.Lerp(corners[0].y,corners[2].y,.365f);
                     float half=p.mesh.bounds.extents.y*p.transform.localScale.y;
                     p.transform.position=new Vector3(p.transform.position.x,boardTop+half-p.mesh.bounds.center.y*p.transform.localScale.y+(interaction.SelectedSlot==i?SelectionLiftWorld(i):0),p.transform.position.z);
+                    var shadow=tokenShadows[i];shadow.basePosition=new Vector3(p.transform.position.x,boardTop-.012f,shadow.basePosition.z);shadow.transform.position=shadow.basePosition;
+                    shadow.baseScale=new Vector3(p.mesh.bounds.size.x*p.transform.localScale.x*1.12f,.075f,.01f);shadow.transform.localScale=shadow.baseScale;
                 }
                 restPositions[i]=tokens[i].transform.position;restScales[i]=tokens[i].transform.localScale;
                 visualOffsets[i]=Vector3.zero;visualStretch[i]=Vector2.one;visualAngles[i]=0;
@@ -291,6 +297,7 @@ namespace Cascade.Presentation
                 support.transform.rotation = Quaternion.Euler(0, 0, 90);
                 support.transform.localScale = new Vector3((top - bottom) / art.beam.bounds.size.x, .035f, .24f);
             }
+            UpdateRopeRig();
         }
         static void SetVisible(List<Part> parts, bool visible) { foreach (var p in parts) p.transform.gameObject.SetActive(visible); }
         void LateUpdate()

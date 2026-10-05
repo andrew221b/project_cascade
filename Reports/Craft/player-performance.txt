@@ -1,0 +1,7 @@
+hardware=Mac16,8 GPU=Apple M4 Pro
+context=Player resolution=1440x900
+frames=240 warmup=90 target=60
+median_ms=16.703 p95_ms=17.520
+allocated_start=106835389 allocated_end=107089661
+gc_counter_valid=False gc_mean_bytes=0 gc_max_bytes=0
+renderers=88

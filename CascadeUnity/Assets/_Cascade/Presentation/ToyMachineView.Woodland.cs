@@ -23,7 +23,7 @@ namespace Cascade.Presentation
         public float LoadedSag=>Frame!=null&&Frame.ActiveFloor<floors.Count?floors[Frame.ActiveFloor].sag:0;
         public void SetHeldWeight(int index){heldWeight=index;}
         public void LandWeight(int floor)
-        {if(!reducedMotion&&floor>=0&&floor<floors.Count)floors[floor].sagVelocity+=.15f;}
+        {if(!reducedMotion&&floor>=0&&floor<floors.Count)floors[floor].sagVelocity+=.25f;}
         public void SetPiecePose(int index,PiecePose pose,float angle=0)
         {piecePoses[index]=pose;visualAngles[index]=reducedMotion?0:angle;ApplyPiece(index);}
         public void ResetWoodPoses()
@@ -73,7 +73,7 @@ namespace Cascade.Presentation
                 var rig=floors[f];bool loaded=Frame.Status==PuzzleStatus.Playing&&Frame.ActiveFloor==f;
                 int grounded=0;for(int i=0;i<tokens.Count;i++)if(heldWeight!=i&&piecePoses[i]!=PiecePose.Falling)grounded++;
                 float weight=loaded?grounded/(float)Mathf.Max(1,tokens.Count):0;
-                float targetSag=reducedMotion?0:.030f*weight;float wind=reducedMotion?0:Mathf.Sin(windTime*.65f+f*.52f)*.025f;
+                float targetSag=reducedMotion?0:.045f*weight;float wind=reducedMotion?0:Mathf.Sin(windTime*.65f+f*.52f)*.025f;
                 Spring(ref rig.sag,ref rig.sagVelocity,targetSag,120,14,dt);Spring(ref rig.sway,ref rig.swayVelocity,wind,45,9,dt);
                 for(int i=0;i<rig.vertices.Length;i++){float x=(i/2)/16f;rig.vertices[i].y=(i%2)-.5f-Mathf.Sin(x*Mathf.PI)*rig.sag/Mathf.Max(.01f,rig.board.transform.localScale.y);}
                 rig.bendMesh.vertices=rig.vertices; // Static bounds already enclose the small cosmetic deflection.
@@ -89,6 +89,7 @@ namespace Cascade.Presentation
                 }
                 if(rig.bombFlame!=null&&!reducedMotion)rig.bombFlame.transform.localScale=rig.bombFlame.baseScale*(1+Mathf.Sin(windTime*7)*.025f);
             }
+            UpdateRopeRig();
             for(int i=0;i<tokens.Count;i++) {
                 if(Frame.Status==PuzzleStatus.Playing&&piecePoses[i]!=PiecePose.Falling&&piecePoses[i]!=PiecePose.Exchanging) {
                     var rig=floors[Frame.ActiveFloor];float x=(i+.5f)/tokens.Count;
@@ -105,13 +106,14 @@ namespace Cascade.Presentation
             token.localScale=Vector3.Scale(restScales[index],new Vector3(stretch.x,stretch.y,1));token.rotation=Quaternion.Euler(0,0,visualAngles[index]);
             if(index<tokenShadows.Count) {
                 var shadow=tokenShadows[index];float lift=Mathf.Max(0,visualOffsets[index].y);
-                shadow.transform.position=shadow.basePosition+dynamicOffsets[index];
+                shadow.transform.position=shadow.basePosition+dynamicOffsets[index]+Vector3.right*visualOffsets[index].x*.25f;
+                shadow.transform.localScale=shadow.baseScale*(1+Mathf.Min(lift,.6f)*.45f);
                 shadow.renderer.enabled=piecePoses[index]!=PiecePose.Falling&&lift<.9f;
             }
         }
         void OnDestroy()
         {
-            if(woodMaterial!=null)Destroy(woodMaterial);if(ropeMaterial!=null)Destroy(ropeMaterial);
+            if(continuousRopeMaterial!=null)Destroy(continuousRopeMaterial);if(woodMaterial!=null)Destroy(woodMaterial);if(ropeMaterial!=null)Destroy(ropeMaterial);
             foreach(var mesh in woodMeshes)if(mesh!=null)Destroy(mesh);
         }
     }

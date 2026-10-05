@@ -30,10 +30,10 @@ namespace Cascade.Presentation
         public void ShowLessons(){SetScreen(GameScreen.Lessons);}
         void DrawJourney()
         {
-            menuWash.color=new Color(1,.96f,.84f,.08f);
+            menuWash.color=Color.clear;
             int first=JourneyStory.FirstStop(mapPage),zone=JourneyStory.Zone(first);machine.SetZone(zone);
             var map=Resources.Load<Sprite>("CascadeArt/"+(zone<3?"Journey/":"Woodland/")+JourneyStory.MapAsset(zone));
-            if(map!=null)Picture("Island map",menuRoot,new Vector2(0,.19f),new Vector2(1,.89f),map,false);
+            if(map!=null)Rect("Island map",menuRoot,new Vector2(0,.19f),new Vector2(1,.89f)).gameObject.AddComponent<SoftSceneryGraphic>().Initialize(map);
             DrawMapAtmosphere(zone);
             var top=Rect("Map heading",menuRoot,new Vector2(.04f,.86f),new Vector2(.96f,.98f));Panel(top,Paper);
             var title=Text("Region",top,new Vector2(.05f,.50f),new Vector2(.78f,.98f),27,JourneyStory.ZoneName(zone));title.font=art.titleFont;title.alignment=TextAlignmentOptions.MidlineLeft;
@@ -45,10 +45,16 @@ namespace Cascade.Presentation
                 int index=first+i;var content=Catalog.PrimaryLevels[index];bool done=sessionClears.Contains(content.Definition.CampaignNodeId);
                 var point=places[i];
                 if(i>0)MapPath(places[i-1],point,first+i<=unlocked);
+                var stone=Rect("Stop stone shadow",menuRoot,point,point);stone.sizeDelta=new Vector2(67,36);stone.anchoredPosition=new Vector2(0,-15);var stoneFace=stone.gameObject.AddComponent<ShapeFaceGraphic>();stoneFace.SetShape(art.disk,new Color(.18f,.36f,.32f,.30f));
                 var b=Button(UiCopy.Raw("Stop"+(index+1)),menuRoot,point,point,()=>{selectedJourneyStop=index;DrawMenu();});
                 var rect=(RectTransform)b.transform;rect.sizeDelta=new Vector2(62,60);b.GetComponentInChildren<TextMeshProUGUI>().SetCopy((index+1).ToString());
                 b.GetComponent<Image>().color=done?new Color(.49f,.78f,.66f):index==selectedJourneyStop&&index<=unlocked?new Color(.99f,.76f,.32f):Paper;
                 b.interactable=index<=unlocked;
+                if(index==selectedJourneyStop&&index<=unlocked){
+                    var halo=Rect("Current stop beacon",b.transform,new Vector2(.5f,.5f),new Vector2(.5f,.5f));halo.sizeDelta=new Vector2(76,72);
+                    var ring=halo.gameObject.AddComponent<CoachRingGraphic>();ring.raycastTarget=false;ring.color=new Color(.95f,.72f,.24f,.8f);
+                    halo.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,1),0,1);
+                }
                 if(Rewards.Records.Any(r=>r.StampGoal!=0&&r.PuzzleId.Split('_')[0]==content.Definition.CampaignNodeId)) {
                     var seal=Rect("Earned trail seal",b.transform,new Vector2(.76f,.78f),new Vector2(.76f,.78f));seal.sizeDelta=new Vector2(20,20);
                     seal.gameObject.AddComponent<ShapeFaceGraphic>().SetShape(art.shapes[4],new Color(.77f,.47f,.08f));
@@ -85,7 +91,7 @@ namespace Cascade.Presentation
         }
         void DrawMapAtmosphere(int zone)
         {
-            if(zone==1||zone==4||zone==6)Rect("Map weather",menuRoot,new Vector2(.02f,.29f),new Vector2(.98f,.85f)).gameObject.AddComponent<WorldWeatherGraphic>().Initialize(this,zone==6);
+            Rect("Map weather",menuRoot,new Vector2(.02f,.29f),new Vector2(.98f,.85f)).gameObject.AddComponent<WorldWeatherGraphic>().InitializeRegion(this,zone);
             var sprite=Resources.Load<Sprite>("CascadeArt/Journey/Cloud");
             if(sprite!=null)for(int i=0;i<2;i++) {
                 float y=i==0?.785f:.315f;var cloud=Picture("Map cloud "+i,menuRoot,new Vector2(i==0?-.10f:.62f,y),new Vector2(i==0?.35f:1.10f,y+.075f),sprite,true);
