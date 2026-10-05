@@ -1,6 +1,6 @@
 # CASCADE — TASKS
 
-P00–P18: COMPLETE в доступном объёме. Unity AI/MCP: работает. P19: IN_PROGRESS; P20: NOT_STARTED.
+P00–P19: COMPLETE в доступном объёме. Unity AI/MCP: работает. P20: IN_PROGRESS.
 Python reference проверен отдельно; это не реализация игровых систем Unity.
 
 Автор прямо разрешил выполнять все этапы подряд, отменив остановки между
@@ -27,7 +27,7 @@ P01–P20. После каждого этапа фиксировать резу�
 - [x] P16 — Save и прогресс
 - [x] P17 — Мастерство и маленькая мета
 - [x] P18 — Интеграционная приёмка
-- [ ] P19 — Реклама и IAP позже
+- [x] P19 — Реклама и IAP позже (локальные границы; реальные SDK выключены)
 - [ ] P20 — Расширять задачами
 
 ## P18 — доступная интеграционная приёмка завершена, 5 октября 2026
@@ -422,3 +422,24 @@ P01–P20. После каждого этапа фиксировать резу�
 - Визуальные уточнения автора сохранены: уникальные CASCADE assets, яркая
   мультяшная стилизация, близкие ShapeMania рисовка/палитра, компактные
   платформы, явный приёмник, фон/ambient. Следующий этап по плану — P12.
+
+## P19 — локальные границы завершены, 5 октября 2026
+
+- Один AdService с disabled-by-default core/privacy/provider gates, запретами
+  на puzzle/tutorial/fail/retry/language, first-session/12-clear защитой,
+  3 новых победы +180 foreground seconds, максимум2/session, no chapter finale.
+  NotReady пропускает этот win; rewarded сбрасывает оба интервала.
+- Mock callback требует opened + verified receipt; close не выдаёт награду;
+  повтор/late confirmation идемпотентны. NoAutomaticAds и HideOffers раздельны.
+  Mock non-consumable restore не выдаёт coins/tokens. Нет store catalog/SDK/UI.
+- Инвентарь/receipt и HintUsed сохраняются до публикации; failed write/capture
+  откатывает профиль, флаг и hint cache. Unknown/stale/revealed не расходуют;
+  reload того же attempt/state не списывает второй жетон. Free Hint сохраняется.
+- Новое optional profile поле совместимо со schema1; цены/правила/IDs/packages
+  не менялись. Контракт до изменений: Docs/P19_MONETIZATION.md.
+- Unity текущая compilation, EditMode **344/344 PASS**,10:01:10–10:01:13 UTC;
+  Console0 errors/warnings. Reports/P19/editmode.xml. PlayMode/build не повторялись:
+  изменений UI/provider integration нет, disk/hint rollback проверены EditMode.
+- Официальные Unity IAP/LevelPlay руководства просмотрены; real SDK, sandbox
+  purchase/restore/receipts, consent age/device и настоящие показы NOT RUN.
+  Core author acceptance отсутствует; ни одного live monetization entrypoint.

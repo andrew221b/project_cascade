@@ -138,6 +138,14 @@ namespace Cascade.Application
             else if (offer.Result.Status == HintStatus.DeadEnd) HintUsed = true;
             return true;
         }
+        public bool TryRevealHintAtomically(HintOffer offer,Func<bool> commit)
+        {
+            if(!IsCurrent(offer)||offer.Result.Status!=HintStatus.Step||revealedHints.ContainsKey(offer.StateHash))return false;
+            bool previous=HintUsed;RevealHint(offer);
+            try {if(commit())return true;}
+            catch {revealedHints.Remove(offer.StateHash);HintUsed=previous;throw;}
+            revealedHints.Remove(offer.StateHash);HintUsed=previous;return false;
+        }
 
         public bool TryApplyHint(HintOffer offer, out TransitionResult result)
         {
