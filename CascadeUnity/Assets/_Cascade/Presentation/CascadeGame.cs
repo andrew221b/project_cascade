@@ -63,6 +63,7 @@ namespace Cascade.Presentation
             ?? throw new InvalidOperationException("Missing CASCADE content: " + name);
         void Awake()
         {
+            InitializeUiLanguage();
             Catalog = ContentImporter.Import(Source("levels"), Source("localized_levels"), Source("words_en"), Source("words_ru"), Source("words_uk"));
             art = ToyArt.Load(); font = art.bodyFont;
             if (uiCamera == null) uiCamera = Camera.main;
@@ -98,20 +99,20 @@ namespace Cascade.Presentation
             UpdateFlow();
             if (hintTask == null || !hintTask.IsCompleted || !Interaction.CanPlay) return;
             var completed = hintTask; hintTask = null; hintCancellation?.Dispose(); hintCancellation = null;
-            if (completed.IsFaulted) { var ignored = completed.Exception; status.text = "Hint unavailable. You can keep playing."; RenderControls(); return; }
+            if (completed.IsFaulted) { var ignored = completed.Exception; status.SetCopy("Hint unavailable. You can keep playing."); RenderControls(); return; }
             if (completed.IsCanceled) return;
             var offer = completed.Result;
             if (!Interaction.Attempt.RevealHint(offer)) return;
             offeredHint = offer;
-            status.text = offer.Result.Status == HintStatus.Step ? "Try this: " + CommandText(offer.Result.Command.Value)
+            status.SetCopy(offer.Result.Status == HintStatus.Step ? new UiCopy("Try this: {0}", CommandText(offer.Result.Command.Value))
                 : offer.Result.Status == HintStatus.DeadEnd ? "Stuck? Undo and try a different move."
-                : offer.Result.Status == HintStatus.Unknown ? "Search limit reached. You can keep playing." : "Target delivered.";
+                : offer.Result.Status == HintStatus.Unknown ? "Search limit reached. You can keep playing." : "Target delivered.");
             RenderControls();
         }
         public void LoadNode(string campaignNode)
         {
             var content = Catalog.GetPrimary(campaignNode); LoadLevel(content.Definition, content.Locale); node = campaignNode;
-            levelLabel.text = "Level " + int.Parse(campaignNode.Substring(1)); RenderControls();
+            levelLabel.SetCopy(new UiCopy("Level {0}", int.Parse(campaignNode.Substring(1)))); RenderControls();
         }
         public void LoadLevel(LevelDefinition level, string locale = "en")
         {
@@ -120,7 +121,7 @@ namespace Cascade.Presentation
             Interaction.SetSuspended(applicationPaused || !applicationFocused);
             journeyActive=false; machine.SetZone(JourneyStory.Zone(Catalog.PrimaryLevels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==level.CampaignNodeId)));
             userPaused = zoomOpen = false; targetZoom.gameObject.SetActive(false);
-            node = level.CampaignNodeId; levelLabel.text = "Level " + node.TrimStart('C', '0');
+            node = level.CampaignNodeId; levelLabel.SetCopy(new UiCopy("Level {0}", node.TrimStart('C', '0')));
             RebuildLevelViews(level); RenderState(); StartCoach(); if(flowReady)SetScreen(GameScreen.Playing);
         }
         void OnCommitted(TransitionResult result)
@@ -138,8 +139,8 @@ namespace Cascade.Presentation
             Coach?.Activity();
             if (result != null && !result.Accepted) {
                 Coach?.Invalid(result.Rejection,Interaction.LastRequestedCommand?.Edge??-1);
-                status.text = result.Rejection == RejectionReason.NoOp
-                    ? "These pieces are the same." : "This way is closed. Try the other side.";
+                status.SetCopy(result.Rejection == RejectionReason.NoOp
+                    ? "These pieces are the same." : "This way is closed. Try the other side.");
                 feedback.Sound(ToyCue.Reject);
             }
             else if (result == null) RenderFocus();
@@ -152,23 +153,24 @@ namespace Cascade.Presentation
         public void PreviewDrag(int from, int to)
         {
             if (Math.Abs(from - to) == 1 && to >= 0) ShowPreview(PuzzleCommand.Swap(Math.Min(from, to)));
-            else status.text = "Move onto the piece next to it.";
+            else status.SetCopy("Move onto the piece next to it.");
             HighlightDragNeighbour(from, to);
         }
         void ShowPreview(PuzzleCommand command)
         {
             var preview = Interaction.Attempt.Resolver.Preview(Interaction.Attempt.Current, command);
-            if (!preview.IsLegal) { status.text = preview.Rejection == RejectionReason.NoOp ? "No change · free to cancel" : "Locked edge · free to cancel"; return; }
+            if (!preview.IsLegal) { status.SetCopy(preview.Rejection == RejectionReason.NoOp ? "No change · free to cancel" : "Locked edge · free to cancel"); return; }
             var prediction = Interaction.Attempt.Predict(command);
-            string exit = prediction.State.ActiveFloor != Interaction.Attempt.Current.ActiveFloor || prediction.State.Status != PuzzleStatus.Playing ? " · then down" : "";
-            var effects = new List<string>();
+            UiCopy exit = prediction.State.ActiveFloor != Interaction.Attempt.Current.ActiveFloor || prediction.State.Status != PuzzleStatus.Playing ? "then down" : "";
+            var effects = new List<UiCopy>{new UiCopy("Board loses {0}",preview.DurabilityCost)};
             foreach (var e in prediction.Events.Where(e => e.Floor == Interaction.Attempt.Current.ActiveFloor)) {
-                if (e.Kind == PuzzleEventKind.Repaired) effects.Add("repair +" + e.Value);
-                if (e.Kind == PuzzleEventKind.BombExploded) effects.Add("bomb −" + e.Value);
+                if (e.Kind == PuzzleEventKind.Repaired) effects.Add(new UiCopy("repair +{0}",e.Value));
+                if (e.Kind == PuzzleEventKind.BombExploded) effects.Add(new UiCopy("bomb −{0}",e.Value));
                 if (e.Kind == PuzzleEventKind.BombDefused) effects.Add("defuse");
                 if (e.Kind == PuzzleEventKind.KeyOpened) effects.Add("unlock");
             }
-            status.text = "Board loses " + preview.DurabilityCost + (effects.Count == 0 ? "" : " · " + string.Join(" · ", effects)) + exit;
+            if(!string.IsNullOrEmpty(exit.Key))effects.Add(exit);
+            status.SetCopy(UiCopy.Join(" · ",effects));
             RenderFocus(); foreach (int edge in preview.AffectedEdges) { slotImages[edge].color = Selected; slotImages[edge + 1].color = Selected; }
         }
         public void Undo()
@@ -184,7 +186,7 @@ namespace Cascade.Presentation
             if (!Interaction.CanPlay || hintTask != null) return;
             CancelHint(); var request = Interaction.Attempt.CaptureHintRequest();
             hintCancellation = new CancellationTokenSource(); var token = hintCancellation.Token;
-            hintTask = Task.Run(() => AttemptService.CalculateHint(request, cancellationToken: token)); status.text = "Looking for one step…"; RenderControls();
+            hintTask = Task.Run(() => AttemptService.CalculateHint(request, cancellationToken: token)); status.SetCopy("Looking for one step…"); RenderControls();
         }
         public void RefreshLayout() {
             Canvas.ForceUpdateCanvases(); ApplySafeArea();
@@ -237,9 +239,9 @@ namespace Cascade.Presentation
             }
             RenderControls();
         }
-        string DisplaySymbol(SymbolId symbol) => symbol.Kind == SymbolKind.Shape ? new[] { "triangle", "circle", "square", "diamond", "star", "hexagon" }[art.ShapeIndex(symbol)] : symbol.Value;
+        UiCopy DisplaySymbol(SymbolId symbol) => symbol.Kind == SymbolKind.Shape ? new[] { "triangle", "circle", "square", "diamond", "star", "hexagon" }[art.ShapeIndex(symbol)] : UiCopy.Raw(symbol.Value);
         static string FaceText(SymbolId symbol) => symbol.Kind == SymbolKind.Glyph ? symbol.Value : "";
-        static string CommandText(PuzzleCommand command) => command.Kind == CommandKind.EarlyDrop ? "Drop the row" : "swap slots " + (command.Edge + 1) + " & " + (command.Edge + 2);
+        static UiCopy CommandText(PuzzleCommand command) => command.Kind == CommandKind.EarlyDrop ? "Drop the row" : new UiCopy("swap slots {0} & {1}",command.Edge+1,command.Edge+2);
         void BuildScreen()
         {
             var canvasRect = Rect("GameCanvas", transform, Vector2.zero, Vector2.one);
@@ -256,7 +258,7 @@ namespace Cascade.Presentation
 
             next = Button("Settings", header, new Vector2(.72f, 0), new Vector2(1, 48f/104), ShowSettings);
             previous.gameObject.SetActive(false); next.gameObject.SetActive(false);
-            pause.GetComponentInChildren<TextMeshProUGUI>().text = "";
+            pause.GetComponentInChildren<TextMeshProUGUI>().SetCopy("");
             var pauseMark = Rect("Pause mark",pause.transform,Vector2.zero,Vector2.one).gameObject.AddComponent<PauseMark>(); pauseMark.raycastTarget=false;
             status = Text("Feedback", safeRoot, new Vector2(.08f, .79f), new Vector2(.92f, .86f), 18, "");
             floorArea = Rect("Floors", safeRoot, new Vector2(.045f, .37f), new Vector2(.955f, .78f));
@@ -303,8 +305,8 @@ namespace Cascade.Presentation
                 float y = count == 1 ? .56f : .87f - i * .74f / (count - 1);
                 var card = Rect("Floor" + (i + 1), floorArea, new Vector2(.5f, y), new Vector2(.5f, y));
                 card.sizeDelta = new Vector2(Mathf.Min(342, level.InitialSymbolIds.Count * 76 + 24), count == 4 ? 110 : 132); floorViews.Add(card);
-                var title = Text("Durability", card, new Vector2(.02f, -.01f), new Vector2(.25f, .24f), 15, ""); title.alignment = TextAlignmentOptions.Left; title.font = art.titleFont; floorLabels.Add(title);
-                var devices = Text("Devices", card, new Vector2(.25f, -.20f), new Vector2(.98f, .22f), 16, ""); devices.alignment = TextAlignmentOptions.TopRight; deviceLabels.Add(devices);
+                var title = Text("Durability", card, new Vector2(.02f, -.01f), new Vector2(.40f, .24f), 15, ""); title.alignment = TextAlignmentOptions.Left; title.font = art.titleFont; floorLabels.Add(title);
+                var devices = Text("Devices", card, new Vector2(.40f, -.20f), new Vector2(.98f, .22f), 16, ""); devices.alignment = TextAlignmentOptions.TopRight; deviceLabels.Add(devices);
                 AddContactGlyph(card, level.Floors[i].Bomb, level.InitialSymbolIds.Count);
                 AddContactGlyph(card, level.Floors[i].Key, level.InitialSymbolIds.Count);
                 AddContactGlyph(card, level.Floors[i].Repair, level.InitialSymbolIds.Count);
@@ -392,8 +394,8 @@ namespace Cascade.Presentation
             for (int i = 0; i < level.Floors.Count; i++) {
                 var floor = level.Floors[i]; bool active = state.Status == PuzzleStatus.Playing && i == state.ActiveFloor;
                 bool past = !state.FloorVisible(i);
-                floorLabels[i].text = past ? "" : "Board " + (active ? state.Durability : floor.BaseDurability);
-                deviceLabels[i].text = past ? "" : DescribeFloor(floor, active ? state : null);
+                floorLabels[i].SetCopy(past ? "" : new UiCopy("Board {0}",active ? state.Durability : floor.BaseDurability));
+                deviceLabels[i].SetCopy(past ? "" : DescribeFloor(floor, active ? state : null));
                 foreach (Transform child in floorViews[i]) if (child.name == "DeviceGlyph") child.gameObject.SetActive(!past);
             }
             tokenRow.SetParent(state.Status == PuzzleStatus.Playing ? floorViews[state.ActiveFloor] : receiver, false);
@@ -404,15 +406,15 @@ namespace Cascade.Presentation
             for (int i = 0; i < tokenLabels.Count; i++) {
                 tokenLabels[i].text = FaceText(state.Row[i]); tokenLabels[i].fontSize = state.Status == PuzzleStatus.Won ? 24 : 28;
             }
-            receiverLabel.text = state.Status == PuzzleStatus.Won ? "Delivered in " + attempt.RouteLength + (attempt.RouteLength==1 ? " move" : " moves") : "Make this row";
-            status.text = userPaused ? "Paused. Devices wait for your next command." : state.Status == PuzzleStatus.Won ? "Exact order delivered." : state.Status == PuzzleStatus.Lost
+            receiverLabel.SetCopy(state.Status == PuzzleStatus.Won ? new UiCopy("Moves to deliver: {0}",attempt.RouteLength) : "Make this row");
+            status.SetCopy(userPaused ? "Paused. Devices wait for your next command." : state.Status == PuzzleStatus.Won ? "Exact order delivered." : state.Status == PuzzleStatus.Lost
                 ? "The rows do not match yet."
                 : state.Row.SequenceEqual(level.TargetSymbolIds)
                     ? state.ActiveFloor == level.Floors.Count - 1 ? "Ready! Tap Deliver." : "Ready here. Check the board below."
-                    : "Drag a piece onto its neighbour.";
+                    : "Drag a piece onto its neighbour.");
             wrongRowLabel.gameObject.SetActive(state.Status==PuzzleStatus.Lost);
             if (state.Status == PuzzleStatus.Lost) {
-                receiverLabel.text = "Goal";
+                receiverLabel.SetCopy("Goal");
                 tokenRow.gameObject.SetActive(true); tokenRow.anchorMin = new Vector2(.02f, -.36f); tokenRow.anchorMax = new Vector2(.98f, .06f);
             }
             RenderFocus(); RefreshLayout();
@@ -424,26 +426,26 @@ namespace Cascade.Presentation
             tokenLabels[index].rectTransform.position = glyphPositions[index] + offset;
             tokenLabels[index].rectTransform.localScale = new Vector3(stretch.x, stretch.y, 1);
         }
-        public void SetPresentationFeedback(string text) { status.text = text; }
+        public void SetPresentationFeedback(UiCopy text) { status.SetCopy(text); }
         public void SyncPresentation() { RenderState(); FinalizeScreenIfNeeded(); }
         public void CompleteDeliveryPose()
         {
             if (VisibleFrame.Status == PuzzleStatus.Won) { tokenRow.gameObject.SetActive(false); machine.Sync(); }
         }
-        string DescribeFloor(FloorDefinition floor, PresentationFrame state)
+        UiCopy DescribeFloor(FloorDefinition floor, PresentationFrame state)
         {
-            var parts = new List<string>();
+            var parts = new List<UiCopy>();
             if (floor.EntryTransform != EntryTransform.None) parts.Add(floor.EntryTransform == EntryTransform.MirrorNext ? "Mirror on entry" : floor.EntryTransform == EntryTransform.ShiftLeftOne ? "Shift left on entry" : "Shift right on entry");
             var closed = Enumerable.Range(0, floor.OpenEdges.Count).Where(i => state == null ? !floor.OpenEdges[i] : !state.EdgeVisibleOpen(floor, i)).ToArray();
-            if (closed.Length != 0) parts.Add("Locked " + string.Join(", ", closed.Select(i => (i + 1).ToString())));
-            if (floor.FragileEdges.Count != 0) parts.Add("Fragile " + string.Join(", ", floor.FragileEdges.Select(i => (i + 1).ToString())));
-            if (floor.LinkedPair.HasValue) parts.Add("Linked " + (floor.LinkedPair.Value.FirstEdge + 1) + " + " + (floor.LinkedPair.Value.SecondEdge + 1));
-            if (floor.Bomb != null) parts.Add("Bomb " + (state == null ? floor.Bomb.Ticks.ToString() : state.BombPhase == BombPhase.Armed ? state.BombTicks.ToString() : state.BombPhase.ToString()));
-            if (floor.Key != null) parts.Add(state?.KeyUsed == true ? "Unlocked" : "Key → " + (floor.Key.EdgeToOpen + 1));
-            if (floor.Repair != null) parts.Add(state?.RepairUsed == true ? "Repaired" : "Repair +" + floor.Repair.Amount);
-            if (floor.OneUseBridgeEdge.HasValue) parts.Add("Bridge " + (floor.OneUseBridgeEdge.Value + 1) + (state?.BridgeUsed == true ? " used" : " once"));
+            if (closed.Length != 0) parts.Add(new UiCopy("Locked {0}", UiCopy.Raw(string.Join(", ",closed.Select(i=>(i+1).ToString())))));
+            if (floor.FragileEdges.Count != 0) parts.Add(new UiCopy("Fragile {0}", UiCopy.Raw(string.Join(", ",floor.FragileEdges.Select(i=>(i+1).ToString())))));
+            if (floor.LinkedPair.HasValue) parts.Add(new UiCopy("Linked {0} + {1}",floor.LinkedPair.Value.FirstEdge+1,floor.LinkedPair.Value.SecondEdge+1));
+            if (floor.Bomb != null) parts.Add(new UiCopy("Bomb {0}",new UiCopy(state == null ? floor.Bomb.Ticks.ToString() : state.BombPhase == BombPhase.Armed ? state.BombTicks.ToString() : state.BombPhase.ToString())));
+            if (floor.Key != null) parts.Add(state?.KeyUsed == true ? "Unlocked" : new UiCopy("Key → {0}",floor.Key.EdgeToOpen+1));
+            if (floor.Repair != null) parts.Add(state?.RepairUsed == true ? "Repaired" : new UiCopy("Repair +{0}",floor.Repair.Amount));
+            if (floor.OneUseBridgeEdge.HasValue) parts.Add(new UiCopy(state?.BridgeUsed==true?"Bridge {0} used":"Bridge {0} once",floor.OneUseBridgeEdge.Value+1));
             if (floor.OptionalStamp != null) parts.Add("Stamp");
-            return string.Join(" · ", parts);
+            return UiCopy.Join(" · ",parts);
         }
         void RenderFocus()
         {
@@ -457,7 +459,7 @@ namespace Cascade.Presentation
             }
             machine?.Sync();
             int? selected = Interaction.SelectedSlot;
-            focusLabel.text = selected.HasValue ? DisplaySymbol(Interaction.Attempt.Current.Row[selected.Value]) : "Choose a symbol";
+            focusLabel.SetCopy(selected.HasValue ? DisplaySymbol(Interaction.Attempt.Current.Row[selected.Value]) : "Choose a symbol");
             swapLeft.interactable = Interaction.CanPlay && selected.HasValue && selected > 0;
             swapRight.interactable = Interaction.CanPlay && selected.HasValue && selected < slots.Count - 1;
             PrecisionLabel(swapLeft, "Left", selected.HasValue ? selected.Value - 1 : -1);
@@ -466,9 +468,9 @@ namespace Cascade.Presentation
         void PrecisionLabel(UnityEngine.UI.Button button, string direction, int edge)
         {
             var label = button.GetComponentInChildren<TextMeshProUGUI>();
-            if (!Interaction.SelectedSlot.HasValue || edge < 0 || edge >= slots.Count - 1) { label.text = direction; return; }
+            if (!Interaction.SelectedSlot.HasValue || edge < 0 || edge >= slots.Count - 1) { label.SetCopy(direction); return; }
             var preview = Interaction.Attempt.Resolver.Preview(Interaction.Attempt.Current, PuzzleCommand.Swap(edge));
-            label.text = direction + (preview.IsLegal ? " −" + preview.DurabilityCost : preview.Rejection == RejectionReason.NoOp ? " · same" : " · locked");
+            label.SetCopy(new UiCopy(preview.IsLegal?"{0} −{1}":preview.Rejection==RejectionReason.NoOp?"{0} · same":"{0} · locked",new UiCopy(direction),preview.DurabilityCost));
         }
         void RenderControls()
         {
@@ -476,10 +478,10 @@ namespace Cascade.Presentation
             undo.interactable = Interaction.CanControl && Interaction.Attempt.CanUndo;
             retry.interactable = Interaction.CanControl; retry.gameObject.SetActive(!Interaction.IsPresenting && Interaction.Attempt.Current.Status != PuzzleStatus.Playing);
             drop.interactable = Interaction.CanPlay; hint.interactable = Interaction.CanPlay && hintTask == null;
-            drop.GetComponentInChildren<TextMeshProUGUI>().text = Interaction.Attempt.Current.Status == PuzzleStatus.Playing
+            drop.GetComponentInChildren<TextMeshProUGUI>().SetCopy(Interaction.Attempt.Current.Status == PuzzleStatus.Playing
                 && Interaction.Attempt.Current.ActiveFloor == Interaction.Attempt.Level.Floors.Count - 1
-                && Interaction.Attempt.Current.Row.SequenceEqual(Interaction.Attempt.Level.TargetSymbolIds) ? "Deliver" : "Descend";
-            hint.GetComponentInChildren<TextMeshProUGUI>().text = offeredHint?.Result.Status == HintStatus.Step ? "Use hint" : "Hint";
+                && Interaction.Attempt.Current.Row.SequenceEqual(Interaction.Attempt.Level.TargetSymbolIds) ? "Deliver" : "Descend");
+            hint.GetComponentInChildren<TextMeshProUGUI>().SetCopy(offeredHint?.Result.Status == HintStatus.Step ? "Use hint" : "Hint");
 
             previous.interactable = next.interactable = Interaction.CanControl;
             PreciseInputActive = ForcePreciseInput;
@@ -496,25 +498,25 @@ namespace Cascade.Presentation
         {
             var image = rect.gameObject.AddComponent<UnityEngine.UI.Image>(); image.color = color; image.raycastTarget = interactive; return image;
         }
-        TextMeshProUGUI Text(string name, Transform parent, Vector2 min, Vector2 max, int size, string content)
+        TextMeshProUGUI Text(string name, Transform parent, Vector2 min, Vector2 max, int size, UiCopy content)
         {
             var rect = Rect(name, parent, min, max); var text = rect.gameObject.AddComponent<TextMeshProUGUI>();
             text.font = font; baseTextSizes[text]=size;
             text.fontSize = size*(Preferences.LargeText&&!IsSymbolFace(name)?1.12f:1); text.enableAutoSizing = false;
             text.color = Preferences.HighContrast?new Color(.06f,.17f,.18f):Ink;
-            text.text = content; text.alignment = TextAlignmentOptions.Center; text.raycastTarget = false;
+            text.SetCopy(IsSymbolFace(name)||name=="Mini glyph"?UiCopy.Raw(content.English):content); text.alignment = TextAlignmentOptions.Center; text.raycastTarget = false;
             text.textWrappingMode = TextWrappingModes.Normal; return text;
         }
-        UnityEngine.UI.Button Button(string label, Transform parent, Vector2 min, Vector2 max, Action clicked)
+        UnityEngine.UI.Button Button(UiCopy label, Transform parent, Vector2 min, Vector2 max, Action clicked)
         {
-            var rect = Rect(label.Replace(" ", ""), parent, min, max); var image = Background(rect, Paper, true); image.sprite = art.panel; image.type = UnityEngine.UI.Image.Type.Sliced;
+            var rect = Rect(label.English.Replace(" ", ""), parent, min, max); var image = Background(rect, Paper, true); image.sprite = art.panel; image.type = UnityEngine.UI.Image.Type.Sliced;
             var button = rect.gameObject.AddComponent<UnityEngine.UI.Button>(); button.onClick.AddListener(() => clicked());
             var colors = button.colors; colors.highlightedColor = new Color(1, .94f, .78f); colors.pressedColor = new Color(.82f, .88f, .81f); colors.disabledColor = new Color(.88f, .90f, .84f, .7f); button.colors = colors;
             var text = Text("Label", rect, Vector2.zero, Vector2.one, 18, label); text.font = art.titleFont; text.margin = new Vector4(3, 2, 3, 2); return button;
         }
         void DirectionButton(string name, Transform parent, Vector2 min, Vector2 max, bool right, Action clicked)
         {
-            var button = Button(name, parent, min, max, clicked); button.GetComponentInChildren<TextMeshProUGUI>().text = "";
+            var button = Button(name, parent, min, max, clicked); button.GetComponentInChildren<TextMeshProUGUI>().SetCopy("");
             var icon = Rect("Chevron", button.transform, new Vector2(.28f, .20f), new Vector2(.72f, .80f)).gameObject.AddComponent<ChevronGraphic>();
             icon.PointsRight = right; icon.color = Ink; icon.raycastTarget = false;
         }

@@ -62,7 +62,9 @@ namespace Cascade.Presentation
         {
             if (!HapticsEnabled) return; HapticRequests++;
             // The OS owns the vibration. This feedback path cannot call gameplay.
-            if (UnityEngine.Application.isMobilePlatform && !UnityEngine.Application.isEditor) Handheld.Vibrate();
+#if (UNITY_IOS || UNITY_ANDROID) && !UNITY_EDITOR
+            Handheld.Vibrate();
+#endif
         }
         void Update()
         {

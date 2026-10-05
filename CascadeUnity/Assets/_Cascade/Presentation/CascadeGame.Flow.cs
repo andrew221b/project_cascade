@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Cascade.Presentation
 {
-    public enum GameScreen { Home, Playing, Pause, Win, Fail, Settings, Devices, Lessons, Dialogue }
+    public enum GameScreen { Home, Playing, Pause, Win, Fail, Settings, Devices, Lessons, Dialogue, WordLanguage }
     public sealed partial class CascadeGame
     {
         public GameScreen CurrentScreen { get; private set; } = GameScreen.Playing;
@@ -57,7 +57,7 @@ namespace Cascade.Presentation
             resultRoot.pivot = new Vector2(.5f,.5f); resultRoot.anchoredPosition = new Vector2(0,88); resultRoot.sizeDelta = new Vector2(0,160);
             resultText = Text("Result summary", resultRoot, new Vector2(0,.71f), Vector2.one,18,"");
             Button("Next delivery",resultRoot,new Vector2(.52f,.35f),new Vector2(1,.65f),StartNextPreferred);
-            var home=Button("Result home",resultRoot,new Vector2(.52f,0),new Vector2(1,.30f),ShowHome);home.GetComponentInChildren<TextMeshProUGUI>().text="Home";
+            var home=Button("Result home",resultRoot,new Vector2(.52f,0),new Vector2(1,.30f),ShowHome);home.GetComponentInChildren<TextMeshProUGUI>().SetCopy("Home");
             resultRoot.gameObject.SetActive(false);
             coachRoot = Rect("Contextual coaching", safeRoot, Vector2.zero, Vector2.zero);
             coachRoot.sizeDelta = new Vector2(300,52); coachRoot.pivot = new Vector2(.5f,1);
@@ -141,7 +141,7 @@ namespace Cascade.Presentation
             if(show&&knownDeadEnd)prompt="Stuck? Undo and try another move.";
             coachRoot.gameObject.SetActive(false);
             if(prompt.Length>0) {
-                coachText.text=prompt; if(!IsHoldingToken && !Interaction.IsPresenting)status.text=prompt;
+                coachText.SetCopy(prompt); if(!IsHoldingToken && !Interaction.IsPresenting)status.SetCopy(prompt);
                 var floor=floorViews[Interaction.Attempt.Current.ActiveFloor];
                 coachRoot.position=floor.TransformPoint(new Vector3(0,-floor.rect.height*.64f,0));
                 coachRoot.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,Mathf.Min(310,safeRoot.rect.width*.90f));
@@ -177,9 +177,9 @@ namespace Cascade.Presentation
             PlaceControl(retry,result?resultRoot:safeRoot,result?new Vector2(0,.35f):new Vector2(.05f,.09f),result?new Vector2(.48f,.65f):new Vector2(.43f,.155f));
             retry.gameObject.SetActive(result); hint.gameObject.SetActive(!result); drop.gameObject.SetActive(!result); precise.gameObject.SetActive(!result&&PreciseInputActive);
             if(result) {
-                resultText.text=CurrentScreen==GameScreen.Win ? "You did it! The way is clear." : "Not quite. Undo and try again.";
+                resultText.SetCopy(CurrentScreen==GameScreen.Win ? "You did it! The way is clear." : "Not quite. Undo and try again.");
                 if(CurrentScreen==GameScreen.Fail && sessionLosses.TryGetValue(node,out var losses)&&losses>=3)
-                    resultText.text="Try the device guide. Undo and retry stay free.";
+                    resultText.SetCopy("Try the device guide. Undo and retry stay free.");
                 resultRoot.Find("Nextdelivery").gameObject.SetActive(CurrentScreen==GameScreen.Win);
             }
         }
@@ -197,6 +197,7 @@ namespace Cascade.Presentation
             else if(CurrentScreen==GameScreen.Lessons) DrawLessons();
             else if(CurrentScreen==GameScreen.Dialogue) DrawDialogue();
             else if(CurrentScreen==GameScreen.Settings) DrawSettings();
+            else if(CurrentScreen==GameScreen.WordLanguage) DrawWordLanguageConfirmation();
             else if(CurrentScreen==GameScreen.Devices) DrawDevices();
             else if(CurrentScreen==GameScreen.Pause) {
                 MenuTitle("Take a break", "Your puzzle will wait.");
@@ -204,12 +205,12 @@ namespace Cascade.Presentation
                 MenuButton("Devices",.36f,ShowDevices); MenuButton("Settings",.25f,ShowSettings); MenuButton("Home",.14f,ShowHome);
             }
         }
-        void MenuTitle(string title,string body)
+        void MenuTitle(UiCopy title,UiCopy body)
         {
             var label=Text("Menu title",menuRoot,new Vector2(.08f,.80f),new Vector2(.92f,.94f),34,title);label.font=art.titleFont;
             Text("Menu description",menuRoot,new Vector2(.08f,.70f),new Vector2(.92f,.81f),18,body);
         }
-        Button MenuButton(string label,float bottom,Action action,bool primary=false,float left=.10f,float right=.90f)
+        Button MenuButton(UiCopy label,float bottom,Action action,bool primary=false,float left=.10f,float right=.90f)
         {
             var button=Button(label,menuRoot,new Vector2(left,bottom),new Vector2(right,bottom),()=>{feedback.Sound(ToyCue.Select);action();});
             var r=(RectTransform)button.transform;r.pivot=new Vector2(.5f,0);r.sizeDelta=new Vector2(0,60);
@@ -232,7 +233,7 @@ namespace Cascade.Presentation
             int currentIndex=levels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==node);
             int proposed=Interaction.Attempt.Current.Status==PuzzleStatus.Won?currentIndex+1:Math.Max(0,currentIndex);
             var chosen=levels[Math.Max(0,Math.Min(levels.Count-1,proposed))];
-            string continueText=resume ? "Continue "+node.TrimStart('C','0')+" · "+Interaction.Attempt.Mode : "Play "+PreferredMode+" · "+chosen.Definition.CampaignNodeId.TrimStart('C','0');
+            UiCopy continueText=resume?new UiCopy("Continue {0} · {1}",node.TrimStart('C','0'),new UiCopy(Interaction.Attempt.Mode.ToString())):new UiCopy("Play {0} · {1}",new UiCopy(PreferredMode.ToString()),chosen.Definition.CampaignNodeId.TrimStart('C','0'));
             MenuButton(continueText,.56f,()=>{if(resume)ShowGame();else StartContent(chosen);},true);
             foreach(var mode in new[]{PuzzleMode.Shapes,PuzzleMode.Words,PuzzleMode.Mixed}) {
                 int i=(int)mode; // Enum values are not used as persisted IDs.
@@ -270,40 +271,41 @@ namespace Cascade.Presentation
         }
         void DrawDevices()
         {
-            MenuTitle(DeviceTitles[deviceIndex],"Device guide · "+(deviceIndex+1)+" / "+DeviceTitles.Length);
+            MenuTitle(DeviceTitles[deviceIndex],new UiCopy("Device guide · {0} / {1}",deviceIndex+1,DeviceTitles.Length));
             var fixture=Catalog.GetPrimary(DeviceNodes[deviceIndex]).Definition;
             MiniMachine(Rect("Device example",menuRoot,new Vector2(.16f,.595f),new Vector2(.84f,.72f)),fixture.InitialSymbolIds,fixture.TargetSymbolIds);
             var explanation=Text("Device explanation",menuRoot,new Vector2(.10f,.38f),new Vector2(.90f,.59f),20,DeviceCopy[deviceIndex]);explanation.alignment=TextAlignmentOptions.MidlineLeft;
             MenuButton("Previous",.29f,()=>{deviceIndex=(deviceIndex+DeviceTitles.Length-1)%DeviceTitles.Length;DrawMenu();},false,.10f,.47f);
             MenuButton("Next",.29f,()=>{deviceIndex=(deviceIndex+1)%DeviceTitles.Length;DrawMenu();},false,.53f,.90f);
-            MenuButton("Try level "+DeviceNodes[deviceIndex].TrimStart('C','0'),.18f,()=>{LoadNode(DeviceNodes[deviceIndex]);ShowGame();},true);
+            MenuButton(new UiCopy("Try level {0}",DeviceNodes[deviceIndex].TrimStart('C','0')),.18f,()=>{LoadNode(DeviceNodes[deviceIndex]);ShowGame();},true);
             MenuButton("Back",.07f,CloseMenu);
         }
         void DrawSettings()
         {
-            MenuTitle("Make yourself at home",settingsPage==0?"Sound & motion":"Comfort & help");
+            MenuTitle("Make yourself at home",settingsPage==0?"Sound & motion":settingsPage==1?"Comfort & help":"Languages");
             if(settingsPage==0) {
                 Setting("Music",Preferences.Music,.60f,()=>Preferences.Music=!Preferences.Music);
                 Setting("Sound effects",Preferences.Sound,.515f,()=>Preferences.Sound=!Preferences.Sound);
                 Setting("Haptics",Preferences.Haptics,.43f,()=>Preferences.Haptics=!Preferences.Haptics);
                 Setting("Reduced motion",Preferences.ReducedMotion,.345f,()=>Preferences.ReducedMotion=!Preferences.ReducedMotion);
                 Setting("Screen shake",Preferences.ScreenShake,.26f,()=>Preferences.ScreenShake=!Preferences.ScreenShake);
-                MenuButton("Effects: "+new[]{"Off","Low","Full"}[Preferences.EffectQuality],.175f,()=>{Preferences.EffectQuality=(Preferences.EffectQuality+1)%3;ApplyPreferences();DrawMenu();});
-            } else {
+                MenuButton(new UiCopy("Effects: {0}",new UiCopy(new[]{"Off","Low","Full"}[Preferences.EffectQuality])),.175f,()=>{Preferences.EffectQuality=(Preferences.EffectQuality+1)%3;ApplyPreferences();DrawMenu();});
+            } else if(settingsPage==1) {
                 Setting("High contrast",Preferences.HighContrast,.60f,()=>Preferences.HighContrast=!Preferences.HighContrast);
                 Setting("Larger text",Preferences.LargeText,.50f,()=>Preferences.LargeText=!Preferences.LargeText);
                 Setting("Precise input",Preferences.PreciseInput,.40f,()=>Preferences.PreciseInput=!Preferences.PreciseInput);
                 Setting("Tutorial help",Preferences.Tutorials,.30f,()=>Preferences.Tutorials=!Preferences.Tutorials);
                 Setting("Dead-end warning",Preferences.DeadEndWarnings,.20f,()=>Preferences.DeadEndWarnings=!Preferences.DeadEndWarnings);
             }
-            MenuButton(settingsPage==0?"Comfort":"Sound & motion",.085f,()=>{settingsPage=1-settingsPage;DrawMenu();},false,.10f,.55f);
+            if(settingsPage==2)DrawLanguages();
+            MenuButton(settingsPage==0?"Comfort":settingsPage==1?"Languages":"Sound & motion",.085f,()=>{settingsPage=(settingsPage+1)%3;DrawMenu();},false,.10f,.55f);
             MenuButton("Back",.085f,CloseMenu,false,.59f,.90f);
         }
         void Setting(string label,bool value,float bottom,Action toggle)
         {
-            var button=MenuButton(label+": "+(value?"On":"Off"),bottom,()=>{toggle();ApplyPreferences();DrawMenu();});
+            var button=MenuButton(UiCopy.Raw(label+": "+(value?"On":"Off")),bottom,()=>{toggle();ApplyPreferences();DrawMenu();});
             button.GetComponent<Image>().color=new Color(.97f,.92f,.78f);
-            var text=button.GetComponentInChildren<TextMeshProUGUI>();text.text=label;text.alignment=TextAlignmentOptions.MidlineLeft;
+            var text=button.GetComponentInChildren<TextMeshProUGUI>();text.SetCopy(label);text.alignment=TextAlignmentOptions.MidlineLeft;
             text.rectTransform.anchorMax=new Vector2(.72f,1);text.margin=new Vector4(16,2,3,2);
             var track=Rect("Switch",button.transform,new Vector2(.77f,.28f),new Vector2(.95f,.72f));var trackImage=Background(track,value?new Color(.32f,.68f,.61f):new Color(.55f,.58f,.49f),false);trackImage.sprite=art.panel;trackImage.type=Image.Type.Sliced;
             var knob=Rect("Knob",track,new Vector2(value?.52f:.04f,.09f),new Vector2(value?.96f:.48f,.91f));var knobImage=Background(knob,Paper,false);knobImage.sprite=art.panel;knobImage.type=Image.Type.Sliced;

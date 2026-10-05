@@ -1,0 +1,1 @@
+Success: StandaloneOSX; duration=5.083996; path=Library/com.unity.addressables/aa/OSX/settings.json

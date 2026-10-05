@@ -79,6 +79,7 @@ namespace Cascade.Content
                 if (Required(source, "locale") != locale) throw new InvalidDataException("Word pack locale differs.");
                 if (entries.ContainsKey(id)) throw new InvalidDataException("Duplicate WordId: " + id);
                 var word = new WordDefinition(id, locale, Required(source, "text"));
+                if(word.DisplayText!=word.DisplayText.ToUpperInvariant())throw new InvalidDataException("Word pack must use uppercase display text: "+id);
                 if (!(source["tokens"] is JArray tokens) || !tokens.Select(t => (string)t).SequenceEqual(word.Graphemes))
                     throw new InvalidDataException("Word NFC graphemes differ: " + id);
                 if (!(source["equality_signature"] is JArray signature) || !signature.Select(t => (int)t).SequenceEqual(word.EqualitySignature))

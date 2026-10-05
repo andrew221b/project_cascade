@@ -411,6 +411,32 @@ namespace Cascade.Tests
             Assert.That(world.CloudPosition,Is.EqualTo(cloud));Assert.That(world.GliderPosition,Is.EqualTo(glider));
             Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
         }
+        [UnityTest] public IEnumerator UiLanguageChangesNeverTranslateOrRestartPuzzleSymbols()
+        {
+            Assert.That(game.UiLanguage,Is.EqualTo("en"));Assert.That(game.Preferences.PuzzleLocale,Is.EqualTo("en"));
+            game.Catalog.TryGetLocalizedBinding("C32","ru",out var binding);game.LoadLevel(binding.Definition,"ru");yield return null;
+            var hash=game.Interaction.Attempt.CurrentStateHash;var state=game.Interaction.Attempt.Current;
+            foreach(string locale in new[]{"ru","uk","en"}) {
+                game.SetUiLocale(locale);yield return null;yield return null;yield return null;
+                Assert.That(game.UiLanguage,Is.EqualTo(locale));Assert.That(game.Interaction.Attempt.ActiveLocale,Is.EqualTo("ru"));
+                Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));Assert.That(game.Interaction.Attempt.Current,Is.SameAs(state));
+                Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Any(t=>t.name=="ReceiverLabel"&&t.text==(locale=="ru"?"Собери этот ряд":locale=="uk"?"Склади цей ряд":"Make this row")),Is.True);
+                foreach(var label in game.GetComponentsInChildren<TextMeshProUGUI>())Assert.That(label.text,Does.Not.Contain("No translation"));
+                game.ShowJourney();yield return null;yield return null;
+                var menu=game.GetComponentsInChildren<UnityEngine.UI.Button>().Single(b=>b.name=="Settings").GetComponentInChildren<TextMeshProUGUI>();
+                Assert.That(menu.text,Is.EqualTo(locale=="en"?"Menu":"Меню"));game.ShowGame();
+            }
+        }
+        [UnityTest] public IEnumerator WordLanguageNeedsConfirmationAndAppliesOnlyAtNextStart()
+        {
+            var before=game.Interaction.Attempt.Current;game.ShowSettings();yield return ClickButton("Comfort");yield return ClickButton("Languages");
+            yield return ClickButton("PuzzleLocaleuk");Assert.That(game.ProposedPuzzleLocale,Is.EqualTo("uk"));
+            yield return ClickButton("Keepmychoice");Assert.That(game.Preferences.PuzzleLocale,Is.EqualTo("en"));
+            yield return ClickButton("PuzzleLocaleru");yield return ClickButton("Usefornewpuzzles");
+            Assert.That(game.Preferences.PuzzleLocale,Is.EqualTo("ru"));Assert.That(game.Interaction.Attempt.Current,Is.SameAs(before));
+            game.SelectMode(PuzzleMode.Words);game.ShowJourney();yield return ClickButton("Travel");yield return ClickButton("Skipstory");
+            Assert.That(game.Interaction.Attempt.ActiveLocale,Is.EqualTo("ru"));Assert.That(game.Interaction.Attempt.Current.Row.All(v=>v.Locale=="ru"),Is.True);
+        }
         [UnityTest] public IEnumerator JourneyMapContinuePreservesAnUnfinishedRoute()
         {
             game.ShowJourney();yield return ClickButton("Travel");yield return ClickButton("Skipstory");
@@ -435,7 +461,7 @@ namespace Cascade.Tests
             Assert.That(game.GetComponentsInChildren<Transform>().Any(t=>t.name=="Mika on the path"),Is.False);
             var travel=game.GetComponentsInChildren<UnityEngine.UI.Button>().Single(b=>b.name=="Travel");
             Assert.That(travel.GetComponentInChildren<TextMeshProUGUI>().text,Is.EqualTo("Back to my path"));
-            Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Any(t=>t.text=="15 stops to reach this island"),Is.True);
+            Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Any(t=>t.text=="Stops to this island: 15"),Is.True);
             yield return ClickButton("Travel");
             Assert.That(game.GetComponentsInChildren<Transform>().Any(t=>t.name=="Mika on the path"),Is.True);
             Assert.That(game.JourneyClearCount,Is.Zero);game.ShowGame();

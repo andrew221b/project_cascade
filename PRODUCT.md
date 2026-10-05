@@ -23,6 +23,9 @@ C# with one transition function. No matching, clearing, spawning puzzle pieces,
 grid board or gameplay physics. Shape/word/mixed puzzles share SymbolId.
 EN is default, RU/UK additional, UI and puzzle locales independent. Free Undo
 and Retry, solver-verified hints. Source rules, IDs and package pins are stable.
+P15 implements EN/RU/UK menus, guidance and story copy. A menu-language change
+keeps the current attempt and exact symbols intact; a confirmed word-language
+choice applies to the next started puzzle. Translations remain editorial drafts.
 
 ## Brand Commitments
 
@@ -61,6 +64,14 @@ P11 input coverage exercised all 40 primary levels; Docs/POC_REVIEW.md retains
 known content-depth limits. These checks do not prove enjoyment, physical-device
 touch/haptics/performance, build readiness or release readiness. Native-language
 editorial review is not complete.
+
+P15 evidence is in Docs/P15_LOCALIZATION.md and Reports/P15: 215 UI keys with
+645 non-empty entries, 313/313 EditMode and 38/38 PlayMode results, and 39 native
+Editor captures across EN/RU/UK. The independent P15 review records a scoped
+ship verdict for those views. Addressables content built for StandaloneOSX;
+this is not a complete player build. Preferences and progress remain session-only
+until P16. Native-language editing, physical-device behavior and human enjoyment
+remain unverified.
 
 ## Product Principles
 

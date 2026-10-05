@@ -1,0 +1,894 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: CascadeUI Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: CascadeUI
+  m_TableCollectionNameGuidString: b33500a1d6ebc45cd9bdf72e97fa93f5
+  m_Entries:
+  - m_Id: 460316672
+    m_Key: CASCADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705280
+    m_Key: '{0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705281
+    m_Key: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705282
+    m_Key: Back to my path
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705283
+    m_Key: Board {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705284
+    m_Key: Board loses {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705285
+    m_Key: "Blast: \u2212{0} durability"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705286
+    m_Key: Bomb
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705287
+    m_Key: Bomb defused
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705288
+    m_Key: Bomb {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705289
+    m_Key: 'Bomb: {0} moves left'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705290
+    m_Key: Armed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705291
+    m_Key: Defused
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705292
+    m_Key: Exploded
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705293
+    m_Key: Absent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705294
+    m_Key: Bridge {0} once
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705295
+    m_Key: Bridge {0} used
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705296
+    m_Key: Choose a delivery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705297
+    m_Key: Choose a symbol
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705298
+    m_Key: Close target
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705299
+    m_Key: Comfort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705300
+    m_Key: Comfort & help
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705301
+    m_Key: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705302
+    m_Key: "Continue {0} \xB7 {1}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705303
+    m_Key: Dead-end warning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705304
+    m_Key: Deliver
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705305
+    m_Key: Descend
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705306
+    m_Key: "Device guide \xB7 {0} / {1}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705307
+    m_Key: Devices
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705308
+    m_Key: Drop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705309
+    m_Key: Drop the row
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705310
+    m_Key: Durability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705311
+    m_Key: Earlier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705312
+    m_Key: Edge {0} unlocked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705313
+    m_Key: 'Effects: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705314
+    m_Key: Entry rollers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 468705315
+    m_Key: Exact order delivered.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899584
+    m_Key: Focus next
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899585
+    m_Key: Focus previous
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899586
+    m_Key: Fragile edge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899587
+    m_Key: Fragile {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899588
+    m_Key: Full
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899589
+    m_Key: Goal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899590
+    m_Key: Haptics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899591
+    m_Key: High contrast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899592
+    m_Key: Hint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899593
+    m_Key: Hint unavailable. You can keep playing.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899594
+    m_Key: Home
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899595
+    m_Key: Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899596
+    m_Key: "Key \u2192 {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899597
+    m_Key: Larger text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899598
+    m_Key: Later
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899599
+    m_Key: Left
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899600
+    m_Key: Lessons
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899601
+    m_Key: Let's go
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899602
+    m_Key: Level {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899603
+    m_Key: Linked pairs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899604
+    m_Key: Linked {0} + {1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899605
+    m_Key: "Locked edge \xB7 free to cancel"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899606
+    m_Key: Locked {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899607
+    m_Key: "Looking for one step\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899608
+    m_Key: Low
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899609
+    m_Key: Make the same row
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899610
+    m_Key: Make this row
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899611
+    m_Key: Make yourself at home
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899612
+    m_Key: Map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899613
+    m_Key: Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899614
+    m_Key: Mirror on entry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899615
+    m_Key: Move onto the piece next to it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899616
+    m_Key: 'Moves to deliver: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899617
+    m_Key: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899618
+    m_Key: Next
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899619
+    m_Key: Next delivery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899620
+    m_Key: "No change \xB7 free to cancel"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899621
+    m_Key: Not quite. Undo and try again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899622
+    m_Key: Off
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899623
+    m_Key: On
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899624
+    m_Key: One row. Bring it home in order.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899625
+    m_Key: One-use bridge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899626
+    m_Key: One-use bridge closed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899627
+    m_Key: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899628
+    m_Key: Paused. Devices wait for your next command.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899629
+    m_Key: Play again
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899630
+    m_Key: Play shapes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899631
+    m_Key: "Play {0} \xB7 {1}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899632
+    m_Key: Precise input
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899633
+    m_Key: Previous
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899634
+    m_Key: Ready here. Check the board below.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899635
+    m_Key: Ready! Tap Deliver.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899636
+    m_Key: Receiver
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899637
+    m_Key: Reduced motion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899638
+    m_Key: Repair
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899639
+    m_Key: Repair +{0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899640
+    m_Key: Repaired
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899641
+    m_Key: Result home
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899642
+    m_Key: Resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899643
+    m_Key: Retry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899644
+    m_Key: Right
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899645
+    m_Key: Screen shake
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899646
+    m_Key: Search limit reached. You can keep playing.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899647
+    m_Key: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899648
+    m_Key: Shift left on entry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899649
+    m_Key: Shift right on entry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899650
+    m_Key: Skip story
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899651
+    m_Key: Sound & motion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899652
+    m_Key: Sound effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899653
+    m_Key: Stamp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899654
+    m_Key: Stamp collected
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899655
+    m_Key: 'Stops to this island: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899656
+    m_Key: Story
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899657
+    m_Key: Stuck? Undo and try a different move.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899658
+    m_Key: Stuck? Undo and try another move.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899659
+    m_Key: Swap left
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899660
+    m_Key: Swap right
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899661
+    m_Key: Take a break
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899662
+    m_Key: Target delivered.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899663
+    m_Key: The rows do not match yet.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899664
+    m_Key: These pieces are the same.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899665
+    m_Key: This way is closed. Try the other side.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899666
+    m_Key: Travel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899667
+    m_Key: Try level {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899668
+    m_Key: Try the device guide. Undo and retry stay free.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899669
+    m_Key: 'Try this: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899670
+    m_Key: Tutorial help
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899671
+    m_Key: Undo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899672
+    m_Key: Unlocked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899673
+    m_Key: Use hint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899674
+    m_Key: You did it! The way is clear.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899675
+    m_Key: Your puzzle will wait.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899676
+    m_Key: Your row
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899677
+    m_Key: triangle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899678
+    m_Key: circle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899679
+    m_Key: square
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899680
+    m_Key: diamond
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899681
+    m_Key: star
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899682
+    m_Key: hexagon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899683
+    m_Key: repair +{0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899684
+    m_Key: "bomb \u2212{0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899685
+    m_Key: defuse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899686
+    m_Key: unlock
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899687
+    m_Key: then down
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899688
+    m_Key: swap slots {0} & {1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899689
+    m_Key: '{0} / {1} lights restored'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899690
+    m_Key: "{0} \xB7 locked"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899691
+    m_Key: "{0} \xB7 same"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899692
+    m_Key: "{0} \u2212{1}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899693
+    m_Key: Shapes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899694
+    m_Key: Words
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899695
+    m_Key: Mixed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899696
+    m_Key: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899697
+    m_Key: Russian
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899698
+    m_Key: Ukrainian
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899699
+    m_Key: Languages
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899700
+    m_Key: Menu language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899701
+    m_Key: "Word language \xB7 next puzzle"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899702
+    m_Key: Change word language?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899703
+    m_Key: 'New puzzles: {0}. This row stays the same.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899704
+    m_Key: Use for new puzzles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899705
+    m_Key: Keep my choice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899706
+    m_Key: A shapes lesson. You can skip it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899707
+    m_Key: '26 is a shapes lesson.
+
+      Words can skip it.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899708
+    m_Key: Each swap wears the board down. At zero, the row drops. Descend leaves
+      this board early.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899709
+    m_Key: The rollers move the whole row when it lands. Look which way they point.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899710
+    m_Key: Put the same piece on the bomb to stop it. Each move lowers its number.
+      At zero, it breaks the board.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899711
+    m_Key: Put the same piece on the key. It opens the gate. Then you can swap through
+      it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899712
+    m_Key: Put the same piece on the patch. It mends the board once.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899713
+    m_Key: A crack wears the board down faster. Check the cost before you let go.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899714
+    m_Key: Two pairs are tied together. Swap one pair and the other pair swaps too.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899715
+    m_Key: You can swap across this bridge once. Then it closes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899716
+    m_Key: Put the same piece on the stamp to earn it. You can still finish without
+      it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899717
+    m_Key: These pieces are the same. Try another pair.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899718
+    m_Key: This way is closed. Try the other side or Descend.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899719
+    m_Key: Put the same piece on the key to open the gate.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899720
+    m_Key: Put the same piece on the bomb to stop it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899721
+    m_Key: Put the same piece on the key.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899722
+    m_Key: Put the same piece on the patch to mend the board.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899723
+    m_Key: These two pairs swap together.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899724
+    m_Key: You can use this bridge once.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899725
+    m_Key: Can you reach the stamp too?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899726
+    m_Key: Careful! This crack wears the board down faster.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899727
+    m_Key: The next board moves the row. Look at its arrow.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899728
+    m_Key: Tap Descend to take the row down.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899729
+    m_Key: At zero, the board breaks and the row drops.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899730
+    m_Key: Drag a piece onto its neighbour.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899731
+    m_Key: Mika
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899732
+    m_Key: Pip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899733
+    m_Key: Rue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899734
+    m_Key: Wind Gardens
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899735
+    m_Key: Rain Mill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899736
+    m_Key: Copper Orchard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899737
+    m_Key: Light the first bridge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899738
+    m_Key: Open the wind gate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899739
+    m_Key: Mend the sky lift
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899740
+    m_Key: Help Pip turn the mill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899741
+    m_Key: Bring water to the village
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899742
+    m_Key: Repair the post boat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899743
+    m_Key: Wake the orchard lights
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899744
+    m_Key: Open the road to the beacon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899745
+    m_Key: The storm took our lights. I will carry a new one to the Great Beacon.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899746
+    m_Key: This bridge is high... One small step, Mika. Let's fix its pattern.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899747
+    m_Key: One light is back! Now I can see the wind gate.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899748
+    m_Key: These boards move when we land. I'll look before I leap.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899749
+    m_Key: My scarf got caught. A little patch will hold it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899750
+    m_Key: The sky lift needs a patch too. Then we can reach the mill.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899751
+    m_Key: I'm Pip. My mill stopped, and the village needs water.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899752
+    m_Key: Will you help me mend it? We can work it out together.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899753
+    m_Key: The wheel is turning! I can hear the water.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899754
+    m_Key: Some boards are cracked. Use the strong ones when you can.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899755
+    m_Key: The post boat can sail again. I kept a letter for your gran.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899756
+    m_Key: Take it with you. She'll be glad to know we're all right.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899757
+    m_Key: I'm Rue. I grow lantern fruit. They glow when the night comes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899758
+    m_Key: Help me light the trees. Try to find a stamp along the way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899759
+    m_Key: Look, Mika. The beacon is beyond those clouds.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472899760
+    m_Key: You've helped us find each other. We'll help you reach it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4696902197248
+    m_Key: Abandoned
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 743085261111165341
+  references:
+    version: 2
+    RefIds:
+    - rid: 743085261111165341
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1791185500852

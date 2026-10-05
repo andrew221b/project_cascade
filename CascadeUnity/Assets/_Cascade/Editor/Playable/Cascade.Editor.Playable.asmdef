@@ -6,10 +6,16 @@
         "Unity.TextMeshPro",
         "Unity.ugui",
         "Unity.InputSystem",
-    "Cascade.Application",
-    "Cascade.Content",
+        "Cascade.Application",
+        "Cascade.Content",
         "Cascade.Domain",
-        "Cascade.Solver"
+        "Cascade.Solver",
+        "Unity.Localization",
+        "Unity.Localization.Editor",
+        "Unity.Addressables",
+        "Unity.Addressables.Editor",
+        "Unity.ResourceManager",
+        "Unity.Newtonsoft.Json"
     ],
     "includePlatforms": [
         "Editor"

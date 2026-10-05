@@ -1,6 +1,6 @@
 # CASCADE — TASKS
 
-P00–P14: COMPLETE. Unity AI/MCP: работает. P15: IN_PROGRESS; P16–P20: NOT_STARTED.
+P00–P15: COMPLETE. Unity AI/MCP: работает. P16: IN_PROGRESS; P17–P20: NOT_STARTED.
 Python reference проверен отдельно; это не реализация игровых систем Unity.
 
 Автор прямо разрешил выполнять все этапы подряд, отменив остановки между
@@ -23,12 +23,34 @@ P01–P20. После каждого этапа фиксировать резу�
 - [x] P12 — Визуальный эталон
 - [x] P13 — Event player и juice
 - [x] P14 — Обучение и экраны
-- [ ] P15 — Локализация и glyph QA
+- [x] P15 — Локализация и glyph QA
 - [ ] P16 — Save и прогресс
 - [ ] P17 — Мастерство и маленькая мета
 - [ ] P18 — Интеграционная приёмка
 - [ ] P19 — Реклама и IAP позже
 - [ ] P20 — Расширять задачами
+
+## P15 — завершено в заявленном объёме, 5 октября 2026
+
+- Реальные Unity String Tables: 215 ключей, 645 EN/RU/UK значений. SelectedLocale
+  и LocalizeStringEvent; буквенные SymbolIds обходят перевод. Язык меню не меняет
+  текущий ряд, попытку, hash или историю. Язык слов подтверждается для новой задачи.
+- Шрифты дополнены недостающими UI-глифами. Все UI и 111 слов проверены; NFC,
+  reference-графемы, Ё/Е, І/Ї/И, Г/Ґ, Е/Є, O/circle и uppercase import покрыты.
+  Повреждённые данные отвергаются без подстановки слова. Saved-attempt recovery — P16.
+- Design note Docs/P15_LOCALIZATION.md до изменения packages: Localization 1.5.13,
+  Addressables 2.8.1, Scriptable Build Pipeline 2.5.2. Правила/IDs/цены неизменны.
+- Финальные EditMode **313/313 PASS**, 07:59:57–07:59:59 UTC; PlayMode **38/38 PASS**,
+  08:00:31–08:02:22 UTC. Console 0 errors/warnings. 192 .meta без проблем.
+- 39 native MCP Editor captures: 13 состояний × 3 языка, 320×693 / Words390×844.
+  Два bounded passes: исправлены пустой translated join и пропущенная кнопка Menu.
+  Финальный overflow/missing-string scan пуст. Независимый reviewer: **ship** только
+  по P15 readability/consistency в этих кадрах; Reports/P15/impeccable-review.md.
+- Addressables StandaloneOSX build PASS; исправлен Handheld guard для Mac compile.
+  Это не полный player build. Native editorial, physical devices/haptics, extended
+  ZWJ segmentation и human enjoyment не проверялись. Тексты — оригинальный черновик.
+- P16 начат последовательно: durable profile/backup/receipts/pinned history. Нет
+  объявления, что полная кампания, сложность, награды или весь продукт уже готовы.
 
 ## P14 — завершено в заявленном объёме, 5 октября 2026
 

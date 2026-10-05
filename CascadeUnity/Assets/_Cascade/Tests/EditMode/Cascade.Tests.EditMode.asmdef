@@ -6,7 +6,11 @@
         "Cascade.Solver",
         "Cascade.Application",
         "Cascade.Content",
-        "Cascade.Editor.Authoring"
+        "Cascade.Editor.Authoring",
+        "Unity.Localization",
+        "Unity.Localization.Editor",
+        "Cascade.Presentation",
+        "Unity.TextMeshPro"
     ],
     "overrideReferences": true,
     "precompiledReferences": [

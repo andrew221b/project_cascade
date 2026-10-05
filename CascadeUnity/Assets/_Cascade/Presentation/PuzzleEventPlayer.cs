@@ -71,18 +71,18 @@ namespace Cascade.Presentation
                         Vector3 origin = EventOrigin(e, level); frame.Read(e, level); game.RenderFrame(frame);
                         switch (e.Kind) {
                             case PuzzleEventKind.BombTicked:
-                                game.SetPresentationFeedback("Bomb: " + e.Value + " moves left"); yield return Hold(.07f); break;
+                                game.SetPresentationFeedback(new UiCopy("Bomb: {0} moves left",e.Value)); yield return Hold(.07f); break;
                             case PuzzleEventKind.BombExploded:
-                                game.SetPresentationFeedback("Blast: −" + e.Value + " durability"); feedback.Sound(ToyCue.Bomb); feedback.Haptic();
+                                game.SetPresentationFeedback(new UiCopy("Blast: −{0} durability",e.Value)); feedback.Sound(ToyCue.Bomb); feedback.Haptic();
                                 feedback.Burst(origin, new Color(1, .46f, .28f, .9f), 12, reduced); yield return Recoil(e.Floor, profile.bomb); break;
                             case PuzzleEventKind.BombDefused:
                                 game.SetPresentationFeedback("Bomb defused"); feedback.Sound(ToyCue.Defuse);
                                 feedback.Burst(origin, new Color(.4f, .88f, .73f, .8f), 4, reduced); yield return Hold(profile.contact); break;
                             case PuzzleEventKind.KeyOpened:
-                                game.SetPresentationFeedback("Edge " + (e.Value + 1) + " unlocked"); feedback.Sound(ToyCue.Unlock); feedback.Haptic();
+                                game.SetPresentationFeedback(new UiCopy("Edge {0} unlocked",e.Value+1)); feedback.Sound(ToyCue.Unlock); feedback.Haptic();
                                 feedback.Burst(origin, new Color(1, .79f, .37f, .8f), 4, reduced); yield return Recoil(e.Floor, profile.contact); break;
                             case PuzzleEventKind.Repaired:
-                                game.SetPresentationFeedback("Repair +" + e.Value); feedback.Sound(ToyCue.Repair);
+                                game.SetPresentationFeedback(new UiCopy("Repair +{0}",e.Value)); feedback.Sound(ToyCue.Repair);
                                 feedback.Burst(origin, new Color(.4f, .88f, .73f, .8f), 5, reduced); yield return Recoil(e.Floor, profile.contact); break;
                             case PuzzleEventKind.StampCollected:
                                 game.SetPresentationFeedback("Stamp collected"); feedback.Sound(ToyCue.Stamp);

@@ -1,6 +1,19 @@
 {
     "name": "Cascade.Tests.PlayMode",
     "rootNamespace": "Cascade.Tests",
-    "references": ["Cascade.Domain", "Cascade.Solver", "Cascade.Application", "Cascade.Content", "Cascade.Presentation", "Unity.ugui", "Unity.TextMeshPro", "Unity.InputSystem"],
-    "optionalUnityReferences": ["TestAssemblies"]
+    "references": [
+        "Cascade.Domain",
+        "Cascade.Solver",
+        "Cascade.Application",
+        "Cascade.Content",
+        "Cascade.Presentation",
+        "Unity.ugui",
+        "Unity.TextMeshPro",
+        "Unity.InputSystem",
+        "Unity.Localization",
+        "Unity.ResourceManager"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ]
 }
