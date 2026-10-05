@@ -24,6 +24,10 @@ namespace Cascade.Editor.Validation
             callbacks = new Results(report); runner.RegisterCallbacks(callbacks);
         }
         public static void Run(string phase)
+            =>RunTests(phase,null);
+        public static void RunFocused(string phase,string testName)
+            =>RunTests(phase,new[]{testName});
+        static void RunTests(string phase,string[] tests)
         {
             if (EditorUtility.scriptCompilationFailed || EditorApplication.isCompiling || EditorApplication.isPlaying)
                 throw new InvalidOperationException("PlayMode validation requires a compiled editor outside Play Mode.");
@@ -32,7 +36,7 @@ namespace Cascade.Editor.Validation
             string root = Directory.GetParent(UnityEngine.Application.dataPath).Parent.FullName;
             string report = Path.Combine(root, "Reports", phase, "playmode.xml"); Directory.CreateDirectory(Path.GetDirectoryName(report));
             SessionState.SetString(PendingKey, report); Register(report);
-            runner.Execute(new ExecutionSettings(new Filter { testMode = TestMode.PlayMode, assemblyNames = new[] { "Cascade.Tests.PlayMode" } }));
+            runner.Execute(new ExecutionSettings(new Filter { testMode = TestMode.PlayMode, assemblyNames = new[] { "Cascade.Tests.PlayMode" },testNames=tests }));
         }
         sealed class Results : ICallbacks
         {

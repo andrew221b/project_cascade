@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Cascade.Presentation
 {
-    public enum GameScreen { Home, Playing, Pause, Win, Fail, Settings, Devices, Lessons, Dialogue, WordLanguage, SaveRecovery }
+    public enum GameScreen { Home, Playing, Pause, Win, Fail, Settings, Devices, Lessons, Dialogue, WordLanguage, SaveRecovery, TravelBag, Journal, Collection, Workshop, Requests, Records, Contracts, Parcel }
     public sealed partial class CascadeGame
     {
         public GameScreen CurrentScreen { get; private set; } = GameScreen.Playing;
@@ -57,7 +57,7 @@ namespace Cascade.Presentation
             resultRoot.pivot = new Vector2(.5f,.5f); resultRoot.anchoredPosition = new Vector2(0,88); resultRoot.sizeDelta = new Vector2(0,160);
             resultText = Text("Result summary", resultRoot, new Vector2(0,.71f), Vector2.one,18,"");
             Button("Next delivery",resultRoot,new Vector2(.52f,.35f),new Vector2(1,.65f),StartNextPreferred);
-            var home=Button("Result home",resultRoot,new Vector2(.52f,0),new Vector2(1,.30f),ShowHome);home.GetComponentInChildren<TextMeshProUGUI>().SetCopy("Home");
+            var home=Button("Result home",resultRoot,new Vector2(.52f,0),new Vector2(1,.30f),()=>{if(WaitingParcel!=null)ShowParcel();else ShowHome();});home.GetComponentInChildren<TextMeshProUGUI>().SetCopy("Home");
             resultRoot.gameObject.SetActive(false);
             coachRoot = Rect("Contextual coaching", safeRoot, Vector2.zero, Vector2.zero);
             coachRoot.sizeDelta = new Vector2(300,52); coachRoot.pivot = new Vector2(.5f,1);
@@ -179,6 +179,8 @@ namespace Cascade.Presentation
             retry.gameObject.SetActive(result); hint.gameObject.SetActive(!result); drop.gameObject.SetActive(!result); precise.gameObject.SetActive(!result&&PreciseInputActive);
             if(result) {
                 resultText.SetCopy(CurrentScreen==GameScreen.Win ? "You did it! The way is clear." : "Not quite. Undo and try again.");
+                if(CurrentScreen==GameScreen.Win && !Interaction.Attempt.Goal.IsSatisfied(Interaction.Attempt.Current))resultText.SetCopy("The row is home. The stamp is still missing.");
+                resultRoot.Find("Resulthome").GetComponentInChildren<TextMeshProUGUI>().SetCopy(WaitingParcel!=null?"Open parcel":"Home");
                 if(CurrentScreen==GameScreen.Fail && sessionLosses.TryGetValue(node,out var losses)&&losses>=3)
                     resultText.SetCopy("Try the device guide. Undo and retry stay free.");
                 resultRoot.Find("Nextdelivery").gameObject.SetActive(CurrentScreen==GameScreen.Win);
@@ -200,6 +202,14 @@ namespace Cascade.Presentation
             else if(CurrentScreen==GameScreen.Settings) DrawSettings();
             else if(CurrentScreen==GameScreen.WordLanguage) DrawWordLanguageConfirmation();
             else if(CurrentScreen==GameScreen.SaveRecovery) DrawSaveRecovery();
+            else if(CurrentScreen==GameScreen.TravelBag) DrawTravelBag();
+            else if(CurrentScreen==GameScreen.Journal) DrawJournal();
+            else if(CurrentScreen==GameScreen.Collection) DrawCollection();
+            else if(CurrentScreen==GameScreen.Workshop) DrawWorkshop();
+            else if(CurrentScreen==GameScreen.Requests) DrawRequests();
+            else if(CurrentScreen==GameScreen.Records) DrawRecords();
+            else if(CurrentScreen==GameScreen.Contracts) DrawContracts();
+            else if(CurrentScreen==GameScreen.Parcel) DrawParcel();
             else if(CurrentScreen==GameScreen.Devices) DrawDevices();
             else if(CurrentScreen==GameScreen.Pause) {
                 MenuTitle("Take a break", "Your puzzle will wait.");

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Cascade.Application;
 using Cascade.Content;
 using Cascade.Domain;
 using TMPro;
@@ -37,7 +38,7 @@ namespace Cascade.Presentation
             var top=Rect("Map heading",menuRoot,new Vector2(.04f,.86f),new Vector2(.96f,.98f));Panel(top,Paper);
             var title=Text("Region",top,new Vector2(.05f,.40f),new Vector2(.78f,.98f),27,JourneyStory.ZoneName(zone));title.font=art.titleFont;title.alignment=TextAlignmentOptions.MidlineLeft;
             var count=Text("Restored lights",top,new Vector2(.05f,.04f),new Vector2(.78f,.40f),16,new UiCopy("{0} / {1} lights restored",JourneyClearCount,Catalog.PrimaryLevels.Count));count.alignment=TextAlignmentOptions.MidlineLeft;
-            Button("Settings",top,new Vector2(.79f,.16f),new Vector2(.98f,.84f),ShowSettings).GetComponentInChildren<TextMeshProUGUI>().SetCopy("Menu");
+            Button("Settings",top,new Vector2(.79f,.16f),new Vector2(.98f,.84f),ShowTravelBag).GetComponentInChildren<TextMeshProUGUI>().SetCopy("Menu");
             Vector2[] places={new Vector2(.25f,.397f),new Vector2(.59f,.469f),new Vector2(.40f,.545f),new Vector2(.65f,.608f),new Vector2(.81f,.687f)};
             int unlocked=NextJourneyStop();
             for(int i=0;i<5&&first+i<Catalog.PrimaryLevels.Count;i++) {
@@ -50,7 +51,11 @@ namespace Cascade.Presentation
                 b.interactable=index<=unlocked;
                 if(index==unlocked) {
                     var portrait=Resources.Load<Sprite>("CascadeArt/Journey/Mika");
-                    if(portrait!=null) { var m=Picture("Mika on the path",menuRoot,point+new Vector2(-.19f,.01f),point+new Vector2(-.04f,.14f),portrait,true);m.raycastTarget=false; }
+                    if(portrait!=null) {
+                        var m=Picture("Mika on the path",menuRoot,point+new Vector2(-.19f,.01f),point+new Vector2(-.04f,.14f),portrait,true);m.raycastTarget=false;
+                        if(Rewards.EquippedGift!=null)Picture("Mika's keepsake",menuRoot,point+new Vector2(-.085f,.075f),point+new Vector2(.015f,.13f),
+                            Resources.Load<Sprite>("CascadeArt/Workshop/"+GiftAssets[Array.IndexOf(JourneyRewards.Gifts,Rewards.EquippedGift)]),true);
+                    }
                 }
             }
             var bottom=Rect("Journey task",menuRoot,new Vector2(.04f,.02f),new Vector2(.96f,.28f));Panel(bottom,Paper);

@@ -56,9 +56,26 @@ The local profile uses a checksum, a flushed temporary write and atomic primary
 replacement with one valid backup. Recovery explains a restored backup, an
 unavailable attempt, an unreadable path or a failed write; newer save versions
 remain read-only. The checksum detects accidental corruption, not cheating.
-The existing 40 lessons remain short. The eight-region/160-stop campaign, further
-meta progression, ranks, collectibles and Long Reach remain staged design work.
-Online remains design-only.
+P17 adds the travel bag and optional journal after three restored lights. Every
+three new node clears earns one saved parcel fragment for a known gift; three
+claimed fragments make an owned Leaf Pin, Sun Button, Sky Ribbon or Moon Patch.
+Selection directs the next order, pending fragments count toward capacity, and
+opening a receipt is idempotent. An owned keepsake can accompany Mika on the map.
+Four workshop miniatures each require their exact ten lesson-node receipts;
+Words skipping C26 does not complete its ten-node workshop. Keeper rank reflects
+restored lights and three requests based on repair, bridge and stamp outcomes
+in successful deliveries. Seven distinct local visit dates accumulate without
+missed-day loss. Personal route records distinguish puzzle, content, mode,
+puzzle locale and objective; optional solver-proved stamp trails keep ordinary
+travel open. These are local milestones for the existing forty lessons.
+
+First-clear and reward changes enter the same local profile transaction before
+command presentation; parcel claims call the save path before their arrival
+animation. Failed writes remain explicit and do not become a durable-save claim.
+The existing 40 lessons remain short. The eight-region/160-stop campaign and
+Long Reach remain staged design work. Online remains design-only. The later
+wooden/rope, weight/fall, pictorial-device, wide-screen and menu revision in
+Docs/VISUAL_MOTION_REWORK.md is pending after P17–P20.
 
 ## Evidence on Hand
 
@@ -90,6 +107,17 @@ scene reload, storage recovery and retry; screenshots show recovery UI poses.
 Physical-device power loss, filesystem-full behavior, mobile OS kill and a
 complete player build remain unverified. No cross-device or cloud save is
 implemented, and these checks do not establish native-language approval or fun.
+
+P17 evidence is in Docs/P17_META.md and Reports/P17: 333/333 EditMode passed;
+the full PlayMode run passed 46/47, followed by the corrected navigation test
+passing 1/1. This gives passing evidence for all 47 distinct tests, without a
+second full-suite run. The final report records 44 inspected native Editor
+frames across EN/RU/UK, small/normal portrait and a wide workshop. The three
+additional carousel asset frames were captured and inspected. Nine original
+transparent illustrations and exact generation prompts are recorded in
+Docs/META_ASSET_PROVENANCE.md. The independent verdict scores the two listed findings resolved, disposition ship at P17 scope;
+these checks do not certify a player build, physical-device behavior, native
+editorial approval, enjoyment or retention.
 
 ## Product Principles
 

@@ -506,8 +506,10 @@ namespace Cascade.Tests
             game.ShowHome();yield return new WaitForSecondsRealtime(.08f);
             Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Home));Assert.That(game.Interaction.CanPlay,Is.False);
             Assert.That(game.Coach.IdleSeconds,Is.EqualTo(idle));
+            yield return ClickButton("Settings");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.TravelBag));
             yield return ClickButton("Settings");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Settings));
-            yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Home));
+            yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.TravelBag));
+            yield return ClickButton("Backtomap");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Home));
             game.ShowGame();Assert.That(game.Interaction.CanPlay,Is.True);
             Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
         }
@@ -632,6 +634,56 @@ namespace Cascade.Tests
             Directory.Delete(path);yield return ClickButton("Trysavingagain");
             Assert.That(game.HasSaveError,Is.False);Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
             Assert.That(new ProfileStore(path).Load().Profile.Attempt.StateHash,Is.EqualTo(hash));
+        }
+        IEnumerator DeliverNode(string node)
+        {
+            game.LoadNode(node);yield return null;
+            foreach(var command in PuzzleSolver.FindShortest(game.Interaction.Attempt.Resolver).Path) {
+                Assert.That(game.Interaction.Execute(command).Accepted,Is.True);yield return AwaitPresentation();
+            }
+        }
+        [UnityTest] public IEnumerator EarnedParcelClaimIsDurableAndCannotBeFarmed()
+        {
+            foreach(string id in new[]{"C01","C02","C03"})yield return DeliverNode(id);
+            Assert.That(game.Rewards.Parcels.Count,Is.EqualTo(1));game.ShowParcel();yield return ClickButton("Unwrap");
+            Assert.That(game.Rewards.Fragments("leaf"),Is.EqualTo(1));
+            Assert.That(new ProfileStore(game.ProfilePath).Load().Profile.Rewards.Parcels[0].Claimed,Is.True);
+            yield return ClickButton("Keepgoing");yield return DeliverNode("C01");game.Undo();yield return null;
+            Assert.That(game.Rewards.Parcels.Count,Is.EqualTo(1));
+            yield return SceneManager.LoadSceneAsync("Assets/_Cascade/Scenes/CascadePlayable.unity");game=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();
+            Assert.That(game.Rewards.ClaimParcel(1),Is.False);Assert.That(game.Rewards.Fragments("leaf"),Is.EqualTo(1));
+        }
+        [UnityTest] public IEnumerator GiftChoiceChangesNextOrderAndMenusBlockPuzzleInput()
+        {
+            foreach(string id in new[]{"C01","C02","C03"})yield return DeliverNode(id);
+            game.LoadNode("C02");game.ShowCollection();var before=game.Interaction.Attempt.CurrentStateHash;
+            yield return ClickButton("Next");yield return ClickButton("Choosethisgift");
+            Assert.That(game.Rewards.SelectedGift,Is.EqualTo("sun"));Assert.That(game.Rewards.Parcels[0].GiftId,Is.EqualTo("leaf"));
+            Assert.That(game.Interaction.CanPlay,Is.False);Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(before));
+            Assert.That(new ProfileStore(game.ProfilePath).Load().Profile.Rewards.SelectedGift,Is.EqualTo("sun"));
+        }
+        [UnityTest] public IEnumerator StampTrailAndNormalDeliveryHaveSeparateRecords()
+        {
+            game.StartStampTrail("C35");yield return null;var attempt=game.Interaction.Attempt;
+            Assert.That(PuzzleSolver.FindShortest(attempt.Resolver,goal:attempt.Goal).OptimalActions,Is.EqualTo(4));
+            foreach(var command in PuzzleSolver.FindShortest(attempt.Resolver).Path){game.Interaction.Execute(command);yield return AwaitPresentation();}
+            Assert.That(attempt.Current.Status,Is.EqualTo(PuzzleStatus.Won));Assert.That(attempt.Goal.IsSatisfied(attempt.Current),Is.False);
+            Assert.That(game.JourneyClearCount,Is.EqualTo(1));Assert.That(game.Rewards.Records.Count,Is.EqualTo(1));
+            Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Any(t=>t.text=="The row is home. The stamp is still missing."),Is.True);
+            game.StartStampTrail("C35");attempt=game.Interaction.Attempt;
+            foreach(var command in PuzzleSolver.FindShortest(attempt.Resolver,goal:attempt.Goal).Path){game.Interaction.Execute(command);yield return AwaitPresentation();}
+            Assert.That(game.JourneyClearCount,Is.EqualTo(1));Assert.That(game.Rewards.Records.Count,Is.EqualTo(2));
+            Assert.That(game.Rewards.QuestCount(2),Is.EqualTo(1));
+            game.ShowRecords();yield return ClickButton("Next");yield return ClickButton("Tryagain");
+            Assert.That(game.Interaction.Attempt.Goal.RequiredStampBits,Is.EqualTo(1));
+        }
+        [UnityTest] public IEnumerator RouteRetryKeepsItsConcretePuzzleLocale()
+        {
+            game.Catalog.TryGetLocalizedBinding("C35","uk",out var level);game.LoadLevel(level.Definition,"uk");yield return null;
+            foreach(var command in PuzzleSolver.FindShortest(game.Interaction.Attempt.Resolver).Path){game.Interaction.Execute(command);yield return AwaitPresentation();}
+            game.Preferences.PuzzleLocale="ru";game.SetUiLocale("ru");game.ShowRecords();yield return null;
+            yield return ClickButton("Tryagain");Assert.That(game.Interaction.Attempt.ActiveLocale,Is.EqualTo("uk"));
+            Assert.That(game.Interaction.Attempt.PinnedContentHash,Is.EqualTo(level.Definition.ContentHash));
         }
         [UnityTest] public IEnumerator AllFortyLevelsCanBeDeliveredThroughActualMouseAndButtons()
         {

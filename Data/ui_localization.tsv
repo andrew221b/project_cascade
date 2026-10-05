@@ -223,3 +223,76 @@ Start a new puzzle	Start a new puzzle	Начать новую задачу	По�
 Could not save. Keep the game open and try again.	Could not save. Keep the game open and try again.	Не удалось сохранить. Не закрывай игру и попробуй ещё раз.	Не вдалося зберегти. Не закривай гру та спробуй ще раз.
 Try saving again	Try saving again	Сохранить ещё раз	Зберегти ще раз
 Start a new path	Start a new path	Начать новый путь	Почати новий шлях
+Leaf pin	Leaf pin	Листик	Листочок
+Sun button	Sun button	Солнечная пуговка	Сонячний ґудзик
+Sky ribbon	Sky ribbon	Небесная лента	Небесна стрічка
+Moon patch	Moon patch	Лунная нашивка	Місячна нашивка
+Bridge lantern	Bridge lantern	Фонарь для моста	Ліхтар для мосту
+Rain pump	Rain pump	Водяной насос	Водяний насос
+Post glider	Post glider	Почтовый планер	Поштовий планер
+Beacon model	Beacon model	Маленький маяк	Маленький маяк
+Apprentice	Apprentice	Ученик	Учень
+Garden friend	Garden friend	Друг садов	Друг садів
+Mill keeper	Mill keeper	Хранитель мельницы	Хранитель млина
+Pathfinder	Pathfinder	Следопыт	Слідопит
+Beacon keeper	Beacon keeper	Хранитель маяка	Хранитель маяка
+Your travel bag	Your travel bag	Твоя сумка	Твоя сумка
+Restore three lights to open your journal.	Restore three lights to open your journal.	Зажги три огонька. Откроется дневник.	Засвіти три вогники. Відкриється щоденник.
+Small things for a long road.	Small things for a long road.	Всё нужное в дорогу.	Усе потрібне в дорогу.
+My journal	My journal	Мой дневник	Мій щоденник
+Workshop	Workshop	Мастерская	Майстерня
+Stamp trails	Stamp trails	Пути с печатями	Шляхи з печатками
+My routes	My routes	Мои пути	Мої шляхи
+Back to map	Back to map	К карте	До карти
+Lights restored: {0}	Lights restored: {0}	Огоньков: {0}	Вогників: {0}
+Visits: {0} / 7\nCome back when you like.	Visits: {0} / 7\nCome back when you like.	Визитов: {0} / 7\nПриходи, когда захочешь.	Візитів: {0} / 7\nПриходь, коли захочеш.
+Every gift part is found!	Every gift part is found!	Все детали подарков найдены!	Усі деталі подарунків знайдено!
+New lights for a parcel: {0} / 3	New lights for a parcel: {0} / 3	До посылки: {0} / 3 огонька	До пакунка: {0} / 3 вогники
+Open parcel	Open parcel	Открыть посылку	Відкрити пакунок
+Choose a gift	Choose a gift	Выбрать подарок	Вибрати подарунок
+Requests	Requests	Просьбы друзей	Прохання друзів
+Keepsakes	Keepsakes	Мои вещи	Мої речі
+Your keepsakes	Your keepsakes	Твои вещи	Твої речі
+You made it!	You made it!	Получилось!	Вийшло!
+Parts found: {0} / 3	Parts found: {0} / 3	Деталей: {0} / 3	Деталей: {0} / 3
+A little keepsake for Mika.	A little keepsake for Mika.	Маленький подарок для Мики.	Маленький подарунок для Міки.
+Three parts make this gift.	Three parts make this gift.	Собери три детали подарка.	Збери три деталі подарунка.
+With Mika	With Mika	У Мики	У Міки
+Take along	Take along	Взять с собой	Узяти з собою
+Next gift	Next gift	Следующий подарок	Наступний подарунок
+Choose this gift	Choose this gift	Хочу этот	Хочу цей
+Ready for the islands!	Ready for the islands!	Готово! Можно в путь.	Готово! Можна в дорогу.
+This is what we are building.	This is what we are building.	Вот что мы строим.	Ось що ми будуємо.
+Lights restored: {0} / 10	Lights restored: {0} / 10	Огоньков: {0} / 10	Вогників: {0} / 10
+From stop {0} to stop {1}	From stop {0} to stop {1}	Остановки {0}–{1}	Зупинки {0}–{1}
+Travel bag	Travel bag	Сумка	Сумка
+Mend a board, then bring the row home.	Mend a board, then bring the row home.	Почини доску. Доставь ряд домой.	Полагодь дошку. Достав ряд додому.
+Use a bridge and finish two different puzzles.	Use a bridge and finish two different puzzles.	Пройди два разных уровня с мостом.	Пройди два різні рівні з мостом.
+Bring home stamps from three different puzzles.	Bring home stamps from three different puzzles.	Собери печати на трёх разных уровнях.	Збери печатки на трьох різних рівнях.
+A friend's request	A friend's request	Просьба друга	Прохання друга
+Thank you! You helped.	Thank you! You helped.	Спасибо за помощь!	Дякую за допомогу!
+Done: {0} / {1}	Done: {0} / {1}	Готово: {0} / {1}	Готово: {0} / {1}
+Try a puzzle	Try a puzzle	К головоломке	До головоломки
+A little piece of home	A little piece of home	Частичка дома	Частинка дому
+A parcel for Mika	A parcel for Mika	Посылка для Мики	Пакунок для Міки
+Inside: a part for {0}	Inside: a part for {0}	Деталь подарка: {0}	Деталь подарунка: {0}
+Your gift is ready!	Your gift is ready!	Твой подарок готов!	Твій подарунок готовий!
+You earned this with three new lights.	You earned this with three new lights.	Ты зажёг три новых огонька!	Ти засвітив три нові вогники!
+Keep going	Keep going	В путь	У дорогу
+Unwrap	Unwrap	Распаковать	Розпакувати
+Stamp trail {0}	Stamp trail {0}	Путь с печатью {0}	Шлях із печаткою {0}
+Bring the row home with its stamp.	Bring the row home with its stamp.	Доставь ряд домой с печатью.	Достав ряд додому з печаткою.
+This is an extra challenge. Your path stays open.	This is an extra challenge. Your path stays open.	Это задание по желанию. Путь открыт.	Це завдання за бажанням. Шлях відкритий.
+Try this trail	Try this trail	В путь	У дорогу
+Your own best paths.	Your own best paths.	Твои лучшие пути.	Твої найкращі шляхи.
+Finish a puzzle to leave a note here.	Finish a puzzle to leave a note here.	Пройди уровень. Мы запишем твой путь.	Пройди рівень. Ми запишемо твій шлях.
+A note from an earlier journey.	A note from an earlier journey.	Запись из прошлого пути.	Запис із минулої подорожі.
+Delivery	Delivery	Доставка	Доставка
+With stamp	With stamp	С печатью	З печаткою
+Best route: {0} moves	Best route · moves: {0}	Ходов в лучшем пути: {0}	Ходів у найкращому шляху: {0}
+Without a hint: {0}	Without a hint: {0}	Без подсказки: {0}	Без підказки: {0}
+Try again without a hint.	Try again without a hint.	Попробуй без подсказки.	Спробуй без підказки.
+Without hint or Undo: {0}	Without hint or Undo: {0}	Без помощи и отмены: {0}	Без допомоги й скасування: {0}
+Undo is always welcome.	Undo is always welcome.	Ход всегда можно отменить.	Хід завжди можна скасувати.
+Try again	Try again	Ещё раз	Ще раз
+The row is home. The stamp is still missing.	The row is home. The stamp is still missing.	Ряд дома! Печать ещё не найдена.	Ряд удома! Печатку ще не знайдено.

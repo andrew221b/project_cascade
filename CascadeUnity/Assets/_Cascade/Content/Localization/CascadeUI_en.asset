@@ -923,6 +923,300 @@ MonoBehaviour:
     m_Localized: Start a new path
     m_Metadata:
       m_Items: []
+  - m_Id: 24216295432192
+    m_Localized: Leaf pin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626496
+    m_Localized: Sun button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626497
+    m_Localized: Sky ribbon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626498
+    m_Localized: Moon patch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626499
+    m_Localized: Bridge lantern
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626500
+    m_Localized: Rain pump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626501
+    m_Localized: Post glider
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626502
+    m_Localized: Beacon model
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626503
+    m_Localized: Apprentice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626504
+    m_Localized: Garden friend
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626505
+    m_Localized: Mill keeper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626506
+    m_Localized: Pathfinder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626507
+    m_Localized: Beacon keeper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626508
+    m_Localized: Your travel bag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626509
+    m_Localized: Restore three lights to open your journal.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626510
+    m_Localized: Small things for a long road.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626511
+    m_Localized: My journal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626512
+    m_Localized: Workshop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626513
+    m_Localized: Stamp trails
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626514
+    m_Localized: My routes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626515
+    m_Localized: Back to map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626516
+    m_Localized: 'Lights restored: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626517
+    m_Localized: 'Visits: {0} / 7
+
+      Come back when you like.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626518
+    m_Localized: Every gift part is found!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626519
+    m_Localized: 'New lights for a parcel: {0} / 3'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626520
+    m_Localized: Open parcel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626521
+    m_Localized: Choose a gift
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626522
+    m_Localized: Requests
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626523
+    m_Localized: Keepsakes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626524
+    m_Localized: Your keepsakes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626525
+    m_Localized: You made it!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626526
+    m_Localized: 'Parts found: {0} / 3'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626527
+    m_Localized: A little keepsake for Mika.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626528
+    m_Localized: Three parts make this gift.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626529
+    m_Localized: With Mika
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626530
+    m_Localized: Take along
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626531
+    m_Localized: Next gift
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626532
+    m_Localized: Choose this gift
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626533
+    m_Localized: Ready for the islands!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626534
+    m_Localized: This is what we are building.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626535
+    m_Localized: 'Lights restored: {0} / 10'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626536
+    m_Localized: From stop {0} to stop {1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626537
+    m_Localized: Travel bag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626538
+    m_Localized: Mend a board, then bring the row home.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626539
+    m_Localized: Use a bridge and finish two different puzzles.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626540
+    m_Localized: Bring home stamps from three different puzzles.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626541
+    m_Localized: A friend's request
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626542
+    m_Localized: Thank you! You helped.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626543
+    m_Localized: 'Done: {0} / {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626544
+    m_Localized: Try a puzzle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626545
+    m_Localized: A little piece of home
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626546
+    m_Localized: A parcel for Mika
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626547
+    m_Localized: 'Inside: a part for {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626548
+    m_Localized: Your gift is ready!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626549
+    m_Localized: You earned this with three new lights.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626550
+    m_Localized: Keep going
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626551
+    m_Localized: Unwrap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626552
+    m_Localized: Stamp trail {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626553
+    m_Localized: Bring the row home with its stamp.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626554
+    m_Localized: This is an extra challenge. Your path stays open.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626555
+    m_Localized: Try this trail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626556
+    m_Localized: Your own best paths.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626557
+    m_Localized: Finish a puzzle to leave a note here.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626558
+    m_Localized: A note from an earlier journey.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626559
+    m_Localized: Delivery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626560
+    m_Localized: With stamp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626561
+    m_Localized: "Best route \xB7 moves: {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626562
+    m_Localized: 'Without a hint: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626563
+    m_Localized: Try again without a hint.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626564
+    m_Localized: 'Without hint or Undo: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626565
+    m_Localized: Undo is always welcome.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626566
+    m_Localized: Try again
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24216299626567
+    m_Localized: The row is home. The stamp is still missing.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

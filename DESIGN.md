@@ -182,6 +182,20 @@ This record merges the implemented P14 journey revision into the P12/P13 system.
 
 P16 extends these existing controls with durable local progress and recovery in `CascadeGame.Save.cs`, `Persistence/` and `Application/AttemptRecord.cs`. `Docs/P16_SAVE.md` owns the save contract; `Reports/P16` holds native recovery fixtures and test evidence. This extension adds no visual tokens or raster assets. Editor evidence does not verify physical-device power loss, OS kill, full player builds, native-language approval or human enjoyment.
 
+P17 extends the same paper, mint and brass surfaces with a travel bag, journal,
+requests, workshop, keepsake collection, earned parcel and personal routes in
+`CascadeGame.Rewards.cs`. `JourneyRewards.cs`, `PlayerProfile.cs` and
+`CascadeGame.Save.cs` supply the local facts behind those views;
+`Docs/P17_META.md` owns their progression contract. Nine new transparent
+illustrations keep the incumbent painted material character; exact prompts and
+alpha/margin limitations are in `Docs/META_ASSET_PROVENANCE.md`. This ordinary
+extension adds no shared visual tokens. `Reports/P17/README.md` records 333/333
+EditMode, 46/47 full PlayMode and a corrected focused 1/1 navigation result,
+plus 44 inspected native frames, including three requested carousel views. The
+independent verdict scores both listed findings resolved, disposition ship at P17 scope. The wooden/rope,
+weight/fall, pictorial-device, wide-screen and menu revision in
+`Docs/VISUAL_MOTION_REWORK.md` is later pending work, not this implemented world.
+
 **Key Characteristics:**
 - Direct touch lifts a piece and its live glyph together; the receiver stays visible.
 - Six stable silhouettes and colors remain readable across all three regions.
@@ -251,6 +265,18 @@ The map uses a tall illustrated five-stop route between a compact paper heading 
 
 Dialogue places a large transparent character above/behind a low paper frame. A thin brass line, Bold speaker name, short Regular sentence and separate Continue/Skip story actions provide hierarchy. Story entry explicitly selects the character's region. Dialogue blocks puzzle input.
 
+### Travel bag and earned objects
+
+Map Menu opens the travel bag. Journal, workshop, stamp trails and personal
+routes become available after three restored lights; Settings and Back to map
+remain in the same bag. Item views use one large alpha illustration, short live
+copy, separate previous/next controls and a clear lower action. The journal
+pairs Mika with restored-light, forgiving visit and next-parcel summaries.
+Progress lives on these optional surfaces rather than adding meters to the
+puzzle HUD. Item artwork preserves aspect ratio inside its padded native UI
+rectangle; the narrow source margins, especially Beacon Model's vertical
+margins, must not be treated as permission to clip painted edges.
+
 **The Complete Machine Rule.** Keep the persistent row, remaining floors and complete receiver order visible together; changing row length must preserve clear physical rail proportions.
 
 **The Honest Path Rule.** Distinguish the browsed stop from the reached stop; future art must never imply unlocked or saved progress.
@@ -299,6 +325,27 @@ The isometric illustration, numbered stop buttons, small path pebbles and Mika m
 
 The paper-and-brass frame names one speaker and gives one short idea at a time. Continue and Skip story lead to the concrete pending puzzle or return to the map. Heard dialogue persists in the local profile. Mika accompanies a successful delivery; win/fail actions preserve free Undo and Retry. A first-clear receipt is recorded from the committed win before animation; Undo does not erase it. The machine remains the visual evidence of the result.
 
+### Journal, workshop and keepsakes
+
+The journal reuses paper controls, Balsamiq live labels and Mika's existing alpha
+portrait. Collection and workshop show one distinct object at a time with
+separate carousel arrows. Collection names the gift and its three-part progress,
+then distinguishes choosing a future gift from equipping an owned keepsake.
+The map places the equipped keepsake beside Mika without changing symbol faces.
+Workshop pairs each of four illustrated miniatures with its exact ten-stop
+range. Unfinished views use a subdued translucent illustration and explicit
+building copy; only ten matching node receipts produce the fully opaque ready
+view. This is a disclosed future miniature preview, not intermediate
+construction artwork.
+
+An earned parcel discloses the selected gift before opening. Its saved claim
+precedes the short arrival pulse; Reduced Motion omits the pulse. The receipt
+never rerolls. Requests show one existing friend and one concrete repair,
+bridge or stamp task at a time. Personal routes state mode, puzzle language,
+ordinary delivery or stamp objective, best route and optional no-hint/clean
+annotations. The stamp-trail view explains that ordinary travel stays open.
+All progression labels derive from local saved facts; no global rank is shown.
+
 ### Saved path and recovery
 
 Recovery reuses the quiet paper surface, dark live text and wide gold action. One heading and one short explanation distinguish backup recovery, an unavailable puzzle, an unreadable path and a failed write. Continue acknowledges a backup that may omit the last move; Start a new puzzle retains valid progress, while Start a new path explicitly replaces an unreadable path. Try saving again retains the committed in-memory attempt until writing succeeds. A newer-version save shows update guidance with no invented store link or destructive action.
@@ -329,6 +376,6 @@ Comfort enables large previous/next focus controls and left/right exchanges with
 - **Don't** bake gameplay text into imagery or change symbol identity to indicate state.
 - **Don't** let presentation, animation completion, scenery, physics or ad callbacks change puzzle state.
 - **Don't** portray browsed islands as reached, an unsuccessful write as saved, or unreadable progress as restored.
-- **Don't** describe the 160-stop target, ranks, parcels, keepsakes, Long Reach or online concept as implemented.
+- **Don't** describe the 160-stop target, Long Reach, online concept or pending wooden-island presentation revision as implemented.
 - **Don't** copy ShapeMania screens, characters, sprites, props or materials into this world.
 - **Don't** equate Editor captures and automated tests with device, haptic, performance, build, native-language or human-enjoyment proof.

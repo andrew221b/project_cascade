@@ -21,6 +21,7 @@ namespace Cascade.Presentation
         public SaveRecovery Recovery { get; private set; }
         public string ProfilePath=>profileStore?.Path;
         public bool HasSaveError { get; private set; }
+        public JourneyRewards Rewards=>profile.Rewards;
         void ReadProfile()
         {
             string directory=UnityEngine.Application.persistentDataPath;
@@ -48,6 +49,7 @@ namespace Cascade.Presentation
                 Recovery=SaveRecovery.AttemptUnavailable;saveBlocked=true;
             }
             persistenceReady=true;
+            InitializeRewards();
             if(Recovery==SaveRecovery.None){ShowHome();PersistProgress();}
             else SetScreen(GameScreen.SaveRecovery);
         }
@@ -69,8 +71,18 @@ namespace Cascade.Presentation
             // QA/custom drafts are playable but do not grant campaign receipts.
             bool published=Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Any(c=>
                 c.Definition.PuzzleId==attempt.Level.PuzzleId && c.Definition.ContentHash==attempt.PinnedContentHash);
-            if(published && profile.RecordClear(attempt))sessionClears.Add(node);
+            if(published) {
+                if(profile.RecordClear(attempt))sessionClears.Add(node);
+                InitializeRewards();profile.Rewards.RecordDelivery(attempt);
+            }
             PersistProgress();
+        }
+        void InitializeRewards()
+        {
+            if(Recovery==SaveRecovery.NewerVersion)return;
+            var known=Catalog.PrimaryLevels.Select(c=>c.Definition.CampaignNodeId).ToHashSet();
+            profile.Rewards.Synchronize(profile.Clears.Where(r=>known.Contains(r.CampaignNodeId)).Select(r=>r.CampaignNodeId));
+            profile.Rewards.RegisterVisit(DateTime.Now);
         }
         public void AcknowledgeRecovery()
         {

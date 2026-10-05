@@ -1,9 +1,12 @@
 using System;
 using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Cascade.Content;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 
 namespace Cascade.Persistence
 {
@@ -56,8 +59,13 @@ namespace Cascade.Persistence
         }
         public static string Encode(PlayerProfile profile)
         {
-            string payload=JsonConvert.SerializeObject(profile,Formatting.None);
+            string payload=JsonConvert.SerializeObject(profile,Formatting.None,new JsonSerializerSettings{ContractResolver=new StoredFields()});
             return new JObject { ["schema"]=Schema,["sha256"]=ContentImporter.Hash(payload),["payload"]=payload }.ToString(Formatting.None);
+        }
+        sealed class StoredFields:DefaultContractResolver
+        {
+            protected override IList<JsonProperty> CreateProperties(Type type,MemberSerialization memberSerialization)
+                =>base.CreateProperties(type,memberSerialization).Where(p=>p.Readable&&p.Writable).ToList();
         }
         static PlayerProfile TryRead(string file,out bool future)
         {

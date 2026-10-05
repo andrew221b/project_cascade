@@ -21,6 +21,7 @@ namespace Cascade.Persistence
         public List<int> HeardStory=new List<int>();
         public bool FirstGestureShown, JourneyAttempt;
         public AttemptRecord Attempt;
+        public JourneyRewards Rewards=new JourneyRewards();
 
         public bool RecordClear(AttemptService attempt)
         {
@@ -51,6 +52,9 @@ namespace Cascade.Persistence
                 || receipt.CampaignNodeId.Length>128 || !nodes.Add(receipt.CampaignNodeId)
                 || !Guid.TryParse(receipt.AttemptId,out var id) || id==Guid.Empty || !Hash(receipt.ContentHash))
                 throw new InvalidDataException("Invalid first-clear receipt.");
+            if(Rewards==null)throw new InvalidDataException("Missing journey rewards.");
+            Rewards.Validate();
+            if(Rewards.SeenClearNodes.Any(n=>!nodes.Contains(n)))throw new InvalidDataException("Reward progress has no first-clear receipt.");
             // An incompatible attempt is recoverable independently of valid meta-progress.
         }
         static bool Locale(string value)=>value=="en"||value=="ru"||value=="uk";

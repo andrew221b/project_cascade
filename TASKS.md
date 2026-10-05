@@ -1,6 +1,6 @@
 # CASCADE — TASKS
 
-P00–P16: COMPLETE. Unity AI/MCP: работает. P17: IN_PROGRESS; P18–P20: NOT_STARTED.
+P00–P17: COMPLETE. Unity AI/MCP: работает. P18: IN_PROGRESS; P19–P20: NOT_STARTED.
 Python reference проверен отдельно; это не реализация игровых систем Unity.
 
 Автор прямо разрешил выполнять все этапы подряд, отменив остановки между
@@ -25,10 +25,42 @@ P01–P20. После каждого этапа фиксировать резу�
 - [x] P14 — Обучение и экраны
 - [x] P15 — Локализация и glyph QA
 - [x] P16 — Save и прогресс
-- [ ] P17 — Мастерство и маленькая мета
+- [x] P17 — Мастерство и маленькая мета
 - [ ] P18 — Интеграционная приёмка
 - [ ] P19 — Реклама и IAP позже
 - [ ] P20 — Расширять задачами
+
+## P17 — завершено в заявленном объёме, 5 октября 2026
+
+- Каждые три новых clear — сохранённая деталь известного подарка. Три детали
+  собирают вещь; выбор меняет следующий заказ, pending reserves capacity,
+  claim идемпотентен, максимум 12 посылок без повторного filler.
+- Четыре миниатюры требуют exact ten-node receipts; C26 skip честно остаётся9/10.
+  Три просьбы считают ремонт/мост/печать в успешных доставках разных узлов.
+  Ранг хранителя и семь local visits без сброса. Local records pin content,
+  mode/locale/goal и отдельно no-hint/clean. Optional stamp не блокирует кампанию.
+- Profile schema1 совместим с отсутствующими новыми полями; meta commit до
+  animation. Посылки/вещи/журнал доступны вне компактного gameplay HUD.
+- 333/333 EditMode PASS; full PlayMode46/47, устаревшее ожидание Map→Settings
+  заменено Map→Bag→Settings и targeted1/1PASS. Все47 distinct tests имеют passing
+  evidence, второй полный прогон не делался. Reports/P17 и P17Focused.
+- 44 final native MCP frames:41 bounded matrix +3 reviewer-requested carousel
+  frames, EN/RU/UK320, portrait390 и wide1440. Fit findings пусты. 297 keys/891entries.
+  Девять original alpha assets, prompts/provenance сохранены. Console0;330meta чисты.
+- Fresh Impeccable review:два finding(документация/3assetframes), оба resolved,
+  scoped ship. Documenter обновил PRODUCT/DESIGN, tokens/sidecar byte-preserved;
+  pre-existing sidecar drift reported. Reports/P17/impeccable-verdict.md.
+- Не запускались player build/physical devices/haptics/native editorial/humanfun.
+  Основные40уроков всё ещё короткие; P20 расширит решения, LongReach покаdesign.
+  Wooden/motion/pictorial/world revision выполняется послеP17–P20.
+
+## Уточнение автора — следующие работы после P17–P20
+
+- [ ] Деревянные платформы на канатах, вес/прогиб/ветер, щепки и посадка фигур.
+- [ ] Наглядные состояния бомбы/устройств, pictorial guidance, microinteractions.
+- [ ] Перекомпозиция широкого фона и пропеллера, живые карта и меню с Микой.
+- [ ] Дополнительные понятные цели/награды; отдельный человеческий плейтест.
+- Контракт до изменения поведения: Docs/VISUAL_MOTION_REWORK.md.
 
 ## P16 — завершено в заявленном объёме, 5 октября 2026
 

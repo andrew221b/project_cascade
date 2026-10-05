@@ -130,3 +130,17 @@ dialogue must work at 320px without piling panels over one another.
 Each phase updates TASKS and evidence. The latest user explicitly rejected
 the previous game's simplicity and crowded UI; prior visual approval does not
 approve this revision. Fresh independent Impeccable review is required.
+
+## Author revision — 5 October, after P17 completion
+
+Complete P17–P20 and remaining validation first. Then extend presentation with
+wooden rope-supported floors, visible weight/sag, wind sway, chips on collapse
+and individual falling/settling poses. Visual simulation reads committed state
+and never resolves moves or changes symbol order. Device states and pictorial
+guidance must show bomb countdown, blast effect, defusal and optional objectives
+without requiring reading. Rework incidental windwheel and wide-screen scenery
+into the same world; weather/ambient belongs on map and themed menus with Mika.
+Finish visual composition before motion embellishment. Add purposeful optional
+challenge rewards only with a design note, solver proof and no path lockout.
+Use bounded relevant verification; no repeated player builds without a change
+that invalidates their evidence. Retention/fun requires human play evidence.
