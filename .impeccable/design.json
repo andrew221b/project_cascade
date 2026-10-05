@@ -351,6 +351,36 @@
         "name": "ambient-wheel",
         "value": "18deg + elapsedUnscaledSeconds * 7deg/s",
         "purpose": "View-only wheel rotation. Pause and suspension stop phase progression; Reduced Motion fixes rotation to 18deg. No moving cloud layer is implemented."
+      },
+      {
+        "name": "selection",
+        "value": "100ms cubic ease-out",
+        "purpose": "Shared mesh and live glyph focus lift; Reduced Motion applies the final focus immediately."
+      },
+      {
+        "name": "exchange",
+        "value": "190ms cubic ease-out",
+        "purpose": "Short opposing arcs explain adjacent and linked permutations of the same persistent row."
+      },
+      {
+        "name": "fall-and-land",
+        "value": "300ms smoothstep + 110ms landing",
+        "purpose": "The entire row travels down the guides; plastic compresses at most 8%. Target remains visible."
+      },
+      {
+        "name": "device-response",
+        "value": "180ms contact / 240ms bomb / 130ms fracture",
+        "purpose": "Local rail recoil is at most 0.025 world units; no camera shake."
+      },
+      {
+        "name": "delivery",
+        "value": "340ms hold",
+        "purpose": "Input unlock follows final visual synchronization, independently of remaining dust and audio."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "55ms state hold",
+        "purpose": "No row travel, arcs, recoil or deformation. At most two stationary dust fades per burst."
       }
     ],
     "breakpoints": [

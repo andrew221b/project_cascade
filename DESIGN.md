@@ -188,9 +188,31 @@ The mesh builder uses five contour rings, with scale factors `0.88, 0.985, 1, 0.
 ### Shadow Vocabulary
 
 - **Soft contact:** a camera-facing quad using the Contact Shadow token. Alpha follows `(1 − smoothstep(0.25, 1, radius))²`; this creates a soft elliptical contact when the quad is compressed. Tokens, platforms and receiver each size their own contact plane. This is a shader effect, not a CSS box shadow.
-- **Selection lift:** the body and live glyph share a normalized vertical center of 0.38 at rest and 0.48 when selected. Body size moves from 0.78 × 0.88 to 0.81 × 0.915 of its cell, with a gold frame behind it. P12 applies this directly; an eased selection tween is not yet implemented.
+- **Selection lift:** the body and live glyph share a normalized vertical center of 0.38 at rest and 0.48 when selected. Body size moves from 0.78 × 0.88 to 0.81 × 0.915 of its cell, with a gold frame behind it. Selection eases out over 100 ms; Reduced Motion applies the focus state directly.
 
-The live wind wheel turns at 7 degrees per second from an 18-degree base angle. Reduced Motion fixes it at that base angle; pause and application suspension stop its phase progression. The painted clouds do not move. The current 0.16-second command presentation gate is temporary P11 behavior and is deliberately not a design motion token; P13 owns causal event animation and audio.
+The live wind wheel turns at 7 degrees per second from an 18-degree base angle. Reduced Motion fixes it at that base angle; pause and application suspension stop its phase progression. The painted clouds do not move.
+
+### Causal Motion
+
+The authored focal sequence is a whole row leaving a spent mint rail, travelling
+down its brass guides, and seating in the next rail or gold receiver. Supporting
+motion explains adjacent/linked exchanges and local device consequences. The
+event player reads already committed results; visual completion cannot apply
+damage, collect a stamp or execute another command.
+
+`MotionProfile` sets selection 100 ms, exchange 190 ms, contact 180 ms, bomb
+240 ms, fracture 130 ms, fall 300 ms, landing 110 ms and delivery hold 340 ms.
+Exchange uses cubic ease-out with short opposing arcs; fall uses smoothstep.
+Landing compresses plastic by at most 8%; rails recoil locally by 0.025 world
+units. The camera does not shake. A target stays visible throughout delivery;
+result controls appear only after the row settles.
+
+Reduced Motion replaces travel, recoil and deformation with 55 ms state holds.
+Dust reduces to at most two stationary fades per burst. Normal dust is capped
+at 32 pooled elements; sound has eight pooled voices. Their tails do not keep
+the command gate closed. Original mallet-like cues and a quiet 24-second loop
+share the workshop palette; `Docs/P13_AUDIO_PROVENANCE.md` records their source
+and the untested auditory/device limits.
 
 ## Shapes
 

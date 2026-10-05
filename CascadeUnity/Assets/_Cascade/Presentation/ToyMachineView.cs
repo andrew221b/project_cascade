@@ -36,6 +36,7 @@ namespace Cascade.Presentation
         readonly List<Part> all = new List<Part>();
         readonly List<Part> tokens = new List<Part>();
         readonly List<Part> tokenShadows = new List<Part>();
+        readonly List<Part> targetBodies = new List<Part>();
         readonly List<Part> selections = new List<Part>();
         readonly List<FloorRig> floors = new List<FloorRig>();
         readonly List<Part> supports = new List<Part>();
@@ -48,6 +49,32 @@ namespace Cascade.Presentation
         public float AmbientPhase => windTime;
         public int TokenCount => tokens.Count;
         public static float TokenFaceY(bool selected) => selected ? .48f : .38f;
+        public PresentationFrame Frame { get; set; }
+        readonly float[] floorOffsets = new float[4];
+        readonly Vector3[] restPositions = new Vector3[8], restScales = new Vector3[8];
+        public Vector3 TokenPosition(int index) => restPositions[index];
+        public Vector3 PresentedTokenPosition(int index) => tokens[index].transform.position;
+        public float SelectionLiftWorld(int index) { tokens[index].anchor.GetWorldCorners(corners); return (corners[2].y-corners[0].y)*.1f; }
+        public Vector3 FloorPosition(int floor)
+        {
+            var anchor = floors[floor].parts[0].anchor; anchor.GetWorldCorners(corners);
+            return new Vector3((corners[0].x + corners[2].x) * .5f, Mathf.Lerp(corners[0].y, corners[2].y, .33f), -.3f);
+        }
+        public Vector3 ContactPosition(int floor, int slot)
+        {
+            var anchor = floors[floor].parts[0].anchor; anchor.GetWorldCorners(corners);
+            return new Vector3(Mathf.Lerp(corners[0].x, corners[2].x, .045f + .91f * (slot + .5f) / tokens.Count), Mathf.Lerp(corners[0].y, corners[2].y, .33f), -.5f);
+        }
+        public void RecoilFloor(int floor, float offset)
+        {
+            foreach (var p in floors[floor].parts) p.transform.position += Vector3.up * (offset - floorOffsets[floor]);
+            floorOffsets[floor] = offset;
+        }
+        public void OffsetToken(int index, Vector3 offset, Vector2 stretch)
+        {
+            tokens[index].transform.position = restPositions[index] + offset;
+            tokens[index].transform.localScale = Vector3.Scale(restScales[index], new Vector3(stretch.x, stretch.y, 1));
+        }
 
         public void Initialize(ToyArt artwork, Camera camera)
         {
@@ -74,7 +101,8 @@ namespace Cascade.Presentation
         {
             if (machine != null) { machine.gameObject.SetActive(false); Destroy(machine.gameObject); }
             machine = new GameObject("Toy machine").transform; machine.SetParent(transform, false);
-            all.Clear(); tokens.Clear(); selections.Clear(); tokenShadows.Clear(); floors.Clear(); supports.Clear(); interaction = model;
+            all.Clear(); tokens.Clear(); selections.Clear(); tokenShadows.Clear(); targetBodies.Clear(); floors.Clear(); supports.Clear(); interaction = model;
+            Frame = new PresentationFrame(model.Attempt.Current);
             upperAnchor = anchors[0]; lowerAnchor = receiver;
             for (int i = 0; i < 2; i++) supports.Add(Create("Brass guide " + i, machine, null, art.beam, art.paleGold, Vector2.zero, Vector2.one, .65f, .08f));
             for (int i = 0; i < anchors.Count; i++) BuildFloor(anchors[i], model.Attempt.Level.Floors[i], slots.Count);
@@ -85,7 +113,7 @@ namespace Cascade.Presentation
                 var anchor = targets[i].rectTransform;
                 Add("Target socket", anchor, art.tile, art.gold, new Vector2(.5f, .5f), new Vector2(.83f, .90f), -.06f, .06f);
                 var symbol = model.Attempt.Level.TargetSymbolIds[i];
-                Add("Target " + i, anchor, art.SymbolMesh(symbol), art.SymbolMaterial(symbol), new Vector2(.5f, .5f), new Vector2(.66f, .72f), -.12f, .10f);
+                targetBodies.Add(Add("Target " + i, anchor, art.SymbolMesh(symbol), art.SymbolMaterial(symbol), new Vector2(.5f, .5f), new Vector2(.66f, .72f), -.12f, .10f));
             }
             for (int i = 0; i < slots.Count; i++) {
                 var anchor = (RectTransform)slots[i].transform;
@@ -181,26 +209,28 @@ namespace Cascade.Presentation
             backdrop.transform.localScale = new Vector3(coverH * ratio, coverH, 1);
             windmill.position = new Vector3(-Mathf.Min(width * .44f, 3.1f), -3.1f, 1.7f);
             if (interaction == null) return;
-            var state = interaction.Attempt.Current;
+            var state = Frame;
+            foreach (var target in targetBodies) target.transform.gameObject.SetActive(true);
             for (int i = 0; i < tokens.Count; i++) {
                 var token = tokens[i]; var mesh = art.SymbolMesh(state.Row[i]);
                 token.mesh = mesh; token.transform.GetComponent<MeshFilter>().sharedMesh = mesh;
                 token.renderer.sharedMaterial = art.SymbolMaterial(state.Row[i]);
-                token.point = new Vector2(.5f, TokenFaceY(interaction.SelectedSlot == i));
-                token.size = interaction.SelectedSlot == i ? new Vector2(.81f, .915f) : new Vector2(.78f, .88f);
+                token.point = new Vector2(.5f, state.Status == PuzzleStatus.Won ? .5f : TokenFaceY(interaction.SelectedSlot == i));
+                token.size = state.Status == PuzzleStatus.Won ? new Vector2(.66f, .72f)
+                    : interaction.SelectedSlot == i ? new Vector2(.81f, .915f) : new Vector2(.78f, .88f);
                 selections[i].transform.gameObject.SetActive(interaction.SelectedSlot == i && token.anchor.gameObject.activeInHierarchy);
                 token.transform.gameObject.SetActive(token.anchor.gameObject.activeInHierarchy);
                 tokenShadows[i].transform.gameObject.SetActive(token.anchor.gameObject.activeInHierarchy);
             }
             for (int f = 0; f < floors.Count; f++) {
-                var rig = floors[f]; bool past = f < state.ActiveFloor || state.Status != PuzzleStatus.Playing;
+                var rig = floors[f]; bool past = !state.FloorVisible(f);
                 bool active = f == state.ActiveFloor && state.Status == PuzzleStatus.Playing;
                 foreach (var p in rig.parts) p.transform.gameObject.SetActive(!past);
                 int hp = active ? state.Durability : interaction.Attempt.Level.Floors[f].BaseDurability;
                 int damage = Mathf.Clamp(interaction.Attempt.Level.Floors[f].BaseDurability - hp, 0, 3);
                 for (int j = 0; j < rig.cracks.Count; j++) rig.cracks[j].transform.gameObject.SetActive(!past && j < damage);
                 for (int edge = 0; edge < rig.locks.Count; edge++) {
-                    bool open = active ? interaction.Attempt.Resolver.IsEdgeOpen(state, edge) : interaction.Attempt.Level.Floors[f].OpenEdges[edge];
+                    bool open = active ? state.EdgeVisibleOpen(interaction.Attempt.Level.Floors[f], edge) : interaction.Attempt.Level.Floors[f].OpenEdges[edge];
                     rig.locks[edge].transform.gameObject.SetActive(!past && !open);
                 }
                 SetVisible(rig.bridge, !past && !(active && state.BridgeUsed));
@@ -210,6 +240,8 @@ namespace Cascade.Presentation
                 SetVisible(rig.stamp, !past && (state.StampBits & (1 << f)) == 0);
             }
             foreach (var part in all) if (part.transform.gameObject.activeSelf) Place(part);
+            for (int i = 0; i < floorOffsets.Length; i++) floorOffsets[i] = 0;
+            for (int i = 0; i < tokens.Count; i++) { restPositions[i] = tokens[i].transform.position; restScales[i] = tokens[i].transform.localScale; }
             upperAnchor.GetWorldCorners(corners); float left = corners[0].x, right = corners[2].x;
             float top = Mathf.Lerp(corners[0].y, corners[2].y, .34f);
             lowerAnchor.GetWorldCorners(corners); float bottom = Mathf.Lerp(corners[0].y, corners[2].y, .55f);

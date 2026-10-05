@@ -32,6 +32,7 @@ namespace Cascade.Tests
             InputSystem.settings.backgroundBehavior = InputSettings.BackgroundBehavior.IgnoreFocus;
             InputSystem.settings.editorInputBehaviorInPlayMode = InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView;
             game.SendMessage("OnApplicationFocus", true); game.SendMessage("OnApplicationPause", false);
+            game.Feedback.MusicEnabled = false; game.Feedback.SoundEnabled = false;
             mouse = InputSystem.AddDevice<Mouse>(); touch = InputSystem.AddDevice<Touchscreen>();
             yield return null;
             game.SendMessage("OnApplicationFocus", true); game.SendMessage("OnApplicationPause", false);
@@ -80,7 +81,7 @@ namespace Cascade.Tests
             yield return MouseFrame(Point(1), true); yield return MouseFrame(Point(1), false);
             Assert.That(game.Interaction.Attempt.Current.Status, Is.EqualTo(PuzzleStatus.Won));
             Assert.That(game.Interaction.Attempt.RouteLength, Is.EqualTo(1));
-            yield return new WaitForSecondsRealtime(.20f); game.Undo();
+            yield return AwaitPresentation(); game.Undo();
             Assert.That(game.Interaction.Attempt.Current.Status, Is.EqualTo(PuzzleStatus.Playing));
             Assert.That(game.Interaction.Attempt.RouteLength, Is.Zero);
         }
@@ -162,7 +163,7 @@ namespace Cascade.Tests
                 Assert.That(cornersA[2].x, Is.LessThan(cornersB[0].x));
             }
             game.Interaction.FocusSlot(0); var result = game.Interaction.SwapFocused(1);
-            if (result != null && result.Accepted) yield return new WaitForSecondsRealtime(.20f);
+            if (result != null && result.Accepted) yield return AwaitPresentation();
             Assert.That(game.TargetRow.GetComponentsInChildren<TextMeshProUGUI>().Select(t => t.text), Is.EqualTo(target));
         }
         [UnityTest] public IEnumerator FocusPauseAndDisableCannotRepeatCommittedCommand()
@@ -237,6 +238,122 @@ namespace Cascade.Tests
             Assert.That(game.Interaction.Execute(PuzzleCommand.Drop), Is.Null);
             Assert.That(game.Interaction.Attempt.CurrentStateHash, Is.EqualTo(hash));
             yield return ClickButton("Closetarget"); Assert.That(game.Interaction.CanPlay, Is.True);
+        }
+        sealed class AnimationWitness
+        {
+            public LevelDefinition level; public PuzzleCommand[] prefix; public PuzzleCommand command; public int eventIndex; public PuzzleEventKind kind;
+        }
+        [UnityTest] public IEnumerator EveryAnimatedStageCanBeInterruptedWithoutReapplyingRules()
+        {
+            var witnesses = new Dictionary<PuzzleEventKind, AnimationWitness>();
+            foreach (var content in game.Catalog.PrimaryLevels) {
+                var resolver = new PuzzleResolver(content.Definition); var state = resolver.CreateInitialState(); var prefix = new List<PuzzleCommand>();
+                foreach (var command in PuzzleSolver.FindShortest(resolver).Path) {
+                    var result = resolver.Resolve(state, command);
+                    for (int i = 0; i < result.Events.Count; i++) {
+                        var e = result.Events[i];
+                        if (e.Kind == PuzzleEventKind.CommandAccepted || e.Kind == PuzzleEventKind.BombAbandoned || (e.Kind == PuzzleEventKind.DurabilityResolved && result.DurabilityCost <= 1)) continue;
+                        if (!witnesses.ContainsKey(e.Kind)) witnesses.Add(e.Kind, new AnimationWitness { level = content.Definition, prefix = prefix.ToArray(), command = command, eventIndex = i, kind = e.Kind });
+                    }
+                    state = result.State; prefix.Add(command);
+                }
+            }
+            Assert.That(witnesses.Count, Is.EqualTo(13), "Every timed event kind needs an interruption witness");
+            foreach (var witness in witnesses.Values) for (int mode = 0; mode < 4; mode++) {
+                game.LoadLevel(witness.level); yield return null;
+                foreach (var command in witness.prefix) { game.Interaction.Execute(command); game.EventPlayer.Skip(); }
+                var views = game.SlotViews.ToArray(); int completions = game.EventPlayer.CompletedPresentations;
+                game.Interaction.Execute(witness.command); var committed = game.Interaction.Attempt.Current;
+                string hash = game.Interaction.Attempt.CurrentStateHash; int route = game.Interaction.Attempt.RouteLength;
+                float until = Time.realtimeSinceStartup + 3;
+                while (game.EventPlayer.IsRunning && game.EventPlayer.EventIndex != witness.eventIndex && Time.realtimeSinceStartup < until) yield return null;
+                Assert.That(game.EventPlayer.IsRunning && game.EventPlayer.EventIndex == witness.eventIndex, Is.True, "Missed " + witness.kind);
+                if (mode == 0) game.EventPlayer.Skip();
+                else if (mode == 1) game.SendMessage("OnApplicationFocus", false);
+                else if (mode == 2) game.enabled = false;
+                else game.SendMessage("TogglePause");
+                yield return null;
+                Assert.That(game.Interaction.Attempt.Current, Is.SameAs(committed), witness.kind.ToString());
+                Assert.That(game.Interaction.Attempt.CurrentStateHash, Is.EqualTo(hash)); Assert.That(game.Interaction.Attempt.RouteLength, Is.EqualTo(route));
+                Assert.That(game.Interaction.IsPresenting, Is.False); Assert.That(game.EventPlayer.CompletedPresentations, Is.EqualTo(completions + 1));
+                Assert.That(game.VisibleFrame.Row, Is.EqualTo(committed.Row)); Assert.That(game.VisibleFrame.Durability, Is.EqualTo(committed.Durability));
+                Assert.That(game.VisibleFrame.ActiveFloor, Is.EqualTo(committed.ActiveFloor)); Assert.That(game.SlotViews, Is.EqualTo(views));
+                if (mode == 1) game.SendMessage("OnApplicationFocus", true);
+                else if (mode == 2) game.enabled = true;
+                else if (mode == 3) game.SendMessage("TogglePause");
+            }
+            Debug.Log("CASCADE P13 interruption matrix: 13 stages × 4 interruption paths verified.");
+        }
+        [UnityTest] public IEnumerator DestroyingEventPlayerSynchronizesTheCommittedResult()
+        {
+            game.LoadNode("C01"); yield return null; game.Interaction.Execute(PuzzleCommand.Swap(0));
+            var committed = game.Interaction.Attempt.Current; string hash = game.Interaction.Attempt.CurrentStateHash;
+            UnityEngine.Object.Destroy(game.EventPlayer); yield return null;
+            Assert.That(game.Interaction.Attempt.Current, Is.SameAs(committed)); Assert.That(game.Interaction.Attempt.CurrentStateHash, Is.EqualTo(hash));
+            Assert.That(game.VisibleFrame.Row, Is.EqualTo(committed.Row)); Assert.That(game.Interaction.IsPresenting, Is.False);
+        }
+        [UnityTest] public IEnumerator DustTailsDoNotKeepUndoLockedAndFeedbackStaysBounded()
+        {
+            var library = Resources.Load<ToyAudioLibrary>("CascadeArt/ToyAudio");
+            Assert.That(library.cues.Length, Is.EqualTo(12)); Assert.That(library.cues.All(c => c != null && c.samples > 0), Is.True);
+            Assert.That(library.alternates.Count(c => c != null), Is.EqualTo(4)); Assert.That(library.music.length, Is.EqualTo(24).Within(.02f));
+            int objects = game.Feedback.GetComponentsInChildren<Transform>(true).Length;
+            game.LoadNode("C01"); yield return null; game.Interaction.Execute(PuzzleCommand.Swap(0)); yield return AwaitPresentation();
+            Assert.That(game.Interaction.CanControl, Is.True); Assert.That(game.Feedback.ActiveParticleCount, Is.GreaterThan(0));
+            game.Undo(); Assert.That(game.Interaction.Attempt.RouteLength, Is.Zero);
+            for (int i = 0; i < 30; i++) game.Feedback.Burst(Vector3.zero, Color.yellow, 50, false);
+            yield return null; Assert.That(game.Feedback.ActiveParticleCount, Is.LessThanOrEqualTo(32));
+            Assert.That(game.Feedback.GetComponentsInChildren<Transform>(true).Length, Is.EqualTo(objects));
+        }
+        [UnityTest] public IEnumerator SelectedLetterTracksItsBodyThroughoutSelectionMotion()
+        {
+            game.LoadNode("C32"); yield return null; game.Interaction.FocusSlot(0); game.RefreshLayout();
+            for (int i = 0; i < 10; i++) {
+                yield return null; var face = game.SlotViews[0].GetComponentInChildren<TextMeshProUGUI>().rectTransform;
+                Assert.That(face.position.y, Is.EqualTo(game.Machine.PresentedTokenPosition(0).y).Within(.01f));
+            }
+        }
+        [UnityTest] public IEnumerator ReducedMotionKeepsPosesStillThroughoutCommittedEvents()
+        {
+            game.LoadNode("C37"); game.ReducedMotion = true; yield return null;
+            var solution = PuzzleSolver.FindShortest(game.Interaction.Attempt.Resolver);
+            foreach (var command in solution.Path) {
+                game.Interaction.Execute(command); string hash = game.Interaction.Attempt.CurrentStateHash;
+                float until = Time.realtimeSinceStartup + 3;
+                do {
+                    yield return null;
+                    Assert.That(game.Interaction.Attempt.CurrentStateHash, Is.EqualTo(hash));
+                    for (int i = 0; i < game.SlotViews.Count; i++)
+                        Assert.That(Vector3.Distance(game.Machine.PresentedTokenPosition(i), game.Machine.TokenPosition(i)), Is.LessThan(.001f));
+                } while (game.Interaction.IsPresenting && Time.realtimeSinceStartup < until);
+                Assert.That(game.Interaction.IsPresenting, Is.False);
+            }
+            Assert.That(game.Interaction.Attempt.Current.Status, Is.EqualTo(PuzzleStatus.Won));
+        }
+        [UnityTest] public IEnumerator SceneReloadDuringAnimationReleasesOldAttemptWithoutExceptions()
+        {
+            game.Interaction.Execute(PuzzleCommand.Swap(0)); var old = game.Interaction;
+            string hash = old.Attempt.CurrentStateHash;
+            yield return SceneManager.LoadSceneAsync("Assets/_Cascade/Scenes/CascadePlayable.unity");
+            game = UnityEngine.Object.FindFirstObjectByType<CascadeGame>();
+            Assert.That(old.IsPresenting, Is.False); Assert.That(old.Attempt.CurrentStateHash, Is.EqualTo(hash));
+            Assert.That(game.Interaction.Attempt.RouteLength, Is.Zero);
+        }
+        [UnityTest] public IEnumerator DeliveryKeepsTargetVisibleAndWaitsBeforeShowingResultControls()
+        {
+            game.LoadNode("C32"); yield return null;
+            foreach (var command in PuzzleSolver.FindShortest(game.Interaction.Attempt.Resolver).Path) {
+                game.Interaction.Execute(command);
+                float until = Time.realtimeSinceStartup + 3;
+                while (game.EventPlayer.IsRunning && Time.realtimeSinceStartup < until) {
+                    Assert.That(game.TargetRow.GetComponentsInChildren<TextMeshProUGUI>().All(t => t.color.a > .99f), Is.True);
+                    Assert.That(game.GetComponentsInChildren<MeshRenderer>(true).Where(r => r.name.StartsWith("Target ")).All(r => r.gameObject.activeInHierarchy), Is.True);
+                    Assert.That(game.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b => b.name == "Retry"), Is.False);
+                    yield return null;
+                }
+                Assert.That(game.EventPlayer.IsRunning, Is.False);
+            }
+            Assert.That(game.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b => b.name == "Retry" && b.interactable), Is.True);
         }
         [UnityTest] public IEnumerator AllFortyLevelsCanBeDeliveredThroughActualMouseAndButtons()
         {

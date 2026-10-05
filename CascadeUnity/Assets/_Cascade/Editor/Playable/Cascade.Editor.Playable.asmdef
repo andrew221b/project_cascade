@@ -8,7 +8,8 @@
         "Unity.InputSystem",
     "Cascade.Application",
     "Cascade.Content",
-        "Cascade.Domain"
+        "Cascade.Domain",
+        "Cascade.Solver"
     ],
     "includePlatforms": [
         "Editor"

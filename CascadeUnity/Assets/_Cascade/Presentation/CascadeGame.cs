@@ -20,7 +20,14 @@ namespace Cascade.Presentation
         [SerializeField] TMP_FontAsset font;
         ToyArt art;
         ToyMachineView machine;
+        PuzzleEventPlayer eventPlayer;
+        ToyFeedbackPool feedback;
+        MotionProfile motion;
+        public PuzzleEventPlayer EventPlayer => eventPlayer;
+        public ToyFeedbackPool Feedback => feedback;
         public ToyMachineView Machine => machine;
+        public PresentationFrame VisibleFrame { get; private set; }
+        readonly Vector3[] glyphPositions = new Vector3[8];
         public bool ReducedMotion { get => machine != null && machine.ReducedMotion; set { if (machine != null) machine.ReducedMotion = value; } }
         public PuzzleInteraction Interaction { get; private set; }
         public ContentCatalog Catalog { get; private set; }
@@ -47,7 +54,6 @@ namespace Cascade.Presentation
         string node;
         Rect safeArea;
         int screenWidth, screenHeight;
-        Coroutine presentation;
         static readonly Color Ink = new Color(.16f, .28f, .29f);
         static readonly Color Paper = new Color(1, .96f, .84f);
         static readonly Color Selected = new Color(.95f, .73f, .29f, .3f);
@@ -60,12 +66,15 @@ namespace Cascade.Presentation
             art = ToyArt.Load(); font = art.bodyFont;
             if (uiCamera == null) uiCamera = Camera.main;
             machine = gameObject.AddComponent<ToyMachineView>(); machine.Initialize(art, uiCamera);
+            motion = Resources.Load<MotionProfile>("CascadeArt/MotionProfile") ?? throw new InvalidOperationException("Build CASCADE motion assets before playing.");
+            feedback = gameObject.AddComponent<ToyFeedbackPool>(); feedback.Initialize(this, art, motion);
+            eventPlayer = gameObject.AddComponent<PuzzleEventPlayer>(); eventPlayer.Initialize(this, motion, feedback);
             BuildScreen(); LoadNode(initialNode);
         }
-        void OnEnable() { if (Interaction != null) RenderState(); }
+        void OnEnable() { if (Interaction != null) { Interaction.SetSuspended(applicationPaused || !applicationFocused); RenderState(); } }
         void OnDisable()
         {
-            CancelHint(); StopPresentation(); Interaction?.CancelPointer();
+            CancelHint(); StopPresentation(); Interaction?.SetSuspended(true); feedback?.ClearTails();
         }
         void OnDestroy() { if (Interaction != null) Interaction.Committed -= OnCommitted; }
         void OnApplicationFocus(bool focused)
@@ -81,7 +90,7 @@ namespace Cascade.Presentation
         void Update()
         {
             if (safeArea != Screen.safeArea || screenWidth != Screen.width || screenHeight != Screen.height) {
-                ApplySafeArea(); if (Interaction != null) RenderState();
+                StopPresentation(); ApplySafeArea(); if (Interaction != null) RenderState();
             }
             if (hintTask == null || !hintTask.IsCompleted || !Interaction.CanPlay) return;
             var completed = hintTask; hintTask = null; hintCancellation?.Dispose(); hintCancellation = null;
@@ -111,22 +120,19 @@ namespace Cascade.Presentation
         }
         void OnCommitted(TransitionResult result)
         {
-            CancelHint(); RenderState(); presentation = StartCoroutine(PresentGrayTransition());
-        }
-        IEnumerator PresentGrayTransition()
-        {
-            // P11 gate only. P13 replaces this with the single event/tween player.
-            yield return new WaitForSecondsRealtime(.16f);
-            Interaction.FinishPresentation(); presentation = null; RenderControls();
+            CancelHint(); eventPlayer.Play(result); RenderControls();
         }
         void StopPresentation()
         {
-            if (presentation != null) StopCoroutine(presentation); presentation = null; Interaction?.FinishPresentation();
+            if (eventPlayer != null) eventPlayer.Skip(); else Interaction?.FinishPresentation();
         }
         public void ReportInput(TransitionResult result)
         {
-            if (result != null && !result.Accepted) status.text = result.Rejection == RejectionReason.NoOp
-                ? "This exchange leaves the row unchanged." : "That edge is locked. No durability spent.";
+            if (result != null && !result.Accepted) {
+                status.text = result.Rejection == RejectionReason.NoOp
+                    ? "This exchange leaves the row unchanged." : "That edge is locked. No durability spent.";
+                feedback.Sound(ToyCue.Reject);
+            }
             else if (result == null) RenderFocus();
         }
         public void PreviewSlot(int slot)
@@ -324,7 +330,9 @@ namespace Cascade.Presentation
             float inset = Mathf.Max(0, (available - 430) * .5f);
             safeRoot.offsetMin = new Vector2(inset, 0); safeRoot.offsetMax = new Vector2(-inset, 0);
             if (header != null && actions != null) {
-                float scale = safeRoot.GetComponentInParent<Canvas>().scaleFactor;
+                var canvas = safeRoot.GetComponentInParent<Canvas>(true);
+                if (canvas == null) return; // Scene teardown can disable the hierarchy before the presentation is cancelled.
+                float scale = canvas.scaleFactor;
                 float unit = 1 / Mathf.Min(1, scale); // Preserve 48-pixel hit regions in the smallest reference capture.
                 FixedBand(header, safeRoot.rect.height - 112 * unit, 104 * unit);
                 FixedBand(status.rectTransform, safeRoot.rect.height - 168 * unit, 48 * unit);
@@ -352,19 +360,27 @@ namespace Cascade.Presentation
         }
         void RenderState()
         {
-            var attempt = Interaction.Attempt; var state = attempt.Current; var level = attempt.Level;
+            RenderFrame(new PresentationFrame(Interaction.Attempt.Current));
+        }
+        public void RenderFrame(PresentationFrame state, bool arriving = false)
+        {
+            VisibleFrame = state; machine.Frame = state;
+            var attempt = Interaction.Attempt; var level = attempt.Level;
             for (int i = 0; i < level.Floors.Count; i++) {
                 var floor = level.Floors[i]; bool active = state.Status == PuzzleStatus.Playing && i == state.ActiveFloor;
-                bool past = i < state.ActiveFloor || state.Status != PuzzleStatus.Playing;
+                bool past = !state.FloorVisible(i);
                 floorLabels[i].text = past ? "" : (active ? state.Durability : floor.BaseDurability) + " HP";
                 deviceLabels[i].text = past ? "" : DescribeFloor(floor, active ? state : null);
                 foreach (Transform child in floorViews[i]) if (child.name == "DeviceGlyph") child.gameObject.SetActive(!past);
             }
             tokenRow.SetParent(state.Status == PuzzleStatus.Playing ? floorViews[state.ActiveFloor] : receiver, false);
-            tokenRow.anchorMin = new Vector2(.045f, state.Status == PuzzleStatus.Playing ? .44f : .20f);
-            tokenRow.anchorMax = new Vector2(.955f, state.Status == PuzzleStatus.Playing ? .98f : .70f); tokenRow.offsetMin = tokenRow.offsetMax = Vector2.zero;
-            tokenRow.gameObject.SetActive(state.Status == PuzzleStatus.Playing);
-            for (int i = 0; i < tokenLabels.Count; i++) tokenLabels[i].text = FaceText(state.Row[i]);
+            tokenRow.anchorMin = new Vector2(state.Status == PuzzleStatus.Playing ? .045f : .07f, state.Status == PuzzleStatus.Playing ? .44f : .20f);
+            tokenRow.anchorMax = new Vector2(state.Status == PuzzleStatus.Playing ? .955f : .93f, state.Status == PuzzleStatus.Playing ? .98f : .70f); tokenRow.offsetMin = tokenRow.offsetMax = Vector2.zero;
+            tokenRow.gameObject.SetActive(state.Status == PuzzleStatus.Playing || arriving);
+            foreach (var label in targetLabels) label.color = Ink;
+            for (int i = 0; i < tokenLabels.Count; i++) {
+                tokenLabels[i].text = FaceText(state.Row[i]); tokenLabels[i].fontSize = state.Status == PuzzleStatus.Won ? 24 : 28;
+            }
             receiverLabel.text = state.Status == PuzzleStatus.Won ? "Delivered!  ·  " + attempt.RouteLength + " actions" : "Deliver this order";
             status.text = userPaused ? "Paused. Devices wait for your next command." : state.Status == PuzzleStatus.Won ? "Exact order delivered." : state.Status == PuzzleStatus.Lost
                 ? "Delivered " + state.Row.Where((symbol, i) => symbol == level.TargetSymbolIds[i]).Count() + " of " + state.Row.Count + " in place. Undo or retry."
@@ -376,12 +392,25 @@ namespace Cascade.Presentation
                 tokenRow.gameObject.SetActive(true); tokenRow.anchorMin = new Vector2(.02f, -.36f); tokenRow.anchorMax = new Vector2(.98f, .06f);
             }
             RenderFocus(); RefreshLayout();
+            for (int i = 0; i < tokenLabels.Count; i++) { glyphPositions[i] = tokenLabels[i].rectTransform.position; tokenLabels[i].rectTransform.localScale = Vector3.one; }
         }
-        string DescribeFloor(FloorDefinition floor, PuzzleState state)
+        public void OffsetPresentedToken(int index, Vector3 offset, Vector2 stretch)
+        {
+            machine.OffsetToken(index, offset, stretch);
+            tokenLabels[index].rectTransform.position = glyphPositions[index] + offset;
+            tokenLabels[index].rectTransform.localScale = new Vector3(stretch.x, stretch.y, 1);
+        }
+        public void SetPresentationFeedback(string text) { status.text = text; }
+        public void SyncPresentation() { RenderState(); }
+        public void CompleteDeliveryPose()
+        {
+            if (VisibleFrame.Status == PuzzleStatus.Won) { tokenRow.gameObject.SetActive(false); machine.Sync(); }
+        }
+        string DescribeFloor(FloorDefinition floor, PresentationFrame state)
         {
             var parts = new List<string>();
             if (floor.EntryTransform != EntryTransform.None) parts.Add(floor.EntryTransform == EntryTransform.MirrorNext ? "Mirror on entry" : floor.EntryTransform == EntryTransform.ShiftLeftOne ? "Shift left on entry" : "Shift right on entry");
-            var closed = Enumerable.Range(0, floor.OpenEdges.Count).Where(i => state == null ? !floor.OpenEdges[i] : !Interaction.Attempt.Resolver.IsEdgeOpen(state, i)).ToArray();
+            var closed = Enumerable.Range(0, floor.OpenEdges.Count).Where(i => state == null ? !floor.OpenEdges[i] : !state.EdgeVisibleOpen(floor, i)).ToArray();
             if (closed.Length != 0) parts.Add("Locked " + string.Join(", ", closed.Select(i => (i + 1).ToString())));
             if (floor.FragileEdges.Count != 0) parts.Add("Fragile " + string.Join(", ", floor.FragileEdges.Select(i => (i + 1).ToString())));
             if (floor.LinkedPair.HasValue) parts.Add("Linked " + (floor.LinkedPair.Value.FirstEdge + 1) + " + " + (floor.LinkedPair.Value.SecondEdge + 1));
@@ -397,9 +426,10 @@ namespace Cascade.Presentation
             if (Interaction == null) return;
             for (int i = 0; i < slotImages.Count; i++) slotImages[i].color = Color.clear;
             for (int i = 0; i < tokenLabels.Count; i++) {
-                var face = tokenLabels[i].rectTransform; float y = ToyMachineView.TokenFaceY(Interaction.SelectedSlot == i);
+                var face = tokenLabels[i].rectTransform; float y = VisibleFrame.Status == PuzzleStatus.Won ? .5f : ToyMachineView.TokenFaceY(Interaction.SelectedSlot == i);
                 face.anchorMin = new Vector2(0, y); face.anchorMax = new Vector2(1, y);
                 face.sizeDelta = new Vector2(0, ((RectTransform)slots[i].transform).rect.height); face.anchoredPosition = Vector2.zero;
+                glyphPositions[i] = face.position;
             }
             machine?.Sync();
             int? selected = Interaction.SelectedSlot;
@@ -420,7 +450,7 @@ namespace Cascade.Presentation
         {
             if (Interaction == null) return;
             undo.interactable = Interaction.CanControl && Interaction.Attempt.CanUndo;
-            retry.interactable = Interaction.CanControl; retry.gameObject.SetActive(Interaction.Attempt.Current.Status != PuzzleStatus.Playing);
+            retry.interactable = Interaction.CanControl; retry.gameObject.SetActive(!Interaction.IsPresenting && Interaction.Attempt.Current.Status != PuzzleStatus.Playing);
             drop.interactable = Interaction.CanPlay; hint.interactable = Interaction.CanPlay && hintTask == null;
             drop.GetComponentInChildren<TextMeshProUGUI>().text = Interaction.Attempt.Current.Status == PuzzleStatus.Playing
                 && Interaction.Attempt.Current.ActiveFloor == Interaction.Attempt.Level.Floors.Count - 1
@@ -430,7 +460,7 @@ namespace Cascade.Presentation
             previous.interactable = next.interactable = Interaction.CanControl;
             PreciseInputActive = ForcePreciseInput || PuzzleInteraction.NeedsPreciseInput(slots.Count, safeRoot.rect.width);
             precise.gameObject.SetActive(PreciseInputActive && Interaction.Attempt.Current.Status == PuzzleStatus.Playing);
-            RenderFocus();
+            if (eventPlayer == null || !eventPlayer.IsRunning) RenderFocus();
         }
         static RectTransform Rect(string name, Transform parent, Vector2 min, Vector2 max)
         {

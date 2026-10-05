@@ -1,6 +1,6 @@
 # CASCADE — TASKS
 
-P00–P12: COMPLETE. Unity AI/MCP: работает. P13–P20: NOT_STARTED.
+P00–P13: COMPLETE. Unity AI/MCP: работает. P14: IN_PROGRESS; P15–P20: NOT_STARTED.
 Python reference проверен отдельно; это не реализация игровых систем Unity.
 
 Автор прямо разрешил выполнять все этапы подряд, отменив остановки между
@@ -21,7 +21,7 @@ P01–P20. После каждого этапа фиксировать резу�
 - [x] P10 — Редактор уровней
 - [x] P11 — Серый playable и ввод
 - [x] P12 — Визуальный эталон
-- [ ] P13 — Event player и juice
+- [x] P13 — Event player и juice
 - [ ] P14 — Обучение и экраны
 - [ ] P15 — Локализация и glyph QA
 - [ ] P16 — Save и прогресс
@@ -29,6 +29,30 @@ P01–P20. После каждого этапа фиксировать резу�
 - [ ] P18 — Интеграционная приёмка
 - [ ] P19 — Реклама и IAP позже
 - [ ] P20 — Расширять задачами
+
+## P13 — event player и обратная связь, 5 октября 2026
+
+- Добавлен отдельный visual frame и последовательный event player: обмены,
+  связанные пары, входные сдвиги/зеркало, реакции устройств, разрушение,
+  падение и посадка в приёмник. Resolver и gameplay callbacks не изменялись.
+- Selection/mesh/glyph двигаются вместе. Target остаётся видимым при доставке;
+  итоговые controls ждут завершения. Reduced Motion убирает travel/arcs/recoil/
+  squash, сохраняя короткие подтверждения. Dust tail не удерживает Undo.
+- MotionProfile, 32 pooled particles, 8 voices, 12 оригинальных SFX + 4 варианта,
+  музыкальная петля 24 s и отключаемый haptic adapter. Provenance и signal audit
+  сохранены; не заявляется прослушивание микса или проверка вибрации на телефоне.
+- EditMode **305/305**; финальный PlayMode **21/21**. 40 уровней/92 команды
+  через настоящий UI; 13 timed stages × 4 interruptions, destroy, scene reload,
+  Reduced Motion, persistent target и bounded FX проверены. Найденный teardown
+  NullReference исправлен; первый failing XML сохранён как repro.
+- MCP снял 468 промежуточных кадров 12 сценариев, включая отдельный QA-only
+  mirror fixture; репрезентативные кадры просмотрены. Максимальный замеренный
+  offset glyph/body <0.000001 world unit. Два кадра до target-fix сохранены.
+  Reports/P13 содержит XML, timeline/retained PNG, audio и meta audits.
+- .meta: 145, без missing/orphan/duplicate GUID. Package pins, rules, IDs,
+  данные и баланс не менялись. P14 начат по прямому разрешению продолжать.
+- Не запускались: player build, реальные телефоны, performance/GC profiling,
+  внешний human playtest, акустическая оценка и аппаратная вибрация.
 
 ## P12 — визуальный эталон, 5 октября 2026
 
