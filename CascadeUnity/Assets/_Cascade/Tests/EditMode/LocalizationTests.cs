@@ -26,7 +26,7 @@ namespace Cascade.Tests
                 var target=Regex.Matches(entry.Value,@"\{\d+\}").Cast<Match>().Select(m=>m.Value).OrderBy(v=>v).ToArray();
                 Assert.That(target,Is.EqualTo(source),table.LocaleIdentifier.Code+": "+key.Key);checks++;
             }
-            var folder=Path.Combine(ReferenceFixtures.PackageRoot,"Reports/P15");Directory.CreateDirectory(folder);
+            var folder=Path.Combine(ReferenceFixtures.PackageRoot,"Reports",System.Environment.GetEnvironmentVariable("CASCADE_VALIDATION_PHASE")??"P15");Directory.CreateDirectory(folder);
             File.WriteAllText(Path.Combine(folder,"table-completeness.txt"),checks+" non-empty entries; matching format arguments; en/ru/uk\n");
         }
         [Test] public void BothFontsCoverEveryUiAndPuzzleCharacterWithoutFallback()

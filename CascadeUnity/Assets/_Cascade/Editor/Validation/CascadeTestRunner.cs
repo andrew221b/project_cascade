@@ -20,6 +20,8 @@ namespace Cascade.Editor.Validation
             var runner = ScriptableObject.CreateInstance<TestRunnerApi>();
             var callback = new Results(report);
             runner.RegisterCallbacks(callback);
+            string previousPhase=Environment.GetEnvironmentVariable("CASCADE_VALIDATION_PHASE");
+            Environment.SetEnvironmentVariable("CASCADE_VALIDATION_PHASE",phase);
             try
             {
                 runner.Execute(new ExecutionSettings(new Filter
@@ -29,7 +31,7 @@ namespace Cascade.Editor.Validation
                 if (callback.TestCount == 0 || callback.Failures != 0)
                     throw new InvalidOperationException("CASCADE tests did not pass. Inspect " + report);
             }
-            finally { runner.UnregisterCallbacks(callback); UnityEngine.Object.DestroyImmediate(runner); }
+            finally { Environment.SetEnvironmentVariable("CASCADE_VALIDATION_PHASE",previousPhase); runner.UnregisterCallbacks(callback); UnityEngine.Object.DestroyImmediate(runner); }
         }
 
         sealed class Results : ICallbacks

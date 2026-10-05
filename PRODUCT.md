@@ -46,10 +46,19 @@ forced by row length. Ambient movement must not obscure gameplay information.
 
 The implemented P14 journey gives the existing 40 lesson puzzles Mika's story,
 a five-stop-page isometric map, optional dialogue and three original regional
-art kits: Wind Gardens, Rain Mill and Copper Orchard. Clears, heard dialogue,
-preferences and resume state are session-only. The eight-region/160-stop
-campaign, durable save, meta progression, collectibles and Long Reach are staged
-design work, not delivered capabilities. Online remains design-only.
+art kits: Wind Gardens, Rain Mill and Copper Orchard. P16 adds a durable local
+profile for preferences, preferred mode, heard dialogue, first-clear receipts
+and a pinned attempt. Restore verifies the saved command route and exact state,
+reconstructs Undo history and retains hint/Undo flags. First-clear receipts are
+deduplicated by campaign node across modes and locales.
+
+The local profile uses a checksum, a flushed temporary write and atomic primary
+replacement with one valid backup. Recovery explains a restored backup, an
+unavailable attempt, an unreadable path or a failed write; newer save versions
+remain read-only. The checksum detects accidental corruption, not cheating.
+The existing 40 lessons remain short. The eight-region/160-stop campaign, further
+meta progression, ranks, collectibles and Long Reach remain staged design work.
+Online remains design-only.
 
 ## Evidence on Hand
 
@@ -69,9 +78,18 @@ P15 evidence is in Docs/P15_LOCALIZATION.md and Reports/P15: 215 UI keys with
 645 non-empty entries, 313/313 EditMode and 38/38 PlayMode results, and 39 native
 Editor captures across EN/RU/UK. The independent P15 review records a scoped
 ship verdict for those views. Addressables content built for StandaloneOSX;
-this is not a complete player build. Preferences and progress remain session-only
-until P16. Native-language editing, physical-device behavior and human enjoyment
-remain unverified.
+this is not a complete player build. At the P15 checkpoint, preferences and
+progress were session-only; P16 adds the local persistence described above.
+Native-language editing, physical-device behavior and human enjoyment remain
+unverified.
+
+P16 evidence is in Docs/P16_SAVE.md and Reports/P16: 323/323 EditMode and 43/43
+PlayMode results, plus 15 final native Editor recovery fixtures across EN/RU/UK
+at 320×693 with no recorded UI-fit findings. The tests cover replay round-trips,
+scene reload, storage recovery and retry; screenshots show recovery UI poses.
+Physical-device power loss, filesystem-full behavior, mobile OS kill and a
+complete player build remain unverified. No cross-device or cloud save is
+implemented, and these checks do not establish native-language approval or fun.
 
 ## Product Principles
 

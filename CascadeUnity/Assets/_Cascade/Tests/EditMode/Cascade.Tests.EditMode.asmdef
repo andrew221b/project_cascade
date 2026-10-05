@@ -10,7 +10,8 @@
         "Unity.Localization",
         "Unity.Localization.Editor",
         "Cascade.Presentation",
-        "Unity.TextMeshPro"
+        "Unity.TextMeshPro",
+        "Cascade.Persistence"
     ],
     "overrideReferences": true,
     "precompiledReferences": [

@@ -1,0 +1,81 @@
+using System;
+using System.IO;
+using System.Text;
+using Cascade.Content;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+namespace Cascade.Persistence
+{
+    public enum SaveRecovery { None, Backup, Unreadable, NewerVersion, AttemptUnavailable, WriteFailed }
+    public sealed class ProfileLoad
+    {
+        public PlayerProfile Profile { get; }
+        public SaveRecovery Recovery { get; }
+        internal ProfileLoad(PlayerProfile profile,SaveRecovery recovery){Profile=profile;Recovery=recovery;}
+    }
+    public sealed class ProfileStore
+    {
+        public const int Schema=1;
+        const int MaxBytes=8*1024*1024;
+        readonly string path;
+        bool futureVersion;
+        public string Path=>path;
+        public string BackupPath=>path+".bak";
+        public ProfileStore(string path){this.path=System.IO.Path.GetFullPath(path);}
+        public ProfileLoad Load()
+        {
+            var main=TryRead(path,out bool future);
+            futureVersion=future;
+            if(future)return new ProfileLoad(new PlayerProfile(),SaveRecovery.NewerVersion);
+            if(main!=null)return new ProfileLoad(main,SaveRecovery.None);
+            var backup=TryRead(BackupPath,out future);
+            futureVersion=future;
+            if(future)return new ProfileLoad(new PlayerProfile(),SaveRecovery.NewerVersion);
+            if(backup!=null)return new ProfileLoad(backup,SaveRecovery.Backup);
+            return new ProfileLoad(new PlayerProfile(),File.Exists(path)||File.Exists(BackupPath)?SaveRecovery.Unreadable:SaveRecovery.None);
+        }
+        public void Save(PlayerProfile profile)
+        {
+            if(futureVersion)throw new InvalidOperationException("A newer save must remain untouched.");
+            profile.Validate();
+            Directory.CreateDirectory(System.IO.Path.GetDirectoryName(path));
+            string text=Encode(profile),temporary=path+".tmp";
+            if(Encoding.UTF8.GetByteCount(text)>MaxBytes)throw new InvalidDataException("Profile exceeds supported size.");
+            using(var stream=new FileStream(temporary,FileMode.Create,FileAccess.Write,FileShare.None)) {
+                byte[] data=Encoding.UTF8.GetBytes(text);stream.Write(data,0,data.Length);stream.Flush(true);
+            }
+            // Never replace a future schema or rotate a corrupt original over the last good backup.
+            var previous=TryRead(path,out bool future);
+            if(future){futureVersion=true;throw new InvalidOperationException("A newer save must remain untouched.");}
+            if(previous!=null)File.Replace(temporary,path,BackupPath);
+            else {
+                if(File.Exists(path))File.Move(path,path+".rejected-"+Guid.NewGuid().ToString("N"));
+                File.Move(temporary,path);
+            }
+        }
+        public static string Encode(PlayerProfile profile)
+        {
+            string payload=JsonConvert.SerializeObject(profile,Formatting.None);
+            return new JObject { ["schema"]=Schema,["sha256"]=ContentImporter.Hash(payload),["payload"]=payload }.ToString(Formatting.None);
+        }
+        static PlayerProfile TryRead(string file,out bool future)
+        {
+            future=false;
+            if(!File.Exists(file))return null;
+            try {
+                if(new FileInfo(file).Length>MaxBytes)return null;
+                var envelope=JObject.Parse(File.ReadAllText(file));
+                if(envelope["schema"]?.Type!=JTokenType.Integer)return null;
+                int schema=(int)envelope["schema"];
+                if(schema>Schema){future=true;return null;}
+                if(schema!=Schema || envelope["payload"]?.Type!=JTokenType.String || envelope["sha256"]?.Type!=JTokenType.String)return null;
+                string payload=(string)envelope["payload"];
+                if(ContentImporter.Hash(payload)!=(string)envelope["sha256"])return null;
+                var profile=JsonConvert.DeserializeObject<PlayerProfile>(payload,new JsonSerializerSettings {MaxDepth=32,TypeNameHandling=TypeNameHandling.None});
+                if(profile==null)return null;profile.Validate();return profile;
+            }
+            catch(Exception e) when(e is IOException || e is UnauthorizedAccessException || e is JsonException || e is ArgumentException || e is OverflowException) { return null; }
+        }
+    }
+}

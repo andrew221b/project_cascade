@@ -75,6 +75,26 @@ namespace Cascade.Application
         }
 
         public TransitionResult Predict(PuzzleCommand command) => Resolver.Resolve(Current, command);
+        public static AttemptService Restore(LevelDefinition level, AttemptRecord record)
+        {
+            if(record==null || record.PuzzleId!=level.PuzzleId || record.CampaignNodeId!=level.CampaignNodeId
+                || record.ContentHash!=level.ContentHash || record.RulesVersion!=level.RulesVersion)
+                throw new ArgumentException("Saved attempt requires its exact pinned content.");
+            if(!Guid.TryParse(record.AttemptId,out var id) || id==Guid.Empty || record.UndoCount<0
+                || record.Commands==null || record.Commands.Length>10000)
+                throw new ArgumentException("Invalid saved attempt metadata.");
+            var attempt=new AttemptService(level,record.Locale,new PuzzleGoal(record.RequiredStampBits));
+            foreach(string encoded in record.Commands) {
+                PuzzleCommand command;
+                if(encoded=="D")command=PuzzleCommand.Drop;
+                else if(int.TryParse(encoded,out int edge) && edge>=0 && edge<level.InitialSymbolIds.Count-1 && encoded==edge.ToString())command=PuzzleCommand.Swap(edge);
+                else throw new ArgumentException("Invalid saved command.");
+                if(!attempt.Execute(command).Accepted)throw new ArgumentException("Saved route cannot be replayed.");
+            }
+            if(attempt.CurrentStateHash!=record.StateHash)throw new ArgumentException("Saved route does not reach its recorded state.");
+            attempt.AttemptId=id;attempt.UndoCount=record.UndoCount;attempt.HintUsed=record.HintUsed;
+            return attempt;
+        }
         public TransitionResult Execute(PuzzleCommand command)
         {
             var result = Resolver.Resolve(Current, command);

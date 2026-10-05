@@ -881,6 +881,42 @@ MonoBehaviour:
     m_Key: Abandoned
     m_Metadata:
       m_Items: []
+  - m_Id: 12135563255808
+    m_Key: Your saved path
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12135567450112
+    m_Key: We found a backup. Your last move may be missing.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12135567450113
+    m_Key: This puzzle changed. Your saved lights are safe. Start a new puzzle.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12135567450114
+    m_Key: This path needs a newer game. Update CASCADE to open it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12135567450115
+    m_Key: We could not read your saved path. You can start a new one.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12135567450116
+    m_Key: Start a new puzzle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12135567450117
+    m_Key: Could not save. Keep the game open and try again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12135567450118
+    m_Key: Try saving again
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14410444693504
+    m_Key: Start a new path
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

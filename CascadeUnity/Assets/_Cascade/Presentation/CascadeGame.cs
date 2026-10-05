@@ -63,6 +63,7 @@ namespace Cascade.Presentation
             ?? throw new InvalidOperationException("Missing CASCADE content: " + name);
         void Awake()
         {
+            ReadProfile();
             InitializeUiLanguage();
             Catalog = ContentImporter.Import(Source("levels"), Source("localized_levels"), Source("words_en"), Source("words_ru"), Source("words_uk"));
             art = ToyArt.Load(); font = art.bodyFont;
@@ -71,16 +72,18 @@ namespace Cascade.Presentation
             motion = Resources.Load<MotionProfile>("CascadeArt/MotionProfile") ?? throw new InvalidOperationException("Build CASCADE motion assets before playing.");
             feedback = gameObject.AddComponent<ToyFeedbackPool>(); feedback.Initialize(this, art, motion);
             eventPlayer = gameObject.AddComponent<PuzzleEventPlayer>(); eventPlayer.Initialize(this, motion, feedback);
-            BuildScreen(); LoadNode(initialNode); BuildFlow(); ShowHome();
+            BuildScreen(); LoadNode(initialNode); BuildFlow(); RestoreProfile();
         }
         void OnEnable() { if (Interaction != null) { Interaction.SetSuspended(applicationPaused || !applicationFocused); RenderState(); } }
         void OnDisable()
         {
+            PersistProgress();
             EndTokenHold(); CancelHint(); CancelDeadEnd(); StopPresentation(); Interaction?.SetSuspended(true); feedback?.ClearTails();
         }
         void OnDestroy() { if (Interaction != null) Interaction.Committed -= OnCommitted; }
         void OnApplicationFocus(bool focused)
         {
+            if(!focused)PersistProgress();
             if(!focused)absentSince=Time.realtimeSinceStartup;
             else if(absentSince>0 && Time.realtimeSinceStartup-absentSince>60 && CurrentScreen==GameScreen.Playing)Coach?.Advance(15,true);
             applicationFocused = focused; Interaction?.SetSuspended(applicationPaused || !applicationFocused); if (!focused) { EndTokenHold(); StopPresentation(); }
@@ -88,6 +91,7 @@ namespace Cascade.Presentation
         }
         void OnApplicationPause(bool paused)
         {
+            if(paused)PersistProgress();
             applicationPaused = paused; Interaction?.SetSuspended(applicationPaused || !applicationFocused); if (paused) { EndTokenHold(); StopPresentation(); }
             if (Interaction != null) RenderState();
         }
@@ -103,6 +107,7 @@ namespace Cascade.Presentation
             if (completed.IsCanceled) return;
             var offer = completed.Result;
             if (!Interaction.Attempt.RevealHint(offer)) return;
+            PersistProgress();
             offeredHint = offer;
             status.SetCopy(offer.Result.Status == HintStatus.Step ? new UiCopy("Try this: {0}", CommandText(offer.Result.Command.Value))
                 : offer.Result.Status == HintStatus.DeadEnd ? "Stuck? Undo and try a different move."
@@ -116,8 +121,13 @@ namespace Cascade.Presentation
         }
         public void LoadLevel(LevelDefinition level, string locale = "en")
         {
+            MountAttempt(new AttemptService(level,locale));PersistProgress();
+        }
+        void MountAttempt(AttemptService attempt)
+        {
+            var level=attempt.Level;
             EndTokenHold(); CancelHint(); CancelDeadEnd(); StopPresentation(); if (Interaction != null) Interaction.Committed -= OnCommitted;
-            Interaction = new PuzzleInteraction(new AttemptService(level, locale)); Interaction.Committed += OnCommitted;
+            Interaction = new PuzzleInteraction(attempt); Interaction.Committed += OnCommitted;
             Interaction.SetSuspended(applicationPaused || !applicationFocused);
             journeyActive=false; machine.SetZone(JourneyStory.Zone(Catalog.PrimaryLevels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==level.CampaignNodeId)));
             userPaused = zoomOpen = false; targetZoom.gameObject.SetActive(false);
@@ -128,6 +138,7 @@ namespace Cascade.Presentation
         {
             CancelHint(); Coach?.Observe(result.State,Interaction.Attempt.RouteLength);
             if(node=="C01")firstGestureShown=true;
+            RecordCommittedProgress();
             eventPlayer.Play(result); ScheduleDeadEnd(); RenderControls();
         }
         void StopPresentation()
@@ -175,11 +186,11 @@ namespace Cascade.Presentation
         }
         public void Undo()
         {
-            if (!Interaction.Undo()) return; CancelHint(); ScheduleDeadEnd(); RenderState(); if(flowReady)ShowGame();
+            if (!Interaction.Undo()) return; PersistProgress(); CancelHint(); ScheduleDeadEnd(); RenderState(); if(flowReady)ShowGame();
         }
         public void Retry()
         {
-            if (!Interaction.Retry()) return; CancelHint(); CancelDeadEnd(); StartCoach(); RenderState(); if(flowReady)ShowGame();
+            if (!Interaction.Retry()) return; PersistProgress(); CancelHint(); CancelDeadEnd(); StartCoach(); RenderState(); if(flowReady)ShowGame();
         }
         public void RequestHint()
         {

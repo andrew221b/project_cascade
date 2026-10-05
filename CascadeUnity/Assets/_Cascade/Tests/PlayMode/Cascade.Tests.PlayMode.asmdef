@@ -11,7 +11,8 @@
         "Unity.TextMeshPro",
         "Unity.InputSystem",
         "Unity.Localization",
-        "Unity.ResourceManager"
+        "Unity.ResourceManager",
+        "Cascade.Persistence"
     ],
     "optionalUnityReferences": [
         "TestAssemblies"

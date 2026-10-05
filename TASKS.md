@@ -1,6 +1,6 @@
 # CASCADE — TASKS
 
-P00–P15: COMPLETE. Unity AI/MCP: работает. P16: IN_PROGRESS; P17–P20: NOT_STARTED.
+P00–P16: COMPLETE. Unity AI/MCP: работает. P17: IN_PROGRESS; P18–P20: NOT_STARTED.
 Python reference проверен отдельно; это не реализация игровых систем Unity.
 
 Автор прямо разрешил выполнять все этапы подряд, отменив остановки между
@@ -24,11 +24,37 @@ P01–P20. После каждого этапа фиксировать резу�
 - [x] P13 — Event player и juice
 - [x] P14 — Обучение и экраны
 - [x] P15 — Локализация и glyph QA
-- [ ] P16 — Save и прогресс
+- [x] P16 — Save и прогресс
 - [ ] P17 — Мастерство и маленькая мета
 - [ ] P18 — Интеграционная приёмка
 - [ ] P19 — Реклама и IAP позже
 - [ ] P20 — Расширять задачами
+
+## P16 — завершено в заявленном объёме, 5 октября 2026
+
+- Локальный schema1 profile: preferences/mode/heard story, exact pinned attempt,
+  remaining command log, UndoCount/HintUsed и CampaignNodeId clear receipts.
+  Запись после commit до animation. Возврат фокуса не повторяет entry transforms.
+- Проверяемый replay восстанавливает final hash и Undo history. 157 initial states
+  и 365 accepted prefixes проверены; optional stamp goal и UK symbols сохраняются.
+  Язык/режим/повтор/Undo победы не дают повторный first-clear receipt.
+- SHA256, flushed temp, atomic replace, один valid backup. Повреждённый оригинал
+  архивируется, newer schema read-only. Невосстановимая попытка не подменяет слово:
+  meta остаётся, игрок явно выбирает новую задачу. Ошибка записи останавливает игру
+  до успешного retry; committed row не теряется в памяти.
+- EditMode **323/323 PASS**, финал 08:28:57–08:29:00 UTC; PlayMode **43/43 PASS**,
+  08:22:08–08:24:05 UTC. После PlayMode менялись только recovery copy/button label
+  и Editor capture harness; EditMode повторён. Реальные scene/disk/input tests
+  покрывают прерывание анимации, reload после landing, preferences/story и retry.
+- 15 final native Editor recovery fixtures на 320×693, EN/RU/UK, два bounded passes;
+  fit scan пуст, все кадры просмотрены. 224 UI keys / 672 entries. 200 .meta чисты;
+  Console 0 errors/warnings. Это UI poses, отдельно от функциональных disk tests.
+- Reviewer принял визуальную часть и запросил поправить устаревшее session-only
+  описание. Documenter обновил PRODUCT/DESIGN без смены tokens. Тот же reviewer
+  оценил единственное замечание resolved, disposition ship; Reports/P16.
+- Save tests изолированы от реального профиля. Физический power loss/disk-full,
+  mobile OS kill, полный player build, native editorial и human fun не проверены.
+  40 уроков всё ещё короткие. P17 начат последовательно: мастерство и награды.
 
 ## P15 — завершено в заявленном объёме, 5 октября 2026
 

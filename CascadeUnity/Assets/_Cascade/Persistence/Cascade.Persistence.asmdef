@@ -1,0 +1,8 @@
+{
+    "name": "Cascade.Persistence",
+    "rootNamespace": "Cascade.Persistence",
+    "references": ["Cascade.Domain", "Cascade.Application", "Cascade.Content"],
+    "overrideReferences": true,
+    "precompiledReferences": ["Newtonsoft.Json.dll"],
+    "noEngineReferences": true
+}

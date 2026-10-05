@@ -91,13 +91,14 @@ namespace Cascade.Presentation
         {
             if(pendingJourney==null){ShowJourney();return;}
             var content=pendingJourney;pendingJourney=null;LoadLevel(content.Definition,content.Locale);journeyActive=true;
+            PersistProgress();
             levelLabel.SetCopy(JourneyStory.Task(selectedJourneyStop/5));levelLabel.fontSize=21;
             ShowGame();
         }
         void AdvanceDialogue()
         {
             if(++dialogueLine<JourneyStory.Lines(selectedJourneyStop/5).Length){DrawMenu();return;}
-            heardStory.Add(selectedJourneyStop/5);EnterJourneyPuzzle();
+            heardStory.Add(selectedJourneyStop/5);PersistProgress();EnterJourneyPuzzle();
         }
         void DrawDialogue()
         {
@@ -109,7 +110,7 @@ namespace Cascade.Presentation
             var speaker=Text("Speaker",panel,new Vector2(.07f,.71f),new Vector2(.93f,.88f),27,JourneyStory.Speaker(zone));speaker.font=art.titleFont;speaker.alignment=TextAlignmentOptions.MidlineLeft;
             var line=Text("Dialogue line",panel,new Vector2(.07f,.27f),new Vector2(.93f,.72f),22,JourneyStory.Lines(selectedJourneyStop/5)[dialogueLine]);line.alignment=TextAlignmentOptions.TopLeft;
             Button("Continue",panel,new Vector2(.52f,.04f),new Vector2(.93f,.24f),AdvanceDialogue).GetComponent<Image>().color=new Color(.98f,.74f,.32f);
-            Button("Skip story",panel,new Vector2(.07f,.04f),new Vector2(.48f,.24f),()=>{heardStory.Add(selectedJourneyStop/5);EnterJourneyPuzzle();}).GetComponentInChildren<TextMeshProUGUI>().fontSize=16;
+            Button("Skip story",panel,new Vector2(.07f,.04f),new Vector2(.48f,.24f),()=>{heardStory.Add(selectedJourneyStop/5);PersistProgress();EnterJourneyPuzzle();}).GetComponentInChildren<TextMeshProUGUI>().fontSize=16;
         }
         void Panel(RectTransform parent,Color tint)
         {var image=Background(parent,tint,true);image.sprite=art.panel;image.type=Image.Type.Sliced;}

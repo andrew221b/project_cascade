@@ -13,11 +13,11 @@ using System.Threading.Tasks;
 
 namespace Cascade.Presentation
 {
-    public enum GameScreen { Home, Playing, Pause, Win, Fail, Settings, Devices, Lessons, Dialogue, WordLanguage }
+    public enum GameScreen { Home, Playing, Pause, Win, Fail, Settings, Devices, Lessons, Dialogue, WordLanguage, SaveRecovery }
     public sealed partial class CascadeGame
     {
         public GameScreen CurrentScreen { get; private set; } = GameScreen.Playing;
-        public GamePreferences Preferences { get; } = new GamePreferences();
+        public GamePreferences Preferences { get; private set; } = new GamePreferences();
         public PuzzleMode PreferredMode { get; private set; } = PuzzleMode.Shapes;
         public TutorialCoach Coach { get; private set; }
         public bool HasDeadEndWarning => knownDeadEnd;
@@ -90,7 +90,7 @@ namespace Cascade.Presentation
             returnScreen=CurrentScreen; deviceIndex=DeviceForCurrentFloor(); SetScreen(GameScreen.Devices);
         }
         public void CloseMenu() { SetScreen(returnScreen); }
-        public void SelectMode(PuzzleMode mode) { PreferredMode=mode; chapterPage=0; if(CurrentScreen==GameScreen.Home||CurrentScreen==GameScreen.Lessons) DrawMenu(); }
+        public void SelectMode(PuzzleMode mode) { PreferredMode=mode; PersistProgress(); chapterPage=0; if(CurrentScreen==GameScreen.Home||CurrentScreen==GameScreen.Lessons) DrawMenu(); }
         void SetScreen(GameScreen screen)
         {
             if (!flowReady) return;
@@ -123,12 +123,13 @@ namespace Cascade.Presentation
             UpdateDeadEnd();
             FinalizeScreenIfNeeded();
             UpdateCoaching(foreground);
+            if(HasSaveError && CurrentScreen!=GameScreen.SaveRecovery) {Recovery=Cascade.Persistence.SaveRecovery.WriteFailed;SetScreen(GameScreen.SaveRecovery);}
         }
         void FinalizeScreenIfNeeded()
         {
             if(!flowReady || !applicationFocused || applicationPaused)return;
             if(CurrentScreen==GameScreen.Playing && !Interaction.IsPresenting) {
-                if(Interaction.Attempt.Current.Status==PuzzleStatus.Won) { sessionClears.Add(node); SetScreen(GameScreen.Win); }
+                if(Interaction.Attempt.Current.Status==PuzzleStatus.Won) { SetScreen(GameScreen.Win); }
                 else if(Interaction.Attempt.Current.Status==PuzzleStatus.Lost) {
                     sessionLosses[node]=sessionLosses.TryGetValue(node,out var n)?n+1:1; SetScreen(GameScreen.Fail);
                 }
@@ -198,6 +199,7 @@ namespace Cascade.Presentation
             else if(CurrentScreen==GameScreen.Dialogue) DrawDialogue();
             else if(CurrentScreen==GameScreen.Settings) DrawSettings();
             else if(CurrentScreen==GameScreen.WordLanguage) DrawWordLanguageConfirmation();
+            else if(CurrentScreen==GameScreen.SaveRecovery) DrawSaveRecovery();
             else if(CurrentScreen==GameScreen.Devices) DrawDevices();
             else if(CurrentScreen==GameScreen.Pause) {
                 MenuTitle("Take a break", "Your puzzle will wait.");
@@ -328,6 +330,7 @@ namespace Cascade.Presentation
         }
         void ApplyPreferences()
         {
+            PersistProgress();
             feedback.MusicEnabled=Preferences.Music;feedback.SoundEnabled=Preferences.Sound;feedback.HapticsEnabled=Preferences.Haptics;
             feedback.Quality=Preferences.EffectQuality;ReducedMotion=Preferences.ReducedMotion;ForcePreciseInput=Preferences.PreciseInput;
             machine.ScreenShakeEnabled=Preferences.ScreenShake;

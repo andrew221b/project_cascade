@@ -1,6 +1,6 @@
 namespace Cascade.Application
 {
-    // In-memory preferences; versioned durable storage is introduced in P16.
+    // Stored in the versioned profile; active UI locale remains LocalizationSettings.SelectedLocale.
     public sealed class GamePreferences
     {
         public bool Music = true, Sound = true, Haptics = true;

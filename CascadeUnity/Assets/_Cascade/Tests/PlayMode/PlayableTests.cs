@@ -12,6 +12,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
+using System.IO;
+using Cascade.Persistence;
 
 namespace Cascade.Tests
 {
@@ -22,8 +24,11 @@ namespace Cascade.Tests
         Touchscreen touch;
         InputSettings.BackgroundBehavior oldBackground;
         InputSettings.EditorInputBehaviorInPlayMode oldEditorInput;
+        string isolatedProfile;
         [UnitySetUp] public IEnumerator SetUp()
         {
+            isolatedProfile=Path.Combine(Path.GetTempPath(),"CascadePlayTests",System.Guid.NewGuid().ToString("N"));
+            CascadeGame.EditorProfileDirectory=isolatedProfile;
             yield return SceneManager.LoadSceneAsync("Assets/_Cascade/Scenes/CascadePlayable.unity");
             game = UnityEngine.Object.FindFirstObjectByType<CascadeGame>();
             game.ShowGame();
@@ -43,6 +48,9 @@ namespace Cascade.Tests
             if (mouse != null) InputSystem.RemoveDevice(mouse); if (touch != null) InputSystem.RemoveDevice(touch);
             InputSystem.settings.backgroundBehavior = oldBackground;
             InputSystem.settings.editorInputBehaviorInPlayMode = oldEditorInput;
+            if(game!=null){UnityEngine.Object.Destroy(game.gameObject);yield return null;}
+            CascadeGame.EditorProfileDirectory=null;
+            if(Directory.Exists(isolatedProfile))Directory.Delete(isolatedProfile,true);
             yield return null;
         }
         Vector2 Point(int slot)
@@ -338,7 +346,9 @@ namespace Cascade.Tests
             yield return SceneManager.LoadSceneAsync("Assets/_Cascade/Scenes/CascadePlayable.unity");
             game = UnityEngine.Object.FindFirstObjectByType<CascadeGame>();
             Assert.That(old.IsPresenting, Is.False); Assert.That(old.Attempt.CurrentStateHash, Is.EqualTo(hash));
-            Assert.That(game.Interaction.Attempt.RouteLength, Is.Zero);
+            Assert.That(game.Interaction.Attempt.RouteLength, Is.EqualTo(1));
+            Assert.That(game.Interaction.Attempt.CurrentStateHash, Is.EqualTo(hash));
+            Assert.That(game.JourneyClearCount, Is.EqualTo(1));
         }
         [UnityTest] public IEnumerator DeliveryKeepsTargetVisibleAndWaitsBeforeShowingResultControls()
         {
@@ -558,6 +568,70 @@ namespace Cascade.Tests
             Assert.That(game.HasDeadEndWarning,Is.True);Assert.That(game.Interaction.Attempt.HintUsed,Is.False);
             Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));yield return ClickButton("Undo");
             Assert.That(game.Interaction.Attempt.RouteLength,Is.Zero);
+        }
+        [UnityTest] public IEnumerator CommitIsOnDiskBeforeAnimationAndReceiptSurvivesUndo()
+        {
+            game.Interaction.Execute(PuzzleCommand.Swap(0));
+            Assert.That(game.Interaction.IsPresenting,Is.True);
+            var loaded=new ProfileStore(game.ProfilePath).Load().Profile;
+            Assert.That(loaded.Attempt.StateHash,Is.EqualTo(game.Interaction.Attempt.CurrentStateHash));
+            Assert.That(loaded.Attempt.Commands.Length,Is.EqualTo(1));Assert.That(loaded.Clears.Count,Is.EqualTo(1));
+            yield return AwaitPresentation();game.Undo();
+            loaded=new ProfileStore(game.ProfilePath).Load().Profile;
+            Assert.That(loaded.Attempt.Commands,Is.Empty);Assert.That(loaded.Attempt.UndoCount,Is.EqualTo(1));
+            Assert.That(loaded.Clears.Count,Is.EqualTo(1));
+        }
+        [UnityTest] public IEnumerator ReloadAfterLandingPreservesEntryTransformAndUndo()
+        {
+            game.LoadNode("C37");
+            foreach(var command in PuzzleSolver.FindShortest(game.Interaction.Attempt.Resolver).Path) {
+                game.Interaction.Execute(command);yield return AwaitPresentation();
+                if(game.Interaction.Attempt.Current.ActiveFloor>0)break;
+            }
+            var attempt=game.Interaction.Attempt;string hash=attempt.CurrentStateHash;
+            var before=attempt.History.Last().Before;int route=attempt.RouteLength;
+            yield return SceneManager.LoadSceneAsync("Assets/_Cascade/Scenes/CascadePlayable.unity");
+            game=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();game.SendMessage("OnApplicationFocus",true);game.ShowGame();
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));Assert.That(game.Interaction.Attempt.RouteLength,Is.EqualTo(route));
+            game.SendMessage("OnApplicationFocus",false);game.SendMessage("OnApplicationFocus",true);
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));game.Undo();
+            Assert.That(game.Interaction.Attempt.Current,Is.EqualTo(before));
+        }
+        [UnityTest] public IEnumerator SettingsStoryAndWordPreferenceSurviveSceneReload()
+        {
+            game.ShowJourney();yield return ClickButton("Travel");yield return ClickButton("Skipstory");
+            game.SetUiLocale("uk");game.ShowSettings();game.ProposePuzzleLocale("ru");game.ConfirmPuzzleLocale();
+            game.SelectMode(PuzzleMode.Words);game.Preferences.Music=false;game.SendMessage("OnApplicationFocus",false);
+            yield return SceneManager.LoadSceneAsync("Assets/_Cascade/Scenes/CascadePlayable.unity");
+            game=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();game.SendMessage("OnApplicationFocus",true);
+            Assert.That(game.UiLanguage,Is.EqualTo("uk"));Assert.That(game.Preferences.PuzzleLocale,Is.EqualTo("ru"));
+            Assert.That(game.PreferredMode,Is.EqualTo(PuzzleMode.Words));Assert.That(game.Preferences.Music,Is.False);
+            Assert.That(new ProfileStore(game.ProfilePath).Load().Profile.HeardStory,Does.Contain(0));
+            yield return ClickButton("Travel");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Playing),"Heard story must not repeat");
+        }
+        [UnityTest] public IEnumerator IncompatibleAttemptOffersExplicitRestartAndKeepsLights()
+        {
+            game.Interaction.Execute(PuzzleCommand.Swap(0));yield return AwaitPresentation();
+            string path=game.ProfilePath;UnityEngine.Object.Destroy(game.gameObject);yield return null;
+            var store=new ProfileStore(path);var p=store.Load().Profile;p.Attempt.ContentHash=new string('0',64);store.Save(p);
+            string disk=File.ReadAllText(path);
+            yield return SceneManager.LoadSceneAsync("Assets/_Cascade/Scenes/CascadePlayable.unity");
+            game=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();game.SendMessage("OnApplicationFocus",true);
+            Assert.That(game.Recovery,Is.EqualTo(SaveRecovery.AttemptUnavailable));Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.SaveRecovery));
+            Assert.That(game.JourneyClearCount,Is.EqualTo(1));Assert.That(File.ReadAllText(path),Is.EqualTo(disk));
+            yield return ClickButton("Startanewpuzzle");
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Home));Assert.That(game.Recovery,Is.EqualTo(SaveRecovery.None));
+            Assert.That(game.JourneyClearCount,Is.EqualTo(1));
+        }
+        [UnityTest] public IEnumerator FailedWritePausesAndCanRetryWithoutLosingCommittedRow()
+        {
+            string path=game.ProfilePath;File.Delete(path);Directory.CreateDirectory(path);
+            game.Interaction.Execute(PuzzleCommand.Swap(0));string hash=game.Interaction.Attempt.CurrentStateHash;
+            yield return null;yield return null;
+            Assert.That(game.HasSaveError,Is.True);Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.SaveRecovery));
+            Directory.Delete(path);yield return ClickButton("Trysavingagain");
+            Assert.That(game.HasSaveError,Is.False);Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+            Assert.That(new ProfileStore(path).Load().Profile.Attempt.StateHash,Is.EqualTo(hash));
         }
         [UnityTest] public IEnumerator AllFortyLevelsCanBeDeliveredThroughActualMouseAndButtons()
         {

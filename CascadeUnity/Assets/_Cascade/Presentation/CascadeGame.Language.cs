@@ -21,6 +21,7 @@ namespace Cascade.Presentation
             if(code!="en"&&code!="ru"&&code!="uk")throw new ArgumentOutOfRangeException(nameof(code));
             LocalizationSettings.SelectedLocale=LocalizationSettings.AvailableLocales.GetLocale(code);
             Preferences.UiLocale=code; // Persistence preference, never a second active UI locale.
+            PersistProgress();
             if(CurrentScreen==GameScreen.Settings)DrawMenu();
         }
         public void ProposePuzzleLocale(string code)
@@ -31,7 +32,7 @@ namespace Cascade.Presentation
         public void ConfirmPuzzleLocale()
         {
             if(proposedPuzzleLocale==null)return;
-            Preferences.PuzzleLocale=proposedPuzzleLocale;proposedPuzzleLocale=null;SetScreen(GameScreen.Settings);
+            Preferences.PuzzleLocale=proposedPuzzleLocale;PersistProgress();proposedPuzzleLocale=null;SetScreen(GameScreen.Settings);
         }
         void DrawWordLanguageConfirmation()
         {

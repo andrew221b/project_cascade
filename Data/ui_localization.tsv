@@ -214,3 +214,12 @@ Help me light the trees. Try to find a stamp along the way.	Help me light the tr
 Look, Mika. The beacon is beyond those clouds.	Look, Mika. The beacon is beyond those clouds.	Смотри, Мика. Маяк за теми облаками.	Дивись, Міко. Маяк за тими хмарами.
 You've helped us find each other. We'll help you reach it.	You've helped us find each other. We'll help you reach it.	Ты помог нам снова быть вместе. Теперь мы поможем тебе дойти до маяка.	Ти допоміг нам знову бути разом. Тепер ми допоможемо тобі дійти до маяка.
 Abandoned	left behind	осталась	залишилась
+Your saved path	Your saved path	Твой путь	Твій шлях
+We found a backup. Your last move may be missing.	We found a backup. Your last move may be missing.	Мы нашли копию пути. Последний ход мог не сохраниться.	Ми знайшли копію шляху. Останній хід міг не зберегтися.
+This puzzle changed. Your saved lights are safe. Start a new puzzle.	We can't open this puzzle. Your lights are safe. Start a new one.	Не удалось открыть эту задачу. Твои огни сохранены. Можно начать новую.	Не вдалося відкрити цю задачу. Твої вогні збережено. Можна почати нову.
+This path needs a newer game. Update CASCADE to open it.	This path needs a newer game. Update CASCADE to open it.	Для этого пути нужна новая версия игры. Обнови CASCADE.	Для цього шляху потрібна нова версія гри. Онови CASCADE.
+We could not read your saved path. You can start a new one.	We could not read your saved path. You can start a new one.	Не удалось открыть твой путь. Можно начать новый.	Не вдалося відкрити твій шлях. Можна почати новий.
+Start a new puzzle	Start a new puzzle	Начать новую задачу	Почати нову задачу
+Could not save. Keep the game open and try again.	Could not save. Keep the game open and try again.	Не удалось сохранить. Не закрывай игру и попробуй ещё раз.	Не вдалося зберегти. Не закривай гру та спробуй ще раз.
+Try saving again	Try saving again	Сохранить ещё раз	Зберегти ще раз
+Start a new path	Start a new path	Начать новый путь	Почати новий шлях

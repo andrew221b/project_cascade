@@ -180,6 +180,8 @@ Real beveled meshes, an orthographic view, live lettering and separate illustrat
 
 This record merges the implemented P14 journey revision into the P12/P13 system. Sources are `CascadeGame.cs`, `.Flow.cs`, `.Journey.cs`, `.Touch.cs`, `TokenSlot.cs`, `ToyMachineView.cs`, `LayeredWorld.cs`, `JourneyStory.cs`, `ToyAssetBuilder.cs` and `MotionProfile.asset`. `Docs/JOURNEY_SURFACE_BRIEF.md` owns the surface contract; `Docs/P14_FLOW.md` owns implementation scope and validation limits. Native captures and review live in `Reports/Journey`. `Docs/JOURNEY_ASSET_PROVENANCE.md` records the 12 original regional/character rasters; earlier mesh, font and audio provenance remains in the P12/P13 documents. The sidecar records native components and motion, with no fabricated HTML/CSS counterparts. Its synthesized tonal ramps are preview aids, not shipped palette additions.
 
+P16 extends these existing controls with durable local progress and recovery in `CascadeGame.Save.cs`, `Persistence/` and `Application/AttemptRecord.cs`. `Docs/P16_SAVE.md` owns the save contract; `Reports/P16` holds native recovery fixtures and test evidence. This extension adds no visual tokens or raster assets. Editor evidence does not verify physical-device power loss, OS kill, full player builds, native-language approval or human enjoyment.
+
 **Key Characteristics:**
 - Direct touch lifts a piece and its live glyph together; the receiver stays visible.
 - Six stable silhouettes and colors remain readable across all three regions.
@@ -203,7 +205,7 @@ Warm paper and brass anchor a mint, coral, lilac, yellow, sky and apricot toy pa
 - **Triangle Yellow, Circle Mint, Square Coral, Diamond Lilac, Star Sky and Hexagon Apricot** preserve the six shape identities in the row, contacts, destination and magnifier.
 - **Device Coral** also marks bomb bodies and fragile notches. Lilac links paired edges and stamp hardware.
 - **Legal Landing** and **Blocked Landing** tint the adjacent destination during a drag. **Preview Gold** washes affected slots during a command preview; the solid selection frame remains distinct.
-- **Map Current** identifies an available selected stop; **Map Restored** identifies a completed stop. **Path Open** and **Path Future** distinguish connecting pebbles. Mika marks actual session progress, independently of browsing.
+- **Map Current** identifies an available selected stop; **Map Restored** identifies a completed stop. **Path Open** and **Path Future** distinguish connecting pebbles. Mika marks actual locally saved progress, independently of browsing.
 
 ### Neutral
 
@@ -245,7 +247,7 @@ Precision input is explicitly enabled in Comfort and is off by default, includin
 
 ### Journey and dialogue
 
-The map uses a tall illustrated five-stop route between a compact paper heading and a lower task panel. A map stop is 62 × 60 reference units; page controls are 76 × 60. The source image is stretched into its normalized map rectangle by the current uGUI implementation; this is not a cover-fit or pixel-perfect raster-registration guarantee. The current map reuses each regional illustration over its five-stop pages. Mika appears only on the actual next session stop, never on a locked future preview. The future footer gives distance and a return action.
+The map uses a tall illustrated five-stop route between a compact paper heading and a lower task panel. A map stop is 62 × 60 reference units; page controls are 76 × 60. The source image is stretched into its normalized map rectangle by the current uGUI implementation; this is not a cover-fit or pixel-perfect raster-registration guarantee. The current map reuses each regional illustration over its five-stop pages. Mika appears only on the actual next stop from local first-clear receipts, never on a locked future preview. The future footer gives distance and a return action.
 
 Dialogue places a large transparent character above/behind a low paper frame. A thin brass line, Bold speaker name, short Regular sentence and separate Continue/Skip story actions provide hierarchy. Story entry explicitly selects the character's region. Dialogue blocks puzzle input.
 
@@ -279,7 +281,7 @@ Panels and buttons reuse the 64 × 64 nine-slice raster. The frontmatter `panel-
 
 ### Controls and settings
 
-Warm paper controls carry dark Bold labels and Unity multiply tints for hover, pressed and disabled states. Descend changes to Deliver when the final-floor row matches; Hint changes to Use hint only for a valid offer. A separate custom keyboard focus treatment is not established. Setting rows use a readable label, an on/off track and positional knob; sound, motion, effects, contrast, larger text, precision, tutorial and dead-end preferences currently live in memory.
+Warm paper controls carry dark Bold labels and Unity multiply tints for hover, pressed and disabled states. Descend changes to Deliver when the final-floor row matches; Hint changes to Use hint only for a valid offer. A separate custom keyboard focus treatment is not established. Setting rows use a readable label, an on/off track and positional knob; sound, motion, effects, contrast, larger text, precision, tutorial and dead-end preferences persist in the P16 local profile, alongside language and preferred mode.
 
 ### Persistent token and receiver
 
@@ -291,11 +293,17 @@ Thin colored enamel beams, ivory highlights and gold caps carry the original loc
 
 ### Map route
 
-The isometric illustration, numbered stop buttons, small path pebbles and Mika marker express travel. Restored count and unlocked stop come from the existing 40-puzzle catalog and in-memory clears. The gold action says Let's go, Continue or Play again where available; future pages explain remaining stops and offer Back to my path. Lessons retains the existing level/mode browser. These are three regional art kits and eight five-stop pages, not 160 new campaign puzzles.
+The isometric illustration, numbered stop buttons, small path pebbles and Mika marker express travel. Restored count and unlocked stop come from the existing 40-puzzle catalog and durable local first-clear receipts, deduplicated by campaign node across modes and locales. The gold action says Let's go, Continue or Play again where available; future pages explain remaining stops and offer Back to my path. Lessons retains the existing level/mode browser. These are three regional art kits and eight five-stop pages, not 160 new campaign puzzles.
 
 ### Dialogue and results
 
-The paper-and-brass frame names one speaker and gives one short idea at a time. Continue and Skip story lead to the concrete pending puzzle or return to the map. Heard dialogue is session-only. Mika accompanies a successful delivery; win/fail actions preserve free Undo and Retry. The machine remains the visual evidence of the result.
+The paper-and-brass frame names one speaker and gives one short idea at a time. Continue and Skip story lead to the concrete pending puzzle or return to the map. Heard dialogue persists in the local profile. Mika accompanies a successful delivery; win/fail actions preserve free Undo and Retry. A first-clear receipt is recorded from the committed win before animation; Undo does not erase it. The machine remains the visual evidence of the result.
+
+### Saved path and recovery
+
+Recovery reuses the quiet paper surface, dark live text and wide gold action. One heading and one short explanation distinguish backup recovery, an unavailable puzzle, an unreadable path and a failed write. Continue acknowledges a backup that may omit the last move; Start a new puzzle retains valid progress, while Start a new path explicitly replaces an unreadable path. Try saving again retains the committed in-memory attempt until writing succeeds. A newer-version save shows update guidance with no invented store link or destructive action.
+
+The local profile checks its payload checksum and retains a valid backup. A pinned attempt restores its exact symbols and committed state through verified replay, including Undo history and hint/Undo flags. Recovery pauses puzzle interaction and never portrays incompatible or unreadable data as restored progress. The five recovery states are captured in EN/RU/UK at 320×693 in `Reports/P16`; disk and scene behavior are evidenced separately by tests.
 
 ### Precision and inspection
 
@@ -309,7 +317,7 @@ Comfort enables large previous/next focus controls and left/right exchanges with
 - **Do** move and scale the live glyph with its selected or held body.
 - **Do** preserve the complete target and the direct-touch default.
 - **Do** keep precision controls an explicit Comfort preference.
-- **Do** bind the map marker to actual session progress and label future previews honestly.
+- **Do** bind the map marker to actual local first-clear receipts and label future previews honestly.
 - **Do** select the story's region before showing its character and dialogue.
 - **Do** bound ambient art outside gameplay information and freeze its phase while paused or suspended.
 - **Do** inspect native 390 × 844, 320 × 693 and wide Editor captures after layout changes.
@@ -320,7 +328,7 @@ Comfort enables large previous/next focus controls and left/right exchanges with
 - **Don't** turn physical rails into full-width rectangular cards or restore the crowded default toolbar.
 - **Don't** bake gameplay text into imagery or change symbol identity to indicate state.
 - **Don't** let presentation, animation completion, scenery, physics or ad callbacks change puzzle state.
-- **Don't** portray browsed islands as reached or session memory as durable saving.
+- **Don't** portray browsed islands as reached, an unsuccessful write as saved, or unreadable progress as restored.
 - **Don't** describe the 160-stop target, ranks, parcels, keepsakes, Long Reach or online concept as implemented.
 - **Don't** copy ShapeMania screens, characters, sprites, props or materials into this world.
 - **Don't** equate Editor captures and automated tests with device, haptic, performance, build, native-language or human-enjoyment proof.
