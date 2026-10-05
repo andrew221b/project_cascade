@@ -22,6 +22,7 @@ namespace Cascade.Persistence
         public bool FirstGestureShown, JourneyAttempt;
         public AttemptRecord Attempt;
         public JourneyRewards Rewards=new JourneyRewards();
+        public DirectorMemory Director=new DirectorMemory();
         public MonetizationLedger Monetization=new MonetizationLedger();
 
         public bool RecordClear(AttemptService attempt)
@@ -35,10 +36,11 @@ namespace Cascade.Persistence
         {
             if(Attempt==null)return null;
             var content=catalog.PrimaryLevels.Concat(catalog.LocalizedLevels).Concat(catalog.BonusLevels).Concat(legacy??Enumerable.Empty<LevelContent>()).FirstOrDefault(c=>
-                c.Definition.PuzzleId==Attempt.PuzzleId && c.Definition.ContentHash==Attempt.ContentHash
+                c.Definition.PuzzleId==Attempt.PuzzleId && c.Definition.ContentHash==(Attempt.Direction?.SourceHash??Attempt.ContentHash)
                 && c.Definition.RulesVersion==Attempt.RulesVersion && c.Locale==Attempt.Locale);
             if(content==null)throw new InvalidDataException("Pinned puzzle content is unavailable.");
-            return AttemptService.Restore(content.Definition,Attempt);
+            var level=Attempt.Direction==null?content.Definition:Attempt.Direction.Apply(content.Definition);
+            return AttemptService.Restore(level,Attempt);
         }
         public void Validate()
         {
@@ -55,6 +57,7 @@ namespace Cascade.Persistence
                 throw new InvalidDataException("Invalid first-clear receipt.");
             if(Rewards==null)throw new InvalidDataException("Missing journey rewards.");
             Rewards.Validate();
+            if(Director==null||!Director.IsValid())throw new InvalidDataException("Invalid delivery director memory.");
             if(Monetization==null)throw new InvalidDataException("Missing monetization ledger.");
             Monetization.Validate();
             if(Rewards.SeenClearNodes.Any(n=>!nodes.Contains(n)))throw new InvalidDataException("Reward progress has no first-clear receipt.");

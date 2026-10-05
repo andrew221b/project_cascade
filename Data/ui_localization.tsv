@@ -440,3 +440,12 @@ Shortest route: {0} moves	Shortest route: {0} moves	Кратчайший пут�
 Wood strength: {0}	Wood strength: {0}	Прочность: {0}	Міцність: {0}
 Checking your puzzle…	Checking your puzzle…	Проверяем задачу…	Перевіряємо задачу…
 Could not check this puzzle. Try again or choose another.	Could not check this puzzle. Try again or choose another.	Не удалось проверить задачу. Попробуй ещё раз или выбери другую.	Не вдалося перевірити задачу. Спробуй ще раз або вибери іншу.
+More wood	More wood	Больше прочности	Більше міцності
+Wind slides the row right	Wind slides the row right	Ветер сдвигает ряд вправо	Вітер зсуває ряд праворуч
+Wind slides the row left	Wind slides the row left	Ветер сдвигает ряд влево	Вітер зсуває ряд ліворуч
+Wind on landing: row slides left	On landing: slide left	При посадке: ряд влево	Під час посадки: ряд ліворуч
+Wind on landing: row slides right	On landing: slide right	При посадке: ряд вправо	Під час посадки: ряд праворуч
+Wind on landing	Wind on landing	Ветер при посадке	Вітер під час посадки
+Wind moves the row on the next board. Tap its arrow to see how.	Wind will slide the row below. Tap the arrow.	Ветер сдвинет ряд внизу. Нажми на стрелку.	Вітер зсуне ряд унизу. Натисни на стрілку.
+Wind pushes the whole row one place when it lands. Follow the arrow. Take your time to think.	On landing, wind slides the whole row one place. Follow the arrow. Take your time to think.	При посадке ветер сдвигает весь ряд на одно место. Смотри на стрелку. Думать можно сколько хочешь.	Під час посадки вітер зсуває весь ряд на одне місце. Дивись на стрілку. Думати можна скільки хочеш.
+Back to puzzle	Back to puzzle	К задаче	До задачі

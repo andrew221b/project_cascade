@@ -20,6 +20,7 @@ namespace Cascade.Presentation
         void UpdatePreparation()
         {
             if (preparation.Poll()) {
+                if(FallBackFromUnprovenDirection())return;
                 Interaction.SetPreparing(!preparation.IsReady);
                 RenderState();
             }

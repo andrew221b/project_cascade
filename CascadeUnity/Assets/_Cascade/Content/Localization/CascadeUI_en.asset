@@ -1799,6 +1799,43 @@ MonoBehaviour:
     m_Localized: Could not check this puzzle. Try again or choose another.
     m_Metadata:
       m_Items: []
+  - m_Id: 188016525041664
+    m_Localized: More wood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188016529235968
+    m_Localized: Wind slides the row right
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188016529235969
+    m_Localized: Wind slides the row left
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188016529235970
+    m_Localized: 'On landing: slide left'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188016529235971
+    m_Localized: 'On landing: slide right'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188016529235972
+    m_Localized: Wind on landing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188016529235973
+    m_Localized: Wind will slide the row below. Tap the arrow.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188016529235974
+    m_Localized: On landing, wind slides the whole row one place. Follow the arrow.
+      Take your time to think.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188016529235975
+    m_Localized: Back to puzzle
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

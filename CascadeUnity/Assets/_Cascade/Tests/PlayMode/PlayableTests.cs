@@ -329,6 +329,54 @@ namespace Cascade.Tests
             Assert.That(weather[0].canvasRenderer,Is.Not.Null);Assert.That(weather[0].canvasRenderer.GetMesh().vertexCount,Is.GreaterThan(0));
             Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
         }
+        [UnityTest] public IEnumerator DirectedWindIsForecastInTheGuideAndPlayableThroughRealInput()
+        {
+            game.SetUiLocale("en");game.LoadDirectedLevel(game.Catalog.GetPrimary("C81").Definition,"en",Cascade.Application.DeliveryMood.Wind);
+            game.ShowGame();yield return AwaitPreparation();game.RefreshLayout();yield return null;
+            var attempt=game.Interaction.Attempt;Assert.That(attempt.Direction.Mood,Is.EqualTo(Cascade.Application.DeliveryMood.Wind));
+            string hash=attempt.CurrentStateHash;yield return ClickButton("Landing movement");
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Devices));
+            Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Any(t=>t.text=="Wind on landing"),Is.True);
+            Assert.That(attempt.CurrentStateHash,Is.EqualTo(hash));game.CloseMenu();
+            var proof=PuzzleSolver.FindShortest(attempt.Resolver);Assert.That(game.MinimumMoves,Is.EqualTo(proof.OptimalActions));bool gust=false;
+            game.Interaction.Committed+=r=>gust|=r.Events.Any(e=>e.Kind==PuzzleEventKind.EntryPermuted&&game.IsWindFloor(e.Floor));
+            foreach(var command in proof.Path) {
+                var predicted=attempt.Predict(command).State;
+                if(command.Kind==CommandKind.EarlyDrop)yield return ClickButton("Drop");
+                else {yield return MouseFrame(Point(command.Edge),true);yield return MouseFrame(Point(command.Edge+1),true);yield return MouseFrame(Point(command.Edge+1),false);}
+                Assert.That(attempt.Current,Is.EqualTo(predicted));yield return AwaitPresentation();
+            }
+            Assert.That(gust,Is.True);Assert.That(attempt.Current.Status,Is.EqualTo(PuzzleStatus.Won));
+            var loaded=new ProfileStore(game.ProfilePath).Load();var restored=loaded.Profile.RestoreAttempt(game.Catalog);
+            Assert.That(restored.CurrentStateHash,Is.EqualTo(attempt.CurrentStateHash));Assert.That(loaded.Profile.Clears.Any(c=>c.CampaignNodeId=="C81"),Is.True);
+        }
+        [UnityTest] public IEnumerator UnprovenTightVariantFallsBackBeforeAnyInputOpens()
+        {
+            var source=game.Catalog.GetPrimary("C42").Definition;
+            var recipe=Cascade.Application.DeliveryDirector.Plan(source,Cascade.Application.DeliveryMood.Tight);
+            Assert.That(PuzzleSolver.FindShortest(new PuzzleResolver(recipe.Apply(source))).Status,Is.EqualTo(SearchStatus.Unsolvable));
+            game.LoadDirectedLevel(source,"en",Cascade.Application.DeliveryMood.Tight);game.ShowGame();
+            Assert.That(game.Interaction.CanPlay,Is.False);Assert.That(game.Interaction.PointerDown(91,0),Is.False);
+            yield return AwaitPreparation();Assert.That(game.Interaction.Attempt.Direction,Is.Null);
+            Assert.That(game.Interaction.Attempt.PinnedContentHash,Is.EqualTo(source.ContentHash));Assert.That(game.Interaction.Attempt.RouteLength,Is.Zero);
+        }
+        [UnityTest] public IEnumerator RepeatedJourneyFailuresOfferNewWoodAndOrdinaryRetryKeepsTheSamePuzzle()
+        {
+            typeof(CascadeGame).GetMethod("BeginJourney",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic).Invoke(game,new object[]{80});
+            if(game.CurrentScreen==GameScreen.Dialogue)yield return ClickButton("Skipstory");
+            yield return AwaitPreparation();string pin=game.Interaction.Attempt.PinnedContentHash;
+            for(int failure=0;failure<2;failure++) {
+                yield return ClickButton("Drop");int pressure=game.Director.Struggle;game.Retry();
+                Assert.That(game.Director.Struggle,Is.EqualTo(pressure),"A blocked retry during falling is not a new failure");
+                yield return AwaitPresentation();yield return ClickButton("Drop");yield return AwaitPresentation();
+                Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Fail));
+                if(failure==0){game.Retry();Assert.That(game.Interaction.Attempt.PinnedContentHash,Is.EqualTo(pin));}
+            }
+            Assert.That(game.Director.Struggle,Is.GreaterThanOrEqualTo(4));yield return ClickButton("Nextdelivery");
+            yield return AwaitPreparation();Assert.That(game.Interaction.Attempt.Direction.Mood,Is.EqualTo(Cascade.Application.DeliveryMood.Recovery));
+            Assert.That(game.Interaction.Attempt.Level.Floors[0].BaseDurability,Is.EqualTo(game.Catalog.GetPrimary("C81").Definition.Floors[0].BaseDurability+1));
+            Assert.That(game.Interaction.Attempt.RouteLength,Is.Zero);Assert.That(game.JourneyClearCount,Is.Zero);
+        }
         [UnityTest] public IEnumerator HangingDevicesFollowDeckWindAndFreezeWithoutSpendingMoves()
         {
             game.LoadNode("C13");game.ShowGame();game.ReducedMotion=false;yield return AwaitPreparation();game.RefreshLayout();

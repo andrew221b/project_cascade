@@ -40,7 +40,7 @@ namespace Cascade.Presentation
         void RestoreProfile()
         {
             try {
-                if(profile.Attempt!=null && !Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).Any(c=>c.Definition.ContentHash==profile.Attempt.ContentHash))
+                if(profile.Attempt!=null && !Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).Any(c=>c.Definition.ContentHash==(profile.Attempt.Direction?.SourceHash??profile.Attempt.ContentHash)))
                     legacyContent=ContentImporter.ImportLegacyDurability(Catalog,Source("campaign_extension"),Source("campaign_durability_v1"));
                 var restored=profile.RestoreAttempt(Catalog,legacyContent);
                 if(restored!=null) {
@@ -73,9 +73,9 @@ namespace Cascade.Presentation
         {
             var attempt=Interaction.Attempt;
             // QA/custom drafts are playable but do not grant campaign receipts.
-            bool published=Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).Concat(legacyContent).Any(c=>
-                c.Definition.PuzzleId==attempt.Level.PuzzleId && c.Definition.ContentHash==attempt.PinnedContentHash);
+            bool published=Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).Concat(legacyContent).Any(c=>DeliveryDirector.MatchesSource(attempt,c.Definition));
             if(published) {
+                if(journeyActive&&!sessionClears.Contains(node))profile.Director.ObserveTerminal(attempt,MinimumMoves);
                 if(profile.RecordClear(attempt))sessionClears.Add(node);
                 InitializeRewards();profile.Rewards.RecordDelivery(attempt);
             }

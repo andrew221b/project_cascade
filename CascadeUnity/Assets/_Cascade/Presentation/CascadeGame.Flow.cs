@@ -117,7 +117,7 @@ namespace Cascade.Presentation
         void StartCoach()
         {
             string lesson = Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).FirstOrDefault(c=>c.Definition.CampaignNodeId==node)?.Lesson ?? "swap";
-            Coach=new TutorialCoach(Interaction.Attempt.Level,lesson) {Enabled=Preferences.Tutorials};
+            Coach=new TutorialCoach(Interaction.Attempt.Level,lesson,Interaction.Attempt.Direction?.WindFloor??-1) {Enabled=Preferences.Tutorials};
             Coach.Observe(Interaction.Attempt.Current,Interaction.Attempt.RouteLength); gestureTime=0;
         }
         void UpdateFlow()
@@ -193,10 +193,10 @@ namespace Cascade.Presentation
                 resultRoot.Find("Resulthome").GetComponentInChildren<TextMeshProUGUI>().SetCopy(WaitingParcel!=null?"Open parcel":"Home");
                 if(CurrentScreen==GameScreen.Fail && sessionLosses.TryGetValue(node,out var losses)&&losses>=3)
                     resultText.SetCopy("Try the device guide. Undo and retry stay free.");
-                resultRoot.Find("Nextdelivery").gameObject.SetActive(CurrentScreen==GameScreen.Win);
+                resultRoot.Find("Nextdelivery").gameObject.SetActive(CurrentScreen==GameScreen.Win||CanOfferStrongerWood);
                 resultRoot.Find("Nextdelivery").GetComponent<Image>().color=new Color(.98f,.74f,.32f);
-                retry.GetComponent<Image>().color=CurrentScreen==GameScreen.Fail?new Color(.98f,.74f,.32f):Paper;
-                resultRoot.Find("Nextdelivery").GetComponentInChildren<TextMeshProUGUI>().SetCopy(journeyActive&&node=="C160"?"Light the beacon":"Next delivery");
+                retry.GetComponent<Image>().color=CurrentScreen==GameScreen.Fail&&!CanOfferStrongerWood?new Color(.98f,.74f,.32f):Paper;
+                resultRoot.Find("Nextdelivery").GetComponentInChildren<TextMeshProUGUI>().SetCopy(CanOfferStrongerWood?"More wood":journeyActive&&node=="C160"?"Light the beacon":"Next delivery");
             }
         }
         static void PlaceControl(Button button,Transform parent,Vector2 min,Vector2 max)
@@ -303,6 +303,7 @@ namespace Cascade.Presentation
         void StartContent(LevelContent content) { LoadLevel(content.Definition,content.Locale); ShowGame(); }
         void StartNextPreferred()
         {
+            if(CanOfferStrongerWood){RestartWithStrongerWood();return;}
             int bonus=Catalog.BonusLevels.ToList().FindIndex(c=>c.Definition.PuzzleId==Interaction.Attempt.Level.PuzzleId);
             if(bonus>=0){if(bonus+1<Catalog.BonusLevels.Count)StartContent(Catalog.BonusLevels[bonus+1]);else ShowReachChallenges();return;}
             if(journeyActive) { int nextStop=selectedJourneyStop+1; if(PreferredMode==PuzzleMode.Words && nextStop==25)nextStop++; if(nextStop<Catalog.PrimaryLevels.Count)BeginJourney(nextStop);else SetScreen(GameScreen.JourneyEnd);return; }
@@ -316,14 +317,16 @@ namespace Cascade.Presentation
         }
         void DrawDevices()
         {
-            MenuTitle(DeviceTitles[deviceIndex],new UiCopy("Device guide · {0} / {1}",deviceIndex+1,DeviceTitles.Length));
+            bool wind=deviceIndex==1&&Interaction.Attempt.Direction?.WindFloor>=1;
+            MenuTitle(wind?"Wind on landing":DeviceTitles[deviceIndex],new UiCopy("Device guide · {0} / {1}",deviceIndex+1,DeviceTitles.Length));
             var guideCaption=(RectTransform)menuRoot.Find("Menu description");guideCaption.anchorMin=new Vector2(.08f,.75f);guideCaption.anchorMax=new Vector2(.92f,.80f);
             var fixture=Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).First(c=>c.Definition.CampaignNodeId==DeviceNodes[deviceIndex]).Definition;
+            if(wind)fixture=WindGuide(Interaction.Attempt.Direction.WindRight);
             LiveDeviceDemo(Rect("Device example",menuRoot,new Vector2(.10f,.555f),new Vector2(.90f,.735f)),fixture,deviceIndex);
-            var explanation=Text("Device explanation",menuRoot,new Vector2(.10f,.38f),new Vector2(.90f,.59f),20,DeviceCopy[deviceIndex]);explanation.alignment=TextAlignmentOptions.MidlineLeft;
+            var explanation=Text("Device explanation",menuRoot,new Vector2(.10f,.38f),new Vector2(.90f,.59f),20,wind?"Wind pushes the whole row one place when it lands. Follow the arrow. Take your time to think.":DeviceCopy[deviceIndex]);explanation.alignment=TextAlignmentOptions.MidlineLeft;
             MenuButton("Previous",.29f,()=>{deviceIndex=(deviceIndex+DeviceTitles.Length-1)%DeviceTitles.Length;DrawMenu();},false,.10f,.47f);
             MenuButton("Next",.29f,()=>{deviceIndex=(deviceIndex+1)%DeviceTitles.Length;DrawMenu();},false,.53f,.90f);
-            MenuButton(new UiCopy("Try level {0}",DeviceNodes[deviceIndex].TrimStart('C','0')),.18f,()=>{StartContent(Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).First(c=>c.Definition.CampaignNodeId==DeviceNodes[deviceIndex]));},true);
+            MenuButton(wind?new UiCopy("Back to puzzle"):new UiCopy("Try level {0}",DeviceNodes[deviceIndex].TrimStart('C','0')),.18f,()=>{if(wind)CloseMenu();else StartContent(Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).First(c=>c.Definition.CampaignNodeId==DeviceNodes[deviceIndex]));},true);
             MenuButton("Back",.07f,CloseMenu);
         }
         void DrawSettings()

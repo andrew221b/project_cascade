@@ -11,6 +11,7 @@ namespace Cascade.Application
         public int RequiredStampBits, UndoCount;
         public bool HintUsed;
         public string[] Commands;
+        public DirectionRecipe Direction;
 
         public static AttemptRecord Capture(AttemptService attempt) => new AttemptRecord {
             AttemptId=attempt.AttemptId.ToString("D"), PuzzleId=attempt.Level.PuzzleId,
@@ -18,7 +19,7 @@ namespace Cascade.Application
             RulesVersion=attempt.PinnedRulesVersion, Locale=attempt.ActiveLocale,
             RequiredStampBits=attempt.Goal.RequiredStampBits, UndoCount=attempt.UndoCount,
             HintUsed=attempt.HintUsed, StateHash=attempt.CurrentStateHash,
-            Commands=attempt.History.Select(h=>h.Command.ToString()).ToArray()
+            Commands=attempt.History.Select(h=>h.Command.ToString()).ToArray(),Direction=attempt.Direction?.Copy()
         };
     }
 }

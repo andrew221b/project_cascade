@@ -22,6 +22,21 @@ namespace Cascade.Editor.Playable
   public static void MorningMistCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(MorningMistShots());}
   public static void ReceiverPolishCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(ReceiverPolishShots());}
   public static void WindCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(WindShots());}
+  public static void DirectorCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(DirectorShots());}
+  static IEnumerator DirectorShots()
+  {
+   var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);g.Feedback.MusicEnabled=g.Feedback.SoundEnabled=false;
+   g.ReducedMotion=false;g.SetUiLocale("en");g.LoadDirectedLevel(g.Catalog.GetPrimary("C81").Definition,"en",Cascade.Application.DeliveryMood.Wind);g.ShowGame();yield return Ready(g);
+   g.SendMessage("OnApplicationFocus",true);g.Interaction.SetSuspended(false);g.Machine.CueWind(false);yield return new WaitForSecondsRealtime(.55f);
+   yield return PlayableCapture.CaptureSettled("Director","wind-game.png",390,844);
+   g.SetUiLocale("ru");yield return PlayableCapture.CaptureSettled("Director","wind-small-ru.png",320,693);
+   g.ReducedMotion=true;g.GetComponentsInChildren<UnityEngine.UI.Button>().Single(b=>b.name=="Landing movement").onClick.Invoke();yield return null;
+   yield return PlayableCapture.CaptureSettled("Director","wind-guide-ru.png",320,693);g.CloseMenu();
+   g.SetUiLocale("en");g.LoadNode("C81");Field(g,"journeyActive",true);g.Director.Struggle=4;g.ShowGame();yield return Ready(g);
+   while(g.Interaction.Attempt.Current.Status==PuzzleStatus.Playing){g.Interaction.Execute(PuzzleCommand.Drop);while(g.Interaction.IsPresenting)yield return null;yield return null;}
+   yield return PlayableCapture.CaptureSettled("Director","stronger-wood.png",390,844);
+   Debug.Log("CASCADE director: wind, compact RU, pictorial guide and stronger-wood offer captured");
+  }
   static IEnumerator WindShots()
   {
    var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);g.ReducedMotion=false;g.SetUiLocale("en");g.Feedback.MusicEnabled=g.Feedback.SoundEnabled=false;

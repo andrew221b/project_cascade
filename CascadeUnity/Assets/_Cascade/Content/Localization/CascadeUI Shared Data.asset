@@ -1791,6 +1791,43 @@ MonoBehaviour:
     m_Key: Could not check this puzzle. Try again or choose another.
     m_Metadata:
       m_Items: []
+  - m_Id: 188016525041664
+    m_Key: More wood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188016529235968
+    m_Key: Wind slides the row right
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188016529235969
+    m_Key: Wind slides the row left
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188016529235970
+    m_Key: 'Wind on landing: row slides left'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188016529235971
+    m_Key: 'Wind on landing: row slides right'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188016529235972
+    m_Key: Wind on landing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188016529235973
+    m_Key: Wind moves the row on the next board. Tap its arrow to see how.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188016529235974
+    m_Key: Wind pushes the whole row one place when it lands. Follow the arrow. Take
+      your time to think.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188016529235975
+    m_Key: Back to puzzle
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

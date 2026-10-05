@@ -187,6 +187,8 @@ namespace Cascade.Presentation
                 if(e.Kind==PuzzleEventKind.HourglassCollected)effects.Add("Bomb paused for two swaps");
             }
             if(!string.IsNullOrEmpty(exit.Key))effects.Add(exit);
+            if(prediction.Events.Any(e=>e.Kind==PuzzleEventKind.EntryPermuted&&IsWindFloor(e.Floor)))
+                effects.Add(Interaction.Attempt.Direction.WindRight?"Wind slides the row right":"Wind slides the row left");
             status.SetCopy(UiCopy.Join(" · ",effects));
             RenderFocus(); machine.PreviewForecast(prediction); PreviewDeviceDocks(prediction);
             if(command.Kind==CommandKind.LongReach){slotImages[command.Edge].color=Selected;slotImages[command.End].color=Selected;return;}
@@ -199,7 +201,11 @@ namespace Cascade.Presentation
         public void Retry()
         {
             if(Interaction.IsPreparing){if(!preparation.IsPending)BeginPreparation();RenderControls();return;}
-            if (!Interaction.Retry()) return; PersistProgress(); CancelHint(); CancelDeadEnd(); StartCoach(); RenderState(); if(flowReady)ShowGame();
+            var attemptId=Interaction.Attempt.AttemptId;
+            bool hadMoves=Interaction.Attempt.Current.Status==PuzzleStatus.Playing&&Interaction.Attempt.RouteLength>0;
+            if (!Interaction.Retry()) return;
+            if(journeyActive&&!sessionClears.Contains(node))profile.Director.ObserveRetry(attemptId,hadMoves);
+            PersistProgress(); CancelHint(); CancelDeadEnd(); StartCoach(); RenderState(); if(flowReady)ShowGame();
         }
         public void RequestHint()
         {

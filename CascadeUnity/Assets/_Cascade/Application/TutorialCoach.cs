@@ -9,6 +9,7 @@ namespace Cascade.Application
     {
         readonly LevelDefinition level;
         readonly string lesson;
+        readonly int windFloor;
         PuzzleState observed;
         RejectionReason lastInvalid;
         int invalidEdge = -1, repeatedInvalid;
@@ -19,8 +20,8 @@ namespace Cascade.Application
         public bool GestureReplayRequested => Enabled && IdleSeconds >= 15;
         public bool ExplainInvalid => Enabled && repeatedInvalid >= 2;
         public string Lesson => lesson;
-        public TutorialCoach(LevelDefinition definition, string lessonId)
-        { level = definition ?? throw new ArgumentNullException(nameof(definition)); lesson = lessonId ?? "swap"; }
+        public TutorialCoach(LevelDefinition definition, string lessonId,int windFloor=-1)
+        { level = definition ?? throw new ArgumentNullException(nameof(definition)); lesson = lessonId ?? "swap"; this.windFloor=windFloor; }
 
         public void Activity() { IdleSeconds = 0; }
         public void Advance(float seconds, bool foregroundPlaying)
@@ -59,6 +60,8 @@ namespace Cascade.Application
                     ? "Put the same piece on the key to open the gate."
                     : "This way is closed. Try the other side or Descend.";
             }
+            if(windFloor==state.ActiveFloor+1&&state.BombPhase!=BombPhase.Armed)
+                return "Wind moves the row on the next board. Tap its arrow to see how.";
             if (state.Row.SequenceEqual(level.TargetSymbolIds)) return state.ActiveFloor == level.Floors.Count-1
                 ? "Ready! Tap Deliver." : "Ready here. Check the board below.";
             if (LessonCompleted && !HighlightRequested && level.Floors[state.ActiveFloor].Powerup==null) return "";

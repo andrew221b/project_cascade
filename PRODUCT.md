@@ -104,6 +104,10 @@ embedded prompt metadata; prompts and hashes are in Docs/AssetPrompts/Craft.
 Prices, packages and existing campaign IDs remain stable; there is no gameplay
 physics. Online remains design-only.
 
+Fresh campaign deliveries after C40 now have a local director that observes completed attempts and deliberate retries. Two confident deliveries can lead to a tighter wood allowance or a wind passage; a peak is followed by recovery. Thinking time and purchases are never difficulty inputs. Replays and ordinary Retry retain their pinned conditions. After repeated failures, More wood starts a separate, clearly offered attempt with stronger planks.
+
+Directed conditions are fixed before input and proved by the same exact solver. Unproven fresh variants fall back to the published source. Wind reuses the existing one-place entry shift on a lower board: its arrow and guide show what will happen on landing. A saved recipe reconstructs the exact variant and its commands; local records remain separated by content hash. Irregular breeze and bounded landing gusts only animate the connected toy world.
+
 Ribbon Reach is implemented as six separate optional workshop trials R01–R06,
 accessible through Power-ups in the bag. Their rules version is 2.1-longreach. One charge permits
 one atomic endpoint exchange across one or two intervening pieces; the middle

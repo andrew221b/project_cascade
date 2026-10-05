@@ -57,6 +57,8 @@ namespace Cascade.Presentation
         bool reducedMotion,ambientPaused;
         public void SetAmbientPaused(bool value){ambientPaused=value;}
         float windTime;
+        float gustStarted=-100;
+        float gustDirection;
         public bool ReducedMotion { get => reducedMotion; set => reducedMotion = value; }
         public float AmbientPhase => windTime;
         public int TokenCount => tokens.Count;
@@ -72,7 +74,14 @@ namespace Cascade.Presentation
         public float FloorVisualAngle(int floor)=>floors[floor].roll;
         public float FloorSag(int floor)=>floors[floor].sag;
         public Vector3 FloorVisualOffset(int floor)=>FloorPointOffset(floor,floors[floor].board.anchor.position,false);
-        public float WindAt(int floor)=>reducedMotion?0:Mathf.Sin(windTime*.62f-floor*.12f)*.72f+Mathf.Sin(windTime*1.13f+.6f)*.20f+Mathf.Sin(windTime*.21f)*.08f;
+        public float WindAt(int floor)
+        {
+            if(reducedMotion)return 0;
+            float age=Mathf.Max(0,windTime-gustStarted);
+            float gust=(1-Mathf.Exp(-age*6))*Mathf.Exp(-age*1.6f)*gustDirection*1.2f;
+            return Mathf.Clamp(WorkshopWind.Sample(windTime-floor*.13f)+gust,-1,1)*(heldWeight>=0?.72f:1);
+        }
+        public void CueWind(bool right){if(!reducedMotion){gustStarted=windTime;gustDirection=right?1:-1;}}
         public Vector3 FloorPosition(int floor)
         {
             var anchor = floors[floor].parts[0].anchor; anchor.GetWorldCorners(corners);
@@ -121,6 +130,7 @@ namespace Cascade.Presentation
             IReadOnlyList<TMPro.TextMeshProUGUI> targets, RectTransform receiver)
         {
             if (machine != null) { machine.gameObject.SetActive(false); Destroy(machine.gameObject); }
+            gustStarted=-100;gustDirection=0;
             machine = new GameObject("Toy machine").transform; machine.SetParent(transform, false);
             foreach(var mesh in woodMeshes)if(mesh!=null)Destroy(mesh);woodMeshes.Clear();
             all.Clear(); tokens.Clear(); selections.Clear(); tokenShadows.Clear(); targetBodies.Clear(); floors.Clear(); supports.Clear(); interaction = model;
@@ -174,6 +184,16 @@ namespace Cascade.Presentation
                     rig.bridge.Add(P("One use bridge", art.beam, art.gold, x, .46f, .12f, .055f, -.4f));
                     rig.bridge.Add(P("Bridge hinge", art.disk, art.graphite, x, .46f, .024f, .045f, -.51f));
                 }
+            }
+            if(interaction.Attempt.Direction?.WindFloor==floors.Count-1) {
+                bool right=floor.EntryTransform==EntryTransform.ShiftRightOne;
+                float centre=.30f;
+                foreach(float candidate in new[]{.30f,.50f,.70f}) {
+                    bool clear=true;foreach(int edge in floor.FragileEdges)if(Mathf.Abs(candidate-(.045f+.91f*(edge+1f)/count))<.13f)clear=false;
+                    if(clear){centre=candidate;break;}
+                }
+                P("Wind arrow shaft",art.beam,art.teal,centre,.33f,.13f,.026f,-.22f);
+                P("Wind arrow head",art.shapes[0],art.teal,centre+(right?.07f:-.07f),.33f,.045f,.08f,-.23f,right?-90:90);
             }
         }
 

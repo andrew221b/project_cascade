@@ -127,7 +127,10 @@ namespace Cascade.Presentation
         void EnterJourneyPuzzle()
         {
             if(pendingJourney==null){ShowJourney();return;}
-            var content=pendingJourney;pendingJourney=null;LoadLevel(content.Definition,content.Locale);journeyActive=true;
+            var content=pendingJourney;pendingJourney=null;
+            if(sessionClears.Contains(content.Definition.CampaignNodeId))LoadLevel(content.Definition,content.Locale);
+            else LoadDirectedLevel(content.Definition,content.Locale,profile.Director.Choose(content.Definition));
+            journeyActive=true;
             PersistProgress();
             levelLabel.SetCopy(JourneyStory.Task(JourneyStory.PageFor(selectedJourneyStop)));levelLabel.fontSize=21;
             ShowGame();

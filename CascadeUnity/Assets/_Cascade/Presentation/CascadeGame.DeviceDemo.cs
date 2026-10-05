@@ -85,10 +85,11 @@ namespace Cascade.Presentation
                 Line("Bridge hinge",new Vector2(gateX-.09f,.46f),new Vector2(gateX-.09f,.56f),Ink,4);
             }
             if(kind==1){
+                bool right=correct.Events.Any(e=>e.Kind==PuzzleEventKind.EntryPermuted&&e.Value==(int)EntryTransform.ShiftRightOne);
                 Rect("Landing board",root,new Vector2(.02f,.11f),new Vector2(.98f,.18f)).gameObject.AddComponent<WoodBoardGraphic>();
                 foreach(float x in new[]{.035f,.965f}){
                     var roller=Rect("Entry roller",root,new Vector2(x-.035f,.20f),new Vector2(x+.035f,.30f));Background(roller,Ink,false).sprite=art.panel;
-                    var arrow=Rect("Roll left arrow",root,new Vector2(x-.022f,.21f),new Vector2(x+.022f,.29f));arrow.gameObject.AddComponent<ShapeFaceGraphic>().SetShape(art.shapes[0],new Color(.98f,.75f,.31f));arrow.localRotation=Quaternion.Euler(0,0,90);
+                    var arrow=Rect("Landing direction arrow",root,new Vector2(x-.022f,.21f),new Vector2(x+.022f,.29f));arrow.gameObject.AddComponent<ShapeFaceGraphic>().SetShape(art.shapes[0],new Color(.98f,.75f,.31f));arrow.localRotation=Quaternion.Euler(0,0,right?-90:90);
                 }
             }
             var outcome=Text("Demo result",root,new Vector2(.51f,.20f),new Vector2(.99f,.32f),13,"");

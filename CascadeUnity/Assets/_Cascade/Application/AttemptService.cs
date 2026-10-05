@@ -53,6 +53,7 @@ namespace Cascade.Application
         public bool HintUsed { get; private set; }
         public string ActiveLocale { get; }
         public PuzzleMode Mode { get; }
+        public DirectionRecipe Direction { get; }
         public string PinnedContentHash => Level.ContentHash;
         public string PinnedRulesVersion => Level.RulesVersion;
         public ReadOnlyCollection<HistoryEntry> History { get; }
@@ -60,11 +61,12 @@ namespace Cascade.Application
         public bool CanUndo => history.Count != 0;
         public string CurrentStateHash => StateHash.Compute(Level, Current);
 
-        public AttemptService(LevelDefinition level, string puzzleLocale = "en", PuzzleGoal goal = null)
+        public AttemptService(LevelDefinition level, string puzzleLocale = "en", PuzzleGoal goal = null, DirectionRecipe direction = null)
         {
             if (puzzleLocale != "en" && puzzleLocale != "ru" && puzzleLocale != "uk")
                 throw new ArgumentException("Unsupported puzzle locale.", nameof(puzzleLocale));
             Resolver = new PuzzleResolver(level); ActiveLocale = puzzleLocale; Goal = goal ?? PuzzleGoal.Delivery;
+            Direction=direction?.Copy();
             if (level.TargetSymbolIds.Any(s => s.Kind == SymbolKind.Glyph && s.Locale != puzzleLocale))
                 throw new ArgumentException("Puzzle locale differs from bound glyphs.", nameof(puzzleLocale));
             bool shapes = level.TargetSymbolIds.Any(s => s.Kind == SymbolKind.Shape);
@@ -83,7 +85,7 @@ namespace Cascade.Application
             if(!Guid.TryParse(record.AttemptId,out var id) || id==Guid.Empty || record.UndoCount<0
                 || record.Commands==null || record.Commands.Length>10000)
                 throw new ArgumentException("Invalid saved attempt metadata.");
-            var attempt=new AttemptService(level,record.Locale,new PuzzleGoal(record.RequiredStampBits));
+            var attempt=new AttemptService(level,record.Locale,new PuzzleGoal(record.RequiredStampBits),record.Direction);
             foreach(string encoded in record.Commands) {
                 PuzzleCommand command;
                 if(encoded=="D")command=PuzzleCommand.Drop;
