@@ -85,6 +85,10 @@ namespace Cascade.Presentation
             if(landscapeMaterial!=null){landscapeMaterial.SetTexture("_BaseMap",workshop&&workshopTexture!=null?workshopTexture:zone==0&&panorama!=null?panorama:backgrounds[zone]??backgrounds[0]);
                 Color[] skies={new Color(.46f,.78f,.9f),new Color(.42f,.65f,.74f),new Color(.88f,.63f,.46f),new Color(.49f,.76f,.85f),new Color(.37f,.70f,.78f),new Color(.49f,.68f,.52f),new Color(.63f,.76f,.86f),new Color(.9f,.71f,.42f)};
                 landscapeMaterial.SetColor("_SkyTop",skies[zone]);landscapeMaterial.SetColor("_SkyBottom",Color.Lerp(skies[zone],new Color(1,.94f,.75f),.72f));}
+            if(landscapeMaterial!=null){
+                landscapeMaterial.SetColor("_MistColor",zone==1||zone==4||zone==6?new Color(.86f,.95f,1):new Color(1,.94f,.83f));
+                landscapeMaterial.SetFloat("_MistStrength",workshop?.045f:zone==0?.10f:.08f);
+            }
             var tint=zone==1||zone==4||zone==6?new Color(.83f,.94f,1):zone==2||zone==7?new Color(1,.88f,.74f):Color.white;
             foreach(var cloud in clouds)if(cloud!=null)cloud.GetComponent<MeshRenderer>().sharedMaterial.SetColor("_BaseColor",tint);
             foreach(var plant in new[]{plantsLeft,plantsRight})if(plant!=null)plant.GetComponent<MeshRenderer>().sharedMaterial.SetColor("_BaseColor",tint);
@@ -95,6 +99,7 @@ namespace Cascade.Presentation
             float h=cameraView.orthographicSize*2,w=h*cameraView.aspect;
             float cx=cameraView.transform.position.x,cy=cameraView.transform.position.y;
             var texture=landscapeMaterial.mainTexture;float ratio=(float)texture.width/texture.height;
+            landscapeMaterial.SetFloat("_MistPhase",phase);
             landscape.position=new Vector3(cx,cy,3.2f);landscape.localScale=new Vector3(w,h,1);
             // Fill every aspect ratio with the artwork instead of fading its sides.
             float imageHeight=Mathf.Max(1,w/ratio/h),imageWidth=Mathf.Max(1,h*ratio/w);

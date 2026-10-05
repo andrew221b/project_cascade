@@ -19,6 +19,14 @@ namespace Cascade.Editor.Playable
   public static void FinishPass(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(FinishShots());}
   public static void MenuHeaderCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(HeaderShots());}
   public static void LagoonCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(LagoonShot());}
+  public static void MorningMistCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(MorningMistShots());}
+  static IEnumerator MorningMistShots()
+  {
+   var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);g.ReducedMotion=false;g.SetUiLocale("en");
+   g.LoadNode("C13");g.ShowGame();yield return Shot("morning-garden");
+   g.LoadNode("C81");g.ShowGame();yield return Shot("morning-lagoon");
+   Debug.Log("CASCADE morning air captured in two regions");
+  }
   public static void SurfaceCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(SurfaceShots());}
   static IEnumerator SurfaceShots()
   {
