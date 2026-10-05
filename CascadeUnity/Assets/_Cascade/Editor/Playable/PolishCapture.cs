@@ -17,6 +17,7 @@ namespace Cascade.Editor.Playable
   static void Redraw(CascadeGame g)=>typeof(CascadeGame).GetMethod("DrawMenu",Flags).Invoke(g,null);
   public static void Run(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(Capture());}
   public static void FinishPass(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(FinishShots());}
+  public static void MenuHeaderCheck(){if(!EditorApplication.isPlaying||EditorUtility.scriptCompilationFailed||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required");UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(HeaderShots());}
   public static void VerifyOneSwap()
   {
    var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);g.LoadNode("C13");g.ShowGame();g.SendMessage("OnApplicationFocus",true);g.Interaction.SetSuspended(false);
@@ -86,6 +87,7 @@ namespace Cascade.Editor.Playable
    }finally{scaler.enabled=false;camera.targetTexture=previous;scaler.enabled=true;RenderTexture.active=active;g.RefreshLayout();UnityEngine.Application.runInBackground=background;UnityEngine.Object.DestroyImmediate(pixels);rt.Release();UnityEngine.Object.DestroyImmediate(rt);}
   }
   static IEnumerator Shot(string name,int width=390,int height=844){yield return new WaitForSecondsRealtime(.18f);yield return PlayableCapture.CaptureSettled("Polish",name+".png",width,height);}
+  static IEnumerator HeaderShots(){var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);g.SetUiLocale("en");g.ShowSettings();yield return Shot("finish-settings");Screen(g,GameScreen.Pause);yield return Shot("finish-pause");g.ShowTravelBag();yield return Shot("finish-bag");Debug.Log("CASCADE illustrated menu header captured");}
   static IEnumerator FinishShots()
   {
    var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);g.Feedback.SoundEnabled=g.Feedback.MusicEnabled=false;g.ReducedMotion=false;g.SetUiLocale("en");

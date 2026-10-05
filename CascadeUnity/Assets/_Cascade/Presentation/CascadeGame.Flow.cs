@@ -206,6 +206,12 @@ namespace Cascade.Presentation
             foreach(Transform child in menuRoot){ child.gameObject.SetActive(false); Destroy(child.gameObject); }
             var wash=Rect("Warm paper",menuRoot,new Vector2(.018f,.012f),new Vector2(.982f,.988f));menuWash=Background(wash,new Color(1,.96f,.84f,.965f),true);menuWash.sprite=art.panel;menuWash.type=Image.Type.Sliced;
             if(CurrentScreen!=GameScreen.Home&&CurrentScreen!=GameScreen.Dialogue){
+                var windowTexture=Resources.Load<Texture2D>("CascadeArt/Craft/WorkshopRoom");
+                if(windowTexture!=null){
+                    var window=Rect("Painted workshop window",menuRoot,new Vector2(.025f,.78f),new Vector2(.975f,.982f)).gameObject.AddComponent<RawImage>();
+                    window.texture=windowTexture;window.uvRect=new Rect(0,.18f,1,.66f);window.raycastTarget=false;
+                    Background(Rect("Quiet header veil",menuRoot,new Vector2(.025f,.78f),new Vector2(.975f,.982f)),new Color(1,.96f,.84f,.69f),false);
+                }
                 var motes=Rect("Window light and drifting dust",menuRoot,new Vector2(.035f,.03f),new Vector2(.965f,.97f)).gameObject.AddComponent<WorldWeatherGraphic>();
                 motes.InitializeRegion(this,machine.LivingWorld.Zone);motes.color=new Color(1,.79f,.44f,.20f);
             }
