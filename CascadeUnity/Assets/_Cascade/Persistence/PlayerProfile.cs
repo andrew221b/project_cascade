@@ -31,10 +31,10 @@ namespace Cascade.Persistence
                 AttemptId=attempt.AttemptId.ToString("D"),ContentHash=attempt.PinnedContentHash});
             return true;
         }
-        public AttemptService RestoreAttempt(ContentCatalog catalog)
+        public AttemptService RestoreAttempt(ContentCatalog catalog, IEnumerable<LevelContent> legacy = null)
         {
             if(Attempt==null)return null;
-            var content=catalog.PrimaryLevels.Concat(catalog.LocalizedLevels).Concat(catalog.BonusLevels).FirstOrDefault(c=>
+            var content=catalog.PrimaryLevels.Concat(catalog.LocalizedLevels).Concat(catalog.BonusLevels).Concat(legacy??Enumerable.Empty<LevelContent>()).FirstOrDefault(c=>
                 c.Definition.PuzzleId==Attempt.PuzzleId && c.Definition.ContentHash==Attempt.ContentHash
                 && c.Definition.RulesVersion==Attempt.RulesVersion && c.Locale==Attempt.Locale);
             if(content==null)throw new InvalidDataException("Pinned puzzle content is unavailable.");

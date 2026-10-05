@@ -79,6 +79,24 @@ namespace Cascade.Content
             return new ContentCatalog(primary, localized, entries, Hash(bundle));
         }
 
+        // Only HP changed in this revision. Exact pins guard reconstruction against future edits.
+        public static IReadOnlyList<LevelContent> ImportLegacyDurability(ContentCatalog catalog, string extensionJson, string manifestJson)
+        {
+            var extension = JObject.Parse(extensionJson); var manifest = JObject.Parse(manifestJson);
+            var legacy = new List<LevelContent>();
+            foreach (JObject source in ((JArray)extension["levels"]).Concat((JArray)extension["bindings"])) {
+                string id = Required(source,"id"), node = (string)source["node_id"] ?? id;
+                if (!(manifest[node] is JObject entry)) continue;
+                var previous = (JObject)source.DeepClone(); var hp = (JArray)entry["hp"];
+                if (hp.Count != ((JArray)previous["floors"]).Count) throw new InvalidDataException("Legacy floor count differs.");
+                for (int i=0;i<hp.Count;i++) previous["floors"][i]["hp"] = hp[i].DeepClone();
+                var level = ImportLevel(previous,catalog.Words);
+                if (level.ContentHash != (string)entry["pins"][id]) throw new InvalidDataException("Legacy content pin differs: "+id);
+                var primary=catalog.GetPrimary(node);
+                legacy.Add(new LevelContent(level,(string)source["locale"]??"en",primary.Title,primary.Lesson,source["node_id"]==null));
+            }
+            return legacy;
+        }
         static void ImportWords(string json, string locale, Dictionary<string, WordEntry> entries)
         {
             foreach (JObject source in JArray.Parse(json))

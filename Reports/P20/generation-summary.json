@@ -7,5 +7,12 @@
   "maximum": 12,
   "mean": 7.866666666666666,
   "stamp_contracts": 10,
-  "note": "Solver evidence, not human enjoyment."
+  "note": "Solver evidence, not human enjoyment.",
+  "durability_revision": {
+    "changed_levels": 103,
+    "minimum": 5,
+    "maximum": 12,
+    "mean": 7.541666666666667,
+    "reference": "Reports/RouteBalance/budget_revision.json"
+  }
 }

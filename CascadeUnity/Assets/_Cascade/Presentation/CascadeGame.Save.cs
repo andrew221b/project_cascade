@@ -18,6 +18,7 @@ namespace Cascade.Presentation
         ProfileStore profileStore;
         PlayerProfile profile;
         bool persistenceReady, saveBlocked;
+        System.Collections.Generic.IEnumerable<LevelContent> legacyContent = Enumerable.Empty<LevelContent>();
         public SaveRecovery Recovery { get; private set; }
         public string ProfilePath=>profileStore?.Path;
         public bool HasSaveError { get; private set; }
@@ -39,7 +40,9 @@ namespace Cascade.Presentation
         void RestoreProfile()
         {
             try {
-                var restored=profile.RestoreAttempt(Catalog);
+                if(profile.Attempt!=null && !Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).Any(c=>c.Definition.ContentHash==profile.Attempt.ContentHash))
+                    legacyContent=ContentImporter.ImportLegacyDurability(Catalog,Source("campaign_extension"),Source("campaign_durability_v1"));
+                var restored=profile.RestoreAttempt(Catalog,legacyContent);
                 if(restored!=null) {
                     MountAttempt(restored);journeyActive=profile.JourneyAttempt;
                     selectedJourneyStop=Math.Max(0,Catalog.PrimaryLevels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==node));
@@ -70,7 +73,7 @@ namespace Cascade.Presentation
         {
             var attempt=Interaction.Attempt;
             // QA/custom drafts are playable but do not grant campaign receipts.
-            bool published=Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).Any(c=>
+            bool published=Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).Concat(legacyContent).Any(c=>
                 c.Definition.PuzzleId==attempt.Level.PuzzleId && c.Definition.ContentHash==attempt.PinnedContentHash);
             if(published) {
                 if(profile.RecordClear(attempt))sessionClears.Add(node);

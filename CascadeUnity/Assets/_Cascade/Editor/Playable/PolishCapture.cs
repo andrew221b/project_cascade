@@ -24,9 +24,15 @@ namespace Cascade.Editor.Playable
   static IEnumerator ReceiverPolishShots()
   {
    var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);g.ReducedMotion=true;g.SetUiLocale("en");
-   g.LoadNode("C81");g.ShowGame();yield return Shot("receiver-shapes");
-   if(g.Catalog.TryGetLocalizedBinding("C38","en",out var words))g.LoadLevel(words.Definition,"en");else g.LoadNode("C38");g.ShowGame();yield return Shot("receiver-letters");
+   g.LoadNode("C81");g.ShowGame();yield return Ready(g);yield return Shot("receiver-shapes");
+   if(g.Catalog.TryGetLocalizedBinding("C38","en",out var words))g.LoadLevel(words.Definition,"en");else g.LoadNode("C38");g.ShowGame();yield return Ready(g);yield return Shot("receiver-letters");
    Debug.Log("CASCADE receiver alignment and palette captured");
+  }
+  static IEnumerator Ready(CascadeGame g)
+  {
+   double start=Time.realtimeSinceStartupAsDouble;
+   while(!g.PreparationReady&&Time.realtimeSinceStartupAsDouble-start<30)yield return null;
+   if(!g.PreparationReady)throw new InvalidOperationException("Puzzle preparation did not complete");
   }
   static IEnumerator MorningMistShots()
   {

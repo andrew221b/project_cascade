@@ -44,6 +44,7 @@ namespace Cascade.Tests
             mouse = InputSystem.AddDevice<Mouse>(); touch = InputSystem.AddDevice<Touchscreen>();
             yield return null;
             game.SendMessage("OnApplicationFocus", true); game.SendMessage("OnApplicationPause", false);
+            yield return AwaitPreparation();
         }
         [UnityTearDown] public IEnumerator TearDown()
         {
@@ -63,6 +64,7 @@ namespace Cascade.Tests
         }
         IEnumerator ClickButton(string name)
         {
+            if(!game.PreparationReady)yield return AwaitPreparation();
             var button = game.GetComponentsInChildren<UnityEngine.UI.Button>().Single(b => b.name == name);
             Assert.That(button.interactable, Is.True, name + " must be available");
             var rect = (RectTransform)button.transform;
@@ -80,11 +82,13 @@ namespace Cascade.Tests
         }
         IEnumerator MouseFrame(Vector2 point, bool held)
         {
+            if(!game.PreparationReady)yield return AwaitPreparation();
             InputSystem.QueueStateEvent(mouse, new MouseState { position = point }.WithButton(MouseButton.Left, held));
             yield return null; yield return null;
         }
         IEnumerator TouchFrame(int id, Vector2 point, UnityEngine.InputSystem.TouchPhase phase)
         {
+            if(!game.PreparationReady)yield return AwaitPreparation();
             InputSystem.QueueStateEvent(touch, new TouchState { touchId = id, position = point, phase = phase });
             yield return null; yield return null;
         }
@@ -669,7 +673,7 @@ namespace Cascade.Tests
         }
         [UnityTest] public IEnumerator HomeDuringAnimationKeepsTheCommittedRow()
         {
-            game.LoadNode("C03");game.Interaction.Execute(PuzzleCommand.Swap(0));var committed=game.Interaction.Attempt.Current;
+            game.LoadNode("C03");yield return AwaitPreparation();game.Interaction.Execute(PuzzleCommand.Swap(0));var committed=game.Interaction.Attempt.Current;
             game.ShowHome();yield return null;Assert.That(game.Interaction.Attempt.Current,Is.SameAs(committed));
             Assert.That(game.Interaction.IsPresenting,Is.False);Assert.That(game.Interaction.CanPlay,Is.False);
             game.ShowGame();Assert.That(game.VisibleFrame.Row,Is.EqualTo(committed.Row));Assert.That(game.Interaction.CanPlay,Is.True);
@@ -684,7 +688,7 @@ namespace Cascade.Tests
         }
         [UnityTest] public IEnumerator ProvenDeadEndDoesNotConsumeOrRevealAHint()
         {
-            game.LoadNode("C02");game.Interaction.Execute(PuzzleCommand.Swap(0));yield return AwaitPresentation();
+            game.LoadNode("C02");yield return AwaitPreparation();game.Interaction.Execute(PuzzleCommand.Swap(0));yield return AwaitPresentation();
             string hash=game.Interaction.Attempt.CurrentStateHash;float until=Time.realtimeSinceStartup+3;
             while(!game.HasDeadEndWarning&&Time.realtimeSinceStartup<until)yield return null;
             Assert.That(game.HasDeadEndWarning,Is.True);Assert.That(game.Interaction.Attempt.HintUsed,Is.False);
@@ -819,6 +823,57 @@ namespace Cascade.Tests
                     yield return AwaitPresentation();
                 }
                 Assert.That(attempt.Current.Status,Is.EqualTo(PuzzleStatus.Won));Assert.That(game.SlotViews,Is.EqualTo(views));
+            }
+        }
+        IEnumerator AwaitPreparation()
+        {
+            double started=Time.realtimeSinceStartupAsDouble;
+            while(!game.PreparationReady && Time.realtimeSinceStartupAsDouble-started<30)yield return null;
+            Assert.That(game.PreparationReady,Is.True,"Final level must be proven before input opens");
+        }
+        [UnityTest] public IEnumerator ReceiverGlyphsAndPreparedRoutesRemainAlignedAndPlayable()
+        {
+            game.ReducedMotion=true;
+            foreach(string locale in new[]{"en","ru","uk"}) {
+                Assert.That(game.Catalog.TryGetLocalizedBinding("C38",locale,out var binding),Is.True);
+                game.LoadLevel(binding.Definition,locale);game.ShowGame();yield return AwaitPreparation();game.RefreshLayout();yield return null;
+                var receiver=(RectTransform)game.TargetRow.parent;
+                var center=receiver.InverseTransformPoint(game.TargetRow.TransformPoint(game.TargetRow.rect.center));
+                Assert.That(center.x,Is.EqualTo(receiver.rect.center.x).Within(.01));
+                Assert.That(center.y,Is.EqualTo(receiver.rect.yMin+receiver.rect.height*.53f).Within(.01));
+                for(int i=0;i<game.SlotViews.Count;i++) {
+                    var face=game.SlotViews[i].GetComponentInChildren<TextMeshProUGUI>();
+                    // Refresh must be correct immediately, even without a following LateUpdate.
+                    game.RefreshLayout();
+                    Assert.That(Vector2.Distance(face.transform.position,game.Machine.TokenVisualPosition(i)),Is.LessThan(.001f));
+                }
+                foreach(var label in game.TargetRow.GetComponentsInChildren<TextMeshProUGUI>()
+                    .Concat(game.SlotViews.Select(s=>s.GetComponentInChildren<TextMeshProUGUI>()))) {
+                    label.ForceMeshUpdate();var min=new Vector2(float.PositiveInfinity,float.PositiveInfinity);var max=-min;
+                    foreach(var c in label.textInfo.characterInfo.Take(label.textInfo.characterCount).Where(c=>c.isVisible))
+                        for(int v=c.vertexIndex;v<c.vertexIndex+4;v++) {
+                            var point=label.textInfo.meshInfo[c.materialReferenceIndex].vertices[v];
+                            min=Vector2.Min(min,point);max=Vector2.Max(max,point);
+                        }
+                    Assert.That(Vector2.Distance((min+max)*.5f,label.rectTransform.rect.center),Is.LessThan(.01f),locale+" "+label.text);
+                }
+            }
+            foreach(var content in new[]{game.Catalog.GetPrimary("C81"),game.Catalog.GetPrimary("C88"),game.Catalog.BonusLevels[8],game.Catalog.BonusLevels[9]}) {
+                game.LoadLevel(content.Definition);game.ShowGame();yield return AwaitPreparation();game.RefreshLayout();
+                var attempt=game.Interaction.Attempt;var proof=PuzzleSolver.FindShortest(attempt.Resolver,goal:attempt.Goal);
+                Assert.That(game.MinimumMoves,Is.EqualTo(proof.OptimalActions));
+                foreach(var command in proof.Path) {
+                    var expected=attempt.Predict(command).State;int before=attempt.RouteLength;
+                    if(command.Kind==CommandKind.EarlyDrop)yield return ClickButton("Drop");
+                    else {
+                        int end=command.Kind==CommandKind.LongReach?command.End:command.Edge+1;
+                        yield return MouseFrame(Point(command.Edge),true);yield return MouseFrame(Point(end),true);yield return MouseFrame(Point(end),false);
+                    }
+                    Assert.That(attempt.RouteLength,Is.EqualTo(before+1));Assert.That(attempt.Current,Is.EqualTo(expected));
+                    yield return AwaitPresentation();
+                }
+                Assert.That(attempt.Goal.IsSatisfied(attempt.Current),Is.True);
+                Assert.That(attempt.RouteLength,Is.EqualTo(game.MinimumMoves));
             }
         }
         [UnityTest] public IEnumerator AllFortyLevelsCanBeDeliveredThroughActualMouseAndButtons()

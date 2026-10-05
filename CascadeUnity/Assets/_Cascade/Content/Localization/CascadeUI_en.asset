@@ -1783,6 +1783,22 @@ MonoBehaviour:
     m_Localized: Match the hourglass picture. The bomb waits for two swaps.
     m_Metadata:
       m_Items: []
+  - m_Id: 171004419629056
+    m_Localized: 'Shortest route: {0} moves'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 171004440600576
+    m_Localized: 'Wood strength: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 171004440600577
+    m_Localized: "Checking your puzzle\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 171004440600578
+    m_Localized: Could not check this puzzle. Try again or choose another.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

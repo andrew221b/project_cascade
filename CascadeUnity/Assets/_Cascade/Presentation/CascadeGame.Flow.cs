@@ -185,7 +185,8 @@ namespace Cascade.Presentation
             resultRoot.gameObject.SetActive(result);
             PlaceControl(undo,result?resultRoot:actions,result?Vector2.zero:Vector2.zero,result?new Vector2(.48f,.30f):new Vector2(.30f,1));
             PlaceControl(retry,result?resultRoot:safeRoot,result?new Vector2(0,.35f):new Vector2(.05f,.09f),result?new Vector2(.48f,.65f):new Vector2(.43f,.155f));
-            retry.gameObject.SetActive(result); hint.gameObject.SetActive(!result); drop.gameObject.SetActive(!result); precise.gameObject.SetActive(!result&&PreciseInputActive);
+            retry.gameObject.SetActive(result||preparation.HasFailed); hint.gameObject.SetActive(!result&&!preparation.HasFailed); drop.gameObject.SetActive(!result&&!preparation.HasFailed); precise.gameObject.SetActive(!result&&PreciseInputActive);
+            if(preparation.HasFailed)PlaceControl(retry,actions,new Vector2(.35f,0),new Vector2(.65f,1));
             if(result) {
                 resultText.SetCopy(CurrentScreen==GameScreen.Win ? "You did it! The way is clear." : "Not quite. Undo and try again.");
                 if(CurrentScreen==GameScreen.Win && !Interaction.Attempt.Goal.IsSatisfied(Interaction.Attempt.Current))resultText.SetCopy("The row is home. The stamp is still missing.");

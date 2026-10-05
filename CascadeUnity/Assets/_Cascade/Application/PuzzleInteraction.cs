@@ -11,8 +11,9 @@ namespace Cascade.Application
         public bool IsPresenting { get; private set; }
         public bool IsPaused { get; private set; }
         public bool IsSuspended { get; private set; }
+        public bool IsPreparing { get; private set; }
         public PuzzleCommand? LastRequestedCommand { get; private set; }
-        public bool CanControl => !IsPresenting && !IsPaused && !IsSuspended;
+        public bool CanControl => !IsPresenting && !IsPaused && !IsSuspended && !IsPreparing;
         public bool CanPlay => CanControl && Attempt.Current.Status == PuzzleStatus.Playing;
         public event Action<TransitionResult> Committed;
         int? pointer;
@@ -91,5 +92,6 @@ namespace Cascade.Application
         }
         public void SetPaused(bool paused) { IsPaused = paused; CancelPointer(); }
         public void SetSuspended(bool suspended) { IsSuspended = suspended; CancelPointer(); }
+        public void SetPreparing(bool preparing) { IsPreparing = preparing; CancelPointer(); }
     }
 }
