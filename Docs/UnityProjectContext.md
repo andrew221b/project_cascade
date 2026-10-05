@@ -39,14 +39,15 @@ version/hash/goal proof gate. Editor/Validation пишет EditMode/PlayMode XML
 ProjectBootstrap/PackageRepair остаётся только явно вызываемым helper.
 
 Первой в build settings добавлена `Assets/_Cascade/Scenes/CascadePlayable.unity`;
-SampleScene сохранена следом. Gray Presentation использует uGUI/TMP, один
+SampleScene сохранена следом. Toy Presentation использует uGUI/TMP, один
 EventSystem/InputSystemUIInputModule и pure input gate. Один persistent row,
 видимые этажи/полный target, drag/tap-tap, precise focus и бесплатные hint/Undo.
-Home/onboarding/save/meta, окончательный визуал и event juice ещё не реализованы.
+P12 добавил оригинальную toy-машину и фон. Home/onboarding/save/meta и event juice ещё не реализованы.
 
 Application commit предшествует presentation. P11 gray gate не меняет core-state;
-полноценный единый event/tween player относится к P13. Новые ассеты P12 ещё не
-генерировались. TMP essentials импортированы штатным API, с OFL/attribution.
+полноценный единый event/tween player относится к P13. P12 использует реальные
+original meshes, URP shared materials, Balsamiq Sans/OFL и original sky workshop;
+только ambient wind wheel, selection pose и Reduced Motion, без gameplay physics.
 
 ## Канон и визуальный источник
 
@@ -58,9 +59,10 @@ Atomic swaps сохраняют multiset; contacts проверяются по f
 Автор подтвердил визуальный источник:
 `/Users/andrew/Desktop/unity projects/unity_projects/shape_sorting-final`.
 Его Assets просматривались только для определения источника; они не переносились.
-Фактические модели, материалы, шрифты и текущие экраны нужно проверить в P12.
-Impeccable context выполнен один раз; PRODUCT/DESIGN ещё не созданы. Gray UI
-служит проверке ввода; окончательное визуальное направление относится к P12.
+Фактические reference-экраны просмотрены; ассеты ShapeMania не копировались.
+Impeccable context выполнен один раз; PRODUCT и P12 direction/provenance записаны.
+P12 runtime captures проверены; независимый reviewer оценил четыре исправления
+как resolved. Полный gameplay flow и анимации проверяются на следующих этапах.
 
 ## Проверки и инструменты
 
@@ -68,7 +70,7 @@ Impeccable context выполнен один раз; PRODUCT/DESIGN ещё не 
 - .meta создаёт Unity; последняя проверка Assets не нашла missing/orphan.
 - Python reference: 39 тестов OK; existing data audit — 801 assertion,
   40 конфигураций, 117 решаемых языковых вариантов, 111 слов.
-- P11 EditMode 305/305 и PlayMode 12/12 PASS. Все 40 primary пройдены через UI: 92 команды. C# совпал с Python по всем 40/117
+- P12 EditMode 305/305 и PlayMode 14/14 PASS. Все 40 primary пройдены через UI: 92 команды. C# совпал с Python по всем 40/117
   графам, минимумам/путям/метрикам. Виртуальные Mouse/Touchscreen прошли через
   настоящий Input System/EventSystem; физический телефон и player build не проверены.
 - Unity CLI `1.0.0-beta.5` доступен. Команды `projects verify` в этой версии нет;
@@ -100,9 +102,9 @@ POC audit: Docs/POC_REVIEW.md, Tools/audit_concept.py, Reports/P11/concept_audit
 рисовки/близкой палитры; яркая мультяшная тема, компактные платформы, явный
 приёмник и связная стилизация окружения/эффектов. Сначала завершить POC по плану.
 
-Пока неизвестны: окончательный визуал, glyph coverage, mobile performance,
-реальный device drag и человеческая оценка интереса. Отчёты: Reports/P00–P11.
-Следующий этап — P12, он ещё не начат.
+Пока неизвестны: full glyph coverage, mobile performance,
+реальный device drag и человеческая оценка интереса. Отчёты: Reports/P00–P12.
+P12 visual fixes проверены; следующий этап — P13 event player и juice.
 
 Источники: AGENTS, README, TASKS, P00, C01/C02/C17/C20, реальные Unity
 ProjectSettings/Packages/Assets и журналы выполненных проверок.

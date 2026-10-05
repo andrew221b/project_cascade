@@ -209,6 +209,35 @@ namespace Cascade.Tests
             Assert.That(game.Interaction.Attempt.Current.BridgeUsed, Is.False);
             Assert.That(game.Interaction.Attempt.Resolver.IsEdgeOpen(game.Interaction.Attempt.Current, 1), Is.True);
         }
+        [UnityTest] public IEnumerator ToyPresentationFreezesAmbientAndNeverChangesPuzzleState()
+        {
+            game.LoadNode("C02"); yield return null; game.RefreshLayout();
+            var hash = game.Interaction.Attempt.CurrentStateHash;
+            Assert.That(game.Machine.TokenCount, Is.EqualTo(game.SlotViews.Count));
+            Assert.That(game.GetComponentsInChildren<Rigidbody>(true), Is.Empty);
+            Assert.That(game.GetComponentsInChildren<Collider>(true), Is.Empty);
+            float initial = game.Machine.AmbientPhase;
+            yield return new WaitForSecondsRealtime(.08f);
+            Assert.That(game.Machine.AmbientPhase, Is.GreaterThan(initial));
+            game.ReducedMotion = true; float stopped = game.Machine.AmbientPhase;
+            yield return new WaitForSecondsRealtime(.08f);
+            Assert.That(game.Machine.AmbientPhase, Is.EqualTo(stopped));
+            game.ReducedMotion = false; game.Interaction.SetPaused(true);
+            yield return new WaitForSecondsRealtime(.08f);
+            Assert.That(game.Machine.AmbientPhase, Is.EqualTo(stopped));
+            Assert.That(game.Interaction.Attempt.CurrentStateHash, Is.EqualTo(hash));
+        }
+        [UnityTest] public IEnumerator TargetMagnifierKeepsShapesAndGlyphsVisibleAndBlocksInput()
+        {
+            game.LoadNode("C32"); yield return null; yield return ClickButton("Receiver"); yield return null;
+            Assert.That(game.Interaction.IsPaused, Is.True);
+            var faces = game.GetComponentsInChildren<ShapeFaceGraphic>(); Assert.That(faces.Length, Is.EqualTo(2));
+            foreach (var face in faces) { Assert.That(face.canvasRenderer, Is.Not.Null); Assert.That(face.rectTransform.rect.width, Is.GreaterThan(20)); }
+            var hash = game.Interaction.Attempt.CurrentStateHash;
+            Assert.That(game.Interaction.Execute(PuzzleCommand.Drop), Is.Null);
+            Assert.That(game.Interaction.Attempt.CurrentStateHash, Is.EqualTo(hash));
+            yield return ClickButton("Closetarget"); Assert.That(game.Interaction.CanPlay, Is.True);
+        }
         [UnityTest] public IEnumerator AllFortyLevelsCanBeDeliveredThroughActualMouseAndButtons()
         {
             var events = new HashSet<PuzzleEventKind>(); int commands = 0;

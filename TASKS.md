@@ -1,6 +1,6 @@
 # CASCADE — TASKS
 
-P00–P11: COMPLETE. Unity AI/MCP: работает. P12–P20: NOT_STARTED.
+P00–P12: COMPLETE. Unity AI/MCP: работает. P13–P20: NOT_STARTED.
 Python reference проверен отдельно; это не реализация игровых систем Unity.
 
 Автор прямо разрешил выполнять все этапы подряд, отменив остановки между
@@ -20,7 +20,7 @@ P01–P20. После каждого этапа фиксировать резу�
 - [x] P09 — 40 данных и три языка
 - [x] P10 — Редактор уровней
 - [x] P11 — Серый playable и ввод
-- [ ] P12 — Визуальный эталон
+- [x] P12 — Визуальный эталон
 - [ ] P13 — Event player и juice
 - [ ] P14 — Обучение и экраны
 - [ ] P15 — Локализация и glyph QA
@@ -29,6 +29,29 @@ P01–P20. После каждого этапа фиксировать резу�
 - [ ] P18 — Интеграционная приёмка
 - [ ] P19 — Реклама и IAP позже
 - [ ] P20 — Расширять задачами
+
+## P12 — визуальный эталон, 5 октября 2026
+
+- Создана оригинальная небесная мастерская: шесть beveled meshes, буквенная
+  плитка, тонкие соразмерные платформы, золотистый receiver, общие URP-материалы,
+  контактные тени, новый рисованный фон и декоративное ветряное колесо.
+- ShapeMania использована только как просмотренный reference; ассеты не
+  копировались. Balsamiq Sans взят независимо из Google Fonts, SIL OFL сохранён.
+  Provenance и точный prompt: Docs/P12_ASSET_PROVENANCE.md и P12_BACKGROUND_PROMPT.txt.
+- Реальные Unity проверки: EditMode **305/305**, финальный PlayMode **14/14**.
+  Все 40 primary по-прежнему проходят через Input System/UI. Проверены freeze
+  ambient при Reduced Motion/pause, неизменность state hash, magnifier и ввод.
+- Через MCP проверены десять runtime captures: 390×844, 320×693, wide 1440×900,
+  Shapes/Words/Mixed8, выбранные фигура/буква, target zoom и Reduced Motion.
+  На этих кадрах controls ≥48px без пересечений, device text ≥14px.
+- Независимое Impeccable-ревью: четыре material fixes исправлены одним batch;
+  reviewer оценил все четыре как resolved, disposition ship в этом объёме.
+  Это не release-приёмка всей игры. Reports/P12 содержит XML, кадры и измерения.
+- Скомпилировано без ошибок; свежая Console пустая. 118 .meta без missing,
+  orphan или duplicate GUID. Rules/Data/package pins/IDs/цены не изменены.
+- Не проверены: физические iOS/Android, dp/pt и safe area на устройствах,
+  player build, профилирование, полный glyph QA, внешний человеческий плейтест.
+  Полноценные event-анимации/FX/audio относятся к P13; flow/onboarding к P14.
 
 ## Unity AI/MCP — исправление 5 октября 2026
 

@@ -18,6 +18,10 @@ namespace Cascade.Presentation
         [SerializeField] string initialNode = "C01";
         [SerializeField] Camera uiCamera;
         [SerializeField] TMP_FontAsset font;
+        ToyArt art;
+        ToyMachineView machine;
+        public ToyMachineView Machine => machine;
+        public bool ReducedMotion { get => machine != null && machine.ReducedMotion; set { if (machine != null) machine.ReducedMotion = value; } }
         public PuzzleInteraction Interaction { get; private set; }
         public ContentCatalog Catalog { get; private set; }
         bool forcePreciseInput;
@@ -25,7 +29,7 @@ namespace Cascade.Presentation
         public bool PreciseInputActive { get; private set; }
         public IReadOnlyList<TokenSlot> SlotViews => slots;
         public RectTransform TargetRow => targetRow;
-        RectTransform safeRoot, floorArea, receiver, tokenRow, targetRow, precise, targetZoom;
+        RectTransform safeRoot, header, actions, floorArea, receiver, tokenRow, targetRow, precise, targetZoom;
         TextMeshProUGUI levelLabel, status, focusLabel, receiverLabel;
         UnityEngine.UI.Button undo, retry, drop, hint, pause, previous, next, swapLeft, swapRight;
         readonly List<RectTransform> floorViews = new List<RectTransform>();
@@ -44,19 +48,18 @@ namespace Cascade.Presentation
         Rect safeArea;
         int screenWidth, screenHeight;
         Coroutine presentation;
-        static readonly Color Ink = new Color(.94f, .95f, .96f);
-        static readonly Color Paper = new Color(.16f, .18f, .20f);
-        static readonly Color Active = new Color(.30f, .34f, .37f);
-        static readonly Color Selected = new Color(.55f, .62f, .65f);
+        static readonly Color Ink = new Color(.16f, .28f, .29f);
+        static readonly Color Paper = new Color(1, .96f, .84f);
+        static readonly Color Selected = new Color(.95f, .73f, .29f, .3f);
 
         static string Source(string name) => Resources.Load<TextAsset>("CascadeContent/" + name)?.text
             ?? throw new InvalidOperationException("Missing CASCADE content: " + name);
         void Awake()
         {
             Catalog = ContentImporter.Import(Source("levels"), Source("localized_levels"), Source("words_en"), Source("words_ru"), Source("words_uk"));
-            if (font == null) font = Resources.Load<TMP_FontAsset>("Fonts & Materials/LiberationSans SDF");
-            if (font == null) throw new InvalidOperationException("CASCADE requires imported TMP essentials.");
+            art = ToyArt.Load(); font = art.bodyFont;
             if (uiCamera == null) uiCamera = Camera.main;
+            machine = gameObject.AddComponent<ToyMachineView>(); machine.Initialize(art, uiCamera);
             BuildScreen(); LoadNode(initialNode);
         }
         void OnEnable() { if (Interaction != null) RenderState(); }
@@ -95,7 +98,7 @@ namespace Cascade.Presentation
         public void LoadNode(string campaignNode)
         {
             var content = Catalog.GetPrimary(campaignNode); LoadLevel(content.Definition, content.Locale); node = campaignNode;
-            levelLabel.text = "CASCADE  /  " + campaignNode.Substring(1); RenderControls();
+            levelLabel.text = "Level " + int.Parse(campaignNode.Substring(1)); RenderControls();
         }
         public void LoadLevel(LevelDefinition level, string locale = "en")
         {
@@ -103,7 +106,7 @@ namespace Cascade.Presentation
             Interaction = new PuzzleInteraction(new AttemptService(level, locale)); Interaction.Committed += OnCommitted;
             Interaction.SetSuspended(applicationPaused || !applicationFocused);
             userPaused = zoomOpen = false; targetZoom.gameObject.SetActive(false);
-            node = level.CampaignNodeId; levelLabel.text = "CASCADE  /  " + node;
+            node = level.CampaignNodeId; levelLabel.text = "Level " + node.TrimStart('C', '0');
             RebuildLevelViews(level); RenderState();
         }
         void OnCommitted(TransitionResult result)
@@ -167,7 +170,11 @@ namespace Cascade.Presentation
             hintCancellation = new CancellationTokenSource(); var token = hintCancellation.Token;
             hintTask = Task.Run(() => AttemptService.CalculateHint(request, cancellationToken: token)); status.text = "Looking for one step…"; RenderControls();
         }
-        public void RefreshLayout() { Canvas.ForceUpdateCanvases(); RenderControls(); }
+        public void RefreshLayout() {
+            Canvas.ForceUpdateCanvases(); ApplySafeArea();
+            UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(safeRoot); Canvas.ForceUpdateCanvases();
+            machine?.Sync(); RenderControls();
+        }
         void CancelHint()
         {
             hintCancellation?.Cancel(); hintCancellation?.Dispose(); hintCancellation = null;
@@ -189,41 +196,56 @@ namespace Cascade.Presentation
             zoomOpen = !zoomOpen; Interaction.SetPaused(userPaused || zoomOpen); targetZoom.gameObject.SetActive(zoomOpen);
             if (zoomOpen) {
                 foreach (Transform child in targetZoom) if (child.name.StartsWith("ZoomToken")) Destroy(child.gameObject);
-                var row = Rect("ZoomTokens", targetZoom, new Vector2(.05f, .40f), new Vector2(.95f, .60f)); row.name = "ZoomTokenRow";
-                AddSymbolLabels(row, Interaction.Attempt.Level.TargetSymbolIds, 34, new List<TextMeshProUGUI>());
+                var row = Rect("ZoomTokens", targetZoom, new Vector2(.08f, .35f), new Vector2(.92f, .67f)); row.name = "ZoomTokenRow";
+                var symbols = Interaction.Attempt.Level.TargetSymbolIds;
+                for (int i = 0; i < symbols.Count; i++) {
+                    int column = i % 4, line = i / 4;
+                    var cell = Rect("ZoomToken" + i, row, new Vector2(column * .25f, 1 - (line + 1) * .5f), new Vector2((column + 1) * .25f, 1 - line * .5f));
+                    if (symbols[i].Kind == SymbolKind.Shape) {
+                        var face = Rect("ShapeFace", cell, new Vector2(.12f, .30f), new Vector2(.88f, .90f)).gameObject.AddComponent<ShapeFaceGraphic>();
+                        face.SetShape(art.SymbolMesh(symbols[i]), art.SymbolMaterial(symbols[i]).GetColor("_BaseColor"));
+                        Text("ShapeName", cell, new Vector2(0, .15f), new Vector2(1, .32f), 12, DisplaySymbol(symbols[i]));
+                    } else {
+                        var label = Text("ZoomSymbol", cell, new Vector2(.06f, .15f), new Vector2(.94f, .83f), 34, symbols[i].Value); label.font = art.titleFont;
+                    }
+                    Text("Position", cell, new Vector2(0, 0), new Vector2(1, .18f), 13, (i + 1).ToString());
+                }
             }
             RenderControls();
         }
-        static string DisplaySymbol(SymbolId symbol) => symbol.Kind == SymbolKind.Shape ? "[" + symbol.Value + "]" : symbol.Value;
+        string DisplaySymbol(SymbolId symbol) => symbol.Kind == SymbolKind.Shape ? new[] { "triangle", "circle", "square", "diamond", "star", "hexagon" }[art.ShapeIndex(symbol)] : symbol.Value;
+        static string FaceText(SymbolId symbol) => symbol.Kind == SymbolKind.Glyph ? symbol.Value : "";
         static string CommandText(PuzzleCommand command) => command.Kind == CommandKind.EarlyDrop ? "Drop the row" : "swap slots " + (command.Edge + 1) + " & " + (command.Edge + 2);
         void BuildScreen()
         {
             var canvasRect = Rect("GameCanvas", transform, Vector2.zero, Vector2.one);
             var canvas = canvasRect.gameObject.AddComponent<Canvas>(); canvas.renderMode = RenderMode.ScreenSpaceCamera;
-            canvas.worldCamera = uiCamera; canvas.planeDistance = 1;
+            canvas.worldCamera = uiCamera; canvas.planeDistance = 5;
             var scaler = canvasRect.gameObject.AddComponent<UnityEngine.UI.CanvasScaler>();
             scaler.uiScaleMode = UnityEngine.UI.CanvasScaler.ScaleMode.ScaleWithScreenSize; scaler.referenceResolution = new Vector2(390, 844); scaler.matchWidthOrHeight = 1;
             canvasRect.gameObject.AddComponent<UnityEngine.UI.GraphicRaycaster>();
-            Background(canvasRect, Paper, false); safeRoot = Rect("SafeArea", canvasRect, Vector2.zero, Vector2.one); ApplySafeArea();
-            var header = Rect("Header", safeRoot, new Vector2(.05f, .88f), new Vector2(.95f, .99f));
-            levelLabel = Text("Level", header, new Vector2(0, .48f), new Vector2(.7f, 1), 21, "CASCADE"); levelLabel.alignment = TextAlignmentOptions.Left;
-            pause = Button("Pause", header, new Vector2(.75f, .48f), Vector2.one, TogglePause);
-            previous = Button("Previous", header, Vector2.zero, new Vector2(.28f, .45f), () => ChangeNode(-1));
-            Text("Prototype", header, new Vector2(.29f, 0), new Vector2(.71f, .45f), 12, "PLAYABLE LAB");
-            next = Button("Next", header, new Vector2(.72f, 0), new Vector2(1, .45f), () => ChangeNode(1));
-            status = Text("Feedback", safeRoot, new Vector2(.055f, .79f), new Vector2(.945f, .87f), 15, "");
+            safeRoot = Rect("SafeArea", canvasRect, Vector2.zero, Vector2.one); ApplySafeArea();
+            header = Rect("Header", safeRoot, new Vector2(.05f, 1), new Vector2(.95f, 1));
+            levelLabel = Text("Level", header, new Vector2(0, 56f/104), new Vector2(.7f, 1), 28, "CASCADE"); levelLabel.alignment = TextAlignmentOptions.Left; levelLabel.font = art.titleFont;
+            pause = Button("Pause", header, new Vector2(.75f, 56f/104), Vector2.one, TogglePause);
+            previous = Button("Previous", header, Vector2.zero, new Vector2(.28f, 48f/104), () => ChangeNode(-1));
+            Button("Motion", header, new Vector2(.32f, 0), new Vector2(.68f, 48f/104), () => {
+                ReducedMotion = !ReducedMotion; header.Find("Motion/Label").GetComponent<TextMeshProUGUI>().text = ReducedMotion ? "Motion: low" : "Motion: full";
+            });
+            next = Button("Next", header, new Vector2(.72f, 0), new Vector2(1, 48f/104), () => ChangeNode(1));
+            status = Text("Feedback", safeRoot, new Vector2(.08f, .79f), new Vector2(.92f, .86f), 18, "");
             floorArea = Rect("Floors", safeRoot, new Vector2(.045f, .37f), new Vector2(.955f, .78f));
-            receiver = Rect("Receiver", safeRoot, new Vector2(.05f, .235f), new Vector2(.95f, .35f)); Background(receiver, new Color(.24f, .27f, .29f), true);
+            receiver = Rect("Receiver", safeRoot, new Vector2(.5f, .245f), new Vector2(.5f, .365f)); receiver.sizeDelta = new Vector2(350, 0); Background(receiver, Color.clear, true);
             receiver.gameObject.AddComponent<UnityEngine.UI.Button>().onClick.AddListener(ToggleTargetZoom);
-            receiverLabel = Text("ReceiverLabel", receiver, new Vector2(.02f, .65f), new Vector2(.98f, .96f), 13, "EXACT RECEIVER · tap to enlarge");
-            targetRow = Rect("TargetRow", receiver, new Vector2(.02f, .08f), new Vector2(.98f, .62f));
+            receiverLabel = Text("ReceiverLabel", receiver, new Vector2(.02f, .76f), new Vector2(.98f, 1.05f), 16, "Deliver this order"); receiverLabel.font = art.titleFont;
+            targetRow = Rect("TargetRow", receiver, new Vector2(.07f, .20f), new Vector2(.93f, .70f));
             precise = Rect("PreciseInput", safeRoot, new Vector2(.05f, .09f), new Vector2(.95f, .225f));
-            Button("‹", precise, new Vector2(0, .5f), new Vector2(.2f, 1), () => MoveFocus(-1));
-            focusLabel = Text("Focus", precise, new Vector2(.22f, .5f), new Vector2(.78f, 1), 20, "Choose a symbol");
-            Button("›", precise, new Vector2(.8f, .5f), Vector2.one, () => MoveFocus(1));
-            swapLeft = Button("Swap left", precise, Vector2.zero, new Vector2(.48f, .45f), () => ReportInput(Interaction.SwapFocused(-1)));
-            swapRight = Button("Swap right", precise, new Vector2(.52f, 0), new Vector2(1, .45f), () => ReportInput(Interaction.SwapFocused(1)));
-            var actions = Rect("Actions", safeRoot, new Vector2(.05f, .012f), new Vector2(.95f, .078f));
+            DirectionButton("Focus previous", precise, new Vector2(0, 56f/104), new Vector2(.2f, 1), false, () => MoveFocus(-1));
+            focusLabel = Text("Focus", precise, new Vector2(.22f, 56f/104), new Vector2(.78f, 1), 20, "Choose a symbol");
+            DirectionButton("Focus next", precise, new Vector2(.8f, 56f/104), Vector2.one, true, () => MoveFocus(1));
+            swapLeft = Button("Swap left", precise, Vector2.zero, new Vector2(.48f, 48f/104), () => ReportInput(Interaction.SwapFocused(-1)));
+            swapRight = Button("Swap right", precise, new Vector2(.52f, 0), new Vector2(1, 48f/104), () => ReportInput(Interaction.SwapFocused(1)));
+            actions = Rect("Actions", safeRoot, new Vector2(.05f, .012f), new Vector2(.95f, .078f));
             undo = Button("Undo", actions, Vector2.zero, new Vector2(.30f, 1), Undo);
             hint = Button("Hint", actions, new Vector2(.35f, 0), new Vector2(.65f, 1), () => {
                 if (offeredHint?.Result.Status == HintStatus.Step && Interaction.Attempt.IsCurrent(offeredHint))
@@ -231,6 +253,7 @@ namespace Cascade.Presentation
                 else RequestHint();
             });
             drop = Button("Drop", actions, new Vector2(.70f, 0), Vector2.one, () => ReportInput(Interaction.Execute(PuzzleCommand.Drop)));
+            drop.GetComponent<UnityEngine.UI.Image>().color = new Color(.98f, .74f, .32f);
             retry = Button("Retry", safeRoot, new Vector2(.05f, .09f), new Vector2(.43f, .155f), Retry);
             targetZoom = Rect("TargetZoom", safeRoot, Vector2.zero, Vector2.one); Background(targetZoom, Paper, true);
             Text("ZoomTitle", targetZoom, new Vector2(.05f, .7f), new Vector2(.95f, .8f), 22, "Deliver this exact order");
@@ -251,28 +274,43 @@ namespace Cascade.Presentation
             floorViews.Clear(); floorLabels.Clear(); deviceLabels.Clear(); slots.Clear(); slotImages.Clear(); tokenLabels.Clear(); targetLabels.Clear();
             int count = level.Floors.Count;
             for (int i = 0; i < count; i++) {
-                float top = 1f - (float)i / count, bottom = 1f - (float)(i + 1) / count;
-                var card = Rect("Floor" + (i + 1), floorArea, new Vector2(0, bottom + .012f), new Vector2(1, top - .012f));
-                Background(card, Active, false); floorViews.Add(card);
-                var title = Text("Durability", card, new Vector2(.025f, .78f), new Vector2(.975f, .99f), 14, ""); title.alignment = TextAlignmentOptions.Left; floorLabels.Add(title);
-                var devices = Text("Devices", card, new Vector2(.025f, .015f), new Vector2(.975f, .32f), 11, ""); devices.alignment = TextAlignmentOptions.Left; deviceLabels.Add(devices);
+                float y = count == 1 ? .56f : .87f - i * .74f / (count - 1);
+                var card = Rect("Floor" + (i + 1), floorArea, new Vector2(.5f, y), new Vector2(.5f, y));
+                card.sizeDelta = new Vector2(Mathf.Min(342, level.InitialSymbolIds.Count * 55 + 24), count == 4 ? 88 : 102); floorViews.Add(card);
+                var title = Text("Durability", card, new Vector2(.02f, -.01f), new Vector2(.25f, .24f), 15, ""); title.alignment = TextAlignmentOptions.Left; title.font = art.titleFont; floorLabels.Add(title);
+                var devices = Text("Devices", card, new Vector2(.25f, -.20f), new Vector2(.98f, .22f), 16, ""); devices.alignment = TextAlignmentOptions.TopRight; deviceLabels.Add(devices);
+                AddContactGlyph(card, level.Floors[i].Bomb, level.InitialSymbolIds.Count);
+                AddContactGlyph(card, level.Floors[i].Key, level.InitialSymbolIds.Count);
+                AddContactGlyph(card, level.Floors[i].Repair, level.InitialSymbolIds.Count);
+                AddContactGlyph(card, level.Floors[i].OptionalStamp, level.InitialSymbolIds.Count);
             }
-            tokenRow = Rect("PersistentRow", floorViews[0], new Vector2(.02f, .34f), new Vector2(.98f, .76f));
+            tokenRow = Rect("PersistentRow", floorViews[0], new Vector2(.045f, .44f), new Vector2(.955f, .98f));
             var layout = tokenRow.gameObject.AddComponent<UnityEngine.UI.HorizontalLayoutGroup>();
             layout.spacing = 3; layout.childControlWidth = layout.childControlHeight = true; layout.childForceExpandWidth = layout.childForceExpandHeight = true;
             for (int i = 0; i < level.InitialSymbolIds.Count; i++) {
                 var cell = Rect("Slot" + (i + 1), tokenRow, Vector2.zero, Vector2.one);
-                var image = Background(cell, new Color(.42f, .46f, .49f), true); slotImages.Add(image);
+                var image = Background(cell, Color.clear, true); image.sprite = art.panel; image.type = UnityEngine.UI.Image.Type.Sliced; slotImages.Add(image);
                 var slot = cell.gameObject.AddComponent<TokenSlot>(); slot.Game = this; slot.Slot = i; slots.Add(slot);
-                tokenLabels.Add(Text("Symbol", cell, Vector2.zero, Vector2.one, 23, ""));
+                var glyph = Text("Symbol", cell, Vector2.zero, Vector2.one, 28, ""); glyph.font = art.titleFont; tokenLabels.Add(glyph);
             }
-            AddSymbolLabels(targetRow, level.TargetSymbolIds, 23, targetLabels); Canvas.ForceUpdateCanvases();
+            AddSymbolLabels(targetRow, level.TargetSymbolIds, 24, targetLabels); Canvas.ForceUpdateCanvases();
+            machine.Bind(Interaction, floorViews, slots, targetLabels, receiver);
+        }
+        void AddContactGlyph(RectTransform card, ContactDefinition contact, int count)
+        {
+            if (contact == null || contact.RequiredSymbol.Kind != SymbolKind.Glyph) return;
+            float x = .045f + .91f * (contact.Slot + .5f) / count;
+            var label = Text("DeviceGlyph", card, new Vector2(x - .039f, .188f), new Vector2(x + .039f, .432f), 16, contact.RequiredSymbol.Value);
+            label.font = art.titleFont;
         }
         void AddSymbolLabels(RectTransform parent, IEnumerable<SymbolId> symbols, int size, List<TextMeshProUGUI> labels)
         {
             var layout = parent.GetComponent<UnityEngine.UI.HorizontalLayoutGroup>() ?? parent.gameObject.AddComponent<UnityEngine.UI.HorizontalLayoutGroup>();
             layout.spacing = 3; layout.childControlWidth = layout.childControlHeight = true; layout.childForceExpandWidth = layout.childForceExpandHeight = true;
-            foreach (var symbol in symbols) labels.Add(Text("TargetSymbol", parent, Vector2.zero, Vector2.one, size, DisplaySymbol(symbol)));
+            foreach (var symbol in symbols) {
+                var label = Text("TargetSymbol", parent, Vector2.zero, Vector2.one, size, FaceText(symbol)); label.font = art.titleFont;
+                var sizing = label.gameObject.AddComponent<UnityEngine.UI.LayoutElement>(); sizing.minWidth = sizing.preferredWidth = 0; sizing.flexibleWidth = 1; labels.Add(label);
+            }
         }
         void ApplySafeArea()
         {
@@ -280,6 +318,37 @@ namespace Cascade.Presentation
             if (safeRoot == null || screenWidth == 0 || screenHeight == 0) return;
             safeRoot.anchorMin = new Vector2(safeArea.xMin / screenWidth, safeArea.yMin / screenHeight);
             safeRoot.anchorMax = new Vector2(safeArea.xMax / screenWidth, safeArea.yMax / screenHeight);
+            safeRoot.offsetMin = safeRoot.offsetMax = Vector2.zero;
+            var canvasRect = (RectTransform)safeRoot.parent;
+            float available = canvasRect.rect.width * (safeRoot.anchorMax.x - safeRoot.anchorMin.x);
+            float inset = Mathf.Max(0, (available - 430) * .5f);
+            safeRoot.offsetMin = new Vector2(inset, 0); safeRoot.offsetMax = new Vector2(-inset, 0);
+            if (header != null && actions != null) {
+                float scale = safeRoot.GetComponentInParent<Canvas>().scaleFactor;
+                float unit = 1 / Mathf.Min(1, scale); // Preserve 48-pixel hit regions in the smallest reference capture.
+                FixedBand(header, safeRoot.rect.height - 112 * unit, 104 * unit);
+                FixedBand(status.rectTransform, safeRoot.rect.height - 168 * unit, 48 * unit);
+                FixedBand(actions, 8 * unit, 48 * unit); FixedBand(precise, 64 * unit, 104 * unit);
+                float receiverHeight = 100;
+                FixedBand(receiver, 184 * unit, receiverHeight);
+                floorArea.anchorMin = new Vector2(.045f, 0); floorArea.anchorMax = new Vector2(.955f, 0);
+                floorArea.offsetMin = new Vector2(0, 184 * unit + receiverHeight + 32 * unit);
+                floorArea.offsetMax = new Vector2(0, safeRoot.rect.height - 196 * unit);
+                foreach (var label in deviceLabels) label.fontSize = 14 * unit;
+                foreach (var floor in floorViews) foreach (Transform child in floor)
+                    if (child.name == "DeviceGlyph") child.GetComponent<TextMeshProUGUI>().fontSize = 14 * unit;
+            }
+            if (floorViews.Count != 0 && Interaction != null) {
+                float boardWidth = Mathf.Min(safeRoot.rect.width * .91f, Interaction.Attempt.Current.Row.Count * 55 + 24);
+                foreach (var floor in floorViews) floor.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, boardWidth);
+                receiver.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Mathf.Min(safeRoot.rect.width * .9f, Interaction.Attempt.Current.Row.Count * 55 + 40));
+            }
+        }
+        static void FixedBand(RectTransform rect, float bottom, float height)
+        {
+            rect.anchorMin = new Vector2(rect.anchorMin.x, 0); rect.anchorMax = new Vector2(rect.anchorMax.x, 0);
+            rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, bottom + height * .5f);
+            rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
         }
         void RenderState()
         {
@@ -287,16 +356,16 @@ namespace Cascade.Presentation
             for (int i = 0; i < level.Floors.Count; i++) {
                 var floor = level.Floors[i]; bool active = state.Status == PuzzleStatus.Playing && i == state.ActiveFloor;
                 bool past = i < state.ActiveFloor || state.Status != PuzzleStatus.Playing;
-                floorViews[i].GetComponent<UnityEngine.UI.Image>().color = active ? Active : past ? new Color(.20f, .22f, .24f) : new Color(.24f, .27f, .30f);
-                floorLabels[i].text = "FLOOR " + (i + 1) + "  ·  " + (past ? "BROKEN" : "Durability " + (active ? state.Durability : floor.BaseDurability));
-                deviceLabels[i].text = DescribeFloor(floor, active ? state : null);
+                floorLabels[i].text = past ? "" : (active ? state.Durability : floor.BaseDurability) + " HP";
+                deviceLabels[i].text = past ? "" : DescribeFloor(floor, active ? state : null);
+                foreach (Transform child in floorViews[i]) if (child.name == "DeviceGlyph") child.gameObject.SetActive(!past);
             }
             tokenRow.SetParent(state.Status == PuzzleStatus.Playing ? floorViews[state.ActiveFloor] : receiver, false);
-            tokenRow.anchorMin = new Vector2(.02f, state.Status == PuzzleStatus.Playing ? .34f : .08f);
-            tokenRow.anchorMax = new Vector2(.98f, state.Status == PuzzleStatus.Playing ? .76f : .62f); tokenRow.offsetMin = tokenRow.offsetMax = Vector2.zero;
+            tokenRow.anchorMin = new Vector2(.045f, state.Status == PuzzleStatus.Playing ? .44f : .20f);
+            tokenRow.anchorMax = new Vector2(.955f, state.Status == PuzzleStatus.Playing ? .98f : .70f); tokenRow.offsetMin = tokenRow.offsetMax = Vector2.zero;
             tokenRow.gameObject.SetActive(state.Status == PuzzleStatus.Playing);
-            for (int i = 0; i < tokenLabels.Count; i++) tokenLabels[i].text = DisplaySymbol(state.Row[i]);
-            receiverLabel.text = state.Status == PuzzleStatus.Won ? "DELIVERED · " + attempt.RouteLength + " actions" : "EXACT RECEIVER · tap to enlarge";
+            for (int i = 0; i < tokenLabels.Count; i++) tokenLabels[i].text = FaceText(state.Row[i]);
+            receiverLabel.text = state.Status == PuzzleStatus.Won ? "Delivered!  ·  " + attempt.RouteLength + " actions" : "Deliver this order";
             status.text = userPaused ? "Paused. Devices wait for your next command." : state.Status == PuzzleStatus.Won ? "Exact order delivered." : state.Status == PuzzleStatus.Lost
                 ? "Delivered " + state.Row.Where((symbol, i) => symbol == level.TargetSymbolIds[i]).Count() + " of " + state.Row.Count + " in place. Undo or retry."
                 : state.Row.SequenceEqual(level.TargetSymbolIds)
@@ -306,27 +375,33 @@ namespace Cascade.Presentation
                 receiverLabel.text = "DELIVERED ROW · target remains above";
                 tokenRow.gameObject.SetActive(true); tokenRow.anchorMin = new Vector2(.02f, -.36f); tokenRow.anchorMax = new Vector2(.98f, .06f);
             }
-            RenderFocus(); RenderControls();
+            RenderFocus(); RefreshLayout();
         }
         string DescribeFloor(FloorDefinition floor, PuzzleState state)
         {
             var parts = new List<string>();
-            if (floor.EntryTransform != EntryTransform.None) parts.Add("Entry: " + floor.EntryTransform);
+            if (floor.EntryTransform != EntryTransform.None) parts.Add(floor.EntryTransform == EntryTransform.MirrorNext ? "Mirror on entry" : floor.EntryTransform == EntryTransform.ShiftLeftOne ? "Shift left on entry" : "Shift right on entry");
             var closed = Enumerable.Range(0, floor.OpenEdges.Count).Where(i => state == null ? !floor.OpenEdges[i] : !Interaction.Attempt.Resolver.IsEdgeOpen(state, i)).ToArray();
-            parts.Add(closed.Length == 0 ? "All edges open" : "Locked " + string.Join(", ", closed.Select(i => (i + 1).ToString())));
+            if (closed.Length != 0) parts.Add("Locked " + string.Join(", ", closed.Select(i => (i + 1).ToString())));
             if (floor.FragileEdges.Count != 0) parts.Add("Fragile " + string.Join(", ", floor.FragileEdges.Select(i => (i + 1).ToString())));
             if (floor.LinkedPair.HasValue) parts.Add("Linked " + (floor.LinkedPair.Value.FirstEdge + 1) + " + " + (floor.LinkedPair.Value.SecondEdge + 1));
-            if (floor.Bomb != null) parts.Add("Bomb " + (state == null ? floor.Bomb.Ticks.ToString() : state.BombPhase == BombPhase.Armed ? state.BombTicks.ToString() : state.BombPhase.ToString()) + " / slot " + (floor.Bomb.Slot + 1) + DisplaySymbol(floor.Bomb.RequiredSymbol));
-            if (floor.Key != null) parts.Add("Key slot " + (floor.Key.Slot + 1) + DisplaySymbol(floor.Key.RequiredSymbol) + " → edge " + (floor.Key.EdgeToOpen + 1));
-            if (floor.Repair != null) parts.Add("Repair slot " + (floor.Repair.Slot + 1) + DisplaySymbol(floor.Repair.RequiredSymbol) + " +" + floor.Repair.Amount);
+            if (floor.Bomb != null) parts.Add("Bomb " + (state == null ? floor.Bomb.Ticks.ToString() : state.BombPhase == BombPhase.Armed ? state.BombTicks.ToString() : state.BombPhase.ToString()));
+            if (floor.Key != null) parts.Add(state?.KeyUsed == true ? "Unlocked" : "Key → " + (floor.Key.EdgeToOpen + 1));
+            if (floor.Repair != null) parts.Add(state?.RepairUsed == true ? "Repaired" : "Repair +" + floor.Repair.Amount);
             if (floor.OneUseBridgeEdge.HasValue) parts.Add("Bridge " + (floor.OneUseBridgeEdge.Value + 1) + (state?.BridgeUsed == true ? " used" : " once"));
-            if (floor.OptionalStamp != null) parts.Add("Stamp slot " + (floor.OptionalStamp.Slot + 1) + DisplaySymbol(floor.OptionalStamp.RequiredSymbol));
+            if (floor.OptionalStamp != null) parts.Add("Stamp");
             return string.Join(" · ", parts);
         }
         void RenderFocus()
         {
             if (Interaction == null) return;
-            for (int i = 0; i < slotImages.Count; i++) slotImages[i].color = Interaction.SelectedSlot == i ? Selected : new Color(.42f, .46f, .49f);
+            for (int i = 0; i < slotImages.Count; i++) slotImages[i].color = Color.clear;
+            for (int i = 0; i < tokenLabels.Count; i++) {
+                var face = tokenLabels[i].rectTransform; float y = ToyMachineView.TokenFaceY(Interaction.SelectedSlot == i);
+                face.anchorMin = new Vector2(0, y); face.anchorMax = new Vector2(1, y);
+                face.sizeDelta = new Vector2(0, ((RectTransform)slots[i].transform).rect.height); face.anchoredPosition = Vector2.zero;
+            }
+            machine?.Sync();
             int? selected = Interaction.SelectedSlot;
             focusLabel.text = selected.HasValue ? "Slot " + (selected.Value + 1) + "  " + DisplaySymbol(Interaction.Attempt.Current.Row[selected.Value]) : "Choose a symbol";
             swapLeft.interactable = Interaction.CanPlay && selected.HasValue && selected > 0;
@@ -375,9 +450,16 @@ namespace Cascade.Presentation
         }
         UnityEngine.UI.Button Button(string label, Transform parent, Vector2 min, Vector2 max, Action clicked)
         {
-            var rect = Rect(label.Replace(" ", ""), parent, min, max); Background(rect, new Color(.34f, .38f, .41f), true);
+            var rect = Rect(label.Replace(" ", ""), parent, min, max); var image = Background(rect, Paper, true); image.sprite = art.panel; image.type = UnityEngine.UI.Image.Type.Sliced;
             var button = rect.gameObject.AddComponent<UnityEngine.UI.Button>(); button.onClick.AddListener(() => clicked());
-            var text = Text("Label", rect, Vector2.zero, Vector2.one, 16, label); text.margin = new Vector4(3, 2, 3, 2); return button;
+            var colors = button.colors; colors.highlightedColor = new Color(1, .94f, .78f); colors.pressedColor = new Color(.82f, .88f, .81f); colors.disabledColor = new Color(.88f, .90f, .84f, .7f); button.colors = colors;
+            var text = Text("Label", rect, Vector2.zero, Vector2.one, 18, label); text.font = art.titleFont; text.margin = new Vector4(3, 2, 3, 2); return button;
+        }
+        void DirectionButton(string name, Transform parent, Vector2 min, Vector2 max, bool right, Action clicked)
+        {
+            var button = Button(name, parent, min, max, clicked); button.GetComponentInChildren<TextMeshProUGUI>().text = "";
+            var icon = Rect("Chevron", button.transform, new Vector2(.28f, .20f), new Vector2(.72f, .80f)).gameObject.AddComponent<ChevronGraphic>();
+            icon.PointsRight = right; icon.color = Ink; icon.raycastTarget = false;
         }
     }
 }

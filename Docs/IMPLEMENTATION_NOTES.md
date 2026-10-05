@@ -99,3 +99,17 @@ Camera/Canvas/EventSystem и стандартный InputSystemUIInputModule. Sa
 gate: один pointer, один accepted command, без очереди. Gray presentation только
 закрывает/открывает gate; commit выполняется до visual callback. Target не меняется
 из-за жестов. Временные [A] placeholders различают shapes и glyphs до P12.
+
+## P12 — original toy machine
+
+Original runtime URP meshes are anchored to uGUI layout; presentation reads
+immutable snapshots and never mutates the rules. Independent Balsamiq Sans/OFL
+replaces prototype labels. Materials, two geometric/raster sources and font
+atlases are stored under CascadeArt with Unity-generated .meta files. The
+original external ShapeMania project remains read-only. No package, rule, price,
+schema or persisted gameplay ID changes.
+
+ScreenSpaceCamera keeps glyphs and meshes in one orthographic capture; a capped
+430-unit column prevents giant Editor platforms. Small reference captures keep
+48px controls and 14px device text. Physical dp/pt validation remains P18.
+Motion is view-only; full transition playback is P13.

@@ -1,0 +1,47 @@
+{
+  "c01-phone": {
+    "minimum_control_dimension": 48.00002670288086,
+    "overlap": [],
+    "device_text_pixels": 0.0
+  },
+  "selected-phone": {
+    "minimum_control_dimension": 48.00002670288086,
+    "overlap": [],
+    "device_text_pixels": 0.0
+  },
+  "c37-small": {
+    "minimum_control_dimension": 47.99993896484375,
+    "overlap": [],
+    "device_text_pixels": 14.0
+  },
+  "selected-letter": {
+    "minimum_control_dimension": 47.99993896484375,
+    "overlap": [],
+    "device_text_pixels": 0.0
+  },
+  "mixed8-small": {
+    "minimum_control_dimension": 47.99993896484375,
+    "overlap": [],
+    "device_text_pixels": 0.0
+  },
+  "words-devices": {
+    "minimum_control_dimension": 48.00002670288086,
+    "overlap": [],
+    "device_text_pixels": 14.0
+  },
+  "c37-phone": {
+    "minimum_control_dimension": 48.00002670288086,
+    "overlap": [],
+    "device_text_pixels": 14.0
+  },
+  "c01-wide": {
+    "minimum_control_dimension": 51.184814453125,
+    "overlap": [],
+    "device_text_pixels": 0.0
+  },
+  "mixed8-reduced": {
+    "minimum_control_dimension": 47.999977111816406,
+    "overlap": [],
+    "device_text_pixels": 0.0
+  }
+}

@@ -1,0 +1,479 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-05T05:12:30.078885+00:00",
+  "title": "Design System: CASCADE",
+  "extensions": {
+    "colorMeta": {
+      "ui-ink": {
+        "role": "neutral",
+        "displayName": "UI Ink",
+        "canonical": "rgb(16% 28% 29%)",
+        "tonalRamp": [
+          "oklch(0.150 0.03663 202.53)",
+          "oklch(0.264 0.03663 202.53)",
+          "oklch(0.379 0.03663 202.53)",
+          "oklch(0.493 0.03663 202.53)",
+          "oklch(0.607 0.03663 202.53)",
+          "oklch(0.721 0.03663 202.53)",
+          "oklch(0.836 0.03663 202.53)",
+          "oklch(0.950 0.03663 202.53)"
+        ]
+      },
+      "ui-paper": {
+        "role": "neutral",
+        "displayName": "UI Paper",
+        "canonical": "rgb(100% 96% 84%)",
+        "tonalRamp": [
+          "oklch(0.150 0.04135 91.72)",
+          "oklch(0.264 0.04135 91.72)",
+          "oklch(0.379 0.04135 91.72)",
+          "oklch(0.493 0.04135 91.72)",
+          "oklch(0.607 0.04135 91.72)",
+          "oklch(0.721 0.04135 91.72)",
+          "oklch(0.836 0.04135 91.72)",
+          "oklch(0.950 0.04135 91.72)"
+        ]
+      },
+      "drop-gold": {
+        "role": "primary",
+        "displayName": "Drop Gold",
+        "canonical": "rgb(98% 74% 32%)",
+        "tonalRamp": [
+          "oklch(0.150 0.14040 78.55)",
+          "oklch(0.264 0.14040 78.55)",
+          "oklch(0.379 0.14040 78.55)",
+          "oklch(0.493 0.14040 78.55)",
+          "oklch(0.607 0.14040 78.55)",
+          "oklch(0.721 0.14040 78.55)",
+          "oklch(0.836 0.14040 78.55)",
+          "oklch(0.950 0.14040 78.55)"
+        ]
+      },
+      "hover-tint": {
+        "role": "neutral",
+        "displayName": "Hover Tint",
+        "canonical": "rgb(100% 94% 78%)",
+        "tonalRamp": [
+          "oklch(0.150 0.05536 89.91)",
+          "oklch(0.264 0.05536 89.91)",
+          "oklch(0.379 0.05536 89.91)",
+          "oklch(0.493 0.05536 89.91)",
+          "oklch(0.607 0.05536 89.91)",
+          "oklch(0.721 0.05536 89.91)",
+          "oklch(0.836 0.05536 89.91)",
+          "oklch(0.950 0.05536 89.91)"
+        ]
+      },
+      "pressed-tint": {
+        "role": "neutral",
+        "displayName": "Pressed Tint",
+        "canonical": "rgb(82% 88% 81%)",
+        "tonalRamp": [
+          "oklch(0.150 0.02911 141.21)",
+          "oklch(0.264 0.02911 141.21)",
+          "oklch(0.379 0.02911 141.21)",
+          "oklch(0.493 0.02911 141.21)",
+          "oklch(0.607 0.02911 141.21)",
+          "oklch(0.721 0.02911 141.21)",
+          "oklch(0.836 0.02911 141.21)",
+          "oklch(0.950 0.02911 141.21)"
+        ]
+      },
+      "disabled-tint": {
+        "role": "neutral",
+        "displayName": "Disabled Tint",
+        "canonical": "rgb(88% 90% 84% / 70%)",
+        "tonalRamp": [
+          "oklch(0.150 0.02114 121.87)",
+          "oklch(0.264 0.02114 121.87)",
+          "oklch(0.379 0.02114 121.87)",
+          "oklch(0.493 0.02114 121.87)",
+          "oklch(0.607 0.02114 121.87)",
+          "oklch(0.721 0.02114 121.87)",
+          "oklch(0.836 0.02114 121.87)",
+          "oklch(0.950 0.02114 121.87)"
+        ]
+      },
+      "preview-gold": {
+        "role": "neutral",
+        "displayName": "Preview Gold",
+        "canonical": "rgb(95% 73% 29% / 30%)",
+        "tonalRamp": [
+          "oklch(0.150 0.14127 81.54)",
+          "oklch(0.264 0.14127 81.54)",
+          "oklch(0.379 0.14127 81.54)",
+          "oklch(0.493 0.14127 81.54)",
+          "oklch(0.607 0.14127 81.54)",
+          "oklch(0.721 0.14127 81.54)",
+          "oklch(0.836 0.14127 81.54)",
+          "oklch(0.950 0.14127 81.54)"
+        ]
+      },
+      "triangle-yellow": {
+        "role": "secondary",
+        "displayName": "Triangle Yellow",
+        "canonical": "#FFC856",
+        "tonalRamp": [
+          "oklch(0.150 0.14301 82.82)",
+          "oklch(0.264 0.14301 82.82)",
+          "oklch(0.379 0.14301 82.82)",
+          "oklch(0.493 0.14301 82.82)",
+          "oklch(0.607 0.14301 82.82)",
+          "oklch(0.721 0.14301 82.82)",
+          "oklch(0.836 0.14301 82.82)",
+          "oklch(0.950 0.14301 82.82)"
+        ]
+      },
+      "circle-mint": {
+        "role": "secondary",
+        "displayName": "Circle Mint",
+        "canonical": "#59CAB1",
+        "tonalRamp": [
+          "oklch(0.150 0.10974 176.42)",
+          "oklch(0.264 0.10974 176.42)",
+          "oklch(0.379 0.10974 176.42)",
+          "oklch(0.493 0.10974 176.42)",
+          "oklch(0.607 0.10974 176.42)",
+          "oklch(0.721 0.10974 176.42)",
+          "oklch(0.836 0.10974 176.42)",
+          "oklch(0.950 0.10974 176.42)"
+        ]
+      },
+      "square-coral": {
+        "role": "secondary",
+        "displayName": "Square Coral",
+        "canonical": "#EB8B7E",
+        "tonalRamp": [
+          "oklch(0.150 0.11951 28.50)",
+          "oklch(0.264 0.11951 28.50)",
+          "oklch(0.379 0.11951 28.50)",
+          "oklch(0.493 0.11951 28.50)",
+          "oklch(0.607 0.11951 28.50)",
+          "oklch(0.721 0.11951 28.50)",
+          "oklch(0.836 0.11951 28.50)",
+          "oklch(0.950 0.11951 28.50)"
+        ]
+      },
+      "diamond-lilac": {
+        "role": "secondary",
+        "displayName": "Diamond Lilac",
+        "canonical": "#B496D9",
+        "tonalRamp": [
+          "oklch(0.150 0.10026 304.52)",
+          "oklch(0.264 0.10026 304.52)",
+          "oklch(0.379 0.10026 304.52)",
+          "oklch(0.493 0.10026 304.52)",
+          "oklch(0.607 0.10026 304.52)",
+          "oklch(0.721 0.10026 304.52)",
+          "oklch(0.836 0.10026 304.52)",
+          "oklch(0.950 0.10026 304.52)"
+        ]
+      },
+      "star-sky": {
+        "role": "secondary",
+        "displayName": "Star Sky",
+        "canonical": "#64B9E1",
+        "tonalRamp": [
+          "oklch(0.150 0.10054 230.52)",
+          "oklch(0.264 0.10054 230.52)",
+          "oklch(0.379 0.10054 230.52)",
+          "oklch(0.493 0.10054 230.52)",
+          "oklch(0.607 0.10054 230.52)",
+          "oklch(0.721 0.10054 230.52)",
+          "oklch(0.836 0.10054 230.52)",
+          "oklch(0.950 0.10054 230.52)"
+        ]
+      },
+      "hexagon-apricot": {
+        "role": "secondary",
+        "displayName": "Hexagon Apricot",
+        "canonical": "#F3A45D",
+        "tonalRamp": [
+          "oklch(0.150 0.12800 61.11)",
+          "oklch(0.264 0.12800 61.11)",
+          "oklch(0.379 0.12800 61.11)",
+          "oklch(0.493 0.12800 61.11)",
+          "oklch(0.607 0.12800 61.11)",
+          "oklch(0.721 0.12800 61.11)",
+          "oklch(0.836 0.12800 61.11)",
+          "oklch(0.950 0.12800 61.11)"
+        ]
+      },
+      "tile-ivory": {
+        "role": "neutral",
+        "displayName": "Tile Ivory",
+        "canonical": "#FFF0CC",
+        "tonalRamp": [
+          "oklch(0.150 0.04953 88.08)",
+          "oklch(0.264 0.04953 88.08)",
+          "oklch(0.379 0.04953 88.08)",
+          "oklch(0.493 0.04953 88.08)",
+          "oklch(0.607 0.04953 88.08)",
+          "oklch(0.721 0.04953 88.08)",
+          "oklch(0.836 0.04953 88.08)",
+          "oklch(0.950 0.04953 88.08)"
+        ]
+      },
+      "warm-graphite": {
+        "role": "neutral",
+        "displayName": "Warm Graphite",
+        "canonical": "#354C50",
+        "tonalRamp": [
+          "oklch(0.150 0.02904 209.42)",
+          "oklch(0.264 0.02904 209.42)",
+          "oklch(0.379 0.02904 209.42)",
+          "oklch(0.493 0.02904 209.42)",
+          "oklch(0.607 0.02904 209.42)",
+          "oklch(0.721 0.02904 209.42)",
+          "oklch(0.836 0.02904 209.42)",
+          "oklch(0.950 0.02904 209.42)"
+        ]
+      },
+      "hardware-gold": {
+        "role": "primary",
+        "displayName": "Hardware Gold",
+        "canonical": "#EFB953",
+        "tonalRamp": [
+          "oklch(0.150 0.13328 80.77)",
+          "oklch(0.264 0.13328 80.77)",
+          "oklch(0.379 0.13328 80.77)",
+          "oklch(0.493 0.13328 80.77)",
+          "oklch(0.607 0.13328 80.77)",
+          "oklch(0.721 0.13328 80.77)",
+          "oklch(0.836 0.13328 80.77)",
+          "oklch(0.950 0.13328 80.77)"
+        ]
+      },
+      "receiver-ivory": {
+        "role": "neutral",
+        "displayName": "Receiver Ivory",
+        "canonical": "#FBE2A3",
+        "tonalRamp": [
+          "oklch(0.150 0.08460 88.85)",
+          "oklch(0.264 0.08460 88.85)",
+          "oklch(0.379 0.08460 88.85)",
+          "oklch(0.493 0.08460 88.85)",
+          "oklch(0.607 0.08460 88.85)",
+          "oklch(0.721 0.08460 88.85)",
+          "oklch(0.836 0.08460 88.85)",
+          "oklch(0.950 0.08460 88.85)"
+        ]
+      },
+      "platform-mint": {
+        "role": "primary",
+        "displayName": "Platform Mint",
+        "canonical": "#53AE9E",
+        "tonalRamp": [
+          "oklch(0.150 0.09067 180.44)",
+          "oklch(0.264 0.09067 180.44)",
+          "oklch(0.379 0.09067 180.44)",
+          "oklch(0.493 0.09067 180.44)",
+          "oklch(0.607 0.09067 180.44)",
+          "oklch(0.721 0.09067 180.44)",
+          "oklch(0.836 0.09067 180.44)",
+          "oklch(0.950 0.09067 180.44)"
+        ]
+      },
+      "device-coral": {
+        "role": "secondary",
+        "displayName": "Device Coral",
+        "canonical": "#E38370",
+        "tonalRamp": [
+          "oklch(0.150 0.12227 32.15)",
+          "oklch(0.264 0.12227 32.15)",
+          "oklch(0.379 0.12227 32.15)",
+          "oklch(0.493 0.12227 32.15)",
+          "oklch(0.607 0.12227 32.15)",
+          "oklch(0.721 0.12227 32.15)",
+          "oklch(0.836 0.12227 32.15)",
+          "oklch(0.950 0.12227 32.15)"
+        ]
+      },
+      "contact-shadow": {
+        "role": "neutral",
+        "displayName": "Contact Shadow",
+        "canonical": "rgb(11% 23% 25% / 28%)",
+        "tonalRamp": [
+          "oklch(0.150 0.03742 209.46)",
+          "oklch(0.264 0.03742 209.46)",
+          "oklch(0.379 0.03742 209.46)",
+          "oklch(0.493 0.03742 209.46)",
+          "oklch(0.607 0.03742 209.46)",
+          "oklch(0.721 0.03742 209.46)",
+          "oklch(0.836 0.03742 209.46)",
+          "oklch(0.950 0.03742 209.46)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "title": {
+        "displayName": "Title",
+        "purpose": "Current-level title, Bold."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "State, instruction and preview copy, Regular."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Action labels, Bold."
+      },
+      "focus": {
+        "displayName": "Focus",
+        "purpose": "Selected slot and symbol, Regular."
+      },
+      "receiver-label": {
+        "displayName": "Receiver Label",
+        "purpose": "Stable destination label, Bold."
+      },
+      "device": {
+        "displayName": "Device",
+        "purpose": "Compensated device explanation; 14-pixel minimum in supplied portrait Editor captures. Device glyphs use Bold at the same compensated size."
+      },
+      "token-glyph": {
+        "displayName": "Token Glyph",
+        "purpose": "Live Bold face anchored with the persistent token body."
+      },
+      "target-glyph": {
+        "displayName": "Target Glyph",
+        "purpose": "Live Bold face in the receiver."
+      }
+    },
+    "shadows": [
+      {
+        "name": "soft-contact",
+        "value": "alpha = (1 - smoothstep(0.25, 1, length((uv - 0.5) * 2)))^2",
+        "purpose": "Analytic native shader on fitted quads beneath tokens, platforms and receiver; tint is colors.contact-shadow. No CSS box-shadow token is implemented."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ambient-wheel",
+        "value": "18deg + elapsedUnscaledSeconds * 7deg/s",
+        "purpose": "View-only wheel rotation. Pause and suspension stop phase progression; Reduced Motion fixes rotation to 18deg. No moving cloud layer is implemented."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "content-width-cap",
+        "value": "430px"
+      },
+      {
+        "name": "precision-input-width",
+        "value": "430px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Drop / Deliver",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Reference-size uGUI panel translation. State fills resolve the native ColorBlock multiplication; the native selected state has no custom focus ring.",
+      "html": "<button class=\"ds-drop\">Drop</button>",
+      "css": ".ds-drop{font-family:'Balsamiq Sans',sans-serif;font-size:18px;font-weight:700;color:rgb(16% 28% 29%);background:rgb(98% 74% 32%);border:0;border-radius:13px;padding:2px 3px;min-height:48px;min-width:96px;cursor:pointer;} .ds-drop:hover{background:rgb(98% 69.56% 24.96%);} .ds-drop:focus-visible{background:rgb(98% 74% 32%);outline:none;} .ds-drop:active{background:rgb(80.36% 65.12% 25.92%);} .ds-drop:disabled{background:rgb(86.24% 66.6% 26.88% / 70%);cursor:default;}"
+    },
+    {
+      "name": "Utility action",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Reference-size uGUI panel translation. State fills resolve the native ColorBlock multiplication; the native selected state has no custom focus ring.",
+      "html": "<button class=\"ds-utility\">Hint</button>",
+      "css": ".ds-utility{font-family:'Balsamiq Sans',sans-serif;font-size:18px;font-weight:700;color:rgb(16% 28% 29%);background:rgb(100% 96% 84%);border:0;border-radius:13px;padding:2px 3px;min-height:48px;min-width:96px;cursor:pointer;} .ds-utility:hover{background:rgb(100% 90.24% 65.52%);} .ds-utility:focus-visible{background:rgb(100% 96% 84%);outline:none;} .ds-utility:active{background:rgb(82% 84.48% 68.04%);} .ds-utility:disabled{background:rgb(88% 86.4% 70.56% / 70%);cursor:default;}"
+    },
+    {
+      "name": "Precision focus direction",
+      "kind": "button",
+      "refersTo": "button-direction",
+      "description": "Authored ChevronGraphic polygon; mirror the path for previous focus. This is geometry, not a font glyph.",
+      "html": "<button class=\"ds-direction\" aria-label=\"Focus next\"><svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><path d=\"M34 24 L42 17 L72 50 L42 83 L34 76 L58 50 Z\"/></svg></button>",
+      "css": ".ds-direction{background:rgb(100% 96% 84%);border:0;border-radius:13px;width:58px;height:48px;padding:0;color:rgb(16% 28% 29%);cursor:pointer;} .ds-direction svg{width:44%;height:60%;fill:currentColor;} .ds-direction:hover{background:rgb(100% 90.24% 65.52%);} .ds-direction:focus-visible{background:rgb(100% 96% 84%);outline:none;} .ds-direction:active{background:rgb(82% 84.48% 68.04%);}"
+    },
+    {
+      "name": "Letter token and selected face",
+      "kind": "custom",
+      "refersTo": "letter-token",
+      "description": "Flat diagram of the shared ivory tile and live Bold letter. The selected example places its body and glyph together inside a gold frame; native meshes supply the bevel.",
+      "html": "<div class=\"ds-letter-set\"><span class=\"ds-letter\">A</span><span class=\"ds-letter-selected\"><span class=\"ds-letter\">A</span></span></div>",
+      "css": ".ds-letter-set{display:flex;align-items:end;gap:18px;height:62px;} .ds-letter{font-family:'Balsamiq Sans',sans-serif;font-size:28px;font-weight:700;color:rgb(16% 28% 29%);display:flex;align-items:center;justify-content:center;background:#FFF0CC;width:48px;height:48px;border-radius:8.64px;} .ds-letter-selected{display:block;background:#EFB953;padding:4px;border-radius:10px;transform:translateY(-5px);}"
+    },
+    {
+      "name": "Shape identity",
+      "kind": "custom",
+      "refersTo": "shape-token",
+      "description": "Flat front-face sample of the actual rounded-triangle contour and its material input. The Unity extrusion and lighting are intentionally not simulated by new CSS effects.",
+      "html": "<svg class=\"ds-shape\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Yellow triangle\"><path d=\"M56.480 15.360 L54.320 12.093 L52.160 10.133 L50.000 9.480 L47.840 10.133 L45.680 12.093 L43.520 15.360 L13.280 70.240 L11.660 73.833 L11.120 76.773 L11.660 79.060 L13.280 80.693 L15.980 81.673 L19.760 82.000 L80.240 82.000 L84.020 81.673 L86.720 80.693 L88.340 79.060 L88.880 76.773 L88.340 73.833 L86.720 70.240 Z\"/></svg>",
+      "css": ".ds-shape{display:block;width:72px;height:72px;fill:#FFC856;}"
+    },
+    {
+      "name": "Compact mint platform",
+      "kind": "custom",
+      "refersTo": "platform",
+      "description": "Flat assembly diagram: thin mint support, ivory top edge and gold end caps. Native meshes provide depth and contact shading.",
+      "html": "<div class=\"ds-platform\"><span class=\"ds-platform-rail\"></span><span class=\"ds-platform-cap ds-platform-cap-left\"></span><span class=\"ds-platform-cap ds-platform-cap-right\"></span></div>",
+      "css": ".ds-platform{position:relative;width:220px;height:19px;background:#53AE9E;border-radius:6px;} .ds-platform-rail{position:absolute;left:3%;right:3%;top:0;height:4.5px;background:#FFF0CC;border-radius:2px;} .ds-platform-cap{position:absolute;width:10px;height:10px;top:4px;border-radius:50%;background:#EFB953;} .ds-platform-cap-left{left:1%;} .ds-platform-cap-right{right:1%;}"
+    },
+    {
+      "name": "Stable receiving cradle",
+      "kind": "custom",
+      "refersTo": "receiver",
+      "description": "Flat diagram of the gold rim, ivory inset, sockets and shared symbols. Three symbols are shown only as a component sample; the native layout fits the complete target.",
+      "html": "<div class=\"ds-receiver-wrap\"><div class=\"ds-receiver-label\">Deliver this order</div><div class=\"ds-receiver\"><svg viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Triangle\"><path d=\"M56.480 15.360 L54.320 12.093 L52.160 10.133 L50.000 9.480 L47.840 10.133 L45.680 12.093 L43.520 15.360 L13.280 70.240 L11.660 73.833 L11.120 76.773 L11.660 79.060 L13.280 80.693 L15.980 81.673 L19.760 82.000 L80.240 82.000 L84.020 81.673 L86.720 80.693 L88.340 79.060 L88.880 76.773 L88.340 73.833 L86.720 70.240 Z\" fill=\"#FFC856\"/></svg><svg viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Circle\"><circle cx=\"50\" cy=\"50\" r=\"35\" fill=\"#59CAB1\"/></svg><span class=\"ds-receiver-letter\">A</span></div></div>",
+      "css": ".ds-receiver-wrap{width:250px;} .ds-receiver-label{font-family:'Balsamiq Sans',sans-serif;font-size:16px;font-weight:700;text-align:center;color:rgb(16% 28% 29%);margin-bottom:4px;} .ds-receiver{display:flex;justify-content:center;gap:3px;background:#FBE2A3;border:8px solid #EFB953;border-radius:18px;padding:8px;} .ds-receiver svg,.ds-receiver-letter{width:50px;height:50px;background:#EFB953;border-radius:9px;} .ds-receiver-letter{font-family:'Balsamiq Sans',sans-serif;font-size:24px;font-weight:700;color:rgb(16% 28% 29%);display:flex;align-items:center;justify-content:center;background:#FFF0CC;border:3px solid #EFB953;}"
+    },
+    {
+      "name": "Exact-order magnifier",
+      "kind": "custom",
+      "refersTo": "target-zoom",
+      "description": "Static preview of the implemented inspection surface. Native symbols occupy a four-column grid with position numbers; the close control returns to play.",
+      "html": "<div class=\"ds-zoom\"><p class=\"ds-zoom-title\">Deliver this exact order</p><div class=\"ds-zoom-row\"><div><strong>P</strong><small>1</small></div><div><strong>L</strong><small>2</small></div><div><strong>A</strong><small>3</small></div><div><strong>N</strong><small>4</small></div></div><button class=\"ds-zoom-close\">Close target</button></div>",
+      "css": ".ds-zoom{font-family:'Balsamiq Sans',sans-serif;background:rgb(100% 96% 84%);color:rgb(16% 28% 29%);width:320px;padding:28px 16px;text-align:center;} .ds-zoom-title{font-size:22px;font-weight:400;margin:0 0 28px;} .ds-zoom-row{display:grid;grid-template-columns:repeat(4,1fr);margin-bottom:28px;} .ds-zoom-row strong{font-size:34px;font-weight:700;display:block;} .ds-zoom-row small{display:block;font-size:13px;} .ds-zoom-close{font-family:'Balsamiq Sans',sans-serif;font-size:18px;font-weight:700;color:rgb(16% 28% 29%);background:rgb(100% 96% 84%);border:0;border-radius:13px;min-height:48px;padding:2px 3px;cursor:pointer;} .ds-zoom-close:hover{background:rgb(100% 90.24% 65.52%);} .ds-zoom-close:focus-visible{background:rgb(100% 96% 84%);outline:none;} .ds-zoom-close:active{background:rgb(82% 84.48% 68.04%);}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Sky Wind Workshop",
+    "overview": "A small wind-powered toy machine hangs above a painted cloud garden. Mint enamel rails, warm gold hardware, ivory letter tiles and six colored silhouettes make the mechanism feel manufactured, friendly and tangible. The center stays quiet enough to read the complete persistent row and its gold receiving cradle together.\n\nThe game uses real beveled meshes, a single orthographic view, live lettering and a separate illustrated backdrop. Compact platforms and visible joints establish the machine; soft buttons borrow its warm materials. This is the original, code-led P12 world chosen within the author's delegated direction. There is no approved composite image or user-research result to claim fidelity against.\n\nThis document records the implemented gameplay surface at P12. P13 event animation/audio and P14 full flow remain pending. The source of truth is `CascadeGame.cs`, `ToyMachineView.cs`, `ToyArt.cs`, `ShapeFaceGraphic.cs`, `ChevronGraphic.cs` and `ToyAssetBuilder.cs`; the relevant captures and layout measurements are in `Reports/P12`. Original-art and font provenance are recorded in `Docs/P12_ASSET_PROVENANCE.md`. Native glyph review, physical-device performance and human enjoyment remain unverified. Sidecar samples are flat, self-contained diagrams of the native components; synthesized color ramps are preview aids, not additional shipped palette values.",
+    "keyCharacteristics": [
+      "A calm painted sky surrounds a compact, fully visible toy machine.",
+      "Six beveled silhouettes retain consistent color identity; live letters sit on ivory tiles.",
+      "Thin mint platforms and gold joints give each floor a physical role.",
+      "The stable gold receiver carries the complete destination below the floors.",
+      "Warm rounded controls remain separate from the token bodies they operate."
+    ],
+    "rules": [
+      {
+        "name": "The Shared Identity Rule",
+        "body": "Use the same silhouette and material for a SymbolId in the moving row, target, device contact and magnifier; glyph symbols use live text on ivory bodies.",
+        "section": "colors"
+      },
+      {
+        "name": "The Live Face Rule",
+        "body": "Keep letters centered on the actual mesh face in every selection state; never bake game letters or labels into scenery.",
+        "section": "typography"
+      },
+      {
+        "name": "The Complete Machine Rule",
+        "body": "Keep the persistent row, remaining floors and complete receiver order visible together; preserve compact rail lengths when the symbol count changes.",
+        "section": "layout"
+      }
+    ],
+    "dos": [
+      "**Do** reuse the same authored silhouette and material wherever a SymbolId appears.",
+      "**Do** move the live glyph and its body together when a token is selected.",
+      "**Do** retain the complete destination in the stable gold receiver below the remaining floors.",
+      "**Do** measure controls and device labels at the supplied small Editor reference size after layout changes.",
+      "**Do** use authored chevron geometry for precision focus controls.",
+      "**Do** keep ambient motion view-only and stop its phase progression during pause or application suspension.",
+      "**Do** preserve original assets, licenses, provenance and Unity meta identities."
+    ],
+    "donts": [
+      "**Don't** turn compact support rails into full-width rectangular cards.",
+      "**Don't** bake gameplay text into the painted background or token artwork.",
+      "**Don't** use color changes to replace the stable shape identities.",
+      "**Don't** let animation completion, scenery, physics or presentation callbacks determine gameplay state.",
+      "**Don't** copy ShapeMania screens, characters, sprites, props or materials into this world.",
+      "**Don't** treat the temporary P11 presentation gate or P12 utility navigation as the completed P13/P14 experience.",
+      "**Don't** claim physical-device validation, native-language editorial approval, measured enjoyment or approved-mockup fidelity from these Editor captures."
+    ]
+  }
+}

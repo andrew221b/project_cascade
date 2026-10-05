@@ -6,7 +6,8 @@
         "Unity.TextMeshPro",
         "Unity.ugui",
         "Unity.InputSystem",
-        "Cascade.Application",
+    "Cascade.Application",
+    "Cascade.Content",
         "Cascade.Domain"
     ],
     "includePlatforms": [
