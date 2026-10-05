@@ -525,11 +525,12 @@ namespace Cascade.Presentation
             var colors = button.colors; colors.highlightedColor = new Color(1, .94f, .78f); colors.pressedColor = new Color(.82f, .88f, .81f); colors.disabledColor = new Color(.88f, .90f, .84f, .7f); button.colors = colors;
             var text = Text("Label", rect, Vector2.zero, Vector2.one, 18, label); text.font = art.titleFont; text.margin = new Vector4(3, 2, 3, 2); return button;
         }
-        void DirectionButton(string name, Transform parent, Vector2 min, Vector2 max, bool right, Action clicked)
+        UnityEngine.UI.Button DirectionButton(string name, Transform parent, Vector2 min, Vector2 max, bool right, Action clicked)
         {
             var button = Button(name, parent, min, max, clicked); button.GetComponentInChildren<TextMeshProUGUI>().SetCopy("");
             var icon = Rect("Chevron", button.transform, new Vector2(.28f, .20f), new Vector2(.72f, .80f)).gameObject.AddComponent<ChevronGraphic>();
             icon.PointsRight = right; icon.color = Ink; icon.raycastTarget = false;
+            return button;
         }
     }
 }

@@ -72,7 +72,8 @@ namespace Cascade.Presentation
         }
         void MapTurn(string name,Vector2 point,Action action)
         {
-            var button=Button(name,menuRoot,point,point,action);((RectTransform)button.transform).sizeDelta=new Vector2(76,60);
+            var button=DirectionButton(name,menuRoot,point,point,name=="Later",action);
+            ((RectTransform)button.transform).sizeDelta=new Vector2(76,60);
         }
         void MapPath(Vector2 start,Vector2 end,bool open)
         {

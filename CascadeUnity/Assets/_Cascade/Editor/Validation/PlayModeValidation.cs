@@ -27,6 +27,8 @@ namespace Cascade.Editor.Validation
             =>RunTests(phase,null);
         public static void RunFocused(string phase,string testName)
             =>RunTests(phase,new[]{testName});
+        public static void RunSelected(string phase,string[] testNames)
+            =>RunTests(phase,testNames);
         static void RunTests(string phase,string[] tests)
         {
             if (EditorUtility.scriptCompilationFailed || EditorApplication.isCompiling || EditorApplication.isPlaying)

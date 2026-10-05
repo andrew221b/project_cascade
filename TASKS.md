@@ -1,6 +1,6 @@
 # CASCADE — TASKS
 
-P00–P17: COMPLETE. Unity AI/MCP: работает. P18: IN_PROGRESS; P19–P20: NOT_STARTED.
+P00–P18: COMPLETE в доступном объёме. Unity AI/MCP: работает. P19: IN_PROGRESS; P20: NOT_STARTED.
 Python reference проверен отдельно; это не реализация игровых систем Unity.
 
 Автор прямо разрешил выполнять все этапы подряд, отменив остановки между
@@ -26,9 +26,28 @@ P01–P20. После каждого этапа фиксировать резу�
 - [x] P15 — Локализация и glyph QA
 - [x] P16 — Save и прогресс
 - [x] P17 — Мастерство и маленькая мета
-- [ ] P18 — Интеграционная приёмка
+- [x] P18 — Интеграционная приёмка
 - [ ] P19 — Реклама и IAP позже
 - [ ] P20 — Расширять задачами
+
+## P18 — доступная интеграционная приёмка завершена, 5 октября 2026
+
+- Полные reachable state/acceptance traces совпали C#/Python для157concrete
+  puzzles:16900states,139376commands,64532accepted. Invalid/no-op/terminal
+  commands включены, first_diff:null, source hashes/per-puzzle digests сохранены.
+- Reused P17 evidence47distinct tests: real input, every animated stage
+  interruption, focus/pause/disable, bounded tails, reload/save. Pure rules unchanged.
+- Large/highcontrast320RU Mixed8/bombguide, UKmap проверены. Исправлены перенос
+  Hint→Помощь/Поміч и map page captions→drawnchevrons.3targeted testsPASS:
+  pointermap/preferences +directUILocale preservation. Второй полный suite не запускался.
+- Fresh Impeccable scopedship для captions/chevron; documenter обновилnative
+  guidance, tokens/sidecar preserved.3final frames/round1 evidence; fit0.
+- Один120frame Editor sample:median99.97ms/p95102.08ms, statehashunchanged.
+  Это не mobile/performancePASS; wholeEditor memory, foreground uncontrolled.
+- Device inventory не прочитан через commandAPI; не утверждаем0devices.
+  Physicalphone/profile/haptics/OSkill/humanfun NOTRUN. Одинfinalplayerbuild
+  выполняется послеP20 и author-requested visualrevision, чтобы не повторятьbuilds.
+- Reports/P18 и Docs/P18_INTEGRATION.md содержатactualevidence/границы.
 
 ## P17 — завершено в заявленном объёме, 5 октября 2026
 

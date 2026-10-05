@@ -1,0 +1,1 @@
+Not read through this MCP: System.Reflection import rejected by tool policy; direct UnityEditor.Devices API not exposed to command compiler. No zero-device claim. Physical phone tests/profiler not run.

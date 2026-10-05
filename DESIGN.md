@@ -196,6 +196,18 @@ independent verdict scores both listed findings resolved, disposition ship at P1
 weight/fall, pictorial-device, wide-screen and menu revision in
 `Docs/VISUAL_MOTION_REWORK.md` is later pending work, not this implemented world.
 
+P18 makes two narrow clarity corrections within this world: the stable `Hint`
+key displays `Помощь`/`Поміч` in RU/UK, and map paging reuses the authored
+direction chevron. `Docs/P18_INTEGRATION.md` owns this phase's contract;
+`Reports/P18/impeccable-review.md` records ship at this correction scope. Three
+final 320 × 693 native Editor frames confirm the corrected RU caption, RU guide
+and UK map against the existing system. The 3/3 focused tests and matching
+157-puzzle traces establish their stated behavior boundaries; the roughly
+100 ms whole-Editor frame observation is not a device performance pass.
+Physical devices, final player build, child comprehension and human enjoyment
+remain unverified. This phase adds no visual tokens or artwork and leaves the
+wooden/rope, motion, pictorial-device, wide-screen and menu revision pending.
+
 **Key Characteristics:**
 - Direct touch lifts a piece and its live glyph together; the receiver stays visible.
 - Six stable silhouettes and colors remain readable across all three regions.
@@ -320,6 +332,13 @@ Thin colored enamel beams, ivory highlights and gold caps carry the original loc
 ### Map route
 
 The isometric illustration, numbered stop buttons, small path pebbles and Mika marker express travel. Restored count and unlocked stop come from the existing 40-puzzle catalog and durable local first-clear receipts, deduplicated by campaign node across modes and locales. The gold action says Let's go, Continue or Play again where available; future pages explain remaining stops and offer Back to my path. Lessons retains the existing level/mode browser. These are three regional art kits and eight five-stop pages, not 160 new campaign puzzles.
+
+Map paging uses the same native `DirectionButton` and `ChevronGraphic` as
+precision focus controls. A dark authored left/right chevron replaces the
+caption inside the paper target; its graphic does not intercept input. The
+`Earlier`/`Later` button identities and existing handlers remain, with the
+map's 76 × 60 reference-unit geometry. This local size override does not change
+the shared direction-button token or introduce a new visual primitive.
 
 ### Dialogue and results
 

@@ -1,0 +1,17 @@
+{
+  "puzzles": 157,
+  "states": 16900,
+  "commands": 139376,
+  "accepted": 64532,
+  "first_diff": null,
+  "matched": true,
+  "scope": "All reachable state/acceptance traces. Event animation and enjoyment are separate.",
+  "source_sha256": {
+    "levels.json": "b69fa4e774b17290c66fa5fa6dc3306c28db2bdac8646ca442fac77200cb5948",
+    "localized_levels.json": "e861d2482b36dbe67d37ee5ee4e3ced3e22a7c710122db839bf93e1c56d15b33",
+    "words_en.json": "0c92dc0ef70a6fbf78c1907f4835e36c71317ffdffbe6be32f86cca1854e23c5",
+    "words_ru.json": "613e1b4b80b697e66697b33ec536ff64d359289a1df7f1d6827e420436557fb5",
+    "words_uk.json": "48f65cc8df3be0539023b937e7e2cec1c59c12f3423ccc255c7bf23f5192792f"
+  },
+  "domain_baseline_commit": "2a96029"
+}
