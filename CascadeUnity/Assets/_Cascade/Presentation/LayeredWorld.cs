@@ -13,11 +13,14 @@ namespace Cascade.Presentation
         Texture2D panorama,workshopTexture;bool workshop;
         readonly MeshRenderer[] weatherRenderers=new MeshRenderer[18];
         Camera cameraView;
-        Material landscapeMaterial;
+        Material landscapeMaterial, weatherMaterial, gliderMaterial;
+        MaterialPropertyBlock weatherTint;
+        float gliderAlpha=1,previousPhase;
+        public int EffectQuality { get; set; }=2;
+        public int ActiveWeatherCount { get; private set; }
         readonly Texture2D[] backgrounds = new Texture2D[8];
         int zone;
         readonly Transform[] weather=new Transform[18];
-        ToyArt artwork;
         float flightBottom, flightTop;
         bool gameplayVisible, holdingToken;
         public float Phase { get; private set; }
@@ -34,7 +37,7 @@ namespace Cascade.Presentation
 
         public void Initialize(ToyArt art,Camera camera)
         {
-            cameraView=camera;artwork=art;
+            cameraView=camera;weatherTint=new MaterialPropertyBlock();
             string[] names={"WindGardenBase","RainMillBase","CopperOrchardBase","CloudPostBase","GlassLagoonBase","MossArchiveBase","SnowSpireBase","GreatBeaconBase"};
             for(int i=0;i<names.Length;i++)backgrounds[i]=Resources.Load<Texture2D>("CascadeArt/"+(i<3?"Journey/":"Woodland/")+names[i]);
             if(backgrounds[0]==null)return;
@@ -44,9 +47,10 @@ namespace Cascade.Presentation
             landscapeMaterial.shader=sceneryTemplate!=null?sceneryTemplate.shader:Shader.Find("CASCADE/IslandScenery");
             panorama=Resources.Load<Texture2D>("CascadeArt/Craft/WindGardenPanorama");
             workshopTexture=Resources.Load<Texture2D>("CascadeArt/Craft/WorkshopRoom");
+            weatherMaterial=new Material(Resources.Load<Shader>("CascadeArt/SoftWeather")){name="Soft distant weather"};owned.Add(weatherMaterial);
             for(int i=0;i<weather.Length;i++) {
                 var go=new GameObject("Region weather "+i,typeof(MeshFilter),typeof(MeshRenderer));go.transform.SetParent(transform,false);
-                go.GetComponent<MeshFilter>().sharedMesh=art.disk;go.GetComponent<MeshRenderer>().sharedMaterial=art.cream;
+                go.GetComponent<MeshFilter>().sharedMesh=art.quad;go.GetComponent<MeshRenderer>().sharedMaterial=weatherMaterial;
                 weatherRenderers[i]=go.GetComponent<MeshRenderer>();weather[i]=go.transform;go.GetComponent<MeshRenderer>().shadowCastingMode=ShadowCastingMode.Off;
             }
             var cloud=Resources.Load<Texture2D>("CascadeArt/Journey/Cloud");
@@ -54,6 +58,7 @@ namespace Cascade.Presentation
             var plants=Resources.Load<Texture2D>("CascadeArt/Journey/GardenPlants");
             plantsLeft=Plate("Near leaves left",plants,art.quad,true);plantsRight=Plate("Near leaves right",plants,art.quad,true);
             glider=Plate("Travelling glider",Resources.Load<Texture2D>("CascadeArt/Journey/Glider"),art.quad,true);
+            if(glider!=null)gliderMaterial=glider.GetComponent<MeshRenderer>().sharedMaterial;
             SetZone(0);Paint(0);
         }
         Transform Plate(string name,Texture texture,Mesh quad,bool transparent)
@@ -84,7 +89,7 @@ namespace Cascade.Presentation
         }
         public void Paint(float phase)
         {
-            if(!Ready)return;Phase=phase;
+            if(!Ready)return;float delta=Mathf.Clamp(phase-previousPhase,0,.05f);previousPhase=phase;Phase=phase;
             float h=cameraView.orthographicSize*2,w=h*cameraView.aspect;
             float cx=cameraView.transform.position.x,cy=cameraView.transform.position.y;
             var texture=landscapeMaterial.mainTexture;float ratio=(float)texture.width/texture.height;
@@ -93,20 +98,24 @@ namespace Cascade.Presentation
             float imageHeight=workshop?Mathf.Max(1,w/ratio/h):zone==0&&panorama!=null?Mathf.Min(1,w/ratio/h):1;
             float imageWidth=workshop?Mathf.Max(1,h*ratio/w):zone==0&&panorama!=null?1:Mathf.Min(1,h*ratio/w);
             landscapeMaterial.SetVector("_ImageRect",new Vector4((1-imageWidth)*.5f,0,imageWidth,imageHeight));
+            ActiveWeatherCount=0;
             for(int i=0;i<weather.Length;i++) {
                 var drop=weather[i];bool snow=zone==6;bool rain=zone==1||zone==4;bool pollen=zone==0||zone==2||zone==5;
-                drop.gameObject.SetActive(!workshop&&(snow||rain||pollen));
-                float x=Mathf.Repeat(i*.618f+phase*(snow?.005f:rain?.018f:.008f),1);
-                float y=Mathf.Repeat(i*.317f-phase*(snow?.025f:rain?.12f:.007f),1);
-                drop.position=new Vector3(cx+(x-.5f)*w,cy+(y-.5f)*h,2.3f);
-                drop.localScale=snow?new Vector3(.018f,.018f,.01f):rain?new Vector3(.009f,.10f,.01f):new Vector3(.009f,.012f,.01f);
+                bool active=!workshop&&EffectQuality>0&&i<(EffectQuality==1?8:18)&&(snow||rain||pollen);
+                drop.gameObject.SetActive(active);if(!active)continue;ActiveWeatherCount++;
+                float x=Mathf.Repeat(i*.618f+phase*(snow?.004f:rain?.012f:.003f),1);
+                float y=Mathf.Repeat(i*.317f-phase*(snow?.018f:rain?.09f:.004f),1);
+                drop.position=new Vector3(cx+(x-.5f)*w+Mathf.Sin(phase*.35f+i)*.06f,cy+(y-.5f)*h,2.3f);
+                drop.localScale=snow?new Vector3(.048f,.048f,.01f):rain?new Vector3(.021f,.16f,.01f):new Vector3(.043f,.043f,.01f);
                 drop.rotation=Quaternion.Euler(0,0,rain?-15:phase*(i%2==0?4:-3));
-                weatherRenderers[i].sharedMaterial=rain?artwork.colors[4]:artwork.cream;
+                float fade=Mathf.SmoothStep(0,1,Mathf.Min(x,1-x)/.12f)*Mathf.SmoothStep(0,1,Mathf.Min(y,1-y)/.12f);
+                Color tint=rain?new Color(.67f,.84f,.91f,.34f):snow?new Color(1,.98f,.90f,.62f):new Color(1,.89f,.64f,.38f);
+                tint.a*=fade;weatherTint.SetColor("_Color",tint);weatherRenderers[i].SetPropertyBlock(weatherTint);
             }
             for(int i=0;i<clouds.Length;i++) {
                 var cloud=clouds[i];if(cloud==null)continue;cloud.gameObject.SetActive(!workshop);
                 float cw=Mathf.Min(w,h)*(i==0?.35f:i==1?.28f:.42f);
-                float x=Mathf.Repeat(phase*(.017f+i*.009f)+i*.42f,1.7f)-.85f;
+                float x=Mathf.Repeat(phase*(.004f+i*.0025f)+i*.42f,1.7f)-.85f;
                 cloud.position=new Vector3(cx+x*w,cy+h*(i==0?.29f:i==1?.43f:-.27f),2.9f-i*.05f);
                 cloud.localScale=new Vector3(cw,cw*.5f,1);
             }
@@ -114,7 +123,9 @@ namespace Cascade.Presentation
             if(glider!=null) {
                 float angle=phase*.07f;
                 float band=flightTop-flightBottom;
-                glider.gameObject.SetActive(!workshop&&!holdingToken&&(!gameplayVisible||band>0));
+                glider.gameObject.SetActive(!workshop&&(!gameplayVisible||band>0));
+                gliderAlpha=phase==0?1:Mathf.MoveTowards(gliderAlpha,holdingToken?0:1,delta*(holdingToken?8:3));
+                gliderMaterial.SetColor("_BaseColor",new Color(1,1,1,gliderAlpha));
                 float height=gameplayVisible?Mathf.Min(h*.05f,band*.5f):Mathf.Min(w,8)*.12f;
                 float y=gameplayVisible?(flightBottom+flightTop)*.5f+Mathf.Sin(angle*.8f)*band*.08f:cy+h*(.255f+Mathf.Sin(angle*.8f)*.022f);
                 glider.position=new Vector3(cx+Mathf.Sin(angle)*w*.34f,y,2.45f);

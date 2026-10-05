@@ -1,5 +1,7 @@
 # CASCADE — TASKS
 
+UI/motion polish: IMPLEMENTED + VERIFIED локально — единые меню, читаемые языки и счётчики, акцент действий, плавные канаты с объёмной оплёткой, сохранение веса доски, мягкая посадка/погода/переходы. 47 native stills +32 motion frames;15 distinct PlayMode cases имеют passing evidence, финальный affected run4/4 PASS (13×4 interruption paths). Первоначальные watchdog failures сохранены: измерен Editor1Hz, функциональный watchdog30s; это не performancePASS. Одна новая CASCADE-Polish.app:0errors/346 existing warnings. Mac locked; foreground player и physical devices NOTRUN. Reports/Polish/README.md.
+
 Devices revision: IMPLEMENTED + VERIFIED локально — узнаваемые устройства, предпросмотр эффекта при перетаскивании,6 B01–B06 с катушкой/часами и обучение; карта без карточек/номеров, закрытые острова чёрно-белые, стрелка «Вы здесь».146 distinct EditMode PASS;6 distinct PlayMode имеют passing evidence,2 первоначальных timeout сохранены в отчёте.14 MCP кадров; независимый scoped visual review:ship. Новая CASCADE-Devices.app готова:0errors/346warnings. Native окно заблокировано lock-screen Mac; телефоны и человеческая понятность/интересность NOTRUN. См. Reports/Devices/README.md.
 
 Craft revision: IMPLEMENTED + VERIFIED локально — меню/вещи/карта, непрерывные канаты, контакт фигур с деревом,6 испытаний с лентой. Новая Mac-сборка и краткий замер готового player готовы. Нативное окно новой сборки ожидает разблокировки Mac; телефоны/человеческий плейтест не проверены. См. Reports/Craft/README.md.

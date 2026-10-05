@@ -63,7 +63,7 @@ Looking for one step…	Looking for one step…	Ищу ход…	Шукаю хі
 Low	Low	Меньше	Менше
 Make the same row	Make the same row	Собери такой же ряд	Склади такий самий ряд
 Make this row	Make this row	Собери этот ряд	Склади цей ряд
-Make yourself at home	Make yourself at home	Как тебе удобно	Як тобі зручно
+Make yourself at home	Settings	Как тебе удобно	Як тобі зручно
 Map	Map	Карта	Карта
 Menu	Menu	Меню	Меню
 Mirror on entry	Mirror on entry	Зеркало при спуске	Дзеркало при спуску
@@ -402,8 +402,8 @@ Drag past a neighbour. The ribbon works once.	Drag past a neighbour. The ribbon 
 Ribbon used. You can still swap neighbours.	Ribbon used. You can still swap neighbours.	Лента потрачена. Соседние фигуры можно менять.	Стрічку використано. Сусідні фігури можна міняти.
 Each swap wears the wood. Empty marks? The board breaks. Down leaves early.	Each swap wears the wood. Empty marks? The board breaks. Down leaves early.	Обмен изнашивает доску. Метки погасли — доска сломается. Кнопка «Вниз» спустит ряд раньше.	Обмін зношує дошку. Мітки згасли — дошка зламається. Кнопка «Вниз» опустить ряд раніше.
 A cracked spot wears the board twice as fast.	A cracked spot wears the board twice as fast.	Обмен у трещины сильнее изнашивает доску.	Обмін біля тріщини сильніше зношує дошку.
-Wood: {0} moves	Wood: {0} moves	Доска: {0} ходов	Дошка: {0} ходів
-{0} moves	{0} moves	{0} ходов	{0} ходів
+Wood: {0} moves	Wood · moves: {0}	Доска · ходы: {0}	Дошка · ходи: {0}
+{0} moves	Fuse: {0}	До взрыва: {0}	До вибуху: {0}
 Safe	Safe	Обезврежена	Знешкоджена
 Burst	Burst	Взорвалась	Вибухнула
 Collected	Collected	Получено	Отримано

@@ -202,7 +202,6 @@ namespace Cascade.Presentation
             backdrop.transform.position = new Vector3(viewCamera.transform.position.x, viewCamera.transform.position.y, 3);
             backdrop.transform.localScale = new Vector3(coverH * ratio, coverH, 1);
 
-            livingWorld?.Paint(windTime);
             if (interaction == null) return;
             var state = Frame;
             foreach (var target in targetBodies) target.transform.gameObject.SetActive(true);

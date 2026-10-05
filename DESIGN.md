@@ -39,7 +39,7 @@ colors:
 typography:
   menu-title:
     fontFamily: "Balsamiq Sans"
-    fontSize: "34px"
+    fontSize: "32px"
     fontWeight: 700
   region-speaker:
     fontFamily: "Balsamiq Sans"
@@ -103,7 +103,7 @@ components:
     textColor: "{colors.ui-ink}"
     typography: "{typography.button}"
     rounded: "{rounded.panel-source}"
-    padding: "2px 3px"
+    padding: "5px 10px"
     height: "48px"
   button-primary:
     backgroundColor: "{colors.drop-gold}"
@@ -117,7 +117,7 @@ components:
     textColor: "{colors.ui-ink}"
     typography: "{typography.button}"
     rounded: "{rounded.panel-source}"
-    height: "60px"
+    height: "52px"
   button-direction:
     backgroundColor: "{colors.ui-paper}"
     textColor: "{colors.ui-ink}"
@@ -361,7 +361,7 @@ Soft contact quads use `(1 − smoothstep(0.25, 1, radius))²` alpha, tinted by 
 
 A held piece lifts immediately with its glyph. Its preview scales toward a 64-rendered-pixel face, clamped to 1.10–2.5 times the base size. Horizontal travel is bounded to 1.15 cell spacings, or 3.15 while a Ribbon Reach charge is available; upward drag adds at most 0.45 spacings above its hold lift. The input cells remain stationary. Releasing elsewhere, pointer cancellation, pause or focus loss returns the presentation without spending a move.
 
-Committed exchanges use 190 ms cubic ease-out with short opposing arcs. Contact, bomb and fracture steps last 180, 240 and 130 ms. A 300 ms fall maps each source piece to its committed destination, with quadratic vertical travel, small stagger and bounded opposing rotation. A landing lasts at least 240 ms, with two damped upward bounce lobes, at most 8% squash and bounded alternating rotation; local rail recoil remains 0.025 world units. The loaded wood strip bends toward 0.045 world units of apparent weight through bounded decorative springs; holding a piece removes its apparent weight. Two continuous hemp ropes run from above the viewport through each rail attachment to the receiver and respond to the same decorative sway. Delivery holds for 340 ms. Reduced Motion substitutes 55 ms state holds and at most two stationary dust fades per burst. Selection focus uses 100 ms or an immediate reduced-motion state. Screen shake is opt-in and off by default; Reduced Motion suppresses it. Dust and audio tails never determine command completion.
+Committed exchanges use 190 ms cubic ease-out with asymmetric upward arcs. Contact, bomb and fracture steps last 180, 240 and 130 ms. A 300 ms fall maps each source piece to its committed destination, with quadratic vertical travel, small stagger and bounded opposing rotation. A landing lasts at least 190 ms, with one short damped upward settle, at most 8% squash and bounded alternating rotation; local rail recoil remains 0.025 world units. The loaded wood strip bends toward 0.045 world units of apparent weight through bounded decorative springs; holding a piece removes its apparent weight. Two continuous hemp ropes run from above the viewport through each rail attachment to the receiver and respond to the same decorative sway. Delivery holds for 340 ms. Reduced Motion substitutes 55 ms state holds and at most two stationary dust fades per burst. Selection focus uses 100 ms or an immediate reduced-motion state. Screen shake is opt-in and off by default; Reduced Motion suppresses it. Dust and audio tails never determine command completion.
 
 Eight distinct far landscapes cover the viewport. Shared transparent clouds move at three speeds, lower-edge plants sway about their stems, and rain, snow or pollen occupy separate scenery layers by region. The incidental lower-right windwheel is hidden. Regional tints adapt cloud/plant layers. The whole rotated glider is bounded to the empty gap between feedback and the top floor; it hides during a held-token gesture and if no gap remains. All ambient motion is view-only. Explicit pause and suspension stop phase progression; Reduced Motion displays phase zero. Map and dialogue can keep their decorative clock running while puzzle input is paused. Quiet generated wind/rain beds follow Sound and explicit pause/suspension preferences; physical listening has not been verified.
 
@@ -385,7 +385,7 @@ Pressing a shape or letter gives immediate lift and a larger held face; legal ad
 
 ### Platforms and devices
 
-Compact painted wood strips retain the original grain and continuous hemp suspension. Up to three graphite seams show wear, while localized Wood: N moves copy reports remaining durability. Strength pips, fuse beads and isolated entry arrows are absent from the playable rails. Contact tools use the original transparent Bomb, RepairKit, BrassKey, Stamp, RibbonSpool and Hourglass art, suspended from a wooden socket by two straps. Each attached tool has a separate matching-piece pocket using the shared SymbolId silhouette and live glyph. Device hit areas are 88 × 55 reference units. Tapping one opens its guide without spending a move. A lilac cord connects linked edges; a landing-movement label opens the relevant explanation. The wood remains unlit, with the existing satin shape and brass materials.
+Compact painted wood strips retain the original grain and continuous hemp suspension. Up to three graphite seams show wear, while localized Wood · moves: N copy reports remaining durability. Strength pips, fuse beads and isolated entry arrows are absent from the playable rails. Contact tools use the original transparent Bomb, RepairKit, BrassKey, Stamp, RibbonSpool and Hourglass art, suspended from a wooden socket by two straps. Each attached tool has a separate matching-piece pocket using the shared SymbolId silhouette and live glyph. Device hit areas are 88 × 55 reference units. Tapping one opens its guide without spending a move. A lilac cord connects linked edges; a landing-movement label opens the relevant explanation. The wood remains unlit, with the existing satin shape and brass materials.
 
 A bomb reports remaining moves, Paused: N, Safe or Burst from committed state. Collected tools become subdued and show Collected. Ribbon and hourglass labels disclose Far swap and Pause bomb before collection. An hourglass pauses bomb ticks while the wood continues wearing; it does not imply stopped animation or a real-time countdown. Collapse still emits bounded wood chips, and source pieces travel to their exact destination before settling.
 
@@ -464,3 +464,14 @@ Comfort enables large previous/next focus controls and left/right exchanges with
 - **Don't** describe online concepts or disabled mock Ads/IAP boundaries as live integration; Ribbon Reach is local optional play, not a purchased ability.
 - **Don't** copy ShapeMania screens, characters, sprites, props or materials into this world.
 - **Don't** equate Editor captures and automated tests with device, haptic, performance, build, native-language or human-enjoyment proof.
+
+
+### UI and motion polish — 2026-10-05
+
+Shared menu headings use left-aligned 32-point Balsamiq titles and 17-point descriptions on the same inset. Standard actions are 52 reference units high: warm gold for the next action, quieter cream for alternatives, plain Back links. Workshop paper is nearly opaque so the scenery does not create false dividers behind content. Settings uses full-width language choices, including the next-puzzle language. The collection keeps the cosmetic sky ribbon distinct from the functional blue spool. Selected/equipped gifts no longer offer a redundant action.
+
+Gameplay guidance has a quiet cream backing, and wood/fuse counters use number-safe EN/RU/UK wording. Victory emphasizes Next delivery; failure emphasizes Retry. Menu arrival takes 160 ms without blocking input, button press compresses to 97.8%, and reduced motion skips both. Filled buttons expose a focus outline.
+
+Continuous suspension uses smoothly sampled curves and an antialiased cylindrical hemp shader. Hidden boards cease being rope anchors. Board springs retain their weight through presentation synchronization; exchanges arc above the plank and land with one short damped settle. This is scripted presentation, never gameplay physics.
+
+Atmosphere uses slower cloud layers, a glider fade while holding a piece, and soft weather with edge fades. UI weather updates at most 30 times per second; world weather is bounded to 8/18 particles for Low/Full. Off removes both world and UI weather. Existing pause/suspension and reduced-motion clocks remain authoritative for scenery. No new bitmap assets or packages were needed.

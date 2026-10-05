@@ -25,6 +25,7 @@ namespace Cascade.Presentation
         RectTransform menuRoot, resultRoot, coachRoot;
         Image tutorialHand, resultFriend, reachBadge;
         Image menuWash;
+        MenuTransition menuTransition;
         CoachRingGraphic coachRing;
         TextMeshProUGUI coachText, resultText;
         GameScreen returnScreen = GameScreen.Home;
@@ -74,6 +75,7 @@ namespace Cascade.Presentation
             var mika=Resources.Load<Sprite>("CascadeArt/Journey/Mika");
             if(mika!=null) { resultFriend=Picture("Mika celebrates",safeRoot,new Vector2(.31f,.43f),new Vector2(.69f,.72f),mika,true);resultFriend.gameObject.SetActive(false); }
             menuRoot = Rect("Menu",safeRoot,Vector2.zero,Vector2.one);
+            menuTransition=menuRoot.gameObject.AddComponent<MenuTransition>();menuTransition.Initialize(this);
             reachBadge=Picture("Ribbon charge",header,new Vector2(.69f,.05f),new Vector2(.80f,.95f),Resources.Load<Sprite>("CascadeArt/Devices/RibbonSpool"),true);
             flowReady=true; ApplyPreferences();
         }
@@ -98,17 +100,18 @@ namespace Cascade.Presentation
         {
             if (!flowReady) return;
             if(screen!=GameScreen.Playing) { CancelHint(); StopPresentation(); }
+            bool changed=CurrentScreen!=screen;
             CurrentScreen=screen; machine.LivingWorld.SetWorkshop(screen!=GameScreen.Playing&&screen!=GameScreen.Win&&screen!=GameScreen.Fail&&screen!=GameScreen.Home&&screen!=GameScreen.Dialogue&&screen!=GameScreen.JourneyEnd); userPaused=screen==GameScreen.Pause;
             if(resultFriend!=null)resultFriend.gameObject.SetActive(screen==GameScreen.Win);
             Interaction.SetPaused(screen!=GameScreen.Playing && screen!=GameScreen.Win && screen!=GameScreen.Fail);
             bool machineVisible=screen==GameScreen.Playing || screen==GameScreen.Win || screen==GameScreen.Fail;
             machine.SetGameplayVisible(machineVisible);machine.SetAmbientPaused(screen==GameScreen.Pause||screen==GameScreen.SaveRecovery);
-            header.gameObject.SetActive(machineVisible); status.gameObject.SetActive(machineVisible);
+            header.gameObject.SetActive(machineVisible); status.gameObject.SetActive(machineVisible);statusPaper.gameObject.SetActive(machineVisible);
             floorArea.gameObject.SetActive(machineVisible); receiver.gameObject.SetActive(machineVisible);
             actions.gameObject.SetActive(machineVisible); precise.gameObject.SetActive(machineVisible && PreciseInputActive);
             coachRoot.gameObject.SetActive(false); tutorialHand.gameObject.SetActive(false);coachRing.gameObject.SetActive(false);
             menuRoot.gameObject.SetActive(!machineVisible); resultRoot.gameObject.SetActive(screen==GameScreen.Win||screen==GameScreen.Fail);
-            if(machineVisible) { RenderState(); ArrangeResultControls(); } else DrawMenu();
+            if(machineVisible) { RenderState(); ArrangeResultControls(); } else {DrawMenu();if(changed)menuTransition.Arrive();}
             Canvas.ForceUpdateCanvases();
         }
         void StartCoach()
@@ -190,6 +193,8 @@ namespace Cascade.Presentation
                 if(CurrentScreen==GameScreen.Fail && sessionLosses.TryGetValue(node,out var losses)&&losses>=3)
                     resultText.SetCopy("Try the device guide. Undo and retry stay free.");
                 resultRoot.Find("Nextdelivery").gameObject.SetActive(CurrentScreen==GameScreen.Win);
+                resultRoot.Find("Nextdelivery").GetComponent<Image>().color=new Color(.98f,.74f,.32f);
+                retry.GetComponent<Image>().color=CurrentScreen==GameScreen.Fail?new Color(.98f,.74f,.32f):Paper;
                 resultRoot.Find("Nextdelivery").GetComponentInChildren<TextMeshProUGUI>().SetCopy(journeyActive&&node=="C160"?"Light the beacon":"Next delivery");
             }
         }
@@ -199,7 +204,7 @@ namespace Cascade.Presentation
         {
             foreach(var key in baseTextSizes.Keys.Where(k=>k==null||k.transform.IsChildOf(menuRoot)).ToArray())baseTextSizes.Remove(key);
             foreach(Transform child in menuRoot){ child.gameObject.SetActive(false); Destroy(child.gameObject); }
-            var wash=Rect("Warm paper",menuRoot,new Vector2(.018f,.012f),new Vector2(.982f,.988f));menuWash=Background(wash,new Color(1,.96f,.84f,.96f),true);menuWash.sprite=art.panel;menuWash.type=Image.Type.Sliced;
+            var wash=Rect("Warm paper",menuRoot,new Vector2(.018f,.012f),new Vector2(.982f,.988f));menuWash=Background(wash,new Color(1,.96f,.84f,.985f),true);menuWash.sprite=art.panel;menuWash.type=Image.Type.Sliced;
         }
         void DrawMenu()
         {
@@ -230,14 +235,15 @@ namespace Cascade.Presentation
         }
         void MenuTitle(UiCopy title,UiCopy body)
         {
-            var label=Text("Menu title",menuRoot,new Vector2(.08f,.80f),new Vector2(.92f,.94f),34,title);label.font=art.titleFont;
-            Text("Menu description",menuRoot,new Vector2(.08f,.70f),new Vector2(.92f,.81f),18,body);
+            var label=Text("Menu title",menuRoot,new Vector2(.08f,.865f),new Vector2(.92f,.955f),32,title);label.font=art.titleFont;label.alignment=TextAlignmentOptions.MidlineLeft;
+            var description=Text("Menu description",menuRoot,new Vector2(.08f,.77f),new Vector2(.92f,.855f),17,body);description.alignment=TextAlignmentOptions.MidlineLeft;
         }
         Button MenuButton(UiCopy label,float bottom,Action action,bool primary=false,float left=.10f,float right=.90f)
         {
             var button=Button(label,menuRoot,new Vector2(left,bottom),new Vector2(right,bottom),()=>{feedback.Sound(ToyCue.Select);action();});
-            var r=(RectTransform)button.transform;r.pivot=new Vector2(.5f,0);r.sizeDelta=new Vector2(0,60);
-            if(primary)button.GetComponent<Image>().color=new Color(.98f,.74f,.32f);return button;
+            var r=(RectTransform)button.transform;r.pivot=new Vector2(.5f,0);r.sizeDelta=new Vector2(0,52);
+            button.GetComponent<Image>().color=primary?new Color(.98f,.74f,.32f):new Color(.94f,.885f,.75f);
+            if(label.Key=="Back"||label.Key=="Travel bag")button.GetComponent<Image>().color=Color.clear;return button;
         }
         IReadOnlyList<LevelContent> PreferredLevels()
         {
@@ -246,7 +252,7 @@ namespace Cascade.Presentation
         }
         void DrawLessons()
         {
-            menuWash.color=new Color(1,.96f,.84f,Preferences.HighContrast?.92f:.13f);
+            menuWash.color=new Color(1,.96f,.84f,.975f);
             var logo=Text("CASCADE",menuRoot,new Vector2(.08f,.86f),new Vector2(.92f,.97f),42,"CASCADE");logo.font=art.titleFont;
             var example=Catalog.GetPrimary("C01").Definition;
             MiniMachine(Rect("Home machine",menuRoot,new Vector2(.25f,.73f),new Vector2(.75f,.85f)),example.InitialSymbolIds,example.TargetSymbolIds);
@@ -324,8 +330,8 @@ namespace Cascade.Presentation
                 Setting("Dead-end warning",Preferences.DeadEndWarnings,.20f,()=>Preferences.DeadEndWarnings=!Preferences.DeadEndWarnings);
             }
             if(settingsPage==2)DrawLanguages();
-            MenuButton(settingsPage==0?"Comfort":settingsPage==1?"Languages":"Sound & motion",.085f,()=>{settingsPage=(settingsPage+1)%3;DrawMenu();},false,.10f,.55f);
-            MenuButton("Back",.085f,CloseMenu,false,.59f,.90f);
+            MenuButton(settingsPage==0?"Comfort":settingsPage==1?"Languages":"Sound & motion",settingsPage==2?.025f:.085f,()=>{settingsPage=(settingsPage+1)%3;DrawMenu();},false,.10f,.55f);
+            MenuButton("Back",settingsPage==2?.025f:.085f,CloseMenu,false,.59f,.90f);
         }
         void Setting(string label,bool value,float bottom,Action toggle)
         {
@@ -356,7 +362,7 @@ namespace Cascade.Presentation
         {
             PersistProgress();
             feedback.MusicEnabled=Preferences.Music;feedback.SoundEnabled=Preferences.Sound;feedback.HapticsEnabled=Preferences.Haptics;
-            feedback.Quality=Preferences.EffectQuality;ReducedMotion=Preferences.ReducedMotion;ForcePreciseInput=Preferences.PreciseInput;
+            feedback.Quality=Preferences.EffectQuality;machine.LivingWorld.EffectQuality=Preferences.EffectQuality;ReducedMotion=Preferences.ReducedMotion;ForcePreciseInput=Preferences.PreciseInput;
             machine.ScreenShakeEnabled=Preferences.ScreenShake;
             if(Preferences.EffectQuality==0)feedback.ClearTails();
             if(!Preferences.DeadEndWarnings)CancelDeadEnd();
@@ -367,7 +373,7 @@ namespace Cascade.Presentation
                 entry.Key.color=Preferences.HighContrast?new Color(.06f,.17f,.18f):Ink;
             }
         }
-        static bool IsSymbolFace(string label)=>label=="Symbol"||label=="TargetSymbol"||label=="DeviceGlyph"||label=="ZoomSymbol";
+        static bool IsSymbolFace(string label)=>label=="Required letter"||label=="Symbol"||label=="TargetSymbol"||label=="DeviceGlyph"||label=="ZoomSymbol";
         void ScheduleDeadEnd()
         {
             CancelDeadEnd();

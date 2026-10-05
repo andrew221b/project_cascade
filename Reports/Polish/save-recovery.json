@@ -1,0 +1,14 @@
+{
+    "width": 390,
+    "height": 844,
+    "minimumDeviceTextPixels": 0.0,
+    "buttons": [
+        {
+            "name": "Continue",
+            "x": 39.00000762939453,
+            "y": 295.39996337890627,
+            "width": 312.0,
+            "height": 52.000030517578128
+        }
+    ]
+}

@@ -1919,11 +1919,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 96949670764544
-    m_Localized: "\u0414\u043E\u0441\u043A\u0430: {0} \u0445\u043E\u0434\u043E\u0432"
+    m_Localized: "\u0414\u043E\u0441\u043A\u0430 \xB7 \u0445\u043E\u0434\u044B: {0}"
     m_Metadata:
       m_Items: []
   - m_Id: 96949674958848
-    m_Localized: "{0} \u0445\u043E\u0434\u043E\u0432"
+    m_Localized: "\u0414\u043E \u0432\u0437\u0440\u044B\u0432\u0430: {0}"
     m_Metadata:
       m_Items: []
   - m_Id: 96949674958849

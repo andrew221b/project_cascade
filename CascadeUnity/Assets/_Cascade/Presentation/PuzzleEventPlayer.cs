@@ -128,7 +128,7 @@ namespace Cascade.Presentation
                     Vector3 position = Vector3.Lerp(from[i], to[i], eased);
                     if(falling)position.y=Mathf.Lerp(from[i].y,to[i].y,local*local);
                     if (arcs && !game.ReducedMotion && Mathf.Abs(from[i].x-to[i].x) > .01f)
-                        position.y += Mathf.Sin(t*Mathf.PI) * profile.swapArc * (from[i].x < to[i].x ? 1 : -.45f);
+                        position.y += Mathf.Sin(t*Mathf.PI) * profile.swapArc * (from[i].x < to[i].x ? 1 : .35f);
                     game.OffsetPresentedToken(i, position-to[i], Vector2.one);
                     game.Machine.SetPiecePose(i,falling?PiecePose.Falling:PiecePose.Exchanging,Mathf.Sin(local*Mathf.PI)*(i%2==0?1:-1)*(falling?13:9));
                 }
@@ -149,12 +149,12 @@ namespace Cascade.Presentation
         IEnumerator Land(bool arrival)
         {
             game.Machine.LandWeight(game.VisibleFrame.ActiveFloor);
-            float duration = game.ReducedMotion ? profile.reducedStep : Mathf.Max(.24f,profile.landing), time = 0;
+            float duration = game.ReducedMotion ? profile.reducedStep : Mathf.Max(.19f,profile.landing), time = 0;
             while (time < duration) {
                 for (int i = 0; i < game.VisibleFrame.Row.Count; i++){
-                    float t=Mathf.Clamp01(time/duration),pulse=game.ReducedMotion?0:Mathf.Sin(t*Mathf.PI*2)*Mathf.Exp(-t*3);
+                    float t=Mathf.Clamp01(time/duration),pulse=game.ReducedMotion?0:Mathf.Cos(t*Mathf.PI*2)*Mathf.Exp(-t*7);
                     float squash=pulse*profile.landingSquash;
-                    game.OffsetPresentedToken(i,Vector3.up*(game.ReducedMotion?0:Mathf.Abs(Mathf.Sin(t*Mathf.PI*2))*Mathf.Exp(-t*3)*.13f),new Vector2(1+squash*.5f,1-squash));
+                    game.OffsetPresentedToken(i,Vector3.up*(game.ReducedMotion?0:Mathf.Sin(t*Mathf.PI)*Mathf.Exp(-t*5)*.09f),new Vector2(1+squash*.5f,1-squash));
                     game.Machine.SetPiecePose(i,PiecePose.Settling,pulse*(i%2==0?1:-1)*5);
                 }
                 time += Time.unscaledDeltaTime; yield return null;

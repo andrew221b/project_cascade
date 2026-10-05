@@ -42,18 +42,18 @@ namespace Cascade.Presentation
         }
         void DrawLanguages()
         {
-            Text("UI language help",menuRoot,new Vector2(.10f,.66f),new Vector2(.90f,.72f),18,"Menu language");
+            Text("UI language help",menuRoot,new Vector2(.10f,.70f),new Vector2(.90f,.76f),18,"Menu language");
             string[] codes={"en","ru","uk"};
             for(int i=0;i<codes.Length;i++) {
                 string code=codes[i];
-                var button=MenuButton(LanguageName(code),.56f-i*.10f,()=>SetUiLocale(code),UiLanguage==code);
+                var button=MenuButton(LanguageName(code),.61f-i*.09f,()=>SetUiLocale(code),UiLanguage==code);
                 button.name="UiLocale"+code;
             }
-            Text("Word language help",menuRoot,new Vector2(.10f,.26f),new Vector2(.90f,.33f),18,"Word language · next puzzle");
+            Text("Word language help",menuRoot,new Vector2(.10f,.355f),new Vector2(.90f,.415f),18,"Word language · next puzzle");
             for(int i=0;i<codes.Length;i++) {
-                string code=codes[i];float left=.06f+i*.30f;
-                var button=MenuButton(LanguageName(code),.175f,()=>ProposePuzzleLocale(code),Preferences.PuzzleLocale==code,left,left+.28f);
-                button.name="PuzzleLocale"+code;button.GetComponentInChildren<TextMeshProUGUI>().fontSize=16;
+                string code=codes[i];
+                var button=MenuButton(LanguageName(code),.265f-i*.085f,()=>ProposePuzzleLocale(code),Preferences.PuzzleLocale==code);
+                button.name="PuzzleLocale"+code;
             }
         }
     }

@@ -12,9 +12,8 @@ namespace Cascade.Presentation
         void CraftTitle(UiCopy title,UiCopy body)
         {
             Rect("Workshop sun dust",menuRoot,Vector2.zero,Vector2.one).gameObject.AddComponent<WorldWeatherGraphic>().InitializeRegion(this,7);
-            menuWash.color=new Color(1,.965f,.86f,Preferences.HighContrast?.97f:.86f);
-            var heading=Text("Menu title",menuRoot,new Vector2(.08f,.86f),new Vector2(.92f,.96f),34,title);heading.font=art.titleFont;
-            Text("Menu description",menuRoot,new Vector2(.09f,.77f),new Vector2(.91f,.85f),18,body);
+            menuWash.color=new Color(1,.965f,.86f,.975f);
+            MenuTitle(title,body);
         }
         void Shelf(float bottom)
         {Rect("Carved display shelf",menuRoot,new Vector2(.08f,bottom),new Vector2(.92f,bottom+.023f)).gameObject.AddComponent<WoodBoardGraphic>();}
@@ -24,7 +23,7 @@ namespace Cascade.Presentation
             b.GetComponent<Image>().color=selected?new Color(.91f,.75f,.40f,.55f):Color.clear;
             var label=b.GetComponentInChildren<TextMeshProUGUI>();label.rectTransform.anchorMin=new Vector2(0,.13f);label.rectTransform.anchorMax=new Vector2(1,.35f);label.fontSize=17*(Preferences.LargeText?1.12f:1);
             b.name=string.IsNullOrEmpty(name)?asset+"Choice":b.name;
-            var icon=Picture("Shelf object",b.transform,new Vector2(.13f,.37f),new Vector2(.87f,.98f),Resources.Load<Sprite>("CascadeArt/Workshop/"+asset),true);
+            var icon=Picture("Shelf object",b.transform,new Vector2(.13f,.37f),new Vector2(.87f,.98f),Resources.Load<Sprite>(asset=="RibbonSpool"?"CascadeArt/Devices/RibbonSpool":"CascadeArt/Workshop/"+asset),true);
             return b;
         }
         void DrawCraftBag()
@@ -36,7 +35,7 @@ namespace Cascade.Presentation
             ShelfChoice("Keepsakes","LeafPin",.08f,.36f,.40f,.19f,ShowCollection);
             ShelfChoice("Workshop","BridgeLantern",.52f,.36f,.40f,.19f,ShowWorkshop);Shelf(.34f);
             ShelfChoice("My journal","MoonPatch",.08f,.15f,.40f,.18f,ShowJournal).interactable=JourneyClearCount>=3;
-            ShelfChoice("Power-ups","SkyRibbon",.52f,.15f,.40f,.18f,ShowPowerupChallenges);Shelf(.13f);
+            ShelfChoice("Power-ups","RibbonSpool",.52f,.15f,.40f,.18f,ShowPowerupChallenges);Shelf(.13f);
             MenuButton("Back to map",.025f,ShowJourney,true,.08f,.63f);
             MenuButton("Settings",.025f,ShowSettings,false,.65f,.94f).GetComponentInChildren<TextMeshProUGUI>().fontSize=14;
         }
@@ -47,7 +46,7 @@ namespace Cascade.Presentation
             bool pickups=CurrentScreen==GameScreen.PowerupChallenges;int offset=pickups?6:0;
             CraftTitle(pickups?"Power-ups":"Ribbon reach",pickups?"Pick up a tool. Find a new way home.":"One ribbon. Swap across one or two pieces.");
             if(pickups)Picture("Teaching tool",menuRoot,new Vector2(.40f,.64f),new Vector2(.60f,.76f),Resources.Load<Sprite>("CascadeArt/Devices/"+(reachPage<3?"RibbonSpool":"Hourglass")),true);
-            else ShelfChoice("","SkyRibbon",.36f,.64f,.28f,.12f,()=>{});
+            else ShelfChoice("","RibbonSpool",.36f,.64f,.28f,.12f,()=>{});
             var level=Catalog.BonusLevels[offset+reachPage].Definition;
             var example=Rect("Reach example",menuRoot,new Vector2(.15f,.43f),new Vector2(.85f,.63f));
             if(pickups)LiveDeviceDemo(example,level,reachPage<3?9:10);else MiniMachine(example,level.InitialSymbolIds,level.TargetSymbolIds);

@@ -1,0 +1,8 @@
+Unity 6000.3.8f1
+Target StandaloneOSX
+Architecture x64ARM64
+Backend Mono2x
+Product CascadeUnity
+Version 0.1.0
+Scene Assets/_Cascade/Scenes/CascadePlayable.unity
+Graphics Metal

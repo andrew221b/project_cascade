@@ -68,9 +68,9 @@ namespace Cascade.Presentation
             selected.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,2),0,1.5f);
             Text("Gift parts",menuRoot,new Vector2(.08f,.33f),new Vector2(.92f,.42f),22,owned?"You made it!":new UiCopy("Parts found: {0} / 3",Rewards.Fragments(id)));
             Text("Gift plan",menuRoot,new Vector2(.08f,.23f),new Vector2(.92f,.32f),18,owned?"A little keepsake for Mika.":"Three parts make this gift.");
-            if(owned)MenuButton(Rewards.EquippedGift==id?"With Mika":"Take along",.14f,()=>{Rewards.Equip(id);PersistProgress();DrawMenu();},true);
+            if(owned)MenuButton(Rewards.EquippedGift==id?"With Mika":"Take along",.14f,()=>{Rewards.Equip(id);PersistProgress();DrawMenu();},true).interactable=Rewards.EquippedGift!=id;
             else if(Rewards.EarnedFragments(id)>=3)MenuButton("Open parcel",.14f,ShowParcel,true);
-            else MenuButton(Rewards.SelectedGift==id?"Next gift":"Choose this gift",.14f,()=>{Rewards.SelectGift(id);PersistProgress();DrawMenu();},true);
+            else MenuButton(Rewards.SelectedGift==id?"Next gift":"Choose this gift",.14f,()=>{Rewards.SelectGift(id);PersistProgress();DrawMenu();},true).interactable=Rewards.SelectedGift!=id;
             MenuButton("Back",.025f,ShowTravelBag);
         }
         void DrawWorkshop()
@@ -80,7 +80,7 @@ namespace Cascade.Presentation
             for(int i=0;i<4;i++){int pick=i;ShelfChoice("",WorkshopAssets[i],.08f+i*.215f,.65f,.195f,.115f,()=>{workshopPage=pick;DrawMenu();},i==workshopPage);}
             Shelf(.64f);
             var picture=RewardPicture(WorkshopAssets[workshopPage],new Vector2(.20f,.39f),new Vector2(.80f,.63f));
-            picture.color=built?Color.white:new Color(.82f,.85f,.77f,.85f);
+            picture.color=built?Color.white:new Color(.90f,.91f,.84f,1);
             picture.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,1),0,.5f);
             Text("Workshop progress",menuRoot,new Vector2(.10f,.29f),new Vector2(.90f,.38f),22,new UiCopy("Lights restored: {0} / 10",complete));
             Text("Workshop range",menuRoot,new Vector2(.10f,.20f),new Vector2(.90f,.29f),18,new UiCopy("From stop {0} to stop {1}",workshopPage*10+1,workshopPage*10+10));

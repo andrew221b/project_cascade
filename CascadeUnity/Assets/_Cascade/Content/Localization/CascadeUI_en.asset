@@ -275,7 +275,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 472899611
-    m_Localized: Make yourself at home
+    m_Localized: Settings
     m_Metadata:
       m_Items: []
   - m_Id: 472899612
@@ -1644,11 +1644,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 96949670764544
-    m_Localized: 'Wood: {0} moves'
+    m_Localized: "Wood \xB7 moves: {0}"
     m_Metadata:
       m_Items: []
   - m_Id: 96949674958848
-    m_Localized: '{0} moves'
+    m_Localized: 'Fuse: {0}'
     m_Metadata:
       m_Items: []
   - m_Id: 96949674958849

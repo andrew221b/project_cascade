@@ -29,7 +29,7 @@ namespace Cascade.Presentation
         public void ResetWoodPoses()
         {
             heldWeight=-1;forecastHp=null;
-            foreach(var rig in floors){rig.sag=rig.sagVelocity=rig.sway=rig.swayVelocity=0;}
+            if(reducedMotion)foreach(var rig in floors){rig.sag=rig.sagVelocity=rig.sway=rig.swayVelocity=0;}
             for(int i=0;i<tokens.Count;i++){dynamicOffsets[i]=Vector3.zero;visualAngles[i]=0;piecePoses[i]=Frame.Status==PuzzleStatus.Playing?PiecePose.Resting:PiecePose.Delivered;}
         }
         public void PreviewForecast(TransitionResult prediction)

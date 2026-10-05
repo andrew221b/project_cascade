@@ -259,6 +259,7 @@ namespace Cascade.Presentation
         UiCopy DisplaySymbol(SymbolId symbol) => symbol.Kind == SymbolKind.Shape ? new[] { "triangle", "circle", "square", "diamond", "star", "hexagon" }[art.ShapeIndex(symbol)] : UiCopy.Raw(symbol.Value);
         static string FaceText(SymbolId symbol) => symbol.Kind == SymbolKind.Glyph ? symbol.Value : "";
         static UiCopy CommandText(PuzzleCommand command) => command.Kind == CommandKind.EarlyDrop ? "Drop the row" : new UiCopy("swap slots {0} & {1}",command.Edge+1,command.Kind==CommandKind.LongReach?command.End+1:command.Edge+2);
+        RectTransform statusPaper;
         void BuildScreen()
         {
             var canvasRect = Rect("GameCanvas", transform, Vector2.zero, Vector2.one);
@@ -277,7 +278,8 @@ namespace Cascade.Presentation
             previous.gameObject.SetActive(false); next.gameObject.SetActive(false);
             pause.GetComponentInChildren<TextMeshProUGUI>().SetCopy("");
             var pauseMark = Rect("Pause mark",pause.transform,Vector2.zero,Vector2.one).gameObject.AddComponent<PauseMark>(); pauseMark.raycastTarget=false;
-            status = Text("Feedback", safeRoot, new Vector2(.08f, .79f), new Vector2(.92f, .86f), 18, "");
+            statusPaper=Rect("Quiet instruction paper",safeRoot,new Vector2(.055f,.79f),new Vector2(.945f,.86f));var paper=Background(statusPaper,new Color(1,.96f,.84f,.93f),false);paper.sprite=art.panel;paper.type=UnityEngine.UI.Image.Type.Sliced;
+            status = Text("Feedback", safeRoot, new Vector2(.08f, .79f), new Vector2(.92f, .86f), 16, "");
             floorArea = Rect("Floors", safeRoot, new Vector2(.045f, .37f), new Vector2(.955f, .78f));
             receiver = Rect("Receiver", safeRoot, new Vector2(.5f, .245f), new Vector2(.5f, .365f)); receiver.sizeDelta = new Vector2(350, 0); Background(receiver, Color.clear, true);
             receiver.gameObject.AddComponent<UnityEngine.UI.Button>().onClick.AddListener(ToggleTargetZoom);
@@ -380,6 +382,9 @@ namespace Cascade.Presentation
                 float unit = 1 / Mathf.Min(1, scale); // Preserve 48-pixel hit regions in the smallest reference capture.
                 FixedBand(header, safeRoot.rect.height - 60 * unit, 48 * unit);
                 FixedBand(status.rectTransform, safeRoot.rect.height - 114 * unit, 44 * unit);
+                FixedBand(statusPaper,safeRoot.rect.height-114*unit,44*unit);status.fontSize=16*unit*(Preferences.LargeText?1.12f:1);
+                foreach(var label in floorLabels)label.fontSize=14*unit;
+                foreach(var dock in deviceDocks)dock.caption.fontSize=13*unit;
                 FixedBand(actions, 8 * unit, 48 * unit); FixedBand(precise, 64 * unit, 104 * unit);
                 if(resultRoot!=null)FixedBand(resultRoot,8*unit,160*unit);
                 receiverLabel.fontSize=16*unit; if(wrongRowLabel!=null)wrongRowLabel.fontSize=15*unit;
@@ -538,7 +543,7 @@ namespace Cascade.Presentation
             var button = rect.gameObject.AddComponent<UnityEngine.UI.Button>(); button.onClick.AddListener(() => clicked());
             var colors = button.colors; colors.highlightedColor = new Color(1, .94f, .78f); colors.pressedColor = new Color(.82f, .88f, .81f); colors.disabledColor = new Color(.88f, .90f, .84f, .7f); button.colors = colors;
             rect.gameObject.AddComponent<ButtonFeel>().Initialize(this);
-            var text = Text("Label", rect, Vector2.zero, Vector2.one, 18, label); text.font = art.titleFont; text.margin = new Vector4(3, 2, 3, 2); return button;
+            var text = Text("Label", rect, Vector2.zero, Vector2.one, 18, label); text.font = art.titleFont; text.margin = new Vector4(10, 5, 10, 5); return button;
         }
         UnityEngine.UI.Button DirectionButton(string name, Transform parent, Vector2 min, Vector2 max, bool right, Action clicked)
         {

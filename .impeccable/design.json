@@ -484,7 +484,7 @@
     "typographyMeta": {
       "menu-title": {
         "displayName": "Menu Title",
-        "purpose": "Pause, guide and settings headings, Bold."
+        "purpose": "Shared left-aligned menu headings, 32 reference units, Bold."
       },
       "region-speaker": {
         "displayName": "Region Speaker",
@@ -565,8 +565,8 @@
       },
       {
         "name": "fall-and-land",
-        "value": "300ms quadratic vertical fall + at least 240ms damped two-stage landing",
-        "purpose": "Map source pieces to committed destinations. Landing uses abs(sin(t * 2pi)) * exp(-3t) * 0.13 world-unit lift; damped alternating rotation up to 5deg and up to 8% squash. Reduced Motion has no bounce. Presentation only."
+        "value": "300ms quadratic vertical fall + at least 190ms damped landing",
+        "purpose": "Map source pieces to committed destinations. Landing uses sin(t * pi) * exp(-5t) * 0.09 world-unit lift; damped alternating rotation up to 5deg and up to 8% squash. Reduced Motion has no bounce. Presentation only."
       },
       {
         "name": "delivery",
@@ -596,7 +596,7 @@
       {
         "name": "ambient-glider",
         "value": "angle = phase * 0.07; x = sin(angle) * viewportWidth * 0.34; rotation = -6deg + sin(angle) * 9deg",
-        "purpose": "Whole rotated 3:2 image fits the bounded gap between feedback and top floor. Height is at most min(viewportHeight * 0.05, gap * 0.5), vertical drift is gap * 0.08. Hidden during held input or unavailable gap; menu pose is separate."
+        "purpose": "Whole rotated 3:2 image fits the bounded gap between feedback and top floor. Height is at most min(viewportHeight * 0.05, gap * 0.5), vertical drift is gap * 0.08. Fades during held input; hidden for an unavailable gap; menu pose is separate."
       },
       {
         "name": "ambient-lifecycle",
@@ -658,7 +658,7 @@
       "name": "Utility and menu action",
       "kind": "button",
       "refersTo": "button-secondary",
-      "description": "Native warm paper Button. Gameplay actions are compensated 48-unit bands; the button-menu variant uses 60 reference units. Custom keyboard focus treatment is not established. Documentation is native-only; HTML/CSS preview intentionally absent.",
+      "description": "Native warm paper Button. Gameplay actions are compensated 48-unit bands; the button-menu variant uses 52 reference units with 10/5-unit horizontal/vertical text margins. Filled controls have a selected focus outline. Documentation is native-only; HTML/CSS preview intentionally absent.",
       "html": "",
       "css": ""
     },

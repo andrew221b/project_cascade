@@ -1,0 +1,1 @@
+All menu routes, eleven device pages, phone/wide/large text/simulated notch. In-memory fixture only; disk persistence disabled. Each capture asserts gameplay state unchanged.

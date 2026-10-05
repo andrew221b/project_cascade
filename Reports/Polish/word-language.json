@@ -1,0 +1,21 @@
+{
+    "width": 390,
+    "height": 844,
+    "minimumDeviceTextPixels": 0.0,
+    "buttons": [
+        {
+            "name": "Usefornewpuzzles",
+            "x": 39.00000762939453,
+            "y": 362.9200134277344,
+            "width": 312.0,
+            "height": 52.0
+        },
+        {
+            "name": "Keepmychoice",
+            "x": 39.00000762939453,
+            "y": 253.20001220703126,
+            "width": 312.0,
+            "height": 52.0
+        }
+    ]
+}

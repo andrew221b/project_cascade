@@ -25,8 +25,10 @@ namespace Cascade.Tests
         InputSettings.BackgroundBehavior oldBackground;
         InputSettings.EditorInputBehaviorInPlayMode oldEditorInput;
         string isolatedProfile;
+        bool oldRunInBackground;
         [UnitySetUp] public IEnumerator SetUp()
         {
+            oldRunInBackground=UnityEngine.Application.runInBackground;UnityEngine.Application.runInBackground=true;
             isolatedProfile=Path.Combine(Path.GetTempPath(),"CascadePlayTests",System.Guid.NewGuid().ToString("N"));
             CascadeGame.EditorProfileDirectory=isolatedProfile;
             yield return SceneManager.LoadSceneAsync("Assets/_Cascade/Scenes/CascadePlayable.unity");
@@ -50,6 +52,7 @@ namespace Cascade.Tests
             InputSystem.settings.editorInputBehaviorInPlayMode = oldEditorInput;
             if(game!=null){UnityEngine.Object.Destroy(game.gameObject);yield return null;}
             CascadeGame.EditorProfileDirectory=null;
+            UnityEngine.Application.runInBackground=oldRunInBackground;
             if(Directory.Exists(isolatedProfile))Directory.Delete(isolatedProfile,true);
             yield return null;
         }
@@ -66,10 +69,13 @@ namespace Cascade.Tests
             var point = RectTransformUtility.WorldToScreenPoint(Camera.main, rect.TransformPoint(rect.rect.center));
             yield return MouseFrame(point, true); yield return MouseFrame(point, false);
         }
+        // Functional stage/ordering checks, not a frame-rate benchmark. A locked macOS Editor
+        // can render at 1 Hz; keep a 30-second real-time hang watchdog.
+        static bool PresentationBudget(double started)=>Time.realtimeSinceStartupAsDouble-started<30;
         IEnumerator AwaitPresentation()
         {
-            float until = Time.realtimeSinceStartup + 3;
-            while (game.Interaction.IsPresenting && Time.realtimeSinceStartup < until) yield return null;
+            double started=Time.realtimeSinceStartupAsDouble;
+            while (game.Interaction.IsPresenting && PresentationBudget(started)) yield return null;
             Assert.That(game.Interaction.IsPresenting, Is.False, "Presentation must release the input gate");
         }
         IEnumerator MouseFrame(Vector2 point, bool held)
@@ -155,11 +161,27 @@ namespace Cascade.Tests
             game.LoadNode("C03");game.ReducedMotion=true;yield return null;game.RefreshLayout();
             var ropes=game.Machine.GetComponentsInChildren<LineRenderer>().Where(l=>l.name.Contains("continuous hemp")).ToArray();
             Assert.That(ropes.Length,Is.EqualTo(2));string hash=game.Interaction.Attempt.CurrentStateHash;
-            foreach(var rope in ropes){Assert.That(rope.enabled,Is.True);Assert.That(rope.positionCount,Is.EqualTo(25));Assert.That(rope.bounds.size.y,Is.GreaterThan(1));}
+            foreach(var rope in ropes){Assert.That(rope.enabled,Is.True);Assert.That(rope.positionCount,Is.GreaterThan(25));Assert.That(rope.bounds.size.y,Is.GreaterThan(1));}
             game.SetEditorSafeInsets(new Vector4(.06f,.045f,.06f,.07f));yield return null;
             Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
             foreach(var rope in ropes)for(int i=0;i<rope.positionCount;i++)Assert.That(float.IsNaN(rope.GetPosition(i).x),Is.False);
             game.SetEditorSafeInsets(Vector4.zero);
+        }
+        [UnityTest] public IEnumerator EffectsOffRemovesWeatherAndPresentationSyncPreservesBoardWeight()
+        {
+            game.LoadNode("C03");game.ShowGame();yield return new WaitForSecondsRealtime(.6f);
+            string hash=game.Interaction.Attempt.CurrentStateHash;float sag=game.Machine.LoadedSag;
+            Assert.That(sag,Is.GreaterThan(.015f));game.RefreshLayout();
+            Assert.That(game.Machine.LoadedSag,Is.EqualTo(sag).Within(.001f),"Layout refresh must not erase the spring's stored weight.");
+            game.Preferences.EffectQuality=0;game.ShowSettings();yield return null;game.ShowGame();
+            game.Machine.LivingWorld.EffectQuality=0;yield return null;
+            Assert.That(game.Machine.LivingWorld.ActiveWeatherCount,Is.Zero);
+            game.ShowTravelBag();yield return null;yield return null;Canvas.ForceUpdateCanvases();
+            foreach(var weather in game.GetComponentsInChildren<WorldWeatherGraphic>())
+                Assert.That(weather.canvasRenderer.GetMesh().vertexCount,Is.Zero);
+            game.Preferences.EffectQuality=2;game.Machine.LivingWorld.EffectQuality=2;game.ShowGame();yield return null;
+            Assert.That(game.Machine.LivingWorld.ActiveWeatherCount,Is.GreaterThan(0));
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
         }
         [UnityTest] public IEnumerator TouchAdjacentDragWinsWithoutSpawningTokens()
         {
@@ -372,9 +394,9 @@ namespace Cascade.Tests
                 var views = game.SlotViews.ToArray(); int completions = game.EventPlayer.CompletedPresentations;
                 game.Interaction.Execute(witness.command); var committed = game.Interaction.Attempt.Current;
                 string hash = game.Interaction.Attempt.CurrentStateHash; int route = game.Interaction.Attempt.RouteLength;
-                float until = Time.realtimeSinceStartup + 3;
-                while (game.EventPlayer.IsRunning && game.EventPlayer.EventIndex != witness.eventIndex && Time.realtimeSinceStartup < until) yield return null;
-                Assert.That(game.EventPlayer.IsRunning && game.EventPlayer.EventIndex == witness.eventIndex, Is.True, "Missed " + witness.kind);
+                double started=Time.realtimeSinceStartupAsDouble;
+                while (game.EventPlayer.IsRunning && game.EventPlayer.EventIndex != witness.eventIndex && PresentationBudget(started)) yield return null;
+                Assert.That(game.EventPlayer.IsRunning && game.EventPlayer.EventIndex == witness.eventIndex, Is.True, "Missed " + witness.kind+" on "+witness.level.CampaignNodeId+" mode "+mode+" current "+game.EventPlayer.CurrentEvent+" index "+game.EventPlayer.EventIndex+" running "+game.EventPlayer.IsRunning+" delta "+Time.unscaledDeltaTime);
                 if (mode == 0) game.EventPlayer.Skip();
                 else if (mode == 1) game.SendMessage("OnApplicationFocus", false);
                 else if (mode == 2) game.enabled = false;
@@ -453,14 +475,14 @@ namespace Cascade.Tests
             game.LoadNode("C32"); yield return null;
             foreach (var command in PuzzleSolver.FindShortest(game.Interaction.Attempt.Resolver).Path) {
                 game.Interaction.Execute(command);
-                float until = Time.realtimeSinceStartup + 3;
-                while (game.EventPlayer.IsRunning && Time.realtimeSinceStartup < until) {
+                double started=Time.realtimeSinceStartupAsDouble;
+                while (game.EventPlayer.IsRunning && PresentationBudget(started)) {
                     Assert.That(game.TargetRow.GetComponentsInChildren<TextMeshProUGUI>().All(t => t.color.a > .99f), Is.True);
                     Assert.That(game.GetComponentsInChildren<MeshRenderer>(true).Where(r => r.name.StartsWith("Target ")).All(r => r.gameObject.activeInHierarchy), Is.True);
                     Assert.That(game.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b => b.name == "Retry"), Is.False);
                     yield return null;
                 }
-                Assert.That(game.EventPlayer.IsRunning, Is.False);
+                Assert.That(game.EventPlayer.IsRunning, Is.False,"Delivery timed out at "+game.EventPlayer.CurrentEvent+" index "+game.EventPlayer.EventIndex+" delta "+Time.unscaledDeltaTime);
             }
             Assert.That(game.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b => b.name == "Retry" && b.interactable), Is.True);
         }

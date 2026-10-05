@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="4" result="Failed(Child)" total="4" passed="2" failed="2" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-05 15:10:38Z" end-time="2026-10-05 15:11:13Z" duration="35.2236359">
+  <test-suite type="TestSuite" id="1064" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="56" result="Failed" site="Child" start-time="2026-10-05 15:10:38Z" end-time="2026-10-05 15:11:13Z" duration="35.223636" total="4" passed="2" failed="2" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1058" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="56" result="Failed" site="Child" start-time="2026-10-05 15:10:38Z" end-time="2026-10-05 15:11:13Z" duration="34.798531" total="4" passed="2" failed="2" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="84036" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1059" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="56" result="Failed" site="Child" start-time="2026-10-05 15:10:38Z" end-time="2026-10-05 15:11:13Z" duration="34.790474" total="4" passed="2" failed="2" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1060" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="56" result="Failed" site="Child" start-time="2026-10-05 15:10:38Z" end-time="2026-10-05 15:11:13Z" duration="34.786921" total="4" passed="2" failed="2" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1001" name="PlayableTests" fullname="Cascade.Tests.PlayableTests" classname="Cascade.Tests.PlayableTests" runstate="Runnable" testcasecount="56" result="Failed" site="Child" start-time="2026-10-05 15:10:38Z" end-time="2026-10-05 15:11:13Z" duration="34.784667" total="4" passed="2" failed="2" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1029" name="DeliveryKeepsTargetVisibleAndWaitsBeforeShowingResultControls" fullname="Cascade.Tests.PlayableTests.DeliveryKeepsTargetVisibleAndWaitsBeforeShowingResultControls" methodname="DeliveryKeepsTargetVisibleAndWaitsBeforeShowingResultControls" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1585081933" result="Failed" start-time="2026-10-05 15:10:38Z" end-time="2026-10-05 15:10:47Z" duration="8.586038" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: False
+  But was:  True
+]]></message>
+                <stack-trace><![CDATA[at Cascade.Tests.PlayableTests+<DeliveryKeepsTargetVisibleAndWaitsBeforeShowingResultControls>d__42.MoveNext () [0x001eb] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Tests/PlayMode/PlayableTests.cs:482
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in ./Library/PackageCache/com.unity.test-framework@0b7a23ab2e1d/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1023" name="EveryAnimatedStageCanBeInterruptedWithoutReapplyingRules" fullname="Cascade.Tests.PlayableTests.EveryAnimatedStageCanBeInterruptedWithoutReapplyingRules" methodname="EveryAnimatedStageCanBeInterruptedWithoutReapplyingRules" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="722410951" result="Failed" start-time="2026-10-05 15:10:47Z" end-time="2026-10-05 15:11:05Z" duration="17.778647" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Missed EntryPermuted
+  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at Cascade.Tests.PlayableTests+<EveryAnimatedStageCanBeInterruptedWithoutReapplyingRules>d__36.MoveNext () [0x0039f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Tests/PlayMode/PlayableTests.cs:396
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in ./Library/PackageCache/com.unity.test-framework@0b7a23ab2e1d/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1002" name="MouseTapTapWinsAndUndoRestores" fullname="Cascade.Tests.PlayableTests.MouseTapTapWinsAndUndoRestores" methodname="MouseTapTapWinsAndUndoRestores" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="722643098" result="Passed" start-time="2026-10-05 15:11:05Z" end-time="2026-10-05 15:11:09Z" duration="4.203820" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1035" name="WordLanguageNeedsConfirmationAndAppliesOnlyAtNextStart" fullname="Cascade.Tests.PlayableTests.WordLanguageNeedsConfirmationAndAppliesOnlyAtNextStart" methodname="WordLanguageNeedsConfirmationAndAppliesOnlyAtNextStart" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="343222216" result="Passed" start-time="2026-10-05 15:11:09Z" end-time="2026-10-05 15:11:13Z" duration="4.148498" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/PolishBackground/playmode.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
