@@ -55,7 +55,7 @@ namespace Cascade.Presentation
                 var heroTouch=Button(UiCopy.Raw(""),world,point+new Vector2(0,.045f),point+new Vector2(0,.045f),()=>OpenJourneyStory(index,false));heroTouch.name="TalktoMika";
                 ((RectTransform)heroTouch.transform).sizeDelta=new Vector2(64*MenuUnit,80*MenuUnit);heroTouch.GetComponent<Image>().color=Color.clear;
                 // Her feet stay on the island; scenery, hero and hit target share parallax.
-                if(Rewards.EquippedGift!=null)Picture("Mika's keepsake",hero.transform,new Vector2(.69f,.30f),new Vector2(.98f,.56f),Resources.Load<Sprite>("CascadeArt/Workshop/"+GiftAssets[Array.IndexOf(JourneyRewards.Gifts,Rewards.EquippedGift)]),true);
+                if(EquippedGift!=null)Picture("Mika's keepsake",hero.transform,new Vector2(.69f,.30f),new Vector2(.98f,.56f),Resources.Load<Sprite>("CascadeArt/Workshop/"+GiftAssets[Array.IndexOf(JourneyRewards.Gifts,EquippedGift)]),true);
             }
             var top=Rect("Map heading",menuRoot,new Vector2(.04f,.875f),new Vector2(.96f,.98f));Panel(top,MenuPaper);
             var back=DirectionButton("Back",top,new Vector2(.015f,.12f),new Vector2(.18f,.90f),false,ShowPlayChoice);back.GetComponent<Image>().color=Color.clear;

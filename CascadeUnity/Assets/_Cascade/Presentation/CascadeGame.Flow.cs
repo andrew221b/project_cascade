@@ -116,7 +116,7 @@ namespace Cascade.Presentation
             coachRoot.gameObject.SetActive(false); tutorialHand.gameObject.SetActive(false);
             if(screen!=GameScreen.Playing)HideInstruction();
             menuRoot.gameObject.SetActive(!machineVisible); resultRoot.gameObject.SetActive(screen==GameScreen.Fail||screen==GameScreen.Checkpoint);
-            if(machineVisible) { RenderState(); ArrangeResultControls(); } else {DrawMenu();if(changed)menuTransition.Arrive();}
+            if(machineVisible) { RenderState(); ArrangeResultControls(); } else {DrawMenu();if(changed)menuTransition.Arrive(screen==GameScreen.Home||screen==GameScreen.PlayChoice||screen==GameScreen.JourneyMap);}
             outcome?.ShowResult(screen);
             Canvas.ForceUpdateCanvases();
         }

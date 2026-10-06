@@ -19,13 +19,15 @@ namespace Cascade.Presentation
         bool dead,productReady;
         public PurchaseState State {get;private set;}
         public event Action Changed;
+        public bool IsPreview=>grants?.PreviewOnly==true;
         public bool Owned=>grants?.Ledger.NoAutomaticAds==true;
         public string Price=>store?.GetProductById(PurchaseCatalog.NoAutomaticAds)?.metadata.localizedPriceString;
         public bool CanBuy=>State==PurchaseState.Ready&&productReady&&!Owned;
-        public bool CanRestore=>store!=null&&(State==PurchaseState.Ready||State==PurchaseState.Complete||State==PurchaseState.Retry);
+        public bool CanRestore=>!IsPreview&&store!=null&&(State==PurchaseState.Ready||State==PurchaseState.Complete||State==PurchaseState.Retry);
         public void Initialize(AdService ledger,MonetizationSettings configuration)
         {
             grants=ledger;settings=configuration;
+            if(IsPreview){productReady=true;Set(Owned?PurchaseState.Complete:PurchaseState.Ready);return;}
             if(settings==null||!settings.storeCatalogRegistered||!Uri.TryCreate(settings.receiptValidationUrl,UriKind.Absolute,out var uri)||uri.Scheme!="https"){
                 Set(PurchaseState.Unconfigured);return;
             }
@@ -55,8 +57,8 @@ namespace Cascade.Presentation
             Set(productReady?PurchaseState.Ready:PurchaseState.Unavailable);
             store.FetchPurchases();
         }
-        public void Buy(){if(!CanBuy)return;Set(PurchaseState.Busy);try{store.PurchaseProduct(PurchaseCatalog.NoAutomaticAds);}catch(Exception){Set(PurchaseState.Retry);}}
-        public async void RetryConnection(){if(State!=PurchaseState.Retry)return;if(store==null){Connect();return;}Set(PurchaseState.Connecting);try{await store.Connect();}catch(Exception){if(!dead)Set(PurchaseState.Retry);}}
+        public void Buy(){if(!CanBuy)return;Set(PurchaseState.Busy);if(IsPreview){Set(grants.TryPreviewNoAds()?PurchaseState.Complete:PurchaseState.Retry);return;}try{store.PurchaseProduct(PurchaseCatalog.NoAutomaticAds);}catch(Exception){Set(PurchaseState.Retry);}}
+        public async void RetryConnection(){if(State!=PurchaseState.Retry)return;if(IsPreview){Set(Owned?PurchaseState.Complete:PurchaseState.Ready);return;}if(store==null){Connect();return;}Set(PurchaseState.Connecting);try{await store.Connect();}catch(Exception){if(!dead)Set(PurchaseState.Retry);}}
         public void Restore(){if(!CanRestore)return;Set(PurchaseState.Busy);try{store.RestoreTransactions((ok,error)=>{if(dead)return;if(ok)store.FetchPurchases();else Set(PurchaseState.Retry);});}catch(Exception){Set(PurchaseState.Retry);}}
         void Pending(PendingOrder order){StartValidation(order,true);}
         void Purchases(Orders orders){foreach(var order in orders.ConfirmedOrders)StartValidation(order,false);if(processing.Count==0)Set(Owned?PurchaseState.Complete:productReady?PurchaseState.Ready:PurchaseState.Unavailable);}

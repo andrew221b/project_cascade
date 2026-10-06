@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +9,7 @@ namespace Cascade.Presentation
     public sealed class RewardCelebration:MonoBehaviour
     {
         CascadeGame game;Image[] stars;int earned,score;TMP_Text number;float elapsed;bool gift;
-        Image[] confetti;Vector2[] origin;int chimed=-1;
+        Image[] confetti;Vector2[] origin;int chimed=-1;Tween ceremony;
         public float Progress=>Mathf.Clamp01(elapsed/2.1f);
         public void Initialize(CascadeGame owner,Image[] awardStars,int count,TMP_Text scoreLabel,int finalScore,Sprite papers,bool opening)
         {
@@ -22,12 +23,14 @@ namespace Cascade.Presentation
                 origin[i]=rect.anchoredPosition;confetti[i].color=new Color(1,1,1,0);
             }
             Paint();
+            ceremony=DOTween.To(()=>elapsed,value=>{elapsed=value;Paint();},3.2f,3.2f).SetEase(Ease.Linear).SetUpdate(true).SetTarget(this);
         }
         void Update()
         {
-            if(game==null||elapsed>=3.2f)return;
-            if(!game.CelebrationMotionAllowed)return;
-            elapsed+=Time.unscaledDeltaTime;Paint();
+            if(game==null)return;
+            if(game.ReducedMotion){ceremony?.Kill();ceremony=null;elapsed=3.2f;Paint();return;}
+            if(ceremony==null||!ceremony.IsActive())return;
+            if(game.CelebrationMotionAllowed)ceremony.Play();else ceremony.Pause();
         }
         void Paint()
         {
@@ -46,9 +49,10 @@ namespace Cascade.Presentation
                 if(confetti[i]==null)continue;
                 float t=Mathf.Clamp01((elapsed-(gift?.15f:.58f)-i*.09f)/2.1f);var rect=confetti[i].rectTransform;
                 rect.anchoredPosition=origin[i]+new Vector2((i%2==0?1:-1)*Mathf.Sin(t*Mathf.PI)*44,35*Mathf.Sin(t*Mathf.PI)-110*t*t);
-                rect.localRotation=Quaternion.Euler(0,0,(i%2==0?1:-1)*30*t);confetti[i].color=new Color(1,1,1,Mathf.Sin(t*Mathf.PI)*.82f);
+                rect.localRotation=Quaternion.Euler(0,0,(i%2==0?1:-1)*30*t);confetti[i].color=new Color(1,1,1,quiet?0:Mathf.Sin(t*Mathf.PI)*.82f);
             }
         }
-        void OnDisable(){foreach(var image in confetti??System.Array.Empty<Image>())if(image!=null)Destroy(image.gameObject);Destroy(this);}
+        void OnDisable(){ceremony?.Kill();foreach(var image in confetti??System.Array.Empty<Image>())if(image!=null)Destroy(image.gameObject);Destroy(this);}
+        void OnDestroy(){ceremony?.Kill();}
     }
 }

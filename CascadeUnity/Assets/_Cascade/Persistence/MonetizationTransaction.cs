@@ -5,6 +5,14 @@ namespace Cascade.Persistence
 {
     public static class MonetizationTransaction
     {
+        public static AdService CreatePreview(PlayerProfile profile,ProfileStore store,Func<AttemptService> activeAttempt)
+        {
+            return new AdService(profile.Monetization.Copy(),candidate=>{
+                var old=profile.Attempt;
+                try{profile.Attempt=AttemptRecord.Capture(activeAttempt());store.Save(profile);}
+                catch{profile.Attempt=old;throw;}
+            },profile.Clears.Count,previewOnly:true);
+        }
         public static AdService Create(PlayerProfile profile,ProfileStore store,Func<AttemptService> activeAttempt=null)
         {
             return new AdService(profile.Monetization,candidate=>{

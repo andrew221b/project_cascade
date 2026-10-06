@@ -1,5 +1,12 @@
 # P19 late monetization boundary
 
+Follow-up, 6 October 2026: the author enabled test ads/shop and DOTween motion.
+Current automatic policy: three new complete wins, 180 foreground seconds,
+maximum two shows per session; skip replays and chapter finales. First-session/
+first-12 protection below is historical. Production configuration remains gated.
+See [DOTWEEN_AND_TEST_MONETIZATION.md](DOTWEEN_AND_TEST_MONETIZATION.md) and
+Reports/MotionAds/README.md for implementation and validation.
+
 Design note before adding optional saved inventory/receipt fields. Status: mock
 and deterministic local acceptance only; no SDK, live payments or ad UI enabled.
 Core remains under revision at the author's request. C16 explicitly gates real

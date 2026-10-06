@@ -4,6 +4,19 @@ namespace Cascade.Application
 {
     public sealed partial class AdService
     {
+        public bool TryPreviewItem(TravelTool tool,string gift=null)
+        {
+            if(!PreviewOnly||FullscreenActive)return false;
+            var next=Ledger.Copy();
+            if(gift!=null){if(!JourneyRewards.Gifts.Contains(gift)||next.Cosmetics.Contains(gift))return false;next.Cosmetics.Add(gift);}
+            else {if(!ShopCatalog.IsTool(tool)||ToolStock(tool)>=ShopCatalog.StockLimit)return false;AddTool(next,tool,1);}
+            return Commit(next);
+        }
+        public bool TryPreviewNoAds()
+        {
+            if(!PreviewOnly||FullscreenActive||Ledger.NoAutomaticAds)return false;
+            var next=Ledger.Copy();next.NoAutomaticAds=true;return Commit(next);
+        }
         public int CoinBalance(int earnedCoins) => (int)Math.Max(0L,(long)earnedCoins+Ledger.BonusCoins-Ledger.SpentCoins);
         public int ToolStock(TravelTool tool) => tool==TravelTool.Wayfinder?Ledger.WayfinderScrolls:tool==TravelTool.UndoSpool?Ledger.UndoSpools:tool==TravelTool.ReturnHourglass?Ledger.ReturnHourglasses:0;
         static void AddTool(MonetizationLedger ledger,TravelTool tool,int amount)

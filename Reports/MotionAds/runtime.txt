@@ -1,0 +1,69 @@
+Native MCP Editor review; isolated profile. Local preview ad lifecycle below. Official SDK rewarded callbacks were checked separately.
+PASS Test store and both ad formats ready
+PASS Item prices absent
+PASS Ad blocks underlying controls and puzzle input
+PASS Cancelled video gives nothing and releases input
+PASS Finished video gives exactly 40 coins; row unchanged
+PASS Interstitial provider exercised with synthetic third-completion context
+PASS Interstitial ends without a coin grant or puzzle change
+PASS Test tool grant 1
+PASS Test tool grant 2
+PASS Test tool grant 3
+PASS Test tool grant 4
+PASS Test tool grant 5
+PASS Test stock cap and zero spend
+PASS Test keepsake can be taken along
+PASS Test no-ads page hides price and real restore
+PASS Test no-ads purchase succeeds once
+PASS Test entitlement blocks automatic ads
+PASS Rapid navigation settles without accumulated offset
+PASS Press compresses artwork; hit rectangle stays fixed
+PASS Release settles to original size
+PASS Screen arrival pauses when unfocused
+PASS Reduced motion settles instantly
+PASS Witness command available
+PASS Witness command accepted
+PASS Witness command available
+PASS Witness command accepted
+PASS Witness command available
+PASS Witness command accepted
+PASS Witness command available
+PASS Witness command accepted
+PASS Witness command available
+PASS Witness command accepted
+PASS Witness command available
+PASS Witness command accepted
+PASS Witness command available
+PASS Witness command accepted
+PASS Witness command available
+PASS Witness command accepted
+PASS Actual level reaches statistics only after all three stages
+PASS Reward ceremony pauses with application
+PASS Score count-up finishes without changing receipt
+PASS Statistics continue returns to map
+FAIL First encounter still pauses input after DOTween integration
+PASS Ad close button localized
+PASS First encounter still pauses input after DOTween integration
+PASS Final text fits: Level
+PASS Final text fits: Label
+PASS Final text fits: Label
+PASS Final text fits: Feedback
+PASS Final text fits: Devices
+PASS Final text fits: Durability
+PASS Final text fits: Symbol
+PASS Final text fits: Symbol
+PASS Final text fits: Symbol
+PASS Final text fits: Symbol
+PASS Final text fits: Devices
+PASS Final text fits: Durability
+PASS Final text fits: ReceiverLabel
+PASS Final text fits: TargetSymbol
+PASS Final text fits: TargetSymbol
+PASS Final text fits: TargetSymbol
+PASS Final text fits: TargetSymbol
+PASS Final text fits: Label
+PASS Final text fits: Label
+PASS Final text fits: New mechanic title
+PASS Final text fits: New mechanic explanation
+PASS Final text fits: Label
+CORRECTIONS COMPLETE. Earlier final tutorial probe used an arbitrary level and a fixed half-second delay; corrected to a new-mechanic fixture and readiness wait. Earlier lifecycle checks passed.

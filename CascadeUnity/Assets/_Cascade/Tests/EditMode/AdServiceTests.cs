@@ -39,11 +39,20 @@ namespace Cascade.Tests
             foreach(var surface in Enum.GetValues(typeof(AdSurface)).Cast<AdSurface>().Where(s=>s!=AdSurface.Win)) {
                 var s=Service();s.AdvanceForeground(180);Assert.That(s.TryAutomatic(Context(surface),true),Is.Null);
             }
-            Action<AdContext>[] gates={c=>c.CoreAccepted=false,c=>c.PrivacyReady=false,c=>c.ProviderEnabled=false,c=>c.FirstSession=true,
-                c=>c.UniqueClears=12,c=>c.SavedWin=false,c=>c.BaseRewardGiven=false,c=>c.ContinueVisible=true,c=>c.ChapterFinal=true};
+            Action<AdContext>[] gates={c=>c.CoreAccepted=false,c=>c.PrivacyReady=false,c=>c.ProviderEnabled=false,
+                c=>c.UniqueClears=2,c=>c.SavedWin=false,c=>c.BaseRewardGiven=false,c=>c.ContinueVisible=true,c=>c.ChapterFinal=true,c=>c.Replay=true};
             foreach(var gate in gates){var s=Service();s.AdvanceForeground(180);var c=Context();gate(c);Assert.That(s.TryAutomatic(c,true),Is.Null);}
             var early=Service();early.AdvanceForeground(179);Assert.That(early.TryAutomatic(Context(),true),Is.Null);
             var few=Service();few.AdvanceForeground(180);Assert.That(few.TryAutomatic(Context(clears:14),true),Is.Null);
+        }
+        [Test] public void FirstSessionCanShowAfterThreeCompleteNewLevelsAndThreeMinutes()
+        {
+            var s=new AdService(new MonetizationLedger(),_=>{});var c=Context(clears:3,node:"C03");c.FirstSession=true;
+            s.AdvanceForeground(179);Assert.That(s.TryAutomatic(Context(clears:2,node:"C02"),true),Is.Null);
+            s.AdvanceForeground(1);var ticket=s.TryAutomatic(c,true);Assert.That(ticket,Is.Not.Null);
+            s.Opened(ticket.Id);s.Closed(ticket.Id);s.AdvanceForeground(180);
+            Assert.That(s.TryAutomatic(Context(clears:5,node:"C05"),true),Is.Null);
+            Assert.That(s.TryAutomatic(Context(clears:6,node:"C06"),true),Is.Not.Null);
         }
         [Test] public void NotReadySkipsThatWinAndTwoAutomaticShowsAreTheSessionLimit()
         {

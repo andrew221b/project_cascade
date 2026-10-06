@@ -141,8 +141,7 @@ namespace Cascade.Presentation
             NavigationNote("Quiet journey benefit","Keep the way home free of advertising breaks. Support Mika's journey.",.49f,.60f);
             NavigationNote("No adverts explanation",PurchaseExplanation,.32f,.46f);
             StorePurchaseButton(.223f);
-            var restore=NavigationButton("Restorepurchases","Restore purchases",1,.112f,()=>purchaseStore?.Restore());restore.interactable=purchaseStore?.CanRestore==true;
-            if(!restore.interactable)restore.gameObject.AddComponent<CanvasGroup>().alpha=.57f;
+            if(!TestMonetization){var restore=NavigationButton("Restorepurchases","Restore purchases",1,.112f,()=>purchaseStore?.Restore());restore.interactable=purchaseStore?.CanRestore==true;if(!restore.interactable)restore.gameObject.AddComponent<CanvasGroup>().alpha=.57f;}
             var back=NavigationButton("Back to play","Back",0,.012f,()=>SetScreen(noAdsReturnScreen),true);
             var rect=(RectTransform)back.transform;float minimum=52/back.GetComponentInParent<Canvas>().scaleFactor;
             if(rect.rect.height<minimum)rect.offsetMax=new Vector2(rect.offsetMax.x,rect.offsetMax.y+minimum-rect.rect.height);

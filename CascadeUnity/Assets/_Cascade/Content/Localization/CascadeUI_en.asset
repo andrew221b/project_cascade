@@ -2544,6 +2544,66 @@ MonoBehaviour:
     m_Localized: Use it
     m_Metadata:
       m_Items: []
+  - m_Id: 542516121165824
+    m_Localized: Test shop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 542516125360128
+    m_Localized: "Video \xB7 +40"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 542516125360129
+    m_Localized: "Loading video\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 542516125360130
+    m_Localized: Try this item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 542516125360131
+    m_Localized: Try removing ads
+    m_Metadata:
+      m_Items: []
+  - m_Id: 542516125360132
+    m_Localized: Test shop. No money is charged. Try removing automatic ads.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 542516125360133
+    m_Localized: Test purchase complete. Automatic ads are off for this session.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 542516125360134
+    m_Localized: Test ad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 542516125360135
+    m_Localized: Watch to the end for 40 coins.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 542516125360136
+    m_Localized: A short break between levels.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 542516125360137
+    m_Localized: Collect coins
+    m_Metadata:
+      m_Items: []
+  - m_Id: 542516125360138
+    m_Localized: All done
+    m_Metadata:
+      m_Items: []
+  - m_Id: 542516125360139
+    m_Localized: '{0} seconds'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 542516125360140
+    m_Localized: 40 coins added
+    m_Metadata:
+      m_Items: []
+  - m_Id: 546229162336256
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -34,7 +34,7 @@ namespace Cascade.Application
     public sealed class AdContext
     {
         public AdSurface Surface;
-        public bool CoreAccepted,PrivacyReady,ProviderEnabled,FirstSession,SavedWin,BaseRewardGiven,ContinueVisible,ChapterFinal;
+        public bool CoreAccepted,PrivacyReady,ProviderEnabled,FirstSession,SavedWin,BaseRewardGiven,ContinueVisible,ChapterFinal,Replay;
         public string NodeId;public int UniqueClears;
     }
     public sealed class AdTicket
@@ -55,15 +55,16 @@ namespace Cascade.Application
         public MonetizationLedger Ledger {get;private set;}
         public bool FullscreenActive=>active!=null;
         public int AutomaticShows=>automaticShows;
-        public AdService(MonetizationLedger ledger,Action<MonetizationLedger> persist,int uniqueAtSessionStart=0)
-        {ledger.Validate();Ledger=ledger;this.persist=persist??throw new ArgumentNullException(nameof(persist));intervalAnchor=uniqueAtSessionStart;}
+        public bool PreviewOnly {get;}
+        public AdService(MonetizationLedger ledger,Action<MonetizationLedger> persist,int uniqueAtSessionStart=0,bool previewOnly=false)
+        {ledger.Validate();Ledger=ledger;this.persist=persist??throw new ArgumentNullException(nameof(persist));intervalAnchor=uniqueAtSessionStart;PreviewOnly=previewOnly;}
         public void AdvanceForeground(double seconds)
         {if(seconds<0||double.IsNaN(seconds)||double.IsInfinity(seconds))throw new ArgumentOutOfRangeException(nameof(seconds));if(active==null)foregroundSeconds+=seconds;}
         static bool Ready(AdContext c)=>c!=null&&c.CoreAccepted&&c.PrivacyReady&&c.ProviderEnabled;
         public AdTicket TryAutomatic(AdContext c,bool adReady)
         {
             if(c==null||c.Surface!=AdSurface.Win||string.IsNullOrWhiteSpace(c.NodeId)||!observedWins.Add(c.NodeId))return null;
-            if(!Ready(c)||active!=null||Ledger.NoAutomaticAds||c.FirstSession||c.UniqueClears<=12||!c.SavedWin||!c.BaseRewardGiven
+            if(!Ready(c)||active!=null||Ledger.NoAutomaticAds||c.UniqueClears<3||!c.SavedWin||!c.BaseRewardGiven||c.Replay
                 ||c.ContinueVisible||c.ChapterFinal||c.UniqueClears-intervalAnchor<3||foregroundSeconds<180||automaticShows>=2||!adReady)return null;
             return active=new AdTicket{Id=Guid.NewGuid().ToString("D"),UniqueClears=c.UniqueClears};
         }

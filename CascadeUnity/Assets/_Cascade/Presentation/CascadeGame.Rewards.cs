@@ -77,7 +77,7 @@ namespace Cascade.Presentation
             MenuReadingSurface("Keepsake progress cloth",new Vector2(.12f,.225f),new Vector2(.88f,.425f));
             Text("Gift parts",menuRoot,new Vector2(.10f,.31f),new Vector2(.90f,.375f),23,owned?"You made it!":new UiCopy("Parts found: {0} / 3",Rewards.Fragments(id))).font=art.titleFont;
             Text("Gift plan",menuRoot,new Vector2(.10f,.235f),new Vector2(.90f,.305f),20,owned?"A little keepsake for Mika.":"Three parts make this gift.");
-            if(owned)MenuButton(Rewards.EquippedGift==id?"With Mika":"Take along",.14f,()=>EquipShopGift(id),true).interactable=Rewards.EquippedGift!=id;
+            if(owned)MenuButton(EquippedGift==id?"With Mika":"Take along",.14f,()=>EquipShopGift(id),true).interactable=EquippedGift!=id;
             else if(Rewards.EarnedFragments(id)>=3)MenuButton("Open parcel",.14f,ShowParcel,true);
             else MenuButton(Rewards.SelectedGift==id?"Next gift":"Choose this gift",.14f,()=>{Rewards.SelectGift(id);PersistProgress();DrawMenu();},true).interactable=Rewards.SelectedGift!=id;
             MenuButton("Back",.025f,()=>SetScreen(collectionReturn));

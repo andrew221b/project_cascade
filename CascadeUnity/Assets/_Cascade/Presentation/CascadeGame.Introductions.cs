@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Cascade.Application;
 using Cascade.Domain;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +17,7 @@ namespace Cascade.Presentation
         int mechanicMountFrame;
         RectTransform mechanicOverlay,mechanicSafe;
         CanvasGroup mechanicOpacity;
-        float mechanicAge;
+        Sequence mechanicArrival;
         Action afterMechanic;
         bool? mechanicWindRight;
         Sprite introBranch;
@@ -94,9 +95,15 @@ namespace Cascade.Presentation
             mechanicOverlay=Rect("First mechanic explanation",(RectTransform)safeRoot.parent,Vector2.zero,Vector2.one);
             var canvas=mechanicOverlay.gameObject.AddComponent<Canvas>();canvas.overrideSorting=true;canvas.sortingOrder=40;
             mechanicOverlay.gameObject.AddComponent<GraphicRaycaster>();Background(mechanicOverlay,new Color(.035f,.12f,.13f,.73f),true);
-            mechanicOpacity=mechanicOverlay.gameObject.AddComponent<CanvasGroup>();mechanicOpacity.alpha=ReducedMotion?1:0;mechanicAge=0;
+            mechanicOpacity=mechanicOverlay.gameObject.AddComponent<CanvasGroup>();mechanicOpacity.alpha=1;
             mechanicSafe=Rect("Explanation safe area",mechanicOverlay,safeRoot.anchorMin,safeRoot.anchorMax);FitMechanicSafeArea();
             var panel=Rect("Explanation cloth",mechanicSafe,new Vector2(.04f,.10f),new Vector2(.96f,.90f));
+            if(!ReducedMotion){
+                mechanicOpacity.alpha=0;panel.localScale=Vector3.one*.97f;
+                mechanicArrival=DOTween.Sequence().SetUpdate(true).SetTarget(mechanicOverlay);
+                mechanicArrival.Append(DOTween.To(()=>mechanicOpacity.alpha,v=>mechanicOpacity.alpha=v,1,.20f).SetEase(Ease.OutCubic));
+                mechanicArrival.Join(panel.DOScale(1,.32f).SetEase(Ease.OutQuint));
+            }
             var face=Background(panel,MenuPaper,false);face.sprite=art.panel;face.type=Image.Type.Sliced;
             var title=Text("New mechanic title",panel,new Vector2(.07f,.81f),new Vector2(.93f,.97f),26,MechanicTitles[(int)lesson]);title.font=art.titleFont;
             title.enableAutoSizing=true;title.fontSizeMin=22*MenuUnit;title.fontSizeMax=28*MenuUnit;
@@ -144,14 +151,17 @@ namespace Cascade.Presentation
         void CloseMechanicPopup()
         {
             if(!MechanicPopupOpen)return;
-            mechanicOverlay.gameObject.SetActive(false);Destroy(mechanicOverlay.gameObject);mechanicOverlay=null;mechanicSafe=null;CurrentMechanic=null;afterMechanic=null;
+            mechanicArrival?.Kill();mechanicArrival=null;mechanicOverlay.gameObject.SetActive(false);Destroy(mechanicOverlay.gameObject);mechanicOverlay=null;mechanicSafe=null;CurrentMechanic=null;afterMechanic=null;
             Interaction?.SetPaused(mechanicWasPaused);machine.SetAmbientPaused(CurrentScreen==GameScreen.Pause||CurrentScreen==GameScreen.SaveRecovery);
         }
         void FitMechanicSafeArea(){if(mechanicSafe==null)return;mechanicSafe.anchorMin=safeRoot.anchorMin;mechanicSafe.anchorMax=safeRoot.anchorMax;mechanicSafe.offsetMin=safeRoot.offsetMin;mechanicSafe.offsetMax=safeRoot.offsetMax;}
         void TickMechanicIntroduction()
         {
-            TryFirstMechanic();if(!MechanicPopupOpen||!IntroductionAnimationAllowed)return;
-            FitMechanicSafeArea();mechanicAge+=Time.unscaledDeltaTime;mechanicOpacity.alpha=ReducedMotion?1:Mathf.SmoothStep(0,1,Mathf.Clamp01(mechanicAge/.22f));
+            TryFirstMechanic();if(!MechanicPopupOpen)return;FitMechanicSafeArea();
+            if(mechanicArrival!=null&&mechanicArrival.IsActive()){
+                if(ReducedMotion)mechanicArrival.Complete();
+                else if(IntroductionAnimationAllowed)mechanicArrival.Play();else mechanicArrival.Pause();
+            }
         }
     }
 }

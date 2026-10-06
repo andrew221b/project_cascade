@@ -20,6 +20,8 @@ namespace Cascade.Presentation
         Image guideHand;
         Image displayedShopObject;
         float guideTime;
+        string previewEquippedGift;
+        public string EquippedGift=>previewEquippedGift??Rewards.EquippedGift;
         public int ShopCoins=>monetization?.CoinBalance(Rewards.EarnedCoins(OrderedNodes))??0;
         public int Stock(TravelTool tool)=>monetization?.ToolStock(tool)??0;
         public bool OwnsGift(string id)=>Rewards.Owns(id)||monetization?.Ledger.Cosmetics.Contains(id)==true;
@@ -68,10 +70,11 @@ namespace Cascade.Presentation
         }
         void DrawTravelCounter(bool bag)
         {
-            LoadNavigationArt();NavigationHeader(bag?"My tools":"Shop",bag?(Action)BackFromTools:BackFromShop);
+            LoadNavigationArt();NavigationHeader(bag?"My tools":TestMonetization?"Test shop":"Shop",bag?(Action)BackFromTools:BackFromShop);
             MenuReadingSurface("Coin wallet cloth",new Vector2(.09f,.80f),new Vector2(.91f,.867f));
             Picture("Earned coin pouch",menuRoot,new Vector2(.11f,.806f),new Vector2(.23f,.862f),TravelArt(3),true);
-            var coins=Text("Wallet coins",menuRoot,new Vector2(.25f,.805f),new Vector2(.88f,.862f),22,new UiCopy("{0} coins",ShopCoins));coins.alignment=TextAlignmentOptions.MidlineLeft;coins.font=art.titleFont;
+            var coins=Text("Wallet coins",menuRoot,new Vector2(.25f,.805f),new Vector2(bag?.88f:.45f,.862f),22,bag?new UiCopy("{0} coins",ShopCoins):UiCopy.Raw(ShopCoins.ToString("N0")));coins.alignment=TextAlignmentOptions.MidlineLeft;coins.font=art.titleFont;
+            if(!bag)RewardedShopOffer();
             if(!bag){
                 CounterButton("Tools tab","Tools",.08f,.48f,.700f,.782f,()=>SelectShopTab(0),shopTab==0);
                 CounterButton("Keepsakes tab","Keepsakes",.52f,.92f,.700f,.782f,()=>SelectShopTab(1),shopTab==1);
@@ -96,10 +99,10 @@ namespace Cascade.Presentation
             bool hasNotice=!string.IsNullOrEmpty(shopNotice.Key);
             var explanation=Text("Selected object benefit",menuRoot,new Vector2(.13f,hasNotice?.272f:.247f),new Vector2(.87f,.385f),20,benefit);explanation.enableAutoSizing=true;explanation.fontSizeMin=(Preferences.LargeText?20:18)*MenuUnit;explanation.fontSizeMax=20*MenuUnit*(Preferences.LargeText?1.12f:1);
             if(hasNotice){var notice=Text("Shop confirmation",menuRoot,new Vector2(.13f,.238f),new Vector2(.87f,.272f),18,shopNotice);notice.textWrappingMode=TextWrappingModes.NoWrap;notice.enableAutoSizing=true;notice.fontSizeMin=18*MenuUnit;notice.fontSizeMax=20*MenuUnit;}
-            UiCopy stock=shopTab==0?new UiCopy("In your bag: {0} / {1}",Stock(tool),ShopCatalog.StockLimit):OwnsGift(gift)?(Rewards.EquippedGift==gift?(UiCopy)"With Mika":"Already yours"):(UiCopy)"Yours forever";
-            var owned=Text("Owned item count",menuRoot,new Vector2(.13f,.200f),new Vector2(bag?.87f:.55f,.236f),20,stock);owned.alignment=bag?TextAlignmentOptions.Center:TextAlignmentOptions.MidlineLeft;owned.textWrappingMode=TextWrappingModes.NoWrap;owned.enableAutoSizing=true;owned.fontSizeMin=(Preferences.LargeText?20:18)*MenuUnit;owned.fontSizeMax=20*MenuUnit*(Preferences.LargeText?1.12f:1);
+            UiCopy stock=shopTab==0?new UiCopy("In your bag: {0} / {1}",Stock(tool),ShopCatalog.StockLimit):OwnsGift(gift)?(EquippedGift==gift?(UiCopy)"With Mika":"Already yours"):(UiCopy)"Yours forever";
+            var owned=Text("Owned item count",menuRoot,new Vector2(.13f,.200f),new Vector2(bag||TestMonetization?.87f:.55f,.236f),20,stock);owned.alignment=bag||TestMonetization?TextAlignmentOptions.Center:TextAlignmentOptions.MidlineLeft;owned.textWrappingMode=TextWrappingModes.NoWrap;owned.enableAutoSizing=true;owned.fontSizeMin=(Preferences.LargeText?20:18)*MenuUnit;owned.fontSizeMax=20*MenuUnit*(Preferences.LargeText?1.12f:1);
             int price=shopTab==0?ShopCatalog.Price(tool):ShopCatalog.KeepsakePrice;
-            if(!bag){var cost=Text("Total item price",menuRoot,new Vector2(.57f,.200f),new Vector2(.87f,.236f),20,new UiCopy("{0} coins",price));cost.alignment=TextAlignmentOptions.MidlineRight;cost.textWrappingMode=TextWrappingModes.NoWrap;cost.enableAutoSizing=true;cost.fontSizeMin=(Preferences.LargeText?20:18)*MenuUnit;cost.fontSizeMax=20*MenuUnit*(Preferences.LargeText?1.12f:1);}
+            if(!bag&&!TestMonetization){var cost=Text("Total item price",menuRoot,new Vector2(.57f,.200f),new Vector2(.87f,.236f),20,new UiCopy("{0} coins",price));cost.alignment=TextAlignmentOptions.MidlineRight;cost.textWrappingMode=TextWrappingModes.NoWrap;cost.enableAutoSizing=true;cost.fontSizeMin=(Preferences.LargeText?20:18)*MenuUnit;cost.fontSizeMax=20*MenuUnit*(Preferences.LargeText?1.12f:1);}
             if(bag){
                 var use=CounterButton("Use selected tool",toolSearchPending?"Checking the route…":"Use one",.08f,.92f,.108f,.190f,()=>UseShopTool(tool),true);
                 use.interactable=!toolSearchPending&&ToolsInLevel&&Stock(tool)>0&&ToolEligible(tool);
@@ -110,10 +113,10 @@ namespace Cascade.Presentation
                 CounterButton("Tools back","Back",.52f,.92f,.008f,.090f,BackFromTools);
             }else{
                 bool alreadyOwned=shopTab==1&&OwnsGift(gift);
-                UiCopy label=alreadyOwned?(Rewards.EquippedGift==gift?(UiCopy)"With Mika":"Take along"):new UiCopy("Buy · {0} coins",price);
+                UiCopy label=alreadyOwned?(EquippedGift==gift?(UiCopy)"With Mika":"Take along"):TestMonetization?(UiCopy)"Try this item":new UiCopy("Buy · {0} coins",price);
                 var buy=CounterButton("Buy selected item",label,.08f,.92f,.108f,.190f,()=>BuySelectedShopItem(),true);
-                buy.interactable=!saveBlocked&&monetization!=null&&(alreadyOwned?Rewards.EquippedGift!=gift:ShopCoins>=price&&(shopTab!=0||Stock(tool)<ShopCatalog.StockLimit));
-                if(!alreadyOwned&&ShopCoins<price)buy.GetComponentInChildren<TextMeshProUGUI>().SetCopy(new UiCopy("Need {0} more coins",price-ShopCoins));
+                buy.interactable=!saveBlocked&&monetization!=null&&!monetization.FullscreenActive&&(alreadyOwned?EquippedGift!=gift:(TestMonetization||ShopCoins>=price)&&(shopTab!=0||Stock(tool)<ShopCatalog.StockLimit));
+                if(!TestMonetization&&!alreadyOwned&&ShopCoins<price)buy.GetComponentInChildren<TextMeshProUGUI>().SetCopy(new UiCopy("Need {0} more coins",price-ShopCoins));
                 else if(shopTab==0&&Stock(tool)>=ShopCatalog.StockLimit)buy.GetComponentInChildren<TextMeshProUGUI>().SetCopy("Bag is full");
                 QuietDisabledCounter(buy);
                 CounterButton("My tools link","Tool bag",.08f,.48f,.008f,.090f,ShowSupplies);
@@ -124,12 +127,13 @@ namespace Cascade.Presentation
         {
             if(saveBlocked||monetization==null)return false;
             string gift=JourneyRewards.Gifts[shopItem];if(shopTab==1&&OwnsGift(gift))return EquipShopGift(gift);
-            bool bought=shopTab==0?monetization.TryBuyTool((TravelTool)shopItem,Rewards.EarnedCoins(OrderedNodes)):monetization.TryBuyKeepsake(gift,Rewards.EarnedCoins(OrderedNodes),Rewards);
+            bool bought=TestMonetization?monetization.TryPreviewItem((TravelTool)shopItem,shopTab==1?gift:null):shopTab==0?monetization.TryBuyTool((TravelTool)shopItem,Rewards.EarnedCoins(OrderedNodes)):monetization.TryBuyKeepsake(gift,Rewards.EarnedCoins(OrderedNodes),Rewards);
             shopNotice=bought?(UiCopy)"Added to your bag":"Could not buy. No coins spent.";
             if(bought)feedback.Sound(ToyCue.Success);DrawMenu();return bought;
         }
         bool EquipShopGift(string id)
         {
+            if(TestMonetization){if(!OwnsGift(id))return false;previewEquippedGift=id;feedback.Sound(ToyCue.Select);DrawMenu();return true;}
             string previous=Rewards.EquippedGift;if(!Rewards.Equip(id,monetization?.Ledger.Cosmetics))return false;
             PersistProgress();if(HasSaveError){Rewards.EquippedGift=previous;return false;}
             feedback.Sound(ToyCue.Select);DrawMenu();return true;
