@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Linq;
 using UnityEngine.UI;
 namespace Cascade.Presentation
 {
@@ -10,11 +11,12 @@ namespace Cascade.Presentation
         Material availability;
         Texture2D sky;Camera viewportCamera;float previousAspect=-1;
         public void SetAvailability(Vector2[] points,int unlocked)
+            =>SetAvailability(points,Enumerable.Range(0,5).Select(i=>i<=unlocked).ToArray());
+        public void SetAvailability(Vector2[] points,bool[] open)
         {
             var shader=Resources.Load<Shader>("CascadeArt/MapAvailability");if(shader==null)return;
             availability=new Material(shader);material=availability;
-            for(int i=0;i<5;i++)availability.SetVector("_Island"+i,new Vector4(points[i].x,points[i].y,0,0));
-            availability.SetFloat("_Unlocked",unlocked);
+            for(int i=0;i<5;i++)availability.SetVector("_Island"+i,new Vector4(points[i].x,points[i].y,open[i]?1:0,0));
         }
         public void SetSky(Texture2D texture,Camera camera)
         {sky=texture;viewportCamera=camera;if(availability!=null&&sky!=null){availability.SetTexture("_SkyTex",sky);availability.SetFloat("_BlendSky",1);LateUpdate();}}

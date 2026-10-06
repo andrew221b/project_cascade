@@ -524,3 +524,33 @@ Checking purchase…	Checking purchase…	Проверяем покупку…	�
 Coming soon	Coming soon	Скоро появится	Незабаром
 Restore purchases	Restore purchases	Восстановить покупки	Відновити покупки
 Back to play	Back to play	К игре	До гри
+Could not check all stages. Try again.	Could not check all stages. Try again.	Не удалось подготовить уровень. Попробуй ещё раз.	Не вдалося підготувати рівень. Спробуй ще раз.
+Well done!	Well done!	Отлично!	Чудово!
+Level {0} · all 3 stages complete	Level {0} · all 3 stages complete	Уровень {0} · все 3 этапа пройдены	Рівень {0} · усі 3 етапи пройдено
+Level {0} complete	Level {0} complete	Уровень {0} пройден	Рівень {0} пройдено
+New best!	New best!	Новый рекорд!	Новий рекорд!
+Score	Score	Очки	Бали
+Moves: {0}	Moves: {0}	Ходы: {0}	Ходи: {0}
+Undos: {0}	Undos: {0}	Отмены: {0}	Скасування: {0}
+You earned	You earned	Твоя награда	Твоя нагорода
+{0} coins	{0} coins	Монеты: {0}	Монети: {0}
+{0} light	{0} light	Огоньки: {0}	Вогники: {0}
+Replay to improve your stars and score.	Replay to improve your stars and score.	Играй снова, чтобы улучшить рекорд.	Грай знову, щоб покращити рекорд.
+A gift is waiting for you!	A gift is waiting for you!	Тебя ждёт подарок!	На тебе чекає подарунок!
+New lights for a gift: {0} / 3	New lights for a gift: {0} / 3	До подарка: {0} из 3 огоньков	До подарунка: {0} з 3 вогників
+Collect my gift	Collect my gift	Забрать подарок	Забрати подарунок
+A gift for you!	A gift for you!	Это тебе!	Це тобі!
+You earned a gift!	You earned a gift!	Твой подарок!	Твій подарунок!
+Let's see what is inside.	Let's see what is inside.	Посмотрим, что внутри.	Подивімося, що всередині.
+Find three parts to make a keepsake for Mika.	Find three parts to make a keepsake for Mika.	Собери 3 части — получится вещь для Мики.	Збери 3 частини — вийде річ для Міки.
+Stage {0}/3 complete!	Stage {0}/3 complete!	Этап {0} из 3 пройден!	Етап {0} з 3 пройдено!
+The next stage is below. Take the row down.	The next stage is below. Take the row down.	Внизу следующий этап. Опусти ряд.	Унизу наступний етап. Опусти ряд.
+Open the next level, or replay one you finished. Swipe to look ahead.	Open the next level, or replay one you finished. Swipe to look ahead.	Открой следующий уровень или сыграй пройденный. Листай, чтобы посмотреть дальше.	Відкрий наступний рівень або грай пройдений. Гортай, щоб подивитися далі.
+Step complete · {0}/{0} levels	Step complete · {0}/{0} levels	Ступень пройдена · {0} из {0}	Сходинку пройдено · {0} з {0}
+Next step in {0} levels · {1}/{2}	Next step in {0} levels · {1}/{2}	До следующей ступени: {0} · пройдено {1}/{2}	До наступної сходинки: {0} · пройдено {1}/{2}
+The picture on a tool shows what it needs. Move that piece above it.	The picture on a tool shows what it needs. Move that piece above it.	Картинка на предмете показывает, что ему нужно. Поставь эту фигуру или букву над ним.	Малюнок на предметі показує, що йому потрібно. Постав цю фігуру чи літеру над ним.
+Make the row below, then descend. Finish all three stages to open the next level.	Make the row below, then descend. Finish all three stages to open the next level.	Собери ряд по образцу и спускайся. Пройди 3 этапа, чтобы открыть следующий уровень.	Збери ряд за зразком і спускайся. Пройди 3 етапи, щоб відкрити наступний рівень.
+Fewer moves earn more stars. Replay an open level to beat your score. Three new lights earn a gift.	Fewer moves earn more stars. Replay an open level to beat your score. Three new lights earn a gift.	Меньше ходов — больше звёзд. Играй снова и улучшай рекорд. За 3 новых огонька — подарок.	Менше ходів — більше зірок. Грай знову й покращуй рекорд. За 3 нові вогники — подарунок.
+Coins	Coins	Монеты	Монети
+Lights	Lights	Огоньки	Вогники
+Next step in {0} level · {1}/{2}	Next step in {0} level · {1}/{2}	До следующей ступени: {0} · пройдено {1}/{2}	До наступної сходинки: {0} · пройдено {1}/{2}

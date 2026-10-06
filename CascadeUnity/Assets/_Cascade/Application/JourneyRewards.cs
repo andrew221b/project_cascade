@@ -97,15 +97,20 @@ namespace Cascade.Application
         public int EarnedCoins(IReadOnlyList<string> orderedNodes)
             =>orderedNodes.Count(SeenClearNodes.Contains)*40+Enumerable.Range(0,4).Count(c=>WorkshopCount(c,orderedNodes)==10)*100;
 
-        public void RecordDelivery(AttemptService attempt,DeliveryPerformance performance=null)
+        public static int ToolFlags(AttemptService attempt)
         {
-            if(attempt.Current.Status!=PuzzleStatus.Won)return;
             int flags=attempt.Current.StampBits!=0?4:0;
             var initial=attempt.Resolver.CreateInitialState();if(initial.RepairUsed)flags|=1;
             foreach(var entry in attempt.History)foreach(var e in attempt.Resolver.Resolve(entry.Before,entry.Command).Events) {
                 if(e.Kind==PuzzleEventKind.Repaired)flags|=1;
                 if(e.Kind==PuzzleEventKind.BridgeConsumed)flags|=2;
             }
+            return flags;
+        }
+        public void RecordDelivery(AttemptService attempt,DeliveryPerformance performance=null)
+        {
+            if(attempt.Current.Status!=PuzzleStatus.Won)return;
+            int flags=(performance?.ToolFlags??0)|ToolFlags(attempt);
             var facts=Deliveries.FirstOrDefault(d=>d.NodeId==attempt.Level.CampaignNodeId);
             if(facts==null){facts=new DeliveryFacts{NodeId=attempt.Level.CampaignNodeId};Deliveries.Add(facts);}facts.Flags|=flags;
             Record(attempt,0,performance);

@@ -60,7 +60,7 @@ namespace Cascade.Presentation
             resultRoot.pivot = new Vector2(.5f,.5f); resultRoot.anchoredPosition = new Vector2(0,88); resultRoot.sizeDelta = new Vector2(0,160);
             resultText = Text("Result summary", resultRoot, new Vector2(0,.71f), Vector2.one,18,"");
             Button("Next delivery",resultRoot,new Vector2(.52f,.35f),new Vector2(1,.65f),StartNextPreferred);
-            var home=Button("Result home",resultRoot,new Vector2(.52f,0),new Vector2(1,.30f),()=>{if(WaitingParcel!=null)ShowParcel();else ShowHome();});home.GetComponentInChildren<TextMeshProUGUI>().SetCopy("Home");
+            var home=Button("Result home",resultRoot,new Vector2(.52f,0),new Vector2(1,.30f),ShowJourney);home.GetComponentInChildren<TextMeshProUGUI>().SetCopy("Map");
             resultRoot.gameObject.SetActive(false);
             coachRoot = Rect("Contextual coaching", safeRoot, Vector2.zero, Vector2.zero);
             coachRoot.sizeDelta = new Vector2(300,52); coachRoot.pivot = new Vector2(.5f,1);
@@ -80,6 +80,8 @@ namespace Cascade.Presentation
         public void ShowHome() { SetScreen(GameScreen.Home); }
         public void ShowGame()
         {
+            if(Interaction.Attempt.Current.Status==PuzzleStatus.Won&&!IsCheckpoint&&profile.Completion?.Acknowledged==true
+                &&profile.Completion.AttemptId==Interaction.Attempt.AttemptId.ToString("D")){ShowJourney();return;}
             machine.SetZone(JourneyStory.Zone(Catalog.PrimaryLevels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==node)));
             SetScreen(Interaction.Attempt.Current.Status==PuzzleStatus.Won ? (IsCheckpoint?GameScreen.Checkpoint:GameScreen.Win)
                 : Interaction.Attempt.Current.Status==PuzzleStatus.Lost ? GameScreen.Fail : GameScreen.Playing);
@@ -104,7 +106,7 @@ namespace Cascade.Presentation
             CurrentScreen=screen;machine.LivingWorld.SetMapSky(null);machine.LivingWorld.SetQuietFlight(screen==GameScreen.Win||screen==GameScreen.Fail);
             machine.LivingWorld.SetWorkshop(screen!=GameScreen.JourneyMap&&screen!=GameScreen.Dialogue&&screen!=GameScreen.JourneyEnd&&screen!=GameScreen.Playing&&screen!=GameScreen.Win&&screen!=GameScreen.Fail&&screen!=GameScreen.Checkpoint); userPaused=screen==GameScreen.Pause;
             Interaction.SetPaused(screen!=GameScreen.Playing && screen!=GameScreen.Win && screen!=GameScreen.Fail && screen!=GameScreen.Checkpoint);
-            bool machineVisible=screen==GameScreen.Playing || screen==GameScreen.Win || screen==GameScreen.Fail || screen==GameScreen.Checkpoint;
+            bool machineVisible=screen==GameScreen.Playing || screen==GameScreen.Fail || screen==GameScreen.Checkpoint;
             if(!machineVisible)feedback.ClearTails();
             machine.SetGameplayVisible(machineVisible);machine.SetAmbientPaused(screen==GameScreen.Pause||screen==GameScreen.SaveRecovery);
             header.gameObject.SetActive(machineVisible); status.gameObject.SetActive(machineVisible);statusPaper.gameObject.SetActive(machineVisible);
@@ -112,7 +114,7 @@ namespace Cascade.Presentation
             actions.gameObject.SetActive(machineVisible); precise.gameObject.SetActive(machineVisible && PreciseInputActive);
             coachRoot.gameObject.SetActive(false); tutorialHand.gameObject.SetActive(false);
             if(screen!=GameScreen.Playing)HideInstruction();
-            menuRoot.gameObject.SetActive(!machineVisible); resultRoot.gameObject.SetActive(screen==GameScreen.Win||screen==GameScreen.Fail||screen==GameScreen.Checkpoint);
+            menuRoot.gameObject.SetActive(!machineVisible); resultRoot.gameObject.SetActive(screen==GameScreen.Fail||screen==GameScreen.Checkpoint);
             if(machineVisible) { RenderState(); ArrangeResultControls(); } else {DrawMenu();if(changed)menuTransition.Arrive();}
             outcome?.ShowResult(screen);
             Canvas.ForceUpdateCanvases();
@@ -120,7 +122,7 @@ namespace Cascade.Presentation
         void StartCoach()
         {
             string lesson = Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).FirstOrDefault(c=>c.Definition.CampaignNodeId==node)?.Lesson ?? "swap";
-            if(descent!=null&&descent.StageIndex<2)lesson=descent.StageIndex==0?(descent.Version>=2?"repair":"swap"):"arrival_wind";
+            if(descent!=null&&descent.StageIndex<2)lesson=descent.StageIndex==0?(Interaction.Attempt.Level.Floors[0].Repair!=null?"repair":"swap"):"arrival_wind";
             int wind=Enumerable.Range(0,Interaction.Attempt.Level.Floors.Count).Where(IsWindFloor).DefaultIfEmpty(-1).First();
             Coach=new TutorialCoach(Interaction.Attempt.Level,lesson,wind) {Enabled=Preferences.Tutorials};
             Coach.Observe(Interaction.Attempt.Current,Interaction.Attempt.RouteLength); gestureTime=0;
@@ -143,7 +145,7 @@ namespace Cascade.Presentation
         {
             if(!flowReady || !applicationFocused || applicationPaused||nativeAdSuspended)return;
             if(CurrentScreen==GameScreen.Playing && !Interaction.IsPresenting) {
-                if(Interaction.Attempt.Current.Status==PuzzleStatus.Won) {if(!IsCheckpoint&&TryAutomaticAd())return;SetScreen(IsCheckpoint?GameScreen.Checkpoint:GameScreen.Win); }
+                if(Interaction.Attempt.Current.Status==PuzzleStatus.Won) {SetScreen(IsCheckpoint?GameScreen.Checkpoint:GameScreen.Win); }
                 else if(Interaction.Attempt.Current.Status==PuzzleStatus.Lost) {
                     sessionLosses[node]=sessionLosses.TryGetValue(node,out var n)?n+1:1; SetScreen(GameScreen.Fail);
                 }
@@ -178,29 +180,36 @@ namespace Cascade.Presentation
         }
         void ArrangeResultControls()
         {
-            bool result=CurrentScreen==GameScreen.Win||CurrentScreen==GameScreen.Fail||CurrentScreen==GameScreen.Checkpoint;
+            bool result=CurrentScreen==GameScreen.Fail||CurrentScreen==GameScreen.Checkpoint;
             resultRoot.gameObject.SetActive(result);
             PlaceControl(undo,result?resultRoot:actions,result?Vector2.zero:new Vector2(.12f,0),result?new Vector2(.48f,.30f):new Vector2(.47f,1));
             PlaceControl(retry,result?resultRoot:safeRoot,result?new Vector2(0,.35f):new Vector2(.05f,.09f),result?new Vector2(CurrentScreen==GameScreen.Fail&&!CanOfferStrongerWood?1:.48f,.65f):new Vector2(.43f,.155f));
-            retry.gameObject.SetActive(result||preparation.HasFailed); hint.gameObject.SetActive(!result&&!preparation.HasFailed); drop.gameObject.SetActive(!result&&!preparation.HasFailed); precise.gameObject.SetActive(!result&&PreciseInputActive);
-            if(preparation.HasFailed)PlaceControl(retry,actions,new Vector2(.35f,0),new Vector2(.65f,1));
+            retry.gameObject.SetActive(result||preparation.HasFailed||descentPlanFailed); hint.gameObject.SetActive(!result&&!preparation.HasFailed&&!descentPlanFailed); drop.gameObject.SetActive(!result&&!preparation.HasFailed&&!descentPlanFailed); precise.gameObject.SetActive(!result&&PreciseInputActive);
+            if(preparation.HasFailed||descentPlanFailed)PlaceControl(retry,actions,new Vector2(.35f,0),new Vector2(.65f,1));
             if(result) {
                 resultText.gameObject.SetActive(CurrentScreen!=GameScreen.Checkpoint);
                 resultText.SetCopy(CurrentScreen==GameScreen.Checkpoint?(descent.StageIndex==0?"Row ready! Below, wind will move it one place.":"Row ready! The last stage has devices."):CurrentScreen==GameScreen.Win ? "You did it! The way is clear." : "Not quite. Undo and try again.");
                 if(CurrentScreen==GameScreen.Win && !Interaction.Attempt.Goal.IsSatisfied(Interaction.Attempt.Current))resultText.SetCopy("The row is home. The stamp is still missing.");
-                resultRoot.Find("Resulthome").GetComponentInChildren<TextMeshProUGUI>().SetCopy(WaitingParcel!=null?"Open parcel":"Home");
+                resultRoot.Find("Resulthome").GetComponentInChildren<TextMeshProUGUI>().SetCopy("Map");
                 if(CurrentScreen==GameScreen.Fail && sessionLosses.TryGetValue(node,out var losses)&&losses>=3)
                     resultText.SetCopy("Try the device guide. Undo and retry stay free.");
                 resultRoot.Find("Nextdelivery").gameObject.SetActive(CurrentScreen==GameScreen.Win||CurrentScreen==GameScreen.Checkpoint||CanOfferStrongerWood);
                 resultRoot.Find("Nextdelivery").GetComponent<Image>().color=new Color(.98f,.74f,.32f);
                 retry.GetComponent<Image>().color=CurrentScreen==GameScreen.Fail&&!CanOfferStrongerWood?new Color(.98f,.74f,.32f):Paper;
                 resultRoot.Find("Nextdelivery").GetComponentInChildren<TextMeshProUGUI>().SetCopy(CurrentScreen==GameScreen.Checkpoint?"Go lower":CanOfferStrongerWood?"More wood":journeyActive&&node=="C160"?"Light the beacon":"Next delivery");
+                if(CurrentScreen==GameScreen.Checkpoint){
+                    LoadNavigationArt();retry.gameObject.SetActive(false);var descend=resultRoot.Find("Nextdelivery").GetComponent<Button>();
+                    PlaceControl(descend,resultRoot,new Vector2(0,.35f),new Vector2(1,.78f));descend.GetComponent<Image>().sprite=enamelControls[1];descend.GetComponent<Image>().type=Image.Type.Sliced;descend.GetComponent<Image>().color=Color.white;
+                    var map=resultRoot.Find("Resulthome").GetComponent<Button>();map.GetComponent<Image>().sprite=enamelControls[0];map.GetComponent<Image>().type=Image.Type.Sliced;map.GetComponent<Image>().color=Color.white;map.GetComponentInChildren<TextMeshProUGUI>().color=new Color(1,.97f,.84f);
+                }
+                else PlaceControl(resultRoot.Find("Nextdelivery").GetComponent<Button>(),resultRoot,new Vector2(.52f,.35f),new Vector2(1,.65f));
             }
         }
         static void PlaceControl(Button button,Transform parent,Vector2 min,Vector2 max)
         { var r=(RectTransform)button.transform; r.SetParent(parent,false); r.anchorMin=min;r.anchorMax=max;r.offsetMin=r.offsetMax=Vector2.zero; }
         void ResetMenu()
         {
+            foreach(var ceremony in menuRoot.GetComponents<RewardCelebration>())ceremony.enabled=false;
             menuActions.Clear();menuRows.Clear();menuBottoms.Clear();navigationLightLabels.Clear();
             foreach(var key in baseTextSizes.Keys.Where(k=>k==null||k.transform.IsChildOf(menuRoot)).ToArray())baseTextSizes.Remove(key);
             foreach(Transform child in menuRoot){ child.gameObject.SetActive(false); Destroy(child.gameObject); }
@@ -215,6 +224,7 @@ namespace Cascade.Presentation
         {
             ResetMenu();
             if(CurrentScreen==GameScreen.Home) DrawMainMenu();
+            else if(CurrentScreen==GameScreen.Win) DrawCompletion();
             else if(CurrentScreen==GameScreen.JourneyMap) DrawJourney();
             else if(CurrentScreen==GameScreen.PlayChoice) DrawPlayChoice();
             else if(CurrentScreen==GameScreen.Prologue) DrawPrologue();
@@ -284,14 +294,22 @@ namespace Cascade.Presentation
             if(PreferredMode==PuzzleMode.Shapes) return Catalog.PrimaryLevels.Where(c=>c.Mode==PuzzleMode.Shapes).ToArray();
             return Catalog.LocalizedLevels.Where(c=>c.Locale==Preferences.PuzzleLocale&&c.Mode==PreferredMode).ToArray();
         }
-        void StartContent(LevelContent content) { LoadLevel(content.Definition,content.Locale); ShowGame(); }
+        void StartContent(LevelContent content)
+        {
+            if(!IsContentOpen(content))return;
+            storyRoute=false;PreferredMode=content.Mode;
+            if(DescentRun.CanDescend(content.Definition)){StartDescentLevel(content.Definition,content.Locale,profile.Director.Choose(content.Definition));descentTravel=journeyActive=true;PersistProgress();}
+            else LoadLevel(content.Definition,content.Locale);
+            ShowGame();
+        }
         void StartNextPreferred()
         {
             if(CurrentScreen==GameScreen.Checkpoint){GoLower();return;}
+            if(CurrentScreen==GameScreen.Win){ContinueCompletion();return;}
             if(CanOfferStrongerWood){RestartWithStrongerWood();return;}
             int bonus=Catalog.BonusLevels.ToList().FindIndex(c=>c.Definition.PuzzleId==Interaction.Attempt.Level.PuzzleId);
             if(bonus>=0){if(bonus+1<Catalog.BonusLevels.Count)StartContent(Catalog.BonusLevels[bonus+1]);else ShowReachChallenges();return;}
-            if(journeyActive) { int nextStop=selectedJourneyStop+1; if(!storyRoute&&PreferredMode==PuzzleMode.Words && nextStop==25)nextStop++; if(nextStop<Catalog.PrimaryLevels.Count)BeginJourney(nextStop);else SetScreen(GameScreen.JourneyEnd);return; }
+            if(journeyActive) {ShowJourney();return;}
             var levels=PreferredLevels();int index=levels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==node);
             if(index>=0&&index+1<levels.Count)StartContent(levels[index+1]);else ShowHome();
         }
@@ -312,7 +330,9 @@ namespace Cascade.Presentation
             var explanation=Text("Device explanation",menuRoot,new Vector2(.10f,.30f),new Vector2(.90f,.49f),20,wind?"Wind pushes the whole row one place when it lands. Follow the arrow. Take your time to think.":DeviceCopy[deviceIndex]);explanation.alignment=TextAlignmentOptions.MidlineLeft;
             MenuButton("Previous",.12f,()=>{deviceIndex=(deviceIndex+DeviceTitles.Length-1)%DeviceTitles.Length;DrawMenu();},false,.08f,.48f);
             MenuButton("Next",.12f,()=>{deviceIndex=(deviceIndex+1)%DeviceTitles.Length;DrawMenu();},false,.52f,.92f);
-            MenuButton(wind?new UiCopy("Back to puzzle"):new UiCopy("Try level {0}",DeviceNodes[deviceIndex].TrimStart('C','0')),.213f,()=>{if(wind)CloseMenu();else StartContent(Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).First(c=>c.Definition.CampaignNodeId==DeviceNodes[deviceIndex]));},true);
+            var example=Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).First(c=>c.Definition.CampaignNodeId==DeviceNodes[deviceIndex]);
+            var tryLevel=MenuButton(wind?new UiCopy("Back to puzzle"):new UiCopy("Try level {0}",DeviceNodes[deviceIndex].TrimStart('C','0')),.213f,()=>{if(wind)CloseMenu();else StartContent(example);},true);
+            tryLevel.interactable=wind||IsContentOpen(example);
             MenuButton("How to play",.025f,ShowHowToPlay,false,.08f,.58f);MenuButton("Back",.025f,CloseMenu,false,.62f,.92f);
         }
         void DrawSettings()

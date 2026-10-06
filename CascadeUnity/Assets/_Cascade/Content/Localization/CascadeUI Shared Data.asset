@@ -2132,6 +2132,128 @@ MonoBehaviour:
     m_Key: Back to play
     m_Metadata:
       m_Items: []
+  - m_Id: 449412512866304
+    m_Key: Could not check all stages. Try again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060608
+    m_Key: Well done!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060609
+    m_Key: "Level {0} \xB7 all 3 stages complete"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060610
+    m_Key: Level {0} complete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060611
+    m_Key: New best!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060612
+    m_Key: Score
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060613
+    m_Key: 'Moves: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060614
+    m_Key: 'Undos: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060615
+    m_Key: You earned
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060616
+    m_Key: '{0} coins'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060617
+    m_Key: '{0} light'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060618
+    m_Key: Replay to improve your stars and score.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060619
+    m_Key: A gift is waiting for you!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060620
+    m_Key: 'New lights for a gift: {0} / 3'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060621
+    m_Key: Collect my gift
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060622
+    m_Key: A gift for you!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060623
+    m_Key: You earned a gift!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060624
+    m_Key: Let's see what is inside.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060625
+    m_Key: Find three parts to make a keepsake for Mika.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060626
+    m_Key: Stage {0}/3 complete!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060627
+    m_Key: The next stage is below. Take the row down.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060628
+    m_Key: Open the next level, or replay one you finished. Swipe to look ahead.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060629
+    m_Key: "Step complete \xB7 {0}/{0} levels"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060630
+    m_Key: "Next step in {0} levels \xB7 {1}/{2}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060631
+    m_Key: The picture on a tool shows what it needs. Move that piece above it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060632
+    m_Key: Make the row below, then descend. Finish all three stages to open the
+      next level.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449412517060633
+    m_Key: Fewer moves earn more stars. Replay an open level to beat your score.
+      Three new lights earn a gift.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457177780183040
+    m_Key: Coins
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457177784377344
+    m_Key: Lights
+    m_Metadata:
+      m_Items: []
+  - m_Id: 459929780477952
+    m_Key: "Next step in {0} level \xB7 {1}/{2}"
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

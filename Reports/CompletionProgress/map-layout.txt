@@ -1,0 +1,3 @@
+Final adaptive map display fixture: 3 legacy-style saved receipts, isolated profile, RU large text, simulated safe insets; 320x693 and 320x568. Actual staged C01-C03 playthrough is in native-flow.txt.
+
+Final projected footer buttons: 320x693 47.04px / gap8.14px; 320x568 44.20px / gap7.65px. Resize recalculates the footer.

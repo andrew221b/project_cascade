@@ -9,7 +9,7 @@ namespace Cascade.Presentation
     public sealed class OutcomeCeremony : MonoBehaviour
     {
         CascadeGame game;
-        RectTransform root,portrait;
+        RectTransform root,portrait;Transform ledge;
         Image hero;
         TextMeshProUGUI title;
         OutcomeLightGraphic light;
@@ -23,6 +23,7 @@ namespace Cascade.Presentation
         public void Initialize(CascadeGame owner,RectTransform story,Image friend,TextMeshProUGUI heading,OutcomeLightGraphic glow)
         {
             game=owner;root=story;hero=friend;portrait=friend.rectTransform;heroRest=portrait.anchoredPosition;title=heading;light=glow;
+            ledge=root.Find("Mika's outcome ledge");
             group=root.gameObject.AddComponent<CanvasGroup>();group.blocksRaycasts=false;group.interactable=false;
             hopeful=Resources.Load<Sprite>("CascadeArt/Journey/Mika");thinking=Resources.Load<Sprite>("CascadeArt/Journey/MikaThinking");
             root.gameObject.SetActive(false);
@@ -30,10 +31,11 @@ namespace Cascade.Presentation
         public IEnumerator Play(bool success,bool isCheckpoint)
         {
             Success=success;checkpoint=isCheckpoint;Running=true;Progress=0;
-            root.gameObject.SetActive(!checkpoint);hero.sprite=success?hopeful:thinking??hopeful;
-            title.SetCopy(success?"Light delivered!":"Let's try another way.");
+            root.gameObject.SetActive(true);hero.gameObject.SetActive(!checkpoint);hero.sprite=success?hopeful:thinking??hopeful;
+            if(ledge!=null)ledge.gameObject.SetActive(!checkpoint);
+            title.SetCopy(checkpoint?new UiCopy("Stage {0}/3 complete!",game.Descent.StageIndex+1):success?"Light delivered!":"Let's try another way.");
             if(success&&!checkpoint)game.Feedback.Haptic();
-            float duration=game.ReducedMotion?.14f:checkpoint?.46f:success?1.35f:1.05f;
+            float duration=game.ReducedMotion?.14f:checkpoint?1.05f:success?1.35f:1.05f;
             float elapsed=0;int lit=-1;bool seeds=false;
             try {
                 while(elapsed<duration){
@@ -76,11 +78,12 @@ namespace Cascade.Presentation
         }
         public void ShowResult(GameScreen screen)
         {
-            bool terminal=screen==GameScreen.Win||screen==GameScreen.Fail;
+            bool terminal=screen==GameScreen.Fail||screen==GameScreen.Checkpoint;
             if(Running&&screen==GameScreen.Playing)return;
             root.gameObject.SetActive(terminal);if(!terminal){game.Machine.SetReceiverLight(0);return;}
-            Success=screen==GameScreen.Win;checkpoint=false;hero.sprite=Success?hopeful:thinking??hopeful;
-            title.SetCopy(Success?"Light delivered!":"Let's try another way.");Settle();
+            checkpoint=screen==GameScreen.Checkpoint;Success=checkpoint;hero.gameObject.SetActive(!checkpoint);hero.sprite=Success?hopeful:thinking??hopeful;
+            if(ledge!=null)ledge.gameObject.SetActive(!checkpoint);
+            title.SetCopy(checkpoint?new UiCopy("Stage {0}/3 complete!",game.Descent.StageIndex+1):"Let's try another way.");Settle();
         }
         void OnDisable(){if(Running)Settle();}
 #if UNITY_EDITOR

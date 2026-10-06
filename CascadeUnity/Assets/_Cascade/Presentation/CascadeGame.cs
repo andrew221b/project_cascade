@@ -85,7 +85,7 @@ namespace Cascade.Presentation
             SettleDescent();CancelDescentWork();
             EndTokenHold(); CancelHint(); CancelDeadEnd(); preparation.Cancel(); StopPresentation(); Interaction?.SetSuspended(true); feedback?.ClearTails();
         }
-        void OnDestroy() { if(purchaseStore!=null)purchaseStore.Changed-=NotifyStoreChanged;DisposeNavigationArt(); preparation.Dispose(); if (Interaction != null) Interaction.Committed -= OnCommitted; if(glyphMaterial!=null)Destroy(glyphMaterial);if(tutorialOverlayMaterial!=null)Destroy(tutorialOverlayMaterial);if(toolSilhouette!=null)Destroy(toolSilhouette);foreach(var sprite in toolBodySprites.Values)if(sprite!=null)Destroy(sprite);foreach(var sprite in enamelControls)if(sprite!=null)Destroy(sprite); }
+        void OnDestroy() { if(purchaseStore!=null)purchaseStore.Changed-=NotifyStoreChanged;DisposeNavigationArt();DisposeCompletionArt(); preparation.Dispose(); if (Interaction != null) Interaction.Committed -= OnCommitted; if(glyphMaterial!=null)Destroy(glyphMaterial);if(tutorialOverlayMaterial!=null)Destroy(tutorialOverlayMaterial);if(toolSilhouette!=null)Destroy(toolSilhouette);foreach(var sprite in toolBodySprites.Values)if(sprite!=null)Destroy(sprite);foreach(var sprite in enamelControls)if(sprite!=null)Destroy(sprite); }
         void OnApplicationFocus(bool focused)
         {
             if(!focused)SettleDescent();
@@ -138,7 +138,7 @@ namespace Cascade.Presentation
         {
             reactionBanner?.Clear();
             feedback?.ClearTails();
-            SettleDescent();CancelDescentWork();descent=run;paintedDescentStage=-1;machine.LivingWorld.DescentDepth=run?.StageIndex??0;
+            SettleDescent();CancelDescentWork();descent=run;descentPlanFailed=false;descentTravel=false;paintedDescentStage=-1;machine.LivingWorld.DescentDepth=run?.StageIndex??0;
             var level=attempt.Level;
             EndTokenHold(); CancelHint(); CancelDeadEnd(); StopPresentation(); if (Interaction != null) Interaction.Committed -= OnCommitted;
             Interaction = new PuzzleInteraction(attempt); Interaction.Committed += OnCommitted;
@@ -215,6 +215,7 @@ namespace Cascade.Presentation
         }
         public void Retry()
         {
+            if(descentPlanFailed){var source=descentSource;string locale=descentLocale;var mood=descentMood;bool travel=descentTravel;StartDescentLevel(source,locale,mood);descentTravel=journeyActive=travel;return;}
             if(Interaction.IsPreparing){if(!preparation.IsPending)BeginPreparation();RenderControls();return;}
             var attemptId=Interaction.Attempt.AttemptId;
             bool hadMoves=Interaction.Attempt.Current.Status==PuzzleStatus.Playing&&Interaction.Attempt.RouteLength>0;
@@ -231,7 +232,7 @@ namespace Cascade.Presentation
         }
         public void RefreshLayout() {
             Canvas.ForceUpdateCanvases(); ApplySafeArea();
-            UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(safeRoot); Canvas.ForceUpdateCanvases();
+            UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(safeRoot); Canvas.ForceUpdateCanvases(); FitJourneyFooter(); Canvas.ForceUpdateCanvases();
             if(uiCamera!=null&&machine!=null&&floorViews.Count>0&&floorViews[0]!=null&&status!=null) {
                 floorViews[0].GetWorldCorners(flightCorners);float floorTop=flightCorners[2].y;
                 status.rectTransform.GetWorldCorners(flightCorners);float statusBottom=flightCorners[0].y;

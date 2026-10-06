@@ -17,7 +17,7 @@ namespace Cascade.Presentation
         {
             if (preparation.Poll()) {
                 if(descent==null&&descentTask==null&&FallBackFromUnprovenDirection())return;
-                Interaction.SetPreparing(!preparation.IsReady||IsPlanningDescent||IsDescending);
+                Interaction.SetPreparing(descentPlanFailed||!preparation.IsReady||IsPlanningDescent||IsDescending);
                 RenderState();
             }
             PaintPreparation();
@@ -25,7 +25,7 @@ namespace Cascade.Presentation
         void PaintPreparation()
         {
             if (Interaction != null && Interaction.IsPreparing&&!IsDescending&&!IsPlanningDescent)
-                status.SetCopy(preparation.HasFailed ? "Could not check this puzzle. Try again or choose another." : "Checking your puzzle…");
+                status.SetCopy(descentPlanFailed?"Could not check all stages. Try again.":preparation.HasFailed ? "Could not check this puzzle. Try again or choose another." : "Checking your puzzle…");
         }
     }
 }

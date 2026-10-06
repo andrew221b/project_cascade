@@ -113,15 +113,22 @@ namespace Cascade.Presentation
             bool resume=Interaction.Attempt.Mode==PreferredMode&&Interaction.Attempt.ActiveLocale==(PreferredMode==PuzzleMode.Shapes?"en":Preferences.PuzzleLocale)
                 &&Interaction.Attempt.Current.Status==PuzzleStatus.Playing&&Interaction.Attempt.RouteLength>0;
             var chosen=levels.FirstOrDefault(c=>!sessionClears.Contains(c.Definition.CampaignNodeId))??levels[levels.Count-1];
-            NavigationNote("Shelf instruction","Tap a number to play. Swipe for more levels.",.77f,.85f);
+            NavigationNote("Shelf instruction","Open the next level, or replay one you finished. Swipe to look ahead.",.77f,.85f);
             var shelf=Rect("Swipeable level shelf",menuRoot,new Vector2(.06f,.275f),new Vector2(.94f,.735f));Background(shelf,Color.clear,true);
             shelf.gameObject.AddComponent<MenuSwipe>().Initialize(TurnLevelShelf);
             for(int i=0;i<9&&chapterPage*9+i<levels.Count;i++){
                 var content=levels[chapterPage*9+i];string id=content.Definition.CampaignNodeId;int col=i%3,row=i/3;
                 var b=Button(UiCopy.Raw(id.TrimStart('C','0')),shelf,new Vector2(col/3f+.028f,1-(row+1)/3f+.035f),new Vector2((col+1)/3f-.028f,1-row/3f-.035f),()=>StartContent(content));
                 var image=b.GetComponent<Image>();image.sprite=enamelControls[2];image.type=Image.Type.Sliced;image.color=Color.white;
+                b.interactable=IsContentOpen(content);
+                if(!b.interactable)b.gameObject.AddComponent<CanvasGroup>().alpha=.56f;
                 var number=b.GetComponentInChildren<TextMeshProUGUI>();number.fontSizeMax=30*MenuUnit;number.fontSizeMin=23*MenuUnit;number.margin=Vector4.zero;
-                if(sessionClears.Contains(id))Rect("Completed level",b.transform,new Vector2(.73f,.13f),new Vector2(.89f,.31f)).gameObject.AddComponent<MenuTickGraphic>().color=new Color(.10f,.40f,.34f);
+                var receipt=profile.Clears.FirstOrDefault(c=>c.CampaignNodeId==id);
+                if(receipt!=null){
+                    if(receipt.BestStars==0)Rect("Completed level",b.transform,new Vector2(.73f,.13f),new Vector2(.89f,.31f)).gameObject.AddComponent<MenuTickGraphic>().color=new Color(.10f,.40f,.34f);
+                    else for(int s=0;s<receipt.BestStars;s++)Picture("Best star "+s,b.transform,new Vector2(.24f+s*.18f,.08f),new Vector2(.40f+s*.18f,.27f),CompletionArt(0),true);
+                    number.rectTransform.anchorMin=new Vector2(0,.23f);
+                }
             }
             var page=Text("Level shelf page",menuRoot,new Vector2(.16f,.212f),new Vector2(.84f,.26f),18,new UiCopy("Page {0} of {1}",chapterPage+1,pages));page.font=art.titleFont;
             NavigationButton("Nextlevel",resume?"Continue":new UiCopy("Play level {0}",chosen.Definition.CampaignNodeId.TrimStart('C','0')),0,.08f,()=>{if(resume)ShowGame();else StartContent(chosen);},true);

@@ -607,8 +607,8 @@ namespace Cascade.Tests
         IEnumerator AwaitDescentReady()
         {
             double began=Time.realtimeSinceStartupAsDouble;
-            while((game.IsPlanningDescent||!game.PreparationReady)&&Time.realtimeSinceStartupAsDouble-began<30)yield return null;
-            Assert.That(game.IsPlanningDescent,Is.False);Assert.That(game.PreparationReady,Is.True);Assert.That(game.Descent,Is.Not.Null);
+            while((game.IsPlanningDescent||game.IsDescending||game.Interaction.IsPresenting||!game.PreparationReady)&&Time.realtimeSinceStartupAsDouble-began<30)yield return null;
+            Assert.That(game.IsPlanningDescent,Is.False);Assert.That(game.IsDescending,Is.False);Assert.That(game.Interaction.IsPresenting,Is.False);Assert.That(game.PreparationReady,Is.True);Assert.That(game.Descent,Is.Not.Null);
         }
         IEnumerator PlayDescentStage()
         {
@@ -618,9 +618,70 @@ namespace Cascade.Tests
                 var predicted=game.Interaction.Attempt.Predict(command).State;
                 if(command.Kind==CommandKind.EarlyDrop)yield return ClickButton("Drop");
                 else {yield return MouseFrame(Point(command.Edge),true);yield return MouseFrame(Point(command.Edge+1),true);yield return MouseFrame(Point(command.Edge+1),false);}
-                Assert.That(game.Interaction.Attempt.Current,Is.EqualTo(predicted));yield return AwaitPresentation();yield return null;
+                Assert.That(game.Interaction.Attempt.Current,Is.EqualTo(predicted),"stage "+game.Descent.StageIndex+" command "+encoded+" actual route "+game.Interaction.Attempt.RouteLength+" canPlay "+game.Interaction.CanPlay+" current "+string.Join(",",game.Interaction.Attempt.Current.Row)+" expected "+string.Join(",",predicted.Row));yield return AwaitPresentation();yield return null;
             }
             Assert.That(game.Interaction.Attempt.Current.Status,Is.EqualTo(PuzzleStatus.Won));
+        }
+        [UnityTest] public IEnumerator SoloMixedMapKeepsItsCheckpointAndItsOwnSequenceAcrossReload()
+        {
+            game.ReducedMotion=true;game.SendMessage("ChooseSoloMode",(object)PuzzleMode.Mixed);
+            var sequence=game.Catalog.LocalizedLevels.Where(c=>c.Mode==PuzzleMode.Mixed&&c.Locale=="en").ToArray();
+            game.SendMessage("StartContent",sequence[0]);yield return PlayDescentStage();
+            game.GoLower();yield return AwaitDescentReady();string pin=game.Interaction.Attempt.PinnedContentHash;
+            game.ShowJourney();Assert.That(game.GetComponentsInChildren<UnityEngine.UI.Button>().Single(b=>b.name=="Travel").GetComponentInChildren<TextMeshProUGUI>().text,Is.EqualTo("Continue"));
+            yield return SceneManager.LoadSceneAsync("Assets/_Cascade/Scenes/CascadePlayable.unity");game=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();
+            game.SendMessage("OnApplicationFocus",true);game.SendMessage("OnApplicationPause",false);game.ShowJourney();yield return null;
+            Assert.That(game.PreferredMode,Is.EqualTo(PuzzleMode.Mixed));Assert.That(game.Descent.StageIndex,Is.EqualTo(1));
+            yield return ClickButton("Travel");Assert.That(game.Interaction.Attempt.PinnedContentHash,Is.EqualTo(pin));
+            yield return PlayDescentStage();yield return ClickButton("Nextdelivery");yield return PlayDescentStage();yield return ClickButton("Continuecompletion");
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.JourneyMap));Assert.That(game.IsContentOpen(sequence[1]),Is.True);Assert.That(game.IsContentOpen(sequence[2]),Is.False);
+            var caption=game.GetComponentsInChildren<UnityEngine.UI.Button>().Single(b=>b.name=="Travel").GetComponentInChildren<TextMeshProUGUI>().text;
+            Assert.That(caption,Does.Contain(sequence[1].Definition.CampaignNodeId.TrimStart('C','0')));
+        }
+        [UnityTest] public IEnumerator EarlyLevelUsesThreeStagesThenStatsThenMapAndKeepsFutureLevelsClosed()
+        {
+            game.ReducedMotion=true;var first=game.Catalog.GetPrimary("C01");var future=game.Catalog.GetPrimary("C03");
+            Assert.That(game.IsContentOpen(first),Is.True);Assert.That(game.IsContentOpen(future),Is.False);
+            string before=game.Interaction.Attempt.PinnedContentHash;game.SendMessage("StartContent",future);yield return null;
+            Assert.That(game.Interaction.Attempt.PinnedContentHash,Is.EqualTo(before));
+            game.SendMessage("StartContent",first);yield return PlayDescentStage();
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Checkpoint));Assert.That(game.JourneyClearCount,Is.Zero);
+            Assert.That(new ProfileStore(game.ProfilePath).Load().Profile.Completion,Is.Null);
+            yield return ClickButton("Nextdelivery");yield return PlayDescentStage();Assert.That(game.JourneyClearCount,Is.Zero);
+            yield return ClickButton("Nextdelivery");yield return PlayDescentStage();
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Win));Assert.That(game.LastCompletion.Stages,Is.EqualTo(3));
+            Assert.That(game.LastCompletion.Stars,Is.EqualTo(3));Assert.That(game.LastCompletion.Coins,Is.EqualTo(40));Assert.That(game.LastCompletion.Lights,Is.EqualTo(1));
+            Assert.That(game.LastCompletion.Moves,Is.EqualTo(game.Descent.Stages.Sum(s=>s.Minimum)));
+            Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Any(t=>t.text.Contains("all 3 stages complete")),Is.True);
+            yield return ClickButton("Continuecompletion");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.JourneyMap));
+            Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Any(t=>t.text.Contains("Next step in 4 levels")),Is.True);
+            Assert.That(game.IsContentOpen(game.Catalog.GetPrimary("C02")),Is.True);Assert.That(game.IsContentOpen(future),Is.False);
+            game.SendMessage("StartContent",first);yield return PlayDescentStage();yield return ClickButton("Nextdelivery");
+            yield return PlayDescentStage();yield return ClickButton("Nextdelivery");yield return PlayDescentStage();
+            Assert.That(game.LastCompletion.Coins,Is.Zero);Assert.That(game.LastCompletion.Lights,Is.Zero);Assert.That(game.JourneyClearCount,Is.EqualTo(1));
+            Assert.That(new ProfileStore(game.ProfilePath).Load().Profile.Clears.Single().BestStars,Is.EqualTo(3));
+        }
+        [UnityTest] public IEnumerator ThreeCompletedLevelsCelebrateStatsThenOneGiftThenMapAndResumeWithoutAnotherGrant()
+        {
+            game.ReducedMotion=true;
+            for(int n=1;n<=3;n++){
+                game.SendMessage("StartContent",game.Catalog.GetPrimary("C0"+n));
+                yield return PlayDescentStage();yield return ClickButton("Nextdelivery");yield return PlayDescentStage();
+                yield return ClickButton("Nextdelivery");yield return PlayDescentStage();
+                Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Win));
+                if(n<3)yield return ClickButton("Continuecompletion");
+            }
+            Assert.That(game.LastCompletion.ParcelOrder,Is.EqualTo(1));yield return ClickButton("Continuecompletion");
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Parcel));var saved=new ProfileStore(game.ProfilePath).Load().Profile;
+            Assert.That(saved.Completion.StatsSeen,Is.True);Assert.That(saved.Rewards.Parcels.Single().Claimed,Is.False);
+            yield return ClickButton("Unwrapgift");saved=new ProfileStore(game.ProfilePath).Load().Profile;
+            Assert.That(saved.Rewards.Fragments("leaf"),Is.EqualTo(1));Assert.That(saved.Completion.Acknowledged,Is.False);
+            yield return SceneManager.LoadSceneAsync("Assets/_Cascade/Scenes/CascadePlayable.unity");game=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();
+            game.SendMessage("OnApplicationFocus",true);game.SendMessage("OnApplicationPause",false);yield return null;
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Parcel));Assert.That(game.LastCompletion.Coins,Is.EqualTo(40));
+            yield return ClickButton("Keepgift");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.JourneyMap));
+            saved=new ProfileStore(game.ProfilePath).Load().Profile;Assert.That(saved.Completion.Acknowledged,Is.True);
+            Assert.That(saved.Rewards.Parcels.Count,Is.EqualTo(1));Assert.That(saved.Rewards.Fragments("leaf"),Is.EqualTo(1));Assert.That(saved.Clears.Count,Is.EqualTo(3));
         }
         [UnityTest] public IEnumerator DescentCheckpointSurvivesFocusInterruptionAndRetryWithoutGrantingAClear()
         {

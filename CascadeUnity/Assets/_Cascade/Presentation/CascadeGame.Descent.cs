@@ -18,15 +18,17 @@ namespace Cascade.Presentation
         DeliveryMood descentMood;
         DescentTransition descentMotion;
         int paintedDescentStage=-1;
+        bool descentPlanFailed,descentTravel;
         public DescentRun Descent=>descent;
         public bool IsDescending=>descentMotion!=null&&descentMotion.Playing;
         public bool IsPlanningDescent=>descentTask!=null;
         public void StartDescentLevel(LevelDefinition source,string locale="en",DeliveryMood mood=DeliveryMood.Steady)
         {
             LoadDirectedLevel(source,locale,mood);
+            descentPlanFailed=false;
             descentSource=source;descentLocale=locale;descentMood=mood;
             descentCancellation=new CancellationTokenSource();var token=descentCancellation.Token;
-            descentTask=Task.Run(()=>DescentRun.Build(source,mood,token),token);
+            descentTask=Task.Run(()=>DescentRun.Build(source,mood,token,version:3),token);
             Interaction.SetPreparing(true);status.SetCopy("Checking all three stages…");
         }
         void CancelDescentWork()
@@ -41,11 +43,11 @@ namespace Cascade.Presentation
                 var task=descentTask;descentTask=null;descentCancellation.Dispose();descentCancellation=null;
                 var source=descentSource;string locale=descentLocale;var mood=descentMood;
                 DescentRun run=null;if(task.IsFaulted){var ignored=task.Exception;}else if(!task.IsCanceled)run=task.Result;
-                if(run==null)LoadDirectedLevel(source,locale,mood);
-                else MountAttempt(new AttemptService(run.Level(source,0),locale,direction:run.Direction),run);
-                journeyActive=true;PersistProgress();ShowGame();
+                bool travel=descentTravel;
+                if(run==null){descentPlanFailed=true;status.SetCopy("Could not check all stages. Try again.");RenderControls();}
+                else {MountAttempt(new AttemptService(run.Level(source,0),locale,direction:run.Direction),run);journeyActive=travel;PersistProgress();ShowGame();}
             }
-            bool gated=IsPlanningDescent||IsDescending||!preparation.IsReady;
+            bool gated=descentPlanFailed||IsPlanningDescent||IsDescending||!preparation.IsReady;
             if(Interaction.IsPreparing!=gated)Interaction.SetPreparing(gated);
             if(descentTask!=null)status.SetCopy("Checking all three stages…");
             PaintDescent();
@@ -55,7 +57,7 @@ namespace Cascade.Presentation
             if(descent==null)return;
             if(paintedDescentStage!=descent.StageIndex){levelLabel.SetCopy(new UiCopy("Level {0} · {1}/3",node.TrimStart('C','0'),descent.StageIndex+1));paintedDescentStage=descent.StageIndex;}
             if(IsDescending)status.SetCopy("Going lower…");
-            else if(CurrentScreen==GameScreen.Checkpoint)status.SetCopy(descent.StageIndex==0?"Row ready! Wind is next.":"Row ready! Devices are next.");
+            else if(CurrentScreen==GameScreen.Checkpoint)status.SetCopy("The next stage is below. Take the row down.");
         }
         bool IsCheckpoint=>descent!=null&&!descent.IsFinal;
         LevelDefinition DescentPublishedSource()=>Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(legacyContent)
@@ -64,14 +66,15 @@ namespace Cascade.Presentation
         {
             if(!IsCheckpoint||Interaction.Attempt.Current.Status!=PuzzleStatus.Won||!Interaction.CanControl||IsDescending)return;
             var source=DescentPublishedSource();if(source==null)return;
-            var run=descent;string locale=Interaction.Attempt.ActiveLocale;
+            var run=descent;string locale=Interaction.Attempt.ActiveLocale;bool travel=journeyActive;
             var departed=machine.CreateDescentGhost("Departing wooden rig");
             run.AcceptCheckpoint(source,Interaction.Attempt);
             // State and persistence precede travel. A tween cannot advance a stage.
             MountAttempt(new AttemptService(run.Level(source,run.StageIndex),locale,direction:run.Direction),run);
-            journeyActive=true;PersistProgress();ShowGame();
+            journeyActive=travel;PersistProgress();ShowGame();
             if(run.Stages[run.StageIndex].Arrival==EntryTransform.ShiftLeftOne||run.Stages[run.StageIndex].Arrival==EntryTransform.ShiftRightOne)
                 machine.CueWind(run.Stages[run.StageIndex].Arrival==EntryTransform.ShiftRightOne);
+            else if(run.Stages[run.StageIndex].PublishedStart)machine.CueWind(run.StageIndex%2==0);
             if(descentMotion==null)descentMotion=gameObject.AddComponent<DescentTransition>();
             descentMotion.Begin(this,departed,machine.CreateDescentGhost("Arriving wooden rig"));
             Interaction.SetPreparing(IsDescending||!preparation.IsReady);

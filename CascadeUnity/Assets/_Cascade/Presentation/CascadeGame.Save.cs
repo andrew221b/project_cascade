@@ -44,7 +44,7 @@ namespace Cascade.Presentation
                     legacyContent=ContentImporter.ImportLegacyDurability(Catalog,Source("campaign_extension"),Source("campaign_durability_v1"));
                 var restored=profile.RestoreAttempt(Catalog,legacyContent);
                 if(restored!=null) {
-                    MountAttempt(restored,profile.Descent);journeyActive=profile.JourneyAttempt;storyRoute=profile.JourneyAttempt;
+                    MountAttempt(restored,profile.Descent);journeyActive=profile.JourneyAttempt;storyRoute=profile.StoryRoute??profile.JourneyAttempt;
                     selectedJourneyStop=Math.Max(0,Catalog.PrimaryLevels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==node));
                     if(journeyActive&&descent==null){levelLabel.SetCopy(JourneyStory.Task(JourneyStory.PageFor(selectedJourneyStop)));levelLabel.fontSize=21;}
                 }
@@ -54,7 +54,10 @@ namespace Cascade.Presentation
             }
             persistenceReady=true;
             InitializeRewards();
-            if(Recovery==SaveRecovery.None){ShowHome();PersistProgress();}
+            if(Recovery==SaveRecovery.None){
+                if(profile.Completion!=null&&!profile.Completion.Acknowledged&&Interaction.Attempt.Current.Status==PuzzleStatus.Won){
+                    if(profile.Completion.StatsSeen&&profile.Completion.ParcelOrder>0)OpenParcel(true);else ShowGame();
+                }else ShowHome();PersistProgress();}
             else SetScreen(GameScreen.SaveRecovery);
         }
         void PersistProgress()
@@ -63,6 +66,7 @@ namespace Cascade.Presentation
             profile.Preferences=Preferences;profile.PreferredMode=PreferredMode.ToString();
             profile.HeardStory=heardStory.OrderBy(p=>p).ToList();profile.FirstGestureShown=firstGestureShown;
             profile.JourneyAttempt=journeyActive;profile.Attempt=AttemptRecord.Capture(Interaction.Attempt);profile.Descent=descent;
+            profile.StoryRoute=storyRoute;
             try {profileStore.Save(profile);HasSaveError=false;}
             catch(Exception e) when(e is IOException || e is UnauthorizedAccessException || e is InvalidOperationException) {
                 HasSaveError=true;
@@ -80,8 +84,15 @@ namespace Cascade.Presentation
                 if(journeyActive&&!sessionClears.Contains(node)&&(full||attempt.Current.Status==PuzzleStatus.Lost))profile.Director.ObserveTerminal(attempt,MinimumMoves,descent?.Performance(attempt));
                 profile.Descent=descent;
                 if(full) {
-                    if(profile.RecordClear(attempt))sessionClears.Add(node);
-                    InitializeRewards();profile.Rewards.RecordDelivery(attempt,descent?.Performance(attempt));
+                    if(attempt.Current.Status==PuzzleStatus.Won&&profile.Completion?.AttemptId!=attempt.AttemptId.ToString("D")) {
+                        int coins=Rewards.EarnedCoins(OrderedNodes);var previous=profile.Clears.FirstOrDefault(c=>c.CampaignNodeId==node);
+                        var completion=LevelCompletion.From(attempt,MinimumMoves,descent?.Performance(attempt));
+                        completion.NewBest=previous==null||completion.Score>previous.BestScore||completion.Stars>previous.BestStars;
+                        bool first=profile.RecordClear(attempt,completion);if(first)sessionClears.Add(node);
+                        InitializeRewards();completion.Coins=Rewards.EarnedCoins(OrderedNodes)-coins;completion.Lights=first&&OrderedNodes.Contains(node)?1:0;
+                        completion.ParcelOrder=WaitingParcel?.Order??0;profile.Completion=completion;
+                    }
+                    profile.Rewards.RecordDelivery(attempt,descent?.Performance(attempt));
                 }
             }
             PersistProgress();

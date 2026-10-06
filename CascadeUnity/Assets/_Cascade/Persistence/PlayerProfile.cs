@@ -11,6 +11,7 @@ namespace Cascade.Persistence
     public sealed class ClearReceipt
     {
         public string CampaignNodeId, AttemptId, ContentHash;
+        public int BestStars,BestScore;
     }
 
     public sealed class PlayerProfile
@@ -20,18 +21,24 @@ namespace Cascade.Persistence
         public List<ClearReceipt> Clears=new List<ClearReceipt>();
         public List<int> HeardStory=new List<int>();
         public bool FirstGestureShown, JourneyAttempt;
+        public bool? StoryRoute;
         public AttemptRecord Attempt;
         public DescentRun Descent;
+        public LevelCompletion Completion;
         public JourneyRewards Rewards=new JourneyRewards();
         public DirectorMemory Director=new DirectorMemory();
         public MonetizationLedger Monetization=new MonetizationLedger();
 
-        public bool RecordClear(AttemptService attempt)
+        public bool RecordClear(AttemptService attempt,LevelCompletion completion=null)
         {
             if(Descent!=null&&(!Descent.IsFinal||attempt.PinnedContentHash!=Descent.StageHash(2)))return false;
-            if(attempt.Current.Status!=PuzzleStatus.Won || Clears.Any(r=>r.CampaignNodeId==attempt.Level.CampaignNodeId))return false;
-            Clears.Add(new ClearReceipt {CampaignNodeId=attempt.Level.CampaignNodeId,
-                AttemptId=attempt.AttemptId.ToString("D"),ContentHash=Descent?.ContentHash??attempt.PinnedContentHash});
+            if(attempt.Current.Status!=PuzzleStatus.Won)return false;
+            var receipt=Clears.FirstOrDefault(r=>r.CampaignNodeId==attempt.Level.CampaignNodeId);
+            bool first=receipt==null;
+            if(first){receipt=new ClearReceipt {CampaignNodeId=attempt.Level.CampaignNodeId,
+                AttemptId=attempt.AttemptId.ToString("D"),ContentHash=Descent?.ContentHash??attempt.PinnedContentHash};Clears.Add(receipt);}
+            if(completion!=null){receipt.BestStars=Math.Max(receipt.BestStars,completion.Stars);receipt.BestScore=Math.Max(receipt.BestScore,completion.Score);}
+            if(!first)return false;
             return true;
         }
         public AttemptService RestoreAttempt(ContentCatalog catalog, IEnumerable<LevelContent> legacy = null)
@@ -56,8 +63,10 @@ namespace Cascade.Persistence
             var nodes=new HashSet<string>(StringComparer.Ordinal);
             foreach(var receipt in Clears)if(receipt==null || string.IsNullOrWhiteSpace(receipt.CampaignNodeId)
                 || receipt.CampaignNodeId.Length>128 || !nodes.Add(receipt.CampaignNodeId)
-                || !Guid.TryParse(receipt.AttemptId,out var id) || id==Guid.Empty || !Hash(receipt.ContentHash))
+                || !Guid.TryParse(receipt.AttemptId,out var id) || id==Guid.Empty || !Hash(receipt.ContentHash)
+                ||receipt.BestStars<0||receipt.BestStars>3||receipt.BestScore<0||receipt.BestScore>1900)
                 throw new InvalidDataException("Invalid first-clear receipt.");
+            if(Completion!=null&&!Completion.IsValid())throw new InvalidDataException("Invalid completion receipt.");
             if(Rewards==null)throw new InvalidDataException("Missing journey rewards.");
             Rewards.Validate();
             if(Director==null||!Director.IsValid())throw new InvalidDataException("Invalid delivery director memory.");
