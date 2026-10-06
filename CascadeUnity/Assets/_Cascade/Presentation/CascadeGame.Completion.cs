@@ -11,18 +11,20 @@ namespace Cascade.Presentation
 {
     public sealed partial class CascadeGame
     {
-        Sprite[] completionArt,rewardEmblems;
+        Sprite[] completionArt,rewardEmblems,celebrationPaper;
         bool parcelReturnsToMap;
         public bool CelebrationMotionAllowed=>applicationFocused&&!applicationPaused&&!nativeAdSuspended&&isActiveAndEnabled;
         public LevelCompletion LastCompletion=>profile.Completion;
-        bool IsJourneyStopOpen(int index)=>index>=0&&index<Catalog.PrimaryLevels.Count
+        bool IsPinnedJourneyStop(int index)=>index>=0&&index<Catalog.PrimaryLevels.Count&&journeyActive
+            &&Catalog.PrimaryLevels[index].Definition.CampaignNodeId==node&&(Interaction.Attempt.Current.Status==PuzzleStatus.Playing||IsCheckpoint);
+        bool IsJourneyStopOpen(int index)=>IsPinnedJourneyStop(index)||index>=0&&index<Catalog.PrimaryLevels.Count
+            &&JourneySequence().Any(c=>c.Definition.CampaignNodeId==Catalog.PrimaryLevels[index].Definition.CampaignNodeId)
             &&(sessionClears.Contains(Catalog.PrimaryLevels[index].Definition.CampaignNodeId)||index==NextJourneyStop());
         public bool IsContentOpen(LevelContent content)
         {
             if(content==null)return false;
             if(!DescentRun.CanDescend(content.Definition))return Catalog.BonusLevels.Contains(content);
-            System.Collections.Generic.IReadOnlyList<LevelContent> sequence=content.Mode==PuzzleMode.Shapes?Catalog.PrimaryLevels:
-                Catalog.LocalizedLevels.Where(c=>c.Mode==content.Mode&&c.Locale==content.Locale).ToArray();
+            var sequence=JourneySequence();
             return CampaignProgress.IsOpen(sequence.Select(c=>c.Definition.CampaignNodeId).ToArray(),sessionClears,content.Definition.CampaignNodeId);
         }
         Sprite CompletionArt(int index)
@@ -36,7 +38,12 @@ namespace Cascade.Presentation
             }
             return completionArt[index];
         }
-        void DisposeCompletionArt(){foreach(var sprites in new[]{completionArt,rewardEmblems})if(sprites!=null)foreach(var sprite in sprites)if(sprite!=null)Destroy(sprite);}
+        void DisposeCompletionArt(){foreach(var sprites in new[]{completionArt,rewardEmblems,celebrationPaper})if(sprites!=null)foreach(var sprite in sprites)if(sprite!=null)Destroy(sprite);}
+        public Sprite CelebrationPaper(int index)
+        {
+            if(celebrationPaper==null)celebrationPaper=NavigationSlices("Workshop/CelebrationPaper",3,2);
+            return celebrationPaper[index];
+        }
         Sprite RewardEmblem(int index)
         {
             if(rewardEmblems==null)rewardEmblems=NavigationSlices("Workshop/RewardEmblems",2,1);
@@ -83,7 +90,7 @@ namespace Cascade.Presentation
             Picture("Earned lights illustration",menuRoot,new Vector2(.555f,.156f),new Vector2(.735f,.263f),RewardEmblem(1),true);
             CompletionText("Earned light",menuRoot,new Vector2(.735f,.163f),new Vector2(.915f,.251f),28,UiCopy.Raw(receipt.Lights>0?"+1":"0"));
             CompletionText("Completion reward note",menuRoot,new Vector2(.08f,.104f),new Vector2(.92f,.153f),14,
-                receipt.Lights==0?"Replay to improve your stars and score.":WaitingParcel!=null?"A gift is waiting for you!":new UiCopy("New lights for a gift: {0} / 3",Rewards.OrderProgress));
+                receipt.Lights==0?"Your stars and score are saved for this mode.":WaitingParcel!=null?"A gift is waiting for you!":new UiCopy("New lights for a gift: {0} / 3",Rewards.OrderProgress));
             var next=MenuButton(WaitingParcel!=null?"Collect my gift":"Back to map",.012f,ContinueCompletion,true,.12f,.88f);
             next.name="Continuecompletion";
             var celebration=menuRoot.gameObject.AddComponent<RewardCelebration>();celebration.Initialize(this,stars,receipt.Stars,score,receipt.Score,CompletionArt(3),false,ribbon.rectTransform);

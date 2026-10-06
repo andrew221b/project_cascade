@@ -95,7 +95,7 @@ namespace Cascade.Presentation
             returnScreen=CurrentScreen; deviceIndex=DeviceForCurrentFloor(); SetScreen(GameScreen.Devices);
         }
         public void CloseMenu() { SetScreen(returnScreen); }
-        public void SelectMode(PuzzleMode mode) { PreferredMode=mode; PersistProgress(); chapterPage=0; if(CurrentScreen==GameScreen.Home||CurrentScreen==GameScreen.Lessons) DrawMenu(); }
+        public void SelectMode(PuzzleMode mode) { SwitchJourneyMode(mode); }
         void SetScreen(GameScreen screen)
         {
             if (!flowReady) return;
@@ -300,12 +300,16 @@ namespace Cascade.Presentation
         IReadOnlyList<LevelContent> PreferredLevels()
         {
             if(PreferredMode==PuzzleMode.Shapes) return Catalog.PrimaryLevels.Where(c=>c.Mode==PuzzleMode.Shapes).ToArray();
+            if(PreferredMode==PuzzleMode.Mixed)return Catalog.PrimaryLevels.Select((primary,i)=>
+                Catalog.TryGetLocalizedBinding(primary.Definition.CampaignNodeId,Preferences.PuzzleLocale,out var localized)
+                &&(localized.Mode==PuzzleMode.Mixed||i%2==1)?localized:primary).ToArray();
             return Catalog.LocalizedLevels.Where(c=>c.Locale==Preferences.PuzzleLocale&&c.Mode==PreferredMode).ToArray();
         }
         void StartContent(LevelContent content)
         {
+            if(content!=null&&DescentRun.CanDescend(content.Definition))content=PreferredLevels().FirstOrDefault(c=>c.Definition.CampaignNodeId==content.Definition.CampaignNodeId);
             if(!IsContentOpen(content))return;
-            storyRoute=false;PreferredMode=content.Mode;
+            storyRoute=false;
             if(DescentRun.CanDescend(content.Definition)){StartDescentLevel(content.Definition,content.Locale,profile.Director.Choose(content.Definition));descentTravel=journeyActive=true;PersistProgress();}
             else LoadLevel(content.Definition,content.Locale);
             ShowGame();

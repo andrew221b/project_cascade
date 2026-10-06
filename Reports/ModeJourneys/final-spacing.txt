@@ -1,0 +1,1 @@
+PASS: final source, RU large type and safe insets at 320x693; Words/Mixed independent; exact Shapes second-stage row restored. Native map captured.

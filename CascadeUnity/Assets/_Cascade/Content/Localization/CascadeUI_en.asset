@@ -2780,6 +2780,10 @@ MonoBehaviour:
     m_Localized: Time
     m_Metadata:
       m_Items: []
+  - m_Id: 584621170352128
+    m_Localized: Your stars and score are saved for this mode.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

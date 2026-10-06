@@ -2763,6 +2763,10 @@ MonoBehaviour:
     m_Key: Time
     m_Metadata:
       m_Items: []
+  - m_Id: 584621170352128
+    m_Key: Your stars and score are saved for this mode.
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

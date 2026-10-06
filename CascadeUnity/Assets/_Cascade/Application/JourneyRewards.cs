@@ -107,23 +107,23 @@ namespace Cascade.Application
             }
             return flags;
         }
-        public void RecordDelivery(AttemptService attempt,DeliveryPerformance performance=null)
+        public void RecordDelivery(AttemptService attempt,DeliveryPerformance performance=null,List<MasteryRecord> records=null)
         {
             if(attempt.Current.Status!=PuzzleStatus.Won)return;
             int flags=(performance?.ToolFlags??0)|ToolFlags(attempt);
             var facts=Deliveries.FirstOrDefault(d=>d.NodeId==attempt.Level.CampaignNodeId);
             if(facts==null){facts=new DeliveryFacts{NodeId=attempt.Level.CampaignNodeId};Deliveries.Add(facts);}facts.Flags|=flags;
-            Record(attempt,0,performance);
-            if(attempt.Goal.RequiredStampBits!=0&&attempt.Goal.IsSatisfied(attempt.Current))Record(attempt,attempt.Goal.RequiredStampBits,performance);
+            Record(attempt,0,performance,records??Records);
+            if(attempt.Goal.RequiredStampBits!=0&&attempt.Goal.IsSatisfied(attempt.Current))Record(attempt,attempt.Goal.RequiredStampBits,performance,records??Records);
         }
-        void Record(AttemptService attempt,int goal,DeliveryPerformance performance)
+        void Record(AttemptService attempt,int goal,DeliveryPerformance performance,List<MasteryRecord> records)
         {
             int route=performance?.Route??attempt.RouteLength;bool hinted=performance?.HintUsed??attempt.HintUsed;int undos=performance?.Undos??attempt.UndoCount;
             var candidate=new MasteryRecord{PuzzleId=attempt.Level.PuzzleId,ContentHash=performance?.ContentHash??attempt.PinnedContentHash,
                 SourceHash=performance?.SourceHash,StageCount=performance==null?0:3,
                 Mode=attempt.Mode.ToString(),Locale=attempt.ActiveLocale,StampGoal=goal,BestRoute=route};
-            var record=Records.FirstOrDefault(r=>r.Key==candidate.Key);
-            if(record==null){record=candidate;Records.Add(record);}
+            var record=records.FirstOrDefault(r=>r.Key==candidate.Key);
+            if(record==null){record=candidate;records.Add(record);}
             record.BestRoute=Math.Min(record.BestRoute,route);
             if(!hinted)record.BestWithoutHint=Math.Min(record.BestWithoutHint??int.MaxValue,route);
             if(!hinted&&undos==0)record.BestClean=Math.Min(record.BestClean??int.MaxValue,route);

@@ -99,7 +99,7 @@ namespace Cascade.Tests
             Directory.CreateDirectory(directory);File.WriteAllText(store.Path,"broken");File.WriteAllText(store.BackupPath,"also broken");
             Assert.That(store.Load().Recovery,Is.EqualTo(SaveRecovery.Unreadable));
             Assert.That(File.ReadAllText(store.Path),Is.EqualTo("broken"));
-            string future="{\"schema\":2}";File.WriteAllText(store.Path,future);
+            string future="{\"schema\":"+(ProfileStore.Schema+1)+"}";File.WriteAllText(store.Path,future);
             Assert.That(store.Load().Recovery,Is.EqualTo(SaveRecovery.NewerVersion));
             Assert.Throws<InvalidOperationException>(()=>store.Save(new PlayerProfile()));Assert.That(File.ReadAllText(store.Path),Is.EqualTo(future));
         }

@@ -19,7 +19,7 @@ namespace Cascade.Persistence
     }
     public sealed class ProfileStore
     {
-        public const int Schema=1;
+        public const int Schema=2;
         const int MaxBytes=8*1024*1024;
         readonly string path;
         bool futureVersion;
@@ -77,11 +77,13 @@ namespace Cascade.Persistence
                 if(envelope["schema"]?.Type!=JTokenType.Integer)return null;
                 int schema=(int)envelope["schema"];
                 if(schema>Schema){future=true;return null;}
-                if(schema!=Schema || envelope["payload"]?.Type!=JTokenType.String || envelope["sha256"]?.Type!=JTokenType.String)return null;
+                if((schema!=1&&schema!=Schema) || envelope["payload"]?.Type!=JTokenType.String || envelope["sha256"]?.Type!=JTokenType.String)return null;
                 string payload=(string)envelope["payload"];
                 if(ContentImporter.Hash(payload)!=(string)envelope["sha256"])return null;
                 var profile=JsonConvert.DeserializeObject<PlayerProfile>(payload,new JsonSerializerSettings {MaxDepth=32,TypeNameHandling=TypeNameHandling.None});
-                if(profile==null)return null;profile.Validate();return profile;
+                if(profile==null)return null;
+                if(schema==1&&profile.Rewards?.Records!=null)profile.ModeRecords=profile.Rewards.Records.ToList();
+                profile.Validate();return profile;
             }
             catch(Exception e) when(e is IOException || e is UnauthorizedAccessException || e is JsonException || e is ArgumentException || e is OverflowException) { return null; }
         }

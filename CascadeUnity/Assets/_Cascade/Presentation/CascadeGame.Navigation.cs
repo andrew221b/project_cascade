@@ -18,17 +18,17 @@ namespace Cascade.Presentation
         readonly HashSet<TextMeshProUGUI> navigationLightLabels=new HashSet<TextMeshProUGUI>();
         public bool IsStoryRoute=>storyRoute;
         public int LevelShelfPage=>chapterPage;
-        public void ShowPlayChoice(){SetScreen(GameScreen.PlayChoice);}
+        public void ShowPlayChoice(){ChooseStory();}
         public void ShowShop(){if(CurrentScreen!=GameScreen.Shop)shopReturnScreen=CurrentScreen;shopNotice=default;SetScreen(GameScreen.Shop);}
         public void ShowNoAds(){if(CurrentScreen!=GameScreen.NoAds)noAdsReturnScreen=CurrentScreen;SetScreen(GameScreen.NoAds);}
-        public void ChooseSoloMode(PuzzleMode mode){storyRoute=false;journeyActive=false;SelectMode(mode);ShowLessons();}
+        public void ChooseSoloMode(PuzzleMode mode){SelectMode(mode);ShowJourney();}
         public void ChooseStory()
         {
-            storyRoute=true;
+            storyRoute=false;
             // Keep an unfinished concrete attempt pinned; the choice affects future levels.
             if(!heardStory.Contains(PrologueReceipt))ShowPrologue();else ShowJourney();
         }
-        public void ShowPrologue(){storyRoute=true;prologuePage=0;SetScreen(GameScreen.Prologue);}
+        public void ShowPrologue(){prologuePage=0;SetScreen(GameScreen.Prologue);}
         public void AdvancePrologue()
         {
             if(++prologuePage<3){DrawMenu();menuTransition.Arrive();return;}
@@ -98,13 +98,7 @@ namespace Cascade.Presentation
         }
         void DrawPlayChoice()
         {
-            NavigationHeader("Play",ShowHome);
-            NavigationNote("Play question","How would you like to play?",.755f,.85f);
-            NavigationButton("Storymode","Story",4,.595f,ChooseStory,true,"Mika's journey. A little of everything.");
-            NavigationButton("Shapes","Shapes",5,.443f,()=>ChooseSoloMode(PuzzleMode.Shapes),false,"Just shapes.");
-            NavigationButton("Words","Words",6,.291f,()=>ChooseSoloMode(PuzzleMode.Words),false,"Put the word in order.");
-            NavigationButton("Mixed","Mixed",7,.139f,()=>ChooseSoloMode(PuzzleMode.Mixed),false,"Shapes and letters.");
-            var opening=Button("Opening story",menuRoot,new Vector2(.24f,.035f),new Vector2(.76f,.10f),ShowPrologue);opening.GetComponent<Image>().sprite=enamelControls[0];opening.GetComponent<Image>().color=Color.white;((RectTransform)opening.transform).sizeDelta=new Vector2(0,12*MenuUnit);
+            DrawJourney(); // Legacy screen enum kept for compatibility; no duplicate mode selector.
         }
         void DrawLessons()
         {
@@ -119,7 +113,7 @@ namespace Cascade.Presentation
             for(int i=0;i<9&&chapterPage*9+i<levels.Count;i++){
                 var content=levels[chapterPage*9+i];string id=content.Definition.CampaignNodeId;int col=i%3,row=i/3;
                 var b=Button(UiCopy.Raw(id.TrimStart('C','0')),shelf,new Vector2(col/3f+.028f,1-(row+1)/3f+.035f),new Vector2((col+1)/3f-.028f,1-row/3f-.035f),()=>StartContent(content));
-                var image=b.GetComponent<Image>();image.sprite=enamelControls[2];image.type=Image.Type.Sliced;image.color=Color.white;
+                var image=b.GetComponent<Image>();image.sprite=enamelControls[0];image.type=Image.Type.Sliced;image.color=Color.white;navigationLightLabels.Add(b.GetComponentInChildren<TextMeshProUGUI>());
                 b.interactable=IsContentOpen(content);
                 if(!b.interactable)b.gameObject.AddComponent<CanvasGroup>().alpha=.56f;
                 var number=b.GetComponentInChildren<TextMeshProUGUI>();number.fontSizeMax=30*MenuUnit;number.fontSizeMin=23*MenuUnit;number.margin=Vector4.zero;

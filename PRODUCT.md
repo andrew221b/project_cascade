@@ -69,25 +69,31 @@ explicit user request. Routine UI work uses available Editor inspection and
 scoped tests, with validation limits stated in its report.
 
 The current Home offers Start game, Shop, Settings and Remove ads. Start game
-opens a separate Story/Shapes/Words/Mixed choice. Story chooses existing primary
-and localized campaign bindings automatically after the first three shape
-lessons, keeping campaign order and an unfinished concrete attempt pinned.
-Its first entry shows a three-scene comic: Gran tends the Great Beacon, the
-storm leaves Mika with one light, and Mika sets out with Pip the frog and Rue
-the older fox to repair the way home and relight the beacon. Completing or
-skipping the opening records HeardStory entry 1000 in the existing local field;
-the opening can be replayed from the play choice. Shapes, Words and Mixed each
-open a numbered shelf filtered by that concrete mode and puzzle locale, with
-up to nine levels per page and swipe navigation. Map and shelf Back return to
-the play choice; Settings and help return to the screen that opened them.
+shows the opening comic once for that journey, then opens the map. The map's
+three top tabs are the only Shapes / Words / Mixed selector. Each tab has its
+own opened levels, clear stars/scores, mastery records, dialogue/lesson history,
+director memory, pinned attempt and exact descent stage. The shared story leads
+Mika to repair the bridges and relight the Great Beacon. Settings select UI and
+word language; they do not repeat the mode selector. Map Back returns Home.
+
+Shapes follows the 155 published shape-only nodes; Words follows 154 word
+bindings in the chosen word language. Mixed visits all 160 nodes, using the five
+existing combined bindings and alternating ready word/shape puzzles elsewhere.
+No puzzle rules or solver witnesses are changed. Account wallet, shop stock,
+purchased entitlements, earned parcels and cosmetics are shared. Account
+resources are granted once per campaign node across modes, while each mode has
+separate clear receipts and records. Schema2 reads schema1 and assigns its old
+journey and route records only to its saved PreferredMode. See
+Docs/PARALLEL_MODE_JOURNEYS.md and Reports/ModeJourneys/README.md.
 
 At the P14 checkpoint, the journey gave the existing 40 lesson puzzles Mika's story,
 a five-stop-page isometric map, optional dialogue and three original regional
 art kits: Wind Gardens, Rain Mill and Copper Orchard. P16 adds a durable local
 profile for preferences, preferred mode, heard dialogue, first-clear receipts
 and a pinned attempt. Restore verifies the saved command route and exact state,
-reconstructs Undo history and retains hint/Undo flags. First-clear receipts are
-deduplicated by campaign node across modes and locales.
+reconstructs Undo history and retains hint/Undo flags. At that historical checkpoint first-clear receipts were
+deduplicated across modes and locales; schema2 now keeps separate mode clears
+while preserving the shared one-time account reward ledger.
 
 The local profile uses a checksum, a flushed temporary write and atomic primary
 replacement with one valid backup. Recovery explains a restored backup, an

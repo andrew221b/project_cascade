@@ -40,8 +40,7 @@ namespace Cascade.Presentation
         void RestoreProfile()
         {
             try {
-                if(profile.Attempt!=null && !Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).Any(c=>c.Definition.ContentHash==(profile.Descent?.SourceHash??profile.Attempt.Direction?.SourceHash??profile.Attempt.ContentHash)))
-                    legacyContent=ContentImporter.ImportLegacyDurability(Catalog,Source("campaign_extension"),Source("campaign_durability_v1"));
+                EnsureSavedJourneyContent();
                 var restored=profile.RestoreAttempt(Catalog,legacyContent);
                 if(restored!=null) {
                     MountAttempt(restored,profile.Descent);journeyActive=profile.JourneyAttempt;storyRoute=profile.StoryRoute??profile.JourneyAttempt;
@@ -59,6 +58,13 @@ namespace Cascade.Presentation
                     if(profile.Completion.StatsSeen&&profile.Completion.ParcelOrder>0)OpenParcel(true);else ShowGame();
                 }else ShowHome();PersistProgress();}
             else SetScreen(GameScreen.SaveRecovery);
+        }
+        void EnsureSavedJourneyContent()
+        {
+            if(profile.Attempt==null)return;
+            string pinned=profile.Descent?.SourceHash??profile.Attempt.Direction?.SourceHash??profile.Attempt.ContentHash;
+            if(!Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).Concat(legacyContent).Any(c=>c.Definition.ContentHash==pinned))
+                legacyContent=ContentImporter.ImportLegacyDurability(Catalog,Source("campaign_extension"),Source("campaign_durability_v1"));
         }
         void PersistProgress()
         {
@@ -85,14 +91,14 @@ namespace Cascade.Presentation
                 profile.Descent=descent;
                 if(full) {
                     if(attempt.Current.Status==PuzzleStatus.Won&&profile.Completion?.AttemptId!=attempt.AttemptId.ToString("D")) {
-                        int coins=Rewards.EarnedCoins(OrderedNodes);var previous=profile.Clears.FirstOrDefault(c=>c.CampaignNodeId==node);
+                        int coins=Rewards.EarnedCoins(OrderedNodes);bool accountFirst=!Rewards.SeenClearNodes.Contains(node);var previous=profile.Clears.FirstOrDefault(c=>c.CampaignNodeId==node);
                         var completion=LevelCompletion.From(attempt,MinimumMoves,descent?.Performance(attempt));
                         completion.NewBest=previous==null||completion.Score>previous.BestScore||completion.Stars>previous.BestStars;
                         bool first=profile.RecordClear(attempt,completion);if(first)sessionClears.Add(node);
-                        InitializeRewards();completion.Coins=Rewards.EarnedCoins(OrderedNodes)-coins;completion.Lights=first&&OrderedNodes.Contains(node)?1:0;
+                        InitializeRewards();completion.Coins=Rewards.EarnedCoins(OrderedNodes)-coins;completion.Lights=first&&accountFirst&&OrderedNodes.Contains(node)?1:0;
                         completion.ParcelOrder=WaitingParcel?.Order??0;profile.Completion=completion;
                     }
-                    profile.Rewards.RecordDelivery(attempt,descent?.Performance(attempt));
+                    profile.Rewards.RecordDelivery(attempt,descent?.Performance(attempt),profile.ModeRecords);
                 }
             }
             PersistProgress();
@@ -101,7 +107,7 @@ namespace Cascade.Presentation
         {
             if(Recovery==SaveRecovery.NewerVersion)return;
             var known=Catalog.PrimaryLevels.Select(c=>c.Definition.CampaignNodeId).ToHashSet();
-            profile.Rewards.Synchronize(profile.Clears.Where(r=>known.Contains(r.CampaignNodeId)).Select(r=>r.CampaignNodeId));
+            profile.Rewards.Synchronize(profile.AllClears.Where(r=>known.Contains(r.CampaignNodeId)).Select(r=>r.CampaignNodeId));
             profile.Rewards.RegisterVisit(DateTime.Now);
         }
         public void AcknowledgeRecovery()

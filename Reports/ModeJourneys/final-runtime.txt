@@ -1,0 +1,1 @@
+PASS: actual five-star reward and gift screen paper objects; receipt/state/rewards stable; stats > gift > map; independent Words/Mixed; Shapes stage and resources restored; disk reload. Final 320px safe-inset map captured. Physical device tests and builds NOT RUN.
