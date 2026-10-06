@@ -36,11 +36,12 @@ namespace Cascade.Presentation
         Sprite ToolBody(int kind)
         {
             if(kind==2)return Resources.Load<Sprite>("CascadeArt/Devices/Bomb");
+            if(kind==10)return Resources.Load<Sprite>("CascadeArt/Devices/FrostFlask");
             if(toolBodySprites.TryGetValue(kind,out var sprite))return sprite;
             int index=kind==3?0:kind==4?1:kind==8?2:kind==9?3:4;
             sprite=WorkshopSpriteSet.Tool(Resources.Load<Texture2D>("CascadeArt/Reactions/ToolBodiesClean"),index);toolBodySprites.Add(kind,sprite);return sprite;
         }
-        static string DeviceAsset(int kind) => kind==2?"Bomb":kind==3?"BrassKey":kind==4?"RepairKit":kind==8?"Stamp":kind==9?"RibbonSpool":"Hourglass";
+        static string DeviceAsset(int kind) => kind==2?"Bomb":kind==3?"BrassKey":kind==4?"RepairKit":kind==8?"Stamp":kind==9?"RibbonSpool":"FrostFlask";
         void OpenDevice(int kind) { returnScreen=CurrentScreen;deviceIndex=kind;SetScreen(GameScreen.Devices); }
         void BuildDeviceDocks(RectTransform card,FloorDefinition floor,int count,int floorIndex)
         {
@@ -58,12 +59,12 @@ namespace Cascade.Presentation
             foreach(var item in contacts) {
                 float slotX=.045f+.91f*(item.contact.Slot+.5f)/count;
                 float x=contacts.Count==2?pairStart+dockIndex++*pairSpan:Mathf.Clamp(slotX,.15f,.85f);if(contacts.Count!=2&&x-previous<.24f)x=Mathf.Min(.86f,previous+.24f);previous=x;
-                // A wooden socket and its suspended tool share a real attachment point.
-                var socket=Rect("Device socket",card,new Vector2(slotX-.034f,.295f),new Vector2(slotX+.034f,.39f));
-                Background(socket,new Color(.31f,.22f,.15f),false).sprite=art.panel;
+                // A tiny nail on the wood face, without a competing plaque.
+                var socket=Picture("Device nail",card,new Vector2(.5f,.5f),new Vector2(.5f,.5f),Resources.Load<Sprite>("CascadeArt/Devices/NailHead"),true).rectTransform;
+                socket.GetComponent<Image>().material=ToolSilhouette;socket.sizeDelta=Vector2.one*10;
                 var cordRect=Rect("Single tool rope",card,Vector2.zero,Vector2.one);
                 var cord=cordRect.gameObject.AddComponent<ToolSuspensionRope>();cord.raycastTarget=false;
-                var button=Button(UiCopy.Raw("Device "+DeviceAsset(item.kind)),card,new Vector2(x,-.075f),new Vector2(x,-.075f),()=>OpenDevice(item.kind));
+                var button=Button(UiCopy.Raw("Device "+DeviceAsset(item.kind)),card,new Vector2(.5f,.5f),new Vector2(.5f,.5f),()=>OpenDevice(item.kind));
                 var root=(RectTransform)button.transform;root.sizeDelta=new Vector2(88,55);
                 button.GetComponent<Image>().color=Color.clear;button.GetComponentInChildren<TextMeshProUGUI>().SetCopy("");
                 var icon=Picture("Recognizable device",root,new Vector2(.05f,-.10f),new Vector2(.88f,1.14f),ToolBody(item.kind),true);
@@ -95,7 +96,7 @@ namespace Cascade.Presentation
         }
         void BuildToolBodyMark(RectTransform icon,int kind,SymbolId required)
         {
-            var bounds=kind==3?new Rect(.33f,.51f,.34f,.32f):kind==4?new Rect(.35f,.165f,.30f,.30f):kind==8?new Rect(.33f,.22f,.36f,.36f):kind==9?new Rect(.21f,.35f,.32f,.34f):new Rect(.36f,.18f,.28f,.28f);
+            var bounds=kind==3?new Rect(.33f,.51f,.34f,.32f):kind==4?new Rect(.35f,.165f,.30f,.30f):kind==8?new Rect(.33f,.22f,.36f,.36f):kind==9?new Rect(.21f,.35f,.32f,.34f):new Rect(.33f,.165f,.32f,.275f);
             var mark=Rect("Body painted symbol",icon,bounds.min,bounds.max);
             if(required.Kind==SymbolKind.Glyph){
                 var letter=Text("Body painted letter",mark,Vector2.zero,Vector2.one,24,UiCopy.Raw(FaceText(required)));

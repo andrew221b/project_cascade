@@ -1,0 +1,6 @@
+Bomb cord follows nail, fixed16px vertical length; no rectangular socket.
+Shape flask source: FrostFlask; mark=Body painted symbol
+Reaction animates original flask, central mark remains attached, caption=Бомба охлаждена!
+FrozenTicks after pickup=1
+No authored RU flask level found; glyph screenshot not taken.
+Glyph inlay inspected on review-only letter binding of the same B04 puzzle; no product content changed. Reaction caption captured after1.10s, original source.

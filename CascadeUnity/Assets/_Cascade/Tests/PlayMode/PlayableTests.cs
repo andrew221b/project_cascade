@@ -129,11 +129,18 @@ namespace Cascade.Tests
             Assert.That(game.Interaction.Attempt.Current.Status,Is.EqualTo(PuzzleStatus.Won));
             game.Undo();Assert.That(game.Interaction.Attempt.Current.ReachCharges,Is.EqualTo(1));
         }
+        IEnumerator FinishDeviceTeaching()
+        {
+            yield return null;
+            double began=Time.realtimeSinceStartupAsDouble;
+            while(game.MechanicPopupOpen&&PresentationBudget(began)){game.AcknowledgeMechanic();yield return null;}
+            Assert.That(game.Interaction.CanPlay,Is.True,"First-use teaching must finish before testing the tool.");
+        }
         [UnityTest] public IEnumerator DeviceTapExplainsWithoutMovingAndClockSurvivesReload()
         {
-            game.LoadLevel(game.Catalog.BonusLevels[9].Definition);game.ShowGame();yield return null;game.RefreshLayout();
+            game.LoadLevel(game.Catalog.BonusLevels[9].Definition);game.ShowGame();yield return AwaitPreparation();yield return FinishDeviceTeaching();game.RefreshLayout();
             string before=game.Interaction.Attempt.CurrentStateHash;
-            yield return ClickButton("DeviceHourglass");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Devices));
+            yield return ClickButton("DeviceFrostFlask");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Devices));
             Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(before));
             yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Playing));
             yield return TouchFrame(23,Point(0),UnityEngine.InputSystem.TouchPhase.Began);
@@ -143,7 +150,8 @@ namespace Cascade.Tests
             string saved=game.Interaction.Attempt.CurrentStateHash;
             yield return SceneManager.LoadSceneAsync("Assets/_Cascade/Scenes/CascadePlayable.unity");game=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();
             Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(saved));
-            Assert.That(game.Interaction.Attempt.Current.FrozenTicks,Is.EqualTo(1));game.ShowGame();game.SendMessage("OnApplicationFocus",true);game.Undo();
+            Assert.That(game.Interaction.Attempt.Current.FrozenTicks,Is.EqualTo(1));game.ShowGame();game.SendMessage("OnApplicationFocus",true);
+            yield return AwaitPreparation();yield return FinishDeviceTeaching();game.Undo();
             Assert.That(game.Interaction.Attempt.Current.PowerupUsed,Is.False);Assert.That(game.Interaction.Attempt.Current.FrozenTicks,Is.Zero);
         }
         [UnityTest] public IEnumerator RibbonDragPersistsAndUndoRestoresCharge()
@@ -824,7 +832,7 @@ namespace Cascade.Tests
         }
         [UnityTest] public IEnumerator HangingDevicesFollowDeckWindAndFreezeWithoutSpendingMoves()
         {
-            game.LoadNode("C13");game.ShowGame();game.ReducedMotion=false;yield return AwaitPreparation();game.RefreshLayout();
+            game.LoadNode("C13");game.ShowGame();game.ReducedMotion=false;yield return AwaitPreparation();yield return FinishDeviceTeaching();game.RefreshLayout();
             string hash=game.Interaction.Attempt.CurrentStateHash;
             var device=(RectTransform)game.GetComponentsInChildren<UnityEngine.UI.Button>().First(b=>b.name=="DeviceBomb").transform;
             Assert.That(device.GetComponent<HangingToolTag>(),Is.Null);
@@ -869,7 +877,7 @@ namespace Cascade.Tests
             Assert.That(safeIcon.transform.parent.Find("Contact outcome ribbon"),Is.Null,"The central reaction is the only outcome ribbon.");
 
             // Every tool keeps its painted symbol on the same body.
-            game.LoadNode("C18");game.ReducedMotion=false;yield return AwaitPreparation();game.RefreshLayout();
+            game.LoadNode("C18");game.ReducedMotion=false;yield return AwaitPreparation();yield return FinishDeviceTeaching();game.RefreshLayout();
             hash=game.Interaction.Attempt.CurrentStateHash;
             Assert.That(game.GetComponentsInChildren<HangingToolTag>(),Is.Empty);
             Assert.That(game.GetComponentsInChildren<ToolTagCordGraphic>(),Is.Empty);

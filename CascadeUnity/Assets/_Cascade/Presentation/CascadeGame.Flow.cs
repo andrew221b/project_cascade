@@ -38,7 +38,7 @@ namespace Cascade.Presentation
         Task<HintOffer> deadEndTask;
         CancellationTokenSource deadEndCancellation;
         bool knownDeadEnd;
-        static readonly string[] DeviceTitles = { "Durability", "Entry rollers", "Bomb", "Key", "Repair", "Fragile edge", "Linked pairs", "One-use bridge", "Stamp", "Ribbon spool", "Hourglass" };
+        static readonly string[] DeviceTitles = { "Durability", "Entry rollers", "Bomb", "Key", "Repair", "Fragile edge", "Linked pairs", "One-use bridge", "Stamp", "Ribbon spool", "Frost flask" };
         static readonly string[] DeviceNodes = { "C03", "C09", "C13", "C17", "C18", "C21", "C25", "C33", "C35", "B01", "B04" };
         static readonly string[] DeviceCopy = {
             "Each swap uses a move. At zero, the wood breaks. Descend leaves early.",
@@ -51,7 +51,7 @@ namespace Cascade.Presentation
             "This bridge works once. Then it folds shut.",
             "Put this piece on the stamp. Bring the row home to keep it.",
             "Move the pictured piece above the spool. You get one swap across one or two pieces. Save it for a lower board if you like.",
-            "Move the pictured piece above the hourglass. The bomb waits for two swaps, including this one. The wood still wears down."
+            "Move the pictured piece above the frost flask. The bomb waits for two swaps, including this one. The wood still wears down."
         };
 
         void BuildFlow()

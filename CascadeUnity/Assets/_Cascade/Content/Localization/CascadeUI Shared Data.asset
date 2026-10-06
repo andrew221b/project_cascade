@@ -3407,6 +3407,28 @@ MonoBehaviour:
       going down.
     m_Metadata:
       m_Items: []
+  - m_Id: 605650634661888
+    m_Key: Frost flask
+    m_Metadata:
+      m_Items: []
+  - m_Id: 605650638856192
+    m_Key: Match the flask picture. The bomb waits two swaps. The wood still wears
+      down.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 605650638856193
+    m_Key: Move the pictured piece above the frost flask. The bomb waits for two
+      swaps, including this one. The wood still wears down.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 605650638856194
+    m_Key: Match the flask picture. The bomb waits for two swaps.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 605650638856195
+    m_Key: Bomb cooled!
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

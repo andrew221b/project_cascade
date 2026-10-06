@@ -25,14 +25,14 @@ namespace Cascade.Presentation
         public MechanicLesson? CurrentMechanic { get; private set; }
         public IReadOnlyList<MechanicLesson> SeenMechanics=>profile.SeenMechanics.AsReadOnly();
         internal bool IntroductionAnimationAllowed=>applicationFocused&&!applicationPaused&&!nativeAdSuspended;
-        static readonly string[] MechanicTitles={"Bomb","Key","Repair","Ribbon spool","Stamp","Hourglass","One-use bridge","Linked pairs","Fragile edge","Closed path","Entry rollers","Mirror on entry","Wind on landing","A gust of wind","Wayfinder scroll","Undo spool","Return hourglass","Signal lantern","Landing lens"};
+        static readonly string[] MechanicTitles={"Bomb","Key","Repair","Ribbon spool","Stamp","Frost flask","One-use bridge","Linked pairs","Fragile edge","Closed path","Entry rollers","Mirror on entry","Wind on landing","A gust of wind","Wayfinder scroll","Undo spool","Return hourglass","Signal lantern","Landing lens"};
         static readonly string[] MechanicCopy={
             "Put its pictured piece above the bomb. Stop it before the count reaches zero.",
             "Put its pictured piece above the key. The branch opens and you can swap there.",
             "Put its pictured piece above the toolbox. It repairs this board once.",
             "Match the spool picture. You earn one swap past one or two pieces.",
             "Match the stamp picture, then finish the level to keep your bonus.",
-            "Match the hourglass picture. The bomb waits two swaps. The wood still wears down.",
+            "Match the flask picture. The bomb waits two swaps. The wood still wears down.",
             "You can swap across this bridge once. Then that path closes.",
             "These pairs are tied together. Swap one pair and the other swaps too.",
             "A swap at the cracked spot uses twice as much wood. Try another path.",

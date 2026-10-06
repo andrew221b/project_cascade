@@ -47,7 +47,7 @@ namespace Cascade.Presentation
         {
             bool pickups=CurrentScreen==GameScreen.PowerupChallenges;int offset=pickups?6:0;
             CraftTitle(pickups?"Power-ups":"Ribbon reach",pickups?"Pick up a tool. Find a new way home.":"One ribbon. Swap across one or two pieces.");
-            if(pickups)Picture("Teaching tool",menuRoot,new Vector2(.38f,.735f),new Vector2(.62f,.812f),Resources.Load<Sprite>("CascadeArt/Devices/"+(reachPage<3?"RibbonSpool":"Hourglass")),true);
+            if(pickups)Picture("Teaching tool",menuRoot,new Vector2(.38f,.735f),new Vector2(.62f,.812f),Resources.Load<Sprite>("CascadeArt/Devices/"+(reachPage<3?"RibbonSpool":"FrostFlask")),true);
             else ShelfChoice("","RibbonSpool",.36f,.735f,.28f,.077f,()=>{});
             var level=Catalog.BonusLevels[offset+reachPage].Definition;
             var example=Rect("Reach example",menuRoot,new Vector2(.10f,.53f),new Vector2(.90f,.73f));
@@ -56,7 +56,7 @@ namespace Cascade.Presentation
             Text("Reach number",menuRoot,new Vector2(.28f,.39f),new Vector2(.72f,.475f),23,UiCopy.Raw((reachPage+1)+" / 6")).font=art.titleFont;
             var previous=DirectionButton("ReachPrevious",menuRoot,new Vector2(.08f,.475f),new Vector2(.26f,.475f),false,()=>{reachPage=(reachPage+5)%6;DrawMenu();});RegisterMenuRow(previous,.475f,0,52,0);
             var next=DirectionButton("ReachNext",menuRoot,new Vector2(.74f,.475f),new Vector2(.92f,.475f),true,()=>{reachPage=(reachPage+1)%6;DrawMenu();});RegisterMenuRow(next,.475f,0,52,0);
-            Text("Reach instruction",menuRoot,new Vector2(.10f,.22f),new Vector2(.90f,.375f),20,pickups?(reachPage<3?"Match the spool picture. Then drag past a neighbour.":"Match the hourglass picture. The bomb waits for two swaps."):"Drag past a neighbour. The ribbon works once. Undo brings it back.");
+            Text("Reach instruction",menuRoot,new Vector2(.10f,.22f),new Vector2(.90f,.375f),20,pickups?(reachPage<3?"Match the spool picture. Then drag past a neighbour.":"Match the flask picture. The bomb waits for two swaps."):"Drag past a neighbour. The ribbon works once. Undo brings it back.");
             MenuButton("Try this trail",.082f,()=>StartContent(Catalog.BonusLevels[offset+reachPage]),true);
             MenuButton("Back",.005f,ShowTravelBag,false,.08f,.45f);
             if(pickups)MenuButton("Ribbon reach",.005f,ShowReachChallenges,false,.50f,.92f);

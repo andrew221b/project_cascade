@@ -103,7 +103,7 @@ namespace Cascade.Presentation
                             case PuzzleEventKind.HourglassCollected:
                                 game.SetPresentationFeedback(e.Kind==PuzzleEventKind.RibbonCollected?"One far swap ready":"Bomb paused for two swaps");feedback.Sound(ToyCue.Stamp);feedback.Haptic();
                                 bool ribbon=e.Kind==PuzzleEventKind.RibbonCollected;int tool=ribbon?9:10;
-                                game.AnnounceReaction(ribbon?"Ribbon ready!":"Time paused!",ribbon?"RibbonSpool":"Hourglass");
+                                game.AnnounceReaction(ribbon?"Ribbon ready!":"Bomb cooled!",ribbon?"RibbonSpool":"FrostFlask");
                                 yield return HoldReaction();break;
                             case PuzzleEventKind.BombFrozen:
                                 game.SetPresentationFeedback("The bomb waits. The wood still wears down.");yield return Hold(.12f);break;

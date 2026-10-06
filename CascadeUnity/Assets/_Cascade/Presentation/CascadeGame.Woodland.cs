@@ -39,7 +39,9 @@ namespace Cascade.Presentation
                 if(dock.kind==8)dock.icon.transform.localScale=new Vector3(1+.13f*response,1-.12f*response,1);
                 if(dock.kind==4)dock.icon.transform.localScale=new Vector3(1-.06f*response,1+.12f*response,1);
                 var card=deviceOverlays[dock.floor];float height=Mathf.Max(1,card.rect.height);
-                var hookWorld=machine.SurfacePoint(dock.floor,dock.slotX,.32f);
+                // Move only the cosmetic center hook clear of the engraved strength numeral.
+                float hookX=Mathf.Abs(dock.slotX-.5f)<.045f?.5f+(dock.slotX<=.5f?-.052f:.052f):dock.slotX;
+                var hookWorld=machine.SurfacePoint(dock.floor,hookX,.35f);
                 var hookLocal=(Vector2)card.InverseTransformPoint(hookWorld);
                 var hook=new Vector2((hookLocal.x-card.rect.xMin)/card.rect.width,(hookLocal.y-card.rect.yMin)/height);
                 var anchor=(Vector2)hookWorld;
@@ -58,19 +60,23 @@ namespace Cascade.Presentation
                     dock.angle=Mathf.Clamp(dock.angle,-10,10);
                 }
                 else if(!moving){dock.anchorReady=false;}
-                // Rotate the whole object about the deck attachment, not about its icon centre.
-                var rest=card.rect.min+Vector2.Scale(card.rect.size,new Vector2(dock.dockX,-.075f));
+                // Constant screen-space suspension length, independent of floor spacing.
+                float unit=1/Mathf.Min(1,dock.root.GetComponentInParent<Canvas>().scaleFactor);
+                var attachment=dock.kind==2?new Vector2(.365f,.69f):dock.kind==3?new Vector2(.465f,1.08f):dock.kind==4?new Vector2(.47f,.78f):dock.kind==8?new Vector2(.68f,1.02f):dock.kind==9?new Vector2(.46f,1.01f):new Vector2(.465f,1.02f);
+                var gripLocal=dock.root.rect.min+Vector2.Scale(dock.root.rect.size,attachment);
+                float spread=Mathf.Clamp((dock.dockX-dock.slotX)*card.rect.width,-18*unit,18*unit);
                 var rotation=Quaternion.Euler(0,0,dock.angle);
-                var centre=hookLocal+(Vector2)(rotation*(Vector3)(rest-(card.rect.min+Vector2.Scale(card.rect.size,new Vector2(dock.slotX,.32f)))));
-                dock.root.anchoredPosition=centre-rest;
+                var centre=hookLocal+(Vector2)(rotation*(Vector3)(new Vector2(spread,-(dock.kind==2?16:22)*unit)-gripLocal));
+                dock.root.localPosition=new Vector3(centre.x,centre.y,dock.root.localPosition.z);
                 dock.root.localRotation=Quaternion.Euler(0,0,dock.angle);
-                dock.socket.anchoredPosition=Vector2.Scale(card.rect.size,hook-new Vector2(dock.slotX,.32f));
+                dock.socket.position=new Vector3(hookWorld.x,hookWorld.y,dock.socket.position.z);
+                dock.socket.sizeDelta=Vector2.one*10*unit;
                 Vector2 Grip(Vector2 attachment) {
                     var point=card.InverseTransformPoint(dock.root.TransformPoint(dock.root.rect.min+Vector2.Scale(dock.root.rect.size,attachment)));
                     return new Vector2((point.x-card.rect.xMin)/card.rect.width,(point.y-card.rect.yMin)/height);
                 }
                 // The bomb hangs from its metal collar; its curved fuse is not a handle.
-                var grip=Grip(dock.kind==2?new Vector2(.365f,.69f):dock.kind==3?new Vector2(.465f,1.08f):dock.kind==4?new Vector2(.47f,.78f):dock.kind==8?new Vector2(.68f,1.02f):dock.kind==9?new Vector2(.46f,1.01f):new Vector2(.47f,1.05f));
+                var grip=Grip(attachment);
                 dock.cord.SetEndpoints(Vector2.Scale(hook,card.rect.size),Vector2.Scale(grip,card.rect.size),ReducedMotion?0:machine.WindAt(dock.floor),moving?dt:0,machine.AmbientPhase+(.17f*dock.floor)+(.13f*dock.slotX),ReducedMotion);
 
             }

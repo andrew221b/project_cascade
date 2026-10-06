@@ -84,7 +84,7 @@ namespace Cascade.Presentation
                 var image=hero.GetComponent<Image>();image.color=Color.white;image.raycastTarget=false;
                 foreach(var text in hero.GetComponentsInChildren<TMP_Text>()){text.fontSizeMax=54;text.fontSize=42;}
             }
-            motif=tool=="RepairKit"?1:tool=="Stamp"?2:tool=="RibbonSpool"?3:tool=="Hourglass"?4:tool=="Bomb"?5:0;
+            motif=tool=="RepairKit"?1:tool=="Stamp"?2:tool=="RibbonSpool"?3:tool=="Hourglass"||tool=="FrostFlask"?4:tool=="Bomb"?5:0;
             count=motif==2?1:motif==1?3:5;
             if(game.Preferences.EffectQuality==1)count=Mathf.Min(3,count);if(game.Preferences.EffectQuality==0)count=0;if(game.ReducedMotion)count=Mathf.Min(2,count);
             title.text=message.ToString();title.ForceMeshUpdate();opacity.alpha=1;heroMount.gameObject.SetActive(hasTool);

@@ -541,7 +541,7 @@ namespace Cascade.Presentation
         }
         public void SetPresentationFeedback(UiCopy text) { status.SetCopy(text); }
         public void AnnounceReaction(UiCopy text,string tool) {
-            int kind=tool.StartsWith("Bomb")?2:tool=="BrassKey"?3:tool=="RepairKit"?4:tool=="Stamp"?8:tool=="RibbonSpool"?9:tool=="Hourglass"?10:0;
+            int kind=tool.StartsWith("Bomb")?2:tool=="BrassKey"?3:tool=="RepairKit"?4:tool=="Stamp"?8:tool=="RibbonSpool"?9:tool=="FrostFlask"?10:0;
             reactionBanner?.Show(text,tool,kind==0?null:DeviceFeedbackAnchor(VisibleFrame.ActiveFloor,kind));
         }
         public void SyncPresentation() { machine.ResetWoodPoses();RenderState(); FinalizeScreenIfNeeded(); }
