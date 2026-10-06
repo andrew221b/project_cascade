@@ -6,12 +6,11 @@ namespace Cascade.Presentation
     public sealed class WoodBoardGraphic:MaskableGraphic
     {
         Texture texture;Rect uv=new Rect(0,0,1,1);
+        public void SetDamage(int stage){var f=WorkshopSpriteSet.WoodUv(stage);uv=new Rect(f.z,f.w,f.x,f.y);SetVerticesDirty();}
         public override Texture mainTexture=>texture!=null?texture:Texture2D.whiteTexture;
         protected override void Awake()
         {
-            base.Awake();texture=Resources.Load<Texture2D>("CascadeArt/Woodland/WoodBoard");
-            var source=Resources.Load<TextAsset>("CascadeArt/Woodland/WoodBoardFrame");
-            if(source!=null){var frame=JsonUtility.FromJson<WoodBodyFrame>(source.text);uv=new Rect(frame.left,frame.bottom,frame.width,frame.height);}
+            base.Awake();texture=Resources.Load<Texture2D>("CascadeArt/Reactions/TimberStates");SetDamage(0);
             raycastTarget=false;
         }
         protected override void OnPopulateMesh(VertexHelper helper)

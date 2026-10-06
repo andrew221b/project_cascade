@@ -1,0 +1,2 @@
+First native inspection: old particles survived LoadLevel and contaminated later tool reactions; witnesses paused at age 0, masking new particles. Corrected by clearing tails when mounting attempts, then capturing at age >=0.18.
+First confirmation stopped at BombExploded: InvalidOperationException: Paused announcement advanced. Existing event-player coroutines advanced from blast to fracture during direct pause. Corrected by pausing event dispatch and all travel/recoil/hold/fracture/landing timelines. Kept this failure; the final witness run must complete before acceptance.

@@ -338,15 +338,25 @@ namespace Cascade.Tests
             Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Devices));
             Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Any(t=>t.text=="Wind on landing"),Is.True);
             Assert.That(attempt.CurrentStateHash,Is.EqualTo(hash));game.CloseMenu();
-            var proof=PuzzleSolver.FindShortest(attempt.Resolver);Assert.That(game.MinimumMoves,Is.EqualTo(proof.OptimalActions));bool gust=false;
+            var proof=PuzzleSolver.FindShortest(attempt.Resolver);Assert.That(game.MinimumMoves,Is.EqualTo(proof.OptimalActions));bool gust=false,forecast=false;
             game.Interaction.Committed+=r=>gust|=r.Events.Any(e=>e.Kind==PuzzleEventKind.EntryPermuted&&game.IsWindFloor(e.Floor));
             foreach(var command in proof.Path) {
                 var predicted=attempt.Predict(command).State;
                 if(command.Kind==CommandKind.EarlyDrop)yield return ClickButton("Drop");
                 else {yield return MouseFrame(Point(command.Edge),true);yield return MouseFrame(Point(command.Edge+1),true);yield return MouseFrame(Point(command.Edge+1),false);}
-                Assert.That(attempt.Current,Is.EqualTo(predicted));yield return AwaitPresentation();
+                Assert.That(attempt.Current,Is.EqualTo(predicted));
+                double deadline=Time.realtimeSinceStartupAsDouble+30;
+                while(game.Interaction.IsPresenting&&Time.realtimeSinceStartupAsDouble<deadline){
+                    if(game.ReactionBanner.IsWindWarning&&!forecast){
+                        forecast=true;float age=game.ReactionBanner.Elapsed;string committed=attempt.CurrentStateHash;
+                        game.Interaction.SetPaused(true);yield return new WaitForSecondsRealtime(.12f);
+                        Assert.That(game.ReactionBanner.Elapsed,Is.EqualTo(age));Assert.That(attempt.CurrentStateHash,Is.EqualTo(committed));game.Interaction.SetPaused(false);
+                    }
+                    yield return null;
+                }
+                Assert.That(game.Interaction.IsPresenting,Is.False);
             }
-            Assert.That(gust,Is.True);Assert.That(attempt.Current.Status,Is.EqualTo(PuzzleStatus.Won));
+            Assert.That(forecast,Is.True);Assert.That(gust,Is.True);Assert.That(attempt.Current.Status,Is.EqualTo(PuzzleStatus.Won));
             var loaded=new ProfileStore(game.ProfilePath).Load();var restored=loaded.Profile.RestoreAttempt(game.Catalog);
             Assert.That(restored.CurrentStateHash,Is.EqualTo(attempt.CurrentStateHash));Assert.That(loaded.Profile.Clears.Any(c=>c.CampaignNodeId=="C81"),Is.True);
         }
@@ -438,6 +448,26 @@ namespace Cascade.Tests
             yield return ClickButton("Playthislevel");yield return AwaitDescentReady();
             Assert.That(game.Descent.StageIndex,Is.Zero);Assert.That(new ProfileStore(game.ProfilePath).Load().Profile.Clears.Count(c=>c.CampaignNodeId=="C81"),Is.EqualTo(1));
         }
+        [UnityTest] public IEnumerator ToolReactionFreezesExpiresAndRespectsQuietFeedbackWithoutChangingState()
+        {
+            foreach(bool quiet in new[]{false,true}){
+                game.LoadNode("C18");game.ShowGame();game.ReducedMotion=quiet;game.Feedback.Quality=quiet?0:2;game.Preferences.EffectQuality=quiet?0:2;yield return AwaitPreparation();
+                game.Interaction.Execute(PuzzleCommand.Swap(0));double until=Time.realtimeSinceStartupAsDouble+30;
+                while(!game.ReactionBanner.IsShowing&&game.Interaction.IsPresenting&&Time.realtimeSinceStartupAsDouble<until)yield return null;
+                Assert.That(game.ReactionBanner.IsShowing,Is.True);Assert.That(game.ReactionBanner.Message,Does.Contain("mended"));
+                string hash=game.Interaction.Attempt.CurrentStateHash;int length=game.Interaction.Attempt.RouteLength;
+                game.Interaction.SetPaused(true);var age=game.ReactionBanner.Elapsed;var scale=game.ReactionBanner.transform.localScale;
+                yield return new WaitForSecondsRealtime(.2f);
+                Assert.That(game.ReactionBanner.Elapsed,Is.EqualTo(age));Assert.That(game.ReactionBanner.transform.localScale,Is.EqualTo(scale));
+                if(quiet){Assert.That(game.ReactionBanner.GetComponentsInChildren<UnityEngine.UI.Image>().Count(i=>i.name.StartsWith("Reaction motif")),Is.Zero);Assert.That(game.Feedback.ActiveParticleCount,Is.Zero);Assert.That(scale,Is.EqualTo(Vector3.one));}
+                game.Interaction.SetPaused(false);yield return AwaitPresentation();
+                until=Time.realtimeSinceStartupAsDouble+10;while(game.ReactionBanner.IsShowing&&Time.realtimeSinceStartupAsDouble<until)yield return null;
+                Assert.That(game.ReactionBanner.IsShowing,Is.False);Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));Assert.That(game.Interaction.Attempt.RouteLength,Is.EqualTo(length));
+                var status=game.GetComponentsInChildren<TextMeshProUGUI>().First(t=>t.name=="Feedback");Assert.That(status.enabled,Is.True);
+                game.AnnounceReaction("Ribbon ready!","RibbonSpool");Assert.That(game.ReactionBanner.IsShowing,Is.True);
+                game.ShowSettings();Assert.That(game.ReactionBanner.IsShowing,Is.False);game.ShowGame();Assert.That(status.enabled,Is.True);
+            }
+        }
         [UnityTest] public IEnumerator HangingDevicesFollowDeckWindAndFreezeWithoutSpendingMoves()
         {
             game.LoadNode("C13");game.ShowGame();game.ReducedMotion=false;yield return AwaitPreparation();game.RefreshLayout();
@@ -487,20 +517,15 @@ namespace Cascade.Tests
             // Other tools retain their independently suspended tags.
             game.LoadNode("C18");game.ReducedMotion=false;yield return AwaitPreparation();game.RefreshLayout();
             hash=game.Interaction.Attempt.CurrentStateHash;
-            var tag=game.GetComponentsInChildren<HangingToolTag>().First();
-            var sign=(RectTransform)tag.transform.Find("Tag pendulum/Hanging matching tag");
-            var tagCords=tag.GetComponentInChildren<ToolTagCordGraphic>();float initialTagAngle=tag.Angle,maxTagTravel=0;
-            Assert.That(tagCords.GetComponent<CanvasRenderer>(),Is.Not.Null);
+            Assert.That(game.GetComponentsInChildren<HangingToolTag>(),Is.Empty);
+            Assert.That(game.GetComponentsInChildren<ToolTagCordGraphic>(),Is.Empty);
+            var paint=game.GetComponentsInChildren<RectTransform>().First(r=>r.name=="Body painted symbol");
+            var local=paint.localPosition;var startPaint=paint.position;float paintTravel=0;
             until=Time.realtimeSinceStartupAsDouble+2;
-            while(Time.realtimeSinceStartupAsDouble<until){maxTagTravel=Mathf.Max(maxTagTravel,Mathf.Abs(tag.Angle-initialTagAngle));yield return null;}
-            Assert.That(maxTagTravel,Is.GreaterThan(.1f));
-            Canvas.ForceUpdateCanvases();Assert.That(tagCords.GetComponent<CanvasRenderer>().GetMesh().vertexCount,Is.GreaterThan(0));
-            for(int side=0;side<2;side++){
-                var hole=sign.TransformPoint(sign.rect.min+Vector2.Scale(sign.rect.size,new Vector2(side==0?.22f:.78f,.93f)));
-                Assert.That(Vector2.Distance(hole,tagCords.EndWorld(side)),Is.LessThan(.001f));
-            }
-            game.Interaction.SetPaused(true);var heldTag=sign.position;yield return new WaitForSecondsRealtime(.1f);Assert.That(sign.position,Is.EqualTo(heldTag));
-            game.Interaction.SetPaused(false);game.ReducedMotion=true;yield return null;Assert.That(tag.Angle,Is.Zero);
+            while(Time.realtimeSinceStartupAsDouble<until){paintTravel=Mathf.Max(paintTravel,Vector3.Distance(startPaint,paint.position));Assert.That(paint.localPosition,Is.EqualTo(local));yield return null;}
+            Assert.That(paintTravel,Is.GreaterThan(.002f));
+            game.Interaction.SetPaused(true);var heldPaint=paint.position;yield return new WaitForSecondsRealtime(.1f);Assert.That(paint.position,Is.EqualTo(heldPaint));
+            game.Interaction.SetPaused(false);game.ReducedMotion=true;yield return null;Assert.That(paint.localPosition,Is.EqualTo(local));
             Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));Assert.That(game.Interaction.Attempt.RouteLength,Is.Zero);
         }
         [UnityTest] public IEnumerator WoodWeightAndGlyphDepthRemainPresentationOnly()
@@ -630,8 +655,11 @@ namespace Cascade.Tests
                 do {
                     yield return null;
                     Assert.That(game.Interaction.Attempt.CurrentStateHash, Is.EqualTo(hash));
-                    for (int i = 0; i < game.SlotViews.Count; i++)
-                        Assert.That(Vector3.Distance(game.Machine.PresentedTokenPosition(i), game.Machine.TokenPosition(i)), Is.LessThan(.001f));
+                    for (int i = 0; i < game.SlotViews.Count; i++) {
+                        var pose=game.Machine.TokenPose(i);
+                        var support=pose==PiecePose.Falling||pose==PiecePose.Exchanging?Vector3.zero:game.Machine.TokenSupportOffset(i);
+                        Assert.That(Vector3.Distance(game.Machine.PresentedTokenPosition(i),game.Machine.TokenPosition(i)+support),Is.LessThan(.001f),"Reduced motion keeps the static wood support, without extra animated displacement.");
+                    }
                 } while (game.Interaction.IsPresenting && Time.realtimeSinceStartup < until);
                 Assert.That(game.Interaction.IsPresenting, Is.False);
             }

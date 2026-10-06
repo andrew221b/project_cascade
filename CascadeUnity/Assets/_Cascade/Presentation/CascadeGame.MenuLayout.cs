@@ -47,11 +47,11 @@ namespace Cascade.Presentation
         }
         void SettingsTabs()
         {
-            string[] names={"Sound effects","Comfort","Languages"};
+            string[] names={"Sound","Comfort tab","Language tab"};
             for(int i=0;i<3;i++){
                 int page=i;float x=.08f+i*.285f;
-                var tab=MenuButton(names[i],.755f,()=>{settingsPage=page;DrawMenu();},false,x,x+.27f);
-                var label=tab.GetComponentInChildren<TextMeshProUGUI>();label.fontSize=20*(Preferences.LargeText?1.10f:1);label.margin=new Vector4(2,3,2,7);MarkSelection(tab,i==settingsPage);RegisterMenuRow(tab,.812f,0,52,0);
+                var tab=MenuButton(names[i],.755f,()=>{settingsPage=page;DrawMenu();},false,x,x+.27f);tab.name=new[]{"Soundeffects","Comfort","Languages"}[i];
+                var label=tab.GetComponentInChildren<TextMeshProUGUI>();label.enableAutoSizing=true;label.fontSizeMin=16*MenuUnit;label.fontSizeMax=20*MenuUnit*(Preferences.LargeText?1.10f:1);label.margin=new Vector4(8*MenuUnit,5,8*MenuUnit,8);MarkSelection(tab,i==settingsPage);RegisterMenuRow(tab,.812f,0,52,0);
             }
         }
         void LanguageCarousel(string name,string current,float top,Action<string> action)

@@ -13,7 +13,7 @@ namespace Cascade.Presentation
             for(int i=0;i<2;i++) {
                 float x=r.xMin+r.width*(i==0?.35f:.56f), w=r.width*.10f;
                 float y=r.yMin+r.height*.29f, h=r.height*.42f;
-                int n=mesh.currentVertCount;var ink=new Color(.16f,.28f,.29f);
+                int n=mesh.currentVertCount;var ink=color;
                 mesh.AddVert(new Vector3(x,y),ink,Vector2.zero);mesh.AddVert(new Vector3(x,y+h),ink,Vector2.zero);
                 mesh.AddVert(new Vector3(x+w,y+h),ink,Vector2.zero);mesh.AddVert(new Vector3(x+w,y),ink,Vector2.zero);
                 mesh.AddTriangle(n,n+1,n+2);mesh.AddTriangle(n,n+2,n+3);

@@ -72,7 +72,7 @@ namespace Cascade.Presentation
             motion = Resources.Load<MotionProfile>("CascadeArt/MotionProfile") ?? throw new InvalidOperationException("Build CASCADE motion assets before playing.");
             feedback = gameObject.AddComponent<ToyFeedbackPool>(); feedback.Initialize(this, art, motion);
             eventPlayer = gameObject.AddComponent<PuzzleEventPlayer>(); eventPlayer.Initialize(this, motion, feedback);
-            BuildScreen(); LoadNode(initialNode); BuildFlow(); RestoreProfile();
+            BuildScreen();BuildControlArt(); LoadNode(initialNode); BuildFlow(); RestoreProfile();
         }
         void OnEnable() { if (Interaction != null) { if(!preparation.IsReady&&!preparation.IsPending)BeginPreparation(); Interaction.SetSuspended(applicationPaused || !applicationFocused); RenderState(); } }
         void OnDisable()
@@ -81,7 +81,7 @@ namespace Cascade.Presentation
             SettleDescent();CancelDescentWork();
             EndTokenHold(); CancelHint(); CancelDeadEnd(); preparation.Cancel(); StopPresentation(); Interaction?.SetSuspended(true); feedback?.ClearTails();
         }
-        void OnDestroy() { preparation.Dispose(); if (Interaction != null) Interaction.Committed -= OnCommitted; if(glyphMaterial!=null)Destroy(glyphMaterial); }
+        void OnDestroy() { preparation.Dispose(); if (Interaction != null) Interaction.Committed -= OnCommitted; if(glyphMaterial!=null)Destroy(glyphMaterial);foreach(var sprite in toolBodySprites.Values)if(sprite!=null)Destroy(sprite);foreach(var sprite in enamelControls)if(sprite!=null)Destroy(sprite); }
         void OnApplicationFocus(bool focused)
         {
             if(!focused)SettleDescent();
@@ -131,6 +131,8 @@ namespace Cascade.Presentation
         }
         void MountAttempt(AttemptService attempt,DescentRun run=null)
         {
+            reactionBanner?.Clear();
+            feedback?.ClearTails();
             SettleDescent();CancelDescentWork();descent=run;paintedDescentStage=-1;machine.LivingWorld.DescentDepth=run?.StageIndex??0;
             var level=attempt.Level;
             EndTokenHold(); CancelHint(); CancelDeadEnd(); StopPresentation(); if (Interaction != null) Interaction.Committed -= OnCommitted;
@@ -230,6 +232,7 @@ namespace Cascade.Presentation
                 machine.LivingWorld.SetFlightBand(floorTop+inset,statusBottom-inset);
             }
             machine?.Sync(); SyncTokenFaces(); SyncDeviceSuspension(0); RenderControls();
+            feedback?.RefreshAnchors();reactionBanner?.RefreshLayout();
             if(IsHoldingToken)PaintHeldToken(true);
         }
         void CancelHint()
@@ -275,6 +278,8 @@ namespace Cascade.Presentation
         static string FaceText(SymbolId symbol) => symbol.Kind == SymbolKind.Glyph ? symbol.Value : "";
         static UiCopy CommandText(PuzzleCommand command) => command.Kind == CommandKind.EarlyDrop ? "Drop the row" : new UiCopy("swap slots {0} & {1}",command.Edge+1,command.Kind==CommandKind.LongReach?command.End+1:command.Edge+2);
         RectTransform statusPaper;
+        GameReactionBanner reactionBanner;
+        public GameReactionBanner ReactionBanner => reactionBanner;
         Material glyphMaterial;
         void FinishLetter(TextMeshProUGUI label)
         {
@@ -316,6 +321,8 @@ namespace Cascade.Presentation
             var pauseMark = Rect("Pause mark",pause.transform,Vector2.zero,Vector2.one).gameObject.AddComponent<PauseMark>(); pauseMark.raycastTarget=false;
             statusPaper=Rect("Quiet instruction paper",safeRoot,new Vector2(.055f,.79f),new Vector2(.945f,.86f));var paper=Background(statusPaper,new Color(1,.96f,.84f,.93f),false);paper.sprite=art.panel;paper.type=UnityEngine.UI.Image.Type.Sliced;
             status = Text("Feedback", safeRoot, new Vector2(.08f, .79f), new Vector2(.92f, .86f), 16, "");
+            reactionBanner=Rect("Tool announcement",safeRoot,Vector2.zero,Vector2.one).gameObject.AddComponent<GameReactionBanner>();
+            reactionBanner.Initialize(this,statusPaper,status,art.titleFont);
             minimumLabel = Text("Shortest route", safeRoot, new Vector2(.08f,.76f),new Vector2(.92f,.78f),13,"");
             minimumLabel.font = art.titleFont;
             floorArea = Rect("Floors", safeRoot, new Vector2(.045f, .37f), new Vector2(.955f, .78f));
@@ -431,6 +438,7 @@ namespace Cascade.Presentation
                 foreach(var button in actions.GetComponentsInChildren<UnityEngine.UI.Button>()){
                     var label=button.GetComponentInChildren<TextMeshProUGUI>();if(label==null)continue;
                     label.fontSize=17*unit*(Preferences.LargeText?1.12f:1);label.margin=new Vector4(5,2,5,2);
+                    label.fontSizeMin=14*unit;label.fontSizeMax=17*unit*(Preferences.LargeText?1.12f:1);
                 }
                 if(resultRoot!=null)FixedBand(resultRoot,8*unit,160*unit);
                 receiverLabel.fontSize=16*unit; if(wrongRowLabel!=null)wrongRowLabel.fontSize=15*unit;
@@ -505,6 +513,10 @@ namespace Cascade.Presentation
             tokenLabels[index].rectTransform.localScale = new Vector3(stretch.x, stretch.y, 1);
         }
         public void SetPresentationFeedback(UiCopy text) { status.SetCopy(text); }
+        public void AnnounceReaction(UiCopy text,string tool) {
+            int kind=tool.StartsWith("Bomb")?2:tool=="BrassKey"?3:tool=="RepairKit"?4:tool=="Stamp"?8:tool=="RibbonSpool"?9:tool=="Hourglass"?10:0;
+            reactionBanner?.Show(text,tool,kind==0?null:DeviceFeedbackAnchor(VisibleFrame.ActiveFloor,kind));
+        }
         public void SyncPresentation() { machine.ResetWoodPoses();RenderState(); FinalizeScreenIfNeeded(); }
         public void CompleteDeliveryPose()
         {
@@ -567,6 +579,7 @@ namespace Cascade.Presentation
             precise.gameObject.SetActive(PreciseInputActive && Interaction.Attempt.Current.Status == PuzzleStatus.Playing && (!flowReady||CurrentScreen==GameScreen.Playing));
             if (eventPlayer == null || !eventPlayer.IsRunning) RenderFocus();
             if(flowReady && resultRoot!=null && actions!=null)ArrangeResultControls();
+            PaintControlLabels();
             PaintPreparation();
         }
         static RectTransform Rect(string name, Transform parent, Vector2 min, Vector2 max)
@@ -595,7 +608,8 @@ namespace Cascade.Presentation
             var button = rect.gameObject.AddComponent<UnityEngine.UI.Button>(); button.onClick.AddListener(() => clicked());
             var colors = button.colors; colors.highlightedColor = new Color(1, .94f, .78f); colors.pressedColor = new Color(.82f, .88f, .81f); colors.disabledColor = new Color(.88f, .90f, .84f, .7f); button.colors = colors;
             rect.gameObject.AddComponent<ButtonFeel>().Initialize(this);
-            var text = Text("Label", rect, Vector2.zero, Vector2.one, 18, label); text.font = art.titleFont; text.margin = new Vector4(10, 5, 10, 5); return button;
+            var text = Text("Label", rect, Vector2.zero, Vector2.one, 18, label); text.font = art.titleFont; text.margin = new Vector4(10, 5, 10, 5);
+            text.textWrappingMode=TextWrappingModes.NoWrap;text.enableAutoSizing=true;text.fontSizeMin=14;text.fontSizeMax=18*(Preferences.LargeText?1.12f:1);return button;
         }
         UnityEngine.UI.Button DirectionButton(string name, Transform parent, Vector2 min, Vector2 max, bool right, Action clicked)
         {

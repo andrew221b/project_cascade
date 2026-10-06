@@ -32,10 +32,7 @@ namespace Cascade.Presentation
             game = owner; library = Resources.Load<ToyAudioLibrary>("CascadeArt/ToyAudio");
             dustMaterial=art.shadow;
             chipMaterial=new Material(Shader.Find("Universal Render Pipeline/Lit")){name="Carved wood splinters"};
-            chipMaterial.SetTexture("_BaseMap",Resources.Load<Texture2D>("CascadeArt/Woodland/WoodBoard"));
-            var woodFrame=JsonUtility.FromJson<WoodBodyFrame>(Resources.Load<TextAsset>("CascadeArt/Woodland/WoodBoardFrame").text);
-            chipMaterial.SetTextureScale("_BaseMap",new Vector2(woodFrame.width*.35f,woodFrame.height*.65f));
-            chipMaterial.SetTextureOffset("_BaseMap",new Vector2(woodFrame.left+woodFrame.width*.3f,woodFrame.bottom+woodFrame.height*.2f));
+            chipMaterial.SetTexture("_BaseMap",Resources.Load<Texture2D>("CascadeArt/Reactions/TimberStates"));
             chipMaterial.SetFloat("_Smoothness",.24f);chipMaterial.SetFloat("_Cull",(float)CullMode.Off);
             chipMaterial.SetFloat("_Surface",1);chipMaterial.SetFloat("_ZWrite",0);chipMaterial.SetFloat("_SrcBlend",(float)BlendMode.SrcAlpha);chipMaterial.SetFloat("_DstBlend",(float)BlendMode.OneMinusSrcAlpha);chipMaterial.EnableKeyword("_SURFACE_TYPE_TRANSPARENT");chipMaterial.renderQueue=3000;
             particles = new Dust[Mathf.Clamp(profile.dustCapacity, 0, 64)];
@@ -81,10 +78,11 @@ namespace Cascade.Presentation
             count=Mathf.Min(count,Quality==1?4:particles.Length);if(reduced)count=Mathf.Min(2,count);
             for(int i=0;i<count;i++){
                 var p=particles[nextParticle++%particles.Length];p.source=null;p.origin=origin+Vector3.right*((i/(float)Mathf.Max(1,count-1)-.5f)*span);p.origin.z=-.7f;
-                p.renderer.sharedMaterial=chipMaterial;p.color=i%2==0?new Color(.84f,.71f,.52f):Color.white;p.age=0;p.life=.85f+(i%3)*.08f;p.size=.14f+(i%4)*.025f;
+                p.renderer.sharedMaterial=chipMaterial;p.color=i%2==0?new Color(.84f,.71f,.52f):Color.white;p.age=0;p.life=reduced?.60f:2.8f+(i%3)*.2f;p.size=i<6?span/6*.92f:.24f+(i%4)*.06f;
                 p.reduced=reduced;p.wood=true;p.seed=false;p.spin=(i%2==0?1:-1)*(150+i*19);
-                p.velocity=new Vector3((i-(count-1)*.5f)*.14f,.5f+(i%3)*.11f,0);
-                p.transform.position=p.origin;p.transform.localScale=new Vector3(p.size,p.size*.22f,1);p.transform.rotation=Quaternion.Euler(0,0,i*31);p.transform.gameObject.SetActive(true);
+                p.velocity=new Vector3(Mathf.Sin(i*2.399f)*.55f+game.Machine.WindAt(game.VisibleFrame.ActiveFloor)*.25f,.18f+(i%3)*.18f,0);
+                p.properties.SetVector("_BaseMap_ST",WorkshopSpriteSet.ChipUv(i));p.properties.SetColor("_BaseColor",p.color);p.renderer.SetPropertyBlock(p.properties);
+                p.transform.position=p.origin;p.transform.localScale=new Vector3(p.size,p.size*.40f,1);p.transform.rotation=Quaternion.Euler(0,0,i*31);p.transform.gameObject.SetActive(true);
             }
         }
         public void Haptic()
@@ -130,10 +128,10 @@ namespace Cascade.Presentation
                 p.age += Time.unscaledDeltaTime; float t = p.age / p.life;
                 if (t >= 1) { p.transform.gameObject.SetActive(false); continue; }
                 ActiveParticleCount++;
-                p.transform.position = p.reduced ? p.origin : p.origin + p.velocity * p.age + (p.seed?Vector3.right*Mathf.Sin(p.age*5+p.spin)*p.age*.12f:Vector3.down*((p.wood?2.8f:.38f)*p.age*p.age));
-                p.transform.localScale=p.wood?new Vector3(p.size,p.size*.22f,1):Vector3.one*(p.size*(1+t));
+                p.transform.position = p.reduced ? p.origin : p.origin + p.velocity * p.age + (p.seed?Vector3.right*Mathf.Sin(p.age*5+p.spin)*p.age*.12f:Vector3.down*((p.wood?3.8f:.38f)*p.age*p.age));
+                p.transform.localScale=p.wood?new Vector3(p.size,p.size*.40f,1):Vector3.one*(p.size*(1+t));
                 if(p.wood&&!p.reduced)p.transform.rotation=Quaternion.Euler(0,0,p.spin*p.age);
-                var color = p.color; color.a *= p.wood?1-Mathf.SmoothStep(0,1,Mathf.Clamp01((t-.45f)/.55f)):(1-t)*(1-t);
+                var color = p.color; color.a *= p.wood?1-Mathf.SmoothStep(0,1,Mathf.Clamp01((t-.62f)/.38f)):(1-t)*(1-t);
                 p.properties.SetColor("_BaseColor", color); p.renderer.SetPropertyBlock(p.properties);
             }
         }
@@ -141,6 +139,14 @@ namespace Cascade.Presentation
         {
             if (particles != null) foreach (var p in particles) p.transform.gameObject.SetActive(false);
             if (voices != null) foreach (var voice in voices) voice.Stop(); ActiveParticleCount = 0;
+        }
+        public void RefreshAnchors()
+        {
+            if(particles==null||game==null)return;
+            foreach(var p in particles)if(p.transform.gameObject.activeSelf&&p.source!=null){
+                var origin=game.UIFeedbackPoint(p.source)+p.sourceOffset;origin.z=-.7f;
+                p.transform.position+=origin-p.origin;p.origin=origin;
+            }
         }
         void OnDestroy(){if(chipMaterial!=null)Destroy(chipMaterial);}
     }

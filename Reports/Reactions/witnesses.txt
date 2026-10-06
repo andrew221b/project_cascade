@@ -1,0 +1,13 @@
+C18: Repaired; commands=0; title=Доска починена!; paused age=0.6003328; state=59060780ec7567f13c83d8f5b51c9e6d261c903bd07600060d5bccd2a4299dd2
+C17: KeyOpened; commands=1; title=Путь открыт!; paused age=0.6006719; state=8cfeb9c8812ff9c1863393f167a1779a4c34345151353a5429579ed026a930f6
+C35: StampCollected; commands=0; title=Печать твоя!; paused age=0.5999898; state=26645683137d9dfc380b146d63e3c6a1d9cbacd45dd6d34680094200bd1ffe1a
+ribbon: RibbonCollected; commands=0; title=Лента готова!; paused age=0.5986981; state=9d178de5881760de5d03074d3d895f35753221b63d4e8a0b2df7054707ff8b9c
+time: HourglassCollected; commands=0; title=Время замерло!; paused age=0.5998927; state=7bb295be3ca446bfb771dd7f4626ea1b152c795f7a3b58b3fe2595128e50dcfe
+C13: BombDefused; commands=0; title=Бомба погашена; paused age=0.5998614; state=2b26c7222612cec332ad9396fdaa11f33a7b3b0b4e78c19853ec07ec67bf8992
+blast: BombExploded; commands=1; title=Осторожно, взрыв!; paused age=0.5988852; state=53288b48da1e2d06c1bbc87e84ad443a3d2d6a87dc87de71a24e3384e3017128
+wood: FloorExited; commands=0; title=Доска ломается!; paused age=0.3991863; state=a735f4dfcaadcd7725cdf207e9ee8a6785ef11c54b58b60fbbd377b9213db401
+small: Repaired; commands=0; title=Дошка полагоджена!; paused age=0.6014435; state=59060780ec7567f13c83d8f5b51c9e6d261c903bd07600060d5bccd2a4299dd2
+quiet: HourglassCollected; commands=0; title=Время замерло!; paused age=0.1996517; state=7bb295be3ca446bfb771dd7f4626ea1b152c795f7a3b58b3fe2595128e50dcfe
+Safe-area/button padding pass: Settings
+Safe-area/button padding pass: Settings
+Safe-area/button padding pass: Settings

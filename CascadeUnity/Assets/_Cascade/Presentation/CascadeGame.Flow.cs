@@ -76,7 +76,7 @@ namespace Cascade.Presentation
             BuildOutcomes();
             menuRoot = Rect("Menu",safeRoot,Vector2.zero,Vector2.one);
             menuTransition=menuRoot.gameObject.AddComponent<MenuTransition>();menuTransition.Initialize(this);
-            reachBadge=Picture("Ribbon charge",header,new Vector2(.69f,.05f),new Vector2(.80f,.95f),Resources.Load<Sprite>("CascadeArt/Devices/RibbonSpool"),true);
+            reachBadge=Picture("Ribbon charge",header,new Vector2(.65f,.20f),new Vector2(.72f,.80f),Resources.Load<Sprite>("CascadeArt/Devices/RibbonSpool"),true);
             flowReady=true; ApplyPreferences();
         }
         public void ShowHome() { ShowJourney(); }
@@ -102,6 +102,7 @@ namespace Cascade.Presentation
             if(screen!=GameScreen.Playing)SettleDescent();
             if(screen!=GameScreen.Playing) { CancelHint(); StopPresentation(); }
             bool changed=CurrentScreen!=screen;
+            if(changed||screen!=GameScreen.Playing)reactionBanner?.Clear();
             CurrentScreen=screen;machine.LivingWorld.SetQuietFlight(screen==GameScreen.Win||screen==GameScreen.Fail); machine.LivingWorld.SetWorkshop(screen!=GameScreen.Home&&screen!=GameScreen.Dialogue&&screen!=GameScreen.JourneyEnd&&screen!=GameScreen.Playing&&screen!=GameScreen.Win&&screen!=GameScreen.Fail&&screen!=GameScreen.Checkpoint); userPaused=screen==GameScreen.Pause;
             Interaction.SetPaused(screen!=GameScreen.Playing && screen!=GameScreen.Win && screen!=GameScreen.Fail && screen!=GameScreen.Checkpoint);
             bool machineVisible=screen==GameScreen.Playing || screen==GameScreen.Win || screen==GameScreen.Fail || screen==GameScreen.Checkpoint;
@@ -278,6 +279,7 @@ namespace Cascade.Presentation
             var button=Button(label,menuRoot,new Vector2(left,bottom),new Vector2(right,bottom),()=>{feedback.Sound(ToyCue.Select);action();});
             var r=(RectTransform)button.transform;r.pivot=new Vector2(.5f,0);r.sizeDelta=new Vector2(0,52*unit);
             menuActions.Add(r);if(fixedBottom>=0)menuBottoms.Add(new MenuBottom{rect=r,bottom=fixedBottom});var caption=button.GetComponentInChildren<TextMeshProUGUI>();caption.margin=new Vector4(8,3,8,3);caption.fontSize=(right-left<.51f?20:22)*(Preferences.LargeText?1.10f:1);caption.textWrappingMode=TextWrappingModes.NoWrap;
+            caption.enableAutoSizing=true;caption.fontSizeMin=16*unit;caption.fontSizeMax=(right-left<.51f?20:22)*unit*(Preferences.LargeText?1.10f:1);
             button.GetComponent<Image>().color=primary?new Color(.98f,.74f,.32f):new Color(.84f,.91f,.87f);
             return button;
         }
@@ -414,8 +416,9 @@ namespace Cascade.Presentation
                 entry.Key.fontSize=entry.Value*(Preferences.LargeText&&!IsSymbolFace(entry.Key.name)?1.12f:1);
                 if(entry.Key.name!="Bomb painted letter")entry.Key.color=Preferences.HighContrast?new Color(.06f,.17f,.18f):menuRoot!=null&&entry.Key.transform.IsChildOf(menuRoot)?MenuInk:Ink;
             }
+            PaintControlLabels();
         }
-        static bool IsSymbolFace(string label)=>label=="Bomb painted letter"||label=="Required letter"||label=="Symbol"||label=="TargetSymbol"||label=="DeviceGlyph"||label=="ZoomSymbol";
+        static bool IsSymbolFace(string label)=>label=="Body painted letter"||label=="Bomb painted letter"||label=="Required letter"||label=="Symbol"||label=="TargetSymbol"||label=="DeviceGlyph"||label=="ZoomSymbol";
         void ScheduleDeadEnd()
         {
             CancelDeadEnd();

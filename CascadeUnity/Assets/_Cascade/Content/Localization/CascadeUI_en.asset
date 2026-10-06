@@ -1909,16 +1909,64 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 214820778401796
-    m_Localized: The little tag shows which piece the tool needs. Move that piece
-      directly above the tool.
+    m_Localized: The picture on the tool shows what it needs. Put that piece right
+      above it.
     m_Metadata:
       m_Items: []
   - m_Id: 214820778401797
-    m_Localized: The little tag shows which piece this tool needs.
+    m_Localized: The picture on the tool shows what it needs.
     m_Metadata:
       m_Items: []
   - m_Id: 214820778401798
     m_Localized: Make the row below. Then bring your row down.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 316397711253504
+    m_Localized: Board mended!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 316397711253505
+    m_Localized: Gate open!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 316397711253506
+    m_Localized: Stamp yours!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 316397711253507
+    m_Localized: Ribbon ready!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 316397711253508
+    m_Localized: Time paused!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 316397711253509
+    m_Localized: Watch the blast!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 316397711253510
+    m_Localized: Wood gives way!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324823266877440
+    m_Localized: Sound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324823271071744
+    m_Localized: Comfort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324823271071745
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328126868480000
+    m_Localized: "Wind is coming \u2014 right!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 328126872674304
+    m_Localized: "Wind is coming \u2014 left!"
     m_Metadata:
       m_Items: []
   references:

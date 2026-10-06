@@ -7,8 +7,8 @@ namespace Cascade.Presentation
     [RequireComponent(typeof(CanvasRenderer))]
     public sealed class ShapeFaceGraphic : MaskableGraphic
     {
-        Mesh source;
-        bool polished;
+        [SerializeField] Mesh source;
+        [SerializeField] bool polished;
         public void SetShape(Mesh mesh, Color shade,bool gloss=false) { if(source==mesh&&color==shade&&polished==gloss)return;source = mesh; color = shade;polished=gloss; raycastTarget = false; SetVerticesDirty(); }
         protected override void OnPopulateMesh(VertexHelper helper)
         {

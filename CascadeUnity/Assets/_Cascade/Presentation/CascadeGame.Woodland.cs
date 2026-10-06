@@ -39,6 +39,11 @@ namespace Cascade.Presentation
                 dock.caption.fontSize=(dock.settledContact?16:14)/Mathf.Min(1,dock.caption.GetComponentInParent<Canvas>().scaleFactor);
                 float response=ReducedMotion?0:Mathf.Sin((1-dock.responseTime/.32f)*Mathf.PI)*dock.responseTime/.32f;
                 dock.icon.transform.localScale=Vector3.one*(1+.10f*response);
+                // The body performs the action: turn a key, press a stamp, unfurl a spool.
+                float turn=dock.kind==3?18*response:dock.kind==9?-12*response:dock.kind==10?8*response:0;
+                dock.icon.transform.localRotation=Quaternion.Euler(0,0,turn);
+                if(dock.kind==8)dock.icon.transform.localScale=new Vector3(1+.13f*response,1-.12f*response,1);
+                if(dock.kind==4)dock.icon.transform.localScale=new Vector3(1-.06f*response,1+.12f*response,1);
                 var card=deviceOverlays[dock.floor];float height=Mathf.Max(1,card.rect.height);
                 var hookWorld=machine.SurfacePoint(dock.floor,dock.slotX,.32f);
                 var hookLocal=(Vector2)card.InverseTransformPoint(hookWorld);
@@ -65,7 +70,6 @@ namespace Cascade.Presentation
                 var centre=hookLocal+(Vector2)(rotation*(Vector3)(rest-(card.rect.min+Vector2.Scale(card.rect.size,new Vector2(dock.slotX,.32f)))));
                 dock.root.anchoredPosition=centre-rest;
                 dock.root.localRotation=Quaternion.Euler(0,0,dock.angle);
-                dock.tag?.Tick(dt,machine.WindAt(dock.floor),dock.angle+machine.FloorVisualAngle(dock.floor),moving,ReducedMotion);
                 dock.socket.anchoredPosition=Vector2.Scale(card.rect.size,hook-new Vector2(dock.slotX,.32f));
                 Vector2 Grip(Vector2 attachment) {
                     var point=card.InverseTransformPoint(dock.root.TransformPoint(dock.root.rect.min+Vector2.Scale(dock.root.rect.size,attachment)));

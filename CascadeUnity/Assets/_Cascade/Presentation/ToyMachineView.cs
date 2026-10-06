@@ -22,7 +22,7 @@ namespace Cascade.Presentation
         sealed class FloorRig
         {
             public readonly List<Part> parts = new List<Part>();
-            public readonly List<Part> cracks = new List<Part>();
+            public readonly MaterialPropertyBlock woodProperties=new MaterialPropertyBlock();
             public readonly List<Part> locks = new List<Part>();
             public readonly List<Part> bridge = new List<Part>();
             public readonly List<Part> bomb = new List<Part>();
@@ -59,6 +59,8 @@ namespace Cascade.Presentation
         float windTime;
         float gustStarted=-100;
         float gustDirection;
+        float windAnticipation;
+        public void PrepareWind(bool right,float strength) => windAnticipation=(right?1:-1)*Mathf.Clamp01(strength)*.48f;
         public bool ReducedMotion { get => reducedMotion; set => reducedMotion = value; }
         public float AmbientPhase => windTime;
         public int TokenCount => tokens.Count;
@@ -96,9 +98,9 @@ namespace Cascade.Presentation
             if(reducedMotion)return 0;
             float age=Mathf.Max(0,windTime-gustStarted);
             float gust=(1-Mathf.Exp(-age*6))*Mathf.Exp(-age*1.6f)*gustDirection*1.2f;
-            return Mathf.Clamp(WorkshopWind.Sample(windTime-floor*.13f)+gust,-1,1)*(heldWeight>=0?.72f:1);
+            return Mathf.Clamp(WorkshopWind.Sample(windTime-floor*.13f)+gust+windAnticipation,-1,1)*(heldWeight>=0?.72f:1);
         }
-        public void CueWind(bool right){if(!reducedMotion){gustStarted=windTime;gustDirection=right?1:-1;}}
+        public void CueWind(bool right){windAnticipation=0;if(!reducedMotion){gustStarted=windTime;gustDirection=right?1:-1;}}
         public Vector3 FloorPosition(int floor)
         {
             var anchor = floors[floor].parts[0].anchor; anchor.GetWorldCorners(corners);
@@ -148,7 +150,7 @@ namespace Cascade.Presentation
             IReadOnlyList<TMPro.TextMeshProUGUI> targets, RectTransform receiver)
         {
             if (machine != null) { machine.gameObject.SetActive(false); Destroy(machine.gameObject); }
-            gustStarted=-100;gustDirection=0;
+            gustStarted=-100;gustDirection=0;windAnticipation=0;
             machine = new GameObject("Toy machine").transform; machine.SetParent(transform, false);
             foreach(var mesh in woodMeshes)if(mesh!=null)Destroy(mesh);woodMeshes.Clear();
             all.Clear(); tokens.Clear(); selections.Clear(); tokenShadows.Clear(); targetBodies.Clear(); floors.Clear(); supports.Clear(); interaction = model;
@@ -190,14 +192,9 @@ namespace Cascade.Presentation
 
             }
 
-            for (int i = 0; i < 3; i++) rig.cracks.Add(P("Damage seam " + i, art.beam, art.graphite, .28f + i * .23f, .33f, .055f, .023f, -.17f, i % 2 == 0 ? 65 : -58));
             for (int i = 0; i < count - 1; i++) {
                 float x = .045f + .91f * (i + 1f) / count;
                 var gate = P("Edge latch " + i, art.tile, art.gold, x, .55f, .025f, .18f, -.4f); rig.locks.Add(gate);
-                if (floor.FragileEdges.Contains(i)) {
-                    P("Fragile notch", art.beam, art.graphite, x - .008f, .35f, .06f, .032f, -.21f, -45);
-                    P("Fragile notch", art.beam, art.graphite, x + .007f, .29f, .05f, .032f, -.22f, 45);
-                }
                 if (floor.OneUseBridgeEdge == i) {
                     rig.bridge.Add(P("One use bridge", art.beam, art.gold, x, .46f, .12f, .055f, -.4f));
                     rig.bridge.Add(P("Bridge hinge", art.disk, art.graphite, x, .46f, .024f, .045f, -.51f));
@@ -269,8 +266,6 @@ namespace Cascade.Presentation
                 foreach (var p in rig.parts) p.transform.gameObject.SetActive(!past);
                 int hp = active ? state.Durability : interaction.Attempt.Level.Floors[f].BaseDurability;
                 rig.wear=active?Mathf.Clamp01(1-hp/(float)interaction.Attempt.Level.Floors[f].BaseDurability):0;
-                int damage = Mathf.Clamp(interaction.Attempt.Level.Floors[f].BaseDurability - hp, 0, 3);
-                for (int j = 0; j < rig.cracks.Count; j++) rig.cracks[j].transform.gameObject.SetActive(!past && j < damage);
                 for (int edge = 0; edge < rig.locks.Count; edge++) {
                     bool open = active ? state.EdgeVisibleOpen(interaction.Attempt.Level.Floors[f], edge) : interaction.Attempt.Level.Floors[f].OpenEdges[edge];
                     rig.locks[edge].transform.gameObject.SetActive(!past && !open);

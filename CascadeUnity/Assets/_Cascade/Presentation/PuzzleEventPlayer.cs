@@ -36,6 +36,7 @@ namespace Cascade.Presentation
         void Finish()
         {
             if (!IsRunning) return; IsRunning = false; playback = null; CompletedPresentations++;
+            if(game!=null){game.Machine.PrepareWind(true,0);game.ReactionBanner.Clear();}
             game?.SettleOutcome();
             if (game != null && game.Interaction != null) { game.Interaction.FinishPresentation(); game.SyncPresentation(); }
         }
@@ -44,6 +45,7 @@ namespace Cascade.Presentation
             var frame = game.VisibleFrame; var level = game.Interaction.Attempt.Level;
             try {
                 for (int index = 0; index < result.Events.Count; index++) {
+                    while(PresentationPaused)yield return null;
                     var e = result.Events[index]; EventIndex = index; CurrentEvent = e.Kind;
                     if (e.Kind == PuzzleEventKind.CommandAccepted) continue;
                     bool reduced = game.ReducedMotion;
@@ -51,6 +53,7 @@ namespace Cascade.Presentation
                         if(e.Kind==PuzzleEventKind.EntryPermuted&&game.IsWindFloor(e.Floor)) {
                             game.Machine.CueWind(level.Floors[e.Floor].EntryTransform==EntryTransform.ShiftRightOne);
                             game.SetPresentationFeedback(level.Floors[e.Floor].EntryTransform==EntryTransform.ShiftRightOne?"Wind slides the row right":"Wind slides the row left");
+                            game.AnnounceReaction(level.Floors[e.Floor].EntryTransform==EntryTransform.ShiftRightOne?"Wind slides the row right":"Wind slides the row left","");
                         }
                         CaptureRow(frame); frame.Read(e, level); game.RenderFrame(frame); MapRow(frame);
                         feedback.Sound(ToyCue.Swap); yield return Travel(profile.swap, !reduced, false);
@@ -64,6 +67,7 @@ namespace Cascade.Presentation
                         game.RenderFrame(frame, arrival); MapRow(frame);
                         yield return Travel(profile.fall, false, true); feedback.Sound(ToyCue.Land);
                         yield return Land(arrival);
+                        if(!arrival&&game.IsWindFloor(e.Floor))yield return WarnWind(level.Floors[e.Floor].EntryTransform==EntryTransform.ShiftRightOne);
                         if (arrival) {
                             feedback.Sound(e.Value == 1 ? ToyCue.Success : ToyCue.Reject);
                             yield return game.PlayOutcome(e.Value==1);
@@ -77,28 +81,30 @@ namespace Cascade.Presentation
                                 game.SetPresentationFeedback(new UiCopy("Bomb: {0} moves left",e.Value)); yield return Hold(.07f); break;
                             case PuzzleEventKind.BombExploded:
                                 game.SetPresentationFeedback(new UiCopy("Blast: −{0} durability",e.Value)); feedback.Sound(ToyCue.Bomb); feedback.Haptic();
-                                feedback.Burst(origin, new Color(1, .46f, .28f, .9f), 12, reduced); yield return Recoil(e.Floor, profile.bomb); break;
+                                game.AnnounceReaction("Watch the blast!","Bomb");
+                                yield return Recoil(e.Floor, Mathf.Max(.30f,profile.bomb));yield return HoldReaction(); break;
                             case PuzzleEventKind.BombDefused:
                                 game.SetPresentationFeedback("Bomb defused"); feedback.Sound(ToyCue.Defuse);
-                                origin=game.DeviceVisualOrigin(e.Floor,2);feedback.LanternSeeds(origin,reduced,game.DeviceFeedbackAnchor(e.Floor,2));
-                                feedback.Burst(origin+Vector3.up*.22f,new Color(.90f,.97f,.91f,.65f),3,reduced,game.DeviceFeedbackAnchor(e.Floor,2));yield return Hold(reduced?profile.reducedStep:.48f);break;
+                                game.AnnounceReaction("Bomb defused","BombSafe");yield return HoldReaction();break;
                             case PuzzleEventKind.KeyOpened:
                                 game.SetPresentationFeedback(new UiCopy("Edge {0} unlocked",e.Value+1)); feedback.Sound(ToyCue.Unlock); feedback.Haptic();
-                                feedback.Burst(game.DeviceVisualOrigin(e.Floor,3), new Color(1, .79f, .37f, .8f), 6, reduced,game.DeviceFeedbackAnchor(e.Floor,3)); yield return Recoil(e.Floor, profile.contact); break;
+                                game.AnnounceReaction("Gate open!","BrassKey");yield return Recoil(e.Floor,profile.contact);yield return HoldReaction(); break;
                             case PuzzleEventKind.Repaired:
                                 game.SetPresentationFeedback(new UiCopy("Repair +{0}",e.Value)); feedback.Sound(ToyCue.Repair);
-                                feedback.Burst(game.DeviceVisualOrigin(e.Floor,4), new Color(.4f, .88f, .73f, .8f), 6, reduced,game.DeviceFeedbackAnchor(e.Floor,4)); yield return Recoil(e.Floor, profile.contact); break;
+                                game.AnnounceReaction("Board mended!","RepairKit");yield return Recoil(e.Floor,profile.contact);yield return HoldReaction(); break;
                             case PuzzleEventKind.RibbonCollected:
                             case PuzzleEventKind.HourglassCollected:
                                 game.SetPresentationFeedback(e.Kind==PuzzleEventKind.RibbonCollected?"One far swap ready":"Bomb paused for two swaps");feedback.Sound(ToyCue.Stamp);feedback.Haptic();
-                                feedback.Burst(game.DeviceVisualOrigin(e.Floor,e.Kind==PuzzleEventKind.RibbonCollected?9:10),new Color(.5f,.8f,1,.85f),6,reduced,game.DeviceFeedbackAnchor(e.Floor,e.Kind==PuzzleEventKind.RibbonCollected?9:10));yield return Hold(profile.contact);break;
+                                bool ribbon=e.Kind==PuzzleEventKind.RibbonCollected;int tool=ribbon?9:10;
+                                game.AnnounceReaction(ribbon?"Ribbon ready!":"Time paused!",ribbon?"RibbonSpool":"Hourglass");
+                                yield return HoldReaction();break;
                             case PuzzleEventKind.BombFrozen:
                                 game.SetPresentationFeedback("The bomb waits. The wood still wears down.");yield return Hold(.12f);break;
                             case PuzzleEventKind.StampCollected:
                                 game.SetPresentationFeedback("Stamp collected"); feedback.Sound(ToyCue.Stamp);
-                                feedback.Burst(game.DeviceVisualOrigin(e.Floor,8), new Color(.74f, .61f, .86f, .8f), 6, reduced,game.DeviceFeedbackAnchor(e.Floor,8)); yield return Hold(profile.contact); break;
+                                game.AnnounceReaction("Stamp yours!","Stamp");yield return HoldReaction();break;
                             case PuzzleEventKind.BridgeConsumed:
-                                game.SetPresentationFeedback("One-use bridge closed"); feedback.Sound(ToyCue.Bridge); yield return Hold(profile.contact); break;
+                                game.SetPresentationFeedback("One-use bridge closed");game.AnnounceReaction("One-use bridge closed","");feedback.Sound(ToyCue.Bridge);yield return Hold(profile.contact);break;
                             case PuzzleEventKind.DurabilityResolved:
                                 if (result.DurabilityCost > 1) { feedback.Sound(ToyCue.Fragile); yield return Recoil(e.Floor, profile.fracture); }
                                 break;
@@ -128,6 +134,7 @@ namespace Cascade.Presentation
             float time = 0;int count=game.VisibleFrame.Row.Count;
             for(int i=0;i<count;i++)game.Machine.SetPiecePose(i,falling?PiecePose.Falling:PiecePose.Exchanging);
             while (time < duration) {
+                if(PresentationPaused){yield return null;continue;}
                 float t = Mathf.Clamp01(time / duration), eased = 1-Mathf.Pow(1-t,3);
                 for (int i = 0; i < game.VisibleFrame.Row.Count; i++) {
                     float local=falling?Mathf.Clamp01((t-(i%3)*.035f)/(1-(i%3)*.035f)):t;
@@ -140,27 +147,33 @@ namespace Cascade.Presentation
                 }
                 time += Time.unscaledDeltaTime; yield return null;
             }
+            while(PresentationPaused)yield return null;
             for (int i = 0; i < game.VisibleFrame.Row.Count; i++){game.OffsetPresentedToken(i, Vector3.zero, Vector2.one);game.Machine.SetPiecePose(i,falling?PiecePose.Settling:PiecePose.Resting);}
             if(arcs)game.Machine.LandWeight(game.VisibleFrame.ActiveFloor);
         }
         IEnumerator BreakWood(int floor)
         {
+            game.AnnounceReaction("Wood gives way!","");
             if(game.ReducedMotion){feedback.WoodChips(game.Machine.FloorPosition(floor),2,true,game.Machine.FloorSpan(floor));yield return Hold(profile.reducedStep);yield break;}
-            float time=0;const float duration=.34f;bool splintered=false;
+            float time=0;const float duration=.64f;bool splintered=false;
             while(time<duration){
+                if(PresentationPaused){yield return null;continue;}
                 float t=Mathf.Clamp01(time/duration);game.Machine.FractureFloor(floor,Mathf.SmoothStep(0,1,t));
-                if(!splintered&&t>=.45f){splintered=true;feedback.WoodChips(game.Machine.FloorPosition(floor),14,false,game.Machine.FloorSpan(floor)*.76f);}
+                if(!splintered&&t>=.36f){splintered=true;feedback.WoodChips(game.Machine.FloorPosition(floor),14,false,game.Machine.FloorSpan(floor)*.96f);}
                 time+=Time.unscaledDeltaTime;yield return null;
             }
+            while(PresentationPaused)yield return null;
         }
         IEnumerator Recoil(int floor, float duration)
         {
             if (game.ReducedMotion) { yield return Hold(profile.reducedStep); yield break; }
             float time = 0;
             while (time < duration) {
+                if(PresentationPaused){yield return null;continue;}
                 game.Machine.RecoilFloor(floor, -Mathf.Sin(time/duration*Mathf.PI)*profile.platformRecoil);
                 time += Time.unscaledDeltaTime; yield return null;
             }
+            while(PresentationPaused)yield return null;
             game.Machine.RecoilFloor(floor, 0);
         }
         IEnumerator Land(bool arrival)
@@ -168,6 +181,7 @@ namespace Cascade.Presentation
             game.Machine.LandWeight(game.VisibleFrame.ActiveFloor);
             float duration = game.ReducedMotion ? profile.reducedStep : Mathf.Max(.19f,profile.landing), time = 0;
             while (time < duration) {
+                if(PresentationPaused){yield return null;continue;}
                 for (int i = 0; i < game.VisibleFrame.Row.Count; i++){
                     float t=Mathf.Clamp01(time/duration),pulse=game.ReducedMotion?0:Mathf.Cos(t*Mathf.PI*2)*Mathf.Exp(-t*7);
                     float squash=pulse*profile.landingSquash;
@@ -176,13 +190,29 @@ namespace Cascade.Presentation
                 }
                 time += Time.unscaledDeltaTime; yield return null;
             }
+            while(PresentationPaused)yield return null;
             game.RenderFrame(game.VisibleFrame, arrival);
+        }
+        IEnumerator WarnWind(bool right)
+        {
+            game.ReactionBanner.ShowWind(right);
+            while(game.ReactionBanner.IsShowing){
+                if(!PresentationPaused)game.Machine.PrepareWind(right,Mathf.SmoothStep(0,1,game.ReactionBanner.Elapsed/.85f));
+                yield return null;
+            }
+            while(PresentationPaused)yield return null;
+        }
+        IEnumerator HoldReaction()
+        {
+            while(game.ReactionBanner!=null&&game.ReactionBanner.IsShowing)yield return null;
         }
         IEnumerator Hold(float duration)
         {
             if (game.ReducedMotion) duration = profile.reducedStep;
-            float time = 0; while (time < duration) { time += Time.unscaledDeltaTime; yield return null; }
+            float time = 0; while (time < duration) { if(!PresentationPaused)time += Time.unscaledDeltaTime; yield return null; }
+            while(PresentationPaused)yield return null;
         }
+        bool PresentationPaused => game.Interaction==null||game.Interaction.IsPaused||game.Interaction.IsSuspended;
         Vector3 EventOrigin(PuzzleEvent e, LevelDefinition level)
         {
             if (e.Floor < 0 || e.Floor >= level.Floors.Count) return game.Machine.TokenPosition(0);

@@ -123,7 +123,7 @@ Try level {0}	Try level {0}	Попробовать {0}	Спробувати {0}
 Try the device guide. Undo and retry stay free.	Try the guide. Undo and retry are free.	Посмотри правила. Отмена и повтор бесплатны.	Зазирни в правила. Скасування й повтор безплатні.
 Try this: {0}	Try this: {0}	Попробуй: {0}	Спробуй: {0}
 Tutorial help	Tutorial help	Помощь в игре	Допомога в грі
-Undo	Undo	Вернуть ход	Вернути хід
+Undo	Undo	Отменить	Скасувати
 Unlocked	Unlocked	Открыто	Відкрито
 Use hint	Use hint	Показать ход	Показати хід
 You did it! The way is clear.	You did it! The way is clear.	Получилось! Путь открыт.	Вийшло! Шлях відкрито.
@@ -467,6 +467,18 @@ Let's try another way.	Let's try another way.	Попробуем иначе.	С�
 How to play	How to play	Как играть	Як грати
 Tools & effects	Tools & effects	Предметы и эффекты	Предмети й ефекти
 Drag a piece onto its neighbour. They change places.	Drag a piece onto its neighbour. They change places.	Перетащи деталь на соседнюю. Они поменяются местами.	Перетягни деталь на сусідню. Вони поміняються місцями.
-The little tag shows which piece the tool needs. Move that piece directly above the tool.	The little tag shows which piece the tool needs. Move that piece directly above the tool.	На табличке — нужная деталь. Поставь такую же прямо над предметом.	На табличці — потрібна деталь. Постав таку саму просто над предметом.
-The little tag shows which piece this tool needs.	The little tag shows which piece this tool needs.	Табличка показывает нужную деталь.	Табличка показує потрібну деталь.
+The little tag shows which piece the tool needs. Move that piece directly above the tool.	The picture on the tool shows what it needs. Put that piece right above it.	На предмете нарисована нужная деталь. Поставь такую же прямо над ним.	На предметі намальована потрібна деталь. Постав таку саму просто над ним.
+The little tag shows which piece this tool needs.	The picture on the tool shows what it needs.	Рисунок на предмете показывает нужную деталь.	Малюнок на предметі показує потрібну деталь.
 Make the row below. Then bring your row down.	Make the row below. Then bring your row down.	Собери ряд как внизу. Затем опусти его.	Склади ряд як унизу. Потім опусти його.
+Board mended!	Board mended!	Доска починена!	Дошка полагоджена!
+Gate open!	Gate open!	Путь открыт!	Шлях відкрито!
+Stamp yours!	Stamp yours!	Печать твоя!	Печатка твоя!
+Ribbon ready!	Ribbon ready!	Лента готова!	Стрічка готова!
+Time paused!	Time paused!	Время замерло!	Час завмер!
+Watch the blast!	Watch the blast!	Осторожно, взрыв!	Обережно, вибух!
+Wood gives way!	Wood gives way!	Доска ломается!	Дошка ламається!
+Sound	Sound	Звук	Звук
+Comfort tab	Comfort	Удобно	Зручно
+Language tab	Language	Язык	Мова
+Gust coming: right	Wind is coming — right!	Сейчас подует вправо!	Зараз подме праворуч!
+Gust coming: left	Wind is coming — left!	Сейчас подует влево!	Зараз подме ліворуч!

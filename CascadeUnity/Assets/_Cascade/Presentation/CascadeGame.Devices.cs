@@ -25,10 +25,17 @@ namespace Cascade.Presentation
             public MaskableGraphic outcomeRibbon;
             public Sprite normalSprite,safeSprite;
             public DemoLine leftStrap,rightStrap;
-            public HangingToolTag tag;
         }
         readonly List<RectTransform> deviceOverlays=new List<RectTransform>();
         readonly List<DeviceDock> deviceDocks = new List<DeviceDock>();
+        readonly Dictionary<int,Sprite> toolBodySprites=new Dictionary<int,Sprite>();
+        Sprite ToolBody(int kind)
+        {
+            if(kind==2)return Resources.Load<Sprite>("CascadeArt/Devices/Bomb");
+            if(toolBodySprites.TryGetValue(kind,out var sprite))return sprite;
+            int index=kind==3?0:kind==4?1:kind==8?2:kind==9?3:4;
+            sprite=WorkshopSpriteSet.Tool(Resources.Load<Texture2D>("CascadeArt/Reactions/ToolBodies"),index);toolBodySprites.Add(kind,sprite);return sprite;
+        }
         static string DeviceAsset(int kind) => kind==2?"Bomb":kind==3?"BrassKey":kind==4?"RepairKit":kind==8?"Stamp":kind==9?"RibbonSpool":"Hourglass";
         void OpenDevice(int kind) { returnScreen=CurrentScreen;deviceIndex=kind;SetScreen(GameScreen.Devices); }
         void BuildDeviceDocks(RectTransform card,FloorDefinition floor,int count,int floorIndex)
@@ -62,12 +69,11 @@ namespace Cascade.Presentation
                 var button=Button(UiCopy.Raw("Device "+DeviceAsset(item.kind)),card,new Vector2(x,-.075f),new Vector2(x,-.075f),()=>OpenDevice(item.kind));
                 var root=(RectTransform)button.transform;root.sizeDelta=new Vector2(88,55);
                 button.GetComponent<Image>().color=Color.clear;button.GetComponentInChildren<TextMeshProUGUI>().SetCopy("");
-                var tag=item.kind==2?null:BuildToolTag(root,item.contact.RequiredSymbol);
-                var icon=Picture("Recognizable device",root,item.kind==2?Vector2.zero:new Vector2(0,.16f),new Vector2(item.kind==2?.70f:.57f,1),Resources.Load<Sprite>("CascadeArt/Devices/"+DeviceAsset(item.kind)),true);
-                if(item.kind==2)BuildBombMark(icon.rectTransform,item.contact.RequiredSymbol);
+                var icon=Picture("Recognizable device",root,new Vector2(.05f,-.10f),new Vector2(.88f,1.14f),ToolBody(item.kind),true);
+                if(item.kind==2)BuildBombMark(icon.rectTransform,item.contact.RequiredSymbol);else BuildToolBodyMark(icon.rectTransform,item.kind,item.contact.RequiredSymbol);
                 var ribbon=Rect("Contact outcome ribbon",root,new Vector2(-.04f,-.59f),new Vector2(1.66f,-.06f)).gameObject.AddComponent<ContactRibbonGraphic>();ribbon.color=new Color(.10f,.40f,.34f);ribbon.raycastTarget=false;ribbon.gameObject.SetActive(false);
                 var caption=Text("Device state",root,new Vector2(-.08f,-.50f),new Vector2(1.08f,-.10f),12,"");caption.font=art.titleFont;
-                deviceDocks.Add(new DeviceDock{floor=floorIndex,kind=item.kind,root=root,socket=socket,icon=icon,normalSprite=icon.sprite,safeSprite=item.kind==2?Resources.Load<Sprite>("CascadeArt/Devices/BombSafe"):null,outcomeRibbon=ribbon,caption=caption,contact=item.contact,slotX=slotX,dockX=x,leftStrap=leftStrap,rightStrap=rightStrap,tag=tag});
+                deviceDocks.Add(new DeviceDock{floor=floorIndex,kind=item.kind,root=root,socket=socket,icon=icon,normalSprite=icon.sprite,safeSprite=item.kind==2?Resources.Load<Sprite>("CascadeArt/Devices/BombSafe"):null,outcomeRibbon=ribbon,caption=caption,contact=item.contact,slotX=slotX,dockX=x,leftStrap=leftStrap,rightStrap=rightStrap});
             }
             UiCopy landing=floor.EntryTransform==EntryTransform.MirrorNext?"Reverse on landing":floor.EntryTransform==EntryTransform.ShiftLeftOne?"Slide left on landing":"Slide right on landing";
             if(IsWindFloor(floorIndex))landing=floor.EntryTransform==EntryTransform.ShiftLeftOne?"Wind on landing: row slides left":"Wind on landing: row slides right";
@@ -96,21 +102,15 @@ namespace Cascade.Presentation
                 letter.alignment=TextAlignmentOptions.Center;letter.raycastTarget=false;letter.gameObject.AddComponent<SymbolGlyphCenter>();
             }else mark.gameObject.AddComponent<ShapeFaceGraphic>().SetShape(art.SymbolMesh(required),paint);
         }
-        HangingToolTag BuildToolTag(RectTransform root,SymbolId required)
+        void BuildToolBodyMark(RectTransform icon,int kind,SymbolId required)
         {
-            Rect("Tool's carved crossbar",root,new Vector2(.26f,.74f),new Vector2(.99f,.86f)).gameObject.AddComponent<WoodBoardGraphic>();
-            var ropes=Rect("Tag hemp cords",root,Vector2.zero,Vector2.one).gameObject.AddComponent<ToolTagCordGraphic>();
-            var suspension=Rect("Tag pendulum",root,new Vector2(.60f,-.08f),new Vector2(.96f,.80f));suspension.pivot=new Vector2(.5f,1);
-            var bezel=Rect("Hanging matching tag",suspension,Vector2.zero,new Vector2(1,.62f));
-            var border=Background(bezel,new Color(.50f,.31f,.12f),false);border.sprite=art.panel;
-            var pocket=Rect("Tag ivory inset",bezel,new Vector2(.09f,.09f),new Vector2(.91f,.91f));Background(pocket,new Color(1,.95f,.78f),false).sprite=art.panel;
-            var face=Rect("Required symbol",pocket,new Vector2(.13f,.13f),new Vector2(.87f,.87f)).gameObject.AddComponent<ShapeFaceGraphic>();
-            face.SetShape(art.SymbolMesh(required),art.SymbolMaterial(required).GetColor("_BaseColor"));
-            if(required.Kind==SymbolKind.Glyph){var letter=Text("Required letter",pocket,Vector2.zero,Vector2.one,18,UiCopy.Raw(FaceText(required)));letter.font=art.titleFont;FinishLetter(letter);}
-            foreach(float x in new[]{.22f,.78f}){
-                var bolt=Rect("Tag brass rivet",bezel,new Vector2(x-.028f,.88f),new Vector2(x+.028f,.98f)).gameObject.AddComponent<ShapeFaceGraphic>();bolt.SetShape(art.disk,new Color(.93f,.72f,.34f));
-            }
-            var tag=root.gameObject.AddComponent<HangingToolTag>();tag.Initialize(root,suspension,bezel,ropes);return tag;
+            var bounds=kind==3?new Rect(.33f,.51f,.34f,.32f):kind==4?new Rect(.35f,.165f,.30f,.30f):kind==8?new Rect(.33f,.22f,.36f,.36f):kind==9?new Rect(.21f,.35f,.32f,.34f):new Rect(.36f,.18f,.28f,.28f);
+            var mark=Rect("Body painted symbol",icon,bounds.min,bounds.max);
+            if(required.Kind==SymbolKind.Glyph){
+                var letter=Text("Body painted letter",mark,Vector2.zero,Vector2.one,24,UiCopy.Raw(FaceText(required)));
+                letter.font=art.titleFont;letter.fontStyle=FontStyles.Bold;letter.margin=Vector4.zero;letter.color=Ink;letter.raycastTarget=false;
+                letter.enableAutoSizing=true;letter.fontSizeMin=12;letter.fontSizeMax=28;letter.gameObject.AddComponent<SymbolGlyphCenter>();
+            }else {var face=mark.gameObject.AddComponent<ShapeFaceGraphic>();face.raycastTarget=false;face.SetShape(art.SymbolMesh(required),art.SymbolMaterial(required).GetColor("_BaseColor"),true);}
         }
         public void CueDevice(PuzzleEvent e)
         {

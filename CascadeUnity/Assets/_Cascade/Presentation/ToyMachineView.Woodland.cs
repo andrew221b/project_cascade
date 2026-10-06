@@ -43,11 +43,10 @@ namespace Cascade.Presentation
         void InitializeWoodMaterials()
         {
             if(woodMaterial!=null)return;
-            var texture=Resources.Load<Texture2D>("CascadeArt/Woodland/WoodBoard");
+            var texture=Resources.Load<Texture2D>("CascadeArt/Reactions/TimberStates");
             woodMaterial=new Material(Shader.Find("Universal Render Pipeline/Lit")){name="Painted honey wood"};
             woodMaterial.SetTexture("_BaseMap",texture);
-            var frameSource=Resources.Load<TextAsset>("CascadeArt/Woodland/WoodBoardFrame");
-            if(frameSource!=null){var frame=JsonUtility.FromJson<WoodBodyFrame>(frameSource.text);woodMaterial.SetTextureScale("_BaseMap",new Vector2(frame.width,frame.height));woodMaterial.SetTextureOffset("_BaseMap",new Vector2(frame.left,frame.bottom));}
+            var frame=WorkshopSpriteSet.WoodUv(0);woodMaterial.SetTextureScale("_BaseMap",new Vector2(frame.x,frame.y));woodMaterial.SetTextureOffset("_BaseMap",new Vector2(frame.z,frame.w));
             woodMaterial.SetColor("_BaseColor",texture!=null?Color.white:new Color(.65f,.35f,.13f));
             woodMaterial.SetFloat("_Smoothness",.32f);
             woodMaterial.SetFloat("_Surface",1);woodMaterial.SetFloat("_ZWrite",0);woodMaterial.SetFloat("_SrcBlend",(float)BlendMode.SrcAlpha);
@@ -56,7 +55,7 @@ namespace Cascade.Presentation
         }
         Mesh BoardMesh()
         {
-            // Duplicate the centre seam: the halves can release from their rope hinges cleanly.
+            // Flexible strip only; cracks and broken chunks come from authored texture states.
             const int columns=18;var vertices=new Vector3[columns*2];var uv=new Vector2[vertices.Length];var triangles=new int[16*6];int triangle=0;
             for(int x=0;x<columns;x++)for(int y=0;y<2;y++){int i=x*2+y;float u=(x<9?x:x-1)/16f;vertices[i]=new Vector3(u-.5f,y-.5f,0);uv[i]=new Vector2(u,y);}
             for(int x=0;x<columns-1;x++){if(x==8)continue;int v=x*2;triangles[triangle++]=v;triangles[triangle++]=v+1;triangles[triangle++]=v+2;triangles[triangle++]=v+1;triangles[triangle++]=v+3;triangles[triangle++]=v+2;}
@@ -74,10 +73,6 @@ namespace Cascade.Presentation
             var rotation=Quaternion.Euler(0,0,rig.roll);
             float x=Mathf.Clamp01(local.x/Mathf.Max(.01f,rig.board.baseScale.x)+.5f);
             var bowed=local+(bend?Vector3.down*Mathf.Sin(x*Mathf.PI)*rig.sag:Vector3.zero);
-            if(bend&&rig.fracture>0){
-                float side=local.x<0?-1:1;var hinge=Vector3.right*side*.475f*rig.board.baseScale.x;
-                bowed=hinge+Quaternion.Euler(0,0,side*rig.fracture*11)*(bowed-hinge);
-            }
             return rotation*bowed-local+new Vector3(rig.sway,floorOffsets[floor],0);
         }
         public void TickWoodDynamics(float seconds)
@@ -100,9 +95,11 @@ namespace Cascade.Presentation
                     float width=rig.board.baseScale.x,height=Mathf.Max(.01f,rig.board.baseScale.y);
                     float side=column<9?-1:1,pivot=side*.475f;
                     var point=new Vector3((x-.5f-pivot)*width,((i%2)-.5f)*height-Mathf.Sin(x*Mathf.PI)*rig.sag,0);
-                    point=Quaternion.Euler(0,0,side*rig.fracture*11)*point;
                     rig.vertices[i]=new Vector3(pivot+point.x/width,point.y/height,0);
                 }
+                int stage=rig.fracture>.22f?3:rig.wear>=.60f?2:rig.wear>0||interaction.Attempt.Level.Floors[f].FragileEdges.Count>0?1:0;
+                rig.woodProperties.SetVector("_BaseMap_ST",WorkshopSpriteSet.WoodUv(stage));
+                rig.woodProperties.SetColor("_BaseColor",new Color(1,1,1,1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(.36f,.82f,rig.fracture))));rig.board.renderer.SetPropertyBlock(rig.woodProperties);
                 rig.bendMesh.vertices=rig.vertices; // Static bounds already enclose the small cosmetic deflection.
                 foreach(var part in rig.parts) {
                     if(rig.rope.Contains(part)) {
@@ -129,7 +126,7 @@ namespace Cascade.Presentation
             var stretch=visualStretch[index];if(stretch==Vector2.zero)stretch=Vector2.one;
             var token=tokens[index].transform;token.position=restPositions[index]+dynamicOffsets[index]+visualOffsets[index];
             bool supported=Frame.Status==PuzzleStatus.Playing&&piecePoses[index]!=PiecePose.Falling&&piecePoses[index]!=PiecePose.Exchanging;
-            float supportAngle=supported?floors[Frame.ActiveFloor].roll+((restPositions[index].x<floors[Frame.ActiveFloor].board.basePosition.x?-1:1)*floors[Frame.ActiveFloor].fracture*11):0;
+            float supportAngle=supported?floors[Frame.ActiveFloor].roll:0;
             token.localScale=Vector3.Scale(restScales[index],new Vector3(stretch.x,stretch.y,1));token.rotation=Quaternion.Euler(0,0,visualAngles[index]+supportAngle);
             if(index<tokenShadows.Count) {
                 var shadow=tokenShadows[index];float lift=Mathf.Max(0,visualOffsets[index].y);

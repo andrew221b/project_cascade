@@ -60,9 +60,8 @@ namespace Cascade.Presentation
             if(contact!=null) {
                 float x=Mathf.Clamp((contact.Slot+.5f)/row.Length,.18f,.82f);
                 var body=Rect("Demo device",root,new Vector2(x-.13f,.20f),new Vector2(x+.13f,.49f));
-                if(kind!=2)tag=BuildToolTag(body,contact.RequiredSymbol);
-                mount=Picture("Tool",body,Vector2.zero,new Vector2(kind==2?.70f:.58f,1),Resources.Load<Sprite>("CascadeArt/Devices/"+DeviceAsset(kind)),true);
-                if(kind==2)BuildBombMark(mount.rectTransform,contact.RequiredSymbol);
+                mount=Picture("Tool",body,Vector2.zero,Vector2.one,ToolBody(kind),true);
+                if(kind==2)BuildBombMark(mount.rectTransform,contact.RequiredSymbol);else BuildToolBodyMark(mount.rectTransform,kind,contact.RequiredSymbol);
                 if(kind==2)armedBomb=mount.sprite;
                 Line("Device strap",new Vector2(x,.45f),new Vector2(x,.51f),new Color(.4f,.27f,.15f),3);
             }
@@ -76,10 +75,7 @@ namespace Cascade.Presentation
                 }
                 Line("Both pairs connected",new Vector2(.375f,.48f),new Vector2(.625f,.48f),new Color(.55f,.36f,.69f),2);
             }
-            if(kind==5)foreach(int edge in floor.FragileEdges){
-                float x=(edge+1f)/row.Length;
-                for(int cut=0;cut<4;cut++)Line("Cracked crossing",new Vector2(x+(cut%2==0?-.018f:.018f),.39f+cut*.035f),new Vector2(x+(cut%2==0?.018f:-.018f),.425f+cut*.035f),new Color(.76f,.27f,.16f),3);
-            }
+            if(kind==5)board.GetComponent<WoodBoardGraphic>().SetDamage(2);
             RectTransform bridge=null;int gateEdge=kind==3?floor.Key.EdgeToOpen:floor.OneUseBridgeEdge??0;float gateX=(gateEdge+1f)/row.Length;
             var latch=Rect("Demo rope gate",root,new Vector2(gateX-.012f,.42f),new Vector2(gateX+.012f,.90f));Background(latch,new Color(.62f,.43f,.22f),false);latch.gameObject.SetActive(kind==3);
             if(kind==7){

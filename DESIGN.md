@@ -520,3 +520,17 @@ Languages are two carousels with native language names, broad arrow targets and 
 Device reactions have contrasting folded ribbons and a short damped entrance, with localized live lettering. The bomb's extinguished-fuse sibling preserves its painted contact and body; small colored light seeds rise at the hanging body. Feedback anchors follow its canvas-to-world position through wind and viewport changes. Keys, repair, stamps and power-ups have related colored bands and feedback at their actual props. Guide and preview shapes use beveled color shading. Pause, reduced motion and effect-quality bounds are retained, with no change to resolver transitions.
 
 Actual native Unity inspection and four selected PlayMode checks are recorded in Reports/MenuReset/README.md. This is local evidence for readability and interactions, not a human-enjoyment or device-performance certification. Original source sprites, Cloud settings, prices, packages, persisted IDs, schemas and core rules remain.
+
+## Tool reactions, enamel controls and wind anticipation — 6 October 2026
+
+Matching symbols are painted directly on every tool body, including guides.
+No secondary matching plaque. Reaction focus uses a separate enlarged tool over
+centered live cloth lettering; tool-specific motifs, bounded timings and quiet
+quality settings preserve cause and effect. Wood damage is authored texture
+states with matching falling splinters, with existing cosmetic flex retained.
+Gameplay actions use wood/brass/enamel, cream-on-teal labels and dark-on-amber
+primary action. Pause bars use the same cream. Settings tabs are short; controls
+retain physical content padding and safe-area bounds, including large text.
+Strong wind gets a brief directional forecast with progressive spring pressure
+before its existing landing shift; ambient wind stays subtle. No fake countdown.
+See Docs/GAMEPLAY_REACTION_MOTION.md and Reports/Reactions/README.md.
