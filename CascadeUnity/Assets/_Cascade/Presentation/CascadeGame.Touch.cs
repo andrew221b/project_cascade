@@ -142,7 +142,6 @@ namespace Cascade.Presentation
             if(!adjacent){machine.SetDragDestination(-1);return;}
             bool legal=Interaction.Attempt.Resolver.Preview(Interaction.Attempt.Current,span==1?PuzzleCommand.Swap(Mathf.Min(from,to)):PuzzleCommand.Reach(from,to)).IsLegal;
             machine.SetDragDestination(to,!legal);
-            if(legal)feedback.Sound(ToyCue.Select);
         }
     }
 }

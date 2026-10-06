@@ -174,7 +174,6 @@ namespace Cascade.Presentation
             float supportAngle=supported?floors[Frame.ActiveFloor].roll:0;
             float rock=supported&&piecePoses[index]!=PiecePose.Held?rocking[index]:0;
             token.position+=Vector3.up*(Mathf.Abs(Mathf.Sin(rock*Mathf.Deg2Rad))*tokens[index].mesh.bounds.extents.x*restScales[index].x);
-            if(index==dragDestination&&index!=heldWeight&&!blockedDestination&&supported)token.position+=Vector3.up*SelectionLiftWorld(index)*.5f;
             token.localScale=Vector3.Scale(restScales[index],new Vector3(stretch.x,stretch.y,1));token.rotation=Quaternion.Euler(0,0,visualAngles[index]+supportAngle+rock);
             UpdateTouchContour(index);
             if(index<tokenShadows.Count) {

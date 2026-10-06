@@ -19,15 +19,17 @@ namespace Cascade.Presentation
         {
             if(index>=selections.Count)return;
             var halo=selections[index];var body=tokens[index].transform;
-            bool visible=interaction.CanPlay&&(interaction.SelectedSlot==index||heldWeight==index||dragDestination==index)
+            bool source=interaction.SelectedSlot==index||heldWeight==index;
+            bool destination=dragDestination==index&&!blockedDestination&&!source;
+            bool visible=interaction.CanPlay&&(source||destination)
                 &&tokens[index].transform.gameObject.activeInHierarchy;
             halo.transform.gameObject.SetActive(visible);
             if(!visible)return;
             if(touchGlowProperties==null)touchGlowProperties=new MaterialPropertyBlock();
             halo.transform.SetPositionAndRotation(body.position+Vector3.forward*.10f,body.rotation);
-            halo.transform.localScale=Vector3.Scale(body.localScale,new Vector3(1.075f,1.075f,.96f));
-            touchGlowProperties.SetColor("_Color",dragDestination==index&&blockedDestination?
-                new Color(1,.32f,.18f,.5f):new Color(1,.95f,.65f,.46f));
+            float contourScale=destination?1.025f:1.075f;
+            halo.transform.localScale=Vector3.Scale(body.localScale,new Vector3(contourScale,contourScale,.96f));
+            touchGlowProperties.SetColor("_Color",new Color(1,.95f,.65f,destination?.10f:.46f));
             halo.renderer.SetPropertyBlock(touchGlowProperties);
         }
         public void ShakeSuspension(Vector2 impulse)
