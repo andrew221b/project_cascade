@@ -21,9 +21,11 @@ namespace Cascade.Presentation
         void InitializePieceMaterials()
         {
             receiverLight=new MaterialPropertyBlock();
+            var glaze=Resources.Load<Material>("CascadeArt/Materials/CandyGlaze");
             candyMaterials = new Material[art.colors.Length];
             for (int i = 0; i < candyMaterials.Length; i++) {
                 var material = new Material(art.colors[i]) { name = "Glazed " + art.colors[i].name };
+                if(glaze!=null)material.shader=glaze.shader;
                 Color.RGBToHSV(material.GetColor("_BaseColor"),out float hue,out float saturation,out float value);
                 material.SetColor("_BaseColor",Color.HSVToRGB(hue,Mathf.Min(1,saturation*1.14f+.02f),Mathf.Min(1,value*1.035f)));
                 material.SetFloat("_Metallic", .035f);
@@ -35,6 +37,7 @@ namespace Cascade.Presentation
                 candyMaterials[i] = material;
             }
             targetSocketMaterial=new Material(art.teal){name="Deep lagoon target socket"};
+            if(glaze!=null)targetSocketMaterial.shader=glaze.shader;
             targetSocketMaterial.SetColor("_BaseColor",new Color(.12f,.46f,.50f));
             targetSocketMaterial.SetFloat("_Metallic",.025f);
             targetSocketMaterial.SetFloat("_Smoothness",.62f);
@@ -42,6 +45,7 @@ namespace Cascade.Presentation
             targetSocketMaterial.SetFloat("_ClearCoatSmoothness",.78f);
             targetSocketMaterial.EnableKeyword("_CLEARCOAT");
             letterMaterial = new Material(art.cream) { name = "Glazed ivory letter tile" };
+            if(glaze!=null)letterMaterial.shader=glaze.shader;
             letterMaterial.SetFloat("_Metallic", .015f);
             letterMaterial.SetFloat("_Smoothness", .68f);
             letterMaterial.SetFloat("_ClearCoatMask", .38f);

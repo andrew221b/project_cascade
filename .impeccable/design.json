@@ -736,6 +736,13 @@
       "identity": "No clone; original restored to hidden home after beat, canonical used flags hide consumed dock",
       "wind": "Gentle continuous deck/rope springs; shared directional velocity kick on canonical gust; bounded .22 world sway and 2.4deg roll",
       "validation": "Reports/OriginalDeparture"
+    },
+    "physicalPresentation20261006": {
+      "weight": "Lift/swap/landing impulses reach sag, roll and neighboring rope spans; guided gravitational figures and bounded rocking",
+      "debris": "Isolated pooled PhysX rigid bodies with mass, spin, wind and cosmetic plank contacts; pause/quiet/cleanup",
+      "light": "Actual URP clear coat, deforming shadow-receiving timber top, alpha cutout wood/fragment masks, cylindrical live rope light; illustrated UI/backdrop retained",
+      "layout": "Old receiver children inactive immediately before deferred destruction",
+      "validation": "Reports/PhysicalPresentation;9 distinct scenarios passed across focused runs, including3/3 lifecycle retest after unload/cancel cleanup fixes; native mobile pipeline sample; real devices/performance/full suite not run"
     }
   },
   "components": [

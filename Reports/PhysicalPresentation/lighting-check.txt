@@ -1,0 +1,1 @@
+Native shadow-on/off changed pixels: 22437

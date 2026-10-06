@@ -63,9 +63,11 @@ namespace Cascade.Presentation
             else{points[a]+=correction*.5f;points[b]-=correction*.5f;}
         }
         public void Impulse(float sideways)
+            =>Impulse(Vector2.right*sideways);
+        public void Impulse(Vector2 velocity)
         {
             if(!ready)return;
-            for(int i=1;i<points.Length-1;i++)previous[i]-=Vector2.right*(sideways*Step*Mathf.Sin(i/(float)(points.Length-1)*Mathf.PI));
+            for(int i=1;i<points.Length-1;i++)previous[i]-=velocity*(Step*Mathf.Sin(i/(float)(points.Length-1)*Mathf.PI));
         }
         public Vector2 Sample(float t)
         {

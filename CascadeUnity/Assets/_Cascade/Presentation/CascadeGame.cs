@@ -22,6 +22,8 @@ namespace Cascade.Presentation
         ToyMachineView machine;
         PuzzleEventPlayer eventPlayer;
         ToyFeedbackPool feedback;
+        bool disabling;
+        public bool CanPresent=>!disabling&&isActiveAndEnabled;
         MotionProfile motion;
         public PuzzleEventPlayer EventPlayer => eventPlayer;
         public ToyFeedbackPool Feedback => feedback;
@@ -74,9 +76,10 @@ namespace Cascade.Presentation
             eventPlayer = gameObject.AddComponent<PuzzleEventPlayer>(); eventPlayer.Initialize(this, motion, feedback);
             BuildScreen();BuildControlArt(); LoadNode(initialNode); BuildFlow(); RestoreProfile();
         }
-        void OnEnable() { if (Interaction != null) { if(!preparation.IsReady&&!preparation.IsPending)BeginPreparation(); Interaction.SetSuspended(applicationPaused || !applicationFocused); RenderState(); } }
+        void OnEnable() { disabling=false;if (Interaction != null) { if(!preparation.IsReady&&!preparation.IsPending)BeginPreparation(); Interaction.SetSuspended(applicationPaused || !applicationFocused); RenderState(); } }
         void OnDisable()
         {
+            disabling=true;
             PersistProgress();
             SettleDescent();CancelDescentWork();
             EndTokenHold(); CancelHint(); CancelDeadEnd(); preparation.Cancel(); StopPresentation(); Interaction?.SetSuspended(true); feedback?.ClearTails();
@@ -360,9 +363,10 @@ namespace Cascade.Presentation
         }
         void RebuildLevelViews(LevelDefinition level)
         {
-            foreach (var view in floorViews) Destroy(view.gameObject);
-            foreach (Transform child in targetRow) Destroy(child.gameObject);
-            if (tokenRow != null) Destroy(tokenRow.gameObject);
+            foreach (var view in floorViews) {view.gameObject.SetActive(false);Destroy(view.gameObject);}
+            // Destroy is deferred; inactive old children must stop contributing to the new row layout now.
+            foreach (Transform child in targetRow) {child.gameObject.SetActive(false);Destroy(child.gameObject);}
+            if (tokenRow != null) {tokenRow.gameObject.SetActive(false);Destroy(tokenRow.gameObject);}
             floorViews.Clear(); floorLabels.Clear(); deviceLabels.Clear(); contactFaces.Clear(); deviceDocks.Clear(); deviceOverlays.Clear(); slots.Clear(); slotImages.Clear(); tokenLabels.Clear(); targetLabels.Clear();
             int count = level.Floors.Count;
             for (int i = 0; i < count; i++) {

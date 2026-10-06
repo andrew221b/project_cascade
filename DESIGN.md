@@ -572,3 +572,18 @@ the hemp braid repeats by world length instead of stretching across the screen.
 Visible floor knots remain anchors; removed floors reconnect the free span.
 Pause freezes integration, Reduced Motion is taut and still, and viewport/topology
 changes reset affected chains. See Docs/FLEXIBLE_ROPE_PRESENTATION.md.
+
+
+## Impact, physical fragments and live light — 6 October 2026
+
+Lifting, exchanging and landing communicate weight through the platform springs
+and neighboring constrained rope spans. Figures descend under gravity with guided
+slot placement and individual bounded rocking. Timber fragments use pooled rigid
+bodies in an isolated PhysX scene; they spin, receive wind and bounce against the
+view's platform contacts before leaving or fading. Pause/quiet remain authoritative.
+Candy/ivory materials now use actual URP clear coat. Wood has a sloped deforming
+top and alpha cutout shadow masks; rope lighting follows the live main light.
+Painted background/UI and supporting contact artwork remain illustrated. Native
+light comparisons and mobile pipeline witnesses belong to Reports/PhysicalPresentation.
+Target replacement immediately excludes old layout children, preserving centered
+receiver symbols before the first command. No gameplay physics or new rules.

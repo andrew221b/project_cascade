@@ -31,8 +31,8 @@ namespace Cascade.Presentation
             public readonly List<Part> stamp = new List<Part>();
             public readonly List<Part> fuse = new List<Part>(), durability = new List<Part>(), rope = new List<Part>();
             public readonly Part[] knots=new Part[2];
-            public Part board, bombFlame; public Mesh bendMesh;
-            public Vector3[] vertices; public float sag,sagVelocity,sway,swayVelocity,roll,rollVelocity,wear,fracture;
+            public Part board,top,bombFlame; public Mesh bendMesh,topMesh;
+            public Vector3[] vertices,topVertices; public float sag,sagVelocity,sway,swayVelocity,roll,rollVelocity,wear,fracture;
         }
         ToyArt art;
         Camera viewCamera;
@@ -191,6 +191,8 @@ namespace Cascade.Presentation
             P("Platform contact", art.quad, art.shadow, .51f, .25f, 1.05f, .29f, .65f);
             rig.bendMesh=BoardMesh();rig.vertices=rig.bendMesh.vertices;
             rig.board=P("Wooden suspended board",rig.bendMesh,woodMaterial,.5f,.33f,1,.19f,.15f);rig.board.stretch=true;
+            rig.topMesh=BoardTopMesh();rig.topVertices=rig.topMesh.vertices;
+            rig.top=P("Wooden load-bearing top",rig.topMesh,woodMaterial,.5f,.365f,1,.08f,-.15f);rig.top.depth=.65f;rig.top.stretch=true;
             for(int end=0;end<2;end++) {
                 float x=end==0?.025f:.975f;
                 // Continuous ropes are shared by the whole hanging machine.
@@ -226,7 +228,7 @@ namespace Cascade.Presentation
         {
             var go = new GameObject(name, typeof(MeshFilter), typeof(MeshRenderer)); go.transform.SetParent(parent, false);
             go.GetComponent<MeshFilter>().sharedMesh = mesh; var renderer = go.GetComponent<MeshRenderer>(); renderer.sharedMaterial = material;
-            bool solidPiece = name.StartsWith("Persistent token") || name.StartsWith("Target ");
+            bool solidPiece = name.StartsWith("Persistent token") || name.StartsWith("Target ") || name.StartsWith("Wooden ") || name=="Rope knot" || name=="Golden receiver rim" || name=="Ivory inset";
             renderer.shadowCastingMode = solidPiece ? ShadowCastingMode.On : ShadowCastingMode.Off;
             renderer.receiveShadows = name == "Wooden suspended board" || solidPiece;
             return new Part { transform = go.transform, renderer = renderer, material=material, mesh = mesh, anchor = anchor, point = point, size = size, z = z, depth = depth, angle = angle };

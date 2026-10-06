@@ -18,7 +18,7 @@ namespace Cascade.Presentation
                 var line=go.GetComponent<LineRenderer>();suspension[side]=line;line.sharedMaterial=continuousRopeMaterial;line.useWorldSpace=true;
                 for(int span=0;span<5;span++)ropeSpans[side,span]=new PresentationRope(13,side*47+span*19+7);
                 line.startWidth=line.endWidth=.09f;line.numCapVertices=8;line.numCornerVertices=8;line.textureMode=LineTextureMode.Tile;line.alignment=LineAlignment.View;
-                line.shadowCastingMode=UnityEngine.Rendering.ShadowCastingMode.Off;line.receiveShadows=false;
+                line.generateLightingData=true;line.shadowCastingMode=UnityEngine.Rendering.ShadowCastingMode.On;line.receiveShadows=true;
             }
         }
         void UpdateRopeRig(float seconds=0)

@@ -102,6 +102,30 @@ namespace Cascade.Editor.Playable
             }finally{camera.targetTexture=old;UnityEngine.Object.Destroy(target);UnityEngine.Object.Destroy(pixels);g.RefreshLayout();}
             Debug.Log("CASCADE original departure and wind witnesses complete");
         }
+        public static void RunPhysicalPresentation(bool lightingOnly=false)=>UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(PhysicalPresentation(lightingOnly));
+        static IEnumerator PhysicalPresentation(bool lightingOnly)
+        {
+            var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();typeof(CascadeGame).GetField("persistenceReady",BindingFlags.Instance|BindingFlags.NonPublic).SetValue(g,false);
+            g.SendMessage("OnApplicationFocus",true);UnityEngine.Application.runInBackground=true;g.SetUiLocale("ru");g.ReducedMotion=false;
+            var camera=Camera.main;var old=camera.targetTexture;var target=new RenderTexture(390,844,24);camera.targetTexture=target;var pixels=new Texture2D(390,844,TextureFormat.RGB24,false);
+            Directory.CreateDirectory("/tmp/cascade-physical-presentation");string report=Path.Combine(Directory.GetParent(UnityEngine.Application.dataPath).Parent.FullName,"Reports","PhysicalPresentation");Directory.CreateDirectory(report);
+            void Shot(string file){camera.Render();var active=RenderTexture.active;RenderTexture.active=target;pixels.ReadPixels(new Rect(0,0,390,844),0,0);pixels.Apply();RenderTexture.active=active;File.WriteAllBytes(file,pixels.EncodeToPNG());}
+            try{
+                foreach(string id in lightingOnly?new string[0]:new[]{"C30","C03"}){
+                    g.LoadNode(id);g.ShowGame();yield return Ready(g);g.RefreshLayout();yield return null;yield return null;
+                    g.Interaction.SetSuspended(false);g.Interaction.Execute(PuzzleCommand.Swap(0));string hash=g.Interaction.Attempt.CurrentStateHash;
+                    for(int f=0;f<(id=="C30"?32:52);f++){Shot("/tmp/cascade-physical-presentation/"+id+"-"+f.ToString("D2")+".png");if(hash!=g.Interaction.Attempt.CurrentStateHash)throw new InvalidOperationException("Physical presentation changed state");yield return new WaitForSecondsRealtime(.06f);}
+                    while(g.Interaction.IsPresenting)yield return null;
+                }
+                g.LoadNode("C30");g.ShowGame();yield return Ready(g);yield return new WaitForSecondsRealtime(.5f);g.Interaction.SetPaused(true);
+                var key=g.Machine.GetComponentsInChildren<Light>().First(l=>l.name=="Warm workshop key light");var rotation=key.transform.rotation;float strength=key.shadowStrength;
+                key.shadowStrength=1;Shot(Path.Combine(report,"light-and-shadows.png"));var on=pixels.GetPixels32();
+                key.shadowStrength=0;Shot(Path.Combine(report,"shadows-off-control.png"));var off=pixels.GetPixels32();int changed=0;for(int i=0;i<on.Length;i++)if(Mathf.Abs(on[i].r-off[i].r)+Mathf.Abs(on[i].g-off[i].g)+Mathf.Abs(on[i].b-off[i].b)>4)changed++;
+                key.shadowStrength=strength;key.transform.rotation=Quaternion.Euler(32,28,0);Shot(Path.Combine(report,"light-from-other-side.png"));key.transform.rotation=rotation;int quality=QualitySettings.GetQualityLevel();int mobile=Array.IndexOf(QualitySettings.names,"Mobile");if(mobile>=0){QualitySettings.SetQualityLevel(mobile,true);Shot(Path.Combine(report,"mobile-quality-light.png"));QualitySettings.SetQualityLevel(quality,true);}g.Interaction.SetPaused(false);
+                File.WriteAllText(Path.Combine(report,"lighting-check.txt"),"Native shadow-on/off changed pixels: "+changed+"\n");if(changed<8)throw new InvalidOperationException("No visible realtime shadow response");
+            }finally{camera.targetTexture=old;UnityEngine.Object.Destroy(target);UnityEngine.Object.Destroy(pixels);g.RefreshLayout();g.Interaction.SetPaused(false);}
+            Debug.Log("CASCADE physical presentation witnesses complete");
+        }
         public static void RunFlexibleRopes() => UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(FlexibleRopes());
         static IEnumerator FlexibleRopes()
         {

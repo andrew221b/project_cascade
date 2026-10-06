@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Passed" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-06 06:42:37Z" end-time="2026-10-06 06:42:42Z" duration="4.607344">
+  <test-suite type="TestSuite" id="1079" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="71" result="Passed" start-time="2026-10-06 06:42:37Z" end-time="2026-10-06 06:42:42Z" duration="4.607344" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1073" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="71" result="Passed" start-time="2026-10-06 06:42:38Z" end-time="2026-10-06 06:42:42Z" duration="4.473782" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="93320" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1074" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="71" result="Passed" start-time="2026-10-06 06:42:38Z" end-time="2026-10-06 06:42:42Z" duration="4.465037" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1075" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="71" result="Passed" start-time="2026-10-06 06:42:38Z" end-time="2026-10-06 06:42:42Z" duration="4.463147" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1001" name="PlayableTests" fullname="Cascade.Tests.PlayableTests" classname="Cascade.Tests.PlayableTests" runstate="Runnable" testcasecount="71" result="Passed" start-time="2026-10-06 06:42:38Z" end-time="2026-10-06 06:42:42Z" duration="4.461926" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1010" name="ContactMomentumReachesDeckAndIndependentRopeSpans" fullname="Cascade.Tests.PlayableTests.ContactMomentumReachesDeckAndIndependentRopeSpans" methodname="ContactMomentumReachesDeckAndIndependentRopeSpans" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="887391190" result="Passed" start-time="2026-10-06 06:42:38Z" end-time="2026-10-06 06:42:40Z" duration="2.526321" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1009" name="PhysicalDebrisFallsInItsOwnSceneAndRespectsPauseAndQuiet" fullname="Cascade.Tests.PlayableTests.PhysicalDebrisFallsInItsOwnSceneAndRespectsPauseAndQuiet" methodname="PhysicalDebrisFallsInItsOwnSceneAndRespectsPauseAndQuiet" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1326581765" result="Passed" start-time="2026-10-06 06:42:40Z" end-time="2026-10-06 06:42:41Z" duration="1.082780" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1040" name="SceneReloadDuringAnimationReleasesOldAttemptWithoutExceptions" fullname="Cascade.Tests.PlayableTests.SceneReloadDuringAnimationReleasesOldAttemptWithoutExceptions" methodname="SceneReloadDuringAnimationReleasesOldAttemptWithoutExceptions" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1271901007" result="Passed" start-time="2026-10-06 06:42:41Z" end-time="2026-10-06 06:42:42Z" duration="0.827723" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/PhysicalLifecycle/playmode.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -183,6 +183,39 @@ namespace Cascade.Tests
             var knots=game.Machine.GetComponentsInChildren<MeshRenderer>().Where(r=>r.name=="Rope knot").ToArray();
             foreach(var line in ropes){Assert.That(knots.Min(k=>Vector2.Distance(k.transform.position,line.GetPosition(24))),Is.LessThan(.002f));for(int i=0;i<line.positionCount;i++)Assert.That(float.IsNaN(line.GetPosition(i).x),Is.False);}
         }
+        [UnityTest] public IEnumerator ReloadingASevenPieceTargetExcludesOldLayoutChildrenImmediately()
+        {
+            game.LoadNode("C03");game.ShowGame();game.LoadNode("C30");game.ShowGame();yield return null;yield return null;
+            var labels=game.GetComponentsInChildren<TextMeshProUGUI>().Where(t=>t.name=="TargetSymbol").ToArray();Assert.That(labels.Length,Is.EqualTo(7));
+            var bodies=game.Machine.GetComponentsInChildren<MeshRenderer>().Where(r=>r.name.StartsWith("Target ")&&!r.name.StartsWith("Target socket")).ToArray();Assert.That(bodies.Length,Is.EqualTo(7));
+            for(int i=0;i<labels.Length;i++){var rect=labels[i].rectTransform;var center=rect.TransformPoint(rect.rect.center);var body=bodies.Single(b=>b.name=="Target "+i);Assert.That(Vector2.Distance(center,body.transform.position),Is.LessThan(.001f),"The live glyph and physical target body share their new layout center.");}
+        }
+        [UnityTest] public IEnumerator PhysicalDebrisFallsInItsOwnSceneAndRespectsPauseAndQuiet()
+        {
+            game.LoadNode("C18");game.ShowGame();game.ReducedMotion=false;yield return AwaitPreparation();string hash=game.Interaction.Attempt.CurrentStateHash;
+            game.Feedback.WoodChips(game.Machine.FloorPosition(0)+Vector3.down*.5f,4,false,1);
+            var bodies=Object.FindObjectsByType<Rigidbody>(FindObjectsSortMode.None).Where(b=>b.name.StartsWith("Pooled workshop dust")&&!b.isKinematic).ToArray();
+            Assert.That(bodies.Length,Is.EqualTo(4));Assert.That(bodies[0].gameObject.scene.GetPhysicsScene(),Is.Not.EqualTo(Physics.defaultPhysicsScene));
+            float height=bodies[0].position.y;var orientation=bodies[0].rotation;
+            yield return new WaitForSecondsRealtime(.4f);Assert.That(bodies[0].position.y,Is.LessThan(height-.1f));Assert.That(Quaternion.Angle(orientation,bodies[0].rotation),Is.GreaterThan(3));
+            game.Interaction.SetPaused(true);var positions=bodies.Select(b=>b.position).ToArray();yield return new WaitForSecondsRealtime(.12f);
+            for(int i=0;i<bodies.Length;i++)Assert.That(bodies[i].position,Is.EqualTo(positions[i]));
+            game.Interaction.SetPaused(false);game.ReducedMotion=true;yield return null;yield return null;
+            positions=bodies.Select(b=>b.position).ToArray();yield return new WaitForSecondsRealtime(.1f);for(int i=0;i<bodies.Length;i++){Assert.That(bodies[i].isKinematic,Is.True);Assert.That(bodies[i].position,Is.EqualTo(positions[i]));}
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));game.Feedback.ClearTails();Assert.That(game.Feedback.ActiveParticleCount,Is.Zero);
+        }
+        [UnityTest] public IEnumerator ContactMomentumReachesDeckAndIndependentRopeSpans()
+        {
+            game.LoadNode("C30");game.ShowGame();game.ReducedMotion=false;yield return AwaitPreparation();yield return new WaitForSecondsRealtime(.4f);
+            string hash=game.Interaction.Attempt.CurrentStateHash;float sag=game.Machine.LoadedSag;
+            var ropes=game.Machine.GetComponentsInChildren<LineRenderer>().Where(l=>l.name.Contains("braided rope")).ToArray();var before=ropes.Select(l=>l.GetPosition(12)).ToArray();
+            game.Machine.ContactImpulse(0,0,.9f,1);float peak=sag,travel=0;double until=Time.realtimeSinceStartupAsDouble+.4;
+            while(Time.realtimeSinceStartupAsDouble<until){peak=Mathf.Max(peak,game.Machine.LoadedSag);for(int i=0;i<ropes.Length;i++)travel=Mathf.Max(travel,Vector3.Distance(before[i],ropes[i].GetPosition(12)));yield return null;}
+            Assert.That(peak,Is.GreaterThan(sag+.003f));Assert.That(travel,Is.GreaterThan(.003f));Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+            game.Interaction.Execute(PuzzleCommand.Swap(0));string committed=game.Interaction.Attempt.CurrentStateHash;yield return AwaitPresentation();
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(committed));Assert.That(game.Machine.TokenPose(0),Is.EqualTo(PiecePose.Resting));
+            game.ReducedMotion=true;yield return null;sag=game.Machine.LoadedSag;game.Machine.ContactImpulse(0,0,1,1);yield return new WaitForSecondsRealtime(.1f);Assert.That(game.Machine.LoadedSag,Is.EqualTo(sag).Within(.001f));
+        }
         [UnityTest] public IEnumerator ConnectedRopesSurviveReducedMotionAndResize()
         {
             game.LoadNode("C03");game.ShowGame();game.ReducedMotion=true;yield return AwaitPreparation();game.RefreshLayout();

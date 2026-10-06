@@ -36,9 +36,8 @@ namespace Cascade.Presentation
         void Finish()
         {
             if (!IsRunning) return; IsRunning = false; playback = null; CompletedPresentations++;
-            if(game!=null){game.Machine.PrepareWind(true,0);game.ReactionBanner.Clear();}
-            game?.SettleOutcome();
-            if (game != null && game.Interaction != null) { game.Interaction.FinishPresentation(); game.SyncPresentation(); }
+            if(game!=null&&game.CanPresent){game.Machine.PrepareWind(true,0);game.ReactionBanner.Clear();game.SettleOutcome();}
+            if (game != null && game.Interaction != null) { game.Interaction.FinishPresentation(); if(game.CanPresent)game.SyncPresentation(); }
         }
         IEnumerator Run(TransitionResult result)
         {
@@ -133,6 +132,8 @@ namespace Cascade.Presentation
         {
             if (game.ReducedMotion) { yield return Hold(profile.reducedStep); yield break; }
             float time = 0;int count=game.VisibleFrame.Row.Count;
+            if(falling){float drop=0;for(int i=0;i<count;i++)drop=Mathf.Max(drop,from[i].y-to[i].y);duration=Mathf.Max(duration,Mathf.Sqrt(2*drop/9.81f)+.07f);}
+            else if(arcs)for(int i=0;i<count;i++)if(Mathf.Abs(from[i].x-to[i].x)>.01f)game.Machine.ContactImpulse(game.VisibleFrame.ActiveFloor,i,-.16f,Mathf.Sign(to[i].x-from[i].x));
             for(int i=0;i<count;i++)game.Machine.SetPiecePose(i,falling?PiecePose.Falling:PiecePose.Exchanging);
             while (time < duration) {
                 if(PresentationPaused){yield return null;continue;}
@@ -140,17 +141,24 @@ namespace Cascade.Presentation
                 for (int i = 0; i < game.VisibleFrame.Row.Count; i++) {
                     float local=falling?Mathf.Clamp01((t-(i%3)*.035f)/(1-(i%3)*.035f)):t;
                     Vector3 position = Vector3.Lerp(from[i], to[i], eased);
-                    if(falling)position.y=Mathf.Lerp(from[i].y,to[i].y,local*local);
+                    if(falling){
+                        float flight=Mathf.Max(0,time-(i%3)*.025f);
+                        position.y=Mathf.Max(to[i].y,from[i].y-4.905f*flight*flight);
+                        position.x+=game.Machine.WindAt(Mathf.Min(game.VisibleFrame.ActiveFloor,game.Interaction.Attempt.Level.Floors.Count-1))*.055f*Mathf.Sin(local*Mathf.PI);
+                    }
                     if (arcs && !game.ReducedMotion && Mathf.Abs(from[i].x-to[i].x) > .01f)
                         position.y += Mathf.Sin(t*Mathf.PI) * profile.swapArc * (from[i].x < to[i].x ? 1 : .35f);
+                    float angle=Mathf.Sin(local*Mathf.PI)*(i%2==0?1:-1)*(falling?13:9);
+                    if(falling)angle*=Mathf.SmoothStep(0,1,Mathf.Clamp01((position.y-to[i].y)/.3f));
                     game.OffsetPresentedToken(i, position-game.Machine.TokenPosition(i), Vector2.one);
-                    game.Machine.SetPiecePose(i,falling?PiecePose.Falling:PiecePose.Exchanging,Mathf.Sin(local*Mathf.PI)*(i%2==0?1:-1)*(falling?13:9));
+                    game.Machine.SetPiecePose(i,falling?PiecePose.Falling:PiecePose.Exchanging,angle);
                 }
                 time += Time.unscaledDeltaTime; yield return null;
             }
             while(PresentationPaused)yield return null;
             for (int i = 0; i < game.VisibleFrame.Row.Count; i++){game.OffsetPresentedToken(i, Vector3.zero, Vector2.one);game.Machine.SetPiecePose(i,falling?PiecePose.Settling:PiecePose.Resting);}
-            if(arcs)game.Machine.LandWeight(game.VisibleFrame.ActiveFloor);
+            for(int i=0;i<count;i++)if(falling||arcs&&Mathf.Abs(from[i].x-to[i].x)>.01f)
+                game.Machine.ContactImpulse(game.VisibleFrame.ActiveFloor,i,falling?Mathf.Clamp(duration*.7f,.3f,.8f)/count:.42f,falling?0:Mathf.Sign(to[i].x-from[i].x)*.45f);
         }
         IEnumerator BreakWood(int floor)
         {
@@ -179,7 +187,6 @@ namespace Cascade.Presentation
         }
         IEnumerator Land(bool arrival)
         {
-            game.Machine.LandWeight(game.VisibleFrame.ActiveFloor);
             float duration = game.ReducedMotion ? profile.reducedStep : Mathf.Max(.19f,profile.landing), time = 0;
             while (time < duration) {
                 if(PresentationPaused){yield return null;continue;}
