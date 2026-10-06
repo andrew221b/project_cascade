@@ -1,0 +1,4 @@
+Real-time phase=3.824955 -> 4.842851; island motion=(0.007538, 0.007680, 0.000000); glider scale change=(-0.007330, -0.004886, 0.000000)
+Score=WindGarden_PaperWings; crossfade=1; wind volume=0.08921649
+Menu score=Menu_HomeAmongClouds; unchanged puzzle hash=True
+Native Editor render and engine checks only. No phone build, device listening or performance proof. Flight snapshots use explicit orbit phases.

@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace Cascade.Presentation
 {
-    public sealed class ToyFeedbackPool : MonoBehaviour
+    public sealed partial class ToyFeedbackPool : MonoBehaviour
     {
         sealed class Dust
         {
@@ -15,9 +15,6 @@ namespace Cascade.Presentation
         }
         Dust[] particles;
         AudioSource[] voices;
-        AudioSource music;
-        AudioSource ambience;
-        AudioClip windBed,rainBed;
         ToyAudioLibrary library;
         Material dustMaterial,chipMaterial;
         int nextParticle, nextVoice, variant;
@@ -60,12 +57,7 @@ namespace Cascade.Presentation
             }
             voices = new AudioSource[Mathf.Clamp(profile.voiceCapacity, 1, 16)];
             for (int i = 0; i < voices.Length; i++) { var go = new GameObject("Pooled toy voice " + i, typeof(AudioSource)); go.transform.SetParent(transform, false); voices[i] = go.GetComponent<AudioSource>(); voices[i].playOnAwake = false; voices[i].spatialBlend = 0; }
-            var musicObject = new GameObject("Cloud workshop music", typeof(AudioSource)); musicObject.transform.SetParent(transform, false);
-            music = musicObject.GetComponent<AudioSource>(); music.playOnAwake = false; music.loop = true; music.spatialBlend = 0; music.volume = .12f;
-            if (library != null) { music.clip = library.music; music.Play(); }
-            var ambientObject=new GameObject("Quiet region ambience",typeof(AudioSource));ambientObject.transform.SetParent(transform,false);
-            ambience=ambientObject.GetComponent<AudioSource>();ambience.playOnAwake=false;ambience.loop=true;ambience.spatialBlend=0;ambience.volume=.08f;
-            windBed=Resources.Load<AudioClip>("CascadeArt/Woodland/WindBed");rainBed=Resources.Load<AudioClip>("CascadeArt/Woodland/RainBed");
+            InitializeAtmosphere();
         }
         public void Sound(ToyCue cue)
         {
@@ -73,7 +65,9 @@ namespace Cascade.Presentation
             var clip = library.cues[(int)cue];
             if ((variant++ & 1) != 0 && library.alternates != null && (int)cue < library.alternates.Length && library.alternates[(int)cue] != null) clip = library.alternates[(int)cue];
             if (clip == null) return;
-            var voice = voices[nextVoice++ % voices.Length]; voice.Stop(); voice.clip = clip; voice.volume = cue == ToyCue.Bomb ? .48f : .65f; voice.pitch = 1; voice.Play(); duck = .22f;
+            var voice = voices[nextVoice++ % voices.Length]; voice.Stop(); voice.clip = clip; voice.volume = cue == ToyCue.Bomb ? .48f : .65f;
+            voice.pitch = cue <= ToyCue.Fragile ? ((variant & 1) == 0 ? .985f : 1.015f) : 1;
+            voice.Play(); duck = .22f;
         }
         public void Burst(Vector3 origin, Color color, int count, bool reduced,RectTransform source=null)
         {
@@ -133,15 +127,7 @@ namespace Cascade.Presentation
             if (game == null || game.Interaction == null) return;
             bool paused = !game.enabled || game.Interaction.IsPaused || game.Interaction.IsSuspended;
             bool worldPaused=!game.enabled||game.Interaction.IsSuspended||game.CurrentScreen==GameScreen.Pause||game.CurrentScreen==GameScreen.SaveRecovery||(game.CurrentScreen==GameScreen.Playing&&game.Interaction.IsPaused);
-            if(ambience!=null){
-                int zone=game.Machine.LivingWorld.Zone;var bed=zone==1||zone==4?rainBed:windBed;
-                if(ambience.clip!=bed){ambience.Stop();ambience.clip=bed;if(bed!=null)ambience.Play();}
-                ambience.mute=!SoundEnabled||worldPaused;
-            }
-            if (music != null) {
-                music.mute = !MusicEnabled || worldPaused; duck = Mathf.Max(0, duck - Time.unscaledDeltaTime);
-                music.volume = Mathf.MoveTowards(music.volume, duck > 0 ? .075f : .12f, Time.unscaledDeltaTime * .4f);
-            }
+            TickAtmosphere(Time.unscaledDeltaTime, worldPaused);
             if (paused) { foreach (var voice in voices) if (voice.isPlaying) voice.Stop(); return; }
             StepDebris(Mathf.Clamp(Time.unscaledDeltaTime,0,.2f));
             ActiveParticleCount = 0;

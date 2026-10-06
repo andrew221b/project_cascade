@@ -977,6 +977,55 @@ namespace Cascade.Tests
             Assert.That(world.CloudPosition,Is.EqualTo(cloud));Assert.That(world.GliderPosition,Is.EqualTo(glider));
             Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
         }
+        [UnityTest] public IEnumerator BackgroundDepthAndFloatingIslandsStayInsideTheQuietFlightBand()
+        {
+            game.LoadNode("C02");yield return null;game.Machine.SetZone(0);
+            var world=game.Machine.LivingWorld;var hash=game.Interaction.Attempt.CurrentStateHash;
+            world.SetQuietFlight(false);world.Paint(0);var near=world.GliderScale;var island=world.IslandPosition(0);
+            for(int i=0;i<32;i++) {
+                world.Paint(i*Mathf.PI/(16*.08f));var bounds=world.GliderBounds;
+                Assert.That(bounds.min.y,Is.GreaterThanOrEqualTo(world.FlightBand.x));
+                Assert.That(bounds.max.y,Is.LessThanOrEqualTo(world.FlightBand.y));
+            }
+            world.Paint(Mathf.PI/.08f);Assert.That(world.GliderScale.y,Is.LessThan(near.y*.75f));
+            Assert.That(world.IslandPosition(0),Is.Not.EqualTo(island));
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+        }
+        [UnityTest] public IEnumerator WorldScoresCrossfadeAndMutePreservesPlaybackPosition()
+        {
+            var library=Resources.Load<ToyAudioLibrary>("CascadeArt/ToyAudio");
+            Assert.That(library.worldMusic.Length,Is.EqualTo(8));
+            Assert.That(library.worldMusic.Distinct().Count(),Is.EqualTo(8));
+            Assert.That(library.worldMusic.All(c=>c!=null&&c.channels==2&&c.length>50),Is.True);
+            Assert.That(library.ScoreFor(GameScreen.Home,7),Is.SameAs(library.menuMusic));
+            for(int i=0;i<8;i++)Assert.That(library.ScoreFor(GameScreen.JourneyMap,i),Is.SameAs(library.worldMusic[i]));
+            game.ShowHome();game.Feedback.MusicEnabled=true;
+            yield return new WaitForSecondsRealtime(1.8f);
+            Assert.That(game.Feedback.CurrentMusicClip,Is.SameAs(library.menuMusic));
+            game.ShowGame();game.Machine.SetZone(2);yield return null;
+            Assert.That(game.Feedback.CurrentMusicClip,Is.SameAs(library.worldMusic[2]));
+            Assert.That(game.Feedback.MusicCrossfade,Is.LessThan(1));
+            yield return new WaitForSecondsRealtime(1.8f);
+            Assert.That(game.Feedback.MusicCrossfade,Is.EqualTo(1));
+            game.Feedback.MusicEnabled=false;yield return new WaitForSecondsRealtime(.45f);
+            Assert.That(game.Feedback.MusicSleeping,Is.True);float position=game.Feedback.MusicPosition;
+            yield return new WaitForSecondsRealtime(.15f);Assert.That(game.Feedback.MusicPosition,Is.EqualTo(position).Within(.03f));
+            game.Feedback.MusicEnabled=true;yield return new WaitForSecondsRealtime(.2f);
+            Assert.That(game.Feedback.MusicSleeping,Is.False);Assert.That(game.Feedback.MusicPosition,Is.GreaterThan(position));
+        }
+        [UnityTest] public IEnumerator WindKeepsItsPositionAcrossRegionsAndFadesBeforeSleeping()
+        {
+            game.LoadNode("C02");yield return null;game.Feedback.SoundEnabled=true;
+            yield return new WaitForSecondsRealtime(.25f);
+            var wind=game.Feedback.GetComponentsInChildren<AudioSource>().Single(s=>s.name=="Living island wind");
+            Assert.That(wind.clip.name,Is.EqualTo("LivingWind"));Assert.That(wind.isPlaying,Is.True);
+            var hash=game.Interaction.Attempt.CurrentStateHash;float before=wind.time;
+            game.Machine.SetZone(1);yield return new WaitForSecondsRealtime(.12f);
+            Assert.That(Mathf.Repeat(wind.time-before,wind.clip.length),Is.GreaterThan(.04f));
+            game.Feedback.SoundEnabled=false;yield return new WaitForSecondsRealtime(.24f);
+            Assert.That(wind.volume,Is.Zero);Assert.That(wind.isPlaying,Is.False);
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+        }
         [UnityTest] public IEnumerator UiLanguageChangesNeverTranslateOrRestartPuzzleSymbols()
         {
             Assert.That(game.UiLanguage,Is.EqualTo("en"));Assert.That(game.Preferences.PuzzleLocale,Is.EqualTo("en"));

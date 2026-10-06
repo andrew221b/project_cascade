@@ -353,7 +353,7 @@ OS accessibility, device performance, native builds or human enjoyment.
 - Wood grain, hemp suspension, brass joints and soft contact shadows make the machine tangible.
 - Mika, Pip and Rue connect short optional dialogue to a concrete destination.
 - Illustrated routes distinguish the current path from future-region browsing.
-- Separate clouds, rooted plants, a glider and regional weather give the sky restrained life.
+- Separate clouds, rooted plants, a glider and regional weather give the sky restrained life. The glider follows a continuous depth orbit with perspective scale and banked turns. Wind Garden's detached islands use a transparent atlas over `WindGardenSky`; independent slow float phases and a height-bounded size keep the scene calm on phones and wide screens.
 - The painted workshop surrounds illustrated enamel actions; Home, play choice and travel each have a clear role.
 
 ## Colors
@@ -405,7 +405,7 @@ Frontmatter `px` type values describe Unity reference-canvas units, not measured
 
 ## Layout
 
-The camera-space uGUI canvas uses a 390 × 844 reference resolution with height scaling and `Screen.safeArea`. Wide Editor views cap content at 430 reference units while the scenery fills the viewport. Mobile PlayerSettings enforce portrait; 844 × 390 landscape is a rejected diagnostic. Desktop 1440 × 900 remains the wide baseline; short desktop windows are unsupported. The machine stays in a portrait composition over a continuous viewport sky surface. WindGardenPanorama supplies the Wind Gardens scene and WorkshopRoom supplies the bag/workshop interior. Other regions keep their existing art. Navigation menus retain WorkshopPortrait on phones and WorkshopRoom in wide views. Navigation maps use the authored MapSky plate at viewport cover, with the central island artwork over it; the earlier Craft map feathering is historical evidence.
+The camera-space uGUI canvas uses a 390 × 844 reference resolution with height scaling and `Screen.safeArea`. Wide Editor views cap content at 430 reference units while the scenery fills the viewport. Mobile PlayerSettings enforce portrait; 844 × 390 landscape is a rejected diagnostic. Desktop 1440 × 900 remains the wide baseline; short desktop windows are unsupported. The machine stays in a portrait composition over a continuous viewport sky surface. WindGardenSky and four independently moving FloatingGardenIslands now supply the Wind Gardens scene; the original WindGardenPanorama remains preserved and WorkshopRoom supplies the bag/workshop interior. Other regions keep their existing art. Navigation menus retain WorkshopPortrait on phones and WorkshopRoom in wide views. Navigation maps use the authored MapSky plate at viewport cover, with the central island artwork over it; the earlier Craft map feathering is historical evidence.
 
 ### Direct play
 

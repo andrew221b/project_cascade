@@ -9,6 +9,7 @@ namespace Cascade.Presentation
     {
         readonly List<Material> owned = new List<Material>();
         readonly Transform[] clouds = new Transform[3];
+        readonly Transform[] islands = new Transform[4];
         Transform landscape, plantsLeft, plantsRight, glider, lagoonSkiff;
         Texture2D panorama,workshopTexture,workshopPortrait,mapSkyTexture;bool workshop;
         readonly MeshRenderer[] weatherRenderers=new MeshRenderer[18];
@@ -28,6 +29,8 @@ namespace Cascade.Presentation
         public float DescentDepth {get;set;}
         public Vector3 CloudPosition => clouds[0]==null?Vector3.zero:clouds[0].position;
         public Vector3 GliderPosition => glider==null?Vector3.zero:glider.position;
+        public Vector3 GliderScale => glider==null?Vector3.zero:glider.localScale;
+        public Vector3 IslandPosition(int index) => islands[index]==null?Vector3.zero:islands[index].position;
         public Bounds GliderBounds => glider==null?default:glider.GetComponent<MeshRenderer>().bounds;
         public Vector2 FlightBand => new Vector2(flightBottom,flightTop);
         public bool Ready => landscape!=null;
@@ -48,7 +51,16 @@ namespace Cascade.Presentation
             landscapeMaterial=landscape.GetComponent<MeshRenderer>().sharedMaterial;
             var sceneryTemplate=Resources.Load<Material>("CascadeArt/Craft/IslandScenery");
             landscapeMaterial.shader=sceneryTemplate!=null?sceneryTemplate.shader:Shader.Find("CASCADE/IslandScenery");
-            panorama=Resources.Load<Texture2D>("CascadeArt/Craft/WindGardenPanorama");
+            panorama=Resources.Load<Texture2D>("CascadeArt/Craft/WindGardenSky") ?? Resources.Load<Texture2D>("CascadeArt/Craft/WindGardenPanorama");
+            var islandAtlas=Resources.Load<Texture2D>("CascadeArt/Craft/FloatingGardenIslands");
+            for(int i=0;i<islands.Length;i++) {
+                islands[i]=Plate("Floating garden island "+i,islandAtlas,art.quad,true);
+                if(islands[i]==null)continue;
+                var material=islands[i].GetComponent<MeshRenderer>().sharedMaterial;
+                material.SetTextureScale("_BaseMap",new Vector2(i==2?.58f:i==3?.42f:.5f,.5f));
+                material.SetTextureOffset("_BaseMap",new Vector2(i==3?.58f:(i%2)*.5f,i<2?.5f:0));
+                material.SetColor("_BaseColor",new Color(1,1,1,i<2?.82f:.68f));
+            }
             workshopTexture=Resources.Load<Texture2D>("CascadeArt/Craft/WorkshopRoom");
             workshopPortrait=Resources.Load<Texture2D>("CascadeArt/Craft/WorkshopPortrait");
             weatherMaterial=new Material(Resources.Load<Shader>("CascadeArt/SoftWeather")){name="Soft distant weather"};owned.Add(weatherMaterial);
@@ -136,6 +148,18 @@ namespace Cascade.Presentation
                 cloud.localScale=new Vector3(cw,cw*.5f,1);
             }
             Plants(plantsLeft,false);Plants(plantsRight,true);
+            for(int i=0;i<islands.Length;i++) {
+                var island=islands[i];if(island==null)continue;
+                island.gameObject.SetActive(zone==0&&mapSkyTexture==null&&!workshop);
+                float seed=i*1.83f;
+                float x=i==0?-.28f:i==1?.28f:i==2?-.22f:.22f;
+                float y=i==0?.23f:i==1?.16f:i==2?-.14f:-.28f;
+                island.position=new Vector3(cx+w*x+Mathf.Sin(phase*.055f+seed)*w*.008f,
+                    cy+h*y+Mathf.Sin(phase*(.17f+i*.021f)+seed)*h*.006f,3.02f-i*.015f);
+                float size=Mathf.Min(w,h)*(i==0?.23f:i==1?.25f:i==2?.27f:.20f);
+                island.localScale=new Vector3(size*(i==2?1.16f:i==3?.84f:1),size,1);
+                island.rotation=Quaternion.Euler(0,0,Mathf.Sin(phase*.12f+seed)*.8f);
+            }
             if(lagoonSkiff!=null){
                 lagoonSkiff.gameObject.SetActive(zone==4&&mapSkyTexture==null&&!workshop&&gameplayVisible);
                 float width=Mathf.Min(w*.23f,h*.14f);
@@ -144,16 +168,18 @@ namespace Cascade.Presentation
                 lagoonSkiff.rotation=Quaternion.Euler(0,0,Mathf.Sin(phase*.48f)*1.2f);
             }
             if(glider!=null) {
-                float angle=phase*.07f;
+                float angle=phase*.08f;
                 float band=flightTop-flightBottom;
                 glider.gameObject.SetActive(mapSkyTexture==null&&!quietFlight&&!workshop&&(!gameplayVisible||band>0));
                 gliderAlpha=phase==0?1:Mathf.MoveTowards(gliderAlpha,holdingToken?0:1,delta*(holdingToken?8:3));
                 gliderMaterial.SetColor("_BaseColor",new Color(1,1,1,gliderAlpha));
-                float height=gameplayVisible?Mathf.Min(h*.078f,band*.58f):Mathf.Min(w,8)*.17f;
-                float y=gameplayVisible?(flightBottom+flightTop)*.5f+Mathf.Sin(angle*.8f)*band*.08f:cy+h*(.255f+Mathf.Sin(angle*.8f)*.022f);
-                glider.position=new Vector3(cx+Mathf.Sin(angle)*w*.34f,y,2.45f);
-                // The whole rotated 3:2 illustration fits in the empty strip above the machine.
-                glider.localScale=new Vector3(height*1.5f,height,1);glider.rotation=Quaternion.Euler(0,0,-6+Mathf.Sin(angle)*9);
+                float depth=.86f+.24f*Mathf.Cos(angle);
+                float height=(gameplayVisible?Mathf.Min(h*.085f,band*.48f):Mathf.Min(w,8)*.18f)*depth;
+                float y=gameplayVisible?(flightBottom+flightTop)*.5f+Mathf.Cos(angle)*band*.065f:cy+h*(.255f+Mathf.Cos(angle)*.035f);
+                glider.position=new Vector3(cx+Mathf.Sin(angle)*w*.33f,y,2.45f+.10f*(1-Mathf.Cos(angle)));
+                // Continuous yaw, curved ascent and perspective scale describe one loop in depth.
+                glider.localScale=new Vector3(height*1.5f,height,1);
+                glider.rotation=Quaternion.Euler(0,angle*Mathf.Rad2Deg,-Mathf.Sin(angle)*11);
             }
             void Plants(Transform plant,bool right)
             {
