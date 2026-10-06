@@ -39,7 +39,7 @@ namespace Cascade.Presentation
             "The branch blocks this swap. Use another pair or go down.",
             "This board slides the whole row when it lands. Watch the arrow before going down.",
             "This board turns the row around on landing. The last piece becomes the first.",
-            "Wind moves the whole row one place on landing. Look at the arrow before going down.",
+            "Wind moves the whole row one place on landing. Watch this example before going down.",
             "A gust rocks the boards and pieces. They settle back into place. Your order stays safe.",
             "Follow the hand for each next move. The scroll lasts until this board breaks.",
             "After two free undos, this spool undoes one more move on the same board.",

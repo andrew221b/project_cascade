@@ -86,7 +86,7 @@ namespace Cascade.Presentation
         {
             if(descent?.Version<4||ReducedMotion||!IsWindFloor(0)||CurrentScreen!=GameScreen.Playing)return;
             bool right=Interaction.Attempt.Level.Floors[0].EntryTransform==EntryTransform.ShiftRightOne;
-            machine.CueWind(right);CueDeviceWind(right);AnnounceReaction(right?"Wind slides the row right":"Wind slides the row left","");
+            machine.CueWind(right);CueDeviceWind(right);AnnounceReaction("The wind moved the row","");
         }
         internal void AppendDescentGraphics(DescentGhost ghost)
         {

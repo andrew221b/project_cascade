@@ -22,6 +22,8 @@ namespace Cascade.Presentation
         }
         void PaintControlLabels()
         {
+            // Keep pale type on the teal enamel after locale/accessibility refreshes.
+            if(status!=null)status.color=MenuPaper;
             foreach(var button in new[]{undo,hint,drop})if(button!=null){
                 var label=button.GetComponentInChildren<TextMeshProUGUI>();
                 label.color=button==drop?Ink:new Color(1,.97f,.84f);button.GetComponent<Image>().color=Color.white;

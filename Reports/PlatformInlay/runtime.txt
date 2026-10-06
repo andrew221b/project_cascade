@@ -1,0 +1,2 @@
+Before=1; after=2; displayed=2; no duplicate forecast=True
+counter=2; characters=1; font=13.5432

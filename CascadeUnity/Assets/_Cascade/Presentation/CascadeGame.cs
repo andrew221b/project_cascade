@@ -211,7 +211,7 @@ namespace Cascade.Presentation
             }
             if(!string.IsNullOrEmpty(exit.Key))effects.Add(exit);
             if(prediction.Events.Any(e=>e.Kind==PuzzleEventKind.EntryPermuted&&IsWindFloor(e.Floor)))
-                effects.Add(prediction.Events.First(e=>e.Kind==PuzzleEventKind.EntryPermuted&&IsWindFloor(e.Floor)).Value==(int)EntryTransform.ShiftRightOne?"Wind slides the row right":"Wind slides the row left");
+                effects.Add("The wind moved the row");
             status.SetCopy(UiCopy.Join(" · ",effects));
             RenderFocus(); machine.PreviewForecast(prediction); PreviewDeviceDocks(prediction);
             // Forecasts belong to the actual pieces and hanging devices, never rectangular slot panels.

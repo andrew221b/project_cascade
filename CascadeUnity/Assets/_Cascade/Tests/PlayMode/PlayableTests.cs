@@ -625,12 +625,19 @@ namespace Cascade.Tests
         [UnityTest] public IEnumerator EarlyContactsForecastFractureAndWindPlayBeforeOneWholeLevelReward()
         {
             game.ReducedMotion=true;game.StartDescentLevel(game.Catalog.GetPrimary("C03").Definition);game.ShowGame();
-            yield return PlayDescentStage();game.GoLower();yield return AwaitDescentReady();yield return null;
+            yield return PlayDescentStage();
+            // First-use wind teaching and the checkpoint conversation precede the next stage.
+            for(int i=0;i<4&&game.Descent.StageIndex==0;i++){game.AcknowledgeMechanic();game.SkipConversation();game.GoLower();yield return null;}
+            yield return AwaitDescentReady();yield return null;
             game.ReducedMotion=false;game.RefreshLayout();
+            double teachingStarted=Time.realtimeSinceStartupAsDouble;
+            while(game.MechanicPopupOpen&&PresentationBudget(teachingStarted)){game.AcknowledgeMechanic();yield return null;}
+            Assert.That(game.Interaction.CanPlay,Is.True);
             var legends=game.GetComponentsInChildren<PlatformLegend>();Assert.That(legends.Length,Is.EqualTo(2));
-            Assert.That(legends[1].ForecastVisible,Is.True);var preview=legends[1].transform.Find("Landing forecast/Animated exact row/Forecast piece 0");
-            var before=preview.localPosition;yield return new WaitForSecondsRealtime(1.2f);
-            Assert.That(Vector3.Distance(before,preview.localPosition),Is.GreaterThan(1),"The real future row preview must move.");
+            Assert.That(legends[1].transform.Find("Landing forecast"),Is.Null,"A second symbol row must not appear under the platform.");
+            yield return null;
+            var inset=legends[1].transform.Find("Remaining wood");Assert.That(inset,Is.Not.Null);
+            Assert.That(Vector2.Distance(legends[1].transform.position,game.Machine.SurfacePoint(1,.5f,.33f)),Is.LessThan(.01f));
             bool bomb=false,warning=false,warningBeforeLanding=false;float fracture=0;int debris=0;
             foreach(string encoded in game.Descent.Stages[1].Witness){
                 var command=encoded=="D"?PuzzleCommand.Drop:PuzzleCommand.Swap(int.Parse(encoded));
@@ -638,6 +645,7 @@ namespace Cascade.Tests
                 bomb|=result.Events.Any(e=>e.Kind==PuzzleEventKind.BombDefused);string committed=game.Interaction.Attempt.CurrentStateHash;
                 double began=Time.realtimeSinceStartupAsDouble;
                 while(game.Interaction.IsPresenting&&PresentationBudget(began)){
+                    game.AcknowledgeMechanic();
                     if(game.ReactionBanner.IsWindWarning){warning=true;warningBeforeLanding|=game.VisibleFrame.ActiveFloor==0&&game.Machine.FloorBreakProgress(0)==0;}
                     fracture=Mathf.Max(fracture,game.Machine.FloorBreakProgress(0));debris=Mathf.Max(debris,game.Feedback.ActiveParticleCount);
                     Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(committed));yield return null;
@@ -649,7 +657,10 @@ namespace Cascade.Tests
             Assert.That(bomb&&warning&&warningBeforeLanding,Is.True);Assert.That(fracture,Is.GreaterThan(.8f));Assert.That(debris,Is.GreaterThanOrEqualTo(14));
             var snap=Resources.Load<AudioClip>("CascadeArt/Audio/Atmosphere/TimberSnap");Assert.That(snap,Is.Not.Null);Assert.That(snap.length,Is.GreaterThan(.8f));
             Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Checkpoint));Assert.That(game.JourneyClearCount,Is.Zero);
-            game.ReducedMotion=true;game.GoLower();yield return PlayDescentStage();
+            game.ReducedMotion=true;game.GoLower();yield return AwaitDescentReady();
+            teachingStarted=Time.realtimeSinceStartupAsDouble;
+            while(game.MechanicPopupOpen&&PresentationBudget(teachingStarted)){game.AcknowledgeMechanic();yield return null;}
+            yield return PlayDescentStage();
             Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Win));Assert.That(game.LastCompletion.Stages,Is.EqualTo(3));Assert.That(game.JourneyClearCount,Is.EqualTo(1));
         }
         [UnityTest] public IEnumerator SoloMixedMapKeepsItsCheckpointAndItsOwnSequenceAcrossReload()

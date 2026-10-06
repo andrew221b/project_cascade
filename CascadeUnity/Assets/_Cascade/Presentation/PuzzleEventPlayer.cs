@@ -59,8 +59,8 @@ namespace Cascade.Presentation
                         if(e.Kind==PuzzleEventKind.EntryPermuted&&game.IsWindFloor(e.Floor)) {
                             game.Machine.CueWind(level.Floors[e.Floor].EntryTransform==EntryTransform.ShiftRightOne);
                             game.CueDeviceWind(level.Floors[e.Floor].EntryTransform==EntryTransform.ShiftRightOne);
-                            game.SetPresentationFeedback(level.Floors[e.Floor].EntryTransform==EntryTransform.ShiftRightOne?"Wind slides the row right":"Wind slides the row left");
-                            game.AnnounceReaction(level.Floors[e.Floor].EntryTransform==EntryTransform.ShiftRightOne?"Wind slides the row right":"Wind slides the row left","");
+                            game.SetPresentationFeedback("The wind moved the row");
+                            game.AnnounceReaction("The wind moved the row","");
                         }
                         CaptureRow(frame); frame.Read(e, level); game.RenderFrame(frame); MapRow(frame);
                         feedback.Sound(ToyCue.Swap); yield return Travel(profile.swap, !reduced, false);

@@ -93,6 +93,7 @@ namespace Cascade.Presentation
         public float FloorVisualAngle(int floor)=>floors[floor].roll;
         public float FloorBreakProgress(int floor)=>floors[floor].fracture;
         public float FloorSag(int floor)=>floors[floor].sag;
+        public float FloorFaceHeight(int floor)=>floors[floor].board.baseScale.y;
         public float FloorSpan(int floor)=>floors[floor].board.baseScale.x;
         public void FractureFloor(int floor,float progress){floors[floor].fracture=Mathf.Clamp01(progress);TickWoodDynamics(0);}
         public Vector3 FloorVisualOffset(int floor)=>FloorPointOffset(floor,floors[floor].board.anchor.position,false);
