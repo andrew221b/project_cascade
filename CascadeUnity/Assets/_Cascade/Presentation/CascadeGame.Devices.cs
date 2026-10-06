@@ -14,15 +14,12 @@ namespace Cascade.Presentation
             public RectTransform root;
             public RectTransform socket;
             public Image icon;
-            public TextMeshProUGUI caption;
+            public TextMeshProUGUI countdown;
             public ContactDefinition contact;
             public float slotX,dockX,angle,angleVelocity;
             public Vector2 anchorPosition,anchorVelocity;
             public bool anchorReady;
             public float responseTime;
-            public float successTime;
-            public bool settledContact;
-            public MaskableGraphic outcomeRibbon;
             public Sprite normalSprite,safeSprite;
             public ToolSuspensionRope cord;
         }
@@ -74,9 +71,10 @@ namespace Cascade.Presentation
                 var icon=Picture("Recognizable device",root,new Vector2(.05f,-.10f),new Vector2(.88f,1.14f),ToolBody(item.kind),true);
                 icon.material=ToolSilhouette;
                 if(item.kind==2)BuildBombMark(icon.rectTransform,item.contact.RequiredSymbol);else BuildToolBodyMark(icon.rectTransform,item.kind,item.contact.RequiredSymbol);
-                var ribbon=Rect("Contact outcome ribbon",root,new Vector2(-.04f,-.59f),new Vector2(1.66f,-.06f)).gameObject.AddComponent<ContactRibbonGraphic>();ribbon.color=new Color(.10f,.40f,.34f);ribbon.raycastTarget=false;ribbon.gameObject.SetActive(false);
-                var caption=Text("Device state",root,new Vector2(-.08f,-.50f),new Vector2(1.08f,-.10f),12,"");caption.font=art.titleFont;
-                deviceDocks.Add(new DeviceDock{floor=floorIndex,kind=item.kind,root=root,socket=socket,icon=icon,normalSprite=icon.sprite,safeSprite=item.kind==2?Resources.Load<Sprite>("CascadeArt/Devices/BombSafe"):null,outcomeRibbon=ribbon,caption=caption,contact=item.contact,slotX=slotX,dockX=x,cord=cord});
+                // Only the armed bomb has a local countdown; outcomes belong to the central reaction.
+                TextMeshProUGUI countdown=null;
+                if(item.kind==2){countdown=Text("Bomb countdown",root,new Vector2(-.08f,-.50f),new Vector2(1.08f,-.10f),12,"");countdown.font=art.titleFont;}
+                deviceDocks.Add(new DeviceDock{floor=floorIndex,kind=item.kind,root=root,socket=socket,icon=icon,normalSprite=icon.sprite,safeSprite=item.kind==2?Resources.Load<Sprite>("CascadeArt/Devices/BombSafe"):null,countdown=countdown,contact=item.contact,slotX=slotX,dockX=x,cord=cord});
             }
             UiCopy landing=floor.EntryTransform==EntryTransform.MirrorNext?"Reverse on landing":floor.EntryTransform==EntryTransform.ShiftLeftOne?"Slide left on landing":"Slide right on landing";
             if(IsWindFloor(floorIndex))landing=floor.EntryTransform==EntryTransform.ShiftLeftOne?"Wind on landing: row slides left":"Wind on landing: row slides right";
@@ -126,7 +124,7 @@ namespace Cascade.Presentation
                 bool reacts=d.kind==2&&(e.Kind==PuzzleEventKind.BombTicked||e.Kind==PuzzleEventKind.BombExploded||e.Kind==PuzzleEventKind.BombDefused)
                     ||d.kind==3&&e.Kind==PuzzleEventKind.KeyOpened||d.kind==4&&e.Kind==PuzzleEventKind.Repaired
                     ||d.kind==8&&e.Kind==PuzzleEventKind.StampCollected||d.kind==9&&e.Kind==PuzzleEventKind.RibbonCollected||d.kind==10&&e.Kind==PuzzleEventKind.HourglassCollected;
-                if(reacts){d.responseTime=.32f;if(e.Kind!=PuzzleEventKind.BombTicked&&e.Kind!=PuzzleEventKind.BombExploded)d.successTime=1.2f;if(!ReducedMotion)d.angleVelocity+=(e.Kind==PuzzleEventKind.BombExploded?-32:16);}
+                if(reacts){d.responseTime=.32f;if(!ReducedMotion)d.angleVelocity+=(e.Kind==PuzzleEventKind.BombExploded?-32:16);}
             }
         }
         public Vector3 DeviceVisualOrigin(int floor,int kind)
@@ -135,11 +133,6 @@ namespace Cascade.Presentation
             if(dock==null)return machine.FloorPosition(floor);
             // UI props live on the camera canvas. Emit in the feedback plane at the same screen point.
             return UIFeedbackPoint(dock.icon.rectTransform);
-        }
-        public void SetReactionSourceStatus(RectTransform source,bool shown)
-        {
-            var dock=deviceDocks.FirstOrDefault(d=>d.icon.rectTransform==source);if(dock==null)return;
-            dock.outcomeRibbon.gameObject.SetActive(dock.settledContact&&shown);dock.caption.enabled=shown;
         }
         public RectTransform DeviceFeedbackAnchor(int floor,int kind)=>deviceDocks.FirstOrDefault(d=>d.floor==floor&&d.kind==kind)?.icon.rectTransform;
         public Vector3 UIFeedbackPoint(RectTransform rect)
@@ -167,7 +160,6 @@ namespace Cascade.Presentation
                     if(!applies)continue;
                     bool blast=e.Kind==PuzzleEventKind.BombExploded;
                     d.icon.color=blast?new Color(1,.52f,.38f):new Color(.67f,1,.83f);
-                    d.caption.SetCopy(blast?"Burst":d.kind==2?(e.Kind==PuzzleEventKind.BombFrozen?"Pause bomb":"Safe"):d.kind==3?"Unlocked":d.kind==4?"Repaired":d.kind==9?"Far swap":d.kind==10?"Pause bomb":"Collected");
                 }
             }
         }
@@ -178,15 +170,13 @@ namespace Cascade.Presentation
                 bool used=active&&(d.kind==2?frame.BombPhase!=BombPhase.Armed:d.kind==3?frame.KeyUsed:d.kind==4?frame.RepairUsed:d.kind==8?(frame.StampBits&(1<<floorIndex))!=0:frame.PowerupUsed);
                 // Existing contact flags decide whether anything still hangs here.
                 d.root.gameObject.SetActive(!past&&!used);d.cord.gameObject.SetActive(!past&&!used);d.socket.gameObject.SetActive(!past&&!used);
-                d.settledContact=used;d.outcomeRibbon.gameObject.SetActive(used);
-                d.outcomeRibbon.color=d.kind==2&&frame.BombPhase==BombPhase.Exploded?new Color(.62f,.20f,.14f):d.kind==3?new Color(.42f,.29f,.12f):d.kind==8?new Color(.34f,.23f,.49f):d.kind>=9?new Color(.10f,.33f,.49f):new Color(.10f,.40f,.34f);
-                d.caption.rectTransform.anchorMin=used?new Vector2(.02f,-.50f):new Vector2(-.08f,-.50f);d.caption.rectTransform.anchorMax=used?new Vector2(1.60f,-.10f):new Vector2(1.08f,-.10f);
-                d.caption.color=used?MenuPaper:Ink;
                 if(d.kind==2)d.icon.sprite=used&&frame.BombPhase==BombPhase.Defused&&d.safeSprite!=null?d.safeSprite:d.normalSprite;
                 d.icon.color=used&&d.kind!=2?new Color(.85f,.94f,.88f):Color.white;
-                UiCopy copy=used?new UiCopy(d.kind==2?(frame.BombPhase==BombPhase.Defused?"Safe":"Burst"):d.kind==3?"Unlocked":d.kind==4?"Repaired":d.kind==9?"Far swap":d.kind==10?"Pause bomb":"Collected"):d.kind==2?new UiCopy("{0} moves",active?frame.BombTicks:floor.Bomb.Ticks):d.kind==9?new UiCopy("Far swap"):d.kind==10?new UiCopy("Pause bomb"):UiCopy.Raw("");
-                if(d.kind==2&&active&&frame.BombPhase==BombPhase.Armed&&frame.FrozenTicks>0){copy=new UiCopy("Paused: {0}",frame.FrozenTicks);d.icon.color=new Color(.65f,.86f,1);}
-                d.caption.SetCopy(copy);
+                if(d.countdown!=null) {
+                    UiCopy copy=new UiCopy("{0} moves",active?frame.BombTicks:floor.Bomb.Ticks);
+                    if(active&&frame.BombPhase==BombPhase.Armed&&frame.FrozenTicks>0){copy=new UiCopy("Paused: {0}",frame.FrozenTicks);d.icon.color=new Color(.65f,.86f,1);}
+                    d.countdown.SetCopy(copy);
+                }
             }
         }
     }

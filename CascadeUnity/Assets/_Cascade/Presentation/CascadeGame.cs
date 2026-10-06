@@ -439,7 +439,7 @@ namespace Cascade.Presentation
                 FixedBand(statusPaper,safeRoot.rect.height-114*unit,44*unit);status.fontSize=16*unit*(Preferences.LargeText?1.12f:1);
                 FixedBand(minimumLabel.rectTransform,safeRoot.rect.height-140*unit,20*unit);minimumLabel.fontSize=13*unit;
                 foreach(var label in floorLabels)label.fontSize=14*unit;
-                foreach(var dock in deviceDocks)dock.caption.fontSize=13*unit;
+                foreach(var dock in deviceDocks)if(dock.countdown!=null)dock.countdown.fontSize=13*unit;
                 FixedBand(actions, 8 * unit, 52 * unit); FixedBand(precise, 64 * unit, 104 * unit);
                 foreach(var button in actions.GetComponentsInChildren<UnityEngine.UI.Button>()){
                     var label=button.GetComponentInChildren<TextMeshProUGUI>();if(label==null)continue;

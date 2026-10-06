@@ -102,6 +102,33 @@ namespace Cascade.Editor.Playable
             }finally{camera.targetTexture=old;UnityEngine.Object.Destroy(target);UnityEngine.Object.Destroy(pixels);g.RefreshLayout();}
             Debug.Log("CASCADE original departure and wind witnesses complete");
         }
+        public static void RunStatusCleanup() => UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(StatusCleanup());
+        static IEnumerator StatusCleanup()
+        {
+            var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();typeof(CascadeGame).GetField("persistenceReady",BindingFlags.Instance|BindingFlags.NonPublic).SetValue(g,false);
+            g.SendMessage("OnApplicationFocus",true);g.SendMessage("OnApplicationPause",false);UnityEngine.Application.runInBackground=true;g.SetUiLocale("ru");g.ReducedMotion=false;
+            foreach(var entry in new[]{("repair",PuzzleEventKind.Repaired),("ribbon",PuzzleEventKind.RibbonCollected),("bomb",PuzzleEventKind.BombDefused)}) {
+                if(entry.Item1=="ribbon")g.LoadLevel(g.Catalog.BonusLevels[6].Definition);else g.LoadNode(entry.Item1=="repair"?"C18":"C13");
+                g.ShowGame();yield return Ready(g);g.Interaction.SetSuspended(false);
+                var route=Route(g.Interaction.Attempt.Resolver,entry.Item2);
+                for(int i=0;i<route.Count-1;i++){g.Interaction.Execute(route[i]);while(g.Interaction.IsPresenting)yield return null;}
+                var command=route[route.Count-1];string hash=g.Interaction.Attempt.CurrentStateHash;
+                if(command.Kind==CommandKind.Swap)g.PreviewDrag(command.Edge,command.Edge+1);else if(command.Kind==CommandKind.LongReach)g.PreviewDrag(command.Edge,command.End);
+                if(hash!=g.Interaction.Attempt.CurrentStateHash)throw new InvalidOperationException("Preview changed state");
+                if(g.GetComponentsInChildren<RectTransform>(true).Any(r=>r.name=="Contact outcome ribbon"||r.name=="Device state"))throw new InvalidOperationException("Local outcome still exists");
+                yield return PlayableCapture.CaptureSettled("StatusCleanup",entry.Item1+"-preview.png",390,844,owner=>{
+                    // Layout refresh clears forecasts; apply the preview to the actual captured frame.
+                    if(command.Kind==CommandKind.Swap||command.Kind==CommandKind.LongReach){owner.PreviewDrag(command.Edge,command.Edge);owner.PreviewDrag(command.Edge,command.Kind==CommandKind.Swap?command.Edge+1:command.End);}
+                });
+                g.Interaction.SetSuspended(false);g.Interaction.Execute(command);
+                while((!g.ReactionBanner.IsShowing||g.EventPlayer.CurrentEvent!=entry.Item2)&&g.Interaction.IsPresenting)yield return null;
+                while(g.ReactionBanner.IsShowing&&g.ReactionBanner.Elapsed<1.1f)yield return null;
+                if(!g.ReactionBanner.IsShowing||!g.ReactionBanner.StatusVisible)throw new InvalidOperationException("Central outcome did not appear");
+                g.Interaction.SetPaused(true);yield return PlayableCapture.CaptureSettled("StatusCleanup",entry.Item1+"-central.png",390,844);g.Interaction.SetPaused(false);
+                while(g.Interaction.IsPresenting)yield return null;
+            }
+            Debug.Log("CASCADE local statuses removed; preview and central reactions checked");
+        }
         public static void RunTouchFeel() => UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(TouchFeel());
         static IEnumerator TouchFeel()
         {

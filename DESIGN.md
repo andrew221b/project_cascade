@@ -599,3 +599,11 @@ released position, scale and angle. Selection never fights the touch pose.
 Unchanged duplicate symbols keep their seats during a far swap. Quiet motion
 removes lift/zoom/tilt while preserving direct finger tracking. See Docs/TOUCH_FEEL.md
 and native/test evidence in Reports/TouchFeel. No gameplay or asset schema change.
+
+
+## One outcome message — 6 October 2026
+
+Hanging tools have no local result caption or outcome ribbon. Forecast uses the
+existing icon tint and shared forecast band. Real results belong to the central
+original-tool reaction and woven status animation. The armed bomb's moves/frozen
+countdown remains functional information. See Reports/StatusCleanup.

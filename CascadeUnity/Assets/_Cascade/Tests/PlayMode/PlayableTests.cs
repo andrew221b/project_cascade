@@ -120,7 +120,7 @@ namespace Cascade.Tests
             yield return TouchFrame(21,Point(0),UnityEngine.InputSystem.TouchPhase.Began);
             yield return TouchFrame(21,Point(1),UnityEngine.InputSystem.TouchPhase.Moved);
             Assert.That(game.Interaction.Attempt.Current.ReachCharges,Is.Zero,"Preview cannot grant a tool");
-            Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Any(t=>t.name=="Device state"&&t.text=="Far swap"),Is.True);
+            Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>(true).Any(t=>t.name=="Device state"),Is.False,"Forecasts do not announce outcomes under hanging tools.");
             yield return TouchFrame(21,Point(1),UnityEngine.InputSystem.TouchPhase.Ended);yield return AwaitPresentation();
             Assert.That(game.Interaction.Attempt.Current.ReachCharges,Is.EqualTo(1));
             yield return TouchFrame(22,Point(1),UnityEngine.InputSystem.TouchPhase.Began);
@@ -668,7 +668,7 @@ namespace Cascade.Tests
             game.Interaction.SetSuspended(false);game.Interaction.Execute(PuzzleCommand.Swap(0));yield return AwaitPresentation();
             Assert.That(game.Interaction.Attempt.Current.BombPhase,Is.EqualTo(BombPhase.Defused),"The symbol painted on the body still uses the canonical contact rule.");
             var safeIcon=letter.transform.parent.parent.GetComponent<UnityEngine.UI.Image>();Assert.That(safeIcon.sprite.name,Is.EqualTo("BombSafe"));
-            Assert.That(safeIcon.transform.parent.Find("Contact outcome ribbon").gameObject.activeSelf,Is.True);
+            Assert.That(safeIcon.transform.parent.Find("Contact outcome ribbon"),Is.Null,"The central reaction is the only outcome ribbon.");
 
             // Every tool keeps its painted symbol on the same body.
             game.LoadNode("C18");game.ReducedMotion=false;yield return AwaitPreparation();game.RefreshLayout();

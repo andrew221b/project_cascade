@@ -91,7 +91,6 @@ namespace Cascade.Presentation
             count=motif==2?1:motif==1?3:5;
             if(game.Preferences.EffectQuality==1)count=Mathf.Min(3,count);if(game.Preferences.EffectQuality==0)count=0;if(game.ReducedMotion)count=Mathf.Min(2,count);
             title.text=message.ToString();title.ForceMeshUpdate();opacity.alpha=1;heroMount.gameObject.SetActive(hasTool);
-            if(hasTool&&!game.ReducedMotion)game.SetReactionSourceStatus(Source,false);
             instruction.enabled=false;paperImage.enabled=false;Paint();
         }
         public void ShowWind(bool right)
@@ -145,7 +144,6 @@ namespace Cascade.Presentation
         }
         public void Clear()
         {
-            if(Source!=null&&game!=null)game.SetReactionSourceStatus(Source,true);
             IsShowing=false;Source=null;if(instruction!=null)instruction.enabled=true;if(paperImage!=null)paperImage.enabled=true;gameObject.SetActive(false);
             ReleaseTool();
         }

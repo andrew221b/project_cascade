@@ -30,13 +30,7 @@ namespace Cascade.Presentation
             foreach(var dock in deviceDocks) {
                 if(dock.root==null||!dock.root.gameObject.activeInHierarchy)continue;
                 if(movingDevice(dock)){dock.responseTime=Mathf.Max(0,dock.responseTime-dt);}
-                if(moving)dock.successTime=Mathf.Max(0,dock.successTime-dt);
-                float reveal=ReducedMotion||dock.successTime<=0?1:1-Mathf.Exp(-(1.2f-dock.successTime)*12);
-                float flourish=ReducedMotion?0:Mathf.Sin((1.2f-dock.successTime)*12)*dock.successTime/1.2f;
-                dock.outcomeRibbon.rectTransform.localScale=Vector3.one*(.86f+.14f*reveal+.04f*flourish);
-                dock.outcomeRibbon.rectTransform.localRotation=Quaternion.Euler(0,0,flourish*3);
-                dock.caption.rectTransform.localScale=Vector3.one*(.92f+.08f*reveal);
-                dock.caption.fontSize=(dock.settledContact?16:14)/Mathf.Min(1,dock.caption.GetComponentInParent<Canvas>().scaleFactor);
+                if(dock.countdown!=null)dock.countdown.fontSize=14/Mathf.Min(1,dock.countdown.GetComponentInParent<Canvas>().scaleFactor);
                 float response=ReducedMotion?0:Mathf.Sin((1-dock.responseTime/.32f)*Mathf.PI)*dock.responseTime/.32f;
                 dock.icon.transform.localScale=Vector3.one*(1+.10f*response);
                 // The body performs the action: turn a key, press a stamp, unfurl a spool.
@@ -78,9 +72,6 @@ namespace Cascade.Presentation
                 // The bomb hangs from its metal collar; its curved fuse is not a handle.
                 var grip=Grip(dock.kind==2?new Vector2(.365f,.69f):dock.kind==3?new Vector2(.465f,1.08f):dock.kind==4?new Vector2(.47f,.78f):dock.kind==8?new Vector2(.68f,1.02f):dock.kind==9?new Vector2(.46f,1.01f):new Vector2(.47f,1.05f));
                 dock.cord.SetEndpoints(Vector2.Scale(hook,card.rect.size),Vector2.Scale(grip,card.rect.size),ReducedMotion?0:machine.WindAt(dock.floor),moving?dt:0,machine.AmbientPhase+(.17f*dock.floor)+(.13f*dock.slotX),ReducedMotion);
-                bool waitForStatus=ReactionBanner.IsShowing&&ReactionBanner.Source==dock.icon.rectTransform&&!ReactionBanner.StatusVisible;
-                dock.outcomeRibbon.gameObject.SetActive(dock.settledContact&&!waitForStatus);
-                dock.caption.enabled=!waitForStatus;
 
             }
         }
