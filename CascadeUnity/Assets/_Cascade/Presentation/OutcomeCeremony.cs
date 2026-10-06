@@ -9,7 +9,7 @@ namespace Cascade.Presentation
     public sealed class OutcomeCeremony : MonoBehaviour
     {
         CascadeGame game;
-        RectTransform root,portrait;Transform ledge;
+        RectTransform root,portrait,ribbon;Transform ledge;
         Image hero;
         TextMeshProUGUI title;
         OutcomeLightGraphic light;
@@ -22,7 +22,7 @@ namespace Cascade.Presentation
         bool checkpoint;
         public void Initialize(CascadeGame owner,RectTransform story,Image friend,TextMeshProUGUI heading,OutcomeLightGraphic glow)
         {
-            game=owner;root=story;hero=friend;portrait=friend.rectTransform;heroRest=portrait.anchoredPosition;title=heading;light=glow;
+            game=owner;root=story;ribbon=heading.transform.parent as RectTransform;hero=friend;portrait=friend.rectTransform;heroRest=portrait.anchoredPosition;title=heading;light=glow;
             ledge=root.Find("Mika's outcome ledge");
             group=root.gameObject.AddComponent<CanvasGroup>();group.blocksRaycasts=false;group.interactable=false;
             hopeful=Resources.Load<Sprite>("CascadeArt/Journey/Mika");thinking=Resources.Load<Sprite>("CascadeArt/Journey/MikaThinking");
@@ -54,6 +54,7 @@ namespace Cascade.Presentation
             game.PlaceOutcomeReceiver(t,Success);
             float reveal=Mathf.SmoothStep(0,1,Mathf.Clamp01((t-.24f)/.36f));
             group.alpha=game.ReducedMotion?1:reveal;
+            if(ribbon!=null){float ease=game.ReducedMotion?1:1-Mathf.Pow(1-Mathf.Clamp01((t-.18f)/.48f),3);ribbon.localScale=new Vector3(Mathf.Lerp(.86f,1,ease),Mathf.Lerp(.68f,1,ease),1);}
             float bow=game.ReducedMotion?0:Mathf.Sin(Mathf.Clamp01((t-.25f)/.75f)*Mathf.PI);
             portrait.anchoredPosition=heroRest+Vector2.up*(Success?8*bow:-3*bow);
             portrait.localRotation=Quaternion.Euler(0,0,Success?-1.5f*bow:2*bow);
@@ -70,7 +71,7 @@ namespace Cascade.Presentation
         }
         public void Settle()
         {
-            if(game==null)return;Running=false;Progress=1;
+            if(game==null)return;Running=false;Progress=1;if(ribbon!=null)ribbon.localScale=Vector3.one;
             portrait.anchoredPosition=heroRest;portrait.localScale=Vector3.one;portrait.localRotation=Quaternion.identity;group.alpha=1;
             light.SetLight(Success&&!checkpoint?.75f:0,1);
             for(int i=0;i<game.Machine.TokenCount;i++){game.OffsetPresentedToken(i,Vector3.zero,Vector2.one);game.Machine.SetPiecePose(i,PiecePose.Delivered);}

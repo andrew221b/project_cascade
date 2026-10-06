@@ -662,3 +662,7 @@ Tools left: {0}	Tools left: {0}	Инструментов: {0}	Інструмен
 Tools: up to 2 stars. No clean record.	Tools: up to 2 stars.\nNo clean record.	С инструментом — до 2 звёзд.\nЧистого рекорда не будет.	Із інструментом — до 2 зірок.\nЧистого рекорду не буде.
 The row would arrive home.	The row would arrive home.	Ряд попадёт домой.	Ряд потрапить додому.
 The row will match the target on the next board.	The row will match the target on the next board.	На следующей доске ряд совпадёт с целью.	На наступній дошці ряд збігатиметься з ціллю.
+World complete · {0}/{0} levels	World complete · {0}/{0} levels	Мир пройден · {0}/{0} уровней	Світ пройдено · {0}/{0} рівнів
+Next world in {0} level · {1}/{2}	Next world in {0} level · {1}/{2}	До нового мира: {0} · пройдено {1}/{2}	До нового світу: {0} · пройдено {1}/{2}
+Next world in {0} levels · {1}/{2}	Next world in {0} levels · {1}/{2}	До нового мира: {0} · пройдено {1}/{2}	До нового світу: {0} · пройдено {1}/{2}
+You are here · {0}/{1}	You are here · {0}/{1}	Вы здесь · {0}/{1}	Ти тут · {0}/{1}

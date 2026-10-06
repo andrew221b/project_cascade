@@ -2728,6 +2728,22 @@ MonoBehaviour:
     m_Localized: The row will match the target on the next board.
     m_Metadata:
       m_Items: []
+  - m_Id: 564361234997248
+    m_Localized: "World complete \xB7 {0}/{0} levels"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 564361239191552
+    m_Localized: "Next world in {0} level \xB7 {1}/{2}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 564361239191553
+    m_Localized: "Next world in {0} levels \xB7 {1}/{2}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 566306465112064
+    m_Localized: "You are here \xB7 {0}/{1}"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

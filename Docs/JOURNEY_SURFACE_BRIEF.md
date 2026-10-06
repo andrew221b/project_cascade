@@ -31,3 +31,11 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 Current acceptance is limited to actual implemented surfaces and tested actions.
 The prior P14 button layout is rejected by the user's evidence; do not use its
 earlier approval to certify this revision. Online remains design-only.
+
+Map refinement, 7 October 2026: keep the world, remove the cream map cards.
+Reading order: region/goal → illustrated current island with Mika → task and
+world progress → amber level action → secondary conversation. Whole-world maps
+group the unchanged160 levels into eight regions; each island owns2–5 levels,
+with33 original story beats retained. Footer controls remain48px on compact
+phones; open-level arrows provide replay. Existing sky and bounded parallax
+remain. Award/parcel motion is one finite light-and-unwrapping sequence.

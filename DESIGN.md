@@ -833,3 +833,19 @@ ambient wind gates the first impulse. A tool's explicit Use resumes only from
 the acknowledgement button. Metadata is persisted before resuming, never from
 tween completion. New authored raster assets are unnecessary: the examples
 reuse the game's actual devices and original tool art.
+
+## Whole-world map and earned celebration — 7 October 2026
+
+The map is an open sky composition: dark ink region and goal at the top,
+illustrated islands in the center, current-island progress below Mika, then
+task/world progress and framed enamel actions. No cream heading, footer or
+current-marker sheet. Amber denotes the level action; ivory arrows read on teal.
+Minimum touch size48px; safe-area roots and Large Text remain active. One
+world persists for10–24 full levels, with2–5 levels per island.
+
+Earned celebration uses the original sewn gold stars, fabric ribbon, confetti
+and parcel. The ribbon opens first, stars arrive in sequence, and score follows.
+A parcel anticipates, opens, raises its object, then settles; a bounded warm
+light fades with the finite confetti. Focus pauses before clock advancement.
+Reduced Motion retains final award information without spatial motion. No
+reward or progression is triggered by motion completion.

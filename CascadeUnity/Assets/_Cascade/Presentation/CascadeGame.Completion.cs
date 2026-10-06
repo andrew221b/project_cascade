@@ -76,7 +76,7 @@ namespace Cascade.Presentation
                 receipt.Lights==0?"Replay to improve your stars and score.":WaitingParcel!=null?"A gift is waiting for you!":new UiCopy("New lights for a gift: {0} / 3",Rewards.OrderProgress));
             var next=MenuButton(WaitingParcel!=null?"Collect my gift":"Back to map",.012f,ContinueCompletion,true,.15f,.85f);
             next.name="Continuecompletion";next.GetComponent<Image>().sprite=enamelControls[1];next.GetComponent<Image>().color=Color.white;
-            var celebration=menuRoot.gameObject.AddComponent<RewardCelebration>();celebration.Initialize(this,stars,receipt.Stars,score,receipt.Score,CompletionArt(3),false);
+            var celebration=menuRoot.gameObject.AddComponent<RewardCelebration>();celebration.Initialize(this,stars,receipt.Stars,score,receipt.Score,CompletionArt(3),false,ribbon.rectTransform);
         }
         public void ContinueCompletion()
         {

@@ -7,6 +7,13 @@ namespace Cascade.Content
     {
         public static int Zone(int stop)=>stop<15?0:stop<30?1:stop<40?2:stop<64?3:stop<88?4:stop<112?5:stop<136?6:7;
         static readonly int[] PageStarts={0,5,10,15,20,25,30,35,40,45,50,55,60,64,69,74,79,84,88,93,98,103,108,112,117,122,127,132,136,141,146,151,156};
+        static readonly int[] WorldStarts={0,15,30,40,64,88,112,136};
+        public const int WorldCount=8;
+        public static int WorldFirst(int world)=>WorldStarts[Math.Max(0,Math.Min(7,world))];
+        public static int WorldLevels(int world)=>(world<7?WorldFirst(world+1):160)-WorldFirst(world);
+        public static int IslandFirst(int world,int island)=>WorldFirst(world)+(WorldLevels(world)*Math.Max(0,Math.Min(5,island))+4)/5;
+        public static int IslandLevels(int world,int island)=>IslandFirst(world,island+1)-IslandFirst(world,island);
+        public static int IslandFor(int stop){int world=Zone(stop);for(int i=4;i>=0;i--)if(stop>=IslandFirst(world,i))return i;return 0;}
         public static int PageCount=>PageStarts.Length;
         public static int FirstStop(int page)=>PageStarts[Math.Max(0,Math.Min(PageStarts.Length-1,page))];
         public static int PageFor(int stop){for(int p=PageStarts.Length-1;p>=0;p--)if(stop>=PageStarts[p])return p;return 0;}

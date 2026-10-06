@@ -107,7 +107,7 @@ namespace Cascade.Presentation
             CompletionText("Gift title",ribbon.transform,new Vector2(.16f,.22f),new Vector2(.84f,.80f),23,opened?"A gift for you!":"You earned a gift!");
             CompletionText("Gift name",menuRoot,new Vector2(.12f,.758f),new Vector2(.88f,.827f),20,new UiCopy(GiftNames[index]));
             var parcel=Picture("Illustrated parcel",menuRoot,new Vector2(.14f,.39f),new Vector2(.86f,.73f),opened?CompletionArt(2):Resources.Load<Sprite>("CascadeArt/Workshop/Parcel"),true);
-            parcel.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,2),0,.6f);
+
             var picture=opened?RewardPicture(GiftAssets[index],new Vector2(.27f,.535f),new Vector2(.73f,.788f)):null;
             MenuReadingSurface("Parcel note cloth",new Vector2(.10f,.235f),new Vector2(.90f,.369f));
             CompletionText("Parcel promise",menuRoot,new Vector2(.12f,.285f),new Vector2(.88f,.36f),22,opened?
@@ -117,27 +117,32 @@ namespace Cascade.Presentation
                 opened?"Find three parts to make a keepsake for Mika.":"Let's see what is inside.");
             var next=MenuButton(opened?(parcelReturnsToMap?"Back to map":"Keep going"):"Unwrap",.095f,()=>{
                 if(opened){if(parcelReturnsToMap)FinishCompletion();else ShowJournal();return;}
-                if(Rewards.ClaimParcel(parcelOrder)){PersistProgress();parcelOpened=true;feedback.Sound(ToyCue.Success);DrawMenu();}
+                if(Rewards.ClaimParcel(parcelOrder)){PersistProgress();parcelOpened=true;DrawMenu();}
             },true,.15f,.85f);next.name=opened?"Keepgift":"Unwrapgift";next.GetComponent<UnityEngine.UI.Image>().sprite=enamelControls[1];next.GetComponent<UnityEngine.UI.Image>().color=Color.white;
             if(opened){if(!ReducedMotion)StartCoroutine(GiftArrival(picture.rectTransform,parcel));
-                menuRoot.gameObject.AddComponent<RewardCelebration>().Initialize(this,null,0,null,0,CompletionArt(3),true);}
+                menuRoot.gameObject.AddComponent<RewardCelebration>().Initialize(this,null,0,null,0,CompletionArt(3),true,ribbon.rectTransform);}
             if(!parcelReturnsToMap)MenuButton("Back",.005f,ShowTravelBag);
         }
         IEnumerator GiftArrival(RectTransform picture,UnityEngine.UI.Image parcel)
         {
             var rest=picture.anchoredPosition;
             var opened=parcel.sprite;parcel.sprite=Resources.Load<Sprite>("CascadeArt/Workshop/Parcel");var gift=picture.GetComponent<UnityEngine.UI.Image>();gift.color=new Color(1,1,1,0);
-            for(float t=0;t<1.65f;){if(picture==null||parcel==null)yield break;
+            bool openedSound=false,revealSound=false;
+            for(float t=0;t<2.35f;){if(picture==null||parcel==null)yield break;
+                if(ReducedMotion)break;
                 if(!CelebrationMotionAllowed){yield return null;continue;}
-                float prepare=Mathf.Clamp01(t/.42f);parcel.rectTransform.localScale=Vector3.one*(1+.035f*Mathf.Sin(prepare*Mathf.PI*2));
-                if(t>=.42f)parcel.sprite=opened;
-                float p=Mathf.Clamp01((t-.42f)/1.15f),ease=1-Mathf.Pow(1-p,3);gift.color=new Color(1,1,1,Mathf.Clamp01(p*4));
-                picture.localScale=Vector3.one*(Mathf.Lerp(.58f,1,ease)+.09f*Mathf.Sin(p*Mathf.PI));
-                picture.anchoredPosition=rest+Vector2.up*Mathf.Sin(p*Mathf.PI)*22;picture.localRotation=Quaternion.Euler(0,0,Mathf.Sin(p*Mathf.PI)*-7);
-                t+=Time.unscaledDeltaTime;yield return null;}
+                float prepare=Mathf.Clamp01(t/.55f);parcel.rectTransform.localScale=new Vector3(1+.035f*Mathf.Sin(prepare*Mathf.PI),1-.025f*Mathf.Sin(prepare*Mathf.PI),1);
+                parcel.rectTransform.localRotation=Quaternion.Euler(0,0,t<.55f?Mathf.Sin(prepare*Mathf.PI*2)*2.2f:Mathf.Sin(Mathf.Clamp01((t-.55f)/.6f)*Mathf.PI)*-1.4f);
+                if(t>=.55f){parcel.sprite=opened;if(!openedSound){openedSound=true;feedback.Sound(ToyCue.Stamp);}}
+                float p=Mathf.Clamp01((t-.62f)/1.35f),ease=1-Mathf.Pow(1-p,3);gift.color=new Color(1,1,1,Mathf.Clamp01(p*5));
+                picture.localScale=Vector3.one*(Mathf.Lerp(.45f,1,ease)+.08f*Mathf.Sin(p*Mathf.PI));
+                picture.anchoredPosition=rest+Vector2.down*(1-ease)*62+Vector2.up*Mathf.Sin(p*Mathf.PI)*16;
+                picture.localRotation=Quaternion.Euler(0,0,Mathf.Sin(p*Mathf.PI)*-6);
+                if(p>.30f&&!revealSound){revealSound=true;feedback.Sound(ToyCue.Success);feedback.Haptic();}
+                t+=Mathf.Min(.05f,Time.unscaledDeltaTime);yield return null;}
             if(picture!=null){picture.anchoredPosition=rest;picture.localRotation=Quaternion.identity;}
-            if(parcel!=null){parcel.sprite=opened;parcel.rectTransform.localScale=Vector3.one;}
-            if(picture!=null)picture.localScale=Vector3.one;
+            if(parcel!=null){parcel.sprite=opened;parcel.rectTransform.localScale=Vector3.one;parcel.rectTransform.localRotation=Quaternion.identity;}
+            if(picture!=null){picture.localScale=Vector3.one;gift.color=Color.white;}
         }
         static int StampGoal(LevelDefinition level)=>level.Floors.Select((f,i)=>f.OptionalStamp==null?0:1<<i).Aggregate(0,(a,b)=>a|b);
         LevelContent[] StampTrails()

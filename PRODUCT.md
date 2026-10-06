@@ -170,10 +170,10 @@ C41–C160 with solver minima of 5–12 actions (mean 7.8667), plus ten optional
 stamp detours in the new content. The catalog contains 160 primary puzzles and
 477 localized bindings, 637 concrete definitions; locale bindings are alternate
 renderings of campaign nodes, not 637 distinct campaign stops. The eight-region
-journey spans 33 map pages. Wind Gardens, Rain Mill and Copper Orchard retain
+journey spans eight whole-world maps (15,15,10,24,24,24,24,24 full levels). Wind Gardens, Rain Mill and Copper Orchard retain
 their original art; five new original Base/Map pairs introduce Cloud Post,
 Glass Lagoon, Moss Archive, Snow Spire and Great Beacon. Mika's optional story
-now follows all 33 pages and ends at the beacon.
+retains its 33 original level-bound story beats and ends at the beacon. Each illustrated island now groups two to five full levels; levels retain three stages. Cream heading/footer/current-marker cards are removed from the map. Dark ink reads directly on the sky, and teal/amber framed controls form the footer. The current-island label shows cleared/group total; the footer shows cleared/world total and remaining levels before the next world. Opened-level arrows support replay while locked levels remain inaccessible.
 
 The wooden workshop revision in Docs/VISUAL_MOTION_REWORK.md and
 Docs/WOODLAND_SURFACE_BRIEF.md is implemented in presentation: honey-wood
@@ -235,7 +235,7 @@ link to the retained Ribbon Reach trials. Map islands are the destinations:
 invisible hit targets replace numbered stop panels and path pebbles; available
 scenery remains colored, locked scenery is desaturated, and the current island
 has a localized You are here arrow with a small Mika standing on its plaza.
-A separate invisible portrait target opens the current conversation. Map pages
+A separate invisible portrait target opens the current conversation. Whole-world maps
 use swipes; islands, Mika and their targets share bounded view-only parallax
 from device gravity where available or desktop mouse input, with quiet ambient
 drift. Reduced Motion and suspension return this map offset to zero. The
@@ -428,3 +428,5 @@ Docs/FIRST_MECHANIC_POPUPS.md; Reports/Introductions.
 - Inspect the running game, and state what remains unverified.
 
 The outcome pass removes the full yellow menu sheet in favor of a complete painted workshop window, animated clouds, gentle lantern daylight and quiet dust behind controls. Victory and failure have distinct finite lantern/Mika ceremonies; result buttons follow the ceremony, and receiver layout moves continuously into place. Hanging tool tags physically attach to their wooden carrier and an accessible How to play page explains the tag, direct dragging and receiver goal. Wood carries a visible static load, bows more with wear and splits into textured splinters when spent. These are cosmetic springs and event-driven poses, not gameplay physics. Two original raster assets were generated: WorkshopPortrait and MikaThinking; existing assets were preserved.
+
+Map/celebration refinement, 7 October 2026: RewardCelebration unfurls the existing illustrated ribbon, lights earned stars sequentially, counts score after their arrival and uses a finite warm glow/fabric burst. Its locally advanced DOTween timeline pauses before advancing when focus is lost and clamps long frame gaps. Stage outcome ribbons also unfurl. A parcel has anticipation, opening at0.55s and a gift emerging over1.35s, then a settled pose; normal navigation can interrupt it, Reduced Motion settles without the spatial sequence. Receipts are committed before motion. Native Editor samples confirm statistics → parcel → map, final poses, focus pause, immutable row/receipts and small48px map targets.16 focused EditMode tests passed. No new raster was needed: CompletionAtlas/Parcel/Mika/map art retained. Docs/MAP_PACING_AND_CELEBRATION.md and Reports/MapCelebration/README.md contain scope and limitations; physical devices, audio listening, performance and human enjoyment are not certified.
