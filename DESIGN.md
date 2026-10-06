@@ -534,3 +534,16 @@ retain physical content padding and safe-area bounds, including large text.
 Strong wind gets a brief directional forecast with progressive spring pressure
 before its existing landing shift; ambient wind stays subtle. No fake countdown.
 See Docs/GAMEPLAY_REACTION_MOTION.md and Reports/Reactions/README.md.
+
+## Single-cord activation sequence — 6 October 2026
+
+Each tool has one softly shaded, continuous hemp cord, attached to its physical
+handle and following the existing wind-driven pendulum. Activation clones only
+its body and symbol; the duplicate departs from its exact rendered pose, travels
+into focus, pulses with separate clean motifs, then reveals status cloth below.
+The original remains suspended. Central and local status wait until .88 seconds;
+there is no early title flash. Total beat1.72s, Reduced Motion static .55s.
+Clean sibling atlases remove embedded atmosphere. A narrow native alpha edge
+material excludes residual low-alpha fringes, with separate settings for solids,
+glass and smoke. No duplicate Outline or added silhouette. The last smoke pass
+uses five smaller, softer wisps so the bomb stays recognizable.

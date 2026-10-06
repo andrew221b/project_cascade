@@ -21,6 +21,57 @@ namespace Cascade.Editor.Playable
             if(!EditorApplication.isPlaying||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required.");
             UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(Shots());
         }
+        public static void RunSequence() => UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(Sequence());
+        static IEnumerator Sequence()
+        {
+            var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();
+            typeof(CascadeGame).GetField("persistenceReady",BindingFlags.Instance|BindingFlags.NonPublic).SetValue(g,false);
+            g.SendMessage("OnApplicationFocus",true);UnityEngine.Application.runInBackground=true;
+            g.SetUiLocale("ru");g.ReducedMotion=false;g.Preferences.EffectQuality=2;g.Feedback.Quality=2;
+            foreach(var entry in new[]{("repair",PuzzleEventKind.Repaired),("key",PuzzleEventKind.KeyOpened),("stamp",PuzzleEventKind.StampCollected),("ribbon",PuzzleEventKind.RibbonCollected),("time",PuzzleEventKind.HourglassCollected),("safe",PuzzleEventKind.BombDefused),("blast",PuzzleEventKind.BombExploded),("words",PuzzleEventKind.Repaired)}){
+                string id=entry.Item1=="repair"||entry.Item1=="words"?"C18":entry.Item1=="key"?"C17":entry.Item1=="stamp"?"C35":"C13";
+                if(entry.Item1=="ribbon"||entry.Item1=="time")g.LoadLevel(g.Catalog.BonusLevels[entry.Item1=="ribbon"?6:9].Definition);
+                else if(entry.Item1=="words"){g.Catalog.TryGetLocalizedBinding(id,"ru",out var words);g.LoadLevel(words.Definition,"ru");}else g.LoadNode(id);
+                g.ShowGame();yield return Ready(g);
+                if(entry.Item1=="repair")yield return PlayableCapture.CaptureSettled("ReactionSequence","single-rope.png",390,844);
+                var route=Route(g.Interaction.Attempt.Resolver,entry.Item2);
+                for(int i=0;i<route.Count;i++){
+                    g.Interaction.SetSuspended(false);g.Interaction.Execute(route[i]);
+                    if(i==route.Count-1){
+                        while((!g.ReactionBanner.IsShowing||g.EventPlayer.CurrentEvent!=entry.Item2)&&g.Interaction.IsPresenting)yield return null;
+                        foreach(var phase in new[]{("pulse",.55f),("status",1.12f)}){
+                            while(g.ReactionBanner.IsShowing&&g.ReactionBanner.Elapsed<phase.Item2)yield return null;
+                            if(!g.ReactionBanner.IsShowing)throw new InvalidOperationException("Missed reaction phase");
+                            g.Interaction.SetPaused(true);float age=g.ReactionBanner.Elapsed;
+                            yield return PlayableCapture.CaptureSettled("ReactionSequence",entry.Item1+"-"+phase.Item1+".png",390,844);
+                            if(age!=g.ReactionBanner.Elapsed)throw new InvalidOperationException("Paused phase changed");
+                            g.Interaction.SetPaused(false);
+                        }
+                    }
+                    while(g.Interaction.IsPresenting)yield return null;
+                }
+            }
+            g.LoadNode("C18");g.ShowGame();yield return Ready(g);
+            g.StartCoroutine(SequenceMotion(g));
+        }
+        public static void ConfirmSequence() => UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(Confirm());
+        static IEnumerator Confirm(){var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();typeof(CascadeGame).GetField("persistenceReady",BindingFlags.Instance|BindingFlags.NonPublic).SetValue(g,false);g.SetUiLocale("ru");g.ReducedMotion=false;g.LoadNode("C13");g.ShowGame();yield return Ready(g);g.Interaction.SetSuspended(false);g.Interaction.Execute(PuzzleCommand.Swap(1));while(!g.ReactionBanner.IsShowing)yield return null;while(g.ReactionBanner.Elapsed<.55f)yield return null;g.Interaction.SetPaused(true);yield return PlayableCapture.CaptureSettled("ReactionSequence","blast-pulse.png",390,844);g.Interaction.SetPaused(false);while(g.Interaction.IsPresenting)yield return null;g.LoadNode("C18");g.ShowGame();yield return Ready(g);yield return SequenceMotion(g);}
+        static IEnumerator SequenceMotion(CascadeGame g)
+        {
+            var camera=Camera.main;var old=camera.targetTexture;var target=new RenderTexture(390,844,24);camera.targetTexture=target;
+            var pixels=new Texture2D(390,844,TextureFormat.RGB24,false);Directory.CreateDirectory("/tmp/cascade-sequence-motion");
+            try{
+                g.RefreshLayout();yield return null;yield return null;g.Interaction.SetSuspended(false);g.Interaction.Execute(PuzzleCommand.Swap(0));
+                while(!g.ReactionBanner.IsShowing)yield return null;string hash=g.Interaction.Attempt.CurrentStateHash;
+                for(int f=0;f<14;f++){
+                    camera.Render();var previous=RenderTexture.active;RenderTexture.active=target;pixels.ReadPixels(new Rect(0,0,390,844),0,0);pixels.Apply();RenderTexture.active=previous;
+                    File.WriteAllBytes("/tmp/cascade-sequence-motion/"+f.ToString("D2")+".png",pixels.EncodeToPNG());
+                    if(hash!=g.Interaction.Attempt.CurrentStateHash)throw new InvalidOperationException("Motion changed state");
+                    yield return new WaitForSecondsRealtime(.08f);
+                }
+            }finally{camera.targetTexture=old;UnityEngine.Object.Destroy(target);UnityEngine.Object.Destroy(pixels);g.RefreshLayout();}
+            Debug.Log("CASCADE clean tool sequence complete");
+        }
         public static void RunHeader()
         {
             var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();

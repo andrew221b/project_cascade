@@ -61,6 +61,7 @@ namespace Cascade.Presentation
                 float x=Mathf.Clamp((contact.Slot+.5f)/row.Length,.18f,.82f);
                 var body=Rect("Demo device",root,new Vector2(x-.13f,.20f),new Vector2(x+.13f,.49f));
                 mount=Picture("Tool",body,Vector2.zero,Vector2.one,ToolBody(kind),true);
+                mount.material=ToolSilhouette;
                 if(kind==2)BuildBombMark(mount.rectTransform,contact.RequiredSymbol);else BuildToolBodyMark(mount.rectTransform,kind,contact.RequiredSymbol);
                 if(kind==2)armedBomb=mount.sprite;
                 Line("Device strap",new Vector2(x,.45f),new Vector2(x,.51f),new Color(.4f,.27f,.15f),3);

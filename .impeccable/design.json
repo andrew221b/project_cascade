@@ -719,6 +719,12 @@
       "wind": "1.05s directional warning before existing landing permutation; progressive cosmetic spring pressure",
       "controls": "Wood/brass/enamel, cream teal labels, dark amber primary, short settings tabs",
       "accessibility": "Pause, Reduced Motion, Off/Low motifs, physical padding, simulated safe insets; real phones unverified"
+    },
+    "singleCordReactions20261006": {
+      "suspension": "One continuous cord per tool, physical handle endpoints, shared wind pendulum",
+      "sequence": "Clone body+symbol at exact source pose; .42s flight; particles .46s; status .88s; total1.72s; static reduced .55s",
+      "silhouette": "Clean sibling alpha atlases, native narrow antialias edge, no duplicated Outline",
+      "validation": "Native canonical two-stage witnesses and focused pause/quiet/suspension checks; see Reports/ReactionSequence"
     }
   },
   "components": [

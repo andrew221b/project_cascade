@@ -12,11 +12,17 @@ namespace Cascade.Presentation
         TMP_Text instruction;
         Image paperImage,cloth;
         TextMeshProUGUI title;
-        CanvasGroup opacity;
+        CanvasGroup opacity,clothOpacity;
+        Vector3 initialScale;
+        float initialAngle;
+        readonly Vector3[] corners=new Vector3[4];
+        public RectTransform Source { get; private set; }
+        public bool StatusVisible => !hasTool||game.ReducedMotion||age>=.88f;
         GameObject hero;
         Vector2 sourcePoint;
         readonly Image[] motes=new Image[8];
         readonly Sprite[] motifs=new Sprite[6];
+        readonly Material[] cleanMotifs=new Material[3];
         float age;
         int motif,count;
         bool hasTool,windWarning;
@@ -25,21 +31,22 @@ namespace Cascade.Presentation
         public bool IsShowing { get; private set; }
         public float Elapsed => age;
         public string Message => title==null?"":title.text;
-        public float BeatDuration => windWarning?1.05f:game.ReducedMotion?.30f:hasTool?1.18f:.60f;
+        public float BeatDuration => windWarning?1.05f:game.ReducedMotion?.55f:hasTool?1.72f:.60f;
         public void Initialize(CascadeGame owner,RectTransform band,TMP_Text status,TMP_FontAsset font)
         {
             game=owner;paper=band;instruction=status;paperImage=band.GetComponent<Image>();root=(RectTransform)transform;
             opacity=gameObject.AddComponent<CanvasGroup>();opacity.blocksRaycasts=false;opacity.interactable=false;
             heroMount=Child("Reaction focus",root,new Vector2(.5f,.68f),new Vector2(.5f,.68f));
-            var atlas=Resources.Load<Texture2D>("CascadeArt/Reactions/ToolMotifs");
+            var atlas=Resources.Load<Texture2D>("CascadeArt/Reactions/ToolMotifsClean");
             for(int i=0;i<6;i++)motifs[i]=WorkshopSpriteSet.Tool(atlas,i);
+            for(int i=0;i<3;i++){cleanMotifs[i]=new Material(Resources.Load<Shader>("CascadeArt/Reactions/CleanSprite")){name="Clean reaction motif "+i};cleanMotifs[i].SetFloat("_AlphaFloor",i==0?.72f:i==1?.46f:.42f);cleanMotifs[i].SetFloat("_AlphaFeather",i==0?.035f:.10f);}
             for(int i=0;i<motes.Length;i++){
                 motes[i]=Child("Reaction motif "+i,root,new Vector2(.5f,.68f),new Vector2(.5f,.68f)).gameObject.AddComponent<Image>();
                 motes[i].raycastTarget=false;motes[i].preserveAspect=true;motes[i].gameObject.SetActive(false);
             }
             windLines=Child("Approaching wind",root,new Vector2(.12f,.38f),new Vector2(.88f,.95f)).gameObject.AddComponent<WindWarningGraphic>();
             windLines.raycastTarget=false;windLines.gameObject.SetActive(false);
-            clothRect=Child("Woven announcement",root,new Vector2(0,.08f),new Vector2(1,.30f));cloth=clothRect.gameObject.AddComponent<Image>();
+            clothRect=Child("Woven announcement",root,new Vector2(0,.08f),new Vector2(1,.30f));cloth=clothRect.gameObject.AddComponent<Image>();clothOpacity=clothRect.gameObject.AddComponent<CanvasGroup>();clothOpacity.blocksRaycasts=false;
             var texture=Resources.Load<Texture2D>("CascadeArt/Reactions/Announcement");
             cloth.sprite=Sprite.Create(texture,new Rect(0,texture.height*.18f,texture.width,texture.height*.64f),new Vector2(.5f,.5f),100);cloth.raycastTarget=false;
             title=Child("Reaction title",clothRect,new Vector2(.13f,.12f),new Vector2(.87f,.88f)).gameObject.AddComponent<TextMeshProUGUI>();
@@ -56,19 +63,24 @@ namespace Cascade.Presentation
             if(game==null||game.CurrentScreen!=GameScreen.Playing)return;
             if(hero!=null){hero.SetActive(false);Destroy(hero);}
             foreach(var m in motes)m.gameObject.SetActive(false);
-            windWarning=false;windLines.gameObject.SetActive(false);hasTool=source!=null;age=0;IsShowing=true;gameObject.SetActive(true);root.SetAsLastSibling();RefreshLayout();
-            sourcePoint=source==null?Vector2.zero:(Vector2)heroMount.parent.InverseTransformPoint(source.position)-(Vector2)heroMount.localPosition;
+            windWarning=false;windLines.gameObject.SetActive(false);Source=source;heroMount.anchoredPosition=Vector2.zero;heroMount.localScale=Vector3.one;heroMount.localRotation=Quaternion.identity;hasTool=source!=null;age=0;IsShowing=true;gameObject.SetActive(true);root.SetAsLastSibling();RefreshLayout();
+            sourcePoint=source==null?Vector2.zero:(Vector2)root.InverseTransformPoint(source.TransformPoint(source.rect.center))-(Vector2)heroMount.localPosition;
+            if(source!=null){
+                source.GetWorldCorners(corners);var a=root.InverseTransformPoint(corners[0]);var b=root.InverseTransformPoint(corners[1]);var c=root.InverseTransformPoint(corners[2]);
+                initialScale=new Vector3(Vector3.Distance(b,c)/heroMount.rect.width,Vector3.Distance(a,b)/heroMount.rect.height,1);
+                initialAngle=source.eulerAngles.z-root.eulerAngles.z;
+            }
             if(hasTool){
                 hero=Instantiate(source.gameObject,heroMount);hero.name="Celebrated tool with body mark";
                 var r=(RectTransform)hero.transform;r.anchorMin=Vector2.zero;r.anchorMax=Vector2.one;r.offsetMin=r.offsetMax=Vector2.zero;r.localScale=Vector3.one;r.localRotation=Quaternion.identity;
                 var image=hero.GetComponent<Image>();image.color=Color.white;image.raycastTarget=false;
-                var edge=hero.AddComponent<Outline>();edge.effectColor=new Color(1,.93f,.69f,.65f);edge.effectDistance=new Vector2(1.5f,-1.5f);
                 foreach(var text in hero.GetComponentsInChildren<TMP_Text>()){text.fontSizeMax=54;text.fontSize=42;}
             }
             motif=tool=="RepairKit"?1:tool=="Stamp"?2:tool=="RibbonSpool"?3:tool=="Hourglass"?4:tool=="Bomb"?5:0;
-            count=motif==2?1:motif==1?3:motif==5?8:5;
+            count=motif==2?1:motif==1?3:5;
             if(game.Preferences.EffectQuality==1)count=Mathf.Min(3,count);if(game.Preferences.EffectQuality==0)count=0;if(game.ReducedMotion)count=Mathf.Min(2,count);
             title.text=message.ToString();title.ForceMeshUpdate();opacity.alpha=1;heroMount.gameObject.SetActive(hasTool);
+            if(hasTool&&!game.ReducedMotion)game.SetReactionSourceStatus(Source,false);
             instruction.enabled=false;paperImage.enabled=false;Paint();
         }
         public void ShowWind(bool right)
@@ -87,24 +99,27 @@ namespace Cascade.Presentation
         {
             float unit=1/Mathf.Min(1,GetComponentInParent<Canvas>().scaleFactor);
             if(windWarning)windLines.Paint(game.ReducedMotion?0:age,game.ReducedMotion);
-            float arrive=game.ReducedMotion?1:1-Mathf.Pow(1-Mathf.Clamp01(age/.32f),3);
-            float pulse=game.ReducedMotion?0:Mathf.Sin(Mathf.Clamp01((age-.28f)/.42f)*Mathf.PI);
-            heroMount.anchoredPosition=game.ReducedMotion?Vector2.zero:sourcePoint*(1-arrive);
-            heroMount.localScale=Vector3.one*(game.ReducedMotion?1:Mathf.Lerp(.48f,1,arrive)+.07f*pulse);
-            heroMount.localRotation=Quaternion.Euler(0,0,game.ReducedMotion?0:(motif==0?12:motif==3?-8:4)*pulse);
-            float exit=windWarning?BeatDuration-.18f:game.ReducedMotion?.22f:BeatDuration-.27f;opacity.alpha=1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(exit,BeatDuration,age));
+            float arrive=game.ReducedMotion?1:1-Mathf.Pow(1-Mathf.Clamp01(age/.42f),3);
+            float pulse=game.ReducedMotion?0:Mathf.Sin(Mathf.Clamp01((age-.42f)/.44f)*Mathf.PI);
+            heroMount.anchoredPosition=game.ReducedMotion?Vector2.zero:sourcePoint*(1-arrive)+Vector2.up*(Mathf.Sin(Mathf.Clamp01(age/.42f)*Mathf.PI)*18*unit);
+            heroMount.localScale=Vector3.one*(game.ReducedMotion?1:1+.085f*pulse);
+            if(!game.ReducedMotion)heroMount.localScale=Vector3.Lerp(initialScale,Vector3.one,arrive)*(1+.085f*pulse);
+            float statusReveal=game.ReducedMotion||!hasTool?1:Mathf.SmoothStep(0,1,Mathf.InverseLerp(.88f,1.06f,age));
+            clothOpacity.alpha=statusReveal;clothRect.localScale=new Vector3(1,.88f+.12f*statusReveal,1);
+            heroMount.localRotation=Quaternion.Euler(0,0,game.ReducedMotion?0:Mathf.LerpAngle(initialAngle,0,arrive)+(motif==0?10:motif==3?-7:3)*pulse);
+            float exit=windWarning?BeatDuration-.18f:game.ReducedMotion?BeatDuration-.14f:BeatDuration-.27f;opacity.alpha=1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(exit,BeatDuration,age));
             for(int i=0;i<motes.Length;i++){
-                bool active=hasTool&&i<count&&age>=(game.ReducedMotion?0:.34f);motes[i].gameObject.SetActive(active);if(!active)continue;
-                var m=motes[i];m.sprite=motifs[motif];float t=game.ReducedMotion?.35f:Mathf.Clamp01((age-.34f)/.70f);float angle=i*2.39996f;
+                bool active=hasTool&&i<count&&age>=(game.ReducedMotion?0:.46f);motes[i].gameObject.SetActive(active);if(!active)continue;
+                var m=motes[i];m.sprite=motifs[motif];m.material=cleanMotifs[motif==4?1:motif==5?2:0];float t=game.ReducedMotion?.35f:Mathf.Clamp01((age-.46f)/.76f);float angle=i*2.39996f;
                 var direction=new Vector2(Mathf.Cos(angle),Mathf.Sin(angle));
                 Vector2 offset=direction*(42+46*t);
                 if(motif==1)offset=new Vector2((i-1)*32,44-28*t+12*Mathf.Sin(t*Mathf.PI));
                 else if(motif==2)offset=new Vector2(56,8);
                 else if(motif==3)offset=new Vector2(direction.x*(30+28*t),38+54*t);
                 else if(motif==4)offset=new Vector2(Mathf.Cos(angle+t),Mathf.Sin(angle+t))*64;
-                m.rectTransform.anchoredPosition=offset*unit;m.rectTransform.sizeDelta=Vector2.one*(motif==5?94:motif==2?72:52)*unit;
+                m.rectTransform.anchoredPosition=offset*unit;m.rectTransform.sizeDelta=Vector2.one*(motif==5?72:motif==2?72:52)*unit;
                 m.rectTransform.localRotation=Quaternion.Euler(0,0,game.ReducedMotion?0:direction.x*t*24);
-                m.color=new Color(1,1,1,(1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(.48f,1,t)))*(motif==5?.8f:1));
+                m.color=new Color(1,1,1,(1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(.48f,1,t)))*(motif==5?.6f:1));
             }
         }
         public void RefreshLayout()
@@ -119,9 +134,10 @@ namespace Cascade.Presentation
         }
         public void Clear()
         {
-            IsShowing=false;if(instruction!=null)instruction.enabled=true;if(paperImage!=null)paperImage.enabled=true;gameObject.SetActive(false);
+            if(Source!=null&&game!=null)game.SetReactionSourceStatus(Source,true);
+            IsShowing=false;Source=null;if(instruction!=null)instruction.enabled=true;if(paperImage!=null)paperImage.enabled=true;gameObject.SetActive(false);
             if(hero!=null){hero.SetActive(false);Destroy(hero);hero=null;}
         }
-        void OnDestroy(){if(cloth!=null&&cloth.sprite!=null)Destroy(cloth.sprite);foreach(var s in motifs)if(s!=null)Destroy(s);}
+        void OnDestroy(){if(cloth!=null&&cloth.sprite!=null)Destroy(cloth.sprite);foreach(var s in motifs)if(s!=null)Destroy(s);foreach(var m in cleanMotifs)if(m!=null)Destroy(m);}
     }
 }

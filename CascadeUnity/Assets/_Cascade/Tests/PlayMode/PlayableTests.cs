@@ -455,12 +455,25 @@ namespace Cascade.Tests
                 game.Interaction.Execute(PuzzleCommand.Swap(0));double until=Time.realtimeSinceStartupAsDouble+30;
                 while(!game.ReactionBanner.IsShowing&&game.Interaction.IsPresenting&&Time.realtimeSinceStartupAsDouble<until)yield return null;
                 Assert.That(game.ReactionBanner.IsShowing,Is.True);Assert.That(game.ReactionBanner.Message,Does.Contain("mended"));
+                var cloth=game.ReactionBanner.GetComponentsInChildren<CanvasGroup>().First(c=>c.name=="Woven announcement");
+                var focus=game.ReactionBanner.transform.Find("Reaction focus");
+                Assert.That(focus.childCount,Is.EqualTo(1));Assert.That(focus.GetComponentsInChildren<ToolSuspensionRope>(),Is.Empty);
+                Assert.That(focus.GetComponentsInChildren<UnityEngine.UI.Outline>(),Is.Empty);
+                if(!quiet){Assert.That(cloth.alpha,Is.Zero);Assert.That(game.ReactionBanner.StatusVisible,Is.False);}
                 string hash=game.Interaction.Attempt.CurrentStateHash;int length=game.Interaction.Attempt.RouteLength;
                 game.Interaction.SetPaused(true);var age=game.ReactionBanner.Elapsed;var scale=game.ReactionBanner.transform.localScale;
                 yield return new WaitForSecondsRealtime(.2f);
                 Assert.That(game.ReactionBanner.Elapsed,Is.EqualTo(age));Assert.That(game.ReactionBanner.transform.localScale,Is.EqualTo(scale));
                 if(quiet){Assert.That(game.ReactionBanner.GetComponentsInChildren<UnityEngine.UI.Image>().Count(i=>i.name.StartsWith("Reaction motif")),Is.Zero);Assert.That(game.Feedback.ActiveParticleCount,Is.Zero);Assert.That(scale,Is.EqualTo(Vector3.one));}
-                game.Interaction.SetPaused(false);yield return AwaitPresentation();
+                game.Interaction.SetPaused(false);
+                if(!quiet){
+                    while(game.ReactionBanner.Elapsed<.50f)yield return null;
+                    Assert.That(game.ReactionBanner.StatusVisible,Is.False);Assert.That(cloth.alpha,Is.Zero);
+                    Assert.That(game.ReactionBanner.GetComponentsInChildren<UnityEngine.UI.Image>().Any(i=>i.name.StartsWith("Reaction motif")),Is.True);
+                    while(game.ReactionBanner.Elapsed<1.10f)yield return null;
+                    Assert.That(cloth.alpha,Is.GreaterThan(.9f));Assert.That(game.ReactionBanner.StatusVisible,Is.True);
+                }
+                yield return AwaitPresentation();
                 until=Time.realtimeSinceStartupAsDouble+10;while(game.ReactionBanner.IsShowing&&Time.realtimeSinceStartupAsDouble<until)yield return null;
                 Assert.That(game.ReactionBanner.IsShowing,Is.False);Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));Assert.That(game.Interaction.Attempt.RouteLength,Is.EqualTo(length));
                 var status=game.GetComponentsInChildren<TextMeshProUGUI>().First(t=>t.name=="Feedback");Assert.That(status.enabled,Is.True);
@@ -490,9 +503,9 @@ namespace Cascade.Tests
             var knots=game.Machine.GetComponentsInChildren<MeshRenderer>().Where(r=>r.name=="Rope knot").ToArray();
             foreach(var rope in ropes)
                 Assert.That(knots.Min(k=>Vector2.Distance(k.transform.position,rope.GetPosition(24))),Is.LessThan(.002f));
-            var straps=game.GetComponentsInChildren<DemoLine>().Where(l=>l.name=="Device leather strap").ToArray();
-            Assert.That(straps.Length,Is.GreaterThanOrEqualTo(2));
-            Assert.That(straps.All(l=>((RectTransform)l.transform).rect.width>12),Is.True,"Visible longer suspension, not a short hinge");
+            var cords=game.GetComponentsInChildren<ToolSuspensionRope>();
+            Assert.That(cords.Length,Is.EqualTo(game.GetComponentsInChildren<UnityEngine.UI.Button>().Count(b=>b.name.StartsWith("Device"))));
+            Assert.That(cords.All(c=>c.canvasRenderer.GetMesh().vertexCount>0),Is.True,"Each tool has one visible continuous rope.");
             game.Interaction.SetPaused(true);var held=device.position;var heldRotation=device.rotation;var heldBoard=board.position;var heldMark=mark.position;
             yield return new WaitForSecondsRealtime(.15f);
             Assert.That(device.position,Is.EqualTo(held));Assert.That(device.rotation,Is.EqualTo(heldRotation));Assert.That(board.position,Is.EqualTo(heldBoard));
@@ -514,7 +527,7 @@ namespace Cascade.Tests
             var safeIcon=letter.transform.parent.parent.GetComponent<UnityEngine.UI.Image>();Assert.That(safeIcon.sprite.name,Is.EqualTo("BombSafe"));
             Assert.That(safeIcon.transform.parent.Find("Contact outcome ribbon").gameObject.activeSelf,Is.True);
 
-            // Other tools retain their independently suspended tags.
+            // Every tool keeps its painted symbol on the same body.
             game.LoadNode("C18");game.ReducedMotion=false;yield return AwaitPreparation();game.RefreshLayout();
             hash=game.Interaction.Attempt.CurrentStateHash;
             Assert.That(game.GetComponentsInChildren<HangingToolTag>(),Is.Empty);

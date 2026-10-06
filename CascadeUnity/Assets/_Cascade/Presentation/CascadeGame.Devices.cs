@@ -24,17 +24,24 @@ namespace Cascade.Presentation
             public bool settledContact;
             public MaskableGraphic outcomeRibbon;
             public Sprite normalSprite,safeSprite;
-            public DemoLine leftStrap,rightStrap;
+            public ToolSuspensionRope cord;
         }
         readonly List<RectTransform> deviceOverlays=new List<RectTransform>();
         readonly List<DeviceDock> deviceDocks = new List<DeviceDock>();
         readonly Dictionary<int,Sprite> toolBodySprites=new Dictionary<int,Sprite>();
+        Material toolSilhouette;
+        Material ToolSilhouette {
+            get {
+                if(toolSilhouette==null){toolSilhouette=new Material(Resources.Load<Shader>("CascadeArt/Reactions/CleanSprite")){name="Clean tool physical silhouette"};toolSilhouette.SetFloat("_AlphaFloor",.72f);toolSilhouette.SetFloat("_AlphaFeather",.035f);}
+                return toolSilhouette;
+            }
+        }
         Sprite ToolBody(int kind)
         {
             if(kind==2)return Resources.Load<Sprite>("CascadeArt/Devices/Bomb");
             if(toolBodySprites.TryGetValue(kind,out var sprite))return sprite;
             int index=kind==3?0:kind==4?1:kind==8?2:kind==9?3:4;
-            sprite=WorkshopSpriteSet.Tool(Resources.Load<Texture2D>("CascadeArt/Reactions/ToolBodies"),index);toolBodySprites.Add(kind,sprite);return sprite;
+            sprite=WorkshopSpriteSet.Tool(Resources.Load<Texture2D>("CascadeArt/Reactions/ToolBodiesClean"),index);toolBodySprites.Add(kind,sprite);return sprite;
         }
         static string DeviceAsset(int kind) => kind==2?"Bomb":kind==3?"BrassKey":kind==4?"RepairKit":kind==8?"Stamp":kind==9?"RibbonSpool":"Hourglass";
         void OpenDevice(int kind) { returnScreen=CurrentScreen;deviceIndex=kind;SetScreen(GameScreen.Devices); }
@@ -59,21 +66,17 @@ namespace Cascade.Presentation
                 // A wooden socket and its suspended tool share a real attachment point.
                 var socket=Rect("Device socket",card,new Vector2(slotX-.034f,.295f),new Vector2(slotX+.034f,.39f));
                 Background(socket,new Color(.31f,.22f,.15f),false).sprite=art.panel;
-                DemoLine leftStrap=null,rightStrap=null;
-                for(int side=-1;side<=1;side+=2) {
-                    var strap=Rect("Device leather strap",card,Vector2.zero,Vector2.zero);
-                    var leather=Background(strap,new Color(.55f,.36f,.18f),false);leather.sprite=art.panel;leather.type=Image.Type.Sliced;
-                    var line=strap.gameObject.AddComponent<DemoLine>();line.Initialize(card,new Vector2(slotX+side*.018f,.32f),new Vector2(x+side*.055f,.10f),2.2f);
-                    if(side<0)leftStrap=line;else rightStrap=line;
-                }
+                var cordRect=Rect("Single tool rope",card,Vector2.zero,Vector2.one);
+                var cord=cordRect.gameObject.AddComponent<ToolSuspensionRope>();cord.raycastTarget=false;
                 var button=Button(UiCopy.Raw("Device "+DeviceAsset(item.kind)),card,new Vector2(x,-.075f),new Vector2(x,-.075f),()=>OpenDevice(item.kind));
                 var root=(RectTransform)button.transform;root.sizeDelta=new Vector2(88,55);
                 button.GetComponent<Image>().color=Color.clear;button.GetComponentInChildren<TextMeshProUGUI>().SetCopy("");
                 var icon=Picture("Recognizable device",root,new Vector2(.05f,-.10f),new Vector2(.88f,1.14f),ToolBody(item.kind),true);
+                icon.material=ToolSilhouette;
                 if(item.kind==2)BuildBombMark(icon.rectTransform,item.contact.RequiredSymbol);else BuildToolBodyMark(icon.rectTransform,item.kind,item.contact.RequiredSymbol);
                 var ribbon=Rect("Contact outcome ribbon",root,new Vector2(-.04f,-.59f),new Vector2(1.66f,-.06f)).gameObject.AddComponent<ContactRibbonGraphic>();ribbon.color=new Color(.10f,.40f,.34f);ribbon.raycastTarget=false;ribbon.gameObject.SetActive(false);
                 var caption=Text("Device state",root,new Vector2(-.08f,-.50f),new Vector2(1.08f,-.10f),12,"");caption.font=art.titleFont;
-                deviceDocks.Add(new DeviceDock{floor=floorIndex,kind=item.kind,root=root,socket=socket,icon=icon,normalSprite=icon.sprite,safeSprite=item.kind==2?Resources.Load<Sprite>("CascadeArt/Devices/BombSafe"):null,outcomeRibbon=ribbon,caption=caption,contact=item.contact,slotX=slotX,dockX=x,leftStrap=leftStrap,rightStrap=rightStrap});
+                deviceDocks.Add(new DeviceDock{floor=floorIndex,kind=item.kind,root=root,socket=socket,icon=icon,normalSprite=icon.sprite,safeSprite=item.kind==2?Resources.Load<Sprite>("CascadeArt/Devices/BombSafe"):null,outcomeRibbon=ribbon,caption=caption,contact=item.contact,slotX=slotX,dockX=x,cord=cord});
             }
             UiCopy landing=floor.EntryTransform==EntryTransform.MirrorNext?"Reverse on landing":floor.EntryTransform==EntryTransform.ShiftLeftOne?"Slide left on landing":"Slide right on landing";
             if(IsWindFloor(floorIndex))landing=floor.EntryTransform==EntryTransform.ShiftLeftOne?"Wind on landing: row slides left":"Wind on landing: row slides right";
@@ -127,6 +130,11 @@ namespace Cascade.Presentation
             if(dock==null)return machine.FloorPosition(floor);
             // UI props live on the camera canvas. Emit in the feedback plane at the same screen point.
             return UIFeedbackPoint(dock.icon.rectTransform);
+        }
+        public void SetReactionSourceStatus(RectTransform source,bool shown)
+        {
+            var dock=deviceDocks.FirstOrDefault(d=>d.icon.rectTransform==source);if(dock==null)return;
+            dock.outcomeRibbon.gameObject.SetActive(dock.settledContact&&shown);dock.caption.enabled=shown;
         }
         public RectTransform DeviceFeedbackAnchor(int floor,int kind)=>deviceDocks.FirstOrDefault(d=>d.floor==floor&&d.kind==kind)?.icon.rectTransform;
         public Vector3 UIFeedbackPoint(RectTransform rect)
