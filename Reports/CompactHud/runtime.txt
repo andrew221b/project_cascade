@@ -1,0 +1,32 @@
+390 EN fresh instruction / replayed teaching gesture: header=87.3..302.7; ropes=75.3..314.7
+Hint parent=Header bounds=(87.3, 728.3, 5.0)..(135.3, 776.3, 5.0)
+Carved chapter plaque parent=Header bounds=(141.3, 732.3, 5.0)..(248.7, 772.3, 5.0)
+Pause parent=Header bounds=(254.7, 728.3, 5.0)..(302.7, 776.3, 5.0)
+Undo parent=Actions bounds=(66.4, 41.8, 5.0)..(184.8, 93.8, 5.0)
+Drop parent=Actions bounds=(205.2, 41.8, 5.0)..(323.6, 93.8, 5.0)
+Dismiss instruction parent=Quiet instruction paper bounds=(318.3, 674.3, 5.0)..(362.3, 718.3, 5.0)
+instruction alpha=0; raycast=False; pointer shader=Cascade/Tutorial Foreground; sorting=30; title pixels=12.5
+390 EN delayed instruction: header=87.3..302.7; ropes=75.3..314.7
+Hint parent=Header bounds=(87.3, 728.3, 5.0)..(135.3, 776.3, 5.0)
+Carved chapter plaque parent=Header bounds=(141.3, 732.3, 5.0)..(248.7, 772.3, 5.0)
+Pause parent=Header bounds=(254.7, 728.3, 5.0)..(302.7, 776.3, 5.0)
+Undo parent=Actions bounds=(66.4, 41.8, 5.0)..(184.8, 93.8, 5.0)
+Drop parent=Actions bounds=(205.2, 41.8, 5.0)..(323.6, 93.8, 5.0)
+Dismiss instruction parent=Quiet instruction paper bounds=(318.3, 674.3, 5.0)..(362.3, 718.3, 5.0)
+instruction alpha=1; raycast=True; pointer shader=Cascade/Tutorial Foreground; sorting=30; title pixels=12.5
+320 RU large text / three symbols: header=73.7..246.3; ropes=61.7..258.3
+Hint parent=Header bounds=(73.7, 587.3, 5.0)..(121.7, 635.3, 5.0)
+Carved chapter plaque parent=Header bounds=(127.7, 591.3, 5.0)..(192.3, 631.3, 5.0)
+Pause parent=Header bounds=(198.3, 587.3, 5.0)..(246.3, 635.3, 5.0)
+Undo parent=Actions bounds=(54.5, 35.7, 5.0)..(151.7, 87.7, 5.0)
+Drop parent=Actions bounds=(168.3, 35.7, 5.0)..(265.5, 87.7, 5.0)
+Dismiss instruction parent=Quiet instruction paper bounds=(253.3, 533.3, 5.0)..(297.3, 577.3, 5.0)
+instruction alpha=1; raycast=True; pointer shader=Cascade/Tutorial Foreground; sorting=30; title pixels=12.2
+1440 wide after dismissal: header=605.2..834.8; ropes=592.4..847.6
+Hint parent=Header bounds=(605.2, 836.0, 5.0)..(656.3, 887.2, 5.0)
+Carved chapter plaque parent=Header bounds=(662.7, 840.3, 5.0)..(777.3, 882.9, 5.0)
+Pause parent=Header bounds=(783.7, 836.0, 5.0)..(834.8, 887.2, 5.0)
+Undo parent=Actions bounds=(563.2, 8.5, 5.0)..(707.6, 64.0, 5.0)
+Drop parent=Actions bounds=(732.4, 8.5, 5.0)..(876.8, 64.0, 5.0)
+Dismiss instruction parent=Quiet instruction paper bounds=(877.1, 778.4, 5.0)..(924.0, 825.4, 5.0)
+instruction alpha=0; raycast=False; pointer shader=Cascade/Tutorial Foreground; sorting=30; title pixels=18.1

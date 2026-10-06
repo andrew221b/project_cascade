@@ -409,7 +409,7 @@ The camera-space uGUI canvas uses a 390 × 844 reference resolution with height 
 
 ### Direct play
 
-A destination and one pause control occupy a 48-unit compensated header, 12 units below the safe top. A 44-unit feedback band sits below. The bottom has three actions, Undo, Hint and Descend/Deliver, in a 48-unit compensated band 8 units above the safe bottom. Retry, map, settings and device help are reached through pause or result flow.
+A drawn Hint lamp, a centred destination plaque and Pause occupy a 48-unit compensated header, 12 units below the safe top. The header follows the actual rail width and remains inside both rope anchors with 12-unit inner clearances; the plaque is 40 units high with centred 12–17-unit type. Contextual cream instructions wait 3.2 seconds and have a dismiss cross; each new message waits, and a dismissed message stays hidden for the current level. Hidden instructions cannot intercept input. The bottom has two centred actions, Undo and Descend/Deliver, in a 52-unit compensated band 8 units above the safe bottom. Retry, map, settings and device help are reached through pause or result flow. The decorative yellow coach ring and player-facing Shortest route label are absent; solver preparation remains unchanged. The tutorial hand renders above the pieces with foreground sorting and an always-visible depth test.
 
 The complete receiver is 100 reference units high. Its bottom is normally 82 compensated units above the safe bottom, moving to 184 for enabled precision controls or win results and 232 for failure comparison. Floors occupy the remaining region above the receiver clearance and below the feedback area. Rail width is `min(91% of content width, symbolCount × 76 + 24)`; receiver width is `min(90% of content width, symbolCount × 68 + 40)`. Three-piece rows are expanded but retain shorter physical rails. Cells share a 3-unit gap.
 
@@ -525,7 +525,7 @@ island and WorkshopPortrait art retain their asset and meta identities.
 
 ### Controls and settings
 
-Warm paper controls carry dark Bold labels and Unity multiply tints for hover, pressed and disabled states. Descend changes to Deliver when the final-floor row matches; Hint changes to Use hint only for a valid offer. A separate custom keyboard focus treatment is not established. Setting rows use a readable label, an on/off track and positional knob; sound, motion, effects, contrast, larger text, precision, tutorial and dead-end preferences persist in the P16 local profile, alongside language and preferred mode.
+Warm paper controls carry dark Bold labels and Unity multiply tints for hover, pressed and disabled states. Descend changes to Deliver when the final-floor row matches; the Hint lamp turns warm gold for a valid offer and retains its request/apply action. A separate custom keyboard focus treatment is not established. Setting rows use a readable label, an on/off track and positional knob; sound, motion, effects, contrast, larger text, precision, tutorial and dead-end preferences persist in the P16 local profile, alongside language and preferred mode.
 
 ### Persistent token and receiver
 

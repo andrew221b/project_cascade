@@ -27,7 +27,6 @@ namespace Cascade.Presentation
         Image menuWash;
         readonly List<RectTransform> menuActions=new List<RectTransform>();
         MenuTransition menuTransition;
-        CoachRingGraphic coachRing;
         TextMeshProUGUI coachText, resultText;
         GameScreen returnScreen = GameScreen.Home;
         int chapterPage, deviceIndex, settingsPage;
@@ -66,17 +65,16 @@ namespace Cascade.Presentation
             coachRoot = Rect("Contextual coaching", safeRoot, Vector2.zero, Vector2.zero);
             coachRoot.sizeDelta = new Vector2(300,52); coachRoot.pivot = new Vector2(.5f,1);
             coachText = Text("Coaching",coachRoot,Vector2.zero,Vector2.one,15,""); coachText.raycastTarget=false;
-            var ringRect=Rect("Device focus",safeRoot,Vector2.zero,Vector2.zero);ringRect.sizeDelta=new Vector2(48,48);
-            coachRing=ringRect.gameObject.AddComponent<CoachRingGraphic>();coachRing.raycastTarget=false;
-            coachRing.color=new Color(.95f,.69f,.23f,.9f);ringRect.gameObject.SetActive(false);
             var handRect = Rect("First exchange hand",safeRoot,Vector2.zero,Vector2.zero);
             handRect.pivot=new Vector2(.5f,.9f); handRect.sizeDelta=new Vector2(58,70);
             tutorialHand=handRect.gameObject.AddComponent<Image>(); tutorialHand.sprite=Resources.Load<Sprite>("CascadeArt/TutorialHand");
             tutorialHand.preserveAspect=true; tutorialHand.raycastTarget=false; tutorialHand.gameObject.SetActive(false);
+            tutorialPointerCanvas=handRect.gameObject.AddComponent<Canvas>();tutorialPointerCanvas.overrideSorting=true;tutorialPointerCanvas.sortingOrder=30;
+            tutorialOverlayMaterial=new Material(Resources.Load<Shader>("CascadeArt/TutorialOverlay")){name="Tutorial hand above the puzzle"};tutorialHand.material=tutorialOverlayMaterial;
             BuildOutcomes();
             menuRoot = Rect("Menu",safeRoot,Vector2.zero,Vector2.one);
             menuTransition=menuRoot.gameObject.AddComponent<MenuTransition>();menuTransition.Initialize(this);
-            reachBadge=Picture("Ribbon charge",header,new Vector2(.65f,.20f),new Vector2(.72f,.80f),Resources.Load<Sprite>("CascadeArt/Devices/RibbonSpool"),true);
+            reachBadge=Picture("Ribbon charge",receiver,new Vector2(.88f,.95f),new Vector2(.96f,1.23f),Resources.Load<Sprite>("CascadeArt/Devices/RibbonSpool"),true);
             flowReady=true; ApplyPreferences();
         }
         public void ShowHome() { SetScreen(GameScreen.Home); }
@@ -112,7 +110,8 @@ namespace Cascade.Presentation
             header.gameObject.SetActive(machineVisible); status.gameObject.SetActive(machineVisible);statusPaper.gameObject.SetActive(machineVisible);
             floorArea.gameObject.SetActive(machineVisible); receiver.gameObject.SetActive(machineVisible);
             actions.gameObject.SetActive(machineVisible); precise.gameObject.SetActive(machineVisible && PreciseInputActive);
-            coachRoot.gameObject.SetActive(false); tutorialHand.gameObject.SetActive(false);coachRing.gameObject.SetActive(false);
+            coachRoot.gameObject.SetActive(false); tutorialHand.gameObject.SetActive(false);
+            if(screen!=GameScreen.Playing)HideInstruction();
             menuRoot.gameObject.SetActive(!machineVisible); resultRoot.gameObject.SetActive(screen==GameScreen.Win||screen==GameScreen.Fail||screen==GameScreen.Checkpoint);
             if(machineVisible) { RenderState(); ArrangeResultControls(); } else {DrawMenu();if(changed)menuTransition.Arrive();}
             outcome?.ShowResult(screen);
@@ -125,6 +124,7 @@ namespace Cascade.Presentation
             int wind=Enumerable.Range(0,Interaction.Attempt.Level.Floors.Count).Where(IsWindFloor).DefaultIfEmpty(-1).First();
             Coach=new TutorialCoach(Interaction.Attempt.Level,lesson,wind) {Enabled=Preferences.Tutorials};
             Coach.Observe(Interaction.Attempt.Current,Interaction.Attempt.RouteLength); gestureTime=0;
+            ResetInstruction();
         }
         void UpdateFlow()
         {
@@ -136,6 +136,7 @@ namespace Cascade.Presentation
             UpdateDeadEnd();
             FinalizeScreenIfNeeded();
             UpdateCoaching(foreground);
+            UpdateInstruction(foreground,Time.unscaledDeltaTime);
             if(HasSaveError && CurrentScreen!=GameScreen.SaveRecovery) {Recovery=Cascade.Persistence.SaveRecovery.WriteFailed;SetScreen(GameScreen.SaveRecovery);}
         }
         void FinalizeScreenIfNeeded()
@@ -150,7 +151,7 @@ namespace Cascade.Presentation
         }
         void UpdateCoaching(bool foreground)
         {
-            bool show=foreground && CurrentScreen==GameScreen.Playing && Interaction.CanPlay && !zoomOpen && !IsHoldingToken && Coach!=null && Coach.Enabled;
+            bool show=foreground && CurrentScreen==GameScreen.Playing && Interaction.CanPlay && !zoomOpen && !IsHoldingToken && reactionBanner?.IsShowing!=true && Coach!=null && Coach.Enabled;
             string prompt=show ? Coach.Prompt(Interaction.Attempt.Current) : "";
             if(show&&(Interaction.Attempt.Level.ReachCharges>0||Interaction.Attempt.Current.ReachCharges>0))prompt=Interaction.Attempt.Current.ReachCharges>0?"Drag past a neighbour. The ribbon works once.":"Ribbon used. You can still swap neighbours.";
             if(show&&knownDeadEnd)prompt="Stuck? Undo and try another move.";
@@ -161,21 +162,11 @@ namespace Cascade.Presentation
                 coachRoot.position=floor.TransformPoint(new Vector3(0,-floor.rect.height*.64f,0));
                 coachRoot.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,Mathf.Min(310,safeRoot.rect.width*.90f));
             }
-            coachRing.gameObject.SetActive(show&&!knownDeadEnd&&Coach.HighlightRequested);
-            if(coachRing.gameObject.activeSelf) {
-                var state=Interaction.Attempt.Current;var f=Interaction.Attempt.Level.Floors[state.ActiveFloor];ContactDefinition contact=null;
-                if(f.Powerup!=null&&!state.PowerupUsed)contact=f.Powerup;
-                else if(f.Bomb!=null&&state.BombPhase==BombPhase.Armed)contact=f.Bomb;
-                else if(f.Key!=null&&!state.KeyUsed)contact=f.Key;
-                else if(f.Repair!=null&&!state.RepairUsed)contact=f.Repair;
-                else if(f.OptionalStamp!=null&&(state.StampBits&(1<<state.ActiveFloor))==0)contact=f.OptionalStamp;
-                coachRing.rectTransform.position=contact==null?machine.FloorPosition(state.ActiveFloor):machine.ContactPosition(state.ActiveFloor,contact.Slot);
-                coachRing.color=new Color(.95f,.69f,.23f,ReducedMotion?.9f:.65f+.25f*Mathf.Sin(Time.unscaledTime*3));
-            }
             bool first=show&&!firstGestureShown&&node=="C01"&&Interaction.Attempt.RouteLength==0;
             bool replay=show&&!knownDeadEnd&&Coach.GestureReplayRequested;
             tutorialHand.gameObject.SetActive((first||replay)&&!ReducedMotion&&tutorialHand.sprite!=null);
             if(tutorialHand.gameObject.activeSelf) {
+                tutorialPointerCanvas.overrideSorting=true;tutorialPointerCanvas.sortingOrder=30;
                 gestureTime+=Time.unscaledDeltaTime; float t=Mathf.Repeat(gestureTime,2.6f);
                 int edge=0; while(edge<slots.Count-1 && !Interaction.Attempt.Resolver.Preview(Interaction.Attempt.Current,PuzzleCommand.Swap(edge)).IsLegal)edge++;
                 if(edge>=slots.Count-1){ tutorialHand.gameObject.SetActive(false); return; }
@@ -189,7 +180,7 @@ namespace Cascade.Presentation
         {
             bool result=CurrentScreen==GameScreen.Win||CurrentScreen==GameScreen.Fail||CurrentScreen==GameScreen.Checkpoint;
             resultRoot.gameObject.SetActive(result);
-            PlaceControl(undo,result?resultRoot:actions,result?Vector2.zero:Vector2.zero,result?new Vector2(.48f,.30f):new Vector2(.30f,1));
+            PlaceControl(undo,result?resultRoot:actions,result?Vector2.zero:new Vector2(.12f,0),result?new Vector2(.48f,.30f):new Vector2(.47f,1));
             PlaceControl(retry,result?resultRoot:safeRoot,result?new Vector2(0,.35f):new Vector2(.05f,.09f),result?new Vector2(CurrentScreen==GameScreen.Fail&&!CanOfferStrongerWood?1:.48f,.65f):new Vector2(.43f,.155f));
             retry.gameObject.SetActive(result||preparation.HasFailed); hint.gameObject.SetActive(!result&&!preparation.HasFailed); drop.gameObject.SetActive(!result&&!preparation.HasFailed); precise.gameObject.SetActive(!result&&PreciseInputActive);
             if(preparation.HasFailed)PlaceControl(retry,actions,new Vector2(.35f,0),new Vector2(.65f,1));

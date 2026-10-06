@@ -473,6 +473,28 @@ namespace Cascade.Tests
             Assert.That(game.Interaction.Attempt.Current, Is.SameAs(committed)); Assert.That(game.Interaction.Attempt.RouteLength, Is.EqualTo(count));
             Assert.That(game.Interaction.IsPresenting, Is.False);
         }
+        [UnityTest] public IEnumerator ContextualInstructionsWaitCanBeDismissedAndDoNotTouchPuzzleState()
+        {
+            game.Coach.Enabled=false;game.ReducedMotion=true;
+            var paper=game.GetComponentsInChildren<CanvasGroup>(true).Single(c=>c.name=="Quiet instruction paper");
+            var close=game.GetComponentsInChildren<UnityEngine.UI.Button>(true).Single(b=>b.name=="Dismiss instruction");
+            string hash=game.Interaction.Attempt.CurrentStateHash;int route=game.Interaction.Attempt.RouteLength;
+            game.SetPresentationFeedback("Drag a piece onto its neighbour.");yield return null;
+            Assert.That(paper.alpha,Is.Zero);Assert.That(paper.blocksRaycasts,Is.False);
+            game.SendMessage("TogglePause");yield return new WaitForSecondsRealtime(.3f);
+            Assert.That(paper.alpha,Is.Zero);game.SendMessage("TogglePause");
+            yield return new WaitForSecondsRealtime(3.4f);
+            Assert.That(paper.alpha,Is.EqualTo(1));Assert.That(paper.blocksRaycasts,Is.True);
+            close.onClick.Invoke();yield return new WaitForSecondsRealtime(.2f);
+            Assert.That(paper.alpha,Is.Zero);Assert.That(paper.blocksRaycasts,Is.False);
+            game.SetPresentationFeedback("Tap Descend to take the row down.");yield return null;
+            Assert.That(paper.alpha,Is.Zero,"A new instruction also waits before appearing.");
+            yield return new WaitForSecondsRealtime(3.4f);Assert.That(paper.alpha,Is.EqualTo(1));
+            close.onClick.Invoke();game.LoadNode("C01");yield return AwaitPreparation();
+            Assert.That(paper.alpha,Is.Zero,"A newly loaded level starts with an uncluttered header.");
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+            Assert.That(game.Interaction.Attempt.RouteLength,Is.EqualTo(route));Assert.That(game.Interaction.Attempt.HintUsed,Is.False);
+        }
         [UnityTest] public IEnumerator PrecisionButtonsAndHintRemainUsableTogether()
         {
             game.Catalog.TryGetLocalizedBinding("C32", "en", out var content);
@@ -486,7 +508,7 @@ namespace Cascade.Tests
             foreach (string name in new[] { "Swapleft", "Swapright" }) {
                 var a = (RectTransform)hintButton.transform; var b = (RectTransform)buttons.Single(v => v.name == name).transform;
                 var ac = new Vector3[4]; var bc = new Vector3[4]; a.GetWorldCorners(ac); b.GetWorldCorners(bc);
-                Assert.That(ac[2].y, Is.LessThan(bc[0].y), "Hint cannot cover precise input");
+                Assert.That(ac[0].y, Is.GreaterThan(bc[2].y), "The header hint cannot cover precise input");
             }
             yield return ClickButton("Hint"); yield return AwaitPresentation();
             Assert.That(game.Interaction.Attempt.RouteLength, Is.EqualTo(1));

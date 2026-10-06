@@ -85,7 +85,7 @@ namespace Cascade.Presentation
             SettleDescent();CancelDescentWork();
             EndTokenHold(); CancelHint(); CancelDeadEnd(); preparation.Cancel(); StopPresentation(); Interaction?.SetSuspended(true); feedback?.ClearTails();
         }
-        void OnDestroy() { if(purchaseStore!=null)purchaseStore.Changed-=NotifyStoreChanged;DisposeNavigationArt(); preparation.Dispose(); if (Interaction != null) Interaction.Committed -= OnCommitted; if(glyphMaterial!=null)Destroy(glyphMaterial);if(toolSilhouette!=null)Destroy(toolSilhouette);foreach(var sprite in toolBodySprites.Values)if(sprite!=null)Destroy(sprite);foreach(var sprite in enamelControls)if(sprite!=null)Destroy(sprite); }
+        void OnDestroy() { if(purchaseStore!=null)purchaseStore.Changed-=NotifyStoreChanged;DisposeNavigationArt(); preparation.Dispose(); if (Interaction != null) Interaction.Committed -= OnCommitted; if(glyphMaterial!=null)Destroy(glyphMaterial);if(tutorialOverlayMaterial!=null)Destroy(tutorialOverlayMaterial);if(toolSilhouette!=null)Destroy(toolSilhouette);foreach(var sprite in toolBodySprites.Values)if(sprite!=null)Destroy(sprite);foreach(var sprite in enamelControls)if(sprite!=null)Destroy(sprite); }
         void OnApplicationFocus(bool focused)
         {
             if(!focused)SettleDescent();
@@ -318,7 +318,7 @@ namespace Cascade.Presentation
             safeRoot = Rect("SafeArea", canvasRect, Vector2.zero, Vector2.one); ApplySafeArea();
             header = Rect("Header", safeRoot, new Vector2(.05f, 1), new Vector2(.95f, 1));
             var chapterPlaque=Rect("Carved chapter plaque",header,Vector2.zero,new Vector2(.76f,1));var plaque=Background(chapterPlaque,new Color(1,.96f,.84f,.91f),false);plaque.sprite=art.panel;plaque.type=UnityEngine.UI.Image.Type.Sliced;
-            levelLabel = Text("Level", header, new Vector2(.045f,0), new Vector2(.74f,1), 24, "CASCADE"); levelLabel.alignment = TextAlignmentOptions.Left; levelLabel.font = art.titleFont;levelLabel.enableAutoSizing=true;levelLabel.fontSizeMin=18;levelLabel.fontSizeMax=24;
+            levelLabel = Text("Level", header, new Vector2(.045f,0), new Vector2(.74f,1), 17, "CASCADE"); levelLabel.alignment = TextAlignmentOptions.Center; levelLabel.font = art.titleFont;levelLabel.enableAutoSizing=true;levelLabel.fontSizeMin=12;levelLabel.fontSizeMax=17;
             pause = Button("Pause", header, new Vector2(.82f, 0), Vector2.one, TogglePause);
             previous = Button("Home", header, Vector2.zero, new Vector2(.28f, 48f/104), ShowHome);
 
@@ -327,11 +327,10 @@ namespace Cascade.Presentation
             pause.GetComponentInChildren<TextMeshProUGUI>().SetCopy("");
             var pauseMark = Rect("Pause mark",pause.transform,Vector2.zero,Vector2.one).gameObject.AddComponent<PauseMark>(); pauseMark.raycastTarget=false;
             statusPaper=Rect("Quiet instruction paper",safeRoot,new Vector2(.055f,.79f),new Vector2(.945f,.86f));var paper=Background(statusPaper,new Color(1,.96f,.84f,.93f),false);paper.sprite=art.panel;paper.type=UnityEngine.UI.Image.Type.Sliced;
-            status = Text("Feedback", safeRoot, new Vector2(.08f, .79f), new Vector2(.92f, .86f), 16, "");
+            status = Text("Feedback", statusPaper, Vector2.zero, Vector2.one, 16, "");
+            BuildInstructionControls();
             reactionBanner=Rect("Tool announcement",safeRoot,Vector2.zero,Vector2.one).gameObject.AddComponent<GameReactionBanner>();
             reactionBanner.Initialize(this,statusPaper,status,art.titleFont);
-            minimumLabel = Text("Shortest route", safeRoot, new Vector2(.08f,.76f),new Vector2(.92f,.78f),13,"");
-            minimumLabel.font = art.titleFont;
             floorArea = Rect("Floors", safeRoot, new Vector2(.045f, .37f), new Vector2(.955f, .78f));
             receiver = Rect("Receiver", safeRoot, new Vector2(.5f, .245f), new Vector2(.5f, .365f)); receiver.sizeDelta = new Vector2(350, 0); Background(receiver, Color.clear, true);
             receiver.gameObject.AddComponent<UnityEngine.UI.Button>().onClick.AddListener(ToggleTargetZoom);
@@ -345,13 +344,15 @@ namespace Cascade.Presentation
             swapLeft = Button("Swap left", precise, Vector2.zero, new Vector2(.48f, 48f/104), () => ReportInput(Interaction.SwapFocused(-1)));
             swapRight = Button("Swap right", precise, new Vector2(.52f, 0), new Vector2(1, 48f/104), () => ReportInput(Interaction.SwapFocused(1)));
             actions = Rect("Actions", safeRoot, new Vector2(.05f, .012f), new Vector2(.95f, .078f));
-            undo = Button("Undo", actions, Vector2.zero, new Vector2(.30f, 1), Undo);
-            hint = Button("Hint", actions, new Vector2(.35f, 0), new Vector2(.65f, 1), () => {
+            undo = Button("Undo", actions, new Vector2(.12f,0), new Vector2(.47f, 1), Undo);
+            hint = Button("Hint", header, Vector2.zero, Vector2.one, () => {
                 if (offeredHint?.Result.Status == HintStatus.Step && Interaction.Attempt.IsCurrent(offeredHint))
                     ReportInput(Interaction.ApplyHint(offeredHint));
                 else RequestHint();
             });
-            drop = Button("Drop", actions, new Vector2(.70f, 0), Vector2.one, () => ReportInput(Interaction.Execute(PuzzleCommand.Drop)));
+            hint.GetComponentInChildren<TextMeshProUGUI>().SetCopy("");
+            hintMark=Rect("Hint lamp",hint.transform,Vector2.zero,Vector2.one).gameObject.AddComponent<HintMark>();hintMark.raycastTarget=false;
+            drop = Button("Drop", actions, new Vector2(.53f, 0), new Vector2(.88f,1), () => ReportInput(Interaction.Execute(PuzzleCommand.Drop)));
             drop.GetComponent<UnityEngine.UI.Image>().color = new Color(.98f, .74f, .32f);
             retry = Button("Retry", safeRoot, new Vector2(.05f, .09f), new Vector2(.43f, .155f), Retry);
             targetZoom = Rect("TargetZoom", safeRoot, Vector2.zero, Vector2.one); Background(targetZoom, Paper, true);
@@ -437,9 +438,8 @@ namespace Cascade.Presentation
                 foreach(var button in menuActions)if(button!=null)button.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,52*unit);
                 FitMenuRows();
                 FixedBand(header, safeRoot.rect.height - 60 * unit, 48 * unit);
-                FixedBand(status.rectTransform, safeRoot.rect.height - 114 * unit, 44 * unit);
                 FixedBand(statusPaper,safeRoot.rect.height-114*unit,44*unit);status.fontSize=16*unit*(Preferences.LargeText?1.12f:1);
-                FixedBand(minimumLabel.rectTransform,safeRoot.rect.height-140*unit,20*unit);minimumLabel.fontSize=13*unit;
+                LayoutInstruction(unit);
                 foreach(var label in floorLabels)label.fontSize=14*unit;
                 foreach(var dock in deviceDocks)if(dock.countdown!=null)dock.countdown.fontSize=13*unit;
                 FixedBand(actions, 8 * unit, 52 * unit); FixedBand(precise, 64 * unit, 104 * unit);
@@ -463,6 +463,7 @@ namespace Cascade.Presentation
             if (floorViews.Count != 0 && Interaction != null) {
                 float boardWidth = Mathf.Min(safeRoot.rect.width * .91f, Interaction.Attempt.Current.Row.Count * 76 + 24);
                 foreach (var floor in floorViews) floor.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, boardWidth);
+                LayoutGameplayHeader(boardWidth);
                 receiver.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Mathf.Min(safeRoot.rect.width * .9f, Interaction.Attempt.Current.Row.Count * 68 + 40));
                 int targetCount=Mathf.Max(1,targetLabels.Count);
                 float targetWidth=Mathf.Min(receiver.rect.width*.87f,targetCount*64f+(targetCount-1)*4f);
@@ -580,7 +581,8 @@ namespace Cascade.Presentation
             drop.GetComponentInChildren<TextMeshProUGUI>().SetCopy(Interaction.Attempt.Current.Status == PuzzleStatus.Playing
                 && Interaction.Attempt.Current.ActiveFloor == Interaction.Attempt.Level.Floors.Count - 1
                 && Interaction.Attempt.Current.Row.SequenceEqual(Interaction.Attempt.Level.TargetSymbolIds) ? "Deliver" : "Descend");
-            hint.GetComponentInChildren<TextMeshProUGUI>().SetCopy(offeredHint?.Result.Status == HintStatus.Step ? "Use hint" : "Hint");
+            hint.GetComponentInChildren<TextMeshProUGUI>().SetCopy("");
+            if(hintMark!=null)hintMark.color=offeredHint?.Result.Status==HintStatus.Step?new Color(1,.80f,.35f):new Color(1,.97f,.84f,hint.interactable?1:.5f);
 
             previous.interactable = next.interactable = Interaction.CanControl;
             PreciseInputActive = ForcePreciseInput;

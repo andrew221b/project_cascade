@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Passed" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-06 12:09:10Z" end-time="2026-10-06 12:09:26Z" duration="16.5745738">
+  <test-suite type="TestSuite" id="1094" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="86" result="Passed" start-time="2026-10-06 12:09:10Z" end-time="2026-10-06 12:09:26Z" duration="16.574574" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1088" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="86" result="Passed" start-time="2026-10-06 12:09:10Z" end-time="2026-10-06 12:09:26Z" duration="16.466820" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="93320" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1089" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="86" result="Passed" start-time="2026-10-06 12:09:10Z" end-time="2026-10-06 12:09:26Z" duration="16.465210" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1090" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="86" result="Passed" start-time="2026-10-06 12:09:10Z" end-time="2026-10-06 12:09:26Z" duration="16.464310" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1001" name="PlayableTests" fullname="Cascade.Tests.PlayableTests" classname="Cascade.Tests.PlayableTests" runstate="Runnable" testcasecount="86" result="Passed" start-time="2026-10-06 12:09:10Z" end-time="2026-10-06 12:09:26Z" duration="16.462997" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1029" name="ContextualInstructionsWaitCanBeDismissedAndDoNotTouchPuzzleState" fullname="Cascade.Tests.PlayableTests.ContextualInstructionsWaitCanBeDismissedAndDoNotTouchPuzzleState" methodname="ContextualInstructionsWaitCanBeDismissedAndDoNotTouchPuzzleState" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="22511768" result="Passed" start-time="2026-10-06 12:09:10Z" end-time="2026-10-06 12:09:20Z" duration="9.541532" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1062" name="GliderWholeSilhouetteStaysInTheEmptyFlightBand" fullname="Cascade.Tests.PlayableTests.GliderWholeSilhouetteStaysInTheEmptyFlightBand" methodname="GliderWholeSilhouetteStaysInTheEmptyFlightBand" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1956612122" result="Passed" start-time="2026-10-06 12:09:20Z" end-time="2026-10-06 12:09:20Z" duration="0.637202" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1030" name="PrecisionButtonsAndHintRemainUsableTogether" fullname="Cascade.Tests.PlayableTests.PrecisionButtonsAndHintRemainUsableTogether" methodname="PrecisionButtonsAndHintRemainUsableTogether" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1045409626" result="Passed" start-time="2026-10-06 12:09:20Z" end-time="2026-10-06 12:09:26Z" duration="6.226551" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/CompactHudFinal/playmode.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -48,6 +48,7 @@ namespace Cascade.Presentation
         TMP_Text text;
         LocalizeStringEvent localize;
         string previous;
+        public string SourceIdentity=>previous??"";
         public void Set(UiCopy copy)
         {
             if(text==null)text=GetComponent<TMP_Text>();
