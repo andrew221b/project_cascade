@@ -821,3 +821,15 @@ Hanging tools have no local result caption or outcome ribbon. Forecast uses the
 existing icon tint and shared forecast band. Real results belong to the central
 original-tool reaction and woven status animation. The armed bomb's moves/frozen
 countdown remains functional information. See Reports/StatusCleanup.
+
+## Paused first encounters — 6 October 2026
+
+A quiet ivory modal dims the full viewport and stays within the device safe
+area. One heading, one isolated animated example, a short explanation and an
+amber acknowledgement teach each mechanic. The playable row, board motion and
+wind remain paused; example animation owns its own cosmetic clock. Known
+mechanics do not repeat. Landing wind gates descent before stage advancement;
+ambient wind gates the first impulse. A tool's explicit Use resumes only from
+the acknowledgement button. Metadata is persisted before resuming, never from
+tween completion. New authored raster assets are unnecessary: the examples
+reuse the game's actual devices and original tool art.

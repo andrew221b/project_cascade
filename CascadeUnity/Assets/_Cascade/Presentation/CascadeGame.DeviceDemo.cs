@@ -8,7 +8,7 @@ namespace Cascade.Presentation
 {
     public sealed partial class CascadeGame
     {
-        void LiveDeviceDemo(RectTransform root,LevelDefinition level,int kind)
+        void LiveDeviceDemo(RectTransform root,LevelDefinition level,int kind,bool isolatedClock=false)
         {
             var resolver=new PuzzleResolver(level);var before=resolver.CreateInitialState();
             var goal=kind==8?new PuzzleGoal(1):PuzzleGoal.Delivery;
@@ -126,7 +126,7 @@ namespace Cascade.Presentation
                     int start=command.Kind==CommandKind.Swap?command.Edge:0;float x=(start+.5f+blend)/row.Length;
                     hand.rectTransform.anchorMin=new Vector2(x-.09f,.54f);hand.rectTransform.anchorMax=new Vector2(x+.09f,.96f);
                 }
-            });
+            },isolatedClock);
         }
     }
 }

@@ -20,6 +20,7 @@ namespace Cascade.Persistence
         public string PreferredMode="Shapes";
         public List<ClearReceipt> Clears=new List<ClearReceipt>();
         public List<int> HeardStory=new List<int>();
+        public List<MechanicLesson> SeenMechanics=new List<MechanicLesson>();
         public bool FirstGestureShown, JourneyAttempt;
         public bool? StoryRoute;
         public AttemptRecord Attempt;
@@ -58,7 +59,8 @@ namespace Cascade.Persistence
                 || Preferences.EffectQuality<0 || Preferences.EffectQuality>2
                 || !new[]{"Shapes","Words","Mixed"}.Contains(PreferredMode)
                 || Clears==null || Clears.Count>10000 || HeardStory==null || HeardStory.Count>10000
-                || HeardStory.Any(p=>p<0 || p>10000) || HeardStory.Distinct().Count()!=HeardStory.Count)
+                || HeardStory.Any(p=>p<0 || p>10000) || HeardStory.Distinct().Count()!=HeardStory.Count
+                || !MechanicLessons.Valid(SeenMechanics))
                 throw new InvalidDataException("Invalid profile fields.");
             var nodes=new HashSet<string>(StringComparer.Ordinal);
             foreach(var receipt in Clears)if(receipt==null || string.IsNullOrWhiteSpace(receipt.CampaignNodeId)

@@ -47,7 +47,7 @@ namespace Cascade.Presentation
                 if(run==null){descentPlanFailed=true;status.SetCopy("Could not check all stages. Try again.");RenderControls();}
                 else {MountAttempt(new AttemptService(run.Level(source,0),locale,direction:run.Direction),run);journeyActive=travel;PersistProgress();ShowGame();}
             }
-            bool gated=descentPlanFailed||IsPlanningDescent||IsDescending||!preparation.IsReady;
+            bool gated=descentPlanFailed||IsPlanningDescent||IsDescending||!preparation.IsReady||needsMechanicScan;
             if(Interaction.IsPreparing!=gated)Interaction.SetPreparing(gated);
             if(descentTask!=null)status.SetCopy("Checking all three stages…");
             PaintDescent();
@@ -65,6 +65,7 @@ namespace Cascade.Presentation
         public void GoLower()
         {
             if(!IsCheckpoint||Interaction.Attempt.Current.Status!=PuzzleStatus.Won||!Interaction.CanControl||IsDescending)return;
+            if(IntroduceDescentWind())return;
             var source=DescentPublishedSource();if(source==null)return;
             var run=descent;string locale=Interaction.Attempt.ActiveLocale;bool travel=journeyActive;
             var departed=machine.CreateDescentGhost("Departing wooden rig");

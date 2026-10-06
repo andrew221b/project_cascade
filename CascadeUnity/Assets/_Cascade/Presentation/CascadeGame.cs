@@ -81,11 +81,12 @@ namespace Cascade.Presentation
         void OnDisable()
         {
             disabling=true;
+            ResetMechanicDiscovery();
             PersistProgress();
             SettleDescent();CancelDescentWork();
             EndTokenHold(); CancelHint(); CancelDeadEnd(); preparation.Cancel(); StopPresentation(); Interaction?.SetSuspended(true); feedback?.ClearTails();
         }
-        void OnDestroy() { if(purchaseStore!=null)purchaseStore.Changed-=NotifyStoreChanged;DisposeNavigationArt();if(travelArt!=null)foreach(var sprite in travelArt)if(sprite!=null)Destroy(sprite);DisposeCompletionArt();DisposePlatformProps(); preparation.Dispose(); if (Interaction != null) Interaction.Committed -= OnCommitted; if(glyphMaterial!=null)Destroy(glyphMaterial);if(tutorialOverlayMaterial!=null)Destroy(tutorialOverlayMaterial);if(toolSilhouette!=null)Destroy(toolSilhouette);foreach(var sprite in toolBodySprites.Values)if(sprite!=null)Destroy(sprite);foreach(var sprite in enamelControls)if(sprite!=null)Destroy(sprite); }
+        void OnDestroy() { if(introBranch!=null)Destroy(introBranch);if(purchaseStore!=null)purchaseStore.Changed-=NotifyStoreChanged;DisposeNavigationArt();if(travelArt!=null)foreach(var sprite in travelArt)if(sprite!=null)Destroy(sprite);DisposeCompletionArt();DisposePlatformProps(); preparation.Dispose(); if (Interaction != null) Interaction.Committed -= OnCommitted; if(glyphMaterial!=null)Destroy(glyphMaterial);if(tutorialOverlayMaterial!=null)Destroy(tutorialOverlayMaterial);if(toolSilhouette!=null)Destroy(toolSilhouette);foreach(var sprite in toolBodySprites.Values)if(sprite!=null)Destroy(sprite);foreach(var sprite in enamelControls)if(sprite!=null)Destroy(sprite); }
         void OnApplicationFocus(bool focused)
         {
             if(!focused)SettleDescent();
@@ -137,6 +138,7 @@ namespace Cascade.Presentation
         }
         void MountAttempt(AttemptService attempt,DescentRun run=null)
         {
+            ResetMechanicDiscovery();
             reactionBanner?.Clear();
             feedback?.ClearTails();
             SettleDescent();CancelDescentWork();descent=run;descentPlanFailed=false;descentTravel=false;paintedDescentStage=-1;machine.LivingWorld.DescentDepth=run?.StageIndex??0;
@@ -261,6 +263,7 @@ namespace Cascade.Presentation
         }
         void TogglePause()
         {
+            if(MechanicPopupOpen){AcknowledgeMechanic();return;}
             if(flowReady) { if(CurrentScreen==GameScreen.Pause)ShowGame();else SetScreen(GameScreen.Pause);return; }
             userPaused = !userPaused; Interaction.SetPaused(userPaused || zoomOpen);
             if (userPaused) StopPresentation(); RenderState();

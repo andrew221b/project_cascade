@@ -56,6 +56,7 @@ namespace Cascade.Presentation
         PuzzleInteraction interaction;
         bool reducedMotion,ambientPaused;
         public void SetAmbientPaused(bool value){ambientPaused=value;}
+        public void DelayAmbientGust(float seconds){nextAmbientGust=Mathf.Max(nextAmbientGust,windTime+seconds);}
         float windTime;
         float gustStarted=-100;
         float gustDirection;
@@ -330,8 +331,11 @@ namespace Cascade.Presentation
         {
             if (!reducedMotion && interaction != null && !ambientPaused && !(interaction.IsPaused&&gameplayView) && !interaction.IsSuspended) windTime += Time.unscaledDeltaTime;
             if(gameplayView&&!reducedMotion&&interaction!=null&&!interaction.IsPaused&&!interaction.IsSuspended&&!interaction.IsPreparing&&!interaction.IsPresenting&&heldWeight<0&&windTime>=nextAmbientGust){
-                CueWind((ambientGust++%2)==0,.55f);nextAmbientGust=windTime+12+(ambientGust%4)*1.7f;
-                GetComponent<CascadeGame>().CueDeviceWind(gustDirection>0);
+                var game=GetComponent<CascadeGame>();
+                if(!game.RequireGustIntroduction()){
+                    CueWind((ambientGust++%2)==0,.55f);nextAmbientGust=windTime+12+(ambientGust%4)*1.7f;
+                    game.CueDeviceWind(gustDirection>0);
+                }
             }
             livingWorld?.Paint(reducedMotion ? 0 : windTime);
             if (windmill != null) windmill.localRotation = Quaternion.Euler(0, 0, reducedMotion ? 18 : 18 + windTime * 7);

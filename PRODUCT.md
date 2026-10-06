@@ -384,6 +384,15 @@ live ad/consent or human-enjoyment proof follows from this evidence. Existing
 MenuBackground assets and original raster pixels remain; no new raster generation
 was needed for this scope.
 
+## First encounters — 6 October 2026
+
+Each new effect pauses for a short illustrated EN/RU/UK explanation. This is
+required once even with optional hints disabled. Combined boards teach effects
+one at a time. The first gust waits before rocking the rig; row-changing wind
+waits before descent. Bag tools explain themselves before consumption. Only
+acknowledgement saves learning; an interrupted explanation remains unseen.
+Docs/FIRST_MECHANIC_POPUPS.md; Reports/Introductions.
+
 ## Product Principles
 
 - Every visual consequence explains an already committed command.

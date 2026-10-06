@@ -99,16 +99,17 @@ namespace Cascade.Presentation
         void SetScreen(GameScreen screen)
         {
             if (!flowReady) return;
+            if(screen!=GameScreen.Playing&&MechanicPopupOpen)ResetMechanicDiscovery();
             if(screen!=GameScreen.Playing)SettleDescent();
             if(screen!=GameScreen.Playing) { CancelHint(); StopPresentation(); }
             bool changed=CurrentScreen!=screen;
             if(changed||screen!=GameScreen.Playing)reactionBanner?.Clear();
             CurrentScreen=screen;machine.LivingWorld.SetMapSky(null);machine.LivingWorld.SetQuietFlight(screen==GameScreen.Win||screen==GameScreen.Fail);
             machine.LivingWorld.SetWorkshop(screen!=GameScreen.JourneyMap&&screen!=GameScreen.Dialogue&&screen!=GameScreen.JourneyEnd&&screen!=GameScreen.Playing&&screen!=GameScreen.Win&&screen!=GameScreen.Fail&&screen!=GameScreen.Checkpoint); userPaused=screen==GameScreen.Pause;
-            Interaction.SetPaused(screen!=GameScreen.Playing && screen!=GameScreen.Win && screen!=GameScreen.Fail && screen!=GameScreen.Checkpoint);
+            Interaction.SetPaused(MechanicPopupOpen||screen!=GameScreen.Playing && screen!=GameScreen.Win && screen!=GameScreen.Fail && screen!=GameScreen.Checkpoint);
             bool machineVisible=screen==GameScreen.Playing || screen==GameScreen.Fail || screen==GameScreen.Checkpoint;
             if(!machineVisible)feedback.ClearTails();
-            machine.SetGameplayVisible(machineVisible);machine.SetAmbientPaused(screen==GameScreen.Pause||screen==GameScreen.SaveRecovery);
+            machine.SetGameplayVisible(machineVisible);machine.SetAmbientPaused(MechanicPopupOpen||screen==GameScreen.Pause||screen==GameScreen.SaveRecovery);
             header.gameObject.SetActive(machineVisible); status.gameObject.SetActive(machineVisible);statusPaper.gameObject.SetActive(machineVisible);
             floorArea.gameObject.SetActive(machineVisible); receiver.gameObject.SetActive(machineVisible);
             actions.gameObject.SetActive(machineVisible); precise.gameObject.SetActive(machineVisible && PreciseInputActive);
@@ -134,6 +135,7 @@ namespace Cascade.Presentation
         void UpdateFlow()
         {
             if(!flowReady || Interaction==null) return;
+            TickMechanicIntroduction();
             bool foreground=applicationFocused&&!applicationPaused&&!Interaction.IsSuspended;
             reachBadge.gameObject.SetActive(Interaction.Attempt.Level.ReachCharges>0||Interaction.Attempt.Current.ReachCharges>0);reachBadge.color=Interaction.Attempt.Current.ReachCharges>0?Color.white:new Color(.5f,.5f,.5f,.5f);
             Coach?.Observe(Interaction.Attempt.Current,Interaction.Attempt.RouteLength);

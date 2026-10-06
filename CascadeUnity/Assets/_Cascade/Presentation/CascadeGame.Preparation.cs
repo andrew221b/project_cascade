@@ -10,17 +10,17 @@ namespace Cascade.Presentation
         void BeginPreparation()
         {
             preparation.Begin(Interaction.Attempt.Level, Interaction.Attempt.Goal);
-            Interaction.SetPreparing(!preparation.IsReady);
+            Interaction.SetPreparing(!preparation.IsReady||needsMechanicScan);
             PaintPreparation();
         }
         void UpdatePreparation()
         {
             if (preparation.Poll()) {
                 if(descent==null&&descentTask==null&&FallBackFromUnprovenDirection())return;
-                Interaction.SetPreparing(descentPlanFailed||!preparation.IsReady||IsPlanningDescent||IsDescending);
+                Interaction.SetPreparing(descentPlanFailed||!preparation.IsReady||IsPlanningDescent||IsDescending||needsMechanicScan);
                 RenderState();
             }
-            PaintPreparation();
+            TryFirstMechanic();PaintPreparation();
         }
         void PaintPreparation()
         {

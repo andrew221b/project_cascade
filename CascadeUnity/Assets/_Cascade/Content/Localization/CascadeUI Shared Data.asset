@@ -2436,6 +2436,99 @@ MonoBehaviour:
     m_Key: Yours forever
     m_Metadata:
       m_Items: []
+  - m_Id: 527816343937024
+    m_Key: Put its pictured piece above the bomb. Stop it before the count reaches
+      zero.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 527816348131328
+    m_Key: Put its pictured piece above the key. The branch opens and you can swap
+      there.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 527816348131329
+    m_Key: Put its pictured piece above the toolbox. It repairs this board once.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 527816348131330
+    m_Key: Match the spool picture. You earn one swap past one or two pieces.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 527816348131331
+    m_Key: Match the stamp picture, then finish the level to keep your bonus.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 527816348131332
+    m_Key: Match the hourglass picture. The bomb waits two swaps. The wood still
+      wears down.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 527816348131333
+    m_Key: You can swap across this bridge once. Then that path closes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 527816348131334
+    m_Key: These pairs are tied together. Swap one pair and the other swaps too.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 527816348131335
+    m_Key: A swap at the cracked spot uses twice as much wood. Try another path.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 527816348131336
+    m_Key: The branch blocks this swap. Use another pair or go down.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 527816348131337
+    m_Key: This board slides the whole row when it lands. Watch the arrow before
+      going down.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 527816348131338
+    m_Key: This board turns the row around on landing. The last piece becomes the
+      first.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 527816348131339
+    m_Key: Wind moves the whole row one place on landing. Look at the arrow before
+      going down.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 527816348131340
+    m_Key: A gust rocks the boards and pieces. They settle back into place. Your
+      order stays safe.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 527816348131341
+    m_Key: Follow the hand for each next move. The scroll lasts until this board
+      breaks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 527816348131342
+    m_Key: After two free undos, this spool undoes one more move on the same board.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 527816348131343
+    m_Key: The hourglass brings back the last broken board in this stage. Later moves
+      are undone.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 527816348131344
+    m_Key: Closed path
+    m_Metadata:
+      m_Items: []
+  - m_Id: 527816348131345
+    m_Key: A gust of wind
+    m_Metadata:
+      m_Items: []
+  - m_Id: 527816348131346
+    m_Key: Got it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 527816348131347
+    m_Key: Use it
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

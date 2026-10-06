@@ -153,7 +153,8 @@ namespace Cascade.Presentation
         }
         public async void UseShopTool(TravelTool tool)
         {
-            if(toolSearchPending||!ToolsInLevel||!ToolEligible(tool)||Stock(tool)==0)return;
+            if(MechanicPopupOpen||toolSearchPending||!ToolsInLevel||!ToolEligible(tool)||Stock(tool)==0)return;
+            if(IntroduceTool(tool))return;
             var attempt=Interaction.Attempt;HintOffer guide=null;
             if(tool==TravelTool.Wayfinder){
                 toolSearchPending=true;DrawMenu();var request=attempt.CaptureHintRequest();
