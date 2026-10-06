@@ -202,7 +202,9 @@ namespace Cascade.Presentation
 
             for (int i = 0; i < count - 1; i++) {
                 float x = .045f + .91f * (i + 1f) / count;
-                var gate = P("Edge latch " + i, art.tile, art.gold, x, .55f, .025f, .18f, -.4f); rig.locks.Add(gate);
+                var gate = P("Edge latch " + i, art.quad, branchMaterial, x, .466f, .05f, .27f, -.32f);
+                var branchUv=new MaterialPropertyBlock();branchUv.SetVector("_BaseMap_ST",new Vector4(.5f,1,((i+floors.Count)%2)*.5f,0));gate.renderer.SetPropertyBlock(branchUv);
+                rig.locks.Add(gate);
                 if (floor.OneUseBridgeEdge == i) {
                     rig.bridge.Add(P("One use bridge", art.beam, art.gold, x, .46f, .12f, .055f, -.4f));
                     rig.bridge.Add(P("Bridge hinge", art.disk, art.graphite, x, .46f, .024f, .045f, -.51f));
@@ -240,6 +242,7 @@ namespace Cascade.Presentation
             part.transform.rotation = Quaternion.Euler(0, 0, part.angle);
             var bounds = part.stretch?new Vector3(1,2,1):part.mesh.bounds.size;
             float width = size.x * part.size.x, height = size.y * part.size.y;
+            if(part.material==branchMaterial)width=height*.5f; // Two portrait illustrations, each half of the square atlas.
             if (!part.stretch && part.mesh != art.beam && part.mesh != art.quad) { float fit = Mathf.Min(width / bounds.x, height / bounds.y); width = fit * bounds.x; height = fit * bounds.y; }
             part.transform.localScale = new Vector3(width / bounds.x, height / bounds.y, part.depth / Mathf.Max(.01f, bounds.z));
             part.basePosition=part.transform.position;part.baseRotation=part.transform.rotation;part.baseScale=part.transform.localScale;

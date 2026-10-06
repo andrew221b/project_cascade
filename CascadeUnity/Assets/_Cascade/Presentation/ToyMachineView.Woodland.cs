@@ -10,7 +10,7 @@ namespace Cascade.Presentation
     public enum PiecePose { Resting,Held,Exchanging,Falling,Settling,Delivered }
     public sealed partial class ToyMachineView
     {
-        Material woodMaterial,ropeMaterial;
+        Material woodMaterial,ropeMaterial,branchMaterial;
         readonly List<Mesh> woodMeshes=new List<Mesh>();
         readonly Vector3[] dynamicOffsets=new Vector3[8],visualOffsets=new Vector3[8];
         readonly Vector2[] visualStretch=new Vector2[8];
@@ -79,6 +79,10 @@ namespace Cascade.Presentation
             woodMaterial.SetFloat("_Smoothness",.32f);
             woodMaterial.SetFloat("_AlphaClip",1);woodMaterial.SetFloat("_Cutoff",.12f);woodMaterial.EnableKeyword("_ALPHATEST_ON");woodMaterial.SetOverrideTag("RenderType","TransparentCutout");woodMaterial.renderQueue=2450;
             ropeMaterial=new Material(art.gold){name="Warm braided hemp"};ropeMaterial.SetColor("_BaseColor",new Color(.73f,.51f,.26f));
+            branchMaterial=new Material(woodMaterial){name="Natural honey-wood branch stops"};
+            branchMaterial.SetTexture("_BaseMap",Resources.Load<Texture2D>("CascadeArt/Woodland/BranchStops"));
+            branchMaterial.SetTextureScale("_BaseMap",Vector2.one);branchMaterial.SetTextureOffset("_BaseMap",Vector2.zero);
+            branchMaterial.SetFloat("_Cutoff",.45f);branchMaterial.SetFloat("_Smoothness",.24f);
         }
         Mesh BoardMesh()
         {
@@ -184,7 +188,7 @@ namespace Cascade.Presentation
         }
         void OnDestroy()
         {
-            if(continuousRopeMaterial!=null)Destroy(continuousRopeMaterial);if(woodMaterial!=null)Destroy(woodMaterial);if(ropeMaterial!=null)Destroy(ropeMaterial);
+            if(continuousRopeMaterial!=null)Destroy(continuousRopeMaterial);if(woodMaterial!=null)Destroy(woodMaterial);if(ropeMaterial!=null)Destroy(ropeMaterial);if(branchMaterial!=null)Destroy(branchMaterial);
             DisposePieceMaterials();
             if(touchGlowMaterial!=null)Destroy(touchGlowMaterial);
             foreach(var mesh in woodMeshes)if(mesh!=null)Destroy(mesh);

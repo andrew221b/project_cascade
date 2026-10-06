@@ -1,0 +1,8 @@
+C08, 390x844 with simulated safe insets; view movement only.
+Edge latch 0 movement=(0.02676, -0.06392, 0.00000) uv=(0.50, 1.00, 0.50, 0.00) material=Natural honey-wood branch stops
+Edge latch 1 movement=(0.02688, -0.07874, 0.00000) uv=(0.50, 1.00, 0.00, 0.00) material=Natural honey-wood branch stops
+Edge latch 0 movement=(0.02739, -0.00463, 0.00000) uv=(0.50, 1.00, 0.00, 0.00) material=Natural honey-wood branch stops
+Edge latch 2 movement=(0.02737, 0.00462, 0.00000) uv=(0.50, 1.00, 0.00, 0.00) material=Natural honey-wood branch stops
+board 0 movement=(0.02742, 0.00000, 0.00000)
+board 1 movement=(0.02849, 0.00000, 0.00000)
+Puzzle hash unchanged. Branch opacity uses actual alpha clipping; source alpha preserved.
