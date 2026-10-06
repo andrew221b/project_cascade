@@ -76,18 +76,18 @@ namespace Cascade.Presentation
             feedback = gameObject.AddComponent<ToyFeedbackPool>(); feedback.Initialize(this, art, motion);
             eventPlayer = gameObject.AddComponent<PuzzleEventPlayer>(); eventPlayer.Initialize(this, motion, feedback);
             gameObject.AddComponent<PhoneShakeFeedback>().Initialize(this);
-            BuildScreen();BuildControlArt(); LoadNode(initialNode); BuildFlow(); RestoreProfile();InitializeMonetization();
+            BuildScreen();BuildControlArt();BuildFieldTools(); LoadNode(initialNode); BuildFlow(); RestoreProfile();InitializeMonetization();
         }
         void OnEnable() { disabling=false;if (Interaction != null) { if(!preparation.IsReady&&!preparation.IsPending)BeginPreparation(); Interaction.SetSuspended(nativeAdSuspended||applicationPaused || !applicationFocused); RenderState(); } }
         void OnDisable()
         {
             disabling=true;
-            ResetMechanicDiscovery();
+            CloseLandingPreview();ResetMechanicDiscovery();
             PersistProgress();
             SettleDescent();CancelDescentWork();
             EndTokenHold(); CancelHint(); CancelDeadEnd(); preparation.Cancel(); StopPresentation(); Interaction?.SetSuspended(true); feedback?.ClearTails();
         }
-        void OnDestroy() { mechanicArrival?.Kill();previewArrival?.Kill();coinArrival?.Kill();if(introBranch!=null)Destroy(introBranch);if(purchaseStore!=null)purchaseStore.Changed-=NotifyStoreChanged;DisposeNavigationArt();if(travelArt!=null)foreach(var sprite in travelArt)if(sprite!=null)Destroy(sprite);DisposeCompletionArt();DisposePlatformProps(); preparation.Dispose(); if (Interaction != null) Interaction.Committed -= OnCommitted; if(glyphMaterial!=null)Destroy(glyphMaterial);if(tutorialOverlayMaterial!=null)Destroy(tutorialOverlayMaterial);if(toolSilhouette!=null)Destroy(toolSilhouette);foreach(var sprite in toolBodySprites.Values)if(sprite!=null)Destroy(sprite);foreach(var sprite in enamelControls)if(sprite!=null)Destroy(sprite); }
+        void OnDestroy() { mechanicArrival?.Kill();previewArrival?.Kill();coinArrival?.Kill();if(introBranch!=null)Destroy(introBranch);if(purchaseStore!=null)purchaseStore.Changed-=NotifyStoreChanged;DisposeNavigationArt();if(treasureArt!=null)foreach(var sprite in treasureArt)if(sprite!=null)Destroy(sprite);if(travelArt!=null)foreach(var sprite in travelArt)if(sprite!=null)Destroy(sprite);DisposeCompletionArt();DisposePlatformProps(); preparation.Dispose(); if (Interaction != null) Interaction.Committed -= OnCommitted; if(glyphMaterial!=null)Destroy(glyphMaterial);if(tutorialOverlayMaterial!=null)Destroy(tutorialOverlayMaterial);if(toolSilhouette!=null)Destroy(toolSilhouette);foreach(var sprite in toolBodySprites.Values)if(sprite!=null)Destroy(sprite);foreach(var sprite in enamelControls)if(sprite!=null)Destroy(sprite); }
         void OnApplicationFocus(bool focused)
         {
             if(!focused)SettleDescent();
@@ -452,7 +452,7 @@ namespace Cascade.Presentation
                 FitMenuRows();
                 FixedBand(header, safeRoot.rect.height - 60 * unit, 48 * unit);
                 FixedBand(statusPaper,safeRoot.rect.height-114*unit,44*unit);status.fontSize=16*unit*(Preferences.LargeText?1.12f:1);
-                LayoutInstruction(unit);
+                LayoutInstruction(unit);LayoutFieldTools(unit);
                 LayoutPlatformLegends(unit);
                 foreach(var dock in deviceDocks)if(dock.countdown!=null)dock.countdown.fontSize=13*unit;
                 FixedBand(actions, 8 * unit, 52 * unit); FixedBand(precise, 64 * unit, 104 * unit);
@@ -589,6 +589,7 @@ namespace Cascade.Presentation
         }
         void RenderControls()
         {
+            RefreshFieldTools();
             if (Interaction == null) return;
             bool stockedUndo=Interaction.Attempt.CanUseSpool&&Stock(TravelTool.UndoSpool)>0;
             bool stockedReturn=Interaction.Attempt.CanUseHourglass&&Stock(TravelTool.ReturnHourglass)>0;

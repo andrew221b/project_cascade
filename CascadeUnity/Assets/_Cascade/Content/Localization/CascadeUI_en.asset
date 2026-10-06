@@ -1018,7 +1018,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 24216299626518
-    m_Localized: Every gift part is found!
+    m_Localized: Every trophy part is found!
     m_Metadata:
       m_Items: []
   - m_Id: 24216299626519
@@ -1030,7 +1030,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 24216299626521
-    m_Localized: Choose a gift
+    m_Localized: Choose a trophy
     m_Metadata:
       m_Items: []
   - m_Id: 24216299626522
@@ -1038,11 +1038,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 24216299626523
-    m_Localized: Gifts
+    m_Localized: Trophies
     m_Metadata:
       m_Items: []
   - m_Id: 24216299626524
-    m_Localized: Your keepsakes
+    m_Localized: Your trophies
     m_Metadata:
       m_Items: []
   - m_Id: 24216299626525
@@ -1054,11 +1054,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 24216299626527
-    m_Localized: A little keepsake for Mika.
+    m_Localized: A little trophy for Mika.
     m_Metadata:
       m_Items: []
   - m_Id: 24216299626528
-    m_Localized: Three parts make this gift.
+    m_Localized: Three parts make this trophy.
     m_Metadata:
       m_Items: []
   - m_Id: 24216299626529
@@ -1070,11 +1070,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 24216299626531
-    m_Localized: Next gift
+    m_Localized: Next trophy
     m_Metadata:
       m_Items: []
   - m_Id: 24216299626532
-    m_Localized: Choose this gift
+    m_Localized: Choose this trophy
     m_Metadata:
       m_Items: []
   - m_Id: 24216299626533
@@ -1138,7 +1138,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 24216299626548
-    m_Localized: Your gift is ready!
+    m_Localized: Your trophy is ready!
     m_Metadata:
       m_Items: []
   - m_Id: 24216299626549
@@ -2026,7 +2026,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 371952031096845
-    m_Localized: Restore lights. Collect parts. Make a gift for Mika.
+    m_Localized: Restore lights. Collect parts. Make a trophy for Mika.
     m_Metadata:
       m_Items: []
   - m_Id: 371952031096846
@@ -2081,11 +2081,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 404348818415616
-    m_Localized: Choose a quieter journey, or find a keepsake for Mika.
+    m_Localized: Choose a quieter journey, or find a trophy for Mika.
     m_Metadata:
       m_Items: []
   - m_Id: 404348822609920
-    m_Localized: Keepsakes can be earned by playing. Purchases are optional.
+    m_Localized: Trophies can be earned by playing. Purchases are optional.
     m_Metadata:
       m_Items: []
   - m_Id: 404348822609921
@@ -2192,23 +2192,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 449412517060619
-    m_Localized: A gift is waiting for you!
+    m_Localized: A trophy is waiting for you!
     m_Metadata:
       m_Items: []
   - m_Id: 449412517060620
-    m_Localized: 'New lights for a gift: {0} / 3'
+    m_Localized: 'New lights for a trophy: {0} / 3'
     m_Metadata:
       m_Items: []
   - m_Id: 449412517060621
-    m_Localized: Collect my gift
+    m_Localized: Collect my trophy
     m_Metadata:
       m_Items: []
   - m_Id: 449412517060622
-    m_Localized: A gift for you!
+    m_Localized: A trophy for you!
     m_Metadata:
       m_Items: []
   - m_Id: 449412517060623
-    m_Localized: You earned a gift!
+    m_Localized: You earned a trophy!
     m_Metadata:
       m_Items: []
   - m_Id: 449412517060624
@@ -2216,7 +2216,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 449412517060625
-    m_Localized: Find three parts to make a keepsake for Mika.
+    m_Localized: Find three parts to make a trophy for Mika.
     m_Metadata:
       m_Items: []
   - m_Id: 449412517060626
@@ -2251,7 +2251,7 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 449412517060633
     m_Localized: Fewer moves earn more stars. Replay an open level to beat your score.
-      Three new lights earn a gift.
+      Three new lights earn a trophy.
     m_Metadata:
       m_Items: []
   - m_Id: 457177780183040
@@ -2602,6 +2602,130 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 546229162336256
     m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995444011008
+    m_Localized: Trophies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205312
+    m_Localized: Signal lantern
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205313
+    m_Localized: Landing lens
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205314
+    m_Localized: Wind chime
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205315
+    m_Localized: Rain badge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205316
+    m_Localized: Copper acorn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205317
+    m_Localized: Beacon brooch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205318
+    m_Localized: Yours
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205319
+    m_Localized: Next trophy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205320
+    m_Localized: Choose this trophy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205321
+    m_Localized: Find in shop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205322
+    m_Localized: Choose a trophy to take with Mika.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205323
+    m_Localized: A trophy for Mika's travels. Wear it on the map. No puzzle advantage.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205324
+    m_Localized: Makes one safe move for you. Uses wood normally. Once per stage.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205325
+    m_Localized: Shows the exact next landing before you descend. No pieces move.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205326
+    m_Localized: The lantern makes one safe move for you. It uses wood just like
+      your own move. Once per stage.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205327
+    m_Localized: See where the pieces will land if you go down now. Nothing moves
+      until you choose Descend.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205328
+    m_Localized: Next landing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205329
+    m_Localized: This is the last board
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205330
+    m_Localized: This landing would lose the row. Try another move.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205331
+    m_Localized: The row is ready. You can bring it home.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205332
+    m_Localized: This is where the pieces will land. Keep arranging below.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205333
+    m_Localized: Keep playing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 557615414239232
+    m_Localized: One safe step
+    m_Metadata:
+      m_Items: []
+  - m_Id: 557615418433536
+    m_Localized: 'Trophies collected: {0} / {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 557763439616000
+    m_Localized: Added to your collection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 561463100956672
+    m_Localized: 'Tools left: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 561463105150976
+    m_Localized: 'Tools: up to 2 stars.
+
+      No clean record.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 561463105150977
+    m_Localized: The row would arrive home.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 561463105150978
+    m_Localized: The row will match the target on the next board.
     m_Metadata:
       m_Items: []
   references:

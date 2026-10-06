@@ -16,7 +16,7 @@ namespace Cascade.Presentation
         bool parcelOpened;
         GameScreen collectionReturn=GameScreen.TravelBag,workshopReturn=GameScreen.TravelBag;
         LevelContent[] contracts;
-        static readonly string[] GiftNames={"Leaf pin","Sun button","Sky ribbon","Moon patch"};
+        static readonly string[] GiftNames={"Leaf pin","Sun button","Sky ribbon","Moon patch","Wind chime","Rain badge","Copper acorn","Beacon brooch"};
         static readonly string[] GiftAssets={"LeafPin","SunButton","SkyRibbon","MoonPatch"};
         static readonly string[] WorkshopNames={"Bridge lantern","Rain pump","Post glider","Beacon model"};
         static readonly string[] WorkshopAssets={"BridgeLantern","RainPump","PostGlider","BeaconModel"};
@@ -66,22 +66,7 @@ namespace Cascade.Presentation
         }
         UnityEngine.UI.Image RewardPicture(string asset,Vector2 min,Vector2 max)
             =>Picture(asset,menuRoot,min,max,Resources.Load<Sprite>("CascadeArt/Workshop/"+asset),true);
-        void DrawCollection()
-        {
-            string id=JourneyRewards.Gifts[giftPage];bool owned=OwnsGift(id);
-            CraftTitle("Your keepsakes",GiftNames[giftPage]);
-            for(int i=0;i<4;i++){int pick=i;ShelfChoice("",GiftAssets[i],.08f+i*.215f,.655f,.195f,.14f,()=>{giftPage=pick;DrawMenu();},i==giftPage);}
-            Shelf(.64f);
-            var selected=RewardPicture(GiftAssets[giftPage],new Vector2(.21f,.39f),new Vector2(.79f,.635f));
-            selected.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,2),0,1.5f);
-            MenuReadingSurface("Keepsake progress cloth",new Vector2(.12f,.225f),new Vector2(.88f,.425f));
-            Text("Gift parts",menuRoot,new Vector2(.10f,.31f),new Vector2(.90f,.375f),23,owned?"You made it!":new UiCopy("Parts found: {0} / 3",Rewards.Fragments(id))).font=art.titleFont;
-            Text("Gift plan",menuRoot,new Vector2(.10f,.235f),new Vector2(.90f,.305f),20,owned?"A little keepsake for Mika.":"Three parts make this gift.");
-            if(owned)MenuButton(EquippedGift==id?"With Mika":"Take along",.14f,()=>EquipShopGift(id),true).interactable=EquippedGift!=id;
-            else if(Rewards.EarnedFragments(id)>=3)MenuButton("Open parcel",.14f,ShowParcel,true);
-            else MenuButton(Rewards.SelectedGift==id?"Next gift":"Choose this gift",.14f,()=>{Rewards.SelectGift(id);PersistProgress();DrawMenu();},true).interactable=Rewards.SelectedGift!=id;
-            MenuButton("Back",.025f,()=>SetScreen(collectionReturn));
-        }
+        void DrawCollection(){shopItem=giftPage;DrawTravelCounter(false,true);}
         void DrawWorkshop()
         {
             int complete=Rewards.WorkshopCount(workshopPage,OrderedNodes);bool built=complete==10;

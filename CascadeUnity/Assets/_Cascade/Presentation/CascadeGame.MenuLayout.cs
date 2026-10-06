@@ -26,6 +26,7 @@ namespace Cascade.Presentation
             foreach(var row in menuRows)if(row.rect!=null){
                 var r=row.rect;r.anchorMin=new Vector2(r.anchorMin.x,row.top);r.anchorMax=new Vector2(r.anchorMax.x,row.top);
                 r.pivot=new Vector2(.5f,1);r.sizeDelta=new Vector2(0,row.height*unit);r.anchoredPosition=new Vector2(0,-(row.offset+row.index*(row.height+row.gap))*unit);
+                if(CurrentScreen==GameScreen.Shop||CurrentScreen==GameScreen.Supplies||CurrentScreen==GameScreen.Collection){var caption=r.GetComponentInChildren<TextMeshProUGUI>();if(caption!=null&&r.GetComponent<Button>()!=null){caption.fontSizeMin=16*unit;caption.fontSizeMax=22*unit;}}
             }
             foreach(var item in menuBottoms)if(item.rect!=null){
                 var r=item.rect;r.anchorMin=new Vector2(r.anchorMin.x,0);r.anchorMax=new Vector2(r.anchorMax.x,0);

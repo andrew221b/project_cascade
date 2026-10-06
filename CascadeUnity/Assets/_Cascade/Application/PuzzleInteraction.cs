@@ -79,6 +79,9 @@ namespace Cascade.Application
             SelectedSlot = null; pointer = null; IsPresenting = true;
             Committed?.Invoke(result);
         }
+        // Publish only the exact result already committed by the atomic inventory transaction.
+        public bool PresentToolTransition(TransitionResult result)
+        {if(!CanPlay||result==null||!result.Accepted||!ReferenceEquals(result.State,Attempt.Current))return false;Present(result);return true;}
         public void FinishPresentation() { IsPresenting = false; }
         public bool Undo()
         {

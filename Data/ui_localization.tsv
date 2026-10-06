@@ -246,21 +246,21 @@ My routes	My routes	Мои пути	Мої шляхи
 Back to map	Back to map	К карте	До карти
 Lights restored: {0}	Lights restored: {0}	Огоньков: {0}	Вогників: {0}
 Visits: {0} / 7\nCome back when you like.	Visits: {0} / 7\nCome back when you like.	Визитов: {0} / 7\nПриходи, когда захочешь.	Візитів: {0} / 7\nПриходь, коли захочеш.
-Every gift part is found!	Every gift part is found!	Все детали подарков найдены!	Усі деталі подарунків знайдено!
+Every gift part is found!	Every trophy part is found!	Все детали трофеев найдены!	Усі деталі трофеїв знайдено!
 New lights for a parcel: {0} / 3	New lights for a parcel: {0} / 3	До посылки: {0} / 3 огонька	До пакунка: {0} / 3 вогники
 Open parcel	Open parcel	Открыть посылку	Відкрити пакунок
-Choose a gift	Choose a gift	Выбрать подарок	Вибрати подарунок
+Choose a gift	Choose a trophy	Выбрать трофей	Вибрати трофей
 Requests	Requests	Просьбы друзей	Прохання друзів
-Keepsakes	Gifts	Подарки	Подарунки
-Your keepsakes	Your keepsakes	Твои вещи	Твої речі
+Keepsakes	Trophies	Трофеи	Трофеї
+Your keepsakes	Your trophies	Твои трофеи	Твої трофеї
 You made it!	You made it!	Получилось!	Вийшло!
 Parts found: {0} / 3	Parts found: {0} / 3	Деталей: {0} / 3	Деталей: {0} / 3
-A little keepsake for Mika.	A little keepsake for Mika.	Маленький подарок для Мики.	Маленький подарунок для Міки.
-Three parts make this gift.	Three parts make this gift.	Собери три детали подарка.	Збери три деталі подарунка.
+A little keepsake for Mika.	A little trophy for Mika.	Трофей для Мики.	Трофей для Міки.
+Three parts make this gift.	Three parts make this trophy.	Собери три детали трофея.	Збери три деталі трофея.
 With Mika	With Mika	У Мики	У Міки
 Take along	Take along	Взять с собой	Узяти з собою
-Next gift	Next gift	Следующий подарок	Наступний подарунок
-Choose this gift	Choose this gift	Хочу этот	Хочу цей
+Next gift	Next trophy	Следующий трофей	Наступний трофей
+Choose this gift	Choose this trophy	Хочу этот	Хочу цей
 Ready for the islands!	Ready for the islands!	Готово! Можно в путь.	Готово! Можна в дорогу.
 This is what we are building.	This is what we are building.	Вот что мы строим.	Ось що ми будуємо.
 Lights restored: {0} / 10	Lights restored: {0} / 10	Огоньков: {0} / 10	Вогників: {0} / 10
@@ -276,7 +276,7 @@ Try a puzzle	Try a puzzle	К головоломке	До головоломки
 A little piece of home	A little piece of home	Частичка дома	Частинка дому
 A parcel for Mika	A parcel for Mika	Посылка для Мики	Пакунок для Міки
 Inside: a part for {0}	Inside: a part for {0}	Деталь подарка: {0}	Деталь подарунка: {0}
-Your gift is ready!	Your gift is ready!	Твой подарок готов!	Твій подарунок готовий!
+Your gift is ready!	Your trophy is ready!	Твой трофей готов!	Твій трофей готовий!
 You earned this with three new lights.	You earned this with three new lights.	Ты зажёг три новых огонька!	Ти засвітив три нові вогники!
 Keep going	Keep going	В путь	У дорогу
 Unwrap	Unwrap	Распаковать	Розпакувати
@@ -406,7 +406,6 @@ Wood: {0} moves	Wood · moves: {0}	Доска · ходы: {0}	Дошка · х�
 {0} moves	{0} moves	{0} ходов	{0} ходів
 Safe	Safe	Обезврежена	Знешкоджена
 Burst	Burst	Взорвалась	Вибухнула
-Collected	Collected	Получено	Отримано
 Far swap	Far swap	Дальний обмен	Далекий обмін
 Pause bomb	Pause bomb	Пауза бомбы	Пауза бомби
 Paused: {0}	Paused: {0}	Пауза: {0}	Пауза: {0}
@@ -496,7 +495,7 @@ Tap a number to play. Swipe for more levels.	Tap a number to play. Swipe for mor
 Page {0} of {1}	Page {0} of {1}	Лист {0} из {1}	Сторінка {0} з {1}
 Play level {0}	Play level {0}	Играть: уровень {0}	Грати: рівень {0}
 Go to level {0}	Go to level {0}	К уровню {0}	До рівня {0}
-Restore lights. Collect parts. Make a gift for Mika.	Restore lights. Collect parts. Make a gift for Mika.	Зажигай огоньки и собирай детали для подарков Мике.	Запалюй вогники й збирай деталі для подарунків Міці.
+Restore lights. Collect parts. Make a gift for Mika.	Restore lights. Collect parts. Make a trophy for Mika.	Зажигай огоньки и собирай детали для трофеев Мике.	Запалюй вогники й збирай деталі для трофеїв Міці.
 My things	My things	Мои вещи	Мої речі
 Ads are already off in this version. Enjoy the game.	Ads are already off in this version. Enjoy the game.	В этой версии рекламы уже нет. Можно спокойно играть.	У цій версії реклами вже немає. Можна спокійно грати.
 Opening story	Opening story	Начало истории	Початок історії
@@ -509,8 +508,8 @@ Then the storm broke the bridges and put the beacon out. Mika saved one little l
 Mika: I'll bring it home, Gran. We'll mend the bridges, help our friends and light the beacon again.	Mika: I'll bring it home, Gran. We'll mend the bridges, help our friends and light the beacon again.	Мика: Я донесу огонёк, бабушка. Починим мосты, поможем друзьям и снова зажжём маяк.	Міка: Я донесу вогник, бабусю. Полагодимо мости, допоможемо друзям і знову запалимо маяк.
 Goal: Great Beacon	Goal: Great Beacon	Наша цель — Большой маяк	Наша мета — Великий маяк
 Talk to {0}	Talk to {0}	Поговорить: {0}	Поговорити: {0}
-Choose a quieter journey, or find a keepsake for Mika.	Choose a quieter journey, or find a keepsake for Mika.	Без рекламных пауз. И подарки для Мики.	Без рекламних пауз. І подарунки для Міки.
-Keepsakes can be earned by playing. Purchases are optional.	Keepsakes can be earned by playing. Purchases are optional.	Подарки можно собрать в игре. Покупать что-либо необязательно.	Подарунки можна зібрати в грі. Купувати щось необов’язково.
+Choose a quieter journey, or find a keepsake for Mika.	Choose a quieter journey, or find a trophy for Mika.	Без рекламных пауз. И трофеи для Мики.	Без рекламних пауз. І трофеї для Міки.
+Keepsakes can be earned by playing. Purchases are optional.	Trophies can be earned by playing. Purchases are optional.	Трофеи можно собрать в игре. Покупать что-либо необязательно.	Трофеї можна зібрати в грі. Купувати щось необов’язково.
 Keep the way home free of advertising breaks. Support Mika's journey.	Keep the way home free of advertising breaks. Support Mika's journey.	Путь домой без рекламных пауз. Ваша покупка поддержит игру.	Шлях додому без рекламних пауз. Ваша покупка підтримає гру.
 The shop is not open yet. You can enjoy the whole journey without purchases.	The shop is not open yet. You can enjoy the whole journey without purchases.	Магазин ещё не открыт. Всё приключение доступно без покупок.	Магазин ще не відкрито. Уся пригода доступна без покупок.
 A one-time purchase removes automatic ads. Optional videos stay your choice.	A one-time purchase removes automatic ads. Optional videos stay your choice.	Купите один раз — и рекламных пауз больше не будет. Видео за награду останутся по желанию.	Купіть один раз — і рекламних пауз більше не буде. Відео за нагороду залишаться за бажанням.
@@ -536,13 +535,13 @@ You earned	You earned	Твоя награда	Твоя нагорода
 {0} coins	{0} coins	Монеты: {0}	Монети: {0}
 {0} light	{0} light	Огоньки: {0}	Вогники: {0}
 Replay to improve your stars and score.	Replay to improve your stars and score.	Играй снова, чтобы улучшить рекорд.	Грай знову, щоб покращити рекорд.
-A gift is waiting for you!	A gift is waiting for you!	Тебя ждёт подарок!	На тебе чекає подарунок!
-New lights for a gift: {0} / 3	New lights for a gift: {0} / 3	До подарка: {0} из 3 огоньков	До подарунка: {0} з 3 вогників
-Collect my gift	Collect my gift	Забрать подарок	Забрати подарунок
-A gift for you!	A gift for you!	Это тебе!	Це тобі!
-You earned a gift!	You earned a gift!	Твой подарок!	Твій подарунок!
+A gift is waiting for you!	A trophy is waiting for you!	Тебя ждёт трофей!	На тебе чекає трофей!
+New lights for a gift: {0} / 3	New lights for a trophy: {0} / 3	До трофея: {0} из 3 огоньков	До трофея: {0} з 3 вогників
+Collect my gift	Collect my trophy	Забрать трофей	Забрати трофей
+A gift for you!	A trophy for you!	Это тебе!	Це тобі!
+You earned a gift!	You earned a trophy!	Твой трофей!	Твій трофей!
 Let's see what is inside.	Let's see what is inside.	Посмотрим, что внутри.	Подивімося, що всередині.
-Find three parts to make a keepsake for Mika.	Find three parts to make a keepsake for Mika.	Собери 3 части — получится вещь для Мики.	Збери 3 частини — вийде річ для Міки.
+Find three parts to make a keepsake for Mika.	Find three parts to make a trophy for Mika.	Собери 3 части — получится вещь для Мики.	Збери 3 частини — вийде річ для Міки.
 Stage {0}/3 complete!	Stage {0}/3 complete!	Этап {0} из 3 пройден!	Етап {0} з 3 пройдено!
 The next stage is below. Take the row down.	The next stage is below. Take the row down.	Внизу следующий этап. Опусти ряд.	Унизу наступний етап. Опусти ряд.
 Open the next level, or replay one you finished. Swipe to look ahead.	Open the next level, or replay one you finished. Swipe to look ahead.	Открой следующий уровень или сыграй пройденный. Листай, чтобы посмотреть дальше.	Відкрий наступний рівень або грай пройдений. Гортай, щоб подивитися далі.
@@ -550,7 +549,7 @@ Step complete · {0}/{0} levels	Step complete · {0}/{0} levels	Ступень �
 Next step in {0} levels · {1}/{2}	Next step in {0} levels · {1}/{2}	До следующей ступени: {0} · пройдено {1}/{2}	До наступної сходинки: {0} · пройдено {1}/{2}
 The picture on a tool shows what it needs. Move that piece above it.	The picture on a tool shows what it needs. Move that piece above it.	Картинка на предмете показывает, что ему нужно. Поставь эту фигуру или букву над ним.	Малюнок на предметі показує, що йому потрібно. Постав цю фігуру чи літеру над ним.
 Make the row below, then descend. Finish all three stages to open the next level.	Make the row below, then descend. Finish all three stages to open the next level.	Собери ряд по образцу и спускайся. Пройди 3 этапа, чтобы открыть следующий уровень.	Збери ряд за зразком і спускайся. Пройди 3 етапи, щоб відкрити наступний рівень.
-Fewer moves earn more stars. Replay an open level to beat your score. Three new lights earn a gift.	Fewer moves earn more stars. Replay an open level to beat your score. Three new lights earn a gift.	Меньше ходов — больше звёзд. Играй снова и улучшай рекорд. За 3 новых огонька — подарок.	Менше ходів — більше зірок. Грай знову й покращуй рекорд. За 3 нові вогники — подарунок.
+Fewer moves earn more stars. Replay an open level to beat your score. Three new lights earn a gift.	Fewer moves earn more stars. Replay an open level to beat your score. Three new lights earn a trophy.	Меньше ходов — больше звёзд. Играй снова и улучшай рекорд. За 3 новых огонька — трофей.	Менше ходів — більше зірок. Грай знову й покращуй рекорд. За 3 нові вогники — трофей.
 Coins	Coins	Монеты	Монети
 Lights	Lights	Огоньки	Вогники
 Next step in {0} level · {1}/{2}	Next step in {0} level · {1}/{2}	До следующей ступени: {0} · пройдено {1}/{2}	До наступної сходинки: {0} · пройдено {1}/{2}
@@ -632,3 +631,34 @@ All done	All done	Готово	Готово
 {0} seconds	{0} seconds	Секунд осталось: {0}	Секунд залишилося: {0}
 40 coins added	40 coins added	Получено 40 монет	Отримано 40 монет
 Close	Close	Закрыть	Закрити
+Trophies	Trophies	Трофеи	Трофеї
+Signal lantern	Signal lantern	Фонарь пути	Ліхтар шляху
+Landing lens	Landing lens	Линза спуска	Лінза спуску
+Wind chime	Wind chime	Музыка ветра	Музика вітру
+Rain badge	Rain badge	Значок дождя	Значок дощу
+Copper acorn	Copper acorn	Медный жёлудь	Мідний жолудь
+Beacon brooch	Beacon brooch	Брошь маяка	Брошка маяка
+Yours	Yours	Твой	Твій
+Next trophy	Next trophy	Следующий трофей	Наступний трофей
+Choose this trophy	Choose this trophy	Выбрать трофей	Вибрати трофей
+Find in shop	Find in shop	Найти в магазине	Знайти в крамниці
+Choose a trophy to take with Mika.	Choose a trophy to take with Mika.	Выбери трофей для Мики.	Вибери трофей для Міки.
+A trophy for Mika's travels. Wear it on the map. No puzzle advantage.	A trophy for Mika's travels. Wear it on the map. No puzzle advantage.	Мика носит его на карте. На головоломки не влияет.	Міка носить його на карті. На головоломки не впливає.
+Makes one safe move for you. Uses wood normally. Once per stage.	Makes one safe move for you. Uses wood normally. Once per stage.	Делает один верный ход за тебя. Доска изнашивается как обычно. Раз за этап.	Робить один правильний хід за тебе. Дошка зношується як завжди. Раз за етап.
+Shows the exact next landing before you descend. No pieces move.	Shows the exact next landing before you descend. No pieces move.	Показывает ряд после спуска. Можно посмотреть и ещё подумать.	Показує ряд після спуску. Можна поглянути й ще подумати.
+The lantern makes one safe move for you. It uses wood just like your own move. Once per stage.	The lantern makes one safe move for you. It uses wood just like your own move. Once per stage.	Фонарь сам делает один верный ход. Он тратит прочность доски, как твой ход. Раз за этап.	Ліхтар сам робить один правильний хід. Він витрачає міцність дошки, як твій хід. Раз за етап.
+See where the pieces will land if you go down now. Nothing moves until you choose Descend.	See where the pieces will land if you go down now. Nothing moves until you choose Descend.	Посмотри, как фигуры приземлятся, если спуститься сейчас. Это только пример: ряд остаётся на месте.	Поглянь, як фігури приземляться, якщо спуститися зараз. Це лише приклад: ряд залишається на місці.
+Next landing	Next landing	После спуска	Після спуску
+This is the last board	This is the last board	Это последняя доска	Це остання дошка
+This landing would lose the row. Try another move.	This landing would lose the row. Try another move.	После такого спуска ты проиграешь. Попробуй другой ход.	Після такого спуску ти програєш. Спробуй інший хід.
+The row is ready. You can bring it home.	The row is ready. You can bring it home.	Ряд собран. Можно доставить его домой.	Ряд зібрано. Можна доставити його додому.
+This is where the pieces will land. Keep arranging below.	This is where the pieces will land. Keep arranging below.	Вот как приземлится ряд. Внизу можно продолжить.	Ось як приземлиться ряд. Унизу можна продовжити.
+Keep playing	Keep playing	Играть дальше	Грати далі
+One safe step	One safe step	Один верный ход	Один правильний хід
+Trophies collected: {0} / {1}	Trophies collected: {0} / {1}	Трофеев: {0} из {1}	Трофеїв: {0} із {1}
+Added to your collection	Added to your collection	Добавлено в коллекцию	Додано до колекції
+Collected	Collected	В твоей коллекции	У твоїй колекції
+Tools left: {0}	Tools left: {0}	Инструментов: {0}	Інструментів: {0}
+Tools: up to 2 stars. No clean record.	Tools: up to 2 stars.\nNo clean record.	С инструментом — до 2 звёзд.\nЧистого рекорда не будет.	Із інструментом — до 2 зірок.\nЧистого рекорду не буде.
+The row would arrive home.	The row would arrive home.	Ряд попадёт домой.	Ряд потрапить додому.
+The row will match the target on the next board.	The row will match the target on the next board.	На следующей доске ряд совпадёт с целью.	На наступній дошці ряд збігатиметься з ціллю.

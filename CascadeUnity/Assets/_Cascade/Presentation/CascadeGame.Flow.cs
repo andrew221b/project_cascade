@@ -99,6 +99,7 @@ namespace Cascade.Presentation
         void SetScreen(GameScreen screen)
         {
             if (!flowReady) return;
+            CloseLandingPreview();
             if(screen!=GameScreen.Playing&&MechanicPopupOpen)ResetMechanicDiscovery();
             if(screen!=GameScreen.Playing)SettleDescent();
             if(screen!=GameScreen.Playing) { CancelHint(); StopPresentation(); }
@@ -209,6 +210,7 @@ namespace Cascade.Presentation
                 }
                 else PlaceControl(resultRoot.Find("Nextdelivery").GetComponent<Button>(),resultRoot,new Vector2(.52f,.35f),new Vector2(1,.65f));
             }
+            RefreshFieldTools();
         }
         static void PlaceControl(Button button,Transform parent,Vector2 min,Vector2 max)
         { var r=(RectTransform)button.transform; r.SetParent(parent,false); r.anchorMin=min;r.anchorMax=max;r.offsetMin=r.offsetMax=Vector2.zero; }

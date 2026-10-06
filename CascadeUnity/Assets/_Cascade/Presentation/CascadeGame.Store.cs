@@ -42,11 +42,11 @@ namespace Cascade.Presentation
         void RewardedShopOffer()
         {
             if(monetization.Ledger.HideVideoOffers)return;
-            var b=CounterButton("Watch coin video",adProvider?.RewardReady==true?(UiCopy)"Video · +40":"Loading video…",.46f,.91f,.805f,.862f,WatchCoinVideo,true);
+            var b=CounterButton("Watch coin video",adProvider?.RewardReady==true?(UiCopy)"Video · +40":"Loading video…",.46f,.91f,.826f,.897f,WatchCoinVideo,false);
             b.interactable=adProvider?.RewardReady==true&&!saveBlocked&&!monetization.Ledger.HideVideoOffers;
             coinVideoButton=(RectTransform)b.transform;FitCoinVideoOffer(MenuUnit);
         }
-        void FitCoinVideoOffer(float unit){if(coinVideoButton!=null)coinVideoButton.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,44*unit);}
+        void FitCoinVideoOffer(float unit){if(coinVideoButton!=null)coinVideoButton.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,48*unit);}
         void StorePurchaseButton(float bottom)
         {
             UiCopy caption=purchaseStore?.Owned==true?"Ads removed":purchaseStore?.CanBuy==true?TestMonetization?(UiCopy)"Try removing ads":new UiCopy("Buy · {0}",UiCopy.Raw(purchaseStore.Price)):

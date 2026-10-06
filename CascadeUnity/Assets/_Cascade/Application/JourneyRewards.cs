@@ -76,7 +76,7 @@ namespace Cascade.Application
         }
         public bool Equip(string id,IEnumerable<string> purchased=null)
         {
-            if(!Gifts.Contains(id)||!Owns(id)&&purchased?.Contains(id)!=true)return false;EquippedGift=id;return true;
+            if(!ShopCatalog.TrophyIds.Contains(id)||!Owns(id)&&purchased?.Contains(id)!=true)return false;EquippedGift=id;return true;
         }
         public bool RegisterVisit(DateTime localDate)
         {
@@ -130,7 +130,7 @@ namespace Cascade.Application
         }
         public void Validate(IEnumerable<string> purchased=null)
         {
-            if(!Gifts.Contains(SelectedGift)||EquippedGift!=null&&!Gifts.Contains(EquippedGift)
+            if(!Gifts.Contains(SelectedGift)||EquippedGift!=null&&!ShopCatalog.TrophyIds.Contains(EquippedGift)
                 ||SeenClearNodes==null||SeenClearNodes.Count>10000||SeenClearNodes.Any(string.IsNullOrWhiteSpace)
                 ||SeenClearNodes.Distinct().Count()!=SeenClearNodes.Count||Parcels==null||Parcels.Count>12
                 ||Parcels.Any(p=>p==null||p.Order<1||p.Order>SeenClearNodes.Count/3||!Gifts.Contains(p.GiftId))

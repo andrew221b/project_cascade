@@ -10,7 +10,7 @@ namespace Cascade.Application
     {
         Bomb=0, Key=1, Repair=2, Ribbon=3, Stamp=4, BombHourglass=5,
         Bridge=6, LinkedPairs=7, Fragile=8, ClosedPath=9, Rollers=10,
-        Mirror=11, LandingWind=12, Gust=13, Wayfinder=14, UndoSpool=15, ReturnHourglass=16
+        Mirror=11, LandingWind=12, Gust=13, Wayfinder=14, UndoSpool=15, ReturnHourglass=16, SignalLantern=17, LandingLens=18
     }
     public static class MechanicLessons
     {
@@ -34,7 +34,7 @@ namespace Cascade.Application
             }
             return found.Distinct().ToArray();
         }
-        public static MechanicLesson Tool(TravelTool tool)=>tool==TravelTool.Wayfinder?MechanicLesson.Wayfinder:tool==TravelTool.UndoSpool?MechanicLesson.UndoSpool:MechanicLesson.ReturnHourglass;
+        public static MechanicLesson Tool(TravelTool tool)=>tool==TravelTool.Wayfinder?MechanicLesson.Wayfinder:tool==TravelTool.UndoSpool?MechanicLesson.UndoSpool:tool==TravelTool.ReturnHourglass?MechanicLesson.ReturnHourglass:tool==TravelTool.SignalLantern?MechanicLesson.SignalLantern:MechanicLesson.LandingLens;
         public static bool Valid(IEnumerable<MechanicLesson> seen)=>seen!=null&&seen.All(x=>Enum.IsDefined(typeof(MechanicLesson),x))&&seen.Distinct().Count()==seen.Count();
     }
 }

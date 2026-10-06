@@ -10,21 +10,22 @@ namespace Cascade.Application
     public sealed class MonetizationLedger
     {
         public int BonusCoins,HintTokens;
-        public int SpentCoins,WayfinderScrolls,UndoSpools,ReturnHourglasses;
+        public int SpentCoins,WayfinderScrolls,UndoSpools,ReturnHourglasses,SignalLanterns,LandingLenses;
         public bool NoAutomaticAds,HideVideoOffers;
         public List<GrantReceipt> Grants=new List<GrantReceipt>();
         public List<string> Cosmetics=new List<string>(),PaidHintStates=new List<string>();
         public MonetizationLedger Copy()=>new MonetizationLedger{BonusCoins=BonusCoins,HintTokens=HintTokens,
-            SpentCoins=SpentCoins,WayfinderScrolls=WayfinderScrolls,UndoSpools=UndoSpools,ReturnHourglasses=ReturnHourglasses,
+            SpentCoins=SpentCoins,WayfinderScrolls=WayfinderScrolls,UndoSpools=UndoSpools,ReturnHourglasses=ReturnHourglasses,SignalLanterns=SignalLanterns,LandingLenses=LandingLenses,
             NoAutomaticAds=NoAutomaticAds,HideVideoOffers=HideVideoOffers,Cosmetics=new List<string>(Cosmetics),
             PaidHintStates=new List<string>(PaidHintStates),Grants=Grants.Select(g=>new GrantReceipt{Id=g.Id,Kind=g.Kind,Product=g.Product,Amount=g.Amount}).ToList()};
         public void Validate()
         {
             if(BonusCoins<0||HintTokens<0||SpentCoins<0||WayfinderScrolls<0||WayfinderScrolls>ShopCatalog.StockLimit||UndoSpools<0||UndoSpools>ShopCatalog.StockLimit
+                ||SignalLanterns<0||SignalLanterns>ShopCatalog.StockLimit||LandingLenses<0||LandingLenses>ShopCatalog.StockLimit
                 ||ReturnHourglasses<0||ReturnHourglasses>ShopCatalog.StockLimit||Grants==null||Grants.Count>10000||Grants.Any(g=>g==null||string.IsNullOrWhiteSpace(g.Id)||g.Id.Length>256
-                ||!(g.Kind=="coins"&&g.Amount==40||g.Kind=="hint"&&g.Amount==1||g.Kind=="no_auto"&&g.Amount==0||g.Kind=="cosmetic"&&g.Amount==0&&JourneyRewards.Gifts.Contains(g.Product)))
+                ||!(g.Kind=="coins"&&g.Amount==40||g.Kind=="hint"&&g.Amount==1||g.Kind=="no_auto"&&g.Amount==0||g.Kind=="cosmetic"&&g.Amount==0&&ShopCatalog.TrophyIds.Contains(g.Product)))
                 ||Grants.Select(g=>g.Id).Distinct().Count()!=Grants.Count||Cosmetics==null||Cosmetics.Distinct().Count()!=Cosmetics.Count
-                ||Cosmetics.Any(g=>!JourneyRewards.Gifts.Contains(g))||PaidHintStates==null||PaidHintStates.Count>20000
+                ||Cosmetics.Any(g=>!ShopCatalog.TrophyIds.Contains(g))||PaidHintStates==null||PaidHintStates.Count>20000
                 ||PaidHintStates.Distinct().Count()!=PaidHintStates.Count||PaidHintStates.Any(k=>k==null||k.Length!=101||!Guid.TryParse(k.Substring(0,36),out _)||k[36]!='|'
                     ||!k.Substring(37).All(c=>c>='0'&&c<='9'||c>='a'&&c<='f')))
                 throw new ArgumentException("Invalid monetization ledger.");
@@ -103,7 +104,7 @@ namespace Cascade.Application
             if(!providerVerified||string.IsNullOrWhiteSpace(receipt)||receipt.Length>256||Ledger.Grants.Any(g=>g.Id==receipt))return false;
             string gift=product!=null&&product.StartsWith("mock.keepsake.",StringComparison.Ordinal)?product.Substring(14):null;
             bool noAuto=product=="mock.no_automatic_ads";
-            if(!noAuto&&!JourneyRewards.Gifts.Contains(gift))return false;
+            if(!noAuto&&!ShopCatalog.TrophyIds.Contains(gift))return false;
             var next=Ledger.Copy();next.Grants.Add(new GrantReceipt{Id=receipt,Kind=noAuto?"no_auto":"cosmetic",Product=gift});
             if(noAuto)next.NoAutomaticAds=true;else if(!next.Cosmetics.Contains(gift))next.Cosmetics.Add(gift);
             return Commit(next); // Only non-consumables exist in this mock catalog; restore never awards coins/tokens.

@@ -2589,6 +2589,128 @@ MonoBehaviour:
     m_Key: Close
     m_Metadata:
       m_Items: []
+  - m_Id: 555995444011008
+    m_Key: Trophies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205312
+    m_Key: Signal lantern
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205313
+    m_Key: Landing lens
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205314
+    m_Key: Wind chime
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205315
+    m_Key: Rain badge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205316
+    m_Key: Copper acorn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205317
+    m_Key: Beacon brooch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205318
+    m_Key: Yours
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205319
+    m_Key: Next trophy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205320
+    m_Key: Choose this trophy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205321
+    m_Key: Find in shop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205322
+    m_Key: Choose a trophy to take with Mika.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205323
+    m_Key: A trophy for Mika's travels. Wear it on the map. No puzzle advantage.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205324
+    m_Key: Makes one safe move for you. Uses wood normally. Once per stage.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205325
+    m_Key: Shows the exact next landing before you descend. No pieces move.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205326
+    m_Key: The lantern makes one safe move for you. It uses wood just like your own
+      move. Once per stage.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205327
+    m_Key: See where the pieces will land if you go down now. Nothing moves until
+      you choose Descend.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205328
+    m_Key: Next landing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205329
+    m_Key: This is the last board
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205330
+    m_Key: This landing would lose the row. Try another move.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205331
+    m_Key: The row is ready. You can bring it home.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205332
+    m_Key: This is where the pieces will land. Keep arranging below.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 555995448205333
+    m_Key: Keep playing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 557615414239232
+    m_Key: One safe step
+    m_Metadata:
+      m_Items: []
+  - m_Id: 557615418433536
+    m_Key: 'Trophies collected: {0} / {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 557763439616000
+    m_Key: Added to your collection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 561463100956672
+    m_Key: 'Tools left: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 561463105150976
+    m_Key: 'Tools: up to 2 stars. No clean record.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 561463105150977
+    m_Key: The row would arrive home.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 561463105150978
+    m_Key: The row will match the target on the next board.
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

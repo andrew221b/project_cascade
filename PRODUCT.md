@@ -97,9 +97,13 @@ P17 adds the travel bag and optional journal after three restored lights. Every
 three new node clears earns one saved parcel fragment for a known gift; three
 claimed fragments make an owned Leaf Pin, Sun Button, Sky Ribbon or Moon Patch.
 Selection directs the next order, pending fragments count toward capacity, and
-opening a receipt is idempotent. An owned keepsake can accompany Mika on the map.
-Collection and workshop each show four selectable object thumbnails together,
-a large selected object, and its saved progress and available action.
+opening a receipt is idempotent. These are the four legacy parcel trophies,
+with three fragments each and a twelve-fragment total cap; the current shop and
+collection catalogue contains eight trophies. Mika can wear an owned trophy on
+the map. Collection now uses two stocked shelves and one attached description
+and action area, with the selected shelf object as its only object illustration.
+The workshop retains four miniature thumbnails, a large selected model and its
+saved progress.
 Four workshop miniatures each require their exact ten lesson-node receipts;
 Words skipping C26 does not complete its ten-node workshop. Keeper rank reflects
 restored lights and three requests based on repair, bridge and stamp outcomes
@@ -108,33 +112,55 @@ missed-day loss. Personal route records distinguish puzzle, content, mode,
 puzzle locale and objective; optional solver-proved stamp trails keep ordinary
 travel open. These local milestones remain available across the expanded campaign; the four workshop miniatures still refer to their original ten-lesson ranges.
 
-The earned-coin shop adds three known travel tools: a Wayfinder scroll for 120
+The earned-coin shop contains five travel tools: a Wayfinder scroll for 120
 coins, an Undo spool for 80 and a Return hourglass for 200. The scroll points out
 each solver-proved next move on the current board until it breaks; a spool gives
 one extra current-board Undo after the two free uses; an hourglass restores the
 exact checkpoint before the latest board collapse and removes subsequent moves.
+A Signal lantern for 160 coins performs exactly one solver-proved non-drop
+command through the existing resolver, with normal wood and contact costs.
+A Landing lens for 100 coins shows the immutable prediction of descending now:
+the exact next row and outcome, while play is paused, without moving the row.
 Each tool kind has a stock cap of five and one use per stage attempt. Retry starts
 a fresh current-stage attempt without refunding spent stock. Tools cannot rewind
-an awarded delivery. Using a bought tool counts as assistance and prevents a
-clean record or three-star performance for that run. Buying alone and cosmetic
+an awarded delivery. Using any tool counts as assistance, caps that run at two
+stars and excludes a clean record. This consequence is visible in the shop and
+bag before Use. Free hints and Retry remain available. Buying alone and cosmetic
 equipment do not affect puzzle performance or adaptive difficulty.
 
 Coins come from existing new-delivery rewards, chapter bonuses and verified
-rewarded grants; replaying a cleared node does not pay again. The four keepsakes
-cost 240 coins each, are bought once, remain earnable through parcels and can
-accompany Mika on the map with no gameplay statistics. The shop keeps count and
-price visible together. Tool bag is available from Pause and the loss flow, with
-localized eligibility and once-per-stage explanations. Purchases and tool use
+rewarded grants; replaying a cleared node does not pay again. All eight trophies
+cost 240 earned coins each and are bought once. Leaf Pin, Sun Button, Sky Ribbon
+and Moon Patch remain earnable through the original parcels. Wind Chime, Rain
+Badge, Copper Acorn and Beacon Brooch are earned-coin shop trophies; they add no
+parcel fragments or gameplay statistics. The full catalogue preserves the old
+four IDs and appends wind_chime, rain_badge, copper_acorn and beacon_brooch.
+Player-facing collection labels are Trophies / Трофеи / Трофеї; legacy Gift
+storage keys remain compatible. The shop shares the collection's two shelves
+and attached copy/action area, without a duplicate large selected object.
+Prices appear in the purchase action; test mode hides prices and resets preview
+stock on restart. A bag control appears between Undo and Descend during play
+when stock exists; Pause and the loss flow also retain access, with localized
+eligibility and once-per-stage explanations. Purchases and tool use
 save currency, inventory and the pinned attempt in the existing transaction;
 failed writes roll them back. Schema 1 remains compatible through optional
 fields. The real No ads adapter remains unconfigured while App Store/Google Play
 catalog and ad identifiers are absent. The rule note and current validation
-limits are in Docs/SHOP_AND_UNDO.md and Reports/Shop/README.md.
-The focused shop/affected checks passed 13/13; Editor runtime callbacks and ten
-native captures cover transaction behavior and the current UI. The fresh finish
-review records ship for the scored readability, unavailable-action, count/price
-and guide-ribbon fixes. That scoped verdict does not certify the whole game,
-physical devices, live commerce, performance or human enjoyment.
+limits for the earlier shop checkpoint are in Docs/SHOP_AND_UNDO.md and
+Reports/Shop/README.md. That checkpoint passed 13/13 focused checks, retained ten
+native captures and received a scoped ship verdict for its readability,
+unavailable-action, count/price and guide-ribbon fixes. It does not establish a
+verdict for the five-tool/eight-trophy revision. The current design note is
+Docs/SHOP_TROPHIES_AND_FIELD_TOOLS.md; Reports/ShopRefresh records 46/46 scoped
+EditMode checks, passing Editor runtime checks and seven final native captures,
+including small portrait, Large Text and simulated safe insets. Recaptured shop
+and bag views show the two-star/no-clean-record warning; the bag also shows its
+remaining tool count. Small-portrait action and preview-close targets measure
+48 pixels high, and the runtime Console reports zero messages. The independent
+finish review verdict remains pending at this documentation pass.
+No player build or phone installation was run for this revision. Full-suite,
+physical-device, live-commerce, performance and human-enjoyment validation remain
+unverified.
 
 First-clear and reward changes enter the same local profile transaction before
 command presentation; parcel claims call the save path before their arrival
@@ -226,8 +252,8 @@ disabled, keys are empty and there is no Codeless IAP automatic initializer.
 The user has no registered Apple/Google products or LevelPlay app/ad units. The
 one prepared draft is `cascade.no_automatic_ads`, a NonConsumable for removing
 automatic ads. Its live price must come from localized store metadata; no price
-is invented. Keepsakes remain earnable through free parcels; the current
-earned-coin shop also offers them for 240 coins. Real-money cosmetic packs remain
+is invented. The original four trophies remain earnable through free parcels;
+the current earned-coin shop offers all eight for 240 coins each. Real-money cosmetic packs remain
 a future option. The unavailable No ads purchase view's RU 320px readability and
 52px-minimum continued-play footer were verified at the historical TouchRevision
 checkpoint; those checks do not provide a verdict for the new earned-coin shop.

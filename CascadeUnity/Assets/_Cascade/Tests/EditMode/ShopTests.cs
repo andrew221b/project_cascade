@@ -92,5 +92,45 @@ namespace Cascade.Tests
                 var restored=AttemptService.Restore(a.Level,saved.Attempt);Assert.That(restored.CurrentStateHash,Is.EqualTo(a.CurrentStateHash));Assert.That(restored.HourglassUsed,Is.True);
             } finally {if(Directory.Exists(dir))Directory.Delete(dir,true);}
         }
+        [Test] public void LanternCommitsExactlyOneProvedMoveWithStockAndRestoresProof()
+        {
+            var a=Board();var before=a.Current;var hint=AttemptService.CalculateHint(a.CaptureHintRequest());
+            var expected=a.Resolver.Resolve(before,hint.Result.Command.Value);
+            var service=new AdService(new MonetizationLedger{SignalLanterns=2},_=>{});
+            Assert.That(service.TryUseTool(TravelTool.SignalLantern,a,hint),Is.True);
+            Assert.That(a.Current,Is.EqualTo(expected.State));Assert.That(a.RouteLength,Is.EqualTo(1));
+            Assert.That(service.ToolStock(TravelTool.SignalLantern),Is.EqualTo(1));Assert.That(a.LanternUsed&&a.HintUsed,Is.True);
+            Assert.That(a.LastToolTransition.State,Is.SameAs(a.Current));
+            Assert.That(AttemptService.Restore(a.Level,AttemptRecord.Capture(a)).LanternUsed,Is.True);
+            Assert.That(service.TryUseTool(TravelTool.SignalLantern,a,AttemptService.CalculateHint(a.CaptureHintRequest())),Is.False);
+            Assert.That(service.ToolStock(TravelTool.SignalLantern),Is.EqualTo(1));
+        }
+        [Test] public void NewToolsRollbackOnFailedPersistenceAndLensNeverChangesRow()
+        {
+            foreach(var tool in new[]{TravelTool.SignalLantern,TravelTool.LandingLens}){
+                var a=Board();string start=a.CurrentStateHash;var proof=AttemptService.CalculateHint(a.CaptureHintRequest());
+                var failing=new AdService(new MonetizationLedger{SignalLanterns=1,LandingLenses=1},_=>throw new IOException("full"));
+                Assert.That(failing.TryUseTool(tool,a,proof),Is.False);Assert.That(a.CurrentStateHash,Is.EqualTo(start));
+                Assert.That(a.History,Is.Empty);Assert.That(a.PurchasedHelpUsed,Is.False);Assert.That(failing.ToolStock(tool),Is.EqualTo(1));
+            }
+            var lens=new AdService(new MonetizationLedger{LandingLenses=2},_=>{});var board=Board();string hash=board.CurrentStateHash;
+            var predicted=board.Predict(PuzzleCommand.Drop);Assert.That(lens.TryUseTool(TravelTool.LandingLens,board),Is.True);
+            Assert.That(board.CurrentStateHash,Is.EqualTo(hash));Assert.That(board.LensUsed&&board.HintUsed,Is.True);
+            Assert.That(AttemptService.Restore(board.Level,AttemptRecord.Capture(board)).LensUsed,Is.True);
+            Assert.That(lens.TryUseTool(TravelTool.LandingLens,board),Is.False);board.Execute(PuzzleCommand.Drop);
+            Assert.That(board.Current,Is.EqualTo(predicted.State));
+        }
+        [Test] public void ExpandedTrophiesEquipWithoutChangingParcelReceiptsOrPuzzleStats()
+        {
+            var rewards=new JourneyRewards();var shop=new AdService(new MonetizationLedger(),_=>{});
+            foreach(string trophy in ShopCatalog.TrophyIds.Skip(4)){
+                Assert.That(shop.TryBuyKeepsake(trophy,5000,rewards),Is.True);Assert.That(shop.TryBuyKeepsake(trophy,5000,rewards),Is.False);
+                Assert.That(rewards.Equip(trophy,shop.Ledger.Cosmetics),Is.True);rewards.Validate(shop.Ledger.Cosmetics);shop.Ledger.Validate();
+            }
+            Assert.That(rewards.Parcels,Is.Empty);Assert.That(JourneyRewards.Gifts.Length,Is.EqualTo(4));
+            Assert.That(ShopCatalog.TrophyIds.Length,Is.EqualTo(8));
+            var old=Newtonsoft.Json.JsonConvert.DeserializeObject<MonetizationLedger>("{}");old.Validate();
+            Assert.That(old.SignalLanterns+old.LandingLenses,Is.Zero);
+        }
     }
 }
