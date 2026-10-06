@@ -17,11 +17,12 @@ namespace Cascade.Tests
             foreach(var command in proof.Path){Assert.That(attempt.Execute(command).Accepted,Is.True);Assert.That(LevelValidator.SameMultiset(attempt.Current.Row,level.InitialSymbolIds),Is.True);}
             Assert.That(attempt.Current.Status,Is.EqualTo(PuzzleStatus.Won));
             var restored=AttemptService.Restore(level,AttemptRecord.Capture(attempt));Assert.That(restored.CurrentStateHash,Is.EqualTo(attempt.CurrentStateHash));
-            while(attempt.Undo()){}Assert.That(attempt.Current.ReachCharges,Is.EqualTo(1));
+            Assert.That(attempt.Undo(),Is.False);attempt.Retry();Assert.That(attempt.Current.ReachCharges,Is.EqualTo(1));
         }
-        [Test] public void DragAcrossTwoPiecesConsumesOneChargeAndUndoRestoresIt()
+        [Test] public void DragAcrossTwoPiecesConsumesChargeAndLocalUndoRestoresIt()
         {
-            var attempt=new AttemptService(ReachChallenges.Create()[1].Definition,"en");var input=new PuzzleInteraction(attempt);
+            var source=ReachChallenges.Create()[1].Definition;var local=new LevelDefinition("reach-local","reach-local","1",source.RulesVersion,"test",source.InitialSymbolIds,source.TargetSymbolIds,source.TargetSegments,new[]{new FloorDefinition(4,new[]{true,true,true})},1);
+            var attempt=new AttemptService(local,"en");var input=new PuzzleInteraction(attempt);
             Assert.That(input.PointerDown(7,0),Is.True);Assert.That(input.PointerUp(7,3,true).Accepted,Is.True);
             Assert.That(attempt.Current.ReachCharges,Is.Zero);Assert.That(attempt.Current.Row.Select(s=>s.Value),Is.EqualTo(new[]{"D","B","C","A"}));
             input.FinishPresentation();Assert.That(input.Undo(),Is.True);Assert.That(attempt.Current.ReachCharges,Is.EqualTo(1));

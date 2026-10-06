@@ -34,10 +34,11 @@ namespace Cascade.Presentation
             var hero=Picture("Mika at the bench",menuRoot,new Vector2(.13f,.59f),new Vector2(.43f,.80f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
             hero.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,1.5f),0,.45f);
             RewardPicture("Parcel",new Vector2(.55f,.62f),new Vector2(.86f,.79f));Shelf(.575f);
-            MenuNavRow("Keepsakes","LeafPin",0,ShowCollection);
-            MenuNavRow("Workshop","BridgeLantern",1,ShowWorkshop);
+            MenuNavRow("My tools","Hourglass",0,ShowSupplies);
+            MenuNavRow("Keepsakes","LeafPin",1,ShowCollection);
             MenuNavRow("My journal","MoonPatch",2,ShowJournal,JourneyClearCount>=3);
-            MenuNavRow("Power-ups","RibbonSpool",3,ShowPowerupChallenges);
+            MenuNavRow("Workshop","BridgeLantern",3,ShowWorkshop);
+            MenuButton("Power-ups",.10f,ShowPowerupChallenges);
             MenuButton("Back",.025f,ShowShop);
         }
         public void ShowPowerupChallenges(){reachPage=0;SetScreen(GameScreen.PowerupChallenges);}

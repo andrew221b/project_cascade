@@ -16,7 +16,7 @@ namespace Cascade.Tests
             bool pickup=false;foreach(var command in proof.Path){var step=a.Execute(command);Assert.That(step.Accepted,Is.True);pickup|=step.Events.Any(e=>e.Kind==PuzzleEventKind.RibbonCollected||e.Kind==PuzzleEventKind.HourglassCollected);Assert.That(LevelValidator.SameMultiset(a.Current.Row,level.InitialSymbolIds),Is.True);}
             Assert.That(pickup,Is.True,"The shortest solution must use the taught pickup");Assert.That(a.Current.Status,Is.EqualTo(PuzzleStatus.Won));
             Assert.That(AttemptService.Restore(level,AttemptRecord.Capture(a)).CurrentStateHash,Is.EqualTo(a.CurrentStateHash));
-            while(a.Undo()){}Assert.That(a.Current.PowerupUsed,Is.False);Assert.That(a.Current.FrozenTicks,Is.Zero);Assert.That(a.Current.ReachCharges,Is.Zero);
+            Assert.That(a.Undo(),Is.False);a.Retry();Assert.That(a.Current.PowerupUsed,Is.False);Assert.That(a.Current.FrozenTicks,Is.Zero);Assert.That(a.Current.ReachCharges,Is.Zero);
         }
         [Test] public void HourglassProtectsTwoTicksButNeverProtectsWood()
         {
@@ -30,7 +30,7 @@ namespace Cascade.Tests
         {
             var a=new AttemptService(PowerupChallenges.Create()[2].Definition,"en");a.Execute(PuzzleCommand.Swap(0));
             Assert.That(a.Current.ActiveFloor,Is.EqualTo(1));Assert.That(a.Current.ReachCharges,Is.EqualTo(1));Assert.That(a.Current.PowerupUsed,Is.False);
-            a.Execute(PuzzleCommand.Reach(1,4));Assert.That(a.Current.ReachCharges,Is.Zero);a.Undo();Assert.That(a.Current.ReachCharges,Is.EqualTo(1));
+            a.Execute(PuzzleCommand.Reach(1,4));Assert.That(a.Current.ReachCharges,Is.Zero);Assert.That(a.Undo(),Is.False);Assert.That(a.TryUseToolAtomically(TravelTool.ReturnHourglass,()=>true),Is.False);Assert.That(a.Current.ReachCharges,Is.Zero);Assert.That(a.Current.Status,Is.EqualTo(PuzzleStatus.Won));
         }
     }
 }

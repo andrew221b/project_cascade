@@ -347,6 +347,21 @@ F01/F02 only, without whole-product certification. These stills and tests do not
 prove hardware touch, sensors, timing, haptics,
 OS accessibility, device performance, native builds or human enjoyment.
 
+The earned-coin shop is an ordinary extension of this workshop in
+`CascadeGame.Shop.cs`, backed by `ShopCatalog.cs`, `TravelShop.cs` and the existing
+attempt/save transaction. `Docs/SHOP_AND_UNDO.md` owns its rule note and direction
+contract. One original transparent TravelTools atlas supplies the scroll, spool,
+return hourglass and coin pouch; exact prompt and embedded provenance are recorded
+in `Docs/AssetPrompts/ShopTools.md`. It reuses the palette, Balsamiq lettering,
+cloth reading plates, object shelf and enamel actions without new shared tokens.
+`Reports/Shop/README.md` records 13/13 focused EditMode checks and Editor runtime
+callback assertions. Native 320/390/768 captures use simulated safe insets. The
+fresh finish review records ship for the scored UI fixes: readable benefit/count/
+price, a separate confirmation, quiet unavailable actions and the clear EN guide
+ribbon. Earlier scoped verdicts remain historical. This shop verdict does not
+approve the whole game, and no current player build, live-store, physical-device,
+performance or human-enjoyment check follows from the Editor evidence.
+
 **Key Characteristics:**
 - Direct touch lifts a piece and its live glyph together; the receiver stays visible.
 - Six stable silhouettes and colors retain their identity across eight regions.
@@ -394,6 +409,7 @@ Balsamiq Sans Regular and Bold provide the rounded hand-lettered voice. Text rem
 
 - **Menu title** introduces pause, guide and settings. **Region/speaker** names a map region or dialogue speaker.
 - **Navigation heading** names the separate play, shelf, comic and shop screens. Its 29-unit maximum fits down to 21; **navigation action** fits from 24 down to 18, with a 1.10 large-text maximum multiplier. **Navigation detail** fits from 17 down to 14. These local auto-size ranges leave the incumbent menu roles intact.
+- **Shop copy** remains live Balsamiq: selected-object titles fit from 26 down to 19 compensated units, while benefits, persistent count and price have an 18-rendered-pixel floor, raised to 20 for Large Text. A purchase confirmation has its own compact 18–20 range and does not replace the benefit or stock/price line. Counter actions use their local 16–22 compensated range; these local values do not redefine other menu roles.
 - **Level title** is the lesson header; **journey task** is the shorter destination line and map task. The current Home CASCADE logo is a separate Bold 43-unit mark.
 - **Dialogue** uses larger Regular text with short sentences; **body** handles state and help; **button** handles actions. Map counts use **secondary** text; Skip story uses a Bold label at that size.
 - **Focus** names the symbol in optional precision controls. **Receiver label** belongs immediately above the cradle.
@@ -434,13 +450,33 @@ wheel input, with clamped first/last pages; Back returns to the play choice.
 
 ### Shop and purchase state
 
-Shop extends the existing painted workshop with Remove ads, earned Keepsakes
-and My things. The unavailable purchase view keeps its explanation, disabled
-purchase/restore controls and continued-play route readable in RU at 320×693.
-Back to play uses the thematic enamel footer inside the safe area, with a
-52-rendered-pixel minimum. Final Editor bounds measure 64.14 pixels at 390×844
-and 52.66 at 320×693; simulated bounds do not establish hardware target quality.
-Existing MenuBackground and navigation artwork remain in use.
+The current shop is a small counter inside the painted workshop. Back/title and
+a coin pouch head the view; Tools/Keepsakes tabs sit above three or four visible
+objects on one shelf. Selection gives the object an amber rim and enlarges its
+original alpha illustration above a cloth explanation plate. Benefit, stock or
+ownership, and full price remain visible when the action changes to an
+insufficient-balance or capacity explanation. A separate short confirmation
+appears after purchase. The lower action buys one known item or equips an owned
+keepsake without charging again; Tool bag and No ads are secondary destinations.
+
+Amber identifies an executable purchase, equip or use action. An unavailable
+action uses the quieter sage panel with readable Menu Ink, rather than retaining
+the amber face. The tool bag uses the same shelf, selection and explanation,
+with one Use action and localized reasons for an empty bag, exhausted stage use,
+remaining free Undo, absence of a current-board move or broken-board checkpoint.
+Pause and the loss flow open that bag directly. Using an item sends the selected
+original object into the existing arrival/pulse/status feedback. The scroll's
+live hand renders in front of pieces and follows solver-proved steps; neither
+the feedback nor its completion spends an item or changes puzzle state.
+
+The new counter's smallest recorded controls measure 50.80 rendered pixels in
+the 320×693 Editor sample. Those bounds and simulated safe insets are local
+evidence, not hardware pt/dp or accessibility certification. Existing workshop,
+enamel, panel and keepsake artwork are retained; the original TravelTools atlas
+adds only the four needed objects. The separate No ads purchase/restore view
+still reflects the unconfigured store. Its 64.14/52.66-pixel return-to-play bounds
+at 390/320 belong to the historical TouchRevision check, which remains evidence
+for that view rather than a current shop verdict.
 
 ### Journey and dialogue
 
@@ -463,7 +499,7 @@ Dialogue places a large transparent character above/behind a low paper frame. A 
 
 ### Travel bag and earned objects
 
-Shop's My things action opens the travel bag: Mika and a parcel share the upper bench, with
+The existing travel bag places Mika and a parcel on the upper bench, with
 Keepsakes/Workshop and My journal/Power-ups arranged on two object shelves.
 The journal unlocks after three restored lights; Power-ups opens six optional
 pickup lessons with a live animated example, lesson selectors and a Try this
@@ -575,7 +611,7 @@ Continue/To the map and Skip story make its order explicit. Completing or
 skipping records HeardStory 1000 in the existing field; Opening story permits
 replay. Its controls do not change the pinned puzzle.
 
-The paper-and-brass frame names one speaker and gives one short idea at a time. Continue and Skip story lead to the concrete pending puzzle or return to the map. Heard dialogue persists in the local profile. Mika accompanies a successful delivery; win/fail actions preserve free Undo and Retry. A first-clear receipt is recorded from the committed win before animation; Undo does not erase it. The machine remains the visual evidence of the result.
+The paper-and-brass frame names one speaker and gives one short idea at a time. Continue and Skip story lead to the concrete pending puzzle or return to the map. Heard dialogue persists in the local profile. Mika accompanies a successful delivery; failure offers free current-stage Retry and the tool bag. Ordinary Undo belongs to the intact current board while playing; a Return hourglass is required for the latest collapse in the current stage. A first-clear receipt is recorded from the committed win before animation; tools cannot rewind that award. The machine remains the visual evidence of the result.
 
 ### Journal, workshop and keepsakes
 

@@ -58,7 +58,21 @@ namespace Cascade.Application
         public string PinnedRulesVersion => Level.RulesVersion;
         public ReadOnlyCollection<HistoryEntry> History { get; }
         public ReadOnlyDictionary<string, PuzzleCommand> RevealedHintStates { get; }
-        public bool CanUndo => history.Count != 0;
+        public const int FreeUndoLimit = 2;
+        public int FreeUndoUsed { get; private set; }
+        public bool SpoolUsed { get; private set; }
+        public bool HourglassUsed { get; private set; }
+        public bool WayfinderUsed { get; private set; }
+        public int GuideFloor { get; private set; } = -1;
+        public bool PurchasedHelpUsed => SpoolUsed || HourglassUsed || WayfinderUsed;
+        public int FreeUndoRemaining => Math.Max(0, FreeUndoLimit - FreeUndoUsed);
+        public bool CanUndoHere => history.Count != 0 && Current.Status == PuzzleStatus.Playing
+            && history[history.Count - 1].Before.ActiveFloor == Current.ActiveFloor;
+        public bool CanUndo => CanUndoHere && FreeUndoRemaining > 0;
+        public bool CanUseSpool => CanUndoHere && FreeUndoRemaining == 0 && !SpoolUsed;
+        public bool CanUseHourglass => !HourglassUsed && Current.Status != PuzzleStatus.Won
+            && history.Any(h => h.Before.ActiveFloor != h.After.ActiveFloor);
+        public bool GuideActive => WayfinderUsed && GuideFloor == Current.ActiveFloor && Current.Status == PuzzleStatus.Playing;
         public string CurrentStateHash => StateHash.Compute(Level, Current);
 
         public AttemptService(LevelDefinition level, string puzzleLocale = "en", PuzzleGoal goal = null, DirectionRecipe direction = null)
@@ -96,12 +110,18 @@ namespace Cascade.Application
             }
             if(attempt.CurrentStateHash!=record.StateHash)throw new ArgumentException("Saved route does not reach its recorded state.");
             attempt.AttemptId=id;attempt.UndoCount=record.UndoCount;attempt.HintUsed=record.HintUsed;
+            if(record.FreeUndoUsed < -1 || record.FreeUndoUsed > FreeUndoLimit || record.GuideFloor < -1 || record.GuideFloor >= level.Floors.Count
+                || !record.WayfinderUsed && record.GuideFloor>=0 || (record.SpoolUsed||record.HourglassUsed||record.WayfinderUsed)&&!record.HintUsed)
+                throw new ArgumentException("Invalid travel tool proof.");
+            attempt.FreeUndoUsed=record.FreeUndoUsed<0?Math.Min(FreeUndoLimit,record.UndoCount):record.FreeUndoUsed;
+            attempt.SpoolUsed=record.SpoolUsed;attempt.HourglassUsed=record.HourglassUsed;attempt.WayfinderUsed=record.WayfinderUsed;attempt.GuideFloor=record.GuideFloor;
             return attempt;
         }
         public TransitionResult Execute(PuzzleCommand command)
         {
             var result = Resolver.Resolve(Current, command);
             if (!result.Accepted) return result;
+            if(GuideActive && (result.State.ActiveFloor!=Current.ActiveFloor || result.State.Status!=PuzzleStatus.Playing))GuideFloor=-1;
             history.Add(new HistoryEntry(Current, result.State, command, RouteLength));
             Current = result.State; RouteLength++;
             return result;
@@ -109,16 +129,43 @@ namespace Cascade.Application
 
         public bool Undo()
         {
-            if (history.Count == 0) return false;
+            if (!CanUndo) return false;
+            FreeUndoUsed++; RestoreLastCommand(); return true;
+        }
+        void RestoreLastCommand()
+        {
             var previous = history[history.Count - 1]; history.RemoveAt(history.Count - 1);
             Current = previous.Before; RouteLength = previous.RouteLengthBefore; UndoCount++;
-            return true;
+        }
+
+        // Inventory persistence and exact replay are one transaction; failed saves roll back tool use.
+        public bool TryUseToolAtomically(TravelTool tool, Func<bool> commit, HintOffer guide = null)
+        {
+            if(commit==null || !ShopCatalog.IsTool(tool))return false;
+            if(tool==TravelTool.UndoSpool && !CanUseSpool || tool==TravelTool.ReturnHourglass && !CanUseHourglass
+                || tool==TravelTool.Wayfinder && (WayfinderUsed || Current.Status!=PuzzleStatus.Playing || !IsCurrent(guide) || guide.Result.Status!=HintStatus.Step || guide.Result.Command.Value.Kind==CommandKind.EarlyDrop))return false;
+            var oldState=Current;var oldHistory=history.ToArray();int oldRoute=RouteLength,oldUndo=UndoCount,oldGuideFloor=GuideFloor;
+            bool oldSpool=SpoolUsed,oldHourglass=HourglassUsed,oldGuide=WayfinderUsed,oldHint=HintUsed;
+            if(tool==TravelTool.UndoSpool){RestoreLastCommand();SpoolUsed=true;}
+            else if(tool==TravelTool.ReturnHourglass){
+                int boundary=history.FindLastIndex(h=>h.Before.ActiveFloor!=h.After.ActiveFloor);
+                Current=history[boundary].Before;RouteLength=history[boundary].RouteLengthBefore;
+                history.RemoveRange(boundary,history.Count-boundary);UndoCount++;HourglassUsed=true;
+            }
+            else {WayfinderUsed=true;GuideFloor=Current.ActiveFloor;}
+            HintUsed=true;
+            try {if(commit())return true;}
+            catch {Rollback();throw;}
+            Rollback();return false;
+            void Rollback(){Current=oldState;history.Clear();history.AddRange(oldHistory);RouteLength=oldRoute;UndoCount=oldUndo;
+                GuideFloor=oldGuideFloor;SpoolUsed=oldSpool;HourglassUsed=oldHourglass;WayfinderUsed=oldGuide;HintUsed=oldHint;}
         }
 
         public void Retry()
         {
             AttemptId = Guid.NewGuid(); Current = Resolver.CreateInitialState();
             RouteLength = 0; UndoCount = 0; HintUsed = false; history.Clear(); revealedHints.Clear();
+            FreeUndoUsed=0;SpoolUsed=HourglassUsed=WayfinderUsed=false;GuideFloor=-1;
         }
 
         public HintRequest CaptureHintRequest() => new HintRequest(AttemptId, CurrentStateHash, Current, Resolver, Goal);

@@ -23,8 +23,11 @@ this floor, which belongs below, and when to give up remaining durability.
 Unity 6000.3.8f1, URP, orthographic camera, uGUI/TMP. Domain and Solver are pure
 C# with one transition function. No matching, clearing, spawning puzzle pieces,
 grid board or gameplay physics. Shape/word/mixed puzzles share SymbolId.
-EN is default, RU/UK additional, UI and puzzle locales independent. Free Undo
-and Retry, solver-verified hints. Source rules, IDs and package pins are stable.
+EN is default, RU/UK additional, UI and puzzle locales independent. Two free
+Undo uses per stage attempt apply only to moves on the current intact board;
+free current-stage Retry and solver-verified one-step hints remain available.
+Only a purchased Return hourglass can recover the latest broken board in the
+current stage. Source Domain rules, IDs and package pins are stable.
 P15 implements EN/RU/UK menus, guidance and story copy. A menu-language change
 keeps the current attempt and exact symbols intact; a confirmed word-language
 choice applies to the next started puzzle. Translations remain editorial drafts.
@@ -104,6 +107,34 @@ in successful deliveries. Seven distinct local visit dates accumulate without
 missed-day loss. Personal route records distinguish puzzle, content, mode,
 puzzle locale and objective; optional solver-proved stamp trails keep ordinary
 travel open. These local milestones remain available across the expanded campaign; the four workshop miniatures still refer to their original ten-lesson ranges.
+
+The earned-coin shop adds three known travel tools: a Wayfinder scroll for 120
+coins, an Undo spool for 80 and a Return hourglass for 200. The scroll points out
+each solver-proved next move on the current board until it breaks; a spool gives
+one extra current-board Undo after the two free uses; an hourglass restores the
+exact checkpoint before the latest board collapse and removes subsequent moves.
+Each tool kind has a stock cap of five and one use per stage attempt. Retry starts
+a fresh current-stage attempt without refunding spent stock. Tools cannot rewind
+an awarded delivery. Using a bought tool counts as assistance and prevents a
+clean record or three-star performance for that run. Buying alone and cosmetic
+equipment do not affect puzzle performance or adaptive difficulty.
+
+Coins come from existing new-delivery rewards, chapter bonuses and verified
+rewarded grants; replaying a cleared node does not pay again. The four keepsakes
+cost 240 coins each, are bought once, remain earnable through parcels and can
+accompany Mika on the map with no gameplay statistics. The shop keeps count and
+price visible together. Tool bag is available from Pause and the loss flow, with
+localized eligibility and once-per-stage explanations. Purchases and tool use
+save currency, inventory and the pinned attempt in the existing transaction;
+failed writes roll them back. Schema 1 remains compatible through optional
+fields. The real No ads adapter remains unconfigured while App Store/Google Play
+catalog and ad identifiers are absent. The rule note and current validation
+limits are in Docs/SHOP_AND_UNDO.md and Reports/Shop/README.md.
+The focused shop/affected checks passed 13/13; Editor runtime callbacks and ten
+native captures cover transaction behavior and the current UI. The fresh finish
+review records ship for the scored readability, unavailable-action, count/price
+and guide-ribbon fixes. That scoped verdict does not certify the whole game,
+physical devices, live commerce, performance or human enjoyment.
 
 First-clear and reward changes enter the same local profile transaction before
 command presentation; parcel claims call the save path before their arrival
@@ -195,11 +226,11 @@ disabled, keys are empty and there is no Codeless IAP automatic initializer.
 The user has no registered Apple/Google products or LevelPlay app/ad units. The
 one prepared draft is `cascade.no_automatic_ads`, a NonConsumable for removing
 automatic ads. Its live price must come from localized store metadata; no price
-is invented. Keepsakes remain free earned objects; paid cosmetic packs are a
-future option, not a shipped purchase. Shop retains access to earned objects
-and My things. The unavailable purchase view remains readable in RU at 320px
-and offers continued play through a thematic footer with a 52px minimum inside
-the safe area.
+is invented. Keepsakes remain earnable through free parcels; the current
+earned-coin shop also offers them for 240 coins. Real-money cosmetic packs remain
+a future option. The unavailable No ads purchase view's RU 320px readability and
+52px-minimum continued-play footer were verified at the historical TouchRevision
+checkpoint; those checks do not provide a verdict for the new earned-coin shop.
 
 The publisher's HTTPS verifier must validate Apple JWS / Google purchase proof
 for the expected app, product and transaction before the ledger saves entitlement

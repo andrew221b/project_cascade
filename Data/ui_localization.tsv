@@ -558,3 +558,41 @@ The number on the wood is swaps left. At zero, it breaks.	The number on the wood
 Swap neighbours. The number on the wood counts swaps left. At zero, the row falls.	Swap neighbours. The number on the wood counts swaps left. At zero, the row falls.	Меняй соседние элементы. Число на доске — сколько обменов осталось. На нуле ряд падает.	Міняй сусідні елементи. Число на дошці — скільки обмінів лишилось. На нулі ряд падає.
 Wind will move the row. Watch the small row by the next board.	Wind will move the row. Watch the small row by the next board.	Ветер сдвинет ряд. Посмотри на маленький ряд у следующей доски.	Вітер зсуне ряд. Подивись на маленький ряд біля наступної дошки.
 The small row shows how the next board moves your pieces.	The small row shows how the next board moves your pieces.	Маленький ряд показывает, как следующая доска сдвинет фигуры.	Маленький ряд показує, як наступна дошка зсуне фігури.
+Tools	Tools	Инструменты	Інструменти
+My tools	My tools	Мои инструменты	Мої інструменти
+Wayfinder scroll	Wayfinder scroll	Карта пути	Мапа шляху
+Undo spool	Undo spool	Катушка отмены	Котушка скасування
+Return hourglass	Return hourglass	Часы возврата	Годинник повернення
+Points out each next move on this board. Stops when the board breaks.	Shows each next move until this board breaks.	Рука показывает следующие ходы, пока эта доска цела.	Рука показує наступні ходи, поки ця дошка ціла.
+One extra undo after your two free undos. Works only on the current board.	One extra undo on this board, after your two free ones.	Ещё одна отмена на целой доске. После двух бесплатных.	Ще одне скасування на цілій дошці. Після двох безплатних.
+Brings back the last broken board in this stage. Moves made since then are undone.	Returns to the last broken board. Once per stage.	Возвращает последнюю сломанную доску. Раз за этап.	Повертає останню зламану дошку. Раз за етап.
+Pick a tool. Each can be used once per stage.	Pick a tool. Each can be used once per stage.	Выбери инструмент. Каждый можно использовать один раз за этап.	Обери інструмент. Кожен можна використати один раз за етап.
+Mika wears it on the map. You can also earn it in parcels.	Mika wears it on the map. You can also earn it in parcels.	Мика носит его на карте. Можно и собрать в посылках.	Міка носить його на мапі. Можна й зібрати в посилках.
+In your bag: {0} / {1}	Bag: {0} / {1}	В сумке: {0} из {1}	У сумці: {0} із {1}
+Already yours	Already yours	Уже твоё	Вже твоє
+Yours forever. No gameplay advantage.	Yours forever. No gameplay advantage.	Останется навсегда. На сложность не влияет.	Залишиться назавжди. На складність не впливає.
+Checking the route…	Checking the route…	Проверяем путь…	Перевіряємо шлях…
+Use one	Use one	Использовать	Використати
+Buy · {0} coins	Buy · {0} coins	Купить · {0} монет	Купити · {0} монет
+Need {0} more coins	Need {0} more coins	Нужно ещё {0} монет	Потрібно ще {0} монет
+Bag is full	Bag is full	Сумка полная	Сумка повна
+Added to your bag	Added to your bag	Теперь в твоей сумке	Тепер у твоїй сумці
+Could not buy. No coins spent.	Coins kept. Try again.	Монеты на месте. Повтори.	Монети на місці. Повтори.
+Open a level first	Open a level first	Сначала открой уровень	Спершу відкрий рівень
+Your bag is empty	Your bag is empty	Пока нет в сумке	Поки немає в сумці
+Already used this stage	Already used this stage	Уже использован в этом этапе	Вже використано в цьому етапі
+Use your free undos first	Use your free undos first	Сначала бесплатная отмена	Спершу безплатне скасування
+No move on this board to undo	No move on this board to undo	Нечего отменять на этой доске	Нічого скасовувати на цій дошці
+No broken board to return to	No broken board to return to	Ещё нет сломанной доски	Ще немає зламаної дошки
+Could not check the route. Nothing used.	Scroll kept. Try again.	Свиток на месте. Повтори.	Сувій на місці. Повтори.
+This tool cannot help here. Nothing used.	Item kept. Try elsewhere.	Предмет пока не нужен.	Предмет поки не потрібен.
+Back on the board	Back on the board	Снова на доске	Знову на дошці
+One move undone	One move undone	Ход отменён	Хід скасовано
+Follow the hand. The scroll knows the way.	Follow the hand	Иди за рукой	Рухай за рукою
+Undo · {0}	Undo · {0}	Отмена · {0}	Скасувати · {0}
+Two free undos per stage. Only on the current board.	Two free undos per stage. Only on the current board.	Две бесплатные отмены за этап. Только на текущей доске.	Два безплатні скасування за етап. Лише на поточній дошці.
+Retry is free. A return hourglass can bring the last board back.	Retry is free. A return hourglass can bring the last board back.	Повтор бесплатный. Часы возврата могут вернуть последнюю доску.	Повтор безплатний. Годинник повернення може повернути останню дошку.
+The row is ready. Keep your scroll.	The row is ready. Keep your scroll.	Ряд готов. Сохрани карту.	Ряд готовий. Збережи мапу.
+Tool bag	Tool bag	Сумка	Сумка
+No ads	No ads	Без рекламы	Без реклами
+Yours forever	Yours forever	Навсегда твоё	Назавжди твоє

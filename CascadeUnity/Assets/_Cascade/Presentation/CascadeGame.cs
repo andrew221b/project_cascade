@@ -85,7 +85,7 @@ namespace Cascade.Presentation
             SettleDescent();CancelDescentWork();
             EndTokenHold(); CancelHint(); CancelDeadEnd(); preparation.Cancel(); StopPresentation(); Interaction?.SetSuspended(true); feedback?.ClearTails();
         }
-        void OnDestroy() { if(purchaseStore!=null)purchaseStore.Changed-=NotifyStoreChanged;DisposeNavigationArt();DisposeCompletionArt();DisposePlatformProps(); preparation.Dispose(); if (Interaction != null) Interaction.Committed -= OnCommitted; if(glyphMaterial!=null)Destroy(glyphMaterial);if(tutorialOverlayMaterial!=null)Destroy(tutorialOverlayMaterial);if(toolSilhouette!=null)Destroy(toolSilhouette);foreach(var sprite in toolBodySprites.Values)if(sprite!=null)Destroy(sprite);foreach(var sprite in enamelControls)if(sprite!=null)Destroy(sprite); }
+        void OnDestroy() { if(purchaseStore!=null)purchaseStore.Changed-=NotifyStoreChanged;DisposeNavigationArt();if(travelArt!=null)foreach(var sprite in travelArt)if(sprite!=null)Destroy(sprite);DisposeCompletionArt();DisposePlatformProps(); preparation.Dispose(); if (Interaction != null) Interaction.Committed -= OnCommitted; if(glyphMaterial!=null)Destroy(glyphMaterial);if(tutorialOverlayMaterial!=null)Destroy(tutorialOverlayMaterial);if(toolSilhouette!=null)Destroy(toolSilhouette);foreach(var sprite in toolBodySprites.Values)if(sprite!=null)Destroy(sprite);foreach(var sprite in enamelControls)if(sprite!=null)Destroy(sprite); }
         void OnApplicationFocus(bool focused)
         {
             if(!focused)SettleDescent();
@@ -109,6 +109,7 @@ namespace Cascade.Presentation
                 StopPresentation(); ApplySafeArea(); if (Interaction != null) RenderState();
             }
             UpdateFlow();
+            TickToolGuide();
             if(applicationFocused&&!applicationPaused&&monetization!=null)monetization.AdvanceForeground(Mathf.Min(Time.unscaledDeltaTime,.5f));
             UpdatePreparation();
             UpdateDescent();
@@ -211,6 +212,10 @@ namespace Cascade.Presentation
         }
         public void Undo()
         {
+            if(!Interaction.Attempt.CanUndo){
+                var tool=Interaction.Attempt.CanUseSpool&&Stock(TravelTool.UndoSpool)>0?TravelTool.UndoSpool:TravelTool.ReturnHourglass;
+                if(Stock(tool)>0){ShowSupplies();SelectShopItem((int)tool);}return;
+            }
             if (!Interaction.Undo()) return; PersistProgress(); CancelHint(); ScheduleDeadEnd(); RenderState(); if(flowReady)ShowGame();
         }
         public void Retry()
@@ -578,7 +583,10 @@ namespace Cascade.Presentation
         void RenderControls()
         {
             if (Interaction == null) return;
-            undo.interactable = Interaction.CanControl && Interaction.Attempt.CanUndo;
+            bool stockedUndo=Interaction.Attempt.CanUseSpool&&Stock(TravelTool.UndoSpool)>0;
+            bool stockedReturn=Interaction.Attempt.CanUseHourglass&&Stock(TravelTool.ReturnHourglass)>0;
+            undo.interactable = Interaction.CanControl && (Interaction.Attempt.CanUndo||stockedUndo||stockedReturn);
+            undo.GetComponentInChildren<TextMeshProUGUI>().SetCopy(Interaction.Attempt.CanUndo?new UiCopy("Undo · {0}",Interaction.Attempt.FreeUndoRemaining):stockedUndo||stockedReturn?(UiCopy)"My tools":new UiCopy("Undo · {0}",Interaction.Attempt.FreeUndoRemaining));
             retry.interactable = Interaction.CanControl || preparation.HasFailed; retry.gameObject.SetActive(preparation.HasFailed || !Interaction.IsPresenting && Interaction.Attempt.Current.Status != PuzzleStatus.Playing);
             drop.interactable = Interaction.CanPlay; hint.interactable = Interaction.CanPlay && hintTask == null;
             drop.GetComponentInChildren<TextMeshProUGUI>().SetCopy(Interaction.Attempt.Current.Status == PuzzleStatus.Playing

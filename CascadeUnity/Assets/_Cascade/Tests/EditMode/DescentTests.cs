@@ -110,9 +110,9 @@ namespace Cascade.Tests
             Assert.That(run.StageIndex,Is.EqualTo(1));Assert.That(second.PinnedContentHash,Is.EqualTo(hash));Assert.That(second.RouteLength,Is.Zero);
             run.Validate(source,"en");
         }
-        [Test] public void UnprovenPlansAndLessonsRetainSinglePuzzlesAndLegacySavesHaveNoDescent()
+        [Test] public void EarlyLessonsUseStagesUnprovenPlansFallBackAndLegacySingleSavesRestore()
         {
-            Assert.That(DescentRun.Build(catalog.GetPrimary("C13").Definition),Is.Null);
+            Assert.That(DescentRun.Build(catalog.GetPrimary("C13").Definition),Is.Not.Null);
             Assert.That(DescentRun.Build(catalog.GetPrimary("C81").Definition,budget:1),Is.Null);
             var single=new AttemptService(catalog.GetPrimary("C81").Definition);single.Execute(PuzzleCommand.Swap(0));
             var profile=new PlayerProfile{Attempt=AttemptRecord.Capture(single)};

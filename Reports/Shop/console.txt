@@ -1,0 +1,1 @@
+Final Unity MCP console: 0 errors, 0 warnings. Play Mode stopped; isolated QA profile override cleared.

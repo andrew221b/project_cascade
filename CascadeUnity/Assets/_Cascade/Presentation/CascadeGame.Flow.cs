@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Cascade.Presentation
 {
-    public enum GameScreen { Home, Playing, Pause, Win, Fail, Settings, Devices, Lessons, Dialogue, WordLanguage, SaveRecovery, TravelBag, Journal, Collection, Workshop, Requests, Records, Contracts, Parcel, JourneyEnd, ReachChallenges, PowerupChallenges, Checkpoint, PlayChoice, JourneyMap, Prologue, Shop, NoAds }
+    public enum GameScreen { Home, Playing, Pause, Win, Fail, Settings, Devices, Lessons, Dialogue, WordLanguage, SaveRecovery, TravelBag, Journal, Collection, Workshop, Requests, Records, Contracts, Parcel, JourneyEnd, ReachChallenges, PowerupChallenges, Checkpoint, PlayChoice, JourneyMap, Prologue, Shop, NoAds, Supplies }
     public sealed partial class CascadeGame
     {
         public GameScreen CurrentScreen { get; private set; } = GameScreen.Playing;
@@ -195,7 +195,7 @@ namespace Cascade.Presentation
                 if(CurrentScreen==GameScreen.Win && !Interaction.Attempt.Goal.IsSatisfied(Interaction.Attempt.Current))resultText.SetCopy("The row is home. The stamp is still missing.");
                 resultRoot.Find("Resulthome").GetComponentInChildren<TextMeshProUGUI>().SetCopy("Map");
                 if(CurrentScreen==GameScreen.Fail && sessionLosses.TryGetValue(node,out var losses)&&losses>=3)
-                    resultText.SetCopy("Try the device guide. Undo and retry stay free.");
+                    resultText.SetCopy("Retry is free. A return hourglass can bring the last board back.");
                 resultRoot.Find("Nextdelivery").gameObject.SetActive(CurrentScreen==GameScreen.Win||CurrentScreen==GameScreen.Checkpoint||CanOfferStrongerWood);
                 resultRoot.Find("Nextdelivery").GetComponent<Image>().color=new Color(.98f,.74f,.32f);
                 retry.GetComponent<Image>().color=CurrentScreen==GameScreen.Fail&&!CanOfferStrongerWood?new Color(.98f,.74f,.32f):Paper;
@@ -232,6 +232,7 @@ namespace Cascade.Presentation
             else if(CurrentScreen==GameScreen.PlayChoice) DrawPlayChoice();
             else if(CurrentScreen==GameScreen.Prologue) DrawPrologue();
             else if(CurrentScreen==GameScreen.Shop) DrawShop();
+            else if(CurrentScreen==GameScreen.Supplies) DrawSupplies();
             else if(CurrentScreen==GameScreen.NoAds) DrawNoAds();
             else if(CurrentScreen==GameScreen.Lessons) DrawLessons();
             else if(CurrentScreen==GameScreen.Dialogue) DrawDialogue();
@@ -256,7 +257,8 @@ namespace Cascade.Presentation
                 friend.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,2),0,.8f);
                 Rect("Mika's wooden shelf",menuRoot,new Vector2(.24f,.625f),new Vector2(.76f,.642f)).gameObject.AddComponent<WoodBoardGraphic>();
                 MenuButton("Resume",.50f,ShowGame,true); MenuButton("Retry",.40f,()=>{SetScreen(GameScreen.Playing);Retry();});
-                MenuButton("How to play",.30f,ShowHowToPlay); MenuButton("Settings",.20f,ShowSettings); MenuButton("Home",.10f,ShowHome);
+                MenuButton("My tools",.30f,ShowSupplies); MenuButton("How to play",.20f,ShowHowToPlay);
+                MenuButton("Settings",.10f,ShowSettings,false,.08f,.48f);MenuButton("Home",.10f,ShowHome,false,.52f,.92f);
             }
             FinishMenuContrast();
             FitMenuRows();

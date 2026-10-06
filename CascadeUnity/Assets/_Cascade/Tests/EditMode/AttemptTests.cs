@@ -24,13 +24,13 @@ namespace Cascade.Tests
         }
         [Test] public void RouteLengthRollsBackButUndoCountIsSeparate()
         {
-            var attempt = Attempt("C02"); attempt.Execute(PuzzleCommand.Swap(1)); attempt.Execute(PuzzleCommand.Swap(0));
-            Assert.That(attempt.RouteLength, Is.EqualTo(2)); Assert.That(attempt.Current.Status, Is.EqualTo(PuzzleStatus.Won));
+            var attempt = new AttemptService(LevelDefinitionTests.Level(LevelDefinitionTests.Row("DCBA"),LevelDefinitionTests.Row("ABCD"),new[]{new FloorDefinition(12,new[]{true,true,true})})); attempt.Execute(PuzzleCommand.Swap(1)); attempt.Execute(PuzzleCommand.Swap(0));
+            Assert.That(attempt.RouteLength, Is.EqualTo(2)); Assert.That(attempt.Current.Status, Is.EqualTo(PuzzleStatus.Playing));
             Assert.That(attempt.Undo(), Is.True); Assert.That(attempt.RouteLength, Is.EqualTo(1)); Assert.That(attempt.UndoCount, Is.EqualTo(1));
             Assert.That(attempt.Undo(), Is.True); Assert.That(attempt.RouteLength, Is.Zero); Assert.That(attempt.UndoCount, Is.EqualTo(2));
             Assert.That(attempt.Undo(), Is.False); Assert.That(attempt.UndoCount, Is.EqualTo(2));
         }
-        [Test] public void UndoAcrossCollapseRestoresBombCountersAndOldFloor()
+        [Test] public void HourglassAcrossCollapseRestoresBombCountersAndOldFloor()
         {
             var level = LevelDefinitionTests.Level(LevelDefinitionTests.Row("BACD"), LevelDefinitionTests.Row("ABCD"), new[]
             { new FloorDefinition(1, new[] { true, true, true }, bomb: new BombDefinition(3, LevelDefinitionTests.S("A"), 1, 4)),
@@ -38,7 +38,7 @@ namespace Cascade.Tests
             var attempt = new AttemptService(level); var before = attempt.Current; string hash = attempt.CurrentStateHash;
             var after = attempt.Execute(PuzzleCommand.Swap(0)).State;
             Assert.That(after.ActiveFloor, Is.EqualTo(1)); Assert.That(after.ExplodedCount, Is.EqualTo(1));
-            attempt.Undo(); Assert.That(attempt.Current, Is.SameAs(before)); Assert.That(attempt.CurrentStateHash, Is.EqualTo(hash));
+            Assert.That(attempt.Undo(),Is.False);Assert.That(attempt.TryUseToolAtomically(TravelTool.ReturnHourglass,()=>true),Is.True); Assert.That(attempt.Current, Is.SameAs(before)); Assert.That(attempt.CurrentStateHash, Is.EqualTo(hash));
             Assert.That(attempt.Current.BombTicks, Is.EqualTo(1)); Assert.That(attempt.Current.ExplodedCount, Is.Zero);
             Assert.That(attempt.Execute(PuzzleCommand.Swap(0)).State, Is.EqualTo(after));
         }
@@ -56,12 +56,12 @@ namespace Cascade.Tests
             Assert.That(attempt.Current.BridgeUsed || attempt.Current.KeyUsed || attempt.Current.RepairUsed, Is.False);
             Assert.That(attempt.Current.StampBits, Is.Zero); Assert.That(attempt.Current.BombPhase, Is.EqualTo(BombPhase.Armed));
         }
-        [Test] public void DeadEndSuggestsUndoAndUndoRestoresPlayable()
+        [Test] public void DeadEndOnBrokenFloorNeedsHourglassToRestorePlayable()
         {
             var attempt = Attempt("C01"); attempt.Execute(PuzzleCommand.Swap(1));
             var hint = Hint(attempt); Assert.That(hint.Result.Status, Is.EqualTo(HintStatus.DeadEnd));
             Assert.That(hint.Result.Command, Is.Null); Assert.That(attempt.RevealHint(hint), Is.True);
-            Assert.That(attempt.CanUndo, Is.True); attempt.Undo();
+            Assert.That(attempt.CanUndo, Is.False); Assert.That(attempt.TryUseToolAtomically(TravelTool.ReturnHourglass,()=>true),Is.True);
             Assert.That(attempt.Current.Status, Is.EqualTo(PuzzleStatus.Playing)); Assert.That(Hint(attempt).Result.Status, Is.EqualTo(HintStatus.Step));
         }
         [Test] public void UnknownDoesNotConsumeHintOrHistory()

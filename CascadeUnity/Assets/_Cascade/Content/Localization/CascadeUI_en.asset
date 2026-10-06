@@ -2291,6 +2291,162 @@ MonoBehaviour:
     m_Localized: The small row shows how the next board moves your pieces.
     m_Metadata:
       m_Items: []
+  - m_Id: 510273457741824
+    m_Localized: Tools
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936128
+    m_Localized: My tools
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936129
+    m_Localized: Wayfinder scroll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936130
+    m_Localized: Undo spool
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936131
+    m_Localized: Return hourglass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936132
+    m_Localized: Shows each next move until this board breaks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936133
+    m_Localized: One extra undo on this board, after your two free ones.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936134
+    m_Localized: Returns to the last broken board. Once per stage.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936135
+    m_Localized: Pick a tool. Each can be used once per stage.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936136
+    m_Localized: Mika wears it on the map. You can also earn it in parcels.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936137
+    m_Localized: 'Bag: {0} / {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936138
+    m_Localized: Already yours
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936139
+    m_Localized: Yours forever. No gameplay advantage.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936140
+    m_Localized: "Checking the route\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936141
+    m_Localized: Use one
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936142
+    m_Localized: "Buy \xB7 {0} coins"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936143
+    m_Localized: Need {0} more coins
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936144
+    m_Localized: Bag is full
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936145
+    m_Localized: Added to your bag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936146
+    m_Localized: Coins kept. Try again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936147
+    m_Localized: Open a level first
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936148
+    m_Localized: Your bag is empty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936149
+    m_Localized: Already used this stage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936150
+    m_Localized: Use your free undos first
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936151
+    m_Localized: No move on this board to undo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936152
+    m_Localized: No broken board to return to
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936153
+    m_Localized: Scroll kept. Try again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936154
+    m_Localized: Item kept. Try elsewhere.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936155
+    m_Localized: Back on the board
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936156
+    m_Localized: One move undone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936157
+    m_Localized: Follow the hand
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936158
+    m_Localized: "Undo \xB7 {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936159
+    m_Localized: Two free undos per stage. Only on the current board.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936160
+    m_Localized: Retry is free. A return hourglass can bring the last board back.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 511543182614528
+    m_Localized: The row is ready. Keep your scroll.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 513635720880128
+    m_Localized: Tool bag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 513635725074432
+    m_Localized: No ads
+    m_Metadata:
+      m_Items: []
+  - m_Id: 517884924125184
+    m_Localized: Once per stage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 517884928319488
+    m_Localized: Yours forever
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -74,9 +74,9 @@ namespace Cascade.Application
             if(EquippedGift==null&&Owns(receipt.GiftId))EquippedGift=receipt.GiftId;
             return true;
         }
-        public bool Equip(string id)
+        public bool Equip(string id,IEnumerable<string> purchased=null)
         {
-            if(!Gifts.Contains(id)||!Owns(id))return false;EquippedGift=id;return true;
+            if(!Gifts.Contains(id)||!Owns(id)&&purchased?.Contains(id)!=true)return false;EquippedGift=id;return true;
         }
         public bool RegisterVisit(DateTime localDate)
         {
@@ -128,14 +128,14 @@ namespace Cascade.Application
             if(!hinted)record.BestWithoutHint=Math.Min(record.BestWithoutHint??int.MaxValue,route);
             if(!hinted&&undos==0)record.BestClean=Math.Min(record.BestClean??int.MaxValue,route);
         }
-        public void Validate()
+        public void Validate(IEnumerable<string> purchased=null)
         {
             if(!Gifts.Contains(SelectedGift)||EquippedGift!=null&&!Gifts.Contains(EquippedGift)
                 ||SeenClearNodes==null||SeenClearNodes.Count>10000||SeenClearNodes.Any(string.IsNullOrWhiteSpace)
                 ||SeenClearNodes.Distinct().Count()!=SeenClearNodes.Count||Parcels==null||Parcels.Count>12
                 ||Parcels.Any(p=>p==null||p.Order<1||p.Order>SeenClearNodes.Count/3||!Gifts.Contains(p.GiftId))
                 ||Parcels.Select(p=>p.Order).Distinct().Count()!=Parcels.Count||Gifts.Any(g=>EarnedFragments(g)>3)
-                ||EquippedGift!=null&&!Owns(EquippedGift)||Deliveries==null||Deliveries.Count>10000
+                ||EquippedGift!=null&&!Owns(EquippedGift)&&purchased?.Contains(EquippedGift)!=true||Deliveries==null||Deliveries.Count>10000
                 ||Deliveries.Any(d=>d==null||string.IsNullOrWhiteSpace(d.NodeId)||d.Flags<0||d.Flags>7)
                 ||Deliveries.Select(d=>d.NodeId).Distinct().Count()!=Deliveries.Count||VisitDates==null||VisitDates.Count>7
                 ||VisitDates.Distinct().Count()!=VisitDates.Count||VisitDates.Any(d=>!DateTime.TryParseExact(d,"yyyy-MM-dd",CultureInfo.InvariantCulture,DateTimeStyles.None,out _))

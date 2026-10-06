@@ -44,7 +44,7 @@ namespace Cascade.Tests
         }
         [Test] public void UndoCountAndHintUsedRemainIndependentOfShortenedRoute()
         {
-            var a=Attempt();a.RevealHint(AttemptService.CalculateHint(a.CaptureHintRequest()));
+            var a=new AttemptService(LevelDefinitionTests.Level(LevelDefinitionTests.Row("DCBA"),LevelDefinitionTests.Row("ABCD"),new[]{new FloorDefinition(12,new[]{true,true,true})}));a.RevealHint(AttemptService.CalculateHint(a.CaptureHintRequest()));
             a.Execute(PuzzleCommand.Swap(1));a.Execute(PuzzleCommand.Swap(0));a.Undo();
             var restored=AttemptService.Restore(a.Level,AttemptRecord.Capture(a));
             Assert.That(restored.HintUsed,Is.True);Assert.That(restored.UndoCount,Is.EqualTo(1));Assert.That(restored.RouteLength,Is.EqualTo(1));

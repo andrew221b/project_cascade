@@ -68,7 +68,7 @@ namespace Cascade.Presentation
             =>Picture(asset,menuRoot,min,max,Resources.Load<Sprite>("CascadeArt/Workshop/"+asset),true);
         void DrawCollection()
         {
-            string id=JourneyRewards.Gifts[giftPage];bool owned=Rewards.Owns(id);
+            string id=JourneyRewards.Gifts[giftPage];bool owned=OwnsGift(id);
             CraftTitle("Your keepsakes",GiftNames[giftPage]);
             for(int i=0;i<4;i++){int pick=i;ShelfChoice("",GiftAssets[i],.08f+i*.215f,.655f,.195f,.14f,()=>{giftPage=pick;DrawMenu();},i==giftPage);}
             Shelf(.64f);
@@ -77,7 +77,7 @@ namespace Cascade.Presentation
             MenuReadingSurface("Keepsake progress cloth",new Vector2(.12f,.225f),new Vector2(.88f,.425f));
             Text("Gift parts",menuRoot,new Vector2(.10f,.31f),new Vector2(.90f,.375f),23,owned?"You made it!":new UiCopy("Parts found: {0} / 3",Rewards.Fragments(id))).font=art.titleFont;
             Text("Gift plan",menuRoot,new Vector2(.10f,.235f),new Vector2(.90f,.305f),20,owned?"A little keepsake for Mika.":"Three parts make this gift.");
-            if(owned)MenuButton(Rewards.EquippedGift==id?"With Mika":"Take along",.14f,()=>{Rewards.Equip(id);PersistProgress();DrawMenu();},true).interactable=Rewards.EquippedGift!=id;
+            if(owned)MenuButton(Rewards.EquippedGift==id?"With Mika":"Take along",.14f,()=>EquipShopGift(id),true).interactable=Rewards.EquippedGift!=id;
             else if(Rewards.EarnedFragments(id)>=3)MenuButton("Open parcel",.14f,ShowParcel,true);
             else MenuButton(Rewards.SelectedGift==id?"Next gift":"Choose this gift",.14f,()=>{Rewards.SelectGift(id);PersistProgress();DrawMenu();},true).interactable=Rewards.SelectedGift!=id;
             MenuButton("Back",.025f,()=>SetScreen(collectionReturn));
@@ -200,7 +200,7 @@ namespace Cascade.Presentation
             MenuReadingSurface("Route notes cloth",new Vector2(.12f,.18f),new Vector2(.88f,.455f));
             Text("Record route",menuRoot,new Vector2(.10f,.39f),new Vector2(.90f,.47f),22,new UiCopy("Best route: {0} moves",record.BestRoute));
             Text("Record help",menuRoot,new Vector2(.10f,.30f),new Vector2(.90f,.37f),18,record.BestWithoutHint.HasValue?new UiCopy("Without a hint: {0}",record.BestWithoutHint.Value):"Try again without a hint.");
-            Text("Record clean",menuRoot,new Vector2(.10f,.23f),new Vector2(.90f,.28f),16,record.BestClean.HasValue?new UiCopy("Without hint or Undo: {0}",record.BestClean.Value):"Undo is always welcome.");
+            Text("Record clean",menuRoot,new Vector2(.10f,.23f),new Vector2(.90f,.28f),16,record.BestClean.HasValue?new UiCopy("Without hint or Undo: {0}",record.BestClean.Value):"Two free undos per stage. Only on the current board.");
             if(content!=null)MenuButton(record.StageCount==3?"Play this level":"Try again",.10f,()=>{
                 if(record.StageCount==3)StartContent(content);
                 else if(record.StampGoal!=0)StartExactTrail(content,record.StampGoal);else StartContent(content);

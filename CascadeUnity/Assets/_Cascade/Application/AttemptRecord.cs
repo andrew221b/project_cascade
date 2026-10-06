@@ -10,6 +10,8 @@ namespace Cascade.Application
         public string AttemptId, PuzzleId, CampaignNodeId, ContentHash, RulesVersion, Locale, StateHash;
         public int RequiredStampBits, UndoCount;
         public bool HintUsed;
+        public int FreeUndoUsed = -1, GuideFloor = -1;
+        public bool SpoolUsed, HourglassUsed, WayfinderUsed;
         public string[] Commands;
         public DirectionRecipe Direction;
 
@@ -19,6 +21,7 @@ namespace Cascade.Application
             RulesVersion=attempt.PinnedRulesVersion, Locale=attempt.ActiveLocale,
             RequiredStampBits=attempt.Goal.RequiredStampBits, UndoCount=attempt.UndoCount,
             HintUsed=attempt.HintUsed, StateHash=attempt.CurrentStateHash,
+            FreeUndoUsed=attempt.FreeUndoUsed,GuideFloor=attempt.GuideFloor,SpoolUsed=attempt.SpoolUsed,HourglassUsed=attempt.HourglassUsed,WayfinderUsed=attempt.WayfinderUsed,
             Commands=attempt.History.Select(h=>h.Command.ToString()).ToArray(),Direction=attempt.Direction?.Copy()
         };
     }

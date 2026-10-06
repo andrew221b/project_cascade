@@ -68,7 +68,7 @@ namespace Cascade.Persistence
                 throw new InvalidDataException("Invalid first-clear receipt.");
             if(Completion!=null&&!Completion.IsValid())throw new InvalidDataException("Invalid completion receipt.");
             if(Rewards==null)throw new InvalidDataException("Missing journey rewards.");
-            Rewards.Validate();
+            Rewards.Validate(Monetization?.Cosmetics);
             if(Director==null||!Director.IsValid())throw new InvalidDataException("Invalid delivery director memory.");
             if(Monetization==null)throw new InvalidDataException("Missing monetization ledger.");
             Monetization.Validate();

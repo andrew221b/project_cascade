@@ -2279,6 +2279,163 @@ MonoBehaviour:
     m_Key: The small row shows how the next board moves your pieces.
     m_Metadata:
       m_Items: []
+  - m_Id: 510273457741824
+    m_Key: Tools
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936128
+    m_Key: My tools
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936129
+    m_Key: Wayfinder scroll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936130
+    m_Key: Undo spool
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936131
+    m_Key: Return hourglass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936132
+    m_Key: Points out each next move on this board. Stops when the board breaks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936133
+    m_Key: One extra undo after your two free undos. Works only on the current board.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936134
+    m_Key: Brings back the last broken board in this stage. Moves made since then
+      are undone.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936135
+    m_Key: Pick a tool. Each can be used once per stage.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936136
+    m_Key: Mika wears it on the map. You can also earn it in parcels.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936137
+    m_Key: 'In your bag: {0} / {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936138
+    m_Key: Already yours
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936139
+    m_Key: Yours forever. No gameplay advantage.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936140
+    m_Key: "Checking the route\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936141
+    m_Key: Use one
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936142
+    m_Key: "Buy \xB7 {0} coins"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936143
+    m_Key: Need {0} more coins
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936144
+    m_Key: Bag is full
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936145
+    m_Key: Added to your bag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936146
+    m_Key: Could not buy. No coins spent.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936147
+    m_Key: Open a level first
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936148
+    m_Key: Your bag is empty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936149
+    m_Key: Already used this stage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936150
+    m_Key: Use your free undos first
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936151
+    m_Key: No move on this board to undo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936152
+    m_Key: No broken board to return to
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936153
+    m_Key: Could not check the route. Nothing used.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936154
+    m_Key: This tool cannot help here. Nothing used.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936155
+    m_Key: Back on the board
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936156
+    m_Key: One move undone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936157
+    m_Key: Follow the hand. The scroll knows the way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936158
+    m_Key: "Undo \xB7 {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936159
+    m_Key: Two free undos per stage. Only on the current board.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 510273461936160
+    m_Key: Retry is free. A return hourglass can bring the last board back.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 511543182614528
+    m_Key: The row is ready. Keep your scroll.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 513635720880128
+    m_Key: Tool bag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 513635725074432
+    m_Key: No ads
+    m_Metadata:
+      m_Items: []
+  - m_Id: 517884924125184
+    m_Key: Once per stage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 517884928319488
+    m_Key: Yours forever
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

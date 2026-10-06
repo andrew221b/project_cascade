@@ -60,11 +60,11 @@ namespace Cascade.Tests
         [TestCase(8,320,true)][TestCase(7,390,true)][TestCase(8,600,false)][TestCase(6,320,false)]
         public void CompactModeDoesNotPretendEightLargeHitAreas(int slots, int width, bool expected)
             => Assert.That(PuzzleInteraction.NeedsPreciseInput(slots, width), Is.EqualTo(expected));
-        [Test] public void UndoAfterTerminalRestoresPlayingInput()
+        [Test] public void OrdinaryUndoCannotRestoreAnAwardedDelivery()
         {
             var input = Input("C01"); input.TapSlot(0); input.TapSlot(1); input.FinishPresentation();
-            Assert.That(input.CanPlay, Is.False); Assert.That(input.Undo(), Is.True); Assert.That(input.CanPlay, Is.True);
-            Assert.That(input.Attempt.RouteLength, Is.Zero);
+            Assert.That(input.CanPlay, Is.False); Assert.That(input.Undo(), Is.False); Assert.That(input.CanPlay, Is.False);
+            Assert.That(input.Attempt.RouteLength, Is.EqualTo(1));
         }
     }
 }

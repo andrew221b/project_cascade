@@ -82,7 +82,7 @@ namespace Cascade.Tests
         {
             var rewards=new JourneyRewards();var hinted=Win("C02",hint:true);rewards.RecordDelivery(hinted);
             var record=rewards.Records.Single();Assert.That(record.BestWithoutHint,Is.Null);Assert.That(record.BestClean,Is.Null);
-            var undo=Win("C02");undo.Undo();undo.Execute(PuzzleCommand.Swap(0));rewards.RecordDelivery(undo);
+            var undo=new AttemptService(catalog.GetPrimary("C02").Definition);undo.Execute(PuzzleCommand.Swap(1));Assert.That(undo.Undo(),Is.True);foreach(var command in PuzzleSolver.FindShortest(undo.Resolver).Path)undo.Execute(command);rewards.RecordDelivery(undo);
             Assert.That(record.BestWithoutHint,Is.EqualTo(2));Assert.That(record.BestClean,Is.Null);
             rewards.RecordDelivery(Win("C02"));Assert.That(record.BestClean,Is.EqualTo(2));
         }

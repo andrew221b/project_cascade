@@ -65,7 +65,7 @@ namespace Cascade.Presentation
             b.GetComponent<Image>().color=new Color(.84f,.91f,.87f);RegisterMenuRow(b,.565f,index,62,8);
             var text=b.GetComponentInChildren<TextMeshProUGUI>();text.rectTransform.anchorMin=new Vector2(.26f,0);text.rectTransform.anchorMax=new Vector2(.90f,1);
             text.alignment=TextAlignmentOptions.MidlineLeft;text.fontSize=22*(Preferences.LargeText?1.10f:1);text.margin=new Vector4(3,3,3,3);
-            Picture("Navigation object",b.transform,new Vector2(.03f,.05f),new Vector2(.23f,.95f),Resources.Load<Sprite>(asset=="RibbonSpool"?"CascadeArt/Devices/RibbonSpool":"CascadeArt/Workshop/"+asset),true);
+            Picture("Navigation object",b.transform,new Vector2(.03f,.05f),new Vector2(.23f,.95f),Resources.Load<Sprite>(asset=="RibbonSpool"||asset=="Hourglass"?"CascadeArt/Devices/"+asset:"CascadeArt/Workshop/"+asset),true);
             Rect("Open this page",b.transform,new Vector2(.92f,.36f),new Vector2(.97f,.64f)).gameObject.AddComponent<MenuChevronGraphic>().color=MenuInk;
         }
         void WorkshopProgress(int complete)
