@@ -26,6 +26,7 @@ namespace Cascade.Presentation
         Scene debrisScene;PhysicsScene debrisPhysics;Transform debrisRoot;
         readonly BoxCollider[] supports=new BoxCollider[12];
         float physicsRemainder;
+        public ToyRowPhysics RowPhysics {get;private set;}
         public bool SoundEnabled { get; set; } = true;
         public bool MusicEnabled { get; set; } = true;
         public bool HapticsEnabled { get; set; } = true;
@@ -37,6 +38,7 @@ namespace Cascade.Presentation
             game = owner; library = Resources.Load<ToyAudioLibrary>("CascadeArt/ToyAudio");
             debrisScene=SceneManager.CreateScene("CASCADE cosmetic debris "+GetInstanceID(),new CreateSceneParameters(LocalPhysicsMode.Physics3D));debrisPhysics=debrisScene.GetPhysicsScene();
             var root=new GameObject("Isolated cosmetic debris");SceneManager.MoveGameObjectToScene(root,debrisScene);debrisRoot=root.transform;
+            RowPhysics=new ToyRowPhysics(game,debrisScene,debrisRoot);
             for(int i=0;i<supports.Length;i++){
                 var rail=new GameObject("Cosmetic plank contact "+i,typeof(BoxCollider),typeof(Rigidbody));SceneManager.MoveGameObjectToScene(rail,debrisScene);rail.transform.SetParent(debrisRoot,false);
                 var body=rail.GetComponent<Rigidbody>();body.isKinematic=true;body.useGravity=false;supports[i]=rail.GetComponent<BoxCollider>();supports[i].enabled=false;
@@ -158,6 +160,7 @@ namespace Cascade.Presentation
         public void ClearTails()
         {
             physicsRemainder=0;
+            RowPhysics?.End();
             // The local scene may unload before the owner during Editor shutdown or scene replacement.
             if (particles != null) foreach (var p in particles) if(p.transform!=null)p.transform.gameObject.SetActive(false);
             if (voices != null) foreach (var voice in voices) if(voice!=null)voice.Stop(); ActiveParticleCount = 0;
@@ -173,11 +176,11 @@ namespace Cascade.Presentation
         void StepDebris(float seconds)
         {
             if(game.ReducedMotion)foreach(var p in particles)if(p.wood&&!p.reduced&&p.transform.gameObject.activeSelf){p.reduced=true;p.origin=p.transform.position;p.body.isKinematic=true;p.collider.enabled=false;}
-            bool active=false;foreach(var p in particles)if(p.wood&&!p.reduced&&p.transform.gameObject.activeSelf){active=true;break;}
+            bool active=RowPhysics?.Active==true;foreach(var p in particles)if(p.wood&&!p.reduced&&p.transform.gameObject.activeSelf){active=true;break;}
             if(!active){physicsRemainder=0;return;}
             for(int i=0;i<supports.Length;i++){
                 bool visible=game.Machine.DebrisSupport(i/3,.5f+(i%3-1)*.95f/3,out var position,out float width,out float angle);var rail=supports[i];rail.enabled=visible;
-                if(visible){rail.transform.SetPositionAndRotation(position-Vector3.up*.045f,Quaternion.Euler(0,0,angle));rail.size=new Vector3(width,.09f,.35f);}
+                if(visible){rail.transform.SetPositionAndRotation(position-Vector3.up*.045f,Quaternion.Euler(0,0,angle));rail.size=new Vector3(width,.09f,1.4f);}
             }
             physicsRemainder+=seconds;const float dt=1f/90;
             while(physicsRemainder>=dt){
@@ -185,9 +188,9 @@ namespace Cascade.Presentation
                     float wind=game.Machine.WindAt(Mathf.Min(game.VisibleFrame.ActiveFloor,game.Interaction.Attempt.Level.Floors.Count-1));
                     p.body.AddForce(Vector3.right*(wind*.016f),ForceMode.Force);
                 }
-                debrisPhysics.Simulate(dt);physicsRemainder-=dt;
+                RowPhysics?.Step(dt);debrisPhysics.Simulate(dt);physicsRemainder-=dt;
             }
         }
-        void OnDestroy(){if(chipMaterial!=null)Destroy(chipMaterial);if(debrisScene.IsValid()&&debrisScene.isLoaded)SceneManager.UnloadSceneAsync(debrisScene);}
+        void OnDestroy(){RowPhysics?.Dispose();if(chipMaterial!=null)Destroy(chipMaterial);if(debrisScene.IsValid()&&debrisScene.isLoaded)SceneManager.UnloadSceneAsync(debrisScene);}
     }
 }

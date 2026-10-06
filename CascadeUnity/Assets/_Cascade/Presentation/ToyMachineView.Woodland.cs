@@ -21,6 +21,8 @@ namespace Cascade.Presentation
         public Vector3 TokenVisualPosition(int index)=>tokens[index].transform.position;
         public Vector3 TokenVisualScale(int index)=>tokens[index].transform.localScale;
         public Vector3 TokenBaseScale(int index)=>restScales[index];
+        public Vector3 TokenBodySize(int index)=>Vector3.Scale(tokens[index].mesh.bounds.size,restScales[index]);
+        public Vector3 TokenBodyCentre(int index)=>Vector3.Scale(tokens[index].mesh.bounds.center,restScales[index]);
         public float TokenVisualAngle(int index)=>tokens[index].transform.eulerAngles.z;
         public PiecePose TokenPose(int index)=>piecePoses[index];
         public float LoadedSag=>Frame!=null&&Frame.ActiveFloor<floors.Count?floors[Frame.ActiveFloor].sag:0;
@@ -168,7 +170,9 @@ namespace Cascade.Presentation
             float supportAngle=supported?floors[Frame.ActiveFloor].roll:0;
             float rock=supported&&piecePoses[index]!=PiecePose.Held?rocking[index]:0;
             token.position+=Vector3.up*(Mathf.Abs(Mathf.Sin(rock*Mathf.Deg2Rad))*tokens[index].mesh.bounds.extents.x*restScales[index].x);
+            if(index==dragDestination&&index!=heldWeight&&!blockedDestination&&supported)token.position+=Vector3.up*SelectionLiftWorld(index)*.5f;
             token.localScale=Vector3.Scale(restScales[index],new Vector3(stretch.x,stretch.y,1));token.rotation=Quaternion.Euler(0,0,visualAngles[index]+supportAngle+rock);
+            UpdateTouchContour(index);
             if(index<tokenShadows.Count) {
                 var shadow=tokenShadows[index];float lift=Mathf.Max(0,visualOffsets[index].y);
                 var shadowOffset=supported?FloorPointOffset(Frame.ActiveFloor,shadow.basePosition,true):dynamicOffsets[index];
@@ -182,6 +186,7 @@ namespace Cascade.Presentation
         {
             if(continuousRopeMaterial!=null)Destroy(continuousRopeMaterial);if(woodMaterial!=null)Destroy(woodMaterial);if(ropeMaterial!=null)Destroy(ropeMaterial);
             DisposePieceMaterials();
+            if(touchGlowMaterial!=null)Destroy(touchGlowMaterial);
             foreach(var mesh in woodMeshes)if(mesh!=null)Destroy(mesh);
         }
     }

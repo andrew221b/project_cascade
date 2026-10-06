@@ -182,7 +182,7 @@ Careful! This crack wears the board down faster.	Careful! This crack wears the b
 The next board moves the row. Look at its arrow.	The next board moves the row. Look at its arrow.	Следующая доска сдвинет ряд. Смотри на стрелку.	Наступна дошка зсуне ряд. Дивись на стрілку.
 Tap Descend to take the row down.	Tap Descend to take the row down.	Нажми «Вниз», чтобы опустить ряд.	Натисни «Униз», щоб опустити ряд.
 At zero, the board breaks and the row drops.	At zero, the board breaks and the row drops.	На нуле доска сломается, и ряд упадёт.	На нулі дошка зламається, і ряд упаде.
-Drag a piece onto its neighbour.	Drag a piece onto its neighbour.	Тяни фигурку к соседней.	Тягни фігурку до сусідньої.
+Drag a piece onto its neighbour.	Drag a piece onto its neighbour.	Тяни деталь к соседней.	Тягни деталь до сусідньої.
 Mika	Mika	Мика	Міка
 Pip	Pip	Пип	Піп
 Rue	Rue	Ру	Ру
@@ -509,3 +509,18 @@ Then the storm broke the bridges and put the beacon out. Mika saved one little l
 Mika: I'll bring it home, Gran. We'll mend the bridges, help our friends and light the beacon again.	Mika: I'll bring it home, Gran. We'll mend the bridges, help our friends and light the beacon again.	Мика: Я донесу огонёк, бабушка. Починим мосты, поможем друзьям и снова зажжём маяк.	Міка: Я донесу вогник, бабусю. Полагодимо мости, допоможемо друзям і знову запалимо маяк.
 Goal: Great Beacon	Goal: Great Beacon	Наша цель — Большой маяк	Наша мета — Великий маяк
 Talk to {0}	Talk to {0}	Поговорить: {0}	Поговорити: {0}
+Choose a quieter journey, or find a keepsake for Mika.	Choose a quieter journey, or find a keepsake for Mika.	Без рекламных пауз. И подарки для Мики.	Без рекламних пауз. І подарунки для Міки.
+Keepsakes can be earned by playing. Purchases are optional.	Keepsakes can be earned by playing. Purchases are optional.	Подарки можно собрать в игре. Покупать что-либо необязательно.	Подарунки можна зібрати в грі. Купувати щось необов’язково.
+Keep the way home free of advertising breaks. Support Mika's journey.	Keep the way home free of advertising breaks. Support Mika's journey.	Путь домой без рекламных пауз. Ваша покупка поддержит игру.	Шлях додому без рекламних пауз. Ваша покупка підтримає гру.
+The shop is not open yet. You can enjoy the whole journey without purchases.	The shop is not open yet. You can enjoy the whole journey without purchases.	Магазин ещё не открыт. Всё приключение доступно без покупок.	Магазин ще не відкрито. Уся пригода доступна без покупок.
+A one-time purchase removes automatic ads. Optional videos stay your choice.	A one-time purchase removes automatic ads. Optional videos stay your choice.	Купите один раз — и рекламных пауз больше не будет. Видео за награду останутся по желанию.	Купіть один раз — і рекламних пауз більше не буде. Відео за нагороду залишаться за бажанням.
+Automatic ads are off. Thank you for supporting Mika's journey.	Automatic ads are off. Thank you for supporting Mika's journey.	Рекламные паузы отключены. Спасибо за поддержку игры!	Рекламні паузи вимкнено. Дякуємо за підтримку гри!
+Waiting for purchase approval. You can keep playing.	Waiting for purchase approval. You can keep playing.	Ждём разрешения на покупку. Можно продолжать играть.	Чекаємо дозволу на покупку. Можна грати далі.
+The store could not finish. Try again. Your purchase will not be lost.	The store could not finish. Try again. Your purchase will not be lost.	Магазин не ответил. Попробуйте ещё раз или восстановите покупку.	Магазин не відповів. Спробуйте ще раз або відновіть покупку.
+Checking with the store. Please wait.	Checking with the store. Please wait.	Проверяем покупку. Немного подождите.	Перевіряємо покупку. Трохи зачекайте.
+Ads removed	Ads removed	Реклама отключена	Рекламу вимкнено
+Buy · {0}	Buy · {0}	Купить · {0}	Купити · {0}
+Checking purchase…	Checking purchase…	Проверяем покупку…	Перевіряємо покупку…
+Coming soon	Coming soon	Скоро появится	Незабаром
+Restore purchases	Restore purchases	Восстановить покупки	Відновити покупки
+Back to play	Back to play	К игре	До гри

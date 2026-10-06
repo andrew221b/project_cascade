@@ -332,6 +332,21 @@ full-suite run, physical touch/gyro, mobile FPS, accessibility, native editorial
 approval, human comprehension/enjoyment or release readiness. Current build
 status belongs to the Navigation report.
 
+The touch/store extension follows `Docs/TOUCH_AND_STORES.md`,
+`CascadeGame.Touch.cs`, `ToyMachineView.TouchFeedback.cs`, `ToyRowPhysics.cs`,
+`PhoneShakeFeedback.cs`, `CascadeGame.Store.cs` and `CascadeGame.Navigation.cs`.
+It extends the same wood, enamel and painted world with actual-body contours,
+free finger tracking, cosmetic physical landings and a disabled native purchase
+view. Existing MenuBackground artwork and source assets remain; no new raster
+generation or shared visual token change was needed. `Reports/TouchRevision`
+holds ten final actual Unity Editor captures. The footer and intentional-y
+review corrections are implemented; the expanded axes check passed 1/1 in
+`Reports/TouchRevisionReviewFinal`. The initial review run failed on Editor
+Device Simulator setup/teardown. The fresh verdict records SHIP for resolved
+F01/F02 only, without whole-product certification. These stills and tests do not
+prove hardware touch, sensors, timing, haptics,
+OS accessibility, device performance, native builds or human enjoyment.
+
 **Key Characteristics:**
 - Direct touch lifts a piece and its live glyph together; the receiver stays visible.
 - Six stable silhouettes and colors retain their identity across eight regions.
@@ -347,7 +362,7 @@ Warm paper and brass anchor a mint, coral, lilac, yellow, sky and apricot toy pa
 
 ### Primary
 
-- **Hardware Gold** marks receiving rims, sockets, selection frames and mechanical joints.
+- **Hardware Gold** marks receiving rims, sockets and mechanical joints. Piece selection uses the contour of its actual body.
 - **Drop Gold** marks the committed Descend/Deliver action and primary travel/dialogue actions; the historical token name remains stable.
 - **Painted honey wood** is the native WoodBoard texture, framed to its solid body band; its grain is not represented by a flat color token. **Wood Fallback** is used only if that texture is unavailable. The platform component's flat fill reference records that fallback, not a measured average of the painted plank.
 - **Hemp Rope** colors suspension and knots. **Wood Chip Dark** and **Wood Chip Light** alternate in short collapse debris.
@@ -357,7 +372,7 @@ Warm paper and brass anchor a mint, coral, lilac, yellow, sky and apricot toy pa
 
 - **Triangle Yellow, Circle Mint, Square Coral, Diamond Lilac, Star Sky and Hexagon Apricot** preserve the six shape identities in the row, contacts, destination and magnifier.
 - **Device Coral** retains fragile-edge feedback. New bomb, repair, key, stamp, ribbon and hourglass rasters carry their own painted colors; lilac connecting cords disclose paired edges.
-- **Legal Landing** and **Blocked Landing** tint the adjacent destination during a drag. **Preview Gold** washes affected slots during a command preview; the solid selection frame remains distinct.
+- **Legal Landing**, **Blocked Landing** and **Preview Gold** retain their historical slot-wash token identities. Current direct-touch feedback uses a warm ivory or blocked coral contour of the actual piece, with a slight legal-target lift; slot images stay transparent and no square selection or target overlay is shown.
 - **Map Current**, **Map Restored**, **Path Open** and **Path Future** remain historical tokens. The current map conveys availability through colored/desaturated island artwork and a localized arrow with Mika; stop fills and connecting pebbles are absent. The retained `map-stop` frontmatter variants describe the earlier surface and must not be used to recreate its visible cards.
 
 ### Neutral
@@ -417,6 +432,16 @@ filter uses the existing catalog. A swipe cancels the child plaque's click and
 changes only the displayed page. Map and shelf use horizontal swipes and desktop
 wheel input, with clamped first/last pages; Back returns to the play choice.
 
+### Shop and purchase state
+
+Shop extends the existing painted workshop with Remove ads, earned Keepsakes
+and My things. The unavailable purchase view keeps its explanation, disabled
+purchase/restore controls and continued-play route readable in RU at 320×693.
+Back to play uses the thematic enamel footer inside the safe area, with a
+52-rendered-pixel minimum. Final Editor bounds measure 64.14 pixels at 390×844
+and 52.66 at 320×693; simulated bounds do not establish hardware target quality.
+Existing MenuBackground and navigation artwork remain in use.
+
 ### Journey and dialogue
 
 The map uses a tall illustrated five-stop route between a compact ivory heading
@@ -460,13 +485,15 @@ margins, must not be treated as permission to clip painted edges.
 
 Beveled meshes, satin URP materials, a warm directional key and analytic contact shadows create depth. The warm key has intensity 1.05 and color (1, 0.96, 0.88); the sky fill has intensity 0.35 and color (0.64, 0.85, 1). Flat ambient light uses (0.69, 0.79, 0.80). Unity cast shadows are disabled for this view. The rounded extrusion uses contour rings at scale factors `0.88, 0.985, 1, 0.97, 0.89`. Shape plastics use smoothness 0.28 and metallic 0.02; other materials keep authored satin values.
 
-Soft contact quads use `(1 − smoothstep(0.25, 1, radius))²` alpha, tinted by Contact Shadow. Each token, platform and receiver fits its own quad. This is a native shader effect, not a CSS shadow. Playing pieces seat their mesh bottom at 0.365 of the padded floor rectangle, matching the visible painted wood. The contact shadow aligns just below this surface. Selection adds a world-space lift, changes size from 0.78 × 0.88 to 0.81 × 0.915 of the cell and reveals a gold frame; the live glyph follows the body. Final sampled landing frames confirm contact, while in-flight frames retain separation.
+Soft contact quads use `(1 − smoothstep(0.25, 1, radius))²` alpha, tinted by Contact Shadow. Each token, platform and receiver fits its own quad. This is a native shader effect, not a CSS shadow. Playing pieces seat their mesh bottom at 0.365 of the padded floor rectangle, matching the visible painted wood. The contact shadow aligns just below this surface. Selection adds a slight world-space lift and a 1.04 size multiplier, with a contour following the actual body and its live glyph. The legal drag destination also lifts slightly. Square slot frames and target overlays are absent. Final sampled landing frames confirm contact, while in-flight frames retain separation.
 
 ### Motion and living scenery
 
-A held piece lifts immediately with its glyph. Its preview scales toward a 64-rendered-pixel face, clamped to 1.10–2.5 times the base size. Horizontal travel is bounded to 1.15 cell spacings, or 3.15 while a Ribbon Reach charge is available; upward drag adds at most 0.45 spacings above its hold lift. The input cells remain stationary. Releasing elsewhere, pointer cancellation, pause or focus loss returns the presentation without spending a move.
+A held piece acknowledges immediately with its glyph, then lifts to 1.6 times the selection lift. Its face aims for 58 rendered pixels with a held-size multiplier clamped to 1.08–1.30; deliberate drag has a minimum multiplier of 1.16. The preserved grab offset and actual pointer x/y control travel freely, with no neighbour-distance or upward movement clamp. Input cells remain stationary and resolver legality alone decides the exchange. Free/cancelled releases return in 180 ms; pause or focus loss settles the presentation without spending a move. Reduced Motion suppresses decorative lift, enlargement and tilt while preserving intentional x/y tracking.
 
-Committed exchanges use 190 ms cubic ease-out with asymmetric upward arcs. Contact, bomb and fracture steps last 180, 240 and 130 ms. A 300 ms fall maps each source piece to its committed destination, with quadratic vertical travel, small stagger and bounded opposing rotation. A landing lasts at least 190 ms, with one short damped upward settle, at most 8% squash and bounded alternating rotation; local rail recoil remains 0.025 world units. The loaded wood strip bends toward 0.045 world units of apparent weight through bounded decorative springs; holding a piece removes its apparent weight. Two continuous hemp ropes run from above the viewport through each rail attachment to the receiver and respond to the same decorative sway. Delivery holds for 340 ms. Reduced Motion substitutes 55 ms state holds and at most two stationary dust fades per burst. Selection focus uses 100 ms or an immediate reduced-motion state. Screen shake is opt-in and off by default; Reduced Motion suppresses it. Dust and audio tails never determine command completion.
+Native scripted exchanges last at least 320 ms for taps and 360 ms for drags. The placed source begins from its actual released position, scale and angle; the partner returns on an upward arc. Normal wind and exchanges remain guided motion. The earlier profile checkpoint recorded contact, bomb and fracture steps at 180, 240 and 130 ms. Falls and shakes use eight pooled real Rigidbody box proxies in the existing isolated cosmetic PhysX scene: the original visible pieces spin, bounce and collide briefly before guided interpolation restores the exact committed seats. These are approximate box contacts, not exact candy-mesh colliders. A landing lasts at least 190 ms, with one short damped upward settle, at most 8% squash and bounded alternating rotation; local rail recoil remains 0.025 world units. The loaded wood strip bends toward 0.045 world units of apparent weight through bounded decorative springs; holding a piece removes its apparent weight. Two continuous hemp ropes run from above the viewport through each rail attachment to the receiver and respond to the same decorative sway. Delivery holds for 340 ms. Reduced Motion substitutes 55 ms state holds and at most two stationary dust fades per burst. Selection focus uses 100 ms or an immediate reduced-motion state. Screen shake is opt-in and off by default; Reduced Motion suppresses it. Dust and audio tails never determine command completion.
+
+Phone acceleration passes through a bounded high-pass response that ignores the initial zero sample and prioritizes deliberate gestures. Its impulse affects decorative board springs, constrained rope chains and the pooled pieces; it never touches Domain, Solver, contacts, row order or move cost. Hardware sensor thresholds and feel remain unverified. The ropes retain their constrained point-chain simulation, not full realistic rope physics.
 
 Eight distinct far landscapes cover the viewport. Shared transparent clouds move at three speeds, lower-edge plants sway about their stems, and rain, snow or pollen occupy separate scenery layers by region. The incidental lower-right windwheel is hidden. Regional tints adapt cloud/plant layers. The whole rotated glider is bounded to the empty gap between feedback and the top floor; it hides during a held-token gesture and if no gap remains. All ambient motion is view-only. Explicit pause and suspension stop phase progression; Reduced Motion displays phase zero. Map and dialogue can keep their decorative clock running while puzzle input is paused. Quiet generated wind/rain beds follow Sound and explicit pause/suspension preferences; physical listening has not been verified.
 
@@ -502,7 +529,7 @@ Warm paper controls carry dark Bold labels and Unity multiply tints for hover, p
 
 ### Persistent token and receiver
 
-Pressing a shape or letter gives immediate lift and a larger held face; legal adjacent landing highlights and the feedback line explain command cost. Release commits one atomic exchange through the shared resolver. Ordinary play exchanges adjacent pieces; the six R trials and a collected ribbon in the B lessons additionally permit one charged endpoint swap across one or two intervening pieces. All crossed edges must be open, linked-pair corridors reject Reach, and crossed fragile/bridge rules still apply. Contacts use the final row. The charge and state are undoable; Retry restores the initial charge. Charge-aware live guidance distinguishes available and spent ribbon states. Tap-then-tap remains available; a long swipe does not chain exchanges. The gold rim and ivory inset retain the complete ordered destination. Magnifier faces derive from the same shapes and live glyphs. Failure shows the goal and delivered row separately; success seats the row before result actions appear.
+Pressing a shape or letter gives actual-body contour feedback, a slight lift and a larger held face. Legal destination contour/lift and the feedback line explain command cost; no rectangular slot or target overlay is used. The same body and embossed glyph follow intentional x/y in normal and Reduced Motion. Release commits one atomic exchange through the shared resolver. Ordinary play exchanges adjacent pieces; the six R trials and a collected ribbon in the B lessons additionally permit one charged endpoint swap across one or two intervening pieces. All crossed edges must be open, linked-pair corridors reject Reach, and crossed fragile/bridge rules still apply. Contacts use the final row. The charge and state are undoable; Retry restores the initial charge. Charge-aware live guidance distinguishes available and spent ribbon states. Tap-then-tap remains available; a long swipe does not chain exchanges. The gold rim and ivory inset retain the complete ordered destination. Magnifier faces derive from the same shapes and live glyphs. Failure shows the goal and delivered row separately; success seats the row before result actions appear.
 
 ### Platforms and devices
 
@@ -573,6 +600,26 @@ ordinary delivery or stamp objective, best route and optional no-hint/clean
 annotations. The stamp-trail view explains that ordinary travel stays open.
 All progression labels derive from local saved facts; no global rank is shown.
 
+### Shop and optional no-ads purchase
+
+The prepared one-time NonConsumable `cascade.no_automatic_ads` removes automatic
+ads; optional videos remain a choice. Live price lettering comes only from store
+metadata. Current resource flags are false and native keys/products do not exist,
+so the view explains that the shop is not open and the whole journey remains
+available without purchases. Purchase, restore, checking, deferred and retry
+states use live localized copy and enabled-state controls. Keepsakes stay free
+earned objects; paid cosmetic packs are only a future option. No new product
+artwork or palette is introduced.
+
+Official IAP 5.4.4 and LevelPlay 9.5.1 packages are installed through UPM, with
+no Codeless IAP automatic initializer or provider activation. The publisher's
+server must verify Apple JWS / Google purchase proof before entitlement is saved
+in the ledger and a pending order is confirmed; that server is not implemented
+or hosted.
+Privacy/age/ATT, native dependency/build and sandbox checks remain external.
+These client views and service boundaries do not establish live purchases or
+ads. Existing C16 policy protections remain in force.
+
 ### Saved path and recovery
 
 Recovery reuses the quiet paper surface, dark live text and wide gold action. One heading and one short explanation distinguish backup recovery, an unavailable puzzle, an unreadable path and a failed write. Continue acknowledges a backup that may omit the last move; Start a new puzzle retains valid progress, while Start a new path explicitly replaces an unreadable path. Try saving again retains the committed in-memory attempt until writing succeeds. A newer-version save shows update guidance with no invented store link or destructive action.
@@ -589,6 +636,7 @@ Comfort enables large previous/next focus controls and left/right exchanges with
 
 - **Do** reuse each authored silhouette and material wherever its SymbolId appears.
 - **Do** move and scale the live glyph with its selected or held body.
+- **Do** preserve deliberate x/y tracking when Reduced Motion removes decorative lift, zoom and tilt.
 - **Do** preserve the complete target and the direct-touch default.
 - **Do** keep precision controls an explicit Comfort preference.
 - **Do** bind the map marker to actual local first-clear receipts and label future previews honestly.
@@ -604,7 +652,7 @@ Comfort enables large previous/next focus controls and left/right exchanges with
 - **Don't** bake gameplay text into imagery or change symbol identity to indicate state.
 - **Don't** let presentation, animation completion, scenery, physics or ad callbacks change puzzle state.
 - **Don't** portray browsed islands as reached, an unsuccessful write as saved, or unreadable progress as restored.
-- **Don't** describe online concepts or disabled mock Ads/IAP boundaries as live integration; Ribbon Reach is local optional play, not a purchased ability.
+- **Don't** describe online concepts or disabled native Ads/IAP preparation as live integration, invent a price or imply receipt-server activation; Ribbon Reach remains local optional play.
 - **Don't** copy ShapeMania screens, characters, sprites, props or materials into this world.
 - **Don't** equate Editor captures and automated tests with device, haptic, performance, build, native-language or human-enjoyment proof.
 
@@ -702,8 +750,10 @@ changes reset affected chains. See Docs/FLEXIBLE_ROPE_PRESENTATION.md.
 ## Impact, physical fragments and live light — 6 October 2026
 
 Lifting, exchanging and landing communicate weight through the platform springs
-and neighboring constrained rope spans. Figures descend under gravity with guided
-slot placement and individual bounded rocking. Timber fragments use pooled rigid
+and neighboring constrained rope spans. Falling and shaken pieces use eight pooled
+Rigidbody box proxies to tumble, bounce and collide, then guide into the exact
+committed seats in the existing isolated cosmetic PhysX scene. Normal wind and
+exchanges remain scripted. Timber fragments use pooled rigid
 bodies in an isolated PhysX scene; they spin, receive wind and bounce against the
 view's platform contacts before leaving or fading. Pause/quiet remain authoritative.
 Candy/ivory materials now use actual URP clear coat. Wood has a sloped deforming
@@ -716,14 +766,17 @@ receiver symbols before the first command. No gameplay physics or new rules.
 
 ## Finger-to-seat continuity — 6 October 2026
 
-Press acknowledges immediately before a short lift and bounded enlargement. The
-same glossy body and embossed glyph follow deliberate drag, with gentle tilt and
-quiet destination feedback. Stable hit areas do not chase the moving artwork.
+Press acknowledges through the actual body's contour before a short lift and
+bounded enlargement. The same glossy body and embossed glyph follow deliberate
+x/y drag freely, with gentle tilt and a slight legal-target lift. No square slot
+or target overlay. Stable hit areas do not chase the moving artwork.
 Free/cancelled releases return in 180 ms; committed travel inherits the actual
 released position, scale and angle. Selection never fights the touch pose.
 Unchanged duplicate symbols keep their seats during a far swap. Quiet motion
-removes lift/zoom/tilt while preserving direct finger tracking. See Docs/TOUCH_FEEL.md
-and native/test evidence in Reports/TouchFeel. No gameplay or asset schema change.
+removes lift/zoom/tilt while preserving direct x/y finger tracking. Docs/TOUCH_FEEL.md
+and Reports/TouchFeel remain the earlier checkpoint; Docs/TOUCH_AND_STORES.md
+and Reports/TouchRevision record the current extension. No gameplay or asset
+schema change.
 
 
 ## One outcome message — 6 October 2026

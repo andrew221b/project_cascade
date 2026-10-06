@@ -104,6 +104,15 @@ namespace Cascade.Application
             if(noAuto)next.NoAutomaticAds=true;else if(!next.Cosmetics.Contains(gift))next.Cosmetics.Add(gift);
             return Commit(next); // Only non-consumables exist in this mock catalog; restore never awards coins/tokens.
         }
+        public bool VerifiedStorePurchase(string product,string receipt,bool providerVerified)
+        {
+            if(!providerVerified||product!=PurchaseCatalog.NoAutomaticAds||string.IsNullOrWhiteSpace(receipt)||receipt.Length>256)return false;
+            var existing=Ledger.Grants.FirstOrDefault(g=>g.Id==receipt);
+            if(existing!=null)return existing.Kind=="no_auto"&&existing.Product==product;
+            var next=Ledger.Copy();next.NoAutomaticAds=true;
+            next.Grants.Add(new GrantReceipt{Id=receipt,Kind="no_auto",Product=product});
+            return Commit(next);
+        }
         public bool TrySpendHint(AttemptService attempt,HintOffer offer)
         {
             if(attempt==null||!attempt.IsCurrent(offer)||offer.Result.Status!=HintStatus.Step||attempt.RevealedHintStates.ContainsKey(offer.StateHash))return false;

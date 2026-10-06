@@ -11,6 +11,8 @@
         "Unity.InputSystem",
         "Unity.Localization",
         "Unity.ResourceManager",
-        "Cascade.Persistence"
+        "Cascade.Persistence",
+        "Unity.Purchasing",
+        "Unity.LevelPlay"
     ]
 }

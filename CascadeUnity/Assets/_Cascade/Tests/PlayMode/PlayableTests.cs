@@ -250,7 +250,7 @@ namespace Cascade.Tests
             string hash=game.Interaction.Attempt.CurrentStateHash;
             yield return TouchFrame(41,Point(0),UnityEngine.InputSystem.TouchPhase.Began);
             yield return new WaitForSecondsRealtime(.18f);
-            Assert.That(game.Machine.TokenVisualPosition(0).y-game.Machine.TokenPosition(0).y,Is.GreaterThan(game.Machine.SelectionLiftWorld(0)*1.5f));
+            Assert.That(game.Machine.TokenVisualPosition(0).y-game.Machine.TokenPosition(0).y-game.Machine.TokenSupportOffset(0).y,Is.GreaterThan(game.Machine.SelectionLiftWorld(0)*1.5f));
             yield return TouchFrame(41,Point(1),UnityEngine.InputSystem.TouchPhase.Moved);
             yield return new WaitForSecondsRealtime(.1f);
             var held=game.Machine.TokenVisualPosition(0);
@@ -287,6 +287,80 @@ namespace Cascade.Tests
             game.SlotViews[0].OnEndDrag(pointer);yield return AwaitPresentation();
             Assert.That(game.Interaction.Attempt.RouteLength,Is.EqualTo(1));Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
             Assert.That(game.SlotViews.Count,Is.EqualTo(views));
+        }
+        [UnityTest] public IEnumerator TapSelectionUsesTheBodyContourAndNeverPaintsASlotPanel()
+        {
+            yield return AwaitPreparation();game.ReducedMotion=false;
+            yield return TouchFrame(711,Point(0),UnityEngine.InputSystem.TouchPhase.Began);
+            yield return TouchFrame(711,Point(0),UnityEngine.InputSystem.TouchPhase.Ended);
+            yield return new WaitForSecondsRealtime(.3f);
+            Assert.That(game.Interaction.SelectedSlot,Is.EqualTo(0));
+            var body=game.GetComponentsInChildren<MeshFilter>().Single(m=>m.name=="Persistent token 0");
+            var contour=game.GetComponentsInChildren<MeshFilter>().Single(m=>m.name=="Piece contour 0");
+            Assert.That(contour.sharedMesh,Is.SameAs(body.sharedMesh));
+            foreach(var slot in game.SlotViews)Assert.That(slot.GetComponent<UnityEngine.UI.Image>().color.a,Is.Zero);
+            float lift=game.Machine.TokenVisualPosition(0).y-game.Machine.TokenPosition(0).y-game.Machine.TokenSupportOffset(0).y;
+            Assert.That(lift,Is.GreaterThan(.025f));Assert.That(game.Interaction.Attempt.RouteLength,Is.Zero);
+        }
+        [UnityTest] public IEnumerator DragFollowsFingerOutsideNeighbourClampAndCancelsFreely()
+        {
+            game.LoadNode("C18");yield return AwaitPreparation();game.RefreshLayout();
+            foreach(bool quiet in new[]{false,true}) {
+                game.ReducedMotion=quiet;
+                string hash=game.Interaction.Attempt.CurrentStateHash;Vector3 original=game.Machine.TokenVisualPosition(0);
+                var pointer=new PointerEventData(EventSystem.current){pointerId=712,button=PointerEventData.InputButton.Left,position=Point(0),pointerCurrentRaycast=new RaycastResult{gameObject=game.SlotViews[0].gameObject}};
+                game.SlotViews[0].OnPointerDown(pointer);var start=pointer.position;
+                // Deliberate vertical-only movement is allowed even with Reduced Motion.
+                pointer.position=start+Vector2.up*90;pointer.pointerCurrentRaycast=new RaycastResult();game.SlotViews[0].OnBeginDrag(pointer);game.SlotViews[0].OnDrag(pointer);yield return null;
+                var origin=Camera.main.WorldToScreenPoint(original);var displayed=Camera.main.WorldToScreenPoint(game.Machine.TokenVisualPosition(0));
+                Assert.That(displayed.x-origin.x,Is.EqualTo(0).Within(2));Assert.That(displayed.y-origin.y,Is.GreaterThan(80));
+                // Then move diagonally across several cells; legality never limits artwork travel.
+                pointer.position=Point(3)+Vector2.up*90;game.SlotViews[0].OnDrag(pointer);yield return null;
+                displayed=Camera.main.WorldToScreenPoint(game.Machine.TokenVisualPosition(0));
+                Assert.That(displayed.x-origin.x,Is.EqualTo(pointer.position.x-start.x).Within(2));
+                Assert.That(displayed.y-origin.y,Is.GreaterThan(80));
+                foreach(var slot in game.SlotViews)Assert.That(slot.GetComponent<UnityEngine.UI.Image>().color.a,Is.Zero);
+                game.SlotViews[0].OnPointerUp(pointer);yield return new WaitForSecondsRealtime(.3f);
+                Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));Assert.That(game.IsHoldingToken,Is.False);
+            }
+        }
+        [UnityTest] public IEnumerator PhysicalLandingTumblesPausesAndReturnsTheCommittedRowToItsSeats()
+        {
+            game.LoadNode("C03");yield return AwaitPreparation();game.ReducedMotion=false;game.ShowGame();
+            game.Interaction.Execute(PuzzleCommand.Drop);
+            float limit=Time.realtimeSinceStartup+3;while(!game.Feedback.RowPhysics.Active&&Time.realtimeSinceStartup<limit)yield return null;
+            Assert.That(game.Feedback.RowPhysics.Active,Is.True);string hash=game.Interaction.Attempt.CurrentStateHash;
+            var row=game.Interaction.Attempt.Current.Row.ToArray();yield return new WaitForSecondsRealtime(.18f);
+            Assert.That(Enumerable.Range(0,game.SlotViews.Count).Max(i=>Mathf.Abs(game.Feedback.RowPhysics.Angle(i))),Is.GreaterThan(4));
+            game.Interaction.SetPaused(true);var paused=game.Feedback.RowPhysics.Position(0);yield return new WaitForSecondsRealtime(.16f);
+            Assert.That(Vector3.Distance(paused,game.Feedback.RowPhysics.Position(0)),Is.LessThan(.001f));
+            game.Interaction.SetPaused(false);yield return AwaitPresentation();
+            Assert.That(game.Feedback.RowPhysics.Active,Is.False);Assert.That(game.Feedback.RowPhysics.LandedCount,Is.GreaterThan(0));
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));Assert.That(game.Interaction.Attempt.Current.Row,Is.EqualTo(row));
+            for(int i=0;i<game.SlotViews.Count;i++)Assert.That(Vector3.Distance(game.Machine.TokenVisualPosition(i),game.Machine.TokenPosition(i)+game.Machine.TokenSupportOffset(i)),Is.LessThan(.012f));
+        }
+        [UnityTest] public IEnumerator PhoneShakeUnsettlesPresentationOnlyAndRespectsReducedMotion()
+        {
+            yield return AwaitPreparation();game.ReducedMotion=false;
+            var acceleration=InputSystem.AddDevice<Accelerometer>();var feedback=game.GetComponent<PhoneShakeFeedback>();
+            try{
+                yield return null;InputSystem.QueueDeltaStateEvent(acceleration.acceleration,new Vector3(0,-1,0));InputSystem.Update();yield return null;
+                string hash=game.Interaction.Attempt.CurrentStateHash;int count=feedback.AppliedImpulses;
+                InputSystem.QueueDeltaStateEvent(acceleration.acceleration,new Vector3(1.6f,-1.5f,0));InputSystem.Update();yield return null;
+                Assert.That(feedback.AppliedImpulses,Is.EqualTo(count+1));Assert.That(game.Feedback.RowPhysics.Shaking,Is.True);
+                yield return new WaitForSecondsRealtime(.15f);Assert.That(Mathf.Abs(game.Machine.TokenVisualAngle(0)),Is.GreaterThan(1));
+                yield return new WaitForSecondsRealtime(1);Assert.That(game.Feedback.RowPhysics.Active,Is.False);Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+                game.ReducedMotion=true;count=feedback.AppliedImpulses;feedback.SampleAcceleration(new Vector3(-2,-1,0),.04f);yield return null;
+                Assert.That(feedback.AppliedImpulses,Is.EqualTo(count));Assert.That(game.Feedback.RowPhysics.Active,Is.False);
+            }finally{InputSystem.RemoveDevice(acceleration);}
+        }
+        [UnityTest] public IEnumerator UnregisteredStoreCannotChargeAndAdSuspensionKeepsFocusLossClosed()
+        {
+            game.SetUiLocale("ru");game.ShowNoAds();yield return null;
+            Assert.That(game.PurchaseStore.State,Is.EqualTo(PurchaseState.Unconfigured));Assert.That(game.PurchaseStore.CanBuy,Is.False);
+            Assert.That(game.GetComponentsInChildren<UnityEngine.UI.Button>().Single(b=>b.name=="Purchasequiet").interactable,Is.False);
+            game.ShowGame();game.SetNativeAdSuspended(true);game.SendMessage("OnApplicationFocus",false);game.SetNativeAdSuspended(false);
+            Assert.That(game.Interaction.IsSuspended,Is.True);game.SendMessage("OnApplicationFocus",true);Assert.That(game.Interaction.IsSuspended,Is.False);
         }
         [UnityTest] public IEnumerator FarDragKeepsUnmovedDuplicateInItsOwnSeat()
         {

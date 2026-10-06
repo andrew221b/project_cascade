@@ -11,6 +11,7 @@ namespace Cascade.Presentation
         {
             if(machine==null||Interaction==null)return;
             machine.TickWoodDynamics(Time.unscaledDeltaTime);
+            feedback.RowPhysics.PresentShake();
             SyncDeviceSuspension(Time.unscaledDeltaTime);
             SyncTokenFaces();
             foreach(var face in contactFaces)if(face.label!=null&&face.label.gameObject.activeInHierarchy){var rect=face.label.rectTransform;var position=machine.ContactPosition(face.floor,face.slot);position.z=rect.position.z;rect.position=position;}

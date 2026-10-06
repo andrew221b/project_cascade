@@ -17,6 +17,23 @@ namespace Cascade.Tests
         static AdService Service(MonetizationLedger ledger=null,Action<MonetizationLedger> persist=null)=>new AdService(ledger??new MonetizationLedger(),persist??(_=>{}),12);
         static AttemptService Attempt()=>new AttemptService(ContentTests.LoadCatalog().GetPrimary("C02").Definition);
         static HintOffer Hint(AttemptService a,int budget=PuzzleSolver.DefaultStateBudget)=>AttemptService.CalculateHint(a.CaptureHintRequest(),budget);
+        [Test] public void NativeEntitlementRejectsUnverifiedOrWrongProductsAndRestoresExactlyOnce()
+        {
+            int saves=0;var service=Service(persist:_=>saves++);
+            Assert.That(service.VerifiedStorePurchase(PurchaseCatalog.NoAutomaticAds,"store_a",false),Is.False);
+            Assert.That(service.VerifiedStorePurchase("mock.no_automatic_ads","store_a",true),Is.False);
+            Assert.That(service.VerifiedStorePurchase(PurchaseCatalog.NoAutomaticAds,"store_a",true),Is.True);
+            Assert.That(service.VerifiedStorePurchase(PurchaseCatalog.NoAutomaticAds,"store_a",true),Is.True);
+            Assert.That(service.Ledger.NoAutomaticAds,Is.True);Assert.That(service.Ledger.Grants.Count,Is.EqualTo(1));
+            Assert.That(saves,Is.EqualTo(1));Assert.That(service.Ledger.BonusCoins+service.Ledger.HintTokens,Is.Zero);
+        }
+        [Test] public void NativeEntitlementIsNotPublishedBeforeItsSaveSucceeds()
+        {
+            bool fail=true;var service=Service(persist:_=>{if(fail)throw new IOException("disk");});
+            Assert.That(service.VerifiedStorePurchase(PurchaseCatalog.NoAutomaticAds,"store_b",true),Is.False);
+            Assert.That(service.Ledger.NoAutomaticAds,Is.False);Assert.That(service.Ledger.Grants,Is.Empty);
+            fail=false;Assert.That(service.VerifiedStorePurchase(PurchaseCatalog.NoAutomaticAds,"store_b",true),Is.True);
+        }
         [Test] public void AutomaticAdsRespectEveryGateAndNeverAppearDuringPuzzleFlows()
         {
             foreach(var surface in Enum.GetValues(typeof(AdSurface)).Cast<AdSurface>().Where(s=>s!=AdSurface.Win)) {

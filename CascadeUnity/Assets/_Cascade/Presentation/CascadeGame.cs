@@ -74,9 +74,10 @@ namespace Cascade.Presentation
             motion = Resources.Load<MotionProfile>("CascadeArt/MotionProfile") ?? throw new InvalidOperationException("Build CASCADE motion assets before playing.");
             feedback = gameObject.AddComponent<ToyFeedbackPool>(); feedback.Initialize(this, art, motion);
             eventPlayer = gameObject.AddComponent<PuzzleEventPlayer>(); eventPlayer.Initialize(this, motion, feedback);
-            BuildScreen();BuildControlArt(); LoadNode(initialNode); BuildFlow(); RestoreProfile();
+            gameObject.AddComponent<PhoneShakeFeedback>().Initialize(this);
+            BuildScreen();BuildControlArt(); LoadNode(initialNode); BuildFlow(); RestoreProfile();InitializeMonetization();
         }
-        void OnEnable() { disabling=false;if (Interaction != null) { if(!preparation.IsReady&&!preparation.IsPending)BeginPreparation(); Interaction.SetSuspended(applicationPaused || !applicationFocused); RenderState(); } }
+        void OnEnable() { disabling=false;if (Interaction != null) { if(!preparation.IsReady&&!preparation.IsPending)BeginPreparation(); Interaction.SetSuspended(nativeAdSuspended||applicationPaused || !applicationFocused); RenderState(); } }
         void OnDisable()
         {
             disabling=true;
@@ -84,21 +85,21 @@ namespace Cascade.Presentation
             SettleDescent();CancelDescentWork();
             EndTokenHold(); CancelHint(); CancelDeadEnd(); preparation.Cancel(); StopPresentation(); Interaction?.SetSuspended(true); feedback?.ClearTails();
         }
-        void OnDestroy() { DisposeNavigationArt(); preparation.Dispose(); if (Interaction != null) Interaction.Committed -= OnCommitted; if(glyphMaterial!=null)Destroy(glyphMaterial);if(toolSilhouette!=null)Destroy(toolSilhouette);foreach(var sprite in toolBodySprites.Values)if(sprite!=null)Destroy(sprite);foreach(var sprite in enamelControls)if(sprite!=null)Destroy(sprite); }
+        void OnDestroy() { if(purchaseStore!=null)purchaseStore.Changed-=NotifyStoreChanged;DisposeNavigationArt(); preparation.Dispose(); if (Interaction != null) Interaction.Committed -= OnCommitted; if(glyphMaterial!=null)Destroy(glyphMaterial);if(toolSilhouette!=null)Destroy(toolSilhouette);foreach(var sprite in toolBodySprites.Values)if(sprite!=null)Destroy(sprite);foreach(var sprite in enamelControls)if(sprite!=null)Destroy(sprite); }
         void OnApplicationFocus(bool focused)
         {
             if(!focused)SettleDescent();
             if(!focused)PersistProgress();
             if(!focused)absentSince=Time.realtimeSinceStartup;
             else if(absentSince>0 && Time.realtimeSinceStartup-absentSince>60 && CurrentScreen==GameScreen.Playing)Coach?.Advance(15,true);
-            applicationFocused = focused; Interaction?.SetSuspended(applicationPaused || !applicationFocused); if (!focused) { EndTokenHold(); StopPresentation(); }
+            applicationFocused = focused; Interaction?.SetSuspended(nativeAdSuspended||applicationPaused || !applicationFocused); if (!focused) { EndTokenHold(); StopPresentation(); }
             if (Interaction != null) RenderState();
         }
         void OnApplicationPause(bool paused)
         {
             if(paused)SettleDescent();
             if(paused)PersistProgress();
-            applicationPaused = paused; Interaction?.SetSuspended(applicationPaused || !applicationFocused); if (paused) { EndTokenHold(); StopPresentation(); }
+            applicationPaused = paused; Interaction?.SetSuspended(nativeAdSuspended||applicationPaused || !applicationFocused); if (paused) { EndTokenHold(); StopPresentation(); }
             if (Interaction != null) RenderState();
         }
         void Update()
@@ -108,6 +109,7 @@ namespace Cascade.Presentation
                 StopPresentation(); ApplySafeArea(); if (Interaction != null) RenderState();
             }
             UpdateFlow();
+            if(applicationFocused&&!applicationPaused&&monetization!=null)monetization.AdvanceForeground(Mathf.Min(Time.unscaledDeltaTime,.5f));
             UpdatePreparation();
             UpdateDescent();
             if (hintTask == null || !hintTask.IsCompleted || !Interaction.CanPlay) return;
@@ -157,6 +159,7 @@ namespace Cascade.Presentation
         }
         void StopPresentation()
         {
+            feedback?.RowPhysics?.CancelShake(true);
             EndTokenHold(); if (eventPlayer != null) eventPlayer.Skip(); else Interaction?.FinishPresentation();
         }
         public void ReportInput(TransitionResult result)
@@ -204,8 +207,7 @@ namespace Cascade.Presentation
                 effects.Add(prediction.Events.First(e=>e.Kind==PuzzleEventKind.EntryPermuted&&IsWindFloor(e.Floor)).Value==(int)EntryTransform.ShiftRightOne?"Wind slides the row right":"Wind slides the row left");
             status.SetCopy(UiCopy.Join(" · ",effects));
             RenderFocus(); machine.PreviewForecast(prediction); PreviewDeviceDocks(prediction);
-            if(command.Kind==CommandKind.LongReach){slotImages[command.Edge].color=Selected;slotImages[command.End].color=Selected;return;}
-            foreach (int edge in preview.AffectedEdges) { slotImages[edge].color = Selected; slotImages[edge + 1].color = Selected; }
+            // Forecasts belong to the actual pieces and hanging devices, never rectangular slot panels.
         }
         public void Undo()
         {

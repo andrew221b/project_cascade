@@ -177,7 +177,7 @@ namespace Cascade.Presentation
             for (int i = 0; i < slots.Count; i++) {
                 var anchor = (RectTransform)slots[i].transform;
                 tokenShadows.Add(Add("Token contact " + i, anchor, art.quad, art.shadow, new Vector2(.53f, .22f), new Vector2(1.04f, .35f), .04f, .01f));
-                selections.Add(Add("Selection rim " + i, anchor, art.tile, art.gold, new Vector2(.5f, .48f), new Vector2(.94f, 1.04f), -.18f, .12f));
+                selections.Add(Add("Piece contour " + i, anchor, art.tile, TouchGlowMaterial, new Vector2(.5f, .5f), new Vector2(.82f, .90f), -.18f, .12f));
                 tokens.Add(Add("Persistent token " + i, anchor, art.tile, art.cream, new Vector2(.5f, .5f), new Vector2(.82f, .90f), -.35f, .34f));
             }
             Sync();
@@ -261,10 +261,11 @@ namespace Cascade.Presentation
                 var token = tokens[i]; var mesh = art.SymbolMesh(state.Row[i]);
                 token.mesh = mesh; token.transform.GetComponent<MeshFilter>().sharedMesh = mesh;
                 token.renderer.sharedMaterial = PieceMaterial(state.Row[i]);
-                token.point = new Vector2(.5f, state.Status == PuzzleStatus.Won ? .5f : TokenFaceY(interaction.SelectedSlot == i));
+                token.point = new Vector2(.5f, state.Status == PuzzleStatus.Won ? .5f : TokenFaceY(false));
                 token.size = state.Status == PuzzleStatus.Won ? new Vector2(.66f, .72f)
-                    : interaction.SelectedSlot == i ? new Vector2(.81f, .915f) : new Vector2(.78f, .88f);
-                selections[i].transform.gameObject.SetActive(interaction.SelectedSlot == i && token.anchor.gameObject.activeInHierarchy);
+                    : new Vector2(.78f, .88f);
+                selections[i].mesh=mesh;selections[i].transform.GetComponent<MeshFilter>().sharedMesh=mesh;
+                selections[i].transform.gameObject.SetActive(false);
                 token.transform.gameObject.SetActive(token.anchor.gameObject.activeInHierarchy);
                 tokenShadows[i].transform.gameObject.SetActive(token.anchor.gameObject.activeInHierarchy);
             }
@@ -299,12 +300,13 @@ namespace Cascade.Presentation
                     // The painted plank occupies the middle of its padded mesh. Seat pieces on visible wood.
                     float boardTop=Mathf.Lerp(corners[0].y,corners[2].y,.365f);
                     float half=p.mesh.bounds.extents.y*p.transform.localScale.y;
-                    p.transform.position=new Vector3(p.transform.position.x,boardTop+half-p.mesh.bounds.center.y*p.transform.localScale.y+(interaction.SelectedSlot==i?SelectionLiftWorld(i):0),p.transform.position.z);
+                    p.transform.position=new Vector3(p.transform.position.x,boardTop+half-p.mesh.bounds.center.y*p.transform.localScale.y,p.transform.position.z);
                     var shadow=tokenShadows[i];shadow.basePosition=new Vector3(p.transform.position.x,boardTop-.012f,shadow.basePosition.z);shadow.transform.position=shadow.basePosition;
                     shadow.baseScale=new Vector3(p.mesh.bounds.size.x*p.transform.localScale.x*1.12f,.075f,.01f);shadow.transform.localScale=shadow.baseScale;
                 }
                 restPositions[i]=tokens[i].transform.position;restScales[i]=tokens[i].transform.localScale;
-                visualOffsets[i]=Vector3.zero;visualStretch[i]=Vector2.one;visualAngles[i]=0;
+                bool selected=interaction.SelectedSlot==i;
+                visualOffsets[i]=selected?Vector3.up*SelectionLiftWorld(i):Vector3.zero;visualStretch[i]=Vector2.one*(selected?1.04f:1);visualAngles[i]=0;
             }
             upperAnchor.GetWorldCorners(corners); float left = corners[0].x, right = corners[2].x;
             float top = Mathf.Lerp(corners[0].y, corners[2].y, .34f);

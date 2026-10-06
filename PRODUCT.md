@@ -41,10 +41,25 @@ and implementation and requested following P01–P20 without approval pauses.
 ## Operating Context
 
 Short portrait puzzle sessions; touch or mouse. Direct dragging is the default;
-pressing a piece lifts it with its glyph. All floors and the complete target stay
-visible. Long rows offer a larger held preview, target inspection, tap-then-tap
-and optional precision controls under Comfort. Precision controls are never
-forced by row length. Ambient movement must not obscure gameplay information.
+pressing a piece acknowledges with its actual body contour and a slight lift,
+with its glyph attached. Deliberate drag follows the finger freely in x and y;
+stable hit regions and resolver legality do not move with the artwork. Selection
+and destination feedback use the piece itself, with no square slot or target
+overlay. Exchanges inherit the released source pose and return the partner on
+an upward arc. All floors and the complete target stay visible. Long rows offer
+a larger held preview, target inspection, tap-then-tap and optional precision
+controls under Comfort. Precision controls are never forced by row length.
+Reduced Motion removes decorative lift, zoom and tilt while preserving intentional
+x/y tracking. Ambient movement must not obscure gameplay information.
+
+Falls and device shakes borrow the existing isolated cosmetic PhysX scene. Eight
+pooled Rigidbody box proxies make the original visible pieces spin, bounce and
+collide briefly, then guide them into the exact committed seats. Normal wind and
+exchanges stay scripted; hemp ropes remain constrained point chains, not full
+realistic rope physics. High-pass filtered acceleration ignores the initial zero
+sample, bounds its impulse and gives deliberate touch priority. Physics and
+sensors never change Domain, Solver, gameplay state, contacts or move costs.
+Actual phone sensor behavior remains unverified.
 
 Development workflow: run phone builds or installations only after a separate
 explicit user request. Routine UI work uses available Editor inspection and
@@ -173,10 +188,28 @@ existing normalized placement rather than claiming pixel-perfect registration.
 The new MenuIcons, OpeningComic and MapSky rasters extend the painted Workshop
 world; existing WorkshopPortrait and gameplay control art remain in use.
 
-P19 provides disabled mock monetization service boundaries; it has no live ads,
-IAP provider or validated production receipts. The current Shop opens earned
-Keepsakes, Workshop and My things. Remove ads states that ads are already off;
-these destinations add no purchase, price or entitlement.
+P19 established the disabled mock monetization ledger and C16 policy boundary.
+The current native-store preparation extends it with official Unity IAP 5.4.4
+and LevelPlay 9.5.1 SDKs installed through UPM. Resource configuration remains
+disabled, keys are empty and there is no Codeless IAP automatic initializer.
+The user has no registered Apple/Google products or LevelPlay app/ad units. The
+one prepared draft is `cascade.no_automatic_ads`, a NonConsumable for removing
+automatic ads. Its live price must come from localized store metadata; no price
+is invented. Keepsakes remain free earned objects; paid cosmetic packs are a
+future option, not a shipped purchase. Shop retains access to earned objects
+and My things. The unavailable purchase view remains readable in RU at 320px
+and offers continued play through a thematic footer with a 52px minimum inside
+the safe area.
+
+The publisher's HTTPS verifier must validate Apple JWS / Google purchase proof
+for the expected app, product and transaction before the ledger saves entitlement
+and before pending-order confirmation. That server is not implemented or hosted.
+Duplicate restore receipts remain idempotent. A real privacy/age/ATT bridge,
+native dependency resolution, platform build and store sandbox validation remain
+external activation work. The existing C16 first-session, first-12-deliveries,
+chapter-final and frequency protections remain; automatic ads can follow only a
+saved win and base reward. No charge, ad or provider activation was performed,
+and this preparation is not live IAP/ads completion. See Docs/TOUCH_AND_STORES.md.
 
 ## Evidence on Hand
 
@@ -297,6 +330,28 @@ scored sky/target findings only. Simulated safe areas and Editor pixel bounds
 do not verify physical touch, gyro, OS behavior, accessibility, mobile FPS,
 native-language approval or human comprehension/enjoyment. Phone-build status
 belongs to the current report; older phase builds are not navigation validation.
+
+Current touch/store evidence is in Reports/TouchRevision, TouchRevisionSensor
+and TouchRevisionFinal. Ledger/policy EditMode passed 13/13. The initial PlayMode
+run passed 9/10 and exposed a zero-sample sensor fault; a second failed run
+exposed premature ground settling. After fixes, the four affected cases passed
+4/4. Together these runs provide passing evidence for ten distinct cases,
+not a fresh full-project suite. Ten final actual Unity Editor captures cover
+gestures, physical landings, shake, letters and unavailable RU store views at
+390×844 and 320×693. Static captures do not prove motion timing.
+
+Fresh finish review found a 45.27px return-to-play target and lost intentional
+vertical drag under Reduced Motion. Both implementations are corrected. The
+final footer bounds are 64.14px at 390 and 52.66px at 320, inside simulated safe
+areas. The expanded normal/Reduced Motion vertical and diagonal pointer check
+in Reports/TouchRevisionReview failed in Editor Device Simulator setup/teardown;
+its Game View repeat passed 1/1 in Reports/TouchRevisionReviewFinal. This expands
+an existing case, not the distinct-case count. The fresh review records SHIP for
+resolved F01/F02 only, with no whole-product certification. No hardware sensor,
+haptic, OS accessibility, device FPS/thermal, native build/sandbox, production receipt,
+live ad/consent or human-enjoyment proof follows from this evidence. Existing
+MenuBackground assets and original raster pixels remain; no new raster generation
+was needed for this scope.
 
 ## Product Principles
 

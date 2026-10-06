@@ -2080,6 +2080,69 @@ MonoBehaviour:
     m_Localized: Talk to {0}
     m_Metadata:
       m_Items: []
+  - m_Id: 404348818415616
+    m_Localized: Choose a quieter journey, or find a keepsake for Mika.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 404348822609920
+    m_Localized: Keepsakes can be earned by playing. Purchases are optional.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 404348822609921
+    m_Localized: Keep the way home free of advertising breaks. Support Mika's journey.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 404348822609922
+    m_Localized: The shop is not open yet. You can enjoy the whole journey without
+      purchases.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 404348822609923
+    m_Localized: A one-time purchase removes automatic ads. Optional videos stay
+      your choice.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 404348822609924
+    m_Localized: Automatic ads are off. Thank you for supporting Mika's journey.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 404348822609925
+    m_Localized: Waiting for purchase approval. You can keep playing.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 404348822609926
+    m_Localized: The store could not finish. Try again. Your purchase will not be
+      lost.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 404348822609927
+    m_Localized: Checking with the store. Please wait.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 404348822609928
+    m_Localized: Ads removed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 404348822609929
+    m_Localized: "Buy \xB7 {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 404348822609930
+    m_Localized: "Checking purchase\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 404348822609931
+    m_Localized: Coming soon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 404348822609932
+    m_Localized: Restore purchases
+    m_Metadata:
+      m_Items: []
+  - m_Id: 404348822609933
+    m_Localized: Back to play
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

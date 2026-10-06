@@ -49,3 +49,12 @@ Clear is now null-safe across scene ordering; disabling explicitly suppresses
 visual completion while still releasing the presentation gate. OnEnable resumes
 normal state rendering. Focused physics/impact/scene-reload regressions are retained
 in Reports/PhysicalLifecycle; early failed lifecycle evidence is described there.
+
+
+Touch revision, 6 October: falling and shaken pieces now also borrow this isolated
+scene, using at most eight pooled rigid bodies and box collision proxies. They spin,
+bounce and collide, then blend to canonical seats; ordinary wind and exchanges remain
+guided. The same rendered originals follow those bodies. This replaces the previous
+guided-only descent described above. It adds no gameplay physics, ragdoll, exact
+shape collider, new lighting system or fully realistic rope simulation. See
+Docs/TOUCH_AND_STORES.md and Reports/TouchRevision for current validation limits.

@@ -10,12 +10,14 @@ namespace Cascade.Presentation
         MotionProfile profile;
         ToyFeedbackPool feedback;
         Coroutine playback;
+        bool releaseCaptured,releasedExchange;
         readonly Vector3[] from = new Vector3[8], to = new Vector3[8], oldPositions = new Vector3[8];
         readonly Vector3[] oldScales = new Vector3[8];
         readonly Vector2[] fromStretch = new Vector2[8];
         readonly float[] oldAngles = new float[8], fromAngles = new float[8];
         readonly SymbolId[] oldRow = new SymbolId[8];
         readonly bool[] used = new bool[8];
+        readonly int[] sourceSlots=new int[8];
         readonly float[] selection = new float[8], selectionFrom = new float[8], selectionTime = new float[8];
         readonly bool[] selectionTarget = new bool[8];
         public bool IsRunning { get; private set; }
@@ -26,7 +28,7 @@ namespace Cascade.Presentation
         public void Play(TransitionResult result)
         {
             if (!result.Accepted) return;
-            Skip(); IsRunning = true; EventIndex = -1;
+            Skip(); IsRunning = true; EventIndex = -1;releaseCaptured=false;
             for (int i = 0; i < selection.Length; i++) { selection[i] = selectionFrom[i] = 0; selectionTarget[i] = false; selectionTime[i] = profile.selection; }
             playback = StartCoroutine(Run(result));
         }
@@ -39,6 +41,8 @@ namespace Cascade.Presentation
         void Finish()
         {
             if (!IsRunning) return; IsRunning = false; playback = null; CompletedPresentations++;
+            feedback?.RowPhysics?.End();
+            game?.CompleteTouchExchange();
             if(game!=null&&game.CanPresent){game.Machine.PrepareWind(true,0);game.ReactionBanner.Clear();game.SettleOutcome();}
             if (game != null && game.Interaction != null) { game.Interaction.FinishPresentation(); if(game.CanPresent)game.SyncPresentation(); }
         }
@@ -119,7 +123,10 @@ namespace Cascade.Presentation
         }
         void CaptureRow(PresentationFrame frame)
         {
+            releasedExchange=!releaseCaptured&&game.ReleasedDrag;
             for (int i = 0; i < frame.Row.Count; i++) { oldRow[i] = frame.Row[i]; oldPositions[i] = game.Machine.TokenVisualPosition(i); oldScales[i] = game.Machine.TokenVisualScale(i); oldAngles[i] = Mathf.DeltaAngle(0,game.Machine.TokenVisualAngle(i)); used[i] = false; }
+            if(!releaseCaptured&&game.ReleasedDrag&&game.ReleasedPartnerSlot>=0)oldPositions[game.ReleasedPartnerSlot]=game.ReleasedPartnerPosition;
+            releaseCaptured=true;
         }
         void MapRow(PresentationFrame frame)
         {
@@ -132,6 +139,7 @@ namespace Cascade.Presentation
                     source=0;while(source<frame.Row.Count && (used[source] || oldRow[source]!=frame.Row[destination]))source++;
                 }
                 if (source == frame.Row.Count) source = destination; // Defensive view fallback; never invent a gameplay permutation.
+                sourceSlots[destination]=source;
                 used[source] = true; from[destination] = oldPositions[source]; to[destination] = game.Machine.TokenPosition(destination)+game.Machine.TokenSupportOffset(destination);
                 var basis=game.Machine.TokenBaseScale(destination);
                 fromStretch[destination]=new Vector2(oldScales[source].x/basis.x,oldScales[source].y/basis.y);fromAngles[destination]=oldAngles[source];
@@ -142,6 +150,8 @@ namespace Cascade.Presentation
         IEnumerator Travel(float duration, bool arcs, bool falling)
         {
             if (game.ReducedMotion) { yield return Hold(profile.reducedStep); yield break; }
+            if(falling){yield return PhysicalFall();yield break;}
+            duration=Mathf.Max(duration,releasedExchange?.36f:.32f);
             float time = 0;int count=game.VisibleFrame.Row.Count;
             if(falling){float drop=0;for(int i=0;i<count;i++)drop=Mathf.Max(drop,from[i].y-to[i].y);duration=Mathf.Max(duration,Mathf.Sqrt(2*drop/9.81f)+.07f);}
             else if(arcs)for(int i=0;i<count;i++)if(Mathf.Abs(from[i].x-to[i].x)>.01f)game.Machine.ContactImpulse(game.VisibleFrame.ActiveFloor,i,-.16f,Mathf.Sign(to[i].x-from[i].x));
@@ -157,8 +167,14 @@ namespace Cascade.Presentation
                         position.y=Mathf.Max(to[i].y,from[i].y-4.905f*flight*flight);
                         position.x+=game.Machine.WindAt(Mathf.Min(game.VisibleFrame.ActiveFloor,game.Interaction.Attempt.Level.Floors.Count-1))*.055f*Mathf.Sin(local*Mathf.PI);
                     }
-                    if (arcs && !game.ReducedMotion && Mathf.Abs(from[i].x-to[i].x) > .01f)
-                        position.y += Mathf.Sin(t*Mathf.PI) * profile.swapArc * (from[i].x < to[i].x ? 1 : .35f);
+                    if (arcs && Mathf.Abs(from[i].x-to[i].x) > .01f){
+                        bool placed=releasedExchange&&sourceSlots[i]==game.ReleasedTokenSlot;
+                        float route=placed?t:Mathf.Clamp01((t-.08f)/.92f);
+                        float smooth=route*route*(3-2*route);
+                        position=Vector3.Lerp(from[i],to[i],smooth);
+                        if(!placed)position.y+=Mathf.Sin(route*Mathf.PI)*Mathf.Max(profile.swapArc,.32f);
+                        position.z=Mathf.Lerp(from[i].z,placed?-.52f:-.8f,Mathf.Sin(t*Mathf.PI));
+                    }
                     float angle=Mathf.Sin(local*Mathf.PI)*(i%2==0?1:-1)*(falling?13:9);
                     if(falling)angle*=Mathf.SmoothStep(0,1,Mathf.Clamp01((position.y-to[i].y)/.3f));
                     game.OffsetPresentedToken(i, position-game.Machine.TokenPosition(i), Vector2.Lerp(fromStretch[i],Vector2.one,eased));
@@ -170,6 +186,32 @@ namespace Cascade.Presentation
             for (int i = 0; i < game.VisibleFrame.Row.Count; i++){game.OffsetPresentedToken(i, Vector3.zero, Vector2.one);game.Machine.SetPiecePose(i,falling?PiecePose.Settling:PiecePose.Resting);}
             for(int i=0;i<count;i++)if(falling||arcs&&Mathf.Abs(from[i].x-to[i].x)>.01f)
                 game.Machine.ContactImpulse(game.VisibleFrame.ActiveFloor,i,falling?Mathf.Clamp(duration*.7f,.3f,.8f)/count:.42f,falling?0:Mathf.Sign(to[i].x-from[i].x)*.45f);
+        }
+        IEnumerator PhysicalFall()
+        {
+            int count=game.VisibleFrame.Row.Count;float drop=0;
+            for(int i=0;i<count;i++)drop=Mathf.Max(drop,from[i].y-to[i].y);
+            float flight=Mathf.Sqrt(2*Mathf.Max(0,drop)/9.81f);
+            var bodies=feedback.RowPhysics;bodies.Begin(from,to,count);
+            float time=0,settleAt=flight+.44f,duration=settleAt+.42f;
+            try{
+                while(time<duration){
+                    if(PresentationPaused){yield return null;continue;}
+                    if(game.ReducedMotion)break;
+                    float seat=Mathf.SmoothStep(0,1,Mathf.InverseLerp(settleAt,duration,time));
+                    for(int i=0;i<count;i++){
+                        var position=Vector3.Lerp(bodies.Position(i),to[i],seat);
+                        float angle=Mathf.LerpAngle(bodies.Angle(i),0,seat);
+                        game.Machine.SetPiecePose(i,PiecePose.Falling,angle);
+                        game.OffsetPresentedToken(i,position-game.Machine.TokenPosition(i),Vector2.one);
+                    }
+                    time=bodies.Elapsed;yield return null;
+                }
+            }finally{bodies.End();}
+            for(int i=0;i<count;i++){
+                game.Machine.SetPiecePose(i,PiecePose.Settling);
+                game.OffsetPresentedToken(i,Vector3.zero,Vector2.one);
+            }
         }
         IEnumerator BreakWood(int floor)
         {
@@ -255,12 +297,11 @@ namespace Cascade.Presentation
                     selectionFrom[i] = selection[i]; selectionTarget[i] = target; selectionTime[i] = 0;
                     if (target) feedback.Sound(ToyCue.Select);
                 }
-                if (selectionTime[i] >= profile.selection) continue;
                 selectionTime[i] = game.ReducedMotion ? profile.selection : Mathf.Min(profile.selection, selectionTime[i] + Time.unscaledDeltaTime);
                 float t = selectionTime[i] / profile.selection, goal = target ? 1 : 0;
                 selection[i] = Mathf.Lerp(selectionFrom[i], goal, 1-Mathf.Pow(1-t,3));
-                float ratio = (1 + .04f * selection[i]) / (1 + .04f * goal);
-                game.OffsetPresentedToken(i, Vector3.up * ((selection[i]-goal)*game.Machine.SelectionLiftWorld(i)), Vector2.one*ratio);
+                float ratio = 1 + .04f * selection[i];
+                game.OffsetPresentedToken(i, Vector3.up * (selection[i]*game.Machine.SelectionLiftWorld(i)), Vector2.one*ratio);
             }
         }
     }

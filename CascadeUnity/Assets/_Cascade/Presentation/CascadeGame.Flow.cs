@@ -140,9 +140,9 @@ namespace Cascade.Presentation
         }
         void FinalizeScreenIfNeeded()
         {
-            if(!flowReady || !applicationFocused || applicationPaused)return;
+            if(!flowReady || !applicationFocused || applicationPaused||nativeAdSuspended)return;
             if(CurrentScreen==GameScreen.Playing && !Interaction.IsPresenting) {
-                if(Interaction.Attempt.Current.Status==PuzzleStatus.Won) { SetScreen(IsCheckpoint?GameScreen.Checkpoint:GameScreen.Win); }
+                if(Interaction.Attempt.Current.Status==PuzzleStatus.Won) {if(!IsCheckpoint&&TryAutomaticAd())return;SetScreen(IsCheckpoint?GameScreen.Checkpoint:GameScreen.Win); }
                 else if(Interaction.Attempt.Current.Status==PuzzleStatus.Lost) {
                     sessionLosses[node]=sessionLosses.TryGetValue(node,out var n)?n+1:1; SetScreen(GameScreen.Fail);
                 }

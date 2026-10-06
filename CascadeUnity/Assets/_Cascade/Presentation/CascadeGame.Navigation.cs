@@ -129,19 +129,26 @@ namespace Cascade.Presentation
         void DrawShop()
         {
             NavigationHeader("Shop",ShowHome);
-            var parcel=RewardPicture("Parcel",new Vector2(.32f,.60f),new Vector2(.68f,.83f));parcel.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,2),0,.6f);
-            NavigationNote("Shop explanation","Restore lights. Collect parts. Make a gift for Mika.",.485f,.585f);
-            var gifts=NavigationButton("Keepsakes","Keepsakes",-1,.365f,ShowCollection,true);
+            var parcel=RewardPicture("Parcel",new Vector2(.35f,.65f),new Vector2(.65f,.83f));parcel.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,2),0,.6f);
+            NavigationNote("Shop explanation","Choose a quieter journey, or find a keepsake for Mika.",.51f,.615f);
+            NavigationButton("Quietjourney","Remove ads",3,.39f,ShowNoAds,true);
+            var gifts=NavigationButton("Keepsakes","Keepsakes",-1,.278f,ShowCollection);
             Picture("Gift illustration",gifts.transform,new Vector2(.045f,.09f),new Vector2(.24f,.91f),Resources.Load<Sprite>("CascadeArt/Workshop/LeafPin"),true);
-            NavigationButton("Workshop","Workshop",2,.255f,ShowWorkshop);
-            NavigationButton("Mythings","My things",1,.145f,ShowTravelBag);
+            NavigationButton("Mythings","My things",1,.166f,ShowTravelBag);
+            NavigationNote("Earned gifts","Keepsakes can be earned by playing. Purchases are optional.",.035f,.125f);
         }
         void DrawNoAds()
         {
             LoadNavigationArt();NavigationHeader("Remove ads",ShowHome);
             Picture("No adverts",menuRoot,new Vector2(.32f,.59f),new Vector2(.68f,.80f),navigationIcons[3],true);
-            NavigationNote("No adverts explanation","Ads are already off in this version. Enjoy the game.",.36f,.54f);
-            NavigationButton("Backtoplay","Start game",0,.17f,ShowPlayChoice,true);
+            NavigationNote("Quiet journey benefit","Keep the way home free of advertising breaks. Support Mika's journey.",.49f,.60f);
+            NavigationNote("No adverts explanation",PurchaseExplanation,.32f,.46f);
+            StorePurchaseButton(.223f);
+            var restore=NavigationButton("Restorepurchases","Restore purchases",1,.112f,()=>purchaseStore?.Restore());restore.interactable=purchaseStore?.CanRestore==true;
+            if(!restore.interactable)restore.gameObject.AddComponent<CanvasGroup>().alpha=.57f;
+            var back=NavigationButton("Back to play","Back to play",0,.012f,ShowPlayChoice,true);
+            var rect=(RectTransform)back.transform;float minimum=52/back.GetComponentInParent<Canvas>().scaleFactor;
+            if(rect.rect.height<minimum)rect.offsetMax=new Vector2(rect.offsetMax.x,rect.offsetMax.y+minimum-rect.rect.height);
         }
         void DrawPrologue()
         {
