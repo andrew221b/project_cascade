@@ -36,7 +36,7 @@ namespace Cascade.Presentation
             if(preview>=0){Progress=Mathf.Clamp01(preview);Pose(Progress);return;}
 #endif
             elapsed+=Time.unscaledDeltaTime;Progress=Mathf.Clamp01(elapsed/.65f);
-            Pose(Progress);if(Progress>=1)Settle();
+            Pose(Progress);if(Progress>=1){Settle();game.RevealArrivalWind();}
         }
         void Pose(float t)
         {

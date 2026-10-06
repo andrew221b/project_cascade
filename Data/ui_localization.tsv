@@ -403,7 +403,7 @@ Ribbon used. You can still swap neighbours.	Ribbon used. You can still swap neig
 Each swap wears the wood. Empty marks? The board breaks. Down leaves early.	Each swap wears the wood. Empty marks? The board breaks. Down leaves early.	Обмен изнашивает доску. Метки погасли — доска сломается. Кнопка «Вниз» спустит ряд раньше.	Обмін зношує дошку. Мітки згасли — дошка зламається. Кнопка «Вниз» опустить ряд раніше.
 A cracked spot wears the board twice as fast.	A cracked spot wears the board twice as fast.	Обмен у трещины сильнее изнашивает доску.	Обмін біля тріщини сильніше зношує дошку.
 Wood: {0} moves	Wood · moves: {0}	Доска · ходы: {0}	Дошка · ходи: {0}
-{0} moves	Fuse: {0}	До взрыва: {0}	До вибуху: {0}
+{0} moves	{0} moves	{0} ходов	{0} ходів
 Safe	Safe	Обезврежена	Знешкоджена
 Burst	Burst	Взорвалась	Вибухнула
 Collected	Collected	Получено	Отримано
@@ -554,3 +554,7 @@ Fewer moves earn more stars. Replay an open level to beat your score. Three new 
 Coins	Coins	Монеты	Монети
 Lights	Lights	Огоньки	Вогники
 Next step in {0} level · {1}/{2}	Next step in {0} level · {1}/{2}	До следующей ступени: {0} · пройдено {1}/{2}	До наступної сходинки: {0} · пройдено {1}/{2}
+The number on the wood is swaps left. At zero, it breaks.	The number on the wood is swaps left. At zero, it breaks.	Число на доске — сколько обменов осталось. На нуле она сломается.	Число на дошці — скільки обмінів лишилось. На нулі вона зламається.
+Swap neighbours. The number on the wood counts swaps left. At zero, the row falls.	Swap neighbours. The number on the wood counts swaps left. At zero, the row falls.	Меняй соседние элементы. Число на доске — сколько обменов осталось. На нуле ряд падает.	Міняй сусідні елементи. Число на дошці — скільки обмінів лишилось. На нулі ряд падає.
+Wind will move the row. Watch the small row by the next board.	Wind will move the row. Watch the small row by the next board.	Ветер сдвинет ряд. Посмотри на маленький ряд у следующей доски.	Вітер зсуне ряд. Подивись на маленький ряд біля наступної дошки.
+The small row shows how the next board moves your pieces.	The small row shows how the next board moves your pieces.	Маленький ряд показывает, как следующая доска сдвинет фигуры.	Маленький ряд показує, як наступна дошка зсуне фігури.

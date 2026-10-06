@@ -7,6 +7,7 @@ namespace Cascade.Presentation
     {
         public DirectorMemory Director=>profile.Director;
         public bool IsWindFloor(int floor)=>descent!=null?(floor==0&&(descent.Stages[descent.StageIndex].Arrival==EntryTransform.ShiftLeftOne||descent.Stages[descent.StageIndex].Arrival==EntryTransform.ShiftRightOne)
+            ||descent.Version>=4&&descent.StageIndex==1&&floor==1&&Interaction.Attempt.Level.Floors[1].EntryTransform!=EntryTransform.None
             ||descent.IsFinal&&descent.Direction?.WindFloor==floor):Interaction?.Attempt.Direction?.WindFloor==floor;
         bool CurrentWindRight=>Interaction.Attempt.Level.Floors[Enumerable.Range(0,Interaction.Attempt.Level.Floors.Count).First(IsWindFloor)].EntryTransform==EntryTransform.ShiftRightOne;
         static LevelDefinition WindGuide(bool right)

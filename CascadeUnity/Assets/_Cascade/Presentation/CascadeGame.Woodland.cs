@@ -22,8 +22,7 @@ namespace Cascade.Presentation
             for(int i=0;i<deviceOverlays.Count;i++) {
                 deviceOverlays[i].position=floorViews[i].position+machine.FloorVisualOffset(i);
                 deviceOverlays[i].rotation=Quaternion.Euler(0,0,machine.FloorVisualAngle(i));
-                floorLabels[i].rectTransform.anchoredPosition=Vector2.down*(machine.FloorSag(i)/Mathf.Max(.0001f,deviceOverlays[i].lossyScale.y)*.65f);
-                floorLabels[i].alpha=machine.FloorBreakProgress(i)>0?0:1;
+                if(i<platformLegends.Count)platformLegends[i].FollowWood(machine.FloorSag(i)/Mathf.Max(.0001f,deviceOverlays[i].lossyScale.y),machine.FloorBreakProgress(i));
             }
             float dt=Mathf.Clamp(seconds,0,.05f);
             bool moving=!Interaction.IsPaused&&!Interaction.IsSuspended;

@@ -52,14 +52,12 @@ namespace Cascade.Presentation
             if(floor.OptionalStamp!=null)contacts.Add((floor.OptionalStamp,8));
             if(floor.Powerup!=null)contacts.Add((floor.Powerup,floor.Powerup.Kind==PowerupKind.Ribbon?9:10));
             contacts.Sort((a,b)=>a.contact.Slot.CompareTo(b.contact.Slot));
-            var woodLabel=floorLabels[floorIndex].rectTransform;
-            woodLabel.SetParent(card,false);
-            float labelX=contacts.Count==0?.5f:contacts.Count==1?(contacts[0].contact.Slot<count*.5f?.76f:.24f):.5f;
-            woodLabel.anchorMin=new Vector2(labelX-.23f,.09f);woodLabel.anchorMax=new Vector2(labelX+.23f,.27f);
             float previous=-1;int dockIndex=0;
+            float pairSpan=contacts.Count==2?Mathf.Max(.24f,.91f*Mathf.Abs(contacts[1].contact.Slot-contacts[0].contact.Slot)/count):0;
+            float pairStart=contacts.Count==2?Mathf.Clamp(.045f+.91f*(contacts[0].contact.Slot+contacts[1].contact.Slot+1f)/(2*count)-pairSpan*.5f,.13f,.87f-pairSpan):0;
             foreach(var item in contacts) {
                 float slotX=.045f+.91f*(item.contact.Slot+.5f)/count;
-                float x=contacts.Count==2?(dockIndex++==0?.18f:.82f):Mathf.Clamp(slotX,.15f,.85f);if(x-previous<.28f)x=Mathf.Min(.86f,previous+.28f);previous=x;
+                float x=contacts.Count==2?pairStart+dockIndex++*pairSpan:Mathf.Clamp(slotX,.15f,.85f);if(contacts.Count!=2&&x-previous<.24f)x=Mathf.Min(.86f,previous+.24f);previous=x;
                 // A wooden socket and its suspended tool share a real attachment point.
                 var socket=Rect("Device socket",card,new Vector2(slotX-.034f,.295f),new Vector2(slotX+.034f,.39f));
                 Background(socket,new Color(.31f,.22f,.15f),false).sprite=art.panel;
@@ -73,18 +71,10 @@ namespace Cascade.Presentation
                 if(item.kind==2)BuildBombMark(icon.rectTransform,item.contact.RequiredSymbol);else BuildToolBodyMark(icon.rectTransform,item.kind,item.contact.RequiredSymbol);
                 // Only the armed bomb has a local countdown; outcomes belong to the central reaction.
                 TextMeshProUGUI countdown=null;
-                if(item.kind==2){countdown=Text("Bomb countdown",root,new Vector2(-.08f,-.50f),new Vector2(1.08f,-.10f),12,"");countdown.font=art.titleFont;}
+                if(item.kind==2){countdown=Text("Bomb countdown",root,new Vector2(-.08f,-.50f),new Vector2(1.08f,-.10f),12,"");countdown.font=art.titleFont;countdown.textWrappingMode=TextWrappingModes.NoWrap;countdown.fontStyle=FontStyles.Bold;}
                 deviceDocks.Add(new DeviceDock{floor=floorIndex,kind=item.kind,root=root,socket=socket,icon=icon,normalSprite=icon.sprite,safeSprite=item.kind==2?Resources.Load<Sprite>("CascadeArt/Devices/BombSafe"):null,countdown=countdown,contact=item.contact,slotX=slotX,dockX=x,cord=cord});
             }
-            UiCopy landing=floor.EntryTransform==EntryTransform.MirrorNext?"Reverse on landing":floor.EntryTransform==EntryTransform.ShiftLeftOne?"Slide left on landing":"Slide right on landing";
-            if(IsWindFloor(floorIndex))landing=floor.EntryTransform==EntryTransform.ShiftLeftOne?"Wind on landing: row slides left":"Wind on landing: row slides right";
-            if(descent!=null&&floorIndex==0&&IsWindFloor(0))landing=floor.EntryTransform==EntryTransform.ShiftLeftOne?"Arrival wind: row moved left":"Arrival wind: row moved right";
-            if(floor.EntryTransform!=EntryTransform.None||floor.LinkedPair.HasValue) {
-                UiCopy description=floor.LinkedPair.HasValue?(floor.EntryTransform==EntryTransform.None?new UiCopy("Paired swaps"):UiCopy.Join(" · ",new[]{landing,new UiCopy("Paired swaps")})):landing;
-                bool belowTools=descent!=null&&contacts.Count>0;
-                var label=Text("Landing movement",card,new Vector2(.02f,belowTools?-.44f:-.16f),new Vector2(.98f,belowTools?-.27f:.01f),12,description);
-                var b=label.gameObject.AddComponent<Button>();b.onClick.AddListener(()=>OpenDevice(floor.LinkedPair.HasValue?6:1));label.raycastTarget=true;
-            }
+            BuildPlatformLegend(card,floor,floorIndex);
             if(floor.LinkedPair.HasValue) {
                 var pair=floor.LinkedPair.Value;float a=.045f+.91f*(pair.FirstEdge+1f)/count,b=.045f+.91f*(pair.SecondEdge+1f)/count;
                 void Cord(Vector2 from,Vector2 to,float width) {var r=Rect("Linked pair cord",card,Vector2.zero,Vector2.zero);Background(r,new Color(.48f,.28f,.62f),false);r.gameObject.AddComponent<DemoLine>().Initialize(card,from,to,width);}
@@ -101,7 +91,7 @@ namespace Cascade.Presentation
                 var letter=Text("Bomb painted letter",mark,new Vector2(0,-.15f),new Vector2(1,1.15f),22,UiCopy.Raw(FaceText(required)));
                 letter.font=art.titleFont;letter.fontStyle=FontStyles.Bold;letter.color=paint;letter.margin=Vector4.zero;
                 letter.alignment=TextAlignmentOptions.Center;letter.raycastTarget=false;letter.gameObject.AddComponent<SymbolGlyphCenter>();
-            }else mark.gameObject.AddComponent<ShapeFaceGraphic>().SetShape(art.SymbolMesh(required),paint);
+            }else {var face=mark.gameObject.AddComponent<ShapeFaceGraphic>();face.raycastTarget=false;face.SetShape(art.SymbolMesh(required),art.SymbolMaterial(required).GetColor("_BaseColor"),true);}
         }
         void BuildToolBodyMark(RectTransform icon,int kind,SymbolId required)
         {

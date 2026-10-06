@@ -122,7 +122,10 @@ namespace Cascade.Presentation
         void StartCoach()
         {
             string lesson = Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).FirstOrDefault(c=>c.Definition.CampaignNodeId==node)?.Lesson ?? "swap";
-            if(descent!=null&&descent.StageIndex<2)lesson=descent.StageIndex==0?(Interaction.Attempt.Level.Floors[0].Repair!=null?"repair":"swap"):"arrival_wind";
+            if(descent!=null&&descent.StageIndex<2){
+                var first=Interaction.Attempt.Level.Floors[0];
+                lesson=first.Powerup!=null?"powerup":first.Bomb!=null?"bomb":first.Key!=null?"key":first.Repair!=null?"repair":first.OptionalStamp!=null?"stamp":first.LinkedPair.HasValue?"linked":first.OneUseBridgeEdge.HasValue?"bridge":first.FragileEdges.Count>0?"fragile":descent.StageIndex==1?"arrival_wind":"swap";
+            }
             int wind=Enumerable.Range(0,Interaction.Attempt.Level.Floors.Count).Where(IsWindFloor).DefaultIfEmpty(-1).First();
             Coach=new TutorialCoach(Interaction.Attempt.Level,lesson,wind) {Enabled=Preferences.Tutorials};
             Coach.Observe(Interaction.Attempt.Current,Interaction.Attempt.RouteLength); gestureTime=0;
@@ -188,7 +191,7 @@ namespace Cascade.Presentation
             if(preparation.HasFailed||descentPlanFailed)PlaceControl(retry,actions,new Vector2(.35f,0),new Vector2(.65f,1));
             if(result) {
                 resultText.gameObject.SetActive(CurrentScreen!=GameScreen.Checkpoint);
-                resultText.SetCopy(CurrentScreen==GameScreen.Checkpoint?(descent.StageIndex==0?"Row ready! Below, wind will move it one place.":"Row ready! The last stage has devices."):CurrentScreen==GameScreen.Win ? "You did it! The way is clear." : "Not quite. Undo and try again.");
+                resultText.SetCopy(CurrentScreen==GameScreen.Checkpoint?"The next stage is below. Take the row down.":CurrentScreen==GameScreen.Win ? "You did it! The way is clear." : "Not quite. Undo and try again.");
                 if(CurrentScreen==GameScreen.Win && !Interaction.Attempt.Goal.IsSatisfied(Interaction.Attempt.Current))resultText.SetCopy("The row is home. The stamp is still missing.");
                 resultRoot.Find("Resulthome").GetComponentInChildren<TextMeshProUGUI>().SetCopy("Map");
                 if(CurrentScreen==GameScreen.Fail && sessionLosses.TryGetValue(node,out var losses)&&losses>=3)

@@ -559,7 +559,7 @@ namespace Cascade.Tests
             foreach(var command in proof.Path) {
                 var predicted=attempt.Predict(command).State;
                 if(command.Kind==CommandKind.EarlyDrop)yield return ClickButton("Drop");
-                else {yield return MouseFrame(Point(command.Edge),true);yield return MouseFrame(Point(command.Edge+1),true);yield return MouseFrame(Point(command.Edge+1),false);}
+                else {int end=command.Kind==CommandKind.LongReach?command.End:command.Edge+1;yield return MouseFrame(Point(command.Edge),true);yield return MouseFrame(Point(end),true);yield return MouseFrame(Point(end),false);}
                 Assert.That(attempt.Current,Is.EqualTo(predicted));
                 double deadline=Time.realtimeSinceStartupAsDouble+30;
                 while(game.Interaction.IsPresenting&&Time.realtimeSinceStartupAsDouble<deadline){
@@ -614,13 +614,43 @@ namespace Cascade.Tests
         {
             yield return AwaitDescentReady();game.RefreshLayout();yield return null;
             foreach(string encoded in game.Descent.Stages[game.Descent.StageIndex].Witness) {
-                var command=encoded=="D"?PuzzleCommand.Drop:PuzzleCommand.Swap(int.Parse(encoded));
+                var command=encoded=="D"?PuzzleCommand.Drop:encoded.StartsWith("R")?PuzzleCommand.Reach(int.Parse(encoded.Substring(1).Split(':')[0]),int.Parse(encoded.Split(':')[1])):PuzzleCommand.Swap(int.Parse(encoded));
                 var predicted=game.Interaction.Attempt.Predict(command).State;
                 if(command.Kind==CommandKind.EarlyDrop)yield return ClickButton("Drop");
                 else {yield return MouseFrame(Point(command.Edge),true);yield return MouseFrame(Point(command.Edge+1),true);yield return MouseFrame(Point(command.Edge+1),false);}
                 Assert.That(game.Interaction.Attempt.Current,Is.EqualTo(predicted),"stage "+game.Descent.StageIndex+" command "+encoded+" actual route "+game.Interaction.Attempt.RouteLength+" canPlay "+game.Interaction.CanPlay+" current "+string.Join(",",game.Interaction.Attempt.Current.Row)+" expected "+string.Join(",",predicted.Row));yield return AwaitPresentation();yield return null;
             }
             Assert.That(game.Interaction.Attempt.Current.Status,Is.EqualTo(PuzzleStatus.Won));
+        }
+        [UnityTest] public IEnumerator EarlyContactsForecastFractureAndWindPlayBeforeOneWholeLevelReward()
+        {
+            game.ReducedMotion=true;game.StartDescentLevel(game.Catalog.GetPrimary("C03").Definition);game.ShowGame();
+            yield return PlayDescentStage();game.GoLower();yield return AwaitDescentReady();yield return null;
+            game.ReducedMotion=false;game.RefreshLayout();
+            var legends=game.GetComponentsInChildren<PlatformLegend>();Assert.That(legends.Length,Is.EqualTo(2));
+            Assert.That(legends[1].ForecastVisible,Is.True);var preview=legends[1].transform.Find("Landing forecast/Animated exact row/Forecast piece 0");
+            var before=preview.localPosition;yield return new WaitForSecondsRealtime(1.2f);
+            Assert.That(Vector3.Distance(before,preview.localPosition),Is.GreaterThan(1),"The real future row preview must move.");
+            bool bomb=false,warning=false,warningBeforeLanding=false;float fracture=0;int debris=0;
+            foreach(string encoded in game.Descent.Stages[1].Witness){
+                var command=encoded=="D"?PuzzleCommand.Drop:PuzzleCommand.Swap(int.Parse(encoded));
+                var result=game.Interaction.Execute(command);Assert.That(result.Accepted,Is.True);
+                bomb|=result.Events.Any(e=>e.Kind==PuzzleEventKind.BombDefused);string committed=game.Interaction.Attempt.CurrentStateHash;
+                double began=Time.realtimeSinceStartupAsDouble;
+                while(game.Interaction.IsPresenting&&PresentationBudget(began)){
+                    if(game.ReactionBanner.IsWindWarning){warning=true;warningBeforeLanding|=game.VisibleFrame.ActiveFloor==0&&game.Machine.FloorBreakProgress(0)==0;}
+                    fracture=Mathf.Max(fracture,game.Machine.FloorBreakProgress(0));debris=Mathf.Max(debris,game.Feedback.ActiveParticleCount);
+                    Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(committed));yield return null;
+                }
+                Assert.That(game.Interaction.IsPresenting,Is.False);
+                foreach(var legend in game.GetComponentsInChildren<PlatformLegend>())
+                    if(legend==legends[1]&&game.VisibleFrame.ActiveFloor==1&&game.VisibleFrame.Status==PuzzleStatus.Playing)Assert.That(legend.Remaining,Is.EqualTo(game.VisibleFrame.Durability));
+            }
+            Assert.That(bomb&&warning&&warningBeforeLanding,Is.True);Assert.That(fracture,Is.GreaterThan(.8f));Assert.That(debris,Is.GreaterThanOrEqualTo(14));
+            var snap=Resources.Load<AudioClip>("CascadeArt/Audio/Atmosphere/TimberSnap");Assert.That(snap,Is.Not.Null);Assert.That(snap.length,Is.GreaterThan(.8f));
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Checkpoint));Assert.That(game.JourneyClearCount,Is.Zero);
+            game.ReducedMotion=true;game.GoLower();yield return PlayDescentStage();
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Win));Assert.That(game.LastCompletion.Stages,Is.EqualTo(3));Assert.That(game.JourneyClearCount,Is.EqualTo(1));
         }
         [UnityTest] public IEnumerator SoloMixedMapKeepsItsCheckpointAndItsOwnSequenceAcrossReload()
         {

@@ -61,7 +61,7 @@ namespace Cascade.Application
                     : "This way is closed. Try the other side or Descend.";
             }
             if(windFloor==state.ActiveFloor+1&&state.BombPhase!=BombPhase.Armed)
-                return "Wind moves the row on the next board. Tap its arrow to see how.";
+                return "Wind will move the row. Watch the small row by the next board.";
             if(lesson=="arrival_wind"&&!LessonCompleted)return "Wind moved the row. Put it back in order.";
             if (state.Row.SequenceEqual(level.TargetSymbolIds)) return state.ActiveFloor == level.Floors.Count-1
                 ? "Ready! Tap Deliver." : "Ready here. Check the board below.";
@@ -76,9 +76,9 @@ namespace Cascade.Application
             if (f.OneUseBridgeEdge.HasValue && !state.BridgeUsed) return "You can use this bridge once.";
             if (f.OptionalStamp != null && (state.StampBits & (1 << state.ActiveFloor)) == 0) return "Can you reach the stamp too?";
             if (f.FragileEdges.Count > 0) return "Careful! This crack wears the board down faster.";
-            if (lesson == "conveyor" || lesson == "fragile_conveyor") return "The next board moves the row. Look at its arrow.";
+            if (lesson == "conveyor" || lesson == "fragile_conveyor") return "The small row shows how the next board moves your pieces.";
             if (lesson == "drop") return "Tap Descend to take the row down.";
-            if (lesson == "collapse") return "At zero, the board breaks and the row drops.";
+            if (lesson == "collapse") return "The number on the wood is swaps left. At zero, it breaks.";
             return "Drag a piece onto its neighbour.";
         }
     }

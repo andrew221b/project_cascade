@@ -34,6 +34,7 @@ namespace Cascade.Presentation
         int motif,count;
         bool hasTool,windWarning;
         WindWarningGraphic windLines;
+        Image windSock;
         public bool IsWindWarning => IsShowing&&windWarning;
         public bool IsShowing { get; private set; }
         public float Elapsed => age;
@@ -51,7 +52,8 @@ namespace Cascade.Presentation
                 motes[i]=Child("Reaction motif "+i,root,new Vector2(.5f,.68f),new Vector2(.5f,.68f)).gameObject.AddComponent<Image>();
                 motes[i].raycastTarget=false;motes[i].preserveAspect=true;motes[i].gameObject.SetActive(false);
             }
-            windLines=Child("Approaching wind",root,new Vector2(.12f,.38f),new Vector2(.88f,.95f)).gameObject.AddComponent<WindWarningGraphic>();
+            windLines=Child("Approaching wind",root,new Vector2(.35f,.38f),new Vector2(.90f,.95f)).gameObject.AddComponent<WindWarningGraphic>();
+            windSock=Child("Visible windsock",root,new Vector2(.08f,.40f),new Vector2(.34f,.98f)).gameObject.AddComponent<Image>();windSock.sprite=game.PlatformProp(0);windSock.material=game.PlatformPropMaterial;windSock.preserveAspect=true;windSock.raycastTarget=false;windSock.gameObject.SetActive(false);
             windLines.raycastTarget=false;windLines.gameObject.SetActive(false);
             clothRect=Child("Woven announcement",root,new Vector2(0,.08f),new Vector2(1,.30f));cloth=clothRect.gameObject.AddComponent<Image>();clothOpacity=clothRect.gameObject.AddComponent<CanvasGroup>();clothOpacity.blocksRaycasts=false;
             var texture=Resources.Load<Texture2D>("CascadeArt/Reactions/Announcement");
@@ -70,7 +72,7 @@ namespace Cascade.Presentation
             if(game==null||game.CurrentScreen!=GameScreen.Playing)return;
             ReleaseTool();
             foreach(var m in motes)m.gameObject.SetActive(false);
-            windWarning=false;windLines.gameObject.SetActive(false);Source=source;heroMount.anchoredPosition=Vector2.zero;heroMount.localScale=Vector3.one;heroMount.localRotation=Quaternion.identity;hasTool=source!=null;age=0;IsShowing=true;gameObject.SetActive(true);root.SetAsLastSibling();RefreshLayout();
+            windWarning=false;windLines.gameObject.SetActive(false);windSock.gameObject.SetActive(false);Source=source;heroMount.anchoredPosition=Vector2.zero;heroMount.localScale=Vector3.one;heroMount.localRotation=Quaternion.identity;hasTool=source!=null;age=0;IsShowing=true;gameObject.SetActive(true);root.SetAsLastSibling();RefreshLayout();
             sourcePoint=source==null?Vector2.zero:(Vector2)root.InverseTransformPoint(source.TransformPoint(source.rect.center))-(Vector2)heroMount.localPosition;
             if(source!=null){
                 source.GetWorldCorners(corners);var a=root.InverseTransformPoint(corners[0]);var b=root.InverseTransformPoint(corners[1]);var c=root.InverseTransformPoint(corners[2]);
@@ -96,7 +98,7 @@ namespace Cascade.Presentation
         public void ShowWind(bool right)
         {
             Show(right?"Gust coming: right":"Gust coming: left","");windWarning=true;
-            windLines.gameObject.SetActive(true);windLines.Right=right;RefreshLayout();Paint();
+            windLines.gameObject.SetActive(true);windLines.Right=right;windSock.gameObject.SetActive(true);windSock.rectTransform.localScale=new Vector3(right?1:-1,1,1);RefreshLayout();Paint();
         }
         void Update()
         {
@@ -108,7 +110,7 @@ namespace Cascade.Presentation
         void Paint()
         {
             float unit=1/Mathf.Min(1,GetComponentInParent<Canvas>().scaleFactor);
-            if(windWarning)windLines.Paint(game.ReducedMotion?0:age,game.ReducedMotion);
+            if(windWarning){windLines.Paint(game.ReducedMotion?0:age,game.ReducedMotion);windSock.rectTransform.localRotation=Quaternion.Euler(0,0,game.ReducedMotion?0:Mathf.Sin(age*7)*3);}
             float arrive=game.ReducedMotion?1:1-Mathf.Pow(1-Mathf.Clamp01(age/.42f),3);
             float pulse=game.ReducedMotion?0:Mathf.Sin(Mathf.Clamp01((age-.42f)/.44f)*Mathf.PI);
             heroMount.anchoredPosition=game.ReducedMotion?Vector2.zero:sourcePoint*(1-arrive)+Vector2.up*(Mathf.Sin(Mathf.Clamp01(age/.42f)*Mathf.PI)*18*unit);

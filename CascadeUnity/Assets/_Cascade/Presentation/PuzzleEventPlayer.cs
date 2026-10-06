@@ -65,6 +65,7 @@ namespace Cascade.Presentation
                         CaptureRow(frame); frame.Read(e, level); game.RenderFrame(frame); MapRow(frame);
                         feedback.Sound(ToyCue.Swap); yield return Travel(profile.swap, !reduced, false);
                     } else if (e.Kind == PuzzleEventKind.FloorExited) {
+                        int next=e.Floor+1;if(next<level.Floors.Count&&game.IsWindFloor(next))yield return WarnWind(level.Floors[next].EntryTransform==EntryTransform.ShiftRightOne);
                         if(frame.Durability<=0){
                             feedback.Sound(ToyCue.Fragile);yield return BreakWood(e.Floor);
                         }else yield return Recoil(e.Floor, profile.fracture);
@@ -74,7 +75,6 @@ namespace Cascade.Presentation
                         game.RenderFrame(frame, arrival); MapRow(frame);
                         yield return Travel(profile.fall, false, true); feedback.Sound(ToyCue.Land);
                         yield return Land(arrival);
-                        if(!arrival&&game.IsWindFloor(e.Floor))yield return WarnWind(level.Floors[e.Floor].EntryTransform==EntryTransform.ShiftRightOne);
                         if (arrival) {
                             feedback.Sound(e.Value == 1 ? ToyCue.Success : ToyCue.Reject);
                             yield return game.PlayOutcome(e.Value==1);
@@ -216,12 +216,15 @@ namespace Cascade.Presentation
         IEnumerator BreakWood(int floor)
         {
             game.AnnounceReaction("Wood gives way!","");
-            if(game.ReducedMotion){feedback.WoodChips(game.Machine.FloorPosition(floor),2,true,game.Machine.FloorSpan(floor));yield return Hold(profile.reducedStep);yield break;}
-            float time=0;const float duration=.64f;bool splintered=false;
+            if(game.ReducedMotion){feedback.WoodSnap();feedback.WoodChips(game.Machine.FloorPosition(floor),2,true,game.Machine.FloorSpan(floor));yield return Hold(profile.reducedStep);yield break;}
+            float time=0;const float duration=1.02f;bool splintered=false,tail=false;
             while(time<duration){
                 if(PresentationPaused){yield return null;continue;}
-                float t=Mathf.Clamp01(time/duration);game.Machine.FractureFloor(floor,Mathf.SmoothStep(0,1,t));
-                if(!splintered&&t>=.36f){splintered=true;feedback.WoodChips(game.Machine.FloorPosition(floor),14,false,game.Machine.FloorSpan(floor)*.96f);}
+                float t=Mathf.Clamp01(time/duration);
+                float fracture=t<.32f?.24f*Mathf.SmoothStep(0,1,t/.32f):Mathf.Lerp(.24f,1,Mathf.SmoothStep(0,1,(t-.32f)/.68f));
+                game.Machine.FractureFloor(floor,fracture);
+                if(!splintered&&t>=.40f){splintered=true;feedback.WoodSnap();feedback.Haptic();game.Machine.ContactImpulse(floor,game.Machine.TokenCount/2,.65f,0);feedback.WoodChips(game.Machine.FloorPosition(floor),14,false,game.Machine.FloorSpan(floor)*.96f);}
+                if(!tail&&t>=.64f){tail=true;feedback.WoodChips(game.Machine.FloorPosition(floor),8,false,game.Machine.FloorSpan(floor)*.92f);}
                 time+=Time.unscaledDeltaTime;yield return null;
             }
             while(PresentationPaused)yield return null;

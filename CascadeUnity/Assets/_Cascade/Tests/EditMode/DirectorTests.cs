@@ -53,7 +53,8 @@ namespace Cascade.Tests
             Assert.That(attempt.PinnedContentHash,Is.EqualTo(pin));
             attempt.Execute(PuzzleCommand.Drop);attempt.Execute(PuzzleCommand.Drop);memory.ObserveTerminal(attempt,null);
             Assert.That(memory.Choose(source),Is.EqualTo(DeliveryMood.Recovery));
-            Assert.That(memory.Choose(catalog.GetPrimary("C13").Definition),Is.EqualTo(DeliveryMood.Steady));
+            Assert.That(memory.Choose(catalog.GetPrimary("C13").Definition),Is.EqualTo(DeliveryMood.Recovery));
+            Assert.That(memory.Choose(catalog.GetPrimary("C04").Definition),Is.EqualTo(DeliveryMood.Steady));
         }
         [Test] public void AllLateRecipesPreserveIdentitiesDevicesMultisetsAndBoundWood()
         {

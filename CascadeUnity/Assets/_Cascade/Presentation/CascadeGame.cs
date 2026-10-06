@@ -85,7 +85,7 @@ namespace Cascade.Presentation
             SettleDescent();CancelDescentWork();
             EndTokenHold(); CancelHint(); CancelDeadEnd(); preparation.Cancel(); StopPresentation(); Interaction?.SetSuspended(true); feedback?.ClearTails();
         }
-        void OnDestroy() { if(purchaseStore!=null)purchaseStore.Changed-=NotifyStoreChanged;DisposeNavigationArt();DisposeCompletionArt(); preparation.Dispose(); if (Interaction != null) Interaction.Committed -= OnCommitted; if(glyphMaterial!=null)Destroy(glyphMaterial);if(tutorialOverlayMaterial!=null)Destroy(tutorialOverlayMaterial);if(toolSilhouette!=null)Destroy(toolSilhouette);foreach(var sprite in toolBodySprites.Values)if(sprite!=null)Destroy(sprite);foreach(var sprite in enamelControls)if(sprite!=null)Destroy(sprite); }
+        void OnDestroy() { if(purchaseStore!=null)purchaseStore.Changed-=NotifyStoreChanged;DisposeNavigationArt();DisposeCompletionArt();DisposePlatformProps(); preparation.Dispose(); if (Interaction != null) Interaction.Committed -= OnCommitted; if(glyphMaterial!=null)Destroy(glyphMaterial);if(tutorialOverlayMaterial!=null)Destroy(tutorialOverlayMaterial);if(toolSilhouette!=null)Destroy(toolSilhouette);foreach(var sprite in toolBodySprites.Values)if(sprite!=null)Destroy(sprite);foreach(var sprite in enamelControls)if(sprite!=null)Destroy(sprite); }
         void OnApplicationFocus(bool focused)
         {
             if(!focused)SettleDescent();
@@ -373,7 +373,7 @@ namespace Cascade.Presentation
             // Destroy is deferred; inactive old children must stop contributing to the new row layout now.
             foreach (Transform child in targetRow) {child.gameObject.SetActive(false);Destroy(child.gameObject);}
             if (tokenRow != null) {tokenRow.gameObject.SetActive(false);Destroy(tokenRow.gameObject);}
-            floorViews.Clear(); floorLabels.Clear(); deviceLabels.Clear(); contactFaces.Clear(); deviceDocks.Clear(); deviceOverlays.Clear(); slots.Clear(); slotImages.Clear(); tokenLabels.Clear(); targetLabels.Clear();
+            platformLegends.Clear();floorViews.Clear(); floorLabels.Clear(); deviceLabels.Clear(); contactFaces.Clear(); deviceDocks.Clear(); deviceOverlays.Clear(); slots.Clear(); slotImages.Clear(); tokenLabels.Clear(); targetLabels.Clear();
             int count = level.Floors.Count;
             for (int i = 0; i < count; i++) {
                 float y = count == 1 ? .56f : .87f - i * .74f / (count - 1);
@@ -441,7 +441,7 @@ namespace Cascade.Presentation
                 FixedBand(header, safeRoot.rect.height - 60 * unit, 48 * unit);
                 FixedBand(statusPaper,safeRoot.rect.height-114*unit,44*unit);status.fontSize=16*unit*(Preferences.LargeText?1.12f:1);
                 LayoutInstruction(unit);
-                foreach(var label in floorLabels)label.fontSize=14*unit;
+                LayoutPlatformLegends(unit);
                 foreach(var dock in deviceDocks)if(dock.countdown!=null)dock.countdown.fontSize=13*unit;
                 FixedBand(actions, 8 * unit, 52 * unit); FixedBand(precise, 64 * unit, 104 * unit);
                 foreach(var button in actions.GetComponentsInChildren<UnityEngine.UI.Button>()){
@@ -455,7 +455,9 @@ namespace Cascade.Presentation
                 float receiverBottom = CurrentScreen==GameScreen.Fail ? 232 : CurrentScreen==GameScreen.Win || CurrentScreen==GameScreen.Checkpoint || PreciseInputActive ? 184 : 82;
                 FixedBand(receiver, receiverBottom * unit, receiverHeight);
                 floorArea.anchorMin = new Vector2(.045f, 0); floorArea.anchorMax = new Vector2(.955f, 0);
-                floorArea.offsetMin = new Vector2(0, receiverBottom * unit + receiverHeight + 38 * unit);
+                var lowest=Interaction.Attempt.Level.Floors[Interaction.Attempt.Level.Floors.Count-1];
+                bool hangingBelow=lowest.Bomb!=null||lowest.Key!=null||lowest.Repair!=null||lowest.OptionalStamp!=null||lowest.Powerup!=null;
+                floorArea.offsetMin = new Vector2(0, receiverBottom * unit + receiverHeight + (hangingBelow?105:64) * unit);
                 floorArea.offsetMax = new Vector2(0, safeRoot.rect.height - 150 * unit);
                 foreach (var label in deviceLabels) label.fontSize = 14 * unit;
                 foreach (var floor in floorViews) foreach (Transform child in floor)
@@ -488,12 +490,12 @@ namespace Cascade.Presentation
             for (int i = 0; i < level.Floors.Count; i++) {
                 var floor = level.Floors[i]; bool active = state.Status == PuzzleStatus.Playing && i == state.ActiveFloor;
                 bool past = !state.FloorVisible(i);
-                floorLabels[i].SetCopy(past ? "" : new UiCopy("Wood strength: {0}",active?state.Durability:floor.BaseDurability));
                 deviceLabels[i].SetCopy("");
                 deviceOverlays[i].gameObject.SetActive(!past);
                 PaintDeviceDocks(state,i,past,active);
                 foreach (Transform child in floorViews[i]) if (child.name == "DeviceGlyph") child.gameObject.SetActive(!past);
             }
+            PaintPlatformLegends(state);
             tokenRow.SetParent(state.Status == PuzzleStatus.Playing ? floorViews[state.ActiveFloor] : receiver, false);
             tokenRow.anchorMin = new Vector2(state.Status == PuzzleStatus.Playing ? .045f : .07f, state.Status == PuzzleStatus.Playing ? .43f : .28f);
             tokenRow.anchorMax = new Vector2(state.Status == PuzzleStatus.Playing ? .955f : .93f, state.Status == PuzzleStatus.Playing ? 1.03f : .78f); tokenRow.offsetMin = tokenRow.offsetMax = Vector2.zero;

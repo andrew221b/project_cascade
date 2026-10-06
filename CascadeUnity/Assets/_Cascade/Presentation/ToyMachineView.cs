@@ -60,6 +60,8 @@ namespace Cascade.Presentation
         float gustStarted=-100;
         float gustDirection;
         float windAnticipation;
+        float nextAmbientGust=9;
+        int ambientGust;
         public void PrepareWind(bool right,float strength) => windAnticipation=(right?1:-1)*Mathf.Clamp01(strength)*.48f;
         public bool ReducedMotion { get => reducedMotion; set => reducedMotion = value; }
         public float AmbientPhase => windTime;
@@ -100,9 +102,9 @@ namespace Cascade.Presentation
             float gust=(1-Mathf.Exp(-age*6))*Mathf.Exp(-age*1.6f)*gustDirection*1.2f;
             return Mathf.Clamp(WorkshopWind.Sample(windTime-floor*.13f)+gust+windAnticipation,-1,1)*(heldWeight>=0?.72f:1);
         }
-        public void CueWind(bool right)
+        public void CueWind(bool right,float strength=1)
         {
-            windAnticipation=0;if(reducedMotion)return;gustStarted=windTime;gustDirection=right?1:-1;
+            windAnticipation=0;if(reducedMotion)return;gustStarted=windTime;gustDirection=(right?1:-1)*Mathf.Clamp01(strength);
             // One pressure impulse, then the existing springs carry the recoil and recovery.
             foreach(var rig in floors){rig.swayVelocity+=gustDirection*.85f;rig.rollVelocity+=gustDirection*10;}
             for(int side=0;side<2;side++)for(int segment=0;segment<=floors.Count;segment++)ropeSpans[side,segment]?.Impulse(gustDirection*.55f);
@@ -157,6 +159,7 @@ namespace Cascade.Presentation
         {
             if (machine != null) { machine.gameObject.SetActive(false); Destroy(machine.gameObject); }
             gustStarted=-100;gustDirection=0;windAnticipation=0;
+            nextAmbientGust=windTime+9+(ambientGust%3);
             machine = new GameObject("Toy machine").transform; machine.SetParent(transform, false);
             foreach(var mesh in woodMeshes)if(mesh!=null)Destroy(mesh);woodMeshes.Clear();
             all.Clear(); tokens.Clear(); selections.Clear(); tokenShadows.Clear(); targetBodies.Clear(); floors.Clear(); supports.Clear(); interaction = model;
@@ -326,6 +329,10 @@ namespace Cascade.Presentation
         void LateUpdate()
         {
             if (!reducedMotion && interaction != null && !ambientPaused && !(interaction.IsPaused&&gameplayView) && !interaction.IsSuspended) windTime += Time.unscaledDeltaTime;
+            if(gameplayView&&!reducedMotion&&interaction!=null&&!interaction.IsPaused&&!interaction.IsSuspended&&!interaction.IsPreparing&&!interaction.IsPresenting&&heldWeight<0&&windTime>=nextAmbientGust){
+                CueWind((ambientGust++%2)==0,.55f);nextAmbientGust=windTime+12+(ambientGust%4)*1.7f;
+                GetComponent<CascadeGame>().CueDeviceWind(gustDirection>0);
+            }
             livingWorld?.Paint(reducedMotion ? 0 : windTime);
             if (windmill != null) windmill.localRotation = Quaternion.Euler(0, 0, reducedMotion ? 18 : 18 + windTime * 7);
         }

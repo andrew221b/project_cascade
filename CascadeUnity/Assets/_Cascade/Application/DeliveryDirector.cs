@@ -92,9 +92,12 @@ namespace Cascade.Application
     public static class DeliveryDirector
     {
         public static bool CanDirect(LevelDefinition source)=>source!=null&&source.CampaignNodeId.StartsWith("C",StringComparison.Ordinal)
-            &&int.TryParse(source.CampaignNodeId.Substring(1),out int node)&&node>=41&&node<=160;
+            &&int.TryParse(source.CampaignNodeId.Substring(1),out int node)&&node>=6&&node<=160;
         public static int WindFloor(LevelDefinition source)
-        {for(int i=1;i<source.Floors.Count;i++)if(source.Floors[i].EntryTransform==EntryTransform.None)return i;return -1;}
+        {
+            if(int.TryParse(source.CampaignNodeId.Substring(1),out int node)&&node<=40&&source.Floors.Any(f=>f.OpenEdges.Any(e=>!e)))return -1;
+            for(int i=1;i<source.Floors.Count;i++)if(source.Floors[i].EntryTransform==EntryTransform.None)return i;return -1;
+        }
         public static DirectionRecipe Plan(LevelDefinition source,DeliveryMood mood,DirectionRecipe previous=null)
         {
             if(!CanDirect(source)||mood==DeliveryMood.Steady)return null;

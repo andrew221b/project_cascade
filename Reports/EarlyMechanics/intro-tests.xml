@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Passed" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-06 16:17:05Z" end-time="2026-10-06 16:17:06Z" duration="0.3830497">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="516" result="Passed" start-time="2026-10-06 16:17:05Z" end-time="2026-10-06 16:17:06Z" duration="0.383050" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1559" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="515" result="Passed" start-time="2026-10-06 16:17:05Z" end-time="2026-10-06 16:17:06Z" duration="0.379131" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="79826" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1560" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="515" result="Passed" start-time="2026-10-06 16:17:05Z" end-time="2026-10-06 16:17:06Z" duration="0.378979" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1561" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="515" result="Passed" start-time="2026-10-06 16:17:05Z" end-time="2026-10-06 16:17:06Z" duration="0.378893" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1344" name="EarlyMechanicsTests" fullname="Cascade.Tests.EarlyMechanicsTests" classname="Cascade.Tests.EarlyMechanicsTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-06 16:17:05Z" end-time="2026-10-06 16:17:06Z" duration="0.378392" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1346" name="FirstIslandIntroducesRealContactsAndThenHourglassBridgeAndLinkedSwaps" fullname="Cascade.Tests.EarlyMechanicsTests.FirstIslandIntroducesRealContactsAndThenHourglassBridgeAndLinkedSwaps" methodname="FirstIslandIntroducesRealContactsAndThenHourglassBridgeAndLinkedSwaps" classname="Cascade.Tests.EarlyMechanicsTests" runstate="Runnable" seed="1082767782" result="Passed" start-time="2026-10-06 16:17:05Z" end-time="2026-10-06 16:17:05Z" duration="0.058818" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1348" name="IntroductoryBombAndHourglassAppearOnTheProvenUsefulRoute" fullname="Cascade.Tests.EarlyMechanicsTests.IntroductoryBombAndHourglassAppearOnTheProvenUsefulRoute" methodname="IntroductoryBombAndHourglassAppearOnTheProvenUsefulRoute" classname="Cascade.Tests.EarlyMechanicsTests" runstate="Runnable" seed="2050171227" result="Passed" start-time="2026-10-06 16:17:05Z" end-time="2026-10-06 16:17:06Z" duration="0.117858" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

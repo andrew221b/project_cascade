@@ -2254,6 +2254,31 @@ MonoBehaviour:
     m_Key: "Next step in {0} level \xB7 {1}/{2}"
     m_Metadata:
       m_Items: []
+  - m_Id: 487858623209472
+    m_Key: The number on the wood is swaps left. At zero, it breaks.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 490843461902336
+    m_Key: Swap neighbours. The number on the wood counts swaps left. At zero, the
+      row falls.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 497236034183168
+    m_Key: Wind will move the row. Watch the small row below.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 497236038377472
+    m_Key: The small row below shows the landing move.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 499028105093120
+    m_Key: Wind will move the row. Watch the small row by the next board.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 499028109287424
+    m_Key: The small row shows how the next board moves your pieces.
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -28,7 +28,7 @@ namespace Cascade.Presentation
             descentPlanFailed=false;
             descentSource=source;descentLocale=locale;descentMood=mood;
             descentCancellation=new CancellationTokenSource();var token=descentCancellation.Token;
-            descentTask=Task.Run(()=>DescentRun.Build(source,mood,token,version:3),token);
+            descentTask=Task.Run(()=>DescentRun.Build(source,mood,token,version:4),token);
             Interaction.SetPreparing(true);status.SetCopy("Checking all three stages…");
         }
         void CancelDescentWork()
@@ -72,7 +72,7 @@ namespace Cascade.Presentation
             // State and persistence precede travel. A tween cannot advance a stage.
             MountAttempt(new AttemptService(run.Level(source,run.StageIndex),locale,direction:run.Direction),run);
             journeyActive=travel;PersistProgress();ShowGame();
-            if(run.Stages[run.StageIndex].Arrival==EntryTransform.ShiftLeftOne||run.Stages[run.StageIndex].Arrival==EntryTransform.ShiftRightOne)
+            if(run.Version<4&&(run.Stages[run.StageIndex].Arrival==EntryTransform.ShiftLeftOne||run.Stages[run.StageIndex].Arrival==EntryTransform.ShiftRightOne))
                 machine.CueWind(run.Stages[run.StageIndex].Arrival==EntryTransform.ShiftRightOne);
             else if(run.Stages[run.StageIndex].PublishedStart)machine.CueWind(run.StageIndex%2==0);
             if(descentMotion==null)descentMotion=gameObject.AddComponent<DescentTransition>();
@@ -80,6 +80,12 @@ namespace Cascade.Presentation
             Interaction.SetPreparing(IsDescending||!preparation.IsReady);
         }
         void SettleDescent(){descentMotion?.Settle();}
+        internal void RevealArrivalWind()
+        {
+            if(descent?.Version<4||ReducedMotion||!IsWindFloor(0)||CurrentScreen!=GameScreen.Playing)return;
+            bool right=Interaction.Attempt.Level.Floors[0].EntryTransform==EntryTransform.ShiftRightOne;
+            machine.CueWind(right);CueDeviceWind(right);AnnounceReaction(right?"Wind slides the row right":"Wind slides the row left","");
+        }
         internal void AppendDescentGraphics(DescentGhost ghost)
         {
             Canvas.ForceUpdateCanvases();

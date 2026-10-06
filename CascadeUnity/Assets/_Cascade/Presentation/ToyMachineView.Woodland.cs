@@ -122,7 +122,7 @@ namespace Cascade.Presentation
                 var rig=floors[f];bool loaded=Frame.Status==PuzzleStatus.Playing&&Frame.ActiveFloor==f;
                 float grounded=0,total=0;for(int i=0;i<tokens.Count;i++){float mass=PieceMass(i);total+=mass;if(heldWeight!=i&&piecePoses[i]!=PiecePose.Falling)grounded+=mass;}
                 float weight=loaded?grounded/Mathf.Max(1,total):0;
-                float targetSag=(.10f+.17f*rig.wear)*weight+rig.fracture*.09f;float wind=WindAt(f);
+                float targetSag=(.10f+.17f*rig.wear)*weight+rig.fracture*.19f;float wind=WindAt(f);
                 float tilt=reducedMotion?0:wind*1.2f+(loaded&&heldWeight>=0?((heldWeight+.5f)/tokens.Count-.5f)*.45f:0);
                 if(reducedMotion){rig.sag=targetSag;rig.sagVelocity=rig.sway=rig.swayVelocity=rig.roll=rig.rollVelocity=0;}
                 Spring(ref rig.sag,ref rig.sagVelocity,targetSag,120,14,dt);
