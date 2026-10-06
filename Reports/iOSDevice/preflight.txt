@@ -1,0 +1,6 @@
+Unity=6000.3.8f1
+ActiveTarget=StandaloneOSX
+Scene=Assets/_Cascade/Scenes/CascadePlayable.unity
+Backend=IL2CPP
+Identifier=com.Unity-Technologies.com.unity.template.urp-blank
+SwitchRequested=True
