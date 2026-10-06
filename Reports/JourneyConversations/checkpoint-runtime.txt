@@ -1,0 +1,1 @@
+PASS: meaningful map Talk, exact saved stage resume, paused input/clock, real second-stage witness, C02 automatic conversation before third stage, no tween-driven checkpoint change, explicit skip descent and disk receipts. Native 390/320 with Large Text and simulated safe insets.

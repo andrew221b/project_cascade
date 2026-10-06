@@ -99,7 +99,7 @@ namespace Cascade.Presentation
         void SetScreen(GameScreen screen)
         {
             if (!flowReady) return;
-            CloseLandingPreview();
+            CancelConversation();CloseLandingPreview();
             if(screen!=GameScreen.Playing&&MechanicPopupOpen)ResetMechanicDiscovery();
             if(screen!=GameScreen.Playing)SettleDescent();
             if(screen!=GameScreen.Playing) { CancelHint(); StopPresentation(); }
@@ -187,7 +187,7 @@ namespace Cascade.Presentation
         void ArrangeResultControls()
         {
             bool result=CurrentScreen==GameScreen.Fail||CurrentScreen==GameScreen.Checkpoint;
-            resultRoot.gameObject.SetActive(result);
+            resultRoot.gameObject.SetActive(result&&!ConversationOpen);
             PlaceControl(undo,result?resultRoot:actions,result?Vector2.zero:new Vector2(.12f,0),result?new Vector2(.48f,.30f):new Vector2(.47f,1));
             PlaceControl(retry,result?resultRoot:safeRoot,result?new Vector2(0,.35f):new Vector2(.05f,.09f),result?new Vector2(CurrentScreen==GameScreen.Fail&&!CanOfferStrongerWood?1:.48f,.65f):new Vector2(.43f,.155f));
             retry.gameObject.SetActive(result||preparation.HasFailed||descentPlanFailed); hint.gameObject.SetActive(!result&&!preparation.HasFailed&&!descentPlanFailed); drop.gameObject.SetActive(!result&&!preparation.HasFailed&&!descentPlanFailed); precise.gameObject.SetActive(!result&&PreciseInputActive);

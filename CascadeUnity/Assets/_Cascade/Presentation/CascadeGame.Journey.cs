@@ -12,7 +12,7 @@ namespace Cascade.Presentation
 {
     public sealed partial class CascadeGame
     {
-        int mapPage, selectedJourneyStop, dialogueLine;
+        int mapPage, selectedJourneyStop;
         bool journeyActive;
         RectTransform journeyFooter;
         Button[] journeyFooterButtons;
@@ -28,7 +28,7 @@ namespace Cascade.Presentation
         }
         public void ShowJourney()
         {
-            selectedJourneyStop=journeyActive&&(Interaction.Attempt.Current.Status==PuzzleStatus.Playing||IsCheckpoint)?Math.Max(0,Catalog.PrimaryLevels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==node)):NextJourneyStop();mapPage=JourneyStory.Zone(selectedJourneyStop);SetScreen(GameScreen.JourneyMap);
+            selectedJourneyStop=journeyActive&&(Interaction.Attempt.Current.Status==PuzzleStatus.Playing||IsCheckpoint)?Math.Max(0,Catalog.PrimaryLevels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==node)):NextJourneyStop();mapPage=JourneyStory.Zone(selectedJourneyStop);SetScreen(GameScreen.JourneyMap);TryIslandConversation();
         }
         public void ShowLessons(){chapterPage=0;SetScreen(GameScreen.Lessons);}
         void DrawJourney()
@@ -56,7 +56,7 @@ namespace Cascade.Presentation
                 var caption=Text("You are here",marker,Vector2.zero,Vector2.one,17,new UiCopy("You are here · {0}/{1}",Enumerable.Range(begin,count).Count(n=>sessionClears.Contains(Catalog.PrimaryLevels[n].Definition.CampaignNodeId)),count));caption.font=art.titleFont;caption.color=MenuInk;caption.enableAutoSizing=true;caption.fontSizeMin=14;caption.fontSizeMax=17;
                 var arrow=Rect("Here arrow",marker,new Vector2(.47f,.94f),new Vector2(.53f,1.15f));arrow.gameObject.AddComponent<ShapeFaceGraphic>().SetShape(art.shapes[0],Ink);
                 var hero=Picture("Mika on the path",world,point+new Vector2(-.050f,-.002f),point+new Vector2(.050f,.085f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
-                var heroTouch=Button(UiCopy.Raw(""),world,point+new Vector2(0,.045f),point+new Vector2(0,.045f),()=>OpenJourneyStory(markerStop,false));heroTouch.name="TalktoMika";
+                var heroTouch=Button(UiCopy.Raw(""),world,point+new Vector2(0,.045f),point+new Vector2(0,.045f),()=>OpenJourneyStory(markerStop,false));heroTouch.name="TalktoMika";heroTouch.interactable=!IsPlanningDescent&&!IsDescending;
                 ((RectTransform)heroTouch.transform).sizeDelta=new Vector2(64*MenuUnit,80*MenuUnit);heroTouch.GetComponent<Image>().color=Color.clear;
                 if(EquippedGift!=null)Picture("Mika's keepsake",hero.transform,new Vector2(.69f,.30f),new Vector2(.98f,.56f),TrophyArt(Array.IndexOf(ShopCatalog.TrophyIds,EquippedGift)),true);
             }
@@ -67,20 +67,18 @@ namespace Cascade.Presentation
             DrawJourneyModeTabs();
             var bottom=Rect("Journey task",menuRoot,new Vector2(.055f,0),new Vector2(.945f,0));
             bool future=!IsJourneyStopOpen(selectedJourneyStop);
-            var task=Text("Next task",bottom,new Vector2(.06f,.805f),new Vector2(.94f,.985f),22,future?new UiCopy("Stops to this island: {0}",selectedJourneyStop-unlocked):JourneyStory.Task(JourneyStory.PageFor(selectedJourneyStop)));task.font=art.titleFont;task.enableAutoSizing=true;task.fontSizeMin=18;task.fontSizeMax=23;
+            var task=Text("Next task",bottom,new Vector2(.06f,.805f),new Vector2(.94f,.985f),22,future?new UiCopy("Stops to this island: {0}",selectedJourneyStop-unlocked):StoryConversations.Task(selectedJourneyStop));task.font=art.titleFont;task.enableAutoSizing=true;task.fontSizeMin=18;task.fontSizeMax=23;
             var offered=JourneySequence().Select(c=>c.Definition.CampaignNodeId).ToHashSet();
             var stepNodes=Catalog.PrimaryLevels.Skip(first).Take(JourneyStory.WorldLevels(mapPage)).Select(c=>c.Definition.CampaignNodeId).Where(offered.Contains).ToArray();
             int remaining=CampaignProgress.Remaining(stepNodes,sessionClears);
             CompletionText("Map step progress",bottom,new Vector2(.06f,.635f),new Vector2(.94f,.795f),16,
                 remaining==0?new UiCopy("World complete · {0}/{0} levels",stepNodes.Length):new UiCopy(remaining==1?"Next world in {0} level · {1}/{2}":"Next world in {0} levels · {1}/{2}",remaining,stepNodes.Length-remaining,stepNodes.Length));
-            bool resume=journeyActive&&(Interaction.Attempt.Current.Status==PuzzleStatus.Playing||descent!=null&&Interaction.Attempt.Current.Status!=PuzzleStatus.Won||IsCheckpoint)
-                &&(Interaction.Attempt.RouteLength>0||descent!=null||!JourneySequence().Any(c=>DeliveryDirector.MatchesSource(Interaction.Attempt,c.Definition)))
-                &&Catalog.PrimaryLevels[selectedJourneyStop].Definition.CampaignNodeId==node;
-            var go=Button("Travel",bottom,new Vector2(.17f,.36f),new Vector2(.83f,.62f),()=>{if(future)ShowJourney();else if(resume)ShowGame();else BeginJourney(selectedJourneyStop);});
+            bool resume=CanResumeSelectedJourney(selectedJourneyStop);
+            var go=Button("Travel",bottom,new Vector2(.17f,.36f),new Vector2(.83f,.62f),TravelSelectedJourney);
             go.GetComponentInChildren<TextMeshProUGUI>().SetCopy(future?"Back to my path":resume?"Continue":new UiCopy("Level {0}",selectedJourneyStop+1));go.GetComponent<Image>().sprite=enamelControls[1];go.GetComponent<Image>().color=Color.white;
             bool homecoming=JourneyClearCount==JourneySequence().Count;
-            var talk=Button("Story",bottom,new Vector2(.05f,.055f),new Vector2(.95f,.315f),()=>{if(homecoming)SetScreen(GameScreen.JourneyEnd);else OpenJourneyStory(selectedJourneyStop,false);});talk.interactable=homecoming||!future;
-            talk.GetComponentInChildren<TextMeshProUGUI>().SetCopy(homecoming?new UiCopy("The beacon is lit!"):new UiCopy("Talk to {0}",new UiCopy(JourneyStory.Speaker(zone))));talk.GetComponent<Image>().color=new Color(.84f,.91f,.87f);
+            var talk=Button("Story",bottom,new Vector2(.05f,.055f),new Vector2(.95f,.315f),()=>{if(homecoming)SetScreen(GameScreen.JourneyEnd);else OpenJourneyStory(selectedJourneyStop,false);});talk.interactable=(homecoming||!future)&&!IsPlanningDescent&&!IsDescending;
+            talk.GetComponentInChildren<TextMeshProUGUI>().SetCopy(homecoming?new UiCopy("The beacon is lit!"):new UiCopy("Talk to {0}",new UiCopy(StoryConversations.Resident(zone))));talk.GetComponent<Image>().color=new Color(.84f,.91f,.87f);
             talk.GetComponent<Image>().sprite=enamelControls[0];talk.GetComponent<Image>().type=UnityEngine.UI.Image.Type.Sliced;talk.GetComponent<Image>().color=Color.white;navigationLightLabels.Add(talk.GetComponentInChildren<TextMeshProUGUI>());
             journeyFooter=bottom;var previous=DirectionButton("Previous opened level",bottom,new Vector2(0,.36f),new Vector2(.145f,.62f),false,()=>SelectOpenedJourneyLevel(-1));
             var next=DirectionButton("Next opened level",bottom,new Vector2(.855f,.36f),new Vector2(1,.62f),true,()=>SelectOpenedJourneyLevel(1));
@@ -152,11 +150,18 @@ namespace Cascade.Presentation
             selectedJourneyStop=index;var primary=Catalog.PrimaryLevels[index];
             pendingJourney=primary;
             pendingJourney=JourneySequence().FirstOrDefault(c=>c.Definition.CampaignNodeId==primary.Definition.CampaignNodeId);
-            if(index==JourneyStory.FirstStop(JourneyStory.PageFor(index))&&!heardStory.Contains(JourneyStory.PageFor(index)))OpenJourneyStory(index,true);else EnterJourneyPuzzle();
+            if(!heardStory.Contains(JourneyStory.PageFor(JourneyStory.WorldFirst(JourneyStory.Zone(index)))))OpenJourneyStory(index,true);else EnterJourneyPuzzle();
         }
         void OpenJourneyStory(int index,bool enterAfter)
         {
-            selectedJourneyStop=index;dialogueLine=0;if(!enterAfter)pendingJourney=null;machine.SetZone(JourneyStory.Zone(index));SetScreen(GameScreen.Dialogue);
+            if(ConversationOpen||IsPlanningDescent||IsDescending||!IsJourneyStopOpen(index))return;
+            selectedJourneyStop=index;machine.SetZone(JourneyStory.Zone(index));
+            if(enterAfter){SetScreen(GameScreen.JourneyMap);OpenConversation(StoryConversations.BeforeLevel(index),"Continue",EnterJourneyPuzzle);}
+            else {
+                pendingJourney=null;
+                int receipt=StoryConversations.BeforeLevel(index).Receipt;
+                OpenConversation(StoryConversations.Visit(index,receipt,heardStory.Contains(receipt)),CanResumeSelectedJourney(index)?new UiCopy("Continue"):new UiCopy("Level {0}",index+1),TravelSelectedJourney,()=>{});
+            }
         }
         void EnterJourneyPuzzle()
         {
@@ -165,27 +170,10 @@ namespace Cascade.Presentation
             StartDescentLevel(content.Definition,content.Locale,profile.Director.Choose(content.Definition));
             descentTravel=journeyActive=true;
             PersistProgress();
-            levelLabel.SetCopy(JourneyStory.Task(JourneyStory.PageFor(selectedJourneyStop)));levelLabel.fontSize=21;
+            levelLabel.SetCopy(StoryConversations.Task(selectedJourneyStop));levelLabel.fontSize=21;
             ShowGame();
         }
-        void AdvanceDialogue()
-        {
-            if(++dialogueLine<JourneyStory.Lines(JourneyStory.PageFor(selectedJourneyStop)).Length){DrawMenu();return;}
-            heardStory.Add(JourneyStory.PageFor(selectedJourneyStop));PersistProgress();EnterJourneyPuzzle();
-        }
-        void DrawDialogue()
-        {
-            int zone=JourneyStory.Zone(selectedJourneyStop);
-            string speakerName=dialogueLine==0?JourneyStory.Speaker(zone):"Mika";
-            var portrait=Resources.Load<Sprite>("CascadeArt/Journey/"+speakerName);
-            if(portrait!=null)Picture("Speaking friend",menuRoot,new Vector2(.20f,.44f),new Vector2(.80f,.91f),portrait,true).gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,2),0,.35f);
-            var panel=Rect("Dialogue frame",menuRoot,new Vector2(.04f,.08f),new Vector2(.96f,.46f));var face=Background(panel,Color.white,true);face.sprite=enamelControls[0];face.type=Image.Type.Sliced;
-            var edge=Rect("Brass corner",panel,new Vector2(.025f,.88f),new Vector2(.975f,.90f));Background(edge,new Color(.92f,.70f,.31f),false);
-            var speaker=Text("Speaker",panel,new Vector2(.07f,.71f),new Vector2(.93f,.88f),27,speakerName);speaker.font=art.titleFont;navigationLightLabels.Add(speaker);speaker.alignment=TextAlignmentOptions.MidlineLeft;
-            var line=Text("Dialogue line",panel,new Vector2(.07f,.27f),new Vector2(.93f,.72f),22,JourneyStory.Lines(JourneyStory.PageFor(selectedJourneyStop))[dialogueLine]);line.alignment=TextAlignmentOptions.TopLeft;navigationLightLabels.Add(line);
-            var next=Button("Continue",panel,new Vector2(.52f,.04f),new Vector2(.93f,.24f),AdvanceDialogue);next.GetComponent<Image>().sprite=enamelControls[1];next.GetComponent<Image>().color=Color.white;
-            var skip=Button("Skip story",panel,new Vector2(.07f,.04f),new Vector2(.48f,.24f),()=>{heardStory.Add(JourneyStory.PageFor(selectedJourneyStop));PersistProgress();EnterJourneyPuzzle();});skip.GetComponent<Image>().sprite=enamelControls[0];skip.GetComponent<Image>().color=Color.white;skip.GetComponentInChildren<TextMeshProUGUI>().fontSize=16;
-        }
+        void DrawDialogue(){OpenConversation(StoryConversations.Visit(selectedJourneyStop),"Back to the map",ShowJourney);}
         void Panel(RectTransform parent,Color tint)
         {var image=Background(parent,tint,true);image.sprite=art.panel;image.type=Image.Type.Sliced;}
         Image Picture(string name,Transform parent,Vector2 min,Vector2 max,Sprite sprite,bool fit)

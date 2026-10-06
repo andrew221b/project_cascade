@@ -66,6 +66,7 @@ namespace Cascade.Presentation
         {
             if(!IsCheckpoint||Interaction.Attempt.Current.Status!=PuzzleStatus.Won||!Interaction.CanControl||IsDescending)return;
             if(IntroduceDescentWind())return;
+            if(TryCheckpointConversation())return;
             var source=DescentPublishedSource();if(source==null)return;
             var run=descent;string locale=Interaction.Attempt.ActiveLocale;bool travel=journeyActive;
             var departed=machine.CreateDescentGhost("Departing wooden rig");

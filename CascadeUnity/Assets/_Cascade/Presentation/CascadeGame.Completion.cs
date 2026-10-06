@@ -106,7 +106,7 @@ namespace Cascade.Presentation
         {
             if(profile.Completion!=null)profile.Completion.Acknowledged=true;
             PersistProgress();if(HasSaveError)return;
-            parcelReturnsToMap=false;ShowJourney();TryAutomaticAd();
+            parcelReturnsToMap=false;ShowJourney();if(!ConversationOpen)TryAutomaticAd();
         }
     }
 }

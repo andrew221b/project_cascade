@@ -1,0 +1,1 @@
+PASS: stats > trophy > island conversation > map; first-clear receipt, disk save and no replay on map revisit. 408 authored localized lines inspected in native TMP. Native portrait/small/wide screenshots; Reduced Motion immediate copy. No physical phone test or build.

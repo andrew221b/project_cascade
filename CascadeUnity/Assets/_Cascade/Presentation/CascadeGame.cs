@@ -81,13 +81,13 @@ namespace Cascade.Presentation
         void OnEnable() { disabling=false;if (Interaction != null) { if(!preparation.IsReady&&!preparation.IsPending)BeginPreparation(); Interaction.SetSuspended(nativeAdSuspended||applicationPaused || !applicationFocused); RenderState(); } }
         void OnDisable()
         {
-            disabling=true;
+            disabling=true;CancelConversation();
             CloseLandingPreview();ResetMechanicDiscovery();
             PersistProgress();
             SettleDescent();CancelDescentWork();
             EndTokenHold(); CancelHint(); CancelDeadEnd(); preparation.Cancel(); StopPresentation(); Interaction?.SetSuspended(true); feedback?.ClearTails();
         }
-        void OnDestroy() { mechanicArrival?.Kill();previewArrival?.Kill();coinArrival?.Kill();if(introBranch!=null)Destroy(introBranch);if(purchaseStore!=null)purchaseStore.Changed-=NotifyStoreChanged;DisposeNavigationArt();if(treasureArt!=null)foreach(var sprite in treasureArt)if(sprite!=null)Destroy(sprite);if(travelArt!=null)foreach(var sprite in travelArt)if(sprite!=null)Destroy(sprite);DisposeCompletionArt();DisposePlatformProps(); preparation.Dispose(); if (Interaction != null) Interaction.Committed -= OnCommitted; if(glyphMaterial!=null)Destroy(glyphMaterial);if(tutorialOverlayMaterial!=null)Destroy(tutorialOverlayMaterial);if(toolSilhouette!=null)Destroy(toolSilhouette);foreach(var sprite in toolBodySprites.Values)if(sprite!=null)Destroy(sprite);foreach(var sprite in enamelControls)if(sprite!=null)Destroy(sprite); }
+        void OnDestroy() { DisposeConversationArt(); mechanicArrival?.Kill();previewArrival?.Kill();coinArrival?.Kill();if(introBranch!=null)Destroy(introBranch);if(purchaseStore!=null)purchaseStore.Changed-=NotifyStoreChanged;DisposeNavigationArt();if(treasureArt!=null)foreach(var sprite in treasureArt)if(sprite!=null)Destroy(sprite);if(travelArt!=null)foreach(var sprite in travelArt)if(sprite!=null)Destroy(sprite);DisposeCompletionArt();DisposePlatformProps(); preparation.Dispose(); if (Interaction != null) Interaction.Committed -= OnCommitted; if(glyphMaterial!=null)Destroy(glyphMaterial);if(tutorialOverlayMaterial!=null)Destroy(tutorialOverlayMaterial);if(toolSilhouette!=null)Destroy(toolSilhouette);foreach(var sprite in toolBodySprites.Values)if(sprite!=null)Destroy(sprite);foreach(var sprite in enamelControls)if(sprite!=null)Destroy(sprite); }
         void OnApplicationFocus(bool focused)
         {
             if(!focused)SettleDescent();
@@ -106,10 +106,10 @@ namespace Cascade.Presentation
         }
         void Update()
         {
-            TickPreviewAd();
+            TickPreviewAd();TickConversation();
             if (safeArea != Screen.safeArea || screenWidth != Screen.width || screenHeight != Screen.height) {
                 SettleDescent();
-                StopPresentation(); ApplySafeArea(); if (Interaction != null) RenderState();
+                StopPresentation(); ApplySafeArea(); if (Interaction != null) RenderState();RefreshConversationLayout();
             }
             if(CurrentScreen==GameScreen.Playing&&Interaction.CanPlay&&!zoomOpen&&!MechanicPopupOpen&&landingPreview==null&&previewAd==null&&applicationFocused&&!applicationPaused&&!nativeAdSuspended)
                 Interaction.Attempt.AdvanceActiveTime(Mathf.Min(Time.unscaledDeltaTime,.5f));
@@ -243,7 +243,7 @@ namespace Cascade.Presentation
         }
         public void RefreshLayout() {
             Canvas.ForceUpdateCanvases(); ApplySafeArea();
-            UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(safeRoot); Canvas.ForceUpdateCanvases(); FitJourneyFooter(); Canvas.ForceUpdateCanvases();
+            UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(safeRoot); Canvas.ForceUpdateCanvases(); FitJourneyFooter();RefreshConversationLayout(); Canvas.ForceUpdateCanvases();
             if(uiCamera!=null&&machine!=null&&floorViews.Count>0&&floorViews[0]!=null&&status!=null) {
                 floorViews[0].GetWorldCorners(flightCorners);float floorTop=flightCorners[2].y;
                 status.rectTransform.GetWorldCorners(flightCorners);float statusBottom=flightCorners[0].y;

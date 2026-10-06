@@ -1,0 +1,1 @@
+PASS: fresh Words and Mixed introduction -> explicit skip -> three-stage descent at stage0; Shapes exact stage/state restored. Existing fresh-attempt/resume distinction retained. No phone build.

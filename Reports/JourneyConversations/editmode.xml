@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="6" result="Passed" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-06 22:56:22Z" end-time="2026-10-06 22:56:22Z" duration="0.5051124">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="557" result="Passed" start-time="2026-10-06 22:56:22Z" end-time="2026-10-06 22:56:22Z" duration="0.505112" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1607" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="556" result="Passed" start-time="2026-10-06 22:56:22Z" end-time="2026-10-06 22:56:22Z" duration="0.306971" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="79826" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1608" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="556" result="Passed" start-time="2026-10-06 22:56:22Z" end-time="2026-10-06 22:56:22Z" duration="0.305762" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1609" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="556" result="Passed" start-time="2026-10-06 22:56:22Z" end-time="2026-10-06 22:56:22Z" duration="0.305108" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1384" name="JourneyStoryTests" fullname="Cascade.Tests.JourneyStoryTests" classname="Cascade.Tests.JourneyStoryTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-06 22:56:22Z" end-time="2026-10-06 22:56:22Z" duration="0.249520" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1386" name="All160StopsBelongToOnePageAndRegionWithoutCrossingBorders" fullname="Cascade.Tests.JourneyStoryTests.All160StopsBelongToOnePageAndRegionWithoutCrossingBorders" methodname="All160StopsBelongToOnePageAndRegionWithoutCrossingBorders" classname="Cascade.Tests.JourneyStoryTests" runstate="Runnable" seed="1977540776" result="Passed" start-time="2026-10-06 22:56:22Z" end-time="2026-10-06 22:56:22Z" duration="0.212137" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1385" name="WholeWorldMapsCoverEveryPublishedLevelAndEachIslandHasMultipleLevels" fullname="Cascade.Tests.JourneyStoryTests.WholeWorldMapsCoverEveryPublishedLevelAndEachIslandHasMultipleLevels" methodname="WholeWorldMapsCoverEveryPublishedLevelAndEachIslandHasMultipleLevels" classname="Cascade.Tests.JourneyStoryTests" runstate="Runnable" seed="1983416947" result="Passed" start-time="2026-10-06 22:56:22Z" end-time="2026-10-06 22:56:22Z" duration="0.005282" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1597" name="StoryConversationTests" fullname="Cascade.Tests.StoryConversationTests" classname="Cascade.Tests.StoryConversationTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-06 22:56:22Z" end-time="2026-10-06 22:56:22Z" duration="0.051966" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1599" name="CheckpointsOnlyInterruptBetweenSecondAndThirdStageAndDoNotCollideWithIslandOrIntroIds" fullname="Cascade.Tests.StoryConversationTests.CheckpointsOnlyInterruptBetweenSecondAndThirdStageAndDoNotCollideWithIslandOrIntroIds" methodname="CheckpointsOnlyInterruptBetweenSecondAndThirdStageAndDoNotCollideWithIslandOrIntroIds" classname="Cascade.Tests.StoryConversationTests" runstate="Runnable" seed="15572776" result="Passed" start-time="2026-10-06 22:56:22Z" end-time="2026-10-06 22:56:22Z" duration="0.013082" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1598" name="IslandScenesCoverTheFullJourneyWithDistinctReceiptsAndRealExchanges" fullname="Cascade.Tests.StoryConversationTests.IslandScenesCoverTheFullJourneyWithDistinctReceiptsAndRealExchanges" methodname="IslandScenesCoverTheFullJourneyWithDistinctReceiptsAndRealExchanges" classname="Cascade.Tests.StoryConversationTests" runstate="Runnable" seed="765456555" result="Passed" start-time="2026-10-06 22:56:22Z" end-time="2026-10-06 22:56:22Z" duration="0.018633" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1600" name="KnownResidentsGiveCurrentIslandGoalInsteadOfRepeatingTheirIntroduction" fullname="Cascade.Tests.StoryConversationTests.KnownResidentsGiveCurrentIslandGoalInsteadOfRepeatingTheirIntroduction" methodname="KnownResidentsGiveCurrentIslandGoalInsteadOfRepeatingTheirIntroduction" classname="Cascade.Tests.StoryConversationTests" runstate="Runnable" seed="1519654518" result="Passed" start-time="2026-10-06 22:56:22Z" end-time="2026-10-06 22:56:22Z" duration="0.005872" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1601" name="ReadingInOneModeDoesNotConsumeStoryInAnotherMode" fullname="Cascade.Tests.StoryConversationTests.ReadingInOneModeDoesNotConsumeStoryInAnotherMode" methodname="ReadingInOneModeDoesNotConsumeStoryInAnotherMode" classname="Cascade.Tests.StoryConversationTests" runstate="Runnable" seed="286813864" result="Passed" start-time="2026-10-06 22:56:22Z" end-time="2026-10-06 22:56:22Z" duration="0.011028" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

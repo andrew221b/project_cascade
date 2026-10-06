@@ -2784,6 +2784,636 @@ MonoBehaviour:
     m_Localized: Your stars and score are saved for this mode.
     m_Metadata:
       m_Items: []
+  - m_Id: 592057918808064
+    m_Localized: Bram
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196672
+    m_Localized: Sora
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196673
+    m_Localized: Neri
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196674
+    m_Localized: Toma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196675
+    m_Localized: Lumi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196676
+    m_Localized: Gran
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196677
+    m_Localized: Not now
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196678
+    m_Localized: Next line
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196679
+    m_Localized: Back to the map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196680
+    m_Localized: Bram here. The storm broke our bridges. I can mend the wood if you
+      bring back the lights.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196681
+    m_Localized: I am Pip. Our mill has stopped. Without it, the village has no water.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196682
+    m_Localized: I am Rue. My lantern trees went dark. Even the birds cannot find
+      their nests.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196683
+    m_Localized: Sora, sky post! Well... ground post today. The wind scattered all
+      our letters.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196684
+    m_Localized: I am Neri. The pond lamps went out. My little boats cannot find
+      the shore.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196685
+    m_Localized: Toma. I keep the maps. The storm hid the road to the beacon between
+      these shelves.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196686
+    m_Localized: I am Lumi. I know the snow road. We will follow the warm lights
+      together.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196687
+    m_Localized: Mika! There you are. The beacon is dark, but I kept a little light
+      for you.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196688
+    m_Localized: I am Mika. I am taking a light to Gran at the Great Beacon. Let
+      us start here.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196689
+    m_Localized: We will get it turning. I would like to hear the water again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196690
+    m_Localized: Let us light one tree first. Then the birds can show us the way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196691
+    m_Localized: One of those letters is for Gran. Let us find it together.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196692
+    m_Localized: I can help with the lamps. I will stay close to the shore!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196693
+    m_Localized: We have come so far. Let us find the last part of the road.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196694
+    m_Localized: My paws are cold, but my lantern is still warm. Lead the way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196695
+    m_Localized: I kept mine too, Gran. Let us bring them home.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196696
+    m_Localized: Light the cloud market
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196697
+    m_Localized: Reach Pip's mill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196698
+    m_Localized: Start the mill wheel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196699
+    m_Localized: Fill the little wells
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196700
+    m_Localized: Reach Rue's orchard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196701
+    m_Localized: Light the lantern trees
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196702
+    m_Localized: Mend the branch bridge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196703
+    m_Localized: Open the orchard path
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196704
+    m_Localized: Light the seed house
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196705
+    m_Localized: Reach the sky post
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196706
+    m_Localized: Find the lost letters
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196707
+    m_Localized: Mend the mail bridge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196708
+    m_Localized: Reach the glass lagoon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196709
+    m_Localized: Wake the pond lamps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196710
+    m_Localized: Open the water gate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196711
+    m_Localized: Find Toma's archive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196712
+    m_Localized: The first bridge is lit. I can see my workshop again!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196713
+    m_Localized: And I can see the next step. That feels less scary.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196714
+    m_Localized: The wind gate is open. Hold your scarf, Mika.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196715
+    m_Localized: I am holding it! Now we can reach the sky lift.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057927196716
+    m_Localized: That lift has not moved since the storm. You did it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390976
+    m_Localized: We did it. Your new boards held me up.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390977
+    m_Localized: The market lamps are back. I missed the smell of warm bread.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390978
+    m_Localized: Let us save a loaf for Pip. He has been waiting.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390979
+    m_Localized: The road to the mill is safe. I will keep these bridges lit.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390980
+    m_Localized: Thank you, Bram. When the beacon shines, you will see it from here.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390981
+    m_Localized: Listen! The wheel is turning again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390982
+    m_Localized: It sounds like the village waking up.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390983
+    m_Localized: Water is on its way to every little house.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390984
+    m_Localized: Now nobody has to carry it all that way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390985
+    m_Localized: The wells are full. Even my smallest bucket can reach.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390986
+    m_Localized: Then your little brother can help too.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390987
+    m_Localized: The post boat floats again. There is a letter for your gran aboard.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390988
+    m_Localized: I will make sure it gets there.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390989
+    m_Localized: Rue is waiting beyond the orchard gate. Tell her the mill is all
+      right.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390990
+    m_Localized: I will. Keep a cup of tea for our way back!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390991
+    m_Localized: The lantern trees are glowing. Look, the birds found their nests.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390992
+    m_Localized: They are singing louder than my lantern can shine.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390993
+    m_Localized: The branch bridge is steady now. No more wobbling baskets.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390994
+    m_Localized: Good. I nearly dropped Gran's letter!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390995
+    m_Localized: The path is open. I can send jam to the village again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390996
+    m_Localized: Gran will ask for the recipe. She always does.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390997
+    m_Localized: The seeds are safe and warm. Soon there will be new trees.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390998
+    m_Localized: Little lights for the next travellers.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931390999
+    m_Localized: Follow that red scarf. Sora will take you to the sky post.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931391000
+    m_Localized: Another friend on the road. I like that.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931391001
+    m_Localized: The letters are all together. Not one left in a cloud!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931391002
+    m_Localized: That small one is Gran's. Please keep it dry.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931391003
+    m_Localized: Your letter is on its way. I put it in my safest bag.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931391004
+    m_Localized: Now she will know I am coming.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931391005
+    m_Localized: This bridge connects the whole post route again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931391006
+    m_Localized: So everyone can hear from their friends.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931391007
+    m_Localized: The basket is up! I should write a letter too. I just never know
+      how to start.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931391008
+    m_Localized: 'Try: I missed you. That is a good start.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931391009
+    m_Localized: Neri is waiting by the lagoon. She makes boats out of leaves.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931391010
+    m_Localized: I hope mine will have a very small sail.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057931391011
+    m_Localized: The pier is whole again. You can come closer, Mika.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057943973888
+    m_Localized: Only a little. Deep water still makes my paws shake.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057943973889
+    m_Localized: Our lamps have little twins in the water. See?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057943973890
+    m_Localized: Two lights from one. Gran would love this place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057948168192
+    m_Localized: The water gate is open. The little boats can go home.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057948168193
+    m_Localized: The beacon is still dark. I hope Gran can see my letter.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057948168194
+    m_Localized: Your pond light is steady. Even the fish have come to look.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057948168195
+    m_Localized: They look like tiny stars swimming.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057948168196
+    m_Localized: Toma keeps a map of the snow road. His archive is just ahead.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057948168197
+    m_Localized: Thank you, Neri. I will come back when the lamps are all lit.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057948168198
+    m_Localized: The leaf door is open. Please wipe your paws. The maps are old.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057948168199
+    m_Localized: I will be careful. We need just one road.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057948168200
+    m_Localized: The shelves are free. I can reach my favourite book again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057948168201
+    m_Localized: What is it about? I would like to read it with Gran.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057948168202
+    m_Localized: Here is the storm map. The snow road leads straight to the beacon.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057948168203
+    m_Localized: It looks far on paper. We will take it one step at a time.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057948168204
+    m_Localized: The page is dry. Your scarf saved the ink.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057948168205
+    m_Localized: Gran knitted it. I think she knew I would need it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057948168206
+    m_Localized: 'This note is from Gran: I am waiting. There is soup on the stove.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057948168207
+    m_Localized: Then we had better not let it get cold. Where is Lumi?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057948168208
+    m_Localized: The snow steps are bright. Stay close to me.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057952362496
+    m_Localized: I can follow them now, even in all this white.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057952362497
+    m_Localized: The shelter is warm again. We can rest our paws.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057952362498
+    m_Localized: Just a moment. I want to tell Gran about everyone we met.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057952362499
+    m_Localized: The frozen arch is behind us. You crossed it without looking down.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057952362500
+    m_Localized: I looked at your scarf instead. It helped.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057952362501
+    m_Localized: Pip's blanket is still dry. He told me to make sure you stayed warm.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057952362502
+    m_Localized: He remembered. I will bring it back with a thank-you note.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057952362503
+    m_Localized: There is the beacon road. You can see Gran's window from here.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057952362504
+    m_Localized: A light in her window! She really is waiting.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057952362505
+    m_Localized: The last bridge is lit. Come here, let me see you.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057952362506
+    m_Localized: I brought stories, Gran. More than I can fit in one letter.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057952362507
+    m_Localized: The lantern lift is ready. Who helped you get this far?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057952362508
+    m_Localized: Bram, Pip, Rue... so many friends. I wish they could see us.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057952362509
+    m_Localized: These stairs used to look so tall to you.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057952362510
+    m_Localized: They still do. But now I know how to keep going.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057952362511
+    m_Localized: The sky lantern is up. Your little light made it all the way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057952362512
+    m_Localized: I was scared sometimes. The others stayed with me.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057956556800
+    m_Localized: Look, Mika. The beacon is shining. Every island can see us now.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057956556801
+    m_Localized: Then let us wave to everyone. We made it home together.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057956556802
+    m_Localized: Your paws are shaking. We can take a breath before the next board.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057956556803
+    m_Localized: A breath, then a step. I can do that.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057956556804
+    m_Localized: That board held. My hammer and your patience make a good team.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057956556805
+    m_Localized: Your hammer is much louder than my patience.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057956556806
+    m_Localized: I used to rush the wheel. It only splashed me.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057956556807
+    m_Localized: Let us look before we move this time.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057960751104
+    m_Localized: Can you hear the mill from here?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057960751105
+    m_Localized: Yes. I like knowing it is still working.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057960751106
+    m_Localized: One branch at a time. That is how a tree grows.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057960751107
+    m_Localized: And one board at a time for us.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057960751108
+    m_Localized: I think a bird is following your lantern.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057960751109
+    m_Localized: It can come. There is room for one more friend.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057960751110
+    m_Localized: I can fly fast. Landing neatly is the hard part.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057960751111
+    m_Localized: Then we both have something to practise.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057960751112
+    m_Localized: 'This letter only says: Come for tea.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057960751113
+    m_Localized: That is plenty. I would go.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057960751114
+    m_Localized: The pond is quiet today. We can hear ourselves think.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057960751115
+    m_Localized: I am thinking about that next board.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057964945408
+    m_Localized: My smallest boat always takes the longest way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057964945409
+    m_Localized: Maybe it likes the view. I do too.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057964945410
+    m_Localized: We need the right order, just like books on a shelf.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057964945411
+    m_Localized: Then I will leave the silly book next to the scary one.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057964945412
+    m_Localized: I marked our place. We will not lose the road.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057964945413
+    m_Localized: Good. I sometimes forget how far we have come.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057964945414
+    m_Localized: The snow is deep, but this board is clear.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057964945415
+    m_Localized: One dry place for my paws. Thank you.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057964945416
+    m_Localized: My ears caught a breeze. We will wait until you are ready.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057964945417
+    m_Localized: Almost ready. I am checking the row.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057964945418
+    m_Localized: I used to count these steps with you.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057964945419
+    m_Localized: Now we can count the lights instead.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057964945420
+    m_Localized: No need to hurry, little one. I am right here.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057964945421
+    m_Localized: Then I will do this last part carefully.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 592057964945422
+    m_Localized: 'Our next job: {0}. Ready when you are.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 593227919908864
+    m_Localized: Let us do this together. Then we can carry on.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

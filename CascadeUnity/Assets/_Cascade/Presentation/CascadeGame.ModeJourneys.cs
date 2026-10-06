@@ -13,7 +13,7 @@ namespace Cascade.Presentation
     public sealed partial class CascadeGame
     {
         RectTransform journeyModeTabs;
-        public bool CanSwitchJourneyMode=>!saveBlocked&&!nativeAdSuspended&&previewAd==null&&!IsDescending&&!IsPlanningDescent
+        public bool CanSwitchJourneyMode=>!ConversationOpen&&!saveBlocked&&!nativeAdSuspended&&previewAd==null&&!IsDescending&&!IsPlanningDescent
             &&Interaction!=null&&!Interaction.IsPresenting&&(profile.Completion==null||profile.Completion.Acknowledged);
         void SwitchJourneyMode(PuzzleMode mode)
         {

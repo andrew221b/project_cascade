@@ -45,7 +45,7 @@ namespace Cascade.Presentation
                 if(restored!=null) {
                     MountAttempt(restored,profile.Descent);journeyActive=profile.JourneyAttempt;storyRoute=profile.StoryRoute??profile.JourneyAttempt;
                     selectedJourneyStop=Math.Max(0,Catalog.PrimaryLevels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==node));
-                    if(journeyActive&&descent==null){levelLabel.SetCopy(JourneyStory.Task(JourneyStory.PageFor(selectedJourneyStop)));levelLabel.fontSize=21;}
+                    if(journeyActive&&descent==null){levelLabel.SetCopy(StoryConversations.Task(selectedJourneyStop));levelLabel.fontSize=21;}
                 }
             }
             catch(Exception e) when(e is ArgumentException || e is InvalidDataException) {
