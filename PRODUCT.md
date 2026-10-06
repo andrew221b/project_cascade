@@ -46,7 +46,24 @@ visible. Long rows offer a larger held preview, target inspection, tap-then-tap
 and optional precision controls under Comfort. Precision controls are never
 forced by row length. Ambient movement must not obscure gameplay information.
 
-The implemented P14 journey gives the existing 40 lesson puzzles Mika's story,
+Development workflow: run phone builds or installations only after a separate
+explicit user request. Routine UI work uses available Editor inspection and
+scoped tests, with validation limits stated in its report.
+
+The current Home offers Start game, Shop, Settings and Remove ads. Start game
+opens a separate Story/Shapes/Words/Mixed choice. Story chooses existing primary
+and localized campaign bindings automatically after the first three shape
+lessons, keeping campaign order and an unfinished concrete attempt pinned.
+Its first entry shows a three-scene comic: Gran tends the Great Beacon, the
+storm leaves Mika with one light, and Mika sets out with Pip the frog and Rue
+the older fox to repair the way home and relight the beacon. Completing or
+skipping the opening records HeardStory entry 1000 in the existing local field;
+the opening can be replayed from the play choice. Shapes, Words and Mixed each
+open a numbered shelf filtered by that concrete mode and puzzle locale, with
+up to nine levels per page and swipe navigation. Map and shelf Back return to
+the play choice; Settings and help return to the screen that opened them.
+
+At the P14 checkpoint, the journey gave the existing 40 lesson puzzles Mika's story,
 a five-stop-page isometric map, optional dialogue and three original regional
 art kits: Wind Gardens, Rain Mill and Copper Orchard. P16 adds a durable local
 profile for preferences, preferred mode, heard dialogue, first-clear receipts
@@ -145,10 +162,21 @@ workshop menu presents six lessons with animated pickup demonstrations and a
 link to the retained Ribbon Reach trials. Map islands are the destinations:
 invisible hit targets replace numbered stop panels and path pebbles; available
 scenery remains colored, locked scenery is desaturated, and the current island
-has a localized You are here arrow with Mika.
+has a localized You are here arrow with a small Mika standing on its plaza.
+A separate invisible portrait target opens the current conversation. Map pages
+use swipes; islands, Mika and their targets share bounded view-only parallax
+from device gravity where available or desktop mouse input, with quiet ambient
+drift. Reduced Motion and suspension return this map offset to zero. The
+original MapSky raster covers the viewport; the island shader substitutes its
+painted blue sky with the same plate at screen coordinates. Map art retains its
+existing normalized placement rather than claiming pixel-perfect registration.
+The new MenuIcons, OpeningComic and MapSky rasters extend the painted Workshop
+world; existing WorkshopPortrait and gameplay control art remain in use.
 
 P19 provides disabled mock monetization service boundaries; it has no live ads,
-IAP provider, store UI or validated production receipts.
+IAP provider or validated production receipts. The current Shop opens earned
+Keepsakes, Workshop and My things. Remove ads states that ads are already off;
+these destinations add no purchase, price or entitlement.
 
 ## Evidence on Hand
 
@@ -254,6 +282,21 @@ final preview checks (2/2 PASS) and actual new build outcome: CASCADE-Devices.ap
 built successfully with0 errors /346 package/config warnings. CUA could not
 inspect its native window because the Mac is locked; standalone UI/performance
 remain unverified.
+
+Navigation evidence is in Reports/Navigation, Reports/NavigationSwipeFix and
+Reports/NavigationMapFix. The initial scoped PlayMode run passed 5/6 and the
+corrected swipe case passed 1/1, supplying passing evidence for six distinct
+cases without a later complete six-case or full-suite rerun. A further 1/1 pass
+expands the existing map case to click Mika's invisible margin, check quiet
+motion and preserve the puzzle hash; it is not a seventh distinct case.
+Localization checks passed 2/2. Sixteen native Editor PNGs cover the revised
+Home, mode choice, shelf, comic, shop, settings, ads-off view, dialogue and map.
+Four corrected map poses include compact/normal portrait, wide and an explicit
++6/+4 reference-unit shift. The correction verdict records SHIP for its two
+scored sky/target findings only. Simulated safe areas and Editor pixel bounds
+do not verify physical touch, gyro, OS behavior, accessibility, mobile FPS,
+native-language approval or human comprehension/enjoyment. Phone-build status
+belongs to the current report; older phase builds are not navigation validation.
 
 ## Product Principles
 

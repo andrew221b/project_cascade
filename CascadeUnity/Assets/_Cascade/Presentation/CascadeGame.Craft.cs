@@ -38,8 +38,7 @@ namespace Cascade.Presentation
             MenuNavRow("Workshop","BridgeLantern",1,ShowWorkshop);
             MenuNavRow("My journal","MoonPatch",2,ShowJournal,JourneyClearCount>=3);
             MenuNavRow("Power-ups","RibbonSpool",3,ShowPowerupChallenges);
-            MenuButton("Back to map",.025f,ShowJourney,true,.08f,.49f);
-            MenuButton("Settings",.025f,ShowSettings,false,.51f,.92f);
+            MenuButton("Back",.025f,ShowShop);
         }
         public void ShowPowerupChallenges(){reachPage=0;SetScreen(GameScreen.PowerupChallenges);}
         public void ShowReachChallenges(){reachPage=0;SetScreen(GameScreen.ReachChallenges);}

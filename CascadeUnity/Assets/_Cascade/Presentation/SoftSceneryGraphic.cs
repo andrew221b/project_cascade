@@ -8,12 +8,22 @@ namespace Cascade.Presentation
     {
         Sprite source;
         Material availability;
+        Texture2D sky;Camera viewportCamera;float previousAspect=-1;
         public void SetAvailability(Vector2[] points,int unlocked)
         {
             var shader=Resources.Load<Shader>("CascadeArt/MapAvailability");if(shader==null)return;
             availability=new Material(shader);material=availability;
             for(int i=0;i<5;i++)availability.SetVector("_Island"+i,new Vector4(points[i].x,points[i].y,0,0));
             availability.SetFloat("_Unlocked",unlocked);
+        }
+        public void SetSky(Texture2D texture,Camera camera)
+        {sky=texture;viewportCamera=camera;if(availability!=null&&sky!=null){availability.SetTexture("_SkyTex",sky);availability.SetFloat("_BlendSky",1);LateUpdate();}}
+        void LateUpdate()
+        {
+            if(availability==null||sky==null||viewportCamera==null||Mathf.Approximately(previousAspect,viewportCamera.aspect))return;
+            previousAspect=viewportCamera.aspect;float ratio=sky.width/(float)sky.height;
+            float width=Mathf.Max(1,ratio/previousAspect),height=Mathf.Max(1,previousAspect/ratio);
+            availability.SetVector("_SkyRect",new Vector4((1-width)*.5f,(1-height)*.5f,width,height));
         }
         protected override void OnDestroy(){if(availability!=null)Destroy(availability);base.OnDestroy();}
         public override Texture mainTexture=>source==null?base.mainTexture:source.texture;

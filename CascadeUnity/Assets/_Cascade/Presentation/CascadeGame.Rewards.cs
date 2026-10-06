@@ -14,6 +14,7 @@ namespace Cascade.Presentation
     {
         int giftPage,workshopPage,requestPage,recordPage,contractPage,parcelOrder;
         bool parcelOpened;
+        GameScreen collectionReturn=GameScreen.TravelBag,workshopReturn=GameScreen.TravelBag;
         LevelContent[] contracts;
         static readonly string[] GiftNames={"Leaf pin","Sun button","Sky ribbon","Moon patch"};
         static readonly string[] GiftAssets={"LeafPin","SunButton","SkyRibbon","MoonPatch"};
@@ -24,8 +25,8 @@ namespace Cascade.Presentation
         string[] OrderedNodes=>Catalog.PrimaryLevels.Select(c=>c.Definition.CampaignNodeId).ToArray();
         public void ShowTravelBag(){SetScreen(GameScreen.TravelBag);}
         public void ShowJournal(){SetScreen(GameScreen.Journal);}
-        public void ShowCollection(){giftPage=Math.Max(0,Array.IndexOf(JourneyRewards.Gifts,Rewards.SelectedGift));SetScreen(GameScreen.Collection);}
-        public void ShowWorkshop(){SetScreen(GameScreen.Workshop);}
+        public void ShowCollection(){collectionReturn=CurrentScreen==GameScreen.Shop?GameScreen.Shop:GameScreen.TravelBag;giftPage=Math.Max(0,Array.IndexOf(JourneyRewards.Gifts,Rewards.SelectedGift));SetScreen(GameScreen.Collection);}
+        public void ShowWorkshop(){workshopReturn=CurrentScreen==GameScreen.Shop?GameScreen.Shop:GameScreen.TravelBag;SetScreen(GameScreen.Workshop);}
         public void ShowRequests(){SetScreen(GameScreen.Requests);}
         public void ShowRecords(){recordPage=0;SetScreen(GameScreen.Records);}
         public void ShowContracts(){contractPage=0;SetScreen(GameScreen.Contracts);}
@@ -75,7 +76,7 @@ namespace Cascade.Presentation
             if(owned)MenuButton(Rewards.EquippedGift==id?"With Mika":"Take along",.14f,()=>{Rewards.Equip(id);PersistProgress();DrawMenu();},true).interactable=Rewards.EquippedGift!=id;
             else if(Rewards.EarnedFragments(id)>=3)MenuButton("Open parcel",.14f,ShowParcel,true);
             else MenuButton(Rewards.SelectedGift==id?"Next gift":"Choose this gift",.14f,()=>{Rewards.SelectGift(id);PersistProgress();DrawMenu();},true).interactable=Rewards.SelectedGift!=id;
-            MenuButton("Back",.025f,ShowTravelBag);
+            MenuButton("Back",.025f,()=>SetScreen(collectionReturn));
         }
         void DrawWorkshop()
         {
@@ -90,8 +91,7 @@ namespace Cascade.Presentation
             Text("Workshop progress",menuRoot,new Vector2(.10f,.282f),new Vector2(.90f,.35f),23,built?"Ready for the islands!":new UiCopy("Lights restored: {0} / 10",complete)).font=art.titleFont;
             WorkshopProgress(complete);
             Text("Workshop range",menuRoot,new Vector2(.10f,.211f),new Vector2(.90f,.255f),20,new UiCopy("From stop {0} to stop {1}",workshopPage*10+1,workshopPage*10+10));
-            MenuButton("Back to map",.10f,ShowJourney,true);
-            MenuButton("Travel bag",.01f,ShowTravelBag);
+            MenuButton("Back",.025f,()=>SetScreen(workshopReturn));
         }
         void DrawRequests()
         {

@@ -1,0 +1,1 @@
+14 native Editor matrix renders plus 2 retained map correction fixtures (compact and shifted); isolated profiles; simulated safe insets and wide map. Corrected map-ru/map-wide overwritten in place. No physical-device visual/gyro claim.

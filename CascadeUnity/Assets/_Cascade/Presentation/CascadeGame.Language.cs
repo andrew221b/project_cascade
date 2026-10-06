@@ -38,14 +38,10 @@ namespace Cascade.Presentation
         }
         void DrawWordLanguageConfirmation()
         {
-            MenuTitle("Change word language?","Word language · next puzzle");
-            menuPage.anchorMin=new Vector2(.045f,.265f);menuPage.anchorMax=new Vector2(.955f,.865f);
-            var binding=menuBinding;binding.anchorMin=new Vector2(.045f,.852f);binding.anchorMax=new Vector2(.955f,.867f);
-            var title=menuHeading.rectTransform;title.anchorMin=new Vector2(.10f,.74f);title.anchorMax=new Vector2(.90f,.838f);menuHeading.fontSize=28*(Preferences.LargeText?1.12f:1);
-            var description=menuDescription.rectTransform;description.anchorMin=new Vector2(.10f,.66f);description.anchorMax=new Vector2(.90f,.735f);
-            Text("Language confirmation",menuRoot,new Vector2(.10f,.51f),new Vector2(.90f,.65f),22,new UiCopy("New puzzles: {0}. This row stays the same.",NativeLanguageName(proposedPuzzleLocale)));
-            MenuButton("Use for new puzzles",.425f,ConfirmPuzzleLocale,true);
-            MenuButton("Keep my choice",.31f,()=>{proposedPuzzleLocale=null;languagePreview=null;SetScreen(GameScreen.Settings);});
+            NavigationHeader("Change word language?",()=>{proposedPuzzleLocale=null;languagePreview=null;SetScreen(GameScreen.Settings);});
+            NavigationNote("Language confirmation",new UiCopy("New puzzles: {0}. This row stays the same.",NativeLanguageName(proposedPuzzleLocale)),.48f,.72f);
+            NavigationButton("Usefornewpuzzles","Use for new puzzles",6,.31f,ConfirmPuzzleLocale,true);
+            NavigationButton("Keepmychoice","Keep my choice",6,.19f,()=>{proposedPuzzleLocale=null;languagePreview=null;SetScreen(GameScreen.Settings);});
         }
         void DrawLanguages()
         {

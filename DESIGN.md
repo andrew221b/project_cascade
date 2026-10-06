@@ -2,6 +2,7 @@
 name: CASCADE — Sky Wind Workshop
 description: A small keeper carries light through a living sky of tactile puzzle machines.
 colors:
+  navigation-cream: "rgb(100% 97% 84%)"
   menu-ink: "rgb(5.5% 16% 17%)"
   menu-paper: "rgb(99% 98% 92%)"
   menu-sage: "rgb(84% 91% 87%)"
@@ -41,6 +42,18 @@ colors:
   wood-chip-dark: "rgb(64% 32% 12%)"
   wood-chip-light: "rgb(89% 60% 28%)"
 typography:
+  navigation-heading:
+    fontFamily: "Balsamiq Sans"
+    fontSize: "29px"
+    fontWeight: 700
+  navigation-action:
+    fontFamily: "Balsamiq Sans"
+    fontSize: "24px"
+    fontWeight: 700
+  navigation-detail:
+    fontFamily: "Balsamiq Sans"
+    fontSize: "17px"
+    fontWeight: 400
   menu-body:
     fontFamily: "Balsamiq Sans"
     fontSize: "20px"
@@ -114,6 +127,25 @@ spacing:
   control-band-gap: "8px"
   setting-label-inset: "16px"
 components:
+  navigation-primary:
+    textColor: "{colors.menu-ink}"
+    typography: "{typography.navigation-action}"
+    padding: "1px 7px 1px 4px"
+    width: "84%"
+  navigation-secondary:
+    textColor: "{colors.navigation-cream}"
+    typography: "{typography.navigation-action}"
+    padding: "1px 7px 1px 4px"
+    width: "84%"
+  level-plaque:
+    textColor: "{colors.menu-ink}"
+    padding: "0px"
+  map-island-target:
+    width: "76px"
+    height: "72px"
+  map-portrait-target:
+    width: "64px"
+    height: "80px"
   button-secondary:
     backgroundColor: "{colors.ui-paper}"
     textColor: "{colors.ui-ink}"
@@ -282,6 +314,24 @@ identity stay intact. Current native captures and validation status belong to
 `Reports/Devices` and `Reports/DevicesRegression`; the pending final confirmation
 must not inherit the earlier Craft review or build verdict.
 
+The navigation extension follows `Docs/NAVIGATION_REWORK.md` and the implemented
+`CascadeGame.Navigation.cs`, `.Flow.cs`, `.Journey.cs`, `MapParallax.cs`,
+`MenuSwipe.cs`, `LayeredWorld.cs`, `SoftSceneryGraphic.cs` and
+`MapAvailability.shader`. It keeps WorkshopPortrait, Balsamiq and the painted
+wood/brass/enamel world while replacing the former Home-as-map/menu folio flow.
+Original MenuIcons, OpeningComic and MapSky rasters support the four-action
+Home, separate play choice, three-scene opening and continuous map sky. Source
+colors remain normative; the cream navigation caption is live TMP ink, not a
+measured enamel texture color. `Reports/Navigation/impeccable-verdict.md` records
+SHIP for the two scored sky/target corrections. Six distinct scoped PlayMode
+cases have passing evidence across the initial 5/6 and corrected swipe 1/1;
+the expanded map 1/1 repeats an existing case. Localization passed 2/2. Sixteen
+native Editor PNGs include four corrected map poses; the +6/+4 shifted pose is
+explicitly staged. Safe areas are simulated. These results do not establish a
+full-suite run, physical touch/gyro, mobile FPS, accessibility, native editorial
+approval, human comprehension/enjoyment or release readiness. Current build
+status belongs to the Navigation report.
+
 **Key Characteristics:**
 - Direct touch lifts a piece and its live glyph together; the receiver stays visible.
 - Six stable silhouettes and colors retain their identity across eight regions.
@@ -289,6 +339,7 @@ must not inherit the earlier Craft review or build verdict.
 - Mika, Pip and Rue connect short optional dialogue to a concrete destination.
 - Illustrated routes distinguish the current path from future-region browsing.
 - Separate clouds, rooted plants, a glider and regional weather give the sky restrained life.
+- The painted workshop surrounds illustrated enamel actions; Home, play choice and travel each have a clear role.
 
 ## Colors
 
@@ -316,6 +367,7 @@ Warm paper and brass anchor a mint, coral, lilac, yellow, sky and apricot toy pa
 - **Tile Ivory** carries glyph bodies, highlights and small machine insets; **Receiver Ivory** carries the receiving inset and guides.
 - **Warm Graphite** carries damage seams, timers, rollers and hinges. **Contact Shadow** grounds the toy locally.
 - **Switch On** and **Switch Off** accompany knob position and the labelled setting. Button hover, pressed and disabled tokens are Unity ColorBlock multipliers over each base fill.
+- **Navigation Cream** carries live captions and details on teal enamel navigation actions. Amber primary navigation keeps Menu Ink; button artwork supplies its painted surface.
 
 **The Shared Identity Rule.** Use the same silhouette and material for a SymbolId in the row, target, device contact and magnifier; glyph symbols use live text on ivory bodies.
 
@@ -326,7 +378,8 @@ Balsamiq Sans Regular and Bold provide the rounded hand-lettered voice. Text rem
 ### Hierarchy
 
 - **Menu title** introduces pause, guide and settings. **Region/speaker** names a map region or dialogue speaker.
-- **Level title** is the lesson header; **journey task** is the shorter destination line and map task. The Lessons logo is a separate Bold 42-unit mark.
+- **Navigation heading** names the separate play, shelf, comic and shop screens. Its 29-unit maximum fits down to 21; **navigation action** fits from 24 down to 18, with a 1.10 large-text maximum multiplier. **Navigation detail** fits from 17 down to 14. These local auto-size ranges leave the incumbent menu roles intact.
+- **Level title** is the lesson header; **journey task** is the shorter destination line and map task. The current Home CASCADE logo is a separate Bold 43-unit mark.
 - **Dialogue** uses larger Regular text with short sentences; **body** handles state and help; **button** handles actions. Map counts use **secondary** text; Skip story uses a Bold label at that size.
 - **Focus** names the symbol in optional precision controls. **Receiver label** belongs immediately above the cradle.
 - **Token glyph** and **target glyph** use Bold and stay centered on their mesh faces. Device glyphs use Bold at the same compensated size as **device** explanations.
@@ -337,7 +390,7 @@ Frontmatter `px` type values describe Unity reference-canvas units, not measured
 
 ## Layout
 
-The camera-space uGUI canvas uses a 390 × 844 reference resolution with height scaling and `Screen.safeArea`. Wide Editor views cap content at 430 reference units while the scenery fills the viewport. Mobile PlayerSettings enforce portrait; 844 × 390 landscape is a rejected diagnostic. Desktop 1440 × 900 remains the wide baseline; short desktop windows are unsupported. The machine stays in a portrait composition over a continuous viewport sky surface. WindGardenPanorama supplies the Wind Gardens scene and WorkshopRoom supplies the bag/workshop interior. Other regions keep their existing art. Scenery fitting preserves source aspect and extends its outer sky rather than stitching architectural strips. The final scoped review confirms the tablet map sky now feathers into the viewport without the previous hard boundary.
+The camera-space uGUI canvas uses a 390 × 844 reference resolution with height scaling and `Screen.safeArea`. Wide Editor views cap content at 430 reference units while the scenery fills the viewport. Mobile PlayerSettings enforce portrait; 844 × 390 landscape is a rejected diagnostic. Desktop 1440 × 900 remains the wide baseline; short desktop windows are unsupported. The machine stays in a portrait composition over a continuous viewport sky surface. WindGardenPanorama supplies the Wind Gardens scene and WorkshopRoom supplies the bag/workshop interior. Other regions keep their existing art. Navigation menus retain WorkshopPortrait on phones and WorkshopRoom in wide views. Navigation maps use the authored MapSky plate at viewport cover, with the central island artwork over it; the earlier Craft map feathering is historical evidence.
 
 ### Direct play
 
@@ -347,15 +400,45 @@ The complete receiver is 100 reference units high. Its bottom is normally 82 com
 
 Precision input is explicitly enabled in Comfort and is off by default, including on seven/eight-symbol rows. Its two rows use a 48/8/48 rhythm. Long rows instead retain stable hit regions and a lifted, enlarged held piece; no claim is made that eight narrow cells each meet a 48-pixel target. The receiver opens a full safe-area magnifier with four columns and up to two rows.
 
+### Home and play choice
+
+Home shows CASCADE, Mika on a small wooden bench and four separate illustrated
+actions: Start game, Shop, Settings and Remove ads. The complete painted
+workshop stays visible around them. The next screen offers Story, Shapes, Words
+and Mixed, each with one short live explanation; Opening story replays the
+comic. Navigation actions occupy 84% of safe content width, with the illustration
+beside left-aligned lettering. Amber enamel identifies the primary action;
+teal enamel carries cream alternatives. Reading copy sits on small ivory plates
+rather than a page-sized folio.
+
+Shapes, Words and Mixed show up to nine numbered enamel plaques on a swipeable
+shelf, a live page count and one Continue/Play level action. Their concrete-mode
+filter uses the existing catalog. A swipe cancels the child plaque's click and
+changes only the displayed page. Map and shelf use horizontal swipes and desktop
+wheel input, with clamped first/last pages; Back returns to the play choice.
+
 ### Journey and dialogue
 
-The map uses a tall illustrated five-stop route between a compact paper heading and a lower task panel. An invisible island hit target is 76 × 72 reference units; page controls are 64 × 44. The source image is stretched into its normalized map rectangle by the current uGUI implementation; this is not a cover-fit or pixel-perfect raster-registration guarantee. The current map reuses each of eight regional illustrations over its regional pages. There are 33 pages: usually five stops, with four on the final page of each new 24-stop region. Stop placement follows the painted plazas using region-specific anchors. Mika and the localized You are here arrow appear only on the actual next stop from local first-clear receipts, never on a locked future preview. The future footer gives distance and a return action.
+The map uses a tall illustrated five-stop route between a compact ivory heading
+with Goal: Great Beacon and a lower task/action panel. An invisible island target
+is 76 × 72 reference units. The source island image remains stretched into its
+normalized map rectangle; viewport cover applies to MapSky, not to that island
+image, and no pixel-perfect raster-registration guarantee follows. The current
+map reuses each of eight regional illustrations over 33 pages: usually five
+stops, with four on the final page of each new 24-stop region. Stop placement
+follows the painted plazas using region-specific anchors. Small Mika stands
+with her feet at the actual next island; a separate invisible 64 × 80 reference
+target opens its conversation, and a localized You are here arrow marks that
+same saved progress. None of these cues appear on a locked future preview. The
+future footer gives distance and a return action. The compact corrected render
+measures Mika's target at 52.5 × 65.7 pixels, with Story and Travel respectively
+53.7 and 56.9 pixels high; these are Editor bounds, not hardware pt/dp promises.
 
 Dialogue places a large transparent character above/behind a low paper frame. A thin brass line, Bold speaker name, short Regular sentence and separate Continue/Skip story actions provide hierarchy. Story entry explicitly selects the character's region. Dialogue blocks puzzle input.
 
 ### Travel bag and earned objects
 
-Map Menu opens the travel bag: Mika and a parcel share the upper bench, with
+Shop's My things action opens the travel bag: Mika and a parcel share the upper bench, with
 Keepsakes/Workshop and My journal/Power-ups arranged on two object shelves.
 The journal unlocks after three restored lights; Power-ups opens six optional
 pickup lessons with a live animated example, lesson selectors and a Try this
@@ -387,6 +470,17 @@ Committed exchanges use 190 ms cubic ease-out with asymmetric upward arcs. Conta
 
 Eight distinct far landscapes cover the viewport. Shared transparent clouds move at three speeds, lower-edge plants sway about their stems, and rain, snow or pollen occupy separate scenery layers by region. The incidental lower-right windwheel is hidden. Regional tints adapt cloud/plant layers. The whole rotated glider is bounded to the empty gap between feedback and the top floor; it hides during a held-token gesture and if no gap remains. All ambient motion is view-only. Explicit pause and suspension stop phase progression; Reduced Motion displays phase zero. Map and dialogue can keep their decorative clock running while puzzle input is paused. Quiet generated wind/rain beds follow Sound and explicit pause/suspension preferences; physical listening has not been verified.
 
+Map islands, hit targets, the current arrow and Mika share one translation.
+Gravity input is calibrated against its first sample where available; desktop
+mouse position supplies the fallback. A five-unit tilt contribution combines
+with ambient drift of at most 1.5 horizontal and 1.1 vertical reference units,
+smoothed with `1 − exp(−4 × unscaledDeltaTime)`. This bounds the target to 6.5
+horizontal and 6.1 vertical units. Separate map clouds drift at another depth.
+Reduced Motion and suspension set the shared offset to zero. The viewport sky
+remains continuous around the moved islands, with gameplay scenery layers
+hidden while MapSky is active. Motion and sensor lifecycle cannot advance a
+puzzle or alter travel availability; physical gyro quality is unverified.
+
 **The Clear Flight Rule.** Decorative motion must fit wholly outside the row, receiver and feedback; a lower render layer alone is not sufficient separation.
 
 ## Shapes
@@ -394,6 +488,11 @@ Eight distinct far landscapes cover the viewport. Shared transparent clouds move
 Six original soft silhouettes form the row: rounded triangle, circle, square, diamond, star and hexagon. Letter tiles reuse the rounded square. The square/tile contour is one mesh unit wide with a 0.18-unit corner radius; the 6 × 1 beam has a 0.3-unit radius. Disks form mounts, caps and hinges. Mesh coordinates are not UI pixels.
 
 Panels and buttons reuse the 64 × 64 nine-slice raster. The frontmatter `panel-source` token describes its 13-source-pixel corner construction with 22-pixel slice borders, not a universal runtime radius. Pause bars and precision chevrons use authored geometry. Mika, Pip, Rue, clouds, plants and glider use original raster cutouts with native alpha; preserve painted edges and transparent gaps rather than replacing them with vector approximations or runtime masks.
+
+Navigation icons use an original eight-picture atlas; the opening uses three
+original square scenes from its own atlas. Both are sliced at runtime without
+altering their source pixels. MapSky is a separate full painted plate; existing
+island and WorkshopPortrait art retain their asset and meta identities.
 
 ## Components
 
@@ -415,18 +514,39 @@ The eleven device-guide demonstrations read precomputed transitions from the sam
 
 ### Map route
 
-The isometric islands themselves express travel. Invisible plaza-aligned buttons retain stop identities; they have no numbered captions, filled cards, shadows or added path pebbles. Locked buttons reject travel. A dedicated map material desaturates scenery assigned to locked destinations while retaining colored available scenery and the blue sky. Its nearest-island/color mask is shader-based, not separately authored island cutouts. The actual next stop has one localized You are here arrow and Mika, both with restrained view-only motion.
+The isometric islands themselves express travel. Invisible plaza-aligned buttons
+retain stop identities; they have no numbered captions, filled cards, shadows
+or added path pebbles. Locked buttons reject travel. The dedicated map material
+desaturates scenery assigned to locked destinations while retaining available
+color. Its nearest-island/color mask is shader-based, not separately authored
+island cutouts. Painted blue sky is substituted with the same viewport MapSky
+plate at screen coordinates, leaving island contours and original cloud
+brushwork in the authored map. Small Mika, her independent conversation target
+and the localized You are here arrow share the island world's motion.
 
-Restored count and unlocked stop come from the 160-node catalog and durable local first-clear receipts, deduplicated across modes and locales. The gold action says Let's go, Continue or Play again where available; future pages explain remaining stops and offer Back to my path. Lessons retains the level/mode browser. Eight regional kits span 33 pages. Clouds and rain/snow retain separate live UI layers. The earlier saved stamp-seal overlay is absent from the current map; saved stamp-goal records and the ten late optional detours remain part of progression.
+Unlocked stops come from the 160-node catalog and durable local first-clear
+receipts, deduplicated across modes and locales. The amber action says Go to
+level N or Continue where available; future pages explain remaining stops and
+offer Back to my path. Talk to the current friend opens its dialogue. Story
+chooses the existing campaign bindings automatically; Shapes/Words/Mixed use
+their separate filtered shelf. Eight regional kits span 33 map pages. Clouds
+and rain/snow retain separate live UI layers. The earlier saved stamp-seal
+overlay is absent; saved stamp-goal records and the ten late optional detours
+remain part of progression.
 
-Map paging uses the same native `DirectionButton` and `ChevronGraphic` as
-precision focus controls. A dark authored left/right chevron replaces the
-caption inside the paper target; its graphic does not intercept input. The
-`Earlier`/`Later` button identities and existing handlers remain, with the
-map's 64 × 44 reference-unit geometry. This local size override does not change
-the shared direction-button token or introduce a new visual primitive.
+Map pages turn through the shared scene's swipe/wheel handler; no Earlier/Later
+page controls are shown. Its header Back chevron returns to the separate play
+choice. The native `DirectionButton`/`ChevronGraphic` remains the incumbent
+primitive for Back and for controls on other surfaces.
 
 ### Dialogue and results
+
+Story's opening is a three-page illustrated comic: Gran and the beacon before
+the storm, the destructive storm and saved light, then Mika's promise with Pip
+the frog and Rue the older fox. The square scene, separate live text, 1/3 count,
+Continue/To the map and Skip story make its order explicit. Completing or
+skipping records HeardStory 1000 in the existing field; Opening story permits
+replay. Its controls do not change the pinned puzzle.
 
 The paper-and-brass frame names one speaker and gives one short idea at a time. Continue and Skip story lead to the concrete pending puzzle or return to the map. Heard dialogue persists in the local profile. Mika accompanies a successful delivery; win/fail actions preserve free Undo and Retry. A first-clear receipt is recorded from the committed win before animation; Undo does not erase it. The machine remains the visual evidence of the result.
 
@@ -472,6 +592,7 @@ Comfort enables large previous/next focus controls and left/right exchanges with
 - **Do** preserve the complete target and the direct-touch default.
 - **Do** keep precision controls an explicit Comfort preference.
 - **Do** bind the map marker to actual local first-clear receipts and label future previews honestly.
+- **Do** move map islands, their invisible targets and the small standing Mika together, retaining the separate broad conversation target.
 - **Do** select the story's region before showing its character and dialogue.
 - **Do** bound ambient art outside gameplay information and freeze its phase while paused or suspended.
 - **Do** inspect native 390 × 844, 320 × 693 and wide Editor captures after layout changes.
@@ -512,6 +633,10 @@ Wood bow grows from about .10 to .27 world units with wear and relaxes after rep
 
 
 ## Menu folio — 6 October 2026
+
+Historical checkpoint: the current Home, play choice, comic, shelf and map
+guidance above supersedes this checkpoint's one-sheet folio composition. Its
+language/settings, earned-object and reaction refinements remain where implemented.
 
 This supersedes the fragmented menu cloth cards described above. The user rejected their empty space, weak hierarchy, awkward buttons and merged text. The menu mode is Operate inside the existing Sky Wind Workshop world: a single quiet ivory folio, shared left alignment, warm timber binding, large character/object artwork and direct sage navigation. Shelf thumbnails reserve their area for the actual object, with gold and a check for selection. Workshop progress is a filled green rail alongside an explicit count. Footer actions have fixed physical baselines at 16 and 80 pixels, 52-pixel height and a 12-pixel gap. Menu short actions do not wrap. Primary captions are 22 reference units, compact captions 20; body copy starts at 20, with a real two-line subtitle area. Balsamiq, the game palette and the illustrated workshop remain.
 

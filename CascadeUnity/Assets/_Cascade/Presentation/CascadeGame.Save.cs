@@ -44,7 +44,7 @@ namespace Cascade.Presentation
                     legacyContent=ContentImporter.ImportLegacyDurability(Catalog,Source("campaign_extension"),Source("campaign_durability_v1"));
                 var restored=profile.RestoreAttempt(Catalog,legacyContent);
                 if(restored!=null) {
-                    MountAttempt(restored,profile.Descent);journeyActive=profile.JourneyAttempt;
+                    MountAttempt(restored,profile.Descent);journeyActive=profile.JourneyAttempt;storyRoute=profile.JourneyAttempt;
                     selectedJourneyStop=Math.Max(0,Catalog.PrimaryLevels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==node));
                     if(journeyActive&&descent==null){levelLabel.SetCopy(JourneyStory.Task(JourneyStory.PageFor(selectedJourneyStop)));levelLabel.fontSize=21;}
                 }

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-05T14:09:12.175266+00:00",
+  "generatedAt": "2026-10-06T08:59:02.152639+00:00",
   "title": "Design System: CASCADE",
   "extensions": {
     "colorMeta": {
@@ -535,6 +535,21 @@
           "oklch(0.836 0.07667 176.24)",
           "oklch(0.950 0.07667 176.24)"
         ]
+      },
+      "navigation-cream": {
+        "role": "neutral",
+        "displayName": "Navigation Cream",
+        "canonical": "rgb(100% 97% 84%)",
+        "tonalRamp": [
+          "oklch(0.150 0.04385 96.38)",
+          "oklch(0.264 0.04385 96.38)",
+          "oklch(0.379 0.04385 96.38)",
+          "oklch(0.493 0.04385 96.38)",
+          "oklch(0.607 0.04385 96.38)",
+          "oklch(0.721 0.04385 96.38)",
+          "oklch(0.836 0.04385 96.38)",
+          "oklch(0.950 0.04385 96.38)"
+        ]
       }
     },
     "typographyMeta": {
@@ -601,6 +616,18 @@
       "menu-compact-action": {
         "displayName": "Compact Menu Action",
         "purpose": "20-unit Bold compact actions and direct settings tabs."
+      },
+      "navigation-heading": {
+        "displayName": "Navigation Heading",
+        "purpose": "29-unit Bold maximum, 21 minimum; local auto-size range for play choice, shelf, comic and shop headings."
+      },
+      "navigation-action": {
+        "displayName": "Navigation Action",
+        "purpose": "24-unit Bold maximum, 18 minimum; large text raises the maximum by 1.10. Left-aligned beside authored action art."
+      },
+      "navigation-detail": {
+        "displayName": "Navigation Detail",
+        "purpose": "17-unit Regular maximum, 14 minimum; one short live explanation below a play-choice action."
       }
     },
     "shadows": [
@@ -685,6 +712,11 @@
         "name": "regional-weather",
         "value": "native separate rain/snow/pollen meshes and map UI; presentation-clock phase",
         "purpose": "Eight original regional backgrounds; live layer movement follows explicit pause/suspension and Reduced Motion. No gameplay-state authority."
+      },
+      {
+        "name": "map-parallax",
+        "value": "tilt * 5 + (sin(phase * .12) * 1.5, sin(phase * .17) * 1.1); lerp by 1 - exp(-4 * unscaledDeltaTime)",
+        "purpose": "One shared transform carries island art, invisible stop/conversation targets, current arrow and small standing Mika. Calibrated GravitySensor input where available, desktop mouse fallback and ambient drift; bounded target <=6.5 horizontal /6.1 vertical reference units. Reduced Motion or suspension sets zero offset. Separate map clouds drift at another depth. Presentation only; physical gyro quality unverified."
       }
     ],
     "breakpoints": [
@@ -743,6 +775,34 @@
       "light": "Actual URP clear coat, deforming shadow-receiving timber top, alpha cutout wood/fragment masks, cylindrical live rope light; illustrated UI/backdrop retained",
       "layout": "Old receiver children inactive immediately before deferred destruction",
       "validation": "Reports/PhysicalPresentation;9 distinct scenarios passed across focused runs, including3/3 lifecycle retest after unload/cancel cleanup fixes; native mobile pipeline sample; real devices/performance/full suite not run"
+    },
+    "navigation20261006": {
+      "authority": "Docs/NAVIGATION_REWORK.md; scoped merge preserving the Sky Wind Workshop",
+      "home": [
+        "Start game",
+        "Shop",
+        "Settings",
+        "Remove ads"
+      ],
+      "playChoice": [
+        "Story (automatic existing campaign bindings)",
+        "Shapes",
+        "Words",
+        "Mixed"
+      ],
+      "story": "Three square comic scenes: Gran and the Great Beacon; storm and saved last light; Mika, Pip the frog and Rue the older fox promise to repair the way home. Finish/skip records HeardStory 1000 in the existing validated field. Opening story replays it; the concrete attempt stays pinned.",
+      "soloShelf": "Up to nine existing numbered enamel plaques per page, exact concrete-mode/puzzle-locale filter, completed check, page count and Continue/Play level action. Horizontal drag cancels child clicks; shared MenuSwipe also accepts desktop wheel input. First/last pages clamp.",
+      "navigationAction": "Original sliced amber/teal enamel artwork, 84% safe-content width; 8.5% safe-content height or 11.8% with explanation. Caption insets top 1/right 7/bottom 1/left 4 reference units within the label rect. Amber uses Menu Ink; teal uses Navigation Cream. Painted workshop remains visible between controls.",
+      "back": "Map and shelf return to play choice; choice returns Home. Shop collection/workshop and My things return Shop. Settings/help retain their opener. Earlier/Later page controls are absent from map and solo shelf.",
+      "map": "Eight regional island illustrations, 160 stops over 33 pages; island artwork keeps normalized stretch placement and plaza anchors. Invisible island targets 76 × 72 reference units. Small Mika feet meet the actual next island and use a separate invisible 64 × 80 conversation target. Goal: Great Beacon, next task and Go to level/Continue/Talk to friend are separate live copy.",
+      "mapSky": "Original MapSky covers the viewport at source aspect. MapAvailability substitutes painted blue sky with the same plate at screen coordinates, preserving island contours, original cloud brushwork and nearest-island locked desaturation. Gameplay clouds/foliage/glider/weather hide while map sky is active; separate map UI atmosphere remains.",
+      "assets": [
+        "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Navigation/MenuIcons.png",
+        "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Navigation/OpeningComic.png",
+        "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Navigation/MapSky.png"
+      ],
+      "shop": "Keepsakes, Workshop and My things reuse earned local objects. Remove ads states ads are already off. No price, purchase, package, entitlement, gameplay-rule or save-schema change.",
+      "evidence": "Reports/Navigation/impeccable-verdict.md: SHIP for scored F1 sky/F2 conversation targets only. 16 native Editor PNGs include 4 corrected map poses; shifted pose is explicit +6/+4, not hardware tilt. Initial 5/6 plus swipe 1/1 supplies 6 distinct passing scoped PlayMode cases. Expanded map 1/1 repeats an existing case; localization 2/2. Compact 320 × 693 target 52.5 × 65.7 pixels, Story 53.7 and Travel 56.9 high; normal 390 × 844 target 64 × 80. No full-suite, physical-device, gyro/FPS, accessibility, native editorial, comprehension/enjoyment or release certification. Current phone-build outcome belongs to report."
     }
   },
   "components": [
@@ -758,7 +818,7 @@
       "name": "Utility and menu action",
       "kind": "button",
       "refersTo": "button-secondary",
-      "description": "Gameplay utility buttons retain their own compensated band. Menus use 52-pixel sage/gold actions, deep teal ink, 8/3-unit text padding, fixed footer baselines and no short-caption wrapping. No HTML/CSS preview; native Unity evidence is in Reports/MenuReset.",
+      "description": "Gameplay utility buttons retain their own compensated band. Incumbent menu controls retain 52-pixel sage/gold actions, deep teal ink, 8/3-unit text padding and fixed footer baselines where used. The current Home/play/shelf/shop extension uses the separate illustrated amber/teal enamel navigation variants. No HTML/CSS preview; Reports/MenuReset is the earlier checkpoint and Reports/Navigation records current navigation.",
       "html": "",
       "css": ""
     },
@@ -797,8 +857,8 @@
     {
       "name": "Journey route and stop",
       "kind": "nav",
-      "refersTo": "map-stop",
-      "description": "Native uGUI over eight original regional art kits and 33 pages for 160 nodes. Invisible 76 × 72 plaza-aligned hit targets replace numbered stop cards and path pebbles. MapAvailability desaturates locked scenery while preserving available color and sky; localized You are here arrow and Mika mark actual current progress. Paging uses 64 × 44 controls. The historical map-stop token is retained, not the current visual treatment. Native-only; HTML/CSS preview intentionally absent.",
+      "refersTo": "map-island-target",
+      "description": "Native uGUI over eight regional art kits and 33 pages for 160 nodes. Invisible 76 × 72 plaza targets select islands; small standing Mika has an independent 64 × 80 conversation target. MapSky covers the viewport and MapAvailability samples the same sky at screen coordinates while desaturating locked island scenery. Localized You are here marks actual saved progress. Shared art/target parallax and swipe/wheel paging replace page-arrow controls. Legacy map-stop fills remain historical tokens. Native-only; evidence in Reports/Navigation.",
       "html": "",
       "css": ""
     },
@@ -833,11 +893,43 @@
       "description": "One native language name and two broad chevrons in a 64-pixel row. UI changes immediately; word browsing needs separate confirmation and preserves the current attempt. Native Unity, no HTML/CSS preview.",
       "html": "",
       "css": ""
+    },
+    {
+      "name": "Illustrated primary navigation action",
+      "kind": "button",
+      "description": "Native sliced amber enamel with dark live Balsamiq lettering and an original action picture. Start game, Story and the next level use this variant; source artwork supplies painted depth. Local auto-size and safe-content geometry are documented in navigation20261006. No HTML/CSS counterpart.",
+      "html": "",
+      "css": "",
+      "refersTo": "navigation-primary"
+    },
+    {
+      "name": "Illustrated secondary navigation action",
+      "kind": "button",
+      "description": "Native sliced teal enamel, cream live caption/detail and original action picture. Home destinations and concrete play choices preserve the complete painted WorkshopPortrait around individual buttons. No HTML/CSS counterpart.",
+      "html": "",
+      "css": "",
+      "refersTo": "navigation-secondary"
+    },
+    {
+      "name": "Numbered level shelf",
+      "kind": "nav",
+      "description": "Native shelf of up to nine numbered enamel plaques with completed checks, page count and one Continue/Play level action. It filters existing concrete modes/locales. Horizontal swipe cancels a plaque click before turning the page; desktop wheel also pages. No Earlier/Later controls or gameplay grid. No HTML/CSS counterpart.",
+      "html": "",
+      "css": "",
+      "refersTo": "level-plaque"
+    },
+    {
+      "name": "Opening comic",
+      "kind": "card",
+      "description": "Three original square scenes on an ivory frame, separate live story text and 1/3 count. Gran and the beacon lead through the storm to Mika/Pip/Rue and the last-light goal. Continue/To the map, Skip story and replay preserve the pinned puzzle; finish/skip saves HeardStory 1000 in the existing field. No HTML/CSS counterpart.",
+      "html": "",
+      "css": "",
+      "refersTo": "paper-panel"
     }
   ],
   "narrative": {
     "northStar": "The Sky Wind Workshop",
-    "overview": "**Creative North Star: \"The Sky Wind Workshop\"**\n\nA small keeper carries light through floating islands and wind-powered toy machines. Painted honey wood, braided hemp, warm brass, ivory letter tiles and six colored silhouettes make the puzzle tangible. Mika's patched overalls, saffron scarf and lantern connect the mechanism to a warm, imperfect character. Painted regional skies and isometric routes give each delivery a place and a neighbour.\n\nReal beveled meshes, an orthographic view, live lettering and separate illustrated scenery share the same bright storybook world. The hand touches the row directly; quiet controls leave room for the machine and its complete gold destination. Paper panels support short dialogue and navigation. This is the author-delegated, code-led extension of the established world; no approved composite image exists for pixel-perfect fidelity claims.\n\nThis record merges the implemented P14 journey revision into the P12/P13 system. Sources are `CascadeGame.cs`, `.Flow.cs`, `.Journey.cs`, `.Touch.cs`, `TokenSlot.cs`, `ToyMachineView.cs`, `LayeredWorld.cs`, `JourneyStory.cs`, `ToyAssetBuilder.cs` and `MotionProfile.asset`. `Docs/JOURNEY_SURFACE_BRIEF.md` owns the surface contract; `Docs/P14_FLOW.md` owns implementation scope and validation limits. Native captures and review live in `Reports/Journey`. `Docs/JOURNEY_ASSET_PROVENANCE.md` records the 12 original regional/character rasters; earlier mesh, font and audio provenance remains in the P12/P13 documents. The sidecar records native components and motion, with no fabricated HTML/CSS counterparts. Its synthesized tonal ramps are preview aids, not shipped palette additions.\n\nP16 extends these existing controls with durable local progress and recovery in `CascadeGame.Save.cs`, `Persistence/` and `Application/AttemptRecord.cs`. `Docs/P16_SAVE.md` owns the save contract; `Reports/P16` holds native recovery fixtures and test evidence. This extension adds no visual tokens or raster assets. Editor evidence does not verify physical-device power loss, OS kill, full player builds, native-language approval or human enjoyment.\n\nP17 extends the same paper, mint and brass surfaces with a travel bag, journal,\nrequests, workshop, keepsake collection, earned parcel and personal routes in\n`CascadeGame.Rewards.cs`. `JourneyRewards.cs`, `PlayerProfile.cs` and\n`CascadeGame.Save.cs` supply the local facts behind those views;\n`Docs/P17_META.md` owns their progression contract. Nine new transparent\nillustrations keep the incumbent painted material character; exact prompts and\nalpha/margin limitations are in `Docs/META_ASSET_PROVENANCE.md`. This ordinary\nextension adds no shared visual tokens. `Reports/P17/README.md` records 333/333\nEditMode, 46/47 full PlayMode and a corrected focused 1/1 navigation result,\nplus 44 inspected native frames, including three requested carousel views. The\nindependent verdict scores both listed findings resolved, disposition ship at P17 scope. The approved wooden workshop extension now follows the contracts in\n`Docs/VISUAL_MOTION_REWORK.md` and `Docs/WOODLAND_SURFACE_BRIEF.md`.\n\nP18 makes two narrow clarity corrections within this world: the stable `Hint`\nkey displays `Помощь`/`Поміч` in RU/UK, and map paging reuses the authored\ndirection chevron. `Docs/P18_INTEGRATION.md` owns this phase's contract;\n`Reports/P18/impeccable-review.md` records ship at this correction scope. Three\nfinal 320 × 693 native Editor frames confirm the corrected RU caption, RU guide\nand UK map against the existing system. The 3/3 focused tests and matching\n157-puzzle traces establish their stated behavior boundaries; the roughly\n100 ms whole-Editor frame observation is not a device performance pass.\nPhysical devices, final player build, child comprehension and human enjoyment\nremain unverified. This historical phase added no visual tokens or artwork. The current wood,\nmotion and world extension is recorded below.\n\nThe Woodland checkpoint uses `ToyMachineView.Woodland.cs`, `PuzzleEventPlayer.cs`,\n`CascadeGame.DeviceDemo.cs`, `WoodBoardGraphic.cs`, `WorldMotion.cs`,\n`WorldWeatherGraphic.cs`, `LayeredWorld.cs` and the expanded `JourneyStory.cs`.\nEight regional art kits now cover 160 stops over 33 pages; three original kits\nare retained and five original Base/Map pairs plus WoodBoard are documented in\n`Docs/WOODLAND_ASSET_PROVENANCE.md`. Source-piece trajectories and board springs\nare presentation effects over the unchanged deterministic rule core. Native\nstills and sampled motion live in `Reports/Woodland`; the 5/5 EditMode and\n16/16 focused PlayMode checkpoint predates the final guide/CanvasRenderer fix.\nThe final renderer correction passed 4/4 affected UI regressions in\n`Reports/WoodlandFix/playmode.xml` at 11:29:09–11:29:16 UTC; fresh native guide,\nmap and bag captures show wood/weather. Review/build were pending at that\nhistorical checkpoint; the Craft results below supersede those statuses. Physical iOS/Android, haptics, mobile performance,\nnon-reader understanding, native editorial, live Ads/IAP and human enjoyment\nremain NOT RUN. The service boundary is disabled mock code; online remains\ndesign-only. These Woodland results are historical checkpoints.\n\nThe Craft extension follows `Docs/CRAFT_REWORK.md`: `CascadeGame.Craft.cs`,\n`CascadeGame.Rewards.cs`, `ToyMachineView.Ropes.cs`, `ToyMachineView.Woodland.cs`,\n`PuzzleEventPlayer.cs` and `LayeredWorld.cs` implement object shelves, simultaneous\nselection, continuous ropes, visual weight and composed scenery. Six optional\nR01–R06 Ribbon Reach trials now use the shared deterministic resolver under\nrules2.1-longreach; C01–C160 retain rules2.0 and their content hashes. The original\nWorkshopRoom and WindGardenPanorama generated rasters and metadata are recorded\nin `Docs/AssetPrompts/Craft/provenance.json`, with exact prompts alongside them.\nThe palette, font, symbols and paper/wood/brass identity are preserved.\n`Reports/Craft/design-documentation.md` records source evidence and remaining\nvalidation limits. `Reports/Craft/impeccable-verdict.md` records ship for seven\nscored findings, including map edges and physical grounding; it does not approve\nthe entire product. `Reports/CraftFinal/playmode.xml` passed three affected\nregressions, a subset of the earlier seven. The Mac standalone build succeeded\nwith zero errors and 346 warnings. A locked-Mac C160 player sample at 1440 × 900\non M4 Pro measured median 16.703 ms / p95 17.520 ms over 240 frames after 90\nwarm-up frames. The invalid GC counter supplies no allocation evidence. This\nshort sample is neither verified foreground nor mobile performance. Native\nplayer visual confirmation is blocked by the locked Mac; physical devices,\nhuman enjoyment and release readiness remain unverified.\n\nThe device/map extension follows `Docs/DEVICES_REWORK.md` and the implemented\n`CascadeGame.Devices.cs`, `CascadeGame.DeviceDemo.cs`, `CascadeGame.Craft.cs`,\n`CascadeGame.Journey.cs` and `MapAvailability.shader`. Six original tool rasters\nretain generated pixels and provenance in `Docs/AssetPrompts/Devices`. Mounted\nmatching-piece sockets, explicit counters and an eleven-part guide replace the\ncoded beads and floating contact faces. The map uses the island artwork itself\nfor availability and current-location cues. Palette, typography and SymbolId\nidentity stay intact. Current native captures and validation status belong to\n`Reports/Devices` and `Reports/DevicesRegression`; the pending final confirmation\nmust not inherit the earlier Craft review or build verdict.",
+    "overview": "**Creative North Star: \"The Sky Wind Workshop\"**\n\nA small keeper carries light through floating islands and wind-powered toy machines. Painted honey wood, braided hemp, warm brass, ivory letter tiles and six colored silhouettes make the puzzle tangible. Mika's patched overalls, saffron scarf and lantern connect the mechanism to a warm, imperfect character. Painted regional skies and isometric routes give each delivery a place and a neighbour.\n\nReal beveled meshes, an orthographic view, live lettering and separate illustrated scenery share the same bright storybook world. The hand touches the row directly; quiet controls leave room for the machine and its complete gold destination. Paper panels support short dialogue and navigation. This is the author-delegated, code-led extension of the established world; no approved composite image exists for pixel-perfect fidelity claims.\n\nThis record merges the implemented P14 journey revision into the P12/P13 system. Sources are `CascadeGame.cs`, `.Flow.cs`, `.Journey.cs`, `.Touch.cs`, `TokenSlot.cs`, `ToyMachineView.cs`, `LayeredWorld.cs`, `JourneyStory.cs`, `ToyAssetBuilder.cs` and `MotionProfile.asset`. `Docs/JOURNEY_SURFACE_BRIEF.md` owns the surface contract; `Docs/P14_FLOW.md` owns implementation scope and validation limits. Native captures and review live in `Reports/Journey`. `Docs/JOURNEY_ASSET_PROVENANCE.md` records the 12 original regional/character rasters; earlier mesh, font and audio provenance remains in the P12/P13 documents. The sidecar records native components and motion, with no fabricated HTML/CSS counterparts. Its synthesized tonal ramps are preview aids, not shipped palette additions.\n\nP16 extends these existing controls with durable local progress and recovery in `CascadeGame.Save.cs`, `Persistence/` and `Application/AttemptRecord.cs`. `Docs/P16_SAVE.md` owns the save contract; `Reports/P16` holds native recovery fixtures and test evidence. This extension adds no visual tokens or raster assets. Editor evidence does not verify physical-device power loss, OS kill, full player builds, native-language approval or human enjoyment.\n\nP17 extends the same paper, mint and brass surfaces with a travel bag, journal,\nrequests, workshop, keepsake collection, earned parcel and personal routes in\n`CascadeGame.Rewards.cs`. `JourneyRewards.cs`, `PlayerProfile.cs` and\n`CascadeGame.Save.cs` supply the local facts behind those views;\n`Docs/P17_META.md` owns their progression contract. Nine new transparent\nillustrations keep the incumbent painted material character; exact prompts and\nalpha/margin limitations are in `Docs/META_ASSET_PROVENANCE.md`. This ordinary\nextension adds no shared visual tokens. `Reports/P17/README.md` records 333/333\nEditMode, 46/47 full PlayMode and a corrected focused 1/1 navigation result,\nplus 44 inspected native frames, including three requested carousel views. The\nindependent verdict scores both listed findings resolved, disposition ship at P17 scope. The approved wooden workshop extension now follows the contracts in\n`Docs/VISUAL_MOTION_REWORK.md` and `Docs/WOODLAND_SURFACE_BRIEF.md`.\n\nP18 makes two narrow clarity corrections within this world: the stable `Hint`\nkey displays `Помощь`/`Поміч` in RU/UK, and map paging reuses the authored\ndirection chevron. `Docs/P18_INTEGRATION.md` owns this phase's contract;\n`Reports/P18/impeccable-review.md` records ship at this correction scope. Three\nfinal 320 × 693 native Editor frames confirm the corrected RU caption, RU guide\nand UK map against the existing system. The 3/3 focused tests and matching\n157-puzzle traces establish their stated behavior boundaries; the roughly\n100 ms whole-Editor frame observation is not a device performance pass.\nPhysical devices, final player build, child comprehension and human enjoyment\nremain unverified. This historical phase added no visual tokens or artwork. The current wood,\nmotion and world extension is recorded below.\n\nThe Woodland checkpoint uses `ToyMachineView.Woodland.cs`, `PuzzleEventPlayer.cs`,\n`CascadeGame.DeviceDemo.cs`, `WoodBoardGraphic.cs`, `WorldMotion.cs`,\n`WorldWeatherGraphic.cs`, `LayeredWorld.cs` and the expanded `JourneyStory.cs`.\nEight regional art kits now cover 160 stops over 33 pages; three original kits\nare retained and five original Base/Map pairs plus WoodBoard are documented in\n`Docs/WOODLAND_ASSET_PROVENANCE.md`. Source-piece trajectories and board springs\nare presentation effects over the unchanged deterministic rule core. Native\nstills and sampled motion live in `Reports/Woodland`; the 5/5 EditMode and\n16/16 focused PlayMode checkpoint predates the final guide/CanvasRenderer fix.\nThe final renderer correction passed 4/4 affected UI regressions in\n`Reports/WoodlandFix/playmode.xml` at 11:29:09–11:29:16 UTC; fresh native guide,\nmap and bag captures show wood/weather. Review/build were pending at that\nhistorical checkpoint; the Craft results below supersede those statuses. Physical iOS/Android, haptics, mobile performance,\nnon-reader understanding, native editorial, live Ads/IAP and human enjoyment\nremain NOT RUN. The service boundary is disabled mock code; online remains\ndesign-only. These Woodland results are historical checkpoints.\n\nThe Craft extension follows `Docs/CRAFT_REWORK.md`: `CascadeGame.Craft.cs`,\n`CascadeGame.Rewards.cs`, `ToyMachineView.Ropes.cs`, `ToyMachineView.Woodland.cs`,\n`PuzzleEventPlayer.cs` and `LayeredWorld.cs` implement object shelves, simultaneous\nselection, continuous ropes, visual weight and composed scenery. Six optional\nR01–R06 Ribbon Reach trials now use the shared deterministic resolver under\nrules2.1-longreach; C01–C160 retain rules2.0 and their content hashes. The original\nWorkshopRoom and WindGardenPanorama generated rasters and metadata are recorded\nin `Docs/AssetPrompts/Craft/provenance.json`, with exact prompts alongside them.\nThe palette, font, symbols and paper/wood/brass identity are preserved.\n`Reports/Craft/design-documentation.md` records source evidence and remaining\nvalidation limits. `Reports/Craft/impeccable-verdict.md` records ship for seven\nscored findings, including map edges and physical grounding; it does not approve\nthe entire product. `Reports/CraftFinal/playmode.xml` passed three affected\nregressions, a subset of the earlier seven. The Mac standalone build succeeded\nwith zero errors and 346 warnings. A locked-Mac C160 player sample at 1440 × 900\non M4 Pro measured median 16.703 ms / p95 17.520 ms over 240 frames after 90\nwarm-up frames. The invalid GC counter supplies no allocation evidence. This\nshort sample is neither verified foreground nor mobile performance. Native\nplayer visual confirmation is blocked by the locked Mac; physical devices,\nhuman enjoyment and release readiness remain unverified.\n\nThe device/map extension follows `Docs/DEVICES_REWORK.md` and the implemented\n`CascadeGame.Devices.cs`, `CascadeGame.DeviceDemo.cs`, `CascadeGame.Craft.cs`,\n`CascadeGame.Journey.cs` and `MapAvailability.shader`. Six original tool rasters\nretain generated pixels and provenance in `Docs/AssetPrompts/Devices`. Mounted\nmatching-piece sockets, explicit counters and an eleven-part guide replace the\ncoded beads and floating contact faces. The map uses the island artwork itself\nfor availability and current-location cues. Palette, typography and SymbolId\nidentity stay intact. Current native captures and validation status belong to\n`Reports/Devices` and `Reports/DevicesRegression`; the pending final confirmation\nmust not inherit the earlier Craft review or build verdict.\n\nThe navigation extension follows `Docs/NAVIGATION_REWORK.md` and the implemented\n`CascadeGame.Navigation.cs`, `.Flow.cs`, `.Journey.cs`, `MapParallax.cs`,\n`MenuSwipe.cs`, `LayeredWorld.cs`, `SoftSceneryGraphic.cs` and\n`MapAvailability.shader`. It keeps WorkshopPortrait, Balsamiq and the painted\nwood/brass/enamel world while replacing the former Home-as-map/menu folio flow.\nOriginal MenuIcons, OpeningComic and MapSky rasters support the four-action\nHome, separate play choice, three-scene opening and continuous map sky. Source\ncolors remain normative; the cream navigation caption is live TMP ink, not a\nmeasured enamel texture color. `Reports/Navigation/impeccable-verdict.md` records\nSHIP for the two scored sky/target corrections. Six distinct scoped PlayMode\ncases have passing evidence across the initial 5/6 and corrected swipe 1/1;\nthe expanded map 1/1 repeats an existing case. Localization passed 2/2. Sixteen\nnative Editor PNGs include four corrected map poses; the +6/+4 shifted pose is\nexplicitly staged. Safe areas are simulated. These results do not establish a\nfull-suite run, physical touch/gyro, mobile FPS, accessibility, native editorial\napproval, human comprehension/enjoyment or release readiness. Current build\nstatus belongs to the Navigation report.",
     "keyCharacteristics": [
       "Direct touch lifts a piece and its live glyph together; the receiver stays visible.",
       "Six stable silhouettes and colors retain their identity across eight regions.",
@@ -845,7 +937,7 @@
       "Mika, Pip and Rue connect short optional dialogue to a concrete destination.",
       "Illustrated routes distinguish the current path from future-region browsing.",
       "Separate clouds, rooted plants, a glider and regional weather give the sky restrained life.",
-      "**Menu folio**: one calm ivory reading surface, left-aligned hierarchy, larger illustrated objects, direct tabs and native-name language carousels; clear footer navigation never covers puzzle previews."
+      "The painted workshop surrounds illustrated enamel actions; Home, play choice and travel each have a clear role."
     ],
     "rules": [
       {
@@ -880,6 +972,7 @@
       "**Do** preserve the complete target and the direct-touch default.",
       "**Do** keep precision controls an explicit Comfort preference.",
       "**Do** bind the map marker to saved first-clear campaign receipts and label future previews honestly.",
+      "**Do** move map islands, their invisible targets and the small standing Mika together, retaining the separate broad conversation target.",
       "**Do** select the story's region before showing its character and dialogue.",
       "**Do** bound ambient art outside gameplay information and freeze its phase while paused or suspended.",
       "**Do** inspect native 390 × 844, 320 × 693 and wide Editor captures after layout changes.",

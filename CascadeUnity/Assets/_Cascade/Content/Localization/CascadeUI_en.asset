@@ -207,7 +207,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 472899594
-    m_Localized: Map
+    m_Localized: Home
     m_Metadata:
       m_Items: []
   - m_Id: 472899595
@@ -1038,7 +1038,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 24216299626523
-    m_Localized: Keepsakes
+    m_Localized: Gifts
     m_Metadata:
       m_Items: []
   - m_Id: 24216299626524
@@ -1967,6 +1967,117 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 328126872674304
     m_Localized: "Wind is coming \u2014 left!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952026902528
+    m_Localized: Start game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096832
+    m_Localized: Shop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096833
+    m_Localized: Remove ads
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096834
+    m_Localized: Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096835
+    m_Localized: How would you like to play?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096836
+    m_Localized: Mika's journey. A little of everything.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096837
+    m_Localized: Just shapes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096838
+    m_Localized: Put the word in order.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096839
+    m_Localized: Shapes and letters.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096840
+    m_Localized: '{0} levels'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096841
+    m_Localized: Tap a number to play. Swipe for more levels.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096842
+    m_Localized: Page {0} of {1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096843
+    m_Localized: Play level {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096844
+    m_Localized: Go to level {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096845
+    m_Localized: Restore lights. Collect parts. Make a gift for Mika.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096846
+    m_Localized: My things
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096847
+    m_Localized: Ads are already off in this version. Enjoy the game.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096848
+    m_Localized: Opening story
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096849
+    m_Localized: Before the storm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096850
+    m_Localized: The last light
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096851
+    m_Localized: A way home
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096852
+    m_Localized: To the map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096853
+    m_Localized: Gran kept the Great Beacon burning. Its light showed everyone the
+      way home.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096854
+    m_Localized: Then the storm broke the bridges and put the beacon out. Mika saved
+      one little light.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096855
+    m_Localized: 'Mika: I''ll bring it home, Gran. We''ll mend the bridges, help
+      our friends and light the beacon again.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096856
+    m_Localized: 'Goal: Great Beacon'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371952031096857
+    m_Localized: Talk to {0}
     m_Metadata:
       m_Items: []
   references:

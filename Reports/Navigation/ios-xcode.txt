@@ -1,0 +1,6 @@
+Xcode Release build=SUCCEEDED
+Errors=0
+BundleIdentifier=com.vickand.cascade
+DisplayName=CASCADE
+TeamIdentifier=F8297DBPDU
+App=/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/CASCADE-iOS-DerivedData/Build/Products/Release-iphoneos/CascadeUnity.app

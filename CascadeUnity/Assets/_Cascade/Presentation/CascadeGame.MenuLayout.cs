@@ -8,20 +8,12 @@ namespace Cascade.Presentation
 {
     public sealed partial class CascadeGame
     {
-        RectTransform menuPage,menuBinding;
         TextMeshProUGUI menuHeading,menuDescription;
         sealed class MenuRow { public RectTransform rect;public float top,height,gap,offset;public int index; }
         sealed class MenuBottom { public RectTransform rect;public float bottom; }
         readonly List<MenuRow> menuRows=new List<MenuRow>();
         readonly List<MenuBottom> menuBottoms=new List<MenuBottom>();
         float MenuUnit=>1/Mathf.Min(1,menuRoot.GetComponentInParent<Canvas>().scaleFactor);
-        void BuildMenuPage()
-        {
-            menuPage=Rect("Workshop folio",menuRoot,new Vector2(.045f,.012f),new Vector2(.955f,.985f));
-            var page=Background(menuPage,MenuPaper,false);page.sprite=art.panel;page.type=Image.Type.Sliced;
-            // One continuous reading surface. Illustrated objects carry the warmth, not nested cards.
-            menuBinding=Rect("Folio's wooden binding",menuRoot,new Vector2(.045f,.976f),new Vector2(.955f,.988f));menuBinding.gameObject.AddComponent<WoodBoardGraphic>();
-        }
         void RegisterMenuRow(Button button,float top,int index,float height=56,float gap=8)
         {
             var rect=(RectTransform)button.transform;

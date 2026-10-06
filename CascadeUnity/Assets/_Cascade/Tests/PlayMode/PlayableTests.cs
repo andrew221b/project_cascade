@@ -444,7 +444,7 @@ namespace Cascade.Tests
                 }
                 Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));yield return ClickButton("Next");
             }
-            game.ShowJourney();yield return ClickButton("Later");yield return ClickButton("Later");yield return ClickButton("Later");
+            game.ShowJourney();game.TurnJourneyMap(1);yield return null;game.TurnJourneyMap(1);yield return null;game.TurnJourneyMap(1);yield return null;
             yield return null;Canvas.ForceUpdateCanvases();var weather=game.GetComponentsInChildren<WorldWeatherGraphic>();Assert.That(weather.Length,Is.EqualTo(1));
             Assert.That(weather[0].canvasRenderer,Is.Not.Null);Assert.That(weather[0].canvasRenderer.GetMesh().vertexCount,Is.GreaterThan(0));
             Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
@@ -950,7 +950,7 @@ namespace Cascade.Tests
         [UnityTest] public IEnumerator FutureMapIsAPreviewAndReturnRestoresTheActualWorld()
         {
             game.LoadNode("C22");var hash=game.Interaction.Attempt.CurrentStateHash;
-            game.ShowJourney();yield return ClickButton("Later");yield return ClickButton("Later");yield return ClickButton("Later");
+            game.ShowJourney();game.TurnJourneyMap(1);yield return null;game.TurnJourneyMap(1);yield return null;game.TurnJourneyMap(1);yield return null;
             Assert.That(game.Machine.LivingWorld.Zone,Is.EqualTo(1));
             Assert.That(game.GetComponentsInChildren<Transform>().Any(t=>t.name=="Mika on the path"),Is.False);
             var travel=game.GetComponentsInChildren<UnityEngine.UI.Button>().Single(b=>b.name=="Travel");
@@ -985,26 +985,63 @@ namespace Cascade.Tests
         }
         [UnityTest] public IEnumerator HomePauseAndSettingsPreserveAttemptAndFreezeCoaching()
         {
-            game.LoadNode("C02"); game.Coach.Advance(6,true);float idle=game.Coach.IdleSeconds;
-            string hash=game.Interaction.Attempt.CurrentStateHash;
+            game.LoadNode("C02");game.Coach.Advance(6,true);float idle=game.Coach.IdleSeconds;string hash=game.Interaction.Attempt.CurrentStateHash;
             game.ShowHome();yield return new WaitForSecondsRealtime(.08f);
             Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Home));Assert.That(game.Interaction.CanPlay,Is.False);
             Assert.That(game.Coach.IdleSeconds,Is.EqualTo(idle));
-            yield return ClickButton("Settings");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.TravelBag));
+            Assert.That(game.GetComponentsInChildren<UnityEngine.UI.Button>().Select(b=>b.name),Is.EquivalentTo(new[]{"Startgame","Shop","Settings","Removeads"}));
             yield return ClickButton("Settings");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Settings));
-            yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.TravelBag));
-            yield return ClickButton("Backtomap");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Home));
-            game.ShowGame();Assert.That(game.Interaction.CanPlay,Is.True);
-            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+            yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Home));
+            yield return ClickButton("Shop");yield return ClickButton("Keepsakes");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Collection));
+            yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Shop));
+            yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Home));
+            game.ShowGame();Assert.That(game.Interaction.CanPlay,Is.True);Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
         }
         [UnityTest] public IEnumerator HomeWordsChoiceStartsAnExistingPinnedBinding()
         {
-            game.ShowHome();yield return ClickButton("Lessons");yield return ClickButton("Words");yield return ClickButton("PlayWords·1");
+            game.ShowHome();yield return ClickButton("Startgame");yield return ClickButton("Words");yield return ClickButton("1");
             Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Playing));Assert.That(game.Interaction.Attempt.Mode,Is.EqualTo(PuzzleMode.Words));
             Assert.That(game.Interaction.Attempt.Current.Row.All(s=>s.Kind==SymbolKind.Glyph),Is.True);
             game.ShowLessons();yield return ClickButton("2");Assert.That(game.Interaction.Attempt.Level.CampaignNodeId,Is.EqualTo("C02"));
-            var before=game.Interaction.Attempt.Current;game.SelectMode(PuzzleMode.Shapes);
-            Assert.That(game.Interaction.Attempt.Current,Is.SameAs(before));
+            var before=game.Interaction.Attempt.Current;game.SelectMode(PuzzleMode.Shapes);Assert.That(game.Interaction.Attempt.Current,Is.SameAs(before));
+        }
+        [UnityTest] public IEnumerator StoryOpeningLeadsToMapAndKeepsPuzzleStateUntouched()
+        {
+            string hash=game.Interaction.Attempt.CurrentStateHash;game.ShowHome();yield return ClickButton("Startgame");yield return ClickButton("Storymode");
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Prologue));
+            for(int i=0;i<3;i++)yield return ClickButton("Continueopening");
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.JourneyMap));Assert.That(game.IsStoryRoute,Is.True);
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));Assert.That(game.JourneyClearCount,Is.Zero);
+            yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.PlayChoice));
+            yield return ClickButton("Storymode");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.JourneyMap));
+            yield return ClickButton("Story");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Dialogue));
+            yield return ClickButton("Skipstory");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.JourneyMap));
+        }
+        [UnityTest] public IEnumerator LevelShelfSwipeDoesNotClickAPuzzleAndAllModesAreExact()
+        {
+            game.ChooseSoloMode(PuzzleMode.Words);yield return null;var button=game.GetComponentsInChildren<UnityEngine.UI.Button>().Single(b=>b.name=="5");
+            var rect=(RectTransform)button.transform;Vector2 start=RectTransformUtility.WorldToScreenPoint(Camera.main,rect.TransformPoint(rect.rect.center));
+            yield return MouseFrame(start,true);yield return MouseFrame(start+Vector2.left*35,true);yield return MouseFrame(start+Vector2.left*110,true);yield return MouseFrame(start+Vector2.left*110,false);
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Lessons));Assert.That(game.LevelShelfPage,Is.EqualTo(1));Assert.That(game.Interaction.Attempt.RouteLength,Is.Zero);
+            yield return ClickButton("10");Assert.That(game.Interaction.Attempt.Mode,Is.EqualTo(PuzzleMode.Words));Assert.That(game.Interaction.Attempt.Level.CampaignNodeId,Is.EqualTo("C10"));
+            foreach(var mode in new[]{PuzzleMode.Shapes,PuzzleMode.Mixed}){
+                game.ChooseSoloMode(mode);yield return null;var pick=game.GetComponentsInChildren<UnityEngine.UI.Button>().First(b=>int.TryParse(b.name,out _));
+                yield return ClickButton(pick.name);Assert.That(game.Interaction.Attempt.Mode,Is.EqualTo(mode));
+            }
+        }
+        [UnityTest] public IEnumerator MapParallaxAndNoAdsNavigationNeverChangePuzzleState()
+        {
+            string hash=game.Interaction.Attempt.CurrentStateHash;game.ShowJourney();yield return null;
+            var world=game.GetComponentInChildren<MapParallax>();Assert.That(world,Is.Not.Null);
+            game.ReducedMotion=true;yield return null;Assert.That(world.Offset,Is.EqualTo(Vector2.zero));
+            var hero=game.GetComponentsInChildren<UnityEngine.UI.Button>().Single(b=>b.name=="TalktoMika");var hit=(RectTransform)hero.transform;
+            // Exercise the invisible margin, beyond the small portrait, through real input.
+            var margin=RectTransformUtility.WorldToScreenPoint(Camera.main,hit.TransformPoint(new Vector2(hit.rect.xMin+2,hit.rect.center.y)));
+            yield return MouseFrame(margin,true);yield return MouseFrame(margin,false);Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Dialogue));
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+            game.ShowHome();yield return ClickButton("Removeads");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.NoAds));
+            yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Home));
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));Assert.That(game.JourneyClearCount,Is.Zero);
         }
         [UnityTest] public IEnumerator OutcomeCeremoniesKeepControlsBackAndInterruptionSettlesBothResults()
         {

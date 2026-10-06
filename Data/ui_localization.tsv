@@ -46,7 +46,7 @@ Haptics	Vibration	Вибрация	Вібрація
 High contrast	High contrast	Ярче текст	Чіткіший текст
 Hint	Hint	Помощь	Поміч
 Hint unavailable. You can keep playing.	Hint unavailable. You can keep playing.	Подсказка не открылась. Можно играть дальше.	Підказка не відкрилася. Можна грати далі.
-Home	Map	Карта	Карта
+Home	Home	Главная	Головна
 Key	Key	Ключ	Ключ
 Key → {0}	Key → {0}	Ключ → {0}	Ключ → {0}
 Larger text	Larger text	Крупный текст	Великий текст
@@ -251,7 +251,7 @@ New lights for a parcel: {0} / 3	New lights for a parcel: {0} / 3	До посы�
 Open parcel	Open parcel	Открыть посылку	Відкрити пакунок
 Choose a gift	Choose a gift	Выбрать подарок	Вибрати подарунок
 Requests	Requests	Просьбы друзей	Прохання друзів
-Keepsakes	Keepsakes	Мои вещи	Мої речі
+Keepsakes	Gifts	Подарки	Подарунки
 Your keepsakes	Your keepsakes	Твои вещи	Твої речі
 You made it!	You made it!	Получилось!	Вийшло!
 Parts found: {0} / 3	Parts found: {0} / 3	Деталей: {0} / 3	Деталей: {0} / 3
@@ -482,3 +482,30 @@ Comfort tab	Comfort	Удобно	Зручно
 Language tab	Language	Язык	Мова
 Gust coming: right	Wind is coming — right!	Сейчас подует вправо!	Зараз подме праворуч!
 Gust coming: left	Wind is coming — left!	Сейчас подует влево!	Зараз подме ліворуч!
+Start game	Start game	Начать игру	Почати гру
+Shop	Shop	Магазин	Крамниця
+Remove ads	Remove ads	Отключить рекламу	Вимкнути рекламу
+Play	Play	Играть	Грати
+How would you like to play?	How would you like to play?	Во что будем играть?	У що будемо грати?
+Mika's journey. A little of everything.	Mika's journey. A little of everything.	Путь Мики. Фигуры и слова.	Подорож Міки. Фігури й слова.
+Just shapes.	Just shapes.	Только фигуры.	Лише фігури.
+Put the word in order.	Put the word in order.	Собери слово из букв.	Склади слово з літер.
+Shapes and letters.	Shapes and letters.	Фигуры и буквы вместе.	Фігури й літери разом.
+{0} levels	{0} levels	Уровни: {0}	Рівні: {0}
+Tap a number to play. Swipe for more levels.	Tap a number to play. Swipe for more levels.	Нажми на номер. Листай уровни свайпом.	Натисни на номер. Гортай рівні свайпом.
+Page {0} of {1}	Page {0} of {1}	Лист {0} из {1}	Сторінка {0} з {1}
+Play level {0}	Play level {0}	Играть: уровень {0}	Грати: рівень {0}
+Go to level {0}	Go to level {0}	К уровню {0}	До рівня {0}
+Restore lights. Collect parts. Make a gift for Mika.	Restore lights. Collect parts. Make a gift for Mika.	Зажигай огоньки и собирай детали для подарков Мике.	Запалюй вогники й збирай деталі для подарунків Міці.
+My things	My things	Мои вещи	Мої речі
+Ads are already off in this version. Enjoy the game.	Ads are already off in this version. Enjoy the game.	В этой версии рекламы уже нет. Можно спокойно играть.	У цій версії реклами вже немає. Можна спокійно грати.
+Opening story	Opening story	Начало истории	Початок історії
+Before the storm	Before the storm	До бури	До бурі
+The last light	The last light	Последний огонёк	Останній вогник
+A way home	A way home	Дорога домой	Дорога додому
+To the map	To the map	К карте	До карти
+Gran kept the Great Beacon burning. Its light showed everyone the way home.	Gran kept the Great Beacon burning. Its light showed everyone the way home.	Бабушка следила за Большим маяком. Его свет помогал всем найти дорогу домой.	Бабуся доглядала Великий маяк. Його світло допомагало всім знайти дорогу додому.
+Then the storm broke the bridges and put the beacon out. Mika saved one little light.	Then the storm broke the bridges and put the beacon out. Mika saved one little light.	Буря сломала мосты и погасила маяк. Мика успела спасти один маленький огонёк.	Буря зламала мости й загасила маяк. Міка встигла врятувати один маленький вогник.
+Mika: I'll bring it home, Gran. We'll mend the bridges, help our friends and light the beacon again.	Mika: I'll bring it home, Gran. We'll mend the bridges, help our friends and light the beacon again.	Мика: Я донесу огонёк, бабушка. Починим мосты, поможем друзьям и снова зажжём маяк.	Міка: Я донесу вогник, бабусю. Полагодимо мости, допоможемо друзям і знову запалимо маяк.
+Goal: Great Beacon	Goal: Great Beacon	Наша цель — Большой маяк	Наша мета — Великий маяк
+Talk to {0}	Talk to {0}	Поговорить: {0}	Поговорити: {0}

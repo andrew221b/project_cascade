@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Cascade.Presentation
 {
-    public enum GameScreen { Home, Playing, Pause, Win, Fail, Settings, Devices, Lessons, Dialogue, WordLanguage, SaveRecovery, TravelBag, Journal, Collection, Workshop, Requests, Records, Contracts, Parcel, JourneyEnd, ReachChallenges, PowerupChallenges, Checkpoint }
+    public enum GameScreen { Home, Playing, Pause, Win, Fail, Settings, Devices, Lessons, Dialogue, WordLanguage, SaveRecovery, TravelBag, Journal, Collection, Workshop, Requests, Records, Contracts, Parcel, JourneyEnd, ReachChallenges, PowerupChallenges, Checkpoint, PlayChoice, JourneyMap, Prologue, Shop, NoAds }
     public sealed partial class CascadeGame
     {
         public GameScreen CurrentScreen { get; private set; } = GameScreen.Playing;
@@ -79,7 +79,7 @@ namespace Cascade.Presentation
             reachBadge=Picture("Ribbon charge",header,new Vector2(.65f,.20f),new Vector2(.72f,.80f),Resources.Load<Sprite>("CascadeArt/Devices/RibbonSpool"),true);
             flowReady=true; ApplyPreferences();
         }
-        public void ShowHome() { ShowJourney(); }
+        public void ShowHome() { SetScreen(GameScreen.Home); }
         public void ShowGame()
         {
             machine.SetZone(JourneyStory.Zone(Catalog.PrimaryLevels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==node)));
@@ -103,7 +103,8 @@ namespace Cascade.Presentation
             if(screen!=GameScreen.Playing) { CancelHint(); StopPresentation(); }
             bool changed=CurrentScreen!=screen;
             if(changed||screen!=GameScreen.Playing)reactionBanner?.Clear();
-            CurrentScreen=screen;machine.LivingWorld.SetQuietFlight(screen==GameScreen.Win||screen==GameScreen.Fail); machine.LivingWorld.SetWorkshop(screen!=GameScreen.Home&&screen!=GameScreen.Dialogue&&screen!=GameScreen.JourneyEnd&&screen!=GameScreen.Playing&&screen!=GameScreen.Win&&screen!=GameScreen.Fail&&screen!=GameScreen.Checkpoint); userPaused=screen==GameScreen.Pause;
+            CurrentScreen=screen;machine.LivingWorld.SetMapSky(null);machine.LivingWorld.SetQuietFlight(screen==GameScreen.Win||screen==GameScreen.Fail);
+            machine.LivingWorld.SetWorkshop(screen!=GameScreen.JourneyMap&&screen!=GameScreen.Dialogue&&screen!=GameScreen.JourneyEnd&&screen!=GameScreen.Playing&&screen!=GameScreen.Win&&screen!=GameScreen.Fail&&screen!=GameScreen.Checkpoint); userPaused=screen==GameScreen.Pause;
             Interaction.SetPaused(screen!=GameScreen.Playing && screen!=GameScreen.Win && screen!=GameScreen.Fail && screen!=GameScreen.Checkpoint);
             bool machineVisible=screen==GameScreen.Playing || screen==GameScreen.Win || screen==GameScreen.Fail || screen==GameScreen.Checkpoint;
             if(!machineVisible)feedback.ClearTails();
@@ -209,13 +210,12 @@ namespace Cascade.Presentation
         { var r=(RectTransform)button.transform; r.SetParent(parent,false); r.anchorMin=min;r.anchorMax=max;r.offsetMin=r.offsetMax=Vector2.zero; }
         void ResetMenu()
         {
-            menuActions.Clear();menuRows.Clear();menuBottoms.Clear();menuPage=null;
+            menuActions.Clear();menuRows.Clear();menuBottoms.Clear();navigationLightLabels.Clear();
             foreach(var key in baseTextSizes.Keys.Where(k=>k==null||k.transform.IsChildOf(menuRoot)).ToArray())baseTextSizes.Remove(key);
             foreach(Transform child in menuRoot){ child.gameObject.SetActive(false); Destroy(child.gameObject); }
             // The illustrated scene is the menu surface; ink sits on its quiet sky window.
             var wash=Rect("Menu hit surface",menuRoot,Vector2.zero,Vector2.one);menuWash=Background(wash,Color.clear,false);
-            if(CurrentScreen!=GameScreen.Home&&CurrentScreen!=GameScreen.Dialogue)BuildMenuPage();
-            if(CurrentScreen!=GameScreen.Home&&CurrentScreen!=GameScreen.Dialogue){
+            if(CurrentScreen!=GameScreen.JourneyMap&&CurrentScreen!=GameScreen.Dialogue){
                 var motes=Rect("Window light and drifting dust",menuRoot,new Vector2(.13f,.12f),new Vector2(.87f,.85f)).gameObject.AddComponent<WorldWeatherGraphic>();
                 motes.InitializeRegion(this,7);motes.color=new Color(1,.85f,.51f,.15f);
             }
@@ -223,7 +223,12 @@ namespace Cascade.Presentation
         void DrawMenu()
         {
             ResetMenu();
-            if(CurrentScreen==GameScreen.Home) DrawJourney();
+            if(CurrentScreen==GameScreen.Home) DrawMainMenu();
+            else if(CurrentScreen==GameScreen.JourneyMap) DrawJourney();
+            else if(CurrentScreen==GameScreen.PlayChoice) DrawPlayChoice();
+            else if(CurrentScreen==GameScreen.Prologue) DrawPrologue();
+            else if(CurrentScreen==GameScreen.Shop) DrawShop();
+            else if(CurrentScreen==GameScreen.NoAds) DrawNoAds();
             else if(CurrentScreen==GameScreen.Lessons) DrawLessons();
             else if(CurrentScreen==GameScreen.Dialogue) DrawDialogue();
             else if(CurrentScreen==GameScreen.Settings) DrawSettings();
@@ -256,13 +261,12 @@ namespace Cascade.Presentation
         static readonly Color MenuPaper=new Color(.99f,.98f,.92f);
         void MenuReadingSurface(string name,Vector2 min,Vector2 max)
         {
-            if(menuPage!=null)return;
             var surface=Rect(name,menuRoot,min,max);var image=Background(surface,MenuPaper,false);
             image.sprite=art.panel;image.type=Image.Type.Sliced;
         }
         void FinishMenuContrast()
         {
-            foreach(var label in menuRoot.GetComponentsInChildren<TextMeshProUGUI>())if(!IsSymbolFace(label.name)&&label.name!="Mini glyph")label.color=MenuInk;
+            foreach(var label in menuRoot.GetComponentsInChildren<TextMeshProUGUI>())if(!IsSymbolFace(label.name)&&label.name!="Mini glyph")label.color=navigationLightLabels.Contains(label)?new Color(1,.97f,.84f):MenuInk;
             foreach(var button in menuRoot.GetComponentsInChildren<Button>())if(!button.interactable){
                 var image=button.GetComponent<Image>();if(image!=null&&image.color.a>0)image.color=new Color(.86f,.91f,.87f);
                 var colors=button.colors;colors.disabledColor=Color.white;button.colors=colors;
@@ -270,6 +274,7 @@ namespace Cascade.Presentation
         }
         void MenuTitle(UiCopy title,UiCopy body)
         {
+            MenuReadingSurface("Menu heading cloth",new Vector2(.06f,.817f),new Vector2(.94f,.978f));
             var label=Text("Menu title",menuRoot,new Vector2(.10f,.905f),new Vector2(.90f,.968f),30,title);label.font=art.titleFont;label.alignment=TextAlignmentOptions.MidlineLeft;
             var description=Text("Menu description",menuRoot,new Vector2(.10f,.812f),new Vector2(.90f,.901f),20,body);description.alignment=TextAlignmentOptions.MidlineLeft;menuHeading=label;menuDescription=description;
         }
@@ -288,41 +293,6 @@ namespace Cascade.Presentation
             if(PreferredMode==PuzzleMode.Shapes) return Catalog.PrimaryLevels.Where(c=>c.Mode==PuzzleMode.Shapes).ToArray();
             return Catalog.LocalizedLevels.Where(c=>c.Locale==Preferences.PuzzleLocale&&c.Mode==PreferredMode).ToArray();
         }
-        void DrawLessons()
-        {
-            var logo=Text("CASCADE",menuRoot,new Vector2(.08f,.86f),new Vector2(.92f,.97f),42,"CASCADE");logo.font=art.titleFont;
-            var example=Catalog.GetPrimary("C01").Definition;
-            MiniMachine(Rect("Home machine",menuRoot,new Vector2(.25f,.73f),new Vector2(.75f,.85f)),example.InitialSymbolIds,example.TargetSymbolIds);
-            Text("Home promise",menuRoot,new Vector2(.08f,.65f),new Vector2(.92f,.72f),18,"One row. Bring it home in order.");
-            var levels=PreferredLevels();
-            bool resume=Interaction.Attempt.Current.Status==PuzzleStatus.Playing&&Interaction.Attempt.RouteLength>0;
-            int currentIndex=levels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==node);
-            int proposed=Interaction.Attempt.Current.Status==PuzzleStatus.Won?currentIndex+1:Math.Max(0,currentIndex);
-            var chosen=levels[Math.Max(0,Math.Min(levels.Count-1,proposed))];
-            UiCopy continueText=resume?new UiCopy("Continue {0} · {1}",node.TrimStart('C','0'),new UiCopy(Interaction.Attempt.Mode.ToString())):new UiCopy("Play {0} · {1}",new UiCopy(PreferredMode.ToString()),chosen.Definition.CampaignNodeId.TrimStart('C','0'));
-            MenuButton(continueText,.56f,()=>{if(resume)ShowGame();else StartContent(chosen);},true);
-            foreach(var mode in new[]{PuzzleMode.Shapes,PuzzleMode.Words,PuzzleMode.Mixed}) {
-                int i=(int)mode; // Enum values are not used as persisted IDs.
-                float left=.06f+i*.30f;
-                var button=MenuButton(mode.ToString(),.45f,()=>SelectMode(mode),mode==PreferredMode,left,left+.28f);
-                button.GetComponentInChildren<TextMeshProUGUI>().fontSize=16*(Preferences.LargeText?1.12f:1);
-            }
-            int pages=Math.Max(1,(levels.Count+3)/4); chapterPage=Math.Max(0,Math.Min(chapterPage,pages-1));
-            Text("Chapter",menuRoot,new Vector2(.15f,.35f),new Vector2(.85f,.42f),20,"Choose a delivery");
-            var rail=Rect("Chapter rail",menuRoot,new Vector2(.13f,.302f),new Vector2(.89f,.312f));Background(rail,new Color(.94f,.73f,.32f),false);
-            for(int i=0;i<4&&chapterPage*4+i<levels.Count;i++) {
-                var content=levels[chapterPage*4+i]; var id=content.Definition.CampaignNodeId;float left=.06f+i*.235f;
-                var b=MenuButton(id.TrimStart('C','0'),.27f,()=>StartContent(content),false,left,left+.21f);
-                if(sessionClears.Contains(id))b.GetComponent<Image>().color=new Color(.59f,.82f,.69f);
-            }
-            MenuButton("Earlier",.17f,()=>{chapterPage=Math.Max(0,chapterPage-1);DrawMenu();},false,.10f,.47f).interactable=chapterPage>0;
-            MenuButton("Later",.17f,()=>{chapterPage=Math.Min(pages-1,chapterPage+1);DrawMenu();},false,.53f,.90f).interactable=chapterPage+1<pages;
-            MenuButton("Devices",.065f,ShowDevices,false,.10f,.47f);MenuButton("Map",.065f,ShowJourney,false,.53f,.90f);
-            if(PreferredMode==PuzzleMode.Words) {
-                var noteRoot=Rect("Word route note",menuRoot,new Vector2(.10f,.006f),new Vector2(.90f,.06f));Background(noteRoot,new Color(1,.96f,.84f,.92f),false);
-                var note=Text("Shape-only lesson",noteRoot,Vector2.zero,Vector2.one,15,"26 is a shapes lesson.\nWords can skip it.");note.raycastTarget=false;
-            }
-        }
         void StartContent(LevelContent content) { LoadLevel(content.Definition,content.Locale); ShowGame(); }
         void StartNextPreferred()
         {
@@ -330,7 +300,7 @@ namespace Cascade.Presentation
             if(CanOfferStrongerWood){RestartWithStrongerWood();return;}
             int bonus=Catalog.BonusLevels.ToList().FindIndex(c=>c.Definition.PuzzleId==Interaction.Attempt.Level.PuzzleId);
             if(bonus>=0){if(bonus+1<Catalog.BonusLevels.Count)StartContent(Catalog.BonusLevels[bonus+1]);else ShowReachChallenges();return;}
-            if(journeyActive) { int nextStop=selectedJourneyStop+1; if(PreferredMode==PuzzleMode.Words && nextStop==25)nextStop++; if(nextStop<Catalog.PrimaryLevels.Count)BeginJourney(nextStop);else SetScreen(GameScreen.JourneyEnd);return; }
+            if(journeyActive) { int nextStop=selectedJourneyStop+1; if(!storyRoute&&PreferredMode==PuzzleMode.Words && nextStop==25)nextStop++; if(nextStop<Catalog.PrimaryLevels.Count)BeginJourney(nextStop);else SetScreen(GameScreen.JourneyEnd);return; }
             var levels=PreferredLevels();int index=levels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==node);
             if(index>=0&&index+1<levels.Count)StartContent(levels[index+1]);else ShowHome();
         }
@@ -379,7 +349,7 @@ namespace Cascade.Presentation
         void Setting(string label,bool value,int index,Action toggle)
         {
             var button=MenuButton(UiCopy.Raw(label+": "+(value?"On":"Off")),.5f,()=>{toggle();ApplyPreferences();DrawMenu();});
-            RegisterMenuRow(button,.71f,index,52,8);button.GetComponent<Image>().color=Color.clear;
+            RegisterMenuRow(button,.71f,index,52,8);button.GetComponent<Image>().color=MenuPaper;
             var text=button.GetComponentInChildren<TextMeshProUGUI>();text.SetCopy(label);text.alignment=TextAlignmentOptions.MidlineLeft;
             text.rectTransform.anchorMax=new Vector2(.73f,1);text.margin=new Vector4(4,2,6,2);
             var separator=Rect("Setting separator",button.transform,new Vector2(0,0),new Vector2(1,0));separator.sizeDelta=new Vector2(0,1);Background(separator,new Color(.66f,.75f,.69f),false);

@@ -50,7 +50,7 @@ namespace Cascade.Editor.Playable
             IEnumerator Shot(string name,int w,int h){yield return PlayableCapture.CaptureSettled("Journey",name+".png",w,h);}
             IEnumerator FlightShot(string name,int w,int h){yield return PlayableCapture.CaptureSettled("Journey",name+".png",w,h,g=>g.Machine.LivingWorld.Paint(3*Mathf.PI/(2*.056f)));}
             IEnumerator Settle(){float until=Time.realtimeSinceStartup+4;while(game.EventPlayer.IsRunning&&Time.realtimeSinceStartup<until)yield return null;yield return null;}
-            void Click(string name){game.GetComponentsInChildren<Button>().Single(b=>b.name==name).onClick.Invoke();}
+            void Click(string name){if(name=="Later"){game.TurnJourneyMap(1);return;}game.GetComponentsInChildren<Button>().Single(b=>b.name==name).onClick.Invoke();}
             void StoryFixture(int index){typeof(CascadeGame).GetMethod("OpenJourneyStory",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic).Invoke(game,new object[]{index,false});}
         }
     }
