@@ -102,6 +102,28 @@ namespace Cascade.Editor.Playable
             }finally{camera.targetTexture=old;UnityEngine.Object.Destroy(target);UnityEngine.Object.Destroy(pixels);g.RefreshLayout();}
             Debug.Log("CASCADE original departure and wind witnesses complete");
         }
+        public static void RunFlexibleRopes() => UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(FlexibleRopes());
+        static IEnumerator FlexibleRopes()
+        {
+            var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();typeof(CascadeGame).GetField("persistenceReady",BindingFlags.Instance|BindingFlags.NonPublic).SetValue(g,false);
+            g.SendMessage("OnApplicationFocus",true);UnityEngine.Application.runInBackground=true;g.SetUiLocale("ru");g.ReducedMotion=false;
+            var camera=Camera.main;var old=camera.targetTexture;var target=new RenderTexture(390,844,24);camera.targetTexture=target;var pixels=new Texture2D(390,844,TextureFormat.RGB24,false);Directory.CreateDirectory("/tmp/cascade-flexible-rope");
+            try{
+                foreach(string id in new[]{"C18","C30"}){
+                    g.LoadNode(id);g.ShowGame();yield return Ready(g);g.RefreshLayout();yield return null;yield return null;string hash=g.Interaction.Attempt.CurrentStateHash;
+                    for(int f=0;f<42;f++){
+                        if(f==18){g.Machine.CueWind(id=="C18");g.CueDeviceWind(id=="C18");}
+                        camera.Render();var active=RenderTexture.active;RenderTexture.active=target;pixels.ReadPixels(new Rect(0,0,390,844),0,0);pixels.Apply();RenderTexture.active=active;
+                        File.WriteAllBytes("/tmp/cascade-flexible-rope/"+id+"-"+f.ToString("D2")+".png",pixels.EncodeToPNG());
+                        if(hash!=g.Interaction.Attempt.CurrentStateHash)throw new InvalidOperationException("Rope changed puzzle state");yield return new WaitForSecondsRealtime(.10f);
+                    }
+                }
+            }finally{camera.targetTexture=old;UnityEngine.Object.Destroy(target);UnityEngine.Object.Destroy(pixels);g.RefreshLayout();}
+            g.LoadNode("C03");g.ShowGame();yield return Ready(g);g.Interaction.SetSuspended(false);g.Interaction.Execute(PuzzleCommand.Swap(0));while(g.Interaction.IsPresenting)yield return null;
+            yield return PlayableCapture.CaptureSettled("FlexibleRopes","removed-floor.png",390,844);
+            g.ReducedMotion=true;yield return PlayableCapture.CaptureSettled("FlexibleRopes","reduced-wide.png",1440,900);
+            Debug.Log("CASCADE flexible rope witnesses complete");
+        }
         public static void RunHeader()
         {
             var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();

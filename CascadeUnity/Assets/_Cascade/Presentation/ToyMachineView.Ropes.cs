@@ -6,7 +6,7 @@ namespace Cascade.Presentation
         Material continuousRopeMaterial;
         readonly LineRenderer[] suspension=new LineRenderer[2];
         readonly Vector3[] ropePoints=new Vector3[121];
-        readonly float[,] ropeBow=new float[2,5],ropeVelocity=new float[2,5];
+        readonly PresentationRope[,] ropeSpans=new PresentationRope[2,5];
         void InitializeRopeRig()
         {
             if(continuousRopeMaterial==null){
@@ -16,7 +16,8 @@ namespace Cascade.Presentation
             for(int side=0;side<2;side++) {
                 var go=new GameObject(side==0?"Left braided rope":"Right braided rope",typeof(LineRenderer));go.transform.SetParent(machine,false);
                 var line=go.GetComponent<LineRenderer>();suspension[side]=line;line.sharedMaterial=continuousRopeMaterial;line.useWorldSpace=true;
-                line.startWidth=line.endWidth=.09f;line.numCapVertices=8;line.numCornerVertices=8;line.textureMode=LineTextureMode.Stretch;line.alignment=LineAlignment.View;
+                for(int span=0;span<5;span++)ropeSpans[side,span]=new PresentationRope(13,side*47+span*19+7);
+                line.startWidth=line.endWidth=.09f;line.numCapVertices=8;line.numCornerVertices=8;line.textureMode=LineTextureMode.Tile;line.alignment=LineAlignment.View;
                 line.shadowCastingMode=UnityEngine.Rendering.ShadowCastingMode.Off;line.receiveShadows=false;
             }
         }
@@ -38,19 +39,11 @@ namespace Cascade.Presentation
                     } else {
                         lowerAnchor.GetWorldCorners(corners);next=new Vector3(Mathf.Lerp(corners[0].x,corners[2].x,side==0?.035f:.965f),Mathf.Lerp(corners[0].y,corners[2].y,.48f),.10f);
                     }
-                    float span=Vector3.Distance(previous,next);
-                    float wind=WindAt(Mathf.Min(segment,floors.Count-1))*.10f;
-                    float wanted=reducedMotion?0:-sign*.08f+wind+(next.x-previous.x)*.08f;
-                    float bow=ropeBow[side,segment],velocity=ropeVelocity[side,segment];
-                    if(reducedMotion){bow=velocity=0;}
-                    else if(!interaction.IsPaused&&!interaction.IsSuspended&&!ambientPaused&&gameplayView)
-                        Spring(ref bow,ref velocity,wanted,28,6.5f,Mathf.Clamp(seconds,0,.05f));
-                    ropeBow[side,segment]=bow;ropeVelocity[side,segment]=velocity;
+                    var chain=ropeSpans[side,segment];
+                    bool moving=!interaction.IsPaused&&!interaction.IsSuspended&&!ambientPaused&&gameplayView;
+                    chain.Advance(previous,next,moving?seconds:0,windTime-segment*.17f,WindAt(Mathf.Min(segment,floors.Count-1)),1.8f,.65f,.34f,reducedMotion);
                     for(int p=1;p<=24;p++) {
-                        float t=p/24f;var point=Vector3.Lerp(previous,next,t);
-                        point.x+=Mathf.Sin(t*Mathf.PI)*bow;
-                        point.y-=Mathf.Sin(t*Mathf.PI)*Mathf.Min(.07f,span*.035f);
-                        ropePoints[index++]=point;
+                        var point=chain.Sample(p/24f);ropePoints[index++]=new Vector3(point.x,point.y,.1f);
                     }
                     previous=next;
                 }

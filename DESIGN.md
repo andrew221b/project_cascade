@@ -559,3 +559,16 @@ Ambient decks and ropes now sway more visibly but gently. Canonical gust pressur
 adds a single shared directional velocity impulse to deck/rope/tool springs, then
 settles. Deck translation is bounded to .22 world units and roll to2.4 degrees;
 quiet/pause settings and the wind direction warning stay intact.
+
+
+## Flexible hemp suspension — 6 October 2026
+
+Main ropes and short tool cords use cosmetic constrained point chains, with pinned
+platform/handle endpoints, inertia, gravity, damping and coherent local wind.
+Different heights and sides have distinct seeded air flow. A directional gust
+adds velocity; no random gameplay transition is introduced. Slight slack and soft
+bend resistance avoid accordion folds. Cubic rendering preserves broad curves;
+the hemp braid repeats by world length instead of stretching across the screen.
+Visible floor knots remain anchors; removed floors reconnect the free span.
+Pause freezes integration, Reduced Motion is taut and still, and viewport/topology
+changes reset affected chains. See Docs/FLEXIBLE_ROPE_PRESENTATION.md.

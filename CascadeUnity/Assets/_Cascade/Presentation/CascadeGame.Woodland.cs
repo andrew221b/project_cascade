@@ -77,7 +77,7 @@ namespace Cascade.Presentation
                 }
                 // The bomb hangs from its metal collar; its curved fuse is not a handle.
                 var grip=Grip(dock.kind==2?new Vector2(.365f,.69f):dock.kind==3?new Vector2(.465f,1.08f):dock.kind==4?new Vector2(.47f,.78f):dock.kind==8?new Vector2(.68f,1.02f):dock.kind==9?new Vector2(.46f,1.01f):new Vector2(.47f,1.05f));
-                dock.cord.SetEndpoints(Vector2.Scale(hook,card.rect.size),Vector2.Scale(grip,card.rect.size),ReducedMotion?0:machine.WindAt(dock.floor));
+                dock.cord.SetEndpoints(Vector2.Scale(hook,card.rect.size),Vector2.Scale(grip,card.rect.size),ReducedMotion?0:machine.WindAt(dock.floor),moving?dt:0,machine.AmbientPhase+(.17f*dock.floor)+(.13f*dock.slotX),ReducedMotion);
                 bool waitForStatus=ReactionBanner.IsShowing&&ReactionBanner.Source==dock.icon.rectTransform&&!ReactionBanner.StatusVisible;
                 dock.outcomeRibbon.gameObject.SetActive(dock.settledContact&&!waitForStatus);
                 dock.caption.enabled=!waitForStatus;

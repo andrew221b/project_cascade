@@ -8,12 +8,15 @@ namespace Cascade.Presentation
     public sealed class ToolSuspensionRope : MaskableGraphic
     {
         Vector2 top,bottom;
-        float wind;
-        public void SetEndpoints(Vector2 a,Vector2 b,float pressure){top=a+rectTransform.rect.min;bottom=b+rectTransform.rect.min;wind=pressure;SetVerticesDirty();}
+        readonly PresentationRope chain=new PresentationRope(9,83);
+        public void SetEndpoints(Vector2 a,Vector2 b,float pressure,float seconds,float time,bool still){
+            top=a+rectTransform.rect.min;bottom=b+rectTransform.rect.min;float unit=1/Mathf.Min(1,canvas.scaleFactor);
+            chain.Advance(top,bottom,seconds,time,pressure,24*unit,14*unit,6*unit,still);SetVerticesDirty();
+        }
         protected override void OnPopulateMesh(VertexHelper mesh)
         {
             mesh.Clear();float unit=1/Mathf.Min(1,canvas.scaleFactor);
-            Vector2 Point(float t)=>Vector2.Lerp(top,bottom,t)+Vector2.right*(Mathf.Sin(t*Mathf.PI)*wind*2.8f*unit);
+            Vector2 Point(float t)=>chain.Sample(t);
             for(int i=0;i<28;i++){
                 float t=i/28f,next=(i+1)/28f;var a=Point(t);var b=Point(next);var delta=b-a;
                 var across=new Vector2(-delta.y,delta.x).normalized*unit;

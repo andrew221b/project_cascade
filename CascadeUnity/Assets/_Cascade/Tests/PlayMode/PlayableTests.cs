@@ -160,6 +160,29 @@ namespace Cascade.Tests
             game.ShowGame();game.SendMessage("OnApplicationFocus",true);game.Undo();
             Assert.That(game.Interaction.Attempt.Current.ReachCharges,Is.EqualTo(1));
         }
+        [UnityTest] public IEnumerator FlexibleRopesHaveIndependentCurvatureAndReconnectAfterAFloorBreak()
+        {
+            game.LoadNode("C30");game.ShowGame();game.ReducedMotion=false;yield return AwaitPreparation();
+            var ropes=game.Machine.GetComponentsInChildren<LineRenderer>().Where(l=>l.name.Contains("braided rope")).ToArray();
+            string hash=game.Interaction.Attempt.CurrentStateHash;float irregularity=0,independence=0;
+            float Offset(LineRenderer line,int i){var a=line.GetPosition(0);var b=line.GetPosition(24);var chord=Vector3.Lerp(a,b,i/24f);return line.GetPosition(i).x-chord.x;}
+            double until=Time.realtimeSinceStartupAsDouble+4;
+            while(Time.realtimeSinceStartupAsDouble<until){
+                irregularity=Mathf.Max(irregularity,Mathf.Abs(Offset(ropes[0],12)-(Offset(ropes[0],6)+Offset(ropes[0],18))*.7071068f));
+                independence=Mathf.Max(independence,Mathf.Abs(Offset(ropes[0],12)-Offset(ropes[1],12)));
+                yield return null;
+            }
+            Assert.That(irregularity,Is.GreaterThan(.0005f),"A flexible rope is not one prescribed sine bow.");
+            Assert.That(independence,Is.GreaterThan(.002f),"Opposite ropes respond to different local air flow.");
+            game.Interaction.SetPaused(true);var frozen=new Vector3[ropes[0].positionCount];ropes[0].GetPositions(frozen);
+            yield return new WaitForSecondsRealtime(.15f);for(int i=0;i<frozen.Length;i++)Assert.That(ropes[0].GetPosition(i),Is.EqualTo(frozen[i]));
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));game.Interaction.SetPaused(false);
+            game.LoadNode("C03");yield return AwaitPreparation();ropes=game.Machine.GetComponentsInChildren<LineRenderer>().Where(l=>l.name.Contains("braided rope")).ToArray();int old=ropes[0].positionCount;
+            game.Interaction.SetSuspended(false);game.Interaction.Execute(PuzzleCommand.Swap(0));yield return AwaitPresentation();yield return null;
+            Assert.That(ropes[0].positionCount,Is.LessThan(old));
+            var knots=game.Machine.GetComponentsInChildren<MeshRenderer>().Where(r=>r.name=="Rope knot").ToArray();
+            foreach(var line in ropes){Assert.That(knots.Min(k=>Vector2.Distance(k.transform.position,line.GetPosition(24))),Is.LessThan(.002f));for(int i=0;i<line.positionCount;i++)Assert.That(float.IsNaN(line.GetPosition(i).x),Is.False);}
+        }
         [UnityTest] public IEnumerator ConnectedRopesSurviveReducedMotionAndResize()
         {
             game.LoadNode("C03");game.ShowGame();game.ReducedMotion=true;yield return AwaitPreparation();game.RefreshLayout();

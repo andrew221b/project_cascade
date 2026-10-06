@@ -14,7 +14,7 @@ Shader "Cascade/HempRope" {
  fixed4 frag(v2f i):SV_Target {
  float across=i.uv.y*2-1;
  float cylinder=sqrt(saturate(1-across*across));
- float phase=i.uv.x*110+across*2.7;
+ float phase=i.uv.x*68+across*2.7;
  float aa=max(fwidth(phase),.001);
  float braid=.5+.5*cos(phase)*saturate(1.2-aa*.34);
  float strand=.5+.5*cos(across*8.4-phase*.33);

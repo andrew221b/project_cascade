@@ -105,7 +105,7 @@ namespace Cascade.Presentation
             windAnticipation=0;if(reducedMotion)return;gustStarted=windTime;gustDirection=right?1:-1;
             // One pressure impulse, then the existing springs carry the recoil and recovery.
             foreach(var rig in floors){rig.swayVelocity+=gustDirection*.85f;rig.rollVelocity+=gustDirection*10;}
-            for(int side=0;side<2;side++)for(int segment=0;segment<=floors.Count;segment++)ropeVelocity[side,segment]+=gustDirection*.38f;
+            for(int side=0;side<2;side++)for(int segment=0;segment<=floors.Count;segment++)ropeSpans[side,segment]?.Impulse(gustDirection*.55f);
         }
         public Vector3 FloorPosition(int floor)
         {
