@@ -30,6 +30,13 @@ namespace Cascade.Presentation
             foreach(var dock in deviceDocks) {
                 if(dock.root==null||!dock.root.gameObject.activeInHierarchy)continue;
                 if(movingDevice(dock)){dock.responseTime=Mathf.Max(0,dock.responseTime-dt);}
+                if(moving)dock.successTime=Mathf.Max(0,dock.successTime-dt);
+                float reveal=ReducedMotion||dock.successTime<=0?1:1-Mathf.Exp(-(1.2f-dock.successTime)*12);
+                float flourish=ReducedMotion?0:Mathf.Sin((1.2f-dock.successTime)*12)*dock.successTime/1.2f;
+                dock.outcomeRibbon.rectTransform.localScale=Vector3.one*(.86f+.14f*reveal+.04f*flourish);
+                dock.outcomeRibbon.rectTransform.localRotation=Quaternion.Euler(0,0,flourish*3);
+                dock.caption.rectTransform.localScale=Vector3.one*(.92f+.08f*reveal);
+                dock.caption.fontSize=(dock.settledContact?16:14)/Mathf.Min(1,dock.caption.GetComponentInParent<Canvas>().scaleFactor);
                 float response=ReducedMotion?0:Mathf.Sin((1-dock.responseTime/.32f)*Mathf.PI)*dock.responseTime/.32f;
                 dock.icon.transform.localScale=Vector3.one*(1+.10f*response);
                 var card=deviceOverlays[dock.floor];float height=Mathf.Max(1,card.rect.height);

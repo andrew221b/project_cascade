@@ -1,0 +1,8 @@
+Imagegen edit provenance — 6 October 2026
+Input: CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Devices/Bomb.png
+Output: CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Devices/BombSafe.png
+Generated result: /Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-8adc8c34-8aec-4736-a7c6-a587b2c30ddf.png
+Transparent alpha preserved; source canvas/shape retained; Unity max import 512.
+
+Exact edit prompt:
+Edit target: the provided CASCADE bomb game sprite. Make its SAFE / DEFUSED visual state for the same warm hand-painted storybook mobile puzzle game. Preserve the square canvas, the object's exact position, scale, sphere outline, perspective, brushed dark slate-blue metal body, brass collar, twisted hemp fuse, and strong soft sunlight from upper left. The spherical body occupies the same lower middle-left portion of the canvas. Extinguish the flame entirely. Keep the fuse curve and endpoint in place, but turn its end into a tiny cool charcoal tip with a delicate small pale mint-grey wisp above it; remove all orange flames and embers. Add a restrained warm reflected mint light on the brass and body, without changing the main dark color. This is still a recognizable tactile toy bomb, now calm and harmless. The body must remain blank for a dynamically painted game letter: do not draw letters, numbers, check marks, plaques, labels, boards, straps or new ornaments. One isolated full sprite, no sheet or multiple views, no scene, no background, no drop shadow on a backdrop. Preserve transparent alpha outside the object. Keep generous original transparent margins and accurate matching silhouette; do not zoom, recenter, crop or recompose.

@@ -419,7 +419,8 @@ namespace Cascade.Presentation
                 if (canvas == null) return; // Scene teardown can disable the hierarchy before the presentation is cancelled.
                 float scale = canvas.scaleFactor;
                 float unit = 1 / Mathf.Min(1, scale); // Preserve 48-pixel hit regions in the smallest reference capture.
-                foreach(var button in menuActions)if(button!=null)button.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,48*unit);
+                foreach(var button in menuActions)if(button!=null)button.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,52*unit);
+                FitMenuRows();
                 FixedBand(header, safeRoot.rect.height - 60 * unit, 48 * unit);
                 FixedBand(status.rectTransform, safeRoot.rect.height - 114 * unit, 44 * unit);
                 FixedBand(statusPaper,safeRoot.rect.height-114*unit,44*unit);status.fontSize=16*unit*(Preferences.LargeText?1.12f:1);
@@ -580,6 +581,8 @@ namespace Cascade.Presentation
         TextMeshProUGUI Text(string name, Transform parent, Vector2 min, Vector2 max, int size, UiCopy content)
         {
             var rect = Rect(name, parent, min, max); var text = rect.gameObject.AddComponent<TextMeshProUGUI>();
+            bool menuText=CurrentScreen!=GameScreen.Home&&CurrentScreen!=GameScreen.Dialogue&&menuRoot!=null&&rect.IsChildOf(menuRoot)&&!IsSymbolFace(name)&&!name.StartsWith("Demo")&&name!="Wood moves"&&name!="Tool tag meaning"&&name!="Mini glyph";
+            if(menuText)size=Mathf.Max(20,size);
             text.font = font; baseTextSizes[text]=size;
             text.fontSize = size*(Preferences.LargeText&&!IsSymbolFace(name)?1.12f:1); text.enableAutoSizing = false;
             text.color = Preferences.HighContrast?new Color(.06f,.17f,.18f):menuRoot!=null&&rect.IsChildOf(menuRoot)?MenuInk:Ink;

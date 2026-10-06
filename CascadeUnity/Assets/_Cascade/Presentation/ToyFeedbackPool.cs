@@ -7,6 +7,7 @@ namespace Cascade.Presentation
     {
         sealed class Dust
         {
+            public RectTransform source;public Vector3 sourceOffset;
             public Transform transform; public MeshRenderer renderer; public MaterialPropertyBlock properties;
             public Vector3 origin, velocity; public Color color; public float age, life, size,spin; public bool reduced,wood,seed;
         }
@@ -61,12 +62,13 @@ namespace Cascade.Presentation
             if (clip == null) return;
             var voice = voices[nextVoice++ % voices.Length]; voice.Stop(); voice.clip = clip; voice.volume = cue == ToyCue.Bomb ? .48f : .65f; voice.pitch = 1; voice.Play(); duck = .22f;
         }
-        public void Burst(Vector3 origin, Color color, int count, bool reduced)
+        public void Burst(Vector3 origin, Color color, int count, bool reduced,RectTransform source=null)
         {
             if (particles == null || particles.Length == 0 || Quality<=0) return;
             count = Mathf.Min(count, Quality==1?4:particles.Length); if (reduced) count = Mathf.Min(2, count);
             for (int i = 0; i < count; i++) {
                 var p = particles[nextParticle++ % particles.Length]; float angle = i * 2.399963f;
+                p.source=source;p.sourceOffset=source==null?Vector3.zero:origin-game.UIFeedbackPoint(source);
                 p.origin = origin; p.origin.z = -.7f; p.color = color; p.age = 0; p.life = .38f + (i % 3) * .10f; p.size = .08f + (i % 4) * .02f; p.reduced = reduced;
                 p.wood=p.seed=false;p.spin=0;p.renderer.sharedMaterial=dustMaterial;p.transform.rotation=Quaternion.identity;
                 p.velocity = new Vector3(Mathf.Cos(angle) * .45f, Mathf.Sin(angle) * .28f + .12f, 0);
@@ -78,7 +80,7 @@ namespace Cascade.Presentation
             if(particles==null||particles.Length==0||Quality<=0)return;
             count=Mathf.Min(count,Quality==1?4:particles.Length);if(reduced)count=Mathf.Min(2,count);
             for(int i=0;i<count;i++){
-                var p=particles[nextParticle++%particles.Length];p.origin=origin+Vector3.right*((i/(float)Mathf.Max(1,count-1)-.5f)*span);p.origin.z=-.7f;
+                var p=particles[nextParticle++%particles.Length];p.source=null;p.origin=origin+Vector3.right*((i/(float)Mathf.Max(1,count-1)-.5f)*span);p.origin.z=-.7f;
                 p.renderer.sharedMaterial=chipMaterial;p.color=i%2==0?new Color(.84f,.71f,.52f):Color.white;p.age=0;p.life=.85f+(i%3)*.08f;p.size=.14f+(i%4)*.025f;
                 p.reduced=reduced;p.wood=true;p.seed=false;p.spin=(i%2==0?1:-1)*(150+i*19);
                 p.velocity=new Vector3((i-(count-1)*.5f)*.14f,.5f+(i%3)*.11f,0);
@@ -93,13 +95,13 @@ namespace Cascade.Presentation
             Handheld.Vibrate();
 #endif
         }
-        public void LanternSeeds(Vector3 origin,bool reduced)
+        public void LanternSeeds(Vector3 origin,bool reduced,RectTransform source=null)
         {
             if(Quality<=0||particles==null||particles.Length==0)return;
             int count=reduced?2:Quality==1?6:18;
             for(int i=0;i<count;i++){
                 var p=particles[nextParticle++%particles.Length];float angle=i*2.399963f;
-                p.origin=origin+Vector3.right*Mathf.Sin(angle)*.22f;p.origin.z=-.7f;
+                p.source=source;p.origin=origin+Vector3.right*Mathf.Sin(angle)*.22f;p.origin.z=-.7f;p.sourceOffset=source==null?Vector3.zero:p.origin-game.UIFeedbackPoint(source);
                 p.age=0;p.life=1.10f+(i%3)*.12f;p.size=.045f+(i%3)*.018f;p.reduced=reduced;p.wood=false;p.seed=true;p.spin=angle;
                 p.color=i%3==0?new Color(.51f,.89f,.77f):i%3==1?new Color(1,.78f,.31f):new Color(.68f,.74f,1);
                 p.velocity=new Vector3(Mathf.Cos(angle)*.65f,1.55f+(i%4)*.16f,0);p.renderer.sharedMaterial=dustMaterial;
@@ -124,6 +126,7 @@ namespace Cascade.Presentation
             ActiveParticleCount = 0;
             foreach (var p in particles) {
                 if (!p.transform.gameObject.activeSelf) continue;
+                if(p.source!=null)p.origin=game.UIFeedbackPoint(p.source)+p.sourceOffset;
                 p.age += Time.unscaledDeltaTime; float t = p.age / p.life;
                 if (t >= 1) { p.transform.gameObject.SetActive(false); continue; }
                 ActiveParticleCount++;

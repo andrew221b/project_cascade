@@ -38,3 +38,8 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 Current acceptance is limited to actual implemented surfaces and tested actions.
 The prior P14 button layout is rejected by the user's evidence; do not use its
 earlier approval to certify this revision. Online remains design-only.
+
+
+## Menus — author-requested reset, 6 October 2026
+
+Mode: Operate. The previous fragmented cream-card menu is explicitly rejected. Replace it with one quiet workshop folio, consistent reading alignment, large actual object/hero art, distinct primary/secondary actions and direct settings tabs. Languages are carousels as explicitly requested; native language names aid recovery from a foreign UI. Bonus lessons share the large-arrow pattern. Word language still needs confirmation and never translates the current row. Previous/back/next live in the footer for requests and records, away from previews. No new product claims, rules, IDs, packages or prices. Local verdict and actual native captures: Reports/MenuReset/README.md.

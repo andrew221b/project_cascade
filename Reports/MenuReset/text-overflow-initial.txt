@@ -1,0 +1,5 @@
+records-ru | Record identity | Фигуры · Английский · Доставка
+powerups-ru | Demo result | Есть один дальний обмен
+settings-sound-ru | Label | Звук и движение
+settings-comfort-ru | Label | Звук и движение
+settings-language-ru | Label | Звук и движение

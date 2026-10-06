@@ -88,7 +88,7 @@ namespace Cascade.Presentation
         }
         public void ShowSettings()
         {
-            returnScreen=CurrentScreen; settingsPage=0; SetScreen(GameScreen.Settings);
+            returnScreen=CurrentScreen; settingsPage=0; languagePreview=null; SetScreen(GameScreen.Settings);
         }
         public void ShowDevices()
         {
@@ -208,11 +208,12 @@ namespace Cascade.Presentation
         { var r=(RectTransform)button.transform; r.SetParent(parent,false); r.anchorMin=min;r.anchorMax=max;r.offsetMin=r.offsetMax=Vector2.zero; }
         void ResetMenu()
         {
-            menuActions.Clear();
+            menuActions.Clear();menuRows.Clear();menuBottoms.Clear();menuPage=null;
             foreach(var key in baseTextSizes.Keys.Where(k=>k==null||k.transform.IsChildOf(menuRoot)).ToArray())baseTextSizes.Remove(key);
             foreach(Transform child in menuRoot){ child.gameObject.SetActive(false); Destroy(child.gameObject); }
             // The illustrated scene is the menu surface; ink sits on its quiet sky window.
             var wash=Rect("Menu hit surface",menuRoot,Vector2.zero,Vector2.one);menuWash=Background(wash,Color.clear,false);
+            if(CurrentScreen!=GameScreen.Home&&CurrentScreen!=GameScreen.Dialogue)BuildMenuPage();
             if(CurrentScreen!=GameScreen.Home&&CurrentScreen!=GameScreen.Dialogue){
                 var motes=Rect("Window light and drifting dust",menuRoot,new Vector2(.13f,.12f),new Vector2(.87f,.85f)).gameObject.AddComponent<WorldWeatherGraphic>();
                 motes.InitializeRegion(this,7);motes.color=new Color(1,.85f,.51f,.15f);
@@ -241,18 +242,20 @@ namespace Cascade.Presentation
             else if(CurrentScreen==GameScreen.PowerupChallenges) DrawReachChallenges();
             else if(CurrentScreen==GameScreen.Pause) {
                 MenuTitle("Take a break", "Your puzzle will wait.");
-                var friend=Picture("Mika rests beside the puzzle",menuRoot,new Vector2(.34f,.615f),new Vector2(.66f,.77f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
+                var friend=Picture("Mika rests beside the puzzle",menuRoot,new Vector2(.30f,.64f),new Vector2(.70f,.82f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
                 friend.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,2),0,.8f);
-                Rect("Mika's wooden shelf",menuRoot,new Vector2(.24f,.602f),new Vector2(.76f,.62f)).gameObject.AddComponent<WoodBoardGraphic>();
+                Rect("Mika's wooden shelf",menuRoot,new Vector2(.24f,.625f),new Vector2(.76f,.642f)).gameObject.AddComponent<WoodBoardGraphic>();
                 MenuButton("Resume",.50f,ShowGame,true); MenuButton("Retry",.40f,()=>{SetScreen(GameScreen.Playing);Retry();});
                 MenuButton("How to play",.30f,ShowHowToPlay); MenuButton("Settings",.20f,ShowSettings); MenuButton("Home",.10f,ShowHome);
             }
             FinishMenuContrast();
+            FitMenuRows();
         }
         static readonly Color MenuInk=new Color(.055f,.16f,.17f);
         static readonly Color MenuPaper=new Color(.99f,.98f,.92f);
         void MenuReadingSurface(string name,Vector2 min,Vector2 max)
         {
+            if(menuPage!=null)return;
             var surface=Rect(name,menuRoot,min,max);var image=Background(surface,MenuPaper,false);
             image.sprite=art.panel;image.type=Image.Type.Sliced;
         }
@@ -266,16 +269,16 @@ namespace Cascade.Presentation
         }
         void MenuTitle(UiCopy title,UiCopy body)
         {
-            MenuReadingSurface("Workshop title cloth",new Vector2(.12f,.756f),new Vector2(.88f,.958f));
-            var label=Text("Menu title",menuRoot,new Vector2(.15f,.855f),new Vector2(.85f,.950f),30,title);label.font=art.titleFont;label.alignment=TextAlignmentOptions.Center;
-            var description=Text("Menu description",menuRoot,new Vector2(.15f,.765f),new Vector2(.85f,.85f),17,body);description.alignment=TextAlignmentOptions.Center;
+            var label=Text("Menu title",menuRoot,new Vector2(.10f,.905f),new Vector2(.90f,.968f),30,title);label.font=art.titleFont;label.alignment=TextAlignmentOptions.MidlineLeft;
+            var description=Text("Menu description",menuRoot,new Vector2(.10f,.812f),new Vector2(.90f,.901f),20,body);description.alignment=TextAlignmentOptions.MidlineLeft;menuHeading=label;menuDescription=description;
         }
         Button MenuButton(UiCopy label,float bottom,Action action,bool primary=false,float left=.08f,float right=.92f)
         {
+            float unit=MenuUnit;float fixedBottom=bottom<=.04f?16:bottom<=.15f?80:-1;
             var button=Button(label,menuRoot,new Vector2(left,bottom),new Vector2(right,bottom),()=>{feedback.Sound(ToyCue.Select);action();});
-            var r=(RectTransform)button.transform;r.pivot=new Vector2(.5f,0);r.sizeDelta=new Vector2(0,48/Mathf.Min(1,menuRoot.GetComponentInParent<Canvas>().scaleFactor));
-            menuActions.Add(r);var caption=button.GetComponentInChildren<TextMeshProUGUI>();caption.margin=new Vector4(6,0,6,0);caption.fontSize=18*(Preferences.LargeText?1.10f:1);
-            button.GetComponent<Image>().color=primary?new Color(.98f,.74f,.32f):new Color(.94f,.885f,.75f);
+            var r=(RectTransform)button.transform;r.pivot=new Vector2(.5f,0);r.sizeDelta=new Vector2(0,52*unit);
+            menuActions.Add(r);if(fixedBottom>=0)menuBottoms.Add(new MenuBottom{rect=r,bottom=fixedBottom});var caption=button.GetComponentInChildren<TextMeshProUGUI>();caption.margin=new Vector4(8,3,8,3);caption.fontSize=(right-left<.51f?20:22)*(Preferences.LargeText?1.10f:1);caption.textWrappingMode=TextWrappingModes.NoWrap;
+            button.GetComponent<Image>().color=primary?new Color(.98f,.74f,.32f):new Color(.84f,.91f,.87f);
             return button;
         }
         IReadOnlyList<LevelContent> PreferredLevels()
@@ -339,51 +342,46 @@ namespace Cascade.Presentation
             if(deviceIndex<0){DrawBasics();return;}
             bool wind=deviceIndex==1&&Enumerable.Range(0,Interaction.Attempt.Level.Floors.Count).Any(IsWindFloor);
             MenuTitle(wind?"Wind on landing":DeviceTitles[deviceIndex],new UiCopy("Device guide · {0} / {1}",deviceIndex+1,DeviceTitles.Length));
-            var guideCaption=(RectTransform)menuRoot.Find("Menu description");guideCaption.anchorMin=new Vector2(.15f,.787f);guideCaption.anchorMax=new Vector2(.85f,.844f);
-            if(deviceIndex==3||deviceIndex==4||deviceIndex>=8){MenuReadingSurface("Tag explanation cloth",new Vector2(.12f,.69f),new Vector2(.88f,.751f));Text("Tool tag meaning",menuRoot,new Vector2(.15f,.70f),new Vector2(.85f,.75f),14,"The little tag shows which piece this tool needs.");}
             var fixture=Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).First(c=>c.Definition.CampaignNodeId==DeviceNodes[deviceIndex]).Definition;
             if(wind)fixture=WindGuide(CurrentWindRight);
-            LiveDeviceDemo(Rect("Device example",menuRoot,new Vector2(.15f,.58f),new Vector2(.85f,deviceIndex==2?.75f:.69f)),fixture,deviceIndex);
+            LiveDeviceDemo(Rect("Device example",menuRoot,new Vector2(.10f,.53f),new Vector2(.90f,.805f)),fixture,deviceIndex);
             MenuReadingSurface("Device instructions cloth",new Vector2(.12f,.375f),new Vector2(.88f,.567f));
-            var explanation=Text("Device explanation",menuRoot,new Vector2(.16f,.39f),new Vector2(.84f,.55f),17,wind?"Wind pushes the whole row one place when it lands. Follow the arrow. Take your time to think.":DeviceCopy[deviceIndex]);explanation.alignment=TextAlignmentOptions.MidlineLeft;
-            MenuButton("Previous",.29f,()=>{deviceIndex=(deviceIndex+DeviceTitles.Length-1)%DeviceTitles.Length;DrawMenu();},false,.10f,.47f);
-            MenuButton("Next",.29f,()=>{deviceIndex=(deviceIndex+1)%DeviceTitles.Length;DrawMenu();},false,.53f,.90f);
-            MenuButton(wind?new UiCopy("Back to puzzle"):new UiCopy("Try level {0}",DeviceNodes[deviceIndex].TrimStart('C','0')),.18f,()=>{if(wind)CloseMenu();else StartContent(Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).First(c=>c.Definition.CampaignNodeId==DeviceNodes[deviceIndex]));},true);
-            MenuButton("How to play",.07f,ShowHowToPlay,false,.10f,.58f);MenuButton("Back",.07f,CloseMenu,false,.62f,.90f);
+            var explanation=Text("Device explanation",menuRoot,new Vector2(.10f,.30f),new Vector2(.90f,.49f),20,wind?"Wind pushes the whole row one place when it lands. Follow the arrow. Take your time to think.":DeviceCopy[deviceIndex]);explanation.alignment=TextAlignmentOptions.MidlineLeft;
+            MenuButton("Previous",.12f,()=>{deviceIndex=(deviceIndex+DeviceTitles.Length-1)%DeviceTitles.Length;DrawMenu();},false,.08f,.48f);
+            MenuButton("Next",.12f,()=>{deviceIndex=(deviceIndex+1)%DeviceTitles.Length;DrawMenu();},false,.52f,.92f);
+            MenuButton(wind?new UiCopy("Back to puzzle"):new UiCopy("Try level {0}",DeviceNodes[deviceIndex].TrimStart('C','0')),.213f,()=>{if(wind)CloseMenu();else StartContent(Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).First(c=>c.Definition.CampaignNodeId==DeviceNodes[deviceIndex]));},true);
+            MenuButton("How to play",.025f,ShowHowToPlay,false,.08f,.58f);MenuButton("Back",.025f,CloseMenu,false,.62f,.92f);
         }
         void DrawSettings()
         {
-            MenuTitle("Make yourself at home",settingsPage==0?"Sound & motion":settingsPage==1?"Comfort & help":"Languages");
-            if(settingsPage<2){
-                var friend=Picture("Mika by the settings",menuRoot,new Vector2(.41f,.683f),new Vector2(.59f,.766f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
-                friend.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,1.5f),0,.85f);
-                Rect("Settings shelf",menuRoot,new Vector2(.34f,.671f),new Vector2(.66f,.681f)).gameObject.AddComponent<WoodBoardGraphic>();
-            }
+            MenuTitle("Settings",settingsPage==0?"Sound & motion":settingsPage==1?"Comfort & help":"Languages");
+            SettingsTabs();
             if(settingsPage==0) {
-                Setting("Music",Preferences.Music,.60f,()=>Preferences.Music=!Preferences.Music);
-                Setting("Sound effects",Preferences.Sound,.515f,()=>Preferences.Sound=!Preferences.Sound);
-                Setting("Haptics",Preferences.Haptics,.43f,()=>Preferences.Haptics=!Preferences.Haptics);
-                Setting("Reduced motion",Preferences.ReducedMotion,.345f,()=>Preferences.ReducedMotion=!Preferences.ReducedMotion);
-                Setting("Screen shake",Preferences.ScreenShake,.26f,()=>Preferences.ScreenShake=!Preferences.ScreenShake);
-                MenuButton(new UiCopy("Effects: {0}",new UiCopy(new[]{"Off","Low","Full"}[Preferences.EffectQuality])),.175f,()=>{Preferences.EffectQuality=(Preferences.EffectQuality+1)%3;ApplyPreferences();DrawMenu();});
+                Setting("Music",Preferences.Music,0,()=>Preferences.Music=!Preferences.Music);
+                Setting("Sound effects",Preferences.Sound,1,()=>Preferences.Sound=!Preferences.Sound);
+                Setting("Haptics",Preferences.Haptics,2,()=>Preferences.Haptics=!Preferences.Haptics);
+                Setting("Reduced motion",Preferences.ReducedMotion,3,()=>Preferences.ReducedMotion=!Preferences.ReducedMotion);
+                Setting("Screen shake",Preferences.ScreenShake,4,()=>Preferences.ScreenShake=!Preferences.ScreenShake);
+                var effects=MenuButton(new UiCopy("Effects: {0}",new UiCopy(new[]{"Off","Low","Full"}[Preferences.EffectQuality])),.3f,()=>{Preferences.EffectQuality=(Preferences.EffectQuality+1)%3;ApplyPreferences();DrawMenu();});
+                RegisterMenuRow(effects,.71f,5,52,8);
             } else if(settingsPage==1) {
-                Setting("High contrast",Preferences.HighContrast,.60f,()=>Preferences.HighContrast=!Preferences.HighContrast);
-                Setting("Larger text",Preferences.LargeText,.50f,()=>Preferences.LargeText=!Preferences.LargeText);
-                Setting("Precise input",Preferences.PreciseInput,.40f,()=>Preferences.PreciseInput=!Preferences.PreciseInput);
-                Setting("Tutorial help",Preferences.Tutorials,.30f,()=>Preferences.Tutorials=!Preferences.Tutorials);
-                Setting("Dead-end warning",Preferences.DeadEndWarnings,.20f,()=>Preferences.DeadEndWarnings=!Preferences.DeadEndWarnings);
+                Setting("High contrast",Preferences.HighContrast,0,()=>Preferences.HighContrast=!Preferences.HighContrast);
+                Setting("Larger text",Preferences.LargeText,1,()=>Preferences.LargeText=!Preferences.LargeText);
+                Setting("Precise input",Preferences.PreciseInput,2,()=>Preferences.PreciseInput=!Preferences.PreciseInput);
+                Setting("Tutorial help",Preferences.Tutorials,3,()=>Preferences.Tutorials=!Preferences.Tutorials);
+                Setting("Dead-end warning",Preferences.DeadEndWarnings,4,()=>Preferences.DeadEndWarnings=!Preferences.DeadEndWarnings);
             }
             if(settingsPage==2)DrawLanguages();
-            MenuButton(settingsPage==0?"Comfort":settingsPage==1?"Languages":"Sound & motion",settingsPage==2?.025f:.085f,()=>{settingsPage=(settingsPage+1)%3;DrawMenu();},false,.10f,.55f);
-            MenuButton("Back",settingsPage==2?.025f:.085f,CloseMenu,false,.59f,.90f);
+            MenuButton("Back",.025f,CloseMenu);
         }
-        void Setting(string label,bool value,float bottom,Action toggle)
+        void Setting(string label,bool value,int index,Action toggle)
         {
-            var button=MenuButton(UiCopy.Raw(label+": "+(value?"On":"Off")),bottom,()=>{toggle();ApplyPreferences();DrawMenu();});
-            button.GetComponent<Image>().color=new Color(.97f,.92f,.78f);
+            var button=MenuButton(UiCopy.Raw(label+": "+(value?"On":"Off")),.5f,()=>{toggle();ApplyPreferences();DrawMenu();});
+            RegisterMenuRow(button,.71f,index,52,8);button.GetComponent<Image>().color=Color.clear;
             var text=button.GetComponentInChildren<TextMeshProUGUI>();text.SetCopy(label);text.alignment=TextAlignmentOptions.MidlineLeft;
-            text.rectTransform.anchorMax=new Vector2(.72f,1);text.margin=new Vector4(16,2,3,2);
-            var track=Rect("Switch",button.transform,new Vector2(.77f,.28f),new Vector2(.95f,.72f));var trackImage=Background(track,value?new Color(.32f,.68f,.61f):new Color(.55f,.58f,.49f),false);trackImage.sprite=art.panel;trackImage.type=Image.Type.Sliced;
+            text.rectTransform.anchorMax=new Vector2(.73f,1);text.margin=new Vector4(4,2,6,2);
+            var separator=Rect("Setting separator",button.transform,new Vector2(0,0),new Vector2(1,0));separator.sizeDelta=new Vector2(0,1);Background(separator,new Color(.66f,.75f,.69f),false);
+            var track=Rect("Switch",button.transform,new Vector2(.79f,.24f),new Vector2(.98f,.76f));var trackImage=Background(track,value?new Color(.12f,.49f,.43f):new Color(.55f,.64f,.60f),false);trackImage.sprite=art.panel;trackImage.type=Image.Type.Sliced;
             var knob=Rect("Knob",track,new Vector2(value?.52f:.04f,.09f),new Vector2(value?.96f:.48f,.91f));var knobImage=Background(knob,Paper,false);knobImage.sprite=art.panel;knobImage.type=Image.Type.Sliced;
         }
         void MiniMachine(RectTransform root,IReadOnlyList<SymbolId> row,IReadOnlyList<SymbolId> target)
@@ -397,7 +395,7 @@ namespace Cascade.Presentation
                     float x=(i+.5f)/symbols.Count,w=.38f/symbols.Count;
                     var slot=Rect("Mini symbol",root,new Vector2(x-w,low),new Vector2(x+w,high));
                     var shape=slot.gameObject.AddComponent<ShapeFaceGraphic>();shape.raycastTarget=false;
-                    shape.SetShape(art.SymbolMesh(symbols[i]),art.SymbolMaterial(symbols[i]).GetColor("_BaseColor"));
+                    shape.SetShape(art.SymbolMesh(symbols[i]),art.SymbolMaterial(symbols[i]).GetColor("_BaseColor"),true);
                     if(symbols[i].Kind==SymbolKind.Glyph)Text("Mini glyph",slot,Vector2.zero,Vector2.one,18,symbols[i].Value);
                 }
             }
@@ -414,7 +412,7 @@ namespace Cascade.Presentation
             foreach(var entry in baseTextSizes.ToArray()) {
                 if(entry.Key==null){baseTextSizes.Remove(entry.Key);continue;}
                 entry.Key.fontSize=entry.Value*(Preferences.LargeText&&!IsSymbolFace(entry.Key.name)?1.12f:1);
-                entry.Key.color=Preferences.HighContrast?new Color(.06f,.17f,.18f):menuRoot!=null&&entry.Key.transform.IsChildOf(menuRoot)?MenuInk:Ink;
+                if(entry.Key.name!="Bomb painted letter")entry.Key.color=Preferences.HighContrast?new Color(.06f,.17f,.18f):menuRoot!=null&&entry.Key.transform.IsChildOf(menuRoot)?MenuInk:Ink;
             }
         }
         static bool IsSymbolFace(string label)=>label=="Bomb painted letter"||label=="Required letter"||label=="Symbol"||label=="TargetSymbol"||label=="DeviceGlyph"||label=="ZoomSymbol";

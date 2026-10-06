@@ -18,27 +18,28 @@ namespace Cascade.Presentation
         Button ShelfChoice(string name,string asset,float left,float bottom,float width,float height,Action action,bool selected=false)
         {
             var b=Button(name,menuRoot,new Vector2(left,bottom),new Vector2(left+width,bottom+height),action);
-            b.GetComponent<Image>().color=string.IsNullOrEmpty(name)?selected?new Color(.96f,.78f,.41f):new Color(.10f,.31f,.32f,.94f):Color.clear;
+            b.GetComponent<Image>().color=string.IsNullOrEmpty(name)?selected?new Color(.98f,.74f,.32f):new Color(.84f,.91f,.87f):Color.clear;
             var label=b.GetComponentInChildren<TextMeshProUGUI>();label.rectTransform.anchorMin=new Vector2(.05f,.10f);label.rectTransform.anchorMax=new Vector2(.95f,.37f);label.fontSize=17*(Preferences.LargeText?1.12f:1);label.margin=new Vector4(3,0,3,0);
             if(!string.IsNullOrEmpty(name)){
                 var plate=Rect("Shelf caption cloth",b.transform,new Vector2(.025f,.07f),new Vector2(.975f,.37f));var paper=Background(plate,MenuPaper,false);paper.sprite=art.panel;paper.type=Image.Type.Sliced;plate.SetAsFirstSibling();
             }
             b.name=string.IsNullOrEmpty(name)?asset+"Choice":b.name;
-            var icon=Picture("Shelf object",b.transform,new Vector2(.13f,.37f),new Vector2(.87f,.98f),Resources.Load<Sprite>(asset=="RibbonSpool"?"CascadeArt/Devices/RibbonSpool":"CascadeArt/Workshop/"+asset),true);
+            var icon=Picture("Shelf object",b.transform,new Vector2(.07f,string.IsNullOrEmpty(name)?.06f:.37f),new Vector2(.93f,.95f),Resources.Load<Sprite>(asset=="RibbonSpool"?"CascadeArt/Devices/RibbonSpool":"CascadeArt/Workshop/"+asset),true);
+            if(string.IsNullOrEmpty(name)&&selected)MarkSelection(b,true);
             return b;
         }
         void DrawCraftBag()
         {
             CraftTitle("Mika's workshop",JourneyClearCount<3?"Restore three lights to open your journal.":"Pick something to make or take along.");
-            var hero=Picture("Mika at the bench",menuRoot,new Vector2(.08f,.55f),new Vector2(.41f,.77f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
+            var hero=Picture("Mika at the bench",menuRoot,new Vector2(.13f,.59f),new Vector2(.43f,.80f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
             hero.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,1.5f),0,.45f);
-            RewardPicture("Parcel",new Vector2(.53f,.60f),new Vector2(.86f,.76f));Shelf(.565f);
-            ShelfChoice("Keepsakes","LeafPin",.08f,.36f,.40f,.19f,ShowCollection);
-            ShelfChoice("Workshop","BridgeLantern",.52f,.36f,.40f,.19f,ShowWorkshop);Shelf(.34f);
-            ShelfChoice("My journal","MoonPatch",.08f,.15f,.40f,.18f,ShowJournal).interactable=JourneyClearCount>=3;
-            ShelfChoice("Power-ups","RibbonSpool",.52f,.15f,.40f,.18f,ShowPowerupChallenges);Shelf(.13f);
-            MenuButton("Back to map",.025f,ShowJourney,true,.08f,.63f);
-            MenuButton("Settings",.025f,ShowSettings,false,.65f,.94f).GetComponentInChildren<TextMeshProUGUI>().fontSize=14;
+            RewardPicture("Parcel",new Vector2(.55f,.62f),new Vector2(.86f,.79f));Shelf(.575f);
+            MenuNavRow("Keepsakes","LeafPin",0,ShowCollection);
+            MenuNavRow("Workshop","BridgeLantern",1,ShowWorkshop);
+            MenuNavRow("My journal","MoonPatch",2,ShowJournal,JourneyClearCount>=3);
+            MenuNavRow("Power-ups","RibbonSpool",3,ShowPowerupChallenges);
+            MenuButton("Back to map",.025f,ShowJourney,true,.08f,.49f);
+            MenuButton("Settings",.025f,ShowSettings,false,.51f,.92f);
         }
         public void ShowPowerupChallenges(){reachPage=0;SetScreen(GameScreen.PowerupChallenges);}
         public void ShowReachChallenges(){reachPage=0;SetScreen(GameScreen.ReachChallenges);}
@@ -46,15 +47,16 @@ namespace Cascade.Presentation
         {
             bool pickups=CurrentScreen==GameScreen.PowerupChallenges;int offset=pickups?6:0;
             CraftTitle(pickups?"Power-ups":"Ribbon reach",pickups?"Pick up a tool. Find a new way home.":"One ribbon. Swap across one or two pieces.");
-            if(pickups)Picture("Teaching tool",menuRoot,new Vector2(.40f,.64f),new Vector2(.60f,.76f),Resources.Load<Sprite>("CascadeArt/Devices/"+(reachPage<3?"RibbonSpool":"Hourglass")),true);
-            else ShelfChoice("","RibbonSpool",.36f,.64f,.28f,.12f,()=>{});
+            if(pickups)Picture("Teaching tool",menuRoot,new Vector2(.38f,.735f),new Vector2(.62f,.812f),Resources.Load<Sprite>("CascadeArt/Devices/"+(reachPage<3?"RibbonSpool":"Hourglass")),true);
+            else ShelfChoice("","RibbonSpool",.36f,.735f,.28f,.077f,()=>{});
             var level=Catalog.BonusLevels[offset+reachPage].Definition;
-            var example=Rect("Reach example",menuRoot,new Vector2(.15f,.43f),new Vector2(.85f,.63f));
+            var example=Rect("Reach example",menuRoot,new Vector2(.10f,.53f),new Vector2(.90f,.73f));
             if(pickups)LiveDeviceDemo(example,level,reachPage<3?9:10);else MiniMachine(example,level.InitialSymbolIds,level.TargetSymbolIds);
             MenuReadingSurface("Tool lesson cloth",new Vector2(.12f,.225f),new Vector2(.88f,.425f));
-            Text("Reach number",menuRoot,new Vector2(.15f,.345f),new Vector2(.85f,.42f),22,new UiCopy(pickups?"Tool challenge {0}":"Try ribbon {0}",reachPage+1));
-            Text("Reach instruction",menuRoot,new Vector2(.16f,.24f),new Vector2(.84f,.34f),17,pickups?(reachPage<3?"Match the spool picture. Then drag past a neighbour.":"Match the hourglass picture. The bomb waits for two swaps."):"Drag past a neighbour. The ribbon works once. Undo brings it back.");
-            for(int i=0;i<6;i++){int pick=i;float left=.09f+i*.14f;var b=Button(UiCopy.Raw((i+1).ToString()),menuRoot,new Vector2(left,.16f),new Vector2(left+.12f,.22f),()=>{reachPage=pick;DrawMenu();});if(i==reachPage)b.GetComponent<Image>().color=new Color(.97f,.73f,.3f);}
+            Text("Reach number",menuRoot,new Vector2(.28f,.39f),new Vector2(.72f,.475f),23,UiCopy.Raw((reachPage+1)+" / 6")).font=art.titleFont;
+            var previous=DirectionButton("ReachPrevious",menuRoot,new Vector2(.08f,.475f),new Vector2(.26f,.475f),false,()=>{reachPage=(reachPage+5)%6;DrawMenu();});RegisterMenuRow(previous,.475f,0,52,0);
+            var next=DirectionButton("ReachNext",menuRoot,new Vector2(.74f,.475f),new Vector2(.92f,.475f),true,()=>{reachPage=(reachPage+1)%6;DrawMenu();});RegisterMenuRow(next,.475f,0,52,0);
+            Text("Reach instruction",menuRoot,new Vector2(.10f,.22f),new Vector2(.90f,.375f),20,pickups?(reachPage<3?"Match the spool picture. Then drag past a neighbour.":"Match the hourglass picture. The bomb waits for two swaps."):"Drag past a neighbour. The ribbon works once. Undo brings it back.");
             MenuButton("Try this trail",.082f,()=>StartContent(Catalog.BonusLevels[offset+reachPage]),true);
             MenuButton("Back",.005f,ShowTravelBag,false,.08f,.45f);
             if(pickups)MenuButton("Ribbon reach",.005f,ShowReachChallenges,false,.50f,.92f);

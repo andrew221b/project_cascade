@@ -80,22 +80,23 @@ namespace Cascade.Presentation
                                 feedback.Burst(origin, new Color(1, .46f, .28f, .9f), 12, reduced); yield return Recoil(e.Floor, profile.bomb); break;
                             case PuzzleEventKind.BombDefused:
                                 game.SetPresentationFeedback("Bomb defused"); feedback.Sound(ToyCue.Defuse);
-                                feedback.Burst(origin, new Color(.4f, .88f, .73f, .8f), 4, reduced); yield return Hold(profile.contact); break;
+                                origin=game.DeviceVisualOrigin(e.Floor,2);feedback.LanternSeeds(origin,reduced,game.DeviceFeedbackAnchor(e.Floor,2));
+                                feedback.Burst(origin+Vector3.up*.22f,new Color(.90f,.97f,.91f,.65f),3,reduced,game.DeviceFeedbackAnchor(e.Floor,2));yield return Hold(reduced?profile.reducedStep:.48f);break;
                             case PuzzleEventKind.KeyOpened:
                                 game.SetPresentationFeedback(new UiCopy("Edge {0} unlocked",e.Value+1)); feedback.Sound(ToyCue.Unlock); feedback.Haptic();
-                                feedback.Burst(origin, new Color(1, .79f, .37f, .8f), 4, reduced); yield return Recoil(e.Floor, profile.contact); break;
+                                feedback.Burst(game.DeviceVisualOrigin(e.Floor,3), new Color(1, .79f, .37f, .8f), 6, reduced,game.DeviceFeedbackAnchor(e.Floor,3)); yield return Recoil(e.Floor, profile.contact); break;
                             case PuzzleEventKind.Repaired:
                                 game.SetPresentationFeedback(new UiCopy("Repair +{0}",e.Value)); feedback.Sound(ToyCue.Repair);
-                                feedback.Burst(origin, new Color(.4f, .88f, .73f, .8f), 5, reduced); yield return Recoil(e.Floor, profile.contact); break;
+                                feedback.Burst(game.DeviceVisualOrigin(e.Floor,4), new Color(.4f, .88f, .73f, .8f), 6, reduced,game.DeviceFeedbackAnchor(e.Floor,4)); yield return Recoil(e.Floor, profile.contact); break;
                             case PuzzleEventKind.RibbonCollected:
                             case PuzzleEventKind.HourglassCollected:
                                 game.SetPresentationFeedback(e.Kind==PuzzleEventKind.RibbonCollected?"One far swap ready":"Bomb paused for two swaps");feedback.Sound(ToyCue.Stamp);feedback.Haptic();
-                                feedback.Burst(origin,new Color(.5f,.8f,1,.85f),5,reduced);yield return Hold(profile.contact);break;
+                                feedback.Burst(game.DeviceVisualOrigin(e.Floor,e.Kind==PuzzleEventKind.RibbonCollected?9:10),new Color(.5f,.8f,1,.85f),6,reduced,game.DeviceFeedbackAnchor(e.Floor,e.Kind==PuzzleEventKind.RibbonCollected?9:10));yield return Hold(profile.contact);break;
                             case PuzzleEventKind.BombFrozen:
                                 game.SetPresentationFeedback("The bomb waits. The wood still wears down.");yield return Hold(.12f);break;
                             case PuzzleEventKind.StampCollected:
                                 game.SetPresentationFeedback("Stamp collected"); feedback.Sound(ToyCue.Stamp);
-                                feedback.Burst(origin, new Color(.74f, .61f, .86f, .8f), 4, reduced); yield return Hold(profile.contact); break;
+                                feedback.Burst(game.DeviceVisualOrigin(e.Floor,8), new Color(.74f, .61f, .86f, .8f), 6, reduced,game.DeviceFeedbackAnchor(e.Floor,8)); yield return Hold(profile.contact); break;
                             case PuzzleEventKind.BridgeConsumed:
                                 game.SetPresentationFeedback("One-use bridge closed"); feedback.Sound(ToyCue.Bridge); yield return Hold(profile.contact); break;
                             case PuzzleEventKind.DurabilityResolved:

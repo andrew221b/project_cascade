@@ -20,6 +20,10 @@ namespace Cascade.Presentation
             public Vector2 anchorPosition,anchorVelocity;
             public bool anchorReady;
             public float responseTime;
+            public float successTime;
+            public bool settledContact;
+            public MaskableGraphic outcomeRibbon;
+            public Sprite normalSprite,safeSprite;
             public DemoLine leftStrap,rightStrap;
             public HangingToolTag tag;
         }
@@ -61,8 +65,9 @@ namespace Cascade.Presentation
                 var tag=item.kind==2?null:BuildToolTag(root,item.contact.RequiredSymbol);
                 var icon=Picture("Recognizable device",root,item.kind==2?Vector2.zero:new Vector2(0,.16f),new Vector2(item.kind==2?.70f:.57f,1),Resources.Load<Sprite>("CascadeArt/Devices/"+DeviceAsset(item.kind)),true);
                 if(item.kind==2)BuildBombMark(icon.rectTransform,item.contact.RequiredSymbol);
+                var ribbon=Rect("Contact outcome ribbon",root,new Vector2(-.04f,-.59f),new Vector2(1.66f,-.06f)).gameObject.AddComponent<ContactRibbonGraphic>();ribbon.color=new Color(.10f,.40f,.34f);ribbon.raycastTarget=false;ribbon.gameObject.SetActive(false);
                 var caption=Text("Device state",root,new Vector2(-.08f,-.50f),new Vector2(1.08f,-.10f),12,"");caption.font=art.titleFont;
-                deviceDocks.Add(new DeviceDock{floor=floorIndex,kind=item.kind,root=root,socket=socket,icon=icon,caption=caption,contact=item.contact,slotX=slotX,dockX=x,leftStrap=leftStrap,rightStrap=rightStrap,tag=tag});
+                deviceDocks.Add(new DeviceDock{floor=floorIndex,kind=item.kind,root=root,socket=socket,icon=icon,normalSprite=icon.sprite,safeSprite=item.kind==2?Resources.Load<Sprite>("CascadeArt/Devices/BombSafe"):null,outcomeRibbon=ribbon,caption=caption,contact=item.contact,slotX=slotX,dockX=x,leftStrap=leftStrap,rightStrap=rightStrap,tag=tag});
             }
             UiCopy landing=floor.EntryTransform==EntryTransform.MirrorNext?"Reverse on landing":floor.EntryTransform==EntryTransform.ShiftLeftOne?"Slide left on landing":"Slide right on landing";
             if(IsWindFloor(floorIndex))landing=floor.EntryTransform==EntryTransform.ShiftLeftOne?"Wind on landing: row slides left":"Wind on landing: row slides right";
@@ -113,8 +118,24 @@ namespace Cascade.Presentation
                 bool reacts=d.kind==2&&(e.Kind==PuzzleEventKind.BombTicked||e.Kind==PuzzleEventKind.BombExploded||e.Kind==PuzzleEventKind.BombDefused)
                     ||d.kind==3&&e.Kind==PuzzleEventKind.KeyOpened||d.kind==4&&e.Kind==PuzzleEventKind.Repaired
                     ||d.kind==8&&e.Kind==PuzzleEventKind.StampCollected||d.kind==9&&e.Kind==PuzzleEventKind.RibbonCollected||d.kind==10&&e.Kind==PuzzleEventKind.HourglassCollected;
-                if(reacts){d.responseTime=.32f;if(!ReducedMotion)d.angleVelocity+=(e.Kind==PuzzleEventKind.BombExploded?-32:16);}
+                if(reacts){d.responseTime=.32f;if(e.Kind!=PuzzleEventKind.BombTicked&&e.Kind!=PuzzleEventKind.BombExploded)d.successTime=1.2f;if(!ReducedMotion)d.angleVelocity+=(e.Kind==PuzzleEventKind.BombExploded?-32:16);}
             }
+        }
+        public Vector3 DeviceVisualOrigin(int floor,int kind)
+        {
+            var dock=deviceDocks.FirstOrDefault(d=>d.floor==floor&&d.kind==kind);
+            if(dock==null)return machine.FloorPosition(floor);
+            // UI props live on the camera canvas. Emit in the feedback plane at the same screen point.
+            return UIFeedbackPoint(dock.icon.rectTransform);
+        }
+        public RectTransform DeviceFeedbackAnchor(int floor,int kind)=>deviceDocks.FirstOrDefault(d=>d.floor==floor&&d.kind==kind)?.icon.rectTransform;
+        public Vector3 UIFeedbackPoint(RectTransform rect)
+        {
+            var body=rect.TransformPoint(rect.rect.min+Vector2.Scale(rect.rect.size,new Vector2(.48f,.35f)));
+            var screen=uiCamera.WorldToScreenPoint(body);
+            var ray=uiCamera.ScreenPointToRay(screen);
+            var plane=new Plane(Vector3.forward,new Vector3(0,0,-.7f));
+            return plane.Raycast(ray,out var distance)?ray.GetPoint(distance):body;
         }
         bool deviceForecast;
         void ClearDeviceForecast()
@@ -143,8 +164,13 @@ namespace Cascade.Presentation
             foreach(var d in deviceDocks)if(d.floor==floorIndex) {
                 d.root.gameObject.SetActive(!past);
                 bool used=active&&(d.kind==2?frame.BombPhase!=BombPhase.Armed:d.kind==3?frame.KeyUsed:d.kind==4?frame.RepairUsed:d.kind==8?(frame.StampBits&(1<<floorIndex))!=0:frame.PowerupUsed);
-                d.icon.color=used?new Color(.62f,.72f,.66f,.70f):Color.white;
-                UiCopy copy=used?new UiCopy(d.kind==2?(frame.BombPhase==BombPhase.Defused?"Safe":"Burst"):d.kind==3?"Unlocked":d.kind==4?"Repaired":"Collected"):d.kind==2?new UiCopy("{0} moves",active?frame.BombTicks:floor.Bomb.Ticks):d.kind==9?new UiCopy("Far swap"):d.kind==10?new UiCopy("Pause bomb"):UiCopy.Raw("");
+                d.settledContact=used;d.outcomeRibbon.gameObject.SetActive(used);
+                d.outcomeRibbon.color=d.kind==2&&frame.BombPhase==BombPhase.Exploded?new Color(.62f,.20f,.14f):d.kind==3?new Color(.42f,.29f,.12f):d.kind==8?new Color(.34f,.23f,.49f):d.kind>=9?new Color(.10f,.33f,.49f):new Color(.10f,.40f,.34f);
+                d.caption.rectTransform.anchorMin=used?new Vector2(.02f,-.50f):new Vector2(-.08f,-.50f);d.caption.rectTransform.anchorMax=used?new Vector2(1.60f,-.10f):new Vector2(1.08f,-.10f);
+                d.caption.color=used?MenuPaper:Ink;
+                if(d.kind==2)d.icon.sprite=used&&frame.BombPhase==BombPhase.Defused&&d.safeSprite!=null?d.safeSprite:d.normalSprite;
+                d.icon.color=used&&d.kind!=2?new Color(.85f,.94f,.88f):Color.white;
+                UiCopy copy=used?new UiCopy(d.kind==2?(frame.BombPhase==BombPhase.Defused?"Safe":"Burst"):d.kind==3?"Unlocked":d.kind==4?"Repaired":d.kind==9?"Far swap":d.kind==10?"Pause bomb":"Collected"):d.kind==2?new UiCopy("{0} moves",active?frame.BombTicks:floor.Bomb.Ticks):d.kind==9?new UiCopy("Far swap"):d.kind==10?new UiCopy("Pause bomb"):UiCopy.Raw("");
                 if(d.kind==2&&active&&frame.BombPhase==BombPhase.Armed&&frame.FrozenTicks>0){copy=new UiCopy("Paused: {0}",frame.FrozenTicks);d.icon.color=new Color(.65f,.86f,1);}
                 d.caption.SetCopy(copy);
             }

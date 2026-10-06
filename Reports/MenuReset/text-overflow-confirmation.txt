@@ -1,0 +1,10 @@
+powerups-ru | Demo result | Есть один дальний обмен
+language-confirmation-en | Menu title | Change word language?
+bag-large-safe-uk | Menu description | Що змайструємо? Що візьмемо з собою?
+contracts-large-safe-uk | Menu description | Достав ряд додому з печаткою.
+powerups-large-safe-uk | Menu description | Збирай корисні речі та знайди шлях додому.
+powerups-large-safe-uk | Demo result | Є один далекий обмін
+ribbon-large-safe-uk | Menu description | Одна стрічка — обмін через одну чи дві фігури.
+basics-large-safe-uk | Menu description | Розстав фігурки й достав ряд.
+basics-large-safe-uk | Guide gesture | Перетягни деталь на сусідню. Вони поміняються місцями.
+basics-large-safe-uk | Guide tag | На табличці — потрібна деталь. Постав таку саму просто над предметом.

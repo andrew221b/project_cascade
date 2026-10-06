@@ -2,6 +2,10 @@
 name: CASCADE — Sky Wind Workshop
 description: A small keeper carries light through a living sky of tactile puzzle machines.
 colors:
+  menu-ink: "rgb(5.5% 16% 17%)"
+  menu-paper: "rgb(99% 98% 92%)"
+  menu-sage: "rgb(84% 91% 87%)"
+  contact-success: "rgb(10% 40% 34%)"
   ui-ink: "rgb(16% 28% 29%)"
   high-contrast-ink: "rgb(6% 17% 18%)"
   ui-paper: "rgb(100% 96% 84%)"
@@ -37,6 +41,18 @@ colors:
   wood-chip-dark: "rgb(64% 32% 12%)"
   wood-chip-light: "rgb(89% 60% 28%)"
 typography:
+  menu-body:
+    fontFamily: "Balsamiq Sans"
+    fontSize: "20px"
+    fontWeight: 400
+  menu-action:
+    fontFamily: "Balsamiq Sans"
+    fontSize: "22px"
+    fontWeight: 700
+  menu-compact-action:
+    fontFamily: "Balsamiq Sans"
+    fontSize: "20px"
+    fontWeight: 700
   menu-title:
     fontFamily: "Balsamiq Sans"
     fontSize: "30px"
@@ -113,11 +129,17 @@ components:
     padding: "2px 3px"
     height: "48px"
   button-menu:
-    backgroundColor: "{colors.ui-paper}"
-    textColor: "{colors.ui-ink}"
-    typography: "{typography.button}"
+    backgroundColor: "{colors.menu-sage}"
+    textColor: "{colors.menu-ink}"
+    typography: "{typography.menu-action}"
     rounded: "{rounded.panel-source}"
+    padding: "3px 8px"
     height: "52px"
+  language-carousel:
+    backgroundColor: "{colors.menu-sage}"
+    textColor: "{colors.menu-ink}"
+    typography: "{typography.menu-action}"
+    height: "64px"
   button-direction:
     backgroundColor: "{colors.ui-paper}"
     textColor: "{colors.ui-ink}"
@@ -487,3 +509,14 @@ Outcome motion now has an authored lantern sequence: a finite staggered receiver
 The readability follow-up places shared menu headings and grouped reading copy on opaque neutral ivory cloth, RGB(.99,.98,.92), with deep teal ink RGB(.055,.16,.17). Source-color contrast is 14.62:1 on these surfaces. The scenery remains visible around them, with no full-screen wash. Shelf captions use matching cloth labels; thumbnail controls use teal enamel and gold selection. Disabled actions use opaque sage rather than translucent gold. Menu actions adapt to at least 48 physical pixels at the small reference size, with shallow text padding and a 1.10 large-text multiplier for two-line actions; body copy retains 1.12. Gameplay actions have a 52-pixel band and 17-pixel text with compact padding. Device/guide counters reserve real font line height. See Docs/MENU_READABILITY_AND_TAGS.md and Reports/Readability/README.md.
 
 Wood bow grows from about .10 to .27 world units with wear and relaxes after repair. The original logical strip thickness is independent of its expanded deformation/culling bounds. At exhaustion the duplicated center seam lets two halves release from their rope ends, followed by textured splinters. Shapes, letter faces, shadows, knots and hanging sockets follow their corresponding cosmetic deformation; the Domain never sees this simulation.
+
+
+## Menu folio — 6 October 2026
+
+This supersedes the fragmented menu cloth cards described above. The user rejected their empty space, weak hierarchy, awkward buttons and merged text. The menu mode is Operate inside the existing Sky Wind Workshop world: a single quiet ivory folio, shared left alignment, warm timber binding, large character/object artwork and direct sage navigation. Shelf thumbnails reserve their area for the actual object, with gold and a check for selection. Workshop progress is a filled green rail alongside an explicit count. Footer actions have fixed physical baselines at 16 and 80 pixels, 52-pixel height and a 12-pixel gap. Menu short actions do not wrap. Primary captions are 22 reference units, compact captions 20; body copy starts at 20, with a real two-line subtitle area. Balsamiq, the game palette and the illustrated workshop remain.
+
+Languages are two carousels with native language names, broad arrow targets and one selected value. Menu changes apply immediately. Word language browsing is separate from confirmation and affects only new puzzles. The confirmation is a compact folio with its heading on the same surface. Sound/comfort/language tabs are direct navigation; settings have full-row tap targets and recognizable switches. Bonus lesson selection also uses arrows and a 1–6 counter. Requests, stamp trails and route records put previous/back/next together in the footer, clear of the preview row.
+
+Device reactions have contrasting folded ribbons and a short damped entrance, with localized live lettering. The bomb's extinguished-fuse sibling preserves its painted contact and body; small colored light seeds rise at the hanging body. Feedback anchors follow its canvas-to-world position through wind and viewport changes. Keys, repair, stamps and power-ups have related colored bands and feedback at their actual props. Guide and preview shapes use beveled color shading. Pause, reduced motion and effect-quality bounds are retained, with no change to resolver transitions.
+
+Actual native Unity inspection and four selected PlayMode checks are recorded in Reports/MenuReset/README.md. This is local evidence for readability and interactions, not a human-enjoyment or device-performance certification. Original source sprites, Cloud settings, prices, packages, persisted IDs, schemas and core rules remain.

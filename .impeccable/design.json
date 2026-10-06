@@ -479,12 +479,68 @@
           "oklch(0.836 0.13099 65.80)",
           "oklch(0.950 0.13099 65.80)"
         ]
+      },
+      "menu-ink": {
+        "role": "neutral",
+        "displayName": "Menu Ink",
+        "tonalRamp": [
+          "oklch(0.150 0.03275 203.73)",
+          "oklch(0.264 0.03275 203.73)",
+          "oklch(0.379 0.03275 203.73)",
+          "oklch(0.493 0.03275 203.73)",
+          "oklch(0.607 0.03275 203.73)",
+          "oklch(0.721 0.03275 203.73)",
+          "oklch(0.836 0.03275 203.73)",
+          "oklch(0.950 0.03275 203.73)"
+        ]
+      },
+      "menu-paper": {
+        "role": "neutral",
+        "displayName": "Folio Paper",
+        "tonalRamp": [
+          "oklch(0.150 0.02026 99.05)",
+          "oklch(0.264 0.02026 99.05)",
+          "oklch(0.379 0.02026 99.05)",
+          "oklch(0.493 0.02026 99.05)",
+          "oklch(0.607 0.02026 99.05)",
+          "oklch(0.721 0.02026 99.05)",
+          "oklch(0.836 0.02026 99.05)",
+          "oklch(0.950 0.02026 99.05)"
+        ]
+      },
+      "menu-sage": {
+        "role": "neutral",
+        "displayName": "Sage Action",
+        "tonalRamp": [
+          "oklch(0.150 0.02339 160.95)",
+          "oklch(0.264 0.02339 160.95)",
+          "oklch(0.379 0.02339 160.95)",
+          "oklch(0.493 0.02339 160.95)",
+          "oklch(0.607 0.02339 160.95)",
+          "oklch(0.721 0.02339 160.95)",
+          "oklch(0.836 0.02339 160.95)",
+          "oklch(0.950 0.02339 160.95)"
+        ]
+      },
+      "contact-success": {
+        "role": "semantic",
+        "displayName": "Contact Success",
+        "tonalRamp": [
+          "oklch(0.150 0.07667 176.24)",
+          "oklch(0.264 0.07667 176.24)",
+          "oklch(0.379 0.07667 176.24)",
+          "oklch(0.493 0.07667 176.24)",
+          "oklch(0.607 0.07667 176.24)",
+          "oklch(0.721 0.07667 176.24)",
+          "oklch(0.836 0.07667 176.24)",
+          "oklch(0.950 0.07667 176.24)"
+        ]
       }
     },
     "typographyMeta": {
       "menu-title": {
         "displayName": "Menu Title",
-        "purpose": "Shared left-aligned menu headings, 32 reference units, Bold."
+        "purpose": "Shared left-aligned menu headings, 30 reference units, Bold; compact word confirmation 28."
       },
       "region-speaker": {
         "displayName": "Region Speaker",
@@ -533,6 +589,18 @@
       "target-glyph": {
         "displayName": "Target Glyph",
         "purpose": "Live Bold face in the complete receiver order."
+      },
+      "menu-body": {
+        "displayName": "Menu Body",
+        "purpose": "Menu reading copy starts at 20 reference units, with enough height for large text."
+      },
+      "menu-action": {
+        "displayName": "Menu Action",
+        "purpose": "22-unit Bold primary/menu captions; short actions do not wrap."
+      },
+      "menu-compact-action": {
+        "displayName": "Compact Menu Action",
+        "purpose": "20-unit Bold compact actions and direct settings tabs."
       }
     },
     "shadows": [
@@ -658,7 +726,7 @@
       "name": "Utility and menu action",
       "kind": "button",
       "refersTo": "button-secondary",
-      "description": "Native warm paper Button. Gameplay actions are compensated 48-unit bands; the button-menu variant uses 52 reference units with 10/5-unit horizontal/vertical text margins. Filled controls have a selected focus outline. Documentation is native-only; HTML/CSS preview intentionally absent.",
+      "description": "Gameplay utility buttons retain their own compensated band. Menus use 52-pixel sage/gold actions, deep teal ink, 8/3-unit text padding, fixed footer baselines and no short-caption wrapping. No HTML/CSS preview; native Unity evidence is in Reports/MenuReset.",
       "html": "",
       "css": ""
     },
@@ -725,6 +793,14 @@
       "description": "Native safe-area paper surface with four columns and up to two rows, original shape contours/live glyphs and position labels. Pauses gameplay; no browser counterpart. Documentation is native-only; HTML/CSS preview intentionally absent.",
       "html": "",
       "css": ""
+    },
+    {
+      "name": "Language carousel",
+      "kind": "custom",
+      "refersTo": "language-carousel",
+      "description": "One native language name and two broad chevrons in a 64-pixel row. UI changes immediately; word browsing needs separate confirmation and preserves the current attempt. Native Unity, no HTML/CSS preview.",
+      "html": "",
+      "css": ""
     }
   ],
   "narrative": {
@@ -736,7 +812,8 @@
       "Wood grain, hemp suspension, brass joints and soft contact shadows make the machine tangible.",
       "Mika, Pip and Rue connect short optional dialogue to a concrete destination.",
       "Illustrated routes distinguish the current path from future-region browsing.",
-      "Separate clouds, rooted plants, a glider and regional weather give the sky restrained life."
+      "Separate clouds, rooted plants, a glider and regional weather give the sky restrained life.",
+      "**Menu folio**: one calm ivory reading surface, left-aligned hierarchy, larger illustrated objects, direct tabs and native-name language carousels; clear footer navigation never covers puzzle previews."
     ],
     "rules": [
       {

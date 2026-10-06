@@ -477,8 +477,12 @@ namespace Cascade.Tests
             var letter=game.GetComponentsInChildren<TextMeshProUGUI>().First(t=>t.name=="Bomb painted letter");
             Assert.That(letter.text,Is.EqualTo(words.Definition.Floors[0].Bomb.RequiredSymbol.Value));
             Assert.That(letter.color.r,Is.GreaterThan(.95f));
+            game.ShowSettings();yield return null;game.Preferences.HighContrast=true;game.SendMessage("ApplyPreferences");game.ShowGame();yield return null;
+            Assert.That(letter.color.r,Is.GreaterThan(.95f),"Preference changes must not turn the painted contact dark.");
             game.Interaction.SetSuspended(false);game.Interaction.Execute(PuzzleCommand.Swap(0));yield return AwaitPresentation();
             Assert.That(game.Interaction.Attempt.Current.BombPhase,Is.EqualTo(BombPhase.Defused),"The symbol painted on the body still uses the canonical contact rule.");
+            var safeIcon=letter.transform.parent.parent.GetComponent<UnityEngine.UI.Image>();Assert.That(safeIcon.sprite.name,Is.EqualTo("BombSafe"));
+            Assert.That(safeIcon.transform.parent.Find("Contact outcome ribbon").gameObject.activeSelf,Is.True);
 
             // Other tools retain their independently suspended tags.
             game.LoadNode("C18");game.ReducedMotion=false;yield return AwaitPreparation();game.RefreshLayout();
@@ -734,9 +738,11 @@ namespace Cascade.Tests
         [UnityTest] public IEnumerator WordLanguageNeedsConfirmationAndAppliesOnlyAtNextStart()
         {
             var before=game.Interaction.Attempt.Current;game.ShowSettings();yield return ClickButton("Comfort");yield return ClickButton("Languages");
+            yield return ClickButton("PuzzleLocalePrevious");Assert.That(game.Preferences.PuzzleLocale,Is.EqualTo("en"));
             yield return ClickButton("PuzzleLocaleuk");Assert.That(game.ProposedPuzzleLocale,Is.EqualTo("uk"));
             yield return ClickButton("Keepmychoice");Assert.That(game.Preferences.PuzzleLocale,Is.EqualTo("en"));
-            yield return ClickButton("PuzzleLocaleru");yield return ClickButton("Usefornewpuzzles");
+            yield return ClickButton("UiLocaleNext");Assert.That(game.UiLanguage,Is.EqualTo("ru"));
+            yield return ClickButton("PuzzleLocaleNext");yield return ClickButton("PuzzleLocaleru");yield return ClickButton("Usefornewpuzzles");
             Assert.That(game.Preferences.PuzzleLocale,Is.EqualTo("ru"));Assert.That(game.Interaction.Attempt.Current,Is.SameAs(before));
             game.SelectMode(PuzzleMode.Words);game.ShowJourney();yield return ClickButton("Travel");yield return ClickButton("Skipstory");
             Assert.That(game.Interaction.Attempt.ActiveLocale,Is.EqualTo("ru"));Assert.That(game.Interaction.Attempt.Current.Row.All(v=>v.Locale=="ru"),Is.True);

@@ -8,8 +8,10 @@ namespace Cascade.Presentation
     public sealed partial class CascadeGame
     {
         string proposedPuzzleLocale;
+        string languagePreview;
         public string UiLanguage=>LocalizationSettings.SelectedLocale.Identifier.Code;
         public string ProposedPuzzleLocale=>proposedPuzzleLocale;
+        static UiCopy NativeLanguageName(string code)=>UiCopy.Raw(code=="ru"?"Русский":code=="uk"?"Українська":"English");
         static UiCopy LanguageName(string code)=>code=="ru"?"Russian":code=="uk"?"Ukrainian":"English";
         void InitializeUiLanguage()
         {
@@ -32,31 +34,27 @@ namespace Cascade.Presentation
         public void ConfirmPuzzleLocale()
         {
             if(proposedPuzzleLocale==null)return;
-            Preferences.PuzzleLocale=proposedPuzzleLocale;PersistProgress();proposedPuzzleLocale=null;SetScreen(GameScreen.Settings);
+            Preferences.PuzzleLocale=proposedPuzzleLocale;PersistProgress();proposedPuzzleLocale=null;languagePreview=null;SetScreen(GameScreen.Settings);
         }
         void DrawWordLanguageConfirmation()
         {
-            MenuTitle("Change word language?",new UiCopy("New puzzles: {0}. This row stays the same.",LanguageName(proposedPuzzleLocale)));
-            MenuButton("Use for new puzzles",.43f,ConfirmPuzzleLocale,true);
-            MenuButton("Keep my choice",.30f,()=>{proposedPuzzleLocale=null;SetScreen(GameScreen.Settings);});
+            MenuTitle("Change word language?","Word language · next puzzle");
+            menuPage.anchorMin=new Vector2(.045f,.265f);menuPage.anchorMax=new Vector2(.955f,.865f);
+            var binding=menuBinding;binding.anchorMin=new Vector2(.045f,.852f);binding.anchorMax=new Vector2(.955f,.867f);
+            var title=menuHeading.rectTransform;title.anchorMin=new Vector2(.10f,.74f);title.anchorMax=new Vector2(.90f,.838f);menuHeading.fontSize=28*(Preferences.LargeText?1.12f:1);
+            var description=menuDescription.rectTransform;description.anchorMin=new Vector2(.10f,.66f);description.anchorMax=new Vector2(.90f,.735f);
+            Text("Language confirmation",menuRoot,new Vector2(.10f,.51f),new Vector2(.90f,.65f),22,new UiCopy("New puzzles: {0}. This row stays the same.",NativeLanguageName(proposedPuzzleLocale)));
+            MenuButton("Use for new puzzles",.425f,ConfirmPuzzleLocale,true);
+            MenuButton("Keep my choice",.31f,()=>{proposedPuzzleLocale=null;languagePreview=null;SetScreen(GameScreen.Settings);});
         }
         void DrawLanguages()
         {
-            MenuReadingSurface("Menu language cloth",new Vector2(.12f,.695f),new Vector2(.88f,.753f));
-            Text("UI language help",menuRoot,new Vector2(.10f,.70f),new Vector2(.90f,.76f),18,"Menu language");
-            string[] codes={"en","ru","uk"};
-            for(int i=0;i<codes.Length;i++) {
-                string code=codes[i];
-                var button=MenuButton(LanguageName(code),.61f-i*.09f,()=>SetUiLocale(code),UiLanguage==code);
-                button.name="UiLocale"+code;
-            }
-            MenuReadingSurface("Word language cloth",new Vector2(.12f,.35f),new Vector2(.88f,.42f));
-            Text("Word language help",menuRoot,new Vector2(.16f,.355f),new Vector2(.84f,.415f),17,"Word language · next puzzle");
-            for(int i=0;i<codes.Length;i++) {
-                string code=codes[i];
-                var button=MenuButton(LanguageName(code),.265f-i*.085f,()=>ProposePuzzleLocale(code),Preferences.PuzzleLocale==code);
-                button.name="PuzzleLocale"+code;
-            }
+            if(languagePreview==null)languagePreview=Preferences.PuzzleLocale;
+            var menuHeading=Text("UI language help",menuRoot,new Vector2(.10f,.66f),new Vector2(.90f,.72f),22,"Menu language");menuHeading.font=art.titleFont;menuHeading.alignment=TextAlignmentOptions.MidlineLeft;
+            LanguageCarousel("UiLocale",UiLanguage,.65f,SetUiLocale);
+            var wordHeading=Text("Word language help",menuRoot,new Vector2(.10f,.435f),new Vector2(.90f,.51f),22,"Word language · next puzzle");wordHeading.font=art.titleFont;wordHeading.alignment=TextAlignmentOptions.MidlineLeft;
+            LanguageCarousel("PuzzleLocale",languagePreview,.42f,code=>{languagePreview=code;DrawMenu();});
+            var apply=MenuButton("Use for new puzzles",.20f,()=>ProposePuzzleLocale(languagePreview),true);apply.name="PuzzleLocale"+languagePreview;apply.interactable=languagePreview!=Preferences.PuzzleLocale;
         }
     }
 }
