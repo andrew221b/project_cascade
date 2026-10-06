@@ -19,16 +19,49 @@ namespace Cascade.Editor.Playable
     {
         const BindingFlags Private=BindingFlags.NonPublic|BindingFlags.Instance;
         const string Phase="Readability";
-        static string Folder=>Path.GetFullPath(Path.Combine(UnityEngine.Application.dataPath,"../../Reports/Readability"));
+        static string capturePhase=Phase;
+        static string Folder=>Path.GetFullPath(Path.Combine(UnityEngine.Application.dataPath,"../../Reports",capturePhase));
         static readonly List<string> findings=new List<string>();
         static void Field(CascadeGame g,string field,object value)=>typeof(CascadeGame).GetField(field,Private).SetValue(g,value);
         static void Draw(CascadeGame g)=>typeof(CascadeGame).GetMethod("DrawMenu",Private).Invoke(g,null);
         public static void Run()
         {
             if(!EditorApplication.isPlaying||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required.");
+            capturePhase=Phase;
             UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(Shots());
         }
-        public static void ConfirmButtons()=>UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(ButtonShots());
+        public static void RunFinalReview()
+        {
+            if(!EditorApplication.isPlaying||EditorApplication.isCompiling)throw new InvalidOperationException("Compiled Play Mode required.");
+            capturePhase="FinalReview";
+            UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(Shots());
+        }
+        public static void ConfirmButtons(){capturePhase=Phase;UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(ButtonShots());}
+        public static void ConfirmBombMark()
+        {
+            capturePhase="FinalReview";UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(BombShots());
+        }
+        static IEnumerator BombShots()
+        {
+            var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);
+            bool background=UnityEngine.Application.runInBackground;UnityEngine.Application.runInBackground=true;
+            try{
+                findings.Clear();findings.AddRange(File.ReadAllLines(Path.Combine(Folder,"text-overflow.txt")).Where(s=>!s.StartsWith("bomb-letter-")&&!s.StartsWith("bomb-defused |")));
+                yield return Ready(g);g.ReducedMotion=false;g.Preferences.LargeText=false;g.SetUiLocale("ru");g.SendMessage("OnApplicationFocus",true);
+                g.Feedback.MusicEnabled=g.Feedback.SoundEnabled=false;
+                if(g.Catalog.TryGetLocalizedBinding("C13","ru",out var words))g.LoadLevel(words.Definition,"ru");
+                g.ShowGame();yield return Ready(g);g.Interaction.SetSuspended(false);
+                var motion=new List<string>{"frame,utc,bomb_angle,state_hash"};
+                for(int i=0;i<2;i++){
+                    yield return new WaitForSecondsRealtime(.75f);yield return Shot(g,"bomb-letter-"+i,390,844);
+                    var bomb=g.GetComponentsInChildren<UnityEngine.UI.Button>().First(b=>b.name=="DeviceBomb");motion.Add(i+","+DateTime.UtcNow.ToString("o")+","+bomb.transform.eulerAngles.z.ToString("F4",System.Globalization.CultureInfo.InvariantCulture)+","+g.Interaction.Attempt.CurrentStateHash);
+                }
+                g.Interaction.Execute(Cascade.Domain.PuzzleCommand.Swap(0));while(g.Interaction.IsPresenting)yield return null;
+                yield return Shot(g,"bomb-defused",390,844);
+                File.WriteAllLines(Path.Combine(Folder,"text-overflow.txt"),findings);File.WriteAllLines(Path.Combine(Folder,"bomb-motion.csv"),motion);
+                Debug.Log("CASCADE final bomb mark confirmation complete; overflow findings: "+findings.Count);
+            }finally{UnityEngine.Application.runInBackground=background;}
+        }
         static IEnumerator ButtonShots()
         {
             var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(g,"persistenceReady",false);g.Feedback.MusicEnabled=g.Feedback.SoundEnabled=false;
@@ -51,13 +84,13 @@ namespace Cascade.Editor.Playable
                 profile.RecordClear(a);profile.Rewards.RecordDelivery(a);
             }
             profile.Rewards.Synchronize(profile.Clears.Select(c=>c.CampaignNodeId));
-            foreach(var receipt in profile.Rewards.Parcels.Take(3))profile.Rewards.ClaimParcel(receipt.Order);
+            foreach(var receipt in profile.Rewards.Parcels.Take(capturePhase=="FinalReview"?2:3))profile.Rewards.ClaimParcel(receipt.Order);
             ((HashSet<string>)typeof(CascadeGame).GetField("sessionClears",Private).GetValue(g)).UnionWith(profile.Clears.Select(c=>c.CampaignNodeId));
         }
         static IEnumerator Shot(CascadeGame g,string name,int width=320,int height=693)
         {
             yield return new WaitForSecondsRealtime(.22f);
-            yield return PlayableCapture.CaptureSettled(Phase,name+".png",width,height,pose=>{
+            yield return PlayableCapture.CaptureSettled(capturePhase,name+".png",width,height,pose=>{
                 foreach(var text in pose.GetComponentsInChildren<TextMeshProUGUI>()){
                     if(string.IsNullOrEmpty(text.text))continue;text.ForceMeshUpdate();
                     if(text.isTextOverflowing)findings.Add(name+" | "+text.name+" | "+text.text.Replace('\n',' '));
@@ -77,6 +110,9 @@ namespace Cascade.Editor.Playable
             findings.Clear();bool background=UnityEngine.Application.runInBackground;UnityEngine.Application.runInBackground=true;
             try {
                 yield return Ready(g);Seed(g);g.SetUiLocale("ru");g.SendMessage("OnApplicationFocus",true);
+                if(capturePhase=="FinalReview"){
+                    g.ShowJourney();yield return Shot(g,"journey-ru");g.ShowLessons();yield return Shot(g,"lessons-ru");g.ShowParcel();yield return Shot(g,"parcel-ru");
+                }
                 g.ShowTravelBag();yield return Shot(g,"bag-ru");
                 g.ShowJournal();yield return Shot(g,"journal-ru");
                 g.ShowCollection();yield return Shot(g,"collection-ru");Field(g,"giftPage",3);Draw(g);yield return Shot(g,"collection-locked-ru");
@@ -92,14 +128,19 @@ namespace Cascade.Editor.Playable
                 g.SendMessage("TogglePause");yield return Shot(g,"pause-ru");
                 g.SetUiLocale("en");g.ShowTravelBag();yield return Shot(g,"bag-en",390,844);yield return Shot(g,"bag-wide",1440,900);
                 g.Preferences.LargeText=true;g.SetUiLocale("uk");g.ShowCollection();yield return Shot(g,"collection-large-uk");g.Preferences.LargeText=false;
+                g.LoadNode("C13");g.ShowGame();yield return Ready(g);g.Interaction.SetSuspended(false);yield return Shot(g,"bomb-shape",390,844);
                 g.SetUiLocale("ru");if(g.Catalog.TryGetLocalizedBinding("C13","ru",out var words))g.LoadLevel(words.Definition,"ru");g.ShowGame();yield return Ready(g);g.Interaction.SetSuspended(false);
-                var motion=new List<string>{"frame,utc,tag_angle,state_hash"};
-                for(int i=0;i<3;i++){
-                    yield return new WaitForSecondsRealtime(.75f);yield return Shot(g,"letter-tag-"+i,390,844);
-                    var tag=g.GetComponentsInChildren<HangingToolTag>().First();motion.Add(i+","+DateTime.UtcNow.ToString("o")+","+tag.Angle.ToString("F4",System.Globalization.CultureInfo.InvariantCulture)+","+g.Interaction.Attempt.CurrentStateHash);
+                var motion=new List<string>{"frame,utc,bomb_angle,state_hash"};
+                for(int i=0;i<2;i++){
+                    yield return new WaitForSecondsRealtime(.75f);yield return Shot(g,"bomb-letter-"+i,390,844);
+                    var bomb=g.GetComponentsInChildren<UnityEngine.UI.Button>().First(b=>b.name=="DeviceBomb");motion.Add(i+","+DateTime.UtcNow.ToString("o")+","+bomb.transform.eulerAngles.z.ToString("F4",System.Globalization.CultureInfo.InvariantCulture)+","+g.Interaction.Attempt.CurrentStateHash);
                 }
-                Directory.CreateDirectory(Folder);File.WriteAllLines(Path.Combine(Folder,"text-overflow.txt"),findings);File.WriteAllLines(Path.Combine(Folder,"tag-motion.csv"),motion);
-                Debug.Log("CASCADE readability native batch complete; overflow findings: "+findings.Count);
+                if(capturePhase=="FinalReview"){
+                    g.Interaction.Execute(Cascade.Domain.PuzzleCommand.Swap(0));
+                    while(g.Interaction.IsPresenting)yield return null;yield return Shot(g,"bomb-defused",390,844);
+                }
+                Directory.CreateDirectory(Folder);File.WriteAllLines(Path.Combine(Folder,"text-overflow.txt"),findings);File.WriteAllLines(Path.Combine(Folder,"bomb-motion.csv"),motion);
+                Debug.Log("CASCADE "+capturePhase+" native batch complete; overflow findings: "+findings.Count);
             }finally{UnityEngine.Application.runInBackground=background;}
         }
     }

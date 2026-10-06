@@ -58,8 +58,9 @@ namespace Cascade.Presentation
                 var button=Button(UiCopy.Raw("Device "+DeviceAsset(item.kind)),card,new Vector2(x,-.075f),new Vector2(x,-.075f),()=>OpenDevice(item.kind));
                 var root=(RectTransform)button.transform;root.sizeDelta=new Vector2(88,55);
                 button.GetComponent<Image>().color=Color.clear;button.GetComponentInChildren<TextMeshProUGUI>().SetCopy("");
-                var tag=BuildToolTag(root,item.contact.RequiredSymbol);
-                var icon=Picture("Recognizable device",root,new Vector2(0,.16f),new Vector2(.57f,1),Resources.Load<Sprite>("CascadeArt/Devices/"+DeviceAsset(item.kind)),true);
+                var tag=item.kind==2?null:BuildToolTag(root,item.contact.RequiredSymbol);
+                var icon=Picture("Recognizable device",root,item.kind==2?Vector2.zero:new Vector2(0,.16f),new Vector2(item.kind==2?.70f:.57f,1),Resources.Load<Sprite>("CascadeArt/Devices/"+DeviceAsset(item.kind)),true);
+                if(item.kind==2)BuildBombMark(icon.rectTransform,item.contact.RequiredSymbol);
                 var caption=Text("Device state",root,new Vector2(-.08f,-.50f),new Vector2(1.08f,-.10f),12,"");caption.font=art.titleFont;
                 deviceDocks.Add(new DeviceDock{floor=floorIndex,kind=item.kind,root=root,socket=socket,icon=icon,caption=caption,contact=item.contact,slotX=slotX,dockX=x,leftStrap=leftStrap,rightStrap=rightStrap,tag=tag});
             }
@@ -78,6 +79,17 @@ namespace Cascade.Presentation
                 Cord(new Vector2(a,.34f),new Vector2(a,.28f),3);Cord(new Vector2(a,.28f),new Vector2(b,.28f),3);Cord(new Vector2(b,.28f),new Vector2(b,.34f),3);
 
             }
+        }
+        void BuildBombMark(RectTransform icon,SymbolId required)
+        {
+            // Paint the contact on the metal body; it travels with the bomb, without a second prop.
+            var mark=Rect("Bomb painted mark",icon,new Vector2(.26f,.11f),new Vector2(.70f,.58f));
+            var paint=new Color(1,.95f,.76f);
+            if(required.Kind==SymbolKind.Glyph){
+                var letter=Text("Bomb painted letter",mark,new Vector2(0,-.15f),new Vector2(1,1.15f),22,UiCopy.Raw(FaceText(required)));
+                letter.font=art.titleFont;letter.fontStyle=FontStyles.Bold;letter.color=paint;letter.margin=Vector4.zero;
+                letter.alignment=TextAlignmentOptions.Center;letter.raycastTarget=false;letter.gameObject.AddComponent<SymbolGlyphCenter>();
+            }else mark.gameObject.AddComponent<ShapeFaceGraphic>().SetShape(art.SymbolMesh(required),paint);
         }
         HangingToolTag BuildToolTag(RectTransform root,SymbolId required)
         {

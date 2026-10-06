@@ -1,5 +1,7 @@
 # Menu readability and hanging tags — 6 October 2026
 
+Final review amendment: the bomb no longer has a wooden crossbar, separate symbol plaque or tag cords. Its required letter or silhouette is painted in warm ivory directly on the metal body, and stays with it through wind motion and response pulses. The existing suspension from the platform remains. The bomb guide shares this mark and has a larger demonstration, with the redundant tag explanation removed. Other tools retain their suspended tags. The bomb's actual contact rule and countdown are unchanged. See Reports/FinalReview/README.md for the final inspection and focused test.
+
 The previous required-symbol tag moved with the tool but was rigidly fixed to its wooden crossbar. It now hangs on two shaded hemp cords from that crossbar. A bounded, damped pendulum gives the lighter sign its own lag and rotation while reading the same wind as the heavier tool. The gameplay resolver still owns every contact; this is presentation-only motion. Pause/suspension freeze it and Reduced Motion settles it. The animated guide uses the same sign and cords.
 
 Detailed clouds, islands and timber were poor reading surfaces. Headings and related body copy now sit on opaque neutral ivory cloth panels, with deep teal ink. The painted workshop, clouds and lantern ambience remain visible around them. Shelf captions have small cloth labels; gift/model selectors use teal enamel with a gold selected state. Disabled controls have an opaque sage surface rather than a translucent gold wash.

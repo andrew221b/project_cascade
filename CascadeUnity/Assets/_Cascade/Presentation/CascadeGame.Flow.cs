@@ -340,10 +340,10 @@ namespace Cascade.Presentation
             bool wind=deviceIndex==1&&Enumerable.Range(0,Interaction.Attempt.Level.Floors.Count).Any(IsWindFloor);
             MenuTitle(wind?"Wind on landing":DeviceTitles[deviceIndex],new UiCopy("Device guide · {0} / {1}",deviceIndex+1,DeviceTitles.Length));
             var guideCaption=(RectTransform)menuRoot.Find("Menu description");guideCaption.anchorMin=new Vector2(.15f,.787f);guideCaption.anchorMax=new Vector2(.85f,.844f);
-            if(deviceIndex==2||deviceIndex==3||deviceIndex==4||deviceIndex>=8){MenuReadingSurface("Tag explanation cloth",new Vector2(.12f,.69f),new Vector2(.88f,.751f));Text("Tool tag meaning",menuRoot,new Vector2(.15f,.70f),new Vector2(.85f,.75f),14,"The little tag shows which piece this tool needs.");}
+            if(deviceIndex==3||deviceIndex==4||deviceIndex>=8){MenuReadingSurface("Tag explanation cloth",new Vector2(.12f,.69f),new Vector2(.88f,.751f));Text("Tool tag meaning",menuRoot,new Vector2(.15f,.70f),new Vector2(.85f,.75f),14,"The little tag shows which piece this tool needs.");}
             var fixture=Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).First(c=>c.Definition.CampaignNodeId==DeviceNodes[deviceIndex]).Definition;
             if(wind)fixture=WindGuide(CurrentWindRight);
-            LiveDeviceDemo(Rect("Device example",menuRoot,new Vector2(.15f,.58f),new Vector2(.85f,.69f)),fixture,deviceIndex);
+            LiveDeviceDemo(Rect("Device example",menuRoot,new Vector2(.15f,.58f),new Vector2(.85f,deviceIndex==2?.75f:.69f)),fixture,deviceIndex);
             MenuReadingSurface("Device instructions cloth",new Vector2(.12f,.375f),new Vector2(.88f,.567f));
             var explanation=Text("Device explanation",menuRoot,new Vector2(.16f,.39f),new Vector2(.84f,.55f),17,wind?"Wind pushes the whole row one place when it lands. Follow the arrow. Take your time to think.":DeviceCopy[deviceIndex]);explanation.alignment=TextAlignmentOptions.MidlineLeft;
             MenuButton("Previous",.29f,()=>{deviceIndex=(deviceIndex+DeviceTitles.Length-1)%DeviceTitles.Length;DrawMenu();},false,.10f,.47f);
@@ -417,7 +417,7 @@ namespace Cascade.Presentation
                 entry.Key.color=Preferences.HighContrast?new Color(.06f,.17f,.18f):menuRoot!=null&&entry.Key.transform.IsChildOf(menuRoot)?MenuInk:Ink;
             }
         }
-        static bool IsSymbolFace(string label)=>label=="Required letter"||label=="Symbol"||label=="TargetSymbol"||label=="DeviceGlyph"||label=="ZoomSymbol";
+        static bool IsSymbolFace(string label)=>label=="Bomb painted letter"||label=="Required letter"||label=="Symbol"||label=="TargetSymbol"||label=="DeviceGlyph"||label=="ZoomSymbol";
         void ScheduleDeadEnd()
         {
             CancelDeadEnd();

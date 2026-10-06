@@ -59,8 +59,9 @@ namespace Cascade.Presentation
             if(contact!=null) {
                 float x=Mathf.Clamp((contact.Slot+.5f)/row.Length,.18f,.82f);
                 var body=Rect("Demo device",root,new Vector2(x-.13f,.20f),new Vector2(x+.13f,.49f));
-                tag=BuildToolTag(body,contact.RequiredSymbol);
-                mount=Picture("Tool",body,Vector2.zero,new Vector2(.58f,1),Resources.Load<Sprite>("CascadeArt/Devices/"+DeviceAsset(kind)),true);
+                if(kind!=2)tag=BuildToolTag(body,contact.RequiredSymbol);
+                mount=Picture("Tool",body,Vector2.zero,new Vector2(kind==2?.70f:.58f,1),Resources.Load<Sprite>("CascadeArt/Devices/"+DeviceAsset(kind)),true);
+                if(kind==2)BuildBombMark(mount.rectTransform,contact.RequiredSymbol);
                 Line("Device strap",new Vector2(x,.45f),new Vector2(x,.51f),new Color(.4f,.27f,.15f),3);
             }
             var handSprite=Resources.Load<Sprite>("CascadeArt/TutorialHand");var hand=handSprite==null?null:Picture("Demo hand",root,new Vector2(.02f,.54f),new Vector2(.18f,.96f),handSprite,true);

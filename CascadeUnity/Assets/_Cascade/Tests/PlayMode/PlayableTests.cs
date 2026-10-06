@@ -443,25 +443,19 @@ namespace Cascade.Tests
             game.LoadNode("C13");game.ShowGame();game.ReducedMotion=false;yield return AwaitPreparation();game.RefreshLayout();
             string hash=game.Interaction.Attempt.CurrentStateHash;
             var device=(RectTransform)game.GetComponentsInChildren<UnityEngine.UI.Button>().First(b=>b.name=="DeviceBomb").transform;
-            var tag=device.GetComponent<HangingToolTag>();Assert.That(tag,Is.Not.Null);
-            var sign=(RectTransform)device.Find("Tag pendulum/Hanging matching tag");
-            var tagCords=device.GetComponentInChildren<ToolTagCordGraphic>();float initialTagAngle=tag.Angle,maxTagTravel=0;
-            Assert.That(tagCords.GetComponent<CanvasRenderer>(),Is.Not.Null,"The rope must render, not only store attachment points.");
+            Assert.That(device.GetComponent<HangingToolTag>(),Is.Null);
+            Assert.That(device.Find("Tool's carved crossbar"),Is.Null);Assert.That(device.Find("Tag hemp cords"),Is.Null);
+            var mark=(RectTransform)device.Find("Recognizable device/Bomb painted mark");Assert.That(mark,Is.Not.Null);
+            Canvas.ForceUpdateCanvases();var paintedPosition=mark.localPosition;
             var board=game.Machine.GetComponentsInChildren<MeshRenderer>().First(r=>r.name=="Wooden suspended board").transform;
             var start=device.position;var rotation=board.rotation;float maxTravel=0,maxTilt=0;
             double until=Time.realtimeSinceStartupAsDouble+2;
             while(Time.realtimeSinceStartupAsDouble<until) {
                 maxTravel=Mathf.Max(maxTravel,Vector2.Distance(start,device.position));
-                maxTagTravel=Mathf.Max(maxTagTravel,Mathf.Abs(tag.Angle-initialTagAngle));
+                Assert.That(mark.localPosition,Is.EqualTo(paintedPosition),"Paint stays fixed on the swaying bomb body.");
                 maxTilt=Mathf.Max(maxTilt,Quaternion.Angle(rotation,board.rotation));yield return null;
             }
             Assert.That(maxTravel,Is.GreaterThan(.002f));Assert.That(maxTilt,Is.GreaterThan(.02f));
-            Assert.That(maxTagTravel,Is.GreaterThan(.1f),"The light sign swings independently from the heavy tool.");
-            Canvas.ForceUpdateCanvases();Assert.That(tagCords.GetComponent<CanvasRenderer>().GetMesh().vertexCount,Is.GreaterThan(0));
-            for(int side=0;side<2;side++){
-                var hole=sign.TransformPoint(sign.rect.min+Vector2.Scale(sign.rect.size,new Vector2(side==0?.22f:.78f,.93f)));
-                Assert.That(Vector2.Distance(hole,tagCords.EndWorld(side)),Is.LessThan(.001f),"Cord stays attached to the moving sign.");
-            }
             var ropes=game.Machine.GetComponentsInChildren<LineRenderer>().Where(r=>r.name.Contains("braided rope")).ToArray();
             var knots=game.Machine.GetComponentsInChildren<MeshRenderer>().Where(r=>r.name=="Rope knot").ToArray();
             foreach(var rope in ropes)
@@ -469,14 +463,40 @@ namespace Cascade.Tests
             var straps=game.GetComponentsInChildren<DemoLine>().Where(l=>l.name=="Device leather strap").ToArray();
             Assert.That(straps.Length,Is.GreaterThanOrEqualTo(2));
             Assert.That(straps.All(l=>((RectTransform)l.transform).rect.width>12),Is.True,"Visible longer suspension, not a short hinge");
-            game.Interaction.SetPaused(true);var held=device.position;var heldRotation=device.rotation;var heldBoard=board.position;var heldTag=sign.position;
+            game.Interaction.SetPaused(true);var held=device.position;var heldRotation=device.rotation;var heldBoard=board.position;var heldMark=mark.position;
             yield return new WaitForSecondsRealtime(.15f);
             Assert.That(device.position,Is.EqualTo(held));Assert.That(device.rotation,Is.EqualTo(heldRotation));Assert.That(board.position,Is.EqualTo(heldBoard));
-            Assert.That(sign.position,Is.EqualTo(heldTag));
+            Assert.That(mark.position,Is.EqualTo(heldMark));
             game.Interaction.SetPaused(false);game.ReducedMotion=true;game.RefreshLayout();yield return null;
             Assert.That(Quaternion.Angle(device.rotation,Quaternion.identity),Is.LessThan(.001f));
-            Assert.That(tag.Angle,Is.Zero);
             var quiet=device.position;yield return new WaitForSecondsRealtime(.15f);Assert.That(device.position,Is.EqualTo(quiet));
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));Assert.That(game.Interaction.Attempt.RouteLength,Is.Zero);
+
+            Assert.That(game.Catalog.TryGetLocalizedBinding("C13","ru",out var words),Is.True);
+            game.LoadLevel(words.Definition,"ru");yield return AwaitPreparation();game.RefreshLayout();
+            var letter=game.GetComponentsInChildren<TextMeshProUGUI>().First(t=>t.name=="Bomb painted letter");
+            Assert.That(letter.text,Is.EqualTo(words.Definition.Floors[0].Bomb.RequiredSymbol.Value));
+            Assert.That(letter.color.r,Is.GreaterThan(.95f));
+            game.Interaction.SetSuspended(false);game.Interaction.Execute(PuzzleCommand.Swap(0));yield return AwaitPresentation();
+            Assert.That(game.Interaction.Attempt.Current.BombPhase,Is.EqualTo(BombPhase.Defused),"The symbol painted on the body still uses the canonical contact rule.");
+
+            // Other tools retain their independently suspended tags.
+            game.LoadNode("C18");game.ReducedMotion=false;yield return AwaitPreparation();game.RefreshLayout();
+            hash=game.Interaction.Attempt.CurrentStateHash;
+            var tag=game.GetComponentsInChildren<HangingToolTag>().First();
+            var sign=(RectTransform)tag.transform.Find("Tag pendulum/Hanging matching tag");
+            var tagCords=tag.GetComponentInChildren<ToolTagCordGraphic>();float initialTagAngle=tag.Angle,maxTagTravel=0;
+            Assert.That(tagCords.GetComponent<CanvasRenderer>(),Is.Not.Null);
+            until=Time.realtimeSinceStartupAsDouble+2;
+            while(Time.realtimeSinceStartupAsDouble<until){maxTagTravel=Mathf.Max(maxTagTravel,Mathf.Abs(tag.Angle-initialTagAngle));yield return null;}
+            Assert.That(maxTagTravel,Is.GreaterThan(.1f));
+            Canvas.ForceUpdateCanvases();Assert.That(tagCords.GetComponent<CanvasRenderer>().GetMesh().vertexCount,Is.GreaterThan(0));
+            for(int side=0;side<2;side++){
+                var hole=sign.TransformPoint(sign.rect.min+Vector2.Scale(sign.rect.size,new Vector2(side==0?.22f:.78f,.93f)));
+                Assert.That(Vector2.Distance(hole,tagCords.EndWorld(side)),Is.LessThan(.001f));
+            }
+            game.Interaction.SetPaused(true);var heldTag=sign.position;yield return new WaitForSecondsRealtime(.1f);Assert.That(sign.position,Is.EqualTo(heldTag));
+            game.Interaction.SetPaused(false);game.ReducedMotion=true;yield return null;Assert.That(tag.Angle,Is.Zero);
             Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));Assert.That(game.Interaction.Attempt.RouteLength,Is.Zero);
         }
         [UnityTest] public IEnumerator WoodWeightAndGlyphDepthRemainPresentationOnly()

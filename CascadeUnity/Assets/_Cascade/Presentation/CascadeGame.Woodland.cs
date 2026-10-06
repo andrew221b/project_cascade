@@ -65,8 +65,8 @@ namespace Cascade.Presentation
                     return new Vector2((point.x-card.rect.xMin)/card.rect.width,(point.y-card.rect.yMin)/height);
                 }
                 // The bomb hangs from its metal collar; its curved fuse is not a handle.
-                dock.leftStrap?.SetEndpoints(hook+Vector2.left*.018f,Grip(dock.kind==2?new Vector2(.24f,.745f):new Vector2(.17f,.88f)));
-                dock.rightStrap?.SetEndpoints(hook+Vector2.right*.018f,Grip(dock.kind==2?new Vector2(.37f,.715f):new Vector2(.40f,.88f)));
+                dock.leftStrap?.SetEndpoints(hook+Vector2.left*.018f,Grip(dock.kind==2?new Vector2(.30f,.70f):new Vector2(.17f,.88f)));
+                dock.rightStrap?.SetEndpoints(hook+Vector2.right*.018f,Grip(dock.kind==2?new Vector2(.43f,.66f):new Vector2(.40f,.88f)));
             }
         }
         void SyncTokenFaces()
