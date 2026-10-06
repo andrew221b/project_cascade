@@ -1,0 +1,2 @@
+shapes: native InputSystem gesture, route=1, holding=False
+letters: native InputSystem gesture, route=0, holding=False

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="8" result="Passed" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-06 06:55:45Z" end-time="2026-10-06 06:55:58Z" duration="13.129887">
+  <test-suite type="TestSuite" id="1081" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="73" result="Passed" start-time="2026-10-06 06:55:45Z" end-time="2026-10-06 06:55:58Z" duration="13.129887" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1075" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="73" result="Passed" start-time="2026-10-06 06:55:45Z" end-time="2026-10-06 06:55:58Z" duration="13.003460" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="93320" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1076" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="73" result="Passed" start-time="2026-10-06 06:55:45Z" end-time="2026-10-06 06:55:58Z" duration="12.833531" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1077" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="73" result="Passed" start-time="2026-10-06 06:55:45Z" end-time="2026-10-06 06:55:58Z" duration="12.829058" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1001" name="PlayableTests" fullname="Cascade.Tests.PlayableTests" classname="Cascade.Tests.PlayableTests" runstate="Runnable" testcasecount="73" result="Passed" start-time="2026-10-06 06:55:45Z" end-time="2026-10-06 06:55:58Z" duration="12.827690" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1013" name="HeldLetterKeepsItsLiftAndCancelledDragSettlesWithoutMove" fullname="Cascade.Tests.PlayableTests.HeldLetterKeepsItsLiftAndCancelledDragSettlesWithoutMove" methodname="HeldLetterKeepsItsLiftAndCancelledDragSettlesWithoutMove" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="701546396" result="Passed" start-time="2026-10-06 06:55:45Z" end-time="2026-10-06 06:55:48Z" duration="2.428980" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1016" name="LongTouchDragAndCancelledTouchAreFree" fullname="Cascade.Tests.PlayableTests.LongTouchDragAndCancelledTouchAreFree" methodname="LongTouchDragAndCancelledTouchAreFree" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1566759624" result="Passed" start-time="2026-10-06 06:55:48Z" end-time="2026-10-06 06:55:48Z" duration="0.476816" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1002" name="MouseTapTapWinsAndUndoRestores" fullname="Cascade.Tests.PlayableTests.MouseTapTapWinsAndUndoRestores" methodname="MouseTapTapWinsAndUndoRestores" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="845067076" result="Passed" start-time="2026-10-06 06:55:48Z" end-time="2026-10-06 06:55:52Z" duration="3.833620" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1041" name="ReducedMotionKeepsPosesStillThroughoutCommittedEvents" fullname="Cascade.Tests.PlayableTests.ReducedMotionKeepsPosesStillThroughoutCommittedEvents" methodname="ReducedMotionKeepsPosesStillThroughoutCommittedEvents" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1547142952" result="Passed" start-time="2026-10-06 06:55:52Z" end-time="2026-10-06 06:55:54Z" duration="2.068739" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1014" name="ReleasedDragTransfersItsPoseIntoAtomicExchange" fullname="Cascade.Tests.PlayableTests.ReleasedDragTransfersItsPoseIntoAtomicExchange" methodname="ReleasedDragTransfersItsPoseIntoAtomicExchange" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1710347754" result="Passed" start-time="2026-10-06 06:55:54Z" end-time="2026-10-06 06:55:57Z" duration="2.623672" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1040" name="SelectedLetterTracksItsBodyThroughoutSelectionMotion" fullname="Cascade.Tests.PlayableTests.SelectedLetterTracksItsBodyThroughoutSelectionMotion" methodname="SelectedLetterTracksItsBodyThroughoutSelectionMotion" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="620646934" result="Passed" start-time="2026-10-06 06:55:57Z" end-time="2026-10-06 06:55:57Z" duration="0.470643" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1018" name="SystemCancelledDragOverNeighbourCannotCommit" fullname="Cascade.Tests.PlayableTests.SystemCancelledDragOverNeighbourCannotCommit" methodname="SystemCancelledDragOverNeighbourCannotCommit" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="548690403" result="Passed" start-time="2026-10-06 06:55:57Z" end-time="2026-10-06 06:55:57Z" duration="0.445056" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1015" name="TouchAdjacentDragWinsWithoutSpawningTokens" fullname="Cascade.Tests.PlayableTests.TouchAdjacentDragWinsWithoutSpawningTokens" methodname="TouchAdjacentDragWinsWithoutSpawningTokens" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1225385656" result="Passed" start-time="2026-10-06 06:55:57Z" end-time="2026-10-06 06:55:58Z" duration="0.453164" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/TouchFeel/playmode.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

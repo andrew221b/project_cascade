@@ -11,6 +11,9 @@ namespace Cascade.Presentation
         ToyFeedbackPool feedback;
         Coroutine playback;
         readonly Vector3[] from = new Vector3[8], to = new Vector3[8], oldPositions = new Vector3[8];
+        readonly Vector3[] oldScales = new Vector3[8];
+        readonly Vector2[] fromStretch = new Vector2[8];
+        readonly float[] oldAngles = new float[8], fromAngles = new float[8];
         readonly SymbolId[] oldRow = new SymbolId[8];
         readonly bool[] used = new bool[8];
         readonly float[] selection = new float[8], selectionFrom = new float[8], selectionTime = new float[8];
@@ -116,16 +119,24 @@ namespace Cascade.Presentation
         }
         void CaptureRow(PresentationFrame frame)
         {
-            for (int i = 0; i < frame.Row.Count; i++) { oldRow[i] = frame.Row[i]; oldPositions[i] = game.Machine.TokenVisualPosition(i); used[i] = false; }
+            for (int i = 0; i < frame.Row.Count; i++) { oldRow[i] = frame.Row[i]; oldPositions[i] = game.Machine.TokenVisualPosition(i); oldScales[i] = game.Machine.TokenVisualScale(i); oldAngles[i] = Mathf.DeltaAngle(0,game.Machine.TokenVisualAngle(i)); used[i] = false; }
         }
         void MapRow(PresentationFrame frame)
         {
+            // Reserve unchanged occurrences first: a held duplicate must not be replaced
+            // by an identical body that stayed in another slot.
+            for(int i=0;i<frame.Row.Count;i++)used[i]=oldRow[i]==frame.Row[i];
             for (int destination = 0; destination < frame.Row.Count; destination++) {
-                int source = 0; while (source < frame.Row.Count && (used[source] || oldRow[source] != frame.Row[destination])) source++;
+                int source = destination;
+                if(oldRow[destination]!=frame.Row[destination]) {
+                    source=0;while(source<frame.Row.Count && (used[source] || oldRow[source]!=frame.Row[destination]))source++;
+                }
                 if (source == frame.Row.Count) source = destination; // Defensive view fallback; never invent a gameplay permutation.
                 used[source] = true; from[destination] = oldPositions[source]; to[destination] = game.Machine.TokenPosition(destination)+game.Machine.TokenSupportOffset(destination);
-                game.Machine.SetPiecePose(destination,PiecePose.Exchanging);
-                game.OffsetPresentedToken(destination, game.ReducedMotion ? Vector3.zero : from[destination]-game.Machine.TokenPosition(destination), Vector2.one);
+                var basis=game.Machine.TokenBaseScale(destination);
+                fromStretch[destination]=new Vector2(oldScales[source].x/basis.x,oldScales[source].y/basis.y);fromAngles[destination]=oldAngles[source];
+                game.Machine.SetPiecePose(destination,PiecePose.Exchanging,game.ReducedMotion?0:fromAngles[destination]);
+                game.OffsetPresentedToken(destination, game.ReducedMotion ? Vector3.zero : from[destination]-game.Machine.TokenPosition(destination), game.ReducedMotion?Vector2.one:fromStretch[destination]);
             }
         }
         IEnumerator Travel(float duration, bool arcs, bool falling)
@@ -150,8 +161,8 @@ namespace Cascade.Presentation
                         position.y += Mathf.Sin(t*Mathf.PI) * profile.swapArc * (from[i].x < to[i].x ? 1 : .35f);
                     float angle=Mathf.Sin(local*Mathf.PI)*(i%2==0?1:-1)*(falling?13:9);
                     if(falling)angle*=Mathf.SmoothStep(0,1,Mathf.Clamp01((position.y-to[i].y)/.3f));
-                    game.OffsetPresentedToken(i, position-game.Machine.TokenPosition(i), Vector2.one);
-                    game.Machine.SetPiecePose(i,falling?PiecePose.Falling:PiecePose.Exchanging,angle);
+                    game.OffsetPresentedToken(i, position-game.Machine.TokenPosition(i), Vector2.Lerp(fromStretch[i],Vector2.one,eased));
+                    game.Machine.SetPiecePose(i,falling?PiecePose.Falling:PiecePose.Exchanging,Mathf.Lerp(fromAngles[i],0,eased)+angle);
                 }
                 time += Time.unscaledDeltaTime; yield return null;
             }
@@ -236,7 +247,9 @@ namespace Cascade.Presentation
         void LateUpdate()
         {
             if (IsRunning || game == null || game.Interaction == null || !game.enabled || game.Interaction.IsSuspended || game.Interaction.IsPaused) return;
+            game.AdvanceTokenTouch(Time.unscaledDeltaTime);
             for (int i = 0; i < game.SlotViews.Count; i++) {
+                if(game.OwnsTokenPose(i)) { selection[i]=selectionFrom[i]=game.Interaction.SelectedSlot==i?1:0;selectionTarget[i]=game.Interaction.SelectedSlot==i;selectionTime[i]=profile.selection;continue; }
                 bool target = game.Interaction.SelectedSlot == i;
                 if (target != selectionTarget[i]) {
                     selectionFrom[i] = selection[i]; selectionTarget[i] = target; selectionTime[i] = 0;

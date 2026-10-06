@@ -587,3 +587,15 @@ Painted background/UI and supporting contact artwork remain illustrated. Native
 light comparisons and mobile pipeline witnesses belong to Reports/PhysicalPresentation.
 Target replacement immediately excludes old layout children, preserving centered
 receiver symbols before the first command. No gameplay physics or new rules.
+
+
+## Finger-to-seat continuity — 6 October 2026
+
+Press acknowledges immediately before a short lift and bounded enlargement. The
+same glossy body and embossed glyph follow deliberate drag, with gentle tilt and
+quiet destination feedback. Stable hit areas do not chase the moving artwork.
+Free/cancelled releases return in 180 ms; committed travel inherits the actual
+released position, scale and angle. Selection never fights the touch pose.
+Unchanged duplicate symbols keep their seats during a far swap. Quiet motion
+removes lift/zoom/tilt while preserving direct finger tracking. See Docs/TOUCH_FEEL.md
+and native/test evidence in Reports/TouchFeel. No gameplay or asset schema change.

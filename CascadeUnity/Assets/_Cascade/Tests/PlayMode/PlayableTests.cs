@@ -243,6 +243,70 @@ namespace Cascade.Tests
             Assert.That(game.Machine.LivingWorld.ActiveWeatherCount,Is.GreaterThan(0));
             Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
         }
+        [UnityTest] public IEnumerator HeldLetterKeepsItsLiftAndCancelledDragSettlesWithoutMove()
+        {
+            game.Catalog.TryGetLocalizedBinding("C18","ru",out var words);game.LoadLevel(words.Definition,"ru");
+            yield return AwaitPreparation();game.ShowGame();game.RefreshLayout();
+            string hash=game.Interaction.Attempt.CurrentStateHash;
+            yield return TouchFrame(41,Point(0),UnityEngine.InputSystem.TouchPhase.Began);
+            yield return new WaitForSecondsRealtime(.18f);
+            Assert.That(game.Machine.TokenVisualPosition(0).y-game.Machine.TokenPosition(0).y,Is.GreaterThan(game.Machine.SelectionLiftWorld(0)*1.5f));
+            yield return TouchFrame(41,Point(1),UnityEngine.InputSystem.TouchPhase.Moved);
+            yield return new WaitForSecondsRealtime(.1f);
+            var held=game.Machine.TokenVisualPosition(0);
+            Assert.That(held.x-game.Machine.TokenPosition(0).x,Is.GreaterThan(.1f),"Preview must not reset the held pose.");
+            for(int i=0;i<6;i++) {
+                yield return null;
+                var face=game.SlotViews[0].GetComponentInChildren<TextMeshProUGUI>().rectTransform;
+                Assert.That(Vector2.Distance(face.position,game.Machine.TokenVisualPosition(0)),Is.LessThan(.002f));
+                Assert.That(Mathf.Abs(Mathf.DeltaAngle(face.eulerAngles.z,game.Machine.TokenVisualAngle(0))),Is.LessThan(.01f));
+            }
+            yield return TouchFrame(41,Point(1),UnityEngine.InputSystem.TouchPhase.Canceled);
+            Assert.That(game.IsHoldingToken,Is.False);
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+            yield return new WaitForSecondsRealtime(.35f);yield return null;
+            Assert.That(game.OwnsTokenPose(0),Is.False);
+            Assert.That(Vector3.Distance(game.Machine.TokenVisualPosition(0),game.Machine.TokenPosition(0)+game.Machine.TokenSupportOffset(0)),Is.LessThan(.01f));
+            Assert.That(game.Interaction.Attempt.RouteLength,Is.Zero);
+        }
+        [UnityTest] public IEnumerator ReleasedDragTransfersItsPoseIntoAtomicExchange()
+        {
+            game.LoadNode("C18");yield return AwaitPreparation();game.ShowGame();game.RefreshLayout();
+            var symbol=game.Interaction.Attempt.Current.Row[0];int views=game.SlotViews.Count;
+            var pointer=new PointerEventData(EventSystem.current){pointerId=804,button=PointerEventData.InputButton.Left,position=Point(0),pointerCurrentRaycast=new RaycastResult{gameObject=game.SlotViews[0].gameObject}};
+            game.SlotViews[0].OnPointerDown(pointer);yield return new WaitForSecondsRealtime(.15f);
+            pointer.position=Point(1);pointer.pointerCurrentRaycast=new RaycastResult{gameObject=game.SlotViews[1].gameObject};
+            game.SlotViews[0].OnBeginDrag(pointer);game.SlotViews[0].OnDrag(pointer);yield return new WaitForSecondsRealtime(.1f);
+            Vector3 position=game.Machine.TokenVisualPosition(0),scale=game.Machine.TokenVisualScale(0);
+            game.SlotViews[0].OnPointerUp(pointer);
+            Assert.That(game.Interaction.Attempt.RouteLength,Is.EqualTo(1));
+            Assert.That(game.VisibleFrame.Row[1],Is.EqualTo(symbol));
+            Assert.That(Vector3.Distance(game.Machine.TokenVisualPosition(1),position),Is.LessThan(.002f),"Exchange starts where the hand released the body.");
+            Assert.That(Vector3.Distance(game.Machine.TokenVisualScale(1),scale),Is.LessThan(.002f),"Held enlargement must not snap back before travel.");
+            string hash=game.Interaction.Attempt.CurrentStateHash;
+            game.SlotViews[0].OnEndDrag(pointer);yield return AwaitPresentation();
+            Assert.That(game.Interaction.Attempt.RouteLength,Is.EqualTo(1));Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+            Assert.That(game.SlotViews.Count,Is.EqualTo(views));
+        }
+        [UnityTest] public IEnumerator FarDragKeepsUnmovedDuplicateInItsOwnSeat()
+        {
+            var source=game.Catalog.GetPrimary("C18").Definition;
+            var row=new[]{source.InitialSymbolIds[0],source.InitialSymbolIds[0],source.InitialSymbolIds[2],source.InitialSymbolIds[3]};
+            var target=new[]{row[3],row[1],row[2],row[0]};
+            game.LoadLevel(new LevelDefinition(source.PuzzleId,source.CampaignNodeId,source.SchemaVersion,source.RulesVersion,"touch-duplicate-fixture",row,target,source.TargetSegments,new[]{new FloorDefinition(4,new[]{true,true,true})},1));
+            yield return AwaitPreparation();game.ShowGame();game.RefreshLayout();
+            var pointer=new PointerEventData(EventSystem.current){pointerId=805,button=PointerEventData.InputButton.Left,position=Point(0),pointerCurrentRaycast=new RaycastResult{gameObject=game.SlotViews[0].gameObject}};
+            game.SlotViews[0].OnPointerDown(pointer);yield return new WaitForSecondsRealtime(.15f);
+            pointer.position=Point(3);pointer.pointerCurrentRaycast=new RaycastResult{gameObject=game.SlotViews[3].gameObject};
+            game.SlotViews[0].OnBeginDrag(pointer);game.SlotViews[0].OnDrag(pointer);yield return new WaitForSecondsRealtime(.1f);
+            var held=game.Machine.TokenVisualPosition(0);var unmoved=game.Machine.TokenVisualPosition(1);var scale=game.Machine.TokenVisualScale(1);
+            game.SlotViews[0].OnPointerUp(pointer);
+            Assert.That(Vector3.Distance(game.Machine.TokenVisualPosition(3),held),Is.LessThan(.002f));
+            Assert.That(Vector3.Distance(game.Machine.TokenVisualPosition(1),unmoved),Is.LessThan(.002f));
+            Assert.That(Vector3.Distance(game.Machine.TokenVisualScale(1),scale),Is.LessThan(.002f));
+            Assert.That(game.Interaction.Attempt.Current.ReachCharges,Is.Zero);yield return AwaitPresentation();
+            Assert.That(game.Interaction.Attempt.RouteLength,Is.EqualTo(1));
+        }
         [UnityTest] public IEnumerator TouchAdjacentDragWinsWithoutSpawningTokens()
         {
             int views = game.SlotViews.Count; yield return TouchFrame(1, Point(0), UnityEngine.InputSystem.TouchPhase.Began);

@@ -27,7 +27,7 @@ namespace Cascade.Presentation
         }
         void Release(PointerEventData eventData)
         {
-            if (!Owns(eventData)) return; released = true; Game.EndTokenHold();
+            if (!Owns(eventData)) return; released = true; Game.ReleaseTokenHold();
             if (WasCancelled(eventData)) { Game.Interaction.CancelPointer(); Game.ReportInput(null); return; }
             var target = eventData.pointerCurrentRaycast.gameObject?.GetComponentInParent<TokenSlot>();
             int destination = target != null && target.Game == Game ? target.Slot : -1;

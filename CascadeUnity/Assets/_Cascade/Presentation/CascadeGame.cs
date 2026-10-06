@@ -149,6 +149,7 @@ namespace Cascade.Presentation
         }
         void OnCommitted(TransitionResult result)
         {
+            TransferTouchPoseToExchange();
             CancelHint(); Coach?.Observe(result.State,Interaction.Attempt.RouteLength);
             if(node=="C01")firstGestureShown=true;
             RecordCommittedProgress();
@@ -176,10 +177,11 @@ namespace Cascade.Presentation
         }
         public void PreviewDrag(int from, int to)
         {
+            if(previewNeighbour==to)return;
             if(to>=0 && Math.Abs(from-to)>=2 && Math.Abs(from-to)<=3 && Interaction.Attempt.Current.ReachCharges>0)ShowPreview(PuzzleCommand.Reach(from,to));
             else if (Math.Abs(from - to) == 1 && to >= 0) ShowPreview(PuzzleCommand.Swap(Math.Min(from, to)));
-            else status.SetCopy("Move onto the piece next to it.");
-            HighlightDragNeighbour(from, to);
+            else { ClearDeviceForecast(); machine.PreviewForecast(null); status.SetCopy("Move onto the piece next to it."); }
+            HighlightDragNeighbour(from, to); RestoreTouchPose();
         }
         void ShowPreview(PuzzleCommand command)
         {
@@ -236,7 +238,7 @@ namespace Cascade.Presentation
             }
             machine?.Sync(); SyncTokenFaces(); SyncDeviceSuspension(0); RenderControls();
             feedback?.RefreshAnchors();reactionBanner?.RefreshLayout();
-            if(IsHoldingToken)PaintHeldToken(true);
+            RestoreTouchPose();
         }
         void CancelHint()
         {
@@ -552,7 +554,7 @@ namespace Cascade.Presentation
                 face.sizeDelta = new Vector2(0, ((RectTransform)slots[i].transform).rect.height); face.anchoredPosition = Vector2.zero;
                 glyphPositions[i] = face.position;
             }
-            machine?.Sync(); SyncTokenFaces();
+            machine?.Sync(); RestoreTouchPose(); SyncTokenFaces();
             int? selected = Interaction.SelectedSlot;
             focusLabel.SetCopy(selected.HasValue ? DisplaySymbol(Interaction.Attempt.Current.Row[selected.Value]) : "Choose a symbol");
             swapLeft.interactable = Interaction.CanPlay && selected.HasValue && selected > 0;

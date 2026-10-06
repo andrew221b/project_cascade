@@ -19,6 +19,8 @@ namespace Cascade.Presentation
         readonly PiecePose[] piecePoses=new PiecePose[8];
         int heldWeight=-1;int? forecastHp;
         public Vector3 TokenVisualPosition(int index)=>tokens[index].transform.position;
+        public Vector3 TokenVisualScale(int index)=>tokens[index].transform.localScale;
+        public Vector3 TokenBaseScale(int index)=>restScales[index];
         public float TokenVisualAngle(int index)=>tokens[index].transform.eulerAngles.z;
         public PiecePose TokenPose(int index)=>piecePoses[index];
         public float LoadedSag=>Frame!=null&&Frame.ActiveFloor<floors.Count?floors[Frame.ActiveFloor].sag:0;

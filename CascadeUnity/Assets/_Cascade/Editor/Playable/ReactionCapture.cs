@@ -102,6 +102,50 @@ namespace Cascade.Editor.Playable
             }finally{camera.targetTexture=old;UnityEngine.Object.Destroy(target);UnityEngine.Object.Destroy(pixels);g.RefreshLayout();}
             Debug.Log("CASCADE original departure and wind witnesses complete");
         }
+        public static void RunTouchFeel() => UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(TouchFeel());
+        static IEnumerator TouchFeel()
+        {
+            var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();
+            typeof(CascadeGame).GetField("persistenceReady",BindingFlags.Instance|BindingFlags.NonPublic).SetValue(g,false);
+            g.SendMessage("OnApplicationFocus",true);g.SendMessage("OnApplicationPause",false);UnityEngine.Application.runInBackground=true;
+            g.SetUiLocale("ru");g.ReducedMotion=false;
+            var camera=Camera.main;var old=camera.targetTexture;var target=new RenderTexture(390,844,24);camera.targetTexture=target;
+            var pixels=new Texture2D(390,844,TextureFormat.RGB24,false);
+            var oldBackground=UnityEngine.InputSystem.InputSystem.settings.backgroundBehavior;
+            var oldEditor=UnityEngine.InputSystem.InputSystem.settings.editorInputBehaviorInPlayMode;
+            UnityEngine.InputSystem.InputSystem.settings.backgroundBehavior=UnityEngine.InputSystem.InputSettings.BackgroundBehavior.IgnoreFocus;
+            UnityEngine.InputSystem.InputSystem.settings.editorInputBehaviorInPlayMode=UnityEngine.InputSystem.InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView;
+            var touch=UnityEngine.InputSystem.InputSystem.AddDevice<UnityEngine.InputSystem.Touchscreen>();
+            Vector2 Point(int slot){var r=(RectTransform)g.SlotViews[slot].transform;return RectTransformUtility.WorldToScreenPoint(camera,r.TransformPoint(r.rect.center));}
+            void Touch(Vector2 point,UnityEngine.InputSystem.TouchPhase phase)=>UnityEngine.InputSystem.InputSystem.QueueStateEvent(touch,new UnityEngine.InputSystem.LowLevel.TouchState{touchId=93,position=point,phase=phase});
+            void Shot(string file){camera.Render();var active=RenderTexture.active;RenderTexture.active=target;pixels.ReadPixels(new Rect(0,0,390,844),0,0);pixels.Apply();RenderTexture.active=active;File.WriteAllBytes(file,pixels.EncodeToPNG());}
+            string report=Path.Combine(Directory.GetParent(UnityEngine.Application.dataPath).Parent.FullName,"Reports","TouchFeel");Directory.CreateDirectory(report);
+            var log=new List<string>();
+            try{
+                foreach(string mode in new[]{"shapes","letters"}) {
+                    if(mode=="letters"){g.Catalog.TryGetLocalizedBinding("C18","ru",out var words);g.LoadLevel(words.Definition,"ru");}else g.LoadNode("C18");
+                    g.ShowGame();yield return Ready(g);g.RefreshLayout();yield return null;yield return null;g.Interaction.SetSuspended(false);
+                    string hash=g.Interaction.Attempt.CurrentStateHash;string path="/tmp/cascade-touch-feel-"+mode;Directory.CreateDirectory(path);
+                    var start=Point(0);var end=Point(1);bool released=false;
+                    for(int f=0;f<32;f++) {
+                        if(f==2)Touch(start,UnityEngine.InputSystem.TouchPhase.Began);
+                        if(f>=6&&f<=12)Touch(Vector2.Lerp(start,end,(f-5)/7f),UnityEngine.InputSystem.TouchPhase.Moved);
+                        if(f==15){Touch(end,mode=="letters"?UnityEngine.InputSystem.TouchPhase.Canceled:UnityEngine.InputSystem.TouchPhase.Ended);released=true;}
+                        yield return null;yield return null;
+                        Shot(Path.Combine(path,f.ToString("D2")+".png"));
+                        if(!released||mode=="letters")if(hash!=g.Interaction.Attempt.CurrentStateHash)throw new InvalidOperationException("Free gesture changed state");
+                        if(f==13)Shot(Path.Combine(report,mode+"-held.png"));
+                        yield return new WaitForSecondsRealtime(.025f);
+                    }
+                    while(g.Interaction.IsPresenting)yield return null;
+                    log.Add(mode+": native InputSystem gesture, route="+g.Interaction.Attempt.RouteLength+", holding="+g.IsHoldingToken);
+                    if(g.Interaction.Attempt.RouteLength!=(mode=="letters"?0:1))throw new InvalidOperationException("Gesture committed wrong move count");
+                }
+                g.ReducedMotion=true;yield return PlayableCapture.CaptureSettled("TouchFeel","quiet-narrow.png",320,693);
+                File.WriteAllLines(Path.Combine(report,"native-check.txt"),log);
+            }finally{UnityEngine.InputSystem.InputSystem.RemoveDevice(touch);UnityEngine.InputSystem.InputSystem.settings.backgroundBehavior=oldBackground;UnityEngine.InputSystem.InputSystem.settings.editorInputBehaviorInPlayMode=oldEditor;camera.targetTexture=old;UnityEngine.Object.Destroy(target);UnityEngine.Object.Destroy(pixels);g.EndTokenHold();g.RefreshLayout();}
+            Debug.Log("CASCADE touch feel witnesses complete");
+        }
         public static void RunPhysicalPresentation(bool lightingOnly=false)=>UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(PhysicalPresentation(lightingOnly));
         static IEnumerator PhysicalPresentation(bool lightingOnly)
         {
