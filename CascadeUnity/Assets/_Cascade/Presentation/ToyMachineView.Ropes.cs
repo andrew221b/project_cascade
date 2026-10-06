@@ -39,12 +39,12 @@ namespace Cascade.Presentation
                         lowerAnchor.GetWorldCorners(corners);next=new Vector3(Mathf.Lerp(corners[0].x,corners[2].x,side==0?.035f:.965f),Mathf.Lerp(corners[0].y,corners[2].y,.48f),.10f);
                     }
                     float span=Vector3.Distance(previous,next);
-                    float wind=WindAt(Mathf.Min(segment,floors.Count-1))*.045f;
+                    float wind=WindAt(Mathf.Min(segment,floors.Count-1))*.10f;
                     float wanted=reducedMotion?0:-sign*.08f+wind+(next.x-previous.x)*.08f;
                     float bow=ropeBow[side,segment],velocity=ropeVelocity[side,segment];
                     if(reducedMotion){bow=velocity=0;}
                     else if(!interaction.IsPaused&&!interaction.IsSuspended&&!ambientPaused&&gameplayView)
-                        Spring(ref bow,ref velocity,wanted,28,8,Mathf.Clamp(seconds,0,.05f));
+                        Spring(ref bow,ref velocity,wanted,28,6.5f,Mathf.Clamp(seconds,0,.05f));
                     ropeBow[side,segment]=bow;ropeVelocity[side,segment]=velocity;
                     for(int p=1;p<=24;p++) {
                         float t=p/24f;var point=Vector3.Lerp(previous,next,t);

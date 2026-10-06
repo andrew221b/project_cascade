@@ -547,3 +547,15 @@ Clean sibling atlases remove embedded atmosphere. A narrow native alpha edge
 material excludes residual low-alpha fringes, with separate settings for solids,
 glass and smoke. No duplicate Outline or added silhouette. The last smoke pass
 uses five smaller, softer wisps so the bomb stays recognizable.
+
+## Original tool departure and gust inertia — 6 October 2026
+
+User correction supersedes all previous duplicate-body descriptions. The original
+icon and symbol leave the dock for central reaction focus, keeping object identity.
+The consumed dock, socket and cord disappear. After the beat its hidden home pose
+is retained for Undo/restart; used contacts stay empty, including saved attempts.
+No gameplay transition is added. Flight/pulse/particles/status timings are retained.
+Ambient decks and ropes now sway more visibly but gently. Canonical gust pressure
+adds a single shared directional velocity impulse to deck/rope/tool springs, then
+settles. Deck translation is bounded to .22 world units and roll to2.4 degrees;
+quiet/pause settings and the wind direction warning stay intact.

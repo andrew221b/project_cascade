@@ -61,7 +61,7 @@ namespace Cascade.Presentation
                         dock.angleVelocity+=(target-dock.angle)*29f*step;
                         dock.angleVelocity*=Mathf.Exp(-4.4f*step);dock.angle+=dock.angleVelocity*step;
                     }
-                    dock.angle=Mathf.Clamp(dock.angle,-7,7);
+                    dock.angle=Mathf.Clamp(dock.angle,-10,10);
                 }
                 else if(!moving){dock.anchorReady=false;}
                 // Rotate the whole object about the deck attachment, not about its icon centre.

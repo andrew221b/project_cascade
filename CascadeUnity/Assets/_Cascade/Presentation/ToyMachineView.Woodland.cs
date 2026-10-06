@@ -85,11 +85,12 @@ namespace Cascade.Presentation
                 int grounded=0;for(int i=0;i<tokens.Count;i++)if(heldWeight!=i&&piecePoses[i]!=PiecePose.Falling)grounded++;
                 float weight=loaded?grounded/(float)Mathf.Max(1,tokens.Count):0;
                 float targetSag=(.10f+.17f*rig.wear)*weight+rig.fracture*.09f;float wind=WindAt(f);
-                float tilt=reducedMotion?0:wind*.8f+(loaded&&heldWeight>=0?((heldWeight+.5f)/tokens.Count-.5f)*.45f:0);
+                float tilt=reducedMotion?0:wind*1.2f+(loaded&&heldWeight>=0?((heldWeight+.5f)/tokens.Count-.5f)*.45f:0);
                 if(reducedMotion){rig.sag=targetSag;rig.sagVelocity=rig.sway=rig.swayVelocity=rig.roll=rig.rollVelocity=0;}
                 Spring(ref rig.sag,ref rig.sagVelocity,targetSag,120,14,dt);
-                Spring(ref rig.sway,ref rig.swayVelocity,wind*.055f,38,8,dt);
-                Spring(ref rig.roll,ref rig.rollVelocity,tilt,32,7.5f,dt);
+                Spring(ref rig.sway,ref rig.swayVelocity,wind*.12f,38,7.2f,dt);
+                Spring(ref rig.roll,ref rig.rollVelocity,tilt,32,5.5f,dt);
+                rig.sway=Mathf.Clamp(rig.sway,-.22f,.22f);rig.roll=Mathf.Clamp(rig.roll,-2.4f,2.4f);
                 for(int i=0;i<rig.vertices.Length;i++){
                     int column=i/2;float x=(column<9?column:column-1)/16f;
                     float width=rig.board.baseScale.x,height=Mathf.Max(.01f,rig.board.baseScale.y);

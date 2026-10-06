@@ -722,9 +722,14 @@
     },
     "singleCordReactions20261006": {
       "suspension": "One continuous cord per tool, physical handle endpoints, shared wind pendulum",
-      "sequence": "Clone body+symbol at exact source pose; .42s flight; particles .46s; status .88s; total1.72s; static reduced .55s",
+      "sequence": "Original body+symbol reparents from exact source pose; consumed dock empty; .42s flight, particles .46s, status .88s, total1.72s; Undo restores same object",
       "silhouette": "Clean sibling alpha atlases, native narrow antialias edge, no duplicated Outline",
       "validation": "Native canonical two-stage witnesses and focused pause/quiet/suspension checks; see Reports/ReactionSequence"
+    },
+    "originalDepartureWind20261006": {
+      "identity": "No clone; original restored to hidden home after beat, canonical used flags hide consumed dock",
+      "wind": "Gentle continuous deck/rope springs; shared directional velocity kick on canonical gust; bounded .22 world sway and 2.4deg roll",
+      "validation": "Reports/OriginalDeparture"
     }
   },
   "components": [

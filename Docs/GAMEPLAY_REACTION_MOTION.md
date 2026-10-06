@@ -35,3 +35,7 @@ physical-device certification, broad suite rerun or claim of human enjoyment.
 
 Single-cord and alpha cleanup follow-up: Docs/TOOL_REACTION_SEQUENCE.md and
 Reports/ReactionSequence/README.md supersede the earlier simultaneous caption.
+
+The original tool now departs; there is no presentation duplicate or retained
+hanging body. Consumed dock visibility derives from canonical flags. Undo restores
+the same object. Latest evidence: Reports/OriginalDeparture/README.md.

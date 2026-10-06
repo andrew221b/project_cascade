@@ -19,6 +19,13 @@ namespace Cascade.Presentation
         public RectTransform Source { get; private set; }
         public bool StatusVisible => !hasTool||game.ReducedMotion||age>=.88f;
         GameObject hero;
+        Transform home;
+        Vector2 homeMin,homeMax,homeOffsetMin,homeOffsetMax;
+        Vector3 homeScale;
+        Quaternion homeRotation;
+        Color homeColor;
+        bool homeRaycast;
+        readonly System.Collections.Generic.List<(TMP_Text text,float size,float max)> homeText=new System.Collections.Generic.List<(TMP_Text,float,float)>();
         Vector2 sourcePoint;
         readonly Image[] motes=new Image[8];
         readonly Sprite[] motifs=new Sprite[6];
@@ -61,7 +68,7 @@ namespace Cascade.Presentation
         public void Show(UiCopy message,string tool,RectTransform source=null)
         {
             if(game==null||game.CurrentScreen!=GameScreen.Playing)return;
-            if(hero!=null){hero.SetActive(false);Destroy(hero);}
+            ReleaseTool();
             foreach(var m in motes)m.gameObject.SetActive(false);
             windWarning=false;windLines.gameObject.SetActive(false);Source=source;heroMount.anchoredPosition=Vector2.zero;heroMount.localScale=Vector3.one;heroMount.localRotation=Quaternion.identity;hasTool=source!=null;age=0;IsShowing=true;gameObject.SetActive(true);root.SetAsLastSibling();RefreshLayout();
             sourcePoint=source==null?Vector2.zero:(Vector2)root.InverseTransformPoint(source.TransformPoint(source.rect.center))-(Vector2)heroMount.localPosition;
@@ -71,7 +78,11 @@ namespace Cascade.Presentation
                 initialAngle=source.eulerAngles.z-root.eulerAngles.z;
             }
             if(hasTool){
-                hero=Instantiate(source.gameObject,heroMount);hero.name="Celebrated tool with body mark";
+                hero=source.gameObject;home=source.parent;homeMin=source.anchorMin;homeMax=source.anchorMax;
+                homeOffsetMin=source.offsetMin;homeOffsetMax=source.offsetMax;homeScale=source.localScale;homeRotation=source.localRotation;
+                var originalImage=source.GetComponent<Image>();homeColor=originalImage.color;homeRaycast=originalImage.raycastTarget;
+                homeText.Clear();foreach(var text in source.GetComponentsInChildren<TMP_Text>(true))homeText.Add((text,text.fontSize,text.fontSizeMax));
+                source.SetParent(heroMount,false);hero.SetActive(true);
                 var r=(RectTransform)hero.transform;r.anchorMin=Vector2.zero;r.anchorMax=Vector2.one;r.offsetMin=r.offsetMax=Vector2.zero;r.localScale=Vector3.one;r.localRotation=Quaternion.identity;
                 var image=hero.GetComponent<Image>();image.color=Color.white;image.raycastTarget=false;
                 foreach(var text in hero.GetComponentsInChildren<TMP_Text>()){text.fontSizeMax=54;text.fontSize=42;}
@@ -136,8 +147,19 @@ namespace Cascade.Presentation
         {
             if(Source!=null&&game!=null)game.SetReactionSourceStatus(Source,true);
             IsShowing=false;Source=null;if(instruction!=null)instruction.enabled=true;if(paperImage!=null)paperImage.enabled=true;gameObject.SetActive(false);
-            if(hero!=null){hero.SetActive(false);Destroy(hero);hero=null;}
+            ReleaseTool();
         }
-        void OnDestroy(){if(cloth!=null&&cloth.sprite!=null)Destroy(cloth.sprite);foreach(var s in motifs)if(s!=null)Destroy(s);foreach(var m in cleanMotifs)if(m!=null)Destroy(m);}
+        void ReleaseTool()
+        {
+            if(hero!=null&&home!=null){
+                var r=(RectTransform)hero.transform;r.SetParent(home,false);r.anchorMin=homeMin;r.anchorMax=homeMax;
+                r.offsetMin=homeOffsetMin;r.offsetMax=homeOffsetMax;r.localScale=homeScale;r.localRotation=homeRotation;
+                var image=hero.GetComponent<Image>();image.color=homeColor;image.raycastTarget=homeRaycast;
+                foreach(var entry in homeText)if(entry.text!=null){entry.text.fontSizeMax=entry.max;entry.text.fontSize=entry.size;}
+                hero.SetActive(true);
+            }
+            hero=null;home=null;homeText.Clear();
+        }
+        void OnDestroy(){ReleaseTool();if(cloth!=null&&cloth.sprite!=null)Destroy(cloth.sprite);foreach(var s in motifs)if(s!=null)Destroy(s);foreach(var m in cleanMotifs)if(m!=null)Destroy(m);}
     }
 }

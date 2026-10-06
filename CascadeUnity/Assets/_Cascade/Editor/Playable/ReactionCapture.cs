@@ -72,6 +72,36 @@ namespace Cascade.Editor.Playable
             }finally{camera.targetTexture=old;UnityEngine.Object.Destroy(target);UnityEngine.Object.Destroy(pixels);g.RefreshLayout();}
             Debug.Log("CASCADE clean tool sequence complete");
         }
+        public static void RunOriginal() => UnityEngine.Object.FindFirstObjectByType<CascadeGame>().StartCoroutine(Original());
+        static IEnumerator Original()
+        {
+            var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();typeof(CascadeGame).GetField("persistenceReady",BindingFlags.Instance|BindingFlags.NonPublic).SetValue(g,false);
+            g.SendMessage("OnApplicationFocus",true);UnityEngine.Application.runInBackground=true;g.SetUiLocale("ru");g.ReducedMotion=false;
+            foreach(string id in new[]{"C18","C13","words"}){
+                if(id=="words"){g.Catalog.TryGetLocalizedBinding("C18","ru",out var words);g.LoadLevel(words.Definition,"ru");}else g.LoadNode(id);
+                g.ShowGame();yield return Ready(g);var original=g.GetComponentsInChildren<UnityEngine.UI.Image>().First(i=>i.name=="Recognizable device");int identity=original.GetInstanceID();var home=original.transform.parent;
+                g.Interaction.SetSuspended(false);g.Interaction.Execute(PuzzleCommand.Swap(0));while(!g.ReactionBanner.IsShowing)yield return null;
+                if(g.ReactionBanner.Source.GetInstanceID()!=original.rectTransform.GetInstanceID())throw new InvalidOperationException("Source was cloned");
+                while(g.ReactionBanner.Elapsed<.55f)yield return null;g.Interaction.SetPaused(true);
+                yield return PlayableCapture.CaptureSettled("OriginalDeparture",id+"-flight.png",390,844);
+                if(home.gameObject.activeInHierarchy)throw new InvalidOperationException("Original dock stayed visible");g.Interaction.SetPaused(false);while(g.Interaction.IsPresenting)yield return null;
+                if(original.GetInstanceID()!=identity||original.gameObject.activeInHierarchy)throw new InvalidOperationException("Original respawned or duplicated");
+                yield return PlayableCapture.CaptureSettled("OriginalDeparture",id+"-used.png",390,844);
+                g.Undo();yield return null;if(!original.gameObject.activeInHierarchy||original.transform.parent!=home)throw new InvalidOperationException("Undo failed to restore original");
+            }
+            g.LoadNode("C18");g.ShowGame();yield return Ready(g);yield return SequenceMotion(g);
+            var camera=Camera.main;var old=camera.targetTexture;var target=new RenderTexture(390,844,24);camera.targetTexture=target;var pixels=new Texture2D(390,844,TextureFormat.RGB24,false);Directory.CreateDirectory("/tmp/cascade-wind-suspension");
+            try{
+                g.LoadNode("C18");yield return Ready(g);g.ShowGame();g.RefreshLayout();yield return null;yield return null;string hash=g.Interaction.Attempt.CurrentStateHash;
+                for(int f=0;f<36;f++){
+                    if(f==15){g.Machine.CueWind(true);g.CueDeviceWind(true);}
+                    camera.Render();var active=RenderTexture.active;RenderTexture.active=target;pixels.ReadPixels(new Rect(0,0,390,844),0,0);pixels.Apply();RenderTexture.active=active;
+                    File.WriteAllBytes("/tmp/cascade-wind-suspension/"+f.ToString("D2")+".png",pixels.EncodeToPNG());
+                    if(hash!=g.Interaction.Attempt.CurrentStateHash)throw new InvalidOperationException("Decorative wind changed state");yield return new WaitForSecondsRealtime(.10f);
+                }
+            }finally{camera.targetTexture=old;UnityEngine.Object.Destroy(target);UnityEngine.Object.Destroy(pixels);g.RefreshLayout();}
+            Debug.Log("CASCADE original departure and wind witnesses complete");
+        }
         public static void RunHeader()
         {
             var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();

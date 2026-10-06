@@ -452,11 +452,14 @@ namespace Cascade.Tests
         {
             foreach(bool quiet in new[]{false,true}){
                 game.LoadNode("C18");game.ShowGame();game.ReducedMotion=quiet;game.Feedback.Quality=quiet?0:2;game.Preferences.EffectQuality=quiet?0:2;yield return AwaitPreparation();
+                var original=game.GetComponentsInChildren<UnityEngine.UI.Image>().First(i=>i.name=="Recognizable device");var home=original.transform.parent;
                 game.Interaction.Execute(PuzzleCommand.Swap(0));double until=Time.realtimeSinceStartupAsDouble+30;
                 while(!game.ReactionBanner.IsShowing&&game.Interaction.IsPresenting&&Time.realtimeSinceStartupAsDouble<until)yield return null;
                 Assert.That(game.ReactionBanner.IsShowing,Is.True);Assert.That(game.ReactionBanner.Message,Does.Contain("mended"));
                 var cloth=game.ReactionBanner.GetComponentsInChildren<CanvasGroup>().First(c=>c.name=="Woven announcement");
                 var focus=game.ReactionBanner.transform.Find("Reaction focus");
+                Assert.That(focus.GetChild(0).gameObject,Is.SameAs(original.gameObject));Assert.That(game.ReactionBanner.Source,Is.SameAs(original.rectTransform));
+                Assert.That(home.gameObject.activeInHierarchy,Is.False,"The source dock is empty, with no duplicate or dangling cord.");
                 Assert.That(focus.childCount,Is.EqualTo(1));Assert.That(focus.GetComponentsInChildren<ToolSuspensionRope>(),Is.Empty);
                 Assert.That(focus.GetComponentsInChildren<UnityEngine.UI.Outline>(),Is.Empty);
                 if(!quiet){Assert.That(cloth.alpha,Is.Zero);Assert.That(game.ReactionBanner.StatusVisible,Is.False);}
@@ -475,11 +478,31 @@ namespace Cascade.Tests
                 }
                 yield return AwaitPresentation();
                 until=Time.realtimeSinceStartupAsDouble+10;while(game.ReactionBanner.IsShowing&&Time.realtimeSinceStartupAsDouble<until)yield return null;
-                Assert.That(game.ReactionBanner.IsShowing,Is.False);Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));Assert.That(game.Interaction.Attempt.RouteLength,Is.EqualTo(length));
+                Assert.That(game.ReactionBanner.IsShowing,Is.False);Assert.That(original.transform.parent,Is.SameAs(home));
+                Assert.That(original.gameObject.activeInHierarchy,Is.False,"Consumed tools do not reappear on the hanger.");Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));Assert.That(game.Interaction.Attempt.RouteLength,Is.EqualTo(length));
                 var status=game.GetComponentsInChildren<TextMeshProUGUI>().First(t=>t.name=="Feedback");Assert.That(status.enabled,Is.True);
                 game.AnnounceReaction("Ribbon ready!","RibbonSpool");Assert.That(game.ReactionBanner.IsShowing,Is.True);
                 game.ShowSettings();Assert.That(game.ReactionBanner.IsShowing,Is.False);game.ShowGame();Assert.That(status.enabled,Is.True);
+                game.Undo();yield return null;Assert.That(original.gameObject.activeInHierarchy,Is.True);Assert.That(original.transform.parent,Is.SameAs(home));
             }
+        }
+        [UnityTest] public IEnumerator GustMovesDeckAndRopesMoreThanAmbientWithoutChangingThePuzzle()
+        {
+            game.LoadNode("C18");game.ShowGame();game.ReducedMotion=false;yield return AwaitPreparation();
+            string hash=game.Interaction.Attempt.CurrentStateHash;float ambient=0,gust=0;
+            var rope=game.Machine.GetComponentsInChildren<LineRenderer>().First(r=>r.name=="Left braided rope");
+            double until=Time.realtimeSinceStartupAsDouble+3;
+            while(Time.realtimeSinceStartupAsDouble<until){ambient=Mathf.Max(ambient,Mathf.Abs(game.Machine.FloorVisualOffset(0).x));yield return null;}
+            var before=rope.GetPosition(12);float ropeTravel=0;
+            game.Machine.CueWind(true);game.CueDeviceWind(true);until=Time.realtimeSinceStartupAsDouble+1.4;
+            while(Time.realtimeSinceStartupAsDouble<until){gust=Mathf.Max(gust,Mathf.Abs(game.Machine.FloorVisualOffset(0).x));ropeTravel=Mathf.Max(ropeTravel,Vector3.Distance(before,rope.GetPosition(12)));yield return null;}
+            Assert.That(gust,Is.GreaterThan(ambient*1.4f));Assert.That(ropeTravel,Is.GreaterThan(.02f));
+            Assert.That(Mathf.Abs(game.Machine.FloorVisualAngle(0)),Is.LessThanOrEqualTo(2.4f));
+            game.Interaction.SetPaused(true);var held=rope.GetPosition(12);var deck=game.Machine.FloorVisualOffset(0);
+            yield return new WaitForSecondsRealtime(.15f);Assert.That(rope.GetPosition(12),Is.EqualTo(held));Assert.That(game.Machine.FloorVisualOffset(0),Is.EqualTo(deck));
+            game.Interaction.SetPaused(false);game.ReducedMotion=true;yield return null;
+            var quiet=rope.GetPosition(12);game.Machine.CueWind(false);yield return new WaitForSecondsRealtime(.15f);Assert.That(rope.GetPosition(12),Is.EqualTo(quiet));
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));Assert.That(game.Interaction.Attempt.RouteLength,Is.Zero);
         }
         [UnityTest] public IEnumerator HangingDevicesFollowDeckWindAndFreezeWithoutSpendingMoves()
         {

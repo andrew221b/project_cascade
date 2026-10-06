@@ -100,7 +100,13 @@ namespace Cascade.Presentation
             float gust=(1-Mathf.Exp(-age*6))*Mathf.Exp(-age*1.6f)*gustDirection*1.2f;
             return Mathf.Clamp(WorkshopWind.Sample(windTime-floor*.13f)+gust+windAnticipation,-1,1)*(heldWeight>=0?.72f:1);
         }
-        public void CueWind(bool right){windAnticipation=0;if(!reducedMotion){gustStarted=windTime;gustDirection=right?1:-1;}}
+        public void CueWind(bool right)
+        {
+            windAnticipation=0;if(reducedMotion)return;gustStarted=windTime;gustDirection=right?1:-1;
+            // One pressure impulse, then the existing springs carry the recoil and recovery.
+            foreach(var rig in floors){rig.swayVelocity+=gustDirection*.85f;rig.rollVelocity+=gustDirection*10;}
+            for(int side=0;side<2;side++)for(int segment=0;segment<=floors.Count;segment++)ropeVelocity[side,segment]+=gustDirection*.38f;
+        }
         public Vector3 FloorPosition(int floor)
         {
             var anchor = floors[floor].parts[0].anchor; anchor.GetWorldCorners(corners);

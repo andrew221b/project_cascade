@@ -115,6 +115,11 @@ namespace Cascade.Presentation
                 letter.enableAutoSizing=true;letter.fontSizeMin=12;letter.fontSizeMax=28;letter.gameObject.AddComponent<SymbolGlyphCenter>();
             }else {var face=mark.gameObject.AddComponent<ShapeFaceGraphic>();face.raycastTarget=false;face.SetShape(art.SymbolMesh(required),art.SymbolMaterial(required).GetColor("_BaseColor"),true);}
         }
+        public void CueDeviceWind(bool right)
+        {
+            if(ReducedMotion)return;
+            foreach(var dock in deviceDocks)if(dock.root.gameObject.activeInHierarchy)dock.angleVelocity+=(right?1:-1)*(dock.kind==2?12:18);
+        }
         public void CueDevice(PuzzleEvent e)
         {
             foreach(var d in deviceDocks)if(d.floor==e.Floor){
@@ -170,8 +175,9 @@ namespace Cascade.Presentation
         {
             var floor=Interaction.Attempt.Level.Floors[floorIndex];
             foreach(var d in deviceDocks)if(d.floor==floorIndex) {
-                d.root.gameObject.SetActive(!past);
                 bool used=active&&(d.kind==2?frame.BombPhase!=BombPhase.Armed:d.kind==3?frame.KeyUsed:d.kind==4?frame.RepairUsed:d.kind==8?(frame.StampBits&(1<<floorIndex))!=0:frame.PowerupUsed);
+                // Existing contact flags decide whether anything still hangs here.
+                d.root.gameObject.SetActive(!past&&!used);d.cord.gameObject.SetActive(!past&&!used);d.socket.gameObject.SetActive(!past&&!used);
                 d.settledContact=used;d.outcomeRibbon.gameObject.SetActive(used);
                 d.outcomeRibbon.color=d.kind==2&&frame.BombPhase==BombPhase.Exploded?new Color(.62f,.20f,.14f):d.kind==3?new Color(.42f,.29f,.12f):d.kind==8?new Color(.34f,.23f,.49f):d.kind>=9?new Color(.10f,.33f,.49f):new Color(.10f,.40f,.34f);
                 d.caption.rectTransform.anchorMin=used?new Vector2(.02f,-.50f):new Vector2(-.08f,-.50f);d.caption.rectTransform.anchorMax=used?new Vector2(1.60f,-.10f):new Vector2(1.08f,-.10f);
