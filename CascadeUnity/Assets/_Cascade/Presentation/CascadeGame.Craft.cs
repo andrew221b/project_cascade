@@ -21,7 +21,7 @@ namespace Cascade.Presentation
             b.GetComponent<Image>().color=string.IsNullOrEmpty(name)?selected?new Color(.98f,.74f,.32f):new Color(.84f,.91f,.87f):Color.clear;
             var label=b.GetComponentInChildren<TextMeshProUGUI>();label.rectTransform.anchorMin=new Vector2(.05f,.10f);label.rectTransform.anchorMax=new Vector2(.95f,.37f);label.fontSize=17*(Preferences.LargeText?1.12f:1);label.margin=new Vector4(3,0,3,0);
             if(!string.IsNullOrEmpty(name)){
-                var plate=Rect("Shelf caption cloth",b.transform,new Vector2(.025f,.07f),new Vector2(.975f,.37f));var paper=Background(plate,MenuPaper,false);paper.sprite=art.panel;paper.type=Image.Type.Sliced;plate.SetAsFirstSibling();
+                var plate=Rect("Shelf caption cloth",b.transform,new Vector2(.025f,.07f),new Vector2(.975f,.37f));plate.SetAsFirstSibling();
             }
             b.name=string.IsNullOrEmpty(name)?asset+"Choice":b.name;
             var icon=Picture("Shelf object",b.transform,new Vector2(.07f,string.IsNullOrEmpty(name)?.06f:.37f),new Vector2(.93f,.95f),Resources.Load<Sprite>(asset=="RibbonSpool"?"CascadeArt/Devices/RibbonSpool":"CascadeArt/Workshop/"+asset),true);

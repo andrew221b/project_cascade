@@ -106,8 +106,8 @@ namespace Cascade.Presentation
                 mechanicArrival.Append(DOTween.To(()=>mechanicOpacity.alpha,v=>mechanicOpacity.alpha=v,1,.20f).SetEase(Ease.OutCubic));
                 mechanicArrival.Join(panel.DOScale(1,.32f).SetEase(Ease.OutQuint));
             }
-            var face=Background(panel,MenuPaper,false);face.sprite=art.panel;face.type=Image.Type.Sliced;
-            var title=Text("New mechanic title",panel,new Vector2(.07f,.81f),new Vector2(.93f,.97f),26,MechanicTitles[(int)lesson]);title.font=art.titleFont;
+            var face=Background(panel,Color.white,false);face.sprite=enamelControls[0];face.type=Image.Type.Sliced;
+            var title=Text("New mechanic title",panel,new Vector2(.07f,.81f),new Vector2(.93f,.97f),26,MechanicTitles[(int)lesson]);title.font=art.titleFont;title.color=MenuPaper;
             title.enableAutoSizing=true;title.fontSizeMin=22*MenuUnit;title.fontSizeMax=28*MenuUnit;
             var example=Rect("Mechanic illustration",panel,new Vector2(.10f,.51f),new Vector2(.90f,.78f));
             int kind=lesson==MechanicLesson.Bomb?2:lesson==MechanicLesson.Key?3:lesson==MechanicLesson.Repair?4:lesson==MechanicLesson.Ribbon?9:lesson==MechanicLesson.Stamp?8:lesson==MechanicLesson.BombHourglass?10:lesson==MechanicLesson.Bridge?7:lesson==MechanicLesson.LinkedPairs?6:-1;
@@ -116,7 +116,7 @@ namespace Cascade.Presentation
                 LiveDeviceDemo(example,fixture,kind,true);
             }else DrawMechanicIllustration(example,lesson);
             var copy=Text("New mechanic explanation",panel,new Vector2(.08f,.23f),new Vector2(.92f,.49f),20,MechanicCopy[(int)lesson]);
-            copy.enableAutoSizing=true;copy.fontSizeMin=(Preferences.LargeText?20:18)*MenuUnit;copy.fontSizeMax=22*MenuUnit*(Preferences.LargeText?1.12f:1);
+            copy.color=MenuPaper;copy.enableAutoSizing=true;copy.fontSizeMin=(Preferences.LargeText?20:18)*MenuUnit;copy.fontSizeMax=22*MenuUnit*(Preferences.LargeText?1.12f:1);
             var button=Button(string.IsNullOrEmpty(acknowledgement.Key)?(UiCopy)"Got it":acknowledgement,panel,new Vector2(.10f,.05f),new Vector2(.90f,.19f),AcknowledgeMechanic);
             button.name="Acknowledge mechanic";button.GetComponent<Image>().sprite=enamelControls[1];button.GetComponent<Image>().type=Image.Type.Sliced;button.GetComponent<Image>().color=Color.white;
             var label=button.GetComponentInChildren<TextMeshProUGUI>();label.fontSizeMin=20*MenuUnit;label.fontSizeMax=24*MenuUnit;label.color=MenuInk;RenderControls();

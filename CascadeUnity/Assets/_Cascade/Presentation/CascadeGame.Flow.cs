@@ -271,12 +271,11 @@ namespace Cascade.Presentation
         static readonly Color MenuPaper=new Color(.99f,.98f,.92f);
         void MenuReadingSurface(string name,Vector2 min,Vector2 max)
         {
-            var surface=Rect(name,menuRoot,min,max);var image=Background(surface,MenuPaper,false);
-            image.sprite=art.panel;image.type=Image.Type.Sliced;
+            Rect(name,menuRoot,min,max); // Layout group only; the illustrated world remains visible.
         }
         void FinishMenuContrast()
         {
-            foreach(var label in menuRoot.GetComponentsInChildren<TextMeshProUGUI>())if(!IsSymbolFace(label.name)&&label.name!="Mini glyph")label.color=navigationLightLabels.Contains(label)?new Color(1,.97f,.84f):MenuInk;
+            foreach(var label in menuRoot.GetComponentsInChildren<TextMeshProUGUI>())if(!IsSymbolFace(label.name)&&label.name!="Mini glyph")label.color=navigationLightLabels.Contains(label)||label.GetComponentInParent<Button>()?.GetComponent<Image>()?.sprite==enamelControls[0]?new Color(1,.97f,.84f):MenuInk;
             foreach(var button in menuRoot.GetComponentsInChildren<Button>())if(!button.interactable){
                 var image=button.GetComponent<Image>();if(image!=null&&image.color.a>0)image.color=new Color(.86f,.91f,.87f);
                 var colors=button.colors;colors.disabledColor=Color.white;button.colors=colors;
@@ -285,8 +284,8 @@ namespace Cascade.Presentation
         void MenuTitle(UiCopy title,UiCopy body)
         {
             MenuReadingSurface("Menu heading cloth",new Vector2(.06f,.817f),new Vector2(.94f,.978f));
-            var label=Text("Menu title",menuRoot,new Vector2(.10f,.905f),new Vector2(.90f,.968f),30,title);label.font=art.titleFont;label.alignment=TextAlignmentOptions.MidlineLeft;
-            var description=Text("Menu description",menuRoot,new Vector2(.10f,.812f),new Vector2(.90f,.901f),20,body);description.alignment=TextAlignmentOptions.MidlineLeft;menuHeading=label;menuDescription=description;
+            var label=Text("Menu title",menuRoot,new Vector2(.17f,.905f),new Vector2(.83f,.968f),28,title);label.font=art.titleFont;label.alignment=TextAlignmentOptions.Center;label.enableAutoSizing=true;label.fontSizeMin=20*MenuUnit;label.fontSizeMax=28*MenuUnit;label.textWrappingMode=TextWrappingModes.NoWrap;
+            var description=Text("Menu description",menuRoot,new Vector2(.17f,.812f),new Vector2(.83f,.901f),18,body);description.alignment=TextAlignmentOptions.Center;description.enableAutoSizing=true;description.fontSizeMin=15*MenuUnit;description.fontSizeMax=18*MenuUnit;menuHeading=label;menuDescription=description;
         }
         Button MenuButton(UiCopy label,float bottom,Action action,bool primary=false,float left=.08f,float right=.92f)
         {
@@ -295,7 +294,7 @@ namespace Cascade.Presentation
             var r=(RectTransform)button.transform;r.pivot=new Vector2(.5f,0);r.sizeDelta=new Vector2(0,52*unit);
             menuActions.Add(r);if(fixedBottom>=0)menuBottoms.Add(new MenuBottom{rect=r,bottom=fixedBottom});var caption=button.GetComponentInChildren<TextMeshProUGUI>();caption.margin=new Vector4(8,3,8,3);caption.fontSize=(right-left<.51f?20:22)*(Preferences.LargeText?1.10f:1);caption.textWrappingMode=TextWrappingModes.NoWrap;
             caption.enableAutoSizing=true;caption.fontSizeMin=16*unit;caption.fontSizeMax=(right-left<.51f?20:22)*unit*(Preferences.LargeText?1.10f:1);
-            button.GetComponent<Image>().color=primary?new Color(.98f,.74f,.32f):new Color(.84f,.91f,.87f);
+            var face=button.GetComponent<Image>();face.sprite=enamelControls[primary?1:0];face.type=Image.Type.Sliced;face.color=Color.white;
             return button;
         }
         IReadOnlyList<LevelContent> PreferredLevels()
@@ -369,7 +368,7 @@ namespace Cascade.Presentation
         void Setting(string label,bool value,int index,Action toggle)
         {
             var button=MenuButton(UiCopy.Raw(label+": "+(value?"On":"Off")),.5f,()=>{toggle();ApplyPreferences();DrawMenu();});
-            RegisterMenuRow(button,.71f,index,52,8);button.GetComponent<Image>().color=MenuPaper;
+            RegisterMenuRow(button,.71f,index,52,8);
             var text=button.GetComponentInChildren<TextMeshProUGUI>();text.SetCopy(label);text.alignment=TextAlignmentOptions.MidlineLeft;
             text.rectTransform.anchorMax=new Vector2(.73f,1);text.margin=new Vector4(4,2,6,2);
             var separator=Rect("Setting separator",button.transform,new Vector2(0,0),new Vector2(1,0));separator.sizeDelta=new Vector2(0,1);Background(separator,new Color(.66f,.75f,.69f),false);

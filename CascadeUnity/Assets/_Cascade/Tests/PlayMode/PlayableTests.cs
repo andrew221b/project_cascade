@@ -680,7 +680,7 @@ namespace Cascade.Tests
             yield return ClickButton("Nextdelivery");yield return PlayDescentStage();Assert.That(game.JourneyClearCount,Is.Zero);
             yield return ClickButton("Nextdelivery");yield return PlayDescentStage();
             Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Win));Assert.That(game.LastCompletion.Stages,Is.EqualTo(3));
-            Assert.That(game.LastCompletion.Stars,Is.EqualTo(3));Assert.That(game.LastCompletion.Coins,Is.EqualTo(40));Assert.That(game.LastCompletion.Lights,Is.EqualTo(1));
+            Assert.That(game.LastCompletion.Stars,Is.EqualTo(5));Assert.That(game.LastCompletion.Coins,Is.EqualTo(40));Assert.That(game.LastCompletion.Lights,Is.EqualTo(1));
             Assert.That(game.LastCompletion.Moves,Is.EqualTo(game.Descent.Stages.Sum(s=>s.Minimum)));
             Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Any(t=>t.text.Contains("all 3 stages complete")),Is.True);
             yield return ClickButton("Continuecompletion");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.JourneyMap));
@@ -689,7 +689,7 @@ namespace Cascade.Tests
             game.SendMessage("StartContent",first);yield return PlayDescentStage();yield return ClickButton("Nextdelivery");
             yield return PlayDescentStage();yield return ClickButton("Nextdelivery");yield return PlayDescentStage();
             Assert.That(game.LastCompletion.Coins,Is.Zero);Assert.That(game.LastCompletion.Lights,Is.Zero);Assert.That(game.JourneyClearCount,Is.EqualTo(1));
-            Assert.That(new ProfileStore(game.ProfilePath).Load().Profile.Clears.Single().BestStars,Is.EqualTo(3));
+            Assert.That(new ProfileStore(game.ProfilePath).Load().Profile.Clears.Single().BestStars,Is.EqualTo(5));
         }
         [UnityTest] public IEnumerator ThreeCompletedLevelsCelebrateStatsThenOneGiftThenMapAndResumeWithoutAnotherGrant()
         {

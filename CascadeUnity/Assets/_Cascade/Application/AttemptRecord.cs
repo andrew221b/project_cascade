@@ -9,6 +9,8 @@ namespace Cascade.Application
     {
         public string AttemptId, PuzzleId, CampaignNodeId, ContentHash, RulesVersion, Locale, StateHash;
         public int RequiredStampBits, UndoCount;
+        public int? MovesMade;
+        public double? ActiveSeconds;
         public bool HintUsed;
         public int FreeUndoUsed = -1, GuideFloor = -1;
         public bool SpoolUsed, HourglassUsed, WayfinderUsed, LanternUsed, LensUsed;
@@ -20,6 +22,7 @@ namespace Cascade.Application
             CampaignNodeId=attempt.Level.CampaignNodeId, ContentHash=attempt.PinnedContentHash,
             RulesVersion=attempt.PinnedRulesVersion, Locale=attempt.ActiveLocale,
             RequiredStampBits=attempt.Goal.RequiredStampBits, UndoCount=attempt.UndoCount,
+            MovesMade=attempt.MovesMade,ActiveSeconds=attempt.ActiveSeconds,
             HintUsed=attempt.HintUsed, StateHash=attempt.CurrentStateHash,
             FreeUndoUsed=attempt.FreeUndoUsed,GuideFloor=attempt.GuideFloor,SpoolUsed=attempt.SpoolUsed,HourglassUsed=attempt.HourglassUsed,WayfinderUsed=attempt.WayfinderUsed,LanternUsed=attempt.LanternUsed,LensUsed=attempt.LensUsed,
             Commands=attempt.History.Select(h=>h.Command.ToString()).ToArray(),Direction=attempt.Direction?.Copy()

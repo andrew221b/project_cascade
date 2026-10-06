@@ -61,8 +61,8 @@ namespace Cascade.Presentation
                 material.SetTextureOffset("_BaseMap",new Vector2(i==3?.58f:(i%2)*.5f,i<2?.5f:0));
                 material.SetColor("_BaseColor",new Color(1,1,1,i<2?.82f:.68f));
             }
-            workshopTexture=Resources.Load<Texture2D>("CascadeArt/Craft/WorkshopRoom");
-            workshopPortrait=Resources.Load<Texture2D>("CascadeArt/Craft/WorkshopPortrait");
+            workshopTexture=Resources.Load<Texture2D>("CascadeArt/Craft/WorkshopRoomQuiet")??Resources.Load<Texture2D>("CascadeArt/Craft/WorkshopRoom");
+            workshopPortrait=Resources.Load<Texture2D>("CascadeArt/Craft/WorkshopPortraitQuiet")??Resources.Load<Texture2D>("CascadeArt/Craft/WorkshopPortrait");
             weatherMaterial=new Material(Resources.Load<Shader>("CascadeArt/SoftWeather")){name="Soft distant weather"};owned.Add(weatherMaterial);
             for(int i=0;i<weather.Length;i++) {
                 var go=new GameObject("Region weather "+i,typeof(MeshFilter),typeof(MeshRenderer));go.transform.SetParent(transform,false);
@@ -150,7 +150,7 @@ namespace Cascade.Presentation
             Plants(plantsLeft,false);Plants(plantsRight,true);
             for(int i=0;i<islands.Length;i++) {
                 var island=islands[i];if(island==null)continue;
-                island.gameObject.SetActive(zone==0&&mapSkyTexture==null&&!workshop);
+                island.gameObject.SetActive(zone==0&&mapSkyTexture==null&&!workshop&&!quietFlight);
                 float seed=i*1.83f;
                 float x=i==0?-.28f:i==1?.28f:i==2?-.22f:.22f;
                 float y=i==0?.23f:i==1?.16f:i==2?-.14f:-.28f;

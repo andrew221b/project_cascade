@@ -2744,6 +2744,42 @@ MonoBehaviour:
     m_Localized: "You are here \xB7 {0}/{1}"
     m_Metadata:
       m_Items: []
+  - m_Id: 570283319615488
+    m_Localized: Brilliant!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 570283323809792
+    m_Localized: Beautifully done!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 570283323809793
+    m_Localized: Delivered!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 570283323809794
+    m_Localized: Made it!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 570283323809795
+    m_Localized: A perfect, swift route.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 570283323809796
+    m_Localized: Aim for fewer moves and undos.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 570283323809797
+    m_Localized: Moves
+    m_Metadata:
+      m_Items: []
+  - m_Id: 570283323809798
+    m_Localized: Undos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 570283323809799
+    m_Localized: Time
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

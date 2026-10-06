@@ -849,3 +849,10 @@ A parcel anticipates, opens, raises its object, then settles; a bounded warm
 light fades with the finite confetti. Focus pauses before clock advancement.
 Reduced Motion retains final award information without spatial motion. No
 reward or progression is triggered by motion completion.
+
+
+Five-star completion and shared menu surfaces — 7 October 2026
+
+The completion composition is an open sky, with rank on the existing woven ribbon, five centered sewn gold stars, Mika beside score, an aligned three-column move/Undo/time row, illustrated gold and contained-firefly rewards, then one continuation. No generic cream score/resource boxes. Dark teal text is the foreground on clear sky; the numerical resources accompany their generated emblems rather than repeated text labels. Optional legacy time uses an em dash. The earned star cascade, finite glow/confetti and score count remain interruptible; Reduced Motion settles their final state.
+
+Menu headings and notes now read directly on the world. Workshop sky/window centers were cleared of detailed islands in new portrait/wide artworks, while old assets remain. Titles are centered inside the timber frame. Actions, bag rows, selected tabs and language carousels use the existing authored brass/teal enamel and ivory type; selected tabs turn gold with dark ink. Language arrows have light ink. First-use lessons, dialogue and preview-ad frames use a contrasting dark teal authored plate instead of cream. Physical ivory letter tiles, woven achievement ribbon and small switch knobs remain meaningful materials, not generic menu backplates.

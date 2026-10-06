@@ -111,6 +111,8 @@ namespace Cascade.Presentation
                 SettleDescent();
                 StopPresentation(); ApplySafeArea(); if (Interaction != null) RenderState();
             }
+            if(CurrentScreen==GameScreen.Playing&&Interaction.CanPlay&&!zoomOpen&&!MechanicPopupOpen&&landingPreview==null&&previewAd==null&&applicationFocused&&!applicationPaused&&!nativeAdSuspended)
+                Interaction.Attempt.AdvanceActiveTime(Mathf.Min(Time.unscaledDeltaTime,.5f));
             UpdateFlow();
             TickToolGuide();
             if(applicationFocused&&!applicationPaused&&monetization!=null)monetization.AdvanceForeground(Mathf.Min(Time.unscaledDeltaTime,.5f));
@@ -291,6 +293,7 @@ namespace Cascade.Presentation
                     Text("Position", cell, new Vector2(0, 0), new Vector2(1, .18f), 13, (i + 1).ToString());
                 }
             }
+            if(zoomOpen)foreach(var label in targetZoom.GetComponentsInChildren<TextMeshProUGUI>())label.color=label.GetComponentInParent<UnityEngine.UI.Button>()!=null?Ink:MenuPaper;
             RenderControls();
         }
         UiCopy DisplaySymbol(SymbolId symbol) => symbol.Kind == SymbolKind.Shape ? new[] { "triangle", "circle", "square", "diamond", "star", "hexagon" }[art.ShapeIndex(symbol)] : UiCopy.Raw(symbol.Value);
@@ -338,8 +341,8 @@ namespace Cascade.Presentation
             previous.gameObject.SetActive(false); next.gameObject.SetActive(false);
             pause.GetComponentInChildren<TextMeshProUGUI>().SetCopy("");
             var pauseMark = Rect("Pause mark",pause.transform,Vector2.zero,Vector2.one).gameObject.AddComponent<PauseMark>(); pauseMark.raycastTarget=false;
-            statusPaper=Rect("Quiet instruction paper",safeRoot,new Vector2(.055f,.79f),new Vector2(.945f,.86f));var paper=Background(statusPaper,new Color(1,.96f,.84f,.93f),false);paper.sprite=art.panel;paper.type=UnityEngine.UI.Image.Type.Sliced;
-            status = Text("Feedback", statusPaper, Vector2.zero, Vector2.one, 16, "");
+            statusPaper=Rect("Quiet instruction paper",safeRoot,new Vector2(.055f,.79f),new Vector2(.945f,.86f));var paper=Background(statusPaper,Color.white,false);paper.sprite=enamelControls[0];paper.type=UnityEngine.UI.Image.Type.Sliced;
+            status = Text("Feedback", statusPaper, Vector2.zero, Vector2.one, 16, "");status.color=MenuPaper;
             BuildInstructionControls();
             reactionBanner=Rect("Tool announcement",safeRoot,Vector2.zero,Vector2.one).gameObject.AddComponent<GameReactionBanner>();
             reactionBanner.Initialize(this,statusPaper,status,art.titleFont);
@@ -367,9 +370,9 @@ namespace Cascade.Presentation
             drop = Button("Drop", actions, new Vector2(.53f, 0), new Vector2(.88f,1), () => ReportInput(Interaction.Execute(PuzzleCommand.Drop)));
             drop.GetComponent<UnityEngine.UI.Image>().color = new Color(.98f, .74f, .32f);
             retry = Button("Retry", safeRoot, new Vector2(.05f, .09f), new Vector2(.43f, .155f), Retry);
-            targetZoom = Rect("TargetZoom", safeRoot, Vector2.zero, Vector2.one); Background(targetZoom, Paper, true);
-            Text("ZoomTitle", targetZoom, new Vector2(.05f, .7f), new Vector2(.95f, .8f), 22, "Make the same row");
-            Button("Close target", targetZoom, new Vector2(.2f, .22f), new Vector2(.8f, .30f), ToggleTargetZoom);
+            targetZoom = Rect("TargetZoom", safeRoot, Vector2.zero, Vector2.one); Background(targetZoom,new Color(.035f,.19f,.20f,.96f),true);
+            Text("ZoomTitle", targetZoom, new Vector2(.05f, .7f), new Vector2(.95f, .8f), 22, "Make the same row").color=MenuPaper;
+            var closeTarget=Button("Close target", targetZoom, new Vector2(.2f, .22f), new Vector2(.8f, .30f), ToggleTargetZoom);closeTarget.GetComponent<UnityEngine.UI.Image>().sprite=enamelControls[1];closeTarget.GetComponent<UnityEngine.UI.Image>().color=Color.white;
             targetZoom.gameObject.SetActive(false);
         }
         void ChangeNode(int direction)

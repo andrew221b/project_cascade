@@ -71,10 +71,10 @@ namespace Cascade.Tests
             Assert.That(profile.RestoreAttempt(catalog).CurrentStateHash,Is.EqualTo(mid.CurrentStateHash));
             var second=Deliver(run,source);Assert.That(profile.RecordClear(second),Is.False);run.AcceptCheckpoint(source,second);
             var final=Deliver(run,source);var result=LevelCompletion.From(final,null,run.Performance(final));
-            Assert.That(result.Stages,Is.EqualTo(3));Assert.That(result.Stars,Is.EqualTo(3));Assert.That(result.Moves,Is.EqualTo(run.Stages.Sum(s=>s.Minimum)));
+            Assert.That(result.Stages,Is.EqualTo(3));Assert.That(result.Stars,Is.EqualTo(5));Assert.That(result.Moves,Is.EqualTo(run.Stages.Sum(s=>s.Minimum)));
             Assert.That(profile.RecordClear(final,result),Is.True);profile.Rewards.Synchronize(profile.Clears.Select(c=>c.CampaignNodeId));
             Assert.That(profile.RecordClear(final,result),Is.False);profile.Rewards.Synchronize(profile.Clears.Select(c=>c.CampaignNodeId));
-            Assert.That(profile.Clears.Single().BestStars,Is.EqualTo(3));Assert.That(profile.Rewards.EarnedCoins(new[]{"C01"}),Is.EqualTo(40));
+            Assert.That(profile.Clears.Single().BestStars,Is.EqualTo(5));Assert.That(profile.Rewards.EarnedCoins(new[]{"C01"}),Is.EqualTo(40));
             result.Coins=40;result.Lights=1;profile.Completion=result;profile.Attempt=AttemptRecord.Capture(final);
             var folder=Path.Combine(Path.GetTempPath(),"CascadeCompletion",Guid.NewGuid().ToString("N"));
             try{var store=new ProfileStore(Path.Combine(folder,"save.json"));store.Save(profile);var saved=store.Load().Profile;
@@ -89,10 +89,10 @@ namespace Cascade.Tests
             Assert.That(profile.RestoreAttempt(catalog),Is.Not.Null);Assert.That(profile.Completion,Is.Null);
             var intro=catalog.GetPrimary("C01").Definition;var run=DescentRun.Build(intro,version:3);
             run.AcceptCheckpoint(intro,Deliver(run,intro));run.AcceptCheckpoint(intro,Deliver(run,intro));var final=Deliver(run,intro);
-            var performance=run.Performance(final);Assert.That(LevelCompletion.From(final,null,performance).Stars,Is.EqualTo(3));
+            var performance=run.Performance(final);Assert.That(LevelCompletion.From(final,null,performance).Stars,Is.EqualTo(5));
             performance.HintUsed=true;Assert.That(LevelCompletion.From(final,null,performance).Stars,Is.EqualTo(2));
             performance.Exploded=1;Assert.That(LevelCompletion.From(final,null,performance).Stars,Is.EqualTo(1));
-            performance.Exploded=0;performance.Route+=20;Assert.That(LevelCompletion.From(final,null,performance).Score,Is.LessThan(1800));
+            performance.Exploded=0;performance.MovesMade+=20;Assert.That(LevelCompletion.From(final,null,performance).Score,Is.LessThan(1800));
         }
     }
 }

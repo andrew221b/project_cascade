@@ -1,5 +1,7 @@
 # Complete levels, visible journey progress (6 October 2026)
 
+Historical design note (6 October). Current rating/time and menu surfaces are superseded by FIVE_STAR_RESULTS_AND_ACTIVE_TIME.md; current world/island pacing is in MAP_PACING_AND_CELEBRATION.md.
+
 Design note, before implementation. The author's requested normal campaign loop is now: three receiver stages in one level → full-level stars/score/earned resources → earned parcel, if waiting → map. No automatic next-level jump. Automatic ad breaks keep their existing cadence but move after acknowledgement of results and any gift. One map stop is one complete level, never one stage. Each map page is a story step of four or five complete levels; its exact remaining count is visible. Existing 160 node IDs, region boundaries, prices, first-clear coins (40; completed workshop +100), and parcel cadence (three new lights, twelve parcels maximum) stay unchanged. Replaying an opened node improves records without farming first-clear rewards.
 
 Fresh primary and localized campaign deliveries use a version-3 three-stage plan from C01, including replays. Early plans introduce devices at their published teaching points: no repair before C20, no bomb in the intermediate stage before C41. Version-1/2 checkpoint recipes and legacy single attempts restore exactly. Source definitions are unchanged; v3 hashes identify the new recipes. The same solver must prove all three stages, their multiset and difficulty curve before play. A failed plan is a recoverable preparation error, never a silent one-stage replacement.

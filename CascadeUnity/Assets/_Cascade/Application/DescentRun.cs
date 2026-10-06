@@ -20,7 +20,8 @@ namespace Cascade.Application
     }
     public sealed class DeliveryPerformance
     {
-        public int Route,Undos,Minimum,Exploded,ToolFlags;
+        public int Route,MovesMade,Undos,Minimum,Exploded,ToolFlags;
+        public double? ActiveSeconds;
         public bool HintUsed;
         public string ContentHash;
         public string SourceHash;
@@ -231,6 +232,8 @@ namespace Cascade.Application
         }
         public DeliveryPerformance Performance(AttemptService attempt)=>new DeliveryPerformance {
             ToolFlags=(CompletedToolFlags??0)|JourneyRewards.ToolFlags(attempt),
+            MovesMade=Completed.Sum(a=>a.MovesMade??a.Commands.Length+a.UndoCount)+attempt.MovesMade,
+            ActiveSeconds=attempt.ActiveSeconds.HasValue&&Completed.All(a=>a.ActiveSeconds.HasValue)?Completed.Sum(a=>a.ActiveSeconds.Value)+attempt.ActiveSeconds.Value:(double?)null,
             Route=Completed.Sum(a=>a.Commands.Length)+attempt.RouteLength,Undos=Completed.Sum(a=>a.UndoCount)+attempt.UndoCount,
             HintUsed=Completed.Any(a=>a.HintUsed)||attempt.HintUsed,Minimum=Stages.Sum(s=>s.Minimum),
             Exploded=CompletedExplosions+attempt.Current.ExplodedCount,ContentHash=ContentHash,SourceHash=SourceHash

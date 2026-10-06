@@ -176,12 +176,12 @@ namespace Cascade.Presentation
             string speakerName=dialogueLine==0?JourneyStory.Speaker(zone):"Mika";
             var portrait=Resources.Load<Sprite>("CascadeArt/Journey/"+speakerName);
             if(portrait!=null)Picture("Speaking friend",menuRoot,new Vector2(.20f,.44f),new Vector2(.80f,.91f),portrait,true).gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,2),0,.35f);
-            var panel=Rect("Dialogue frame",menuRoot,new Vector2(.04f,.08f),new Vector2(.96f,.46f));Panel(panel,Paper);
+            var panel=Rect("Dialogue frame",menuRoot,new Vector2(.04f,.08f),new Vector2(.96f,.46f));var face=Background(panel,Color.white,true);face.sprite=enamelControls[0];face.type=Image.Type.Sliced;
             var edge=Rect("Brass corner",panel,new Vector2(.025f,.88f),new Vector2(.975f,.90f));Background(edge,new Color(.92f,.70f,.31f),false);
-            var speaker=Text("Speaker",panel,new Vector2(.07f,.71f),new Vector2(.93f,.88f),27,speakerName);speaker.font=art.titleFont;speaker.alignment=TextAlignmentOptions.MidlineLeft;
-            var line=Text("Dialogue line",panel,new Vector2(.07f,.27f),new Vector2(.93f,.72f),22,JourneyStory.Lines(JourneyStory.PageFor(selectedJourneyStop))[dialogueLine]);line.alignment=TextAlignmentOptions.TopLeft;
+            var speaker=Text("Speaker",panel,new Vector2(.07f,.71f),new Vector2(.93f,.88f),27,speakerName);speaker.font=art.titleFont;navigationLightLabels.Add(speaker);speaker.alignment=TextAlignmentOptions.MidlineLeft;
+            var line=Text("Dialogue line",panel,new Vector2(.07f,.27f),new Vector2(.93f,.72f),22,JourneyStory.Lines(JourneyStory.PageFor(selectedJourneyStop))[dialogueLine]);line.alignment=TextAlignmentOptions.TopLeft;navigationLightLabels.Add(line);
             var next=Button("Continue",panel,new Vector2(.52f,.04f),new Vector2(.93f,.24f),AdvanceDialogue);next.GetComponent<Image>().sprite=enamelControls[1];next.GetComponent<Image>().color=Color.white;
-            Button("Skip story",panel,new Vector2(.07f,.04f),new Vector2(.48f,.24f),()=>{heardStory.Add(JourneyStory.PageFor(selectedJourneyStop));PersistProgress();EnterJourneyPuzzle();}).GetComponentInChildren<TextMeshProUGUI>().fontSize=16;
+            var skip=Button("Skip story",panel,new Vector2(.07f,.04f),new Vector2(.48f,.24f),()=>{heardStory.Add(JourneyStory.PageFor(selectedJourneyStop));PersistProgress();EnterJourneyPuzzle();});skip.GetComponent<Image>().sprite=enamelControls[0];skip.GetComponent<Image>().color=Color.white;skip.GetComponentInChildren<TextMeshProUGUI>().fontSize=16;
         }
         void Panel(RectTransform parent,Color tint)
         {var image=Background(parent,tint,true);image.sprite=art.panel;image.type=Image.Type.Sliced;}

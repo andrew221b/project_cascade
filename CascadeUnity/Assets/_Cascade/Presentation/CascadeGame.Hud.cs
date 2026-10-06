@@ -26,7 +26,7 @@ namespace Cascade.Presentation
             instructionClose.targetGraphic=hit;
             instructionClose.onClick.AddListener(()=>{dismissedInstructions.Add(instructionKey??"");HideInstruction();});
             var mark=Rect("Close mark",close,Vector2.zero,Vector2.one).gameObject.AddComponent<InstructionCloseMark>();
-            mark.color=Ink;mark.raycastTarget=false;
+            mark.color=MenuPaper;mark.raycastTarget=false;
         }
 
         void LayoutInstruction(float unit)

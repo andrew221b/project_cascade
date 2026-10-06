@@ -66,7 +66,7 @@ namespace Cascade.Persistence
             foreach(var receipt in Clears)if(receipt==null || string.IsNullOrWhiteSpace(receipt.CampaignNodeId)
                 || receipt.CampaignNodeId.Length>128 || !nodes.Add(receipt.CampaignNodeId)
                 || !Guid.TryParse(receipt.AttemptId,out var id) || id==Guid.Empty || !Hash(receipt.ContentHash)
-                ||receipt.BestStars<0||receipt.BestStars>3||receipt.BestScore<0||receipt.BestScore>1900)
+                ||receipt.BestStars<0||receipt.BestStars>5||receipt.BestScore<0||receipt.BestScore>2100)
                 throw new InvalidDataException("Invalid first-clear receipt.");
             if(Completion!=null&&!Completion.IsValid())throw new InvalidDataException("Invalid completion receipt.");
             if(Rewards==null)throw new InvalidDataException("Missing journey rewards.");

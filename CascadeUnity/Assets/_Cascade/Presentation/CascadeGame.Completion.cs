@@ -11,7 +11,7 @@ namespace Cascade.Presentation
 {
     public sealed partial class CascadeGame
     {
-        Sprite[] completionArt;
+        Sprite[] completionArt,rewardEmblems;
         bool parcelReturnsToMap;
         public bool CelebrationMotionAllowed=>applicationFocused&&!applicationPaused&&!nativeAdSuspended&&isActiveAndEnabled;
         public LevelCompletion LastCompletion=>profile.Completion;
@@ -36,7 +36,12 @@ namespace Cascade.Presentation
             }
             return completionArt[index];
         }
-        void DisposeCompletionArt(){if(completionArt!=null)foreach(var sprite in completionArt)if(sprite!=null)Destroy(sprite);}
+        void DisposeCompletionArt(){foreach(var sprites in new[]{completionArt,rewardEmblems})if(sprites!=null)foreach(var sprite in sprites)if(sprite!=null)Destroy(sprite);}
+        Sprite RewardEmblem(int index)
+        {
+            if(rewardEmblems==null)rewardEmblems=NavigationSlices("Workshop/RewardEmblems",2,1);
+            return rewardEmblems[index];
+        }
         TextMeshProUGUI CompletionText(string name,Transform parent,Vector2 min,Vector2 max,float size,UiCopy copy)
         {
             var label=Text(name,parent,min,max,Mathf.RoundToInt(size),copy);label.font=art.titleFont;label.enableAutoSizing=true;
@@ -51,31 +56,36 @@ namespace Cascade.Presentation
                 profile.Completion=LevelCompletion.From(attempt,MinimumMoves,descent?.Performance(attempt));PersistProgress();
             }
             var receipt=profile.Completion;
-            var ribbon=Picture("Completion ribbon",menuRoot,new Vector2(.06f,.842f),new Vector2(.94f,.978f),CompletionArt(1),true);
-            CompletionText("Completion title",ribbon.transform,new Vector2(.16f,.22f),new Vector2(.84f,.80f),25,"Well done!");
-            CompletionText("Completed stages",menuRoot,new Vector2(.10f,.79f),new Vector2(.90f,.841f),17,
+            string rank=receipt.Stars==5?"Brilliant!":receipt.Stars==4?"Beautifully done!":receipt.Stars==3?"Well done!":receipt.Stars==2?"Delivered!":"Made it!";
+            var ribbon=Picture("Completion ribbon",menuRoot,new Vector2(.08f,.85f),new Vector2(.92f,.98f),CompletionArt(1),true);
+            CompletionText("Completion title",ribbon.transform,new Vector2(.16f,.22f),new Vector2(.84f,.80f),26,rank);
+            CompletionText("Completed stages",menuRoot,new Vector2(.08f,.79f),new Vector2(.92f,.842f),17,
                 new UiCopy(receipt.Stages==3?"Level {0} · all 3 stages complete":"Level {0} complete",receipt.NodeId.TrimStart('C','0')));
-            var stars=new Image[3];for(int i=0;i<3;i++){
-                float x=.19f+i*.215f;stars[i]=Picture("Earned star "+(i+1),menuRoot,new Vector2(x,.669f),new Vector2(x+.19f,.785f),CompletionArt(0),true);
-                if(i>=receipt.Stars)stars[i].color=new Color(.30f,.43f,.41f,.48f);
+            var stars=new Image[5];for(int i=0;i<5;i++){
+                float x=.085f+i*.166f;stars[i]=Picture("Earned star "+(i+1),menuRoot,new Vector2(x,.686f),new Vector2(x+.166f,.784f),CompletionArt(0),true);
+                if(i>=receipt.Stars)stars[i].color=new Color(.15f,.29f,.30f,.40f);
             }
-            MenuReadingSurface("Completion cloth",new Vector2(.08f,.315f),new Vector2(.92f,.648f));
-            var hero=Picture("Mika celebrates",menuRoot,new Vector2(.08f,.376f),new Vector2(.36f,.63f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
+            var hero=Picture("Mika celebrates",menuRoot,new Vector2(.065f,.405f),new Vector2(.34f,.666f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
             hero.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,1.3f),0,.45f);
-            CompletionText("Score label",menuRoot,new Vector2(.36f,.558f),new Vector2(.88f,.618f),18,receipt.NewBest?"New best!":"Score");
-            var score=CompletionText("Earned score",menuRoot,new Vector2(.36f,.423f),new Vector2(.88f,.561f),46,UiCopy.Raw(receipt.Score.ToString("N0")));
-            CompletionText("Moves statistic",menuRoot,new Vector2(.13f,.336f),new Vector2(.51f,.406f),18,new UiCopy("Moves: {0}",receipt.Moves));
-            CompletionText("Undo statistic",menuRoot,new Vector2(.51f,.336f),new Vector2(.87f,.406f),18,new UiCopy("Undos: {0}",receipt.Undos));
-            MenuReadingSurface("Earned resources cloth",new Vector2(.08f,.133f),new Vector2(.92f,.287f));
-            CompletionText("Resources heading",menuRoot,new Vector2(.12f,.235f),new Vector2(.88f,.282f),17,"You earned");
-            CompletionText("Coins heading",menuRoot,new Vector2(.14f,.198f),new Vector2(.46f,.236f),15,"Coins");
-            CompletionText("Lights heading",menuRoot,new Vector2(.54f,.198f),new Vector2(.86f,.236f),15,"Lights");
-            CompletionText("Earned coins",menuRoot,new Vector2(.14f,.143f),new Vector2(.46f,.202f),25,UiCopy.Raw(receipt.Coins>0?"+"+receipt.Coins:"0"));
-            CompletionText("Earned light",menuRoot,new Vector2(.54f,.143f),new Vector2(.86f,.202f),25,UiCopy.Raw(receipt.Lights>0?"+1":"0"));
-            CompletionText("Completion reward note",menuRoot,new Vector2(.12f,.100f),new Vector2(.88f,.148f),14,
+            CompletionText("Score label",menuRoot,new Vector2(.35f,.575f),new Vector2(.93f,.644f),18,receipt.NewBest?"New best!":"Score");
+            var score=CompletionText("Earned score",menuRoot,new Vector2(.35f,.465f),new Vector2(.93f,.574f),48,UiCopy.Raw(receipt.Score.ToString("N0")));
+            var tip=CompletionText("Rank guidance",menuRoot,new Vector2(.35f,.407f),new Vector2(.93f,.47f),14,receipt.Stars==5?"A perfect, swift route.":"Aim for fewer moves and undos.");
+
+            string[] names={"Moves","Undos","Time"};string[] values={receipt.Moves.ToString(),receipt.Undos.ToString(),receipt.ActiveSeconds.HasValue?
+                ((int)receipt.ActiveSeconds.Value/60).ToString()+":"+((int)receipt.ActiveSeconds.Value%60).ToString("00"):"—"};
+            for(int i=0;i<3;i++){
+                float left=.07f+i*.29f;
+                CompletionText(names[i]+" statistic heading",menuRoot,new Vector2(left,.345f),new Vector2(left+.28f,.392f),16,names[i]);
+                CompletionText(names[i]+" statistic",menuRoot,new Vector2(left,.282f),new Vector2(left+.28f,.35f),27,UiCopy.Raw(values[i]));
+            }
+            Picture("Earned gold illustration",menuRoot,new Vector2(.105f,.156f),new Vector2(.285f,.263f),RewardEmblem(0),true);
+            CompletionText("Earned coins",menuRoot,new Vector2(.285f,.163f),new Vector2(.465f,.251f),28,UiCopy.Raw(receipt.Coins>0?"+"+receipt.Coins:"0"));
+            Picture("Earned lights illustration",menuRoot,new Vector2(.555f,.156f),new Vector2(.735f,.263f),RewardEmblem(1),true);
+            CompletionText("Earned light",menuRoot,new Vector2(.735f,.163f),new Vector2(.915f,.251f),28,UiCopy.Raw(receipt.Lights>0?"+1":"0"));
+            CompletionText("Completion reward note",menuRoot,new Vector2(.08f,.104f),new Vector2(.92f,.153f),14,
                 receipt.Lights==0?"Replay to improve your stars and score.":WaitingParcel!=null?"A gift is waiting for you!":new UiCopy("New lights for a gift: {0} / 3",Rewards.OrderProgress));
-            var next=MenuButton(WaitingParcel!=null?"Collect my gift":"Back to map",.012f,ContinueCompletion,true,.15f,.85f);
-            next.name="Continuecompletion";next.GetComponent<Image>().sprite=enamelControls[1];next.GetComponent<Image>().color=Color.white;
+            var next=MenuButton(WaitingParcel!=null?"Collect my gift":"Back to map",.012f,ContinueCompletion,true,.12f,.88f);
+            next.name="Continuecompletion";
             var celebration=menuRoot.gameObject.AddComponent<RewardCelebration>();celebration.Initialize(this,stars,receipt.Stars,score,receipt.Score,CompletionArt(3),false,ribbon.rectTransform);
         }
         public void ContinueCompletion()

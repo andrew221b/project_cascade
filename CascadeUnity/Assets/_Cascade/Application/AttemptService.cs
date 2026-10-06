@@ -50,6 +50,13 @@ namespace Cascade.Application
         public PuzzleState Current { get; private set; }
         public int RouteLength { get; private set; }
         public int UndoCount { get; private set; }
+        public int MovesMade { get; private set; }
+        public double? ActiveSeconds { get; private set; }
+        public void AdvanceActiveTime(double seconds)
+        {
+            if(double.IsNaN(seconds)||double.IsInfinity(seconds)||seconds<0)throw new ArgumentOutOfRangeException(nameof(seconds));
+            if(Current.Status==PuzzleStatus.Playing&&ActiveSeconds.HasValue)ActiveSeconds=Math.Min(604800,ActiveSeconds.Value+seconds);
+        }
         public bool HintUsed { get; private set; }
         public string ActiveLocale { get; }
         public PuzzleMode Mode { get; }
@@ -113,6 +120,10 @@ namespace Cascade.Application
                 if(!attempt.Execute(command).Accepted)throw new ArgumentException("Saved route cannot be replayed.");
             }
             if(attempt.CurrentStateHash!=record.StateHash)throw new ArgumentException("Saved route does not reach its recorded state.");
+            if(record.MovesMade.HasValue&&(record.MovesMade.Value<attempt.RouteLength+record.UndoCount||record.MovesMade.Value>100000)
+                ||record.ActiveSeconds.HasValue&&(double.IsNaN(record.ActiveSeconds.Value)||double.IsInfinity(record.ActiveSeconds.Value)||record.ActiveSeconds.Value<0||record.ActiveSeconds.Value>604800))
+                throw new ArgumentException("Invalid saved performance metadata.");
+            attempt.MovesMade=record.MovesMade??attempt.RouteLength+record.UndoCount;attempt.ActiveSeconds=record.ActiveSeconds;
             attempt.AttemptId=id;attempt.UndoCount=record.UndoCount;attempt.HintUsed=record.HintUsed;
             if(record.FreeUndoUsed < -1 || record.FreeUndoUsed > FreeUndoLimit || record.GuideFloor < -1 || record.GuideFloor >= level.Floors.Count
                 || !record.WayfinderUsed && record.GuideFloor>=0 || (record.SpoolUsed||record.HourglassUsed||record.WayfinderUsed||record.LanternUsed||record.LensUsed)&&!record.HintUsed)
@@ -127,7 +138,7 @@ namespace Cascade.Application
             if (!result.Accepted) return result;
             if(GuideActive && (result.State.ActiveFloor!=Current.ActiveFloor || result.State.Status!=PuzzleStatus.Playing))GuideFloor=-1;
             history.Add(new HistoryEntry(Current, result.State, command, RouteLength));
-            Current = result.State; RouteLength++;
+            Current = result.State; RouteLength++; MovesMade++;
             return result;
         }
 
@@ -149,7 +160,7 @@ namespace Cascade.Application
             if(tool==TravelTool.LandingLens&&!CanUseLens || tool==TravelTool.SignalLantern&&(LanternUsed||Current.Status!=PuzzleStatus.Playing||!IsCurrent(guide)||guide.Result.Status!=HintStatus.Step||guide.Result.Command.Value.Kind==CommandKind.EarlyDrop)
                 || tool==TravelTool.UndoSpool && !CanUseSpool || tool==TravelTool.ReturnHourglass && !CanUseHourglass
                 || tool==TravelTool.Wayfinder && (WayfinderUsed || Current.Status!=PuzzleStatus.Playing || !IsCurrent(guide) || guide.Result.Status!=HintStatus.Step || guide.Result.Command.Value.Kind==CommandKind.EarlyDrop))return false;
-            var oldState=Current;var oldHistory=history.ToArray();int oldRoute=RouteLength,oldUndo=UndoCount,oldGuideFloor=GuideFloor;
+            var oldState=Current;var oldHistory=history.ToArray();int oldRoute=RouteLength,oldMoves=MovesMade,oldUndo=UndoCount,oldGuideFloor=GuideFloor;
             bool oldSpool=SpoolUsed,oldHourglass=HourglassUsed,oldGuide=WayfinderUsed,oldHint=HintUsed,oldLantern=LanternUsed,oldLens=LensUsed;
             var oldTransition=LastToolTransition;LastToolTransition=null;
             if(tool==TravelTool.UndoSpool){RestoreLastCommand();SpoolUsed=true;}
@@ -165,14 +176,14 @@ namespace Cascade.Application
             try {if(commit())return true;}
             catch {Rollback();throw;}
             Rollback();return false;
-            void Rollback(){Current=oldState;history.Clear();history.AddRange(oldHistory);RouteLength=oldRoute;UndoCount=oldUndo;
+            void Rollback(){Current=oldState;history.Clear();history.AddRange(oldHistory);RouteLength=oldRoute;MovesMade=oldMoves;UndoCount=oldUndo;
                 GuideFloor=oldGuideFloor;SpoolUsed=oldSpool;HourglassUsed=oldHourglass;WayfinderUsed=oldGuide;HintUsed=oldHint;LanternUsed=oldLantern;LensUsed=oldLens;LastToolTransition=oldTransition;}
         }
 
         public void Retry()
         {
             AttemptId = Guid.NewGuid(); Current = Resolver.CreateInitialState();
-            RouteLength = 0; UndoCount = 0; HintUsed = false; history.Clear(); revealedHints.Clear();
+            RouteLength = 0; MovesMade=0; ActiveSeconds=0; UndoCount = 0; HintUsed = false; history.Clear(); revealedHints.Clear();
             FreeUndoUsed=0;SpoolUsed=HourglassUsed=WayfinderUsed=LanternUsed=LensUsed=false;GuideFloor=-1;LastToolTransition=null;
         }
 

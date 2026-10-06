@@ -35,7 +35,7 @@ namespace Cascade.Presentation
         }
         void MarkSelection(Button button,bool selected)
         {
-            button.GetComponent<Image>().color=selected?new Color(.98f,.74f,.32f):new Color(.84f,.91f,.87f);
+            var face=button.GetComponent<Image>();face.sprite=enamelControls[selected?1:0];face.type=Image.Type.Sliced;face.color=Color.white;
             if(selected){var mark=Rect("Selected",button.transform,new Vector2(.79f,.05f),new Vector2(.95f,.25f));mark.gameObject.AddComponent<MenuTickGraphic>().color=MenuInk;}
         }
         void SettingsTabs()
@@ -53,21 +53,22 @@ namespace Cascade.Presentation
             int index=Array.IndexOf(codes,current);
             var row=Rect(name+" carousel",menuRoot,new Vector2(.10f,top),new Vector2(.90f,top));
             row.pivot=new Vector2(.5f,1);menuRows.Add(new MenuRow{rect=row,top=top,height=64});
-            var paper=Background(row,new Color(.84f,.91f,.87f),false);paper.sprite=art.panel;paper.type=Image.Type.Sliced;
+            var paper=Background(row,Color.white,false);paper.sprite=enamelControls[0];paper.type=Image.Type.Sliced;
             var left=DirectionButton(name+"Previous",row,Vector2.zero,new Vector2(.21f,1),false,()=>{feedback.Sound(ToyCue.Select);action(codes[(index+2)%3]);});
             var right=DirectionButton(name+"Next",row,new Vector2(.79f,0),Vector2.one,true,()=>{feedback.Sound(ToyCue.Select);action(codes[(index+1)%3]);});
             left.GetComponent<Image>().color=right.GetComponent<Image>().color=Color.clear;
-            var label=Text("Selected language",row,new Vector2(.21f,0),new Vector2(.79f,1),22,NativeLanguageName(current));label.font=art.titleFont;label.textWrappingMode=TextWrappingModes.NoWrap;
+            foreach(var direction in new[]{left,right})foreach(var chevron in direction.GetComponentsInChildren<ChevronGraphic>())chevron.color=MenuPaper;
+            var label=Text("Selected language",row,new Vector2(.21f,0),new Vector2(.79f,1),22,NativeLanguageName(current));label.font=art.titleFont;navigationLightLabels.Add(label);label.textWrappingMode=TextWrappingModes.NoWrap;
             FitMenuRows();
         }
         void MenuNavRow(string label,string asset,int index,Action action,bool enabled=true)
         {
             var b=Button(label,menuRoot,new Vector2(.08f,.5f),new Vector2(.92f,.5f),action);b.interactable=enabled;
-            b.GetComponent<Image>().color=new Color(.84f,.91f,.87f);RegisterMenuRow(b,.565f,index,62,8);
+            b.GetComponent<Image>().sprite=enamelControls[0];b.GetComponent<Image>().type=Image.Type.Sliced;b.GetComponent<Image>().color=Color.white;RegisterMenuRow(b,.565f,index,62,8);
             var text=b.GetComponentInChildren<TextMeshProUGUI>();text.rectTransform.anchorMin=new Vector2(.26f,0);text.rectTransform.anchorMax=new Vector2(.90f,1);
             text.alignment=TextAlignmentOptions.MidlineLeft;text.fontSize=22*(Preferences.LargeText?1.10f:1);text.margin=new Vector4(3,3,3,3);
             Picture("Navigation object",b.transform,new Vector2(.03f,.05f),new Vector2(.23f,.95f),Resources.Load<Sprite>(asset=="RibbonSpool"||asset=="Hourglass"?"CascadeArt/Devices/"+asset:"CascadeArt/Workshop/"+asset),true);
-            Rect("Open this page",b.transform,new Vector2(.92f,.36f),new Vector2(.97f,.64f)).gameObject.AddComponent<MenuChevronGraphic>().color=MenuInk;
+            Rect("Open this page",b.transform,new Vector2(.92f,.36f),new Vector2(.97f,.64f)).gameObject.AddComponent<MenuChevronGraphic>().color=MenuPaper;
         }
         void WorkshopProgress(int complete)
         {

@@ -2727,6 +2727,42 @@ MonoBehaviour:
     m_Key: "You are here \xB7 {0}/{1}"
     m_Metadata:
       m_Items: []
+  - m_Id: 570283319615488
+    m_Key: Brilliant!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 570283323809792
+    m_Key: Beautifully done!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 570283323809793
+    m_Key: Delivered!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 570283323809794
+    m_Key: Made it!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 570283323809795
+    m_Key: A perfect, swift route.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 570283323809796
+    m_Key: Aim for fewer moves and undos.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 570283323809797
+    m_Key: Moves
+    m_Metadata:
+      m_Items: []
+  - m_Id: 570283323809798
+    m_Key: Undos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 570283323809799
+    m_Key: Time
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

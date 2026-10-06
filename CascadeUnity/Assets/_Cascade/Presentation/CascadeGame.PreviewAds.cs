@@ -24,11 +24,12 @@ namespace Cascade.Presentation
             previewAd.gameObject.AddComponent<GraphicRaycaster>();Background(previewAd,new Color(.035f,.12f,.13f,.94f),true);
             previewAdSafe=Rect("Advertisement safe area",previewAd,safeRoot.anchorMin,safeRoot.anchorMax);FitPreviewSafeArea();
             var sheet=Rect("Advertisement cloth",previewAdSafe,new Vector2(.06f,.18f),new Vector2(.94f,.82f));
-            var face=Background(sheet,MenuPaper,false);face.sprite=art.panel;face.type=Image.Type.Sliced;
-            var heading=Text("Test advertisement heading",sheet,new Vector2(.08f,.82f),new Vector2(.92f,.96f),26,"Test ad");heading.font=art.titleFont;
+            var face=Background(sheet,Color.white,false);face.sprite=enamelControls[0];face.type=Image.Type.Sliced;
+            var heading=Text("Test advertisement heading",sheet,new Vector2(.08f,.82f),new Vector2(.92f,.96f),26,"Test ad");heading.font=art.titleFont;heading.color=MenuPaper;
             Picture("Video reward pouch",sheet,new Vector2(.27f,.47f),new Vector2(.73f,.78f),TravelArt(3),true);
-            Text("Advertisement promise",sheet,new Vector2(.08f,.31f),new Vector2(.92f,.48f),20,rewarded?(UiCopy)"Watch to the end for 40 coins.":"A short break between levels.");
+            var promise=Text("Advertisement promise",sheet,new Vector2(.08f,.31f),new Vector2(.92f,.48f),20,rewarded?(UiCopy)"Watch to the end for 40 coins.":"A short break between levels.");promise.color=MenuPaper;
             previewClock=Text("Test advertisement countdown",sheet,new Vector2(.08f,.21f),new Vector2(.92f,.31f),19,"");
+            previewClock.color=MenuPaper;
             previewFinish=Button(rewarded?(UiCopy)"Collect coins":"Continue",sheet,new Vector2(.10f,.08f),new Vector2(.90f,.21f),()=>FinishPreviewAd(true));
             var enamel=previewFinish.GetComponent<Image>();enamel.sprite=enamelControls[1];enamel.type=Image.Type.Sliced;enamel.color=Color.white;previewFinish.interactable=false;
             var cancel=Button("Close",previewAdSafe,new Vector2(.25f,.07f),new Vector2(.75f,.15f),()=>FinishPreviewAd(false));cancel.name="Close test advertisement";

@@ -60,7 +60,7 @@ namespace Cascade.Presentation
         }
         void NavigationHeader(UiCopy title,Action back)
         {
-            var headerPlate=Rect("Navigation heading",menuRoot,new Vector2(.06f,.88f),new Vector2(.94f,.975f));Panel(headerPlate,MenuPaper);
+            var headerPlate=Rect("Navigation heading",menuRoot,new Vector2(.06f,.88f),new Vector2(.94f,.975f));
             var button=DirectionButton("Back",headerPlate,new Vector2(.01f,.12f),new Vector2(.20f,.88f),false,back);
             button.GetComponent<Image>().color=Color.clear;((RectTransform)button.transform).sizeDelta=new Vector2(0,8*MenuUnit);
             var heading=Text("Page heading",headerPlate,new Vector2(.22f,.08f),new Vector2(.94f,.92f),29,title);heading.font=art.titleFont;heading.alignment=TextAlignmentOptions.MidlineLeft;
@@ -81,7 +81,7 @@ namespace Cascade.Presentation
         }
         void NavigationNote(string name,UiCopy text,float bottom,float top)
         {
-            var root=Rect(name+" cloth",menuRoot,new Vector2(.09f,bottom),new Vector2(.91f,top));Panel(root,MenuPaper);
+            var root=Rect(name+" cloth",menuRoot,new Vector2(.09f,bottom),new Vector2(.91f,top));
             var copy=Text(name,root,new Vector2(.06f,.08f),new Vector2(.94f,.92f),20,text);copy.enableAutoSizing=true;copy.fontSizeMin=17*MenuUnit;copy.fontSizeMax=21*MenuUnit;copy.margin=new Vector4(5,4,5,4);
         }
         void DrawMainMenu()
@@ -104,7 +104,7 @@ namespace Cascade.Presentation
             NavigationButton("Shapes","Shapes",5,.443f,()=>ChooseSoloMode(PuzzleMode.Shapes),false,"Just shapes.");
             NavigationButton("Words","Words",6,.291f,()=>ChooseSoloMode(PuzzleMode.Words),false,"Put the word in order.");
             NavigationButton("Mixed","Mixed",7,.139f,()=>ChooseSoloMode(PuzzleMode.Mixed),false,"Shapes and letters.");
-            var opening=Button("Opening story",menuRoot,new Vector2(.24f,.035f),new Vector2(.76f,.10f),ShowPrologue);opening.GetComponent<Image>().color=MenuPaper;((RectTransform)opening.transform).sizeDelta=new Vector2(0,12*MenuUnit);
+            var opening=Button("Opening story",menuRoot,new Vector2(.24f,.035f),new Vector2(.76f,.10f),ShowPrologue);opening.GetComponent<Image>().sprite=enamelControls[0];opening.GetComponent<Image>().color=Color.white;((RectTransform)opening.transform).sizeDelta=new Vector2(0,12*MenuUnit);
         }
         void DrawLessons()
         {
@@ -126,7 +126,7 @@ namespace Cascade.Presentation
                 var receipt=profile.Clears.FirstOrDefault(c=>c.CampaignNodeId==id);
                 if(receipt!=null){
                     if(receipt.BestStars==0)Rect("Completed level",b.transform,new Vector2(.73f,.13f),new Vector2(.89f,.31f)).gameObject.AddComponent<MenuTickGraphic>().color=new Color(.10f,.40f,.34f);
-                    else for(int s=0;s<receipt.BestStars;s++)Picture("Best star "+s,b.transform,new Vector2(.24f+s*.18f,.08f),new Vector2(.40f+s*.18f,.27f),CompletionArt(0),true);
+                    else for(int s=0;s<5;s++){var star=Picture("Best star "+s,b.transform,new Vector2(.12f+s*.152f,.08f),new Vector2(.27f+s*.152f,.27f),CompletionArt(0),true);if(s>=receipt.BestStars)star.color=new Color(.15f,.29f,.30f,.40f);}
                     number.rectTransform.anchorMin=new Vector2(0,.23f);
                 }
             }
@@ -149,12 +149,12 @@ namespace Cascade.Presentation
         void DrawPrologue()
         {
             LoadNavigationArt();NavigationHeader(new[]{"Before the storm","The last light","A way home"}[prologuePage],ShowPlayChoice);
-            var frame=Rect("Opening comic frame",menuRoot,new Vector2(.055f,.43f),new Vector2(.945f,.855f));Panel(frame,MenuPaper);
+            var frame=Rect("Opening comic frame",menuRoot,new Vector2(.055f,.43f),new Vector2(.945f,.855f));
             Picture("Opening comic scene",frame,new Vector2(.025f,.035f),new Vector2(.975f,.965f),prologuePanels[prologuePage],true);
             string[] lines={"Gran kept the Great Beacon burning. Its light showed everyone the way home.","Then the storm broke the bridges and put the beacon out. Mika saved one little light.","Mika: I'll bring it home, Gran. We'll mend the bridges, help our friends and light the beacon again."};
             NavigationNote("Opening story",lines[prologuePage],.235f,.405f);
             NavigationButton("Continueopening",prologuePage==2?"To the map":"Continue",0,.11f,AdvancePrologue,true);
-            var skip=Button("Skip story",menuRoot,new Vector2(.24f,.025f),new Vector2(.76f,.083f),()=>{heardStory.Add(PrologueReceipt);PersistProgress();ShowJourney();});skip.GetComponent<Image>().color=MenuPaper;((RectTransform)skip.transform).sizeDelta=new Vector2(0,12*MenuUnit);
+            var skip=Button("Skip story",menuRoot,new Vector2(.24f,.025f),new Vector2(.76f,.083f),()=>{heardStory.Add(PrologueReceipt);PersistProgress();ShowJourney();});skip.GetComponent<Image>().sprite=enamelControls[0];skip.GetComponent<Image>().color=Color.white;((RectTransform)skip.transform).sizeDelta=new Vector2(0,12*MenuUnit);
             var count=Text("Comic page",frame,new Vector2(.81f,.02f),new Vector2(.97f,.13f),16,UiCopy.Raw((prologuePage+1)+" / 3"));count.font=art.titleFont;
         }
     }

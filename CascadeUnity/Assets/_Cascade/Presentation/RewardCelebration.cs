@@ -51,7 +51,7 @@ namespace Cascade.Presentation
                 stars[i].rectTransform.localRotation=Quaternion.Euler(0,0,quiet?0:(1-ease)*(i%2==0?-12:12));
                 if(t>.3f&&i>chimed){chimed=i;game.Feedback.Sound(i==earned-1?ToyCue.Success:ToyCue.Stamp);}
             }
-            if(number!=null){float t=quiet?1:Mathf.Clamp01((elapsed-1.05f)/1.25f);number.text=Mathf.RoundToInt(score*(1-Mathf.Pow(1-t,3))).ToString("N0");}
+            if(number!=null){float delay=stars!=null&&stars.Length>3?1.95f:1.05f;float t=quiet?1:Mathf.Clamp01((elapsed-delay)/1.25f);number.text=Mathf.RoundToInt(score*(1-Mathf.Pow(1-t,3))).ToString("N0");}
             if(confetti!=null)for(int i=0;i<confetti.Length;i++){
                 if(confetti[i]==null)continue;
                 float t=Mathf.Clamp01((elapsed-(gift?.65f:.68f)-i*.09f)/2.1f);var rect=confetti[i].rectTransform;
