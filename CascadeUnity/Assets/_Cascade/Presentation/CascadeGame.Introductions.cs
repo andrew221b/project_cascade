@@ -25,7 +25,7 @@ namespace Cascade.Presentation
         public MechanicLesson? CurrentMechanic { get; private set; }
         public IReadOnlyList<MechanicLesson> SeenMechanics=>profile.SeenMechanics.AsReadOnly();
         internal bool IntroductionAnimationAllowed=>applicationFocused&&!applicationPaused&&!nativeAdSuspended;
-        static readonly string[] MechanicTitles={"Bomb","Key","Repair","Ribbon spool","Stamp","Frost flask","One-use bridge","Linked pairs","Fragile edge","Closed path","Entry rollers","Mirror on entry","Wind on landing","A gust of wind","Wayfinder scroll","Undo spool","Return hourglass","Signal lantern","Landing lens"};
+        static readonly string[] MechanicTitles={"Bomb","Key","Repair","Ribbon spool","Stamp","Frost flask","One-use bridge","Linked pairs","Fragile edge","Closed path","Entry rollers","Mirror on entry","Wind on landing","A gust of wind","Wayfinder scroll","Undo spool","Return hourglass","Signal lantern","Landing lens","Strong gust"};
         static readonly string[] MechanicCopy={
             "Put its pictured piece above the bomb. Stop it before the count reaches zero.",
             "Put its pictured piece above the key. The branch opens and you can swap there.",
@@ -45,7 +45,8 @@ namespace Cascade.Presentation
             "After two free undos, this spool undoes one more move on the same board.",
             "The hourglass brings back the last broken board in this stage. Later moves are undone.",
             "The lantern makes one safe move for you. It uses wood just like your own move. Once per stage.",
-            "See where the pieces will land if you go down now. Nothing moves until you choose Descend."
+            "See where the pieces will land if you go down now. Nothing moves until you choose Descend.",
+            "After your next swap, wind shifts the row. It can crack the board. Plan your move, or descend before the gust."
         };
         void ResetMechanicDiscovery()
         {
@@ -124,8 +125,8 @@ namespace Cascade.Presentation
         static bool FloorHasLesson(FloorDefinition f,MechanicLesson lesson)=>lesson==MechanicLesson.Bomb?f.Bomb!=null:lesson==MechanicLesson.Key?f.Key!=null:lesson==MechanicLesson.Repair?f.Repair!=null:lesson==MechanicLesson.Ribbon?f.Powerup?.Kind==PowerupKind.Ribbon:lesson==MechanicLesson.Stamp?f.OptionalStamp!=null:lesson==MechanicLesson.BombHourglass?f.Powerup?.Kind==PowerupKind.Hourglass:lesson==MechanicLesson.Bridge?f.OneUseBridgeEdge.HasValue:f.LinkedPair.HasValue;
         void DrawMechanicIllustration(RectTransform root,MechanicLesson lesson)
         {
-            if(lesson>=MechanicLesson.Wayfinder){Picture("Travel tool",root,Vector2.zero,Vector2.one,ToolArt((int)lesson-(int)MechanicLesson.Wayfinder),true);return;}
-            if(lesson==MechanicLesson.Gust){var flag=Picture("Gust windsock",root,Vector2.zero,Vector2.one,PlatformProp(0),true);root.gameObject.AddComponent<DeviceDemonstration>().Initialize(this,(time,bad)=>flag.rectTransform.localRotation=Quaternion.Euler(0,0,ReducedMotion?0:Mathf.Sin(time*1.3f)*9),true);return;}
+            if(lesson>=MechanicLesson.Wayfinder&&lesson<=MechanicLesson.LandingLens){Picture("Travel tool",root,Vector2.zero,Vector2.one,ToolArt((int)lesson-(int)MechanicLesson.Wayfinder),true);return;}
+            if(lesson==MechanicLesson.Gust||lesson==MechanicLesson.LiveGust){var flag=Picture("Gust windsock",root,Vector2.zero,Vector2.one,PlatformProp(0),true);root.gameObject.AddComponent<DeviceDemonstration>().Initialize(this,(time,bad)=>flag.rectTransform.localRotation=Quaternion.Euler(0,0,ReducedMotion?0:Mathf.Sin(time*1.3f)*9),true);return;}
             if(lesson==MechanicLesson.LandingWind||lesson==MechanicLesson.Rollers||lesson==MechanicLesson.Mirror){
                 var actual=mechanicWindRight.HasValue?EntryTransform.None:lesson==MechanicLesson.LandingWind?
                     Interaction.Attempt.Level.Floors[Enumerable.Range(0,Interaction.Attempt.Level.Floors.Count).First(IsWindFloor)].EntryTransform:

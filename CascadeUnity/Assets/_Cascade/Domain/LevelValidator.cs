@@ -42,6 +42,11 @@ namespace Cascade.Domain
                 if (floor == null) { Check(false, path, "Missing floor."); continue; }
                 bool Edge(int e) => e >= 0 && e < n - 1;
                 Check(floor.BaseDurability >= 1 && floor.BaseDurability <= 12, path + ".BaseDurability", "Expected 1–12.");
+                Check(floor.GustAfterSwaps>=0&&floor.GustAfterSwaps<=3&&floor.GustDamage>=0&&floor.GustDamage<=1,
+                    path+".Gust", "Gust timing/damage out of range.");
+                Check(floor.GustAfterSwaps==0?floor.GustTransform==EntryTransform.None&&floor.GustDamage==0:
+                    i<level.Floors.Count-1&&(floor.GustTransform==EntryTransform.ShiftLeftOne||floor.GustTransform==EntryTransform.ShiftRightOne),
+                    path+".Gust", "Live gust requires a lower playable floor and a shift.");
                 Check(floor.OpenEdges.Count == n - 1, path + ".OpenEdges", "Expected N−1 edges.");
                 Check(Enum.IsDefined(typeof(EntryTransform), floor.EntryTransform), path + ".EntryTransform", "Unknown transform.");
                 Check(floor.FragileEdges.Distinct().Count() == floor.FragileEdges.Count && floor.FragileEdges.All(Edge),

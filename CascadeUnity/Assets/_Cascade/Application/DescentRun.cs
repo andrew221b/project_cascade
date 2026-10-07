@@ -55,6 +55,9 @@ namespace Cascade.Application
                 Swap(initial,first);int second=Enumerable.Range(0,n-1).FirstOrDefault(i=>i!=first&&initial[i]!=initial[i+1]);
                 if(second!=first&&initial[second]!=initial[second+1])Swap(initial,second);
             }
+            FloorDefinition LiveWind(FloorDefinition f) => Version>=5&&stage==1&&NodeNumber(source)>=2
+                ?new FloorDefinition(f.BaseDurability,f.OpenEdges,f.FragileEdges,f.LinkedPair,f.EntryTransform,f.Bomb,f.Key,f.Repair,f.OneUseBridgeEdge,f.OptionalStamp,f.Powerup,
+                    1,recipe.Arrival,NodeNumber(source)>=4?1:0):f;
             FloorDefinition[] floors;
             if(stage==0) {
                 RepairDefinition repair=null;
@@ -97,18 +100,18 @@ namespace Cascade.Application
                         &&(i>0&&arrived[i-1]==basis.TargetSymbolIds[i]||i+1<n&&arrived[i+1]==basis.TargetSymbolIds[i])).DefaultIfEmpty((slot+1)%n).First();
                     powerup=new PowerupDefinition(mark,basis.TargetSymbolIds[mark],hourglass?PowerupKind.Hourglass:PowerupKind.Ribbon);
                 }
-                var landing=early&&node>=2&&!Rotate(Rotate(initial,recipe.Arrival),recipe.Arrival).SequenceEqual(initial)?recipe.Arrival:EntryTransform.None;
+                var landing=Version<5&&early&&node>=2&&!Rotate(Rotate(initial,recipe.Arrival),recipe.Arrival).SequenceEqual(initial)?recipe.Arrival:EntryTransform.None;
                 if(early&&(node==3||node==7)){
                     // Calibrate introductory contacts against the canonical useful route, including the landing shift.
                     ContactDefinition FirstExchange(FloorDefinition first,int avoid=-1) {
                         var preview=new LevelDefinition(basis.PuzzleId,basis.CampaignNodeId,basis.SchemaVersion,basis.RulesVersion,
-                            StageHash(stage),initial,basis.TargetSymbolIds,basis.TargetSegments,new[]{first,new FloorDefinition(recipe.Wood[1],open,entryTransform:landing,optionalStamp:stamp)});
+                            StageHash(stage),initial,basis.TargetSymbolIds,basis.TargetSegments,new[]{LiveWind(first),new FloorDefinition(recipe.Wood[1],open,entryTransform:landing,optionalStamp:stamp)});
                         var resolver=new PuzzleResolver(preview);var state=resolver.CreateInitialState();
                         var proof=PuzzleSolver.FindShortest(resolver,stateBudget:10000);
                         foreach(var command in proof.Path){
                             if(state.ActiveFloor==0&&command.Kind==CommandKind.Swap&&state.Row[command.Edge]!=state.Row[command.Edge+1]){
                                 int mark=command.Edge==avoid?command.Edge+1:command.Edge;
-                                return new ContactDefinition(mark,state.Row[mark==command.Edge?mark+1:mark-1]);
+                                return new ContactDefinition(mark,Version>=5?resolver.Resolve(state,command).State.Row[mark]:state.Row[mark==command.Edge?mark+1:mark-1]);
                             }
                             state=resolver.Resolve(state,command).State;
                         }
@@ -122,6 +125,7 @@ namespace Cascade.Application
             }
             else floors=basis.Floors.Select((f,i)=>new FloorDefinition(recipe.Wood[i],f.OpenEdges,f.FragileEdges,f.LinkedPair,
                 i==0?recipe.Arrival:f.EntryTransform,f.Bomb,f.Key,f.Repair,f.OneUseBridgeEdge,f.OptionalStamp,f.Powerup)).ToArray();
+            if(stage==1)floors[0]=LiveWind(floors[0]);
             return new LevelDefinition(basis.PuzzleId,basis.CampaignNodeId,basis.SchemaVersion,basis.RulesVersion,
                 StageHash(stage),initial,basis.TargetSymbolIds,basis.TargetSegments,floors,stage==2?basis.ReachCharges:0);
         }
@@ -145,7 +149,7 @@ namespace Cascade.Application
         public static DescentRun Build(LevelDefinition source,DeliveryMood mood=DeliveryMood.Steady,
             CancellationToken cancellation=default,int budget=PuzzleSolver.DefaultStateBudget,int version=2)
         {
-            if((version<1||version>4)||!(version>=3?CanDescend(source):DeliveryDirector.CanDirect(source))||source.TargetSymbolIds.Distinct().Count()<2)return null;
+            if((version<1||version>5)||!(version>=3?CanDescend(source):DeliveryDirector.CanDirect(source))||source.TargetSymbolIds.Distinct().Count()<2)return null;
             var direction=DeliveryDirector.Plan(source,mood);
             var run=new DescentRun {Version=version,SourceHash=source.ContentHash,Direction=direction,Stages=new DescentStage[3]};
             var basis=run.Directed(source);int n=basis.TargetSymbolIds.Count;
@@ -153,6 +157,7 @@ namespace Cascade.Application
             run.Stages[0]=new DescentStage{Wood=new[]{early?(lesson==4?1:lesson==5?3:2):version==1||version==3&&NodeNumber(source)<20?2:1}};
             run.Stages[1]=new DescentStage{Arrival=int.Parse(source.CampaignNodeId.Substring(1))%2==0?EntryTransform.ShiftRightOne:EntryTransform.ShiftLeftOne,
                 Wood=early&&n<=6?new[]{Math.Max(2,(n-1)/2),Math.Min(12,n+n/2)}:new[]{Math.Max(1,(n-1)/2),Math.Max(1,n-(n-1)/2)}};
+            if(version>=5&&NodeNumber(source)>=2){run.Stages[1].Wood=new[]{NodeNumber(source)%3==0?2:3,Math.Min(12,n+n/2+1)};}
             if(!Prove(run,source,0,cancellation,budget)||!Prove(run,source,1,cancellation,budget)
                 ||run.Stages[1].Minimum<=run.Stages[0].Minimum)return null;
             // The device finale retains the published topology and contacts. Try at most three arrivals.
@@ -186,7 +191,7 @@ namespace Cascade.Application
         }
         public void Validate(LevelDefinition source,string locale)
         {
-            if((Version<1||Version>4)||CompletedExplosions<0||source.ContentHash!=SourceHash||!(Version>=3?CanDescend(source):DeliveryDirector.CanDirect(source))||Stages==null||Stages.Length!=3
+            if((Version<1||Version>5)||CompletedExplosions<0||source.ContentHash!=SourceHash||!(Version>=3?CanDescend(source):DeliveryDirector.CanDirect(source))||Stages==null||Stages.Length!=3
                 ||Completed==null||Completed.Count>2||source.TargetSymbolIds.Distinct().Count()<2)throw new ArgumentException("Invalid descent checkpoint.");
             Directed(source);
             int explosions=0,flags=0;

@@ -8,6 +8,7 @@ namespace Cascade.Presentation
     public sealed class WindWarningGraphic : MaskableGraphic
     {
         public bool Right { get; set; }
+        public bool DrawTips {get;set;}=true;
         float phase;
         bool still;
         public void Paint(float time,bool reduced){phase=time;still=reduced;SetVerticesDirty();}
@@ -25,6 +26,7 @@ namespace Cascade.Presentation
                     mesh.AddVert(a-n,shade,Vector2.zero);mesh.AddVert(a+n,shade,Vector2.zero);mesh.AddVert(b+n,shade,Vector2.zero);mesh.AddVert(b-n,shade,Vector2.zero);
                     mesh.AddTriangle(k,k+1,k+2);mesh.AddTriangle(k,k+2,k+3);
                 }
+                if(!DrawTips)continue;
                 var tip=Point(1);float sign=Right?1:-1;int v=mesh.currentVertCount;var ink=new Color(1,.97f,.82f,.8f);
                 mesh.AddVert(tip+Vector2.right*sign*r.height*.12f,ink,Vector2.zero);
                 mesh.AddVert(tip+new Vector2(-sign*.055f,.09f)*r.height,ink,Vector2.zero);

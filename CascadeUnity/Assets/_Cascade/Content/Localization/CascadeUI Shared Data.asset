@@ -3538,6 +3538,19 @@ MonoBehaviour:
     m_Key: Fewer moves, more stars. Replay a level to improve your score.
     m_Metadata:
       m_Items: []
+  - m_Id: 689485263134720
+    m_Key: Strong gust
+    m_Metadata:
+      m_Items: []
+  - m_Id: 689485288300544
+    m_Key: After your next swap, wind shifts the row. It can crack the board. Plan
+      your move, or descend before the gust.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 689485288300545
+    m_Key: 'Next swap: a strong gust. You can descend first.'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

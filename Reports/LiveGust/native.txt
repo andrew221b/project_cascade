@@ -1,0 +1,15 @@
+PASS star begins at screen scale
+PASS ceremony completes
+PASS ceremony preserves state
+PASS first-use live gust popup pauses play
+PASS gust occurs on playable upper board
+PASS weak board breaks after gust damage
+PASS gust leaves a playable lower board
+PASS visible garden island drift over two seconds
+PASS region ambient layer 1
+PASS region ambient layer 2
+PASS region ambient layer 3
+PASS region ambient layer 4
+PASS region ambient layer 5
+PASS region ambient layer 6
+PASS region ambient layer 7

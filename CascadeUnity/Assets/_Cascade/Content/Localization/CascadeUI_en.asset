@@ -3558,6 +3558,19 @@ MonoBehaviour:
     m_Localized: Fewer moves, more stars. Replay a level to improve your score.
     m_Metadata:
       m_Items: []
+  - m_Id: 689485263134720
+    m_Localized: Strong gust
+    m_Metadata:
+      m_Items: []
+  - m_Id: 689485288300544
+    m_Localized: After your next swap, wind shifts the row. It can crack the board.
+      Plan your move, or descend before the gust.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 689485288300545
+    m_Localized: 'Next swap: a strong gust. You can descend first.'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

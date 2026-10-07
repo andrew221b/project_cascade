@@ -35,7 +35,7 @@ namespace Cascade.Presentation
             if(!descentLoadPending||descentTask!=null)return;
             descentPlanFailed=false;descentCancellation=new CancellationTokenSource();var token=descentCancellation.Token;
             var source=descentSource;var mood=descentMood;
-            descentTask=Task.Run(()=>DescentRun.Build(source,mood,token,version:4),token);
+            descentTask=Task.Run(()=>DescentRun.Build(source,mood,token,version:5),token);
             Interaction.SetPreparing(true);
         }
         void CancelDescentWork(bool preserveRequest=false)
@@ -96,7 +96,7 @@ namespace Cascade.Presentation
         void SettleDescent(){descentMotion?.Settle();}
         internal void RevealArrivalWind()
         {
-            if(descent?.Version<4||ReducedMotion||!IsWindFloor(0)||CurrentScreen!=GameScreen.Playing)return;
+            if(descent?.Version<4||descent?.Version>=5||ReducedMotion||!IsWindFloor(0)||CurrentScreen!=GameScreen.Playing)return;
             bool right=Interaction.Attempt.Level.Floors[0].EntryTransform==EntryTransform.ShiftRightOne;
             machine.CueWind(right);CueDeviceWind(right);AnnounceReaction("The wind moved the row","");
         }

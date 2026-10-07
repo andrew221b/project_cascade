@@ -9,12 +9,23 @@ namespace Cascade.Presentation
     public sealed class RewardCelebration:MonoBehaviour
     {
         CascadeGame game;Image[] stars;int earned,score;TMP_Text number;float elapsed;bool gift;
-        Image[] confetti;PaperBody[] paperBodies;Vector2[] starOrigins;int chimed=-1;Tween ceremony;RectTransform ribbon;CeremonyGlowGraphic glow;
+        Image[] confetti;PaperBody[] paperBodies;Vector2[] starOrigins,starLaunch;float[] starSizes;int chimed=-1;Tween ceremony;RectTransform ribbon;CeremonyGlowGraphic glow;
         public float Progress=>Mathf.Clamp01(elapsed/3.2f);
         public void Initialize(CascadeGame owner,Image[] awardStars,int count,TMP_Text scoreLabel,int finalScore,Sprite papers,bool opening,RectTransform awardRibbon=null)
         {
             game=owner;stars=awardStars;earned=count;number=scoreLabel;score=finalScore;gift=opening;ribbon=awardRibbon;
-            starOrigins=new Vector2[stars?.Length??0];for(int i=0;i<starOrigins.Length;i++)starOrigins[i]=stars[i].rectTransform.anchoredPosition;
+            Canvas.ForceUpdateCanvases();starOrigins=new Vector2[stars?.Length??0];starLaunch=new Vector2[starOrigins.Length];starSizes=new float[starOrigins.Length];
+            var area=((RectTransform)transform).rect;
+            for(int i=0;i<starOrigins.Length;i++){
+                var rect=stars[i].rectTransform;starOrigins[i]=rect.anchoredPosition;
+                starLaunch[i]=new Vector2(area.center.x,area.yMin+area.height*.62f)-(Vector2)rect.localPosition;
+                starSizes[i]=Mathf.Clamp(area.width*.78f/Mathf.Max(1,rect.rect.width),1,6);
+                if(i>=count)continue;
+                var layer=rect.gameObject.AddComponent<Canvas>();layer.overrideSorting=true;layer.sortingOrder=20;
+                var shine=new GameObject("Star glint",typeof(RectTransform),typeof(CanvasRenderer),typeof(AwardGlintGraphic));shine.transform.SetParent(rect,false);
+                var sr=(RectTransform)shine.transform;sr.anchorMin=Vector2.zero;sr.anchorMax=Vector2.one;sr.offsetMin=sr.offsetMax=Vector2.zero;
+                shine.GetComponent<AwardGlintGraphic>().Initialize(owner,i);shine.GetComponent<Graphic>().raycastTarget=false;
+            }
             var light=new GameObject("Earned lantern light",typeof(RectTransform),typeof(CanvasRenderer),typeof(CeremonyGlowGraphic));light.transform.SetParent(transform,false);light.transform.SetSiblingIndex(0);
             var lightRect=(RectTransform)light.transform;lightRect.anchorMin=new Vector2(.03f,gift?.40f:.61f);lightRect.anchorMax=new Vector2(.97f,gift?.83f:.81f);lightRect.offsetMin=lightRect.offsetMax=Vector2.zero;glow=light.GetComponent<CeremonyGlowGraphic>();glow.raycastTarget=false;
             int pieces=owner.ReducedMotion||owner.Preferences.EffectQuality==0?0:owner.Preferences.EffectQuality==1?12:24;
@@ -52,12 +63,16 @@ namespace Cascade.Presentation
             if(glow!=null){float t=Mathf.Clamp01((elapsed-(gift?.50f:.24f))/2.0f);glow.SetLight(quiet||game.Preferences.EffectQuality==0?0:Mathf.Sin(t*Mathf.PI)*.65f,t);}
             if(stars!=null)for(int i=0;i<stars.Length;i++){
                 if(stars[i]==null||i>=earned)continue;
-                float t=quiet?1:Mathf.Clamp01((elapsed-.16f-i*.32f)/.55f),ease=1-Mathf.Pow(1-t,3);
-                stars[i].color=new Color(1,1,1,quiet?1:Mathf.Lerp(.18f,1,ease));
-                stars[i].rectTransform.localScale=Vector3.one*(quiet?1:Mathf.Lerp(.78f,1,ease)+.14f*Mathf.Sin(t*Mathf.PI));
-                stars[i].rectTransform.anchoredPosition=starOrigins[i]+Vector2.down*(quiet?0:(1-ease)*14);
-                stars[i].rectTransform.localRotation=Quaternion.Euler(0,0,quiet?0:(1-ease)*(i%2==0?-12:12));
-                if(t>.3f&&i>chimed){chimed=i;game.Feedback.Sound(i==earned-1?ToyCue.Success:ToyCue.Stamp);}
+                float age=elapsed-.12f-i*.50f,t=quiet?1:Mathf.Clamp01(age/.62f),ease=t*t*(3-2*t);
+                stars[i].color=new Color(1,1,1,quiet?1:Mathf.Clamp01(age/.09f));
+                var rect=stars[i].rectTransform;
+                var layer=rect.GetComponent<Canvas>();if(layer!=null)layer.overrideSorting=!quiet&&t<1;
+                rect.localScale=Vector3.one*(quiet?1:Mathf.Lerp(starSizes[i],1,ease)+Mathf.Sin(t*Mathf.PI*2)*.08f);
+                rect.anchoredPosition=starOrigins[i]+(quiet?Vector2.zero:starLaunch[i]*(1-ease));
+                rect.localRotation=Quaternion.Euler(0,0,quiet?0:(1-ease)*(i%2==0?-14:14));
+                if(age>=0&&age<.5f)rect.SetAsLastSibling();
+                if(t>.85f&&i>chimed){chimed=i;game.Feedback.Sound(i==earned-1?ToyCue.Success:ToyCue.Stamp);}
+
             }
             if(number!=null){float delay=stars!=null&&stars.Length>3?1.95f:1.05f;float t=quiet?1:Mathf.Clamp01((elapsed-delay)/1.25f);number.text=Mathf.RoundToInt(score*(1-Mathf.Pow(1-t,3))).ToString("N0");}
             if(confetti!=null)for(int i=0;i<confetti.Length;i++){
@@ -85,6 +100,24 @@ namespace Cascade.Presentation
         }
         void OnDisable(){ceremony?.Kill();if(glow!=null)Destroy(glow.gameObject);foreach(var image in confetti??System.Array.Empty<Image>())if(image!=null)Destroy(image.gameObject);Destroy(this);}
         void OnDestroy(){ceremony?.Kill();}
+    }
+    public sealed class AwardGlintGraphic:MaskableGraphic
+    {
+        CascadeGame game;float age;int slot;
+        public void Initialize(CascadeGame owner,int index){game=owner;slot=index;}
+        void Update(){if(game==null||!game.CelebrationMotionAllowed)return;age+=Mathf.Min(.05f,Time.unscaledDeltaTime);SetVerticesDirty();}
+        protected override void OnPopulateMesh(VertexHelper vh){
+            vh.Clear();if(game==null||game.ReducedMotion||game.Preferences.EffectQuality==0||age<.8f+slot*.5f)return;
+            var r=rectTransform.rect;
+            for(int i=0;i<2;i++){
+                float a=Mathf.Pow(Mathf.Max(0,Mathf.Sin(age*2.1f-slot*.7f+i*1.8f)),12)*.8f;
+                var c=new Color(1,1,.86f,a);var center=new Vector2(r.xMin+r.width*(i==0?.34f:.72f),r.yMin+r.height*(i==0?.74f:.42f));
+                float size=r.width*.085f;int v=vh.currentVertCount;
+                vh.AddVert(center+Vector2.up*size,c,Vector2.zero);vh.AddVert(center+Vector2.right*size*.45f,c,Vector2.zero);
+                vh.AddVert(center-Vector2.up*size,c,Vector2.zero);vh.AddVert(center-Vector2.right*size*.45f,c,Vector2.zero);
+                vh.AddTriangle(v,v+1,v+2);vh.AddTriangle(v,v+2,v+3);
+            }
+        }
     }
     [RequireComponent(typeof(CanvasRenderer))]
     public sealed class CeremonyGlowGraphic:MaskableGraphic

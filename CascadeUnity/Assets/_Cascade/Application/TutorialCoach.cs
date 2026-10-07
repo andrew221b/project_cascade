@@ -60,6 +60,7 @@ namespace Cascade.Application
                     ? "Put the same piece on the key to open the gate."
                     : "This way is closed. Try the other side or Descend.";
             }
+            if(state.GustTicks>0)return "Next swap: a strong gust. You can descend first.";
             if(windFloor==state.ActiveFloor+1&&state.BombPhase!=BombPhase.Armed)
                 return "Wind will move the row. Watch the small row by the next board.";
             if(lesson=="arrival_wind"&&!LessonCompleted)return "Wind moved the row. Put it back in order.";

@@ -86,12 +86,15 @@ namespace Cascade.Domain
         public int? OneUseBridgeEdge { get; }
         public ContactDefinition OptionalStamp { get; }
         public PowerupDefinition Powerup { get; }
+        public int GustAfterSwaps { get; }
+        public EntryTransform GustTransform { get; }
+        public int GustDamage { get; }
 
         public FloorDefinition(int baseDurability, IEnumerable<bool> openEdges,
             IEnumerable<int> fragileEdges = null, LinkedPair? linkedPair = null,
             EntryTransform entryTransform = EntryTransform.None, BombDefinition bomb = null,
             KeyDefinition key = null, RepairDefinition repair = null,
-            int? oneUseBridgeEdge = null, ContactDefinition optionalStamp = null, PowerupDefinition powerup = null)
+            int? oneUseBridgeEdge = null, ContactDefinition optionalStamp = null, PowerupDefinition powerup = null, int gustAfterSwaps = 0, EntryTransform gustTransform = EntryTransform.None, int gustDamage = 0)
         {
             BaseDurability = baseDurability;
             OpenEdges = Frozen.Copy(openEdges);
@@ -99,7 +102,7 @@ namespace Cascade.Domain
             LinkedPair = linkedPair;
             EntryTransform = entryTransform;
             Bomb = bomb; Key = key; Repair = repair;
-            OneUseBridgeEdge = oneUseBridgeEdge; OptionalStamp = optionalStamp; Powerup=powerup;
+            OneUseBridgeEdge = oneUseBridgeEdge; OptionalStamp = optionalStamp; Powerup=powerup; GustAfterSwaps=gustAfterSwaps; GustTransform=gustTransform; GustDamage=gustDamage;
         }
     }
 

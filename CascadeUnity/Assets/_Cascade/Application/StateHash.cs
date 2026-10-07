@@ -29,6 +29,7 @@ namespace Cascade.Application
                     writer.Write(state.StampBits); writer.Write(state.DefusedCount);
                     writer.Write(state.ExplodedCount); writer.Write(state.AbandonedCount); writer.Write((int)state.Status);
                     if(level.ReachCharges>0||level.Floors.Any(f=>f.Powerup!=null)){writer.Write("longreach-v1");writer.Write(state.ReachCharges);}
+                    if(level.Floors.Any(f=>f.GustAfterSwaps>0)){writer.Write("live-gust-v1");writer.Write(state.GustTicks);}
                     if(level.Floors.Any(f=>f.Powerup!=null)){writer.Write("pickups-v1");writer.Write(state.PowerupUsed);writer.Write(state.FrozenTicks);}
                 }
                 using (var sha = SHA256.Create())

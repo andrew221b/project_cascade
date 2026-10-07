@@ -57,6 +57,15 @@ namespace Cascade.Domain
                 next = state.With(row: row, durability: state.Durability - preview.DurabilityCost, bridgeUsed: consumed, reachCharges: state.ReachCharges-(command.Kind==CommandKind.LongReach?1:0));
                 events.Add(new PuzzleEvent(PuzzleEventKind.RowPermuted, next, edges: preview.AffectedEdges));
             }
+            if(command.Kind!=CommandKind.EarlyDrop&&next.GustTicks>0){
+                next=next.With(gustTicks:next.GustTicks-1);
+                if(next.GustTicks==0){
+                    var wind=Level.Floors[next.ActiveFloor];var row=next.Row.ToArray();
+                    row=wind.GustTransform==EntryTransform.ShiftRightOne?row.Skip(row.Length-1).Concat(row.Take(row.Length-1)).ToArray():row.Skip(1).Concat(row.Take(1)).ToArray();
+                    next=next.With(row:row,durability:next.Durability-wind.GustDamage);
+                    events.Add(new PuzzleEvent(PuzzleEventKind.WindPermuted,next,(int)wind.GustTransform));
+                }
+            }
             next = ResolveContacts(next, events);
             next = TickBomb(next, events);
             events.Add(new PuzzleEvent(PuzzleEventKind.DurabilityResolved, next, next.Durability));
@@ -155,14 +164,14 @@ namespace Cascade.Domain
             {
                 var terminal = state.With(activeFloor: floorIndex, durability: 0, bombPhase: BombPhase.Absent,
                     bombTicks: 0, keyUsed: false, repairUsed: false, bridgeUsed: false, powerupUsed:false,frozenTicks:0,
-                    status: state.Row.SequenceEqual(Level.TargetSymbolIds) ? PuzzleStatus.Won : PuzzleStatus.Lost);
+                    gustTicks:0, status: state.Row.SequenceEqual(Level.TargetSymbolIds) ? PuzzleStatus.Won : PuzzleStatus.Lost);
                 events.Add(new PuzzleEvent(PuzzleEventKind.ReceiverEvaluated, terminal, terminal.Status == PuzzleStatus.Won ? 1 : 0));
                 return terminal;
             }
             var floor = Level.Floors[floorIndex];
             var entered = state.With(activeFloor: floorIndex, durability: floor.BaseDurability,
                 bombPhase: floor.Bomb == null ? BombPhase.Absent : BombPhase.Armed,
-                bombTicks: floor.Bomb == null ? 0 : floor.Bomb.Ticks, keyUsed: false, repairUsed: false, bridgeUsed: false,powerupUsed:false,frozenTicks:0);
+                bombTicks: floor.Bomb == null ? 0 : floor.Bomb.Ticks, keyUsed: false, repairUsed: false, bridgeUsed: false,powerupUsed:false,frozenTicks:0,gustTicks:floor.GustAfterSwaps);
             events.Add(new PuzzleEvent(PuzzleEventKind.FloorEntered, entered, floor.BaseDurability));
             if (floor.EntryTransform != EntryTransform.None)
             {

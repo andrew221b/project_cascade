@@ -159,16 +159,16 @@ namespace Cascade.Presentation
                 float seed=i*1.83f;
                 float x=i==0?-.28f:i==1?.28f:i==2?-.22f:.22f;
                 float y=i==0?.23f:i==1?.16f:i==2?-.14f:-.28f;
-                island.position=new Vector3(cx+w*x+Mathf.Sin(phase*.055f+seed)*w*.008f,
-                    cy+h*y+Mathf.Sin(phase*(.17f+i*.021f)+seed)*h*.006f,3.02f-i*.015f);
+                island.position=new Vector3(cx+w*x+Mathf.Sin(phase*.22f+seed)*w*.018f,
+                    cy+h*y+Mathf.Sin(phase*(.46f+i*.047f)+seed)*h*.017f,3.02f-i*.015f);
                 float size=Mathf.Min(w,h)*(i==0?.23f:i==1?.25f:i==2?.27f:.20f);
                 island.localScale=new Vector3(size*(i==2?1.16f:i==3?.84f:1),size,1);
-                island.rotation=Quaternion.Euler(0,0,Mathf.Sin(phase*.12f+seed)*.8f);
+                island.rotation=Quaternion.Euler(0,0,Mathf.Sin(phase*.3f+seed)*1.2f);
             }
             if(lagoonSkiff!=null){
-                lagoonSkiff.gameObject.SetActive(zone==4&&mapSkyTexture==null&&!workshop&&gameplayVisible);
-                float width=Mathf.Min(w*.23f,h*.14f);
-                lagoonSkiff.position=new Vector3(cx+w*(.24f+Mathf.Sin(phase*.065f)*.035f),cy-h*.075f+Mathf.Sin(phase*.75f)*.045f,2.7f);
+                lagoonSkiff.gameObject.SetActive((zone==3||zone==4||zone==7)&&mapSkyTexture==null&&!workshop&&gameplayVisible);
+                float width=Mathf.Min(w*.29f,h*.17f);
+                lagoonSkiff.position=new Vector3(cx+w*(.24f+Mathf.Sin(phase*.18f)*.11f),cy+h*.10f+Mathf.Sin(phase*.65f)*h*.009f,2.7f);
                 lagoonSkiff.localScale=new Vector3(width,width*.9f,1);
                 lagoonSkiff.rotation=Quaternion.Euler(0,0,Mathf.Sin(phase*.48f)*1.2f);
             }
@@ -179,7 +179,7 @@ namespace Cascade.Presentation
                 gliderAlpha=phase==0?1:Mathf.MoveTowards(gliderAlpha,holdingToken?0:1,delta*(holdingToken?8:3));
                 gliderMaterial.SetColor("_BaseColor",new Color(1,1,1,gliderAlpha));
                 float depth=.86f+.24f*Mathf.Cos(angle);
-                float height=(gameplayVisible?Mathf.Min(h*.085f,band*.48f):Mathf.Min(w,8)*.18f)*depth;
+                float height=(gameplayVisible?Mathf.Min(h*.105f,band*.55f):Mathf.Min(w,8)*.18f)*depth;
                 float y=gameplayVisible?(flightBottom+flightTop)*.5f+Mathf.Cos(angle)*band*.065f:cy+h*(.255f+Mathf.Cos(angle)*.035f);
                 glider.position=new Vector3(cx+Mathf.Sin(angle)*w*.33f,y,2.45f+.10f*(1-Mathf.Cos(angle)));
                 // Continuous yaw, curved ascent and perspective scale describe one loop in depth.

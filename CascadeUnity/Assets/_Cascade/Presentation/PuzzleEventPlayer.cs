@@ -41,10 +41,20 @@ namespace Cascade.Presentation
         void Finish()
         {
             if (!IsRunning) return; IsRunning = false; playback = null; CompletedPresentations++;
+            if(windAir!=null)Destroy(windAir.gameObject);
             feedback?.RowPhysics?.End();
             game?.CompleteTouchExchange();
             if(game!=null&&game.CanPresent){game.Machine.PrepareWind(true,0);game.ReactionBanner.Clear();game.SettleOutcome();}
             if (game != null && game.Interaction != null) { game.Interaction.FinishPresentation(); if(game.CanPresent)game.SyncPresentation(); }
+        }
+        bool windTravel;
+        WindWarningGraphic windAir;
+        void BeginWindAir(bool right){
+            if(game.ReducedMotion)return;
+            var go=new GameObject("Gust air trails",typeof(RectTransform),typeof(CanvasRenderer),typeof(WindWarningGraphic));
+            go.transform.SetParent(game.SlotViews[0].GetComponentInParent<UnityEngine.Canvas>().transform,false);
+            var rect=(RectTransform)go.transform;rect.anchorMin=new Vector2(.06f,.30f);rect.anchorMax=new Vector2(.94f,.70f);rect.offsetMin=rect.offsetMax=Vector2.zero;
+            windAir=go.GetComponent<WindWarningGraphic>();windAir.Right=right;windAir.DrawTips=false;windAir.raycastTarget=false;
         }
         IEnumerator Run(TransitionResult result)
         {
@@ -55,7 +65,13 @@ namespace Cascade.Presentation
                     var e = result.Events[index]; EventIndex = index; CurrentEvent = e.Kind;
                     if (e.Kind == PuzzleEventKind.CommandAccepted) continue;
                     bool reduced = game.ReducedMotion;
-                    if (e.Kind == PuzzleEventKind.RowPermuted || e.Kind == PuzzleEventKind.EntryPermuted) {
+                    if (e.Kind == PuzzleEventKind.RowPermuted || e.Kind == PuzzleEventKind.EntryPermuted || e.Kind==PuzzleEventKind.WindPermuted) {
+                        windTravel=e.Kind==PuzzleEventKind.WindPermuted;
+                        if(windTravel){
+                            bool right=e.Value==(int)EntryTransform.ShiftRightOne;
+                            yield return WarnWind(right);BeginWindAir(right);game.Machine.CueWind(right);game.CueDeviceWind(right);
+                            game.SetPresentationFeedback("The wind moved the row");
+                        }
                         if(e.Kind==PuzzleEventKind.EntryPermuted&&game.IsWindFloor(e.Floor)) {
                             game.Machine.CueWind(level.Floors[e.Floor].EntryTransform==EntryTransform.ShiftRightOne);
                             game.CueDeviceWind(level.Floors[e.Floor].EntryTransform==EntryTransform.ShiftRightOne);
@@ -63,7 +79,7 @@ namespace Cascade.Presentation
                             game.AnnounceReaction("The wind moved the row","");
                         }
                         CaptureRow(frame); frame.Read(e, level); game.RenderFrame(frame); MapRow(frame);
-                        feedback.Sound(ToyCue.Swap); yield return Travel(profile.swap, !reduced, false);
+                        feedback.Sound(ToyCue.Swap); yield return Travel(windTravel?.95f:profile.swap, !reduced, false);windTravel=false;if(windAir!=null)Destroy(windAir.gameObject);
                     } else if (e.Kind == PuzzleEventKind.FloorExited) {
                         int next=e.Floor+1;if(next<level.Floors.Count&&game.IsWindFloor(next))yield return WarnWind(level.Floors[next].EntryTransform==EntryTransform.ShiftRightOne);
                         if(frame.Durability<=0){
@@ -158,6 +174,7 @@ namespace Cascade.Presentation
             for(int i=0;i<count;i++)game.Machine.SetPiecePose(i,falling?PiecePose.Falling:PiecePose.Exchanging);
             while (time < duration) {
                 if(PresentationPaused){yield return null;continue;}
+                if(windAir!=null)windAir.Paint(time*1.8f,false);
                 float t = Mathf.Clamp01(time / duration), eased = 1-Mathf.Pow(1-t,3);
                 for (int i = 0; i < game.VisibleFrame.Row.Count; i++) {
                     float local=falling?Mathf.Clamp01((t-(i%3)*.035f)/(1-(i%3)*.035f)):t;
@@ -172,10 +189,10 @@ namespace Cascade.Presentation
                         float route=placed?t:Mathf.Clamp01((t-.08f)/.92f);
                         float smooth=route*route*(3-2*route);
                         position=Vector3.Lerp(from[i],to[i],smooth);
-                        if(!placed)position.y+=Mathf.Sin(route*Mathf.PI)*Mathf.Max(profile.swapArc,.32f);
+                        if(!placed)position.y+=Mathf.Sin(route*Mathf.PI)*Mathf.Max(profile.swapArc,windTravel?.8f:.32f);
                         position.z=Mathf.Lerp(from[i].z,placed?-.52f:-.8f,Mathf.Sin(t*Mathf.PI));
                     }
-                    float angle=Mathf.Sin(local*Mathf.PI)*(i%2==0?1:-1)*(falling?13:9);
+                    float angle=Mathf.Sin(local*Mathf.PI)*(i%2==0?1:-1)*(falling?13:windTravel?24:9);
                     if(falling)angle*=Mathf.SmoothStep(0,1,Mathf.Clamp01((position.y-to[i].y)/.3f));
                     game.OffsetPresentedToken(i, position-game.Machine.TokenPosition(i), Vector2.Lerp(fromStretch[i],Vector2.one,eased));
                     game.Machine.SetPiecePose(i,falling?PiecePose.Falling:PiecePose.Exchanging,Mathf.Lerp(fromAngles[i],0,eased)+angle);

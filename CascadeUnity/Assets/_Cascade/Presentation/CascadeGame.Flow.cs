@@ -126,7 +126,7 @@ namespace Cascade.Presentation
             string lesson = Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).FirstOrDefault(c=>c.Definition.CampaignNodeId==node)?.Lesson ?? "swap";
             if(descent!=null&&descent.StageIndex<2){
                 var first=Interaction.Attempt.Level.Floors[0];
-                lesson=first.Powerup!=null?"powerup":first.Bomb!=null?"bomb":first.Key!=null?"key":first.Repair!=null?"repair":first.OptionalStamp!=null?"stamp":first.LinkedPair.HasValue?"linked":first.OneUseBridgeEdge.HasValue?"bridge":first.FragileEdges.Count>0?"fragile":descent.StageIndex==1?"arrival_wind":"swap";
+                lesson=first.Powerup!=null?"powerup":first.Bomb!=null?"bomb":first.Key!=null?"key":first.Repair!=null?"repair":first.OptionalStamp!=null?"stamp":first.LinkedPair.HasValue?"linked":first.OneUseBridgeEdge.HasValue?"bridge":first.FragileEdges.Count>0?"fragile":descent.StageIndex==1&&descent.Version<5?"arrival_wind":"swap";
             }
             int wind=Enumerable.Range(0,Interaction.Attempt.Level.Floors.Count).Where(IsWindFloor).DefaultIfEmpty(-1).First();
             Coach=new TutorialCoach(Interaction.Attempt.Level,lesson,wind) {Enabled=Preferences.Tutorials};

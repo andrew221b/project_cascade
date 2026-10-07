@@ -40,7 +40,7 @@ namespace Cascade.Presentation
             world.gameObject.AddComponent<MapParallax>().Initialize(this);
             world.gameObject.AddComponent<MenuSwipe>().Initialize(TurnJourneyMap);
             int unlocked=NextJourneyStop(),markerStop=IsPinnedJourneyStop(selectedJourneyStop)?selectedJourneyStop:unlocked;Vector2[] places=MapPlaces(zone);
-            var mapFrame=Rect("Map view",world,new Vector2(.035f,.28f),new Vector2(.965f,.765f));
+            var mapFrame=Rect("Map view",world,new Vector2(.035f,.32f),new Vector2(.965f,.79f));
             var mapSurface=Rect("Island map",mapFrame,Vector2.zero,Vector2.one);
             var crop=zone<3?new Rect(0,.16f,1,.72f):new Rect(0,.03f,1,.95f);
             var uvPoints=places.Select(p=>new Vector2(p.x,(p.y-.29f)/.51f)).ToArray();
@@ -115,7 +115,7 @@ namespace Cascade.Presentation
         {
             if(CurrentScreen!=GameScreen.JourneyMap||journeyFooter==null||journeyFooterButtons==null)return;
             FitJourneyModeTabs();
-            journeyFooter.pivot=new Vector2(.5f,0);journeyFooter.sizeDelta=new Vector2(0,216*MenuUnit);journeyFooter.anchoredPosition=Vector2.zero;
+            journeyFooter.pivot=new Vector2(.5f,0);journeyFooter.sizeDelta=new Vector2(0,(safeRoot.rect.height<720?200:216)*MenuUnit);journeyFooter.anchoredPosition=Vector2.zero;
             foreach(var control in journeyFooterButtons)if(control!=null){
                 var rect=(RectTransform)control.transform;
                 rect.sizeDelta=new Vector2(0,0);Canvas.ForceUpdateCanvases();

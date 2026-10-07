@@ -10,7 +10,7 @@ namespace Cascade.Application
     {
         Bomb=0, Key=1, Repair=2, Ribbon=3, Stamp=4, BombHourglass=5,
         Bridge=6, LinkedPairs=7, Fragile=8, ClosedPath=9, Rollers=10,
-        Mirror=11, LandingWind=12, Gust=13, Wayfinder=14, UndoSpool=15, ReturnHourglass=16, SignalLantern=17, LandingLens=18
+        Mirror=11, LandingWind=12, Gust=13, Wayfinder=14, UndoSpool=15, ReturnHourglass=16, SignalLantern=17, LandingLens=18, LiveGust=19
     }
     public static class MechanicLessons
     {
@@ -28,6 +28,7 @@ namespace Cascade.Application
                 if(f.LinkedPair.HasValue)found.Add(MechanicLesson.LinkedPairs);
                 if(f.FragileEdges.Count>0)found.Add(MechanicLesson.Fragile);
                 if(f.Key==null&&f.OpenEdges.Where((open,edge)=>!open&&edge!=f.OneUseBridgeEdge).Any())found.Add(MechanicLesson.ClosedPath);
+                if(f.GustAfterSwaps>0)found.Add(MechanicLesson.LiveGust);
                 if(wind.Contains(i))found.Add(MechanicLesson.LandingWind);
                 else if(f.EntryTransform==EntryTransform.MirrorNext)found.Add(MechanicLesson.Mirror);
                 else if(f.EntryTransform!=EntryTransform.None)found.Add(MechanicLesson.Rollers);
