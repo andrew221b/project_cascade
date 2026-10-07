@@ -611,7 +611,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 472899695
-    m_Localized: Mixed
+    m_Localized: Mix
     m_Metadata:
       m_Items: []
   - m_Id: 472899696
@@ -4528,6 +4528,10 @@ MonoBehaviour:
   - m_Id: 730607482036238
     m_Localized: Mika brought the light home. Together, her friends lit the way beyond
       it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 752843987345408
+    m_Localized: 'Completed: {0}/{1}'
     m_Metadata:
       m_Items: []
   references:

@@ -147,7 +147,7 @@ swap slots {0} & {1}	swap pieces {0} & {1}	поменяй фигурки {0} и 
 {0} −{1}	{0} −{1}	{0} −{1}	{0} −{1}
 Shapes	Shapes	Фигуры	Фігури
 Words	Words	Слова	Слова
-Mixed	Mixed	Всё вместе	Усе разом
+Mixed	Mix	Микс	Mix
 English	English	Английский	Англійська
 Russian	Русский	Русский	Російська
 Ukrainian	Українська	Украинский	Українська
@@ -1099,3 +1099,4 @@ Goal: light the constellations	Light the constellations	Зажги созвез�
 The sky shines again!	The sky shines again!	Небо снова сияет!	Небо знову сяє!
 A light for every traveller.	A light for every traveller.	Свет для каждого путника.	Світло для кожного мандрівника.
 Mika brought the light home. Together, her friends lit the way beyond it.	Mika brought the light home. Together, her friends lit the way beyond it.	Мика вернула свет домой. А вместе с друзьями зажгла путь ещё дальше.	Міка повернула світло додому. А разом із друзями запалила шлях ще далі.
+Completed: {0}/{1}	Completed: {0}/{1}	Пройдено: {0}/{1}	Пройдено: {0}/{1}

@@ -4482,6 +4482,10 @@ MonoBehaviour:
       it.
     m_Metadata:
       m_Items: []
+  - m_Id: 752843987345408
+    m_Key: 'Completed: {0}/{1}'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

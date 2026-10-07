@@ -46,7 +46,7 @@ namespace Cascade.Presentation
             world.gameObject.AddComponent<MapParallax>().Initialize(this);
             world.gameObject.AddComponent<MenuSwipe>().Initialize(TurnJourneyMap);
             int unlocked=NextJourneyStop(),markerStop=IsPinnedJourneyStop(selectedJourneyStop)?selectedJourneyStop:unlocked;Vector2[] places=MapPlaces(zone);
-            var mapFrame=Rect("Map view",world,new Vector2(.035f,.32f),new Vector2(.965f,.79f));
+            var mapFrame=Rect("Map view",world,new Vector2(.015f,.19f),new Vector2(.985f,.82f));
             var mapSurface=Rect("Island map",mapFrame,Vector2.zero,Vector2.one);
             var crop=zone<3?new Rect(0,.16f,1,.72f):new Rect(0,.03f,1,.95f);
             var uvPoints=places.Select(p=>new Vector2(p.x,(p.y-.29f)/.51f)).ToArray();
@@ -72,21 +72,17 @@ namespace Cascade.Presentation
                 ((RectTransform)b.transform).sizeDelta=new Vector2(76*MenuUnit,72*MenuUnit);b.GetComponentInChildren<TextMeshProUGUI>().SetCopy("");
                 b.GetComponent<Image>().color=Color.clear;b.interactable=Enumerable.Range(begin,count).Any(IsJourneyStopOpen);
                 if(JourneyStory.Zone(markerStop)!=zone||JourneyStory.IslandFor(markerStop)!=island)continue;
-                bool labelLeft=point.x>.5f;
-                var marker=Rect("You are here marker",islandRoot,point,point);
-                marker.pivot=new Vector2(labelLeft?1:0,.5f);marker.sizeDelta=new Vector2(114,38)*MenuUnit;
-                marker.anchoredPosition=new Vector2(labelLeft?-45:45,0)*MenuUnit;
-                var caption=Text("You are here",marker,Vector2.zero,Vector2.one,16,new UiCopy("You are here · {0}/{1}",Enumerable.Range(begin,count).Count(n=>sessionClears.Contains(Catalog.PrimaryLevels[n].Definition.CampaignNodeId)),count));caption.font=art.titleFont;caption.color=zone==8?MenuPaper:MenuInk;caption.enableAutoSizing=true;caption.fontSizeMin=14*MenuUnit;caption.fontSizeMax=16*MenuUnit;
-                var arrow=Rect("Here arrow",marker,new Vector2(labelLeft?1.07f:-.07f,.5f),new Vector2(labelLeft?1.07f:-.07f,.5f));arrow.sizeDelta=new Vector2(10,10)*MenuUnit;arrow.localRotation=Quaternion.Euler(0,0,labelLeft?-90:90);arrow.gameObject.AddComponent<ShapeFaceGraphic>().SetShape(art.shapes[0],Ink);
                 var hero=Picture("Mika on the path",islandRoot,point,point,Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
                 hero.rectTransform.pivot=new Vector2(.5f,0);hero.rectTransform.sizeDelta=new Vector2(40,52)*MenuUnit;
+                MapMikaHalo.Attach(this,hero);
                 var heroTouch=Button(UiCopy.Raw(""),islandRoot,point+new Vector2(0,.045f),point+new Vector2(0,.045f),()=>OpenJourneyStory(markerStop,false));heroTouch.name="TalktoMika";heroTouch.interactable=!IsPlanningDescent&&!IsDescending;
                 ((RectTransform)heroTouch.transform).sizeDelta=new Vector2(64*MenuUnit,80*MenuUnit);heroTouch.GetComponent<Image>().color=Color.clear;
                 if(EquippedGift!=null)Picture("Mika's keepsake",hero.transform,new Vector2(.69f,.30f),new Vector2(.98f,.56f),TrophyArt(Array.IndexOf(ShopCatalog.TrophyIds,EquippedGift)),true);
             }
             var top=Rect("Map heading",menuRoot,new Vector2(.04f,.904f),new Vector2(.96f,.99f));
-            var back=DirectionButton("Back",top,new Vector2(.015f,.12f),new Vector2(.18f,.90f),false,ShowHome);back.GetComponent<Image>().sprite=enamelControls[0];back.GetComponent<Image>().color=Color.white;foreach(var chevron in back.GetComponentsInChildren<ChevronGraphic>())chevron.color=new Color(1,.97f,.84f);
-            var title=Text("Region",top,new Vector2(.22f,.43f),new Vector2(.95f,.95f),26,JourneyStory.ZoneName(zone));if(zone==8)title.color=MenuPaper;title.font=art.titleFont;title.alignment=TextAlignmentOptions.MidlineLeft;title.enableAutoSizing=true;title.fontSizeMin=20;title.fontSizeMax=26;
+            var back=DirectionButton("Back",top,new Vector2(.098f,.52f),new Vector2(.098f,.52f),false,ShowHome);back.GetComponent<Image>().sprite=enamelControls[0];back.GetComponent<Image>().color=Color.white;foreach(var chevron in back.GetComponentsInChildren<ChevronGraphic>())chevron.color=new Color(1,.97f,.84f);
+            ((RectTransform)back.transform).sizeDelta=Vector2.one*48*MenuUnit;menuSquares.Add(new System.Collections.Generic.KeyValuePair<RectTransform,float>((RectTransform)back.transform,48));
+            var title=Text("Region",top,new Vector2(.22f,.43f),new Vector2(.95f,.95f),24,JourneyStory.ZoneName(zone));if(zone==8)title.color=MenuPaper;title.font=art.titleFont;title.alignment=TextAlignmentOptions.MidlineLeft;title.enableAutoSizing=true;title.fontSizeMin=18;title.fontSizeMax=24;
             var goal=Text("Journey goal",top,new Vector2(.22f,.07f),new Vector2(.95f,.44f),16,zone==8?"Goal: light the constellations":"Goal: Great Beacon");if(zone==8)goal.color=MenuPaper;goal.alignment=TextAlignmentOptions.MidlineLeft;goal.enableAutoSizing=true;goal.fontSizeMin=14;goal.fontSizeMax=17;
             title.rectTransform.anchorMax=new Vector2(.79f,.95f);goal.rectTransform.anchorMax=new Vector2(.79f,.44f);
             if(zone==8){
@@ -102,21 +98,20 @@ namespace Cascade.Presentation
             DrawJourneyModeTabs();
             var bottom=Rect("Journey task",menuRoot,new Vector2(.055f,0),new Vector2(.945f,0));
             bool future=!IsJourneyStopOpen(selectedJourneyStop);
-            var task=Text("Next task",bottom,new Vector2(.06f,.805f),new Vector2(.94f,.985f),22,future?new UiCopy("Stops to this island: {0}",selectedJourneyStop-unlocked):StoryConversations.Task(selectedJourneyStop));task.font=art.titleFont;task.enableAutoSizing=true;task.fontSizeMin=18;task.fontSizeMax=23;
             var offered=JourneySequence().Select(c=>c.Definition.CampaignNodeId).ToHashSet();
             var stepNodes=Catalog.PrimaryLevels.Skip(first).Take(JourneyStory.WorldLevels(mapPage)).Select(c=>c.Definition.CampaignNodeId).Where(offered.Contains).ToArray();
             int remaining=CampaignProgress.Remaining(stepNodes,sessionClears);
-            CompletionText("Map step progress",bottom,new Vector2(.06f,.635f),new Vector2(.94f,.795f),16,
-                remaining==0?new UiCopy("World complete · {0}/{0} levels",stepNodes.Length):new UiCopy(remaining==1?"Next world in {0} level · {1}/{2}":"Next world in {0} levels · {1}/{2}",remaining,stepNodes.Length-remaining,stepNodes.Length));
+            CompletionText("Map step progress",bottom,new Vector2(.06f,.777f),new Vector2(.94f,1),16,
+                new UiCopy("Completed: {0}/{1}",stepNodes.Length-remaining,stepNodes.Length));
             bool resume=CanResumeSelectedJourney(selectedJourneyStop);
-            var go=Button("Travel",bottom,new Vector2(.17f,.36f),new Vector2(.83f,.62f),TravelSelectedJourney);
+            var go=Button("Travel",bottom,new Vector2(.205f,.389f),new Vector2(.795f,.722f),TravelSelectedJourney);
             go.GetComponentInChildren<TextMeshProUGUI>().SetCopy(future?"Back to my path":resume?"Continue":new UiCopy("Level {0}",selectedJourneyStop+1));go.GetComponent<Image>().sprite=enamelControls[1];go.GetComponent<Image>().color=Color.white;
             bool homecoming=JourneyClearCount==JourneySequence().Count;
-            var talk=Button("Story",bottom,new Vector2(.05f,.055f),new Vector2(.95f,.315f),()=>{if(homecoming)SetScreen(GameScreen.JourneyEnd);else OpenJourneyStory(selectedJourneyStop,false);});talk.interactable=(homecoming||!future)&&!IsPlanningDescent&&!IsDescending;
+            var talk=Button("Story",bottom,new Vector2(.09f,0),new Vector2(.91f,.3333f),()=>{if(homecoming)SetScreen(GameScreen.JourneyEnd);else OpenJourneyStory(selectedJourneyStop,false);});talk.interactable=(homecoming||!future)&&!IsPlanningDescent&&!IsDescending;
             talk.GetComponentInChildren<TextMeshProUGUI>().SetCopy(homecoming?new UiCopy("The beacon is lit!"):new UiCopy("Talk to {0}",new UiCopy(StoryConversations.Resident(zone))));talk.GetComponent<Image>().color=new Color(.84f,.91f,.87f);
             talk.GetComponent<Image>().sprite=enamelControls[0];talk.GetComponent<Image>().type=UnityEngine.UI.Image.Type.Sliced;talk.GetComponent<Image>().color=Color.white;navigationLightLabels.Add(talk.GetComponentInChildren<TextMeshProUGUI>());
-            journeyFooter=bottom;var previous=DirectionButton("Previous opened level",bottom,new Vector2(0,.36f),new Vector2(.145f,.62f),false,()=>SelectOpenedJourneyLevel(-1));
-            var next=DirectionButton("Next opened level",bottom,new Vector2(.855f,.36f),new Vector2(1,.62f),true,()=>SelectOpenedJourneyLevel(1));
+            journeyFooter=bottom;var previous=DirectionButton("Previous opened level",bottom,new Vector2(0,.389f),new Vector2(.145f,.722f),false,()=>SelectOpenedJourneyLevel(-1));
+            var next=DirectionButton("Next opened level",bottom,new Vector2(.855f,.389f),new Vector2(1,.722f),true,()=>SelectOpenedJourneyLevel(1));
             foreach(var direction in new[]{previous,next}){direction.GetComponent<Image>().sprite=enamelControls[0];direction.GetComponent<Image>().color=Color.white;foreach(var chevron in direction.GetComponentsInChildren<ChevronGraphic>())chevron.color=new Color(1,.97f,.84f);}
             bool beyondFirstIsland=JourneyStory.Zone(unlocked)>zone||JourneyStory.IslandFor(unlocked)>0;
             previous.gameObject.SetActive(beyondFirstIsland&&Enumerable.Range(first,Math.Max(0,selectedJourneyStop-first)).Any(IsJourneyStopOpen));
@@ -127,7 +122,7 @@ namespace Cascade.Presentation
         {
             if(CurrentScreen!=GameScreen.JourneyMap||journeyFooter==null||journeyFooterButtons==null)return;
             FitJourneyModeTabs();
-            journeyFooter.pivot=new Vector2(.5f,0);journeyFooter.sizeDelta=new Vector2(0,(safeRoot.rect.height<720?200:216)*MenuUnit);journeyFooter.anchoredPosition=Vector2.zero;
+            journeyFooter.pivot=new Vector2(.5f,0);journeyFooter.sizeDelta=new Vector2(0,144*MenuUnit);journeyFooter.anchoredPosition=Vector2.zero;
             foreach(var control in journeyFooterButtons)if(control!=null){
                 var rect=(RectTransform)control.transform;
                 rect.sizeDelta=new Vector2(0,0);Canvas.ForceUpdateCanvases();

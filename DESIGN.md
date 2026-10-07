@@ -840,9 +840,10 @@ reuse the game's actual devices and original tool art.
 ## Whole-world map and earned celebration — 7 October 2026
 
 The map is an open sky composition: dark ink region and goal at the top,
-illustrated islands in the center, current-island progress below Mika, then
-task/world progress and framed enamel actions. No cream heading, footer or
-current-marker sheet. Amber denotes the level action; ivory arrows read on teal.
+larger illustrated islands in the center, a soft pulsing alpha-contour halo on
+Mika, one world completion count, then compact framed enamel actions. The
+map has no task sentence, next-world countdown, campaign total or island count.
+Amber denotes the level action; ivory arrows read on teal.
 Minimum touch size48px; safe-area roots and Large Text remain active. One
 world persists for10–24 full levels, with2–5 levels per island.
 
@@ -863,7 +864,7 @@ Menu headings and notes now read directly on the world. Workshop sky/window cent
 
 Parallel mode maps and individual celebration paper — 7 October 2026
 
-Map mode tabs use selected amber/dark ink and idle teal/ivory enamel. The tab row is recalculated with the Canvas scale on every map layout, keeping each hit target 52 physical pixels high even at320×693. Mode progress and a drawn gold-star counter sit below the tabs with a separate gap; map illustrations reserve the header region. No additional mode chooser in Home/Settings. Numbered level buttons also use teal enamel and ivory numbers instead of brown wood against wood.
+Map mode tabs use selected amber/dark ink and idle teal/ivory enamel. The tab row is recalculated with the Canvas scale on every map layout, keeping each hit target 48 physical pixels high even at320×693. A larger drawn gold star and its earned total sit below the tabs; map illustrations reserve the header region. The Mixed display label is Mix / Микс / Mix. Back and bag share 48-pixel square targets. No additional mode chooser in Home/Settings. Numbered level buttons also use teal enamel and ivory numbers instead of brown wood against wood.
 
 Celebrations instantiate24 individual leaf/fabric objects (12 low-quality,0 effects-off/reduced-motion) from six separated transparent sprite cells. Each has its own launch velocity, drag, gravity, wind phase and spin, with a thin tumble silhouette and a late smooth fade. The whole atlas is never rendered. The simulation is decorative and does not change receipts, currency, progression or puzzle state. Native reward/gift captures and physical-size readbacks are in Reports/ModeJourneys.
 
