@@ -75,6 +75,9 @@ namespace Cascade.Application
         public TransitionResult LastToolTransition { get; private set; }
         public bool CanUseLens => !LensUsed && Current.Status==PuzzleStatus.Playing && Current.ActiveFloor<Level.Floors.Count-1;
         public int GuideFloor { get; private set; } = -1;
+        public const int ToolUseLimit=2;
+        public int ToolsUsed => (SpoolUsed?1:0)+(HourglassUsed?1:0)+(WayfinderUsed?1:0)+(LanternUsed?1:0)+(LensUsed?1:0);
+        public int ToolUsesRemaining => System.Math.Max(0,ToolUseLimit-ToolsUsed);
         public bool PurchasedHelpUsed => SpoolUsed || HourglassUsed || WayfinderUsed || LanternUsed || LensUsed;
         public int FreeUndoRemaining => Math.Max(0, FreeUndoLimit - FreeUndoUsed);
         public bool CanUndoHere => history.Count != 0 && Current.Status == PuzzleStatus.Playing
@@ -136,7 +139,7 @@ namespace Cascade.Application
         {
             var result = Resolver.Resolve(Current, command);
             if (!result.Accepted) return result;
-            if(GuideActive && (result.State.ActiveFloor!=Current.ActiveFloor || result.State.Status!=PuzzleStatus.Playing))GuideFloor=-1;
+            if(GuideActive)GuideFloor=-1;
             history.Add(new HistoryEntry(Current, result.State, command, RouteLength));
             Current = result.State; RouteLength++; MovesMade++;
             return result;
@@ -149,6 +152,7 @@ namespace Cascade.Application
         }
         void RestoreLastCommand()
         {
+            GuideFloor=-1;
             var previous = history[history.Count - 1]; history.RemoveAt(history.Count - 1);
             Current = previous.Before; RouteLength = previous.RouteLengthBefore; UndoCount++;
         }
@@ -156,7 +160,7 @@ namespace Cascade.Application
         // Inventory persistence and exact replay are one transaction; failed saves roll back tool use.
         public bool TryUseToolAtomically(TravelTool tool, Func<bool> commit, HintOffer guide = null)
         {
-            if(commit==null || !ShopCatalog.IsTool(tool))return false;
+            if(commit==null || !ShopCatalog.IsTool(tool) || ToolUsesRemaining==0)return false;
             if(tool==TravelTool.LandingLens&&!CanUseLens || tool==TravelTool.SignalLantern&&(LanternUsed||Current.Status!=PuzzleStatus.Playing||!IsCurrent(guide)||guide.Result.Status!=HintStatus.Step||guide.Result.Command.Value.Kind==CommandKind.EarlyDrop)
                 || tool==TravelTool.UndoSpool && !CanUseSpool || tool==TravelTool.ReturnHourglass && !CanUseHourglass
                 || tool==TravelTool.Wayfinder && (WayfinderUsed || Current.Status!=PuzzleStatus.Playing || !IsCurrent(guide) || guide.Result.Status!=HintStatus.Step || guide.Result.Command.Value.Kind==CommandKind.EarlyDrop))return false;
@@ -167,7 +171,7 @@ namespace Cascade.Application
             else if(tool==TravelTool.ReturnHourglass){
                 int boundary=history.FindLastIndex(h=>h.Before.ActiveFloor!=h.After.ActiveFloor);
                 Current=history[boundary].Before;RouteLength=history[boundary].RouteLengthBefore;
-                history.RemoveRange(boundary,history.Count-boundary);UndoCount++;HourglassUsed=true;
+                history.RemoveRange(boundary,history.Count-boundary);UndoCount++;HourglassUsed=true;GuideFloor=-1;
             }
             else if(tool==TravelTool.SignalLantern){LastToolTransition=Execute(guide.Result.Command.Value);if(!LastToolTransition.Accepted){LastToolTransition=oldTransition;return false;}LanternUsed=true;}
             else if(tool==TravelTool.LandingLens)LensUsed=true;

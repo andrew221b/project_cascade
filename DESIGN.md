@@ -647,14 +647,17 @@ states use live localized copy and enabled-state controls. Keepsakes stay free
 earned objects; paid cosmetic packs are only a future option. No new product
 artwork or palette is introduced.
 
-Official IAP 5.4.4 and LevelPlay 9.5.1 packages are installed through UPM, with
-no Codeless IAP automatic initializer or provider activation. The publisher's
-server must verify Apple JWS / Google purchase proof before entitlement is saved
-in the ledger and a pending order is confirmed; that server is not implemented
-or hosted.
-Privacy/age/ATT, native dependency/build and sandbox checks remain external.
-These client views and service boundaries do not establish live purchases or
-ads. Existing C16 policy protections remain in force.
+Official Unity IAP 5.4.4 and Google Mobile Ads Unity 11.5.0 with UMP are installed;
+LevelPlay was removed. The existing workshop/enamel visual system also carries
+coin packs, without invented cash prices. Wallet, category tabs, two offers,
+a contrasting assistance/test-status notice and Back preserve the established
+hierarchy. See Docs/ADMOB_STORE_UI.md for the scoped native Editor evidence.
+The publisher receipt verifier is prepared in Backend/ReceiptVerifier; it is
+not hosted. The client saves verified grants before confirming pending orders.
+UMP gates AdMob initialization and required privacy options live in Settings.
+Registered store products, publisher IDs, HTTPS deployment, native dependency
+builds, physical-device consent and store sandbox checks remain activation work.
+These client views do not establish live purchases or ads. C16 policy remains.
 
 ### Saved path and recovery
 

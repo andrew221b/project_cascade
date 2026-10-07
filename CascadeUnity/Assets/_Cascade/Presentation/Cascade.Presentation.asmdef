@@ -13,7 +13,6 @@
         "Unity.ResourceManager",
         "Cascade.Persistence",
         "Unity.Purchasing",
-        "Unity.LevelPlay",
         "DOTween.Modules"
     ]
 }

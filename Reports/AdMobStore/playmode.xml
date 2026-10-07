@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Passed" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-07 02:25:15Z" end-time="2026-10-07 02:25:15Z" duration="0.2575098">
+  <test-suite type="TestSuite" id="1101" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="92" result="Passed" start-time="2026-10-07 02:25:15Z" end-time="2026-10-07 02:25:15Z" duration="0.257510" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1095" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="92" result="Passed" start-time="2026-10-07 02:25:15Z" end-time="2026-10-07 02:25:15Z" duration="0.143362" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="79826" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1096" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="92" result="Passed" start-time="2026-10-07 02:25:15Z" end-time="2026-10-07 02:25:15Z" duration="0.141288" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1097" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="92" result="Passed" start-time="2026-10-07 02:25:15Z" end-time="2026-10-07 02:25:15Z" duration="0.140302" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1001" name="CoinStoreTests" fullname="Cascade.Tests.CoinStoreTests" classname="Cascade.Tests.CoinStoreTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-07 02:25:15Z" end-time="2026-10-07 02:25:15Z" duration="0.138896" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1003" name="MissingPublisherConfigurationCannotGrantRealMoney" fullname="Cascade.Tests.CoinStoreTests.MissingPublisherConfigurationCannotGrantRealMoney" methodname="MissingPublisherConfigurationCannotGrantRealMoney" classname="Cascade.Tests.CoinStoreTests" runstate="Runnable" seed="714761775" result="Passed" start-time="2026-10-07 02:25:15Z" end-time="2026-10-07 02:25:15Z" duration="0.126474" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1002" name="TestWalletStopsNewPacksButKeepsNoAdsAvailable" fullname="Cascade.Tests.CoinStoreTests.TestWalletStopsNewPacksButKeepsNoAdsAvailable" methodname="TestWalletStopsNewPacksButKeepsNoAdsAvailable" classname="Cascade.Tests.CoinStoreTests" runstate="Runnable" seed="430514266" result="Passed" start-time="2026-10-07 02:25:15Z" end-time="2026-10-07 02:25:15Z" duration="0.005892" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/AdMobStore/playmode.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

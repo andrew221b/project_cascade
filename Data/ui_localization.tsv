@@ -562,10 +562,10 @@ My tools	My tools	Мои инструменты	Мої інструменти
 Wayfinder scroll	Wayfinder scroll	Карта пути	Мапа шляху
 Undo spool	Undo spool	Катушка отмены	Котушка скасування
 Return hourglass	Return hourglass	Часы возврата	Годинник повернення
-Points out each next move on this board. Stops when the board breaks.	Shows each next move until this board breaks.	Рука показывает следующие ходы, пока эта доска цела.	Рука показує наступні ходи, поки ця дошка ціла.
+Points out each next move on this board. Stops when the board breaks.	Shows one next move. Then you take over. Once per stage.	Показывает один следующий ход. Дальше решаешь сам. Раз за этап.	Показує один наступний хід. Далі вирішуєш сам. Раз за етап.
 One extra undo after your two free undos. Works only on the current board.	One extra undo on this board, after your two free ones.	Ещё одна отмена на целой доске. После двух бесплатных.	Ще одне скасування на цілій дошці. Після двох безплатних.
 Brings back the last broken board in this stage. Moves made since then are undone.	Returns to the last broken board. Once per stage.	Возвращает последнюю сломанную доску. Раз за этап.	Повертає останню зламану дошку. Раз за етап.
-Pick a tool. Each can be used once per stage.	Pick a tool. Each can be used once per stage.	Выбери инструмент. Каждый можно использовать один раз за этап.	Обери інструмент. Кожен можна використати один раз за етап.
+Pick a tool. Each can be used once per stage.	Pick up to two tools per stage. Each works once.	За этап можно взять два инструмента. Каждый работает один раз.	За етап можна взяти два інструменти. Кожен працює один раз.
 Mika wears it on the map. You can also earn it in parcels.	Mika wears it on the map. You can also earn it in parcels.	Мика носит его на карте. Можно и собрать в посылках.	Міка носить його на мапі. Можна й зібрати в посилках.
 In your bag: {0} / {1}	Bag: {0} / {1}	В сумке: {0} из {1}	У сумці: {0} із {1}
 Already yours	Already yours	Уже твоё	Вже твоє
@@ -609,7 +609,7 @@ This board slides the whole row when it lands. Watch the arrow before going down
 This board turns the row around on landing. The last piece becomes the first.	This board turns the row around on landing. The last piece becomes the first.	При посадке доска разворачивает ряд. Последняя деталь станет первой.	Під час посадки дошка розвертає ряд. Остання деталь стане першою.
 Wind moves the whole row one place on landing. Look at the arrow before going down.	Wind moves the whole row one place on landing. Look at the arrow before going down.	При посадке ветер сдвинет весь ряд на одно место. Перед спуском посмотри на стрелку.	Під час посадки вітер зсуне весь ряд на одне місце. Перед спуском поглянь на стрілку.
 A gust rocks the boards and pieces. They settle back into place. Your order stays safe.	A gust rocks the boards and pieces. They settle back into place. Your order stays safe.	Порыв качает доски и детали. Они вернутся на места. Твой порядок сохранится.	Порив гойдає дошки й деталі. Вони повернуться на місця. Твій порядок збережеться.
-Follow the hand for each next move. The scroll lasts until this board breaks.	Follow the hand for each next move. The scroll lasts until this board breaks.	Рука показывает следующий ход. Свиток помогает, пока эта доска цела.	Рука показує наступний хід. Сувій допомагає, поки ця дошка ціла.
+Follow the hand for each next move. The scroll lasts until this board breaks.	The hand shows one next move. Then you take over. Up to two tools per stage.	Рука покажет один следующий ход. Дальше решаешь сам. До двух инструментов за этап.	Рука покаже один наступний хід. Далі вирішуєш сам. До двох інструментів за етап.
 After two free undos, this spool undoes one more move on the same board.	After two free undos, this spool undoes one more move on the same board.	После двух бесплатных отмен катушка отменит ещё один ход. Только на этой доске.	Після двох безплатних скасувань котушка скасує ще один хід. Лише на цій дошці.
 The hourglass brings back the last broken board in this stage. Later moves are undone.	The hourglass brings back the last broken board in this stage. Later moves are undone.	Часы вернут последнюю сломанную доску этапа. Ходы после её слома отменятся.	Годинник поверне останню зламану дошку етапу. Ходи після її зламу скасуються.
 Closed path	Closed path	Закрытый проход	Закритий прохід
@@ -842,3 +842,20 @@ Match the flask picture. The bomb waits for two swaps.	Match the flask picture. 
 Bomb cooled!	Bomb cooled!	Бомба охлаждена!	Бомбу охолоджено!
 Tools and trophies for the journey.	Tools and trophies for the journey.	Вещи для пути: инструменты и трофеи.	Речі для подорожі: інструменти й трофеї.
 Practice	Practice	Тренировка	Тренування
+{0} coins added	{0} coins added	Получено {0} монет	Отримано {0} монет
+Back to shop	Back to shop	В магазин	До магазину
+A trophy or a few tools	A trophy or a few tools	На трофей или инструменты	На трофей або інструменти
+More for your collection	More for your collection	Пополнить коллекцию	Поповнити колекцію
+Try +{0}	Try +{0}	Проба: +{0}	Проба: +{0}
+You have enough coins	You have enough coins	Монет пока достаточно	Монет поки достатньо
+Two tools used. Try the next step yourself.	Two tools used. Try the next step yourself.	Два инструмента использованы. Дальше попробуй сам.	Два інструменти використано. Далі спробуй сам.
+Two tools per stage. With help, earn up to two stars. Five stars are yours to earn.	Two tools per stage. With help, earn up to two stars. Five stars are yours to earn.	Два инструмента за этап. С помощью — до двух звёзд. Пять звёзд — за своё решение.	Два інструменти за етап. З допомогою — до двох зірок. Пʼять зірок — за власне рішення.
+Test shop. No money is charged.	Test shop. No money is charged.	Тестовый магазин. Деньги не списываются.	Тестовий магазин. Гроші не списуються.
+Coins are optional. Earn them by playing, too.	Coins are optional. Earn them by playing, too.	Монеты можно заработать в игре. Покупать их не обязательно.	Монети можна заробити в грі. Купувати їх не обовʼязково.
+Advertising privacy	Advertising privacy	Настройки рекламы	Налаштування реклами
+Tool tab	Tools	Помощь	Допомога
+Up to two tools per stage. Help limits this run to two stars.	Up to two tools per stage. Help limits this run to two stars.	До двух инструментов за этап. С помощью — до двух звёзд за уровень.	До двох інструментів за етап. З допомогою — до двох зірок за рівень.
+Test shop · no charge	Test shop · no charge	Тестовый магазин · без оплаты	Тестовий магазин · без оплати
+The store could not finish. Try again.	The store could not finish. Try again.	Покупка не завершена. Попробуй ещё раз.	Покупку не завершено. Спробуй ще раз.
+The shop is not open yet.	The shop is not open yet.	Магазин пока закрыт.	Магазин поки зачинений.
+Coins can also be earned by playing.	Coins can also be earned by playing.	Монеты можно заработать в игре.	Монети можна заробити в грі.

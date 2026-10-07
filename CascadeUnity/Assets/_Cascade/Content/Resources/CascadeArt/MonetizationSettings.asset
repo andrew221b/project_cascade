@@ -14,9 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Cascade.Presentation::Cascade.Presentation.MonetizationSettings
   storeCatalogRegistered: 0
   receiptValidationUrl: 
-  iosAppKey: 
-  androidAppKey: 
-  rewardedUnitId: 
-  interstitialUnitId: 
+  iosAdmobAppId:
+  androidAdmobAppId:
+  iosRewardedUnitId:
+  iosInterstitialUnitId:
   adsReleaseReady: 0
   testMonetization: 1
+  productionRelease: 0
+  androidRewardedUnitId:
+  androidInterstitialUnitId:
+  admobTestAds: 1
+  childDirected: 0
+  underAgeOfConsent: 0

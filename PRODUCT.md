@@ -120,14 +120,14 @@ travel open. These local milestones remain available across the expanded campaig
 
 The earned-coin shop contains five travel tools: a Wayfinder scroll for 120
 coins, an Undo spool for 80 and a Return hourglass for 200. The scroll points out
-each solver-proved next move on the current board until it breaks; a spool gives
+one solver-proved next move, then stops; a spool gives
 one extra current-board Undo after the two free uses; an hourglass restores the
 exact checkpoint before the latest board collapse and removes subsequent moves.
 A Signal lantern for 160 coins performs exactly one solver-proved non-drop
 command through the existing resolver, with normal wood and contact costs.
 A Landing lens for 100 coins shows the immutable prediction of descending now:
 the exact next row and outcome, while play is paused, without moving the row.
-Each tool kind has a stock cap of five and one use per stage attempt. Retry starts
+Each tool kind has a stock cap of five and one use per stage attempt, with at most two tools total per stage. Retry starts
 a fresh current-stage attempt without refunding spent stock. Tools cannot rewind
 an awarded delivery. Using any tool counts as assistance, caps that run at two
 stars and excludes a clean record. This consequence is visible in the shop and
@@ -251,28 +251,33 @@ existing normalized placement rather than claiming pixel-perfect registration.
 The new MenuIcons, OpeningComic and MapSky rasters extend the painted Workshop
 world; existing WorkshopPortrait and gameplay control art remain in use.
 
-P19 established the disabled mock monetization ledger and C16 policy boundary.
-The current native-store preparation extends it with official Unity IAP 5.4.4
-and LevelPlay 9.5.1 SDKs installed through UPM. Resource configuration remains
-disabled, keys are empty and there is no Codeless IAP automatic initializer.
-The user has no registered Apple/Google products or LevelPlay app/ad units. The
-one prepared draft is `cascade.no_automatic_ads`, a NonConsumable for removing
-automatic ads. Its live price must come from localized store metadata; no price
-is invented. The original four trophies remain earnable through free parcels;
-the current earned-coin shop offers all eight for 240 coins each. Real-money cosmetic packs remain
-a future option. The unavailable No ads purchase view's RU 320px readability and
-52px-minimum continued-play footer were verified at the historical TouchRevision
-checkpoint; those checks do not provide a verdict for the new earned-coin shop.
+P19 established the transaction ledger and C16 ad boundary. Current native setup
+uses Unity IAP 5.4.4 and Google Mobile Ads Unity 11.5.0 with UMP; LevelPlay was
+removed. Test ads use official Google sample IDs; the session-only test shop
+never persists fake currency or ownership. Automatic ads remain eligible only
+at saved wins, at least three new clears and 180 foreground seconds apart,
+at most twice per session, with first-session, replay and chapter-final protection.
+Rewarded videos are optional and give 40 coins.
 
-The publisher's HTTPS verifier must validate Apple JWS / Google purchase proof
-for the expected app, product and transaction before the ledger saves entitlement
-and before pending-order confirmation. That server is not implemented or hosted.
-Duplicate restore receipts remain idempotent. A real privacy/age/ATT bridge,
-native dependency resolution, platform build and store sandbox validation remain
-external activation work. The existing C16 first-session, first-12-deliveries,
-chapter-final and frequency protections remain; automatic ads can follow only a
-saved win and base reward. No charge, ad or provider activation was performed,
-and this preparation is not live IAP/ads completion. See Docs/TOUCH_AND_STORES.md.
+Draft store products are `cascade.no_automatic_ads` (non-consumable),
+`cascade.coins_240` and `cascade.coins_480` (consumables). Prices come from
+store metadata; no cash price is invented. Packs have equal coins per unit,
+no bulk bonus; new pack purchases stop at a displayed wallet of 960 coins.
+Paid pending orders always deliver even above that threshold. The existing
+five tool prices and eight 240-coin trophies remain unchanged. Paid and earned
+coins buy the same stock; assistance caps the whole delivery at two stars and
+excludes clean records. No paid skips, platform strength or competitive rank.
+
+Backend/ReceiptVerifier prepares publisher-side Apple/Google proof verification;
+it is not hosted and has no credentials. The client saves an idempotent grant
+before confirming the pending purchase. Confirmed consumables do not restore
+currency. UMP precedes AdMob initialization and required privacy options are
+available in Settings. An explicit productionRelease build guard rejects test
+money/ads and incomplete store/publisher/verifier configuration. Registered
+products, HTTPS deployment, native SDK sandbox transactions and consent checks
+on physical devices remain external activation work. The local wallet is not
+a server anti-fraud ledger or cloud currency synchronization. See
+Docs/ADMOB_AND_STORE_RELEASE.md and Backend/ReceiptVerifier/README.md.
 
 ## Evidence on Hand
 

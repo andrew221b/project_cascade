@@ -56,14 +56,14 @@ namespace Cascade.Presentation
             previewAd.gameObject.SetActive(false);Destroy(previewAd.gameObject);previewAd=null;previewAdSafe=null;
             callback?.Invoke(confirmed);
         }
-        public void ShowCoinReward()
+        public void ShowCoinReward(int amount=40)
         {
-            if(!CanPresent||CurrentScreen!=GameScreen.Shop)return;
+            if(!CanPresent||CurrentScreen!=GameScreen.Shop&&CurrentScreen!=GameScreen.CoinPacks)return;
             coinArrival?.Kill();if(coinToast!=null)Destroy(coinToast.gameObject);
             coinToast=Rect("Video coins received",menuRoot,new Vector2(.09f,.34f),new Vector2(.91f,.45f));
             var face=Background(coinToast,new Color(.04f,.28f,.28f),false);face.sprite=art.panel;face.type=Image.Type.Sliced;
             Picture("Received coin pouch",coinToast,new Vector2(.04f,.05f),new Vector2(.24f,.95f),TravelArt(3),true);
-            var caption=Text("Coins received",coinToast,new Vector2(.25f,.12f),new Vector2(.94f,.88f),22,"40 coins added");caption.color=MenuPaper;caption.font=art.titleFont;
+            var caption=Text("Coins received",coinToast,new Vector2(.25f,.12f),new Vector2(.94f,.88f),22,new UiCopy("{0} coins added",amount));caption.color=MenuPaper;caption.font=art.titleFont;
             caption.textWrappingMode=TextWrappingModes.NoWrap;caption.enableAutoSizing=true;caption.fontSizeMin=18*MenuUnit;caption.fontSizeMax=22*MenuUnit;
             var group=coinToast.gameObject.AddComponent<CanvasGroup>();group.blocksRaycasts=false;
             var body=coinToast;var arrival=DOTween.Sequence().SetUpdate(true).SetTarget(body).SetLink(body.gameObject,LinkBehaviour.KillOnDisable);

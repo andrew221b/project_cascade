@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Cascade.Presentation
 {
-    public enum GameScreen { Home, Playing, Pause, Win, Fail, Settings, Devices, Lessons, Dialogue, WordLanguage, SaveRecovery, TravelBag, Journal, Collection, Workshop, Requests, Records, Contracts, Parcel, JourneyEnd, ReachChallenges, PowerupChallenges, Checkpoint, PlayChoice, JourneyMap, Prologue, Shop, NoAds, Supplies }
+    public enum GameScreen { Home, Playing, Pause, Win, Fail, Settings, Devices, Lessons, Dialogue, WordLanguage, SaveRecovery, TravelBag, Journal, Collection, Workshop, Requests, Records, Contracts, Parcel, JourneyEnd, ReachChallenges, PowerupChallenges, Checkpoint, PlayChoice, JourneyMap, Prologue, Shop, NoAds, Supplies, CoinPacks }
     public sealed partial class CascadeGame
     {
         public GameScreen CurrentScreen { get; private set; } = GameScreen.Playing;
@@ -238,6 +238,7 @@ namespace Cascade.Presentation
             else if(CurrentScreen==GameScreen.Shop) DrawShop();
             else if(CurrentScreen==GameScreen.Supplies) DrawSupplies();
             else if(CurrentScreen==GameScreen.NoAds) DrawNoAds();
+            else if(CurrentScreen==GameScreen.CoinPacks) DrawCoinPacks();
             else if(CurrentScreen==GameScreen.Lessons) DrawLessons();
             else if(CurrentScreen==GameScreen.Dialogue) DrawDialogue();
             else if(CurrentScreen==GameScreen.Settings) DrawSettings();
@@ -367,6 +368,7 @@ namespace Cascade.Presentation
                 Setting("Dead-end warning",Preferences.DeadEndWarnings,4,()=>Preferences.DeadEndWarnings=!Preferences.DeadEndWarnings);
             }
             if(settingsPage==2)DrawLanguages();
+            if(settingsPage==1&&adProvider?.PrivacyOptionsRequired==true){var privacy=MenuButton("Advertising privacy",.18f,()=>adProvider.ShowPrivacyOptions());RegisterMenuRow(privacy,.71f,5,52,8);}
             MenuButton("Back",.025f,CloseMenu);
         }
         void Setting(string label,bool value,int index,Action toggle)

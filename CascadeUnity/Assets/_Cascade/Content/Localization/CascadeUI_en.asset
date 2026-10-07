@@ -2312,7 +2312,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 510273461936132
-    m_Localized: Shows each next move until this board breaks.
+    m_Localized: Shows one next move. Then you take over. Once per stage.
     m_Metadata:
       m_Items: []
   - m_Id: 510273461936133
@@ -2324,7 +2324,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 510273461936135
-    m_Localized: Pick a tool. Each can be used once per stage.
+    m_Localized: Pick up to two tools per stage. Each works once.
     m_Metadata:
       m_Items: []
   - m_Id: 510273461936136
@@ -2514,8 +2514,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 527816348131341
-    m_Localized: Follow the hand for each next move. The scroll lasts until this
-      board breaks.
+    m_Localized: The hand shows one next move. Then you take over. Up to two tools
+      per stage.
     m_Metadata:
       m_Items: []
   - m_Id: 527816348131342
@@ -3455,6 +3455,75 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 613809554186240
     m_Localized: Practice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 643232689020928
+    m_Localized: '{0} coins added'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 643232714186752
+    m_Localized: Back to shop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 643232714186753
+    m_Localized: A trophy or a few tools
+    m_Metadata:
+      m_Items: []
+  - m_Id: 643232714186754
+    m_Localized: More for your collection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 643232714186755
+    m_Localized: Try +{0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 643232714186756
+    m_Localized: You have enough coins
+    m_Metadata:
+      m_Items: []
+  - m_Id: 643232714186757
+    m_Localized: Two tools used. Try the next step yourself.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 643232714186758
+    m_Localized: Two tools per stage. With help, earn up to two stars. Five stars
+      are yours to earn.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 643232714186759
+    m_Localized: Test shop. No money is charged.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 643232714186760
+    m_Localized: Coins are optional. Earn them by playing, too.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 643232714186761
+    m_Localized: Advertising privacy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 644963959300096
+    m_Localized: Tools
+    m_Metadata:
+      m_Items: []
+  - m_Id: 644963963494400
+    m_Localized: Up to two tools per stage. Help limits this run to two stars.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 644963963494401
+    m_Localized: "Test shop \xB7 no charge"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 644963963494402
+    m_Localized: The store could not finish. Try again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 644963963494403
+    m_Localized: The shop is not open yet.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 644963963494404
+    m_Localized: Coins can also be earned by playing.
     m_Metadata:
       m_Items: []
   references:

@@ -22,10 +22,10 @@ namespace Cascade.Presentation
             var settings=Resources.Load<MonetizationSettings>("CascadeArt/MonetizationSettings");
             monetization=settings?.testMonetization==true&&!saveBlocked?
                 MonetizationTransaction.CreatePreview(profile,profileStore,()=>Interaction.Attempt):MonetizationTransaction.Create(profile,profileStore,()=>Interaction.Attempt);
-            purchaseStore=gameObject.AddComponent<NativePurchaseStore>();purchaseStore.Initialize(monetization,saveBlocked?null:settings);purchaseStore.Changed+=NotifyStoreChanged;
+            purchaseStore=gameObject.AddComponent<NativePurchaseStore>();purchaseStore.Initialize(monetization,saveBlocked?null:settings,()=>ShopCoins);purchaseStore.Changed+=NotifyStoreChanged;purchaseStore.CoinsGranted+=amount=>{NotifyStoreChanged();ShowCoinReward(amount);};
             adProvider=gameObject.AddComponent<NativeAdProvider>();adProvider.Initialize(this,monetization,saveBlocked?null:settings);
         }
-        public void NotifyStoreChanged(){if(CurrentScreen==GameScreen.NoAds||CurrentScreen==GameScreen.Shop||CurrentScreen==GameScreen.Supplies)DrawMenu();}
+        public void NotifyStoreChanged(){if(CurrentScreen==GameScreen.NoAds||CurrentScreen==GameScreen.Shop||CurrentScreen==GameScreen.Supplies||CurrentScreen==GameScreen.CoinPacks||CurrentScreen==GameScreen.Settings)DrawMenu();}
         public void SetNativeAdSuspended(bool value)
         {
             nativeAdSuspended=value;if(value){EndTokenHold();Interaction.CancelPointer();}

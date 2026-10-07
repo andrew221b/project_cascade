@@ -17,6 +17,11 @@ namespace Cascade.Application
             if(!PreviewOnly||FullscreenActive||Ledger.NoAutomaticAds)return false;
             var next=Ledger.Copy();next.NoAutomaticAds=true;return Commit(next);
         }
+        public bool TryPreviewCoinPack(string product)
+        {
+            int amount=PurchaseCatalog.Coins(product);if(!PreviewOnly||FullscreenActive||amount==0)return false;
+            var next=Ledger.Copy();next.BonusCoins=checked(next.BonusCoins+amount);return Commit(next);
+        }
         public int CoinBalance(int earnedCoins) => (int)Math.Max(0L,(long)earnedCoins+Ledger.BonusCoins-Ledger.SpentCoins);
         public int ToolStock(TravelTool tool) => tool==TravelTool.Wayfinder?Ledger.WayfinderScrolls:tool==TravelTool.UndoSpool?Ledger.UndoSpools:tool==TravelTool.ReturnHourglass?Ledger.ReturnHourglasses:tool==TravelTool.SignalLantern?Ledger.SignalLanterns:tool==TravelTool.LandingLens?Ledger.LandingLenses:0;
         static void AddTool(MonetizationLedger ledger,TravelTool tool,int amount)

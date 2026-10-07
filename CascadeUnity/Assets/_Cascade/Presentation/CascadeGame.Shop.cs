@@ -125,8 +125,7 @@ namespace Cascade.Presentation
                 if(!bag)RewardedShopOffer();
             }
             if(!bag&&!collection){
-                CounterButton("Tools tab","Tools",.085f,.492f,.731f,.807f,()=>SelectShopTab(0),shopTab==0);
-                CounterButton("Trophies tab","Trophies",.508f,.915f,.731f,.807f,()=>SelectShopTab(1),shopTab==1);
+                ShopCategoryButtons();
             }else {
                 var note=Text("Catalogue guidance",menuRoot,new Vector2(.10f,.746f),new Vector2(.90f,.805f),18,collection?"Choose a trophy to take with Mika.":"Pick a tool. Each can be used once per stage.");
                 note.enableAutoSizing=true;note.fontSizeMin=16*MenuUnit;note.fontSizeMax=18*MenuUnit;
@@ -193,6 +192,7 @@ namespace Cascade.Presentation
         }
         bool ToolEligible(TravelTool tool)
         {
+            if(Interaction?.Attempt.ToolUsesRemaining==0)return false;
             var a=Interaction.Attempt;
             return !saveBlocked&&!Interaction.IsPreparing&&!Interaction.IsPresenting&&!Interaction.IsSuspended
                 &&(tool==TravelTool.UndoSpool?a.CanUseSpool:tool==TravelTool.ReturnHourglass?a.CanUseHourglass:tool==TravelTool.LandingLens?a.CanUseLens:tool==TravelTool.SignalLantern?a.Current.Status==PuzzleStatus.Playing&&!a.LanternUsed&&!a.Current.Row.SequenceEqual(a.Level.TargetSymbolIds):a.Current.Status==PuzzleStatus.Playing&&!a.WayfinderUsed&&!a.Current.Row.SequenceEqual(a.Level.TargetSymbolIds));
@@ -202,6 +202,7 @@ namespace Cascade.Presentation
             var a=Interaction.Attempt;
             if(!ToolsInLevel)return "Open a level first";
             if(Stock(tool)==0)return "Your bag is empty";
+            if(a.ToolUsesRemaining==0)return "Two tools used. Try the next step yourself.";
             if(tool==TravelTool.UndoSpool){if(a.SpoolUsed)return "Already used this stage";if(a.FreeUndoRemaining>0)return "Use your free undos first";if(!a.CanUndoHere)return "No move on this board to undo";}
             if(tool==TravelTool.ReturnHourglass&&!a.CanUseHourglass)return a.HourglassUsed?"Already used this stage":"No broken board to return to";
             if(tool==TravelTool.SignalLantern&&a.LanternUsed)return "Already used this stage";

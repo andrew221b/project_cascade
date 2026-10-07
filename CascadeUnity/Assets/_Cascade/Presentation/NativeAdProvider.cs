@@ -1,77 +1,107 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using Cascade.Application;
-using Unity.Services.LevelPlay;
+using GoogleMobileAds.Common;
+using GoogleMobileAds.Api;
+using GoogleMobileAds.Ump.Api;
 using UnityEngine;
 
 namespace Cascade.Presentation
 {
-    // The SDK supplies ad events; the existing policy/ledger owns eligibility and grants.
+    // SDK callbacks supply evidence; the existing transaction owns eligibility and rewards.
     public sealed class NativeAdProvider:MonoBehaviour
     {
         CascadeGame game;AdService policy;MonetizationSettings settings;
-        LevelPlayRewardedAd rewarded;LevelPlayInterstitialAd interstitial;
-        readonly Dictionary<string,AdTicket> displayedRewards=new Dictionary<string,AdTicket>();
-        AdTicket pending;float deadline;bool privacyReady,initialized,dead,localPreview;
-        public bool RewardReady=>initialized&&(localPreview||rewarded!=null&&rewarded.IsAdReady());
-        public bool AutomaticReady=>initialized&&(localPreview||interstitial!=null&&interstitial.IsAdReady());
+        RewardedAd rewarded,activeRewarded;InterstitialAd interstitial,activeInterstitial;
+        AdTicket pending;float deadline,rewardLoadedAt,automaticLoadedAt,retryAt;
+        bool privacyReady,initialized,initializing,dead,localPreview,loadingReward,loadingAutomatic;
+        int retryCount;
+        public bool RewardReady=>initialized&&(localPreview||rewarded!=null&&rewarded.CanShowAd());
+        public bool AutomaticReady=>initialized&&(localPreview||interstitial!=null&&interstitial.CanShowAd());
         public bool PrivacyReady=>privacyReady&&initialized;
         public bool Showing=>pending!=null;
+        public bool PrivacyOptionsRequired=>!localPreview&&ConsentInformation.PrivacyOptionsRequirementStatus==PrivacyOptionsRequirementStatus.Required;
+        void Main(Action action)=>MobileAdsEventExecutor.ExecuteInUpdate(()=>{if(!dead)action();});
         public void Initialize(CascadeGame owner,AdService ledger,MonetizationSettings configuration)
         {
             game=owner;policy=ledger;settings=configuration;
-            if(settings==null||!settings.testMonetization||!policy.PreviewOnly)return;
-            privacyReady=initialized=true;
-#if UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
-            // Official SDK Editor mocks; these identifiers never initialize a device SDK.
-            CreateUnits("cascade-editor-rewarded-mock","cascade-editor-interstitial-mock");
+            if(settings==null)return;
+#if !UNITY_IOS && !UNITY_ANDROID
+            if(policy.PreviewOnly){localPreview=privacyReady=initialized=true;}return;
 #else
-            localPreview=true;
+            if(!settings.admobTestAds&&!settings.adsReleaseReady)return;
+            RequestPrivacy();
 #endif
         }
 #if UNITY_EDITOR
-        public void UseLocalPreviewForReview(bool value){if(policy?.PreviewOnly==true&&!Showing)localPreview=value;}
+        public void UseLocalPreviewForReview(bool value)
+        {
+            if(policy?.PreviewOnly!=true||Showing)return;
+            localPreview=value;if(value)privacyReady=initialized=true;else RequestPrivacy();
+        }
 #endif
-        // Called by the publisher's age/consent bridge AFTER CMP/ATT flow, never with invented consent.
-        public void InitializeAfterPrivacy(bool consent,bool optOut,bool isChild)
+        void RequestPrivacy()
         {
-            if(policy.PreviewOnly||settings==null||!settings.adsReleaseReady||initialized||privacyReady)return;
-            string key=UnityEngine.Application.platform==RuntimePlatform.IPhonePlayer?settings.iosAppKey:settings.androidAppKey;
-            if(string.IsNullOrWhiteSpace(key)||string.IsNullOrWhiteSpace(settings.rewardedUnitId)||string.IsNullOrWhiteSpace(settings.interstitialUnitId))return;
-            privacyReady=true;
-            LevelPlayPrivacySettings.SetGDPRConsent(consent);LevelPlayPrivacySettings.SetCCPA(optOut);LevelPlayPrivacySettings.SetCOPPA(isChild);
-            LevelPlay.OnInitSuccess-=Initialized;LevelPlay.OnInitFailed-=InitFailed;
-            LevelPlay.OnInitSuccess+=Initialized;LevelPlay.OnInitFailed+=InitFailed;LevelPlay.Init(key);
+            var request=new ConsentRequestParameters{TagForUnderAgeOfConsent=settings.underAgeOfConsent};
+            ConsentInformation.Update(request,error=>Main(()=>{
+                game.NotifyStoreChanged();
+                if(error!=null){StartAdsIfAllowed();return;}
+                game.SetNativeAdSuspended(true);
+                ConsentForm.LoadAndShowConsentFormIfRequired(formError=>Main(()=>{game.SetNativeAdSuspended(false);StartAdsIfAllowed();game.NotifyStoreChanged();}));
+            }));
         }
-        void Initialized(LevelPlayConfiguration configuration)
+        public void ShowPrivacyOptions()
         {
-            if(dead)return;initialized=true;
-            CreateUnits(settings.rewardedUnitId,settings.interstitialUnitId);
+            if(!PrivacyOptionsRequired||Showing)return;game.SetNativeAdSuspended(true);
+            ConsentForm.ShowPrivacyOptionsForm(error=>Main(()=>{
+                game.SetNativeAdSuspended(false);privacyReady=ConsentInformation.CanRequestAds();
+                if(!privacyReady){DestroyUnits();initialized=false;}
+                else StartAdsIfAllowed();game.NotifyStoreChanged();
+            }));
         }
-        void CreateUnits(string rewardedId,string automaticId)
+        void StartAdsIfAllowed()
         {
-            rewarded=new LevelPlayRewardedAd(rewardedId);interstitial=new LevelPlayInterstitialAd(automaticId);
-            rewarded.OnAdLoaded+=Loaded;interstitial.OnAdLoaded+=Loaded;
-            rewarded.OnAdDisplayed+=RewardDisplayed;rewarded.OnAdDisplayFailed+=RewardFailed;rewarded.OnAdRewarded+=Reward;
-            rewarded.OnAdClosed+=RewardClosed;rewarded.OnAdLoadFailed+=LoadFailed;rewarded.OnAdImpressionDataReady+=Impression;
-            interstitial.OnAdDisplayed+=AutomaticDisplayed;interstitial.OnAdDisplayFailed+=AutomaticFailed;
-            interstitial.OnAdClosed+=AutomaticClosed;interstitial.OnAdLoadFailed+=LoadFailed;interstitial.OnAdImpressionDataReady+=Impression;
-            rewarded.LoadAd();interstitial.LoadAd();
+            privacyReady=ConsentInformation.CanRequestAds();if(!privacyReady||initialized||initializing)return;
+            MobileAds.SetRequestConfiguration(new RequestConfiguration{TagForChildDirectedTreatment=settings.childDirected?TagForChildDirectedTreatment.True:TagForChildDirectedTreatment.Unspecified,
+                TagForUnderAgeOfConsent=settings.underAgeOfConsent?TagForUnderAgeOfConsent.True:TagForUnderAgeOfConsent.Unspecified});
+            initializing=true;MobileAds.Initialize(status=>Main(()=>{initializing=false;if(status==null)return;initialized=true;LoadUnits();}));
         }
-        void Loaded(LevelPlayAdInfo info){if(!dead)game.NotifyStoreChanged();}
-        void InitFailed(LevelPlayInitError error){privacyReady=false;initialized=false;}
-        void Impression(LevelPlayImpressionData data){/* Publisher analytics may subscribe here; no receipt or user data is logged. */}
-        void LoadFailed(LevelPlayAdError error){/* Not ready means skip, never hold gameplay or queue a debt. */}
+        string Unit(bool video)
+        {
+            bool ios=UnityEngine.Application.platform==RuntimePlatform.IPhonePlayer;
+#if UNITY_EDITOR && UNITY_IOS
+            ios=true;
+#endif
+            return settings.AdUnit(ios,video);
+        }
+        void LoadUnits()
+        {
+            if(!initialized||!privacyReady||Showing||localPreview)return;
+            if(rewarded==null&&!loadingReward){
+                string id=Unit(true);if(!string.IsNullOrWhiteSpace(id)){
+                    loadingReward=true;RewardedAd.Load(id,new AdRequest(),(ad,error)=>MobileAdsEventExecutor.ExecuteInUpdate(()=>{
+                        loadingReward=false;if(dead){ad?.Destroy();return;}
+                        if(error!=null||ad==null){ScheduleRetry();return;}
+                        rewarded=ad;rewardLoadedAt=Time.realtimeSinceStartup;retryCount=0;game.NotifyStoreChanged();
+                    }));
+                }
+            }
+            if(interstitial==null&&!loadingAutomatic&&!policy.Ledger.NoAutomaticAds){
+                string id=Unit(false);if(!string.IsNullOrWhiteSpace(id)){
+                    loadingAutomatic=true;InterstitialAd.Load(id,new AdRequest(),(ad,error)=>MobileAdsEventExecutor.ExecuteInUpdate(()=>{
+                        loadingAutomatic=false;if(dead){ad?.Destroy();return;}
+                        if(error!=null||ad==null){ScheduleRetry();return;}
+                        interstitial=ad;automaticLoadedAt=Time.realtimeSinceStartup;retryCount=0;game.NotifyStoreChanged();
+                    }));
+                }
+            }
+        }
+        void ScheduleRetry(){retryAt=Time.realtimeSinceStartup+Mathf.Min(120,15*Mathf.Pow(2,Mathf.Min(3,retryCount++)));game.NotifyStoreChanged();}
         public bool TryAutomatic(AdContext context)
         {
-            var ticket=policy.TryAutomatic(context,AutomaticReady);if(ticket==null)return false;
-            Show(ticket,false);return true;
+            var ticket=policy.TryAutomatic(context,AutomaticReady);if(ticket==null)return false;Show(ticket,false);return true;
         }
-        public void OfferCoins(AdContext context)
-        {
-            var ticket=policy.TryRewarded(context,"coins",RewardReady);if(ticket!=null)Show(ticket,true);
-        }
+        public void OfferCoins(AdContext context){var ticket=policy.TryRewarded(context,"coins",RewardReady);if(ticket!=null)Show(ticket,true);}
         void Show(AdTicket ticket,bool video)
         {
             pending=ticket;deadline=Time.realtimeSinceStartup+12;game.SetNativeAdSuspended(true);
@@ -79,42 +109,46 @@ namespace Cascade.Presentation
                 policy.Opened(ticket.Id);deadline=0;
                 game.ShowPreviewAd(video,confirmed=>{
                     if(dead||pending!=ticket)return;
-                    bool rewardedNow=video&&confirmed&&policy.RewardConfirmed(ticket.Id,"preview_"+ticket.Id,true);
-                    if(!confirmed)policy.Failed(ticket.Id);Close();game.NotifyStoreChanged();if(rewardedNow)game.ShowCoinReward();
+                    bool granted=video&&confirmed&&policy.RewardConfirmed(ticket.Id,"preview_"+ticket.Id,true);
+                    if(!confirmed)policy.Failed(ticket.Id);Close(ticket);if(granted)game.ShowCoinReward();
                 });return;
             }
-            try{if(video)rewarded.ShowAd();else interstitial.ShowAd();}catch(Exception){Fail();}
+            try{
+                if(video){
+                    var ad=rewarded;rewarded=null;activeRewarded=ad;bool granted=false,closed=false;
+                    ad.OnAdFullScreenContentOpened+=()=>Main(()=>Opened(ticket));
+                    ad.OnAdFullScreenContentFailed+=error=>Main(()=>{Fail(ticket);ad.Destroy();activeRewarded=null;LoadUnits();});
+                    ad.OnAdFullScreenContentClosed+=()=>Main(()=>{closed=true;Close(ticket);ad.Destroy();activeRewarded=null;LoadUnits();if(granted)game.ShowCoinReward();else StartCoroutine(ExpireReward(ticket));});
+                    ad.Show(reward=>Main(()=>{
+                        // The original ticket survives close-before-reward callbacks; a new ad cannot receive this reward.
+                        policy.Opened(ticket.Id);
+                        granted=policy.RewardConfirmed(ticket.Id,"admob_"+ticket.Id,true);if(granted){game.NotifyStoreChanged();if(closed)game.ShowCoinReward();}
+                    }));
+                }else{
+                    var ad=interstitial;interstitial=null;activeInterstitial=ad;
+                    ad.OnAdFullScreenContentOpened+=()=>Main(()=>Opened(ticket));
+                    ad.OnAdFullScreenContentFailed+=error=>Main(()=>{Fail(ticket);ad.Destroy();activeInterstitial=null;LoadUnits();});
+                    ad.OnAdFullScreenContentClosed+=()=>Main(()=>{Close(ticket);ad.Destroy();activeInterstitial=null;LoadUnits();});ad.Show();
+                }
+            }catch(Exception){Fail(ticket);activeRewarded?.Destroy();activeRewarded=null;activeInterstitial?.Destroy();activeInterstitial=null;LoadUnits();}
         }
-        void RewardDisplayed(LevelPlayAdInfo info)
+        IEnumerator ExpireReward(AdTicket ticket){yield return new WaitForSecondsRealtime(30);policy.Failed(ticket.Id);}
+        void Opened(AdTicket ticket){if(pending!=ticket)return;policy.Opened(ticket.Id);deadline=0;}
+        void Close(AdTicket ticket)
         {
-            if(pending==null||!pending.Rewarded)return;policy.Opened(pending.Id);deadline=0;
-            string key=Key(info);if(key!=null)displayedRewards[key]=pending;
+            policy.Closed(ticket.Id);if(pending!=ticket)return;pending=null;deadline=0;game.SetNativeAdSuspended(false);game.NotifyStoreChanged();
         }
-        static string Key(LevelPlayAdInfo info)=>!string.IsNullOrEmpty(info.AuctionId)?info.AuctionId:info.AdId;
-        void Reward(LevelPlayAdInfo info,LevelPlayReward reward)
+        void Fail(AdTicket ticket){policy.Failed(ticket.Id);Close(ticket);}
+        void DestroyUnits(){rewarded?.Destroy();rewarded=null;interstitial?.Destroy();interstitial=null;}
+        void Update()
         {
-            string key=Key(info);if(key==null||!displayedRewards.TryGetValue(key,out var ticket))return;
-            if(policy.RewardConfirmed(ticket.Id,"ad_"+ticket.Id,true)){displayedRewards.Remove(key);game.NotifyStoreChanged();game.ShowCoinReward();}
+            if(pending!=null&&deadline>0&&Time.realtimeSinceStartup>=deadline){Fail(pending);LoadUnits();}
+            if(!initialized||Showing||localPreview)return;
+            float now=Time.realtimeSinceStartup;
+            if(rewarded!=null&&now-rewardLoadedAt>3500){rewarded.Destroy();rewarded=null;retryAt=now;}
+            if(interstitial!=null&&(policy.Ledger.NoAutomaticAds||now-automaticLoadedAt>3500)){interstitial.Destroy();interstitial=null;retryAt=now;}
+            if(retryAt>0&&now>=retryAt){retryAt=0;LoadUnits();}
         }
-        void AutomaticDisplayed(LevelPlayAdInfo info){if(pending!=null){policy.Opened(pending.Id);deadline=0;}}
-        void RewardClosed(LevelPlayAdInfo info)
-        {
-            string key=Key(info);if(key!=null&&displayedRewards.TryGetValue(key,out var ticket))StartCoroutine(ExpireReward(key,ticket));
-            Close();rewarded.LoadAd();
-        }
-        IEnumerator ExpireReward(string key,AdTicket ticket){yield return new WaitForSecondsRealtime(30);if(displayedRewards.TryGetValue(key,out var current)&&current==ticket){displayedRewards.Remove(key);policy.Failed(ticket.Id);}}
-        void AutomaticClosed(LevelPlayAdInfo info){Close();interstitial.LoadAd();}
-        void RewardFailed(LevelPlayAdInfo info,LevelPlayAdError error)=>Fail();
-        void AutomaticFailed(LevelPlayAdInfo info,LevelPlayAdError error)=>Fail();
-        void Close(){if(pending!=null)policy.Closed(pending.Id);pending=null;deadline=0;game.SetNativeAdSuspended(false);}
-        void Fail(){if(pending!=null)policy.Failed(pending.Id);Close();}
-        void Update(){if(pending!=null&&deadline>0&&Time.realtimeSinceStartup>=deadline)Fail();}
-        void OnDestroy()
-        {
-            dead=true;StopAllCoroutines();if(policy!=null&&pending!=null)policy.Failed(pending.Id);
-            LevelPlay.OnInitSuccess-=Initialized;LevelPlay.OnInitFailed-=InitFailed;
-            if(rewarded!=null){rewarded.OnAdLoaded-=Loaded;rewarded.OnAdDisplayed-=RewardDisplayed;rewarded.OnAdDisplayFailed-=RewardFailed;rewarded.OnAdRewarded-=Reward;rewarded.OnAdClosed-=RewardClosed;rewarded.OnAdLoadFailed-=LoadFailed;rewarded.OnAdImpressionDataReady-=Impression;rewarded.DestroyAd();}
-            if(interstitial!=null){interstitial.OnAdLoaded-=Loaded;interstitial.OnAdDisplayed-=AutomaticDisplayed;interstitial.OnAdDisplayFailed-=AutomaticFailed;interstitial.OnAdClosed-=AutomaticClosed;interstitial.OnAdLoadFailed-=LoadFailed;interstitial.OnAdImpressionDataReady-=Impression;interstitial.DestroyAd();}
-        }
+        void OnDestroy(){dead=true;if(policy!=null&&pending!=null)policy.Failed(pending.Id);DestroyUnits();activeRewarded?.Destroy();activeInterstitial?.Destroy();}
     }
 }

@@ -23,7 +23,7 @@ namespace Cascade.Application
             if(BonusCoins<0||HintTokens<0||SpentCoins<0||WayfinderScrolls<0||WayfinderScrolls>ShopCatalog.StockLimit||UndoSpools<0||UndoSpools>ShopCatalog.StockLimit
                 ||SignalLanterns<0||SignalLanterns>ShopCatalog.StockLimit||LandingLenses<0||LandingLenses>ShopCatalog.StockLimit
                 ||ReturnHourglasses<0||ReturnHourglasses>ShopCatalog.StockLimit||Grants==null||Grants.Count>10000||Grants.Any(g=>g==null||string.IsNullOrWhiteSpace(g.Id)||g.Id.Length>256
-                ||!(g.Kind=="coins"&&g.Amount==40||g.Kind=="hint"&&g.Amount==1||g.Kind=="no_auto"&&g.Amount==0||g.Kind=="cosmetic"&&g.Amount==0&&ShopCatalog.TrophyIds.Contains(g.Product)))
+                ||!(g.Kind=="coins"&&g.Amount==40||g.Kind=="store_coins"&&PurchaseCatalog.Coins(g.Product)>0&&g.Amount==PurchaseCatalog.Coins(g.Product)||g.Kind=="hint"&&g.Amount==1||g.Kind=="no_auto"&&g.Amount==0||g.Kind=="cosmetic"&&g.Amount==0&&ShopCatalog.TrophyIds.Contains(g.Product)))
                 ||Grants.Select(g=>g.Id).Distinct().Count()!=Grants.Count||Cosmetics==null||Cosmetics.Distinct().Count()!=Cosmetics.Count
                 ||Cosmetics.Any(g=>!ShopCatalog.TrophyIds.Contains(g))||PaidHintStates==null||PaidHintStates.Count>20000
                 ||PaidHintStates.Distinct().Count()!=PaidHintStates.Count||PaidHintStates.Any(k=>k==null||k.Length!=101||!Guid.TryParse(k.Substring(0,36),out _)||k[36]!='|'
@@ -111,11 +111,12 @@ namespace Cascade.Application
         }
         public bool VerifiedStorePurchase(string product,string receipt,bool providerVerified)
         {
-            if(!providerVerified||product!=PurchaseCatalog.NoAutomaticAds||string.IsNullOrWhiteSpace(receipt)||receipt.Length>256)return false;
+            if(!providerVerified||!PurchaseCatalog.IsKnown(product)||string.IsNullOrWhiteSpace(receipt)||receipt.Length>256)return false;
             var existing=Ledger.Grants.FirstOrDefault(g=>g.Id==receipt);
-            if(existing!=null)return existing.Kind=="no_auto"&&existing.Product==product;
-            var next=Ledger.Copy();next.NoAutomaticAds=true;
-            next.Grants.Add(new GrantReceipt{Id=receipt,Kind="no_auto",Product=product});
+            int amount=PurchaseCatalog.Coins(product);string kind=amount>0?"store_coins":"no_auto";
+            if(existing!=null)return existing.Kind==kind&&existing.Product==product&&existing.Amount==amount;
+            var next=Ledger.Copy();if(amount>0)next.BonusCoins=checked(next.BonusCoins+amount);else next.NoAutomaticAds=true;
+            next.Grants.Add(new GrantReceipt{Id=receipt,Kind=kind,Product=product,Amount=amount});
             return Commit(next);
         }
         public bool TrySpendHint(AttemptService attempt,HintOffer offer)
