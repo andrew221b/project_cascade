@@ -1,0 +1,2 @@
+PASS native RU390 and UK320/LargeText/safe insets; no text overflow; unchanged puzzle hash; medal artwork and finite metric reveal.
+Final native captures visually inspected; record label inside enamel, timer icon separated from digits. Editor review fixture launched via CUA after native MCP timeout. Temporary runner removed; no phone build or gameplay suite.

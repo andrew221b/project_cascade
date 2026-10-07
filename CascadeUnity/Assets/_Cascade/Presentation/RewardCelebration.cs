@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,7 @@ namespace Cascade.Presentation
     {
         CascadeGame game;Image[] stars;int earned,score;TMP_Text number;float elapsed;bool gift;
         Image[] confetti;PaperBody[] paperBodies;Vector2[] starOrigins,starLaunch;float[] starSizes;int chimed=-1;Tween ceremony;RectTransform ribbon;CeremonyGlowGraphic glow;
+        RectTransform[] metrics;
         public float Progress=>Mathf.Clamp01(elapsed/3.2f);
         public void Initialize(CascadeGame owner,Image[] awardStars,int count,TMP_Text scoreLabel,int finalScore,Sprite papers,bool opening,RectTransform awardRibbon=null)
         {
@@ -42,6 +44,7 @@ namespace Cascade.Presentation
                     gravity=140+(float)random.NextDouble()*65,delay=(gift?.50f:.40f)+i*.015f};
                 confetti[i].color=new Color(1,1,1,0);
             }
+            metrics=GetComponentsInChildren<RectTransform>().Where(r=>r.name.StartsWith("Award metric ",System.StringComparison.Ordinal)).ToArray();
             Paint();
             ceremony=DOTween.To(()=>elapsed,value=>{elapsed=value;Paint();},3.2f,3.2f).SetEase(Ease.Linear).SetUpdate(UpdateType.Manual).SetTarget(this).Pause();
         }
@@ -74,6 +77,7 @@ namespace Cascade.Presentation
                 if(t>.85f&&i>chimed){chimed=i;game.Feedback.Sound(i==earned-1?ToyCue.Success:ToyCue.Stamp);}
 
             }
+            if(metrics!=null)for(int i=0;i<metrics.Length;i++){float t=quiet?1:Mathf.Clamp01((elapsed-1.45f-i*.13f)/.4f);metrics[i].GetComponent<CanvasGroup>().alpha=t;metrics[i].localScale=Vector3.one*Mathf.Lerp(.9f,1,1-Mathf.Pow(1-t,3));}
             if(number!=null){float delay=stars!=null&&stars.Length>3?1.95f:1.05f;float t=quiet?1:Mathf.Clamp01((elapsed-delay)/1.25f);number.text=Mathf.RoundToInt(score*(1-Mathf.Pow(1-t,3))).ToString("N0");}
             if(confetti!=null)for(int i=0;i<confetti.Length;i++){
                 if(confetti[i]==null)continue;var body=paperBodies[i];float age=elapsed-body.delay;

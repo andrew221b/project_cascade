@@ -38,7 +38,7 @@ namespace Cascade.Presentation
             }
             return completionArt[index];
         }
-        void DisposeCompletionArt(){foreach(var sprites in new[]{completionArt,rewardEmblems,celebrationPaper})if(sprites!=null)foreach(var sprite in sprites)if(sprite!=null)Destroy(sprite);}
+        void DisposeCompletionArt(){foreach(var sprites in new[]{completionArt,rewardEmblems,celebrationPaper,resultMedals})if(sprites!=null)foreach(var sprite in sprites)if(sprite!=null)Destroy(sprite);}
         public Sprite CelebrationPaper(int index)
         {
             if(celebrationPaper==null)celebrationPaper=NavigationSlices("Workshop/CelebrationPaper",3,2);
@@ -54,6 +54,16 @@ namespace Cascade.Presentation
             var label=Text(name,parent,min,max,Mathf.RoundToInt(size),copy);label.font=art.titleFont;label.enableAutoSizing=true;
             label.fontSizeMax=size*(Preferences.LargeText?1.1f:1);label.fontSizeMin=size*.78f;label.color=MenuInk;
             label.margin=new Vector4(6,4,6,4);return label;
+        }
+        Sprite[] resultMedals;
+        Sprite ResultMedal(int index)
+        {
+            if(resultMedals==null){
+                var texture=Resources.Load<Texture2D>("CascadeArt/Workshop/ResultMedals");
+                var bounds=new[]{new Rect(50,737,664,357),new Rect(766,693,416,460),new Rect(130,97,447,486),new Rect(735,97,445,489)};
+                resultMedals=bounds.Select(r=>Sprite.Create(texture,r,new Vector2(.5f,.5f),100,0,SpriteMeshType.FullRect)).ToArray();
+            }
+            return resultMedals[index];
         }
         void DrawCompletion()
         {
@@ -74,16 +84,21 @@ namespace Cascade.Presentation
             }
             var hero=Picture("Mika celebrates",menuRoot,new Vector2(.065f,.405f),new Vector2(.34f,.666f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
             hero.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,1.3f),0,.45f);
-            CompletionText("Score label",menuRoot,new Vector2(.35f,.575f),new Vector2(.93f,.644f),18,receipt.NewBest?"New best!":"Score");
-            var score=CompletionText("Earned score",menuRoot,new Vector2(.35f,.465f),new Vector2(.93f,.574f),48,UiCopy.Raw(receipt.Score.ToString("N0")));
-            var tip=CompletionText("Rank guidance",menuRoot,new Vector2(.35f,.407f),new Vector2(.93f,.47f),14,receipt.Stars==5?"A perfect, swift route.":"Aim for fewer moves and undos.");
+            var scoreMedal=Picture("Score medal",menuRoot,new Vector2(.345f,.452f),new Vector2(.955f,.636f),ResultMedal(0),true);
+            var scoreLabel=CompletionText("Score label",scoreMedal.transform,new Vector2(.13f,.53f),new Vector2(.87f,.74f),17,receipt.NewBest?"New best!":"Score");scoreLabel.color=MenuPaper;scoreLabel.margin=new Vector4(2,0,2,0);navigationLightLabels.Add(scoreLabel);
+            var score=CompletionText("Earned score",scoreMedal.transform,new Vector2(.16f,.19f),new Vector2(.84f,.56f),42,UiCopy.Raw(receipt.Score.ToString("N0")));score.color=new Color(1,.88f,.46f);score.margin=new Vector4(2,0,2,0);
+            var scoreGlint=Rect("Score glint",scoreMedal.transform,Vector2.zero,Vector2.one).gameObject.AddComponent<AwardGlintGraphic>();scoreGlint.Initialize(this,3);scoreGlint.raycastTarget=false;
+            CompletionText("Rank guidance",menuRoot,new Vector2(.35f,.405f),new Vector2(.94f,.455f),14,receipt.Stars==5?"A perfect, swift route.":"Aim for fewer moves and undos.");
 
             string[] names={"Moves","Undos","Time"};string[] values={receipt.Moves.ToString(),receipt.Undos.ToString(),receipt.ActiveSeconds.HasValue?
                 ((int)receipt.ActiveSeconds.Value/60).ToString()+":"+((int)receipt.ActiveSeconds.Value%60).ToString("00"):"—"};
             for(int i=0;i<3;i++){
                 float left=.07f+i*.29f;
-                CompletionText(names[i]+" statistic heading",menuRoot,new Vector2(left,.345f),new Vector2(left+.28f,.392f),16,names[i]);
-                CompletionText(names[i]+" statistic",menuRoot,new Vector2(left,.282f),new Vector2(left+.28f,.35f),27,UiCopy.Raw(values[i]));
+                var metric=Rect("Award metric "+i,menuRoot,new Vector2(left,.278f),new Vector2(left+.28f,.397f));
+                metric.gameObject.AddComponent<CanvasGroup>();
+                Picture(names[i]+" medal",metric,new Vector2(.02f,.38f),new Vector2(.40f,.97f),ResultMedal(i+1),true);
+                var value=CompletionText(names[i]+" statistic",metric,new Vector2(.46f,.38f),new Vector2(1,.97f),25,UiCopy.Raw(values[i]));value.margin=new Vector4(2,0,2,0);
+                CompletionText(names[i]+" statistic heading",metric,new Vector2(0,.015f),new Vector2(1,.35f),15,names[i]);
             }
             Picture("Earned gold illustration",menuRoot,new Vector2(.105f,.156f),new Vector2(.285f,.263f),RewardEmblem(0),true);
             CompletionText("Earned coins",menuRoot,new Vector2(.285f,.163f),new Vector2(.465f,.251f),28,UiCopy.Raw(receipt.Coins>0?"+"+receipt.Coins:"0"));
