@@ -82,6 +82,7 @@ namespace Cascade.Presentation
         }
         Sprite ConversationPortrait(string name)
         {
+            if(name=="Mika")return MikaBasePortrait();
             if(name=="Aster")return Resources.Load<Sprite>("CascadeArt/Journey/Aster");
             if(residents==null)residents=NavigationSlices("Journey/Residents",3,2);
             int index=Array.IndexOf(new[]{"Bram","Sora","Neri","Toma","Lumi","Gran"},name);if(index>=0)return residents[index];
@@ -98,6 +99,8 @@ namespace Cascade.Presentation
         void PaintConversationLine()
         {
             var line=conversation.Lines[conversationLine];conversationPortrait.sprite=ConversationPortrait(line.Speaker);conversationSpeaker.SetCopy(line.Speaker);
+            if(line.Speaker=="Mika")AttachMikaCosmetic(conversationPortrait,null,true);
+            else conversationPortrait.GetComponent<MikaCosmeticView>()?.HideForOtherSpeaker();
             conversationBody.SetCopy(line.Goal==null?new UiCopy(line.Text):new UiCopy(line.Text,new UiCopy(line.Goal)));
             conversationCount.SetCopy(UiCopy.Raw((conversationLine+1)+" / "+conversation.Lines.Length));
             conversationNext.GetComponentInChildren<TextMeshProUGUI>().SetCopy(conversationLine==conversation.Lines.Length-1?conversationFinal:new UiCopy("Next line"));

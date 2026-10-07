@@ -4550,6 +4550,78 @@ MonoBehaviour:
     m_Key: '{0}: locked'
     m_Metadata:
       m_Items: []
+  - m_Id: 784913883193344
+    m_Key: Leaf pin, drifting leaves
+    m_Metadata:
+      m_Items: []
+  - m_Id: 784913887387648
+    m_Key: Sun button, warm motes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 784913887387649
+    m_Key: Sky outfit, falling feathers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 784913887387650
+    m_Key: Moon outfit, twinkling stars
+    m_Metadata:
+      m_Items: []
+  - m_Id: 784913887387651
+    m_Key: Chime pin, floating petals
+    m_Metadata:
+      m_Items: []
+  - m_Id: 784913887387652
+    m_Key: Raincoat, soft raindrops
+    m_Metadata:
+      m_Items: []
+  - m_Id: 784913887387653
+    m_Key: Acorn pin, amber leaves
+    m_Metadata:
+      m_Items: []
+  - m_Id: 784913887387654
+    m_Key: Brooch, glowing fireflies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 784913887387655
+    m_Key: Preview
+    m_Metadata:
+      m_Items: []
+  - m_Id: 784913887387656
+    m_Key: Test look
+    m_Metadata:
+      m_Items: []
+  - m_Id: 784913887387657
+    m_Key: or coins
+    m_Metadata:
+      m_Items: []
+  - m_Id: 784913887387658
+    m_Key: Appearance only
+    m_Metadata:
+      m_Items: []
+  - m_Id: 784913887387659
+    m_Key: Wear this look
+    m_Metadata:
+      m_Items: []
+  - m_Id: 784913887387660
+    m_Key: Try this look
+    m_Metadata:
+      m_Items: []
+  - m_Id: 784913887387661
+    m_Key: 'Levels: {0}/{1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 784913887387662
+    m_Key: 'Parcel parts: {0}/3'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 784913887387663
+    m_Key: Preview resets on restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 784913887387664
+    m_Key: Preview only; resets on restart
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -39,7 +39,12 @@ namespace Cascade.Application
         public List<string> VisitDates=new List<string>();
         public int Fragments(string id)=>Parcels.Count(p=>p.GiftId==id&&p.Claimed);
         public int EarnedFragments(string id)=>Parcels.Count(p=>p.GiftId==id);
-        public bool Owns(string id)=>Fragments(id)==3;
+        public int CosmeticClearCount=>SeenClearNodes.Where(n=>!string.IsNullOrWhiteSpace(n)).Distinct(StringComparer.Ordinal).Count();
+        public bool Owns(string id)
+        {
+            int milestone=ShopCatalog.EarnedClearMilestone(id);
+            return milestone>0 ? CosmeticClearCount>=milestone : Gifts.Contains(id)&&Fragments(id)==3;
+        }
         public bool AllGiftsEarned=>Parcels.Count==12;
         public int OrderProgress=>AllGiftsEarned?3:SeenClearNodes.Count%3;
         public int CompletedRequests=>(QuestCount(0)>=1?1:0)+(QuestCount(1)>=2?1:0)+(QuestCount(2)>=3?1:0);

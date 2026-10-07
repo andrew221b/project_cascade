@@ -132,5 +132,58 @@ namespace Cascade.Tests
             var old=Newtonsoft.Json.JsonConvert.DeserializeObject<MonetizationLedger>("{}");old.Validate();
             Assert.That(old.SignalLanterns+old.LandingLenses,Is.Zero);
         }
+        [TestCase("wind_chime",15)]
+        [TestCase("rain_badge",30)]
+        [TestCase("copper_acorn",45)]
+        [TestCase("beacon_brooch",60)]
+        public void TrophyMilestonesRequireTheirExactUniqueClearThreshold(string id,int threshold)
+        {
+            var rewards=new JourneyRewards();
+            rewards.Synchronize(Enumerable.Range(1,threshold-1).Select(i=>"C"+i));
+            Assert.That(ShopCatalog.EarnedClearMilestone(id),Is.EqualTo(threshold));
+            Assert.That(rewards.Owns(id),Is.False);Assert.That(rewards.Equip(id),Is.False);
+            rewards.Synchronize(new[]{"C"+threshold});
+            Assert.That(rewards.Owns(id),Is.True);Assert.That(rewards.Equip(id),Is.True);rewards.Validate();
+            Assert.That(JourneyRewards.Gifts.All(g=>!rewards.Owns(g)),Is.True,"Milestones must not silently claim parcel fragments.");
+            Assert.That(rewards.Records,Is.Empty);Assert.That(rewards.Deliveries,Is.Empty);
+        }
+        [Test] public void TrophyReplayCannotFarmOwnershipAndEarnedTrophyCannotBeBoughtAgain()
+        {
+            var rewards=new JourneyRewards();var nodes=Enumerable.Range(1,14).Select(i=>"C"+i).ToArray();
+            for(int replay=0;replay<4;replay++)rewards.Synchronize(nodes);
+            Assert.That(rewards.CosmeticClearCount,Is.EqualTo(14));Assert.That(rewards.Owns("wind_chime"),Is.False);
+            rewards.Synchronize(new[]{"C15","C15"});Assert.That(rewards.CosmeticClearCount,Is.EqualTo(15));
+            var shop=new AdService(new MonetizationLedger{BonusCoins=500},_=>{});
+            Assert.That(shop.TryBuyKeepsake("wind_chime",0,rewards),Is.False);
+            Assert.That(shop.Ledger.SpentCoins,Is.Zero);Assert.That(shop.Ledger.Cosmetics,Is.Empty);
+            Assert.That(rewards.Owns("unknown"),Is.False);Assert.That(ShopCatalog.KeepsakePrice,Is.EqualTo(240));
+        }
+        [Test] public void PurchasedTrophyStaysPermanentWhenItsMilestoneIsLaterEarned()
+        {
+            var rewards=new JourneyRewards();var shop=new AdService(new MonetizationLedger{BonusCoins=500},_=>{});
+            Assert.That(shop.TryBuyKeepsake("rain_badge",0,rewards),Is.True);
+            Assert.That(rewards.Equip("rain_badge",shop.Ledger.Cosmetics),Is.True);
+            rewards.Synchronize(Enumerable.Range(1,30).Select(i=>"C"+i));
+            Assert.That(rewards.Equip("rain_badge"),Is.True);Assert.That(shop.TryBuyKeepsake("rain_badge",0,rewards),Is.False);
+            Assert.That(shop.Ledger.Cosmetics,Is.EquivalentTo(new[]{"rain_badge"}));Assert.That(shop.Ledger.SpentCoins,Is.EqualTo(240));
+            rewards.Validate(shop.Ledger.Cosmetics);
+        }
+        [Test] public void EarnedCosmeticAndEquipmentSurviveModeSwitchAndDurableReload()
+        {
+            string dir=Path.Combine(Path.GetTempPath(),"CascadeTrophyMilestones",Guid.NewGuid().ToString("N"));
+            try {
+                var profile=new PlayerProfile();
+                for(int i=1;i<=15;i++)profile.Clears.Add(new ClearReceipt{CampaignNodeId="C"+i,AttemptId=Guid.NewGuid().ToString("D"),ContentHash=new string('a',64)});
+                profile.Rewards.Synchronize(profile.AllClears.Select(c=>c.CampaignNodeId));
+                Assert.That(profile.Rewards.Equip("wind_chime"),Is.True);
+                profile.SelectJourney("Words");Assert.That(profile.Clears,Is.Empty);Assert.That(profile.Rewards.Owns("wind_chime"),Is.True);
+                var store=new ProfileStore(Path.Combine(dir,"save.json"));store.Save(profile);
+                var loaded=store.Load().Profile;loaded.Validate();
+                Assert.That(loaded.Rewards.CosmeticClearCount,Is.EqualTo(15));Assert.That(loaded.Rewards.EquippedGift,Is.EqualTo("wind_chime"));
+                loaded.SelectJourney("Mixed");loaded.Rewards.Synchronize(loaded.AllClears.Select(c=>c.CampaignNodeId));loaded.Validate();
+                Assert.That(loaded.Rewards.Owns("wind_chime"),Is.True);Assert.That(loaded.Rewards.CosmeticClearCount,Is.EqualTo(15));
+                Assert.That(loaded.Monetization.Cosmetics,Is.Empty);Assert.That(loaded.Rewards.Records,Is.Empty);
+            } finally {if(Directory.Exists(dir))Directory.Delete(dir,true);}
+        }
     }
 }

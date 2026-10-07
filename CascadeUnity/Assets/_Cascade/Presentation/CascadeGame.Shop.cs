@@ -28,7 +28,7 @@ namespace Cascade.Presentation
         public string EquippedGift=>previewEquippedGift??Rewards.EquippedGift;
         public int ShopCoins=>monetization?.CoinBalance(Rewards.EarnedCoins(OrderedNodes))??0;
         public int Stock(TravelTool tool)=>monetization?.ToolStock(tool)??0;
-        public bool OwnsGift(string id)=>Rewards.Owns(id)||monetization?.Ledger.Cosmetics.Contains(id)==true;
+        public bool OwnsGift(string id)=>ShopCatalog.TrophyIds.Contains(id)&&(Rewards.Owns(id)||monetization?.Ledger.Cosmetics.Contains(id)==true);
         Sprite TravelArt(int index)
         {
             if(travelArt==null){
@@ -136,21 +136,22 @@ namespace Cascade.Presentation
             if(!bag&&!collection){
                 ShopCategoryButtons();
             }else {
-                var note=Text("Catalogue guidance",menuRoot,new Vector2(.16f,.726f),new Vector2(.84f,.817f),18,collection?"Choose a trophy to take with Mika.":"Pick a tool. Each can be used once per stage.");
+                var note=Text("Catalogue guidance",menuRoot,new Vector2(.16f,.726f),new Vector2(.84f,.817f),18,collection?TestMonetization?(UiCopy)"Preview resets on restart":"Choose a trophy to take with Mika.":"Pick a tool. Each can be used once per stage.");
                 note.enableAutoSizing=true;note.fontSizeMin=16*MenuUnit;note.fontSizeMax=18*MenuUnit;
             }
             int count=shopTab==0?ShopCatalog.ToolCount+1:ShopCatalog.TrophyIds.Length,columns=shopTab==0?3:4;
             shopItem=Mathf.Clamp(shopItem,0,count-1);float span=.83f/columns;
             for(int i=0;i<count;i++){
-                int selected=i;float x=.085f+i%columns*span,top=.719f-(i/columns)*.137f;
-                var button=Button("",menuRoot,new Vector2(x+.008f,top-.119f),new Vector2(x+span-.008f,top),()=>SelectShopItem(selected));button.name="Shop object "+i;button.interactable=!toolSearchPending;
+                int selected=i;float x=.085f+i%columns*span,top=.719f-(i/columns)*(shopTab==1?.120f:.137f);
+                var button=Button("",menuRoot,new Vector2(x+.008f,top-(shopTab==1?.105f:.119f)),new Vector2(x+span-.008f,top),()=>SelectShopItem(selected));button.name="Shop object "+i;button.interactable=!toolSearchPending;
                 var face=button.GetComponent<Image>();face.sprite=art.panel;face.type=Image.Type.Sliced;face.color=i==shopItem?new Color(.99f,.79f,.36f):new Color(.86f,.91f,.85f,.55f);
                 var picture=Picture("Object on shelf",button.transform,new Vector2(.09f,.14f),new Vector2(.91f,.96f),shopTab==0?ToolArt(i):TrophyArt(i),true);
                 if(i==shopItem)displayedShopObject=picture;
                 bool owned=shopTab==1&&OwnsGift(ShopCatalog.TrophyIds[i]);int stock=shopTab==0?Stock((TravelTool)i):0;
-                if(owned||shopTab==0){var mark=Text("Owned stock",button.transform,new Vector2(.52f,.01f),new Vector2(.96f,.24f),14,shopTab==0&&i==ShopCatalog.ToolCount?(UiCopy)"Yours":owned?"Yours":UiCopy.Raw("×"+stock));mark.font=art.titleFont;mark.enableAutoSizing=true;mark.fontSizeMin=12*MenuUnit;mark.fontSizeMax=14*MenuUnit;}
+                if(owned||shopTab==0){var mark=Text("Owned stock",button.transform,new Vector2(.52f,.01f),new Vector2(.96f,.24f),14,shopTab==0&&i==ShopCatalog.ToolCount?(UiCopy)"Yours":owned?DurableTrophyOwned(ShopCatalog.TrophyIds[i])?(UiCopy)"Yours":"Preview":UiCopy.Raw("×"+stock));mark.font=art.titleFont;mark.enableAutoSizing=true;mark.fontSizeMin=12*MenuUnit;mark.fontSizeMax=14*MenuUnit;}
             }
-            Shelf(.582f);Shelf(.445f);
+            Shelf(shopTab==1?.607f:.582f);Shelf(shopTab==1?.487f:.445f);
+            if(shopTab==1){DrawTrophySelection(collection);return;}
             string gift=ShopCatalog.TrophyIds[shopItem];var tool=(TravelTool)shopItem;
             var title=Text("Selected object title",menuRoot,new Vector2(.105f,.383f),new Vector2(.895f,.431f),25,shopTab==0?ToolTitle(shopItem):(UiCopy)GiftNames[shopItem]);title.font=art.titleFont;title.textWrappingMode=TextWrappingModes.NoWrap;title.enableAutoSizing=true;title.fontSizeMin=18*MenuUnit;title.fontSizeMax=25*MenuUnit;
             UiCopy benefit=shopTab==0?ToolDescription(shopItem):shopItem<4?"Mika wears it on the map. You can also earn it in parcels.":"A trophy for Mika's travels. Wear it on the map. No puzzle advantage.";
@@ -198,10 +199,10 @@ namespace Cascade.Presentation
         bool EquipShopGift(string id)
         {
             shopNotice=default;
-            if(TestMonetization){if(!OwnsGift(id))return false;previewEquippedGift=id;feedback.Sound(ToyCue.Select);DrawMenu();return true;}
+            if(TestMonetization&&!DurableTrophyOwned(id)){if(!OwnsGift(id))return false;previewEquippedGift=id;CreateGlobalCosmeticAmbiance();feedback.Sound(ToyCue.Select);DrawMenu();return true;}
             string previous=Rewards.EquippedGift;if(!Rewards.Equip(id,monetization?.Ledger.Cosmetics))return false;
             PersistProgress();if(HasSaveError){Rewards.EquippedGift=previous;return false;}
-            feedback.Sound(ToyCue.Select);DrawMenu();return true;
+            previewEquippedGift=null;CreateGlobalCosmeticAmbiance();feedback.Sound(ToyCue.Select);DrawMenu();return true;
         }
         bool ToolEligible(TravelTool tool)
         {

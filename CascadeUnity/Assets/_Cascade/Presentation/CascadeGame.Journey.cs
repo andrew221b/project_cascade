@@ -77,7 +77,6 @@ namespace Cascade.Presentation
                 MapMikaHalo.Attach(this,hero);
                 var heroTouch=Button(UiCopy.Raw(""),islandRoot,point+new Vector2(0,.045f),point+new Vector2(0,.045f),()=>OpenJourneyStory(markerStop,false));heroTouch.name="TalktoMika";heroTouch.interactable=!IsPlanningDescent&&!IsDescending;
                 ((RectTransform)heroTouch.transform).sizeDelta=new Vector2(64*MenuUnit,80*MenuUnit);heroTouch.GetComponent<Image>().color=Color.clear;
-                if(EquippedGift!=null)Picture("Mika's keepsake",hero.transform,new Vector2(.69f,.30f),new Vector2(.98f,.56f),TrophyArt(Array.IndexOf(ShopCatalog.TrophyIds,EquippedGift)),true);
             }
             var top=Rect("Map heading",menuRoot,new Vector2(.04f,.904f),new Vector2(.96f,.99f));
             var back=DirectionButton("Back",top,new Vector2(.098f,.52f),new Vector2(.098f,.52f),false,ShowHome);back.GetComponent<Image>().sprite=enamelControls[0];back.GetComponent<Image>().color=Color.white;foreach(var chevron in back.GetComponentsInChildren<ChevronGraphic>())chevron.color=new Color(1,.97f,.84f);
@@ -211,6 +210,8 @@ namespace Cascade.Presentation
         void Panel(RectTransform parent,Color tint)
         {var image=Background(parent,tint,true);image.sprite=art.panel;image.type=Image.Type.Sliced;}
         Image Picture(string name,Transform parent,Vector2 min,Vector2 max,Sprite sprite,bool fit)
-        {var image=Rect(name,parent,min,max).gameObject.AddComponent<Image>();image.sprite=sprite;image.preserveAspect=fit;image.raycastTarget=false;return image;}
+        {var image=Rect(name,parent,min,max).gameObject.AddComponent<Image>();image.sprite=sprite;image.preserveAspect=fit;image.raycastTarget=false;
+            if(sprite!=null&&(sprite.texture.name=="Mika"||sprite.texture.name=="MikaThinking"))AttachMikaCosmetic(image,null);
+            return image;}
     }
 }

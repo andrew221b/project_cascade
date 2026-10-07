@@ -115,6 +115,7 @@ namespace Cascade.Presentation
             bool changed=CurrentScreen!=screen;
             if(changed||screen!=GameScreen.Playing)reactionBanner?.Clear();
             CurrentScreen=screen;machine.LivingWorld.SetMapSky(null);machine.LivingWorld.SetQuietFlight(screen==GameScreen.Win||screen==GameScreen.Fail||screen==GameScreen.Prologue);
+            CreateGlobalCosmeticAmbiance();
             machine.LivingWorld.SetWorkshop(screen!=GameScreen.JourneyMap&&screen!=GameScreen.Dialogue&&screen!=GameScreen.JourneyEnd&&screen!=GameScreen.Playing&&screen!=GameScreen.Win&&screen!=GameScreen.Fail&&screen!=GameScreen.Checkpoint); userPaused=screen==GameScreen.Pause;
             Interaction.SetPaused(MechanicPopupOpen||screen!=GameScreen.Playing && screen!=GameScreen.Win && screen!=GameScreen.Fail && screen!=GameScreen.Checkpoint);
             bool machineVisible=screen==GameScreen.Playing || screen==GameScreen.Fail || screen==GameScreen.Checkpoint;
