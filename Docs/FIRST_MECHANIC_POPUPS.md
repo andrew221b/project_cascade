@@ -1,3 +1,5 @@
+> Superseded for presentation and acknowledgement behavior on 7 October by [Visual first encounters](VISUAL_LESSONS_OCT07.md). The current modal shows an isolated animation; closing arms real practice, never auto-uses a tool. Discovery persists after the relevant real action. The historical validation below applies to the earlier text-modal implementation.
+
 # First encounter explanations — 6 October 2026
 
 Design note before additive save metadata and tutorial identifiers. Every previously unseen mechanic on the visible rig pauses play before input is enabled. Combination levels teach one mechanic at a time. The first ambient gust waits for its explanation; landing wind has a separate explanation because it changes the row. Bought tools explain themselves before their first use and consumption.

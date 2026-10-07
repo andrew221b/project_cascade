@@ -160,6 +160,7 @@ namespace Cascade.Presentation
         }
         void OnCommitted(TransitionResult result)
         {
+            ObserveLessonTransition(result);
             TransferTouchPoseToExchange();
             CancelHint(); Coach?.Observe(result.State,Interaction.Attempt.RouteLength);
             if(node=="C01")firstGestureShown=true;
@@ -226,7 +227,8 @@ namespace Cascade.Presentation
                 var tool=Interaction.Attempt.CanUseSpool&&Stock(TravelTool.UndoSpool)>0?TravelTool.UndoSpool:TravelTool.ReturnHourglass;
                 if(Stock(tool)>0){ShowSupplies();SelectShopItem((int)tool);}return;
             }
-            if (!Interaction.Undo()) return; PersistProgress(); CancelHint(); ScheduleDeadEnd(); RenderState(); if(flowReady)ShowGame();
+            if(RequireActionLesson(Cascade.Application.MechanicLesson.Undo))return;
+            if (!Interaction.Undo()) return; CompleteLessonPractice(Cascade.Application.MechanicLesson.Undo); PersistProgress(); CancelHint(); ScheduleDeadEnd(); RenderState(); if(flowReady)ShowGame();
         }
         public void Retry()
         {
@@ -240,12 +242,14 @@ namespace Cascade.Presentation
             var attemptId=Interaction.Attempt.AttemptId;
             bool hadMoves=Interaction.Attempt.Current.Status==PuzzleStatus.Playing&&Interaction.Attempt.RouteLength>0;
             if (!Interaction.Retry()) return;
+            ResetMechanicDiscovery();
             if(journeyActive&&!sessionClears.Contains(node))profile.Director.ObserveRetry(attemptId,hadMoves);
             PersistProgress(); CancelHint(); CancelDeadEnd(); StartCoach(); RenderState(); if(flowReady)ShowGame();
         }
         public void RequestHint()
         {
             if (!Interaction.CanPlay || hintTask != null) return;
+            if(!Interaction.Attempt.GuideActive&&RequireActionLesson(Cascade.Application.MechanicLesson.Hint))return;
             CancelHint(); var request = Interaction.Attempt.CaptureHintRequest();
             hintCancellation = new CancellationTokenSource(); var token = hintCancellation.Token;
             hintTask = Task.Run(() => AttemptService.CalculateHint(request, cancellationToken: token)); status.SetCopy("Looking for one step…"); RenderControls();
@@ -365,18 +369,22 @@ namespace Cascade.Presentation
             DirectionButton("Focus previous", precise, new Vector2(0, 56f/104), new Vector2(.2f, 1), false, () => MoveFocus(-1));
             focusLabel = Text("Focus", precise, new Vector2(.22f, 56f/104), new Vector2(.78f, 1), 20, "Choose a symbol");
             DirectionButton("Focus next", precise, new Vector2(.8f, 56f/104), Vector2.one, true, () => MoveFocus(1));
-            swapLeft = Button("Swap left", precise, Vector2.zero, new Vector2(.48f, 48f/104), () => ReportInput(Interaction.SwapFocused(-1)));
-            swapRight = Button("Swap right", precise, new Vector2(.52f, 0), new Vector2(1, 48f/104), () => ReportInput(Interaction.SwapFocused(1)));
+            swapLeft = Button("Swap left", precise, Vector2.zero, new Vector2(.48f, 48f/104), () => PlayFocusedSwap(-1));
+            swapRight = Button("Swap right", precise, new Vector2(.52f, 0), new Vector2(1, 48f/104), () => PlayFocusedSwap(1));
             actions = Rect("Actions", safeRoot, new Vector2(.05f, .012f), new Vector2(.95f, .078f));
             undo = Button("Undo", actions, new Vector2(.12f,0), new Vector2(.47f, 1), Undo);
             hint = Button("Hint", header, Vector2.zero, Vector2.one, () => {
+                if(RequireActionLesson(Cascade.Application.MechanicLesson.Hint))return;
                 if (offeredHint?.Result.Status == HintStatus.Step && Interaction.Attempt.IsCurrent(offeredHint))
+                {
+                    if(RequireCommandLesson(offeredHint.Result.Command.Value))return;
                     ReportInput(Interaction.ApplyHint(offeredHint));
+                }
                 else RequestHint();
             });
             hint.GetComponentInChildren<TextMeshProUGUI>().SetCopy("");
             hintMark=Rect("Hint lamp",hint.transform,Vector2.zero,Vector2.one).gameObject.AddComponent<HintMark>();hintMark.raycastTarget=false;
-            drop = Button("Drop", actions, new Vector2(.53f, 0), new Vector2(.88f,1), () => ReportInput(Interaction.Execute(PuzzleCommand.Drop)));
+            drop = Button("Drop", actions, new Vector2(.53f, 0), new Vector2(.88f,1), () => PlayCommand(PuzzleCommand.Drop));
             drop.GetComponent<UnityEngine.UI.Image>().color = new Color(.98f, .74f, .32f);
             retry = Button("Retry", safeRoot, new Vector2(.05f, .09f), new Vector2(.43f, .155f), Retry);
             targetZoom = Rect("TargetZoom", safeRoot, Vector2.zero, Vector2.one); Background(targetZoom,new Color(.035f,.19f,.20f,.96f),true);

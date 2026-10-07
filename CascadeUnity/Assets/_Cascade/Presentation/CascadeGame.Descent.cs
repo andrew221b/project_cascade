@@ -59,7 +59,7 @@ namespace Cascade.Presentation
                     journeyActive=travel;PersistProgress();SetScreen(screen);
                 }
             }
-            bool gated=descentPlanFailed||IsPlanningDescent||IsPlanningDirection||IsDescending||!preparation.IsReady||needsMechanicScan;
+            bool gated=descentPlanFailed||IsPlanningDescent||IsPlanningDirection||IsDescending||!preparation.IsReady||needsMechanicScan&&CurrentScreen==GameScreen.Playing;
             if(Interaction.IsPreparing!=gated)Interaction.SetPreparing(gated);
             if(descentTask!=null)status.SetCopy("Checking all three stages…");
             PaintDescent();
@@ -83,6 +83,8 @@ namespace Cascade.Presentation
             var run=descent;string locale=Interaction.Attempt.ActiveLocale;bool travel=journeyActive;
             var departed=machine.CreateDescentGhost("Departing wooden rig");
             run.AcceptCheckpoint(source,Interaction.Attempt);
+            if(PendingLesson==MechanicLesson.Mirror||PendingLesson==MechanicLesson.Rollers||PendingLesson==MechanicLesson.LandingWind)
+                CompleteLessonPractice(PendingLesson.Value,false);
             // State and persistence precede travel. A tween cannot advance a stage.
             MountAttempt(new AttemptService(run.Level(source,run.StageIndex),locale,direction:run.Direction),run);
             journeyActive=travel;PersistProgress();ShowGame();

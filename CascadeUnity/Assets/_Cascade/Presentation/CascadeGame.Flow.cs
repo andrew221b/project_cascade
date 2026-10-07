@@ -59,6 +59,7 @@ namespace Cascade.Presentation
             resultRoot = Rect("Result controls", safeRoot, new Vector2(.05f,0), new Vector2(.95f,0));
             resultRoot.pivot = new Vector2(.5f,.5f); resultRoot.anchoredPosition = new Vector2(0,88); resultRoot.sizeDelta = new Vector2(0,160);
             resultText = Text("Result summary", resultRoot, new Vector2(0,.71f), Vector2.one,18,"");
+            StyleCelebrationType(resultText,CelebrationType.Information);
             Button("Next delivery",resultRoot,new Vector2(.52f,.35f),new Vector2(1,.65f),StartNextPreferred);
             var home=Button("Result home",resultRoot,new Vector2(.52f,0),new Vector2(1,.30f),ShowJourney);home.GetComponentInChildren<TextMeshProUGUI>().SetCopy("Map");
             resultRoot.gameObject.SetActive(false);
@@ -66,7 +67,7 @@ namespace Cascade.Presentation
             coachRoot.sizeDelta = new Vector2(300,52); coachRoot.pivot = new Vector2(.5f,1);
             coachText = Text("Coaching",coachRoot,Vector2.zero,Vector2.one,15,""); coachText.raycastTarget=false;
             var handRect = Rect("First exchange hand",safeRoot,Vector2.zero,Vector2.zero);
-            handRect.pivot=new Vector2(.5f,.9f); handRect.sizeDelta=new Vector2(58,70);
+            handRect.pivot=new Vector2(.64f,.88f); handRect.sizeDelta=new Vector2(58,70);
             tutorialHand=handRect.gameObject.AddComponent<Image>(); tutorialHand.sprite=Resources.Load<Sprite>("CascadeArt/TutorialHand");
             tutorialHand.preserveAspect=true; tutorialHand.raycastTarget=false; tutorialHand.gameObject.SetActive(false);
             tutorialPointerCanvas=handRect.gameObject.AddComponent<Canvas>();tutorialPointerCanvas.overrideSorting=true;tutorialPointerCanvas.sortingOrder=30;
@@ -169,6 +170,7 @@ namespace Cascade.Presentation
         void UpdateCoaching(bool foreground)
         {
             bool show=foreground && CurrentScreen==GameScreen.Playing && Interaction.CanPlay && !zoomOpen && !IsHoldingToken && reactionBanner?.IsShowing!=true && Coach!=null && Coach.Enabled;
+            if(UpdateLessonPractice(foreground)){coachRoot.gameObject.SetActive(false);return;}
             string prompt=show ? Coach.Prompt(Interaction.Attempt.Current) : "";
             if(show&&(Interaction.Attempt.Level.ReachCharges>0||Interaction.Attempt.Current.ReachCharges>0))prompt=Interaction.Attempt.Current.ReachCharges>0?"Drag past a neighbour. The ribbon works once.":"Ribbon used. You can still swap neighbours.";
             if(show&&knownDeadEnd)prompt="Stuck? Undo and try another move.";
@@ -313,6 +315,7 @@ namespace Cascade.Presentation
                 bool resultCopy=nightResult&&(label.name=="Completed stages"||label.name=="Rank guidance"||label.name=="Earned coins"||label.name=="Earned light"||label.name=="Completion reward note"||label.name=="Journey ending"||label.name=="Menu title"||label.name=="Menu description");
                 if(mapCopy||resultCopy)label.color=MenuPaper;
             }
+            FinishThemedTypeStyles();
             foreach(var button in menuRoot.GetComponentsInChildren<Button>())if(!button.interactable){
                 var image=button.GetComponent<Image>();if(image!=null&&image.color.a>0)image.color=new Color(.86f,.91f,.87f);
                 var colors=button.colors;colors.disabledColor=Color.white;button.colors=colors;
@@ -321,7 +324,7 @@ namespace Cascade.Presentation
         void MenuTitle(UiCopy title,UiCopy body)
         {
             MenuReadingSurface("Menu heading cloth",new Vector2(.06f,.817f),new Vector2(.94f,.978f));
-            var label=Text("Menu title",menuRoot,new Vector2(.17f,.905f),new Vector2(.83f,.968f),28,title);label.font=art.titleFont;label.alignment=TextAlignmentOptions.Center;label.enableAutoSizing=true;label.fontSizeMin=20*MenuUnit;label.fontSizeMax=28*MenuUnit;label.textWrappingMode=TextWrappingModes.NoWrap;
+            var label=Text("Menu title",menuRoot,new Vector2(.17f,.905f),new Vector2(.83f,.968f),28,title);StyleCelebrationType(label,CelebrationType.Information);label.alignment=TextAlignmentOptions.Center;label.enableAutoSizing=true;label.fontSizeMin=20*MenuUnit;label.fontSizeMax=28*MenuUnit;label.textWrappingMode=TextWrappingModes.NoWrap;
             var description=Text("Menu description",menuRoot,new Vector2(.17f,.812f),new Vector2(.83f,.901f),18,body);description.alignment=TextAlignmentOptions.Center;description.enableAutoSizing=true;description.fontSizeMin=15*MenuUnit;description.fontSizeMax=18*MenuUnit;menuHeading=label;menuDescription=description;
         }
         Button MenuButton(UiCopy label,float bottom,Action action,bool primary=false,float left=.08f,float right=.92f)
@@ -364,24 +367,21 @@ namespace Cascade.Presentation
         }
         int DeviceForCurrentFloor()
         {
-            var state=Interaction.Attempt.Current;if(state.Status!=PuzzleStatus.Playing)return 0;var f=Interaction.Attempt.Level.Floors[state.ActiveFloor];
-            return f.Powerup!=null?(f.Powerup.Kind==PowerupKind.Ribbon?9:10):f.Bomb!=null?2:f.Key!=null?3:f.Repair!=null?4:f.LinkedPair.HasValue?6:f.OneUseBridgeEdge.HasValue?7:f.OptionalStamp!=null?8:f.FragileEdges.Count>0?5:f.EntryTransform!=EntryTransform.None?1:0;
+            var lessons=MechanicLessons.DiscoverVisible(Interaction.Attempt.Level,Interaction.Attempt.Current);
+            return lessons.Count>0?(int)lessons[0]:(int)MechanicLesson.Swap;
         }
         void DrawDevices()
         {
-            if(deviceIndex<0){DrawBasics();return;}
-            bool wind=deviceIndex==1&&Enumerable.Range(0,Interaction.Attempt.Level.Floors.Count).Any(IsWindFloor);
-            MenuTitle(wind?"Wind on landing":DeviceTitles[deviceIndex],"");
-            var count=Text("Device page",menuRoot,new Vector2(.29f,.818f),new Vector2(.71f,.89f),18,UiCopy.Raw((deviceIndex+1)+" / "+DeviceTitles.Length));count.font=art.titleFont;
-            var previous=DirectionButton("Previous example",menuRoot,new Vector2(.08f,.89f),new Vector2(.25f,.89f),false,()=>{deviceIndex=(deviceIndex+DeviceTitles.Length-1)%DeviceTitles.Length;DrawMenu();});RegisterMenuRow(previous,.89f,0,48,0);
-            var next=DirectionButton("Next example",menuRoot,new Vector2(.75f,.89f),new Vector2(.92f,.89f),true,()=>{deviceIndex=(deviceIndex+1)%DeviceTitles.Length;DrawMenu();});RegisterMenuRow(next,.89f,0,48,0);
-            var fixture=Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).First(c=>c.Definition.CampaignNodeId==DeviceNodes[deviceIndex]).Definition;
-            if(wind)fixture=WindGuide(CurrentWindRight);
-            LiveDeviceDemo(Rect("Device example",menuRoot,new Vector2(.12f,.52f),new Vector2(.88f,.785f)),fixture,deviceIndex);
-            MenuReadingSurface("Device instructions cloth",new Vector2(.12f,.375f),new Vector2(.88f,.567f));
-            var explanation=Text("Device explanation",menuRoot,new Vector2(.12f,.285f),new Vector2(.88f,.47f),18,wind?"Wind pushes the whole row one place when it lands. Follow the arrow. Take your time to think.":DeviceCopy[deviceIndex]);explanation.alignment=TextAlignmentOptions.TopLeft;explanation.margin=new Vector4(0,8*MenuUnit,0,0);explanation.enableAutoSizing=true;explanation.fontSizeMin=17*MenuUnit;explanation.fontSizeMax=18*MenuUnit;
-
-            MenuButton("Basics",.025f,ShowHowToPlay,false,.08f,.48f);MenuButton("Back",.025f,CloseMenu,false,.52f,.92f);
+            if(deviceIndex<0)deviceIndex=(int)MechanicLesson.Swap;
+            var lesson=(MechanicLesson)deviceIndex;
+            MenuTitle(LessonTitle(lesson),"");
+            var count=Text("Device page",menuRoot,new Vector2(.33f,.825f),new Vector2(.67f,.885f),18,UiCopy.Raw((deviceIndex+1)+" / "+Enum.GetValues(typeof(MechanicLesson)).Length));
+            StyleCelebrationType(count,CelebrationType.Information);
+            int total=Enum.GetValues(typeof(MechanicLesson)).Length;
+            var previous=DirectionButton("Previous example",menuRoot,new Vector2(.10f,.83f),new Vector2(.26f,.83f),false,()=>{deviceIndex=(deviceIndex+total-1)%total;DrawMenu();});RegisterMenuRow(previous,.83f,0,48,0);
+            var next=DirectionButton("Next example",menuRoot,new Vector2(.74f,.83f),new Vector2(.90f,.83f),true,()=>{deviceIndex=(deviceIndex+1)%total;DrawMenu();});RegisterMenuRow(next,.83f,0,48,0);
+            BuildLessonFilm(Rect("Device example",menuRoot,new Vector2(.12f,.22f),new Vector2(.88f,.77f)),lesson);
+            MenuButton("Back",.025f,CloseMenu);
         }
         void DrawSettings()
         {

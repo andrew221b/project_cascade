@@ -98,7 +98,7 @@ namespace Cascade.Presentation
             float width=Mathf.Min(bounds.width,bounds.height*aspect),height=Mathf.Min(bounds.height,bounds.width/aspect);
             title.rectTransform.anchorMin=title.rectTransform.anchorMax=new Vector2(.5f,.5f);
             title.rectTransform.sizeDelta=new Vector2(width*.59f,height*.60f);title.rectTransform.anchoredPosition=Vector2.up*height*.025f;
-            title.margin=new Vector4(3*unit,2*unit,3*unit,2*unit);title.fontSizeMin=13*unit;title.fontSizeMax=22*unit*(game.Preferences.LargeText?1.12f:1);
+            title.margin=new Vector4(3*unit,2*unit,3*unit,2*unit);title.fontSizeMin=17*unit;title.fontSizeMax=24*unit*(game.Preferences.LargeText?1.12f:1);
         }
         void OnDisable(){if(Running)Settle();}
 #if UNITY_EDITOR

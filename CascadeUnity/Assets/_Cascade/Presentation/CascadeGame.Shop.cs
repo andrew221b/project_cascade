@@ -80,6 +80,8 @@ namespace Cascade.Presentation
         public void SelectShopItem(int index){shopItem=Mathf.Clamp(index,0,shopTab==0?ShopCatalog.ToolCount:ShopCatalog.TrophyIds.Length-1);if(CurrentScreen==GameScreen.Collection)giftPage=shopItem;if(CurrentScreen==GameScreen.Supplies)toolsItem=shopItem;shopNotice=default;DrawMenu();}
         public void ShowSupplies()
         {
+            if(CurrentScreen==GameScreen.Playing&&RequireActionLesson(MechanicLesson.Toolbag))return;
+            CompleteLessonPractice(MechanicLesson.Toolbag);
             if(CurrentScreen==GameScreen.Shop&&shopReturnScreen==GameScreen.Supplies){BackFromShop();return;}
             if(CurrentScreen!=GameScreen.Supplies){
                 toolsReturnScreen=CurrentScreen==GameScreen.Shop&&(shopReturnScreen==GameScreen.Playing||shopReturnScreen==GameScreen.Pause||shopReturnScreen==GameScreen.Fail)?shopReturnScreen:CurrentScreen;toolsItem=0;
@@ -237,6 +239,7 @@ namespace Cascade.Presentation
             var beforeToolState=attempt.Current;
             var prediction=tool==TravelTool.LandingLens?attempt.Predict(PuzzleCommand.Drop):null;
             if(!monetization.TryUseTool(tool,attempt,guide)){shopNotice="This tool cannot help here. Nothing used.";DrawMenu();return;}
+            CompleteLessonPractice(MechanicLessons.Tool(tool));
             var activatedObject=displayedShopObject!=null?displayedShopObject.rectTransform:null;
             if(activatedObject!=null){var sway=activatedObject.GetComponent<WorldMotion>();if(sway!=null)sway.enabled=false;}
             Interaction.CancelPointer();EndTokenHold();CancelHint();CancelDeadEnd();RenderState();ScheduleDeadEnd();
@@ -249,7 +252,7 @@ namespace Cascade.Presentation
         }
         void TickToolGuide()
         {
-            bool active=CurrentScreen==GameScreen.Playing&&Interaction.Attempt.GuideActive&&Interaction.CanPlay&&!IsHoldingToken&&!Interaction.SelectedSlot.HasValue;
+            bool active=!PendingLesson.HasValue&&CurrentScreen==GameScreen.Playing&&Interaction.Attempt.GuideActive&&Interaction.CanPlay&&!IsHoldingToken&&!Interaction.SelectedSlot.HasValue;
             if(guideHand!=null)guideHand.gameObject.SetActive(false);
             if(!active)return;
             tutorialHand.gameObject.SetActive(false);

@@ -70,6 +70,7 @@ namespace Cascade.Presentation
         float windAnticipation;
         float nextAmbientGust=9;
         int ambientGust;
+        public int AmbientGustCount=>ambientGust;
         public void PrepareWind(bool right,float strength) => windAnticipation=(right?1:-1)*Mathf.Clamp01(strength)*.48f;
         public bool ReducedMotion { get => reducedMotion; set => reducedMotion = value; }
         public float AmbientPhase => windTime;

@@ -8,6 +8,13 @@ namespace Cascade.Presentation
         MaterialPropertyBlock touchGlowProperties;
         int dragDestination=-1;
         bool blockedDestination;
+        int lessonFirst=-1,lessonSecond=-1;
+        float lessonGlow;
+        public void SetLessonFocus(int first,int second,float alpha)
+        {
+            lessonFirst=first;lessonSecond=second;lessonGlow=Mathf.Clamp01(alpha);
+            for(int i=0;i<tokens.Count;i++)UpdateTouchContour(i);
+        }
         Material TouchGlowMaterial => touchGlowMaterial!=null?touchGlowMaterial:
             touchGlowMaterial=new Material(Resources.Load<Shader>("CascadeArt/ContourGlow")){name="Soft ivory piece contour"};
         public void SetDragDestination(int index,bool blocked=false)
@@ -21,15 +28,16 @@ namespace Cascade.Presentation
             var halo=selections[index];var body=tokens[index].transform;
             bool source=interaction.SelectedSlot==index||heldWeight==index;
             bool destination=dragDestination==index&&!blockedDestination&&!source;
-            bool visible=interaction.CanPlay&&(source||destination)
+            bool taught=(lessonFirst==index||lessonSecond==index)&&lessonGlow>0;
+            bool visible=interaction.CanPlay&&(source||destination||taught)
                 &&tokens[index].transform.gameObject.activeInHierarchy;
             halo.transform.gameObject.SetActive(visible);
             if(!visible)return;
             if(touchGlowProperties==null)touchGlowProperties=new MaterialPropertyBlock();
             halo.transform.SetPositionAndRotation(body.position+Vector3.forward*.10f,body.rotation);
-            float contourScale=destination?1.025f:1.075f;
+            float contourScale=source?1.075f:1.025f;
             halo.transform.localScale=Vector3.Scale(body.localScale,new Vector3(contourScale,contourScale,.96f));
-            touchGlowProperties.SetColor("_Color",new Color(1,.95f,.65f,destination?.10f:.46f));
+            touchGlowProperties.SetColor("_Color",new Color(1,.95f,.65f,source?.46f:taught?lessonGlow:.10f));
             halo.renderer.SetPropertyBlock(touchGlowProperties);
         }
         public void ShakeSuspension(Vector2 impulse)

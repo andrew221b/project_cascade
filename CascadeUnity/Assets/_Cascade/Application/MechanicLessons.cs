@@ -10,7 +10,8 @@ namespace Cascade.Application
     {
         Bomb=0, Key=1, Repair=2, Ribbon=3, Stamp=4, BombHourglass=5,
         Bridge=6, LinkedPairs=7, Fragile=8, ClosedPath=9, Rollers=10,
-        Mirror=11, LandingWind=12, Gust=13, Wayfinder=14, UndoSpool=15, ReturnHourglass=16, SignalLantern=17, LandingLens=18, LiveGust=19
+        Mirror=11, LandingWind=12, Gust=13, Wayfinder=14, UndoSpool=15, ReturnHourglass=16, SignalLantern=17, LandingLens=18, LiveGust=19,
+        Swap=20, Descent=21, Undo=22, Hint=23, FarSwap=24, Toolbag=25
     }
     public static class MechanicLessons
     {
@@ -37,6 +38,30 @@ namespace Cascade.Application
                 }
             }
             return found.Distinct().ToArray();
+        }
+        // A first encounter belongs to the board the player can act on now. Entry
+        // transformations are introduced separately before the actual next landing.
+        public static IReadOnlyList<MechanicLesson> DiscoverVisible(LevelDefinition level,PuzzleState state)
+        {
+            if(level==null)throw new ArgumentNullException(nameof(level));
+            if(state==null)throw new ArgumentNullException(nameof(state));
+            var found=new List<MechanicLesson>();
+            if(state.Status!=PuzzleStatus.Playing||state.ActiveFloor<0||state.ActiveFloor>=level.Floors.Count)return found;
+            var f=level.Floors[state.ActiveFloor];
+            if(f.Bomb!=null&&state.BombPhase==BombPhase.Armed)found.Add(MechanicLesson.Bomb);
+            if(f.Key!=null&&!state.KeyUsed)found.Add(MechanicLesson.Key);
+            if(f.Repair!=null&&!state.RepairUsed)found.Add(MechanicLesson.Repair);
+            if(f.Powerup!=null&&!state.PowerupUsed)found.Add(f.Powerup.Kind==PowerupKind.Ribbon?MechanicLesson.Ribbon:MechanicLesson.BombHourglass);
+            if(f.OptionalStamp!=null&&(state.StampBits&(1<<state.ActiveFloor))==0)found.Add(MechanicLesson.Stamp);
+            if(f.OneUseBridgeEdge.HasValue&&!state.BridgeUsed)found.Add(MechanicLesson.Bridge);
+            if(f.LinkedPair.HasValue)found.Add(MechanicLesson.LinkedPairs);
+            if(f.FragileEdges.Count>0)found.Add(MechanicLesson.Fragile);
+            // The key owns its branch lesson. Other closed branches still need an example.
+            if(f.OpenEdges.Where((open,edge)=>!open&&edge!=f.OneUseBridgeEdge
+                &&(f.Key==null||edge!=f.Key.EdgeToOpen)).Any())found.Add(MechanicLesson.ClosedPath);
+            if(f.GustAfterSwaps>0&&state.GustTicks>0)found.Add(MechanicLesson.LiveGust);
+            if(state.ReachCharges>0)found.Add(MechanicLesson.FarSwap);
+            return found;
         }
         public static MechanicLesson Tool(TravelTool tool)=>tool==TravelTool.Wayfinder?MechanicLesson.Wayfinder:tool==TravelTool.UndoSpool?MechanicLesson.UndoSpool:tool==TravelTool.ReturnHourglass?MechanicLesson.ReturnHourglass:tool==TravelTool.SignalLantern?MechanicLesson.SignalLantern:MechanicLesson.LandingLens;
         public static bool Valid(IEnumerable<MechanicLesson> seen)=>seen!=null&&seen.All(x=>Enum.IsDefined(typeof(MechanicLesson),x))&&seen.Distinct().Count()==seen.Count();

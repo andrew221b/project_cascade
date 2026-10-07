@@ -1,3 +1,4 @@
+using Cascade.Domain;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
@@ -31,6 +32,17 @@ namespace Cascade.Presentation
             if (WasCancelled(eventData)) { Game.Interaction.CancelPointer(); Game.ReportInput(null); return; }
             var target = eventData.pointerCurrentRaycast.gameObject?.GetComponentInParent<TokenSlot>();
             int destination = Game.TokenAtScreenPoint(eventData.position,target != null && target.Game == Game ? target.Slot : -1,dragged?Slot:-1);
+            int? source=dragged?(int?)Slot:Game.Interaction.SelectedSlot;
+            if(source.HasValue&&destination>=0&&destination!=source.Value){
+                int distance=System.Math.Abs(destination-source.Value);
+                var command=distance==1?PuzzleCommand.Swap(System.Math.Min(source.Value,destination)):PuzzleCommand.Reach(source.Value,destination);
+                if(distance<=3){
+                    Game.Interaction.CancelPointer();
+                    if(Game.RequireCommandLesson(command))return;
+                    // Restore the captured pointer only after the read-only introduction gate.
+                    Game.Interaction.PointerDown(eventData.pointerId,Slot);
+                }
+            }
             Game.ReportInput(Game.Interaction.PointerUp(eventData.pointerId, destination, dragged));
         }
         public void OnPointerUp(PointerEventData eventData) => Release(eventData);

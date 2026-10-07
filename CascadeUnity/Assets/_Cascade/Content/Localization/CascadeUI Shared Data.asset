@@ -4486,6 +4486,14 @@ MonoBehaviour:
     m_Key: 'Completed: {0}/{1}'
     m_Metadata:
       m_Items: []
+  - m_Id: 762049566072832
+    m_Key: Try it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 762049574461440
+    m_Key: Swap neighbours
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

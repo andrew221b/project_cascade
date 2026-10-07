@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Cascade.Domain;
+using Cascade.Application;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -42,7 +43,7 @@ namespace Cascade.Presentation
             sprite=WorkshopSpriteSet.Tool(Resources.Load<Texture2D>("CascadeArt/Reactions/ToolBodiesClean"),index);toolBodySprites.Add(kind,sprite);return sprite;
         }
         static string DeviceAsset(int kind) => kind==2?"Bomb":kind==3?"BrassKey":kind==4?"RepairKit":kind==8?"Stamp":kind==9?"RibbonSpool":"FrostFlask";
-        void OpenDevice(int kind) { returnScreen=CurrentScreen;deviceIndex=kind;SetScreen(GameScreen.Devices); }
+        void OpenDevice(int kind) { returnScreen=CurrentScreen;deviceIndex=(int)new[]{MechanicLesson.Descent,MechanicLesson.Rollers,MechanicLesson.Bomb,MechanicLesson.Key,MechanicLesson.Repair,MechanicLesson.Fragile,MechanicLesson.LinkedPairs,MechanicLesson.Bridge,MechanicLesson.Stamp,MechanicLesson.Ribbon,MechanicLesson.BombHourglass}[kind];SetScreen(GameScreen.Devices); }
         void BuildDeviceDocks(RectTransform card,FloorDefinition floor,int count,int floorIndex)
         {
             card=Rect("Device attachments",card,Vector2.zero,Vector2.one);deviceOverlays.Add(card);
