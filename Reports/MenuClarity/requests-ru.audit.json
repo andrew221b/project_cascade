@@ -1,0 +1,176 @@
+{
+  "pose": "requests-ru",
+  "before": {
+    "Screen": "Requests",
+    "Attempt": "8766975b-837d-483b-a345-d5e063971a38",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "after": {
+    "Screen": "Requests",
+    "Attempt": "8766975b-837d-483b-a345-d5e063971a38",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 390,
+    "height": 844,
+    "locale": "ru",
+    "largeText": false,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Previous",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Previous",
+        "interactable": true,
+        "bounds": {
+          "x": 37.0968056,
+          "y": 49.7600174,
+          "width": 67.67279,
+          "height": 52.0000076
+        }
+      },
+      {
+        "name": "Next",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Next",
+        "interactable": true,
+        "bounds": {
+          "x": 285.2304,
+          "y": 49.7600174,
+          "width": 67.67282,
+          "height": 52.0000076
+        }
+      },
+      {
+        "name": "Stamptrails",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Stamptrails",
+        "interactable": true,
+        "bounds": {
+          "x": 37.0968056,
+          "y": 113.760017,
+          "width": 315.806427,
+          "height": 52.0000076
+        }
+      },
+      {
+        "name": "Back",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Back",
+        "interactable": true,
+        "bounds": {
+          "x": 119.808006,
+          "y": 49.7600174,
+          "width": 150.383972,
+          "height": 52.0000076
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Menu title",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Menu title",
+        "text": "Ру",
+        "button": null,
+        "bounds": {
+          "x": 70.9332,
+          "y": 716.6151,
+          "width": 248.133575,
+          "height": 47.5357666
+        },
+        "fontPixels": 28.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Menu description",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Menu description",
+        "text": "Просьба друга",
+        "button": null,
+        "bounds": {
+          "x": 70.9332,
+          "y": 646.443237,
+          "width": 248.133575,
+          "height": 67.15375
+        },
+        "fontPixels": 18.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Request detail",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Request detail",
+        "text": "Собери печати на трёх разных уровнях.",
+        "button": null,
+        "bounds": {
+          "x": 44.616,
+          "y": 267.666168,
+          "width": 300.767975,
+          "height": 116.953094
+        },
+        "fontPixels": 20.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Request progress",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Request progress",
+        "text": "Готово: 0 / 3",
+        "button": null,
+        "bounds": {
+          "x": 44.616,
+          "y": 195.985245,
+          "width": 300.767975,
+          "height": 49.0448456
+        },
+        "fontPixels": 20.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Stamptrails/Label",
+        "text": "Пути с печатями",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Stamptrails",
+        "bounds": {
+          "x": 37.0968056,
+          "y": 113.760017,
+          "width": 315.806427,
+          "height": 52.0000076
+        },
+        "fontPixels": 22.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Back/Label",
+        "text": "Назад",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Back",
+        "bounds": {
+          "x": 119.808006,
+          "y": 49.7600174,
+          "width": 150.383972,
+          "height": 52.0000076
+        },
+        "fontPixels": 20.0,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

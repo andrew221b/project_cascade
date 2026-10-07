@@ -911,3 +911,7 @@ character-mesh repair compiled, but bulk measurement was not rerun after it.
 This scoped validation does not establish all-state or physical-device behavior,
 audio listening quality, performance or enjoyment; no build/install was made
 for this audit. See the audit document and its final validation summary.
+
+
+## Menu clarity — 7 October 2026
+Workshop menus fit the sky opening at portrait and landscape ratios by reframing the existing room; furniture must not sit behind actions. Framed back controls use a 48 px target, separate from carousel paging. Devices put arrows beside the page count and keep equal-width Basics / Back actions. Store and bag use a complete three-by-two tool shelf: five consumables plus the permanent, free illustrated Field guide. It opens teaching examples without changing the economy or puzzle. Catalogue/no-ads/coin screens have one return control. Record identity wraps; long instruction bodies leave a gap before actions. Map layout is preserved at the user's request. Evidence and limits: Docs/MENU_CLARITY_OCT07.md; Reports/MenuClarity-Final.

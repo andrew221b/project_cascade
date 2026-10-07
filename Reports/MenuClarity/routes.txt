@@ -1,0 +1,4 @@
+All GameScreen values: Home, Playing, Pause, Win, Fail, Settings, Devices, Lessons, Dialogue, WordLanguage, SaveRecovery, TravelBag, Journal, Collection, Workshop, Requests, Records, Contracts, Parcel, JourneyEnd, ReachChallenges, PowerupChallenges, Checkpoint, PlayChoice, JourneyMap, Prologue, Shop, NoAds, Supplies, CoinPacks
+PlayChoice is an unused legacy alias of JourneyMap; no duplicate image. Dialogue is captured as its conversation overlay. Devices includes basics and a bomb guide. Settings has three pages. Prologue has three pages. Terminal, failed and checkpoint states use valid isolated attempts. Other private SetScreen calls exercise presentation routes, not progression eligibility.
+Native Editor captures only; simulated safe insets; no physical-device, sound-playback, release-language or human-enjoyment claim.
+The Music and Sound effects preferences are separate controls; visual captures do not validate audio playback.

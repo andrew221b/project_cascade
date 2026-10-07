@@ -52,13 +52,13 @@ namespace Cascade.Editor.Playable
             if(string.IsNullOrEmpty(phase))phase="VisualAudit-Before";Directory.CreateDirectory(Folder);
             string result=string.Join("\n",log);File.WriteAllText(Path.Combine(Folder,"terminal-shop-diagnostic.txt"),result);return result;
         }
-        public static void Run(bool after=false)
+        public static void Run(bool after=false,string outputPhase=null)
         {
             var g=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();
             if(Running)throw new InvalidOperationException("Visual audit already running.");
             if(!EditorApplication.isPlaying||EditorApplication.isCompiling||g==null||g.ProfilePath==null||!g.ProfilePath.Contains("CascadeNavigationReview"))
                 throw new InvalidOperationException("Use VisualAuditReview.Prepare before loading the playable; an isolated compiled Play Mode session is required.");
-            phase=after?"VisualAudit-After":"VisualAudit-Before";Directory.CreateDirectory(Folder);findings.Clear();
+            phase=outputPhase??(after?"VisualAudit-After":"VisualAudit-Before");Directory.CreateDirectory(Folder);findings.Clear();
             Running=true;g.StartCoroutine(Inspect(g));
         }
         static object Field(CascadeGame g,string name)=>typeof(CascadeGame).GetField(name,Private).GetValue(g);
@@ -108,6 +108,11 @@ namespace Cascade.Editor.Playable
                 Add("settings-sound-uk-small",()=>Settings(0),small:true);Add("settings-comfort-uk-small",()=>Settings(1),small:true);Add("settings-language-uk-small",()=>Settings(2),small:true);
                 Add("shop-ru",()=>{g.ShowShop();g.SelectShopTab(0);g.SelectShopItem(3);});
                 Add("shop-uk-small",()=>{g.ShowShop();g.SelectShopTab(0);g.SelectShopItem(4);},small:true);
+                if(phase.StartsWith("MenuClarity",StringComparison.Ordinal)) {
+                    Add("field-guide-ru",()=>{g.ShowShop();g.SelectShopTab(0);g.SelectShopItem(ShopCatalog.ToolCount);});
+                    Add("field-guide-uk-small",()=>{g.ShowShop();g.SelectShopTab(0);g.SelectShopItem(ShopCatalog.ToolCount);},small:true);
+                    Add("shop-en-small",()=>{g.ShowShop();g.SelectShopTab(0);g.SelectShopItem(2);},small:true);
+                }
                 Add("no-ads-ru",g.ShowNoAds);Add("coin-packs-ru",g.ShowCoinPacks);
                 Add("supplies-ru",()=>{var l=g.Monetization.Ledger;l.WayfinderScrolls=l.UndoSpools=l.ReturnHourglasses=l.SignalLanterns=l.LandingLenses=1;g.ShowSupplies();});
                 Add("save-recovery-ru",()=>{typeof(CascadeGame).GetProperty("Recovery").SetValue(g,SaveRecovery.AttemptUnavailable);Screen(g,GameScreen.SaveRecovery);});
@@ -117,6 +122,11 @@ namespace Cascade.Editor.Playable
                 Add("game-wide",g.ShowGame,wide:true);
                 Add("pause-ru",()=>Screen(g,GameScreen.Pause));Add("basics-ru",g.ShowHowToPlay);
                 Add("device-ru",()=>{g.ShowDevices();Field(g,"deviceIndex",2);Draw(g);});
+                if(phase.StartsWith("MenuClarity",StringComparison.Ordinal)) {
+                    Add("device-uk-small",()=>{g.ShowDevices();Field(g,"deviceIndex",2);Draw(g);},small:true);
+                    Add("device-flask-uk-small",()=>{g.ShowDevices();Field(g,"deviceIndex",10);Draw(g);},small:true);
+                    Add("basics-uk-small",g.ShowHowToPlay,small:true);
+                }
                 Add("mixed-uk-small",()=>Load("C32"),small:true);
                 Add("words-ru",()=>Load("C37","ru"));
                 Add("mechanic-ru",()=>{Load("C02");Call(g,"OpenMechanicPopup",MechanicLesson.Gust,null,default(UiCopy),null);});
@@ -136,6 +146,23 @@ namespace Cascade.Editor.Playable
                     Call(g,"MountAttempt",a,checkpoint);g.ShowGame();
                 });
                 File.WriteAllText(Path.Combine(Folder,"routes.txt"),"All GameScreen values: "+string.Join(", ",Enum.GetNames(typeof(GameScreen)))+"\nPlayChoice is an unused legacy alias of JourneyMap; no duplicate image. Dialogue is captured as its conversation overlay. Devices includes basics and a bomb guide. Settings has three pages. Prologue has three pages. Terminal, failed and checkpoint states use valid isolated attempts. Other private SetScreen calls exercise presentation routes, not progression eligibility.\nNative Editor captures only; simulated safe insets; no physical-device, sound-playback, release-language or human-enjoyment claim.\nThe Music and Sound effects preferences are separate controls; visual captures do not validate audio playback.\n");
+                if(phase=="MenuClarity-Final") {
+                    string[] names={"home-ru","home-wide","device-ru","device-flask-uk-small","basics-uk-small","field-guide-uk-small","shop-en-small","settings-sound-uk-small","coin-packs-ru","no-ads-ru","collection-ru","records-ru","prologue-1-ru"};
+                    poses=poses.Where(p=>names.Contains(p.Name)).ToList();
+                    g.ShowHome();g.ShowShop();g.SelectShopTab(0);g.SelectShopItem(ShopCatalog.ToolCount);
+                    int wallet=g.ShopCoins;string hash=g.Interaction.Attempt.CurrentStateHash;
+                    var stock=Enumerable.Range(0,ShopCatalog.ToolCount).Select(i=>g.Stock((TravelTool)i)).ToArray();
+                    Click("Read field guide");Require(g.CurrentScreen==GameScreen.Devices,"manual opens basics");
+                    var effects=g.GetComponentsInChildren<Button>().First(b=>b.GetComponentInChildren<LocalizedCaption>()?.SourceIdentity=="Tools & effects");effects.onClick.Invoke();
+                    int page=(int)Field(g,"deviceIndex");Click("Nextexample");Require((int)Field(g,"deviceIndex")==((page+1)%11),"next example");Click("Previousexample");Require((int)Field(g,"deviceIndex")==page,"previous example");
+                    Require(g.GetComponentsInChildren<Button>().Count(b=>b.GetComponentInChildren<LocalizedCaption>()?.SourceIdentity=="Back")==1,"only one Back exit");
+                    g.CloseMenu();Require(g.CurrentScreen==GameScreen.Shop,"returns to shop");
+                    Require(g.ShopCoins==wallet&&g.Interaction.Attempt.CurrentStateHash==hash&&stock.SequenceEqual(Enumerable.Range(0,ShopCatalog.ToolCount).Select(i=>g.Stock((TravelTool)i))),"manual changes no coins, stock or puzzle");
+                    Require(g.GetComponentsInChildren<Button>().Count(b=>b.name.StartsWith("Shop object ",StringComparison.Ordinal))==6,"six catalogue objects");
+                    File.WriteAllText(Path.Combine(Folder,"navigation.txt"),"PASS: six items; free manual opens basics; effects page next/previous; exactly one Back; returns to shop; coins, stock and puzzle hash unchanged.\n");
+                    void Click(string name){var b=g.GetComponentsInChildren<Button>().Single(b=>b.name==name);Require(b.interactable,"enabled "+name);b.onClick.Invoke();}
+                    void Require(bool condition,string check){if(!condition)throw new InvalidOperationException("Menu navigation: "+check);}
+                }
                 int done=0;
                 foreach(var pose in poses){
                     Status="Capturing "+(++done)+"/"+poses.Count+" "+pose.Name;WriteStatus();
@@ -151,7 +178,7 @@ namespace Cascade.Editor.Playable
         }
         static IEnumerator Capture(CascadeGame g,Pose pose)
         {
-            g.Preferences.LargeText=pose.Small;g.SetEditorSafeInsets(pose.Wide?Vector4.zero:Insets);g.SetUiLocale(pose.Small?"uk":"ru");
+            g.Preferences.LargeText=pose.Small;g.SetEditorSafeInsets(pose.Wide?Vector4.zero:Insets);g.SetUiLocale(pose.Name.Contains("-en-")?"en":pose.Small?"uk":"ru");
             pose.Setup();yield return null;
             float until=Time.realtimeSinceStartup+15;
             while(g.Interaction.IsPreparing&&!g.MechanicPopupOpen&&Time.realtimeSinceStartup<until)yield return null;
@@ -198,7 +225,7 @@ namespace Cascade.Editor.Playable
                 labels.Add(new{name=text.name,path=PathOf(text.transform),text=text.text,button=button==null?null:PathOf(button.transform),bounds=Bounds(text.rectTransform),fontPixels=text.fontSize*(canvas==null?1:canvas.scaleFactor),overflow=text.isTextOverflowing,splitWords=split});
             }
             var insets=pose.Wide?Vector4.zero:Insets;
-            return new{width=pose.Width,height=pose.Height,locale=pose.Small?"uk":"ru",largeText=pose.Small,simulatedInsets=new[]{insets.x,insets.y,insets.z,insets.w},buttons,labels};
+            return new{width=pose.Width,height=pose.Height,locale=g.UiLanguage,largeText=pose.Small,simulatedInsets=new[]{insets.x,insets.y,insets.z,insets.w},buttons,labels};
         }
         static object Bounds(RectTransform rect)
         {

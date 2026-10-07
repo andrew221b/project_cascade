@@ -20,7 +20,6 @@ namespace Cascade.Presentation
             var paper=Background(notice,Color.white,false);paper.sprite=enamelControls[0];paper.type=Image.Type.Sliced;
             var note=Text("Fair help rules",notice,new Vector2(.06f,.40f),new Vector2(.94f,.94f),17,"Up to two tools per stage. Help limits this run to two stars.");note.enableAutoSizing=true;note.fontSizeMin=16*MenuUnit;note.fontSizeMax=17*MenuUnit;navigationLightLabels.Add(note);
             var state=Text("Store availability",notice,new Vector2(.06f,.065f),new Vector2(.94f,.37f),16,TestMonetization?(UiCopy)"Test shop · no charge":purchaseStore?.State==PurchaseState.Deferred?"Waiting for purchase approval. You can keep playing.":purchaseStore?.State==PurchaseState.Busy?"Checking purchase…":purchaseStore?.State==PurchaseState.Retry?"The store could not finish. Try again.":purchaseStore?.State==PurchaseState.Unconfigured||purchaseStore?.State==PurchaseState.Unavailable?"The shop is not open yet.":"Coins can also be earned by playing.");state.enableAutoSizing=true;state.fontSizeMin=15*MenuUnit;state.fontSizeMax=16*MenuUnit;navigationLightLabels.Add(state);
-            MenuButton("Back to shop",.025f,()=>SetScreen(GameScreen.Shop));
         }
         void ShopCategoryButtons(bool coins=false)
         {

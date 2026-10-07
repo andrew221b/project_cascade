@@ -655,6 +655,10 @@ namespace Cascade.Presentation
             var button = Button(name, parent, min, max, clicked); button.GetComponentInChildren<TextMeshProUGUI>().SetCopy("");
             var icon = Rect("Chevron", button.transform, new Vector2(.28f, .20f), new Vector2(.72f, .80f)).gameObject.AddComponent<ChevronGraphic>();
             icon.PointsRight = right; icon.color = Ink; icon.raycastTarget = false;
+            if(menuRoot!=null&&button.transform.IsChildOf(menuRoot)&&CurrentScreen!=GameScreen.JourneyMap&&CurrentScreen!=GameScreen.PlayChoice) {
+                var face=button.GetComponent<UnityEngine.UI.Image>();face.sprite=enamelControls[0];face.type=UnityEngine.UI.Image.Type.Sliced;face.color=Color.white;
+                icon.color=MenuPaper;icon.rectTransform.anchorMin=new Vector2(.36f,.31f);icon.rectTransform.anchorMax=new Vector2(.64f,.69f);
+            }
             return button;
         }
     }

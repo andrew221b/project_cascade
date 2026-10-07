@@ -83,8 +83,8 @@ namespace Cascade.Presentation
         {
             var headerPlate=Rect("Navigation heading",menuRoot,new Vector2(.06f,.88f),new Vector2(.94f,.975f));
             var button=DirectionButton("Back",headerPlate,new Vector2(.01f,.12f),new Vector2(.20f,.88f),false,back);
-            button.GetComponent<Image>().color=Color.clear;((RectTransform)button.transform).sizeDelta=new Vector2(0,8*MenuUnit);
-            var heading=Text("Page heading",headerPlate,new Vector2(.22f,.08f),new Vector2(.88f,.92f),29,title);heading.font=art.titleFont;heading.alignment=TextAlignmentOptions.MidlineLeft;
+            var backRect=(RectTransform)button.transform;backRect.anchorMin=backRect.anchorMax=new Vector2(0,.5f);backRect.pivot=new Vector2(0,.5f);backRect.sizeDelta=Vector2.one*48*MenuUnit;menuSquares.Add(new KeyValuePair<RectTransform,float>(backRect,48));
+            var heading=Text("Page heading",headerPlate,new Vector2(.22f,.08f),new Vector2(.98f,.92f),29,title);heading.font=art.titleFont;heading.alignment=TextAlignmentOptions.MidlineLeft;
             heading.enableAutoSizing=true;heading.fontSizeMin=21*MenuUnit;heading.fontSizeMax=29*MenuUnit;heading.textWrappingMode=TextWrappingModes.NoWrap;
         }
         Button NavigationButton(string name,UiCopy title,int icon,float bottom,Action action,bool primary=false,UiCopy detail=default)
@@ -157,9 +157,7 @@ namespace Cascade.Presentation
             NavigationNote("No adverts explanation",PurchaseExplanation,.315f,.475f);
             StorePurchaseButton(.223f);
             if(!TestMonetization){var restore=NavigationButton("Restorepurchases","Restore purchases",1,.112f,()=>purchaseStore?.Restore());restore.interactable=purchaseStore?.CanRestore==true;if(!restore.interactable)restore.gameObject.AddComponent<CanvasGroup>().alpha=.57f;}
-            var back=NavigationButton("Back to play","Back",0,.012f,()=>SetScreen(noAdsReturnScreen),true);
-            var rect=(RectTransform)back.transform;float minimum=52/back.GetComponentInParent<Canvas>().scaleFactor;
-            if(rect.rect.height<minimum)rect.offsetMax=new Vector2(rect.offsetMax.x,rect.offsetMax.y+minimum-rect.rect.height);
+
         }
         void DrawPrologue()
         {

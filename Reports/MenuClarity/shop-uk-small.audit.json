@@ -1,0 +1,440 @@
+{
+  "pose": "shop-uk-small",
+  "before": {
+    "Screen": "Shop",
+    "Attempt": "8766975b-837d-483b-a345-d5e063971a38",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "after": {
+    "Screen": "Shop",
+    "Attempt": "8766975b-837d-483b-a345-d5e063971a38",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 320,
+    "height": 693,
+    "locale": "uk",
+    "largeText": true,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Back",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Navigation heading/Back",
+        "interactable": true,
+        "bounds": {
+          "x": 24.2688179,
+          "y": 578.3452,
+          "width": 47.9999962,
+          "height": 48.0
+        }
+      },
+      {
+        "name": "Watch coin video",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Watch coin video",
+        "interactable": false,
+        "bounds": {
+          "x": 147.6608,
+          "y": 535.449158,
+          "width": 138.815979,
+          "height": 48.0
+        }
+      },
+      {
+        "name": "Tool tab tab",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Tool tab tab",
+        "interactable": true,
+        "bounds": {
+          "x": 31.9808,
+          "y": 479.6904,
+          "width": 80.82175,
+          "height": 47.99997
+        }
+      },
+      {
+        "name": "Trophies tab",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Trophies tab",
+        "interactable": true,
+        "bounds": {
+          "x": 119.589111,
+          "y": 479.6904,
+          "width": 80.82173,
+          "height": 47.99997
+        }
+      },
+      {
+        "name": "Coins tab",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Coins tab",
+        "interactable": true,
+        "bounds": {
+          "x": 207.197418,
+          "y": 479.6904,
+          "width": 80.82175,
+          "height": 47.99997
+        }
+      },
+      {
+        "name": "Shop object 0",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 0",
+        "interactable": true,
+        "bounds": {
+          "x": 34.4486427,
+          "y": 399.4452,
+          "width": 80.4104462,
+          "height": 73.7254944
+        }
+      },
+      {
+        "name": "Shop object 1",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 1",
+        "interactable": true,
+        "bounds": {
+          "x": 119.794769,
+          "y": 399.4452,
+          "width": 80.41046,
+          "height": 73.7254944
+        }
+      },
+      {
+        "name": "Shop object 2",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 2",
+        "interactable": true,
+        "bounds": {
+          "x": 205.1409,
+          "y": 399.4452,
+          "width": 80.41043,
+          "height": 73.7254944
+        }
+      },
+      {
+        "name": "Shop object 3",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 3",
+        "interactable": true,
+        "bounds": {
+          "x": 34.4486427,
+          "y": 314.567963,
+          "width": 80.4104462,
+          "height": 73.7254944
+        }
+      },
+      {
+        "name": "Shop object 4",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 4",
+        "interactable": true,
+        "bounds": {
+          "x": 119.794769,
+          "y": 314.567963,
+          "width": 80.41046,
+          "height": 73.7254944
+        }
+      },
+      {
+        "name": "Shop object 5",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 5",
+        "interactable": true,
+        "bounds": {
+          "x": 205.1409,
+          "y": 314.567963,
+          "width": 80.41043,
+          "height": 73.7254944
+        }
+      },
+      {
+        "name": "Buy selected item",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Buy selected item",
+        "interactable": true,
+        "bounds": {
+          "x": 35.0656052,
+          "y": 114.160622,
+          "width": 249.868744,
+          "height": 48.0000076
+        }
+      },
+      {
+        "name": "My tools link",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/My tools link",
+        "interactable": true,
+        "bounds": {
+          "x": 35.0656052,
+          "y": 57.1627579,
+          "width": 249.868744,
+          "height": 48.0000153
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Page heading",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Navigation heading/Page heading",
+        "text": "Тест крамниці",
+        "button": null,
+        "bounds": {
+          "x": 83.9905243,
+          "y": 577.6255,
+          "width": 206.311386,
+          "height": 49.4394531
+        },
+        "fontPixels": 23.8116112,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Wallet coins",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Wallet coins",
+        "text": "120",
+        "button": null,
+        "bounds": {
+          "x": 76.7103958,
+          "y": 539.4617,
+          "width": 67.86559,
+          "height": 40.2702637
+        },
+        "fontPixels": 20.2316589,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Watch coin video/Label",
+        "text": "Завантаження…",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Watch coin video",
+        "bounds": {
+          "x": 155.989746,
+          "y": 538.3292,
+          "width": 122.158081,
+          "height": 42.23999
+        },
+        "fontPixels": 16.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Tool tab tab/Label",
+        "text": "Допомога",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Tool tab tab",
+        "bounds": {
+          "x": 36.83011,
+          "y": 482.570374,
+          "width": 71.12314,
+          "height": 42.24005
+        },
+        "fontPixels": 16.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Trophies tab/Label",
+        "text": "Трофеї",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Trophies tab",
+        "bounds": {
+          "x": 124.438416,
+          "y": 482.570374,
+          "width": 71.12312,
+          "height": 42.24005
+        },
+        "fontPixels": 18.5566349,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Coins tab/Label",
+        "text": "Монети",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Coins tab",
+        "bounds": {
+          "x": 212.046738,
+          "y": 482.570374,
+          "width": 71.12312,
+          "height": 42.24005
+        },
+        "fontPixels": 17.6534367,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Owned stock",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 0/Owned stock",
+        "text": "×0",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 0",
+        "bounds": {
+          "x": 76.26207,
+          "y": 400.182465,
+          "width": 35.3805847,
+          "height": 16.9568481
+        },
+        "fontPixels": 11.49526,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Owned stock",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 1/Owned stock",
+        "text": "×0",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 1",
+        "bounds": {
+          "x": 161.6082,
+          "y": 400.182465,
+          "width": 35.3806,
+          "height": 16.9568481
+        },
+        "fontPixels": 11.49526,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Owned stock",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 2/Owned stock",
+        "text": "×0",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 2",
+        "bounds": {
+          "x": 246.95433,
+          "y": 400.182465,
+          "width": 35.38057,
+          "height": 16.9568481
+        },
+        "fontPixels": 11.49526,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Owned stock",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 3/Owned stock",
+        "text": "×0",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 3",
+        "bounds": {
+          "x": 76.26207,
+          "y": 315.3052,
+          "width": 35.3805847,
+          "height": 16.9568787
+        },
+        "fontPixels": 11.49526,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Owned stock",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 4/Owned stock",
+        "text": "×0",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 4",
+        "bounds": {
+          "x": 161.6082,
+          "y": 315.3052,
+          "width": 35.3806,
+          "height": 16.9568787
+        },
+        "fontPixels": 11.49526,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Owned stock",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 5/Owned stock",
+        "text": "Твій",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 5",
+        "bounds": {
+          "x": 246.95433,
+          "y": 315.3052,
+          "width": 35.38057,
+          "height": 16.9568787
+        },
+        "fontPixels": 11.49526,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Selected object title",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Selected object title",
+        "text": "Лінза спуску",
+        "button": null,
+        "bounds": {
+          "x": 38.1504059,
+          "y": 265.004578,
+          "width": 243.699142,
+          "height": 29.7380371
+        },
+        "fontPixels": 20.52725,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Selected object benefit",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Selected object benefit",
+        "text": "Показує ряд після спуску. Можна поглянути й ще подумати.",
+        "button": null,
+        "bounds": {
+          "x": 39.6928024,
+          "y": 208.006744,
+          "width": 240.614349,
+          "height": 52.66107
+        },
+        "fontPixels": 15.4775476,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Owned item count",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Owned item count",
+        "text": "Із інструментом — до 2 зірок.\nЧистого рекорду не буде.",
+        "button": null,
+        "bounds": {
+          "x": 39.6928024,
+          "y": 170.214691,
+          "width": 240.614349,
+          "height": 32.83571
+        },
+        "fontPixels": 13.6711493,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Buy selected item/Label",
+        "text": "Спробувати предмет",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Buy selected item",
+        "bounds": {
+          "x": 50.057724,
+          "y": 117.040627,
+          "width": 219.884476,
+          "height": 42.2400131
+        },
+        "fontPixels": 21.2251778,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/My tools link/Label",
+        "text": "Мої речі",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/My tools link",
+        "bounds": {
+          "x": 50.057724,
+          "y": 60.04278,
+          "width": 219.884476,
+          "height": 42.24001
+        },
+        "fontPixels": 22.0,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

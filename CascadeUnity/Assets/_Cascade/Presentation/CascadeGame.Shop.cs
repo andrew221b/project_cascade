@@ -44,7 +44,7 @@ namespace Cascade.Presentation
             if(treasureArt==null)treasureArt=NavigationSlices("TravelTreasures",2,3);
             return treasureArt[index];
         }
-        Sprite ToolArt(int index)=>index<3?TravelArt(index):TreasureArt(index-3);
+        Sprite ToolArt(int index)=>index==ShopCatalog.ToolCount?navigationIcons[4]:index<3?TravelArt(index):TreasureArt(index-3);
         Sprite TrophyArt(int index)=>index<4?Resources.Load<Sprite>("CascadeArt/Workshop/"+GiftAssets[index]):TreasureArt(index-2);
         bool HasFieldTools { get {for(int i=0;i<ShopCatalog.ToolCount;i++)if(Stock((TravelTool)i)>0)return true;return false;} }
         void BuildFieldTools()
@@ -75,7 +75,7 @@ namespace Cascade.Presentation
             fieldTools.interactable=Interaction.CanPlay&&!MechanicPopupOpen;
         }
         public void SelectShopTab(int tab){shopTab=Mathf.Clamp(tab,0,1);shopItem=0;shopNotice=default;DrawMenu();}
-        public void SelectShopItem(int index){shopItem=Mathf.Clamp(index,0,shopTab==0?ShopCatalog.ToolCount-1:ShopCatalog.TrophyIds.Length-1);if(CurrentScreen==GameScreen.Collection)giftPage=shopItem;shopNotice=default;DrawMenu();}
+        public void SelectShopItem(int index){shopItem=Mathf.Clamp(index,0,shopTab==0?ShopCatalog.ToolCount:ShopCatalog.TrophyIds.Length-1);if(CurrentScreen==GameScreen.Collection)giftPage=shopItem;shopNotice=default;DrawMenu();}
         public void ShowSupplies()
         {
             if(CurrentScreen!=GameScreen.Shop)toolsReturnScreen=CurrentScreen;
@@ -85,8 +85,8 @@ namespace Cascade.Presentation
         bool ToolsInLevel=>toolsReturnScreen==GameScreen.Pause||toolsReturnScreen==GameScreen.Playing||toolsReturnScreen==GameScreen.Fail;
         void BackFromTools(){if(ToolsInLevel)ShowGame();else SetScreen(toolsReturnScreen);}
         void BackFromShop(){if(shopReturnScreen==GameScreen.Shop)ShowHome();else SetScreen(shopReturnScreen);}
-        static UiCopy ToolTitle(int i)=>new[]{"Wayfinder scroll","Undo spool","Return hourglass","Signal lantern","Landing lens"}[i];
-        static UiCopy ToolDescription(int i)=>new[]{
+        static UiCopy ToolTitle(int i)=>i==ShopCatalog.ToolCount?(UiCopy)"Field guide":new[]{"Wayfinder scroll","Undo spool","Return hourglass","Signal lantern","Landing lens"}[i];
+        static UiCopy ToolDescription(int i)=>i==ShopCatalog.ToolCount?(UiCopy)"See how each effect works. Watch an example, then try it yourself.":new[]{
             "Points out each next move on this board. Stops when the board breaks.",
             "One extra undo after your two free undos. Works only on the current board.",
             "Brings back the last broken board in this stage. Moves made since then are undone.",
@@ -113,7 +113,7 @@ namespace Cascade.Presentation
             if(collection)shopTab=1;
             LoadNavigationArt();NavigationHeader(collection?"Trophies":bag?"My tools":TestMonetization?"Test shop":"Shop",collection?()=>SetScreen(collectionReturn):bag?(Action)BackFromTools:BackFromShop);
             var headingPlate=(RectTransform)menuRoot.Find("Navigation heading");headingPlate.anchorMin=new Vector2(.06f,.906f);headingPlate.anchorMax=new Vector2(.94f,.985f);menuRows.Add(new MenuRow{rect=headingPlate,top=.985f,height=48});FitMenuRows();
-            var backButton=headingPlate.GetComponentInChildren<Button>();var backRect=(RectTransform)backButton.transform;backRect.anchorMin=new Vector2(.01f,0);backRect.anchorMax=new Vector2(.20f,1);backRect.sizeDelta=Vector2.zero;
+
             // One continuous catalogue surface. The actual stock lives on two wooden shelves.
             MenuReadingSurface("Workshop catalogue",new Vector2(.055f,.035f),new Vector2(.945f,.815f));
             if(collection){
@@ -132,38 +132,42 @@ namespace Cascade.Presentation
                 var note=Text("Catalogue guidance",menuRoot,new Vector2(.16f,.726f),new Vector2(.84f,.817f),18,collection?"Choose a trophy to take with Mika.":"Pick a tool. Each can be used once per stage.");
                 note.enableAutoSizing=true;note.fontSizeMin=16*MenuUnit;note.fontSizeMax=18*MenuUnit;
             }
-            int count=shopTab==0?ShopCatalog.ToolCount:ShopCatalog.TrophyIds.Length,columns=shopTab==0?3:4;
+            int count=shopTab==0?ShopCatalog.ToolCount+1:ShopCatalog.TrophyIds.Length,columns=shopTab==0?3:4;
             shopItem=Mathf.Clamp(shopItem,0,count-1);float span=.83f/columns;
             for(int i=0;i<count;i++){
-                int selected=i;float x=.085f+i%columns*span+(shopTab==0&&i>=3?span*.5f:0),top=.719f-(i/columns)*.137f;
+                int selected=i;float x=.085f+i%columns*span,top=.719f-(i/columns)*.137f;
                 var button=Button("",menuRoot,new Vector2(x+.008f,top-.119f),new Vector2(x+span-.008f,top),()=>SelectShopItem(selected));button.name="Shop object "+i;button.interactable=!toolSearchPending;
                 var face=button.GetComponent<Image>();face.sprite=art.panel;face.type=Image.Type.Sliced;face.color=i==shopItem?new Color(.99f,.79f,.36f):new Color(.86f,.91f,.85f,.55f);
                 var picture=Picture("Object on shelf",button.transform,new Vector2(.09f,.14f),new Vector2(.91f,.96f),shopTab==0?ToolArt(i):TrophyArt(i),true);
                 if(i==shopItem)displayedShopObject=picture;
                 bool owned=shopTab==1&&OwnsGift(ShopCatalog.TrophyIds[i]);int stock=shopTab==0?Stock((TravelTool)i):0;
-                if(owned||shopTab==0){var mark=Text("Owned stock",button.transform,new Vector2(.52f,.01f),new Vector2(.96f,.24f),14,owned?"Yours":UiCopy.Raw("×"+stock));mark.font=art.titleFont;mark.enableAutoSizing=true;mark.fontSizeMin=12*MenuUnit;mark.fontSizeMax=14*MenuUnit;}
+                if(owned||shopTab==0){var mark=Text("Owned stock",button.transform,new Vector2(.52f,.01f),new Vector2(.96f,.24f),14,shopTab==0&&i==ShopCatalog.ToolCount?(UiCopy)"Yours":owned?"Yours":UiCopy.Raw("×"+stock));mark.font=art.titleFont;mark.enableAutoSizing=true;mark.fontSizeMin=12*MenuUnit;mark.fontSizeMax=14*MenuUnit;}
             }
             Shelf(.582f);Shelf(.445f);
             string gift=ShopCatalog.TrophyIds[shopItem];var tool=(TravelTool)shopItem;
             var title=Text("Selected object title",menuRoot,new Vector2(.105f,.383f),new Vector2(.895f,.431f),25,shopTab==0?ToolTitle(shopItem):(UiCopy)GiftNames[shopItem]);title.font=art.titleFont;title.textWrappingMode=TextWrappingModes.NoWrap;title.enableAutoSizing=true;title.fontSizeMin=18*MenuUnit;title.fontSizeMax=25*MenuUnit;
             UiCopy benefit=shopTab==0?ToolDescription(shopItem):shopItem<4?"Mika wears it on the map. You can also earn it in parcels.":"A trophy for Mika's travels. Wear it on the map. No puzzle advantage.";
             var explanation=Text("Selected object benefit",menuRoot,new Vector2(.11f,.291f),new Vector2(.89f,.376f),19,benefit);explanation.enableAutoSizing=true;explanation.fontSizeMin=17*MenuUnit;explanation.fontSizeMax=19*MenuUnit*(Preferences.LargeText?1.12f:1);
-            UiCopy state=shopTab==0?(UiCopy)"Tools: up to 2 stars. No clean record.":OwnsGift(gift)?(UiCopy)"Collected":collection&&shopItem<4?new UiCopy("Parts found: {0} / 3",Rewards.Fragments(gift)):(UiCopy)"Yours forever";
+            bool manual=shopTab==0&&shopItem==ShopCatalog.ToolCount;
+            UiCopy state=manual?(UiCopy)"Always with you. Free to read.":shopTab==0?(UiCopy)"Tools: up to 2 stars. No clean record.":OwnsGift(gift)?(UiCopy)"Collected":collection&&shopItem<4?new UiCopy("Parts found: {0} / 3",Rewards.Fragments(gift)):(UiCopy)"Yours forever";
             if(!bag&&!string.IsNullOrEmpty(shopNotice.Key))state=shopNotice;
             var stockLabel=Text("Owned item count",menuRoot,new Vector2(.11f,.230f),new Vector2(.89f,.283f),18,state);stockLabel.textWrappingMode=shopTab==0?TextWrappingModes.Normal:TextWrappingModes.NoWrap;stockLabel.enableAutoSizing=true;stockLabel.fontSizeMin=16*MenuUnit;stockLabel.fontSizeMax=18*MenuUnit;
             int price=shopTab==0?ShopCatalog.Price(tool):ShopCatalog.KeepsakePrice;
-            if(bag){
+            if(manual){
+                CounterButton("Read field guide","Open guide",.095f,.905f,.138f,.217f,ShowHowToPlay,true);
+                if(bag)CounterButton("Open shop","Shop",.095f,.905f,.049f,.125f,ShowShop);
+                else CounterButton("My tools link","My things",.095f,.905f,.049f,.125f,ShowTravelBag);
+            }else if(bag){
                 var use=CounterButton("Use selected tool",toolSearchPending?"Checking the route…":"Use one",.095f,.905f,.138f,.217f,()=>UseShopTool(tool),true);
                 use.interactable=!toolSearchPending&&ToolsInLevel&&Stock(tool)>0&&ToolEligible(tool);
                 var why=ToolEligibilityText(tool);if(!string.IsNullOrEmpty(why.Key))use.GetComponentInChildren<TextMeshProUGUI>().SetCopy(why);QuietDisabledCounter(use);
-                CounterButton("Open shop","Shop",.095f,.492f,.049f,.125f,ShowShop);
-                CounterButton("Tools back",ToolsInLevel?"Continue":"Back",.508f,.905f,.049f,.125f,BackFromTools);
+                CounterButton("Open shop","Shop",.095f,.905f,.049f,.125f,ShowShop);
             }else if(collection){
                 bool owned=OwnsGift(gift);
                 UiCopy caption=owned?(EquippedGift==gift?(UiCopy)"With Mika":"Take along"):shopItem<4?(Rewards.EarnedFragments(gift)>=3?(UiCopy)"Open parcel":Rewards.SelectedGift==gift?(UiCopy)"Next trophy":"Choose this trophy"):(UiCopy)"Find in shop";
                 var action=CounterButton("Trophy action",caption,.095f,.905f,.138f,.217f,()=>{if(owned)EquipShopGift(gift);else if(shopItem>=4){ShowShop();shopTab=1;DrawMenu();}else if(Rewards.EarnedFragments(gift)>=3)ShowParcel();else{Rewards.SelectGift(gift);PersistProgress();DrawMenu();}},true);
                 action.interactable=owned?EquippedGift!=gift:shopItem>=4||Rewards.EarnedFragments(gift)>=3||Rewards.SelectedGift!=gift;QuietDisabledCounter(action);
-                CounterButton("Collection back","Back",.095f,.905f,.049f,.125f,()=>SetScreen(collectionReturn));
+
             }else{
                 bool owned=shopTab==1&&OwnsGift(gift);
                 UiCopy caption=owned?(EquippedGift==gift?(UiCopy)"With Mika":"Take along"):TestMonetization?(UiCopy)"Try this item":new UiCopy("Buy · {0} coins",price);
@@ -178,7 +182,7 @@ namespace Cascade.Presentation
         }
         public bool BuySelectedShopItem()
         {
-            if(saveBlocked||monetization==null)return false;
+            if(saveBlocked||monetization==null||shopTab==0&&shopItem==ShopCatalog.ToolCount)return false;
             string gift=ShopCatalog.TrophyIds[shopItem];if(shopTab==1&&OwnsGift(gift))return EquipShopGift(gift);
             bool bought=TestMonetization?monetization.TryPreviewItem((TravelTool)shopItem,shopTab==1?gift:null):shopTab==0?monetization.TryBuyTool((TravelTool)shopItem,Rewards.EarnedCoins(OrderedNodes)):monetization.TryBuyKeepsake(gift,Rewards.EarnedCoins(OrderedNodes),Rewards);
             shopNotice=bought?(shopTab==0?(UiCopy)"Added to your bag":"Added to your collection"):"Could not buy. No coins spent.";

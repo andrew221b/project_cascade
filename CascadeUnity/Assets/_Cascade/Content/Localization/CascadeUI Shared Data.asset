@@ -3506,6 +3506,38 @@ MonoBehaviour:
     m_Key: Coins can also be earned by playing.
     m_Metadata:
       m_Items: []
+  - m_Id: 673947791122432
+    m_Key: Basics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 673947795316736
+    m_Key: Field guide
+    m_Metadata:
+      m_Items: []
+  - m_Id: 673947795316737
+    m_Key: See how each effect works. Watch an example, then try it yourself.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 673947795316738
+    m_Key: Always with you. Free to read.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 673947795316739
+    m_Key: Open guide
+    m_Metadata:
+      m_Items: []
+  - m_Id: 676262187098112
+    m_Key: Try this example
+    m_Metadata:
+      m_Items: []
+  - m_Id: 676262241624064
+    m_Key: Opens at level {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 676262241624065
+    m_Key: Fewer moves, more stars. Replay a level to improve your score.
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

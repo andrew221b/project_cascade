@@ -58,8 +58,8 @@ namespace Cascade.Presentation
             var next=DirectionButton("ReachNext",menuRoot,new Vector2(.74f,.475f),new Vector2(.92f,.475f),true,()=>{reachPage=(reachPage+1)%6;DrawMenu();});RegisterMenuRow(next,.475f,0,52,0);
             Text("Reach instruction",menuRoot,new Vector2(.10f,.22f),new Vector2(.90f,.375f),20,pickups?(reachPage<3?"Match the spool picture. Then drag past a neighbour.":"Match the flask picture. The bomb waits for two swaps."):"Drag past a neighbour. The ribbon works once. Undo brings it back.");
             MenuButton("Try this trail",.082f,()=>StartContent(Catalog.BonusLevels[offset+reachPage]),true);
-            MenuButton("Back",.005f,ShowTravelBag,false,.08f,.45f);
-            if(pickups)MenuButton("Ribbon reach",.005f,ShowReachChallenges,false,.50f,.92f);
+            MenuButton("Back",.005f,ShowTravelBag,false,.08f,.48f);
+            if(pickups)MenuButton("Ribbon reach",.005f,ShowReachChallenges,false,.52f,.92f);
         }
     }
 }

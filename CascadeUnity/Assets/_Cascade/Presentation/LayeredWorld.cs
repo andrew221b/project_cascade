@@ -120,9 +120,14 @@ namespace Cascade.Presentation
             var texture=landscapeMaterial.mainTexture;float ratio=(float)texture.width/texture.height;
             landscapeMaterial.SetFloat("_MistPhase",phase);
             landscape.position=new Vector3(cx,cy,3.2f);landscape.localScale=new Vector3(w,h,1);
-            // Fill every aspect ratio with the artwork instead of fading its sides.
+            // Portrait menus use the sky opening as their content area: move timber outside
+            // the safe UI, with a slim sill below it. Map/gameplay retain their own framing.
             float imageHeight=Mathf.Max(1,w/ratio/h),imageWidth=Mathf.Max(1,h*ratio/w);
-            var imageRect=workshop&&cameraView.aspect<.85f?new Vector4(0,0,1,1):new Vector4((1-imageWidth)*.5f,(1-imageHeight)*.5f-(gameplayVisible?DescentDepth:0)*.022f,imageWidth,imageHeight);
+            var imageRect=workshop&&cameraView.aspect<.85f?new Vector4(-.13f,-.17f,1.26f,1.19f):new Vector4((1-imageWidth)*.5f,(1-imageHeight)*.5f-(gameplayVisible?DescentDepth:0)*.022f,imageWidth,imageHeight);
+            if(workshop&&cameraView.aspect>=.85f) {
+                // Widen the same opening on landscape; preserve the illustration's proportions.
+                float width=imageWidth*1.52f;imageRect=new Vector4((1-width)*.5f,-.47f,width,1.52f);
+            }
             landscapeMaterial.SetVector("_ImageRect",imageRect);
             ActiveWeatherCount=0;
             for(int i=0;i<weather.Length;i++) {

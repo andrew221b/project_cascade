@@ -1,0 +1,202 @@
+{
+  "pose": "device-uk-small",
+  "before": {
+    "Screen": "Devices",
+    "Attempt": "89c93d3e-0c6f-4082-81e7-b4f873f9af0a",
+    "Hash": "e015ec5538a2013c0c2ec340cc5453ca671b447aade0955e5d2c7d3f96129bdd",
+    "Status": "Playing",
+    "Route": 0,
+    "Stage": -1,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "after": {
+    "Screen": "Devices",
+    "Attempt": "89c93d3e-0c6f-4082-81e7-b4f873f9af0a",
+    "Hash": "e015ec5538a2013c0c2ec340cc5453ca671b447aade0955e5d2c7d3f96129bdd",
+    "Status": "Playing",
+    "Route": 0,
+    "Stage": -1,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 320,
+    "height": 693,
+    "locale": "uk",
+    "largeText": true,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Previousexample",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Previousexample",
+        "interactable": true,
+        "bounds": {
+          "x": 30.4384041,
+          "y": 531.112366,
+          "width": 52.4416,
+          "height": 48.0
+        }
+      },
+      {
+        "name": "Nextexample",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Nextexample",
+        "interactable": true,
+        "bounds": {
+          "x": 237.11998,
+          "y": 531.112366,
+          "width": 52.4416046,
+          "height": 48.0
+        }
+      },
+      {
+        "name": "Trylevel13",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Trylevel13",
+        "interactable": false,
+        "bounds": {
+          "x": 30.4383945,
+          "y": 107.72,
+          "width": 259.12323,
+          "height": 52.0
+        }
+      },
+      {
+        "name": "Basics",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Basics",
+        "interactable": true,
+        "bounds": {
+          "x": 30.4384041,
+          "y": 43.720047,
+          "width": 123.391983,
+          "height": 51.9999771
+        }
+      },
+      {
+        "name": "Back",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Back",
+        "interactable": true,
+        "bounds": {
+          "x": 166.169571,
+          "y": 43.720047,
+          "width": 123.392014,
+          "height": 51.9999771
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Menu title",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Menu title",
+        "text": "Бомба",
+        "button": null,
+        "bounds": {
+          "x": 58.2016068,
+          "y": 588.405457,
+          "width": 203.596771,
+          "height": 39.03125
+        },
+        "fontPixels": 22.99052,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Device page",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Device page",
+        "text": "3 / 11",
+        "button": null,
+        "bounds": {
+          "x": 95.21919,
+          "y": 534.5053,
+          "width": 129.561569,
+          "height": 44.6070557
+        },
+        "fontPixels": 18.392416,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Demo result",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Device example/Demo result",
+        "text": "Дошка ламається",
+        "button": null,
+        "bounds": {
+          "x": 42.7776031,
+          "y": 317.881836,
+          "width": 234.444748,
+          "height": 28.0
+        },
+        "fontPixels": 18.392416,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Device explanation",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Device explanation",
+        "text": "Постав над бомбою її фігуру — і ґніт згасне. Кожен обмін зменшує лічильник. На нулі бомба пошкодить дошку.",
+        "button": null,
+        "bounds": {
+          "x": 42.7776031,
+          "y": 204.289474,
+          "width": 234.444748,
+          "height": 114.61528
+        },
+        "fontPixels": 14.7796211,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Trylevel13/Label",
+        "text": "Спробувати 13",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Trylevel13",
+        "bounds": {
+          "x": 30.4383945,
+          "y": 107.72,
+          "width": 259.12323,
+          "height": 52.0
+        },
+        "fontPixels": 19.87038,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Basics/Label",
+        "text": "Основи",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Basics",
+        "bounds": {
+          "x": 30.4384041,
+          "y": 43.720005,
+          "width": 123.391983,
+          "height": 52.00002
+        },
+        "fontPixels": 18.06398,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Back/Label",
+        "text": "Назад",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Back",
+        "bounds": {
+          "x": 166.169571,
+          "y": 43.720005,
+          "width": 123.392014,
+          "height": 52.00002
+        },
+        "fontPixels": 18.06398,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

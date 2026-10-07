@@ -338,18 +338,22 @@ namespace Cascade.Presentation
         {
             if(deviceIndex<0){DrawBasics();return;}
             bool wind=deviceIndex==1&&Enumerable.Range(0,Interaction.Attempt.Level.Floors.Count).Any(IsWindFloor);
-            MenuTitle(wind?"Wind on landing":DeviceTitles[deviceIndex],new UiCopy("Device guide · {0} / {1}",deviceIndex+1,DeviceTitles.Length));
+            MenuTitle(wind?"Wind on landing":DeviceTitles[deviceIndex],"");
+            var count=Text("Device page",menuRoot,new Vector2(.29f,.818f),new Vector2(.71f,.89f),18,UiCopy.Raw((deviceIndex+1)+" / "+DeviceTitles.Length));count.font=art.titleFont;
+            var previous=DirectionButton("Previous example",menuRoot,new Vector2(.08f,.89f),new Vector2(.25f,.89f),false,()=>{deviceIndex=(deviceIndex+DeviceTitles.Length-1)%DeviceTitles.Length;DrawMenu();});RegisterMenuRow(previous,.89f,0,48,0);
+            var next=DirectionButton("Next example",menuRoot,new Vector2(.75f,.89f),new Vector2(.92f,.89f),true,()=>{deviceIndex=(deviceIndex+1)%DeviceTitles.Length;DrawMenu();});RegisterMenuRow(next,.89f,0,48,0);
             var fixture=Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).First(c=>c.Definition.CampaignNodeId==DeviceNodes[deviceIndex]).Definition;
             if(wind)fixture=WindGuide(CurrentWindRight);
-            LiveDeviceDemo(Rect("Device example",menuRoot,new Vector2(.10f,.53f),new Vector2(.90f,.805f)),fixture,deviceIndex);
+            LiveDeviceDemo(Rect("Device example",menuRoot,new Vector2(.12f,.52f),new Vector2(.88f,.785f)),fixture,deviceIndex);
             MenuReadingSurface("Device instructions cloth",new Vector2(.12f,.375f),new Vector2(.88f,.567f));
-            var explanation=Text("Device explanation",menuRoot,new Vector2(.16f,.28f),new Vector2(.84f,.48f),18,wind?"Wind pushes the whole row one place when it lands. Follow the arrow. Take your time to think.":DeviceCopy[deviceIndex]);explanation.alignment=TextAlignmentOptions.TopLeft;explanation.margin=new Vector4(0,8*MenuUnit,0,0);explanation.enableAutoSizing=true;explanation.fontSizeMin=17*MenuUnit;explanation.fontSizeMax=18*MenuUnit;
-            MenuButton("Previous",.12f,()=>{deviceIndex=(deviceIndex+DeviceTitles.Length-1)%DeviceTitles.Length;DrawMenu();},false,.08f,.48f);
-            MenuButton("Next",.12f,()=>{deviceIndex=(deviceIndex+1)%DeviceTitles.Length;DrawMenu();},false,.52f,.92f);
+            var explanation=Text("Device explanation",menuRoot,new Vector2(.12f,.285f),new Vector2(.88f,.47f),18,wind?"Wind pushes the whole row one place when it lands. Follow the arrow. Take your time to think.":DeviceCopy[deviceIndex]);explanation.alignment=TextAlignmentOptions.TopLeft;explanation.margin=new Vector4(0,8*MenuUnit,0,0);explanation.enableAutoSizing=true;explanation.fontSizeMin=17*MenuUnit;explanation.fontSizeMax=18*MenuUnit;
+
             var example=Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).First(c=>c.Definition.CampaignNodeId==DeviceNodes[deviceIndex]);
-            var tryLevel=MenuButton(wind?new UiCopy("Back to puzzle"):new UiCopy("Try level {0}",DeviceNodes[deviceIndex].TrimStart('C','0')),.213f,()=>{if(wind)CloseMenu();else StartContent(example);},true);
-            tryLevel.interactable=wind||IsContentOpen(example);
-            MenuButton("How to play",.025f,ShowHowToPlay,false,.08f,.58f);MenuButton("Back",.025f,CloseMenu,false,.62f,.92f);
+            if(!wind){
+                var tryLevel=MenuButton(IsContentOpen(example)?new UiCopy("Try this example"):new UiCopy("Opens at level {0}",DeviceNodes[deviceIndex].TrimStart('C','0')),.12f,()=>StartContent(example),true);
+                tryLevel.interactable=IsContentOpen(example);
+            }
+            MenuButton("Basics",.025f,ShowHowToPlay,false,.08f,.48f);MenuButton("Back",.025f,CloseMenu,false,.52f,.92f);
         }
         void DrawSettings()
         {

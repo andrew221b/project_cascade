@@ -1,0 +1,124 @@
+{
+  "pose": "no-ads-ru",
+  "before": {
+    "Screen": "NoAds",
+    "Attempt": "ed0ca980-7724-479d-91fe-6f36ae34cd29",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "after": {
+    "Screen": "NoAds",
+    "Attempt": "ed0ca980-7724-479d-91fe-6f36ae34cd29",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 390,
+    "height": 844,
+    "locale": "ru",
+    "largeText": false,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Back",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Navigation heading/Back",
+        "interactable": true,
+        "bounds": {
+          "x": 29.57761,
+          "y": 709.592163,
+          "width": 48.00001,
+          "height": 48.0
+        }
+      },
+      {
+        "name": "Purchasequiet",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Purchasequiet",
+        "interactable": true,
+        "bounds": {
+          "x": 37.0968056,
+          "y": 202.021561,
+          "width": 315.806427,
+          "height": 64.13551
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Page heading",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Navigation heading/Page heading",
+        "text": "Отключить рекламу",
+        "button": null,
+        "bounds": {
+          "x": 102.363464,
+          "y": 703.4862,
+          "width": 251.442078,
+          "height": 60.2119141
+        },
+        "fontPixels": 26.8,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Quiet journey benefit",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Quiet journey benefit cloth/Quiet journey benefit",
+        "text": "Путь домой без рекламных пауз. Ваша покупка поддержит игру.",
+        "button": null,
+        "bounds": {
+          "x": 59.3536339,
+          "y": 410.1226,
+          "width": 271.292725,
+          "height": 69.71912
+        },
+        "fontPixels": 17.15,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "No adverts explanation",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/No adverts explanation cloth/No adverts explanation",
+        "text": "Это тест. Деньги не списываются. Можно попробовать игру без рекламных пауз.",
+        "button": null,
+        "bounds": {
+          "x": 59.3536339,
+          "y": 281.096924,
+          "width": 271.292725,
+          "height": 101.409607
+        },
+        "fontPixels": 19.45,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Purchasequiet/Label",
+        "text": "Попробовать",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Purchasequiet",
+        "bounds": {
+          "x": 119.206474,
+          "y": 208.4351,
+          "width": 205.27417,
+          "height": 51.3084259
+        },
+        "fontPixels": 24.0,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

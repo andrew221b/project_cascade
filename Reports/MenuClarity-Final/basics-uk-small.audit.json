@@ -1,0 +1,199 @@
+{
+  "pose": "basics-uk-small",
+  "before": {
+    "Screen": "Devices",
+    "Attempt": "ed0ca980-7724-479d-91fe-6f36ae34cd29",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "after": {
+    "Screen": "Devices",
+    "Attempt": "ed0ca980-7724-479d-91fe-6f36ae34cd29",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 320,
+    "height": 693,
+    "locale": "uk",
+    "largeText": true,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Tools&effects",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Tools&effects",
+        "interactable": true,
+        "bounds": {
+          "x": 30.4383945,
+          "y": 107.72,
+          "width": 259.12323,
+          "height": 52.0
+        }
+      },
+      {
+        "name": "Back",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Back",
+        "interactable": true,
+        "bounds": {
+          "x": 30.4383945,
+          "y": 43.720047,
+          "width": 259.12323,
+          "height": 51.9999771
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Menu title",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Menu title",
+        "text": "Як грати",
+        "button": null,
+        "bounds": {
+          "x": 58.2016068,
+          "y": 588.405457,
+          "width": 203.596771,
+          "height": 39.03125
+        },
+        "fontPixels": 22.99052,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Menu description",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Menu description",
+        "text": "Розстав фігурки й достав ряд.",
+        "button": null,
+        "bounds": {
+          "x": 58.2016068,
+          "y": 530.788147,
+          "width": 203.596771,
+          "height": 55.13922
+        },
+        "fontPixels": 14.7796211,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Demo result",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/From piece to hanging tool/Demo result",
+        "text": "Полагоджено",
+        "button": null,
+        "bounds": {
+          "x": 162.467819,
+          "y": 439.219818,
+          "width": 118.456284,
+          "height": 23.4187012
+        },
+        "fontPixels": 14.7139339,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Guide gesture",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Guide gesture",
+        "text": "Міняй сусідні елементи. Число на дошці — скільки обмінів лишилось. На нулі ряд падає.",
+        "button": null,
+        "bounds": {
+          "x": 42.7776031,
+          "y": 352.979553,
+          "width": 234.444748,
+          "height": 53.9001465
+        },
+        "fontPixels": 13.1374407,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Guide tag",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Guide tag",
+        "text": "Малюнок на предметі показує, що йому потрібно. Постав цю фігуру чи літеру над ним.",
+        "button": null,
+        "bounds": {
+          "x": 42.7776031,
+          "y": 292.883972,
+          "width": 234.444748,
+          "height": 53.900177
+        },
+        "fontPixels": 13.1374407,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Guide stages",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Guide stages",
+        "text": "Збери ряд за зразком і спускайся. Пройди 3 етапи, щоб відкрити наступний рівень.",
+        "button": null,
+        "bounds": {
+          "x": 42.7776031,
+          "y": 231.549316,
+          "width": 234.444748,
+          "height": 55.13925
+        },
+        "fontPixels": 13.4658766,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Guide stars",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Guide stars",
+        "text": "Менше ходів — більше зірок. Грай знову й покращуй рекорд.",
+        "button": null,
+        "bounds": {
+          "x": 42.7776031,
+          "y": 173.312378,
+          "width": 234.444748,
+          "height": 52.0415344
+        },
+        "fontPixels": 14.4511852,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Tools&effects/Label",
+        "text": "Предмети й ефекти",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Tools&effects",
+        "bounds": {
+          "x": 30.4383945,
+          "y": 107.72,
+          "width": 259.12323,
+          "height": 52.0
+        },
+        "fontPixels": 19.87038,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Back/Label",
+        "text": "Назад",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Back",
+        "bounds": {
+          "x": 30.4383945,
+          "y": 43.720005,
+          "width": 259.12323,
+          "height": 52.00002
+        },
+        "fontPixels": 19.87038,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

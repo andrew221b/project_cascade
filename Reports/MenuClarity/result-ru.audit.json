@@ -1,0 +1,278 @@
+{
+  "pose": "result-ru",
+  "before": {
+    "Screen": "Win",
+    "Attempt": "8766975b-837d-483b-a345-d5e063971a38",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": false
+  },
+  "after": {
+    "Screen": "Win",
+    "Attempt": "8766975b-837d-483b-a345-d5e063971a38",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": false
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 390,
+    "height": 844,
+    "locale": "ru",
+    "largeText": false,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Continuecompletion",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Continuecompletion",
+        "interactable": true,
+        "bounds": {
+          "x": 52.1351929,
+          "y": 49.7600174,
+          "width": 285.729553,
+          "height": 52.0000076
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Completion title",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Completion ribbon/Completion title",
+        "text": "Блестяще!",
+        "button": null,
+        "bounds": {
+          "x": 87.62583,
+          "y": 696.6954,
+          "width": 214.748383,
+          "height": 56.8919678
+        },
+        "fontPixels": 26.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Completed stages",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Completed stages",
+        "text": "Уровень 3 · все 3 этапа пройдены",
+        "button": null,
+        "bounds": {
+          "x": 37.0968056,
+          "y": 629.8435,
+          "width": 315.806427,
+          "height": 39.23578
+        },
+        "fontPixels": 17.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Score label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Score label",
+        "text": "Новый рекорд!",
+        "button": null,
+        "bounds": {
+          "x": 138.606,
+          "y": 467.618164,
+          "width": 218.056808,
+          "height": 52.06305
+        },
+        "fontPixels": 18.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Earned score",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Earned score",
+        "text": "2,000",
+        "button": null,
+        "bounds": {
+          "x": 138.606,
+          "y": 384.619263,
+          "width": 218.056808,
+          "height": 82.2444153
+        },
+        "fontPixels": 48.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Rank guidance",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Rank guidance",
+        "text": "Быстро и без ошибок.",
+        "button": null,
+        "bounds": {
+          "x": 138.606,
+          "y": 340.856171,
+          "width": 218.056808,
+          "height": 47.5357666
+        },
+        "fontPixels": 14.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Moves statistic heading",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Moves statistic heading",
+        "text": "Ходы",
+        "button": null,
+        "bounds": {
+          "x": 33.3372,
+          "y": 294.074951,
+          "width": 105.2688,
+          "height": 35.4631653
+        },
+        "fontPixels": 16.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Moves statistic",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Moves statistic",
+        "text": "13",
+        "button": null,
+        "bounds": {
+          "x": 33.3372,
+          "y": 246.539169,
+          "width": 105.2688,
+          "height": 51.3084564
+        },
+        "fontPixels": 27.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Undos statistic heading",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Undos statistic heading",
+        "text": "Отмены",
+        "button": null,
+        "bounds": {
+          "x": 142.3656,
+          "y": 294.074951,
+          "width": 105.268768,
+          "height": 35.4631653
+        },
+        "fontPixels": 16.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Undos statistic",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Undos statistic",
+        "text": "0",
+        "button": null,
+        "bounds": {
+          "x": 142.3656,
+          "y": 246.539169,
+          "width": 105.268768,
+          "height": 51.3084564
+        },
+        "fontPixels": 27.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Time statistic heading",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Time statistic heading",
+        "text": "Время",
+        "button": null,
+        "bounds": {
+          "x": 251.394,
+          "y": 294.074951,
+          "width": 105.268753,
+          "height": 35.4631653
+        },
+        "fontPixels": 16.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Time statistic",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Time statistic",
+        "text": "0:33",
+        "button": null,
+        "bounds": {
+          "x": 251.394,
+          "y": 246.539169,
+          "width": 105.268753,
+          "height": 51.3084564
+        },
+        "fontPixels": 27.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Earned coins",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Earned coins",
+        "text": "+40",
+        "button": null,
+        "bounds": {
+          "x": 114.168594,
+          "y": 156.74939,
+          "width": 67.6728058,
+          "height": 66.39914
+        },
+        "fontPixels": 28.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Earned light",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Earned light",
+        "text": "+1",
+        "button": null,
+        "bounds": {
+          "x": 283.3506,
+          "y": 156.74939,
+          "width": 67.67285,
+          "height": 66.39914
+        },
+        "fontPixels": 28.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Completion reward note",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Completion reward note",
+        "text": "Тебя ждёт трофей!",
+        "button": null,
+        "bounds": {
+          "x": 37.0968056,
+          "y": 112.231766,
+          "width": 315.806427,
+          "height": 36.97226
+        },
+        "fontPixels": 14.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Continuecompletion/Label",
+        "text": "Забрать трофей",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Continuecompletion",
+        "bounds": {
+          "x": 52.1351929,
+          "y": 49.7600174,
+          "width": 285.729553,
+          "height": 52.0000076
+        },
+        "fontPixels": 22.0,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

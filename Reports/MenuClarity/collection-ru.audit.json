@@ -1,0 +1,257 @@
+{
+  "pose": "collection-ru",
+  "before": {
+    "Screen": "Collection",
+    "Attempt": "8766975b-837d-483b-a345-d5e063971a38",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "after": {
+    "Screen": "Collection",
+    "Attempt": "8766975b-837d-483b-a345-d5e063971a38",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 390,
+    "height": 844,
+    "locale": "ru",
+    "largeText": false,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Back",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Navigation heading/Back",
+        "interactable": true,
+        "bounds": {
+          "x": 29.57761,
+          "y": 728.977966,
+          "width": 48.00001,
+          "height": 48.0
+        }
+      },
+      {
+        "name": "Shop object 0",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 0",
+        "interactable": true,
+        "bounds": {
+          "x": 41.9842834,
+          "y": 486.4816,
+          "width": 71.9963455,
+          "height": 89.7898254
+        }
+      },
+      {
+        "name": "Shop object 1",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 1",
+        "interactable": true,
+        "bounds": {
+          "x": 119.995972,
+          "y": 486.4816,
+          "width": 71.99634,
+          "height": 89.7898254
+        }
+      },
+      {
+        "name": "Shop object 2",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 2",
+        "interactable": true,
+        "bounds": {
+          "x": 198.007675,
+          "y": 486.4816,
+          "width": 71.99635,
+          "height": 89.7898254
+        }
+      },
+      {
+        "name": "Shop object 3",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 3",
+        "interactable": true,
+        "bounds": {
+          "x": 276.019379,
+          "y": 486.4816,
+          "width": 71.99637,
+          "height": 89.7898254
+        }
+      },
+      {
+        "name": "Shop object 4",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 4",
+        "interactable": true,
+        "bounds": {
+          "x": 41.9842834,
+          "y": 383.1102,
+          "width": 71.9963455,
+          "height": 89.7897949
+        }
+      },
+      {
+        "name": "Shop object 5",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 5",
+        "interactable": true,
+        "bounds": {
+          "x": 119.995972,
+          "y": 383.1102,
+          "width": 71.99634,
+          "height": 89.7897949
+        }
+      },
+      {
+        "name": "Shop object 6",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 6",
+        "interactable": true,
+        "bounds": {
+          "x": 198.007675,
+          "y": 383.1102,
+          "width": 71.99635,
+          "height": 89.7897949
+        }
+      },
+      {
+        "name": "Shop object 7",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Shop object 7",
+        "interactable": true,
+        "bounds": {
+          "x": 276.019379,
+          "y": 383.1102,
+          "width": 71.99637,
+          "height": 89.7897949
+        }
+      },
+      {
+        "name": "Trophy action",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Trophy action",
+        "interactable": false,
+        "bounds": {
+          "x": 42.73619,
+          "y": 149.494308,
+          "width": 304.5276,
+          "height": 48.0
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Page heading",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Navigation heading/Page heading",
+        "text": "Трофеи",
+        "button": null,
+        "bounds": {
+          "x": 102.363464,
+          "y": 732.818,
+          "width": 251.442078,
+          "height": 40.3199463
+        },
+        "fontPixels": 29.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Trophy collection count",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Trophy collection count",
+        "text": "Трофеев: 0 из 8",
+        "button": null,
+        "bounds": {
+          "x": 48.3756027,
+          "y": 657.0068,
+          "width": 293.248779,
+          "height": 49.0448
+        },
+        "fontPixels": 20.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Catalogue guidance",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Catalogue guidance",
+        "text": "Выбери трофей для Мики.",
+        "button": null,
+        "bounds": {
+          "x": 67.17361,
+          "y": 581.553162,
+          "width": 255.652771,
+          "height": 68.66278
+        },
+        "fontPixels": 18.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Selected object title",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Selected object title",
+        "text": "Листик",
+        "button": null,
+        "bounds": {
+          "x": 46.4958076,
+          "y": 322.747284,
+          "width": 297.008362,
+          "height": 36.2177429
+        },
+        "fontPixels": 25.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Selected object benefit",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Selected object benefit",
+        "text": "Мика носит его на карте. Можно и собрать в посылках.",
+        "button": null,
+        "bounds": {
+          "x": 48.3756027,
+          "y": 253.33,
+          "width": 293.248779,
+          "height": 64.13551
+        },
+        "fontPixels": 19.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Owned item count",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Owned item count",
+        "text": "Деталей: 1 / 3",
+        "button": null,
+        "bounds": {
+          "x": 48.3756027,
+          "y": 207.303314,
+          "width": 293.248779,
+          "height": 39.990387
+        },
+        "fontPixels": 18.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Trophy action/Label",
+        "text": "Следующий трофей",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Trophy action",
+        "bounds": {
+          "x": 61.007843,
+          "y": 152.374329,
+          "width": 267.984283,
+          "height": 42.23999
+        },
+        "fontPixels": 22.0,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

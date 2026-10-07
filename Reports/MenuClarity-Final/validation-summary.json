@@ -1,0 +1,28 @@
+{
+  "initialNativeStates": 56,
+  "initialStablePuzzleStates": 56,
+  "initialTextOverflowFindings": 0,
+  "finalNativeImages": 13,
+  "finalTextOverflowFindings": 0,
+  "navigationFlow": "PASS; see navigation.txt",
+  "sizes": [
+    "390x844",
+    "320x693 large text",
+    "1440x900"
+  ],
+  "locales": [
+    "ru",
+    "uk",
+    "en catalogue stress"
+  ],
+  "correctedCaptureFixture": "Two final shop poses inherited the Trophies tab after the filtered list. Captured again with Tools explicitly selected; sixItems true and no text overflow in corrected .audit.json. Future helper poses set their own tab.",
+  "notRun": [
+    "phone build/install",
+    "physical devices",
+    "OS accessibility",
+    "performance",
+    "full gameplay suite",
+    "live commerce"
+  ],
+  "editor": "Stopped, QA profile detached; final changes compiled"
+}

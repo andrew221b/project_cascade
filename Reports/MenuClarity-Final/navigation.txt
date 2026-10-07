@@ -1,0 +1,1 @@
+PASS: six items; free manual opens basics; effects page next/previous; exactly one Back; returns to shop; coins, stock and puzzle hash unchanged.

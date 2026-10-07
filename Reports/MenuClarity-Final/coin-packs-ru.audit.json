@@ -1,0 +1,303 @@
+{
+  "pose": "coin-packs-ru",
+  "before": {
+    "Screen": "CoinPacks",
+    "Attempt": "ed0ca980-7724-479d-91fe-6f36ae34cd29",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "after": {
+    "Screen": "CoinPacks",
+    "Attempt": "ed0ca980-7724-479d-91fe-6f36ae34cd29",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 390,
+    "height": 844,
+    "locale": "ru",
+    "largeText": false,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Back",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Navigation heading/Back",
+        "interactable": true,
+        "bounds": {
+          "x": 29.57761,
+          "y": 709.592163,
+          "width": 48.00001,
+          "height": 48.0
+        }
+      },
+      {
+        "name": "Tool tab tab",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Tool tab tab",
+        "interactable": true,
+        "bounds": {
+          "x": 38.9766121,
+          "y": 594.670532,
+          "width": 98.50151,
+          "height": 48.00006
+        }
+      },
+      {
+        "name": "Trophies tab",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Trophies tab",
+        "interactable": true,
+        "bounds": {
+          "x": 145.749237,
+          "y": 594.670532,
+          "width": 98.5015259,
+          "height": 48.00006
+        }
+      },
+      {
+        "name": "Coins tab",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Coins tab",
+        "interactable": true,
+        "bounds": {
+          "x": 252.521881,
+          "y": 594.670532,
+          "width": 98.5014954,
+          "height": 48.00006
+        }
+      },
+      {
+        "name": "Purchase cascade.coins_240",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Coin pack 240/Purchase cascade.coins_240",
+        "interactable": true,
+        "bounds": {
+          "x": 129.470169,
+          "y": 426.834076,
+          "width": 204.390671,
+          "height": 59.5357666
+        }
+      },
+      {
+        "name": "Purchase cascade.coins_480",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Coin pack 480/Purchase cascade.coins_480",
+        "interactable": true,
+        "bounds": {
+          "x": 129.470169,
+          "y": 272.154236,
+          "width": 204.390671,
+          "height": 59.5357666
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Page heading",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Navigation heading/Page heading",
+        "text": "Монеты",
+        "button": null,
+        "bounds": {
+          "x": 102.363464,
+          "y": 703.4862,
+          "width": 251.442078,
+          "height": 60.2119141
+        },
+        "fontPixels": 29.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Coin balance",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Coin balance",
+        "text": "120",
+        "button": null,
+        "bounds": {
+          "x": 153.6444,
+          "y": 650.215942,
+          "width": 131.586014,
+          "height": 51.30841
+        },
+        "fontPixels": 26.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Tool tab tab/Label",
+        "text": "Помощь",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Tool tab tab",
+        "bounds": {
+          "x": 44.8867073,
+          "y": 597.550537,
+          "width": 86.68135,
+          "height": 42.23999
+        },
+        "fontPixels": 19.8,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Trophies tab/Label",
+        "text": "Трофеи",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Trophies tab",
+        "bounds": {
+          "x": 151.659317,
+          "y": 597.550537,
+          "width": 86.681366,
+          "height": 42.23999
+        },
+        "fontPixels": 20.65,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Coins tab/Label",
+        "text": "Монеты",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Coins tab",
+        "bounds": {
+          "x": 258.431976,
+          "y": 597.550537,
+          "width": 86.6813354,
+          "height": 42.23999
+        },
+        "fontPixels": 20.5,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Pack quantity",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Coin pack 240/Pack quantity",
+        "text": "Монеты: 240",
+        "button": null,
+        "bounds": {
+          "x": 129.470169,
+          "y": 521.7939,
+          "width": 204.390671,
+          "height": 35.3123169
+        },
+        "fontPixels": 25.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Pack use",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Coin pack 240/Pack use",
+        "text": "На трофей или инструменты",
+        "button": null,
+        "bounds": {
+          "x": 129.470169,
+          "y": 485.123474,
+          "width": 204.390671,
+          "height": 38.0286255
+        },
+        "fontPixels": 15.8,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Coin pack 240/Purchase cascade.coins_240/Label",
+        "text": "Проба: +240",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Coin pack 240/Purchase cascade.coins_240",
+        "bounds": {
+          "x": 129.470169,
+          "y": 426.834076,
+          "width": 204.390671,
+          "height": 59.5357666
+        },
+        "fontPixels": 19.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Pack quantity",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Coin pack 480/Pack quantity",
+        "text": "Монеты: 480",
+        "button": null,
+        "bounds": {
+          "x": 129.470169,
+          "y": 367.114,
+          "width": 204.390671,
+          "height": 35.3122864
+        },
+        "fontPixels": 25.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Pack use",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Coin pack 480/Pack use",
+        "text": "Пополнить коллекцию",
+        "button": null,
+        "bounds": {
+          "x": 129.470169,
+          "y": 330.443542,
+          "width": 204.390671,
+          "height": 38.0286255
+        },
+        "fontPixels": 17.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Coin pack 480/Purchase cascade.coins_480/Label",
+        "text": "Проба: +480",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Coin pack 480/Purchase cascade.coins_480",
+        "bounds": {
+          "x": 129.470169,
+          "y": 272.154236,
+          "width": 204.390671,
+          "height": 59.5357666
+        },
+        "fontPixels": 19.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Fair help rules",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Coin purchase explanation/Fair help rules",
+        "text": "До двух инструментов за этап. С помощью — до двух звёзд за уровень.",
+        "button": null,
+        "bounds": {
+          "x": 61.007843,
+          "y": 179.385468,
+          "width": 267.984283,
+          "height": 73.34091
+        },
+        "fontPixels": 17.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Store availability",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Coin purchase explanation/Store availability",
+        "text": "Тестовый магазин · без оплаты",
+        "button": null,
+        "bounds": {
+          "x": 61.007843,
+          "y": 133.886978,
+          "width": 267.984283,
+          "height": 41.4240265
+        },
+        "fontPixels": 16.0,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

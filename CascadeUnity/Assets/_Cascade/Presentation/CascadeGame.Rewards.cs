@@ -201,7 +201,8 @@ namespace Cascade.Presentation
             if(content!=null)MiniMachine(Rect("Record target",menuRoot,new Vector2(.19f,.49f),new Vector2(.81f,.72f)),content.Definition.InitialSymbolIds,content.Definition.TargetSymbolIds);
             MetaArrows(()=>{recordPage=(recordPage+records.Length-1)%records.Length;DrawMenu();},()=>{recordPage=(recordPage+1)%records.Length;DrawMenu();});
             MenuReadingSurface("Route identity cloth",new Vector2(.12f,.655f),new Vector2(.88f,.72f));
-            Text("Record identity",menuRoot,new Vector2(.10f,.755f),new Vector2(.90f,.815f),16,UiCopy.Join(" · ",new[]{new UiCopy(record.Mode),LanguageName(record.Locale),new UiCopy(record.StampGoal==0?"Delivery":"With stamp")}));
+            var identity=Text("Record identity",menuRoot,new Vector2(.12f,.73f),new Vector2(.88f,.825f),16,UiCopy.Join(" · ",new[]{new UiCopy(record.Mode),LanguageName(record.Locale),new UiCopy(record.StampGoal==0?"Delivery":"With stamp")}));
+            identity.enableAutoSizing=true;identity.fontSizeMin=15*MenuUnit;identity.fontSizeMax=17*MenuUnit;identity.textWrappingMode=TMPro.TextWrappingModes.Normal;
             MenuReadingSurface("Route notes cloth",new Vector2(.12f,.18f),new Vector2(.88f,.455f));
             Text("Record route",menuRoot,new Vector2(.10f,.39f),new Vector2(.90f,.47f),22,new UiCopy("Best route: {0} moves",record.BestRoute));
             Text("Record help",menuRoot,new Vector2(.10f,.30f),new Vector2(.90f,.37f),18,record.BestWithoutHint.HasValue?new UiCopy("Without a hint: {0}",record.BestWithoutHint.Value):"Try again without a hint.");
