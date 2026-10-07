@@ -49,12 +49,12 @@ namespace Cascade.Presentation
         };
         void ResetMechanicDiscovery()
         {
-            CloseMechanicPopup();firstMechanics.Clear();needsMechanicScan=true;mechanicMountFrame=Time.frameCount;
+            CloseMechanicPopup();firstMechanics.Clear();needsMechanicScan=Interaction==null||Interaction.Attempt.Current.Status==PuzzleStatus.Playing;mechanicMountFrame=Time.frameCount;
         }
         void TryFirstMechanic()
         {
             if(!flowReady||profile==null||CurrentScreen!=GameScreen.Playing||MechanicPopupOpen||!IntroductionAnimationAllowed
-                ||!PreparationReady||Interaction.IsPresenting||IsDescending||IsPlanningDescent||Time.frameCount<=mechanicMountFrame||saveBlocked||HasSaveError)return;
+                ||!PreparationReady||Interaction.IsPresenting||IsDescending||IsPlanningDescent||IsPlanningDirection||Time.frameCount<=mechanicMountFrame||saveBlocked||HasSaveError)return;
             if(needsMechanicScan){
                 firstMechanics.Clear();
                 foreach(var lesson in MechanicLessons.Discover(Interaction.Attempt.Level,Interaction.Attempt.Current.ActiveFloor,
@@ -154,7 +154,7 @@ namespace Cascade.Presentation
         {
             if(!MechanicPopupOpen)return;
             mechanicArrival?.Kill();mechanicArrival=null;mechanicOverlay.gameObject.SetActive(false);Destroy(mechanicOverlay.gameObject);mechanicOverlay=null;mechanicSafe=null;CurrentMechanic=null;afterMechanic=null;
-            Interaction?.SetPaused(mechanicWasPaused);machine.SetAmbientPaused(CurrentScreen==GameScreen.Pause||CurrentScreen==GameScreen.SaveRecovery);RenderControls();
+            Interaction?.SetPaused(mechanicWasPaused);machine.SetAmbientPaused(CurrentScreen==GameScreen.Pause||CurrentScreen==GameScreen.SaveRecovery);if(CanPresent)RenderControls();
         }
         void FitMechanicSafeArea(){if(mechanicSafe==null)return;mechanicSafe.anchorMin=safeRoot.anchorMin;mechanicSafe.anchorMax=safeRoot.anchorMax;mechanicSafe.offsetMin=safeRoot.offsetMin;mechanicSafe.offsetMax=safeRoot.offsetMax;}
         void TickMechanicIntroduction()

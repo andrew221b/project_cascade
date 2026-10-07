@@ -228,9 +228,10 @@ namespace Cascade.Presentation
             if(!monetization.TryUseTool(tool,attempt,guide)){shopNotice="This tool cannot help here. Nothing used.";DrawMenu();return;}
             var activatedObject=displayedShopObject!=null?displayedShopObject.rectTransform:null;
             if(activatedObject!=null){var sway=activatedObject.GetComponent<WorldMotion>();if(sway!=null)sway.enabled=false;}
-            Interaction.CancelPointer();EndTokenHold();CancelHint();CancelDeadEnd();RenderState();ScheduleDeadEnd();ShowGame();
+            Interaction.CancelPointer();EndTokenHold();CancelHint();CancelDeadEnd();RenderState();ScheduleDeadEnd();
             UiCopy reaction=tool==TravelTool.ReturnHourglass?"Back on the board":tool==TravelTool.UndoSpool?"One move undone":"Follow the hand. The scroll knows the way.";
-            if(tool==TravelTool.SignalLantern){RenderFrame(new PresentationFrame(beforeToolState));Interaction.PresentToolTransition(attempt.LastToolTransition);feedback.Sound(ToyCue.Success);reactionBanner?.Show("One safe step","Wayfinder",activatedObject);RefreshFieldTools();return;}
+            if(tool==TravelTool.SignalLantern){SetScreen(GameScreen.Playing);RenderFrame(new PresentationFrame(beforeToolState));Interaction.PresentToolTransition(attempt.LastToolTransition);feedback.Sound(ToyCue.Success);reactionBanner?.Show("One safe step","Wayfinder",activatedObject);RefreshFieldTools();return;}
+            ShowGame();
             if(tool==TravelTool.LandingLens){OpenLandingPreview(prediction);RefreshFieldTools();return;}
             feedback.Sound(ToyCue.Success);status.SetCopy(reaction);reactionBanner?.Show(reaction,tool==TravelTool.ReturnHourglass?"Hourglass":tool==TravelTool.UndoSpool?"RibbonSpool":"Wayfinder",activatedObject);
             if(tool==TravelTool.Wayfinder&&guide!=null){attempt.RevealHint(guide);offeredHint=guide;PersistProgress();}

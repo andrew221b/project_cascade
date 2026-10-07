@@ -1,10 +1,20 @@
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using Cascade.Application;
 using Cascade.Domain;
 namespace Cascade.Presentation
 {
     public sealed partial class CascadeGame
     {
+        Task<DirectionRecipe> directionTask;
+        CancellationTokenSource directionCancellation;
+        LevelDefinition directionSource;
+        string directionLocale;
+        DeliveryMood directionMood;
+        DirectionRecipe directionPrevious;
+        PuzzleGoal directionGoal;
+        public bool IsPlanningDirection=>directionSource!=null;
         public DirectorMemory Director=>profile.Director;
         public bool IsWindFloor(int floor)=>descent!=null?(floor==0&&(descent.Stages[descent.StageIndex].Arrival==EntryTransform.ShiftLeftOne||descent.Stages[descent.StageIndex].Arrival==EntryTransform.ShiftRightOne)
             ||descent.Version>=4&&descent.StageIndex==1&&floor==1&&Interaction.Attempt.Level.Floors[1].EntryTransform!=EntryTransform.None
@@ -28,15 +38,52 @@ namespace Cascade.Presentation
         }
         public void LoadDirectedLevel(LevelDefinition source,string locale,DeliveryMood mood)
         {
-            var recipe=DeliveryDirector.Plan(source,mood);
-            MountAttempt(new AttemptService(recipe?.Apply(source)??source,locale,direction:recipe));PersistProgress();
+            BeginDirectionRequest(source,locale,mood);
+        }
+        void BeginDirectionRequest(LevelDefinition source,string locale,DeliveryMood mood,PuzzleGoal goal=null,DirectionRecipe previous=null)
+        {
+            CancelDirectionWork();
+            MountAttempt(new AttemptService(source,locale,goal));
+            directionSource=source;directionLocale=locale;directionMood=mood;
+            directionGoal=goal??PuzzleGoal.Delivery;directionPrevious=previous?.Copy();
+            Interaction.SetPreparing(true);status.SetCopy("Checking your puzzle…");
+            ResumeDirectionWork();
+        }
+        void CancelDirectionWork(bool preserveRequest=false)
+        {
+            directionCancellation?.Cancel();directionCancellation?.Dispose();directionCancellation=null;
+            if(directionTask!=null)directionTask.ContinueWith(t=>{var ignored=t.Exception;},TaskContinuationOptions.OnlyOnFaulted);
+            directionTask=null;
+            if(!preserveRequest){directionSource=null;directionLocale=null;directionPrevious=null;directionGoal=null;}
+        }
+        void ResumeDirectionWork()
+        {
+            if(directionSource==null||directionTask!=null)return;
+            var source=directionSource;var mood=directionMood;
+            var goal=directionGoal;var previous=directionPrevious?.Copy();
+            directionCancellation=new CancellationTokenSource();var token=directionCancellation.Token;
+            directionTask=Task.Run(()=>DeliveryDirector.PlanVerified(source,mood,previous,goal,token),token);
+            Interaction?.SetPreparing(true);
+        }
+        void UpdateDirection()
+        {
+            if(directionTask==null||!directionTask.IsCompleted)return;
+            var task=directionTask;directionTask=null;directionCancellation?.Dispose();directionCancellation=null;
+            if(task.IsCanceled){ResumeDirectionWork();return;}
+            DirectionRecipe recipe=null;
+            if(task.IsFaulted){var ignored=task.Exception;}else recipe=task.Result;
+            var source=directionSource;string locale=directionLocale;var goal=directionGoal;
+            var screen=CurrentScreen;bool travel=journeyActive;
+            CancelDirectionWork();
+            MountAttempt(new AttemptService(recipe?.Apply(source)??source,locale,goal,recipe));
+            journeyActive=travel;SetScreen(screen);PersistProgress();
         }
         bool FallBackFromUnprovenDirection()
         {
             if(!preparation.HasFailed||Interaction.Attempt.Direction==null||Interaction.Attempt.RouteLength!=0)return false;
             var source=DirectedSource();if(source==null)return false;
-            bool travel=journeyActive;string locale=Interaction.Attempt.ActiveLocale;
-            MountAttempt(new AttemptService(source,locale,Interaction.Attempt.Goal));journeyActive=travel;PersistProgress();return true;
+            bool travel=journeyActive;string locale=Interaction.Attempt.ActiveLocale;var screen=CurrentScreen;
+            MountAttempt(new AttemptService(source,locale,Interaction.Attempt.Goal));journeyActive=travel;SetScreen(screen);PersistProgress();return true;
         }
         bool CanOfferStrongerWood=>descent==null&&journeyActive&&Interaction.Attempt.Current.Status==PuzzleStatus.Lost
             &&DeliveryDirector.CanDirect(Interaction.Attempt.Level)&&profile.Director.Struggle>=4
@@ -45,9 +92,9 @@ namespace Cascade.Presentation
         {
             if(!CanOfferStrongerWood)return;
             var source=DirectedSource();if(source==null)return;
-            var recipe=DeliveryDirector.Plan(source,DeliveryMood.Recovery,Interaction.Attempt.Direction);
             var goal=Interaction.Attempt.Goal;string locale=Interaction.Attempt.ActiveLocale;
-            MountAttempt(new AttemptService(recipe.Apply(source),locale,goal,recipe));journeyActive=true;PersistProgress();ShowGame();
+            var previous=Interaction.Attempt.Direction;
+            BeginDirectionRequest(source,locale,DeliveryMood.Recovery,goal,previous);journeyActive=true;ShowGame();
         }
     }
 }

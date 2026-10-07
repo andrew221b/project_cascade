@@ -21,7 +21,7 @@ namespace Cascade.Presentation
             firstMonetizationSession=profile.Clears.Count==0;
             var settings=Resources.Load<MonetizationSettings>("CascadeArt/MonetizationSettings");
             monetization=settings?.testMonetization==true&&!saveBlocked?
-                MonetizationTransaction.CreatePreview(profile,profileStore,()=>Interaction.Attempt):MonetizationTransaction.Create(profile,profileStore,()=>Interaction.Attempt);
+                MonetizationTransaction.CreatePreview(profile,profileStore,()=>Interaction.Attempt,()=>IsPlanningDescent||IsPlanningDirection||descentPlanFailed):MonetizationTransaction.Create(profile,profileStore,()=>Interaction.Attempt,()=>IsPlanningDescent||IsPlanningDirection||descentPlanFailed);
             purchaseStore=gameObject.AddComponent<NativePurchaseStore>();purchaseStore.Initialize(monetization,saveBlocked?null:settings,()=>ShopCoins);purchaseStore.Changed+=NotifyStoreChanged;purchaseStore.CoinsGranted+=amount=>{NotifyStoreChanged();ShowCoinReward(amount);};
             adProvider=gameObject.AddComponent<NativeAdProvider>();adProvider.Initialize(this,monetization,saveBlocked?null:settings);
         }

@@ -8,7 +8,8 @@ namespace Cascade.Presentation
         AudioSource windSource, rainSource;
         int scoreIncoming;
         float scoreFade = 1, scoreGain, rainBlend;
-        bool audioSleeping, scoreSleeping;
+        bool audioSleeping, scoreSleeping, windNeedsResume;
+        readonly WindAudioEnvelope windEnvelope = new WindAudioEnvelope();
         public AudioClip CurrentMusicClip => scoreSources[scoreIncoming]?.clip;
         public float MusicPosition => scoreSources[scoreIncoming] == null ? 0 : scoreSources[scoreIncoming].time;
         public float MusicCrossfade => scoreFade;
@@ -64,19 +65,26 @@ namespace Cascade.Presentation
             // Both beds keep their place. Region changes blend them rather than restarting the wind.
             bool soundsAllowed = SoundEnabled && !paused;
             if (audioSleeping && soundsAllowed) { windSource.UnPause(); rainSource.UnPause(); audioSleeping = false; }
+            if (windNeedsResume && soundsAllowed) { windSource.UnPause(); windNeedsResume = false; }
             rainBlend = Mathf.MoveTowards(rainBlend, zone == 1 || zone == 4 ? 1 : 0, dt * .45f);
-            float phase = game.Machine.AmbientPhase;
-            float breath = .5f + .5f * Mathf.Sin(phase * .21f + Mathf.Sin(phase * .073f) * 2.1f);
-            float swell = Mathf.SmoothStep(0, 1, breath);
-            float pressure = Mathf.Abs(game.Machine.WindAt(0));
-            float windTarget = soundsAllowed ? Mathf.Lerp(.018f, .080f, swell) + pressure * .07f : 0;
-            bool indoors = game.CurrentScreen == GameScreen.Home || game.CurrentScreen == GameScreen.Settings || game.CurrentScreen == GameScreen.Shop;
-            windTarget *= indoors ? .35f : 1 - rainBlend * .55f;
-            windSource.volume = Mathf.MoveTowards(windSource.volume, windTarget, dt * (soundsAllowed?.12f:.9f));
+            bool atRig = game.CurrentScreen == GameScreen.Playing || game.CurrentScreen == GameScreen.Win
+                || game.CurrentScreen == GameScreen.Fail || game.CurrentScreen == GameScreen.Checkpoint;
+            int floor = atRig ? game.VisibleFrame?.ActiveFloor ?? 0 : 0;
+            float pressure = game.Machine.WindAt(floor);
+            bool indoors = !atRig && game.CurrentScreen != GameScreen.JourneyMap
+                && game.CurrentScreen != GameScreen.Dialogue && game.CurrentScreen != GameScreen.JourneyEnd;
+            // The same pressure drives the visible rig and this loop; no independent audio gust clock.
+            windSource.volume = windEnvelope.Tick(pressure, indoors ? .35f : 1 - rainBlend * .55f, soundsAllowed, dt);
             rainSource.volume = Mathf.MoveTowards(rainSource.volume, soundsAllowed ? rainBlend * .08f : 0, dt * (soundsAllowed?.16f:.7f));
             if (!audioSleeping && windSource.volume == 0 && rainSource.volume == 0) {
                 windSource.Pause(); rainSource.Pause(); audioSleeping = true;
             }
+        }
+        void OnDisable()
+        {
+            windEnvelope.Reset();
+            if (windSource == null) return;
+            windSource.volume = 0; windSource.Pause(); windNeedsResume = true;
         }
     }
 }

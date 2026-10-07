@@ -71,7 +71,9 @@ namespace Cascade.Presentation
             if(!persistenceReady || saveBlocked || Interaction==null)return;
             profile.Preferences=Preferences;profile.PreferredMode=PreferredMode.ToString();
             profile.HeardStory=heardStory.OrderBy(p=>p).ToList();profile.FirstGestureShown=firstGestureShown;
-            profile.JourneyAttempt=journeyActive;profile.Attempt=AttemptRecord.Capture(Interaction.Attempt);profile.Descent=descent;
+            if(!IsPlanningDescent&&!IsPlanningDirection) {
+                profile.JourneyAttempt=journeyActive;profile.Attempt=AttemptRecord.Capture(Interaction.Attempt);profile.Descent=descent;
+            }
             profile.StoryRoute=storyRoute;
             try {profileStore.Save(profile);HasSaveError=false;}
             catch(Exception e) when(e is IOException || e is UnauthorizedAccessException || e is InvalidOperationException) {

@@ -135,6 +135,37 @@ namespace Cascade.Tests
                 Assert.That(loaded.Monetization,Is.SameAs(old));Assert.That(loaded.Attempt,Is.SameAs(oldAttempt));
             } finally {if(Directory.Exists(directory))Directory.Delete(directory,true);}
         }
+        [TestCase(false)] [TestCase(true)]
+        public void GrantDuringPlanningPreservesSavedDescentAndResumesNormalAttemptCapture(bool preview)
+        {
+            string directory=Path.Combine(Path.GetTempPath(),"CascadePlanningGrant",Guid.NewGuid().ToString("N"));
+            try {
+                var catalog=ContentTests.LoadCatalog();var source=catalog.GetPrimary("C06").Definition;
+                var run=DescentRun.Build(source,version:3);Assert.That(run,Is.Not.Null);
+                var saved=new AttemptService(run.Level(source,0));
+                var profile=new PlayerProfile{Descent=run,JourneyAttempt=true,Attempt=AttemptRecord.Capture(saved)};
+                var store=new ProfileStore(Path.Combine(directory,"profile.json"));store.Save(profile);
+                var original=profile.Attempt;bool planning=true;int captures=0;var placeholder=Attempt();
+                Func<AttemptService> capture=()=>{captures++;if(planning)throw new InvalidOperationException("Unverified placeholder capture");return placeholder;};
+                var service=preview?MonetizationTransaction.CreatePreview(profile,store,capture,()=>planning)
+                    :MonetizationTransaction.Create(profile,store,capture,()=>planning);
+                bool Granted(string receipt)=>preview?service.TryPreviewCoinPack(PurchaseCatalog.Coins240)
+                    :service.VerifiedStorePurchase(PurchaseCatalog.Coins240,receipt,true);
+                Assert.That(Granted("pending-grant"),Is.True);Assert.That(captures,Is.Zero);
+                Assert.That(profile.Attempt,Is.SameAs(original));Assert.That(profile.Descent,Is.SameAs(run));Assert.That(profile.JourneyAttempt,Is.True);
+                var loaded=store.Load().Profile;
+                Assert.That(loaded.Descent.ContentHash,Is.EqualTo(run.ContentHash));Assert.That(loaded.JourneyAttempt,Is.True);
+                Assert.That(loaded.RestoreAttempt(catalog).CurrentStateHash,Is.EqualTo(saved.CurrentStateHash));
+                Assert.That(loaded.Monetization.BonusCoins,Is.EqualTo(preview?0:240));
+                Assert.That(service.Ledger.BonusCoins,Is.EqualTo(240));
+                // Mount completion supplies the new verified attempt and clears the old run before normal capture.
+                planning=false;profile.Descent=null;profile.JourneyAttempt=false;
+                Assert.That(Granted("mounted-grant"),Is.True);Assert.That(captures,Is.EqualTo(1));
+                loaded=store.Load().Profile;Assert.That(loaded.Descent,Is.Null);Assert.That(loaded.JourneyAttempt,Is.False);
+                Assert.That(loaded.RestoreAttempt(catalog).CurrentStateHash,Is.EqualTo(placeholder.CurrentStateHash));
+                Assert.That(loaded.Monetization.BonusCoins,Is.EqualTo(preview?0:480));
+            } finally {if(Directory.Exists(directory))Directory.Delete(directory,true);}
+        }
         [Test] public void PreviousSchemaOneProfileDefaultsToDisabledEmptyInventory()
         {
             string directory=Path.Combine(Path.GetTempPath(),"CascadeAds",Guid.NewGuid().ToString("N"));

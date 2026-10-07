@@ -3,7 +3,9 @@ using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using Cascade.Domain;
+using Cascade.Solver;
 
 namespace Cascade.Application
 {
@@ -113,6 +115,27 @@ namespace Cascade.Application
                 recipe.Durability[recipe.WindFloor]=Math.Min(12,recipe.Durability[recipe.WindFloor]+1);
             }
             return recipe;
+        }
+        // Fresh single deliveries calibrate on a worker. Raw recipes and their saved hash remain unchanged.
+        public static DirectionRecipe PlanVerified(LevelDefinition source,DeliveryMood mood,DirectionRecipe previous=null,
+            PuzzleGoal goal=null,CancellationToken cancellation=default,int budget=PuzzleSolver.DefaultStateBudget)
+        {
+            cancellation.ThrowIfCancellationRequested();
+            if(budget<1)throw new ArgumentOutOfRangeException(nameof(budget));
+            var requested=Plan(source,mood,previous);
+            if(requested==null){cancellation.ThrowIfCancellationRequested();return null;} // Mount preparation proves the published fallback once.
+            bool Proves(DirectionRecipe recipe) {
+                var proof=PuzzleSolver.FindShortest(new PuzzleResolver(recipe.Apply(source)),goal:goal,
+                    stateBudget:budget,cancellationToken:cancellation);
+                cancellation.ThrowIfCancellationRequested();
+                return proof.Status==SearchStatus.Solved;
+            }
+            if(Proves(requested))return requested;
+            // An impossible landing shift is not carried into the easier fresh delivery.
+            var recovery=Plan(source,DeliveryMood.Recovery);
+            if(recovery!=null&&(mood!=DeliveryMood.Recovery||previous!=null&&previous.WindFloor>=1)&&Proves(recovery))return recovery;
+            cancellation.ThrowIfCancellationRequested();
+            return null;
         }
         public static bool MatchesSource(AttemptService attempt,LevelDefinition source)
         {

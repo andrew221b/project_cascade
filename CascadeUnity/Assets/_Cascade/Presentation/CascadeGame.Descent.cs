@@ -18,36 +18,48 @@ namespace Cascade.Presentation
         DeliveryMood descentMood;
         DescentTransition descentMotion;
         int paintedDescentStage=-1;
-        bool descentPlanFailed,descentTravel;
+        bool descentPlanFailed,descentTravel,descentLoadPending;
         public DescentRun Descent=>descent;
         public bool IsDescending=>descentMotion!=null&&descentMotion.Playing;
-        public bool IsPlanningDescent=>descentTask!=null;
+        public bool IsPlanningDescent=>descentLoadPending;
         public void StartDescentLevel(LevelDefinition source,string locale="en",DeliveryMood mood=DeliveryMood.Steady)
         {
-            LoadDirectedLevel(source,locale,mood);
+            MountAttempt(new AttemptService(source,locale));
             descentPlanFailed=false;
             descentSource=source;descentLocale=locale;descentMood=mood;
-            descentCancellation=new CancellationTokenSource();var token=descentCancellation.Token;
-            descentTask=Task.Run(()=>DescentRun.Build(source,mood,token,version:4),token);
+            descentLoadPending=true;ResumeDescentWork();
             Interaction.SetPreparing(true);status.SetCopy("Checking all three stages…");
         }
-        void CancelDescentWork()
+        void ResumeDescentWork()
+        {
+            if(!descentLoadPending||descentTask!=null)return;
+            descentPlanFailed=false;descentCancellation=new CancellationTokenSource();var token=descentCancellation.Token;
+            var source=descentSource;var mood=descentMood;
+            descentTask=Task.Run(()=>DescentRun.Build(source,mood,token,version:4),token);
+            Interaction.SetPreparing(true);
+        }
+        void CancelDescentWork(bool preserveRequest=false)
         {
             descentCancellation?.Cancel();descentCancellation?.Dispose();descentCancellation=null;
             if(descentTask!=null)descentTask.ContinueWith(t=>{var ignored=t.Exception;},TaskContinuationOptions.OnlyOnFaulted);
             descentTask=null;
+            if(!preserveRequest)descentLoadPending=false;
         }
         void UpdateDescent()
         {
             if(descentTask!=null&&descentTask.IsCompleted) {
                 var task=descentTask;descentTask=null;descentCancellation.Dispose();descentCancellation=null;
-                var source=descentSource;string locale=descentLocale;var mood=descentMood;
+                var source=descentSource;string locale=descentLocale;
                 DescentRun run=null;if(task.IsFaulted){var ignored=task.Exception;}else if(!task.IsCanceled)run=task.Result;
                 bool travel=descentTravel;
                 if(run==null){descentPlanFailed=true;status.SetCopy("Could not check all stages. Try again.");RenderControls();}
-                else {MountAttempt(new AttemptService(run.Level(source,0),locale,direction:run.Direction),run);journeyActive=travel;PersistProgress();ShowGame();}
+                else {
+                    var screen=CurrentScreen;
+                    MountAttempt(new AttemptService(run.Level(source,0),locale,direction:run.Direction),run);
+                    journeyActive=travel;PersistProgress();SetScreen(screen);
+                }
             }
-            bool gated=descentPlanFailed||IsPlanningDescent||IsDescending||!preparation.IsReady||needsMechanicScan;
+            bool gated=descentPlanFailed||IsPlanningDescent||IsPlanningDirection||IsDescending||!preparation.IsReady||needsMechanicScan;
             if(Interaction.IsPreparing!=gated)Interaction.SetPreparing(gated);
             if(descentTask!=null)status.SetCopy("Checking all three stages…");
             PaintDescent();

@@ -114,9 +114,9 @@ namespace Cascade.Tests
                 foreach(var letter in letters){Assert.That(letter.text,Is.EqualTo(binding.Definition.Floors[0].Key.RequiredSymbol.Value));Assert.That(letter.isTextOverflowing,Is.False);}
             }
         }
-        [UnityTest] public IEnumerator PickupDragThenFarSwapWinsAndUndoRestoresTool()
+        [UnityTest] public IEnumerator PickupDragThenFarSwapWinsAndFreeUndoCannotRestoreItsBrokenBoard()
         {
-            game.LoadLevel(game.Catalog.BonusLevels[6].Definition);game.ShowGame();yield return null;game.RefreshLayout();
+            game.LoadLevel(game.Catalog.BonusLevels[6].Definition);game.ShowGame();yield return AwaitPreparation();yield return FinishDeviceTeaching();game.RefreshLayout();
             yield return TouchFrame(21,Point(0),UnityEngine.InputSystem.TouchPhase.Began);
             yield return TouchFrame(21,Point(1),UnityEngine.InputSystem.TouchPhase.Moved);
             Assert.That(game.Interaction.Attempt.Current.ReachCharges,Is.Zero,"Preview cannot grant a tool");
@@ -127,7 +127,10 @@ namespace Cascade.Tests
             yield return TouchFrame(22,Point(3),UnityEngine.InputSystem.TouchPhase.Moved);
             yield return TouchFrame(22,Point(3),UnityEngine.InputSystem.TouchPhase.Ended);yield return AwaitPresentation();
             Assert.That(game.Interaction.Attempt.Current.Status,Is.EqualTo(PuzzleStatus.Won));
-            game.Undo();Assert.That(game.Interaction.Attempt.Current.ReachCharges,Is.EqualTo(1));
+            Assert.That(game.Interaction.Attempt.CanUndo,Is.False,"Free Undo cannot restore the board broken by the winning swap.");
+            string delivered=game.Interaction.Attempt.CurrentStateHash;game.Undo();
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(delivered));
+            Assert.That(game.Interaction.Attempt.Current.ReachCharges,Is.Zero);
         }
         IEnumerator FinishDeviceTeaching()
         {
@@ -556,9 +559,10 @@ namespace Cascade.Tests
         [UnityTest] public IEnumerator DirectedWindIsForecastInTheGuideAndPlayableThroughRealInput()
         {
             game.SetUiLocale("en");game.LoadDirectedLevel(game.Catalog.GetPrimary("C81").Definition,"en",Cascade.Application.DeliveryMood.Wind);
-            game.ShowGame();yield return AwaitPreparation();game.RefreshLayout();yield return null;
+            game.ShowGame();yield return AwaitPreparation();yield return FinishDeviceTeaching();game.RefreshLayout();yield return null;
             var attempt=game.Interaction.Attempt;Assert.That(attempt.Direction.Mood,Is.EqualTo(Cascade.Application.DeliveryMood.Wind));
-            string hash=attempt.CurrentStateHash;yield return ClickButton("Landing movement");
+            string hash=attempt.CurrentStateHash;game.ShowDevices();
+            for(int page=0;page<11&&!game.GetComponentsInChildren<TextMeshProUGUI>().Any(t=>t.text=="Wind on landing");page++)yield return ClickButton("Next");
             Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Devices));
             Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Any(t=>t.text=="Wind on landing"),Is.True);
             Assert.That(attempt.CurrentStateHash,Is.EqualTo(hash));game.CloseMenu();
@@ -584,15 +588,16 @@ namespace Cascade.Tests
             var loaded=new ProfileStore(game.ProfilePath).Load();var restored=loaded.Profile.RestoreAttempt(game.Catalog);
             Assert.That(restored.CurrentStateHash,Is.EqualTo(attempt.CurrentStateHash));Assert.That(loaded.Profile.Clears.Any(c=>c.CampaignNodeId=="C81"),Is.True);
         }
-        [UnityTest] public IEnumerator UnprovenTightVariantFallsBackBeforeAnyInputOpens()
+        [UnityTest] public IEnumerator UnprovenTightVariantIsRecalibratedBeforeAnyInputOpens()
         {
             var source=game.Catalog.GetPrimary("C42").Definition;
             var recipe=Cascade.Application.DeliveryDirector.Plan(source,Cascade.Application.DeliveryMood.Tight);
             Assert.That(PuzzleSolver.FindShortest(new PuzzleResolver(recipe.Apply(source))).Status,Is.EqualTo(SearchStatus.Unsolvable));
             game.LoadDirectedLevel(source,"en",Cascade.Application.DeliveryMood.Tight);game.ShowGame();
             Assert.That(game.Interaction.CanPlay,Is.False);Assert.That(game.Interaction.PointerDown(91,0),Is.False);
-            yield return AwaitPreparation();Assert.That(game.Interaction.Attempt.Direction,Is.Null);
-            Assert.That(game.Interaction.Attempt.PinnedContentHash,Is.EqualTo(source.ContentHash));Assert.That(game.Interaction.Attempt.RouteLength,Is.Zero);
+            yield return AwaitPreparation();Assert.That(game.Interaction.Attempt.Direction.Mood,Is.EqualTo(Cascade.Application.DeliveryMood.Recovery));
+            Assert.That(game.Interaction.Attempt.Direction.SourceHash,Is.EqualTo(source.ContentHash));Assert.That(game.Interaction.Attempt.RouteLength,Is.Zero);
+            Assert.That(PuzzleSolver.FindShortest(game.Interaction.Attempt.Resolver,goal:game.Interaction.Attempt.Goal).Status,Is.EqualTo(SearchStatus.Solved));
         }
         [UnityTest] public IEnumerator RepeatedJourneyFailuresOfferNewWoodAndOrdinaryRetryKeepsTheSamePuzzle()
         {
@@ -814,7 +819,7 @@ namespace Cascade.Tests
         }
         [UnityTest] public IEnumerator GustMovesDeckAndRopesMoreThanAmbientWithoutChangingThePuzzle()
         {
-            game.LoadNode("C18");game.ShowGame();game.ReducedMotion=false;yield return AwaitPreparation();
+            game.LoadNode("C18");game.ShowGame();game.ReducedMotion=false;yield return AwaitPreparation();yield return FinishDeviceTeaching();
             string hash=game.Interaction.Attempt.CurrentStateHash;float ambient=0,gust=0;
             var rope=game.Machine.GetComponentsInChildren<LineRenderer>().First(r=>r.name=="Left braided rope");
             double until=Time.realtimeSinceStartupAsDouble+3;

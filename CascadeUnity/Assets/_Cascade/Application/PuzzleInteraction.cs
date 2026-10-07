@@ -18,6 +18,7 @@ namespace Cascade.Application
         public event Action<TransitionResult> Committed;
         int? pointer;
         int pressedSlot;
+        TransitionResult publishedToolTransition;
 
         public PuzzleInteraction(AttemptService attempt) { Attempt = attempt ?? throw new ArgumentNullException(nameof(attempt)); }
         public static bool NeedsPreciseInput(int slots, float usableWidth) => slots >= 7 && usableWidth < 430;
@@ -81,7 +82,12 @@ namespace Cascade.Application
         }
         // Publish only the exact result already committed by the atomic inventory transaction.
         public bool PresentToolTransition(TransitionResult result)
-        {if(!CanPlay||result==null||!result.Accepted||!ReferenceEquals(result.State,Attempt.Current))return false;Present(result);return true;}
+        {
+            if(!CanControl||pointer.HasValue||result==null||!result.Accepted
+                ||!ReferenceEquals(result,Attempt.LastToolTransition)||ReferenceEquals(result,publishedToolTransition)
+                ||!ReferenceEquals(result.State,Attempt.Current))return false;
+            publishedToolTransition=result;Present(result);return true;
+        }
         public void FinishPresentation() { IsPresenting = false; }
         public bool Undo()
         {

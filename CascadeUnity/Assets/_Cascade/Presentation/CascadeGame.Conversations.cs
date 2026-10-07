@@ -161,7 +161,7 @@ namespace Cascade.Presentation
         }
         bool CanResumeSelectedJourney(int index)=>journeyActive
             &&(Interaction.Attempt.Current.Status==Cascade.Domain.PuzzleStatus.Playing||descent!=null&&Interaction.Attempt.Current.Status!=Cascade.Domain.PuzzleStatus.Won||IsCheckpoint)
-            &&(Interaction.Attempt.RouteLength>0||descent!=null||!JourneySequence().Any(c=>Cascade.Application.DeliveryDirector.MatchesSource(Interaction.Attempt,c.Definition)))
+            &&(Interaction.Attempt.RouteLength>0||descent!=null||IsPlanningDescent||IsPlanningDirection||!JourneySequence().Any(c=>Cascade.Application.DeliveryDirector.MatchesSource(Interaction.Attempt,c.Definition)))
             &&Catalog.PrimaryLevels[index].Definition.CampaignNodeId==node;
         void TravelSelectedJourney()
         {

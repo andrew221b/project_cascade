@@ -78,13 +78,13 @@ namespace Cascade.Presentation
             gameObject.AddComponent<PhoneShakeFeedback>().Initialize(this);
             BuildScreen();BuildControlArt();BuildFieldTools(); LoadNode(initialNode); BuildFlow(); RestoreProfile();InitializeMonetization();
         }
-        void OnEnable() { disabling=false;if (Interaction != null) { if(!preparation.IsReady&&!preparation.IsPending)BeginPreparation(); Interaction.SetSuspended(nativeAdSuspended||applicationPaused || !applicationFocused); RenderState(); } }
+        void OnEnable() { disabling=false;if (Interaction != null) { ResumeDirectionWork();ResumeDescentWork();if(!preparation.IsReady&&!preparation.IsPending)BeginPreparation(); Interaction.SetSuspended(nativeAdSuspended||applicationPaused || !applicationFocused); RenderState(); } }
         void OnDisable()
         {
             disabling=true;CancelConversation();
             CloseLandingPreview();ResetMechanicDiscovery();
             PersistProgress();
-            SettleDescent();CancelDescentWork();
+            SettleDescent();CancelDescentWork(true);CancelDirectionWork(true);
             EndTokenHold(); CancelHint(); CancelDeadEnd(); preparation.Cancel(); StopPresentation(); Interaction?.SetSuspended(true); feedback?.ClearTails();
         }
         void OnDestroy() { DisposeConversationArt(); mechanicArrival?.Kill();previewArrival?.Kill();coinArrival?.Kill();if(introBranch!=null)Destroy(introBranch);if(purchaseStore!=null)purchaseStore.Changed-=NotifyStoreChanged;DisposeNavigationArt();if(treasureArt!=null)foreach(var sprite in treasureArt)if(sprite!=null)Destroy(sprite);if(travelArt!=null)foreach(var sprite in travelArt)if(sprite!=null)Destroy(sprite);DisposeCompletionArt();DisposePlatformProps(); preparation.Dispose(); if (Interaction != null) Interaction.Committed -= OnCommitted; if(glyphMaterial!=null)Destroy(glyphMaterial);if(tutorialOverlayMaterial!=null)Destroy(tutorialOverlayMaterial);if(toolSilhouette!=null)Destroy(toolSilhouette);foreach(var sprite in toolBodySprites.Values)if(sprite!=null)Destroy(sprite);foreach(var sprite in enamelControls)if(sprite!=null)Destroy(sprite); }
@@ -117,6 +117,7 @@ namespace Cascade.Presentation
             TickToolGuide();
             if(applicationFocused&&!applicationPaused&&monetization!=null)monetization.AdvanceForeground(Mathf.Min(Time.unscaledDeltaTime,.5f));
             UpdatePreparation();
+            UpdateDirection();
             UpdateDescent();
             if (hintTask == null || !hintTask.IsCompleted || !Interaction.CanPlay) return;
             var completed = hintTask; hintTask = null; hintCancellation?.Dispose(); hintCancellation = null;
@@ -145,11 +146,12 @@ namespace Cascade.Presentation
             ResetMechanicDiscovery();
             reactionBanner?.Clear();
             feedback?.ClearTails();
-            SettleDescent();CancelDescentWork();descent=run;descentPlanFailed=false;descentTravel=false;paintedDescentStage=-1;machine.LivingWorld.DescentDepth=run?.StageIndex??0;
+            SettleDescent();CancelDescentWork();CancelDirectionWork();descent=run;descentPlanFailed=false;descentTravel=false;paintedDescentStage=-1;machine.LivingWorld.DescentDepth=run?.StageIndex??0;
             var level=attempt.Level;
             EndTokenHold(); CancelHint(); CancelDeadEnd(); StopPresentation(); if (Interaction != null) Interaction.Committed -= OnCommitted;
             Interaction = new PuzzleInteraction(attempt); Interaction.Committed += OnCommitted;
-            Interaction.SetSuspended(applicationPaused || !applicationFocused);
+            needsMechanicScan=attempt.Current.Status==PuzzleStatus.Playing;
+            Interaction.SetSuspended(nativeAdSuspended||applicationPaused || !applicationFocused);
             BeginPreparation();
             journeyActive=false; machine.SetZone(JourneyStory.Zone(Catalog.PrimaryLevels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==level.CampaignNodeId)));
             userPaused = zoomOpen = false; targetZoom.gameObject.SetActive(false);
@@ -226,7 +228,12 @@ namespace Cascade.Presentation
         }
         public void Retry()
         {
-            if(descentPlanFailed){var source=descentSource;string locale=descentLocale;var mood=descentMood;bool travel=descentTravel;StartDescentLevel(source,locale,mood);descentTravel=journeyActive=travel;return;}
+            if(descentPlanFailed){
+                var source=descentSource;string locale=descentLocale;var mood=descentMood;
+                bool travel=descentTravel,journey=journeyActive;var screen=CurrentScreen;
+                StartDescentLevel(source,locale,mood);descentTravel=travel;journeyActive=journey;
+                if(flowReady)SetScreen(screen);RenderControls();return;
+            }
             if(Interaction.IsPreparing){if(!preparation.IsPending)BeginPreparation();RenderControls();return;}
             var attemptId=Interaction.Attempt.AttemptId;
             bool hadMoves=Interaction.Attempt.Current.Status==PuzzleStatus.Playing&&Interaction.Attempt.RouteLength>0;
@@ -598,7 +605,7 @@ namespace Cascade.Presentation
             bool stockedReturn=Interaction.Attempt.CanUseHourglass&&Stock(TravelTool.ReturnHourglass)>0;
             undo.interactable = Interaction.CanControl && (Interaction.Attempt.CanUndo||stockedUndo||stockedReturn);
             undo.GetComponentInChildren<TextMeshProUGUI>().SetCopy(Interaction.Attempt.CanUndo?new UiCopy("Undo · {0}",Interaction.Attempt.FreeUndoRemaining):stockedUndo||stockedReturn?(UiCopy)"My tools":new UiCopy("Undo · {0}",Interaction.Attempt.FreeUndoRemaining));
-            retry.interactable = Interaction.CanControl || preparation.HasFailed; retry.gameObject.SetActive(preparation.HasFailed || !Interaction.IsPresenting && Interaction.Attempt.Current.Status != PuzzleStatus.Playing);
+            retry.interactable = Interaction.CanControl || preparation.HasFailed || descentPlanFailed; retry.gameObject.SetActive(preparation.HasFailed || descentPlanFailed || !Interaction.IsPresenting && Interaction.Attempt.Current.Status != PuzzleStatus.Playing);
             drop.interactable = Interaction.CanPlay; hint.interactable = Interaction.CanPlay && hintTask == null;
             drop.GetComponentInChildren<TextMeshProUGUI>().SetCopy(Interaction.Attempt.Current.Status == PuzzleStatus.Playing
                 && Interaction.Attempt.Current.ActiveFloor == Interaction.Attempt.Level.Floors.Count - 1
