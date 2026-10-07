@@ -33,6 +33,7 @@ namespace Cascade.Presentation
             public readonly Part[] knots=new Part[2];
             public Part board,top,bombFlame; public Mesh bendMesh,topMesh;
             public Vector3[] vertices,topVertices; public float sag,sagVelocity,sway,swayVelocity,roll,rollVelocity,wear,fracture;
+            public readonly float[] deflection=new float[17];
         }
         ToyArt art;
         Camera viewCamera;
@@ -133,8 +134,7 @@ namespace Cascade.Presentation
         public void OffsetToken(int index, Vector3 offset, Vector2 stretch)
         {
             visualOffsets[index]=offset;visualStretch[index]=stretch;
-            tokens[index].transform.position = restPositions[index] + dynamicOffsets[index] + offset;
-            tokens[index].transform.localScale = Vector3.Scale(restScales[index], new Vector3(stretch.x, stretch.y, 1));
+            ApplyPiece(index);
         }
 
         public void Initialize(ToyArt artwork, Camera camera)
@@ -166,6 +166,7 @@ namespace Cascade.Presentation
             foreach(var mesh in woodMeshes)if(mesh!=null)Destroy(mesh);woodMeshes.Clear();
             all.Clear(); tokens.Clear(); selections.Clear(); tokenShadows.Clear(); targetBodies.Clear(); floors.Clear(); supports.Clear(); interaction = model;
             Frame = new PresentationFrame(model.Attempt.Current);
+            ResetContactLoads();
             upperAnchor = anchors[0]; lowerAnchor = receiver;
             InitializeWoodMaterials();
             InitializeRopeRig();

@@ -1,0 +1,15 @@
+PASS tap keeps the lifted element selected
+PASS tap unloads the flexible plank: 0.1493359 -> 0.0857603
+PASS neighbour follows the recovering wood
+PASS neighbour leans with its local surface
+PASS lift changes no puzzle state
+PASS return reloads the board without drift
+PASS deselect changes no puzzle state
+PASS drag retains pointer ownership
+PASS real pointer drag commits the intended atomic exchange
+PASS physical feedback spends only one move
+PASS pause freezes contact integration
+PASS quiet mode has static load without recoil
+PASS letter plaque also unloads the plank
+PASS letter lift preserves puzzle state
+Native isolated Editor fixture; 390x844 safe insets. No phone/build/full suite or performance claim.

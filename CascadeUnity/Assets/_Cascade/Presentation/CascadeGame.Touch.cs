@@ -39,19 +39,21 @@ namespace Cascade.Presentation
             feedback.RowPhysics.CancelShake(true);
             EndTokenHold();
             heldToken = slot; previewNeighbour = -2; draggingToken=false;ReleasedTokenSlot=-1;Coach?.Activity();
+            var startPosition=machine.TokenVisualPosition(slot);
+            float startAngle=Mathf.DeltaAngle(0,machine.TokenVisualAngle(slot));
             machine.LivingWorld.SetTokenHeld(true);machine.SetHeldWeight(slot);machine.SetPiecePose(slot,PiecePose.Held);
             if(tutorialHand!=null)tutorialHand.gameObject.SetActive(false);
             RectTransformUtility.ScreenPointToWorldPointInRectangle(tokenRow, screenPoint, uiCamera, out holdOrigin);
-            grabOffset=machine.TokenVisualPosition(slot)-holdOrigin;
+            grabOffset=startPosition-holdOrigin;
             var r = (RectTransform)slots[slot].transform;
             // A visible acknowledgement now, followed by a short lift; the hit region stays still.
             float screenSpan = Vector2.Distance(RectTransformUtility.WorldToScreenPoint(uiCamera, r.TransformPoint(new Vector2(r.rect.xMin,0))),
                 RectTransformUtility.WorldToScreenPoint(uiCamera, r.TransformPoint(new Vector2(r.rect.xMax,0))));
             wantedScale = Mathf.Clamp(58 / Mathf.Max(1, screenSpan*.78f), 1.08f, 1.3f);
-            holdScale = ReducedMotion ? 1 : 1.015f; holdAngle = wantedAngle = 0;
-            wantedOffset = Vector3.up * (ReducedMotion?0:machine.SelectionLiftWorld(slot)*1.6f);
+            holdScale = ReducedMotion ? 1 : 1.015f; holdAngle = wantedAngle = ReducedMotion?0:startAngle;
+            wantedOffset = startPosition-machine.TokenPosition(slot)+Vector3.up * (ReducedMotion?0:machine.SelectionLiftWorld(slot)*1.6f);
             wantedOffset.z = -.3f;
-            holdOffset = ReducedMotion ? wantedOffset : Vector3.up * machine.SelectionLiftWorld(slot) * .25f;
+            holdOffset = ReducedMotion ? wantedOffset : startPosition-machine.TokenPosition(slot)+Vector3.up * machine.SelectionLiftWorld(slot) * .25f;
             feedback.Sound(ToyCue.Select); feedback.Haptic();
             RestoreTouchPose();
         }
