@@ -1,0 +1,7 @@
+Commit 8adca9c
+Unity 6000.3.8f1
+iOS IL2CPP Release
+Version 0.1.0
+Scene Assets/_Cascade/Scenes/CascadePlayable.unity
+User Cloud edit preserved
+Previous export preserved
