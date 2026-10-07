@@ -1,0 +1,358 @@
+{
+  "pose": "lessons-ru",
+  "before": {
+    "Screen": "Lessons",
+    "Attempt": "8d724f0e-bc59-47a2-92bf-c5f4ab4f0f1c",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "after": {
+    "Screen": "Lessons",
+    "Attempt": "8d724f0e-bc59-47a2-92bf-c5f4ab4f0f1c",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 390,
+    "height": 844,
+    "locale": "ru",
+    "largeText": false,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Back",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Navigation heading/Back",
+        "interactable": true,
+        "bounds": {
+          "x": 32.88606,
+          "y": 702.3534,
+          "width": 62.8605232,
+          "height": 62.47754
+        }
+      },
+      {
+        "name": "1",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/1",
+        "interactable": true,
+        "bounds": {
+          "x": 38.8412628,
+          "y": 484.796478,
+          "width": 91.75429,
+          "height": 91.3995056
+        }
+      },
+      {
+        "name": "2",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/2",
+        "interactable": true,
+        "bounds": {
+          "x": 149.122864,
+          "y": 484.796478,
+          "width": 91.7543,
+          "height": 91.3995056
+        }
+      },
+      {
+        "name": "3",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/3",
+        "interactable": true,
+        "bounds": {
+          "x": 259.40448,
+          "y": 484.796478,
+          "width": 91.7543,
+          "height": 91.3995056
+        }
+      },
+      {
+        "name": "4",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/4",
+        "interactable": true,
+        "bounds": {
+          "x": 38.8412628,
+          "y": 369.100983,
+          "width": 91.75429,
+          "height": 91.3994446
+        }
+      },
+      {
+        "name": "5",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/5",
+        "interactable": false,
+        "bounds": {
+          "x": 149.122864,
+          "y": 369.100983,
+          "width": 91.7543,
+          "height": 91.3994446
+        }
+      },
+      {
+        "name": "6",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/6",
+        "interactable": false,
+        "bounds": {
+          "x": 259.40448,
+          "y": 369.100983,
+          "width": 91.7543,
+          "height": 91.3994446
+        }
+      },
+      {
+        "name": "7",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/7",
+        "interactable": false,
+        "bounds": {
+          "x": 38.8412628,
+          "y": 253.405457,
+          "width": 91.75429,
+          "height": 91.3994751
+        }
+      },
+      {
+        "name": "8",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/8",
+        "interactable": false,
+        "bounds": {
+          "x": 149.122864,
+          "y": 253.405457,
+          "width": 91.7543,
+          "height": 91.3994751
+        }
+      },
+      {
+        "name": "9",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/9",
+        "interactable": false,
+        "bounds": {
+          "x": 259.40448,
+          "y": 253.405457,
+          "width": 91.7543,
+          "height": 91.3994751
+        }
+      },
+      {
+        "name": "Nextlevel",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Nextlevel",
+        "interactable": true,
+        "bounds": {
+          "x": 37.0968056,
+          "y": 94.1229248,
+          "width": 315.806427,
+          "height": 64.13553
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Page heading",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Navigation heading/Page heading",
+        "text": "Уровни: Фигуры",
+        "button": null,
+        "bounds": {
+          "x": 102.363464,
+          "y": 703.4862,
+          "width": 218.357544,
+          "height": 60.2119141
+        },
+        "fontPixels": 29.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Shelf instruction",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Shelf instruction cloth/Shelf instruction",
+        "text": "Открой следующий уровень или сыграй пройденный. Листай, чтобы посмотреть дальше.",
+        "button": null,
+        "bounds": {
+          "x": 59.3536339,
+          "y": 606.301941,
+          "width": 271.292725,
+          "height": 69.71912
+        },
+        "fontPixels": 17.1,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/1/Label",
+        "text": "1",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/1",
+        "bounds": {
+          "x": 38.8412628,
+          "y": 505.8184,
+          "width": 91.75429,
+          "height": 70.377594
+        },
+        "fontPixels": 30.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/2/Label",
+        "text": "2",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/2",
+        "bounds": {
+          "x": 149.122864,
+          "y": 505.8184,
+          "width": 91.7543,
+          "height": 70.377594
+        },
+        "fontPixels": 30.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/3/Label",
+        "text": "3",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/3",
+        "bounds": {
+          "x": 259.40448,
+          "y": 505.8184,
+          "width": 91.7543,
+          "height": 70.377594
+        },
+        "fontPixels": 30.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/4/Label",
+        "text": "4",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/4",
+        "bounds": {
+          "x": 38.8412628,
+          "y": 369.100983,
+          "width": 91.75429,
+          "height": 91.3994446
+        },
+        "fontPixels": 30.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/5/Label",
+        "text": "5",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/5",
+        "bounds": {
+          "x": 149.122864,
+          "y": 369.100983,
+          "width": 91.7543,
+          "height": 91.3994446
+        },
+        "fontPixels": 30.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/6/Label",
+        "text": "6",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/6",
+        "bounds": {
+          "x": 259.40448,
+          "y": 369.100983,
+          "width": 91.7543,
+          "height": 91.3994446
+        },
+        "fontPixels": 30.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/7/Label",
+        "text": "7",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/7",
+        "bounds": {
+          "x": 38.8412628,
+          "y": 253.405457,
+          "width": 91.75429,
+          "height": 91.3994751
+        },
+        "fontPixels": 30.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/8/Label",
+        "text": "8",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/8",
+        "bounds": {
+          "x": 149.122864,
+          "y": 253.405457,
+          "width": 91.7543,
+          "height": 91.3994751
+        },
+        "fontPixels": 30.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/9/Label",
+        "text": "9",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Swipeable level shelf/9",
+        "bounds": {
+          "x": 259.40448,
+          "y": 253.405457,
+          "width": 91.7543,
+          "height": 91.3994751
+        },
+        "fontPixels": 30.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Level shelf page",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Level shelf page",
+        "text": "Лист 1 из 18",
+        "button": null,
+        "bounds": {
+          "x": 67.17361,
+          "y": 193.721634,
+          "width": 255.652771,
+          "height": 36.2177429
+        },
+        "fontPixels": 20.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Nextlevel/Label",
+        "text": "Играть: уровень 4",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Nextlevel",
+        "bounds": {
+          "x": 119.206474,
+          "y": 100.536476,
+          "width": 205.27417,
+          "height": 51.30842
+        },
+        "fontPixels": 22.9,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

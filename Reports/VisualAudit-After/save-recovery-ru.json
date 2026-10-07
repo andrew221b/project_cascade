@@ -1,0 +1,14 @@
+{
+    "width": 390,
+    "height": 844,
+    "minimumDeviceTextPixels": 0.0,
+    "buttons": [
+        {
+            "name": "Startanewpuzzle",
+            "x": 37.096805572509769,
+            "y": 297.8476257324219,
+            "width": 315.8064270019531,
+            "height": 52.0
+        }
+    ]
+}

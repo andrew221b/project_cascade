@@ -39,7 +39,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   music: {fileID: 8300000, guid: 7f99657db699d411fbbdbadc474ab05c, type: 3}
-  menuMusic: {fileID: 8300000, guid: f7da1454c1e1e4578a7f41e66dcdf131, type: 3}
+  menuMusic: {fileID: 8300000, guid: 65bda92c2de042258b2d4b27a1aa66fe, type: 3}
   worldMusic:
   - {fileID: 8300000, guid: 9eddcd6665e7c4ba38f5906bb8a7e55f, type: 3}
   - {fileID: 8300000, guid: 97edd1c769c074f00b2010e668f1febe, type: 3}

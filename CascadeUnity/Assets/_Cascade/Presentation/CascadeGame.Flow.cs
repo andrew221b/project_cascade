@@ -200,8 +200,11 @@ namespace Cascade.Presentation
                 if(CurrentScreen==GameScreen.Fail && sessionLosses.TryGetValue(node,out var losses)&&losses>=3)
                     resultText.SetCopy("Retry is free. A return hourglass can bring the last board back.");
                 resultRoot.Find("Nextdelivery").gameObject.SetActive(CurrentScreen==GameScreen.Win||CurrentScreen==GameScreen.Checkpoint||CanOfferStrongerWood);
-                resultRoot.Find("Nextdelivery").GetComponent<Image>().color=new Color(.98f,.74f,.32f);
-                retry.GetComponent<Image>().color=CurrentScreen==GameScreen.Fail&&!CanOfferStrongerWood?new Color(.98f,.74f,.32f):Paper;
+                LoadNavigationArt();
+                void DressResult(Button button,bool primary){var face=button.GetComponent<Image>();face.sprite=enamelControls[primary?1:0];face.type=Image.Type.Sliced;face.color=Color.white;button.GetComponentInChildren<TextMeshProUGUI>().color=primary?MenuInk:MenuPaper;}
+                DressResult(resultRoot.Find("Nextdelivery").GetComponent<Button>(),true);
+                DressResult(retry,CurrentScreen==GameScreen.Fail&&!CanOfferStrongerWood);
+                DressResult(resultRoot.Find("Resulthome").GetComponent<Button>(),false);
                 resultRoot.Find("Nextdelivery").GetComponentInChildren<TextMeshProUGUI>().SetCopy(CurrentScreen==GameScreen.Checkpoint?"Go lower":CanOfferStrongerWood?"More wood":journeyActive&&node=="C160"?"Light the beacon":"Next delivery");
                 if(CurrentScreen==GameScreen.Checkpoint){
                     LoadNavigationArt();retry.gameObject.SetActive(false);var descend=resultRoot.Find("Nextdelivery").GetComponent<Button>();
@@ -340,7 +343,7 @@ namespace Cascade.Presentation
             if(wind)fixture=WindGuide(CurrentWindRight);
             LiveDeviceDemo(Rect("Device example",menuRoot,new Vector2(.10f,.53f),new Vector2(.90f,.805f)),fixture,deviceIndex);
             MenuReadingSurface("Device instructions cloth",new Vector2(.12f,.375f),new Vector2(.88f,.567f));
-            var explanation=Text("Device explanation",menuRoot,new Vector2(.10f,.30f),new Vector2(.90f,.49f),20,wind?"Wind pushes the whole row one place when it lands. Follow the arrow. Take your time to think.":DeviceCopy[deviceIndex]);explanation.alignment=TextAlignmentOptions.MidlineLeft;
+            var explanation=Text("Device explanation",menuRoot,new Vector2(.16f,.28f),new Vector2(.84f,.48f),18,wind?"Wind pushes the whole row one place when it lands. Follow the arrow. Take your time to think.":DeviceCopy[deviceIndex]);explanation.alignment=TextAlignmentOptions.TopLeft;explanation.margin=new Vector4(0,8*MenuUnit,0,0);explanation.enableAutoSizing=true;explanation.fontSizeMin=17*MenuUnit;explanation.fontSizeMax=18*MenuUnit;
             MenuButton("Previous",.12f,()=>{deviceIndex=(deviceIndex+DeviceTitles.Length-1)%DeviceTitles.Length;DrawMenu();},false,.08f,.48f);
             MenuButton("Next",.12f,()=>{deviceIndex=(deviceIndex+1)%DeviceTitles.Length;DrawMenu();},false,.52f,.92f);
             var example=Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).First(c=>c.Definition.CampaignNodeId==DeviceNodes[deviceIndex]);
@@ -376,9 +379,8 @@ namespace Cascade.Presentation
             var button=MenuButton(UiCopy.Raw(label+": "+(value?"On":"Off")),.5f,()=>{toggle();ApplyPreferences();DrawMenu();});
             RegisterMenuRow(button,.71f,index,52,8);
             var text=button.GetComponentInChildren<TextMeshProUGUI>();text.SetCopy(label);text.alignment=TextAlignmentOptions.MidlineLeft;
-            text.rectTransform.anchorMax=new Vector2(.73f,1);text.margin=new Vector4(4,2,6,2);
-            var separator=Rect("Setting separator",button.transform,new Vector2(0,0),new Vector2(1,0));separator.sizeDelta=new Vector2(0,1);Background(separator,new Color(.66f,.75f,.69f),false);
-            var track=Rect("Switch",button.transform,new Vector2(.79f,.24f),new Vector2(.98f,.76f));var trackImage=Background(track,value?new Color(.12f,.49f,.43f):new Color(.55f,.64f,.60f),false);trackImage.sprite=art.panel;trackImage.type=Image.Type.Sliced;
+            text.rectTransform.anchorMin=new Vector2(.065f,0);text.rectTransform.anchorMax=new Vector2(.75f,1);text.margin=new Vector4(4,5,8,5);
+            var track=Rect("Switch",button.transform,new Vector2(.78f,.24f),new Vector2(.94f,.76f));var trackImage=Background(track,value?new Color(.12f,.49f,.43f):new Color(.55f,.64f,.60f),false);trackImage.sprite=art.panel;trackImage.type=Image.Type.Sliced;
             var knob=Rect("Knob",track,new Vector2(value?.52f:.04f,.09f),new Vector2(value?.96f:.48f,.91f));var knobImage=Background(knob,Paper,false);knobImage.sprite=art.panel;knobImage.type=Image.Type.Sliced;
         }
         void MiniMachine(RectTransform root,IReadOnlyList<SymbolId> row,IReadOnlyList<SymbolId> target)

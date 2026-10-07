@@ -67,6 +67,8 @@ namespace Cascade.Presentation
             if(fieldTools==null)return;
             bool show=CurrentScreen==GameScreen.Playing&&HasFieldTools;
             fieldTools.gameObject.SetActive(show);
+            // Result controls own their lower row; a hidden bag must not stretch Undo again.
+            if(undo.transform.parent!=actions)return;
             var u=(RectTransform)undo.transform;var d=(RectTransform)drop.transform;
             u.anchorMin=new Vector2(show?0:.12f,0);u.anchorMax=new Vector2(show?.36f:.47f,1);
             d.anchorMin=new Vector2(show?.64f:.53f,0);d.anchorMax=new Vector2(show?1:.88f,1);
@@ -127,7 +129,7 @@ namespace Cascade.Presentation
             if(!bag&&!collection){
                 ShopCategoryButtons();
             }else {
-                var note=Text("Catalogue guidance",menuRoot,new Vector2(.10f,.746f),new Vector2(.90f,.805f),18,collection?"Choose a trophy to take with Mika.":"Pick a tool. Each can be used once per stage.");
+                var note=Text("Catalogue guidance",menuRoot,new Vector2(.16f,.726f),new Vector2(.84f,.817f),18,collection?"Choose a trophy to take with Mika.":"Pick a tool. Each can be used once per stage.");
                 note.enableAutoSizing=true;note.fontSizeMin=16*MenuUnit;note.fontSizeMax=18*MenuUnit;
             }
             int count=shopTab==0?ShopCatalog.ToolCount:ShopCatalog.TrophyIds.Length,columns=shopTab==0?3:4;

@@ -1,0 +1,150 @@
+{
+  "pose": "no-ads-ru",
+  "before": {
+    "Screen": "NoAds",
+    "Attempt": "bba515c0-24f2-4688-a727-763241d6a29c",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "after": {
+    "Screen": "NoAds",
+    "Attempt": "bba515c0-24f2-4688-a727-763241d6a29c",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 390,
+    "height": 844,
+    "locale": "ru",
+    "largeText": false,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Back",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Navigation heading/Back",
+        "interactable": true,
+        "bounds": {
+          "x": 32.88606,
+          "y": 702.3534,
+          "width": 62.8605232,
+          "height": 62.47754
+        }
+      },
+      {
+        "name": "Purchasequiet",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Purchasequiet",
+        "interactable": true,
+        "bounds": {
+          "x": 37.0968056,
+          "y": 202.021561,
+          "width": 315.806427,
+          "height": 64.13551
+        }
+      },
+      {
+        "name": "Back to play",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Back to play",
+        "interactable": true,
+        "bounds": {
+          "x": 37.0968056,
+          "y": 42.8144531,
+          "width": 315.806427,
+          "height": 64.13555
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Page heading",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Navigation heading/Page heading",
+        "text": "Отключить рекламу",
+        "button": null,
+        "bounds": {
+          "x": 102.363464,
+          "y": 703.4862,
+          "width": 238.208282,
+          "height": 60.2119141
+        },
+        "fontPixels": 25.35,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Quiet journey benefit",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Quiet journey benefit cloth/Quiet journey benefit",
+        "text": "Путь домой без рекламных пауз. Ваша покупка поддержит игру.",
+        "button": null,
+        "bounds": {
+          "x": 59.3536339,
+          "y": 410.1226,
+          "width": 271.292725,
+          "height": 69.71912
+        },
+        "fontPixels": 17.15,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "No adverts explanation",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/No adverts explanation cloth/No adverts explanation",
+        "text": "Это тест. Деньги не списываются. Можно попробовать игру без рекламных пауз.",
+        "button": null,
+        "bounds": {
+          "x": 59.3536339,
+          "y": 283.662354,
+          "width": 271.292725,
+          "height": 88.73343
+        },
+        "fontPixels": 17.0,
+        "overflow": true,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Purchasequiet/Label",
+        "text": "Попробовать",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Purchasequiet",
+        "bounds": {
+          "x": 119.206474,
+          "y": 208.4351,
+          "width": 205.27417,
+          "height": 51.3084259
+        },
+        "fontPixels": 24.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Back to play/Label",
+        "text": "Назад",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Back to play",
+        "bounds": {
+          "x": 119.206474,
+          "y": 49.22803,
+          "width": 205.27417,
+          "height": 51.3084221
+        },
+        "fontPixels": 24.0,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

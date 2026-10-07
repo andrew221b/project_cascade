@@ -1,0 +1,150 @@
+{
+  "pose": "prologue-2-ru",
+  "before": {
+    "Screen": "Prologue",
+    "Attempt": "8d724f0e-bc59-47a2-92bf-c5f4ab4f0f1c",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "after": {
+    "Screen": "Prologue",
+    "Attempt": "8d724f0e-bc59-47a2-92bf-c5f4ab4f0f1c",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 390,
+    "height": 844,
+    "locale": "ru",
+    "largeText": false,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Back",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Navigation heading/Back",
+        "interactable": true,
+        "bounds": {
+          "x": 32.88606,
+          "y": 702.3534,
+          "width": 62.8605232,
+          "height": 62.47754
+        }
+      },
+      {
+        "name": "Continueopening",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Continueopening",
+        "interactable": true,
+        "bounds": {
+          "x": 37.0968056,
+          "y": 116.75901,
+          "width": 315.806427,
+          "height": 64.13552
+        }
+      },
+      {
+        "name": "Skipstory",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Skipstory",
+        "interactable": true,
+        "bounds": {
+          "x": 97.2504,
+          "y": 46.6234436,
+          "width": 195.4992,
+          "height": 55.7631
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Page heading",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Navigation heading/Page heading",
+        "text": "Последний огонёк",
+        "button": null,
+        "bounds": {
+          "x": 102.363464,
+          "y": 703.4862,
+          "width": 218.357544,
+          "height": 60.2119141
+        },
+        "fontPixels": 25.15,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Opening story",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Opening story cloth/Opening story",
+        "text": "Буря сломала мосты и погасила маяк. Мика успела спасти один маленький огонёк.",
+        "button": null,
+        "bounds": {
+          "x": 59.3536339,
+          "y": 221.337646,
+          "width": 271.292725,
+          "height": 107.747772
+        },
+        "fontPixels": 20.75,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Continueopening/Label",
+        "text": "Дальше",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Continueopening",
+        "bounds": {
+          "x": 119.206474,
+          "y": 123.172562,
+          "width": 205.27417,
+          "height": 51.3084259
+        },
+        "fontPixels": 24.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Skipstory/Label",
+        "text": "Пропустить",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Skipstory",
+        "bounds": {
+          "x": 97.2504,
+          "y": 46.6234436,
+          "width": 195.4992,
+          "height": 55.7631
+        },
+        "fontPixels": 18.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Comic page",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Comic page",
+        "text": "2 / 3",
+        "button": null,
+        "bounds": {
+          "x": 270.192,
+          "y": 334.8199,
+          "width": 75.19202,
+          "height": 31.6905212
+        },
+        "fontPixels": 16.0,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

@@ -84,7 +84,7 @@ namespace Cascade.Presentation
             var headerPlate=Rect("Navigation heading",menuRoot,new Vector2(.06f,.88f),new Vector2(.94f,.975f));
             var button=DirectionButton("Back",headerPlate,new Vector2(.01f,.12f),new Vector2(.20f,.88f),false,back);
             button.GetComponent<Image>().color=Color.clear;((RectTransform)button.transform).sizeDelta=new Vector2(0,8*MenuUnit);
-            var heading=Text("Page heading",headerPlate,new Vector2(.22f,.08f),new Vector2(.94f,.92f),29,title);heading.font=art.titleFont;heading.alignment=TextAlignmentOptions.MidlineLeft;
+            var heading=Text("Page heading",headerPlate,new Vector2(.22f,.08f),new Vector2(.88f,.92f),29,title);heading.font=art.titleFont;heading.alignment=TextAlignmentOptions.MidlineLeft;
             heading.enableAutoSizing=true;heading.fontSizeMin=21*MenuUnit;heading.fontSizeMax=29*MenuUnit;heading.textWrappingMode=TextWrappingModes.NoWrap;
         }
         Button NavigationButton(string name,UiCopy title,int icon,float bottom,Action action,bool primary=false,UiCopy detail=default)
@@ -128,7 +128,7 @@ namespace Cascade.Presentation
             bool resume=Interaction.Attempt.Mode==PreferredMode&&Interaction.Attempt.ActiveLocale==(PreferredMode==PuzzleMode.Shapes?"en":Preferences.PuzzleLocale)
                 &&Interaction.Attempt.Current.Status==PuzzleStatus.Playing&&Interaction.Attempt.RouteLength>0;
             var chosen=levels.FirstOrDefault(c=>!sessionClears.Contains(c.Definition.CampaignNodeId))??levels[levels.Count-1];
-            NavigationNote("Shelf instruction","Open the next level, or replay one you finished. Swipe to look ahead.",.77f,.85f);
+            NavigationNote("Shelf instruction","Open the next level, or replay one you finished. Swipe to look ahead.",.75f,.86f);
             var shelf=Rect("Swipeable level shelf",menuRoot,new Vector2(.06f,.275f),new Vector2(.94f,.735f));Background(shelf,Color.clear,true);
             shelf.gameObject.AddComponent<MenuSwipe>().Initialize(TurnLevelShelf);
             for(int i=0;i<9&&chapterPage*9+i<levels.Count;i++){
@@ -154,7 +154,7 @@ namespace Cascade.Presentation
             LoadNavigationArt();NavigationHeader("Remove ads",()=>SetScreen(noAdsReturnScreen));
             Picture("No adverts",menuRoot,new Vector2(.32f,.59f),new Vector2(.68f,.80f),navigationIcons[3],true);
             NavigationNote("Quiet journey benefit","Keep the way home free of advertising breaks. Support Mika's journey.",.49f,.60f);
-            NavigationNote("No adverts explanation",PurchaseExplanation,.32f,.46f);
+            NavigationNote("No adverts explanation",PurchaseExplanation,.315f,.475f);
             StorePurchaseButton(.223f);
             if(!TestMonetization){var restore=NavigationButton("Restorepurchases","Restore purchases",1,.112f,()=>purchaseStore?.Restore());restore.interactable=purchaseStore?.CanRestore==true;if(!restore.interactable)restore.gameObject.AddComponent<CanvasGroup>().alpha=.57f;}
             var back=NavigationButton("Back to play","Back",0,.012f,()=>SetScreen(noAdsReturnScreen),true);
@@ -170,7 +170,7 @@ namespace Cascade.Presentation
             NavigationNote("Opening story",lines[prologuePage],.235f,.405f);
             NavigationButton("Continueopening",prologuePage==2?"To the map":"Continue",0,.11f,AdvancePrologue,true);
             var skip=Button("Skip story",menuRoot,new Vector2(.24f,.025f),new Vector2(.76f,.083f),()=>{heardStory.Add(PrologueReceipt);PersistProgress();ShowJourney();});skip.GetComponent<Image>().sprite=enamelControls[0];skip.GetComponent<Image>().color=Color.white;((RectTransform)skip.transform).sizeDelta=new Vector2(0,12*MenuUnit);
-            var count=Text("Comic page",frame,new Vector2(.81f,.02f),new Vector2(.97f,.13f),16,UiCopy.Raw((prologuePage+1)+" / 3"));count.font=art.titleFont;
+            var count=CompletionText("Comic page",menuRoot,new Vector2(.70f,.399f),new Vector2(.90f,.441f),16,UiCopy.Raw((prologuePage+1)+" / 3"));count.textWrappingMode=TextWrappingModes.NoWrap;
         }
     }
 }

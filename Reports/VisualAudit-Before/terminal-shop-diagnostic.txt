@@ -1,0 +1,6 @@
+Terminal floor=2 floors=2 state=99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa
+ShowHome succeeded
+ShowShop succeeded
+SelectShopTab(0) succeeded
+SelectShopItem(3) succeeded
+ShowSupplies succeeded

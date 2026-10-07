@@ -10,6 +10,8 @@ struct Theme {
     let name: String; let bpm: Double; let root: Int; let minor: Bool; let lead: Int; let pluck: Int; let warmth: Float
 }
 let output = CommandLine.arguments[1]
+let selectedTheme = CommandLine.arguments.firstIndex(of: "--theme").map { CommandLine.arguments[$0 + 1] }
+let balanceMenu = CommandLine.arguments.contains("--menu-balanced")
 try FileManager.default.createDirectory(atPath: output, withIntermediateDirectories: true)
 let themes = [
     Theme(name: "Menu_HomeAmongClouds", bpm: 84, root: 62, minor: false, lead: 0, pluck: 1, warmth: 0.18),
@@ -51,7 +53,7 @@ let refrains = [
 ]
 let harmonies = [0, 5, 3, 4, 0, 2, 3, 4, 5, 3, 0, 4, 3, 4, 0, 0]
 
-func compose(_ theme: Theme, index: Int) -> ([Note], Double) {
+func compose(_ theme: Theme, index: Int, balancedMenu: Bool = false) -> ([Note], Double) {
     var notes = [Note]()
     let unit = 30 / theme.bpm // eighth note; six per bar
     let scale = theme.minor ? [0, 2, 3, 5, 7, 9, 10] : [0, 2, 4, 5, 7, 9, 11]
@@ -82,9 +84,12 @@ func compose(_ theme: Theme, index: Int) -> ([Note], Double) {
         let m = (bar % 8) * 2
         let lead = (index == 0 && chorus) ? 3 : theme.lead
         let dynamic = bar % 8 == 7 ? -10 : 0
-        add(start, 2.65, lead, pitch(melody[m], octave: 1), 67 + dynamic + (chorus ? 6 : 0))
+        // A sustained flute is louder than the A-section piano at the same MIDI velocity.
+        // Keep the tune, but let its first two B bars open as a phrase rather than a level jump.
+        let entrance = balancedMenu && chorus ? (bar == 16 ? -12 : bar == 17 ? -6 : 0) : 0
+        add(start, 2.65, lead, pitch(melody[m], octave: 1), 67 + dynamic + (chorus ? 6 : 0) + entrance)
         // Leave the end of every four-bar phrase open for an acoustic reply.
-        if bar % 4 != 3 { add(start + 3, 2.35, lead, pitch(melody[m + 1], octave: 1), 58 + dynamic) }
+        if bar % 4 != 3 { add(start + 3, 2.35, lead, pitch(melody[m + 1], octave: 1), 58 + dynamic + entrance) }
         else {
             add(start + 3, 1.35, 0, pitch(degree + 4), 47)
             add(start + 4.5, 1.3, 0, pitch(degree + 2), 40)
@@ -98,7 +103,7 @@ func compose(_ theme: Theme, index: Int) -> ([Note], Double) {
     return (notes, 32 * 6 * unit)
 }
 
-func render(_ notes: [Note], length: Double, name: String, wet: Float) throws {
+func render(_ notes: [Note], length: Double, name: String, wet: Float, balancedMenu: Bool = false) throws {
     let engine = AVAudioEngine()
     let format = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 2)!
     var samplers = [AVAudioUnitSampler]()
@@ -109,6 +114,7 @@ func render(_ notes: [Note], length: Double, name: String, wet: Float) throws {
             program: program, bankMSB: UInt8(kAUSampler_DefaultMelodicBankMSB), bankLSB: 0)
         sampler.stereoPan = pans[i] * 100
         sampler.masterGain = i == 4 ? -8 : i == 5 ? -5 : -2
+        if balancedMenu && i == 3 { sampler.masterGain = -8.5 }
         samplers.append(sampler)
     }
     let reverb = AVAudioUnitReverb(); reverb.loadFactoryPreset(.mediumHall); reverb.wetDryMix = wet * 100
@@ -146,9 +152,10 @@ func render(_ notes: [Note], length: Double, name: String, wet: Float) throws {
     engine.stop(); print("Rendered \(name): \(Int(length)) s + acoustic tail")
 }
 
-for (index, theme) in themes.enumerated() {
-    let (score, length) = compose(theme, index: index)
-    try render(score, length: length, name: theme.name, wet: theme.warmth)
+for (index, theme) in themes.enumerated() where selectedTheme == nil || selectedTheme == theme.name {
+    let balanced = balanceMenu && index == 0
+    let (score, length) = compose(theme, index: index, balancedMenu: balanced)
+    try render(score, length: length, name: theme.name + (balanced ? "Balanced" : ""), wet: theme.warmth, balancedMenu: balanced)
 }
 // Short, purposeful acoustic reactions, with proper release rather than bleeps.
 let cues: [(String, [Int], Int, Double)] = CommandLine.arguments.contains("--scores-only") ? [] : [

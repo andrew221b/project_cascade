@@ -1,0 +1,30 @@
+lessons-ru | text overflow | CASCADE/GameCanvas/SafeArea/Menu/Shelf instruction cloth/Shelf instruction | Открой следующий уровень или сыграй пройденный. Листай, чтобы посмотреть дальше.
+settings-language-uk-small | text overflow | CASCADE/GameCanvas/SafeArea/Menu/Word language help | Слова в нових задачах
+shop-ru | fixture/capture unavailable | Index was outside the bounds of the array.
+shop-uk-small | fixture/capture unavailable | Index was outside the bounds of the array.
+no-ads-ru | text overflow | CASCADE/GameCanvas/SafeArea/Menu/No adverts explanation cloth/No adverts explanation | Это тест. Деньги не списываются. Можно попробовать игру без рекламных пауз.
+supplies-ru | fixture/capture unavailable | Index was outside the bounds of the array.
+game-ru | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor1/Device attachments/Platform legend/Remaining wood/Engraving edge | 1
+game-ru | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor1/Device attachments/Platform legend/Remaining wood/Durability | 1
+game-ru | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor2/Device attachments/Platform legend/Remaining wood/Engraving edge | 1
+game-ru | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor2/Device attachments/Platform legend/Remaining wood/Durability | 1
+game-wide | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor1/Device attachments/Platform legend/Remaining wood/Engraving edge | 1
+game-wide | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor1/Device attachments/Platform legend/Remaining wood/Durability | 1
+game-wide | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor2/Device attachments/Platform legend/Remaining wood/Engraving edge | 1
+game-wide | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor2/Device attachments/Platform legend/Remaining wood/Durability | 1
+mixed-uk-small | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor1/Device attachments/Platform legend/Remaining wood/Engraving edge | 1
+mixed-uk-small | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor1/Device attachments/Platform legend/Remaining wood/Durability | 1
+mixed-uk-small | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor2/Device attachments/Platform legend/Remaining wood/Engraving edge | 1
+mixed-uk-small | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor2/Device attachments/Platform legend/Remaining wood/Durability | 1
+words-ru | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor1/Device attachments/Platform legend/Remaining wood/Engraving edge | 2
+words-ru | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor1/Device attachments/Platform legend/Remaining wood/Durability | 2
+words-ru | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor2/Device attachments/Platform legend/Remaining wood/Engraving edge | 3
+words-ru | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor2/Device attachments/Platform legend/Remaining wood/Durability | 3
+words-ru | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor3/Device attachments/Platform legend/Remaining wood/Engraving edge | 1
+words-ru | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor3/Device attachments/Platform legend/Remaining wood/Durability | 1
+mechanic-ru | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor1/Device attachments/Platform legend/Remaining wood/Engraving edge | 2
+mechanic-ru | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor1/Device attachments/Platform legend/Remaining wood/Durability | 2
+target-ru | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor1/Device attachments/Platform legend/Remaining wood/Engraving edge | 2
+target-ru | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor1/Device attachments/Platform legend/Remaining wood/Durability | 2
+ad-modal-ru | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor1/Device attachments/Platform legend/Remaining wood/Engraving edge | 2
+ad-modal-ru | text overflow | CASCADE/GameCanvas/SafeArea/Floors/Floor1/Device attachments/Platform legend/Remaining wood/Durability | 2

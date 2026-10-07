@@ -1,0 +1,213 @@
+{
+  "pose": "checkpoint-ru",
+  "before": {
+    "Screen": "Checkpoint",
+    "Attempt": "8d07b349-2f76-433a-83ba-03f17a4936eb",
+    "Hash": "b5e8ccf083615b45df4f964ee0d0ad3f667d89e91df2378839d7b262ee2f98e1",
+    "Status": "Won",
+    "Route": 2,
+    "Stage": 0,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": false
+  },
+  "after": {
+    "Screen": "Checkpoint",
+    "Attempt": "8d07b349-2f76-433a-83ba-03f17a4936eb",
+    "Hash": "b5e8ccf083615b45df4f964ee0d0ad3f667d89e91df2378839d7b262ee2f98e1",
+    "Status": "Won",
+    "Route": 2,
+    "Stage": 0,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": false
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 390,
+    "height": 844,
+    "locale": "ru",
+    "largeText": false,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Pause",
+        "path": "CASCADE/GameCanvas/SafeArea/Header/Pause",
+        "interactable": true,
+        "bounds": {
+          "x": 334.98,
+          "y": 728.2961,
+          "width": 48.0,
+          "height": 47.99994
+        }
+      },
+      {
+        "name": "Dismiss instruction",
+        "path": "CASCADE/GameCanvas/SafeArea/Quiet instruction paper/Dismiss instruction",
+        "interactable": true,
+        "bounds": {
+          "x": 318.3022,
+          "y": 674.2961,
+          "width": 44.0,
+          "height": 44.0
+        }
+      },
+      {
+        "name": "Receiver",
+        "path": "CASCADE/GameCanvas/SafeArea/Receiver",
+        "interactable": true,
+        "bounds": {
+          "x": 38.9999847,
+          "y": 217.76004,
+          "width": 312.0,
+          "height": 100.0
+        }
+      },
+      {
+        "name": "Nextdelivery",
+        "path": "CASCADE/GameCanvas/SafeArea/Result controls/Nextdelivery",
+        "interactable": true,
+        "bounds": {
+          "x": 25.8180065,
+          "y": 97.7599945,
+          "width": 338.364,
+          "height": 68.80003
+        }
+      },
+      {
+        "name": "Resulthome",
+        "path": "CASCADE/GameCanvas/SafeArea/Result controls/Resulthome",
+        "interactable": true,
+        "bounds": {
+          "x": 201.767273,
+          "y": 41.760006,
+          "width": 162.414734,
+          "height": 48.0000038
+        }
+      },
+      {
+        "name": "Undo",
+        "path": "CASCADE/GameCanvas/SafeArea/Result controls/Undo",
+        "interactable": false,
+        "bounds": {
+          "x": 25.8180065,
+          "y": 41.760006,
+          "width": 162.4147,
+          "height": 48.0000038
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Level",
+        "path": "CASCADE/GameCanvas/SafeArea/Header/Carved chapter plaque/Level",
+        "text": "Уровень 3 · 1/3",
+        "button": null,
+        "bounds": {
+          "x": 83.02001,
+          "y": 737.2961,
+          "width": 223.959991,
+          "height": 29.999939
+        },
+        "fontPixels": 17.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Feedback",
+        "path": "CASCADE/GameCanvas/SafeArea/Quiet instruction paper/Feedback",
+        "text": "Внизу следующий этап. Опусти ряд.",
+        "button": null,
+        "bounds": {
+          "x": 41.6978035,
+          "y": 678.2961,
+          "width": 276.60437,
+          "height": 36.0
+        },
+        "fontPixels": 16.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "ReceiverLabel",
+        "path": "CASCADE/GameCanvas/SafeArea/Receiver/ReceiverLabel",
+        "text": "Доставлено! Ходов: 2",
+        "button": "CASCADE/GameCanvas/SafeArea/Receiver",
+        "bounds": {
+          "x": 38.9999847,
+          "y": 311.76004,
+          "width": 312.0,
+          "height": 28.0
+        },
+        "fontPixels": 16.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Result controls/Nextdelivery/Label",
+        "text": "Спуститься",
+        "button": "CASCADE/GameCanvas/SafeArea/Result controls/Nextdelivery",
+        "bounds": {
+          "x": 25.8180065,
+          "y": 97.7599945,
+          "width": 338.364,
+          "height": 68.80003
+        },
+        "fontPixels": 18.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Result controls/Resulthome/Label",
+        "text": "Карта",
+        "button": "CASCADE/GameCanvas/SafeArea/Result controls/Resulthome",
+        "bounds": {
+          "x": 201.767273,
+          "y": 41.760006,
+          "width": 162.414734,
+          "height": 48.0000038
+        },
+        "fontPixels": 18.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Result controls/Undo/Label",
+        "text": "Отмена · 2",
+        "button": "CASCADE/GameCanvas/SafeArea/Result controls/Undo",
+        "bounds": {
+          "x": 25.8180065,
+          "y": 41.760006,
+          "width": 162.4147,
+          "height": 48.0000038
+        },
+        "fontPixels": 17.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Outcome heading",
+        "path": "CASCADE/GameCanvas/SafeArea/Lantern delivery story/Stage celebration ribbon/Outcome heading",
+        "text": "Этап 1 из 3 пройден!",
+        "button": null,
+        "bounds": {
+          "x": 94.2427139,
+          "y": 535.866,
+          "width": 201.514557,
+          "height": 74.45007
+        },
+        "fontPixels": 22.0,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

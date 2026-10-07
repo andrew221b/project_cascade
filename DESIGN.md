@@ -870,3 +870,44 @@ Celebrations instantiate24 individual leaf/fabric objects (12 low-quality,0 effe
 Menu icon refinement — 7 October 2026
 
 Retain the workshop/enamel/illustration system. Imported menu atlases preserve their source aspect (NPOT None). Home illustrations use authored silhouette rectangles, a 44-pixel square region centred vertically in the left column and Simple Image/preserveAspect. Inventory rows share this rule. Map inventory uses a 48-pixel square target aligned with the Back control. All square regions refresh with Canvas scale. Disabled shop actions keep a muted teal enamel frame and pale lettering. See Docs/NAVIGATION_ICONS_AND_RETURNS.md.
+
+
+Actual UI refinements from the screen audit — 7 October 2026
+
+The workshop frame, enamel actions, ivory lettering, original illustrations and
+open-sky completion composition remain the design. The audit corrects measured
+fit and spacing defects within those surfaces: setting labels and switches sit
+inside the enamel edge; navigation titles reserve a right inset; lessons,
+no-advertising explanation and word-language guidance have more vertical room.
+Device instructions use a narrower inset with bounded type fitting, and wood
+engraving numerals fit their actual painted band. These local fits do not create
+a new shared type scale.
+
+The compact travel bag keeps its four destination rows and workshop access.
+Below a 700-physical-unit menu height, its row height becomes 52 physical units
+and Mika/parcel/shelf shift upward; the regular rows remain 62. This preserves
+48-plus hit regions rather than dropping an action. Result Undo owns its lower
+row after reparenting; the hidden in-game tool bag must not re-anchor it. Retry,
+map and continuation reuse the authored teal/gold enamel states. The prologue
+page count now sits below the dark illustration, on the clear world.
+
+Music and Sound effects were already independent persisted controls. Keep them
+separate: Music owns score sources; Sound effects owns event cues and wind/rain.
+The audio refinement preserves the eight world scores and original menu WAV,
+selecting a new balanced menu sibling to reduce its measured piano-to-flute
+jump. No new music theme, preference schema or visual primitive is introduced.
+See `Docs/AUDIO_FORM_AND_CONTROLS.md` for form, source measurements and owned
+audio lifecycle behavior. `Docs/VISUAL_AUDIT_OCT07.md` records the before
+evidence and the current validation checkpoint; source edits alone do not
+prove corrected rendering, listening quality or touch effectiveness.
+
+The final audit checkpoint contains 50 native Editor poses: 47 detailed stable
+state audits and three direct catalogue captures with internal state checks.
+Independent finish review passed 21 selected after views plus all three direct
+catalogue views, with no further material fixes requested. Final compilation
+succeeded and the focused audio lifecycle/control run passed 2/2 after a test
+crossfade-wait correction; the initial 1/2 result is preserved. The final QA-only
+character-mesh repair compiled, but bulk measurement was not rerun after it.
+This scoped validation does not establish all-state or physical-device behavior,
+audio listening quality, performance or enjoyment; no build/install was made
+for this audit. See the audit document and its final validation summary.

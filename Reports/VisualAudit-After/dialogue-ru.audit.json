@@ -1,0 +1,139 @@
+{
+  "pose": "dialogue-ru",
+  "before": {
+    "Screen": "Dialogue",
+    "Attempt": "8d724f0e-bc59-47a2-92bf-c5f4ab4f0f1c",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "after": {
+    "Screen": "Dialogue",
+    "Attempt": "8d724f0e-bc59-47a2-92bf-c5f4ab4f0f1c",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 390,
+    "height": 844,
+    "locale": "ru",
+    "largeText": false,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Nextline",
+        "path": "CASCADE/GameCanvas/Story conversation/Story safe content/Speech ribbon/Nextline",
+        "interactable": true,
+        "bounds": {
+          "x": 198.496429,
+          "y": 66.04347,
+          "width": 145.101776,
+          "height": 51.239975
+        }
+      },
+      {
+        "name": "Notnow",
+        "path": "CASCADE/GameCanvas/Story conversation/Story safe content/Speech ribbon/Notnow",
+        "interactable": true,
+        "bounds": {
+          "x": 46.4018021,
+          "y": 66.04347,
+          "width": 124.123192,
+          "height": 51.239975
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Speaker name",
+        "path": "CASCADE/GameCanvas/Story conversation/Story safe content/Speech ribbon/Speaker name ribbon/Speaker name",
+        "text": "Брам",
+        "button": null,
+        "bounds": {
+          "x": 150.945,
+          "y": 307.603424,
+          "width": 151.045685,
+          "height": 40.65039
+        },
+        "fontPixels": 20.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Conversation line",
+        "path": "CASCADE/GameCanvas/Story conversation/Story safe content/Speech ribbon/Conversation line",
+        "text": "Я Брам. Буря сломала мосты. Я починю доски, а ты помоги вернуть огоньки.",
+        "button": null,
+        "bounds": {
+          "x": 46.4018135,
+          "y": 130.703415,
+          "width": 297.196381,
+          "height": 134.2
+        },
+        "fontPixels": 20.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Conversation progress",
+        "path": "CASCADE/GameCanvas/Story conversation/Story safe content/Speech ribbon/Conversation progress",
+        "text": "1 / 3",
+        "button": null,
+        "bounds": {
+          "x": 285.9071,
+          "y": 269.783447,
+          "width": 57.6911,
+          "height": 18.2999573
+        },
+        "fontPixels": 14.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/Story conversation/Story safe content/Speech ribbon/Nextline/Label",
+        "text": "Дальше",
+        "button": "CASCADE/GameCanvas/Story conversation/Story safe content/Speech ribbon/Nextline",
+        "bounds": {
+          "x": 198.496429,
+          "y": 66.04347,
+          "width": 145.101776,
+          "height": 51.239975
+        },
+        "fontPixels": 18.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/Story conversation/Story safe content/Speech ribbon/Notnow/Label",
+        "text": "Не сейчас",
+        "button": "CASCADE/GameCanvas/Story conversation/Story safe content/Speech ribbon/Notnow",
+        "bounds": {
+          "x": 46.4018021,
+          "y": 66.04347,
+          "width": 124.123192,
+          "height": 51.239975
+        },
+        "fontPixels": 18.0,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

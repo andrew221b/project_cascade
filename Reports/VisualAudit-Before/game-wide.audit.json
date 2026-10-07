@@ -1,0 +1,254 @@
+{
+  "pose": "game-wide",
+  "before": {
+    "Screen": "Playing",
+    "Attempt": "5f8573a8-4436-46a7-84b6-a83145cdffb6",
+    "Hash": "e015ec5538a2013c0c2ec340cc5453ca671b447aade0955e5d2c7d3f96129bdd",
+    "Status": "Playing",
+    "Route": 0,
+    "Stage": -1,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": false
+  },
+  "after": {
+    "Screen": "Playing",
+    "Attempt": "5f8573a8-4436-46a7-84b6-a83145cdffb6",
+    "Hash": "e015ec5538a2013c0c2ec340cc5453ca671b447aade0955e5d2c7d3f96129bdd",
+    "Status": "Playing",
+    "Route": 0,
+    "Stage": -1,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": false
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 1440,
+    "height": 900,
+    "locale": "ru",
+    "largeText": false,
+    "simulatedInsets": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "buttons": [
+      {
+        "name": "Pause",
+        "path": "CASCADE/GameCanvas/SafeArea/Header/Pause",
+        "interactable": true,
+        "bounds": {
+          "x": 898.080566,
+          "y": 836.019043,
+          "width": 51.1848755,
+          "height": 51.1847534
+        }
+      },
+      {
+        "name": "Hint",
+        "path": "CASCADE/GameCanvas/SafeArea/Header/Hint",
+        "interactable": true,
+        "bounds": {
+          "x": 490.7346,
+          "y": 836.019043,
+          "width": 51.184845,
+          "height": 51.1847534
+        }
+      },
+      {
+        "name": "Dismiss instruction",
+        "path": "CASCADE/GameCanvas/SafeArea/Quiet instruction paper/Dismiss instruction",
+        "interactable": true,
+        "bounds": {
+          "x": 877.126831,
+          "y": 778.436035,
+          "width": 46.9194336,
+          "height": 46.9194336
+        }
+      },
+      {
+        "name": "Receiver",
+        "path": "CASCADE/GameCanvas/SafeArea/Receiver",
+        "interactable": true,
+        "bounds": {
+          "x": 553.6493,
+          "y": 87.4407349,
+          "width": 332.701416,
+          "height": 106.635056
+        }
+      },
+      {
+        "name": "Undo",
+        "path": "CASCADE/GameCanvas/SafeArea/Actions/Undo",
+        "interactable": false,
+        "bounds": {
+          "x": 513.661133,
+          "y": 8.530792,
+          "width": 148.564026,
+          "height": 55.45022
+        }
+      },
+      {
+        "name": "Drop",
+        "path": "CASCADE/GameCanvas/SafeArea/Actions/Drop",
+        "interactable": true,
+        "bounds": {
+          "x": 777.774841,
+          "y": 8.530792,
+          "width": 148.564026,
+          "height": 55.45022
+        }
+      },
+      {
+        "name": "Field tools",
+        "path": "CASCADE/GameCanvas/SafeArea/Actions/Field tools",
+        "interactable": true,
+        "bounds": {
+          "x": 678.732239,
+          "y": 8.530792,
+          "width": 82.53558,
+          "height": 55.45022
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Level",
+        "path": "CASCADE/GameCanvas/SafeArea/Header/Carved chapter plaque/Level",
+        "text": "Уровень 3",
+        "button": null,
+        "bounds": {
+          "x": 571.7773,
+          "y": 845.61615,
+          "width": 296.445435,
+          "height": 31.99054
+        },
+        "fontPixels": 18.1279621,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Feedback",
+        "path": "CASCADE/GameCanvas/SafeArea/Quiet instruction paper/Feedback",
+        "text": "Число на доске — сколько обменов осталось. На нуле она сломается.",
+        "button": null,
+        "bounds": {
+          "x": 530.8827,
+          "y": 782.7014,
+          "width": 346.244141,
+          "height": 38.38861
+        },
+        "fontPixels": 15.99526,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Engraving edge",
+        "path": "CASCADE/GameCanvas/SafeArea/Floors/Floor1/Device attachments/Platform legend/Remaining wood/Engraving edge",
+        "text": "1",
+        "button": null,
+        "bounds": {
+          "x": 700.425232,
+          "y": 638.553467,
+          "width": 34.18109,
+          "height": 11.8693237
+        },
+        "fontPixels": 14.4417992,
+        "overflow": true,
+        "splitWords": []
+      },
+      {
+        "name": "Durability",
+        "path": "CASCADE/GameCanvas/SafeArea/Floors/Floor1/Device attachments/Platform legend/Remaining wood/Durability",
+        "text": "1",
+        "button": null,
+        "bounds": {
+          "x": 700.4278,
+          "y": 639.0883,
+          "width": 34.1812134,
+          "height": 11.8693237
+        },
+        "fontPixels": 14.4417992,
+        "overflow": true,
+        "splitWords": []
+      },
+      {
+        "name": "Engraving edge",
+        "path": "CASCADE/GameCanvas/SafeArea/Floors/Floor2/Device attachments/Platform legend/Remaining wood/Engraving edge",
+        "text": "1",
+        "button": null,
+        "bounds": {
+          "x": 700.615845,
+          "y": 294.023163,
+          "width": 34.1776733,
+          "height": 11.8791809
+        },
+        "fontPixels": 14.441802,
+        "overflow": true,
+        "splitWords": []
+      },
+      {
+        "name": "Durability",
+        "path": "CASCADE/GameCanvas/SafeArea/Floors/Floor2/Device attachments/Platform legend/Remaining wood/Durability",
+        "text": "1",
+        "button": null,
+        "bounds": {
+          "x": 700.6183,
+          "y": 294.557983,
+          "width": 34.1777344,
+          "height": 11.8791809
+        },
+        "fontPixels": 14.441802,
+        "overflow": true,
+        "splitWords": []
+      },
+      {
+        "name": "ReceiverLabel",
+        "path": "CASCADE/GameCanvas/SafeArea/Receiver/ReceiverLabel",
+        "text": "Собери этот ряд",
+        "button": "CASCADE/GameCanvas/SafeArea/Receiver",
+        "bounds": {
+          "x": 553.6493,
+          "y": 187.6777,
+          "width": 332.701416,
+          "height": 29.85785
+        },
+        "fontPixels": 17.0616112,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Actions/Undo/Label",
+        "text": "Отмена · 2",
+        "button": "CASCADE/GameCanvas/SafeArea/Actions/Undo",
+        "bounds": {
+          "x": 513.661133,
+          "y": 8.530792,
+          "width": 148.564026,
+          "height": 55.45022
+        },
+        "fontPixels": 18.1279621,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Actions/Drop/Label",
+        "text": "Вниз",
+        "button": "CASCADE/GameCanvas/SafeArea/Actions/Drop",
+        "bounds": {
+          "x": 777.774841,
+          "y": 8.530792,
+          "width": 148.564026,
+          "height": 55.45022
+        },
+        "fontPixels": 18.1279621,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

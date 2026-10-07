@@ -9,7 +9,7 @@ import numpy as np
 
 root = Path(__file__).resolve().parents[1]
 folder = root / 'CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere'
-bpm = dict(Menu_HomeAmongClouds=84, WindGarden_PaperWings=92, RainMill_RainOnCedar=76,
+bpm = dict(Menu_HomeAmongClouds=84, Menu_HomeAmongCloudsBalanced=84, WindGarden_PaperWings=92, RainMill_RainOnCedar=76,
            CopperOrchard_GoldenAfternoon=104, CloudPost_LettersOnTheBreeze=96,
            GlassLagoon_ReflectedMoon=80, MossArchive_StoriesInTheLeaves=72,
            SnowSpire_WarmLightInSnow=78, GreatBeacon_TheWayHome=100)
@@ -40,9 +40,15 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--scores', action='store_true')
 parser.add_argument('--music-only', action='store_true')
 parser.add_argument('--recordings', type=Path)
+parser.add_argument('--folder', type=Path, default=folder)
+parser.add_argument('--only-score')
+parser.add_argument('--report', type=Path)
 args = parser.parse_args()
+folder = args.folder
 if args.scores or args.music_only:
     for path in folder.glob('*.wav'):
+        if args.only_score and path.stem != args.only_score:
+            continue
         if args.music_only and path.stem not in bpm:
             continue
         if path.stem not in bpm and path.stem not in {'Repair_Chimes', 'Defuse_Release', 'Bridge_Unfold', 'Success_Home', 'Unlock_Turn'}:
@@ -81,9 +87,12 @@ if args.recordings:
         mp3.unlink(); converted.unlink()
 report = {}
 for path in sorted(folder.glob('*.wav')):
+    if args.only_score and path.stem != args.only_score:
+        continue
     data, rate = read(path)
     report[path.stem] = dict(seconds=round(len(data) / rate, 3), channels=data.shape[1], peak=round(float(abs(data).max()), 5),
         rms=round(float(np.sqrt(np.mean(data ** 2))), 5), seam=round(float(abs(data[0] - data[-1]).max()), 5))
-dest = root / 'Reports/Atmosphere'; dest.mkdir(exist_ok=True)
-(dest / 'audio-metrics.json').write_text(json.dumps(report, indent=2) + '\n')
+dest = args.report or root / 'Reports/Atmosphere/audio-metrics.json'
+dest.parent.mkdir(parents=True, exist_ok=True)
+dest.write_text(json.dumps(report, indent=2) + '\n')
 print(f'Finished {len(report)} audio assets; clipping count: {sum(v["peak"] >= 1 for v in report.values())}')

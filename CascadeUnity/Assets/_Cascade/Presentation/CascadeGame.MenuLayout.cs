@@ -24,6 +24,16 @@ namespace Cascade.Presentation
         void FitMenuRows()
         {
             if(menuRoot==null)return;float unit=MenuUnit;
+            if(CurrentScreen==GameScreen.TravelBag){
+                bool compact=menuRoot.rect.height/unit<700;
+                foreach(var row in menuRows){row.top=compact?.615f:.565f;row.height=compact?52:62;}
+                var hero=menuRoot.Find("Mika at the bench") as RectTransform;
+                var parcel=menuRoot.Find("Parcel") as RectTransform;
+                var shelf=menuRoot.Find("Carved display shelf") as RectTransform;
+                if(hero!=null){hero.anchorMin=new Vector2(.13f,compact?.64f:.59f);hero.anchorMax=new Vector2(.43f,.80f);}
+                if(parcel!=null){parcel.anchorMin=new Vector2(.55f,compact?.665f:.62f);parcel.anchorMax=new Vector2(.86f,.79f);}
+                if(shelf!=null){shelf.anchorMin=new Vector2(shelf.anchorMin.x,compact?.625f:.575f);shelf.anchorMax=new Vector2(shelf.anchorMax.x,compact?.648f:.598f);}
+            }
             foreach(var row in menuRows)if(row.rect!=null){
                 var r=row.rect;r.anchorMin=new Vector2(r.anchorMin.x,row.top);r.anchorMax=new Vector2(r.anchorMax.x,row.top);
                 r.pivot=new Vector2(.5f,1);r.sizeDelta=new Vector2(0,row.height*unit);r.anchoredPosition=new Vector2(0,-(row.offset+row.index*(row.height+row.gap))*unit);

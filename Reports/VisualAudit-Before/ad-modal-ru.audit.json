@@ -1,0 +1,321 @@
+{
+  "pose": "ad-modal-ru",
+  "before": {
+    "Screen": "Playing",
+    "Attempt": "59e9edc6-bb53-44b0-b638-6a70609bb904",
+    "Hash": "d3dbc68589c5b37494f4660fb67824b1ba8e0635b6a921d69bfd4530fef12bce",
+    "Status": "Playing",
+    "Route": 0,
+    "Stage": -1,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": false
+  },
+  "after": {
+    "Screen": "Playing",
+    "Attempt": "59e9edc6-bb53-44b0-b638-6a70609bb904",
+    "Hash": "d3dbc68589c5b37494f4660fb67824b1ba8e0635b6a921d69bfd4530fef12bce",
+    "Status": "Playing",
+    "Route": 0,
+    "Stage": -1,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": false
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 390,
+    "height": 844,
+    "locale": "ru",
+    "largeText": false,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Pause",
+        "path": "CASCADE/GameCanvas/SafeArea/Header/Pause",
+        "interactable": true,
+        "bounds": {
+          "x": 334.98,
+          "y": 728.2961,
+          "width": 48.0,
+          "height": 47.99994
+        }
+      },
+      {
+        "name": "Hint",
+        "path": "CASCADE/GameCanvas/SafeArea/Header/Hint",
+        "interactable": true,
+        "bounds": {
+          "x": 7.02000237,
+          "y": 728.2961,
+          "width": 48.0,
+          "height": 47.99994
+        }
+      },
+      {
+        "name": "Dismiss instruction",
+        "path": "CASCADE/GameCanvas/SafeArea/Quiet instruction paper/Dismiss instruction",
+        "interactable": true,
+        "bounds": {
+          "x": 318.3022,
+          "y": 674.2961,
+          "width": 44.0,
+          "height": 44.0
+        }
+      },
+      {
+        "name": "Receiver",
+        "path": "CASCADE/GameCanvas/SafeArea/Receiver",
+        "interactable": true,
+        "bounds": {
+          "x": 72.99999,
+          "y": 115.760025,
+          "width": 244.000031,
+          "height": 100.000015
+        }
+      },
+      {
+        "name": "Undo",
+        "path": "CASCADE/GameCanvas/SafeArea/Actions/Undo",
+        "interactable": false,
+        "bounds": {
+          "x": 25.8180065,
+          "y": 41.7600327,
+          "width": 121.811035,
+          "height": 52.0000076
+        }
+      },
+      {
+        "name": "Drop",
+        "path": "CASCADE/GameCanvas/SafeArea/Actions/Drop",
+        "interactable": true,
+        "bounds": {
+          "x": 242.370941,
+          "y": 41.7600327,
+          "width": 121.811066,
+          "height": 52.0000076
+        }
+      },
+      {
+        "name": "Field tools",
+        "path": "CASCADE/GameCanvas/SafeArea/Actions/Field tools",
+        "interactable": true,
+        "bounds": {
+          "x": 161.1636,
+          "y": 41.7600327,
+          "width": 67.6728058,
+          "height": 52.0000076
+        }
+      },
+      {
+        "name": "Collectcoins",
+        "path": "CASCADE/GameCanvas/Test advertisement/Advertisement safe area/Advertisement cloth/Collectcoins",
+        "interactable": false,
+        "bounds": {
+          "x": 62.6620827,
+          "y": 208.208725,
+          "width": 264.675873,
+          "height": 62.77745
+        }
+      },
+      {
+        "name": "Close test advertisement",
+        "path": "CASCADE/GameCanvas/Test advertisement/Advertisement safe area/Close test advertisement",
+        "interactable": true,
+        "bounds": {
+          "x": 101.01,
+          "y": 86.57751,
+          "width": 187.97998,
+          "height": 60.3628769
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Level",
+        "path": "CASCADE/GameCanvas/SafeArea/Header/Carved chapter plaque/Level",
+        "text": "Уровень 2",
+        "button": null,
+        "bounds": {
+          "x": 91.2999954,
+          "y": 737.2961,
+          "width": 207.400024,
+          "height": 29.999939
+        },
+        "fontPixels": 17.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Feedback",
+        "path": "CASCADE/GameCanvas/SafeArea/Quiet instruction paper/Feedback",
+        "text": "Тяни деталь к соседней.",
+        "button": null,
+        "bounds": {
+          "x": 41.6978035,
+          "y": 678.2961,
+          "width": 276.60437,
+          "height": 36.0
+        },
+        "fontPixels": 16.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Engraving edge",
+        "path": "CASCADE/GameCanvas/SafeArea/Floors/Floor1/Device attachments/Platform legend/Remaining wood/Engraving edge",
+        "text": "2",
+        "button": null,
+        "bounds": {
+          "x": 177.4612,
+          "y": 443.169464,
+          "width": 32.0366058,
+          "height": 11.1816711
+        },
+        "fontPixels": 13.5431986,
+        "overflow": true,
+        "splitWords": []
+      },
+      {
+        "name": "Durability",
+        "path": "CASCADE/GameCanvas/SafeArea/Floors/Floor1/Device attachments/Platform legend/Remaining wood/Durability",
+        "text": "2",
+        "button": null,
+        "bounds": {
+          "x": 177.46283,
+          "y": 443.671051,
+          "width": 32.0366364,
+          "height": 11.1816406
+        },
+        "fontPixels": 13.5431986,
+        "overflow": true,
+        "splitWords": []
+      },
+      {
+        "name": "ReceiverLabel",
+        "path": "CASCADE/GameCanvas/SafeArea/Receiver/ReceiverLabel",
+        "text": "Собери этот ряд",
+        "button": "CASCADE/GameCanvas/SafeArea/Receiver",
+        "bounds": {
+          "x": 72.99999,
+          "y": 209.760025,
+          "width": 244.000031,
+          "height": 28.0000153
+        },
+        "fontPixels": 16.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Actions/Undo/Label",
+        "text": "Отмена · 2",
+        "button": "CASCADE/GameCanvas/SafeArea/Actions/Undo",
+        "bounds": {
+          "x": 25.8180065,
+          "y": 41.7600327,
+          "width": 121.811035,
+          "height": 52.0000076
+        },
+        "fontPixels": 17.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Actions/Drop/Label",
+        "text": "Вниз",
+        "button": "CASCADE/GameCanvas/SafeArea/Actions/Drop",
+        "bounds": {
+          "x": 242.370941,
+          "y": 41.7600327,
+          "width": 121.811066,
+          "height": 52.0000076
+        },
+        "fontPixels": 17.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Test advertisement heading",
+        "path": "CASCADE/GameCanvas/Test advertisement/Advertisement safe area/Advertisement cloth/Test advertisement heading",
+        "text": "Тестовая реклама",
+        "button": null,
+        "bounds": {
+          "x": 56.045208,
+          "y": 565.557,
+          "width": 277.9096,
+          "height": 67.6063843
+        },
+        "fontPixels": 26.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Advertisement promise",
+        "path": "CASCADE/GameCanvas/Test advertisement/Advertisement safe area/Advertisement cloth/Advertisement promise",
+        "text": "Посмотри до конца и получи 40 монет.",
+        "button": null,
+        "bounds": {
+          "x": 56.045208,
+          "y": 319.276459,
+          "width": 277.9096,
+          "height": 82.0935059
+        },
+        "fontPixels": 20.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Test advertisement countdown",
+        "path": "CASCADE/GameCanvas/Test advertisement/Advertisement safe area/Advertisement cloth/Test advertisement countdown",
+        "text": "Секунд осталось: 5",
+        "button": null,
+        "bounds": {
+          "x": 56.045208,
+          "y": 270.986176,
+          "width": 277.9096,
+          "height": 48.2902832
+        },
+        "fontPixels": 19.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/Test advertisement/Advertisement safe area/Advertisement cloth/Collectcoins/Label",
+        "text": "Забрать монеты",
+        "button": "CASCADE/GameCanvas/Test advertisement/Advertisement safe area/Advertisement cloth/Collectcoins",
+        "bounds": {
+          "x": 62.6620827,
+          "y": 208.208725,
+          "width": 264.675873,
+          "height": 62.77745
+        },
+        "fontPixels": 18.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/Test advertisement/Advertisement safe area/Close test advertisement/Label",
+        "text": "Закрыть",
+        "button": "CASCADE/GameCanvas/Test advertisement/Advertisement safe area/Close test advertisement",
+        "bounds": {
+          "x": 101.01,
+          "y": 86.57751,
+          "width": 187.97998,
+          "height": 60.3628769
+        },
+        "fontPixels": 18.0,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

@@ -8,7 +8,7 @@ namespace Cascade.Presentation
         AudioSource windSource, rainSource;
         int scoreIncoming;
         float scoreFade = 1, scoreGain, rainBlend;
-        bool audioSleeping, scoreSleeping, windNeedsResume;
+        bool audioSleeping, scoreSleeping;
         readonly WindAudioEnvelope windEnvelope = new WindAudioEnvelope();
         public AudioClip CurrentMusicClip => scoreSources[scoreIncoming]?.clip;
         public float MusicPosition => scoreSources[scoreIncoming] == null ? 0 : scoreSources[scoreIncoming].time;
@@ -65,7 +65,6 @@ namespace Cascade.Presentation
             // Both beds keep their place. Region changes blend them rather than restarting the wind.
             bool soundsAllowed = SoundEnabled && !paused;
             if (audioSleeping && soundsAllowed) { windSource.UnPause(); rainSource.UnPause(); audioSleeping = false; }
-            if (windNeedsResume && soundsAllowed) { windSource.UnPause(); windNeedsResume = false; }
             rainBlend = Mathf.MoveTowards(rainBlend, zone == 1 || zone == 4 ? 1 : 0, dt * .45f);
             bool atRig = game.CurrentScreen == GameScreen.Playing || game.CurrentScreen == GameScreen.Win
                 || game.CurrentScreen == GameScreen.Fail || game.CurrentScreen == GameScreen.Checkpoint;
@@ -82,9 +81,16 @@ namespace Cascade.Presentation
         }
         void OnDisable()
         {
+            // This component owns these loops; stopping Update must not leave its audio audible.
+            // Pause rather than Stop so re-enabling keeps every theme/ambience playback position.
+            if (voices != null) foreach (var source in voices) if (source != null) source.Stop();
+            duck = 0;
+            scoreGain = 0; scoreSleeping = true;
+            foreach (var source in scoreSources) if (source != null) { source.volume = 0; source.Pause(); }
             windEnvelope.Reset();
-            if (windSource == null) return;
-            windSource.volume = 0; windSource.Pause(); windNeedsResume = true;
+            if (windSource != null) { windSource.volume = 0; windSource.Pause(); }
+            if (rainSource != null) { rainSource.volume = 0; rainSource.Pause(); }
+            audioSleeping = true;
         }
     }
 }

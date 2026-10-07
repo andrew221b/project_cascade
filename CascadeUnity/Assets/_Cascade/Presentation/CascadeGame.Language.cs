@@ -48,7 +48,7 @@ namespace Cascade.Presentation
             if(languagePreview==null)languagePreview=Preferences.PuzzleLocale;
             var menuHeading=Text("UI language help",menuRoot,new Vector2(.17f,.66f),new Vector2(.83f,.72f),22,"Menu language");menuHeading.font=art.titleFont;menuHeading.alignment=TextAlignmentOptions.Center;
             LanguageCarousel("UiLocale",UiLanguage,.65f,SetUiLocale);
-            var wordHeading=Text("Word language help",menuRoot,new Vector2(.17f,.435f),new Vector2(.83f,.51f),22,"Word language · next puzzle");wordHeading.font=art.titleFont;wordHeading.alignment=TextAlignmentOptions.Center;
+            var wordHeading=Text("Word language help",menuRoot,new Vector2(.17f,.435f),new Vector2(.83f,.535f),22,"Word language · next puzzle");wordHeading.font=art.titleFont;wordHeading.alignment=TextAlignmentOptions.Center;wordHeading.enableAutoSizing=true;wordHeading.fontSizeMin=18*MenuUnit;wordHeading.fontSizeMax=22*MenuUnit;
             LanguageCarousel("PuzzleLocale",languagePreview,.42f,code=>{languagePreview=code;DrawMenu();});
             var apply=MenuButton("Use for new puzzles",.20f,()=>ProposePuzzleLocale(languagePreview),true);apply.name="PuzzleLocale"+languagePreview;apply.interactable=languagePreview!=Preferences.PuzzleLocale;
         }

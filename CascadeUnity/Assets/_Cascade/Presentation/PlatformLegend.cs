@@ -30,7 +30,7 @@ namespace Cascade.Presentation
             foreach(var label in new[]{rim,number}) {
                 label.font=art.titleFont;label.fontStyle=FontStyles.Bold;label.alignment=TextAlignmentOptions.Center;
                 label.margin=Vector4.zero;label.textWrappingMode=TextWrappingModes.NoWrap;
-                label.overflowMode=TextOverflowModes.Overflow;label.gameObject.AddComponent<SymbolGlyphCenter>();label.raycastTarget=false;
+                label.enableAutoSizing=true;label.overflowMode=TextOverflowModes.Overflow;label.gameObject.AddComponent<SymbolGlyphCenter>();label.raycastTarget=false;
             }
             rim.color=new Color(1,.84f,.48f,.85f);
             var legend=band.gameObject.AddComponent<PlatformLegend>();legend.Initialize(this,index,floor,number,rim,counter);platformLegends.Add(legend);
@@ -66,7 +66,8 @@ namespace Cascade.Presentation
             band.position=center;band.rotation=Quaternion.Euler(0,0,game.Machine.FloorVisualAngle(floor));
             float height=game.Machine.FloorFaceHeight(floor)/Mathf.Max(.0001f,band.lossyScale.y);
             band.sizeDelta=new Vector2(32*unit,height*.90f);
-            number.fontSize=rim.fontSize=Mathf.Min(18*unit,height*1.08f);
+            number.fontSizeMax=rim.fontSizeMax=Mathf.Min(18*unit,height*1.08f);
+            number.fontSizeMin=rim.fontSizeMin=Mathf.Min(number.fontSizeMax,height*.55f);
             rim.rectTransform.anchoredPosition=Vector2.down*Mathf.Min(.65f*unit,height*.04f);
             counter.gameObject.SetActive(fracture<.22f);
         }

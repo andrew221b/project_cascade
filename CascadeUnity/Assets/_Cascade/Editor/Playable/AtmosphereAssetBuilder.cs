@@ -13,11 +13,11 @@ namespace Cascade.Editor.Playable
         public static void Configure()
         {
             if(EditorApplication.isPlaying)throw new InvalidOperationException("Configure audio outside Play Mode.");
-            string[] scores={"Menu_HomeAmongClouds","WindGarden_PaperWings","RainMill_RainOnCedar","CopperOrchard_GoldenAfternoon",
+            string[] scores={"Menu_HomeAmongCloudsBalanced","WindGarden_PaperWings","RainMill_RainOnCedar","CopperOrchard_GoldenAfternoon",
                 "CloudPost_LettersOnTheBreeze","GlassLagoon_ReflectedMoon","MossArchive_StoriesInTheLeaves","SnowSpire_WarmLightInSnow","GreatBeacon_TheWayHome"};
             foreach(var file in Directory.GetFiles(Audio,"*.wav")) {
                 var importer=(AudioImporter)AssetImporter.GetAtPath(file);
-                bool score=Array.IndexOf(scores,Path.GetFileNameWithoutExtension(file))>=0;
+                bool score=Array.IndexOf(scores,Path.GetFileNameWithoutExtension(file))>=0||Path.GetFileNameWithoutExtension(file)=="Menu_HomeAmongClouds";
                 var samples=importer.defaultSampleSettings;
                 samples.loadType=score?AudioClipLoadType.Streaming:AudioClipLoadType.DecompressOnLoad;
                 samples.compressionFormat=score?AudioCompressionFormat.Vorbis:AudioCompressionFormat.PCM;
