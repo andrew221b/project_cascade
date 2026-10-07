@@ -32,7 +32,28 @@ namespace Cascade.Tests
                 new FloorDefinition(2,new[]{true,true,true},entryTransform:EntryTransform.ShiftRightOne)});
             Assert.That(MechanicLessons.Discover(level,0,new[]{1}),Does.Contain(MechanicLesson.LandingWind));
             Assert.That(MechanicLessons.Discover(level,0,new[]{1}),Has.No.Member(MechanicLesson.Rollers));
-            Assert.That(MechanicLessons.Discover(level,1,Array.Empty<int>()),Is.EqualTo(new[]{MechanicLesson.Rollers}));
+            Assert.That(MechanicLessons.Discover(level,1,Array.Empty<int>()),Is.Empty);
+        }
+        [Test] public void InitialMirrorHasAlreadyRunAndNeverPromisesAReceiverEffect()
+        {
+            var level=LevelDefinitionTests.Level(LevelDefinitionTests.Row("ABCD"),LevelDefinitionTests.Row("DCBA"),
+                new[]{new FloorDefinition(3,new[]{true,true,true},entryTransform:EntryTransform.MirrorNext)});
+            var resolver=new PuzzleResolver(level);var state=resolver.CreateInitialState();
+            Assert.That(state.Row,Is.EqualTo(level.TargetSymbolIds));
+            Assert.That(MechanicLessons.Discover(level,0,Array.Empty<int>()),Is.Empty);
+            var delivered=resolver.Resolve(state,PuzzleCommand.Drop);
+            Assert.That(delivered.State.Status,Is.EqualTo(PuzzleStatus.Won));
+            Assert.That(delivered.Events.Any(e=>e.Kind==PuzzleEventKind.EntryPermuted),Is.False);
+        }
+        [Test] public void FutureMirrorReallyReversesOnTheNextPlatform()
+        {
+            var level=LevelDefinitionTests.Level(LevelDefinitionTests.Row("ABCD"),LevelDefinitionTests.Row("DCBA"),
+                new[]{new FloorDefinition(3,new[]{true,true,true}),new FloorDefinition(3,new[]{true,true,true},entryTransform:EntryTransform.MirrorNext)});
+            Assert.That(MechanicLessons.Discover(level,0,Array.Empty<int>()),Does.Contain(MechanicLesson.Mirror));
+            var resolver=new PuzzleResolver(level);var landed=resolver.Resolve(resolver.CreateInitialState(),PuzzleCommand.Drop);
+            Assert.That(landed.Events.Any(e=>e.Kind==PuzzleEventKind.EntryPermuted&&e.Floor==1),Is.True);
+            Assert.That(landed.State.Row,Is.EqualTo(level.TargetSymbolIds));
+            Assert.That(MechanicLessons.Discover(level,1,Array.Empty<int>()),Is.Empty);
         }
         [Test] public void LegacyProfileStartsUnseenAndAcknowledgementSurvivesSerialization()
         {

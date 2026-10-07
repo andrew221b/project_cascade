@@ -473,11 +473,12 @@ namespace Cascade.Presentation
                     label.fontSize=17*unit*(Preferences.LargeText?1.12f:1);label.margin=new Vector4(5,2,5,2);
                     label.fontSizeMin=14*unit;label.fontSizeMax=17*unit*(Preferences.LargeText?1.12f:1);
                 }
-                if(resultRoot!=null)FixedBand(resultRoot,8*unit,160*unit);
+                if(resultRoot!=null)LayoutResultControls(unit);
                 receiverLabel.fontSize=16*unit; if(wrongRowLabel!=null)wrongRowLabel.fontSize=15*unit;
                 float receiverHeight = 100;
                 float receiverBottom = CurrentScreen==GameScreen.Fail ? 232 : CurrentScreen==GameScreen.Win || CurrentScreen==GameScreen.Checkpoint || PreciseInputActive ? 184 : 82;
                 FixedBand(receiver, receiverBottom * unit, receiverHeight);
+                if(CurrentScreen==GameScreen.Fail||CurrentScreen==GameScreen.Checkpoint)outcome?.Layout(unit,receiver);
                 floorArea.anchorMin = new Vector2(.045f, 0); floorArea.anchorMax = new Vector2(.955f, 0);
                 var lowest=Interaction.Attempt.Level.Floors[Interaction.Attempt.Level.Floors.Count-1];
                 bool hangingBelow=lowest.Bomb!=null||lowest.Key!=null||lowest.Repair!=null||lowest.OptionalStamp!=null||lowest.Powerup!=null;

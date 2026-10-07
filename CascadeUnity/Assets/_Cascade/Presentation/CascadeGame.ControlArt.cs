@@ -12,7 +12,7 @@ namespace Cascade.Presentation
             var atlas=Resources.Load<Texture2D>("CascadeArt/Reactions/EnamelControls");
             for(int i=0;i<3;i++)enamelControls[i]=WorkshopSpriteSet.Control(atlas,i);
             void Dress(Button b,int style){var image=b.GetComponent<Image>();image.sprite=enamelControls[style];image.type=Image.Type.Sliced;image.color=Color.white;}
-            Dress(undo,0);Dress(hint,0);Dress(drop,1);Dress(pause,0);
+            Dress(undo,0);Dress(hint,0);Dress(drop,1);Dress(pause,0);Dress(retry,1);
             var instruction=statusPaper.GetComponent<Image>();instruction.sprite=enamelControls[0];instruction.type=Image.Type.Sliced;instruction.color=Color.white;
             Dress(targetZoom.GetComponentInChildren<Button>(true),1);
             var plaque=header.Find("Carved chapter plaque").GetComponent<Image>();plaque.sprite=enamelControls[2];plaque.type=Image.Type.Sliced;plaque.color=Color.white;

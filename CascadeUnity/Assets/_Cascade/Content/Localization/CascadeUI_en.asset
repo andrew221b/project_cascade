@@ -2494,12 +2494,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 527816348131337
-    m_Localized: This board slides the whole row when it lands. Watch the arrow before
-      going down.
+    m_Localized: The rollers move every piece one place on landing. The end piece
+      goes to the other end.
     m_Metadata:
       m_Items: []
   - m_Id: 527816348131338
-    m_Localized: This board turns the row around on landing. The last piece becomes
+    m_Localized: On the mirror board, the row turns around. The last piece becomes
       the first.
     m_Metadata:
       m_Items: []

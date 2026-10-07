@@ -11,6 +11,7 @@ namespace Cascade.Presentation
     public sealed partial class ToyMachineView
     {
         Material woodMaterial,ropeMaterial,branchMaterial;
+        readonly Material[] platformMaterials=new Material[3];
         readonly List<Mesh> woodMeshes=new List<Mesh>();
         readonly Vector3[] dynamicOffsets=new Vector3[8],visualOffsets=new Vector3[8];
         readonly Vector2[] visualStretch=new Vector2[8];
@@ -72,6 +73,10 @@ namespace Cascade.Presentation
             woodMaterial.SetColor("_BaseColor",texture!=null?Color.white:new Color(.65f,.35f,.13f));
             woodMaterial.SetFloat("_Smoothness",.32f);
             woodMaterial.SetFloat("_AlphaClip",1);woodMaterial.SetFloat("_Cutoff",.12f);woodMaterial.EnableKeyword("_ALPHATEST_ON");woodMaterial.SetOverrideTag("RenderType","TransparentCutout");woodMaterial.renderQueue=2450;
+            for(int i=0;i<platformMaterials.Length;i++){
+                var surface=new Material(woodMaterial){name=i==0?"Reflective mirror timber":i==1?"Turquoise roller timber":"Wind-woven timber"};
+                surface.SetTexture("_BaseMap",PlatformSurfaceArt.Texture);surface.SetFloat("_Smoothness",i==0?.68f:.36f);platformMaterials[i]=surface;
+            }
             ropeMaterial=new Material(art.gold){name="Warm braided hemp"};ropeMaterial.SetColor("_BaseColor",new Color(.73f,.51f,.26f));
             branchMaterial=new Material(woodMaterial){name="Natural honey-wood branch stops"};
             branchMaterial.SetTexture("_BaseMap",Resources.Load<Texture2D>("CascadeArt/Woodland/BranchStops"));
@@ -115,6 +120,8 @@ namespace Cascade.Presentation
             TickContactLoads(dt);
             for(int f=0;f<floors.Count;f++) {
                 var rig=floors[f];bool loaded=Frame.Status==PuzzleStatus.Playing&&Frame.ActiveFloor==f;
+                int surface=PlatformSurfaceArt.Style(interaction.Attempt.Level.Floors[f],f<=Frame.ActiveFloor);
+                if(surface!=rig.surfaceStyle){rig.surfaceStyle=surface;rig.board.renderer.sharedMaterial=rig.top.renderer.sharedMaterial=surface>=0?platformMaterials[surface]:woodMaterial;}
                 float weight=loaded?centreLoad/Mathf.Max(.01f,centreFullLoad):0;
                 float targetSag=(.15f+.21f*rig.wear)*weight+rig.fracture*.19f;float wind=WindAt(f);
                 float tilt=reducedMotion?0:wind*1.2f-(loaded?loadCentre-.5f:0)*4.2f;
@@ -135,7 +142,7 @@ namespace Cascade.Presentation
                     rig.vertices[i]=new Vector3(pivot+point.x/width,point.y/height,0);
                 }
                 int stage=rig.fracture>.22f?3:rig.wear>=.60f?2:rig.wear>0||interaction.Attempt.Level.Floors[f].FragileEdges.Count>0?1:0;
-                rig.woodProperties.SetVector("_BaseMap_ST",WorkshopSpriteSet.WoodUv(stage));
+                rig.woodProperties.SetVector("_BaseMap_ST",rig.surfaceStyle<0?WorkshopSpriteSet.WoodUv(stage):PlatformSurfaceArt.Uv(rig.surfaceStyle,stage));
                 rig.woodProperties.SetColor("_BaseColor",new Color(1,1,1,1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(.36f,.82f,rig.fracture))));rig.board.renderer.SetPropertyBlock(rig.woodProperties);
                 rig.bendMesh.vertices=rig.vertices; // Static bounds already enclose the small cosmetic deflection.
                 for(int i=0;i<rig.topVertices.Length;i++){float x=i/2/16f;rig.topVertices[i].y=((i%2==0?-.035f:.035f)-BendAt(f,x))/Mathf.Max(.001f,rig.top.baseScale.y);}
@@ -188,6 +195,7 @@ namespace Cascade.Presentation
         void OnDestroy()
         {
             if(continuousRopeMaterial!=null)Destroy(continuousRopeMaterial);if(woodMaterial!=null)Destroy(woodMaterial);if(ropeMaterial!=null)Destroy(ropeMaterial);if(branchMaterial!=null)Destroy(branchMaterial);
+            foreach(var material in platformMaterials)if(material!=null)Destroy(material);
             DisposePieceMaterials();
             if(touchGlowMaterial!=null)Destroy(touchGlowMaterial);
             foreach(var mesh in woodMeshes)if(mesh!=null)Destroy(mesh);

@@ -16,6 +16,7 @@ namespace Cascade.Presentation
         CanvasGroup group;
         Sprite hopeful,thinking;
         Vector2 heroRest;
+        readonly Vector3[] portraitCorners=new Vector3[4],receiverCorners=new Vector3[4];
         public bool Running {get;private set;}
         public bool Success {get;private set;}
         public float Progress {get;private set;}=1;
@@ -85,6 +86,19 @@ namespace Cascade.Presentation
             checkpoint=screen==GameScreen.Checkpoint;Success=checkpoint;hero.gameObject.SetActive(!checkpoint);hero.sprite=Success?hopeful:thinking??hopeful;
             if(ledge!=null)ledge.gameObject.SetActive(!checkpoint);
             title.SetCopy(checkpoint?new UiCopy("Stage {0}/3 complete!",game.Descent.StageIndex+1):"Let's try another way.");Settle();
+        }
+        public void Layout(float unit,RectTransform receiver)
+        {
+            root.anchoredPosition=Vector2.zero;
+            portrait.GetWorldCorners(portraitCorners);receiver.GetWorldCorners(receiverCorners);
+            float foot=root.parent.InverseTransformPoint(portraitCorners[0]).y;
+            float targetTop=root.parent.InverseTransformPoint(receiverCorners[2]).y;
+            root.anchoredPosition=Vector2.up*Mathf.Max(0,targetTop+28*unit-foot);
+            var image=ribbon.GetComponent<Image>();var bounds=ribbon.rect;float aspect=image.sprite.rect.width/image.sprite.rect.height;
+            float width=Mathf.Min(bounds.width,bounds.height*aspect),height=Mathf.Min(bounds.height,bounds.width/aspect);
+            title.rectTransform.anchorMin=title.rectTransform.anchorMax=new Vector2(.5f,.5f);
+            title.rectTransform.sizeDelta=new Vector2(width*.59f,height*.60f);title.rectTransform.anchoredPosition=Vector2.up*height*.025f;
+            title.margin=new Vector4(3*unit,2*unit,3*unit,2*unit);title.fontSizeMin=13*unit;title.fontSizeMax=22*unit*(game.Preferences.LargeText?1.12f:1);
         }
         void OnDisable(){if(Running)Settle();}
 #if UNITY_EDITOR

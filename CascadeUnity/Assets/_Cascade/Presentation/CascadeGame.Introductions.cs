@@ -77,17 +77,13 @@ namespace Cascade.Presentation
             var lesson=MechanicLessons.Tool(tool);if(profile.SeenMechanics.Contains(lesson))return false;
             OpenMechanicPopup(lesson,()=>UseShopTool(tool),"Use it");return true;
         }
-        bool IntroduceDescentWind()
+        bool IntroduceDescentEntry()
         {
-            if(profile.SeenMechanics.Contains(MechanicLesson.LandingWind))return false;
             var upcoming=descent.Level(DescentPublishedSource(),descent.StageIndex+1);
-            int stage=descent.StageIndex+1;var arrival=descent.Stages[stage].Arrival;
-            bool wind=arrival==EntryTransform.ShiftLeftOne||arrival==EntryTransform.ShiftRightOne
-                ||descent.Version>=4&&stage==1&&upcoming.Floors[1].EntryTransform!=EntryTransform.None
-                ||stage==2&&descent.Direction?.WindFloor!=null;
-            if(!wind)return false;
-            var shift=upcoming.Floors.FirstOrDefault(f=>f.EntryTransform==EntryTransform.ShiftLeftOne||f.EntryTransform==EntryTransform.ShiftRightOne)?.EntryTransform??arrival;
-            OpenMechanicPopup(MechanicLesson.LandingWind,GoLower,"Continue",shift==EntryTransform.ShiftRightOne);return true;
+            var arrival=upcoming.Floors[0].EntryTransform;if(arrival==EntryTransform.None)return false;
+            var lesson=arrival==EntryTransform.MirrorNext?MechanicLesson.Mirror:MechanicLesson.Rollers;
+            if(profile.SeenMechanics.Contains(lesson))return false;
+            OpenMechanicPopup(lesson,GoLower,"Continue",arrival==EntryTransform.ShiftRightOne);return true;
         }
         void OpenMechanicPopup(MechanicLesson lesson,Action requestedAction=null,UiCopy acknowledgement=default,bool? windRight=null)
         {
@@ -116,7 +112,7 @@ namespace Cascade.Presentation
                 var fixture=Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).Select(c=>c.Definition).First(l=>FloorHasLesson(l.Floors[0],lesson));
                 LiveDeviceDemo(example,fixture,kind,true);
             }else DrawMechanicIllustration(example,lesson);
-            var copy=Text("New mechanic explanation",panel,new Vector2(.08f,.23f),new Vector2(.92f,.49f),20,MechanicCopy[(int)lesson]);
+            var copy=Text("New mechanic explanation",panel,new Vector2(.08f,.22f),new Vector2(.92f,.45f),20,MechanicCopy[(int)lesson]);
             copy.color=MenuPaper;copy.enableAutoSizing=true;copy.fontSizeMin=(Preferences.LargeText?20:18)*MenuUnit;copy.fontSizeMax=22*MenuUnit*(Preferences.LargeText?1.12f:1);
             var button=Button(string.IsNullOrEmpty(acknowledgement.Key)?(UiCopy)"Got it":acknowledgement,panel,new Vector2(.10f,.05f),new Vector2(.90f,.19f),AcknowledgeMechanic);
             button.name="Acknowledge mechanic";button.GetComponent<Image>().sprite=enamelControls[1];button.GetComponent<Image>().type=Image.Type.Sliced;button.GetComponent<Image>().color=Color.white;
@@ -128,7 +124,7 @@ namespace Cascade.Presentation
             if(lesson>=MechanicLesson.Wayfinder&&lesson<=MechanicLesson.LandingLens){Picture("Travel tool",root,Vector2.zero,Vector2.one,ToolArt((int)lesson-(int)MechanicLesson.Wayfinder),true);return;}
             if(lesson==MechanicLesson.Gust||lesson==MechanicLesson.LiveGust){var flag=Picture("Gust windsock",root,Vector2.zero,Vector2.one,PlatformProp(0),true);root.gameObject.AddComponent<DeviceDemonstration>().Initialize(this,(time,bad)=>flag.rectTransform.localRotation=Quaternion.Euler(0,0,ReducedMotion?0:Mathf.Sin(time*1.3f)*9),true);return;}
             if(lesson==MechanicLesson.LandingWind||lesson==MechanicLesson.Rollers||lesson==MechanicLesson.Mirror){
-                var actual=mechanicWindRight.HasValue?EntryTransform.None:lesson==MechanicLesson.LandingWind?
+                var actual=lesson==MechanicLesson.Mirror?EntryTransform.MirrorNext:mechanicWindRight.HasValue?EntryTransform.None:lesson==MechanicLesson.LandingWind?
                     Interaction.Attempt.Level.Floors[Enumerable.Range(0,Interaction.Attempt.Level.Floors.Count).First(IsWindFloor)].EntryTransform:
                     Interaction.Attempt.Level.Floors.First(f=>lesson==MechanicLesson.Mirror?f.EntryTransform==EntryTransform.MirrorNext:f.EntryTransform==EntryTransform.ShiftLeftOne||f.EntryTransform==EntryTransform.ShiftRightOne).EntryTransform;
                 var fixture=WindGuide(mechanicWindRight??actual==EntryTransform.ShiftRightOne);

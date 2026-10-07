@@ -215,11 +215,28 @@ namespace Cascade.Presentation
                     var map=resultRoot.Find("Resulthome").GetComponent<Button>();map.GetComponent<Image>().sprite=enamelControls[0];map.GetComponent<Image>().type=Image.Type.Sliced;map.GetComponent<Image>().color=Color.white;map.GetComponentInChildren<TextMeshProUGUI>().color=new Color(1,.97f,.84f);
                 }
                 else PlaceControl(resultRoot.Find("Nextdelivery").GetComponent<Button>(),resultRoot,new Vector2(.52f,.35f),new Vector2(1,.65f));
+                LayoutResultControls(MenuUnit);
             }
             RefreshFieldTools();
         }
         static void PlaceControl(Button button,Transform parent,Vector2 min,Vector2 max)
         { var r=(RectTransform)button.transform; r.SetParent(parent,false); r.anchorMin=min;r.anchorMax=max;r.offsetMin=r.offsetMax=Vector2.zero; }
+        void LayoutResultControls(float unit)
+        {
+            if(CurrentScreen!=GameScreen.Fail&&CurrentScreen!=GameScreen.Checkpoint)return;
+            FixedBand(resultRoot,8*unit,140*unit);
+            var map=resultRoot.Find("Resulthome").GetComponent<Button>();
+            var descend=resultRoot.Find("Nextdelivery").GetComponent<Button>();
+            foreach(var button in new[]{undo,map,retry,descend}){
+                var rect=(RectTransform)button.transform;rect.localScale=Vector3.one;rect.localRotation=Quaternion.identity;
+                FixedBand(rect,button==undo||button==map?0:54*unit,48*unit);
+                var colors=button.colors;colors.disabledColor=new Color(.65f,.73f,.71f,1);button.colors=colors;
+                var label=button.GetComponentInChildren<TextMeshProUGUI>();label.margin=new Vector4(14*unit,5*unit,14*unit,5*unit);
+                label.fontSizeMin=14*unit;label.fontSizeMax=18*unit*(Preferences.LargeText?1.12f:1);label.textWrappingMode=TextWrappingModes.NoWrap;
+            }
+            FixedBand(resultText.rectTransform,108*unit,32*unit);
+            resultText.fontSize=15*unit*(Preferences.LargeText?1.12f:1);resultText.enableAutoSizing=true;resultText.fontSizeMin=13*unit;resultText.fontSizeMax=resultText.fontSize;
+        }
         void ResetMenu()
         {
             foreach(var ceremony in menuRoot.GetComponents<RewardCelebration>())ceremony.enabled=false;

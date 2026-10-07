@@ -11,10 +11,10 @@ namespace Cascade.Presentation
         {
             var story=Rect("Lantern delivery story",safeRoot,new Vector2(.10f,.41f),new Vector2(.90f,.80f));
             var glow=Rect("Lantern light",story,Vector2.zero,Vector2.one).gameObject.AddComponent<OutcomeLightGraphic>();
-            var ribbon=Picture("Stage celebration ribbon",story,new Vector2(0,.54f),new Vector2(1,1),CompletionArt(1),true);
+            var ribbon=Picture("Stage celebration ribbon",story,new Vector2(0,.66f),new Vector2(1,1),CompletionArt(1),true);
             var heading=Text("Outcome heading",ribbon.transform,new Vector2(.165f,.25f),new Vector2(.835f,.80f),22,"");heading.font=art.titleFont;heading.enableAutoSizing=true;heading.fontSizeMax=22;heading.fontSizeMin=14;
             var shelf=Rect("Mika's outcome ledge",story,new Vector2(.27f,.155f),new Vector2(.73f,.172f));shelf.gameObject.AddComponent<WoodBoardGraphic>();
-            var friend=Picture("Mika's outcome",story,new Vector2(.22f,.10f),new Vector2(.78f,.79f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
+            var friend=Picture("Mika's outcome",story,new Vector2(.25f,.10f),new Vector2(.75f,.61f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
             outcome=gameObject.AddComponent<OutcomeCeremony>();outcome.Initialize(this,story,friend,heading,glow);
         }
         public IEnumerator PlayOutcome(bool success)

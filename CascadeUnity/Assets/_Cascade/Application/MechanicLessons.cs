@@ -29,9 +29,12 @@ namespace Cascade.Application
                 if(f.FragileEdges.Count>0)found.Add(MechanicLesson.Fragile);
                 if(f.Key==null&&f.OpenEdges.Where((open,edge)=>!open&&edge!=f.OneUseBridgeEdge).Any())found.Add(MechanicLesson.ClosedPath);
                 if(f.GustAfterSwaps>0)found.Add(MechanicLesson.LiveGust);
-                if(wind.Contains(i))found.Add(MechanicLesson.LandingWind);
-                else if(f.EntryTransform==EntryTransform.MirrorNext)found.Add(MechanicLesson.Mirror);
-                else if(f.EntryTransform!=EntryTransform.None)found.Add(MechanicLesson.Rollers);
+                // The current floor's entry has already happened, including initial floor zero.
+                if(i>firstFloor){
+                    if(wind.Contains(i)&&f.EntryTransform!=EntryTransform.None)found.Add(MechanicLesson.LandingWind);
+                    else if(f.EntryTransform==EntryTransform.MirrorNext)found.Add(MechanicLesson.Mirror);
+                    else if(f.EntryTransform!=EntryTransform.None)found.Add(MechanicLesson.Rollers);
+                }
             }
             return found.Distinct().ToArray();
         }

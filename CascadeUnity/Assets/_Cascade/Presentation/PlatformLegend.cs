@@ -23,6 +23,7 @@ namespace Cascade.Presentation
         {
             var band=Rect("Platform legend",card,new Vector2(.5f,.33f),new Vector2(.5f,.33f));
             var counter=Rect("Remaining wood",band,Vector2.zero,Vector2.one);
+            var plaque=Picture("Inset wood strength plaque",counter,Vector2.zero,Vector2.one,PlatformProp(3),true);plaque.material=ToolSilhouette;
             var rim=Text("Engraving edge",counter,Vector2.zero,Vector2.one,13,"");
             var number=floorLabels[index];number.rectTransform.SetParent(counter,false);
             number.rectTransform.anchorMin=Vector2.zero;number.rectTransform.anchorMax=Vector2.one;
@@ -62,10 +63,10 @@ namespace Cascade.Presentation
         {
             if(game.Machine==null)return;
             var band=(RectTransform)transform;
-            var center=game.Machine.SurfacePoint(floor,.5f,.33f);center.z=band.position.z;
+            var center=game.Machine.SurfacePoint(floor,.5f,.30f);center.z=band.position.z;
             band.position=center;band.rotation=Quaternion.Euler(0,0,game.Machine.FloorVisualAngle(floor));
             float height=game.Machine.FloorFaceHeight(floor)/Mathf.Max(.0001f,band.lossyScale.y);
-            band.sizeDelta=new Vector2(32*unit,height*.90f);
+            band.sizeDelta=new Vector2(height*2.9f,height*.90f);
             number.fontSizeMax=rim.fontSizeMax=Mathf.Min(18*unit,height*1.08f);
             number.fontSizeMin=rim.fontSizeMin=Mathf.Min(number.fontSizeMax,height*.55f);
             rim.rectTransform.anchoredPosition=Vector2.down*Mathf.Min(.65f*unit,height*.04f);

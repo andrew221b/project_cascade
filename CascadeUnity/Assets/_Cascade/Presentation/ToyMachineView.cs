@@ -34,6 +34,7 @@ namespace Cascade.Presentation
             public Part board,top,bombFlame; public Mesh bendMesh,topMesh;
             public Vector3[] vertices,topVertices; public float sag,sagVelocity,sway,swayVelocity,roll,rollVelocity,wear,fracture;
             public readonly float[] deflection=new float[17];
+            public int surfaceStyle=-1;
         }
         ToyArt art;
         Camera viewCamera;
@@ -195,10 +196,13 @@ namespace Cascade.Presentation
                 var p = Add(name, anchor, mesh, material, new Vector2(x, y), new Vector2(w, h), z, .16f, angle); rig.parts.Add(p); return p;
             }
             P("Platform contact", art.quad, art.shadow, .51f, .25f, 1.05f, .29f, .65f);
+            rig.surfaceStyle=PlatformSurfaceArt.Style(floor,floors.Count-1==Frame.ActiveFloor);
+            var surfaceMaterial=rig.surfaceStyle>=0?platformMaterials[rig.surfaceStyle]:woodMaterial;
             rig.bendMesh=BoardMesh();rig.vertices=rig.bendMesh.vertices;
-            rig.board=P("Wooden suspended board",rig.bendMesh,woodMaterial,.5f,.33f,1,.19f,.15f);rig.board.stretch=true;
+            if(rig.surfaceStyle>=0){var uv=rig.bendMesh.uv;for(int i=0;i<uv.Length;i++)uv[i].x=PlatformSurfaceArt.FaceUvX(uv[i].x);rig.bendMesh.uv=uv;}
+            rig.board=P("Wooden suspended board",rig.bendMesh,surfaceMaterial,.5f,.30f,1,.25f,.15f);rig.board.stretch=true;
             rig.topMesh=BoardTopMesh();rig.topVertices=rig.topMesh.vertices;
-            rig.top=P("Wooden load-bearing top",rig.topMesh,woodMaterial,.5f,.365f,1,.08f,-.15f);rig.top.depth=.65f;rig.top.stretch=true;
+            rig.top=P("Wooden load-bearing top",rig.topMesh,surfaceMaterial,.5f,.365f,1,.08f,-.15f);rig.top.depth=.65f;rig.top.stretch=true;
             for(int end=0;end<2;end++) {
                 float x=end==0?.025f:.975f;
                 // Continuous ropes are shared by the whole hanging machine.
@@ -215,16 +219,6 @@ namespace Cascade.Presentation
                     rig.bridge.Add(P("One use bridge", art.beam, art.gold, x, .46f, .12f, .055f, -.4f));
                     rig.bridge.Add(P("Bridge hinge", art.disk, art.graphite, x, .46f, .024f, .045f, -.51f));
                 }
-            }
-            if(GetComponent<CascadeGame>().IsWindFloor(floors.Count-1)) {
-                bool right=floor.EntryTransform==EntryTransform.ShiftRightOne;
-                float centre=.30f;
-                foreach(float candidate in new[]{.30f,.50f,.70f}) {
-                    bool clear=true;foreach(int edge in floor.FragileEdges)if(Mathf.Abs(candidate-(.045f+.91f*(edge+1f)/count))<.13f)clear=false;
-                    if(clear){centre=candidate;break;}
-                }
-                P("Wind arrow shaft",art.beam,art.teal,centre,.33f,.13f,.026f,-.22f);
-                P("Wind arrow head",art.shapes[0],art.teal,centre+(right?.07f:-.07f),.33f,.045f,.08f,-.23f,right?-90:90);
             }
         }
 

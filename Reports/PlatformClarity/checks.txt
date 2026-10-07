@@ -1,0 +1,56 @@
+PASS NUnit VisibleCombinationFindsEachEffectOnceWithoutChangingTheLevel
+PASS NUnit WindOnLandingIsDifferentFromRollersAndPassingFloorsRetiresTheirLessons
+PASS NUnit InitialMirrorHasAlreadyRunAndNeverPromisesAReceiverEffect
+PASS NUnit FutureMirrorReallyReversesOnTheNextPlatform
+PASS NUnit LegacyProfileStartsUnseenAndAcknowledgementSurvivesSerialization
+PASS NUnit InvalidOrRepeatedAcknowledgementsAreRejected
+PASS one-floor initial mirror does not promise a future receiver effect
+PASS receiver has no phantom mirror event
+PASS future mirror is introduced before reaching it
+PASS real descent commits the mirror event
+PASS mirror landing produces the exact reversed row
+PASS entered mirror is not introduced again
+PASS rollers preserve multiset and move the end piece to the other end
+PASS real wrong move reaches the fail screen
+PASS Undo and Map keep the same compact height
+PASS disabled Undo remains opaque
+PASS Retry uses themed artwork
+PASS Mika and the result ribbon do not overlap
+PASS result labels fit their controls
+PASS Undo and Map keep the same compact height
+PASS disabled Undo remains opaque
+PASS Retry uses themed artwork
+PASS Mika and the result ribbon do not overlap
+PASS result labels fit their controls
+PASS Undo and Map keep the same compact height
+PASS disabled Undo remains opaque
+PASS Retry uses themed artwork
+PASS Mika and the result ribbon do not overlap
+PASS result labels fit their controls
+Native isolated Unity Editor via CUA MCP; no phone/build/full-suite/performance claim.
+Final visual confirmation after the bounded correction pass:
+PASS entry lesson has no unrelated miniature receiver row
+PASS pending live gust uses the wind-woven platform
+PASS wind platform still performs its actual in-play gust
+PASS inset counter follows the committed durability after gust damage
+PASS Undo and Map keep the same compact height
+PASS disabled Undo remains opaque
+PASS Retry uses themed artwork
+PASS Mika and the result ribbon do not overlap
+PASS Mika stays above the receiver on the narrow screen
+PASS result heading fits the rendered cloth
+PASS result labels fit their controls
+PASS Undo and Map keep the same compact height
+PASS disabled Undo remains opaque
+PASS Retry uses themed artwork
+PASS Mika and the result ribbon do not overlap
+PASS Mika stays above the receiver on the narrow screen
+PASS result heading fits the rendered cloth
+PASS result labels fit their controls
+PASS Undo and Map keep the same compact height
+PASS disabled Undo remains opaque
+PASS Retry uses themed artwork
+PASS Mika and the result ribbon do not overlap
+PASS Mika stays above the receiver on the narrow screen
+PASS result heading fits the rendered cloth
+PASS result labels fit their controls

@@ -47,10 +47,12 @@ namespace Cascade.Presentation
                 var shade=art.SymbolMaterial(before.Row[i]).GetColor("_BaseColor");shade.a=.45f;ghosts[i].SetShape(art.SymbolMesh(before.Row[i]),shade);ghost.gameObject.SetActive(ReducedMotion);
 
             }
+            if(kind!=1){
             var afterRim=Rect("Demo receiver",root,new Vector2(.02f,.01f),new Vector2(.98f,.15f));Background(afterRim,new Color(.94f,.73f,.32f),false).sprite=art.panel;
             for(int i=0;i<row.Length;i++) {
                 float x=(i+.5f)/row.Length;var cell=Rect("Demo goal "+i,root,new Vector2(x-.30f/row.Length,.02f),new Vector2(x+.30f/row.Length,.14f));
                 cell.gameObject.AddComponent<ShapeFaceGraphic>().SetShape(art.SymbolMesh(level.TargetSymbolIds[i]),art.SymbolMaterial(level.TargetSymbolIds[i]).GetColor("_BaseColor"),true);
+            }
             }
             ContactDefinition contact=kind==2?floor.Bomb:kind==3?floor.Key:kind==4?floor.Repair:kind==8?floor.OptionalStamp:kind>=9?floor.Powerup:null;
             Image mount=null;HangingToolTag tag=null;
@@ -84,15 +86,12 @@ namespace Cascade.Presentation
                 Line("Bridge hinge",new Vector2(gateX-.09f,.46f),new Vector2(gateX-.09f,.56f),Ink,4);
             }
             if(kind==1){
-                bool right=correct.Events.Any(e=>e.Kind==PuzzleEventKind.EntryPermuted&&e.Value==(int)EntryTransform.ShiftRightOne);
-                Rect("Landing board",root,new Vector2(.02f,.11f),new Vector2(.98f,.18f)).gameObject.AddComponent<WoodBoardGraphic>();
-                foreach(float x in new[]{.035f,.965f}){
-                    var roller=Rect("Entry roller",root,new Vector2(x-.035f,.20f),new Vector2(x+.035f,.30f));Background(roller,Ink,false).sprite=art.panel;
-                    var arrow=Rect("Landing direction arrow",root,new Vector2(x-.022f,.21f),new Vector2(x+.022f,.29f));arrow.gameObject.AddComponent<ShapeFaceGraphic>().SetShape(art.shapes[0],new Color(.98f,.75f,.31f));arrow.localRotation=Quaternion.Euler(0,0,right?-90:90);
-                }
+                var landing=Rect("Landing board",root,new Vector2(.02f,.08f),new Vector2(.98f,.19f)).gameObject.AddComponent<WoodBoardGraphic>();
+                landing.SetSurface(level.Floors[1]);
             }
             bool beneath=CurrentScreen==GameScreen.PowerupChallenges||CurrentScreen==GameScreen.Devices&&deviceIndex>=0;
-            var outcome=Text("Demo result",root,beneath?new Vector2(0,-.145f):new Vector2(.51f,.19f),beneath?new Vector2(1,-.01f):new Vector2(.99f,.40f),beneath?20:16,"");
+            var outcome=Text("Demo result",root,new Vector2(0,-.14f),new Vector2(1,-.015f),beneath?20:16,"");
+            if(isolatedClock)outcome.color=MenuPaper;
             if(beneath)menuRows.Add(new MenuRow{rect=outcome.rectTransform,top=0,height=28,offset=4});
             int lastStage=-1;var motion=root.gameObject.AddComponent<DeviceDemonstration>();motion.Initialize(this,(time,bad)=>{
                 tag?.Tick(Time.unscaledDeltaTime,Machine.WindAt(0),0,!Interaction.IsSuspended,ReducedMotion);
@@ -104,7 +103,7 @@ namespace Cascade.Presentation
                     float x=Mathf.Lerp(fromX,toX,blend),y=.70f;
                     if(kind==1){
                         float fall=ReducedMotion?1:Mathf.Clamp01((local-.9f)/.65f);
-                        y=Mathf.Lerp(.70f,.28f,fall*fall);
+                        y=Mathf.Lerp(.70f,.38f,fall*fall);
                         float shift=ReducedMotion?1:Mathf.SmoothStep(0,1,Mathf.Clamp01((local-1.55f)/.65f));x=Mathf.Lerp(fromX,(finalDest[i]+.5f)/row.Length,shift);
                     }else if(!ReducedMotion)y+=Mathf.Sin(blend*Mathf.PI)*(toX>=fromX?.12f:-.06f);
                     var cell=row[i].rectTransform;float half=ReducedMotion?.12f:.18f;
@@ -120,7 +119,7 @@ namespace Cascade.Presentation
                 if(mount!=null)mount.color=after?new Color(.65f,.8f,.73f,.7f):Color.white;
                 board.gameObject.SetActive(!blast&&(kind!=1||!after));latch.gameObject.SetActive(kind==3?!after:kind==7&&after);
                 if(bridge!=null)bridge.localRotation=Quaternion.Euler(0,0,-78*(ReducedMotion?1:Mathf.Clamp01((local-1.7f)/.4f)));
-                int stage=(after?1:0)+(bad?2:0);if(stage!=lastStage){lastStage=stage;outcome.SetCopy(after?(blast?"Board breaks":defused?"Bomb defused":kind==3?"Unlocked":kind==4?"Repaired":kind==8?"Stamp collected":kind==9?"One far swap ready":kind==10?"Bomb paused for two swaps":"then down"):"");}
+                int stage=(after?1:0)+(bad?2:0);if(stage!=lastStage){lastStage=stage;outcome.SetCopy(after?(kind==1?"":blast?"Board breaks":defused?"Bomb defused":kind==3?"Unlocked":kind==4?"Repaired":kind==8?"Stamp collected":kind==9?"One far swap ready":kind==10?"Bomb paused for two swaps":"then down"):"");}
                 if(hand!=null) {
                     hand.gameObject.SetActive(!ReducedMotion&&local<2.3f);
                     int start=command.Kind==CommandKind.Swap?command.Edge:0;float x=(start+.5f+blend)/row.Length;

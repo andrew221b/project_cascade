@@ -77,7 +77,7 @@ namespace Cascade.Presentation
         public void GoLower()
         {
             if(!IsCheckpoint||Interaction.Attempt.Current.Status!=PuzzleStatus.Won||!Interaction.CanControl||IsDescending)return;
-            if(IntroduceDescentWind())return;
+            if(IntroduceDescentEntry())return;
             if(TryCheckpointConversation())return;
             var source=DescentPublishedSource();if(source==null)return;
             var run=descent;string locale=Interaction.Attempt.ActiveLocale;bool travel=journeyActive;
