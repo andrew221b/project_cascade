@@ -174,6 +174,8 @@ namespace Cascade.Presentation
         public void ReportInput(TransitionResult result)
         {
             Coach?.Activity();
+            if(result!=null&&result.Accepted&&(Interaction.LastRequestedCommand?.Kind==CommandKind.Swap||Interaction.LastRequestedCommand?.Kind==CommandKind.LongReach))
+                RetireInstruction("Drag a piece onto its neighbour.");
             if (result != null && !result.Accepted) {
                 Coach?.Invalid(result.Rejection,Interaction.LastRequestedCommand?.Edge??-1);
                 status.SetCopy(result.Rejection == RejectionReason.NoOp

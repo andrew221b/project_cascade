@@ -17,6 +17,23 @@ namespace Cascade.Presentation
         public bool IsHoldingToken => heldToken >= 0;
         public bool OwnsTokenPose(int slot) => heldToken == slot || returningToken == slot || feedback?.RowPhysics?.Shaking==true;
 
+        public int TokenAtScreenPoint(Vector2 point,int raycastSlot=-1,int draggedSlot=-1)
+        {
+            if(Interaction==null||Interaction.Attempt.Current.Status!=PuzzleStatus.Playing)return -1;
+            int nearest=-1;float score=float.MaxValue;
+            for(int i=0;i<slots.Count;i++){
+                if(i==draggedSlot)continue;
+                var center=machine.TokenVisualPosition(i)+machine.TokenBodyCentre(i);
+                var size=machine.TokenBodySize(i);
+                var lo=(Vector2)uiCamera.WorldToScreenPoint(center-size*.5f);
+                var hi=(Vector2)uiCamera.WorldToScreenPoint(center+size*.5f);
+                var box=UnityEngine.Rect.MinMaxRect(Mathf.Min(lo.x,hi.x)-8,Mathf.Min(lo.y,hi.y)-10,Mathf.Max(lo.x,hi.x)+8,Mathf.Max(lo.y,hi.y)+28);
+                if(!box.Contains(point))continue;
+                float distance=Mathf.Abs(point.x-(lo.x+hi.x)*.5f);
+                if(distance<score){score=distance;nearest=i;}
+            }
+            return nearest>=0?nearest:raycastSlot;
+        }
         public void BeginTokenHold(int slot, Vector2 screenPoint)
         {
             feedback.RowPhysics.CancelShake(true);

@@ -29,7 +29,7 @@ namespace Cascade.Presentation
             var hit=Background(close,Color.clear,true);
             instructionClose=close.gameObject.AddComponent<UnityEngine.UI.Button>();
             instructionClose.targetGraphic=hit;
-            instructionClose.onClick.AddListener(()=>{dismissedInstructions.Add(instructionKey??"");HideInstruction();});
+            instructionClose.onClick.AddListener(()=>RetireInstruction(instructionKey));
             var mark=Rect("Close mark",close,Vector2.zero,Vector2.one).gameObject.AddComponent<InstructionCloseMark>();
             mark.color=MenuPaper;mark.raycastTarget=false;
         }
@@ -76,8 +76,22 @@ namespace Cascade.Presentation
 
         void ResetInstruction()
         {
-            dismissedInstructions.Clear();instructionKey=null;instructionAge=0;HideInstruction();
+            if(profile?.SeenCoachPrompts!=null)dismissedInstructions.UnionWith(profile.SeenCoachPrompts);instructionKey=null;instructionAge=0;observedCoachRoute=Interaction.Attempt.RouteLength;HideInstruction();
             chapterKey=null;chapterAge=0;if(chapterOpacity!=null)chapterOpacity.alpha=0;
+        }
+        void RetireInstruction(string key)
+        {
+            if(string.IsNullOrEmpty(key)||!dismissedInstructions.Add(key))return;
+            if(profile!=null){if(profile.SeenCoachPrompts==null)profile.SeenCoachPrompts=new List<string>();profile.SeenCoachPrompts.Add(key);PersistProgress();}
+            HideInstruction();
+        }
+        int observedCoachRoute;
+        void ObserveCoachingProgress()
+        {
+            int route=Interaction.Attempt.RouteLength;
+            if(route>observedCoachRoute&&!string.IsNullOrEmpty(instructionKey)&&Coach.Prompt(Interaction.Attempt.Current)!=instructionKey)
+                RetireInstruction(instructionKey);
+            observedCoachRoute=route;
         }
         void HideInstruction()
         {
@@ -88,12 +102,12 @@ namespace Cascade.Presentation
         {
             UpdateChapter(foreground,seconds);
             if(instructionOpacity==null)return;
-            string key=status.text??"";
+            string key=status.GetComponent<LocalizedCaption>()?.SourceIdentity??status.text??"";
             if(instructionKey!=key){instructionKey=key;instructionAge=0;HideInstruction();}
             bool playing=foreground&&CurrentScreen==GameScreen.Playing&&!Interaction.IsPaused&&!zoomOpen;
             if(playing&&!IsHoldingToken&&!Interaction.IsPresenting)instructionAge+=seconds;
             bool show=playing&&!IsHoldingToken&&!Interaction.IsPresenting&&reactionBanner?.IsShowing!=true
-                &&key.Length>0&&!dismissedInstructions.Contains(key)&&(instructionAge>=InstructionDelay||preparation.HasFailed);
+                &&key.Length>0&&(!dismissedInstructions.Contains(key)||preparation.HasFailed)&&(instructionAge>=InstructionDelay||preparation.HasFailed);
             instructionOpacity.alpha=ReducedMotion?(show?1:0):Mathf.MoveTowards(instructionOpacity.alpha,show?1:0,seconds/.18f);
             instructionOpacity.interactable=instructionOpacity.blocksRaycasts=show&&instructionOpacity.alpha>.9f;
         }

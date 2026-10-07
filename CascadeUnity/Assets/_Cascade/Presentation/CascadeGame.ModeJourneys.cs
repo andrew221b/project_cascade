@@ -13,6 +13,8 @@ namespace Cascade.Presentation
     public sealed partial class CascadeGame
     {
         RectTransform journeyModeTabs;
+        bool changingJourneyMode;
+        internal Vector2 MapAmbientOffset;
         public bool CanSwitchJourneyMode=>!ConversationOpen&&!saveBlocked&&!nativeAdSuspended&&previewAd==null&&!IsDescending&&!IsPlanningDescent
             &&Interaction!=null&&!Interaction.IsPresenting&&(profile.Completion==null||profile.Completion.Acknowledged);
         void SwitchJourneyMode(PuzzleMode mode)
@@ -37,8 +39,11 @@ namespace Cascade.Presentation
             }
             sessionClears.Clear();sessionClears.UnionWith(profile.Clears.Select(c=>c.CampaignNodeId));
             heardStory.Clear();heardStory.UnionWith(profile.HeardStory);firstGestureShown=profile.FirstGestureShown;
-            MountAttempt(restored,profile.Descent);journeyActive=profile.JourneyAttempt;storyRoute=false;
-            chapterPage=0;selectedJourneyStop=NextJourneyStop();ShowJourney();
+            changingJourneyMode=true;
+            try {
+                MountAttempt(restored,profile.Descent);journeyActive=profile.JourneyAttempt;storyRoute=false;
+                chapterPage=0;selectedJourneyStop=NextJourneyStop();ShowJourney();
+            } finally {changingJourneyMode=false;}
         }
         void DrawJourneyModeTabs()
         {

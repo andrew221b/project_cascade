@@ -1,0 +1,23 @@
+PASS body hit at offset 0
+PASS one atomic swap with empty UI raycast at offset 0
+PASS body hit at offset 18
+PASS one atomic swap with empty UI raycast at offset 18
+PASS pause on active puzzle stays Playing
+PASS successful swap learns instruction on disk
+PASS dismissed instruction saved to disk
+PASS dismissal survives next level
+PASS checkpoint witness 1
+PASS checkpoint witness 0
+PASS actual solved stage gives Checkpoint
+PASS checkpoint pause/resume preserves completed stage
+PASS Undo and Map have equal height after resume
+PASS switch to Words
+PASS mode switch has no page slide Words
+PASS switch to Mixed
+PASS mode switch has no page slide Mixed
+PASS switch to Shapes
+PASS mode switch has no page slide Shapes
+PASS map respects artwork aspect
+PASS island floats
+PASS cloud drifts
+PASS reduced motion stops island drift after LateUpdate

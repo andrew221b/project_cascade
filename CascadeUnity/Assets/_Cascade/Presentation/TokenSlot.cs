@@ -22,7 +22,7 @@ namespace Cascade.Presentation
         {
             if (!Owns(eventData)) return;
             var target = eventData.pointerCurrentRaycast.gameObject?.GetComponentInParent<TokenSlot>();
-            Game.PreviewDrag(Slot, target != null && target.Game == Game ? target.Slot : -1);
+            Game.PreviewDrag(Slot, Game.TokenAtScreenPoint(eventData.position,target != null && target.Game == Game ? target.Slot : -1,Slot));
             Game.MoveTokenHold(eventData.position);
         }
         void Release(PointerEventData eventData)
@@ -30,7 +30,7 @@ namespace Cascade.Presentation
             if (!Owns(eventData)) return; released = true; Game.ReleaseTokenHold();
             if (WasCancelled(eventData)) { Game.Interaction.CancelPointer(); Game.ReportInput(null); return; }
             var target = eventData.pointerCurrentRaycast.gameObject?.GetComponentInParent<TokenSlot>();
-            int destination = target != null && target.Game == Game ? target.Slot : -1;
+            int destination = Game.TokenAtScreenPoint(eventData.position,target != null && target.Game == Game ? target.Slot : -1,dragged?Slot:-1);
             Game.ReportInput(Game.Interaction.PointerUp(eventData.pointerId, destination, dragged));
         }
         public void OnPointerUp(PointerEventData eventData) => Release(eventData);

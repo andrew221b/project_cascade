@@ -117,7 +117,7 @@ namespace Cascade.Presentation
             coachRoot.gameObject.SetActive(false); tutorialHand.gameObject.SetActive(false);
             if(screen!=GameScreen.Playing)HideInstruction();
             menuRoot.gameObject.SetActive(!machineVisible); resultRoot.gameObject.SetActive(screen==GameScreen.Fail||screen==GameScreen.Checkpoint);
-            if(machineVisible) { RenderState(); ArrangeResultControls(); } else {DrawMenu();if(changed)menuTransition.Arrive(screen==GameScreen.Home||screen==GameScreen.PlayChoice||screen==GameScreen.JourneyMap);}
+            if(machineVisible) { RenderState(); ArrangeResultControls(); } else {DrawMenu();if(changed&&!changingJourneyMode)menuTransition.Arrive(screen==GameScreen.Home||screen==GameScreen.PlayChoice||screen==GameScreen.JourneyMap);}
             outcome?.ShowResult(screen);
             Canvas.ForceUpdateCanvases();
         }
@@ -140,6 +140,7 @@ namespace Cascade.Presentation
             bool foreground=applicationFocused&&!applicationPaused&&!Interaction.IsSuspended;
             reachBadge.gameObject.SetActive(Interaction.Attempt.Level.ReachCharges>0||Interaction.Attempt.Current.ReachCharges>0);reachBadge.color=Interaction.Attempt.Current.ReachCharges>0?Color.white:new Color(.5f,.5f,.5f,.5f);
             Coach?.Observe(Interaction.Attempt.Current,Interaction.Attempt.RouteLength);
+            if(Coach!=null)ObserveCoachingProgress();
             Coach?.Advance(Time.unscaledDeltaTime,foreground && CurrentScreen==GameScreen.Playing && Interaction.CanPlay && !zoomOpen);
             UpdateDeadEnd();
             FinalizeScreenIfNeeded();
@@ -170,8 +171,8 @@ namespace Cascade.Presentation
                 coachRoot.position=floor.TransformPoint(new Vector3(0,-floor.rect.height*.64f,0));
                 coachRoot.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,Mathf.Min(310,safeRoot.rect.width*.90f));
             }
-            bool first=show&&!firstGestureShown&&node=="C01"&&Interaction.Attempt.RouteLength==0;
-            bool replay=show&&!knownDeadEnd&&Coach.GestureReplayRequested;
+            bool first=show&&!firstGestureShown&&!dismissedInstructions.Contains("Drag a piece onto its neighbour.")&&node=="C01"&&Interaction.Attempt.RouteLength==0;
+            bool replay=show&&!knownDeadEnd&&!Coach.LessonCompleted&&!dismissedInstructions.Contains("Drag a piece onto its neighbour.")&&Coach.GestureReplayRequested;
             tutorialHand.gameObject.SetActive((first||replay)&&!ReducedMotion&&tutorialHand.sprite!=null);
             if(tutorialHand.gameObject.activeSelf) {
                 tutorialPointerCanvas.overrideSorting=true;tutorialPointerCanvas.sortingOrder=30;
@@ -202,6 +203,8 @@ namespace Cascade.Presentation
                 resultRoot.Find("Nextdelivery").gameObject.SetActive(CurrentScreen==GameScreen.Win||CurrentScreen==GameScreen.Checkpoint||CanOfferStrongerWood);
                 LoadNavigationArt();
                 void DressResult(Button button,bool primary){var face=button.GetComponent<Image>();face.sprite=enamelControls[primary?1:0];face.type=Image.Type.Sliced;face.color=Color.white;button.GetComponentInChildren<TextMeshProUGUI>().color=primary?MenuInk:MenuPaper;}
+                DressResult(undo,false);
+                var undoColors=undo.colors;undoColors.disabledColor=new Color(.64f,.73f,.71f,1);undo.colors=undoColors;
                 DressResult(resultRoot.Find("Nextdelivery").GetComponent<Button>(),true);
                 DressResult(retry,CurrentScreen==GameScreen.Fail&&!CanOfferStrongerWood);
                 DressResult(resultRoot.Find("Resulthome").GetComponent<Button>(),false);

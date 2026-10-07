@@ -20,6 +20,7 @@ namespace Cascade.Persistence
         public string PreferredMode="Shapes";
         public List<ClearReceipt> Clears=new List<ClearReceipt>();
         public List<int> HeardStory=new List<int>();
+        public List<string> SeenCoachPrompts=new List<string>();
         public List<MechanicLesson> SeenMechanics=new List<MechanicLesson>();
         public bool FirstGestureShown, JourneyAttempt;
         public bool? StoryRoute;
