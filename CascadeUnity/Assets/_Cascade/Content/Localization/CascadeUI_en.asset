@@ -3571,6 +3571,972 @@ MonoBehaviour:
     m_Localized: 'Next swap: a strong gust. You can descend first.'
     m_Metadata:
       m_Items: []
+  - m_Id: 730607473647616
+    m_Localized: A light to carry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647617
+    m_Localized: The storm took our island lights. I will be waiting at the Great
+      Beacon.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647618
+    m_Localized: I will bring our little light to you. I just wish the bridges were
+      lower.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647619
+    m_Localized: The broken way
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647620
+    m_Localized: I built these bridges. Seeing them broken feels like losing old
+      friends.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647621
+    m_Localized: Then we will give them new boards. Will you stay while I cross?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647622
+    m_Localized: A builder's promise
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647623
+    m_Localized: Bram. Builder, bread lover, and your first travelling friend. I
+      will stay.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647624
+    m_Localized: One bridge first. The beacon can wait for one careful step.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647625
+    m_Localized: The quiet wheel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647626
+    m_Localized: Pip's mill used to sing all day. Now the buckets come back empty.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647627
+    m_Localized: I can hear the rain. I cannot hear the water reaching the village.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647628
+    m_Localized: Too fast to listen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647629
+    m_Localized: I tried turning everything at once. My little brother got the biggest
+      splash.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647630
+    m_Localized: He is still here with his bucket. He believes you will mend it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647631
+    m_Localized: Water for everyone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647632
+    m_Localized: I want to deserve that. Help me start with one wheel, Mika.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647633
+    m_Localized: One wheel, then one well. We will listen as we go.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647634
+    m_Localized: An orchard without lanterns
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647635
+    m_Localized: Without Rue's lantern fruit, the birds circle past their own nests.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647636
+    m_Localized: A home should be easy to find. Let us give them a light.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647637
+    m_Localized: Seeds for tomorrow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647638
+    m_Localized: I saved the seeds before the fruit. Tomorrow needs a little care
+      too.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647639
+    m_Localized: Can I carry a few? My pocket has room beside Gran's letter.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647640
+    m_Localized: The first branch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647641
+    m_Localized: Keep them warm. We will wake one tree and let the birds guide us.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647642
+    m_Localized: Small things can show a very long way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607473647643
+    m_Localized: Letters in the clouds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841920
+    m_Localized: Sora knows every sky route. The storm scattered the letters across
+      them.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841921
+    m_Localized: There is a letter for Gran somewhere up there. We will find it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841922
+    m_Localized: The letter not sent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841923
+    m_Localized: I deliver everybody's letters. My own has waited in my pocket for
+      months.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841924
+    m_Localized: Maybe you can write it while I mend the post bridge.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841925
+    m_Localized: A route between friends
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841926
+    m_Localized: First we get these letters home. Then I will find my first sentence.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841927
+    m_Localized: You could start with what you miss. That is how I started Gran's.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841928
+    m_Localized: No light on the shore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841929
+    m_Localized: The lagoon still shines like glass, but Neri's boats cannot find
+      the shore.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841930
+    m_Localized: Deep water makes my paws shake. I can still help from the pier.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841931
+    m_Localized: The first little boat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841932
+    m_Localized: My mother helped me fold this boat. I promised to keep its route
+      open.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841933
+    m_Localized: Let us start with the nearest lamp. I can reach that one.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841934
+    m_Localized: A safe place to land
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841935
+    m_Localized: You do not have to become brave all at once. I will hold the boat.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841936
+    m_Localized: And I will make the first landing safe for both of us.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841937
+    m_Localized: Rain between the shelves
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841938
+    m_Localized: Toma keeps every island map in the Moss Archive. Rain has found
+      a way in.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841939
+    m_Localized: We need the road through the snow. We can mend the roof on our way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841940
+    m_Localized: A map kept safe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841941
+    m_Localized: That map is the last copy. If you take it, what will stay on my
+      shelf?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841942
+    m_Localized: A space for the story we bring back.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841943
+    m_Localized: A map put to use
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841944
+    m_Localized: A road belongs under someone's paws. I will help you read it, Mika.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841945
+    m_Localized: Then the archive is coming with us, one page at a time.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841946
+    m_Localized: The road disappears
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841947
+    m_Localized: Snow covered the warm trail lamps. Even Lumi cannot see the next
+      ridge.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841948
+    m_Localized: I thought guides always knew the way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841949
+    m_Localized: A guide needs company
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841950
+    m_Localized: I know this mountain. I do not know every snowflake. Stay close
+      today.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841951
+    m_Localized: We can share my lantern. Gran's scarf is long enough for two.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841952
+    m_Localized: One warm footprint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841953
+    m_Localized: First we wake the steps. Then the mountain will show us its shape
+      again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841954
+    m_Localized: And if it does not, we will wait together.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841955
+    m_Localized: A window still glowing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841956
+    m_Localized: Gran kept a lamp in her window while the Great Beacon was dark.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841957
+    m_Localized: I saw it from the snow road. You knew I would come.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841958
+    m_Localized: Stories at the door
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841959
+    m_Localized: I hoped you would. Come warm your paws and tell me who helped you.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841960
+    m_Localized: So many friends. I brought a little piece of every island home.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841961
+    m_Localized: Two keepers, one light
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841962
+    m_Localized: My knees dislike these stairs now. Will you carry the light beside
+      me?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841963
+    m_Localized: I will, Gran. Let us make a light our friends can see.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841964
+    m_Localized: Above the beacon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841965
+    m_Localized: The beacon is shining. Above its clouds, the star routes are still
+      dark.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841966
+    m_Localized: Aster watches there. After breakfast, you could take him a light.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841967
+    m_Localized: An imperfect chart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841968
+    m_Localized: I am Aster. My charts lost some stars. I have been trying to fix
+      them alone.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841969
+    m_Localized: There is room for two by your telescope. May I look with you?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841970
+    m_Localized: A path for night travellers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841971
+    m_Localized: The chart is not perfect yet. But perhaps we can start with the
+      moon dial.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841972
+    m_Localized: We do not need every star to take the first step.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841973
+    m_Localized: My first bridge has lost its boards. I kept the good timber.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841974
+    m_Localized: You bring the boards, Bram. I will bring the light.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841975
+    m_Localized: The wind gate creaks like my old knees. It needs a careful hand.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841976
+    m_Localized: I will keep my scarf clear of the hinges this time.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841977
+    m_Localized: I checked the sky lift twice. I still worry when someone climbs
+      aboard.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841978
+    m_Localized: Let us mend it, then check it together.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841979
+    m_Localized: The market baker saved us a loaf. Her lamps need saving too.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841980
+    m_Localized: Warm bread and a bright doorway. That sounds like a good job.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841981
+    m_Localized: This last bridge leads to Pip. I have not crossed it since the storm.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841982
+    m_Localized: When it is safe, you could walk the first part with me.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841983
+    m_Localized: The wheel needs a steady start. My paws always want to rush.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841984
+    m_Localized: We can go slowly enough to hear it catch.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841985
+    m_Localized: The village pipe is blocked. My brother put his bucket at the far
+      end.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841986
+    m_Localized: Let us bring the water all the way to him.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841987
+    m_Localized: These wells serve the smallest houses. They should not have to wait.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841988
+    m_Localized: Small houses need full buckets too.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841989
+    m_Localized: I promised Sora a post boat. A promise is heavier than a bucket.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841990
+    m_Localized: Good thing we have two pairs of paws to carry it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841991
+    m_Localized: Rue is waiting beyond this gate. She traded us seeds for a cup of
+      water.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841992
+    m_Localized: Then this path is our way of saying thank you.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841993
+    m_Localized: The birds keep circling this tree. They remember its light.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841994
+    m_Localized: We will help the tree remember too.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841995
+    m_Localized: I made the branch bridge narrow to spare the roots. Now it needs
+      mending.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841996
+    m_Localized: We can look after the roots and the travellers.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841997
+    m_Localized: The village needs this jam. I would rather share it than keep it
+      safe here.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841998
+    m_Localized: First the path, then a jar for every table.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477841999
+    m_Localized: The seed house is cold. These tiny things are next year's orchard.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842000
+    m_Localized: Let us make a warm place for things we cannot see yet.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842001
+    m_Localized: Sora used to bring letters through this gate. I miss her noisy landings.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842002
+    m_Localized: We will open it. You can put the kettle on.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842003
+    m_Localized: Every scattered letter belongs to someone waiting. I keep thinking
+      of them.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842004
+    m_Localized: Let us gather them one safe landing at a time.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842005
+    m_Localized: Gran's letter is small, but you have carried it such a long way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842006
+    m_Localized: I want her to know I am coming. Can we send it from here?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842007
+    m_Localized: Without this bridge, I can reach the clouds but not the post house.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842008
+    m_Localized: Even a flyer needs somewhere steady to land.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842009
+    m_Localized: The mail basket is heavy. I tucked my unfinished letter underneath.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842010
+    m_Localized: We can lift the basket. You can finish one sentence.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842011
+    m_Localized: Neri's shore is below this last gate. I owe her a visit, not just
+      a letter.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842012
+    m_Localized: Come with me after we open it. She might have tea.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842013
+    m_Localized: The pier is cracked. I promised you a dry place to stand.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842014
+    m_Localized: We can make one. I will start close to the shore.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842015
+    m_Localized: Each pond lamp marks a turn. My mother's boat knew them all.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842016
+    m_Localized: Tell me the turns as we bring their lights back.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842017
+    m_Localized: The water gate holds my smallest boats outside. I hear their sails
+      tapping.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842018
+    m_Localized: We will open their way home, carefully.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842019
+    m_Localized: This pond light has travelled for years. Now it needs someone to
+      carry it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842020
+    m_Localized: I can carry it beside mine. They will keep each other company.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842021
+    m_Localized: Toma keeps the snow map beyond this path. He dislikes lending precious
+      things.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842022
+    m_Localized: I will tell him what a careful boat maker taught me.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842023
+    m_Localized: The leaf door jammed in the rain. Please mind the oldest maps inside.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842024
+    m_Localized: I will wipe my paws before I touch a page.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842025
+    m_Localized: These shelves move together. I tied them to keep the books from
+      falling.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842026
+    m_Localized: We can untie the road without losing a book.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842027
+    m_Localized: The storm map is behind this case. I have never let it travel before.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842028
+    m_Localized: Maybe it has been waiting for a journey too.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842029
+    m_Localized: Rain is reaching the ink. I cannot hold the roof and the page together.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842030
+    m_Localized: You hold the roof. My scarf will look after the page.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842031
+    m_Localized: Gran left this note between two maps. I saved it for when you were
+      ready.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842032
+    m_Localized: Let us open the way to it. I think I am ready now.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842033
+    m_Localized: The snow steps are hidden. I remember where their lamps belong.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842034
+    m_Localized: You remember the places. I will bring the light.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842035
+    m_Localized: I built this shelter for others. Today I need its warmth too.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842036
+    m_Localized: Then we mend it for both of us, and have a rest.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842037
+    m_Localized: The frozen arch hides its far side. I do not like that either.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842038
+    m_Localized: We can plan the landing together before we cross.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842039
+    m_Localized: Pip sent a blanket for you. He asked me to carry it carefully.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842040
+    m_Localized: There is room for your paws under it too.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842041
+    m_Localized: The beacon road starts here. I can see one window through the snow.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842042
+    m_Localized: That is Gran's lamp. Let us give her a whole road of lights.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842043
+    m_Localized: This last bridge used to feel enormous to you. I left its lamp burning.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842044
+    m_Localized: It still feels enormous. But I know how to mend a bridge now.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842045
+    m_Localized: The lantern lift has waited all storm. I could not mend it alone.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842046
+    m_Localized: You waited for me. Now we have enough paws.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842047
+    m_Localized: I used to carry you up these stairs. Today we will climb side by
+      side.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842048
+    m_Localized: I can hold the lantern so you can hold the rail.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842049
+    m_Localized: The sky lantern needs both our lights. Mine is small, but I kept
+      it safe.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842050
+    m_Localized: Mine came through every island. Let us lift them together.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842051
+    m_Localized: The beacon lens is ready. Would you like to light it, keeper Mika?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842052
+    m_Localized: Yes. So everyone who helped us can find the way home.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842053
+    m_Localized: The moon dial lost its rhythm. I counted alone until sunrise.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842054
+    m_Localized: We can count together. You can close one tired eye.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842055
+    m_Localized: My telescope bridge is missing a board. I kept observing from the
+      doorstep.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842056
+    m_Localized: Let us mend it. The stars deserve a closer look.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842057
+    m_Localized: The star charts blew apart. I was waiting to find every corner.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842058
+    m_Localized: We can start with the pieces we have, Aster.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842059
+    m_Localized: These constellation lamps once guided the night gliders. I miss
+      their wings.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842060
+    m_Localized: Let us give the first glider a pattern to follow.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842061
+    m_Localized: The last sky gate is ahead. I would like someone else to check my
+      chart.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842062
+    m_Localized: I will check it with you. Then we can wave to the travellers.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842063
+    m_Localized: Star Observatory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842064
+    m_Localized: Aster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842065
+    m_Localized: I am Aster. The constellations went dark. I know the sky, but I
+      need another pair of eyes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842066
+    m_Localized: Gran's beacon is shining. Let us help its light reach the night
+      travellers too.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842067
+    m_Localized: Wake the moon dial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842068
+    m_Localized: Mend the telescope bridge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842069
+    m_Localized: Gather the scattered star charts
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842070
+    m_Localized: Relight the constellations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842071
+    m_Localized: Open the night travellers' route
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842072
+    m_Localized: The moon dial is keeping time again. I can hear its quiet tick.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842073
+    m_Localized: It sounds like Pip's mill, but sleepy.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842074
+    m_Localized: The telescope bridge is steady. There is room for two observers
+      now.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842075
+    m_Localized: Your stars look closer when you share them.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842076
+    m_Localized: The charts have gaps, but their routes join. I was waiting for too
+      much.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842077
+    m_Localized: We found enough sky to keep going.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842078
+    m_Localized: The constellations are bright. That glider knows where to turn.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842079
+    m_Localized: Look, Aster. Someone is waving from its window!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842080
+    m_Localized: The sky gate is open. Tonight I will leave a second stool by the
+      telescope.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842081
+    m_Localized: Save it for me. I will bring Gran and a flask of warm tea.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842082
+    m_Localized: I mistook a firefly for a star once. I wrote it down very carefully.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842083
+    m_Localized: Maybe it was your nearest star that night.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842084
+    m_Localized: The clearest sky still has clouds. I am learning to look between
+      them.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842085
+    m_Localized: There is room for our next step between these boards too.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842086
+    m_Localized: The beacon is bright, but the sky paths are still dark.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842087
+    m_Localized: Aster has been waiting above the clouds. Tonight we will help him.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842088
+    m_Localized: The moon dial is turning. Its light reaches a tiny telescope.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842089
+    m_Localized: Aster says he used to watch alone. I will watch with him.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842090
+    m_Localized: These star charts blew out of Aster's notebook.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842091
+    m_Localized: Some corners are missing. There is still enough to find the way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842092
+    m_Localized: One constellation is awake. I can see the next in its light.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842093
+    m_Localized: The stars are far apart. Their pattern brings them together.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842094
+    m_Localized: A little glider is following our new sky path.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842095
+    m_Localized: Gran's beacon and Aster's stars are shining together.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842096
+    m_Localized: I thought I had to mend every bridge before I could cross one.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842097
+    m_Localized: You crossed the first part with me. That was enough for today.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842098
+    m_Localized: My brother filled his bucket himself. He asked when you are coming
+      for tea.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842099
+    m_Localized: After the post boat is ready. We have a promise to carry.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842100
+    m_Localized: You still have those seeds. I thought you might have forgotten them.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842101
+    m_Localized: They are warm beside the letter. I want to show Gran tomorrow's
+      orchard.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842102
+    m_Localized: 'I wrote the first sentence: I miss having tea with you. It was
+      easier than I feared.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842103
+    m_Localized: Then the next sentence can wait until we lift this basket.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842104
+    m_Localized: The little boat reached its lamp. My mother would have liked your
+      careful landing.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607477842105
+    m_Localized: I was still scared. You made room for that too.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607482036224
+    m_Localized: There is an empty space on my shelf now. It feels like an open door.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607482036225
+    m_Localized: Keep it for us. I will bring the map back with a story.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607482036226
+    m_Localized: I usually tell travellers to stay close. Today I am glad you told
+      me too.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607482036227
+    m_Localized: Guides can share blankets. Pip sent a very big one.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607482036228
+    m_Localized: You ask for help sooner now. That is something a keeper needs to
+      learn.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607482036229
+    m_Localized: I learnt it from a whole sky of friends. And you.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607482036230
+    m_Localized: I left the unfinished chart on the table. Someone added a star while
+      we worked.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607482036231
+    m_Localized: Maybe another observer wanted a place beside you too.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607482036232
+    m_Localized: Finish current level first
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607482036233
+    m_Localized: Finish your current level before starting a stamp trail.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607482036234
+    m_Localized: Light the constellations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607482036235
+    m_Localized: '{0}: {1}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607482036236
+    m_Localized: The sky shines again!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607482036237
+    m_Localized: A light for every traveller.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730607482036238
+    m_Localized: Mika brought the light home. Together, her friends lit the way beyond
+      it.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

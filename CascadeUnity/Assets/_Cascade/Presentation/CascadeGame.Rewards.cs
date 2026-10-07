@@ -174,6 +174,7 @@ namespace Cascade.Presentation
         }
         void StartExactTrail(LevelContent content,int stampGoal)
         {
+            if(HasResumableJourneyAttempt)return;
             var goal=new PuzzleGoal(stampGoal);
             if(PuzzleSolver.FindShortest(new PuzzleResolver(content.Definition),goal:goal).Status!=SearchStatus.Solved)return;
             MountAttempt(new AttemptService(content.Definition,content.Locale,goal));
@@ -188,8 +189,10 @@ namespace Cascade.Presentation
             MetaArrows(()=>{contractPage=(contractPage+choices.Length-1)%choices.Length;DrawMenu();},()=>{contractPage=(contractPage+1)%choices.Length;DrawMenu();});
             MenuReadingSurface("Stamp trail note cloth",new Vector2(.12f,.215f),new Vector2(.88f,.455f));
             Text("Contract stop",menuRoot,new Vector2(.10f,.40f),new Vector2(.90f,.47f),22,new UiCopy("Stamp trail {0}",content.Definition.CampaignNodeId.TrimStart('C','0')));
-            Text("Contract freedom",menuRoot,new Vector2(.10f,.235f),new Vector2(.90f,.365f),18,"This is an extra challenge. Your path stays open.");
-            MenuButton("Try this trail",.12f,()=>StartStampTrail(content.Definition.CampaignNodeId),true);MenuButton("Back",.01f,ShowRequests,false,.30f,.70f);
+            Text("Contract freedom",menuRoot,new Vector2(.10f,.235f),new Vector2(.90f,.365f),18,HasResumableJourneyAttempt?"Finish your current level before starting a stamp trail.":"This is an extra challenge. Your path stays open.");
+            var start=MenuButton(HasResumableJourneyAttempt?"Finish current level first":"Try this trail",.12f,()=>StartStampTrail(content.Definition.CampaignNodeId),true);
+            start.name="Trythistrail";start.interactable=!HasResumableJourneyAttempt;
+            MenuButton("Back",.01f,ShowRequests,false,.30f,.70f);
         }
         void DrawRecords()
         {
@@ -207,10 +210,14 @@ namespace Cascade.Presentation
             Text("Record route",menuRoot,new Vector2(.10f,.39f),new Vector2(.90f,.47f),22,new UiCopy("Best route: {0} moves",record.BestRoute));
             Text("Record help",menuRoot,new Vector2(.10f,.30f),new Vector2(.90f,.37f),18,record.BestWithoutHint.HasValue?new UiCopy("Without a hint: {0}",record.BestWithoutHint.Value):"Try again without a hint.");
             Text("Record clean",menuRoot,new Vector2(.10f,.23f),new Vector2(.90f,.28f),16,record.BestClean.HasValue?new UiCopy("Without hint or Undo: {0}",record.BestClean.Value):"Two free undos per stage. Only on the current board.");
-            if(content!=null)MenuButton(record.StageCount==3?"Play this level":"Try again",.10f,()=>{
-                if(record.StageCount==3)StartContent(content);
-                else if(record.StampGoal!=0)StartExactTrail(content,record.StampGoal);else StartContent(content);
-            },true);
+            if(content!=null){
+                bool blockedTrail=record.StageCount!=3&&record.StampGoal!=0&&HasResumableJourneyAttempt;
+                var replay=MenuButton(blockedTrail?"Finish current level first":record.StageCount==3?"Play this level":"Try again",.10f,()=>{
+                    if(record.StageCount==3)StartContent(content);
+                    else if(record.StampGoal!=0)StartExactTrail(content,record.StampGoal);else StartContent(content);
+                },true);
+                replay.name=record.StageCount==3?"Playthislevel":"Tryagain";replay.interactable=!blockedTrail;
+            }
             MenuButton("Back",.01f,ShowJournal,false,.30f,.70f);
         }
     }

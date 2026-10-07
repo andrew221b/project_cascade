@@ -525,6 +525,8 @@ namespace Cascade.Presentation
             tokenRow.anchorMin = new Vector2(state.Status == PuzzleStatus.Playing ? .045f : .07f, state.Status == PuzzleStatus.Playing ? .43f : .28f);
             tokenRow.anchorMax = new Vector2(state.Status == PuzzleStatus.Playing ? .955f : .93f, state.Status == PuzzleStatus.Playing ? 1.03f : .78f); tokenRow.offsetMin = tokenRow.offsetMax = Vector2.zero;
             tokenRow.gameObject.SetActive(state.Status == PuzzleStatus.Playing || arriving);
+            receiverLabel.color=wrongRowLabel.color=machine.LivingWorld.Zone==8?MenuPaper:Ink;
+            if(flowReady)resultText.color=machine.LivingWorld.Zone==8?MenuPaper:Ink;
             foreach (var label in targetLabels) label.color = Ink;
             for (int i = 0; i < tokenLabels.Count; i++) {
                 tokenLabels[i].text = FaceText(state.Row[i]); tokenLabels[i].fontSize = state.Status == PuzzleStatus.Won ? 24 : 28;

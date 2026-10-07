@@ -1,0 +1,211 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using Cascade.Application;
+using Cascade.Content;
+using Cascade.Domain;
+using Cascade.Persistence;
+using Cascade.Presentation;
+using Cascade.Solver;
+using NUnit.Framework;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.TestTools;
+using UnityEngine.UI;
+
+namespace Cascade.Tests
+{
+    public sealed class WorldComicFlowTests
+    {
+        const BindingFlags PrivateInstance=BindingFlags.Instance|BindingFlags.NonPublic;
+        CascadeGame game;
+        string directory;
+        bool oldRunInBackground;
+
+        [UnitySetUp] public IEnumerator SetUp()
+        {
+            oldRunInBackground=UnityEngine.Application.runInBackground;
+            UnityEngine.Application.runInBackground=true;
+            directory=Path.Combine(Path.GetTempPath(),"CascadeWorldComicFlow",Guid.NewGuid().ToString("N"));
+            CascadeGame.EditorProfileDirectory=directory;
+            yield return SceneManager.LoadSceneAsync("Assets/_Cascade/Scenes/CascadePlayable.unity");
+            game=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();ConfigureGame();
+            var heard=Read<HashSet<int>>("heardStory");heard.Add(1000);
+            heard.UnionWith(Enumerable.Range(0,JourneyStory.PageCount));
+            heard.UnionWith(Enumerable.Range(4000,JourneyStory.TotalLevels));
+            game.ShowGame();
+            yield return Await(()=>game.PreparationReady&&game.Interaction.CanPlay,"Initial puzzle must become playable");
+        }
+        [UnityTearDown] public IEnumerator TearDown()
+        {
+            if(game!=null){UnityEngine.Object.Destroy(game.gameObject);yield return null;}
+            CascadeGame.EditorProfileDirectory=null;
+            UnityEngine.Application.runInBackground=oldRunInBackground;
+            if(Directory.Exists(directory))Directory.Delete(directory,true);
+        }
+        void ConfigureGame()
+        {
+            game.SendMessage("OnApplicationFocus",true);game.SendMessage("OnApplicationPause",false);
+            game.Preferences.ReducedMotion=true;game.ReducedMotion=true;
+            game.Feedback.MusicEnabled=game.Feedback.SoundEnabled=false;
+            Read<PlayerProfile>("profile").SeenMechanics=Enum.GetValues(typeof(MechanicLesson)).Cast<MechanicLesson>().ToList();
+        }
+        T Read<T>(string name)=>(T)typeof(CascadeGame).GetField(name,PrivateInstance).GetValue(game);
+        void Write(string name,object value)=>typeof(CascadeGame).GetField(name,PrivateInstance).SetValue(game,value);
+        void Invoke(string name,params object[] arguments)=>typeof(CascadeGame).GetMethod(name,PrivateInstance).Invoke(game,arguments);
+        PlayerProfile Saved()=>new ProfileStore(game.ProfilePath).Load().Profile;
+        static IEnumerator Await(Func<bool> ready,string message)
+        {
+            double began=Time.realtimeSinceStartupAsDouble;
+            while(!ready()&&Time.realtimeSinceStartupAsDouble-began<30)yield return null;
+            Assert.That(ready(),Is.True,message);
+        }
+        IEnumerator Click(string name)
+        {
+            yield return null;
+            var button=game.GetComponentsInChildren<Button>().Single(b=>b.name==name&&b.gameObject.activeInHierarchy);
+            Assert.That(button.interactable,Is.True,name+" must be available");
+            button.onClick.Invoke();yield return null;
+        }
+        static void Solve(AttemptService attempt)
+        {
+            var solution=PuzzleSolver.FindShortest(attempt.Resolver,attempt.Current);
+            Assert.That(solution.Status,Is.EqualTo(SearchStatus.Solved));
+            foreach(var command in solution.Path)Assert.That(attempt.Execute(command).Accepted,Is.True);
+        }
+        IEnumerator MountMiddleStage()
+        {
+            var profile=Read<PlayerProfile>("profile");
+            foreach(string node in new[]{"C01","C02"}){
+                var completed=new AttemptService(game.Catalog.GetPrimary(node).Definition);Solve(completed);
+                Assert.That(profile.RecordClear(completed),Is.True);Read<HashSet<string>>("sessionClears").Add(node);
+            }
+            var source=game.Catalog.GetPrimary("C03").Definition;var run=DescentRun.Build(source,version:5);
+            var first=new AttemptService(run.Level(source,0),direction:run.Direction);Solve(first);run.AcceptCheckpoint(source,first);
+            Invoke("MountAttempt",new AttemptService(run.Level(source,1),direction:run.Direction),run);
+            Write("journeyActive",true);Write("descentTravel",true);Invoke("InitializeRewards");game.ShowGame();
+            yield return Await(()=>game.Interaction.CanPlay,"Middle stage must become playable");
+            var command=PuzzleSolver.FindShortest(game.Interaction.Attempt.Resolver).Path.First();
+            Assert.That(game.Interaction.Execute(command).Accepted,Is.True);
+            yield return Await(()=>!game.Interaction.IsPresenting,"Exchange must finish before opening a comic");
+            Assert.That(game.Interaction.Attempt.Current.Status,Is.EqualTo(PuzzleStatus.Playing));
+            Invoke("PersistProgress");
+        }
+        void OpenPublishedRoutesInMemory()
+        {
+            // Fixture availability only: no puzzle execution or clear receipts are fabricated.
+            Read<HashSet<string>>("sessionClears").UnionWith(game.Catalog.PrimaryLevels.Select(c=>c.Definition.CampaignNodeId));
+            Write("journeyActive",true);
+            Read<HashSet<int>>("heardStory").UnionWith(Enumerable.Range(6000,JourneyStory.WorldCount));
+        }
+        IEnumerator FinishOpening(int expectedReceipt)
+        {
+            Assert.That(game.ConversationOpen,Is.True);Assert.That(game.ConversationReceipt,Is.EqualTo(expectedReceipt));
+            int selected=Read<int>("selectedJourneyStop"),world=Read<int>("mapPage");
+            game.SkipConversation();yield return null;
+            Assert.That(game.HasSaveError,Is.False);Assert.That(game.ConversationOpen,Is.False);
+            Assert.That(Read<int>("selectedJourneyStop"),Is.EqualTo(selected),"Finishing dialogue must retain the browsed level");
+            Assert.That(Read<int>("mapPage"),Is.EqualTo(world),"Finishing dialogue must retain the browsed world");
+            Assert.That(Saved().HeardStory,Does.Contain(expectedReceipt));
+        }
+
+        [UnityTest] public IEnumerator EveryWorldComicHasThreeRealPanelsAndPreservesThePinnedMiddleStage()
+        {
+            yield return MountMiddleStage();
+            var attempt=game.Interaction.Attempt;var row=attempt.Current;var run=game.Descent;
+            string hash=attempt.CurrentStateHash;int route=attempt.RouteLength;var panels=new HashSet<string>();
+            for(int world=0;world<JourneyStory.WorldCount;world++){
+                game.OpenWorldComic(world,game.ShowHome);yield return null;
+                for(int page=0;page<3;page++){
+                    Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Prologue));Assert.That(game.ComicWorld,Is.EqualTo(world));Assert.That(game.ComicPage,Is.EqualTo(page));
+                    var image=game.GetComponentsInChildren<Image>().Single(i=>i.name=="World comic scene");
+                    Assert.That(image.sprite,Is.Not.Null);Assert.That(image.sprite.texture,Is.Not.Null);Assert.That(image.sprite.rect.width,Is.GreaterThan(0));
+                    panels.Add(image.sprite.texture.GetInstanceID()+":"+image.sprite.rect);
+                    Assert.That(game.Interaction.IsPaused,Is.True);Assert.That(game.Interaction.Attempt,Is.SameAs(attempt));
+                    Assert.That(attempt.Current,Is.SameAs(row));Assert.That(attempt.CurrentStateHash,Is.EqualTo(hash));Assert.That(attempt.RouteLength,Is.EqualTo(route));
+                    Assert.That(game.Descent,Is.SameAs(run));Assert.That(game.Descent.StageIndex,Is.EqualTo(1));
+                    yield return Click("Next comic page");
+                }
+                Assert.That(game.ComicWorld,Is.EqualTo(-1));Assert.That(game.HasSaveError,Is.False);
+                Assert.That(Saved().HeardStory,Does.Contain(WorldPrologues.ForWorld(world).Receipt));
+                Assert.That(Saved().Attempt.StateHash,Is.EqualTo(hash));Assert.That(Saved().Descent.StageIndex,Is.EqualTo(1));
+            }
+            Assert.That(panels.Count,Is.EqualTo(27),"All worlds must use their own three illustration panels");
+        }
+
+        [UnityTest] public IEnumerator ComicReceiptsStayInTheirModeAndSeenComicsDoNotRepeatAfterReload()
+        {
+            game.OpenWorldComic(0,game.ShowHome);game.FinishWorldComic();yield return null;
+            Assert.That(Saved().HeardStory,Does.Contain(6000));
+            foreach(var mode in new[]{PuzzleMode.Words,PuzzleMode.Mixed}){
+                game.SelectMode(mode);yield return null;
+                Assert.That(game.PreferredMode,Is.EqualTo(mode));Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Prologue));Assert.That(game.ComicWorld,Is.Zero);
+                Assert.That(Read<HashSet<int>>("heardStory").Contains(6000),Is.False);
+                Assert.That(Saved().HeardStory.Contains(6000),Is.False);
+                Assert.That(Saved().ModeJourneys.Single(j=>j.Mode=="Shapes").HeardStory,Does.Contain(6000));
+                game.FinishWorldComic();yield return null;
+                if(game.ConversationOpen){game.SkipConversation();yield return null;}
+                Assert.That(Saved().HeardStory,Does.Contain(6000));
+                yield return Await(()=>game.PreparationReady&&!game.Interaction.IsPresenting,"Mode preparation must finish before switching again");
+            }
+            game.SelectMode(PuzzleMode.Shapes);yield return null;
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.JourneyMap));Assert.That(game.ComicWorld,Is.EqualTo(-1));
+            if(game.ConversationOpen){game.SkipConversation();yield return null;}
+            string pinned=game.Interaction.Attempt.CurrentStateHash;
+            yield return SceneManager.LoadSceneAsync("Assets/_Cascade/Scenes/CascadePlayable.unity");
+            game=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();ConfigureGame();game.ShowJourney();yield return null;
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.JourneyMap));Assert.That(game.ComicWorld,Is.EqualTo(-1));Assert.That(game.ConversationOpen,Is.False);
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(pinned));Assert.That(Read<HashSet<int>>("heardStory"),Does.Contain(6000));
+        }
+
+        [UnityTest] public IEnumerator IslandButtonsAndWorldBrowsingShowEveryUnseenOpeningOnceWithoutMovingTheRow()
+        {
+            // Mixed offers every published node, including the original mixed-symbol lessons.
+            game.SelectMode(PuzzleMode.Mixed);yield return null;
+            Assert.That(game.PreferredMode,Is.EqualTo(PuzzleMode.Mixed));
+            game.OpenWorldComic(0,game.ShowHome);game.FinishWorldComic();yield return null;
+            OpenPublishedRoutesInMemory();Read<HashSet<int>>("heardStory").UnionWith(Enumerable.Range(7000,JourneyStory.TotalLevels));
+            var attempt=game.Interaction.Attempt;string hash=attempt.CurrentStateHash;
+            game.ShowJourney();yield return null;yield return FinishOpening(StoryConversations.IslandOpening(0,0).Receipt);
+            for(int world=0;world<JourneyStory.WorldCount;world++){
+                if(world>0){
+                    game.TurnJourneyMap(1);yield return null;Assert.That(Read<int>("mapPage"),Is.EqualTo(world));
+                    if(game.ConversationOpen)yield return FinishOpening(StoryConversations.IslandOpening(world,JourneyStory.IslandFor(Read<int>("selectedJourneyStop"))).Receipt);
+                }
+                for(int island=0;island<5;island++){
+                    int receipt=StoryConversations.IslandOpening(world,island).Receipt;
+                    bool heard=Read<HashSet<int>>("heardStory").Contains(receipt);
+                    yield return Click("Island"+(island+1));
+                    Assert.That(Read<int>("selectedJourneyStop"),Is.EqualTo(JourneyStory.IslandFirst(world,island)));
+                    if(heard)Assert.That(game.ConversationOpen,Is.False);else yield return FinishOpening(receipt);
+                    yield return Click("Island"+(island+1));Assert.That(game.ConversationOpen,Is.False,"An opening must not repeat on a second visit");
+                    Assert.That(game.Interaction.Attempt,Is.SameAs(attempt));Assert.That(attempt.CurrentStateHash,Is.EqualTo(hash));
+                }
+            }
+            Assert.That(Read<HashSet<int>>("heardStory").Count(r=>r>=8000&&r<8100),Is.EqualTo(45));
+        }
+
+        [UnityTest] public IEnumerator OccasionalExchangeAppearsOnlyOnItsExactLevelAndKeepsTheBrowsedStop()
+        {
+            OpenPublishedRoutesInMemory();Read<HashSet<int>>("heardStory").UnionWith(Enumerable.Range(8000,JourneyStory.WorldCount*10));
+            var row=game.Interaction.Attempt.Current;string hash=game.Interaction.Attempt.CurrentStateHash;
+            game.ShowJourney();yield return null;
+            for(int world=0;world<JourneyStory.WorldCount;world++){
+                if(world>0){game.TurnJourneyMap(1);yield return null;}
+                yield return Click("Island4");Assert.That(game.ConversationOpen,Is.False);
+                Assert.That(Read<int>("selectedJourneyStop"),Is.EqualTo(JourneyStory.IslandFirst(world,3)));
+                yield return Click("Nextopenedlevel");
+                int stop=JourneyStory.IslandFirst(world,3)+1;Assert.That(Read<int>("selectedJourneyStop"),Is.EqualTo(stop));
+                yield return FinishOpening(StoryConversations.LevelAside(stop).Receipt);
+                yield return Click("Previousopenedlevel");Assert.That(game.ConversationOpen,Is.False);
+                yield return Click("Nextopenedlevel");Assert.That(game.ConversationOpen,Is.False,"A read exchange must not repeat");
+                yield return Click("Nextopenedlevel");Assert.That(game.ConversationOpen,Is.False,"The next level must not reuse the exchange");
+                Assert.That(game.Interaction.Attempt.Current,Is.SameAs(row));Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+            }
+            Assert.That(Read<HashSet<int>>("heardStory").Count(r=>r>=7000&&r<7200),Is.EqualTo(9));
+        }
+    }
+}

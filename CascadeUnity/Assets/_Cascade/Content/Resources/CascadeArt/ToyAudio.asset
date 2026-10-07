@@ -49,4 +49,5 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 86459c4b746a140a79714a235ede5b40, type: 3}
   - {fileID: 8300000, guid: c24768ef76716493e8298a510d1bd180, type: 3}
   - {fileID: 8300000, guid: 2b07da921fcdc4b9682b679b6b4a71e2, type: 3}
+  - {fileID: 8300000, guid: 8d310ba387f2f41bc9fb7abead0364a1, type: 3}
   naturalWind: {fileID: 8300000, guid: 8fe398963a7bf4a5999c1de982e3acb9, type: 3}

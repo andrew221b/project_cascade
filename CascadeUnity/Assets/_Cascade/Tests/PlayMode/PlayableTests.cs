@@ -1207,17 +1207,16 @@ namespace Cascade.Tests
             Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Playing));Assert.That(game.Interaction.Attempt.Current,Is.SameAs(before));
             Assert.That(game.Interaction.Attempt.RouteLength,Is.EqualTo(route));
         }
-        [UnityTest] public IEnumerator FutureMapIsAPreviewAndReturnRestoresTheActualWorld()
+        [UnityTest] public IEnumerator UnopenedWorldSwipeKeepsCurrentMapAndDoesNotChangeTheAttempt()
         {
             game.LoadNode("C22");var hash=game.Interaction.Attempt.CurrentStateHash;
             game.ShowJourney();game.TurnJourneyMap(1);yield return null;game.TurnJourneyMap(1);yield return null;game.TurnJourneyMap(1);yield return null;
-            Assert.That(game.Machine.LivingWorld.Zone,Is.EqualTo(1));
-            Assert.That(game.GetComponentsInChildren<Transform>().Any(t=>t.name=="Mika on the path"),Is.False);
-            var travel=game.GetComponentsInChildren<UnityEngine.UI.Button>().Single(b=>b.name=="Travel");
-            Assert.That(travel.GetComponentInChildren<TextMeshProUGUI>().text,Is.EqualTo("Back to my path"));
-            Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Any(t=>t.text=="Stops to this island: 15"),Is.True);
-            yield return ClickButton("Travel");
+            Assert.That(game.Machine.LivingWorld.Zone,Is.Zero);
             Assert.That(game.GetComponentsInChildren<Transform>().Any(t=>t.name=="Mika on the path"),Is.True);
+            var travel=game.GetComponentsInChildren<UnityEngine.UI.Button>().Single(b=>b.name=="Travel");
+            Assert.That(travel.GetComponentInChildren<TextMeshProUGUI>().text,Is.Not.EqualTo("Back to my path"));
+            Assert.That(game.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b=>b.name=="Nextopenedlevel"),Is.False);
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
             Assert.That(game.JourneyClearCount,Is.Zero);game.ShowGame();
             Assert.That(game.Machine.LivingWorld.Zone,Is.EqualTo(1));Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
         }
@@ -1259,7 +1258,7 @@ namespace Cascade.Tests
             yield return ClickButton("Mytools");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Supplies));
             yield return ClickButton("Open shop");yield return ClickButton("My tools link");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Supplies));
             yield return ClickButton("Tools back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.TravelBag));
-            yield return ClickButton("Practice");yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.TravelBag));
+            Assert.That(game.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b=>b.name=="Practice"),Is.False);
             yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Shop));
             yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Home));
             game.ShowJourney();yield return null;if(game.ConversationOpen)game.SkipConversation();yield return null;

@@ -16,20 +16,20 @@ namespace Cascade.Tests
         ContentCatalog catalog;JArray balance;
         static string Read(string file)=>File.ReadAllText(Path.Combine(ReferenceFixtures.PackageRoot,"Data",file));
         static string Extension=>Read("campaign_extension.json");
-        public static IEnumerable<string> Cases=>((JArray)JObject.Parse(Extension)["levels"]).Select(l=>(string)l["id"]);
+        public static IEnumerable<string> Cases=>((JArray)JObject.Parse(Extension)["levels"]).Select(l=>(string)l["id"]).Where(id=>int.Parse(id.Substring(1))<=160);
         [OneTimeSetUp] public void Setup()
         {
             catalog=ContentImporter.Import(Read("levels.json"),Read("localized_levels.json"),Read("words_en.json"),Read("words_ru.json"),Read("words_uk.json"),Extension);
             balance=JArray.Parse(File.ReadAllText(Path.Combine(ReferenceFixtures.PackageRoot,"Reports/P20/python_campaign_balance.json")));
         }
-        [Test] public void RuntimeExtensionPreservesOriginalPinsAndHasExactly160Nodes()
+        [Test] public void RuntimeExtensionPreservesOriginalPinsAndHasExactly184Nodes()
         {
-            var original=ContentTests.LoadCatalog();Assert.That(catalog.PrimaryLevels.Count,Is.EqualTo(160));Assert.That(catalog.LocalizedLevels.Count,Is.EqualTo(477));
+            var original=ContentTests.LoadCatalog();Assert.That(catalog.PrimaryLevels.Count,Is.EqualTo(184));Assert.That(catalog.LocalizedLevels.Count,Is.EqualTo(549));
             foreach(var content in original.PrimaryLevels.Concat(original.LocalizedLevels)) {
                 var current=catalog.PrimaryLevels.Concat(catalog.LocalizedLevels).Single(c=>c.Definition.PuzzleId==content.Definition.PuzzleId);
                 Assert.That(current.Definition.ContentHash,Is.EqualTo(content.Definition.ContentHash));
             }
-            Assert.That(catalog.PrimaryLevels.Select(c=>c.Definition.CampaignNodeId),Is.EqualTo(Enumerable.Range(1,160).Select(i=>"C"+i.ToString("00"))));
+            Assert.That(catalog.PrimaryLevels.Select(c=>c.Definition.CampaignNodeId),Is.EqualTo(Enumerable.Range(1,184).Select(i=>"C"+i.ToString("00"))));
             Assert.That(balance.Select(b=>(string)b["structure_sha256"]).Distinct().Count(),Is.EqualTo(120));
             Assert.That(File.ReadAllText(Path.Combine(UnityEngine.Application.dataPath,"_Cascade/Content/Resources/CascadeContent/campaign_extension.json")),Is.EqualTo(Extension));
             Assert.That(UnityEngine.Resources.Load<UnityEngine.TextAsset>("CascadeContent/campaign_extension").text,Is.EqualTo(Extension));

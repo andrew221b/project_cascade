@@ -32,8 +32,8 @@ namespace Cascade.Presentation
             availability=new Material(shader);material=availability;
             for(int i=0;i<5;i++)availability.SetVector("_Island"+i,new Vector4(points[i].x,points[i].y,open[i]?1:0,0));
         }
-        public void SetSky(Texture2D texture,Camera camera)
-        {sky=texture;viewportCamera=camera;if(availability!=null&&sky!=null){availability.SetTexture("_SkyTex",sky);availability.SetFloat("_BlendSky",1);LateUpdate();}}
+        public void SetSky(Texture2D texture,Camera camera,bool night=false)
+        {sky=texture;viewportCamera=camera;if(availability!=null&&sky!=null){availability.SetTexture("_SkyTex",sky);availability.SetFloat("_BlendSky",1);availability.SetFloat("_DarkSky",night?1:0);LateUpdate();}}
         void LateUpdate()
         {
             if(game!=null){float next=game.ReducedMotion?0:game.Machine.AmbientPhase;if(!Mathf.Approximately(phase,next)){phase=next;for(int i=0;i<5;i++)islandDrift[i]=new Vector2(Mathf.Sin(phase*.31f+i*1.73f)*.65f,Mathf.Sin(phase*.55f+i*1.73f)*2.4f);SetVerticesDirty();}}

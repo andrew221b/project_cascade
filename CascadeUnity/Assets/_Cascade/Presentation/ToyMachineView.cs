@@ -43,8 +43,13 @@ namespace Cascade.Presentation
         Transform machine, scenery, windmill;
         LayeredWorld livingWorld;
         public LayeredWorld LivingWorld => livingWorld;
-        int theme;
-        public void SetZone(int zone) { theme=Mathf.Clamp(zone,0,7); livingWorld?.SetZone(theme); }
+        int theme;Light worldKey,worldFill;
+        public void SetZone(int zone) { theme=Mathf.Clamp(zone,0,Cascade.Content.JourneyStory.WorldCount-1); livingWorld?.SetZone(theme);
+            if(worldKey==null||worldFill==null)return;bool night=theme==8;
+            worldKey.color=night?new Color(1,.87f,.66f):new Color(1,.96f,.88f);worldKey.intensity=night?1.08f:1.18f;
+            worldFill.color=night?new Color(.42f,.65f,1):new Color(.64f,.85f,1);worldFill.intensity=night?.64f:.35f;
+            RenderSettings.ambientLight=night?new Color(.38f,.48f,.65f):new Color(.69f,.79f,.80f);
+        }
         Part backdrop;
         readonly List<Part> all = new List<Part>();
         readonly List<Part> tokens = new List<Part>();
@@ -147,11 +152,11 @@ namespace Cascade.Presentation
             if(livingWorld.Ready)backdrop.transform.gameObject.SetActive(false);
             var lightObject = new GameObject("Warm workshop key light", typeof(Light)); lightObject.transform.SetParent(transform, false);
             lightObject.transform.rotation = Quaternion.Euler(32, -24, 0);
-            var keyLight = lightObject.GetComponent<Light>(); keyLight.type = LightType.Directional;
+            var keyLight = worldKey=lightObject.GetComponent<Light>(); keyLight.type = LightType.Directional;
             keyLight.color = new Color(1, .96f, .88f); keyLight.intensity = 1.18f; keyLight.shadows = LightShadows.Soft;
             keyLight.shadowStrength = .42f; keyLight.shadowBias = .035f; keyLight.shadowNormalBias = .15f;
             var fillObject=new GameObject("Soft sky rim",typeof(Light));fillObject.transform.SetParent(transform,false);fillObject.transform.rotation=Quaternion.Euler(-18,155,0);
-            var fill=fillObject.GetComponent<Light>();fill.type=LightType.Directional;fill.color=new Color(.64f,.85f,1);fill.intensity=.35f;fill.shadows=LightShadows.None;
+            var fill=worldFill=fillObject.GetComponent<Light>();fill.type=LightType.Directional;fill.color=new Color(.64f,.85f,1);fill.intensity=.35f;fill.shadows=LightShadows.None;
             RenderSettings.ambientMode = AmbientMode.Flat; RenderSettings.ambientLight = new Color(.69f, .79f, .80f);
             InitializePieceMaterials();
 

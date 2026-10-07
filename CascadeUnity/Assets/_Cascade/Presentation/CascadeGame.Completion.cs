@@ -15,8 +15,8 @@ namespace Cascade.Presentation
         bool parcelReturnsToMap;
         public bool CelebrationMotionAllowed=>applicationFocused&&!applicationPaused&&!nativeAdSuspended&&isActiveAndEnabled;
         public LevelCompletion LastCompletion=>profile.Completion;
-        bool IsPinnedJourneyStop(int index)=>index>=0&&index<Catalog.PrimaryLevels.Count&&journeyActive
-            &&Catalog.PrimaryLevels[index].Definition.CampaignNodeId==node&&(Interaction.Attempt.Current.Status==PuzzleStatus.Playing||IsCheckpoint);
+        bool IsPinnedJourneyStop(int index)=>index>=0&&index<Catalog.PrimaryLevels.Count&&HasResumableJourneyAttempt
+            &&Catalog.PrimaryLevels[index].Definition.CampaignNodeId==node;
         bool IsJourneyStopOpen(int index)=>IsPinnedJourneyStop(index)||index>=0&&index<Catalog.PrimaryLevels.Count
             &&JourneySequence().Any(c=>c.Definition.CampaignNodeId==Catalog.PrimaryLevels[index].Definition.CampaignNodeId)
             &&(sessionClears.Contains(Catalog.PrimaryLevels[index].Definition.CampaignNodeId)||index==NextJourneyStop());

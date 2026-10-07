@@ -26,11 +26,12 @@ namespace Cascade.Presentation
         {
             storyRoute=false;
             // Keep an unfinished concrete attempt pinned; the choice affects future levels.
-            if(!heardStory.Contains(PrologueReceipt))ShowPrologue();else ShowJourney();
+            ShowJourney();
         }
-        public void ShowPrologue(){prologuePage=0;SetScreen(GameScreen.Prologue);}
+        public void ShowPrologue(){worldComic=-1;prologuePage=0;SetScreen(GameScreen.Prologue);}
         public void AdvancePrologue()
         {
+            if(worldComic>=0){AdvanceWorldComic();return;}
             if(++prologuePage<3){DrawMenu();menuTransition.Arrive();return;}
             heardStory.Add(PrologueReceipt);PersistProgress();ShowJourney();
         }
@@ -44,6 +45,7 @@ namespace Cascade.Presentation
         {
             if(navigationIcons!=null)foreach(var s in navigationIcons)if(s!=null)Destroy(s);
             if(prologuePanels!=null)foreach(var s in prologuePanels)if(s!=null)Destroy(s);
+            foreach(var atlas in worldComicPanels)if(atlas!=null)foreach(var s in atlas)if(s!=null)Destroy(s);
         }
         void LoadNavigationArt()
         {
@@ -161,6 +163,7 @@ namespace Cascade.Presentation
         }
         void DrawPrologue()
         {
+            if(worldComic>=0){DrawWorldComic();return;}
             LoadNavigationArt();NavigationHeader(new[]{"Before the storm","The last light","A way home"}[prologuePage],ShowPlayChoice);
             var frame=Rect("Opening comic frame",menuRoot,new Vector2(.055f,.43f),new Vector2(.945f,.855f));
             Picture("Opening comic scene",frame,new Vector2(.025f,.035f),new Vector2(.975f,.965f),prologuePanels[prologuePage],true);

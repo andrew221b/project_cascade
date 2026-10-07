@@ -23,7 +23,8 @@ namespace Cascade.Content
             "Neri",
             "Toma",
             "Lumi",
-            "Gran"
+            "Gran",
+            "Aster"
         };
         static readonly string[] Introductions={
             "Bram here. The storm broke our bridges. I can mend the wood if you bring back the lights.",
@@ -33,7 +34,8 @@ namespace Cascade.Content
             "I am Neri. The pond lamps went out. My little boats cannot find the shore.",
             "Toma. I keep the maps. The storm hid the road to the beacon between these shelves.",
             "I am Lumi. I know the snow road. We will follow the warm lights together.",
-            "Mika! There you are. The beacon is dark, but I kept a little light for you."
+            "Mika! There you are. The beacon is dark, but I kept a little light for you.",
+            "I am Aster. The constellations went dark. I know the sky, but I need another pair of eyes."
         };
         static readonly string[] Replies={
             "I am Mika. I am taking a light to Gran at the Great Beacon. Let us start here.",
@@ -43,7 +45,8 @@ namespace Cascade.Content
             "I can help with the lamps. I will stay close to the shore!",
             "We have come so far. Let us find the last part of the road.",
             "My paws are cold, but my lantern is still warm. Lead the way.",
-            "I kept mine too, Gran. Let us bring them home."
+            "I kept mine too, Gran. Let us bring them home.",
+            "Gran's beacon is shining. Let us help its light reach the night travellers too."
         };
         static readonly string[] Goals={
             "Light the first bridge",
@@ -85,7 +88,12 @@ namespace Cascade.Content
             "Mend the lantern lift",
             "Light the beacon stairs",
             "Lift the sky lantern",
-            "Bring the light home"
+            "Bring the light home",
+            "Wake the moon dial",
+            "Mend the telescope bridge",
+            "Gather the scattered star charts",
+            "Relight the constellations",
+            "Open the night travellers' route"
         };
         static readonly string[] IslandLines={
             "The first bridge is lit. I can see my workshop again!",
@@ -167,7 +175,17 @@ namespace Cascade.Content
             "The sky lantern is up. Your little light made it all the way.",
             "I was scared sometimes. The others stayed with me.",
             "Look, Mika. The beacon is shining. Every island can see us now.",
-            "Then let us wave to everyone. We made it home together."
+            "Then let us wave to everyone. We made it home together.",
+            "The moon dial is keeping time again. I can hear its quiet tick.",
+            "It sounds like Pip's mill, but sleepy.",
+            "The telescope bridge is steady. There is room for two observers now.",
+            "Your stars look closer when you share them.",
+            "The charts have gaps, but their routes join. I was waiting for too much.",
+            "We found enough sky to keep going.",
+            "The constellations are bright. That glider knows where to turn.",
+            "Look, Aster. Someone is waving from its window!",
+            "The sky gate is open. Tonight I will leave a second stool by the telescope.",
+            "Save it for me. I will bring Gran and a flask of warm tea."
         };
         static readonly string[] BanterLines={
             "Your paws are shaking. We can take a breath before the next board.",
@@ -201,9 +219,125 @@ namespace Cascade.Content
             "I used to count these steps with you.",
             "Now we can count the lights instead.",
             "No need to hurry, little one. I am right here.",
-            "Then I will do this last part carefully."
+            "Then I will do this last part carefully.",
+            "I mistook a firefly for a star once. I wrote it down very carefully.",
+            "Maybe it was your nearest star that night.",
+            "The clearest sky still has clouds. I am learning to look between them.",
+            "There is room for our next step between these boards too."
         };
-        public static string Resident(int world)=>Residents[Math.Max(0,Math.Min(7,world))];
+        static readonly string[] OpeningLines={
+            "My first bridge has lost its boards. I kept the good timber.",
+            "You bring the boards, Bram. I will bring the light.",
+            "The wind gate creaks like my old knees. It needs a careful hand.",
+            "I will keep my scarf clear of the hinges this time.",
+            "I checked the sky lift twice. I still worry when someone climbs aboard.",
+            "Let us mend it, then check it together.",
+            "The market baker saved us a loaf. Her lamps need saving too.",
+            "Warm bread and a bright doorway. That sounds like a good job.",
+            "This last bridge leads to Pip. I have not crossed it since the storm.",
+            "When it is safe, you could walk the first part with me.",
+            "The wheel needs a steady start. My paws always want to rush.",
+            "We can go slowly enough to hear it catch.",
+            "The village pipe is blocked. My brother put his bucket at the far end.",
+            "Let us bring the water all the way to him.",
+            "These wells serve the smallest houses. They should not have to wait.",
+            "Small houses need full buckets too.",
+            "I promised Sora a post boat. A promise is heavier than a bucket.",
+            "Good thing we have two pairs of paws to carry it.",
+            "Rue is waiting beyond this gate. She traded us seeds for a cup of water.",
+            "Then this path is our way of saying thank you.",
+            "The birds keep circling this tree. They remember its light.",
+            "We will help the tree remember too.",
+            "I made the branch bridge narrow to spare the roots. Now it needs mending.",
+            "We can look after the roots and the travellers.",
+            "The village needs this jam. I would rather share it than keep it safe here.",
+            "First the path, then a jar for every table.",
+            "The seed house is cold. These tiny things are next year's orchard.",
+            "Let us make a warm place for things we cannot see yet.",
+            "Sora used to bring letters through this gate. I miss her noisy landings.",
+            "We will open it. You can put the kettle on.",
+            "Every scattered letter belongs to someone waiting. I keep thinking of them.",
+            "Let us gather them one safe landing at a time.",
+            "Gran's letter is small, but you have carried it such a long way.",
+            "I want her to know I am coming. Can we send it from here?",
+            "Without this bridge, I can reach the clouds but not the post house.",
+            "Even a flyer needs somewhere steady to land.",
+            "The mail basket is heavy. I tucked my unfinished letter underneath.",
+            "We can lift the basket. You can finish one sentence.",
+            "Neri's shore is below this last gate. I owe her a visit, not just a letter.",
+            "Come with me after we open it. She might have tea.",
+            "The pier is cracked. I promised you a dry place to stand.",
+            "We can make one. I will start close to the shore.",
+            "Each pond lamp marks a turn. My mother's boat knew them all.",
+            "Tell me the turns as we bring their lights back.",
+            "The water gate holds my smallest boats outside. I hear their sails tapping.",
+            "We will open their way home, carefully.",
+            "This pond light has travelled for years. Now it needs someone to carry it.",
+            "I can carry it beside mine. They will keep each other company.",
+            "Toma keeps the snow map beyond this path. He dislikes lending precious things.",
+            "I will tell him what a careful boat maker taught me.",
+            "The leaf door jammed in the rain. Please mind the oldest maps inside.",
+            "I will wipe my paws before I touch a page.",
+            "These shelves move together. I tied them to keep the books from falling.",
+            "We can untie the road without losing a book.",
+            "The storm map is behind this case. I have never let it travel before.",
+            "Maybe it has been waiting for a journey too.",
+            "Rain is reaching the ink. I cannot hold the roof and the page together.",
+            "You hold the roof. My scarf will look after the page.",
+            "Gran left this note between two maps. I saved it for when you were ready.",
+            "Let us open the way to it. I think I am ready now.",
+            "The snow steps are hidden. I remember where their lamps belong.",
+            "You remember the places. I will bring the light.",
+            "I built this shelter for others. Today I need its warmth too.",
+            "Then we mend it for both of us, and have a rest.",
+            "The frozen arch hides its far side. I do not like that either.",
+            "We can plan the landing together before we cross.",
+            "Pip sent a blanket for you. He asked me to carry it carefully.",
+            "There is room for your paws under it too.",
+            "The beacon road starts here. I can see one window through the snow.",
+            "That is Gran's lamp. Let us give her a whole road of lights.",
+            "This last bridge used to feel enormous to you. I left its lamp burning.",
+            "It still feels enormous. But I know how to mend a bridge now.",
+            "The lantern lift has waited all storm. I could not mend it alone.",
+            "You waited for me. Now we have enough paws.",
+            "I used to carry you up these stairs. Today we will climb side by side.",
+            "I can hold the lantern so you can hold the rail.",
+            "The sky lantern needs both our lights. Mine is small, but I kept it safe.",
+            "Mine came through every island. Let us lift them together.",
+            "The beacon lens is ready. Would you like to light it, keeper Mika?",
+            "Yes. So everyone who helped us can find the way home.",
+            "The moon dial lost its rhythm. I counted alone until sunrise.",
+            "We can count together. You can close one tired eye.",
+            "My telescope bridge is missing a board. I kept observing from the doorstep.",
+            "Let us mend it. The stars deserve a closer look.",
+            "The star charts blew apart. I was waiting to find every corner.",
+            "We can start with the pieces we have, Aster.",
+            "These constellation lamps once guided the night gliders. I miss their wings.",
+            "Let us give the first glider a pattern to follow.",
+            "The last sky gate is ahead. I would like someone else to check my chart.",
+            "I will check it with you. Then we can wave to the travellers."
+        };
+        static readonly string[] AsideLines={
+            "I thought I had to mend every bridge before I could cross one.",
+            "You crossed the first part with me. That was enough for today.",
+            "My brother filled his bucket himself. He asked when you are coming for tea.",
+            "After the post boat is ready. We have a promise to carry.",
+            "You still have those seeds. I thought you might have forgotten them.",
+            "They are warm beside the letter. I want to show Gran tomorrow's orchard.",
+            "I wrote the first sentence: I miss having tea with you. It was easier than I feared.",
+            "Then the next sentence can wait until we lift this basket.",
+            "The little boat reached its lamp. My mother would have liked your careful landing.",
+            "I was still scared. You made room for that too.",
+            "There is an empty space on my shelf now. It feels like an open door.",
+            "Keep it for us. I will bring the map back with a story.",
+            "I usually tell travellers to stay close. Today I am glad you told me too.",
+            "Guides can share blankets. Pip sent a very big one.",
+            "You ask for help sooner now. That is something a keeper needs to learn.",
+            "I learnt it from a whole sky of friends. And you.",
+            "I left the unfinished chart on the table. Someone added a star while we worked.",
+            "Maybe another observer wanted a place beside you too."
+        };
+        public static string Resident(int world)=>Residents[Math.Max(0,Math.Min(JourneyStory.WorldCount-1,world))];
         public static string Task(int stop)=>Goals[JourneyStory.Zone(stop)*5+JourneyStory.IslandFor(stop)];
         public static StoryConversation BeforeLevel(int stop)=>Visit(stop,JourneyStory.PageFor(JourneyStory.WorldFirst(JourneyStory.Zone(stop))));
         public static StoryConversation Visit(int stop,int receipt=-1,bool alreadyMet=false)
@@ -215,11 +349,28 @@ namespace Cascade.Content
         }
         public static StoryConversation Island(int world,int island)
         {
-            if(world<0||world>=8||island<0||island>=5)throw new ArgumentOutOfRangeException();
+            if(world<0||world>=JourneyStory.WorldCount||island<0||island>=5)throw new ArgumentOutOfRangeException();
             int offset=(world*5+island)*2;
             return new StoryConversation(2000+world*10+island,new StoryLine(Resident(world),IslandLines[offset]),new StoryLine("Mika",IslandLines[offset+1]));
         }
-        public static bool HasCheckpoint(int stop,int completedStage)=>completedStage==1&&stop>=1&&stop<160&&stop%3==1;
+        public static StoryConversation IslandOpening(int world,int island)
+        {
+            if(world<0||world>=JourneyStory.WorldCount||island<0||island>=5)throw new ArgumentOutOfRangeException();
+            int offset=(world*5+island)*2;
+            return new StoryConversation(8000+world*10+island,new StoryLine(Resident(world),OpeningLines[offset]),new StoryLine("Mika",OpeningLines[offset+1],Goals[world*5+island]));
+        }
+        public static bool HasLevelAside(int stop)
+        {
+            if(stop<0||stop>=JourneyStory.TotalLevels)return false;
+            return stop==JourneyStory.IslandFirst(JourneyStory.Zone(stop),3)+1;
+        }
+        public static StoryConversation LevelAside(int stop)
+        {
+            if(!HasLevelAside(stop))throw new ArgumentOutOfRangeException(nameof(stop));
+            int world=JourneyStory.Zone(stop),offset=world*2;
+            return new StoryConversation(7000+stop,new StoryLine(Resident(world),AsideLines[offset]),new StoryLine("Mika",AsideLines[offset+1]));
+        }
+        public static bool HasCheckpoint(int stop,int completedStage)=>completedStage==1&&stop>=1&&stop<JourneyStory.TotalLevels&&stop%3==1;
         public static StoryConversation Checkpoint(int stop)
         {
             int world=JourneyStory.Zone(stop),offset=world*4+(JourneyStory.IslandFor(stop)%2)*2;

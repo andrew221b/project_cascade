@@ -86,6 +86,13 @@ namespace Cascade.Presentation
             SetScreen(Interaction.Attempt.Current.Status==PuzzleStatus.Won ? (IsCheckpoint?GameScreen.Checkpoint:GameScreen.Win)
                 : Interaction.Attempt.Current.Status==PuzzleStatus.Lost ? GameScreen.Fail : GameScreen.Playing);
         }
+        bool HasResumableJourneyAttempt=>journeyActive&&(Interaction.Attempt.Current.Status!=PuzzleStatus.Won||IsCheckpoint
+            ||profile.Completion?.Acknowledged==false&&profile.Completion.AttemptId==Interaction.Attempt.AttemptId.ToString("D"));
+        void ResumeJourneyPuzzle()
+        {
+            if(Interaction.Attempt.Current.Status==PuzzleStatus.Lost){SetScreen(GameScreen.Playing);Retry();}
+            else ShowGame();
+        }
         public void ShowSettings()
         {
             if(CurrentScreen!=GameScreen.Settings)returnScreen=CurrentScreen; settingsPage=0; languagePreview=null; SetScreen(GameScreen.Settings);
@@ -99,13 +106,14 @@ namespace Cascade.Presentation
         void SetScreen(GameScreen screen)
         {
             if (!flowReady) return;
+            if(screen==GameScreen.ReachChallenges||screen==GameScreen.PowerupChallenges)screen=GameScreen.TravelBag;
             CancelConversation();CloseLandingPreview();
             if(screen!=GameScreen.Playing&&MechanicPopupOpen)ResetMechanicDiscovery();
             if(screen!=GameScreen.Playing)SettleDescent();
             if(screen!=GameScreen.Playing) { CancelHint(); StopPresentation(); }
             bool changed=CurrentScreen!=screen;
             if(changed||screen!=GameScreen.Playing)reactionBanner?.Clear();
-            CurrentScreen=screen;machine.LivingWorld.SetMapSky(null);machine.LivingWorld.SetQuietFlight(screen==GameScreen.Win||screen==GameScreen.Fail);
+            CurrentScreen=screen;machine.LivingWorld.SetMapSky(null);machine.LivingWorld.SetQuietFlight(screen==GameScreen.Win||screen==GameScreen.Fail||screen==GameScreen.Prologue);
             machine.LivingWorld.SetWorkshop(screen!=GameScreen.JourneyMap&&screen!=GameScreen.Dialogue&&screen!=GameScreen.JourneyEnd&&screen!=GameScreen.Playing&&screen!=GameScreen.Win&&screen!=GameScreen.Fail&&screen!=GameScreen.Checkpoint); userPaused=screen==GameScreen.Pause;
             Interaction.SetPaused(MechanicPopupOpen||screen!=GameScreen.Playing && screen!=GameScreen.Win && screen!=GameScreen.Fail && screen!=GameScreen.Checkpoint);
             bool machineVisible=screen==GameScreen.Playing || screen==GameScreen.Fail || screen==GameScreen.Checkpoint;
@@ -269,7 +277,6 @@ namespace Cascade.Presentation
             else if(CurrentScreen==GameScreen.SaveRecovery) DrawSaveRecovery();
             else if(CurrentScreen==GameScreen.TravelBag) DrawTravelBag();
             else if(CurrentScreen==GameScreen.Journal) DrawJournal();
-            else if(CurrentScreen==GameScreen.ReachChallenges) DrawReachChallenges();
             else if(CurrentScreen==GameScreen.Collection) DrawCollection();
             else if(CurrentScreen==GameScreen.Workshop) DrawWorkshop();
             else if(CurrentScreen==GameScreen.Requests) DrawRequests();
@@ -278,7 +285,6 @@ namespace Cascade.Presentation
             else if(CurrentScreen==GameScreen.Parcel) DrawParcel();
             else if(CurrentScreen==GameScreen.JourneyEnd)DrawJourneyEnd();
             else if(CurrentScreen==GameScreen.Devices) DrawDevices();
-            else if(CurrentScreen==GameScreen.PowerupChallenges) DrawReachChallenges();
             else if(CurrentScreen==GameScreen.Pause) {
                 MenuTitle("Take a break", "Your puzzle will wait.");
                 var friend=Picture("Mika rests beside the puzzle",menuRoot,new Vector2(.30f,.64f),new Vector2(.70f,.82f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
@@ -300,6 +306,13 @@ namespace Cascade.Presentation
         void FinishMenuContrast()
         {
             foreach(var label in menuRoot.GetComponentsInChildren<TextMeshProUGUI>())if(!IsSymbolFace(label.name)&&label.name!="Mini glyph")label.color=label.name=="Earned score"?new Color(1,.88f,.46f):navigationLightLabels.Contains(label)||label.GetComponentInParent<Button>()?.GetComponent<Image>()?.sprite==enamelControls[0]?new Color(1,.97f,.84f):MenuInk;
+            bool nightMap=CurrentScreen==GameScreen.JourneyMap&&mapPage==8;
+            bool nightResult=(CurrentScreen==GameScreen.Win||CurrentScreen==GameScreen.Parcel||CurrentScreen==GameScreen.JourneyEnd)&&machine.LivingWorld.Zone==8;
+            foreach(var label in menuRoot.GetComponentsInChildren<TextMeshProUGUI>()){
+                bool mapCopy=nightMap&&label.GetComponentInParent<Button>()==null;
+                bool resultCopy=nightResult&&(label.name=="Completed stages"||label.name=="Rank guidance"||label.name=="Earned coins"||label.name=="Earned light"||label.name=="Completion reward note"||label.name=="Journey ending"||label.name=="Menu title"||label.name=="Menu description");
+                if(mapCopy||resultCopy)label.color=MenuPaper;
+            }
             foreach(var button in menuRoot.GetComponentsInChildren<Button>())if(!button.interactable){
                 var image=button.GetComponent<Image>();if(image!=null&&image.color.a>0)image.color=new Color(.86f,.91f,.87f);
                 var colors=button.colors;colors.disabledColor=Color.white;button.colors=colors;
@@ -344,7 +357,7 @@ namespace Cascade.Presentation
             if(CurrentScreen==GameScreen.Win){ContinueCompletion();return;}
             if(CanOfferStrongerWood){RestartWithStrongerWood();return;}
             int bonus=Catalog.BonusLevels.ToList().FindIndex(c=>c.Definition.PuzzleId==Interaction.Attempt.Level.PuzzleId);
-            if(bonus>=0){if(bonus+1<Catalog.BonusLevels.Count)StartContent(Catalog.BonusLevels[bonus+1]);else ShowReachChallenges();return;}
+            if(bonus>=0){ShowJourney();return;}
             if(journeyActive) {ShowJourney();return;}
             var levels=PreferredLevels();int index=levels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==node);
             if(index>=0&&index+1<levels.Count)StartContent(levels[index+1]);else ShowHome();
@@ -368,11 +381,6 @@ namespace Cascade.Presentation
             MenuReadingSurface("Device instructions cloth",new Vector2(.12f,.375f),new Vector2(.88f,.567f));
             var explanation=Text("Device explanation",menuRoot,new Vector2(.12f,.285f),new Vector2(.88f,.47f),18,wind?"Wind pushes the whole row one place when it lands. Follow the arrow. Take your time to think.":DeviceCopy[deviceIndex]);explanation.alignment=TextAlignmentOptions.TopLeft;explanation.margin=new Vector4(0,8*MenuUnit,0,0);explanation.enableAutoSizing=true;explanation.fontSizeMin=17*MenuUnit;explanation.fontSizeMax=18*MenuUnit;
 
-            var example=Catalog.PrimaryLevels.Concat(Catalog.BonusLevels).First(c=>c.Definition.CampaignNodeId==DeviceNodes[deviceIndex]);
-            if(!wind){
-                var tryLevel=MenuButton(IsContentOpen(example)?new UiCopy("Try this example"):new UiCopy("Opens at level {0}",DeviceNodes[deviceIndex].TrimStart('C','0')),.12f,()=>StartContent(example),true);
-                tryLevel.interactable=IsContentOpen(example);
-            }
             MenuButton("Basics",.025f,ShowHowToPlay,false,.08f,.48f);MenuButton("Back",.025f,CloseMenu,false,.52f,.92f);
         }
         void DrawSettings()
@@ -438,6 +446,7 @@ namespace Cascade.Presentation
                 if(entry.Key.name!="Bomb painted letter")entry.Key.color=Preferences.HighContrast?new Color(.06f,.17f,.18f):menuRoot!=null&&entry.Key.transform.IsChildOf(menuRoot)?MenuInk:Ink;
             }
             PaintControlLabels();
+            if(menuRoot!=null&&menuRoot.gameObject.activeSelf)FinishMenuContrast();
         }
         static bool IsSymbolFace(string label)=>label=="Body painted letter"||label=="Bomb painted letter"||label=="Required letter"||label=="Symbol"||label=="TargetSymbol"||label=="DeviceGlyph"||label=="ZoomSymbol";
         void ScheduleDeadEnd()

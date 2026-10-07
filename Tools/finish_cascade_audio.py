@@ -12,7 +12,8 @@ folder = root / 'CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Audio
 bpm = dict(Menu_HomeAmongClouds=84, Menu_HomeAmongCloudsBalanced=84, WindGarden_PaperWings=92, RainMill_RainOnCedar=76,
            CopperOrchard_GoldenAfternoon=104, CloudPost_LettersOnTheBreeze=96,
            GlassLagoon_ReflectedMoon=80, MossArchive_StoriesInTheLeaves=72,
-           SnowSpire_WarmLightInSnow=78, GreatBeacon_TheWayHome=100)
+           SnowSpire_WarmLightInSnow=78, GreatBeacon_TheWayHome=100,
+           StarObservatory_ConstellationLullaby=60)
 
 def read(path):
     with wave.open(str(path), 'rb') as file:
@@ -55,10 +56,11 @@ if args.scores or args.music_only:
             continue
         data, rate = read(path)
         if path.stem in bpm:
-            length = int(32 * 6 * 30 / bpm[path.stem] * rate)
+            night = path.stem == 'StarObservatory_ConstellationLullaby'
+            length = int((16 if night else 32) * 6 * 30 / bpm[path.stem] * rate)
             body, tail = data[:length].copy(), data[length:]
             body[:len(tail)] += tail
-            data = gain(body, .12, .72)
+            data = gain(body, .075 if night else .12, .50 if night else .72)
         else:
             activity = np.flatnonzero(np.max(np.abs(data), axis=1) > .001)
             data = data[:min(len(data), activity[-1] + int(rate * .12))]

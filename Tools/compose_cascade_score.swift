@@ -22,7 +22,8 @@ let themes = [
     Theme(name: "GlassLagoon_ReflectedMoon", bpm: 80, root: 62, minor: true, lead: 3, pluck: 2, warmth: 0.23),
     Theme(name: "MossArchive_StoriesInTheLeaves", bpm: 72, root: 59, minor: true, lead: 3, pluck: 6, warmth: 0.22),
     Theme(name: "SnowSpire_WarmLightInSnow", bpm: 78, root: 64, minor: false, lead: 0, pluck: 2, warmth: 0.26),
-    Theme(name: "GreatBeacon_TheWayHome", bpm: 100, root: 62, minor: false, lead: 3, pluck: 1, warmth: 0.20)
+    Theme(name: "GreatBeacon_TheWayHome", bpm: 100, root: 62, minor: false, lead: 3, pluck: 1, warmth: 0.20),
+    Theme(name: "StarObservatory_ConstellationLullaby", bpm: 60, root: 62, minor: false, lead: 3, pluck: 2, warmth: 0.27)
 ]
 // Piano, koto, harp, flute, strings, cello, nylon guitar, vibraphone.
 let programs: [UInt8] = [0, 107, 46, 73, 48, 42, 24, 11]
@@ -103,6 +104,40 @@ func compose(_ theme: Theme, index: Int, balancedMenu: Bool = false) -> ([Note],
     return (notes, 32 * 6 * unit)
 }
 
+// Original 16-bar D-major pentatonic lullaby: harp, flute, warm strings and cello.
+// The second eight-bar phrase opens gently, then returns to the opening tonic.
+func observatory(_ theme: Theme) -> ([Note], Double) {
+    var notes = [Note](); let unit = 30 / theme.bpm
+    let scale = [0, 2, 4, 7, 9]
+    let harmony = [0, -1, -2, 0, 1, -2, -1, 0, 0, 1, -1, -2, 1, -1, 0, 0]
+    let verse = [0, 2, 3, 2, 1, 0, -1, 0, 2, 3, 2, 0, 1, -1, 0, 0]
+    let refrain = [3, 4, 5, 3, 2, 3, 4, 2, 3, 5, 4, 2, 1, -1, 0, 0]
+    func key(_ degree: Int, _ octave: Int = 0) -> Int {
+        let oct = Int(floor(Double(degree) / 5)); let pos = ((degree % 5) + 5) % 5
+        return theme.root + scale[pos] + 12 * (oct + octave)
+    }
+    func add(_ at: Double, _ duration: Double, _ voice: Int, _ pitch: Int, _ velocity: Int) {
+        let onset = max(0, at * unit + sin(at * 1.31 + Double(voice)) * 0.006)
+        notes.append(Note(time: onset, end: onset + duration * unit, instrument: voice,
+            pitch: UInt8(clamping: pitch), velocity: UInt8(clamping: velocity)))
+    }
+    for bar in 0..<16 {
+        let at = Double(bar * 6), degree = harmony[bar], answer = bar >= 8
+        let lift = answer ? (bar == 8 ? 2 : 5) : 0
+        for beat in [0, 3] { add(at + Double(beat), 2.8, 5, key(degree, -2), 32 + lift) }
+        for interval in [0, 2, 3] { add(at, 5.8, 4, key(degree + interval, -1), 24 + lift) }
+        for (step, interval) in [0, 2, 3, 2, 4, 2].enumerated() {
+            add(at + Double(step), 1.65, 2, key(degree + interval, -1), (step % 3 == 0 ? 44 : 35) + lift)
+        }
+        let melody = answer ? refrain : verse, index = (bar % 8) * 2
+        let breath = bar % 4 == 3 ? -5 : 0
+        add(at, 2.75, 3, key(melody[index], 1), 47 + lift + breath)
+        if bar % 4 != 3 { add(at + 3, 2.5, 3, key(melody[index + 1], 1), 42 + lift) }
+        else { add(at + 4.5, 1.2, 2, key(degree + 2), 32 + lift) }
+    }
+    return (notes, 16 * 6 * unit)
+}
+
 func render(_ notes: [Note], length: Double, name: String, wet: Float, balancedMenu: Bool = false) throws {
     let engine = AVAudioEngine()
     let format = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 2)!
@@ -115,6 +150,9 @@ func render(_ notes: [Note], length: Double, name: String, wet: Float, balancedM
         sampler.stereoPan = pans[i] * 100
         sampler.masterGain = i == 4 ? -8 : i == 5 ? -5 : -2
         if balancedMenu && i == 3 { sampler.masterGain = -8.5 }
+        if name == "StarObservatory_ConstellationLullaby" {
+            sampler.masterGain = i == 3 ? -9 : i == 4 ? -14 : i == 5 ? -11 : -5
+        }
         samplers.append(sampler)
     }
     let reverb = AVAudioUnitReverb(); reverb.loadFactoryPreset(.mediumHall); reverb.wetDryMix = wet * 100
@@ -154,7 +192,8 @@ func render(_ notes: [Note], length: Double, name: String, wet: Float, balancedM
 
 for (index, theme) in themes.enumerated() where selectedTheme == nil || selectedTheme == theme.name {
     let balanced = balanceMenu && index == 0
-    let (score, length) = compose(theme, index: index, balancedMenu: balanced)
+    let (score, length) = theme.name == "StarObservatory_ConstellationLullaby"
+        ? observatory(theme) : compose(theme, index: index, balancedMenu: balanced)
     try render(score, length: length, name: theme.name + (balanced ? "Balanced" : ""), wet: theme.warmth, balancedMenu: balanced)
 }
 // Short, purposeful acoustic reactions, with proper release rather than bleeps.

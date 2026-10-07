@@ -73,11 +73,15 @@ shows the opening comic once for that journey, then opens the map. The map's
 three top tabs are the only Shapes / Words / Mixed selector. Each tab has its
 own opened levels, clear stars/scores, mastery records, dialogue/lesson history,
 director memory, pinned attempt and exact descent stage. The shared story leads
-Mika to repair the bridges and relight the Great Beacon. Settings select UI and
+Mika to repair the bridges and relight the Great Beacon, then help Aster restore
+the night constellations. Each world opens with a three-page comic, each island
+has its own opening exchange, and occasional level exchanges develop its resident.
+Continue retries a failed current stage and preserves playing rows/checkpoints;
+Practice no longer replaces the campaign attempt. Settings select UI and
 word language; they do not repeat the mode selector. Map Back returns Home.
 
-Shapes follows the 155 published shape-only nodes; Words follows 154 word
-bindings in the chosen word language. Mixed visits all 160 nodes, using the five
+Shapes follows the 179 published shape-only nodes; Words follows 178 word
+bindings in the chosen word language. Mixed visits all 184 nodes, using the five
 existing combined bindings and alternating ready word/shape puzzles elsewhere.
 No puzzle rules or solver witnesses are changed. Account wallet, shop stock,
 purchased entitlements, earned parcels and cosmetics are shared. Account
@@ -173,10 +177,11 @@ command presentation; parcel claims call the save path before their arrival
 animation. Failed writes remain explicit and do not become a durable-save claim.
 The original 40 lessons remain the tutorial route. P20 adds 120 primary puzzles
 C41–C160 with solver minima of 5–12 actions (mean 7.8667), plus ten optional
-stamp detours in the new content. The catalog contains 160 primary puzzles and
-477 localized bindings, 637 concrete definitions; locale bindings are alternate
-renderings of campaign nodes, not 637 distinct campaign stops. The eight-region
-journey spans eight whole-world maps (15,15,10,24,24,24,24,24 full levels). Wind Gardens, Rain Mill and Copper Orchard retain
+stamp detours in the new content. The catalog now appends C161–C184 in Star Observatory, preserving the first
+637 definitions unchanged. It contains 184 primary puzzles and 549 localized
+bindings, 733 concrete definitions; locale bindings are alternate renderings
+of campaign nodes. The nine-region journey spans nine whole-world maps
+(15,15,10,24,24,24,24,24,24 full levels). Wind Gardens, Rain Mill and Copper Orchard retain
 their original art; five new original Base/Map pairs introduce Cloud Post,
 Glass Lagoon, Moss Archive, Snow Spire and Great Beacon. Mika's optional story
 retains its 33 original level-bound story beats and ends at the beacon. Each illustrated island now groups two to five full levels; levels retain three stages. Cream heading/footer/current-marker cards are removed from the map. Dark ink reads directly on the sky, and teal/amber framed controls form the footer. The current-island label shows cleared/group total; the footer shows cleared/world total and remaining levels before the next world. Opened-level arrows support replay while locked levels remain inaccessible.

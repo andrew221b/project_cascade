@@ -139,7 +139,7 @@ namespace Cascade.Application
             return new[]{4,8,7,4,3,5}[node%6];
         }
         public static bool CanDescend(LevelDefinition source)=>source!=null&&source.CampaignNodeId.StartsWith("C",StringComparison.Ordinal)
-            &&NodeNumber(source)>=1&&NodeNumber(source)<=160;
+            &&NodeNumber(source)>=1&&NodeNumber(source)<=184;
         static bool Prove(DescentRun run,LevelDefinition source,int stage,CancellationToken cancellation,int budget)
         {
             var result=PuzzleSolver.FindShortest(new PuzzleResolver(run.Level(source,stage)),stateBudget:budget,cancellationToken:cancellation);

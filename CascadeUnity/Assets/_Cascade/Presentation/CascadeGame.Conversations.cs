@@ -82,6 +82,7 @@ namespace Cascade.Presentation
         }
         Sprite ConversationPortrait(string name)
         {
+            if(name=="Aster")return Resources.Load<Sprite>("CascadeArt/Journey/Aster");
             if(residents==null)residents=NavigationSlices("Journey/Residents",3,2);
             int index=Array.IndexOf(new[]{"Bram","Sora","Neri","Toma","Lumi","Gran"},name);if(index>=0)return residents[index];
             if(incumbentBusts==null){
@@ -159,14 +160,13 @@ namespace Cascade.Presentation
             var scene=StoryConversations.Island(world,island);if(heardStory.Contains(scene.Receipt))return;
             OpenConversation(scene,"Back to the map",()=>TryAutomaticAd());
         }
-        bool CanResumeSelectedJourney(int index)=>journeyActive
-            &&(Interaction.Attempt.Current.Status==Cascade.Domain.PuzzleStatus.Playing||descent!=null&&Interaction.Attempt.Current.Status!=Cascade.Domain.PuzzleStatus.Won||IsCheckpoint)
+        bool CanResumeSelectedJourney(int index)=>index>=0&&index<Catalog.PrimaryLevels.Count&&HasResumableJourneyAttempt
             &&(Interaction.Attempt.RouteLength>0||descent!=null||IsPlanningDescent||IsPlanningDirection||!JourneySequence().Any(c=>Cascade.Application.DeliveryDirector.MatchesSource(Interaction.Attempt,c.Definition)))
             &&Catalog.PrimaryLevels[index].Definition.CampaignNodeId==node;
         void TravelSelectedJourney()
         {
             if(!IsJourneyStopOpen(selectedJourneyStop)){ShowJourney();return;}
-            if(CanResumeSelectedJourney(selectedJourneyStop))ShowGame();else BeginJourney(selectedJourneyStop);
+            if(CanResumeSelectedJourney(selectedJourneyStop))ResumeJourneyPuzzle();else BeginJourney(selectedJourneyStop);
         }
     }
 }
