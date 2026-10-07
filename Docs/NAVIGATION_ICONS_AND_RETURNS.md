@@ -11,13 +11,13 @@ MenuIcons now uses authored opaque silhouette bounds with four source pixels of 
 ## Destination and return rules
 
 - Home keeps Start game / Shop / Settings / Remove ads. Start opens the introductory story once, then the map; the map alone selects Shapes / Words / Mixed.
-- Map has an illustrated bag at top right. It opens My things, containing Tools, Trophies, Journal, Workshop and Practice. Back returns to the same map selection.
+- Map has an illustrated bag at top right. It opens My things, containing Tools, Trophies, Journal and Workshop. Back returns to the same map selection. Practice has been removed.
 - Shop opened from Home leads to My things. My things restores the original shop tab, item and shop parent after nested tools/shop visits.
 - A shop opened from game tools returns to those tools; a shop opened from the trophy collection returns to the collection. Neither creates another root inventory entry.
 - Journal leads to Requests, Trophies and My routes. Requests/trails return to Requests, records return to Journal, trophy collection returns to its caller. Journal retains the existing three-light unlock.
 - Settings retains its caller even if shown twice. Existing mode saves, current descent stage, puzzle state, prices and rules are untouched.
 
-Practice explicitly names the existing power-up teaching levels. New EN/RU/UK copy is added only for this label and the journey inventory description. Existing localization IDs remain.
+First-use teaching stays inside the current level. Old training definitions and localization IDs are retained for save compatibility and developer fixtures; they have no player entry.
 
 Disabled shop actions retain the same muted enamel frame instead of switching to a flat cream panel.
 

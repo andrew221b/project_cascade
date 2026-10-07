@@ -23,7 +23,7 @@ namespace Cascade.Presentation
         public bool IsContentOpen(LevelContent content)
         {
             if(content==null)return false;
-            if(!DescentRun.CanDescend(content.Definition))return Catalog.BonusLevels.Contains(content);
+            if(!DescentRun.CanDescend(content.Definition))return false;
             var sequence=JourneySequence();
             return CampaignProgress.IsOpen(sequence.Select(c=>c.Definition.CampaignNodeId).ToArray(),sessionClears,content.Definition.CampaignNodeId);
         }

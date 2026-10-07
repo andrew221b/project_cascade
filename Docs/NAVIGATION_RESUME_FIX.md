@@ -17,6 +17,13 @@ animated examples and removes the action that replaced the campaign with an exam
 An old bonus result returns to the campaign map. Existing bonus definitions and art
 are retained for developer fixtures and compatible old saves.
 
+Final Practice access review: old bonus-lesson records are also hidden from My
+routes, and the shared menu content-opening predicate rejects training content.
+This closes the saved-record replay route without deleting profile history.
+First-use lesson films and coaching on the current campaign attempt remain.
+Presentation compiled successfully after this correction (0 errors, 7 existing
+warnings); native tests and new screenshots were not rerun for this narrow guard.
+
 Optional stamp trails and stamp-record replay also used the same live-attempt slot.
 Their shared entry method now refuses to replace a resumable campaign attempt; both
 launch buttons explain that the current level must be finished first. The guard also

@@ -225,10 +225,10 @@ namespace Cascade.Presentation
         }
         void DrawRecords()
         {
-            var records=profile.ModeRecords.OrderBy(r=>r.PuzzleId,StringComparer.Ordinal).ThenBy(r=>r.StampGoal).ToArray();
+            var records=profile.ModeRecords.Where(r=>!Catalog.BonusLevels.Any(c=>c.Definition.PuzzleId==r.PuzzleId)).OrderBy(r=>r.PuzzleId,StringComparer.Ordinal).ThenBy(r=>r.StampGoal).ToArray();
             if(records.Length==0){MenuTitle("My routes","Your own best paths.");MenuReadingSurface("Empty route book cloth",new Vector2(.12f,.38f),new Vector2(.88f,.65f));Text("Empty journal",menuRoot,new Vector2(.16f,.40f),new Vector2(.84f,.63f),22,"Finish a puzzle to leave a note here.");MenuButton("Back",.10f,ShowJournal);return;}
             recordPage=Math.Min(recordPage,records.Length-1);var record=records[recordPage];
-            var content=Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).FirstOrDefault(c=>c.Definition.PuzzleId==record.PuzzleId&&c.Definition.ContentHash==(record.SourceHash??record.ContentHash));
+            var content=Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).FirstOrDefault(c=>c.Definition.PuzzleId==record.PuzzleId&&c.Definition.ContentHash==(record.SourceHash??record.ContentHash));
             MenuTitle("My routes",content==null?"A note from an earlier journey.":new UiCopy(record.StageCount==3?"Level {0}, 3 stages":"Level {0}",content.Definition.CampaignNodeId.TrimStart('C','0')));
             if(content!=null)MiniMachine(Rect("Record target",menuRoot,new Vector2(.19f,.49f),new Vector2(.81f,.72f)),content.Definition.InitialSymbolIds,content.Definition.TargetSymbolIds);
             MetaArrows(()=>{recordPage=(recordPage+records.Length-1)%records.Length;DrawMenu();},()=>{recordPage=(recordPage+1)%records.Length;DrawMenu();});
