@@ -23,9 +23,24 @@ namespace Cascade.Presentation
         static readonly string[] RankNames={"Apprentice","Garden friend","Mill keeper","Pathfinder","Beacon keeper"};
         ParcelReceipt WaitingParcel=>Rewards.Parcels.FirstOrDefault(p=>!p.Claimed);
         string[] OrderedNodes=>Catalog.PrimaryLevels.Select(c=>c.Definition.CampaignNodeId).ToArray();
-        public void ShowTravelBag(){SetScreen(GameScreen.TravelBag);}
-        public void ShowJournal(){SetScreen(GameScreen.Journal);}
-        public void ShowCollection(){collectionReturn=CurrentScreen==GameScreen.Shop?GameScreen.Shop:GameScreen.TravelBag;giftPage=Math.Max(0,Array.IndexOf(JourneyRewards.Gifts,Rewards.SelectedGift));SetScreen(GameScreen.Collection);}
+        GameScreen bagReturnScreen=GameScreen.Home,journalReturnScreen=GameScreen.TravelBag;
+        GameScreen bagShopReturnScreen=GameScreen.Home;
+        int bagShopTab,bagShopItem;
+        public void ShowTravelBag()
+        {
+            if(CurrentScreen==GameScreen.Home||CurrentScreen==GameScreen.Shop||CurrentScreen==GameScreen.JourneyMap){
+                bagReturnScreen=CurrentScreen;
+                if(CurrentScreen==GameScreen.Shop){bagShopReturnScreen=shopReturnScreen;bagShopTab=shopTab;bagShopItem=shopItem;}
+            }
+            SetScreen(GameScreen.TravelBag);
+        }
+        void BackFromBag()
+        {
+            if(bagReturnScreen==GameScreen.Shop){shopReturnScreen=bagShopReturnScreen;shopTab=bagShopTab;shopItem=bagShopItem;}
+            SetScreen(bagReturnScreen==GameScreen.TravelBag?GameScreen.Home:bagReturnScreen);
+        }
+        public void ShowJournal(){if(CurrentScreen==GameScreen.TravelBag||CurrentScreen==GameScreen.JourneyEnd)journalReturnScreen=CurrentScreen;SetScreen(GameScreen.Journal);}
+        public void ShowCollection(){collectionReturn=CurrentScreen==GameScreen.Shop?GameScreen.Shop:CurrentScreen==GameScreen.Journal?GameScreen.Journal:GameScreen.TravelBag;giftPage=Math.Max(0,Array.IndexOf(JourneyRewards.Gifts,Rewards.SelectedGift));SetScreen(GameScreen.Collection);}
         public void ShowWorkshop(){workshopReturn=CurrentScreen==GameScreen.Shop?GameScreen.Shop:GameScreen.TravelBag;SetScreen(GameScreen.Workshop);}
         public void ShowRequests(){SetScreen(GameScreen.Requests);}
         public void ShowRecords(){recordPage=0;SetScreen(GameScreen.Records);}
@@ -54,9 +69,9 @@ namespace Cascade.Presentation
             MenuReadingSurface("Current order cloth",new Vector2(.12f,.345f),new Vector2(.88f,.445f));
             Text("Current order",menuRoot,new Vector2(.10f,.335f),new Vector2(.90f,.43f),18,order);
             if(WaitingParcel!=null)MenuButton("Open parcel",.26f,ShowParcel,true);
-            else MenuButton("Choose a gift",.26f,ShowCollection,true);
-            MenuButton("Requests",.14f,ShowRequests,false,.08f,.48f);MenuButton("Keepsakes",.14f,ShowCollection,false,.52f,.92f);
-            MenuButton("Back",.025f,ShowTravelBag);
+            else MenuButton("Trophies",.26f,ShowCollection,true);
+            MenuButton("Requests",.14f,ShowRequests,false,.08f,.48f);MenuButton("My routes",.14f,ShowRecords,false,.52f,.92f);
+            MenuButton("Back",.025f,()=>SetScreen(journalReturnScreen));
         }
         void MetaArrows(Action previousAction,Action nextAction)
         {
@@ -167,19 +182,19 @@ namespace Cascade.Presentation
         void DrawContracts()
         {
             var choices=StampTrails();MenuTitle("Stamp trails","Bring the row home with its stamp.");
-            if(choices.Length==0){MenuButton("Back",.10f,ShowTravelBag);return;}
+            if(choices.Length==0){MenuButton("Back",.10f,ShowRequests);return;}
             contractPage=Math.Min(contractPage,choices.Length-1);var content=choices[contractPage];
             MiniMachine(Rect("Stamp target",menuRoot,new Vector2(.17f,.52f),new Vector2(.83f,.78f)),content.Definition.InitialSymbolIds,content.Definition.TargetSymbolIds);
             MetaArrows(()=>{contractPage=(contractPage+choices.Length-1)%choices.Length;DrawMenu();},()=>{contractPage=(contractPage+1)%choices.Length;DrawMenu();});
             MenuReadingSurface("Stamp trail note cloth",new Vector2(.12f,.215f),new Vector2(.88f,.455f));
             Text("Contract stop",menuRoot,new Vector2(.10f,.40f),new Vector2(.90f,.47f),22,new UiCopy("Stamp trail {0}",content.Definition.CampaignNodeId.TrimStart('C','0')));
             Text("Contract freedom",menuRoot,new Vector2(.10f,.235f),new Vector2(.90f,.365f),18,"This is an extra challenge. Your path stays open.");
-            MenuButton("Try this trail",.12f,()=>StartStampTrail(content.Definition.CampaignNodeId),true);MenuButton("Back",.01f,ShowTravelBag,false,.30f,.70f);
+            MenuButton("Try this trail",.12f,()=>StartStampTrail(content.Definition.CampaignNodeId),true);MenuButton("Back",.01f,ShowRequests,false,.30f,.70f);
         }
         void DrawRecords()
         {
             var records=profile.ModeRecords.OrderBy(r=>r.PuzzleId,StringComparer.Ordinal).ThenBy(r=>r.StampGoal).ToArray();
-            if(records.Length==0){MenuTitle("My routes","Your own best paths.");MenuReadingSurface("Empty route book cloth",new Vector2(.12f,.38f),new Vector2(.88f,.65f));Text("Empty journal",menuRoot,new Vector2(.16f,.40f),new Vector2(.84f,.63f),22,"Finish a puzzle to leave a note here.");MenuButton("Back",.10f,ShowTravelBag);return;}
+            if(records.Length==0){MenuTitle("My routes","Your own best paths.");MenuReadingSurface("Empty route book cloth",new Vector2(.12f,.38f),new Vector2(.88f,.65f));Text("Empty journal",menuRoot,new Vector2(.16f,.40f),new Vector2(.84f,.63f),22,"Finish a puzzle to leave a note here.");MenuButton("Back",.10f,ShowJournal);return;}
             recordPage=Math.Min(recordPage,records.Length-1);var record=records[recordPage];
             var content=Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).FirstOrDefault(c=>c.Definition.PuzzleId==record.PuzzleId&&c.Definition.ContentHash==(record.SourceHash??record.ContentHash));
             MenuTitle("My routes",content==null?"A note from an earlier journey.":new UiCopy(record.StageCount==3?"Level {0} · 3 stages":"Level {0}",content.Definition.CampaignNodeId.TrimStart('C','0')));
@@ -195,7 +210,7 @@ namespace Cascade.Presentation
                 if(record.StageCount==3)StartContent(content);
                 else if(record.StampGoal!=0)StartExactTrail(content,record.StampGoal);else StartContent(content);
             },true);
-            MenuButton("Back",.01f,ShowTravelBag,false,.30f,.70f);
+            MenuButton("Back",.01f,ShowJournal,false,.30f,.70f);
         }
     }
 }

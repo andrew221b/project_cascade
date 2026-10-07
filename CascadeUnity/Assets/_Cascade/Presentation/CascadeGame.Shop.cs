@@ -102,8 +102,9 @@ namespace Cascade.Presentation
         void QuietDisabledCounter(Button button)
         {
             if(button.interactable)return;
-            var face=button.GetComponent<Image>();face.sprite=art.panel;face.type=Image.Type.Sliced;
-            navigationLightLabels.Remove(button.GetComponentInChildren<TextMeshProUGUI>());
+            var face=button.GetComponent<Image>();face.sprite=enamelControls[0];face.type=Image.Type.Sliced;
+            face.color=new Color(.70f,.76f,.72f);
+            navigationLightLabels.Add(button.GetComponentInChildren<TextMeshProUGUI>());
         }
         void DrawTravelCounter(bool bag,bool collection=false)
         {
@@ -169,7 +170,9 @@ namespace Cascade.Presentation
                 buy.interactable=!saveBlocked&&monetization!=null&&!monetization.FullscreenActive&&(owned?EquippedGift!=gift:(TestMonetization||ShopCoins>=price)&&(shopTab!=0||Stock(tool)<ShopCatalog.StockLimit));
                 if(!TestMonetization&&!owned&&ShopCoins<price)buy.GetComponentInChildren<TextMeshProUGUI>().SetCopy(new UiCopy("Need {0} more coins",price-ShopCoins));
                 else if(shopTab==0&&Stock(tool)>=ShopCatalog.StockLimit)buy.GetComponentInChildren<TextMeshProUGUI>().SetCopy("Bag is full");QuietDisabledCounter(buy);
-                CounterButton("My tools link","Tool bag",.095f,.905f,.049f,.125f,ShowSupplies);
+                bool fromTools=shopReturnScreen==GameScreen.Supplies||shopReturnScreen==GameScreen.Playing||shopReturnScreen==GameScreen.Pause||shopReturnScreen==GameScreen.Fail;
+                CounterButton("My tools link",fromTools?"Tool bag":shopReturnScreen==GameScreen.Collection?"Trophies":"My things",.095f,.905f,.049f,.125f,
+                    fromTools?(Action)ShowSupplies:shopReturnScreen==GameScreen.Collection?()=>SetScreen(GameScreen.Collection):ShowTravelBag);
             }
         }
         public bool BuySelectedShopItem()

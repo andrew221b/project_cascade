@@ -88,7 +88,7 @@ namespace Cascade.Presentation
         }
         public void ShowSettings()
         {
-            returnScreen=CurrentScreen; settingsPage=0; languagePreview=null; SetScreen(GameScreen.Settings);
+            if(CurrentScreen!=GameScreen.Settings)returnScreen=CurrentScreen; settingsPage=0; languagePreview=null; SetScreen(GameScreen.Settings);
         }
         public void ShowDevices()
         {
@@ -217,7 +217,7 @@ namespace Cascade.Presentation
         void ResetMenu()
         {
             foreach(var ceremony in menuRoot.GetComponents<RewardCelebration>())ceremony.enabled=false;
-            menuActions.Clear();menuRows.Clear();menuBottoms.Clear();navigationLightLabels.Clear();
+            menuActions.Clear();menuRows.Clear();menuBottoms.Clear();menuSquares.Clear();navigationLightLabels.Clear();
             foreach(var key in baseTextSizes.Keys.Where(k=>k==null||k.transform.IsChildOf(menuRoot)).ToArray())baseTextSizes.Remove(key);
             foreach(Transform child in menuRoot){ child.gameObject.SetActive(false); Destroy(child.gameObject); }
             // The illustrated scene is the menu surface; ink sits on its quiet sky window.

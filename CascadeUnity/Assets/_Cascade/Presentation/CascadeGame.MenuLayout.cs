@@ -13,6 +13,7 @@ namespace Cascade.Presentation
         sealed class MenuBottom { public RectTransform rect;public float bottom; }
         readonly List<MenuRow> menuRows=new List<MenuRow>();
         readonly List<MenuBottom> menuBottoms=new List<MenuBottom>();
+        readonly List<KeyValuePair<RectTransform,float>> menuSquares=new List<KeyValuePair<RectTransform,float>>();
         float MenuUnit=>1/Mathf.Min(1,menuRoot.GetComponentInParent<Canvas>().scaleFactor);
         void RegisterMenuRow(Button button,float top,int index,float height=56,float gap=8)
         {
@@ -32,6 +33,7 @@ namespace Cascade.Presentation
                 var r=item.rect;r.anchorMin=new Vector2(r.anchorMin.x,0);r.anchorMax=new Vector2(r.anchorMax.x,0);
                 r.pivot=new Vector2(.5f,0);r.anchoredPosition=new Vector2(0,item.bottom*unit);r.sizeDelta=new Vector2(0,52*unit);
             }
+            foreach(var item in menuSquares)if(item.Key!=null)item.Key.sizeDelta=Vector2.one*item.Value*unit;
         }
         void MarkSelection(Button button,bool selected)
         {
@@ -67,7 +69,7 @@ namespace Cascade.Presentation
             b.GetComponent<Image>().sprite=enamelControls[0];b.GetComponent<Image>().type=Image.Type.Sliced;b.GetComponent<Image>().color=Color.white;RegisterMenuRow(b,.565f,index,62,8);
             var text=b.GetComponentInChildren<TextMeshProUGUI>();text.rectTransform.anchorMin=new Vector2(.26f,0);text.rectTransform.anchorMax=new Vector2(.90f,1);
             text.alignment=TextAlignmentOptions.MidlineLeft;text.fontSize=22*(Preferences.LargeText?1.10f:1);text.margin=new Vector4(3,3,3,3);
-            Picture("Navigation object",b.transform,new Vector2(.03f,.05f),new Vector2(.23f,.95f),Resources.Load<Sprite>(asset=="RibbonSpool"||asset=="Hourglass"?"CascadeArt/Devices/"+asset:"CascadeArt/Workshop/"+asset),true);
+            MenuIcon("Navigation object",b.transform,new Vector2(.13f,.5f),Resources.Load<Sprite>(asset=="RibbonSpool"||asset=="Hourglass"?"CascadeArt/Devices/"+asset:"CascadeArt/Workshop/"+asset));
             Rect("Open this page",b.transform,new Vector2(.92f,.36f),new Vector2(.97f,.64f)).gameObject.AddComponent<MenuChevronGraphic>().color=MenuPaper;
         }
         void WorkshopProgress(int complete)

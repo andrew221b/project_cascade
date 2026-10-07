@@ -64,6 +64,12 @@ namespace Cascade.Presentation
             var back=DirectionButton("Back",top,new Vector2(.015f,.12f),new Vector2(.18f,.90f),false,ShowHome);back.GetComponent<Image>().sprite=enamelControls[0];back.GetComponent<Image>().color=Color.white;foreach(var chevron in back.GetComponentsInChildren<ChevronGraphic>())chevron.color=new Color(1,.97f,.84f);
             var title=Text("Region",top,new Vector2(.22f,.43f),new Vector2(.95f,.95f),26,JourneyStory.ZoneName(zone));title.font=art.titleFont;title.alignment=TextAlignmentOptions.MidlineLeft;title.enableAutoSizing=true;title.fontSizeMin=20;title.fontSizeMax=26;
             var goal=Text("Journey goal",top,new Vector2(.22f,.07f),new Vector2(.95f,.44f),16,"Goal: Great Beacon");goal.alignment=TextAlignmentOptions.MidlineLeft;goal.enableAutoSizing=true;goal.fontSizeMin=14;goal.fontSizeMax=17;
+            title.rectTransform.anchorMax=new Vector2(.79f,.95f);goal.rectTransform.anchorMax=new Vector2(.79f,.44f);
+            var bag=Button("My things",top,new Vector2(.91f,.52f),new Vector2(.91f,.52f),ShowTravelBag);bag.name="Map bag";
+            ((RectTransform)bag.transform).sizeDelta=Vector2.one*48*MenuUnit;bag.GetComponentInChildren<TextMeshProUGUI>().SetCopy("");
+            menuSquares.Add(new System.Collections.Generic.KeyValuePair<RectTransform,float>((RectTransform)bag.transform,48));
+            bag.GetComponent<Image>().sprite=enamelControls[0];bag.GetComponent<Image>().type=Image.Type.Sliced;bag.GetComponent<Image>().color=Color.white;
+            LoadNavigationArt();MenuIcon("Inventory icon",bag.transform,new Vector2(.5f,.5f),navigationIcons[1],34);
             DrawJourneyModeTabs();
             var bottom=Rect("Journey task",menuRoot,new Vector2(.055f,0),new Vector2(.945f,0));
             bool future=!IsJourneyStopOpen(selectedJourneyStop);

@@ -1240,16 +1240,31 @@ namespace Cascade.Tests
         }
         [UnityTest] public IEnumerator HomePauseAndSettingsPreserveAttemptAndFreezeCoaching()
         {
-            game.LoadNode("C02");game.Coach.Advance(6,true);float idle=game.Coach.IdleSeconds;string hash=game.Interaction.Attempt.CurrentStateHash;
+            game.LoadNode("C02");yield return AwaitPreparation();yield return FinishDeviceTeaching();game.Coach.Advance(6,true);float idle=game.Coach.IdleSeconds;string hash=game.Interaction.Attempt.CurrentStateHash;
             game.ShowHome();yield return new WaitForSecondsRealtime(.08f);
             Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Home));Assert.That(game.Interaction.CanPlay,Is.False);
             Assert.That(game.Coach.IdleSeconds,Is.EqualTo(idle));
             Assert.That(game.GetComponentsInChildren<UnityEngine.UI.Button>().Select(b=>b.name),Is.EquivalentTo(new[]{"Startgame","Shop","Settings","Removeads"}));
             yield return ClickButton("Settings");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Settings));
+            game.ShowSettings(); // Reopening settings must not replace its parent with itself.
             yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Home));
-            yield return ClickButton("Shop");yield return ClickButton("Keepsakes");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Collection));
+            yield return ClickButton("Shop");yield return ClickButton("My tools link");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.TravelBag));
+            yield return ClickButton("Keepsakes");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Collection));
+            yield return ClickButton("Collection back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.TravelBag));
+            yield return ClickButton("Mytools");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Supplies));
+            yield return ClickButton("Open shop");yield return ClickButton("My tools link");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Supplies));
+            yield return ClickButton("Tools back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.TravelBag));
+            yield return ClickButton("Practice");yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.TravelBag));
             yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Shop));
             yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Home));
+            game.ShowJourney();yield return null;if(game.ConversationOpen)game.SkipConversation();yield return null;
+            yield return ClickButton("Map bag");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.TravelBag));
+            yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.JourneyMap));
+            yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Home));
+            game.ShowJournal();yield return ClickButton("Myroutes");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Records));
+            yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Journal));
+            yield return ClickButton("Requests");game.ShowContracts();yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Requests));
+            yield return ClickButton("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Journal));
             game.ShowGame();Assert.That(game.Interaction.CanPlay,Is.True);Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
         }
         [UnityTest] public IEnumerator HomeWordsChoiceStartsAnExistingPinnedBinding()

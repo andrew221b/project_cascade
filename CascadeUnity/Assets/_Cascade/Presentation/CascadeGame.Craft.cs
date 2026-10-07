@@ -30,7 +30,7 @@ namespace Cascade.Presentation
         }
         void DrawCraftBag()
         {
-            CraftTitle("Mika's workshop",JourneyClearCount<3?"Restore three lights to open your journal.":"Pick something to make or take along.");
+            CraftTitle("My things",JourneyClearCount<3?"Restore three lights to open your journal.":"Tools and trophies for the journey.");
             var hero=Picture("Mika at the bench",menuRoot,new Vector2(.13f,.59f),new Vector2(.43f,.80f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
             hero.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,1.5f),0,.45f);
             RewardPicture("Parcel",new Vector2(.55f,.62f),new Vector2(.86f,.79f));Shelf(.575f);
@@ -38,8 +38,8 @@ namespace Cascade.Presentation
             MenuNavRow("Keepsakes","LeafPin",1,ShowCollection);
             MenuNavRow("My journal","MoonPatch",2,ShowJournal,JourneyClearCount>=3);
             MenuNavRow("Workshop","BridgeLantern",3,ShowWorkshop);
-            MenuButton("Power-ups",.10f,ShowPowerupChallenges);
-            MenuButton("Back",.025f,ShowShop);
+            MenuButton("Practice",.10f,ShowPowerupChallenges);
+            MenuButton("Back",.025f,BackFromBag);
         }
         public void ShowPowerupChallenges(){reachPage=0;SetScreen(GameScreen.PowerupChallenges);}
         public void ShowReachChallenges(){reachPage=0;SetScreen(GameScreen.ReachChallenges);}

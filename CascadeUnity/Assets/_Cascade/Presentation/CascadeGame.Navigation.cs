@@ -47,8 +47,29 @@ namespace Cascade.Presentation
         }
         void LoadNavigationArt()
         {
-            if(navigationIcons==null)navigationIcons=NavigationSlices("Navigation/MenuIcons",4,2);
+            if(navigationIcons==null)navigationIcons=NavigationIconSlices();
             if(prologuePanels==null)prologuePanels=NavigationSlices("Navigation/OpeningComic",3,1);
+        }
+        Sprite[] NavigationIconSlices()
+        {
+            var texture=Resources.Load<Texture2D>("CascadeArt/Navigation/MenuIcons");var sprites=new Sprite[8];
+            if(texture==null)return sprites;
+            // Authored silhouettes plus four source pixels of breathing room. Empty atlas fields
+            // must not shift each icon below its button's optical centre.
+            var bounds=new[]{new Rect(39,516,319,424),new Rect(386,512,358,363),new Rect(777,515,363,368),new Rect(1180,527,326,353),
+                new Rect(10,82,374,355),new Rect(384,120,384,392),new Rect(800,105,337,328),new Rect(1174,107,351,312)};
+            for(int i=0;i<sprites.Length;i++){
+                var b=bounds[i];var rect=new Rect(b.x/1536*texture.width,b.y/1024*texture.height,b.width/1536*texture.width,b.height/1024*texture.height);
+                sprites[i]=Sprite.Create(texture,rect,new Vector2(.5f,.5f),100,0,SpriteMeshType.FullRect);
+            }
+            return sprites;
+        }
+        Image MenuIcon(string name,Transform parent,Vector2 centre,Sprite sprite,float size=44)
+        {
+            var image=Picture(name,parent,centre,centre,sprite,true);
+            image.type=Image.Type.Simple;image.rectTransform.sizeDelta=Vector2.one*size*MenuUnit;
+            menuSquares.Add(new KeyValuePair<RectTransform,float>(image.rectTransform,size));
+            return image;
         }
         Sprite[] NavigationSlices(string path,int columns,int rows)
         {
@@ -75,7 +96,7 @@ namespace Cascade.Presentation
             var label=b.GetComponentInChildren<TextMeshProUGUI>();label.rectTransform.anchorMin=new Vector2(.26f,described?.43f:.10f);label.rectTransform.anchorMax=new Vector2(.91f,described?.93f:.90f);
             label.alignment=TextAlignmentOptions.MidlineLeft;label.margin=new Vector4(4,1,7,1);label.fontSizeMin=18*MenuUnit;label.fontSizeMax=24*MenuUnit*(Preferences.LargeText?1.10f:1);label.enableAutoSizing=true;
             if(!primary)navigationLightLabels.Add(label);
-            if(icon>=0)Picture("Action illustration",b.transform,new Vector2(.045f,.09f),new Vector2(.24f,.91f),navigationIcons[icon],true);
+            if(icon>=0)MenuIcon("Action illustration",b.transform,new Vector2(.14f,.5f),navigationIcons[icon]);
             if(described){var sub=Text("Action explanation",b.transform,new Vector2(.27f,.12f),new Vector2(.90f,.43f),16,detail);sub.alignment=TextAlignmentOptions.MidlineLeft;sub.enableAutoSizing=true;sub.fontSizeMin=14*MenuUnit;sub.fontSizeMax=17*MenuUnit;sub.margin=Vector4.zero;if(!primary)navigationLightLabels.Add(sub);}
             return b;
         }
