@@ -7,6 +7,8 @@ namespace Cascade.Presentation
         readonly LineRenderer[] suspension=new LineRenderer[2];
         readonly Vector3[] ropePoints=new Vector3[121];
         readonly PresentationRope[,] ropeSpans=new PresentationRope[2,5];
+        float upperRopeHalfWidth=float.PositiveInfinity;
+        public void SetUpperRopeHalfWidth(float width)=>upperRopeHalfWidth=Mathf.Max(.01f,width);
         void InitializeRopeRig()
         {
             if(continuousRopeMaterial==null){
@@ -27,7 +29,7 @@ namespace Cascade.Presentation
             for(int side=0;side<2;side++) {
                 var line=suspension[side];line.enabled=Frame.Status==Cascade.Domain.PuzzleStatus.Playing;
                 float sign=side==0?-1:1;
-                var first=floors[0].board;float x=first.basePosition.x+sign*first.baseScale.x*.475f;
+                var first=floors[0].board;float x=first.basePosition.x+sign*Mathf.Min(first.baseScale.x*.475f,upperRopeHalfWidth);
                 Vector3 previous=new Vector3(x,viewCamera.transform.position.y+viewCamera.orthographicSize+.2f,.10f);int index=0;
                 ropePoints[index++]=previous;
                 for(int segment=0;segment<=floors.Count;segment++) {
