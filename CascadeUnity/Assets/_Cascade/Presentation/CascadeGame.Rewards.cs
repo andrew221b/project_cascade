@@ -162,7 +162,7 @@ namespace Cascade.Presentation
             var next=MenuButton(opened?(parcelReturnsToMap?"Back to map":"Keep going"):"Unwrap",.095f,()=>{
                 if(opened){if(parcelReturnsToMap)FinishCompletion();else SetScreen(parcelReturnScreen);return;}
                 if(Rewards.ClaimParcel(parcelOrder)){PersistProgress();parcelOpened=true;DrawMenu();}
-            },true,.15f,.85f);next.name=opened?"Keepgift":"Unwrapgift";next.GetComponent<UnityEngine.UI.Image>().sprite=enamelControls[1];next.GetComponent<UnityEngine.UI.Image>().color=Color.white;
+            },true,.15f,.85f);next.name=opened?"Keepgift":"Unwrapgift";next.GetComponent<UnityEngine.UI.Image>().sprite=enamelControls[0];next.GetComponent<UnityEngine.UI.Image>().color=Color.white;
             if(opened){if(!ReducedMotion)StartCoroutine(GiftArrival(picture.rectTransform,parcel));
                 menuRoot.gameObject.AddComponent<RewardCelebration>().Initialize(this,null,0,null,0,CompletionArt(3),true,ribbon.rectTransform);}
             if(!parcelReturnsToMap&&!opened)MenuButton("Back",.005f,()=>SetScreen(parcelReturnScreen));
@@ -229,11 +229,11 @@ namespace Cascade.Presentation
             if(records.Length==0){MenuTitle("My routes","Your own best paths.");MenuReadingSurface("Empty route book cloth",new Vector2(.12f,.38f),new Vector2(.88f,.65f));Text("Empty journal",menuRoot,new Vector2(.16f,.40f),new Vector2(.84f,.63f),22,"Finish a puzzle to leave a note here.");MenuButton("Back",.10f,ShowJournal);return;}
             recordPage=Math.Min(recordPage,records.Length-1);var record=records[recordPage];
             var content=Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).FirstOrDefault(c=>c.Definition.PuzzleId==record.PuzzleId&&c.Definition.ContentHash==(record.SourceHash??record.ContentHash));
-            MenuTitle("My routes",content==null?"A note from an earlier journey.":new UiCopy(record.StageCount==3?"Level {0} · 3 stages":"Level {0}",content.Definition.CampaignNodeId.TrimStart('C','0')));
+            MenuTitle("My routes",content==null?"A note from an earlier journey.":new UiCopy(record.StageCount==3?"Level {0}, 3 stages":"Level {0}",content.Definition.CampaignNodeId.TrimStart('C','0')));
             if(content!=null)MiniMachine(Rect("Record target",menuRoot,new Vector2(.19f,.49f),new Vector2(.81f,.72f)),content.Definition.InitialSymbolIds,content.Definition.TargetSymbolIds);
             MetaArrows(()=>{recordPage=(recordPage+records.Length-1)%records.Length;DrawMenu();},()=>{recordPage=(recordPage+1)%records.Length;DrawMenu();});
             MenuReadingSurface("Route identity cloth",new Vector2(.12f,.655f),new Vector2(.88f,.72f));
-            var identity=Text("Record identity",menuRoot,new Vector2(.12f,.73f),new Vector2(.88f,.825f),16,UiCopy.Join(" · ",new[]{new UiCopy(record.Mode),LanguageName(record.Locale),new UiCopy(record.StampGoal==0?"Delivery":"With stamp")}));
+            var identity=Text("Record identity",menuRoot,new Vector2(.12f,.73f),new Vector2(.88f,.825f),16,UiCopy.Join(", ",new[]{new UiCopy(record.Mode),LanguageName(record.Locale),new UiCopy(record.StampGoal==0?"Delivery":"With stamp")}));
             identity.enableAutoSizing=true;identity.fontSizeMin=15*MenuUnit;identity.fontSizeMax=17*MenuUnit;identity.textWrappingMode=TMPro.TextWrappingModes.Normal;
             MenuReadingSurface("Route notes cloth",new Vector2(.12f,.18f),new Vector2(.88f,.455f));
             Text("Record route",menuRoot,new Vector2(.10f,.39f),new Vector2(.90f,.47f),22,new UiCopy("Best route: {0} moves",record.BestRoute));

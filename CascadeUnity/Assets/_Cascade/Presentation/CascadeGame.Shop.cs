@@ -102,10 +102,10 @@ namespace Cascade.Presentation
         Button CounterButton(string name,UiCopy copy,float left,float right,float bottom,float top,Action action,bool amber=false)
         {
             var b=Button(copy,menuRoot,new Vector2(left,bottom),new Vector2(right,top),action);b.name=name;
-            var face=b.GetComponent<Image>();face.sprite=enamelControls[amber?1:0];face.type=Image.Type.Sliced;face.color=Color.white;
+            var face=b.GetComponent<Image>();face.sprite=enamelControls[0];face.type=Image.Type.Sliced;face.color=Color.white;
             var text=b.GetComponentInChildren<TextMeshProUGUI>();text.rectTransform.anchorMin=new Vector2(.06f,.06f);text.rectTransform.anchorMax=new Vector2(.94f,.94f);
             text.margin=new Vector4(5,2,5,2);text.textWrappingMode=TextWrappingModes.NoWrap;text.enableAutoSizing=true;text.fontSizeMin=16*MenuUnit;text.fontSizeMax=22*MenuUnit;
-            if(!amber)navigationLightLabels.Add(text);RegisterMenuRow(b,top,0,48,0);return b;
+            navigationLightLabels.Add(text);RegisterMenuRow(b,top,0,48,0);return b;
         }
         void DrawSupplies(){shopTab=0;shopItem=toolsItem;DrawTravelCounter(true);}
         void QuietDisabledCounter(Button button)
@@ -177,7 +177,7 @@ namespace Cascade.Presentation
 
             }else{
                 bool owned=shopTab==1&&OwnsGift(gift);
-                UiCopy caption=owned?(EquippedGift==gift?(UiCopy)"With Mika":"Take along"):TestMonetization?(UiCopy)"Try this item":new UiCopy("Buy · {0} coins",price);
+                UiCopy caption=owned?(EquippedGift==gift?(UiCopy)"With Mika":"Take along"):TestMonetization?(UiCopy)"Try this item":new UiCopy("Buy for {0} coins",price);
                 var buy=CounterButton("Buy selected item",caption,.095f,.905f,.138f,.217f,()=>BuySelectedShopItem(),true);
                 buy.interactable=!saveBlocked&&monetization!=null&&!monetization.FullscreenActive&&(owned?EquippedGift!=gift:(TestMonetization||ShopCoins>=price)&&(shopTab!=0||Stock(tool)<ShopCatalog.StockLimit));
                 if(!TestMonetization&&!owned&&ShopCoins<price)buy.GetComponentInChildren<TextMeshProUGUI>().SetCopy(new UiCopy("Need {0} more coins",price-ShopCoins));

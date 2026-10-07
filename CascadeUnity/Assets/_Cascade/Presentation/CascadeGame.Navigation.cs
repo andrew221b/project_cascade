@@ -113,13 +113,13 @@ namespace Cascade.Presentation
         {
             LoadNavigationArt();bool described=!string.IsNullOrEmpty(detail.Key);
             var b=Button(title,menuRoot,new Vector2(.08f,bottom),new Vector2(.92f,bottom+(described?.118f:.085f)),()=>{feedback.Sound(ToyCue.Select);action();});b.name=name;
-            var face=b.GetComponent<Image>();face.sprite=enamelControls[primary?1:0];face.type=Image.Type.Sliced;face.color=Color.white;
-            if(face.sprite==null){face.sprite=art.panel;face.color=primary?new Color(.98f,.74f,.32f):new Color(.10f,.37f,.38f);}
+            var face=b.GetComponent<Image>();face.sprite=enamelControls[0];face.type=Image.Type.Sliced;face.color=Color.white;
+            if(face.sprite==null){face.sprite=art.panel;face.color=new Color(.10f,.37f,.38f);}
             var label=b.GetComponentInChildren<TextMeshProUGUI>();label.rectTransform.anchorMin=new Vector2(.26f,described?.43f:.10f);label.rectTransform.anchorMax=new Vector2(.91f,described?.93f:.90f);
             label.alignment=TextAlignmentOptions.MidlineLeft;label.margin=new Vector4(4,1,7,1);label.fontSizeMin=18*MenuUnit;label.fontSizeMax=24*MenuUnit*(Preferences.LargeText?1.10f:1);label.enableAutoSizing=true;
-            if(!primary)navigationLightLabels.Add(label);
+            navigationLightLabels.Add(label);
             if(icon>=0)MenuIcon("Action illustration",b.transform,new Vector2(.14f,.5f),navigationIcons[icon]);
-            if(described){var sub=Text("Action explanation",b.transform,new Vector2(.27f,.12f),new Vector2(.90f,.43f),16,detail);sub.alignment=TextAlignmentOptions.MidlineLeft;sub.enableAutoSizing=true;sub.fontSizeMin=14*MenuUnit;sub.fontSizeMax=17*MenuUnit;sub.margin=Vector4.zero;if(!primary)navigationLightLabels.Add(sub);}
+            if(described){var sub=Text("Action explanation",b.transform,new Vector2(.27f,.12f),new Vector2(.90f,.43f),16,detail);sub.alignment=TextAlignmentOptions.MidlineLeft;sub.enableAutoSizing=true;sub.fontSizeMin=14*MenuUnit;sub.fontSizeMax=17*MenuUnit;sub.margin=Vector4.zero;navigationLightLabels.Add(sub);}
             return b;
         }
         void NavigationNote(string name,UiCopy text,float bottom,float top)

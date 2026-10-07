@@ -111,7 +111,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 468705302
-    m_Localized: "Continue {0} \xB7 {1}"
+    m_Localized: Continue {0}, {1}
     m_Metadata:
       m_Items: []
   - m_Id: 468705303
@@ -127,7 +127,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 468705306
-    m_Localized: "Device guide \xB7 {0} / {1}"
+    m_Localized: 'Device guide: {0} / {1}'
     m_Metadata:
       m_Items: []
   - m_Id: 468705307
@@ -251,7 +251,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 472899605
-    m_Localized: "Closed \xB7 let go to cancel"
+    m_Localized: Closed. Let go to cancel.
     m_Metadata:
       m_Items: []
   - m_Id: 472899606
@@ -311,7 +311,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 472899620
-    m_Localized: "Same pieces \xB7 let go to cancel"
+    m_Localized: Same pieces. Let go to cancel.
     m_Metadata:
       m_Items: []
   - m_Id: 472899621
@@ -355,7 +355,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 472899631
-    m_Localized: "Play {0} \xB7 {1}"
+    m_Localized: Play {0}, {1}
     m_Metadata:
       m_Items: []
   - m_Id: 472899632
@@ -591,11 +591,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 472899690
-    m_Localized: "{0} \xB7 closed"
+    m_Localized: '{0}: closed'
     m_Metadata:
       m_Items: []
   - m_Id: 472899691
-    m_Localized: "{0} \xB7 same"
+    m_Localized: '{0}: same'
     m_Metadata:
       m_Items: []
   - m_Id: 472899692
@@ -635,7 +635,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 472899701
-    m_Localized: "Word language \xB7 next puzzle"
+    m_Localized: 'Word language: next puzzle'
     m_Metadata:
       m_Items: []
   - m_Id: 472899702
@@ -1190,7 +1190,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 24216299626561
-    m_Localized: "Best route \xB7 moves: {0}"
+    m_Localized: 'Best route: {0} moves'
     m_Metadata:
       m_Items: []
   - m_Id: 24216299626562
@@ -1644,7 +1644,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 96949670764544
-    m_Localized: "Wood \xB7 moves: {0}"
+    m_Localized: 'Wood: {0} moves'
     m_Metadata:
       m_Items: []
   - m_Id: 96949674958848
@@ -1841,7 +1841,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 200727199735808
-    m_Localized: "Level {0} \xB7 {1}/3"
+    m_Localized: Level {0}, {1}/3
     m_Metadata:
       m_Items: []
   - m_Id: 200727199735809
@@ -1881,7 +1881,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 205454146789377
-    m_Localized: "Level {0} \xB7 3 stages"
+    m_Localized: Level {0}, 3 stages
     m_Metadata:
       m_Items: []
   - m_Id: 205454146789378
@@ -2122,7 +2122,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 404348822609929
-    m_Localized: "Buy \xB7 {0}"
+    m_Localized: 'Buy: {0}'
     m_Metadata:
       m_Items: []
   - m_Id: 404348822609930
@@ -2150,7 +2150,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 449412517060609
-    m_Localized: "Level {0} \xB7 all 3 stages complete"
+    m_Localized: 'Level {0}: all 3 stages complete'
     m_Metadata:
       m_Items: []
   - m_Id: 449412517060610
@@ -2230,11 +2230,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 449412517060629
-    m_Localized: "Step complete \xB7 {0}/{0} levels"
+    m_Localized: 'Step complete: {0}/{0} levels'
     m_Metadata:
       m_Items: []
   - m_Id: 449412517060630
-    m_Localized: "Next step in {0} levels \xB7 {1}/{2}"
+    m_Localized: Next step in {0} levels, {1}/{2}
     m_Metadata:
       m_Items: []
   - m_Id: 449412517060631
@@ -2261,7 +2261,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 459929780477952
-    m_Localized: "Next step in {0} level \xB7 {1}/{2}"
+    m_Localized: Next step in {0} level, {1}/{2}
     m_Metadata:
       m_Items: []
   - m_Id: 487858623209472
@@ -2350,7 +2350,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 510273461936142
-    m_Localized: "Buy \xB7 {0} coins"
+    m_Localized: 'Buy: {0} coins'
     m_Metadata:
       m_Items: []
   - m_Id: 510273461936143
@@ -2414,7 +2414,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 510273461936158
-    m_Localized: "Undo \xB7 {0}"
+    m_Localized: 'Undo: {0}'
     m_Metadata:
       m_Items: []
   - m_Id: 510273461936159
@@ -2544,7 +2544,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 542516125360128
-    m_Localized: "Video \xB7 +40"
+    m_Localized: 'Video: +40'
     m_Metadata:
       m_Items: []
   - m_Id: 542516125360129
@@ -2560,7 +2560,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 542516125360132
-    m_Localized: "Test purchase \xB7 no charge. Try removing automatic ads."
+    m_Localized: 'Test purchase: no charge. Try removing automatic ads.'
     m_Metadata:
       m_Items: []
   - m_Id: 542516125360133
@@ -2722,19 +2722,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 564361234997248
-    m_Localized: "World complete \xB7 {0}/{0} levels"
+    m_Localized: 'World complete: {0}/{0} levels'
     m_Metadata:
       m_Items: []
   - m_Id: 564361239191552
-    m_Localized: "Next world in {0} level \xB7 {1}/{2}"
+    m_Localized: Next world in {0} level, {1}/{2}
     m_Metadata:
       m_Items: []
   - m_Id: 564361239191553
-    m_Localized: "Next world in {0} levels \xB7 {1}/{2}"
+    m_Localized: Next world in {0} levels, {1}/{2}
     m_Metadata:
       m_Items: []
   - m_Id: 566306465112064
-    m_Localized: "You are here \xB7 {0}/{1}"
+    m_Localized: 'You are here: {0}/{1}'
     m_Metadata:
       m_Items: []
   - m_Id: 570283319615488
@@ -3504,7 +3504,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 644963963494401
-    m_Localized: "Test shop \xB7 no charge"
+    m_Localized: 'Test shop: no charge'
     m_Metadata:
       m_Items: []
   - m_Id: 644963963494402
@@ -4540,6 +4540,62 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 762049574461440
     m_Localized: Swap neighbours
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238724538368
+    m_Localized: All 3 stages complete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732672
+    m_Localized: Level complete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732673
+    m_Localized: Video +40
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732674
+    m_Localized: Buy {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732675
+    m_Localized: Buy for {0} coins
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732676
+    m_Localized: Words in new puzzles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732677
+    m_Localized: Level {0}, stage {1}/3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732678
+    m_Localized: Level {0}, 3 stages
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732679
+    m_Localized: 'Test shop: no charge'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732680
+    m_Localized: Undo {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732681
+    m_Localized: No change. Free to cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732682
+    m_Localized: Closed edge. Free to cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732683
+    m_Localized: '{0}: same'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732684
+    m_Localized: '{0}: locked'
     m_Metadata:
       m_Items: []
   references:

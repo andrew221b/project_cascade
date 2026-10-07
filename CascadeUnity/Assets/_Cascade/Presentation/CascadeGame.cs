@@ -202,7 +202,7 @@ namespace Cascade.Presentation
         {
             ClearDeviceForecast();
             var preview = Interaction.Attempt.Resolver.Preview(Interaction.Attempt.Current, command);
-            if (!preview.IsLegal) { status.SetCopy(preview.Rejection == RejectionReason.NoOp ? "No change · free to cancel" : "Locked edge · free to cancel"); return; }
+            if (!preview.IsLegal) { status.SetCopy(preview.Rejection == RejectionReason.NoOp ? "No change. Free to cancel" : "Closed edge. Free to cancel"); return; }
             var prediction = Interaction.Attempt.Predict(command);
             UiCopy exit = prediction.State.ActiveFloor != Interaction.Attempt.Current.ActiveFloor || prediction.State.Status != PuzzleStatus.Playing ? "then down" : "";
             var effects = new List<UiCopy>{new UiCopy("Board loses {0}",preview.DurabilityCost)};
@@ -217,7 +217,7 @@ namespace Cascade.Presentation
             if(!string.IsNullOrEmpty(exit.Key))effects.Add(exit);
             if(prediction.Events.Any(e=>e.Kind==PuzzleEventKind.EntryPermuted&&IsWindFloor(e.Floor)))
                 effects.Add("The wind moved the row");
-            status.SetCopy(UiCopy.Join(" · ",effects));
+            status.SetCopy(UiCopy.Join(", ",effects));
             RenderFocus(); machine.PreviewForecast(prediction); PreviewDeviceDocks(prediction);
             // Forecasts belong to the actual pieces and hanging devices, never rectangular slot panels.
         }
@@ -389,7 +389,7 @@ namespace Cascade.Presentation
             retry = Button("Retry", safeRoot, new Vector2(.05f, .09f), new Vector2(.43f, .155f), Retry);
             targetZoom = Rect("TargetZoom", safeRoot, Vector2.zero, Vector2.one); Background(targetZoom,new Color(.035f,.19f,.20f,.96f),true);
             Text("ZoomTitle", targetZoom, new Vector2(.05f, .7f), new Vector2(.95f, .8f), 22, "Make the same row").color=MenuPaper;
-            var closeTarget=Button("Close target", targetZoom, new Vector2(.2f, .22f), new Vector2(.8f, .30f), ToggleTargetZoom);closeTarget.GetComponent<UnityEngine.UI.Image>().sprite=enamelControls[1];closeTarget.GetComponent<UnityEngine.UI.Image>().color=Color.white;
+            var closeTarget=Button("Close target", targetZoom, new Vector2(.2f, .22f), new Vector2(.8f, .30f), ToggleTargetZoom);closeTarget.GetComponent<UnityEngine.UI.Image>().sprite=enamelControls[0];closeTarget.GetComponent<UnityEngine.UI.Image>().color=Color.white;closeTarget.GetComponentInChildren<TextMeshProUGUI>().color=MenuPaper;
             targetZoom.gameObject.SetActive(false);
         }
         void ChangeNode(int direction)
@@ -582,7 +582,7 @@ namespace Cascade.Presentation
             if (floor.Repair != null) parts.Add(state?.RepairUsed == true ? "Repaired" : new UiCopy("Repair +{0}",floor.Repair.Amount));
             if (floor.OneUseBridgeEdge.HasValue) parts.Add(new UiCopy(state?.BridgeUsed==true?"Bridge {0} used":"Bridge {0} once",floor.OneUseBridgeEdge.Value+1));
             if (floor.OptionalStamp != null) parts.Add("Stamp");
-            return UiCopy.Join(" · ",parts);
+            return UiCopy.Join(", ",parts);
         }
         void RenderFocus()
         {
@@ -608,7 +608,7 @@ namespace Cascade.Presentation
             var label = button.GetComponentInChildren<TextMeshProUGUI>();
             if (!Interaction.SelectedSlot.HasValue || edge < 0 || edge >= slots.Count - 1) { label.SetCopy(direction); return; }
             var preview = Interaction.Attempt.Resolver.Preview(Interaction.Attempt.Current, PuzzleCommand.Swap(edge));
-            label.SetCopy(new UiCopy(preview.IsLegal?"{0} −{1}":preview.Rejection==RejectionReason.NoOp?"{0} · same":"{0} · locked",new UiCopy(direction),preview.DurabilityCost));
+            label.SetCopy(new UiCopy(preview.IsLegal?"{0} −{1}":preview.Rejection==RejectionReason.NoOp?"{0}: same":"{0}: locked",new UiCopy(direction),preview.DurabilityCost));
         }
         void RenderControls()
         {
@@ -617,7 +617,7 @@ namespace Cascade.Presentation
             bool stockedUndo=Interaction.Attempt.CanUseSpool&&Stock(TravelTool.UndoSpool)>0;
             bool stockedReturn=Interaction.Attempt.CanUseHourglass&&Stock(TravelTool.ReturnHourglass)>0;
             undo.interactable = Interaction.CanControl && (Interaction.Attempt.CanUndo||stockedUndo||stockedReturn);
-            undo.GetComponentInChildren<TextMeshProUGUI>().SetCopy(Interaction.Attempt.CanUndo?new UiCopy("Undo · {0}",Interaction.Attempt.FreeUndoRemaining):stockedUndo||stockedReturn?(UiCopy)"My tools":new UiCopy("Undo · {0}",Interaction.Attempt.FreeUndoRemaining));
+            undo.GetComponentInChildren<TextMeshProUGUI>().SetCopy(Interaction.Attempt.CanUndo?new UiCopy("Undo {0}",Interaction.Attempt.FreeUndoRemaining):stockedUndo||stockedReturn?(UiCopy)"My tools":new UiCopy("Undo {0}",Interaction.Attempt.FreeUndoRemaining));
             retry.interactable = Interaction.CanControl || preparation.HasFailed || descentPlanFailed; retry.gameObject.SetActive(preparation.HasFailed || descentPlanFailed || !Interaction.IsPresenting && Interaction.Attempt.Current.Status != PuzzleStatus.Playing);
             drop.interactable = Interaction.CanPlay; hint.interactable = Interaction.CanPlay && hintTask == null;
             drop.GetComponentInChildren<TextMeshProUGUI>().SetCopy(Interaction.Attempt.Current.Status == PuzzleStatus.Playing

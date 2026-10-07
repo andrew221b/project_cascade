@@ -4494,6 +4494,62 @@ MonoBehaviour:
     m_Key: Swap neighbours
     m_Metadata:
       m_Items: []
+  - m_Id: 776238724538368
+    m_Key: All 3 stages complete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732672
+    m_Key: Level complete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732673
+    m_Key: Video +40
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732674
+    m_Key: Buy {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732675
+    m_Key: Buy for {0} coins
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732676
+    m_Key: Words in new puzzles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732677
+    m_Key: Level {0}, stage {1}/3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732678
+    m_Key: Level {0}, 3 stages
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732679
+    m_Key: 'Test shop: no charge'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732680
+    m_Key: Undo {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732681
+    m_Key: No change. Free to cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732682
+    m_Key: Closed edge. Free to cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732683
+    m_Key: '{0}: same'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776238728732684
+    m_Key: '{0}: locked'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

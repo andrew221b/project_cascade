@@ -67,7 +67,7 @@ namespace Cascade.Presentation
         void PaintDescent()
         {
             if(descent==null)return;
-            if(paintedDescentStage!=descent.StageIndex){levelLabel.SetCopy(new UiCopy("Level {0} · {1}/3",node.TrimStart('C','0'),descent.StageIndex+1));paintedDescentStage=descent.StageIndex;}
+            if(paintedDescentStage!=descent.StageIndex){levelLabel.SetCopy(new UiCopy("Level {0}, stage {1}/3",node.TrimStart('C','0'),descent.StageIndex+1));paintedDescentStage=descent.StageIndex;}
             if(IsDescending)status.SetCopy("Going lower…");
             else if(CurrentScreen==GameScreen.Checkpoint)status.SetCopy("The next stage is below. Take the row down.");
         }

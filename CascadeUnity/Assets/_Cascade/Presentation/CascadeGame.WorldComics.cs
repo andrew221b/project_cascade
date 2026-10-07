@@ -58,7 +58,7 @@ namespace Cascade.Presentation
                 line.fontSizeMin=15*MenuUnit;line.fontSizeMax=19*MenuUnit*(Preferences.LargeText?1.12f:1);line.margin=new Vector4(4,3,4,3);
             }
             var next=Button(worldComicPage==2?"To the map":"Continue",menuRoot,new Vector2(.11f,.072f),new Vector2(.89f,.145f),AdvanceWorldComic);
-            next.name="Next comic page";StyleConversationButton(next,enamelControls[1],MenuInk);
+            next.name="Next comic page";StyleConversationButton(next,enamelControls[0],MenuPaper);
             var number=Text("World comic progress",menuRoot,new Vector2(.36f,.018f),new Vector2(.64f,.063f),15,UiCopy.Raw((worldComicPage+1)+" / 3"));number.color=MenuInk;
         }
         void TryJourneyOpening()

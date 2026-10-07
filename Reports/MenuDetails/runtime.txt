@@ -1,0 +1,135 @@
+PASS locale ru
+PASS text fits CASCADE
+PASS no dot separator CASCADE
+PASS text fits Label
+PASS no dot separator Label
+PASS text fits Label
+PASS no dot separator Label
+PASS text fits Label
+PASS no dot separator Label
+PASS text fits Label
+PASS no dot separator Label
+PASS blue action Startgame
+PASS blue action Shop
+PASS blue action Settings
+PASS blue action Removeads
+PASS text fits Label
+PASS no dot separator Label
+PASS text fits Page heading
+PASS no dot separator Page heading
+PASS text fits Wallet coins
+PASS no dot separator Wallet coins
+PASS text fits Label
+PASS no dot separator Label
+PASS text fits Label
+PASS no dot separator Label
+PASS text fits Label
+PASS no dot separator Label
+PASS text fits Label
+PASS no dot separator Label
+PASS text fits Label
+PASS no dot separator Label
+PASS text fits Owned stock
+PASS no dot separator Owned stock
+PASS text fits Label
+PASS no dot separator Label
+PASS text fits Owned stock
+PASS no dot separator Owned stock
+PASS text fits Label
+PASS no dot separator Label
+PASS text fits Owned stock
+PASS no dot separator Owned stock
+PASS text fits Label
+PASS no dot separator Label
+PASS text fits Owned stock
+PASS no dot separator Owned stock
+PASS text fits Label
+PASS no dot separator Label
+PASS text fits Owned stock
+PASS no dot separator Owned stock
+PASS text fits Label
+PASS no dot separator Label
+PASS text fits Owned stock
+PASS no dot separator Owned stock
+PASS text fits Selected object title
+PASS no dot separator Selected object title
+PASS text fits Selected object benefit
+PASS no dot separator Selected object benefit
+PASS text fits Owned item count
+PASS no dot separator Owned item count
+PASS text fits Label
+PASS no dot separator Label
+PASS text fits Label
+PASS no dot separator Label
+PASS blue action Back
+PASS blue action Watch coin video
+PASS blue action Buy selected item
+PASS blue action My tools link
+PASS selected tab retains warm face and dark text
+PASS locale ru
+PASS text fits Completion title
+PASS no dot separator Completion title
+PASS text fits Completed stages
+PASS no dot separator Completed stages
+PASS text fits Score label
+PASS no dot separator Score label
+PASS text fits Earned score
+PASS no dot separator Earned score
+PASS text fits Rank guidance
+PASS no dot separator Rank guidance
+PASS text fits Moves statistic
+PASS no dot separator Moves statistic
+PASS text fits Moves statistic heading
+PASS no dot separator Moves statistic heading
+PASS text fits Undos statistic
+PASS no dot separator Undos statistic
+PASS text fits Undos statistic heading
+PASS no dot separator Undos statistic heading
+PASS text fits Time statistic
+PASS no dot separator Time statistic
+PASS text fits Time statistic heading
+PASS no dot separator Time statistic heading
+PASS text fits Earned coins
+PASS no dot separator Earned coins
+PASS text fits Earned light
+PASS no dot separator Earned light
+PASS text fits Label
+PASS no dot separator Label
+PASS blue action Continuecompletion
+PASS caption centred beneath Moves medal
+PASS caption centred beneath Undos medal
+PASS caption centred beneath Time medal
+PASS redundant trophy note absent
+PASS locale uk
+PASS text fits Completion title
+PASS no dot separator Completion title
+PASS text fits Completed stages
+PASS no dot separator Completed stages
+PASS text fits Score label
+PASS no dot separator Score label
+PASS text fits Earned score
+PASS no dot separator Earned score
+PASS text fits Rank guidance
+PASS no dot separator Rank guidance
+PASS text fits Moves statistic
+PASS no dot separator Moves statistic
+PASS text fits Moves statistic heading
+PASS no dot separator Moves statistic heading
+PASS text fits Undos statistic
+PASS no dot separator Undos statistic
+PASS text fits Undos statistic heading
+PASS no dot separator Undos statistic heading
+PASS text fits Time statistic
+PASS no dot separator Time statistic
+PASS text fits Time statistic heading
+PASS no dot separator Time statistic heading
+PASS text fits Earned coins
+PASS no dot separator Earned coins
+PASS text fits Earned light
+PASS no dot separator Earned light
+PASS text fits Label
+PASS no dot separator Label
+PASS caption centred beneath Moves medal
+PASS caption centred beneath Undos medal
+PASS caption centred beneath Time medal
+PASS blue action Continuecompletion

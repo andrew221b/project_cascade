@@ -105,7 +105,7 @@ namespace Cascade.Presentation
                 new UiCopy("Completed: {0}/{1}",stepNodes.Length-remaining,stepNodes.Length));
             bool resume=CanResumeSelectedJourney(selectedJourneyStop);
             var go=Button("Travel",bottom,new Vector2(.205f,.389f),new Vector2(.795f,.722f),TravelSelectedJourney);
-            go.GetComponentInChildren<TextMeshProUGUI>().SetCopy(future?"Back to my path":resume?"Continue":new UiCopy("Level {0}",selectedJourneyStop+1));go.GetComponent<Image>().sprite=enamelControls[1];go.GetComponent<Image>().color=Color.white;
+            go.GetComponentInChildren<TextMeshProUGUI>().SetCopy(future?"Back to my path":resume?"Continue":new UiCopy("Level {0}",selectedJourneyStop+1));go.GetComponent<Image>().sprite=enamelControls[0];go.GetComponent<Image>().color=Color.white;
             bool homecoming=JourneyClearCount==JourneySequence().Count;
             var talk=Button("Story",bottom,new Vector2(.09f,0),new Vector2(.91f,.3333f),()=>{if(homecoming)SetScreen(GameScreen.JourneyEnd);else OpenJourneyStory(selectedJourneyStop,false);});talk.interactable=(homecoming||!future)&&!IsPlanningDescent&&!IsDescending;
             talk.GetComponentInChildren<TextMeshProUGUI>().SetCopy(homecoming?new UiCopy("The beacon is lit!"):new UiCopy("Talk to {0}",new UiCopy(StoryConversations.Resident(zone))));talk.GetComponent<Image>().color=new Color(.84f,.91f,.87f);

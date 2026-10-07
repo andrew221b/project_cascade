@@ -77,7 +77,7 @@ namespace Cascade.Presentation
             var ribbon=Picture("Completion ribbon",menuRoot,new Vector2(.08f,.85f),new Vector2(.92f,.98f),CompletionArt(1),true);
             CompletionText("Completion title",ribbon.transform,new Vector2(.16f,.22f),new Vector2(.84f,.80f),28,rank,CelebrationType.PaperTitle);
             var completed=CompletionText("Completed stages",menuRoot,new Vector2(.055f,.79f),new Vector2(.945f,.842f),20,
-                new UiCopy(receipt.Stages==3?"Level {0} · all 3 stages complete":"Level {0} complete",receipt.NodeId.TrimStart('C','0')));
+                (UiCopy)(receipt.Stages==3?"All 3 stages complete":"Level complete"));
             completed.textWrappingMode=TextWrappingModes.NoWrap;completed.fontSizeMin=16.5f;completed.margin=new Vector4(3,3,3,3);
             var stars=new Image[5];for(int i=0;i<5;i++){
                 float x=.085f+i*.166f;stars[i]=Picture("Earned star "+(i+1),menuRoot,new Vector2(x,.686f),new Vector2(x+.166f,.784f),CompletionArt(0),true);
@@ -97,17 +97,15 @@ namespace Cascade.Presentation
                 float left=.07f+i*.29f;
                 var metric=Rect("Award metric "+i,menuRoot,new Vector2(left,.278f),new Vector2(left+.28f,.397f));
                 metric.gameObject.AddComponent<CanvasGroup>();
-                Picture(names[i]+" medal",metric,new Vector2(.02f,.38f),new Vector2(.40f,.97f),ResultMedal(i+1),true);
-                var value=CompletionText(names[i]+" statistic",metric,new Vector2(.43f,.38f),new Vector2(1,.97f),27,UiCopy.Raw(values[i]),CelebrationType.SkyNumber);value.margin=new Vector4(2,0,2,0);
+                Picture(names[i]+" medal",metric,new Vector2(.29f,.62f),new Vector2(.71f,1),ResultMedal(i+1),true);
+                var value=CompletionText(names[i]+" statistic",metric,new Vector2(0,.27f),new Vector2(1,.60f),27,UiCopy.Raw(values[i]),CelebrationType.SkyNumber);value.margin=new Vector4(2,0,2,0);
                 value.textWrappingMode=TextWrappingModes.NoWrap;
-                CompletionText(names[i]+" statistic heading",metric,new Vector2(0,.015f),new Vector2(1,.35f),16,names[i]);
+                var heading=CompletionText(names[i]+" statistic heading",metric,new Vector2(0,.005f),new Vector2(1,.245f),16,names[i]);heading.margin=new Vector4(2,0,2,0);
             }
             Picture("Earned gold illustration",menuRoot,new Vector2(.105f,.156f),new Vector2(.285f,.263f),RewardEmblem(0),true);
             CompletionText("Earned coins",menuRoot,new Vector2(.285f,.163f),new Vector2(.465f,.251f),30,UiCopy.Raw(receipt.Coins>0?"+"+receipt.Coins:"0"),CelebrationType.SkyNumber);
             Picture("Earned lights illustration",menuRoot,new Vector2(.555f,.156f),new Vector2(.735f,.263f),RewardEmblem(1),true);
             CompletionText("Earned light",menuRoot,new Vector2(.735f,.163f),new Vector2(.915f,.251f),30,UiCopy.Raw(receipt.Lights>0?"+1":"0"),CelebrationType.SkyNumber);
-            CompletionText("Completion reward note",menuRoot,new Vector2(.08f,.104f),new Vector2(.92f,.153f),16,
-                receipt.Lights==0?"Your stars and score are saved for this mode.":WaitingParcel!=null?"A gift is waiting for you!":new UiCopy("New lights for a gift: {0} / 3",Rewards.OrderProgress));
             var next=MenuButton(WaitingParcel!=null?"Collect my gift":"Back to map",.012f,ContinueCompletion,true,.12f,.88f);
             next.name="Continuecompletion";
             var celebration=menuRoot.gameObject.AddComponent<RewardCelebration>();celebration.Initialize(this,stars,receipt.Stars,score,receipt.Score,CompletionArt(3),false,ribbon.rectTransform);

@@ -31,7 +31,7 @@ namespace Cascade.Presentation
             previewClock=Text("Test advertisement countdown",sheet,new Vector2(.08f,.21f),new Vector2(.92f,.31f),19,"");
             previewClock.color=MenuPaper;
             previewFinish=Button(rewarded?(UiCopy)"Collect coins":"Continue",sheet,new Vector2(.10f,.08f),new Vector2(.90f,.21f),()=>FinishPreviewAd(true));
-            var enamel=previewFinish.GetComponent<Image>();enamel.sprite=enamelControls[1];enamel.type=Image.Type.Sliced;enamel.color=Color.white;previewFinish.interactable=false;
+            var enamel=previewFinish.GetComponent<Image>();enamel.sprite=enamelControls[0];enamel.type=Image.Type.Sliced;enamel.color=Color.white;previewFinish.interactable=false;previewFinish.GetComponentInChildren<TMP_Text>().color=MenuPaper;
             var cancel=Button("Close",previewAdSafe,new Vector2(.25f,.07f),new Vector2(.75f,.15f),()=>FinishPreviewAd(false));cancel.name="Close test advertisement";
             var cancelFace=cancel.GetComponent<Image>();cancelFace.sprite=enamelControls[0];cancelFace.type=Image.Type.Sliced;cancelFace.color=Color.white;cancel.GetComponentInChildren<TMP_Text>().color=MenuPaper;
             var opacity=previewAd.gameObject.AddComponent<CanvasGroup>();opacity.alpha=ReducedMotion?1:0;

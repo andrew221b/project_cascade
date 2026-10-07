@@ -50,7 +50,7 @@ namespace Cascade.Presentation
             conversationBody.alignment=TextAlignmentOptions.MidlineLeft;conversationBody.color=new Color(1,.97f,.86f);conversationBody.textWrappingMode=TextWrappingModes.Normal;conversationBody.overflowMode=TextOverflowModes.Overflow;
             conversationCount=Text("Conversation progress",conversationPlate,new Vector2(.76f,.89f),new Vector2(.925f,.965f),14,"");conversationCount.color=new Color(.81f,.92f,.87f);
             conversationNext=Button("Next line",conversationPlate,new Vector2(.51f,.055f),new Vector2(.925f,.265f),AdvanceConversation);
-            StyleConversationButton(conversationNext,enamelControls[1],MenuInk);
+            StyleConversationButton(conversationNext,enamelControls[0],MenuPaper);
             conversationSkip=Button("Not now",conversationPlate,new Vector2(.075f,.055f),new Vector2(.43f,.265f),SkipConversation);
             StyleConversationButton(conversationSkip,enamelControls[0],new Color(1,.97f,.86f));
             RefreshConversationLayout();PaintConversationLine();conversationRoot.SetAsLastSibling();

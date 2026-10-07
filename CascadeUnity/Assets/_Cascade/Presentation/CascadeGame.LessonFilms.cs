@@ -205,10 +205,10 @@ namespace Cascade.Presentation
             count.font = art.titleFont; count.fontStyle = FontStyles.Bold; count.color = new Color(.34f, .16f, .05f); count.margin = Vector4.zero;
             count.raycastTarget = false; count.gameObject.AddComponent<SymbolGlyphCenter>();
             var button = Rect("Film action button", stage, new Vector2(.30f, .025f), new Vector2(.70f, .17f));
-            var buttonFace = Background(button, Color.white, false); buttonFace.sprite = enamelControls[1]; buttonFace.type = Image.Type.Sliced;
+            var buttonFace = Background(button, Color.white, false); buttonFace.sprite = enamelControls[plan.descent ? 1 : 0]; buttonFace.type = Image.Type.Sliced;
             var caption = Text("Film action label", button, new Vector2(.09f, .12f), new Vector2(.91f, .88f), 17,
                 plan.descent ? "Descend" : lesson == MechanicLesson.Undo ? "Undo" : lesson == MechanicLesson.Hint ? "Hint" : lesson == MechanicLesson.Toolbag ? "Tool bag" : "Use one");
-            caption.font = art.titleFont; caption.fontStyle = FontStyles.Bold; caption.color = MenuInk;
+            caption.font = art.titleFont; caption.fontStyle = FontStyles.Bold; caption.color = plan.descent ? MenuInk : MenuPaper;
             caption.enableAutoSizing = true; caption.fontSizeMin = 13; caption.fontSizeMax = 17; caption.textWrappingMode = TextWrappingModes.NoWrap;
             bool buttonShown = plan.descent || plan.tool;
             button.gameObject.SetActive(buttonShown);

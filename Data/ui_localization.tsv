@@ -22,11 +22,11 @@ Close target	Close target	Закрыть цель	Закрити ціль
 Comfort	Comfort	Удобство	Зручність
 Comfort & help	Comfort & help	Удобство и помощь	Зручність і допомога
 Continue	Continue	Дальше	Далі
-Continue {0} · {1}	Continue {0} · {1}	Продолжить {0} · {1}	Продовжити {0} · {1}
+Continue {0} · {1}	Continue {0}, {1}	Продолжить {0}, {1}	Продовжити {0}, {1}
 Dead-end warning	Dead-end warning	Подсказывать тупик	Показувати глухий кут
 Deliver	Deliver	Доставить	Доставити
 Descend	Descend	Вниз	Униз
-Device guide · {0} / {1}	Device guide · {0} / {1}	Как это работает · {0} / {1}	Як це працює · {0} / {1}
+Device guide · {0} / {1}	Device guide: {0} / {1}	Как это работает: {0} / {1}	Як це працює: {0} / {1}
 Devices	Device guide	Правила	Правила
 Drop	Descend	Вниз	Униз
 Drop the row	Drop the row	опусти ряд	опусти ряд
@@ -57,7 +57,7 @@ Let's go	Let's go	В путь	У дорогу
 Level {0}	Level {0}	Уровень {0}	Рівень {0}
 Linked pairs	Linked pairs	Связанные пары	Зв'язані пари
 Linked {0} + {1}	Linked {0} + {1}	Связь {0} + {1}	Зв'язок {0} + {1}
-Locked edge · free to cancel	Closed · let go to cancel	Закрыто. Отпусти фигурку.	Закрито. Відпусти фігурку.
+Locked edge · free to cancel	Closed. Let go to cancel.	Закрыто. Отпусти фигурку.	Закрито. Відпусти фігурку.
 Locked {0}	Locked {0}	Закрыто: {0}	Закрито: {0}
 Looking for one step…	Looking for one step…	Ищу ход…	Шукаю хід…
 Low	Low	Меньше	Менше
@@ -72,7 +72,7 @@ Moves to deliver: {0}	Moves to deliver: {0}	Доставлено! Ходов: {0
 Music	Music	Музыка	Музика
 Next	Next	Дальше	Далі
 Next delivery	Next delivery	Следующий путь	Наступний шлях
-No change · free to cancel	Same pieces · let go to cancel	Одинаковые. Отпусти фигурку.	Однакові. Відпусти фігурку.
+No change · free to cancel	Same pieces. Let go to cancel.	Одинаковые. Отпусти фигурку.	Однакові. Відпусти фігурку.
 Not quite. Undo and try again.	Not quite. Undo and try again.	Почти! Верни ход и попробуй ещё.	Майже! Поверни хід і спробуй ще.
 Off	Off	Нет	Ні
 On	On	Да	Так
@@ -83,7 +83,7 @@ Pause	Pause	Пауза	Пауза
 Paused. Devices wait for your next command.	Paused. The puzzle will wait.	Пауза. Можно отдохнуть.	Пауза. Можна відпочити.
 Play again	Play again	Ещё раз	Ще раз
 Play shapes	Play shapes	Играть с фигурами	Грати з фігурами
-Play {0} · {1}	Play {0} · {1}	Играть: {0} · {1}	Грати: {0} · {1}
+Play {0} · {1}	Play {0}, {1}	Играть: {0}, {1}	Грати: {0}, {1}
 Precise input	Precise input	Точный выбор	Точний вибір
 Previous	Previous	Назад	Назад
 Ready here. Check the board below.	Ready here. Check the board below.	Ряд готов. Проверь доску ниже.	Ряд готовий. Перевір дошку нижче.
@@ -142,8 +142,8 @@ unlock	open gate	открыть проход	відкрити прохід
 then down	then down	затем вниз	потім униз
 swap slots {0} & {1}	swap pieces {0} & {1}	поменяй фигурки {0} и {1}	поміняй фігурки {0} і {1}
 {0} / {1} lights restored	{0} / {1} lights restored	Свет зажжён: {0} / {1}	Світло запалено: {0} / {1}
-{0} · locked	{0} · closed	{0} · закрыто	{0} · закрито
-{0} · same	{0} · same	{0} · одинаковые	{0} · однакові
+{0} · locked	{0}: closed	{0}: закрыто	{0}: закрито
+{0} · same	{0}: same	{0}: одинаковые	{0}: однакові
 {0} −{1}	{0} −{1}	{0} −{1}	{0} −{1}
 Shapes	Shapes	Фигуры	Фігури
 Words	Words	Слова	Слова
@@ -153,7 +153,7 @@ Russian	Русский	Русский	Російська
 Ukrainian	Українська	Украинский	Українська
 Languages	Languages	Языки	Мови
 Menu language	Menu language	Язык меню	Мова меню
-Word language · next puzzle	Word language · next puzzle	Слова в новых задачах	Слова в нових задачах
+Word language · next puzzle	Word language: next puzzle	Слова в новых задачах	Слова в нових задачах
 Change word language?	Change word language?	Сменить язык слов?	Змінити мову слів?
 New puzzles: {0}. This row stays the same.	New puzzles: {0}. This row stays the same.	Новые задачи: {0}. Этот ряд не изменится.	Нові задачі: {0}. Цей ряд не зміниться.
 Use for new puzzles	Use for new puzzles	Для новых задач	Для нових задач
@@ -289,7 +289,7 @@ Finish a puzzle to leave a note here.	Finish a puzzle to leave a note here.	Пр
 A note from an earlier journey.	A note from an earlier journey.	Запись из прошлого пути.	Запис із минулої подорожі.
 Delivery	Delivery	Доставка	Доставка
 With stamp	With stamp	С печатью	З печаткою
-Best route: {0} moves	Best route · moves: {0}	Ходов в лучшем пути: {0}	Ходів у найкращому шляху: {0}
+Best route: {0} moves	Best route: {0} moves	Ходов в лучшем пути: {0}	Ходів у найкращому шляху: {0}
 Without a hint: {0}	Without a hint: {0}	Без подсказки: {0}	Без підказки: {0}
 Try again without a hint.	Try again without a hint.	Попробуй без подсказки.	Спробуй без підказки.
 Without hint or Undo: {0}	Without hint or Undo: {0}	Без помощи и отмены: {0}	Без допомоги й скасування: {0}
@@ -402,7 +402,7 @@ Drag past a neighbour. The ribbon works once.	Drag past a neighbour. The ribbon 
 Ribbon used. You can still swap neighbours.	Ribbon used. You can still swap neighbours.	Лента потрачена. Соседние фигуры можно менять.	Стрічку використано. Сусідні фігури можна міняти.
 Each swap wears the wood. Empty marks? The board breaks. Down leaves early.	Each swap wears the wood. Empty marks? The board breaks. Down leaves early.	Обмен изнашивает доску. Метки погасли — доска сломается. Кнопка «Вниз» спустит ряд раньше.	Обмін зношує дошку. Мітки згасли — дошка зламається. Кнопка «Вниз» опустить ряд раніше.
 A cracked spot wears the board twice as fast.	A cracked spot wears the board twice as fast.	Обмен у трещины сильнее изнашивает доску.	Обмін біля тріщини сильніше зношує дошку.
-Wood: {0} moves	Wood · moves: {0}	Доска · ходы: {0}	Дошка · ходи: {0}
+Wood: {0} moves	Wood: {0} moves	Доска: {0} ходов	Дошка: {0} ходів
 {0} moves	{0} moves	{0} ходов	{0} ходів
 Safe	Safe	Обезврежена	Знешкоджена
 Burst	Burst	Взорвалась	Вибухнула
@@ -449,7 +449,7 @@ Wind moves the row on the next board. Tap its arrow to see how.	Wind will slide 
 Wind pushes the whole row one place when it lands. Follow the arrow. Take your time to think.	On landing, wind slides the whole row one place. Follow the arrow. Take your time to think.	При посадке ветер сдвигает весь ряд на одно место. Смотри на стрелку. Думать можно сколько хочешь.	Під час посадки вітер зсуває весь ряд на одне місце. Дивись на стрілку. Думати можна скільки хочеш.
 Back to puzzle	Back to puzzle	К задаче	До задачі
 Checking all three stages…	Checking all three stages…	Проверяем три этапа…	Перевіряємо три етапи…
-Level {0} · {1}/3	Level {0} · {1}/3	Уровень {0} · {1}/3	Рівень {0} · {1}/3
+Level {0} · {1}/3	Level {0}, {1}/3	Уровень {0}, {1}/3	Рівень {0}, {1}/3
 Going lower…	Going lower…	Спускаемся ниже…	Спускаємося нижче…
 Go lower	Go lower	Спуститься	Спуститися
 Row ready! Below, wind will move it one place.	Row ready! Below, wind will move it one place.	Ряд готов! Внизу ветер сдвинет его на одно место.	Ряд готовий! Унизу вітер зсуне його на одне місце.
@@ -459,7 +459,7 @@ Arrival wind: row moved left	Wind moved the row left	Ветер сдвинул �
 Arrival wind: row moved right	Wind moved the row right	Ветер сдвинул ряд вправо	Вітер зсунув ряд праворуч
 Row ready! Wind is next.	Row ready! Wind is next.	Ряд готов! Дальше — ветер.	Ряд готовий! Далі — вітер.
 Row ready! Devices are next.	Row ready! Devices are next.	Ряд готов! Впереди устройства.	Ряд готовий! Попереду пристрої.
-Level {0} · 3 stages	Level {0} · 3 stages	Уровень {0} · 3 этапа	Рівень {0} · 3 етапи
+Level {0} · 3 stages	Level {0}, 3 stages	Уровень {0}, 3 этапа	Рівень {0}, 3 етапи
 Play this level	Play this level	Пройти уровень	Пройти рівень
 Light delivered!	Light delivered!	Свет доставлен!	Світло доставлено!
 Let's try another way.	Let's try another way.	Попробуем иначе.	Спробуймо інакше.
@@ -518,14 +518,14 @@ Waiting for purchase approval. You can keep playing.	Waiting for purchase approv
 The store could not finish. Try again. Your purchase will not be lost.	The store could not finish. Try again. Your purchase will not be lost.	Магазин не ответил. Попробуйте ещё раз или восстановите покупку.	Магазин не відповів. Спробуйте ще раз або відновіть покупку.
 Checking with the store. Please wait.	Checking with the store. Please wait.	Проверяем покупку. Немного подождите.	Перевіряємо покупку. Трохи зачекайте.
 Ads removed	Ads removed	Реклама отключена	Рекламу вимкнено
-Buy · {0}	Buy · {0}	Купить · {0}	Купити · {0}
+Buy · {0}	Buy: {0}	Купить: {0}	Купити: {0}
 Checking purchase…	Checking purchase…	Проверяем покупку…	Перевіряємо покупку…
 Coming soon	Coming soon	Скоро появится	Незабаром
 Restore purchases	Restore purchases	Восстановить покупки	Відновити покупки
 Back to play	Back to play	К игре	До гри
 Could not check all stages. Try again.	Could not check all stages. Try again.	Не удалось подготовить уровень. Попробуй ещё раз.	Не вдалося підготувати рівень. Спробуй ще раз.
 Well done!	Well done!	Отлично!	Чудово!
-Level {0} · all 3 stages complete	Level {0} · all 3 stages complete	Уровень {0} · все 3 этапа пройдены	Рівень {0} · усі 3 етапи пройдено
+Level {0} · all 3 stages complete	Level {0}: all 3 stages complete	Уровень {0}: все 3 этапа пройдены	Рівень {0}: усі 3 етапи пройдено
 Level {0} complete	Level {0} complete	Уровень {0} пройден	Рівень {0} пройдено
 New best!	New best!	Новый рекорд!	Новий рекорд!
 Score	Score	Очки	Бали
@@ -545,14 +545,14 @@ Find three parts to make a keepsake for Mika.	3 parts make Mika's trophy.	3 де
 Stage {0}/3 complete!	Stage {0}/3 complete!	Этап {0} из 3 пройден!	Етап {0} з 3 пройдено!
 The next stage is below. Take the row down.	The next stage is below. Take the row down.	Внизу следующий этап. Опусти ряд.	Унизу наступний етап. Опусти ряд.
 Open the next level, or replay one you finished. Swipe to look ahead.	Open the next level, or replay one you finished. Swipe to look ahead.	Открой следующий уровень или сыграй пройденный. Листай, чтобы посмотреть дальше.	Відкрий наступний рівень або грай пройдений. Гортай, щоб подивитися далі.
-Step complete · {0}/{0} levels	Step complete · {0}/{0} levels	Ступень пройдена · {0} из {0}	Сходинку пройдено · {0} з {0}
-Next step in {0} levels · {1}/{2}	Next step in {0} levels · {1}/{2}	До следующей ступени: {0} · пройдено {1}/{2}	До наступної сходинки: {0} · пройдено {1}/{2}
+Step complete · {0}/{0} levels	Step complete: {0}/{0} levels	Ступень пройдена: {0} из {0}	Сходинку пройдено: {0} з {0}
+Next step in {0} levels · {1}/{2}	Next step in {0} levels, {1}/{2}	До следующей ступени: {0}, пройдено {1}/{2}	До наступної сходинки: {0}, пройдено {1}/{2}
 The picture on a tool shows what it needs. Move that piece above it.	The picture on a tool shows what it needs. Move that piece above it.	Картинка на предмете показывает, что ему нужно. Поставь эту фигуру или букву над ним.	Малюнок на предметі показує, що йому потрібно. Постав цю фігуру чи літеру над ним.
 Make the row below, then descend. Finish all three stages to open the next level.	Make the row below, then descend. Finish all three stages to open the next level.	Собери ряд по образцу и спускайся. Пройди 3 этапа, чтобы открыть следующий уровень.	Збери ряд за зразком і спускайся. Пройди 3 етапи, щоб відкрити наступний рівень.
 Fewer moves earn more stars. Replay an open level to beat your score. Three new lights earn a gift.	Fewer moves earn more stars. Replay an open level to beat your score. Three new lights earn a trophy.	Меньше ходов — больше звёзд. Играй снова и улучшай рекорд. За 3 новых огонька — трофей.	Менше ходів — більше зірок. Грай знову й покращуй рекорд. За 3 нові вогники — трофей.
 Coins	Coins	Монеты	Монети
 Lights	Lights	Огоньки	Вогники
-Next step in {0} level · {1}/{2}	Next step in {0} level · {1}/{2}	До следующей ступени: {0} · пройдено {1}/{2}	До наступної сходинки: {0} · пройдено {1}/{2}
+Next step in {0} level · {1}/{2}	Next step in {0} level, {1}/{2}	До следующей ступени: {0}, пройдено {1}/{2}	До наступної сходинки: {0}, пройдено {1}/{2}
 The number on the wood is swaps left. At zero, it breaks.	The number on the wood is swaps left. At zero, it breaks.	Число на доске — сколько обменов осталось. На нуле она сломается.	Число на дошці — скільки обмінів лишилось. На нулі вона зламається.
 Swap neighbours. The number on the wood counts swaps left. At zero, the row falls.	Swap neighbours. The number on the wood counts swaps left. At zero, the row falls.	Меняй соседние элементы. Число на доске — сколько обменов осталось. На нуле ряд падает.	Міняй сусідні елементи. Число на дошці — скільки обмінів лишилось. На нулі ряд падає.
 Wind will move the row. Watch the small row by the next board.	Wind will move the row. Watch the small row by the next board.	Ветер сдвинет ряд. Посмотри на маленький ряд у следующей доски.	Вітер зсуне ряд. Подивись на маленький ряд біля наступної дошки.
@@ -572,7 +572,7 @@ Already yours	Already yours	Уже твоё	Вже твоє
 Yours forever. No gameplay advantage.	Yours forever. No gameplay advantage.	Останется навсегда. На сложность не влияет.	Залишиться назавжди. На складність не впливає.
 Checking the route…	Checking the route…	Проверяем путь…	Перевіряємо шлях…
 Use one	Use one	Использовать	Використати
-Buy · {0} coins	Buy · {0} coins	Купить · {0} монет	Купити · {0} монет
+Buy · {0} coins	Buy: {0} coins	Купить: {0} монет	Купити: {0} монет
 Need {0} more coins	Need {0} more coins	Нужно ещё {0} монет	Потрібно ще {0} монет
 Bag is full	Bag is full	Сумка полная	Сумка повна
 Added to your bag	Added to your bag	Теперь в твоей сумке	Тепер у твоїй сумці
@@ -588,7 +588,7 @@ This tool cannot help here. Nothing used.	Item kept. Try elsewhere.	Предме
 Back on the board	Back on the board	Снова на доске	Знову на дошці
 One move undone	One move undone	Ход отменён	Хід скасовано
 Follow the hand. The scroll knows the way.	Follow the hand	Иди за рукой	Рухай за рукою
-Undo · {0}	Undo · {0}	Отмена · {0}	Скасувати · {0}
+Undo · {0}	Undo: {0}	Отмена: {0}	Скасувати: {0}
 Two free undos per stage. Only on the current board.	Two free undos per stage. Only on the current board.	Две бесплатные отмены за этап. Только на текущей доске.	Два безплатні скасування за етап. Лише на поточній дошці.
 Retry is free. A return hourglass can bring the last board back.	Retry is free. A return hourglass can bring the last board back.	Повтор бесплатный. Часы возврата могут вернуть последнюю доску.	Повтор безплатний. Годинник повернення може повернути останню дошку.
 The row is ready. Keep your scroll.	The row is ready. Keep your scroll.	Ряд готов. Сохрани карту.	Ряд готовий. Збережи мапу.
@@ -617,11 +617,11 @@ A gust of wind	A gust of wind	Порыв ветра	Порив вітру
 Got it	Got it	Понятно	Зрозуміло
 Use it	Use it	Применить	Застосувати
 Test shop	Test shop	Тест магазина	Тест крамниці
-Video · +40	Video · +40	Видео · +40	Відео · +40
+Video · +40	Video: +40	Видео: +40	Відео: +40
 Loading video…	Loading video…	Загрузка…	Завантаження…
 Try this item	Try this item	Попробовать предмет	Спробувати предмет
 Try removing ads	Try removing ads	Попробовать	Спробувати
-Test shop. No money is charged. Try removing automatic ads.	Test purchase · no charge. Try removing automatic ads.	Тест без оплаты. Попробуй отключить рекламные паузы.	Тест без оплати. Спробуй вимкнути рекламні паузи.
+Test shop. No money is charged. Try removing automatic ads.	Test purchase: no charge. Try removing automatic ads.	Тест без оплаты. Попробуй отключить рекламные паузы.	Тест без оплати. Спробуй вимкнути рекламні паузи.
 Test purchase complete. Automatic ads are off for this session.	Test complete. Automatic ads off for this session.	Тест завершён. Рекламные паузы отключены до перезапуска.	Тест завершено. Рекламні паузи вимкнено до перезапуску.
 Test ad	Test ad	Тестовая реклама	Тестова реклама
 Watch to the end for 40 coins.	Watch to the end for 40 coins.	Посмотри до конца и получи 40 монет.	Подивись до кінця й отримай 40 монет.
@@ -662,10 +662,10 @@ Tools left: {0}	Tools left: {0}	Инструментов: {0}	Інструмен
 Tools: up to 2 stars. No clean record.	Tools: up to 2 stars.\nNo clean record.	С инструментом — до 2 звёзд.\nЧистого рекорда не будет.	Із інструментом — до 2 зірок.\nЧистого рекорду не буде.
 The row would arrive home.	The row would arrive home.	Ряд попадёт домой.	Ряд потрапить додому.
 The row will match the target on the next board.	The row will match the target on the next board.	На следующей доске ряд совпадёт с целью.	На наступній дошці ряд збігатиметься з ціллю.
-World complete · {0}/{0} levels	World complete · {0}/{0} levels	Мир пройден · {0}/{0} уровней	Світ пройдено · {0}/{0} рівнів
-Next world in {0} level · {1}/{2}	Next world in {0} level · {1}/{2}	До нового мира: {0} · пройдено {1}/{2}	До нового світу: {0} · пройдено {1}/{2}
-Next world in {0} levels · {1}/{2}	Next world in {0} levels · {1}/{2}	До нового мира: {0} · пройдено {1}/{2}	До нового світу: {0} · пройдено {1}/{2}
-You are here · {0}/{1}	You are here · {0}/{1}	Вы здесь · {0}/{1}	Ти тут · {0}/{1}
+World complete · {0}/{0} levels	World complete: {0}/{0} levels	Мир пройден: {0}/{0} уровней	Світ пройдено: {0}/{0} рівнів
+Next world in {0} level · {1}/{2}	Next world in {0} level, {1}/{2}	До нового мира: {0}, пройдено {1}/{2}	До нового світу: {0}, пройдено {1}/{2}
+Next world in {0} levels · {1}/{2}	Next world in {0} levels, {1}/{2}	До нового мира: {0}, пройдено {1}/{2}	До нового світу: {0}, пройдено {1}/{2}
+You are here · {0}/{1}	You are here: {0}/{1}	Вы здесь: {0}/{1}	Ти тут: {0}/{1}
 Brilliant!	Brilliant!	Блестяще!	Блискуче!
 Beautifully done!	Beautifully done!	Здорово!	Чудово!
 Delivered!	Delivered!	Доставлено!	Доставлено!
@@ -855,7 +855,7 @@ Coins are optional. Earn them by playing, too.	Coins are optional. Earn them by 
 Advertising privacy	Advertising privacy	Настройки рекламы	Налаштування реклами
 Tool tab	Tools	Помощь	Допомога
 Up to two tools per stage. Help limits this run to two stars.	Up to 2 tools per stage. Tools cap this run at 2 stars.	До 2 инструментов за этап. С ними — до 2 звёзд за уровень.	До 2 інструментів за етап. З ними — до 2 зірок за рівень.
-Test shop · no charge	Test shop · no charge	Тестовый магазин · без оплаты	Тестовий магазин · без оплати
+Test shop · no charge	Test shop: no charge	Тестовый магазин: без оплаты	Тестовий магазин: без оплати
 The store could not finish. Try again.	The store could not finish. Try again.	Покупка не завершена. Попробуй ещё раз.	Покупку не завершено. Спробуй ще раз.
 The shop is not open yet.	The shop is not open yet.	Магазин пока закрыт.	Магазин поки зачинений.
 Coins can also be earned by playing.	Coins can also be earned by playing.	Монеты можно заработать в игре.	Монети можна заробити в грі.
@@ -1102,3 +1102,17 @@ Mika brought the light home. Together, her friends lit the way beyond it.	Mika b
 Completed: {0}/{1}	Completed: {0}/{1}	Пройдено: {0}/{1}	Пройдено: {0}/{1}
 Try it	Try it	Попробовать	Спробувати
 Swap neighbours	Swap neighbours	Поменяй соседей	Поміняй сусідів
+All 3 stages complete	All 3 stages complete	Все три этапа пройдены	Усі три етапи пройдено
+Level complete	Level complete	Уровень пройден	Рівень пройдено
+Video +40	Video +40	Видео +40	Відео +40
+Buy {0}	Buy {0}	Купить {0}	Купити {0}
+Buy for {0} coins	Buy for {0} coins	Купить за {0} монет	Купити за {0} монет
+Words in new puzzles	Words in new puzzles	Слова в новых задачах	Слова в нових задачах
+Level {0}, stage {1}/3	Level {0}, stage {1}/3	Уровень {0}, этап {1}/3	Рівень {0}, етап {1}/3
+Level {0}, 3 stages	Level {0}, 3 stages	Уровень {0}, 3 этапа	Рівень {0}, 3 етапи
+Test shop: no charge	Test shop: no charge	Тест без оплаты	Тест без оплати
+Undo {0}	Undo {0}	Отмена {0}	Скасування {0}
+No change. Free to cancel	No change. Free to cancel	Без изменений. Отмена бесплатна	Без змін. Скасування безплатне
+Closed edge. Free to cancel	Closed edge. Free to cancel	Проход закрыт. Отмена бесплатна	Прохід закрито. Скасування безплатне
+{0}: same	{0}: same	{0}: одинаковые	{0}: однакові
+{0}: locked	{0}: locked	{0}: закрыто	{0}: закрито

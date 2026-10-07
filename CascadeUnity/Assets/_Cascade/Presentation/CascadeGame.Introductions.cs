@@ -89,14 +89,14 @@ namespace Cascade.Presentation
             title.enableAutoSizing=true;title.fontSizeMin=18*MenuUnit;title.fontSizeMax=26*MenuUnit;
             var close=Button(UiCopy.Raw(""),panel,new Vector2(.87f,.91f),new Vector2(.87f,.91f),AcknowledgeMechanic);
             close.name="Close lesson film";((RectTransform)close.transform).sizeDelta=Vector2.one*48*MenuUnit;
-            close.GetComponent<Image>().sprite=enamelControls[1];close.GetComponent<Image>().color=Color.white;
-            var cross=Rect("Close lesson mark",close.transform,new Vector2(.20f,.20f),new Vector2(.80f,.80f)).gameObject.AddComponent<InstructionCloseMark>();cross.color=MenuInk;cross.raycastTarget=false;
+            close.GetComponent<Image>().sprite=enamelControls[0];close.GetComponent<Image>().color=Color.white;
+            var cross=Rect("Close lesson mark",close.transform,new Vector2(.20f,.20f),new Vector2(.80f,.80f)).gameObject.AddComponent<InstructionCloseMark>();cross.color=MenuPaper;cross.raycastTarget=false;
             var example=Rect("Mechanic illustration",panel,new Vector2(.06f,.17f),new Vector2(.94f,.82f));
             BuildLessonFilm(example,lesson,windRight);
             var button=Button("Try it",panel,new Vector2(.18f,.035f),new Vector2(.82f,.035f),AcknowledgeMechanic);
             button.name="Acknowledge mechanic";((RectTransform)button.transform).pivot=new Vector2(.5f,0);((RectTransform)button.transform).sizeDelta=new Vector2(0,48*MenuUnit);
-            button.GetComponent<Image>().sprite=enamelControls[1];button.GetComponent<Image>().type=Image.Type.Sliced;button.GetComponent<Image>().color=Color.white;
-            var label=button.GetComponentInChildren<TextMeshProUGUI>();label.fontSizeMin=18*MenuUnit;label.fontSizeMax=22*MenuUnit;label.color=MenuInk;RenderControls();
+            button.GetComponent<Image>().sprite=enamelControls[0];button.GetComponent<Image>().type=Image.Type.Sliced;button.GetComponent<Image>().color=Color.white;
+            var label=button.GetComponentInChildren<TextMeshProUGUI>();label.fontSizeMin=18*MenuUnit;label.fontSizeMax=22*MenuUnit;label.color=MenuPaper;RenderControls();
         }
         static UiCopy LessonTitle(MechanicLesson lesson)=>lesson==MechanicLesson.Swap?(UiCopy)"Swap neighbours":lesson==MechanicLesson.Descent?(UiCopy)"Descend":lesson==MechanicLesson.Undo?(UiCopy)"Undo":lesson==MechanicLesson.Hint?(UiCopy)"Hint":lesson==MechanicLesson.FarSwap?(UiCopy)"One far swap ready":lesson==MechanicLesson.Toolbag?(UiCopy)"My tools":MechanicTitles[(int)lesson];
         public void AcknowledgeMechanic()

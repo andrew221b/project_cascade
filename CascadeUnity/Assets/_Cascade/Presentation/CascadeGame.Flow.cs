@@ -212,7 +212,7 @@ namespace Cascade.Presentation
                     resultText.SetCopy("Retry is free. A return hourglass can bring the last board back.");
                 resultRoot.Find("Nextdelivery").gameObject.SetActive(CurrentScreen==GameScreen.Win||CurrentScreen==GameScreen.Checkpoint||CanOfferStrongerWood);
                 LoadNavigationArt();
-                void DressResult(Button button,bool primary){var face=button.GetComponent<Image>();face.sprite=enamelControls[primary?1:0];face.type=Image.Type.Sliced;face.color=Color.white;button.GetComponentInChildren<TextMeshProUGUI>().color=primary?MenuInk:MenuPaper;}
+                void DressResult(Button button,bool primary){var face=button.GetComponent<Image>();face.sprite=enamelControls[0];face.type=Image.Type.Sliced;face.color=Color.white;button.GetComponentInChildren<TextMeshProUGUI>().color=MenuPaper;}
                 DressResult(undo,false);
                 var undoColors=undo.colors;undoColors.disabledColor=new Color(.64f,.73f,.71f,1);undo.colors=undoColors;
                 DressResult(resultRoot.Find("Nextdelivery").GetComponent<Button>(),true);
@@ -221,7 +221,7 @@ namespace Cascade.Presentation
                 resultRoot.Find("Nextdelivery").GetComponentInChildren<TextMeshProUGUI>().SetCopy(CurrentScreen==GameScreen.Checkpoint?"Go lower":CanOfferStrongerWood?"More wood":journeyActive&&node=="C160"?"Light the beacon":"Next delivery");
                 if(CurrentScreen==GameScreen.Checkpoint){
                     LoadNavigationArt();retry.gameObject.SetActive(false);var descend=resultRoot.Find("Nextdelivery").GetComponent<Button>();
-                    PlaceControl(descend,resultRoot,new Vector2(0,.35f),new Vector2(1,.78f));descend.GetComponent<Image>().sprite=enamelControls[1];descend.GetComponent<Image>().type=Image.Type.Sliced;descend.GetComponent<Image>().color=Color.white;
+                    PlaceControl(descend,resultRoot,new Vector2(0,.35f),new Vector2(1,.78f));descend.GetComponent<Image>().sprite=enamelControls[0];descend.GetComponent<Image>().type=Image.Type.Sliced;descend.GetComponent<Image>().color=Color.white;
                     var map=resultRoot.Find("Resulthome").GetComponent<Button>();map.GetComponent<Image>().sprite=enamelControls[0];map.GetComponent<Image>().type=Image.Type.Sliced;map.GetComponent<Image>().color=Color.white;map.GetComponentInChildren<TextMeshProUGUI>().color=new Color(1,.97f,.84f);
                 }
                 else PlaceControl(resultRoot.Find("Nextdelivery").GetComponent<Button>(),resultRoot,new Vector2(.52f,.35f),new Vector2(1,.65f));
@@ -334,7 +334,7 @@ namespace Cascade.Presentation
             var r=(RectTransform)button.transform;r.pivot=new Vector2(.5f,0);r.sizeDelta=new Vector2(0,52*unit);
             menuActions.Add(r);if(fixedBottom>=0)menuBottoms.Add(new MenuBottom{rect=r,bottom=fixedBottom});var caption=button.GetComponentInChildren<TextMeshProUGUI>();caption.margin=new Vector4(8,3,8,3);caption.fontSize=(right-left<.51f?20:22)*(Preferences.LargeText?1.10f:1);caption.textWrappingMode=TextWrappingModes.NoWrap;
             caption.enableAutoSizing=true;caption.fontSizeMin=16*unit;caption.fontSizeMax=(right-left<.51f?20:22)*unit*(Preferences.LargeText?1.10f:1);
-            var face=button.GetComponent<Image>();face.sprite=enamelControls[primary?1:0];face.type=Image.Type.Sliced;face.color=Color.white;
+            var face=button.GetComponent<Image>();face.sprite=enamelControls[0];face.type=Image.Type.Sliced;face.color=Color.white;
             return button;
         }
         IReadOnlyList<LevelContent> PreferredLevels()
