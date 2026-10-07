@@ -4670,6 +4670,38 @@ MonoBehaviour:
     m_Localized: Preview only; resets on restart
     m_Metadata:
       m_Items: []
+  - m_Id: 797900371124224
+    m_Localized: Island {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 797900375318528
+    m_Localized: Tap a level to play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 797900375318529
+    m_Localized: 'Best score: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 797900375318530
+    m_Localized: Your next level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 797900375318531
+    m_Localized: Locked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 797900375318532
+    m_Localized: Replay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 797900375318533
+    m_Localized: Previous world
+    m_Metadata:
+      m_Items: []
+  - m_Id: 797900375318534
+    m_Localized: Next world
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -8,16 +8,17 @@ namespace Cascade.Presentation
     public sealed class SoftSceneryGraphic : MaskableGraphic
     {
         Sprite source;
-        CascadeGame game;Rect crop=new Rect(0,0,1,1);Vector2[] centers;readonly Vector2[] islandDrift=new Vector2[5];float phase;
+        CascadeGame game;Rect crop=new Rect(0,0,1,1);Vector2[] centers;readonly Vector2[] islandDrift=new Vector2[5];float phase,spacing;
         public void SetMotion(CascadeGame owner,Rect sourceCrop){game=owner;crop=sourceCrop;}
+        public void SetIslandSpacing(float gap){spacing=gap;SetVerticesDirty();}
         public Vector2 Displacement(Vector2 uv)
         {
-            if(game==null||game.ReducedMotion||centers==null)return Vector2.zero;
+            if(game==null||centers==null)return Vector2.zero;
             Vector2 sum=Vector2.zero;float total=0;
             for(int i=0;i<centers.Length;i++){
                 var d=uv-centers[i];d.y*=source.rect.height/source.rect.width;
                 float squared=d.sqrMagnitude+.0001f,weight=1/(squared*squared);
-                sum+=islandDrift[i]*weight;total+=weight;
+                sum+=((game.ReducedMotion?Vector2.zero:islandDrift[i])+Vector2.up*((i-2)*spacing))*weight;total+=weight;
             }
             return sum/Mathf.Max(.001f,total);
         }

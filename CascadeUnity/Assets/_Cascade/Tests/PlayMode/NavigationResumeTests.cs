@@ -212,11 +212,19 @@ namespace Cascade.Tests
         {
             yield return MountPublishedLevelAt("C04",1);string hash=game.Interaction.Attempt.CurrentStateHash;
             game.ShowJourney();yield return null;
-            Assert.That(JourneyStory.IslandFor(Read<int>("selectedJourneyStop")),Is.EqualTo(1),"The second island must be unlocked before opened-level arrows are offered");
-            Assert.That(game.GetComponentsInChildren<Button>().Any(b=>b.name=="Nextopenedlevel"),Is.False);
-            yield return Click("Previousopenedlevel");Assert.That(Read<int>("selectedJourneyStop"),Is.EqualTo(2));
-            yield return Click("Nextopenedlevel");Assert.That(Read<int>("selectedJourneyStop"),Is.EqualTo(3));
-            Assert.That(game.GetComponentsInChildren<Button>().Any(b=>b.name=="Nextopenedlevel"),Is.False);
+            Assert.That(game.MapWorld,Is.Zero);Assert.That(game.BrowsedIsland,Is.EqualTo(-1));
+            Assert.That(game.GetComponentsInChildren<Button>().Any(b=>b.name=="Previousworld"||b.name=="Nextworld"),Is.False);
+            game.OpenJourneyIsland(0);yield return null;Assert.That(game.BrowsedIsland,Is.Zero);
+            game.ReplayJourneyLevel(3);yield return null;
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.JourneyMap),"An opened level outside the selected island cannot be replayed");
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+            game.CloseJourneyIsland();yield return null;Assert.That(game.MapWorld,Is.Zero);
+            game.OpenJourneyIsland(1);yield return null;Assert.That(game.BrowsedIsland,Is.EqualTo(1));
+            game.ReplayJourneyLevel(4);yield return null;
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.JourneyMap),"Later levels on the opened island remain locked");
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+            game.ReplayJourneyLevel(3);yield return Await(()=>game.Interaction.CanPlay,"Selecting the pinned level must resume the current stage");
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Playing));
             Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
             Assert.That(game.Descent.StageIndex,Is.EqualTo(1));Assert.That(game.JourneyClearCount,Is.EqualTo(3));
         }

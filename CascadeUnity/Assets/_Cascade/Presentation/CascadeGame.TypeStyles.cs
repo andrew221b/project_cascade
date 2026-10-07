@@ -39,7 +39,7 @@ namespace Cascade.Presentation
         }
         void PaintCelebrationType(TextMeshProUGUI label,CelebrationType role)
         {
-            bool night=machine!=null&&machine.LivingWorld.Zone==8;
+            bool night=machine!=null&&machine.LivingWorld.Zone==8&&!(CurrentScreen==GameScreen.JourneyMap&&islandBrowseIndex>=0);
             label.color=role==CelebrationType.Number?new Color(1,.87f,.43f):role==CelebrationType.EnamelLabel?MenuPaper:
                 (role==CelebrationType.Information||role==CelebrationType.SkyNumber)&&night?MenuPaper:new Color(.065f,.25f,.26f);
         }

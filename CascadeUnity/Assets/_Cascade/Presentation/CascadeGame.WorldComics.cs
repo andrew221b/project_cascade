@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Cascade.Content;
 using TMPro;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace Cascade.Presentation
 {
     public sealed partial class CascadeGame
     {
-        int worldComic=-1,worldComicPage;
+        int worldComic=-1,worldComicPage,worldComicLine;
         Action worldComicDone;
         readonly Sprite[][] worldComicPanels=new Sprite[3][];
         public int ComicWorld=>worldComic;
@@ -21,11 +22,15 @@ namespace Cascade.Presentation
         public void OpenWorldComic(int world,Action done=null)
         {
             CancelConversation();worldComic=Mathf.Clamp(world,0,JourneyStory.WorldCount-1);
-            worldComicPage=0;worldComicDone=done??ShowJourney;machine.SetZone(worldComic);
+            worldComicPage=worldComicLine=0;worldComicDone=done??ShowJourney;machine.SetZone(worldComic);
             SetScreen(GameScreen.Prologue);
         }
         void AdvanceWorldComic()
         {
+            if(worldComic<0||CurrentScreen!=GameScreen.Prologue)return;
+            var page=WorldPrologues.ForWorld(worldComic).Pages[worldComicPage];
+            if(++worldComicLine<page.Lines.Length){DrawMenu();return;}
+            worldComicLine=0;
             if(++worldComicPage<3){DrawMenu();menuTransition.Arrive();return;}
             FinishWorldComic();
         }
@@ -38,28 +43,35 @@ namespace Cascade.Presentation
         }
         void DrawWorldComic()
         {
-            var story=WorldPrologues.ForWorld(worldComic);var page=story.Pages[worldComicPage];
+            var story=WorldPrologues.ForWorld(worldComic);var page=story.Pages[worldComicPage];var line=page.Lines[worldComicLine];
             int sheet=worldComic/3;
             if(worldComicPanels[sheet]==null)worldComicPanels[sheet]=NavigationSlices("Navigation/WorldComic"+sheet,3,3);
             NavigationHeader(JourneyStory.ZoneName(worldComic),FinishWorldComic);
-            var title=menuRoot.Find("Navigation heading/Page heading").GetComponent<TextMeshProUGUI>();
-            title.fontSizeMin=16*MenuUnit;title.fontSizeMax=26*MenuUnit;
-            title.rectTransform.anchorMax=new Vector2(.945f,.92f);title.margin=new Vector4(0,0,4*MenuUnit,0);
-            var frame=Rect("World comic illustration",menuRoot,new Vector2(.095f,.47f),new Vector2(.905f,.865f));
-            Picture("World comic scene",frame,Vector2.zero,Vector2.one,worldComicPanels[sheet][worldComic%3*3+worldComicPage],true);
-            frame.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(1.4f,1),worldComicPage,.13f);
-            var heading=CompletionText("World comic caption",menuRoot,new Vector2(.075f,.409f),new Vector2(.925f,.475f),22,page.Caption);
-            heading.enableAutoSizing=true;heading.fontSizeMin=18*MenuUnit;heading.fontSizeMax=23*MenuUnit;
-            for(int i=0;i<page.Lines.Length;i++){
-                float top=.408f-i*.118f;
-                var line=Text("World story line "+i,menuRoot,new Vector2(.095f,top-.109f),new Vector2(.905f,top),18,
-                    new UiCopy("{0}: {1}",new UiCopy(page.Lines[i].Speaker),new UiCopy(page.Lines[i].Text)));
-                line.alignment=TextAlignmentOptions.MidlineLeft;line.color=MenuInk;line.enableAutoSizing=true;
-                line.fontSizeMin=15*MenuUnit;line.fontSizeMax=19*MenuUnit*(Preferences.LargeText?1.12f:1);line.margin=new Vector4(4,3,4,3);
-            }
-            var next=Button(worldComicPage==2?"To the map":"Continue",menuRoot,new Vector2(.11f,.072f),new Vector2(.89f,.145f),AdvanceWorldComic);
+            var title=menuRoot.GetComponentsInChildren<TextMeshProUGUI>().Single(t=>t.name=="Page heading");
+            title.fontSizeMin=16*MenuUnit;title.fontSizeMax=26*MenuUnit;title.margin=new Vector4(0,0,4*MenuUnit,0);
+            var frame=Rect("World comic illustration",menuRoot,Vector2.zero,Vector2.one);
+            var illustration=Picture("World comic scene",frame,Vector2.zero,Vector2.one,worldComicPanels[sheet][worldComic%3*3+worldComicPage],true);
+            var speech=Rect("World comic speech ribbon",menuRoot,Vector2.zero,Vector2.one);
+            var lining=Rect("Opaque enamel lining",speech,new Vector2(.025f,.025f),new Vector2(.975f,.975f));Background(lining,new Color(.04f,.235f,.245f),false);
+            var rim=Rect("Enamel ribbon rim",speech,Vector2.zero,Vector2.one);var enamel=Background(rim,Color.white,false);enamel.sprite=enamelControls[0];enamel.type=UnityEngine.UI.Image.Type.Sliced;
+            var portrait=Rect("World comic speaker portrait",speech,Vector2.zero,Vector2.one).gameObject.AddComponent<UnityEngine.UI.Image>();
+            portrait.sprite=ConversationPortrait(line.Speaker);portrait.preserveAspect=true;portrait.raycastTarget=false;
+            if(line.Speaker=="Mika")AttachMikaCosmetic(portrait,null,true);
+            var nameRibbon=Rect("World comic speaker ribbon",speech,Vector2.zero,Vector2.one);var cloth=Background(nameRibbon,Color.white,false);cloth.sprite=CompletionArt(1);cloth.type=UnityEngine.UI.Image.Type.Sliced;
+            var speaker=Text("World comic speaker name",nameRibbon,new Vector2(.10f,.08f),new Vector2(.90f,.92f),20,line.Speaker);speaker.font=art.titleFont;
+            var reading=Rect("World comic reading area",speech,Vector2.zero,Vector2.one);
+            var viewport=Rect("World comic reading viewport",reading,Vector2.zero,Vector2.one);Background(viewport,Color.white,true);
+            var mask=viewport.gameObject.AddComponent<UnityEngine.UI.Mask>();mask.showMaskGraphic=false;
+            var body=Text("World comic spoken line",viewport,new Vector2(0,1),Vector2.one,20,line.Text);
+            body.alignment=TextAlignmentOptions.TopLeft;body.textWrappingMode=TextWrappingModes.Normal;body.overflowMode=TextOverflowModes.Overflow;
+            body.rectTransform.pivot=new Vector2(.5f,1);body.gameObject.AddComponent<UnityEngine.UI.ContentSizeFitter>().verticalFit=UnityEngine.UI.ContentSizeFitter.FitMode.PreferredSize;
+            navigationLightLabels.Add(body);
+            var scroll=reading.gameObject.AddComponent<UnityEngine.UI.ScrollRect>();scroll.viewport=viewport;scroll.content=body.rectTransform;scroll.horizontal=false;scroll.inertia=false;scroll.movementType=UnityEngine.UI.ScrollRect.MovementType.Clamped;
+            bool last=worldComicPage==2&&worldComicLine==page.Lines.Length-1;
+            var next=Button(last?"To the map":"Continue",menuRoot,Vector2.zero,Vector2.one,AdvanceWorldComic);
             next.name="Next comic page";StyleConversationButton(next,enamelControls[0],MenuPaper);
-            var number=Text("World comic progress",menuRoot,new Vector2(.36f,.018f),new Vector2(.64f,.063f),15,UiCopy.Raw((worldComicPage+1)+" / 3"));number.color=MenuInk;
+            var number=Text("World comic progress",menuRoot,Vector2.zero,Vector2.one,15,UiCopy.Raw((worldComicPage+1)+" / 3"));number.color=MenuInk;
+            speech.gameObject.AddComponent<WorldComicLayout>().Initialize(this,menuRoot,(RectTransform)title.transform.parent,illustration,portrait,nameRibbon,speaker,body,scroll,next,number);
         }
         void TryJourneyOpening()
         {

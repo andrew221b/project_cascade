@@ -1,0 +1,23 @@
+Focused native Editor checks
+RUN FirstIslandHidesUnavailableArrowsAndCannotBrowseLockedWorlds
+PASS FirstIslandHidesUnavailableArrowsAndCannotBrowseLockedWorlds
+CAPTURE map-first-ru.png
+CAPTURE island-first-ru.png
+CAPTURE map-second-ru.png
+SCENE comic-first-ru.png texture=1536x1024 sprite=(x:0.00, y:682.67, width:512.00, height:341.33) canvas=1
+CAPTURE comic-first-ru.png
+FAIL UnityEngine.MissingReferenceException: The object of type 'UnityEngine.RectTransform' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+  at UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) [0x00064] in /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/UnityEngineObject.bindings.cs:1059
+  at UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) [0x00010] in /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/BindingsHelpers.cs:61
+  at UnityEngine.RectTransform.get_anchorMin () [0x00006] in <cceaa8dc4be246b8863c05d5431ef574>:0
+  at Cascade.Presentation.WorldComicLayout.Place (UnityEngine.RectTransform rect, System.Single x, System.Single y, System.Single width, System.Single height) [0x00000] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Presentation/WorldComicLayout.cs:78
+  at Cascade.Presentation.WorldComicLayout.RefreshLayout () [0x00287] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Presentation/WorldComicLayout.cs:57
+  at (wrapper delegate-invoke) <Module>.invoke_void()
+  at UnityEngine.Canvas.SendWillRenderCanvases () [0x00001] in /Users/bokken/build/output/unity/unity/Modules/UI/ScriptBindings/UICanvas.bindings.cs:121
+  at UnityEngine.Canvas.ForceUpdateCanvases () [0x00007] in /Users/bokken/build/output/unity/unity/Modules/UI/ScriptBindings/UICanvas.bindings.cs:109
+  at Cascade.Presentation.CascadeGame.RefreshLayout () [0x00000] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Presentation/CascadeGame.cs:258
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.<>m__Finally1 () [0x0006f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:59
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.System.IDisposable.Dispose () [0x00015] in <a4faad7055874b2ca84182a3500ee36c>:0
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x004a0] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:61
+  at Cascade.Editor.Playable.MapBrowseReviewOnce+<Guard>d__8.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/MapBrowseReviewOnce.cs:41

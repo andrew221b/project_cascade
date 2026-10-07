@@ -266,6 +266,7 @@ namespace Cascade.Presentation
             machine?.Sync(); SyncTokenFaces(); SyncDeviceSuspension(0); RenderControls();
             feedback?.RefreshAnchors();reactionBanner?.RefreshLayout();
             RestoreTouchPose();
+            if(worldComic>=0&&CurrentScreen==GameScreen.Prologue)menuRoot.GetComponentInChildren<WorldComicLayout>()?.RefreshLayout();
         }
         void CancelHint()
         {

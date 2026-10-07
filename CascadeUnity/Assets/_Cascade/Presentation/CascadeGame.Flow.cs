@@ -309,7 +309,7 @@ namespace Cascade.Presentation
         void FinishMenuContrast()
         {
             foreach(var label in menuRoot.GetComponentsInChildren<TextMeshProUGUI>())if(!IsSymbolFace(label.name)&&label.name!="Mini glyph")label.color=label.name=="Earned score"?new Color(1,.88f,.46f):navigationLightLabels.Contains(label)||label.GetComponentInParent<Button>()?.GetComponent<Image>()?.sprite==enamelControls[0]?new Color(1,.97f,.84f):MenuInk;
-            bool nightMap=CurrentScreen==GameScreen.JourneyMap&&mapPage==8;
+            bool nightMap=CurrentScreen==GameScreen.JourneyMap&&islandBrowseIndex<0&&mapPage==8;
             bool nightResult=(CurrentScreen==GameScreen.Win||CurrentScreen==GameScreen.Parcel||CurrentScreen==GameScreen.JourneyEnd)&&machine.LivingWorld.Zone==8;
             foreach(var label in menuRoot.GetComponentsInChildren<TextMeshProUGUI>()){
                 bool mapCopy=nightMap&&label.GetComponentInParent<Button>()==null;

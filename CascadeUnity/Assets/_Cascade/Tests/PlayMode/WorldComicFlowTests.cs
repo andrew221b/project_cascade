@@ -122,11 +122,16 @@ namespace Cascade.Tests
                 for(int page=0;page<3;page++){
                     Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Prologue));Assert.That(game.ComicWorld,Is.EqualTo(world));Assert.That(game.ComicPage,Is.EqualTo(page));
                     var image=game.GetComponentsInChildren<Image>().Single(i=>i.name=="World comic scene");
+                    game.RefreshLayout();
+                    var frame=(RectTransform)image.transform.parent;
+                    Assert.That(frame.rect.width/frame.rect.height,Is.EqualTo(image.sprite.rect.width/image.sprite.rect.height).Within(.001f),"Each new panel must bind its active heading and preserve the illustration aspect");
                     Assert.That(image.sprite,Is.Not.Null);Assert.That(image.sprite.texture,Is.Not.Null);Assert.That(image.sprite.rect.width,Is.GreaterThan(0));
                     panels.Add(image.sprite.texture.GetInstanceID()+":"+image.sprite.rect);
                     Assert.That(game.Interaction.IsPaused,Is.True);Assert.That(game.Interaction.Attempt,Is.SameAs(attempt));
                     Assert.That(attempt.Current,Is.SameAs(row));Assert.That(attempt.CurrentStateHash,Is.EqualTo(hash));Assert.That(attempt.RouteLength,Is.EqualTo(route));
                     Assert.That(game.Descent,Is.SameAs(run));Assert.That(game.Descent.StageIndex,Is.EqualTo(1));
+                    yield return Click("Next comic page");
+                    Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Prologue));Assert.That(game.ComicPage,Is.EqualTo(page),"The first click reveals the next speaker on the same illustration");
                     yield return Click("Next comic page");
                 }
                 Assert.That(game.ComicWorld,Is.EqualTo(-1));Assert.That(game.HasSaveError,Is.False);
@@ -172,38 +177,52 @@ namespace Cascade.Tests
             game.ShowJourney();yield return null;yield return FinishOpening(StoryConversations.IslandOpening(0,0).Receipt);
             for(int world=0;world<JourneyStory.WorldCount;world++){
                 if(world>0){
-                    game.TurnJourneyMap(1);yield return null;Assert.That(Read<int>("mapPage"),Is.EqualTo(world));
+                    game.TurnJourneyMap(1);yield return null;Assert.That(game.MapWorld,Is.EqualTo(world));
                     if(game.ConversationOpen)yield return FinishOpening(StoryConversations.IslandOpening(world,JourneyStory.IslandFor(Read<int>("selectedJourneyStop"))).Receipt);
                 }
                 for(int island=0;island<5;island++){
                     int receipt=StoryConversations.IslandOpening(world,island).Receipt;
-                    bool heard=Read<HashSet<int>>("heardStory").Contains(receipt);
+                    bool heard=Read<HashSet<int>>("heardStory").Contains(receipt);int selected=Read<int>("selectedJourneyStop");
                     yield return Click("Island"+(island+1));
-                    Assert.That(Read<int>("selectedJourneyStop"),Is.EqualTo(JourneyStory.IslandFirst(world,island)));
-                    if(heard)Assert.That(game.ConversationOpen,Is.False);else yield return FinishOpening(receipt);
-                    yield return Click("Island"+(island+1));Assert.That(game.ConversationOpen,Is.False,"An opening must not repeat on a second visit");
+                    Assert.That(game.BrowsedIsland,Is.EqualTo(island));Assert.That(Read<int>("selectedJourneyStop"),Is.EqualTo(selected));
+                    Assert.That(game.ConversationOpen,Is.False,"An island tap opens its read-only list");
+                    Assert.That(Read<HashSet<int>>("heardStory").Contains(receipt),Is.EqualTo(heard),"Browsing must not consume an unread story");
+                    game.CloseJourneyIsland();yield return null;Assert.That(game.MapWorld,Is.EqualTo(world));
+                    yield return Click("Island"+(island+1));Assert.That(game.ConversationOpen,Is.False,"Reopening the list must keep it free of dialogue");
+                    Assert.That(Read<HashSet<int>>("heardStory").Contains(receipt),Is.EqualTo(heard));
                     Assert.That(game.Interaction.Attempt,Is.SameAs(attempt));Assert.That(attempt.CurrentStateHash,Is.EqualTo(hash));
+                    game.CloseJourneyIsland();yield return null;
                 }
             }
-            Assert.That(Read<HashSet<int>>("heardStory").Count(r=>r>=8000&&r<8100),Is.EqualTo(45));
+            Assert.That(Read<HashSet<int>>("heardStory").Where(r=>r>=8000&&r<8100),
+                Is.EquivalentTo(Enumerable.Range(0,JourneyStory.WorldCount).Select(w=>StoryConversations.IslandOpening(w,0).Receipt)),
+                "World navigation reads its first island opening; other island stories wait for Play");
         }
 
         [UnityTest] public IEnumerator OccasionalExchangeAppearsOnlyOnItsExactLevelAndKeepsTheBrowsedStop()
         {
             OpenPublishedRoutesInMemory();Read<HashSet<int>>("heardStory").UnionWith(Enumerable.Range(8000,JourneyStory.WorldCount*10));
-            var row=game.Interaction.Attempt.Current;string hash=game.Interaction.Attempt.CurrentStateHash;
             game.ShowJourney();yield return null;
             for(int world=0;world<JourneyStory.WorldCount;world++){
                 if(world>0){game.TurnJourneyMap(1);yield return null;}
+                Assert.That(game.MapWorld,Is.EqualTo(world));
+                var original=game.Interaction.Attempt;var row=original.Current;string hash=original.CurrentStateHash;
                 yield return Click("Island4");Assert.That(game.ConversationOpen,Is.False);
-                Assert.That(Read<int>("selectedJourneyStop"),Is.EqualTo(JourneyStory.IslandFirst(world,3)));
-                yield return Click("Nextopenedlevel");
-                int stop=JourneyStory.IslandFirst(world,3)+1;Assert.That(Read<int>("selectedJourneyStop"),Is.EqualTo(stop));
+                Assert.That(game.BrowsedIsland,Is.EqualTo(3));
+                int stop=JourneyStory.IslandFirst(world,3)+1;
+                yield return Click("Island level "+(stop+1));Assert.That(Read<int>("selectedJourneyStop"),Is.EqualTo(stop));
+                Assert.That(game.Interaction.Attempt,Is.SameAs(original));Assert.That(original.Current,Is.SameAs(row));
+                Assert.That(original.CurrentStateHash,Is.EqualTo(hash),"Reading the exact level's exchange must retain the current attempt until Continue");
                 yield return FinishOpening(StoryConversations.LevelAside(stop).Receipt);
-                yield return Click("Previousopenedlevel");Assert.That(game.ConversationOpen,Is.False);
-                yield return Click("Nextopenedlevel");Assert.That(game.ConversationOpen,Is.False,"A read exchange must not repeat");
-                yield return Click("Nextopenedlevel");Assert.That(game.ConversationOpen,Is.False,"The next level must not reuse the exchange");
-                Assert.That(game.Interaction.Attempt.Current,Is.SameAs(row));Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+                yield return Await(()=>game.PreparationReady&&game.Interaction.CanPlay,"Continue must launch the selected published level");
+                Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Playing));
+                Assert.That(game.Interaction.Attempt.Level.CampaignNodeId,Is.EqualTo(game.Catalog.PrimaryLevels[stop].Definition.CampaignNodeId));
+                var launched=game.Interaction.Attempt;row=launched.Current;hash=launched.CurrentStateHash;
+                game.ShowJourney();yield return null;Assert.That(game.ConversationOpen,Is.False,"A read exchange must not repeat on the return to the map");
+                yield return Click("Island4");Assert.That(game.ConversationOpen,Is.False,"The neighboring level cards must not reuse the exchange");
+                game.ReplayJourneyLevel(stop);yield return null;Assert.That(game.ConversationOpen,Is.False,"Playing the pinned level again must resume without repeating its exchange");
+                Assert.That(game.Interaction.Attempt,Is.SameAs(launched));Assert.That(launched.Current,Is.SameAs(row));Assert.That(launched.CurrentStateHash,Is.EqualTo(hash));
+                game.ShowJourney();yield return null;
             }
             Assert.That(Read<HashSet<int>>("heardStory").Count(r=>r>=7000&&r<7200),Is.EqualTo(9));
         }
