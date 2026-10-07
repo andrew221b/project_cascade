@@ -9,6 +9,9 @@ namespace Cascade.Presentation
         int scoreIncoming;
         float scoreFade = 1, scoreGain, rainBlend;
         bool audioSleeping, scoreSleeping;
+        bool audioConfigurationChanged;
+        readonly int[] scoreSamples=new int[2];
+        int windSamples,rainSamples;
         readonly WindAudioEnvelope windEnvelope = new WindAudioEnvelope();
         public AudioClip CurrentMusicClip => scoreSources[scoreIncoming]?.clip;
         public float MusicPosition => scoreSources[scoreIncoming] == null ? 0 : scoreSources[scoreIncoming].time;
@@ -32,29 +35,52 @@ namespace Cascade.Presentation
             scoreSources[1] = LoopSource("CASCADE score B", null);
             windSource = LoopSource("Living island wind", library?.naturalWind ?? Resources.Load<AudioClip>("CascadeArt/Woodland/WindBed"));
             rainSource = LoopSource("Rain beneath the mill", Resources.Load<AudioClip>("CascadeArt/Woodland/RainBed"));
+            AudioSettings.OnAudioConfigurationChanged+=AudioConfigurationChanged;
         }
+        void AudioConfigurationChanged(bool deviceChanged){audioConfigurationChanged=true;}
+        void RememberLoopPositions()
+        {
+            for(int i=0;i<scoreSources.Length;i++)if(scoreSources[i]!=null&&scoreSources[i].isPlaying)scoreSamples[i]=scoreSources[i].timeSamples;
+            if(windSource!=null&&windSource.isPlaying)windSamples=windSource.timeSamples;
+            if(rainSource!=null&&rainSource.isPlaying)rainSamples=rainSource.timeSamples;
+        }
+        static bool ResumeLoop(AudioSource source,int position)
+        {
+            if(source==null||source.clip==null)return true;
+            // Stopping a streaming source can unload its data. Merely waiting never reloads it.
+            if(source.clip.loadState==AudioDataLoadState.Unloaded)source.clip.LoadAudioData();
+            if(source.clip.loadState!=AudioDataLoadState.Loaded)return false;
+            source.UnPause();
+            // UnPause cannot restart a source stopped by an output-device reset.
+            if(!source.isPlaying){source.Play();if(position>0)source.timeSamples=Mathf.Min(position,source.clip.samples-1);}
+            return source.isPlaying;
+        }
+        void DisposeAtmosphere(){AudioSettings.OnAudioConfigurationChanged-=AudioConfigurationChanged;}
         void TickAtmosphere(float seconds, bool paused)
         {
             float dt = Mathf.Clamp(seconds, 0, .1f);
+            if(audioConfigurationChanged){audioConfigurationChanged=false;scoreSleeping=audioSleeping=true;scoreGain=0;}
+            else RememberLoopPositions();
             int zone = game.Machine.LivingWorld.Zone;
             var wanted = library?.ScoreFor(game.CurrentScreen, zone);
             // Reversing an existing blend keeps both playback positions and the instantaneous gain.
             if(wanted!=null&&wanted!=CurrentMusicClip&&wanted==scoreSources[1-scoreIncoming].clip) {
                 scoreIncoming=1-scoreIncoming;scoreFade=1-scoreFade;
-                if(!scoreSleeping)scoreSources[scoreIncoming].UnPause();
+                if(!scoreSleeping)ResumeLoop(scoreSources[scoreIncoming],scoreSamples[scoreIncoming]);
             }
             // Queue a third theme until the current blend completes. Never cut an audible track halfway through.
             if (wanted != null && wanted != CurrentMusicClip && scoreFade >= 1) {
                 scoreIncoming = 1 - scoreIncoming;
                 var incoming = scoreSources[scoreIncoming];
                 incoming.Stop(); incoming.volume = 0; incoming.clip = wanted; incoming.Play();
+                scoreSamples[scoreIncoming]=0;
                 if (scoreSleeping) incoming.Pause();
                 scoreFade = 0;
             }
             duck = Mathf.Max(0, duck - dt);
             float target = !MusicEnabled || paused ? 0 : duck > 0 ? .13f : .19f;
             scoreGain = Mathf.MoveTowards(scoreGain, target, dt * .7f);
-            if (scoreSleeping && target > 0) { foreach (var source in scoreSources) source.UnPause(); scoreSleeping = false; }
+            if (scoreSleeping && target > 0) {bool ready=true;for(int i=0;i<scoreSources.Length;i++)ready&=ResumeLoop(scoreSources[i],scoreSamples[i]);scoreSleeping=!ready;}
             if (!scoreSleeping) scoreFade = Mathf.Min(1, scoreFade + dt / 1.6f);
             float blend = Mathf.SmoothStep(0, 1, scoreFade);
             scoreSources[scoreIncoming].volume = scoreGain * Mathf.Sqrt(blend);
@@ -64,7 +90,7 @@ namespace Cascade.Presentation
 
             // Both beds keep their place. Region changes blend them rather than restarting the wind.
             bool soundsAllowed = SoundEnabled && !paused;
-            if (audioSleeping && soundsAllowed) { windSource.UnPause(); rainSource.UnPause(); audioSleeping = false; }
+            if (audioSleeping && soundsAllowed) {audioSleeping=!(ResumeLoop(windSource,windSamples)&ResumeLoop(rainSource,rainSamples));}
             rainBlend = Mathf.MoveTowards(rainBlend, zone == 1 || zone == 4 ? 1 : 0, dt * .45f);
             bool atRig = game.CurrentScreen == GameScreen.Playing || game.CurrentScreen == GameScreen.Win
                 || game.CurrentScreen == GameScreen.Fail || game.CurrentScreen == GameScreen.Checkpoint;
@@ -81,6 +107,7 @@ namespace Cascade.Presentation
         }
         void OnDisable()
         {
+            RememberLoopPositions();
             // This component owns these loops; stopping Update must not leave its audio audible.
             // Pause rather than Stop so re-enabling keeps every theme/ambience playback position.
             if (voices != null) foreach (var source in voices) if (source != null) source.Stop();

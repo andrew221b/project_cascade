@@ -2089,17 +2089,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 404348822609921
-    m_Localized: Keep the way home free of advertising breaks. Support Mika's journey.
+    m_Localized: Remove automatic ad breaks.
     m_Metadata:
       m_Items: []
   - m_Id: 404348822609922
-    m_Localized: The shop is not open yet. You can enjoy the whole journey without
-      purchases.
+    m_Localized: Shop closed. Play the full journey without purchases.
     m_Metadata:
       m_Items: []
   - m_Id: 404348822609923
-    m_Localized: A one-time purchase removes automatic ads. Optional videos stay
-      your choice.
+    m_Localized: One purchase removes automatic ads. Reward videos stay optional.
     m_Metadata:
       m_Items: []
   - m_Id: 404348822609924
@@ -2216,7 +2214,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 449412517060625
-    m_Localized: Find three parts to make a trophy for Mika.
+    m_Localized: 3 parts make Mika's trophy.
     m_Metadata:
       m_Items: []
   - m_Id: 449412517060626
@@ -2328,7 +2326,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 510273461936136
-    m_Localized: Mika wears it on the map. You can also earn it in parcels.
+    m_Localized: Wear it on the map. Earn it in parcels too.
     m_Metadata:
       m_Items: []
   - m_Id: 510273461936137
@@ -2514,18 +2512,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 527816348131341
-    m_Localized: The hand shows one next move. Then you take over. Up to two tools
-      per stage.
+    m_Localized: Follow the hand for one move. Up to 2 tools per stage.
     m_Metadata:
       m_Items: []
   - m_Id: 527816348131342
-    m_Localized: After two free undos, this spool undoes one more move on the same
-      board.
+    m_Localized: One extra Undo on this board, after 2 free Undos.
     m_Metadata:
       m_Items: []
   - m_Id: 527816348131343
-    m_Localized: The hourglass brings back the last broken board in this stage. Later
-      moves are undone.
+    m_Localized: Restore this stage's last broken board. Later moves undone.
     m_Metadata:
       m_Items: []
   - m_Id: 527816348131344
@@ -2565,11 +2560,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 542516125360132
-    m_Localized: Test shop. No money is charged. Try removing automatic ads.
+    m_Localized: "Test purchase \xB7 no charge. Try removing automatic ads."
     m_Metadata:
       m_Items: []
   - m_Id: 542516125360133
-    m_Localized: Test purchase complete. Automatic ads are off for this session.
+    m_Localized: Test complete. Automatic ads off for this session.
     m_Metadata:
       m_Items: []
   - m_Id: 542516125360134
@@ -2653,7 +2648,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 555995448205323
-    m_Localized: A trophy for Mika's travels. Wear it on the map. No puzzle advantage.
+    m_Localized: Wear it on the map. No puzzle advantage.
     m_Metadata:
       m_Items: []
   - m_Id: 555995448205324
@@ -2665,13 +2660,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 555995448205326
-    m_Localized: The lantern makes one safe move for you. It uses wood just like
-      your own move. Once per stage.
+    m_Localized: One safe move. Normal wood cost. Once per stage.
     m_Metadata:
       m_Items: []
   - m_Id: 555995448205327
-    m_Localized: See where the pieces will land if you go down now. Nothing moves
-      until you choose Descend.
+    m_Localized: Preview the next landing. Pieces stay put until Descend.
     m_Metadata:
       m_Items: []
   - m_Id: 555995448205328
@@ -3507,7 +3500,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 644963963494400
-    m_Localized: Up to two tools per stage. Help limits this run to two stars.
+    m_Localized: Up to 2 tools per stage. Tools cap this run at 2 stars.
     m_Metadata:
       m_Items: []
   - m_Id: 644963963494401
@@ -3535,7 +3528,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 673947795316737
-    m_Localized: See how each effect works. Watch an example, then try it yourself.
+    m_Localized: Watch an example, then try it.
     m_Metadata:
       m_Items: []
   - m_Id: 673947795316738

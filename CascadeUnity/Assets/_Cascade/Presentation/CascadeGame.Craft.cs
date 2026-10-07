@@ -34,7 +34,7 @@ namespace Cascade.Presentation
             hero.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,1.5f),0,.45f);
             RewardPicture("Parcel",new Vector2(.55f,.62f),new Vector2(.86f,.79f));Shelf(.575f);
             MenuNavRow("My tools","Hourglass",0,ShowSupplies);
-            MenuNavRow("Keepsakes","LeafPin",1,ShowCollection);
+            MenuNavRow("Trophies","LeafPin",1,ShowCollection);
             MenuNavRow("My journal","MoonPatch",2,ShowJournal,JourneyClearCount>=3);
             MenuNavRow("Workshop","BridgeLantern",3,ShowWorkshop);
             MenuButton("Back",.025f,BackFromBag);

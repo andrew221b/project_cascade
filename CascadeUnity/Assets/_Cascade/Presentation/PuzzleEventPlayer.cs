@@ -79,7 +79,7 @@ namespace Cascade.Presentation
                             game.AnnounceReaction("The wind moved the row","");
                         }
                         CaptureRow(frame); frame.Read(e, level); game.RenderFrame(frame); MapRow(frame);
-                        feedback.Sound(ToyCue.Swap); yield return Travel(windTravel?.95f:profile.swap, !reduced, false);windTravel=false;if(windAir!=null)Destroy(windAir.gameObject);
+                        feedback.Sound(ToyCue.Swap);feedback.Haptic(.24f);yield return Travel(windTravel?.95f:profile.swap, !reduced, false);windTravel=false;if(windAir!=null)Destroy(windAir.gameObject);
                     } else if (e.Kind == PuzzleEventKind.FloorExited) {
                         int next=e.Floor+1;if(next<level.Floors.Count&&game.IsWindFloor(next))yield return WarnWind(level.Floors[next].EntryTransform==EntryTransform.ShiftRightOne);
                         if(frame.Durability<=0){
@@ -89,7 +89,7 @@ namespace Cascade.Presentation
                     } else if (e.Kind == PuzzleEventKind.FloorEntered || e.Kind == PuzzleEventKind.ReceiverEvaluated) {
                         CaptureRow(frame); frame.Read(e, level); bool arrival = e.Kind == PuzzleEventKind.ReceiverEvaluated;
                         game.RenderFrame(frame, arrival); MapRow(frame);
-                        yield return Travel(profile.fall, false, true); feedback.Sound(ToyCue.Land);
+                        yield return Travel(profile.fall, false, true);feedback.Sound(ToyCue.Land);feedback.Haptic(.42f);
                         yield return Land(arrival);
                         if (arrival) {
                             feedback.Sound(e.Value == 1 ? ToyCue.Success : ToyCue.Reject);

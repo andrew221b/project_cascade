@@ -19,7 +19,27 @@ namespace Cascade.Presentation
         public bool IsStoryRoute=>storyRoute;
         public int LevelShelfPage=>chapterPage;
         public void ShowPlayChoice(){ChooseStory();}
-        public void ShowShop(){if(CurrentScreen!=GameScreen.Shop)shopReturnScreen=CurrentScreen;shopNotice=default;SetScreen(GameScreen.Shop);}
+        struct ShopLocation
+        {
+            public GameScreen Origin;
+            public int Tab,Item;
+        }
+        ShopLocation CaptureShop()=>new ShopLocation{Origin=shopReturnScreen,Tab=shopTab,Item=shopItem};
+        void RestoreShop(ShopLocation location)
+        {
+            shopReturnScreen=location.Origin;shopTab=location.Tab;shopItem=location.Item;
+            shopNotice=default;SetScreen(GameScreen.Shop);
+        }
+        public void ShowShop()
+        {
+            // A link back to an existing parent resumes that visit instead of making a loop.
+            if(CurrentScreen==GameScreen.TravelBag&&bagReturnScreen==GameScreen.Shop){BackFromBag();return;}
+            if(CurrentScreen==GameScreen.Collection&&collectionReturn==GameScreen.Shop){BackFromCollection();return;}
+            if(CurrentScreen==GameScreen.Supplies&&toolsReturnScreen==GameScreen.Shop){BackFromTools();return;}
+            if(CurrentScreen==GameScreen.Workshop&&workshopReturn==GameScreen.Shop){BackFromWorkshop();return;}
+            if(CurrentScreen!=GameScreen.Shop&&CurrentScreen!=GameScreen.CoinPacks)shopReturnScreen=CurrentScreen;
+            shopNotice=default;SetScreen(GameScreen.Shop);
+        }
         public void ShowNoAds(){if(CurrentScreen!=GameScreen.NoAds)noAdsReturnScreen=CurrentScreen;SetScreen(GameScreen.NoAds);}
         public void ChooseSoloMode(PuzzleMode mode){SelectMode(mode);ShowJourney();}
         public void ChooseStory()

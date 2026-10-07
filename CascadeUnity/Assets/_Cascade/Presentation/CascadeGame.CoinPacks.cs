@@ -7,7 +7,11 @@ namespace Cascade.Presentation
 {
     public sealed partial class CascadeGame
     {
-        public void ShowCoinPacks()=>SetScreen(GameScreen.CoinPacks);
+        public void ShowCoinPacks()
+        {
+            if(CurrentScreen!=GameScreen.Shop&&CurrentScreen!=GameScreen.CoinPacks)ShowShop();
+            SetScreen(GameScreen.CoinPacks);
+        }
         void DrawCoinPacks()
         {
             LoadNavigationArt();NavigationHeader("Coins",()=>SetScreen(GameScreen.Shop));

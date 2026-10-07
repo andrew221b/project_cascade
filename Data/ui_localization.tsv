@@ -510,9 +510,9 @@ Goal: Great Beacon	Goal: Great Beacon	Наша цель — Большой ма�
 Talk to {0}	Talk to {0}	Поговорить: {0}	Поговорити: {0}
 Choose a quieter journey, or find a keepsake for Mika.	Choose a quieter journey, or find a trophy for Mika.	Без рекламных пауз. И трофеи для Мики.	Без рекламних пауз. І трофеї для Міки.
 Keepsakes can be earned by playing. Purchases are optional.	Trophies can be earned by playing. Purchases are optional.	Трофеи можно собрать в игре. Покупать что-либо необязательно.	Трофеї можна зібрати в грі. Купувати щось необов’язково.
-Keep the way home free of advertising breaks. Support Mika's journey.	Keep the way home free of advertising breaks. Support Mika's journey.	Путь домой без рекламных пауз. Ваша покупка поддержит игру.	Шлях додому без рекламних пауз. Ваша покупка підтримає гру.
-The shop is not open yet. You can enjoy the whole journey without purchases.	The shop is not open yet. You can enjoy the whole journey without purchases.	Магазин ещё не открыт. Всё приключение доступно без покупок.	Магазин ще не відкрито. Уся пригода доступна без покупок.
-A one-time purchase removes automatic ads. Optional videos stay your choice.	A one-time purchase removes automatic ads. Optional videos stay your choice.	Купите один раз — и рекламных пауз больше не будет. Видео за награду останутся по желанию.	Купіть один раз — і рекламних пауз більше не буде. Відео за нагороду залишаться за бажанням.
+Keep the way home free of advertising breaks. Support Mika's journey.	Remove automatic ad breaks.	Отключи рекламные паузы.	Вимкни рекламні паузи.
+The shop is not open yet. You can enjoy the whole journey without purchases.	Shop closed. Play the full journey without purchases.	Магазин закрыт. Всё приключение доступно без покупок.	Крамницю зачинено. Уся пригода доступна без покупок.
+A one-time purchase removes automatic ads. Optional videos stay your choice.	One purchase removes automatic ads. Reward videos stay optional.	Одна покупка отключает рекламные паузы. Видео за награду — по желанию.	Одна покупка вимикає рекламні паузи. Відео за нагороду — за бажанням.
 Automatic ads are off. Thank you for supporting Mika's journey.	Automatic ads are off. Thank you for supporting Mika's journey.	Рекламные паузы отключены. Спасибо за поддержку игры!	Рекламні паузи вимкнено. Дякуємо за підтримку гри!
 Waiting for purchase approval. You can keep playing.	Waiting for purchase approval. You can keep playing.	Ждём разрешения на покупку. Можно продолжать играть.	Чекаємо дозволу на покупку. Можна грати далі.
 The store could not finish. Try again. Your purchase will not be lost.	The store could not finish. Try again. Your purchase will not be lost.	Магазин не ответил. Попробуйте ещё раз или восстановите покупку.	Магазин не відповів. Спробуйте ще раз або відновіть покупку.
@@ -541,7 +541,7 @@ Collect my gift	Collect my trophy	Забрать трофей	Забрати т�
 A gift for you!	A trophy for you!	Это тебе!	Це тобі!
 You earned a gift!	You earned a trophy!	Твой трофей!	Твій трофей!
 Let's see what is inside.	Let's see what is inside.	Посмотрим, что внутри.	Подивімося, що всередині.
-Find three parts to make a keepsake for Mika.	Find three parts to make a trophy for Mika.	Собери 3 части — получится вещь для Мики.	Збери 3 частини — вийде річ для Міки.
+Find three parts to make a keepsake for Mika.	3 parts make Mika's trophy.	3 детали — трофей для Мики.	3 деталі — трофей для Міки.
 Stage {0}/3 complete!	Stage {0}/3 complete!	Этап {0} из 3 пройден!	Етап {0} з 3 пройдено!
 The next stage is below. Take the row down.	The next stage is below. Take the row down.	Внизу следующий этап. Опусти ряд.	Унизу наступний етап. Опусти ряд.
 Open the next level, or replay one you finished. Swipe to look ahead.	Open the next level, or replay one you finished. Swipe to look ahead.	Открой следующий уровень или сыграй пройденный. Листай, чтобы посмотреть дальше.	Відкрий наступний рівень або грай пройдений. Гортай, щоб подивитися далі.
@@ -566,7 +566,7 @@ Points out each next move on this board. Stops when the board breaks.	Shows one 
 One extra undo after your two free undos. Works only on the current board.	One extra undo on this board, after your two free ones.	Ещё одна отмена на целой доске. После двух бесплатных.	Ще одне скасування на цілій дошці. Після двох безплатних.
 Brings back the last broken board in this stage. Moves made since then are undone.	Returns to the last broken board. Once per stage.	Возвращает последнюю сломанную доску. Раз за этап.	Повертає останню зламану дошку. Раз за етап.
 Pick a tool. Each can be used once per stage.	Pick up to two tools per stage. Each works once.	За этап можно взять два инструмента. Каждый работает один раз.	За етап можна взяти два інструменти. Кожен працює один раз.
-Mika wears it on the map. You can also earn it in parcels.	Mika wears it on the map. You can also earn it in parcels.	Мика носит его на карте. Можно и собрать в посылках.	Міка носить його на мапі. Можна й зібрати в посилках.
+Mika wears it on the map. You can also earn it in parcels.	Wear it on the map. Earn it in parcels too.	Носи на карте. Можно собрать в посылках.	Носи на карті. Можна зібрати в посилках.
 In your bag: {0} / {1}	Bag: {0} / {1}	В сумке: {0} из {1}	У сумці: {0} із {1}
 Already yours	Already yours	Уже твоё	Вже твоє
 Yours forever. No gameplay advantage.	Yours forever. No gameplay advantage.	Останется навсегда. На сложность не влияет.	Залишиться назавжди. На складність не впливає.
@@ -609,9 +609,9 @@ This board slides the whole row when it lands. Watch the arrow before going down
 This board turns the row around on landing. The last piece becomes the first.	On the mirror board, the row turns around. The last piece becomes the first.	На зеркальной доске ряд разворачивается. Последняя деталь становится первой.	На дзеркальній дошці ряд розвертається. Остання деталь стає першою.
 Wind moves the whole row one place on landing. Look at the arrow before going down.	Wind moves the whole row one place on landing. Look at the arrow before going down.	При посадке ветер сдвинет весь ряд на одно место. Перед спуском посмотри на стрелку.	Під час посадки вітер зсуне весь ряд на одне місце. Перед спуском поглянь на стрілку.
 A gust rocks the boards and pieces. They settle back into place. Your order stays safe.	A gust rocks the boards and pieces. They settle back into place. Your order stays safe.	Порыв качает доски и детали. Они вернутся на места. Твой порядок сохранится.	Порив гойдає дошки й деталі. Вони повернуться на місця. Твій порядок збережеться.
-Follow the hand for each next move. The scroll lasts until this board breaks.	The hand shows one next move. Then you take over. Up to two tools per stage.	Рука покажет один следующий ход. Дальше решаешь сам. До двух инструментов за этап.	Рука покаже один наступний хід. Далі вирішуєш сам. До двох інструментів за етап.
-After two free undos, this spool undoes one more move on the same board.	After two free undos, this spool undoes one more move on the same board.	После двух бесплатных отмен катушка отменит ещё один ход. Только на этой доске.	Після двох безплатних скасувань котушка скасує ще один хід. Лише на цій дошці.
-The hourglass brings back the last broken board in this stage. Later moves are undone.	The hourglass brings back the last broken board in this stage. Later moves are undone.	Часы вернут последнюю сломанную доску этапа. Ходы после её слома отменятся.	Годинник поверне останню зламану дошку етапу. Ходи після її зламу скасуються.
+Follow the hand for each next move. The scroll lasts until this board breaks.	Follow the hand for one move. Up to 2 tools per stage.	Рука покажет один ход. До 2 инструментов за этап.	Рука покаже один хід. До 2 інструментів за етап.
+After two free undos, this spool undoes one more move on the same board.	One extra Undo on this board, after 2 free Undos.	Ещё одна отмена на этой доске после 2 бесплатных.	Ще одне скасування на цій дошці після 2 безплатних.
+The hourglass brings back the last broken board in this stage. Later moves are undone.	Restore this stage's last broken board. Later moves undone.	Вернёт последнюю сломанную доску этапа. Отменит ходы после слома.	Поверне останню зламану дошку етапу. Скасує ходи після зламу.
 Closed path	Closed path	Закрытый проход	Закритий прохід
 A gust of wind	A gust of wind	Порыв ветра	Порив вітру
 Got it	Got it	Понятно	Зрозуміло
@@ -621,8 +621,8 @@ Video · +40	Video · +40	Видео · +40	Відео · +40
 Loading video…	Loading video…	Загрузка…	Завантаження…
 Try this item	Try this item	Попробовать предмет	Спробувати предмет
 Try removing ads	Try removing ads	Попробовать	Спробувати
-Test shop. No money is charged. Try removing automatic ads.	Test shop. No money is charged. Try removing automatic ads.	Это тест. Деньги не списываются. Можно попробовать игру без рекламных пауз.	Це тест. Гроші не списуються. Можна спробувати гру без рекламних пауз.
-Test purchase complete. Automatic ads are off for this session.	Test purchase complete. Automatic ads are off for this session.	Готово. До конца этой игры рекламных пауз не будет. Это тестовая покупка.	Готово. До кінця цієї гри рекламних пауз не буде. Це тестова покупка.
+Test shop. No money is charged. Try removing automatic ads.	Test purchase · no charge. Try removing automatic ads.	Тест без оплаты. Попробуй отключить рекламные паузы.	Тест без оплати. Спробуй вимкнути рекламні паузи.
+Test purchase complete. Automatic ads are off for this session.	Test complete. Automatic ads off for this session.	Тест завершён. Рекламные паузы отключены до перезапуска.	Тест завершено. Рекламні паузи вимкнено до перезапуску.
 Test ad	Test ad	Тестовая реклама	Тестова реклама
 Watch to the end for 40 coins.	Watch to the end for 40 coins.	Посмотри до конца и получи 40 монет.	Подивись до кінця й отримай 40 монет.
 A short break between levels.	A short break between levels.	Короткая пауза между уровнями.	Коротка пауза між рівнями.
@@ -643,11 +643,11 @@ Next trophy	Next trophy	Следующий трофей	Наступний тр�
 Choose this trophy	Choose this trophy	Выбрать трофей	Вибрати трофей
 Find in shop	Find in shop	Найти в магазине	Знайти в крамниці
 Choose a trophy to take with Mika.	Choose a trophy to take with Mika.	Выбери трофей для Мики.	Вибери трофей для Міки.
-A trophy for Mika's travels. Wear it on the map. No puzzle advantage.	A trophy for Mika's travels. Wear it on the map. No puzzle advantage.	Мика носит его на карте. На головоломки не влияет.	Міка носить його на карті. На головоломки не впливає.
+A trophy for Mika's travels. Wear it on the map. No puzzle advantage.	Wear it on the map. No puzzle advantage.	Носи на карте. Не влияет на головоломки.	Носи на карті. Не впливає на головоломки.
 Makes one safe move for you. Uses wood normally. Once per stage.	Makes one safe move for you. Uses wood normally. Once per stage.	Делает один верный ход за тебя. Доска изнашивается как обычно. Раз за этап.	Робить один правильний хід за тебе. Дошка зношується як завжди. Раз за етап.
 Shows the exact next landing before you descend. No pieces move.	Shows the exact next landing before you descend. No pieces move.	Показывает ряд после спуска. Можно посмотреть и ещё подумать.	Показує ряд після спуску. Можна поглянути й ще подумати.
-The lantern makes one safe move for you. It uses wood just like your own move. Once per stage.	The lantern makes one safe move for you. It uses wood just like your own move. Once per stage.	Фонарь сам делает один верный ход. Он тратит прочность доски, как твой ход. Раз за этап.	Ліхтар сам робить один правильний хід. Він витрачає міцність дошки, як твій хід. Раз за етап.
-See where the pieces will land if you go down now. Nothing moves until you choose Descend.	See where the pieces will land if you go down now. Nothing moves until you choose Descend.	Посмотри, как фигуры приземлятся, если спуститься сейчас. Это только пример: ряд остаётся на месте.	Поглянь, як фігури приземляться, якщо спуститися зараз. Це лише приклад: ряд залишається на місці.
+The lantern makes one safe move for you. It uses wood just like your own move. Once per stage.	One safe move. Normal wood cost. Once per stage.	Один верный ход. Обычный износ доски. Раз за этап.	Один правильний хід. Звичний знос дошки. Раз за етап.
+See where the pieces will land if you go down now. Nothing moves until you choose Descend.	Preview the next landing. Pieces stay put until Descend.	Покажет ряд после спуска. До нажатия «Вниз» ряд не двигается.	Покаже ряд після спуску. До натискання «Униз» ряд не рухається.
 Next landing	Next landing	После спуска	Після спуску
 This is the last board	This is the last board	Это последняя доска	Це остання дошка
 This landing would lose the row. Try another move.	This landing would lose the row. Try another move.	После такого спуска ты проиграешь. Попробуй другой ход.	Після такого спуску ти програєш. Спробуй інший хід.
@@ -854,14 +854,14 @@ Test shop. No money is charged.	Test shop. No money is charged.	Тестовый
 Coins are optional. Earn them by playing, too.	Coins are optional. Earn them by playing, too.	Монеты можно заработать в игре. Покупать их не обязательно.	Монети можна заробити в грі. Купувати їх не обовʼязково.
 Advertising privacy	Advertising privacy	Настройки рекламы	Налаштування реклами
 Tool tab	Tools	Помощь	Допомога
-Up to two tools per stage. Help limits this run to two stars.	Up to two tools per stage. Help limits this run to two stars.	До двух инструментов за этап. С помощью — до двух звёзд за уровень.	До двох інструментів за етап. З допомогою — до двох зірок за рівень.
+Up to two tools per stage. Help limits this run to two stars.	Up to 2 tools per stage. Tools cap this run at 2 stars.	До 2 инструментов за этап. С ними — до 2 звёзд за уровень.	До 2 інструментів за етап. З ними — до 2 зірок за рівень.
 Test shop · no charge	Test shop · no charge	Тестовый магазин · без оплаты	Тестовий магазин · без оплати
 The store could not finish. Try again.	The store could not finish. Try again.	Покупка не завершена. Попробуй ещё раз.	Покупку не завершено. Спробуй ще раз.
 The shop is not open yet.	The shop is not open yet.	Магазин пока закрыт.	Магазин поки зачинений.
 Coins can also be earned by playing.	Coins can also be earned by playing.	Монеты можно заработать в игре.	Монети можна заробити в грі.
 Basics	Basics	Основы	Основи
 Field guide	Field guide	Справочник	Довідник
-See how each effect works. Watch an example, then try it yourself.	See how each effect works. Watch an example, then try it yourself.	Узнай, как работают предметы. Посмотри пример и попробуй сам.	Дізнайся, як працюють предмети. Подивись приклад і спробуй сам.
+See how each effect works. Watch an example, then try it yourself.	Watch an example, then try it.	Посмотри пример и попробуй сам.	Подивись приклад і спробуй сам.
 Always with you. Free to read.	Always with you. Free to read.	Всегда под рукой. Читать бесплатно.	Завжди поруч. Читати безкоштовно.
 Open guide	Open guide	Читать	Читати
 Try this example	Try it	Попробовать	Спробувати

@@ -24,24 +24,52 @@ namespace Cascade.Presentation
         ParcelReceipt WaitingParcel=>Rewards.Parcels.FirstOrDefault(p=>!p.Claimed);
         string[] OrderedNodes=>Catalog.PrimaryLevels.Select(c=>c.Definition.CampaignNodeId).ToArray();
         GameScreen bagReturnScreen=GameScreen.Home,journalReturnScreen=GameScreen.TravelBag;
-        GameScreen bagShopReturnScreen=GameScreen.Home;
-        int bagShopTab,bagShopItem;
+        ShopLocation bagShopLocation,collectionShopLocation,workshopShopLocation;
+        GameScreen parcelReturnScreen=GameScreen.Journal;
         public void ShowTravelBag()
         {
+            if(CurrentScreen==GameScreen.Shop&&shopReturnScreen==GameScreen.TravelBag){BackFromShop();return;}
             if(CurrentScreen==GameScreen.Home||CurrentScreen==GameScreen.Shop||CurrentScreen==GameScreen.JourneyMap){
                 bagReturnScreen=CurrentScreen;
-                if(CurrentScreen==GameScreen.Shop){bagShopReturnScreen=shopReturnScreen;bagShopTab=shopTab;bagShopItem=shopItem;}
+                if(CurrentScreen==GameScreen.Shop)bagShopLocation=CaptureShop();
             }
             SetScreen(GameScreen.TravelBag);
         }
         void BackFromBag()
         {
-            if(bagReturnScreen==GameScreen.Shop){shopReturnScreen=bagShopReturnScreen;shopTab=bagShopTab;shopItem=bagShopItem;}
+            if(bagReturnScreen==GameScreen.Shop){RestoreShop(bagShopLocation);return;}
             SetScreen(bagReturnScreen==GameScreen.TravelBag?GameScreen.Home:bagReturnScreen);
         }
         public void ShowJournal(){if(CurrentScreen==GameScreen.TravelBag||CurrentScreen==GameScreen.JourneyEnd)journalReturnScreen=CurrentScreen;SetScreen(GameScreen.Journal);}
-        public void ShowCollection(){collectionReturn=CurrentScreen==GameScreen.Shop?GameScreen.Shop:CurrentScreen==GameScreen.Journal?GameScreen.Journal:GameScreen.TravelBag;giftPage=Math.Max(0,Array.IndexOf(JourneyRewards.Gifts,Rewards.SelectedGift));SetScreen(GameScreen.Collection);}
-        public void ShowWorkshop(){workshopReturn=CurrentScreen==GameScreen.Shop?GameScreen.Shop:GameScreen.TravelBag;SetScreen(GameScreen.Workshop);}
+        public void ShowCollection()
+        {
+            if(CurrentScreen==GameScreen.Shop&&shopReturnScreen==GameScreen.Collection){BackFromShop();return;}
+            if(CurrentScreen!=GameScreen.Collection){
+                collectionReturn=CurrentScreen;
+                if(CurrentScreen==GameScreen.Shop)collectionShopLocation=CaptureShop();
+                giftPage=Math.Max(0,Array.IndexOf(JourneyRewards.Gifts,Rewards.SelectedGift));
+            }
+            SetScreen(GameScreen.Collection);
+        }
+        void BackFromCollection()
+        {
+            if(collectionReturn==GameScreen.Shop){RestoreShop(collectionShopLocation);return;}
+            SetScreen(collectionReturn);
+        }
+        public void ShowWorkshop()
+        {
+            if(CurrentScreen==GameScreen.Shop&&shopReturnScreen==GameScreen.Workshop){BackFromShop();return;}
+            if(CurrentScreen!=GameScreen.Workshop){
+                workshopReturn=CurrentScreen;
+                if(CurrentScreen==GameScreen.Shop)workshopShopLocation=CaptureShop();
+            }
+            SetScreen(GameScreen.Workshop);
+        }
+        void BackFromWorkshop()
+        {
+            if(workshopReturn==GameScreen.Shop){RestoreShop(workshopShopLocation);return;}
+            SetScreen(workshopReturn);
+        }
         public void ShowRequests(){SetScreen(GameScreen.Requests);}
         public void ShowRecords(){recordPage=0;SetScreen(GameScreen.Records);}
         public void ShowContracts(){contractPage=0;SetScreen(GameScreen.Contracts);}
@@ -50,8 +78,9 @@ namespace Cascade.Presentation
         void OpenParcel(bool returnToMap)
         {
             var receipt=returnToMap&&profile.Completion?.ParcelOrder>0?Rewards.Parcels.FirstOrDefault(p=>p.Order==profile.Completion.ParcelOrder):WaitingParcel;
-            if(receipt==null){if(returnToMap)FinishCompletion();else ShowJournal();return;}
+            if(receipt==null){if(returnToMap)FinishCompletion();return;}
             parcelReturnsToMap=returnToMap;
+            if(!returnToMap&&CurrentScreen!=GameScreen.Parcel)parcelReturnScreen=CurrentScreen;
             parcelOrder=receipt.Order;parcelOpened=false;SetScreen(GameScreen.Parcel);
         }
         void DrawTravelBag()
@@ -95,7 +124,7 @@ namespace Cascade.Presentation
             Text("Workshop progress",menuRoot,new Vector2(.10f,.282f),new Vector2(.90f,.35f),23,built?"Ready for the islands!":new UiCopy("Lights restored: {0} / 10",complete)).font=art.titleFont;
             WorkshopProgress(complete);
             Text("Workshop range",menuRoot,new Vector2(.10f,.211f),new Vector2(.90f,.255f),20,new UiCopy("From stop {0} to stop {1}",workshopPage*10+1,workshopPage*10+10));
-            MenuButton("Back",.025f,()=>SetScreen(workshopReturn));
+            MenuButton("Back",.025f,BackFromWorkshop);
         }
         void DrawRequests()
         {
@@ -131,12 +160,12 @@ namespace Cascade.Presentation
             CompletionText("Gift piece note",menuRoot,new Vector2(.12f,.237f),new Vector2(.88f,.292f),15,
                 opened?"Find three parts to make a keepsake for Mika.":"Let's see what is inside.");
             var next=MenuButton(opened?(parcelReturnsToMap?"Back to map":"Keep going"):"Unwrap",.095f,()=>{
-                if(opened){if(parcelReturnsToMap)FinishCompletion();else ShowJournal();return;}
+                if(opened){if(parcelReturnsToMap)FinishCompletion();else SetScreen(parcelReturnScreen);return;}
                 if(Rewards.ClaimParcel(parcelOrder)){PersistProgress();parcelOpened=true;DrawMenu();}
             },true,.15f,.85f);next.name=opened?"Keepgift":"Unwrapgift";next.GetComponent<UnityEngine.UI.Image>().sprite=enamelControls[1];next.GetComponent<UnityEngine.UI.Image>().color=Color.white;
             if(opened){if(!ReducedMotion)StartCoroutine(GiftArrival(picture.rectTransform,parcel));
                 menuRoot.gameObject.AddComponent<RewardCelebration>().Initialize(this,null,0,null,0,CompletionArt(3),true,ribbon.rectTransform);}
-            if(!parcelReturnsToMap)MenuButton("Back",.005f,ShowTravelBag);
+            if(!parcelReturnsToMap&&!opened)MenuButton("Back",.005f,()=>SetScreen(parcelReturnScreen));
         }
         IEnumerator GiftArrival(RectTransform picture,UnityEngine.UI.Image parcel)
         {

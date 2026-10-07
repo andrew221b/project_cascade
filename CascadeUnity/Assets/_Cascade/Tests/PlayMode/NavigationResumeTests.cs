@@ -268,5 +268,79 @@ namespace Cascade.Tests
             Assert.That(Read<int>("selectedJourneyStop"),Is.Zero);Assert.That(Read<int>("mapPage"),Is.Zero);
             Assert.That(game.Machine.LivingWorld.Zone,Is.Zero);
         }
+
+        string SelectedCounterTitle()=>game.GetComponentsInChildren<TextMeshProUGUI>().Single(t=>t.name=="Selected object title").text;
+        void AssertPinnedAttempt(PlayerProfile before)
+        {
+            Invoke("PersistProgress");var after=Saved();
+            Assert.That(after.Attempt.AttemptId,Is.EqualTo(before.Attempt.AttemptId));
+            Assert.That(after.Attempt.StateHash,Is.EqualTo(before.Attempt.StateHash));
+            Assert.That(after.Descent.ContentHash,Is.EqualTo(before.Descent.ContentHash));
+            Assert.That(after.Descent.StageIndex,Is.EqualTo(before.Descent.StageIndex));
+            Assert.That(after.Clears.Select(c=>c.CampaignNodeId),Is.EquivalentTo(before.Clears.Select(c=>c.CampaignNodeId)));
+        }
+
+        [UnityTest] public IEnumerator MapBagTrophiesBackReturnsToBagThenTheSameMap()
+        {
+            yield return MountThirdLevelAt(1);var before=Saved();
+            game.ShowJourney();yield return Click("Map bag");yield return Click("Trophies");
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Collection));
+            Assert.That(game.GetComponentsInChildren<Button>().Any(b=>b.name=="Buy selected item"||b.name=="Coins tab"),Is.False);
+            game.Monetization.Ledger.Cosmetics.Add("leaf");game.SelectShopItem(0);yield return Click("Trophy action");
+            Assert.That(game.EquippedGift,Is.EqualTo("leaf"));Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Collection));
+            game.ShowCollection();yield return Click("Back");
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.TravelBag));
+            yield return Click("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.JourneyMap));
+            AssertPinnedAttempt(before);
+        }
+
+        [UnityTest] public IEnumerator ExplicitTrophyShopVisitReturnsToTheSelectedTrophyThenBagAndMap()
+        {
+            yield return MountThirdLevelAt(1);var before=Saved();
+            game.ShowJourney();yield return Click("Map bag");yield return Click("Trophies");
+            game.SelectShopItem(4);yield return Click("Trophy action");
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Shop));
+            game.SelectShopTab(0);game.SelectShopItem(2);yield return Click("Back");
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Collection));
+            Assert.That(SelectedCounterTitle(),Is.EqualTo("Wind chime"));
+            yield return Click("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.TravelBag));
+            yield return Click("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.JourneyMap));
+            AssertPinnedAttempt(before);
+        }
+
+        [UnityTest] public IEnumerator BuyShopBagAndToolsVisitsRestoreTheirSelectionsAndOriginalHome()
+        {
+            yield return MountThirdLevelAt(1);var before=Saved();
+            game.Monetization.Ledger.BonusCoins=1000;
+            game.ShowHome();yield return Click("Shop");game.SelectShopTab(0);game.SelectShopItem(2);
+            int stock=game.Stock(TravelTool.ReturnHourglass);
+            yield return Click("Buy selected item");Assert.That(game.Stock(TravelTool.ReturnHourglass),Is.EqualTo(stock+1));
+            yield return Click("My tools link");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.TravelBag));
+            yield return Click("Mytools");game.SelectShopItem(4);yield return Click("Open shop");
+            game.SelectShopItem(1);yield return Click("My tools link");
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Supplies));
+            Assert.That(SelectedCounterTitle(),Is.EqualTo("Landing lens"));
+            yield return Click("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.TravelBag));
+            yield return Click("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Shop));
+            Assert.That(SelectedCounterTitle(),Is.EqualTo("Return hourglass"));
+            yield return Click("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Home));
+            AssertPinnedAttempt(before);
+        }
+
+        [UnityTest] public IEnumerator HomeShopCoinAndBagLinksCannotCreateBackLoops()
+        {
+            yield return MountThirdLevelAt(1);var before=Saved();
+            game.ShowHome();yield return Click("Shop");game.SelectShopTab(1);game.SelectShopItem(6);
+            yield return Click("Coins tab");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.CoinPacks));
+            game.ShowShop();yield return null;
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Shop));
+            Assert.That(SelectedCounterTitle(),Is.EqualTo("Copper acorn"));
+            yield return Click("My tools link");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.TravelBag));
+            game.ShowShop();yield return null;
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Shop));
+            Assert.That(SelectedCounterTitle(),Is.EqualTo("Copper acorn"));
+            game.ShowShop();yield return Click("Back");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Home));
+            AssertPinnedAttempt(before);
+        }
     }
 }

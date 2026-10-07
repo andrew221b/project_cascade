@@ -20,6 +20,7 @@ namespace Cascade.Presentation
         Material dustMaterial,chipMaterial;
         int nextParticle, nextVoice, variant;
         float duck;
+        float lastSelectSound=-1,lastHaptic=-1;
         CascadeGame game;
         Scene debrisScene;PhysicsScene debrisPhysics;Transform debrisRoot;
         readonly BoxCollider[] supports=new BoxCollider[12];
@@ -63,7 +64,8 @@ namespace Cascade.Presentation
         }
         public void Sound(ToyCue cue)
         {
-            if (!SoundEnabled || library == null || library.cues == null || (int)cue >= library.cues.Length) return;
+            if (!SoundEnabled || game==null || !game.enabled || game.Interaction?.IsSuspended==true || library == null || library.cues == null || (int)cue >= library.cues.Length) return;
+            if(cue==ToyCue.Select){float now=Time.realtimeSinceStartup;if(now-lastSelectSound<.075f)return;lastSelectSound=now;}
             var clip = library.cues[(int)cue];
             if ((variant++ & 1) != 0 && library.alternates != null && (int)cue < library.alternates.Length && library.alternates[(int)cue] != null) clip = library.alternates[(int)cue];
             if (clip == null) return;
@@ -107,13 +109,11 @@ namespace Cascade.Presentation
                 if(!reduced){p.body.position=p.origin;p.body.rotation=p.transform.rotation;p.body.linearVelocity=p.velocity;p.body.angularVelocity=new Vector3(.35f*(i%3-1),.22f*(i%2==0?1:-1),p.spin*Mathf.Deg2Rad);p.body.WakeUp();}
             }
         }
-        public void Haptic()
+        public void Haptic(float strength=.35f)
         {
-            if (!HapticsEnabled) return; HapticRequests++;
-            // The OS owns the vibration. This feedback path cannot call gameplay.
-#if (UNITY_IOS || UNITY_ANDROID) && !UNITY_EDITOR
-            Handheld.Vibrate();
-#endif
+            if (!HapticsEnabled || float.IsNaN(strength) || strength<=0 || game==null || !game.enabled || game.Interaction?.IsSuspended==true) return;
+            float now=Time.realtimeSinceStartup;if(now-lastHaptic<.12f)return;lastHaptic=now;HapticRequests++;
+            NativeHaptics.Pulse(Mathf.Clamp01(strength));
         }
         public void LanternSeeds(Vector3 origin,bool reduced,RectTransform source=null)
         {
@@ -135,7 +135,9 @@ namespace Cascade.Presentation
             bool paused = !game.enabled || game.Interaction.IsPaused || game.Interaction.IsSuspended;
             bool worldPaused=!game.enabled||game.Interaction.IsSuspended||game.CurrentScreen==GameScreen.Pause||game.CurrentScreen==GameScreen.SaveRecovery||(game.CurrentScreen==GameScreen.Playing&&game.Interaction.IsPaused);
             TickAtmosphere(Time.unscaledDeltaTime, worldPaused);
-            if (paused) { foreach (var voice in voices) if (voice.isPlaying) voice.Stop(); return; }
+            // Pausing puzzle commands for menus must not pause the menu's audio feedback.
+            if (!SoundEnabled||!game.enabled||game.Interaction.IsSuspended)foreach(var voice in voices)if(voice.isPlaying)voice.Stop();
+            if (paused) return;
             StepDebris(Mathf.Clamp(Time.unscaledDeltaTime,0,.2f));
             ActiveParticleCount = 0;
             foreach (var p in particles) {
@@ -150,13 +152,13 @@ namespace Cascade.Presentation
                 p.properties.SetColor("_BaseColor", color); p.renderer.SetPropertyBlock(p.properties);
             }
         }
-        public void ClearTails()
+        public void ClearTails(bool stopAudio=true)
         {
             physicsRemainder=0;
             RowPhysics?.End();
             // The local scene may unload before the owner during Editor shutdown or scene replacement.
             if (particles != null) foreach (var p in particles) if(p.transform!=null)p.transform.gameObject.SetActive(false);
-            if (voices != null) foreach (var voice in voices) if(voice!=null)voice.Stop(); ActiveParticleCount = 0;
+            if (stopAudio&&voices != null) foreach (var voice in voices) if(voice!=null)voice.Stop(); ActiveParticleCount = 0;
         }
         public void RefreshAnchors()
         {
@@ -184,6 +186,6 @@ namespace Cascade.Presentation
                 RowPhysics?.Step(dt);debrisPhysics.Simulate(dt);physicsRemainder-=dt;
             }
         }
-        void OnDestroy(){RowPhysics?.Dispose();if(chipMaterial!=null)Destroy(chipMaterial);if(debrisScene.IsValid()&&debrisScene.isLoaded)SceneManager.UnloadSceneAsync(debrisScene);}
+        void OnDestroy(){DisposeAtmosphere();RowPhysics?.Dispose();if(chipMaterial!=null)Destroy(chipMaterial);if(debrisScene.IsValid()&&debrisScene.isLoaded)SceneManager.UnloadSceneAsync(debrisScene);}
     }
 }

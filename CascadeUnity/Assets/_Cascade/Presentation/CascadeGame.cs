@@ -649,7 +649,7 @@ namespace Cascade.Presentation
         UnityEngine.UI.Button Button(UiCopy label, Transform parent, Vector2 min, Vector2 max, Action clicked)
         {
             var rect = Rect(label.English.Replace(" ", ""), parent, min, max); var image = Background(rect, Paper, true); image.sprite = art.panel; image.type = UnityEngine.UI.Image.Type.Sliced;
-            var button = rect.gameObject.AddComponent<UnityEngine.UI.Button>(); button.onClick.AddListener(() => clicked());
+            var button = rect.gameObject.AddComponent<UnityEngine.UI.Button>();button.onClick.AddListener(()=>{feedback?.Sound(ToyCue.Select);feedback?.Haptic(.18f);clicked();});
             var colors = button.colors; colors.highlightedColor = new Color(1, .94f, .78f); colors.pressedColor = new Color(.82f, .88f, .81f); colors.disabledColor = new Color(.88f, .90f, .84f, .7f); button.colors = colors;
             rect.gameObject.AddComponent<ButtonFeel>().Initialize(this);
             var text = Text("Label", rect, Vector2.zero, Vector2.one, 18, label); text.font = art.titleFont; text.margin = new Vector4(10, 5, 10, 5);

@@ -2,6 +2,7 @@
 One persistent row is reordered across destructible floors to an exact receiver target.
 No matching, clearing, falling-piece spawning, grid board or gameplay physics.
 EN default; RU/UK additional. Shapes, Words and Mixed share one SymbolId core.
+UI copy stays brief and actionable. Prefer clear visual state/examples over explanatory paragraphs; retain essential costs, limits and consequences. Story dialogue should reveal a character or move the story, without repeating UI instructions.
 Read only relevant Docs/Cxx.md, current task and actual affected files.
 Domain and Solver are pure C#. The solver uses the same transition function.
 All swaps are atomic; preserve the multiset. Contacts use the final row.

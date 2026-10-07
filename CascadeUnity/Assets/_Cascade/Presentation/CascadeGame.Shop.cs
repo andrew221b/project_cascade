@@ -17,6 +17,8 @@ namespace Cascade.Presentation
         RectTransform landingPreview;
         int shopTab,shopItem;
         GameScreen shopReturnScreen=GameScreen.Home,toolsReturnScreen=GameScreen.TravelBag,noAdsReturnScreen=GameScreen.Home;
+        ShopLocation toolsShopLocation;
+        int toolsItem;
         UiCopy shopNotice;
         bool toolSearchPending;
         Image guideHand;
@@ -75,15 +77,18 @@ namespace Cascade.Presentation
             fieldTools.interactable=Interaction.CanPlay&&!MechanicPopupOpen;
         }
         public void SelectShopTab(int tab){shopTab=Mathf.Clamp(tab,0,1);shopItem=0;shopNotice=default;DrawMenu();}
-        public void SelectShopItem(int index){shopItem=Mathf.Clamp(index,0,shopTab==0?ShopCatalog.ToolCount:ShopCatalog.TrophyIds.Length-1);if(CurrentScreen==GameScreen.Collection)giftPage=shopItem;shopNotice=default;DrawMenu();}
+        public void SelectShopItem(int index){shopItem=Mathf.Clamp(index,0,shopTab==0?ShopCatalog.ToolCount:ShopCatalog.TrophyIds.Length-1);if(CurrentScreen==GameScreen.Collection)giftPage=shopItem;if(CurrentScreen==GameScreen.Supplies)toolsItem=shopItem;shopNotice=default;DrawMenu();}
         public void ShowSupplies()
         {
-            if(CurrentScreen!=GameScreen.Shop)toolsReturnScreen=CurrentScreen;
-            else if(shopReturnScreen!=GameScreen.Supplies)toolsReturnScreen=shopReturnScreen;
-            shopTab=0;shopItem=0;shopNotice=default;SetScreen(GameScreen.Supplies);
+            if(CurrentScreen==GameScreen.Shop&&shopReturnScreen==GameScreen.Supplies){BackFromShop();return;}
+            if(CurrentScreen!=GameScreen.Supplies){
+                toolsReturnScreen=CurrentScreen==GameScreen.Shop&&(shopReturnScreen==GameScreen.Playing||shopReturnScreen==GameScreen.Pause||shopReturnScreen==GameScreen.Fail)?shopReturnScreen:CurrentScreen;toolsItem=0;
+                if(CurrentScreen==GameScreen.Shop)toolsShopLocation=CaptureShop();
+            }
+            shopTab=0;shopItem=toolsItem;shopNotice=default;SetScreen(GameScreen.Supplies);
         }
         bool ToolsInLevel=>toolsReturnScreen==GameScreen.Pause||toolsReturnScreen==GameScreen.Playing||toolsReturnScreen==GameScreen.Fail;
-        void BackFromTools(){if(ToolsInLevel)ShowGame();else SetScreen(toolsReturnScreen);}
+        void BackFromTools(){if(ToolsInLevel)ShowGame();else if(toolsReturnScreen==GameScreen.Shop)RestoreShop(toolsShopLocation);else SetScreen(toolsReturnScreen);}
         void BackFromShop(){if(shopReturnScreen==GameScreen.Shop)ShowHome();else SetScreen(shopReturnScreen);}
         static UiCopy ToolTitle(int i)=>i==ShopCatalog.ToolCount?(UiCopy)"Field guide":new[]{"Wayfinder scroll","Undo spool","Return hourglass","Signal lantern","Landing lens"}[i];
         static UiCopy ToolDescription(int i)=>i==ShopCatalog.ToolCount?(UiCopy)"See how each effect works. Watch an example, then try it yourself.":new[]{
@@ -100,7 +105,7 @@ namespace Cascade.Presentation
             text.margin=new Vector4(5,2,5,2);text.textWrappingMode=TextWrappingModes.NoWrap;text.enableAutoSizing=true;text.fontSizeMin=16*MenuUnit;text.fontSizeMax=22*MenuUnit;
             if(!amber)navigationLightLabels.Add(text);RegisterMenuRow(b,top,0,48,0);return b;
         }
-        void DrawSupplies(){DrawTravelCounter(true);}
+        void DrawSupplies(){shopTab=0;shopItem=toolsItem;DrawTravelCounter(true);}
         void QuietDisabledCounter(Button button)
         {
             if(button.interactable)return;
@@ -111,7 +116,7 @@ namespace Cascade.Presentation
         void DrawTravelCounter(bool bag,bool collection=false)
         {
             if(collection)shopTab=1;
-            LoadNavigationArt();NavigationHeader(collection?"Trophies":bag?"My tools":TestMonetization?"Test shop":"Shop",collection?()=>SetScreen(collectionReturn):bag?(Action)BackFromTools:BackFromShop);
+            LoadNavigationArt();NavigationHeader(collection?"Trophies":bag?"My tools":TestMonetization?"Test shop":"Shop",collection?(Action)BackFromCollection:bag?(Action)BackFromTools:BackFromShop);
             var headingPlate=(RectTransform)menuRoot.Find("Navigation heading");headingPlate.anchorMin=new Vector2(.06f,.906f);headingPlate.anchorMax=new Vector2(.94f,.985f);menuRows.Add(new MenuRow{rect=headingPlate,top=.985f,height=48});FitMenuRows();
 
             // One continuous catalogue surface. The actual stock lives on two wooden shelves.
@@ -177,7 +182,7 @@ namespace Cascade.Presentation
                 else if(shopTab==0&&Stock(tool)>=ShopCatalog.StockLimit)buy.GetComponentInChildren<TextMeshProUGUI>().SetCopy("Bag is full");QuietDisabledCounter(buy);
                 bool fromTools=shopReturnScreen==GameScreen.Supplies||shopReturnScreen==GameScreen.Playing||shopReturnScreen==GameScreen.Pause||shopReturnScreen==GameScreen.Fail;
                 CounterButton("My tools link",fromTools?"Tool bag":shopReturnScreen==GameScreen.Collection?"Trophies":"My things",.095f,.905f,.049f,.125f,
-                    fromTools?(Action)ShowSupplies:shopReturnScreen==GameScreen.Collection?()=>SetScreen(GameScreen.Collection):ShowTravelBag);
+                    fromTools?(Action)ShowSupplies:shopReturnScreen==GameScreen.Collection?(Action)ShowCollection:ShowTravelBag);
             }
         }
         public bool BuySelectedShopItem()

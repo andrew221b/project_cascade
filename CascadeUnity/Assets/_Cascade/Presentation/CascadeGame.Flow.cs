@@ -117,7 +117,7 @@ namespace Cascade.Presentation
             machine.LivingWorld.SetWorkshop(screen!=GameScreen.JourneyMap&&screen!=GameScreen.Dialogue&&screen!=GameScreen.JourneyEnd&&screen!=GameScreen.Playing&&screen!=GameScreen.Win&&screen!=GameScreen.Fail&&screen!=GameScreen.Checkpoint); userPaused=screen==GameScreen.Pause;
             Interaction.SetPaused(MechanicPopupOpen||screen!=GameScreen.Playing && screen!=GameScreen.Win && screen!=GameScreen.Fail && screen!=GameScreen.Checkpoint);
             bool machineVisible=screen==GameScreen.Playing || screen==GameScreen.Fail || screen==GameScreen.Checkpoint;
-            if(!machineVisible)feedback.ClearTails();
+            if(!machineVisible)feedback.ClearTails(false);
             machine.SetGameplayVisible(machineVisible);machine.SetAmbientPaused(MechanicPopupOpen||screen==GameScreen.Pause||screen==GameScreen.SaveRecovery);
             header.gameObject.SetActive(machineVisible); status.gameObject.SetActive(machineVisible);statusPaper.gameObject.SetActive(machineVisible);
             floorArea.gameObject.SetActive(machineVisible); receiver.gameObject.SetActive(machineVisible);
@@ -437,7 +437,7 @@ namespace Cascade.Presentation
             feedback.MusicEnabled=Preferences.Music;feedback.SoundEnabled=Preferences.Sound;feedback.HapticsEnabled=Preferences.Haptics;
             feedback.Quality=Preferences.EffectQuality;machine.LivingWorld.EffectQuality=Preferences.EffectQuality;ReducedMotion=Preferences.ReducedMotion;ForcePreciseInput=Preferences.PreciseInput;
             machine.ScreenShakeEnabled=Preferences.ScreenShake;
-            if(Preferences.EffectQuality==0)feedback.ClearTails();
+            if(Preferences.EffectQuality==0)feedback.ClearTails(false);
             if(!Preferences.DeadEndWarnings)CancelDeadEnd();
             if(Coach!=null)Coach.Enabled=Preferences.Tutorials;
             foreach(var entry in baseTextSizes.ToArray()) {
