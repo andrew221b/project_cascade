@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-08 21:29:50Z" end-time="2026-10-08 21:29:51Z" duration="1.5790152">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="808" result="Passed" start-time="2026-10-08 21:29:50Z" end-time="2026-10-08 21:29:51Z" duration="1.579015" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1898" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="807" result="Passed" start-time="2026-10-08 21:29:50Z" end-time="2026-10-08 21:29:51Z" duration="1.232377" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24227" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1899" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="807" result="Passed" start-time="2026-10-08 21:29:50Z" end-time="2026-10-08 21:29:51Z" duration="1.232090" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1900" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="807" result="Passed" start-time="2026-10-08 21:29:50Z" end-time="2026-10-08 21:29:51Z" duration="1.231927" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1588" name="PersonalMissionTests" fullname="Cascade.Tests.PersonalMissionTests" classname="Cascade.Tests.PersonalMissionTests" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-10-08 21:29:50Z" end-time="2026-10-08 21:29:51Z" duration="1.231520" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1598" name="MissionsAreHarderWithinABoundedBandAndEveryStageReplays" fullname="Cascade.Tests.PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays" classname="Cascade.Tests.PersonalMissionTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-10-08 21:29:51Z" end-time="2026-10-08 21:29:51Z" duration="0.383149" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1592" name="MissionsAreHarderWithinABoundedBandAndEveryStageReplays(&quot;C14&quot;)" fullname="Cascade.Tests.PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(&quot;C14&quot;)" methodname="MissionsAreHarderWithinABoundedBandAndEveryStageReplays" classname="Cascade.Tests.PersonalMissionTests" runstate="Runnable" seed="2105936717" result="Passed" start-time="2026-10-08 21:29:51Z" end-time="2026-10-08 21:29:51Z" duration="0.378557" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

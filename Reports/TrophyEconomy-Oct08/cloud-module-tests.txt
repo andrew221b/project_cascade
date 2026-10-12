@@ -1,0 +1,4 @@
+Cloud Code boundary checks: 59 PASS; fake SDK transport, no live Cloud Save claim.
+Command: DOTNET_CLI_HOME=/private/tmp/cascade-dotnet-cli DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 DOTNET_CLI_TELEMETRY_OPTOUT=1 /private/tmp/cascade-dotnet9/dotnet run --project CascadeAccount.Tests/CascadeAccount.Tests.csproj -c Release --no-restore
+Working directory: CascadeUnity/CascadeAccountCCM
+Shared module and test source compiled by this run. No live service deployment or transport exercised.

@@ -1,0 +1,228 @@
+{
+  "pose": "bag-uk-small",
+  "before": {
+    "Screen": "TravelBag",
+    "Attempt": "bba515c0-24f2-4688-a727-763241d6a29c",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "after": {
+    "Screen": "TravelBag",
+    "Attempt": "bba515c0-24f2-4688-a727-763241d6a29c",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 320,
+    "height": 693,
+    "locale": "uk",
+    "largeText": true,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Mytools",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Mytools",
+        "interactable": true,
+        "bounds": {
+          "x": 30.4383945,
+          "y": 315.76123,
+          "width": 259.12323,
+          "height": 62.0
+        }
+      },
+      {
+        "name": "Keepsakes",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Keepsakes",
+        "interactable": true,
+        "bounds": {
+          "x": 30.4383945,
+          "y": 245.76123,
+          "width": 259.12323,
+          "height": 62.0
+        }
+      },
+      {
+        "name": "Myjournal",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Myjournal",
+        "interactable": true,
+        "bounds": {
+          "x": 30.4383945,
+          "y": 175.761246,
+          "width": 259.12323,
+          "height": 62.0
+        }
+      },
+      {
+        "name": "Workshop",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Workshop",
+        "interactable": true,
+        "bounds": {
+          "x": 30.4383945,
+          "y": 105.76123,
+          "width": 259.12323,
+          "height": 62.0
+        }
+      },
+      {
+        "name": "Practice",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Practice",
+        "interactable": true,
+        "bounds": {
+          "x": 30.4383945,
+          "y": 107.72,
+          "width": 259.12323,
+          "height": 52.0
+        }
+      },
+      {
+        "name": "Back",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Back",
+        "interactable": true,
+        "bounds": {
+          "x": 30.4383945,
+          "y": 43.720047,
+          "width": 259.12323,
+          "height": 51.9999771
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Menu title",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Menu title",
+        "text": "Мої речі",
+        "button": null,
+        "bounds": {
+          "x": 58.2016068,
+          "y": 588.405457,
+          "width": 203.596771,
+          "height": 39.03125
+        },
+        "fontPixels": 22.99052,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Menu description",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Menu description",
+        "text": "Речі для подорожі: інструменти й трофеї.",
+        "button": null,
+        "bounds": {
+          "x": 58.2016068,
+          "y": 530.788147,
+          "width": 203.596771,
+          "height": 55.13922
+        },
+        "fontPixels": 14.7796211,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Mytools/Label",
+        "text": "Мої інструменти",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Mytools",
+        "bounds": {
+          "x": 97.8104248,
+          "y": 315.76123,
+          "width": 165.838867,
+          "height": 62.0
+        },
+        "fontPixels": 16.553175,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Keepsakes/Label",
+        "text": "Трофеї",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Keepsakes",
+        "bounds": {
+          "x": 97.8104248,
+          "y": 245.76123,
+          "width": 165.838867,
+          "height": 62.0
+        },
+        "fontPixels": 16.553175,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Myjournal/Label",
+        "text": "Мій щоденник",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Myjournal",
+        "bounds": {
+          "x": 97.8104248,
+          "y": 175.761246,
+          "width": 165.838867,
+          "height": 62.0
+        },
+        "fontPixels": 16.553175,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Workshop/Label",
+        "text": "Майстерня",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Workshop",
+        "bounds": {
+          "x": 97.8104248,
+          "y": 105.76123,
+          "width": 165.838867,
+          "height": 62.0
+        },
+        "fontPixels": 16.553175,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Practice/Label",
+        "text": "Тренування",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Practice",
+        "bounds": {
+          "x": 30.4383945,
+          "y": 107.72,
+          "width": 259.12323,
+          "height": 52.0
+        },
+        "fontPixels": 19.87038,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Back/Label",
+        "text": "Назад",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Back",
+        "bounds": {
+          "x": 30.4383945,
+          "y": 43.720005,
+          "width": 259.12323,
+          "height": 52.00002
+        },
+        "fontPixels": 19.87038,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

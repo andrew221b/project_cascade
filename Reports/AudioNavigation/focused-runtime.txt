@@ -1,0 +1,26 @@
+Unity 6000.3.8f1; native focused coroutine invocation, not TestRunner XML; isolated profiles.
+PASS AudioFeedbackTests.MenuClickFinishesAcrossNavigationAndReducedEffectsWithoutDuplicateVoices
+PASS AudioFeedbackTests.SoundMuteStopsCuesWhileMusicContinuesAndNewClicksResume
+FAIL AudioFeedbackTests.OutputResetAndForegroundReturnRecoverTheEnabledThemeNearItsOldPosition
+NUnit.Framework.AssertionException:   Stopped output loops must recover, not only UnPause
+  Expected: True
+  But was:  False
+
+  at NUnit.Framework.Assert.That[TActual] (TActual actual, NUnit.Framework.Constraints.IResolveConstraint expression, System.String message, System.Object[] args) [0x00039] in <f577cd9686154d6ab10efd7e65e64366>:0
+  at Cascade.Tests.AudioFeedbackTests+<Await>d__7.MoveNext () [0x0005b] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Tests/PlayMode/AudioFeedbackTests.cs:19
+  at Cascade.Editor.Playable.AudioSilenceProbeOneShot+<Drive>d__7.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/AudioSilenceProbeOneShot.cs:38
+PASS AudioFeedbackTests.HapticsAreThrottledAndRespectPreferenceAndSuspension
+PASS NavigationResumeTests.MapBagTrophiesBackReturnsToBagThenTheSameMap
+PASS NavigationResumeTests.ExplicitTrophyShopVisitReturnsToTheSelectedTrophyThenBagAndMap
+PASS NavigationResumeTests.BuyShopBagAndToolsVisitsRestoreTheirSelectionsAndOriginalHome
+PASS NavigationResumeTests.HomeShopCoinAndBagLinksCannotCreateBackLoops
+PASS WindAudioLifecycleTests.DisablingFeedbackSilencesWindWithoutRestartingOrReplacingItsLoop
+PASS WindAudioLifecycleTests.IndependentMusicAndSoundControlsAndOwnerDisablePreserveLoopPositions
+Home music only PCM peak=0.09660614 rms=0.0209987470013393 clip=Menu_HomeAmongCloudsBalanced editorMute=False
+World music only PCM peak=0.07667144 rms=0.0316159601557035 clip=WindGarden_PaperWings editorMute=False
+SFX only PCM peak=0.09504824 rms=0.0174923509117807 clip=Menu_HomeAmongCloudsBalanced editorMute=False
+settings-ru-small TMP overflow=0
+noads-ru-small TMP overflow=0
+trophies-ru TMP overflow=0
+shop-ru TMP overflow=0
+No player/device build, phone haptic feel, subjective listening or full suite run.

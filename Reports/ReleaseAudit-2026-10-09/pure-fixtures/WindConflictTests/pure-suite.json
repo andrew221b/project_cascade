@@ -1,0 +1,72 @@
+[
+  {
+    "test": "WindConflictTests.VerifiedPlannerReplacesAnImpossiblePeakWithProvedRecovery(C29,Wind)",
+    "status": "Passed",
+    "ms": 12.154200000000001
+  },
+  {
+    "test": "WindConflictTests.VerifiedPlannerReplacesAnImpossiblePeakWithProvedRecovery(C32,Wind)",
+    "status": "Passed",
+    "ms": 7.1279
+  },
+  {
+    "test": "WindConflictTests.VerifiedPlannerReplacesAnImpossiblePeakWithProvedRecovery(C17,Tight)",
+    "status": "Passed",
+    "ms": 0.25270000000000004
+  },
+  {
+    "test": "WindConflictTests.VerifiedPlannerReplacesAnImpossiblePeakWithProvedRecovery(C42,Tight)",
+    "status": "Passed",
+    "ms": 8.1621
+  },
+  {
+    "test": "WindConflictTests.VerifiedPlannerPreservesAProvedWindRecipeAndItsRecoveryLanding()",
+    "status": "Passed",
+    "ms": 10.9007
+  },
+  {
+    "test": "WindConflictTests.VerifiedPlannerDoesNotPublishUnknownOrCanceledCalibration()",
+    "status": "Passed",
+    "ms": 2.4547000000000003
+  },
+  {
+    "test": "WindConflictTests.OldRawWindSaveKeepsItsExactPinAndCommandsAfterFreshCalibration()",
+    "status": "Passed",
+    "ms": 5.6636000000000006
+  },
+  {
+    "test": "WindConflictTests.WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint(C29,en)",
+    "status": "Passed",
+    "ms": 38.8744
+  },
+  {
+    "test": "WindConflictTests.WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint(C29,ru)",
+    "status": "Passed",
+    "ms": 34.014700000000005
+  },
+  {
+    "test": "WindConflictTests.WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint(C29,uk)",
+    "status": "Passed",
+    "ms": 33.6248
+  },
+  {
+    "test": "WindConflictTests.WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint(C32,en)",
+    "status": "Passed",
+    "ms": 3939.2251
+  },
+  {
+    "test": "WindConflictTests.WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint(C32,ru)",
+    "status": "Passed",
+    "ms": 3956.8444000000004
+  },
+  {
+    "test": "WindConflictTests.WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint(C32,uk)",
+    "status": "Passed",
+    "ms": 3944.8892
+  },
+  {
+    "test": "WindConflictTests.LinkedFragileFallAndWindResolveAllContactsOnTheFinalRow()",
+    "status": "Passed",
+    "ms": 2.2148000000000003
+  }
+]

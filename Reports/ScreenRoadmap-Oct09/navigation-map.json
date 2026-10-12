@@ -1,0 +1,1378 @@
+{
+  "width": 5200,
+  "height": 13380,
+  "captures": "archived 2026-10-08",
+  "nodes": [
+    {
+      "id": "01.01",
+      "title": "Главное меню",
+      "source": "Reports/NavigationType-Oct08/01-home.png",
+      "bounds": [
+        85,
+        590,
+        395,
+        1400
+      ]
+    },
+    {
+      "id": "01.02",
+      "title": "Комикс мира",
+      "source": "Reports/NavigationType-Oct08/29-comic.png",
+      "bounds": [
+        720,
+        590,
+        1030,
+        1400
+      ]
+    },
+    {
+      "id": "01.03",
+      "title": "Карта",
+      "source": "Reports/NavigationType-Oct08/08-map.png",
+      "bounds": [
+        1355,
+        590,
+        1665,
+        1400
+      ]
+    },
+    {
+      "id": "01.04",
+      "title": "Уровни острова",
+      "source": "Reports/NavigationType-Oct08/10-island.png",
+      "bounds": [
+        1990,
+        590,
+        2300,
+        1400
+      ]
+    },
+    {
+      "id": "01.05",
+      "title": "Обучение механике",
+      "source": "Reports/NavigationType-Oct08/33-tutorial.png",
+      "bounds": [
+        2625,
+        590,
+        2935,
+        1400
+      ]
+    },
+    {
+      "id": "01.06",
+      "title": "Игровой этап",
+      "source": "Reports/NavigationType-Oct08/20-game.png",
+      "bounds": [
+        3260,
+        590,
+        3570,
+        1400
+      ]
+    },
+    {
+      "id": "01.07",
+      "title": "Этап завершён",
+      "source": "Reports/NavigationType-Oct08/24-checkpoint.png",
+      "bounds": [
+        3895,
+        590,
+        4205,
+        1400
+      ]
+    },
+    {
+      "id": "01.08",
+      "title": "Уровень завершён",
+      "source": "Reports/NavigationType-Oct08/25-victory.png",
+      "bounds": [
+        4530,
+        590,
+        4840,
+        1400
+      ]
+    },
+    {
+      "id": "02.01",
+      "title": "Этап завершён",
+      "source": "Reports/NavigationType-Oct08/24-checkpoint.png",
+      "bounds": [
+        85,
+        2040,
+        395,
+        2850
+      ]
+    },
+    {
+      "id": "02.02",
+      "title": "Следующий этап",
+      "source": "Reports/NavigationType-Oct08/20-game.png",
+      "bounds": [
+        720,
+        2040,
+        1030,
+        2850
+      ]
+    },
+    {
+      "id": "02.03",
+      "title": "Победа и статистика",
+      "source": "Reports/NavigationType-Oct08/25-victory.png",
+      "bounds": [
+        1355,
+        2040,
+        1665,
+        2850
+      ]
+    },
+    {
+      "id": "02.04",
+      "title": "Посылка",
+      "source": "Reports/NavigationType-Oct08/27-parcel.png",
+      "bounds": [
+        1990,
+        2040,
+        2300,
+        2850
+      ]
+    },
+    {
+      "id": "02.05",
+      "title": "Посылка открыта",
+      "source": "Reports/NavigationType-Oct08/28-parcel-open.png",
+      "bounds": [
+        2625,
+        2040,
+        2935,
+        2850
+      ]
+    },
+    {
+      "id": "02.06",
+      "title": "Карта",
+      "source": "Reports/NavigationType-Oct08/08-map.png",
+      "bounds": [
+        3260,
+        2040,
+        3570,
+        2850
+      ]
+    },
+    {
+      "id": "02.07",
+      "title": "Проигрыш",
+      "source": "Reports/NavigationType-Oct08/26-failure.png",
+      "bounds": [
+        3895,
+        2040,
+        4205,
+        2850
+      ]
+    },
+    {
+      "id": "02.08",
+      "title": "Финал путешествия",
+      "source": "Reports/NavigationType-Oct08/39-story-ending.png",
+      "bounds": [
+        4530,
+        2040,
+        4840,
+        2850
+      ]
+    },
+    {
+      "id": "03.01",
+      "title": "Игра",
+      "source": "Reports/NavigationType-Oct08/20-game.png",
+      "bounds": [
+        85,
+        3490,
+        395,
+        4300
+      ]
+    },
+    {
+      "id": "03.02",
+      "title": "Увеличенная цель",
+      "source": "Reports/NavigationType-Oct08/41-target.png",
+      "bounds": [
+        720,
+        3490,
+        1030,
+        4300
+      ]
+    },
+    {
+      "id": "03.03",
+      "title": "Пауза",
+      "source": "Reports/NavigationType-Oct08/23-pause.png",
+      "bounds": [
+        1355,
+        3490,
+        1665,
+        4300
+      ]
+    },
+    {
+      "id": "03.04",
+      "title": "Предметы / инструменты",
+      "source": "Reports/NavigationType-Oct08/19-supplies.png",
+      "bounds": [
+        1990,
+        3490,
+        2300,
+        4300
+      ]
+    },
+    {
+      "id": "03.05",
+      "title": "Магазин",
+      "source": "Reports/NavigationType-Oct08/11a-shop-shelf.png",
+      "bounds": [
+        2625,
+        3490,
+        2935,
+        4300
+      ]
+    },
+    {
+      "id": "03.06",
+      "title": "Сумка над кнопками",
+      "source": null,
+      "bounds": [
+        3260,
+        3490,
+        3570,
+        4300
+      ]
+    },
+    {
+      "id": "03.07",
+      "title": "Игра: слова",
+      "source": "Reports/NavigationType-Oct08/21-game-words.png",
+      "bounds": [
+        3895,
+        3490,
+        4205,
+        4300
+      ]
+    },
+    {
+      "id": "03.08",
+      "title": "Игра: микс",
+      "source": "Reports/NavigationType-Oct08/22-game-mixed.png",
+      "bounds": [
+        4530,
+        3490,
+        4840,
+        4300
+      ]
+    },
+    {
+      "id": "04.01",
+      "title": "Карта",
+      "source": "Reports/NavigationType-Oct08/08-map.png",
+      "bounds": [
+        85,
+        4940,
+        395,
+        5750
+      ]
+    },
+    {
+      "id": "04.02",
+      "title": "Разговор с героем",
+      "source": "Reports/NavigationType-Oct08/30-dialogue.png",
+      "bounds": [
+        720,
+        4940,
+        1030,
+        5750
+      ]
+    },
+    {
+      "id": "04.03",
+      "title": "Предложение миссии",
+      "source": null,
+      "bounds": [
+        1355,
+        4940,
+        1665,
+        5750
+      ]
+    },
+    {
+      "id": "04.04",
+      "title": "Игра / личная миссия",
+      "source": "Reports/NavigationType-Oct08/20-game.png",
+      "bounds": [
+        1990,
+        4940,
+        2300,
+        5750
+      ]
+    },
+    {
+      "id": "04.05",
+      "title": "Список уровней",
+      "source": "Reports/NavigationType-Oct08/10-island.png",
+      "bounds": [
+        2625,
+        4940,
+        2935,
+        5750
+      ]
+    },
+    {
+      "id": "04.06",
+      "title": "Уровень со словами",
+      "source": "Reports/NavigationType-Oct08/21-game-words.png",
+      "bounds": [
+        3260,
+        4940,
+        3570,
+        5750
+      ]
+    },
+    {
+      "id": "04.07",
+      "title": "Смешанный уровень",
+      "source": "Reports/NavigationType-Oct08/22-game-mixed.png",
+      "bounds": [
+        3895,
+        4940,
+        4205,
+        5750
+      ]
+    },
+    {
+      "id": "04.08",
+      "title": "Другой открытый мир",
+      "source": "Reports/NavigationType-Oct08/09-map-night.png",
+      "bounds": [
+        4530,
+        4940,
+        4840,
+        5750
+      ]
+    },
+    {
+      "id": "05.01",
+      "title": "Главное меню",
+      "source": "Reports/NavigationType-Oct08/01-home.png",
+      "bounds": [
+        85,
+        6390,
+        395,
+        7200
+      ]
+    },
+    {
+      "id": "05.02",
+      "title": "Мои вещи",
+      "source": "Reports/NavigationType-Oct08/17-bag.png",
+      "bounds": [
+        720,
+        6390,
+        1030,
+        7200
+      ]
+    },
+    {
+      "id": "05.03",
+      "title": "Журнал / кабинет",
+      "source": "Reports/NavigationType-Oct08/34-journal.png",
+      "bounds": [
+        1355,
+        6390,
+        1665,
+        7200
+      ]
+    },
+    {
+      "id": "05.04",
+      "title": "Мои пути / рекорды",
+      "source": "Reports/NavigationType-Oct08/37-records.png",
+      "bounds": [
+        1990,
+        6390,
+        2300,
+        7200
+      ]
+    },
+    {
+      "id": "05.05",
+      "title": "Каталог трофеев",
+      "source": "Reports/NavigationType-Oct08/12a-trophy-shelf.png",
+      "bounds": [
+        2625,
+        6390,
+        2935,
+        7200
+      ]
+    },
+    {
+      "id": "05.06",
+      "title": "Просмотр трофея",
+      "source": "Reports/NavigationType-Oct08/18-trophies.png",
+      "bounds": [
+        3260,
+        6390,
+        3570,
+        7200
+      ]
+    },
+    {
+      "id": "05.07",
+      "title": "Посылка",
+      "source": "Reports/NavigationType-Oct08/27-parcel.png",
+      "bounds": [
+        3895,
+        6390,
+        4205,
+        7200
+      ]
+    },
+    {
+      "id": "05.08",
+      "title": "Переигрывание уровня",
+      "source": "Reports/NavigationType-Oct08/20-game.png",
+      "bounds": [
+        4530,
+        6390,
+        4840,
+        7200
+      ]
+    },
+    {
+      "id": "06.01",
+      "title": "Главное меню",
+      "source": "Reports/NavigationType-Oct08/01-home.png",
+      "bounds": [
+        85,
+        7840,
+        395,
+        8650
+      ]
+    },
+    {
+      "id": "06.02",
+      "title": "Инструменты: каталог",
+      "source": "Reports/NavigationType-Oct08/11a-shop-shelf.png",
+      "bounds": [
+        720,
+        7840,
+        1030,
+        8650
+      ]
+    },
+    {
+      "id": "06.03",
+      "title": "Инструмент: просмотр",
+      "source": "Reports/NavigationType-Oct08/11-shop-tools.png",
+      "bounds": [
+        1355,
+        7840,
+        1665,
+        8650
+      ]
+    },
+    {
+      "id": "06.04",
+      "title": "Трофеи: каталог",
+      "source": "Reports/NavigationType-Oct08/12a-trophy-shelf.png",
+      "bounds": [
+        1990,
+        7840,
+        2300,
+        8650
+      ]
+    },
+    {
+      "id": "06.05",
+      "title": "Костюм: просмотр",
+      "source": "Reports/NavigationType-Oct08/12-shop-mika.png",
+      "bounds": [
+        2625,
+        7840,
+        2935,
+        8650
+      ]
+    },
+    {
+      "id": "06.06",
+      "title": "Фон и живность",
+      "source": "Reports/NavigationType-Oct08/13-shop-background.png",
+      "bounds": [
+        3260,
+        7840,
+        3570,
+        8650
+      ]
+    },
+    {
+      "id": "06.07",
+      "title": "Рамки",
+      "source": "Reports/NavigationType-Oct08/14-shop-frames.png",
+      "bounds": [
+        3895,
+        7840,
+        4205,
+        8650
+      ]
+    },
+    {
+      "id": "06.08",
+      "title": "Пакеты монет",
+      "source": "Reports/NavigationType-Oct08/15-coins.png",
+      "bounds": [
+        4530,
+        7840,
+        4840,
+        8650
+      ]
+    },
+    {
+      "id": "07.01",
+      "title": "Главное меню",
+      "source": "Reports/NavigationType-Oct08/01-home.png",
+      "bounds": [
+        85,
+        9290,
+        395,
+        10100
+      ]
+    },
+    {
+      "id": "07.02",
+      "title": "Список настроек",
+      "source": "Reports/NavigationType-Oct08/02-settings.png",
+      "bounds": [
+        720,
+        9290,
+        1030,
+        10100
+      ]
+    },
+    {
+      "id": "07.03",
+      "title": "Звук и движение",
+      "source": "Reports/NavigationType-Oct08/03-settings-0.png",
+      "bounds": [
+        1355,
+        9290,
+        1665,
+        10100
+      ]
+    },
+    {
+      "id": "07.04",
+      "title": "Удобство и помощь",
+      "source": "Reports/NavigationType-Oct08/04-settings-1.png",
+      "bounds": [
+        1990,
+        9290,
+        2300,
+        10100
+      ]
+    },
+    {
+      "id": "07.05",
+      "title": "Языки",
+      "source": "Reports/NavigationType-Oct08/05-settings-2.png",
+      "bounds": [
+        2625,
+        9290,
+        2935,
+        10100
+      ]
+    },
+    {
+      "id": "07.06",
+      "title": "Напоминания",
+      "source": "Reports/NavigationType-Oct08/06-settings-3.png",
+      "bounds": [
+        3260,
+        9290,
+        3570,
+        10100
+      ]
+    },
+    {
+      "id": "07.07",
+      "title": "Облачное сохранение",
+      "source": "Reports/NavigationType-Oct08/07-settings-4.png",
+      "bounds": [
+        3895,
+        9290,
+        4205,
+        10100
+      ]
+    },
+    {
+      "id": "07.08",
+      "title": "Отключение рекламы",
+      "source": "Reports/NavigationType-Oct08/16-no-ads.png",
+      "bounds": [
+        4530,
+        9290,
+        4840,
+        10100
+      ]
+    },
+    {
+      "id": "08.01",
+      "title": "Пауза",
+      "source": "Reports/NavigationType-Oct08/23-pause.png",
+      "bounds": [
+        85,
+        10740,
+        395,
+        11550
+      ]
+    },
+    {
+      "id": "08.02",
+      "title": "Как играть",
+      "source": "Reports/NavigationType-Oct08/31-guide.png",
+      "bounds": [
+        720,
+        10740,
+        1030,
+        11550
+      ]
+    },
+    {
+      "id": "08.03",
+      "title": "Эффекты и инструменты",
+      "source": "Reports/NavigationType-Oct08/32-effect-guide.png",
+      "bounds": [
+        1355,
+        10740,
+        1665,
+        11550
+      ]
+    },
+    {
+      "id": "08.04",
+      "title": "Урок эффекта",
+      "source": "Reports/NavigationType-Oct08/33-tutorial.png",
+      "bounds": [
+        1990,
+        10740,
+        2300,
+        11550
+      ]
+    },
+    {
+      "id": "08.05",
+      "title": "Игра",
+      "source": "Reports/NavigationType-Oct08/20-game.png",
+      "bounds": [
+        2625,
+        10740,
+        2935,
+        11550
+      ]
+    },
+    {
+      "id": "08.06",
+      "title": "Восстановление сохранения",
+      "source": "Reports/NavigationType-Oct08/43-save-recovery.png",
+      "bounds": [
+        3260,
+        10740,
+        3570,
+        11550
+      ]
+    },
+    {
+      "id": "08.07",
+      "title": "Главное меню",
+      "source": "Reports/NavigationType-Oct08/01-home.png",
+      "bounds": [
+        3895,
+        10740,
+        4205,
+        11550
+      ]
+    },
+    {
+      "id": "09.01",
+      "title": "Мастерская",
+      "source": "Reports/NavigationType-Oct08/35-workshop.png",
+      "bounds": [
+        85,
+        12190,
+        395,
+        13000
+      ]
+    },
+    {
+      "id": "09.02",
+      "title": "Пути с печатями",
+      "source": "Reports/NavigationType-Oct08/38-contracts.png",
+      "bounds": [
+        720,
+        12190,
+        1030,
+        13000
+      ]
+    },
+    {
+      "id": "09.03",
+      "title": "Прежнее меню просьб",
+      "source": "Reports/NavigationType-Oct08/36-requests.png",
+      "bounds": [
+        1355,
+        12190,
+        1665,
+        13000
+      ]
+    },
+    {
+      "id": "09.04",
+      "title": "Подтверждение языка слов",
+      "source": "Reports/NavigationType-Oct08/40-word-language.png",
+      "bounds": [
+        1990,
+        12190,
+        2300,
+        13000
+      ]
+    },
+    {
+      "id": "09.05",
+      "title": "Уровень завершён",
+      "source": "Reports/NavigationType-Oct08/25-victory.png",
+      "bounds": [
+        2625,
+        12190,
+        2935,
+        13000
+      ]
+    },
+    {
+      "id": "09.06",
+      "title": "Рекламное окно",
+      "source": "Reports/NavigationType-Oct08/42-test-ad.png",
+      "bounds": [
+        3260,
+        12190,
+        3570,
+        13000
+      ]
+    },
+    {
+      "id": "09.07",
+      "title": "Карта",
+      "source": "Reports/NavigationType-Oct08/08-map.png",
+      "bounds": [
+        3895,
+        12190,
+        4205,
+        13000
+      ]
+    },
+    {
+      "id": "09.08",
+      "title": "Магазин",
+      "source": "Reports/NavigationType-Oct08/11a-shop-shelf.png",
+      "bounds": [
+        4530,
+        12190,
+        4840,
+        13000
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "from": "01.01",
+      "to": "01.02",
+      "action": "Играть · первый вход",
+      "kind": "tap"
+    },
+    {
+      "from": "01.02",
+      "to": "01.03",
+      "action": "Далее / закончить комикс",
+      "kind": "tap"
+    },
+    {
+      "from": "01.01",
+      "to": "01.03",
+      "action": "Играть · история уже прочитана",
+      "kind": "tap"
+    },
+    {
+      "from": "01.03",
+      "to": "01.04",
+      "action": "Тап по острову",
+      "kind": "tap"
+    },
+    {
+      "from": "01.04",
+      "to": "01.05",
+      "action": "Тап уровня · новый эффект",
+      "kind": "tap"
+    },
+    {
+      "from": "01.05",
+      "to": "01.06",
+      "action": "Начать / понятно",
+      "kind": "tap"
+    },
+    {
+      "from": "01.04",
+      "to": "01.06",
+      "action": "Тап уровня · эффект уже знаком",
+      "kind": "tap"
+    },
+    {
+      "from": "01.03",
+      "to": "01.06",
+      "action": "Продолжить · текущий уровень",
+      "kind": "tap"
+    },
+    {
+      "from": "01.06",
+      "to": "01.07",
+      "action": "Авто: цель этапа собрана",
+      "kind": "event"
+    },
+    {
+      "from": "01.06",
+      "to": "01.08",
+      "action": "Авто: завершён 3-й этап",
+      "kind": "event"
+    },
+    {
+      "from": "01.04",
+      "to": "01.03",
+      "action": "Назад",
+      "kind": "return"
+    },
+    {
+      "from": "02.01",
+      "to": "02.02",
+      "action": "Ниже · перейти к этапу",
+      "kind": "tap"
+    },
+    {
+      "from": "02.02",
+      "to": "02.01",
+      "action": "Авто: завершён 1-й / 2-й этап",
+      "kind": "event"
+    },
+    {
+      "from": "02.02",
+      "to": "02.03",
+      "action": "Авто: завершён 3-й этап",
+      "kind": "event"
+    },
+    {
+      "from": "02.03",
+      "to": "02.04",
+      "action": "Следующий уровень / карта · есть подарок",
+      "kind": "tap"
+    },
+    {
+      "from": "02.04",
+      "to": "02.05",
+      "action": "Открыть",
+      "kind": "tap"
+    },
+    {
+      "from": "02.05",
+      "to": "02.06",
+      "action": "Далее · выбрана карта",
+      "kind": "tap"
+    },
+    {
+      "from": "02.03",
+      "to": "02.06",
+      "action": "Карта · без новой посылки",
+      "kind": "tap"
+    },
+    {
+      "from": "02.03",
+      "to": "02.02",
+      "action": "Следующий уровень · без подарка",
+      "kind": "tap"
+    },
+    {
+      "from": "02.05",
+      "to": "02.02",
+      "action": "Далее · выбран следующий уровень",
+      "kind": "tap"
+    },
+    {
+      "from": "02.02",
+      "to": "02.07",
+      "action": "Авто: проигрыш",
+      "kind": "event"
+    },
+    {
+      "from": "02.07",
+      "to": "02.02",
+      "action": "Заново",
+      "kind": "tap"
+    },
+    {
+      "from": "02.07",
+      "to": "02.06",
+      "action": "Карта",
+      "kind": "tap"
+    },
+    {
+      "from": "02.06",
+      "to": "02.08",
+      "action": "Авто: история полностью завершена",
+      "kind": "event"
+    },
+    {
+      "from": "02.08",
+      "to": "02.06",
+      "action": "Наше путешествие",
+      "kind": "tap"
+    },
+    {
+      "from": "03.01",
+      "to": "03.02",
+      "action": "Тап по цели",
+      "kind": "tap"
+    },
+    {
+      "from": "03.02",
+      "to": "03.01",
+      "action": "Закрыть цель",
+      "kind": "return"
+    },
+    {
+      "from": "03.01",
+      "to": "03.03",
+      "action": "Кнопка паузы II",
+      "kind": "tap"
+    },
+    {
+      "from": "03.03",
+      "to": "03.01",
+      "action": "Продолжить / заново",
+      "kind": "return"
+    },
+    {
+      "from": "03.03",
+      "to": "03.04",
+      "action": "Мои инструменты",
+      "kind": "tap"
+    },
+    {
+      "from": "03.04",
+      "to": "03.01",
+      "action": "Выбрать → использовать",
+      "kind": "tap"
+    },
+    {
+      "from": "03.04",
+      "to": "03.05",
+      "action": "Магазин",
+      "kind": "tap"
+    },
+    {
+      "from": "03.05",
+      "to": "03.04",
+      "action": "Назад",
+      "kind": "return"
+    },
+    {
+      "from": "03.01",
+      "to": "03.06",
+      "action": "Тап по сумке",
+      "kind": "tap"
+    },
+    {
+      "from": "03.06",
+      "to": "03.01",
+      "action": "Тап предмета / повторный тап сумки",
+      "kind": "tap"
+    },
+    {
+      "from": "04.01",
+      "to": "04.02",
+      "action": "Авто: сюжетное событие",
+      "kind": "event"
+    },
+    {
+      "from": "04.02",
+      "to": "04.01",
+      "action": "Далее / закрыть разговор",
+      "kind": "return"
+    },
+    {
+      "from": "04.01",
+      "to": "04.03",
+      "action": "Авто: время предложения миссии",
+      "kind": "event"
+    },
+    {
+      "from": "04.03",
+      "to": "04.01",
+      "action": "Decline / отказаться",
+      "kind": "tap"
+    },
+    {
+      "from": "04.03",
+      "to": "04.04",
+      "action": "Accept / принять",
+      "kind": "tap"
+    },
+    {
+      "from": "04.04",
+      "to": "04.01",
+      "action": "Карта · завершить / покинуть миссию",
+      "kind": "return"
+    },
+    {
+      "from": "04.01",
+      "to": "04.05",
+      "action": "Тап по острову",
+      "kind": "tap"
+    },
+    {
+      "from": "04.05",
+      "to": "04.06",
+      "action": "Тап уровня · выбран режим «Слова»",
+      "kind": "tap"
+    },
+    {
+      "from": "04.05",
+      "to": "04.07",
+      "action": "Тап уровня · выбран «Микс»",
+      "kind": "tap"
+    },
+    {
+      "from": "04.05",
+      "to": "04.04",
+      "action": "Тап уровня · выбран режим «Фигуры»",
+      "kind": "tap"
+    },
+    {
+      "from": "04.01",
+      "to": "04.08",
+      "action": "Стрелка мира / свайп",
+      "kind": "tap"
+    },
+    {
+      "from": "04.08",
+      "to": "04.01",
+      "action": "Обратная стрелка / свайп",
+      "kind": "return"
+    },
+    {
+      "from": "05.01",
+      "to": "05.02",
+      "action": "Мои вещи",
+      "kind": "tap"
+    },
+    {
+      "from": "05.02",
+      "to": "05.01",
+      "action": "Назад",
+      "kind": "return"
+    },
+    {
+      "from": "05.02",
+      "to": "05.03",
+      "action": "Мой журнал",
+      "kind": "tap"
+    },
+    {
+      "from": "05.03",
+      "to": "05.02",
+      "action": "Назад",
+      "kind": "return"
+    },
+    {
+      "from": "05.03",
+      "to": "05.04",
+      "action": "Мои пути",
+      "kind": "tap"
+    },
+    {
+      "from": "05.04",
+      "to": "05.03",
+      "action": "Назад",
+      "kind": "return"
+    },
+    {
+      "from": "05.02",
+      "to": "05.05",
+      "action": "Трофеи",
+      "kind": "tap"
+    },
+    {
+      "from": "05.03",
+      "to": "05.05",
+      "action": "Трофеи · нет посылки",
+      "kind": "tap"
+    },
+    {
+      "from": "05.05",
+      "to": "05.06",
+      "action": "Выбрать тапом → посмотреть",
+      "kind": "tap"
+    },
+    {
+      "from": "05.06",
+      "to": "05.05",
+      "action": "Назад из просмотра",
+      "kind": "return"
+    },
+    {
+      "from": "05.03",
+      "to": "05.07",
+      "action": "Открыть посылку",
+      "kind": "tap"
+    },
+    {
+      "from": "05.07",
+      "to": "05.03",
+      "action": "Открыть → далее",
+      "kind": "return"
+    },
+    {
+      "from": "05.04",
+      "to": "05.08",
+      "action": "Пройти уровень",
+      "kind": "tap"
+    },
+    {
+      "from": "06.01",
+      "to": "06.02",
+      "action": "Магазин",
+      "kind": "tap"
+    },
+    {
+      "from": "06.02",
+      "to": "06.01",
+      "action": "Назад · вход из меню",
+      "kind": "return"
+    },
+    {
+      "from": "06.02",
+      "to": "06.03",
+      "action": "Выбрать → посмотреть",
+      "kind": "tap"
+    },
+    {
+      "from": "06.03",
+      "to": "06.02",
+      "action": "Назад из просмотра",
+      "kind": "return"
+    },
+    {
+      "from": "06.02",
+      "to": "06.04",
+      "action": "Вкладка «Трофеи»",
+      "kind": "tap"
+    },
+    {
+      "from": "06.04",
+      "to": "06.05",
+      "action": "Выбрать → посмотреть",
+      "kind": "tap"
+    },
+    {
+      "from": "06.05",
+      "to": "06.04",
+      "action": "Назад из просмотра",
+      "kind": "return"
+    },
+    {
+      "from": "06.04",
+      "to": "06.06",
+      "action": "Вкладка «Фон»",
+      "kind": "tap"
+    },
+    {
+      "from": "06.04",
+      "to": "06.07",
+      "action": "Вкладка «Рамки»",
+      "kind": "tap"
+    },
+    {
+      "from": "06.06",
+      "to": "06.04",
+      "action": "Вкладка «Мика»",
+      "kind": "tap"
+    },
+    {
+      "from": "06.07",
+      "to": "06.04",
+      "action": "Вкладка «Мика»",
+      "kind": "tap"
+    },
+    {
+      "from": "06.02",
+      "to": "06.08",
+      "action": "Вкладка «Монеты»",
+      "kind": "tap"
+    },
+    {
+      "from": "06.08",
+      "to": "06.02",
+      "action": "Назад / «Помощь»",
+      "kind": "return"
+    },
+    {
+      "from": "07.01",
+      "to": "07.02",
+      "action": "Настройки",
+      "kind": "tap"
+    },
+    {
+      "from": "07.02",
+      "to": "07.01",
+      "action": "Назад",
+      "kind": "return"
+    },
+    {
+      "from": "07.02",
+      "to": "07.03",
+      "action": "Звук и движение",
+      "kind": "tap"
+    },
+    {
+      "from": "07.02",
+      "to": "07.04",
+      "action": "Удобство и помощь",
+      "kind": "tap"
+    },
+    {
+      "from": "07.02",
+      "to": "07.05",
+      "action": "Языки",
+      "kind": "tap"
+    },
+    {
+      "from": "07.02",
+      "to": "07.06",
+      "action": "Напоминания",
+      "kind": "tap"
+    },
+    {
+      "from": "07.02",
+      "to": "07.07",
+      "action": "Облачное сохранение",
+      "kind": "tap"
+    },
+    {
+      "from": "07.02",
+      "to": "07.08",
+      "action": "Без рекламы",
+      "kind": "tap"
+    },
+    {
+      "from": "07.03",
+      "to": "07.02",
+      "action": "Назад",
+      "kind": "return"
+    },
+    {
+      "from": "07.04",
+      "to": "07.02",
+      "action": "Назад",
+      "kind": "return"
+    },
+    {
+      "from": "07.05",
+      "to": "07.02",
+      "action": "Назад",
+      "kind": "return"
+    },
+    {
+      "from": "07.06",
+      "to": "07.02",
+      "action": "Назад",
+      "kind": "return"
+    },
+    {
+      "from": "07.07",
+      "to": "07.02",
+      "action": "Назад",
+      "kind": "return"
+    },
+    {
+      "from": "07.08",
+      "to": "07.02",
+      "action": "Назад",
+      "kind": "return"
+    },
+    {
+      "from": "08.01",
+      "to": "08.02",
+      "action": "Как играть",
+      "kind": "tap"
+    },
+    {
+      "from": "08.02",
+      "to": "08.01",
+      "action": "Назад",
+      "kind": "return"
+    },
+    {
+      "from": "08.02",
+      "to": "08.03",
+      "action": "Инструменты и эффекты",
+      "kind": "tap"
+    },
+    {
+      "from": "08.03",
+      "to": "08.01",
+      "action": "Назад · вход из паузы",
+      "kind": "return"
+    },
+    {
+      "from": "08.05",
+      "to": "08.04",
+      "action": "Авто: незнакомый эффект / предмет",
+      "kind": "event"
+    },
+    {
+      "from": "08.04",
+      "to": "08.05",
+      "action": "Начать / понятно",
+      "kind": "tap"
+    },
+    {
+      "from": "08.06",
+      "to": "08.07",
+      "action": "Продолжить / начать заново",
+      "kind": "tap"
+    },
+    {
+      "from": "09.05",
+      "to": "09.06",
+      "action": "Карта · наступил интервал рекламы",
+      "kind": "tap"
+    },
+    {
+      "from": "09.06",
+      "to": "09.07",
+      "action": "Закрыть · вход после уровня",
+      "kind": "return"
+    },
+    {
+      "from": "09.08",
+      "to": "09.06",
+      "action": "Видео за монеты · доступно",
+      "kind": "tap"
+    },
+    {
+      "from": "09.06",
+      "to": "09.08",
+      "action": "Закрыть · вход из магазина",
+      "kind": "return"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "path": "/Users/andrew/Library/Android",
+    "allocated_kib": 2570824,
+    "access_errors": 0,
+    "complete": true
+  },
+  {
+    "path": "/Users/andrew/.android",
+    "allocated_kib": 6816,
+    "access_errors": 0,
+    "complete": true
+  },
+  {
+    "path": "/Users/andrew/.cursor",
+    "allocated_kib": 224356,
+    "access_errors": 0,
+    "complete": true
+  },
+  {
+    "path": "/Users/andrew/.Trash",
+    "allocated_kib": null,
+    "access_errors": 1,
+    "complete": false
+  },
+  {
+    "path": "/Users/Shared",
+    "allocated_kib": 10633876,
+    "access_errors": 0,
+    "complete": true
+  },
+  {
+    "path": "/Users/andrew/Library/Mobile Documents",
+    "allocated_kib": 14556,
+    "access_errors": 0,
+    "complete": true
+  },
+  {
+    "path": "/Users/andrew/Library/CloudStorage",
+    "allocated_kib": 0,
+    "access_errors": 0,
+    "complete": true
+  }
+]

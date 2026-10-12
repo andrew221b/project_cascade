@@ -1,0 +1,54 @@
+{
+  "error" : {
+    "code" : 3002,
+    "domain" : "com.apple.dt.CoreDeviceError",
+    "userInfo" : {
+      "NSLocalizedDescription" : {
+        "string" : "Failed to install the app on the device."
+      },
+      "NSURL" : {
+        "url" : "file:///Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/CASCADE-iOS-2026-10-08-menu-DerivedData/Build/Products/Release-iphoneos/CascadeUnity.app/"
+      },
+      "NSUnderlyingError" : {
+        "error" : {
+          "code" : 6,
+          "domain" : "IXRemoteErrorDomain",
+          "userInfo" : {
+            "FunctionName" : {
+              "string" : "_IXHandleConnectionForInstallMessagesFromRemoteService_block_invoke"
+            },
+            "NSLocalizedDescription" : {
+              "string" : "Connection with the remote side was unexpectedly closed : <dictionary: 0x208d50370> { count = 1, transaction: 0, voucher = 0x0, contents =\n\t\"XPCErrorDescription\" => <string: 0x208d504f0> { string cache = 0x0, length = 22, contents = \"Connection interrupted\" }\n}"
+            },
+            "NSLocalizedFailureReason" : {
+              "string" : "Unhandled error domain IXRemoteErrorDomain, code 6"
+            },
+            "SourceFileLine" : {
+              "int" : 300
+            }
+          }
+        }
+      }
+    }
+  },
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "install",
+      "app",
+      "--device",
+      "86ED6044-764E-5091-8CFE-C94C101E8DA8",
+      "--json-output",
+      "Reports/iOS-2026-10-08-menu/install.json",
+      "CascadeUnity/Builds/CASCADE-iOS-2026-10-08-menu-DerivedData/Build/Products/Release-iphoneos/CascadeUnity.app"
+    ],
+    "commandType" : "devicectl.device.install.app",
+    "environment" : {
+      "TERM" : "dumb"
+    },
+    "jsonVersion" : 3,
+    "outcome" : "failed",
+    "version" : "518.33"
+  }
+}

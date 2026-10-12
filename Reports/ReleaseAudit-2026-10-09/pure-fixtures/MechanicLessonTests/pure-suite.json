@@ -1,0 +1,97 @@
+[
+  {
+    "test": "MechanicLessonTests.VisibleCombinationFindsEachEffectOnceWithoutChangingTheLevel()",
+    "status": "Passed",
+    "ms": 8.5822
+  },
+  {
+    "test": "MechanicLessonTests.WindOnLandingIsDifferentFromRollersAndPassingFloorsRetiresTheirLessons()",
+    "status": "Passed",
+    "ms": 2.0345
+  },
+  {
+    "test": "MechanicLessonTests.InitialMirrorHasAlreadyRunAndNeverPromisesAReceiverEffect()",
+    "status": "Passed",
+    "ms": 1.0171000000000001
+  },
+  {
+    "test": "MechanicLessonTests.FutureMirrorReallyReversesOnTheNextPlatform()",
+    "status": "Passed",
+    "ms": 0.2565
+  },
+  {
+    "test": "MechanicLessonTests.LegacyProfileStartsUnseenAndAcknowledgementSurvivesSerialization()",
+    "status": "Passed",
+    "ms": 60.8143
+  },
+  {
+    "test": "MechanicLessonTests.InvalidOrRepeatedAcknowledgementsAreRejected()",
+    "status": "Passed",
+    "ms": 2.0623
+  },
+  {
+    "test": "MechanicLessonTests.NewLessonIdsAppendWithoutRenumberingExistingSaveValues()",
+    "status": "Passed",
+    "ms": 0.5557
+  },
+  {
+    "test": "MechanicLessonTests.VisibleLessonsWaitForTheirBoardAndNeverPromiseAnAlreadyAppliedEntry()",
+    "status": "Passed",
+    "ms": 1.6937
+  },
+  {
+    "test": "MechanicLessonTests.ContactsResolvedOnArrivalDoNotAskThePlayerToRepeatThem()",
+    "status": "Passed",
+    "ms": 0.1829
+  },
+  {
+    "test": "MechanicLessonTests.UnusedContactsAreCompletedOnlyByTheirActualAcceptedEvents()",
+    "status": "Passed",
+    "ms": 0.36100000000000004
+  },
+  {
+    "test": "MechanicLessonTests.ActualGustIsTaughtUntilItMovesTheRowAndDamagesTheWood()",
+    "status": "Passed",
+    "ms": 0.3007
+  },
+  {
+    "test": "MechanicLessonTests.LandingContactsCompleteOnArrivalWithoutACommandOnTheNewBoard()",
+    "status": "Passed",
+    "ms": 0.2906
+  },
+  {
+    "test": "MechanicLessonTests.AcceptedSwapDropAndFarSwapHaveDistinctPracticeCompletions()",
+    "status": "Passed",
+    "ms": 0.263
+  },
+  {
+    "test": "MechanicLessonTests.LeavingTheTeachingBoardDoesNotCountAsUsingItsMechanic()",
+    "status": "Passed",
+    "ms": 0.22160000000000002
+  },
+  {
+    "test": "MechanicLessonTests.DescendingCannotPretendThatAControlOrPurchasedToolWasUsed()",
+    "status": "Passed",
+    "ms": 0.1237
+  },
+  {
+    "test": "MechanicLessonTests.EntryLessonsObserveTheNextBoardPermutation(ShiftLeftOne)",
+    "status": "Passed",
+    "ms": 0.17950000000000002
+  },
+  {
+    "test": "MechanicLessonTests.EntryLessonsObserveTheNextBoardPermutation(ShiftRightOne)",
+    "status": "Passed",
+    "ms": 0.0451
+  },
+  {
+    "test": "MechanicLessonTests.SurfaceExamplesFollowBridgeLinkedAndFragileConsequences()",
+    "status": "Passed",
+    "ms": 0.3653
+  },
+  {
+    "test": "MechanicLessonTests.FrostAndBlockedPathsNeedTheirRealConsequences()",
+    "status": "Passed",
+    "ms": 0.22970000000000002
+  }
+]

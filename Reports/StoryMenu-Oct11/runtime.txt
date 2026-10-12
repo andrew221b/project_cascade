@@ -1,0 +1,16 @@
+PASS en between-stage caption: Next
+PASS Shop: 8 sprite counters bounded.
+PASS Supplies: 7 sprite counters bounded.
+PASS CoinPacks: 3 sprite counters bounded.
+PASS Journal: 3 sprite counters bounded.
+PASS ru between-stage caption: Далее
+PASS Shop: 8 sprite counters bounded.
+PASS Supplies: 7 sprite counters bounded.
+PASS CoinPacks: 3 sprite counters bounded.
+PASS Journal: 3 sprite counters bounded.
+PASS uk between-stage caption: Далі
+PASS Shop: 8 sprite counters bounded.
+PASS Supplies: 7 sprite counters bounded.
+PASS CoinPacks: 3 sprite counters bounded.
+PASS Journal: 3 sprite counters bounded.
+PASS native menus and dialogue; production save untouched.

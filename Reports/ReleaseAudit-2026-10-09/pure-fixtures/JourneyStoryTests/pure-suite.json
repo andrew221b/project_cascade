@@ -1,0 +1,17 @@
+[
+  {
+    "test": "JourneyStoryTests.WholeWorldMapsCoverEveryPublishedLevelAndEachIslandHasMultipleLevels()",
+    "status": "Passed",
+    "ms": 10.6148
+  },
+  {
+    "test": "JourneyStoryTests.EveryPublishedStopBelongsToOnePageAndRegionWithoutCrossingBorders()",
+    "status": "Passed",
+    "ms": 1.8101
+  },
+  {
+    "test": "JourneyStoryTests.ExpandedRouteKeepsExistingPageAnchorsAndNightWorld()",
+    "status": "Passed",
+    "ms": 0.6744
+  }
+]

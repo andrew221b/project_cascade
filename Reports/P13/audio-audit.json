@@ -1,0 +1,155 @@
+[
+  {
+    "file": "Bomb.wav",
+    "seconds": 0.34,
+    "rate": 22050,
+    "channels": 1,
+    "peak": 0.305145263671875,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "file": "Bridge.wav",
+    "seconds": 0.12997732426303854,
+    "rate": 22050,
+    "channels": 1,
+    "peak": 0.3978271484375,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "file": "CloudWorkshopLoop.wav",
+    "seconds": 24.0,
+    "rate": 22050,
+    "channels": 1,
+    "peak": 0.177490234375,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "file": "Defuse.wav",
+    "seconds": 0.12997732426303854,
+    "rate": 22050,
+    "channels": 1,
+    "peak": 0.403411865234375,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "file": "Fragile.wav",
+    "seconds": 0.12997732426303854,
+    "rate": 22050,
+    "channels": 1,
+    "peak": 0.209808349609375,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "file": "FragileAlternate.wav",
+    "seconds": 0.12997732426303854,
+    "rate": 22050,
+    "channels": 1,
+    "peak": 0.19781494140625,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "file": "Land.wav",
+    "seconds": 0.12997732426303854,
+    "rate": 22050,
+    "channels": 1,
+    "peak": 0.369232177734375,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "file": "LandAlternate.wav",
+    "seconds": 0.12997732426303854,
+    "rate": 22050,
+    "channels": 1,
+    "peak": 0.376495361328125,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "file": "Reject.wav",
+    "seconds": 0.12997732426303854,
+    "rate": 22050,
+    "channels": 1,
+    "peak": 0.38812255859375,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "file": "Repair.wav",
+    "seconds": 0.28,
+    "rate": 22050,
+    "channels": 1,
+    "peak": 0.469940185546875,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "file": "Select.wav",
+    "seconds": 0.12997732426303854,
+    "rate": 22050,
+    "channels": 1,
+    "peak": 0.4241943359375,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "file": "SelectAlternate.wav",
+    "seconds": 0.12997732426303854,
+    "rate": 22050,
+    "channels": 1,
+    "peak": 0.39984130859375,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "file": "Stamp.wav",
+    "seconds": 0.12997732426303854,
+    "rate": 22050,
+    "channels": 1,
+    "peak": 0.23687744140625,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "file": "Success.wav",
+    "seconds": 0.5799546485260771,
+    "rate": 22050,
+    "channels": 1,
+    "peak": 0.777099609375,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "file": "Swap.wav",
+    "seconds": 0.12997732426303854,
+    "rate": 22050,
+    "channels": 1,
+    "peak": 0.412841796875,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "file": "SwapAlternate.wav",
+    "seconds": 0.12997732426303854,
+    "rate": 22050,
+    "channels": 1,
+    "peak": 0.4144287109375,
+    "first": 0,
+    "last": 0
+  },
+  {
+    "file": "Unlock.wav",
+    "seconds": 0.12997732426303854,
+    "rate": 22050,
+    "channels": 1,
+    "peak": 0.399322509765625,
+    "first": 0,
+    "last": 0
+  }
+]

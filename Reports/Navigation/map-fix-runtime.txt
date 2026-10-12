@@ -1,0 +1,2 @@
+MCP Editor map reaction: before=(-1.04, -1.90); after=(-1.09, -2.05); reduced-motion=(0.00, 0.00); unchanged puzzle hash=True
+Physical phone gravity was not tested.

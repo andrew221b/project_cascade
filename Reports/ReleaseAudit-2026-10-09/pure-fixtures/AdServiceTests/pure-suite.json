@@ -1,0 +1,82 @@
+[
+  {
+    "test": "AdServiceTests.NativeEntitlementRejectsUnverifiedOrWrongProductsAndRestoresExactlyOnce()",
+    "status": "Passed",
+    "ms": 6.7481
+  },
+  {
+    "test": "AdServiceTests.NativeEntitlementIsNotPublishedBeforeItsSaveSucceeds()",
+    "status": "Passed",
+    "ms": 0.59300000000000008
+  },
+  {
+    "test": "AdServiceTests.AutomaticAdsRespectEveryGateAndNeverAppearDuringPuzzleFlows()",
+    "status": "Passed",
+    "ms": 1.5593000000000001
+  },
+  {
+    "test": "AdServiceTests.FirstSessionCanShowAfterThreeCompleteNewLevelsAndThreeMinutes()",
+    "status": "Passed",
+    "ms": 1.3632
+  },
+  {
+    "test": "AdServiceTests.NotReadySkipsThatWinAndTwoAutomaticShowsAreTheSessionLimit()",
+    "status": "Passed",
+    "ms": 0.2316
+  },
+  {
+    "test": "AdServiceTests.RewardIsVerifiedOnceEvenAfterCloseAndCloseAloneNeverGrants()",
+    "status": "Passed",
+    "ms": 0.5977
+  },
+  {
+    "test": "AdServiceTests.NoAutomaticAdsAndHideOffersHaveSeparateMeaning()",
+    "status": "Passed",
+    "ms": 0.1124
+  },
+  {
+    "test": "AdServiceTests.RewardedShowRestartsTheAutomaticInterval()",
+    "status": "Passed",
+    "ms": 0.072500000000000009
+  },
+  {
+    "test": "AdServiceTests.FailedSavePublishesNoRewardAndCanBeRetried()",
+    "status": "Passed",
+    "ms": 0.1729
+  },
+  {
+    "test": "AdServiceTests.MockNonConsumablesRestoreIdempotentlyWithoutConsumableRewards()",
+    "status": "Passed",
+    "ms": 1.2367000000000001
+  },
+  {
+    "test": "AdServiceTests.UnknownStaleAndAlreadyRevealedHintsDoNotSpendAndStepDoesNotExecute()",
+    "status": "Passed",
+    "ms": 83.207000000000008
+  },
+  {
+    "test": "AdServiceTests.HintFlagAndCacheRollBackWhenGrantCommitFails()",
+    "status": "Passed",
+    "ms": 20.735400000000002
+  },
+  {
+    "test": "AdServiceTests.DiskTransactionSavesHintAndPaidStateTogetherAndReloadDoesNotRecharge()",
+    "status": "Passed",
+    "ms": 131.776
+  },
+  {
+    "test": "AdServiceTests.GrantDuringPlanningPreservesSavedDescentAndResumesNormalAttemptCapture(False)",
+    "status": "Passed",
+    "ms": 74.8802
+  },
+  {
+    "test": "AdServiceTests.GrantDuringPlanningPreservesSavedDescentAndResumesNormalAttemptCapture(True)",
+    "status": "Passed",
+    "ms": 67.4848
+  },
+  {
+    "test": "AdServiceTests.PreviousSchemaOneProfileDefaultsToDisabledEmptyInventory()",
+    "status": "Passed",
+    "ms": 9.1009000000000011
+  }
+]

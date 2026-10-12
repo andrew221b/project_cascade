@@ -1,0 +1,6 @@
+ShopTests: cumulative 20 passed, 0 failed
+GuidedPracticeTests: cumulative 34 passed, 0 failed
+AttemptTests: cumulative 51 passed, 0 failed
+CompletionProgressTests: cumulative 59 passed, 0 failed
+LevelDefinitionTests: cumulative 99 passed, 0 failed
+BridgeStampTests: cumulative 107 passed, 0 failed

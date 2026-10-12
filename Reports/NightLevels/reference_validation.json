@@ -1,0 +1,13 @@
+{
+  "seed": 26100709,
+  "generation_trials": 538,
+  "new_primary": 24,
+  "new_word_bindings": 72,
+  "reference_proofs_and_replays": 96,
+  "minimum": 8,
+  "maximum": 12,
+  "maximum_reference_states": 22122,
+  "previous_extension_fingerprint": "2bc315845290ecedcb7d0ffae7fb641a9cdea4ca2a0b093dde5ce067c8a42357",
+  "previous637_content_pins_fingerprint": "227d7ca0bc11c4f1ac6deb19df10ff4d7d33f904ccadb2ce874e920b2ccfd33c",
+  "native_validation": "Delegated to parent task; not run by the content subagent."
+}

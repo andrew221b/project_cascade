@@ -1,0 +1,11 @@
+{
+  "campaign": 540,
+  "stages": 1620,
+  "primaryLocalizedReplays": 6471,
+  "bombs": 349,
+  "unsafeQueries": 286,
+  "benefitQueries": 1620,
+  "normalizedUniqueTriads": 534,
+  "elapsedSeconds": 27.0513837,
+  "note": "Same target equality pattern and exact recipe fields; structural fingerprint, not exhaustive graph isomorphism. Duration from Mono on this Mac during concurrent tests, not iPhone timing."
+}

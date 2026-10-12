@@ -1,0 +1,14 @@
+{
+    "width": 390,
+    "height": 844,
+    "minimumDeviceTextPixels": 0.0,
+    "buttons": [
+        {
+            "name": "Keepgift",
+            "x": 63.53327941894531,
+            "y": 113.76001739501953,
+            "width": 263.1719970703125,
+            "height": 52.00000762939453
+        }
+    ]
+}

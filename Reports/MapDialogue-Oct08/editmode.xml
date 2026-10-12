@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Passed" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-08 13:42:51Z" end-time="2026-10-08 13:42:52Z" duration="0.2953935">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="793" result="Passed" start-time="2026-10-08 13:42:51Z" end-time="2026-10-08 13:42:52Z" duration="0.295394" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1879" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="792" result="Passed" start-time="2026-10-08 13:42:51Z" end-time="2026-10-08 13:42:52Z" duration="0.153265" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24227" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1880" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="792" result="Passed" start-time="2026-10-08 13:42:51Z" end-time="2026-10-08 13:42:52Z" duration="0.153087" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1881" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="792" result="Passed" start-time="2026-10-08 13:42:51Z" end-time="2026-10-08 13:42:52Z" duration="0.152965" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1381" name="DialoguePagesTests" fullname="Cascade.Tests.DialoguePagesTests" classname="Cascade.Tests.DialoguePagesTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-08 13:42:51Z" end-time="2026-10-08 13:42:52Z" duration="0.152408" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1383" name="AnOversizedWordRemainsReadableAndDoesNotLoop" fullname="Cascade.Tests.DialoguePagesTests.AnOversizedWordRemainsReadableAndDoesNotLoop" methodname="AnOversizedWordRemainsReadableAndDoesNotLoop" classname="Cascade.Tests.DialoguePagesTests" runstate="Runnable" seed="1089550998" result="Passed" start-time="2026-10-08 13:42:51Z" end-time="2026-10-08 13:42:52Z" duration="0.145821" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1382" name="PagesKeepEveryWordInOrder" fullname="Cascade.Tests.DialoguePagesTests.PagesKeepEveryWordInOrder" methodname="PagesKeepEveryWordInOrder" classname="Cascade.Tests.DialoguePagesTests" runstate="Runnable" seed="1512025369" result="Passed" start-time="2026-10-08 13:42:52Z" end-time="2026-10-08 13:42:52Z" duration="0.001052" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1384" name="StoryPagesNeverStopInsideASentence" fullname="Cascade.Tests.DialoguePagesTests.StoryPagesNeverStopInsideASentence" methodname="StoryPagesNeverStopInsideASentence" classname="Cascade.Tests.DialoguePagesTests" runstate="Runnable" seed="1093555965" result="Passed" start-time="2026-10-08 13:42:52Z" end-time="2026-10-08 13:42:52Z" duration="0.000271" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

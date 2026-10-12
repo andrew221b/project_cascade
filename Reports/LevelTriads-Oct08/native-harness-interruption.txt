@@ -1,0 +1,1 @@
+Initial native helper reached a legitimate unseen world prologue after completion, then timed out waiting for the map. Follow-up used FinishWorldComic and inspected the actual JourneyMap. Two diagnostic command snippets referred to nonexistent AttemptService properties and did not execute. No production-code exception was observed.

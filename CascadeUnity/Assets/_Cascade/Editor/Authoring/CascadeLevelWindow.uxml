@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:Style src="CascadeLevelWindow.uss" />
+    <ui:VisualElement class="workshop">
+        <ui:VisualElement class="masthead">
+            <ui:Label text="CASCADE / Level workshop" class="workshop-title" />
+            <ui:Label text="Build a row. Find a route. Watch every consequence." class="subtitle" />
+        </ui:VisualElement>
+        <ui:VisualElement name="toolbar" class="toolbar" />
+        <ui:VisualElement class="columns">
+            <ui:ScrollView class="draft-scroll">
+                <ui:VisualElement name="draftBody" class="draft-body" />
+            </ui:ScrollView>
+            <ui:ScrollView class="report-scroll">
+                <ui:VisualElement name="reportBody" class="report-body" />
+            </ui:ScrollView>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

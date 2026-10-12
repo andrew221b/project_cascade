@@ -1,0 +1,37 @@
+{
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "install",
+      "app",
+      "--device",
+      "86ED6044-764E-5091-8CFE-C94C101E8DA8",
+      "CascadeUnity/Builds/CASCADE-iOS-2026-10-08-touch-undo-DerivedData/Build/Products/Release-iphoneos/CascadeUnity.app",
+      "--json-output",
+      "Reports/iOS-2026-10-08-touch-undo/install.json"
+    ],
+    "commandType" : "devicectl.device.install.app",
+    "environment" : {
+      "TERM" : "dumb"
+    },
+    "jsonVersion" : 3,
+    "outcome" : "success",
+    "version" : "518.33"
+  },
+  "result" : {
+    "deviceIdentifier" : "86ED6044-764E-5091-8CFE-C94C101E8DA8",
+    "installedApplications" : [
+      {
+        "bundleID" : "com.vickand.cascade",
+        "databaseSequenceNumber" : 1996,
+        "databaseUUID" : "4339F797-3276-43B8-AF14-A2DADD234626",
+        "installationURL" : "file:///private/var/containers/Bundle/Application/43401395-758D-49E5-A33A-AD058018B833/CascadeUnity.app/",
+        "launchServicesIdentifier" : "unknown",
+        "options" : {
+
+        }
+      }
+    ]
+  }
+}

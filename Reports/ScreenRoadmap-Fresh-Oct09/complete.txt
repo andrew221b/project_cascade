@@ -1,0 +1,1 @@
+57 native Unity screenshots; 0 capture failures. Isolated QA progress; simulated portrait safe insets. No device/Simulator/build/audio validation.

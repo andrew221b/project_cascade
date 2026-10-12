@@ -1,0 +1,17 @@
+[
+  {
+    "test": "InteractionConflictTests.WinningLanternTransitionPublishesAfterTheAtomicCommit()",
+    "status": "Passed",
+    "ms": 98.615800000000007
+  },
+  {
+    "test": "InteractionConflictTests.AToolTransitionFromBeforeRetryCannotPublishIntoTheNewAttempt()",
+    "status": "Passed",
+    "ms": 0.9657
+  },
+  {
+    "test": "InteractionConflictTests.PreparationCancelsHeldReachAndBlocksHintAndPrecisionCommands()",
+    "status": "Passed",
+    "ms": 1.3968
+  }
+]

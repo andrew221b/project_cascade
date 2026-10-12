@@ -1,0 +1,58 @@
+{
+  "editMode": {
+    "passed": 59,
+    "failed": 0,
+    "report": "Reports/UiReview-Oct11/editmode.xml"
+  },
+  "playMode": {
+    "passed": 10,
+    "failed": 0,
+    "cases": {
+      "Cascade.Tests.GuidedLessonFlowTests.BagExpandsInlineAndAppliesItsSelectedIconExactlyOnce": {
+        "result": "Passed",
+        "report": "Reports/UiReview-Oct11-Bag/playmode.xml"
+      },
+      "Cascade.Tests.PlayableTests.FailureOffersFreeRetryWithoutAnUndoButton": {
+        "result": "Passed",
+        "report": "Reports/UiReview-Oct11-Verified/playmode.xml"
+      },
+      "Cascade.Tests.PlayableTests.MouseTapTapCommitsOnceAndUndoRestores": {
+        "result": "Passed",
+        "report": "Reports/UiReview-Oct11-Verified/playmode.xml"
+      },
+      "Cascade.Tests.PlayableTests.ProvenDeadEndDoesNotConsumeOrRevealAHint": {
+        "result": "Passed",
+        "report": "Reports/UiReview-Oct11-Verified/playmode.xml"
+      },
+      "Cascade.Tests.PlayableTests.ReloadAfterLandingPreservesEntryTransformAndCannotUndoBrokenFloor": {
+        "result": "Passed",
+        "report": "Reports/UiReview-Oct11-Verified/playmode.xml"
+      },
+      "Cascade.Tests.PlayableTests.RibbonDragPersistsAndUndoRestoresCharge": {
+        "result": "Passed",
+        "report": "Reports/UiReview-Oct11-Verified/playmode.xml"
+      },
+      "Cascade.Tests.ScreenCosmeticFlowTests.EquippedLeavesAreOpaqueAndDriftWithWind": {
+        "result": "Passed",
+        "report": "Reports/UiReview-Oct11-Verified/playmode.xml"
+      },
+      "Cascade.Tests.ScreenCosmeticFlowTests.EveryScreenStyleHasItsOwnPreviewAndUnifiedCatalogue": {
+        "result": "Passed",
+        "report": "Reports/UiReview-Oct11-Verified/playmode.xml"
+      },
+      "Cascade.Tests.ScreenCosmeticFlowTests.IndependentStylesCanEquipRemoveAndSurviveMenuRoundTrip": {
+        "result": "Passed",
+        "report": "Reports/UiReview-Oct11-Verified/playmode.xml"
+      },
+      "Cascade.Tests.ScreenCosmeticFlowTests.InventoryAndShopHaveClearActionsAndLargerCards": {
+        "result": "Passed",
+        "report": "Reports/UiReview-Oct11-Verified/playmode.xml"
+      }
+    }
+  },
+  "phoneBuild": "NOT RUN",
+  "notes": [
+    "Earlier runs retained. Old price/card-count expectations and reload-readiness waits were corrected.",
+    "An initial isolated screenshot fixture fabricated reward milestones without first-clear receipts. Save validation rejected it; final captures use a fresh valid profile. Save validation was preserved."
+  ]
+}

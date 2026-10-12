@@ -1,0 +1,37 @@
+[
+  {
+    "test": "DirectorTests.DirectorAlternatesConfidencePeakAndRecoveryAndDoesNotCountAResultTwice()",
+    "status": "Passed",
+    "ms": 12.3687
+  },
+  {
+    "test": "DirectorTests.FailedAndAbandonedAttemptsEaseTheNextDeliveryButRetryKeepsItsPin()",
+    "status": "Passed",
+    "ms": 0.3628
+  },
+  {
+    "test": "DirectorTests.AllLateRecipesPreserveIdentitiesDevicesMultisetsAndBoundWood()",
+    "status": "Passed",
+    "ms": 187.60070000000002
+  },
+  {
+    "test": "DirectorTests.WindUsesTheExactResolverAndKeepsContactsOnTheFinalRow()",
+    "status": "Passed",
+    "ms": 33.871
+  },
+  {
+    "test": "DirectorTests.DirectedSaveReconstructsExactCommandsAndRejectsTamperedRecipes()",
+    "status": "Passed",
+    "ms": 3.9129
+  },
+  {
+    "test": "DirectorTests.LegacyProfilesGetCalmDefaultsWithoutChangingTheirAttempt()",
+    "status": "Passed",
+    "ms": 78.0014
+  },
+  {
+    "test": "DirectorTests.IrregularWindIsSmoothBoundedAndNotAShortLoop()",
+    "status": "Passed",
+    "ms": 8.0031
+  }
+]

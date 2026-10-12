@@ -1,0 +1,4 @@
+Unity iOS export: Result Succeeded, 0 errors, 358 warnings.
+Xcode iPhone Release build: exit 0; bundle com.vickand.cascade; version 202610114; arm64; minimum iOS 15.
+Installed successfully on the paired iPhone 17 through CoreDevice.
+Host codesign --verify --deep --strict returned CSSMERR_TP_NOT_TRUSTED, also seen on the prior Xcode app; device installation nevertheless succeeded. This host-side trust check is not being reported as passing.

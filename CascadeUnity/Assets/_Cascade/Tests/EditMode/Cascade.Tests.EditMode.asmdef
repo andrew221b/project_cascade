@@ -1,0 +1,27 @@
+{
+    "name": "Cascade.Tests.EditMode",
+    "rootNamespace": "Cascade.Tests",
+    "references": [
+        "Cascade.Domain",
+        "Cascade.Solver",
+        "Cascade.Application",
+        "Cascade.Content",
+        "Cascade.Editor.Authoring",
+        "Unity.Localization",
+        "Unity.Localization.Editor",
+        "Cascade.Presentation",
+        "Unity.TextMeshPro",
+        "Cascade.Persistence"
+    ],
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "Newtonsoft.Json.dll"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ]
+}

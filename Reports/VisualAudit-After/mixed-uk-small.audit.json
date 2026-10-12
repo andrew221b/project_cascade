@@ -1,0 +1,434 @@
+{
+  "pose": "mixed-uk-small",
+  "before": {
+    "Screen": "Playing",
+    "Attempt": "437cbfb0-1aab-4837-9415-a5f2419aa704",
+    "Hash": "955b7ccda3a138f9195fa9bcc030a4d84be26a1b29021ae1356be0a9fc8cad60",
+    "Status": "Playing",
+    "Route": 0,
+    "Stage": -1,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": false
+  },
+  "after": {
+    "Screen": "Playing",
+    "Attempt": "437cbfb0-1aab-4837-9415-a5f2419aa704",
+    "Hash": "955b7ccda3a138f9195fa9bcc030a4d84be26a1b29021ae1356be0a9fc8cad60",
+    "Status": "Playing",
+    "Route": 0,
+    "Stage": -1,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": false
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 320,
+    "height": 693,
+    "locale": "uk",
+    "largeText": true,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Pause",
+        "path": "CASCADE/GameCanvas/SafeArea/Header/Pause",
+        "interactable": true,
+        "bounds": {
+          "x": 266.23996,
+          "y": 587.261963,
+          "width": 48.00003,
+          "height": 48.0
+        }
+      },
+      {
+        "name": "Hint",
+        "path": "CASCADE/GameCanvas/SafeArea/Header/Hint",
+        "interactable": true,
+        "bounds": {
+          "x": 5.76001167,
+          "y": 587.261963,
+          "width": 47.9999924,
+          "height": 48.0
+        }
+      },
+      {
+        "name": "Dismiss instruction",
+        "path": "CASCADE/GameCanvas/SafeArea/Quiet instruction paper/Dismiss instruction",
+        "interactable": true,
+        "bounds": {
+          "x": 253.27356,
+          "y": 533.262,
+          "width": 44.0,
+          "height": 44.0
+        }
+      },
+      {
+        "name": "Receiver",
+        "path": "CASCADE/GameCanvas/SafeArea/Receiver",
+        "interactable": true,
+        "bounds": {
+          "x": 21.1840057,
+          "y": 109.720024,
+          "width": 277.631958,
+          "height": 82.1089859
+        }
+      },
+      {
+        "name": "Undo",
+        "path": "CASCADE/GameCanvas/SafeArea/Actions/Undo",
+        "interactable": false,
+        "bounds": {
+          "x": 21.1840057,
+          "y": 35.7200623,
+          "width": 99.94751,
+          "height": 51.9999847
+        }
+      },
+      {
+        "name": "Drop",
+        "path": "CASCADE/GameCanvas/SafeArea/Actions/Drop",
+        "interactable": true,
+        "bounds": {
+          "x": 198.868469,
+          "y": 35.7200623,
+          "width": 99.94748,
+          "height": 51.9999847
+        }
+      },
+      {
+        "name": "Field tools",
+        "path": "CASCADE/GameCanvas/SafeArea/Actions/Field tools",
+        "interactable": true,
+        "bounds": {
+          "x": 132.2368,
+          "y": 35.7200623,
+          "width": 55.5263977,
+          "height": 51.9999847
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Level",
+        "path": "CASCADE/GameCanvas/SafeArea/Header/Carved chapter plaque/Level",
+        "text": "Рівень 32",
+        "button": null,
+        "bounds": {
+          "x": 81.76001,
+          "y": 596.261963,
+          "width": 156.479965,
+          "height": 30.0
+        },
+        "fontPixels": 19.04,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Feedback",
+        "path": "CASCADE/GameCanvas/SafeArea/Quiet instruction paper/Feedback",
+        "text": "Тягни деталь до сусідньої.",
+        "button": null,
+        "bounds": {
+          "x": 36.72641,
+          "y": 537.262,
+          "width": 216.547134,
+          "height": 36.0
+        },
+        "fontPixels": 17.7355461,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Engraving edge",
+        "path": "CASCADE/GameCanvas/SafeArea/Floors/Floor1/Device attachments/Platform legend/Remaining wood/Engraving edge",
+        "text": "1",
+        "button": null,
+        "bounds": {
+          "x": 142.016754,
+          "y": 435.2627,
+          "width": 32.0466461,
+          "height": 9.104248
+        },
+        "fontPixels": 7.718246,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Durability",
+        "path": "CASCADE/GameCanvas/SafeArea/Floors/Floor1/Device attachments/Platform legend/Remaining wood/Durability",
+        "text": "1",
+        "button": null,
+        "bounds": {
+          "x": 142.018845,
+          "y": 435.674561,
+          "width": 32.0466461,
+          "height": 9.104187
+        },
+        "fontPixels": 7.718246,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Symbol",
+        "path": "CASCADE/GameCanvas/SafeArea/Floors/Floor1/PersistentRow/Slot1/Symbol",
+        "text": "C",
+        "button": null,
+        "bounds": {
+          "x": 30.192337,
+          "y": 428.853119,
+          "width": 30.23404,
+          "height": 64.8187256
+        },
+        "fontPixels": 22.99052,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Symbol",
+        "path": "CASCADE/GameCanvas/SafeArea/Floors/Floor1/PersistentRow/Slot3/Symbol",
+        "text": "A",
+        "button": null,
+        "bounds": {
+          "x": 94.65152,
+          "y": 424.5229,
+          "width": 30.2311554,
+          "height": 64.8201
+        },
+        "fontPixels": 22.99052,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Symbol",
+        "path": "CASCADE/GameCanvas/SafeArea/Floors/Floor1/PersistentRow/Slot4/Symbol",
+        "text": "T",
+        "button": null,
+        "bounds": {
+          "x": 126.883324,
+          "y": 423.446228,
+          "width": 30.2363052,
+          "height": 64.81763
+        },
+        "fontPixels": 22.99052,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Symbol",
+        "path": "CASCADE/GameCanvas/SafeArea/Floors/Floor1/PersistentRow/Slot6/Symbol",
+        "text": "D",
+        "button": null,
+        "bounds": {
+          "x": 191.35527,
+          "y": 424.0428,
+          "width": 30.2578583,
+          "height": 64.80762
+        },
+        "fontPixels": 22.99052,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Symbol",
+        "path": "CASCADE/GameCanvas/SafeArea/Floors/Floor1/PersistentRow/Slot7/Symbol",
+        "text": "G",
+        "button": null,
+        "bounds": {
+          "x": 223.603,
+          "y": 425.5915,
+          "width": 30.257843,
+          "height": 64.80762
+        },
+        "fontPixels": 22.99052,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Symbol",
+        "path": "CASCADE/GameCanvas/SafeArea/Floors/Floor1/PersistentRow/Slot8/Symbol",
+        "text": "O",
+        "button": null,
+        "bounds": {
+          "x": 255.853668,
+          "y": 427.71698,
+          "width": 30.2578125,
+          "height": 64.80762
+        },
+        "fontPixels": 22.99052,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Engraving edge",
+        "path": "CASCADE/GameCanvas/SafeArea/Floors/Floor2/Device attachments/Platform legend/Remaining wood/Engraving edge",
+        "text": "1",
+        "button": null,
+        "bounds": {
+          "x": 141.9394,
+          "y": 263.83075,
+          "width": 32.0493,
+          "height": 9.094849
+        },
+        "fontPixels": 7.718246,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Durability",
+        "path": "CASCADE/GameCanvas/SafeArea/Floors/Floor2/Device attachments/Platform legend/Remaining wood/Durability",
+        "text": "1",
+        "button": null,
+        "bounds": {
+          "x": 141.94162,
+          "y": 264.242584,
+          "width": 32.0492859,
+          "height": 9.094879
+        },
+        "fontPixels": 7.718246,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "ReceiverLabel",
+        "path": "CASCADE/GameCanvas/SafeArea/Receiver/ReceiverLabel",
+        "text": "Склади цей ряд",
+        "button": "CASCADE/GameCanvas/SafeArea/Receiver",
+        "bounds": {
+          "x": 21.1840057,
+          "y": 186.902466,
+          "width": 277.631958,
+          "height": 22.99054
+        },
+        "fontPixels": 16.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "TargetSymbol",
+        "path": "CASCADE/GameCanvas/SafeArea/Receiver/TargetRow/TargetSymbol",
+        "text": "C",
+        "button": "CASCADE/GameCanvas/SafeArea/Receiver",
+        "bounds": {
+          "x": 69.83311,
+          "y": 132.710541,
+          "width": 27.3186722,
+          "height": 41.0545044
+        },
+        "fontPixels": 19.7061615,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "TargetSymbol",
+        "path": "CASCADE/GameCanvas/SafeArea/Receiver/TargetRow/TargetSymbol",
+        "text": "A",
+        "button": "CASCADE/GameCanvas/SafeArea/Receiver",
+        "bounds": {
+          "x": 100.436127,
+          "y": 132.710541,
+          "width": 27.3186569,
+          "height": 41.0545044
+        },
+        "fontPixels": 19.7061615,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "TargetSymbol",
+        "path": "CASCADE/GameCanvas/SafeArea/Receiver/TargetRow/TargetSymbol",
+        "text": "T",
+        "button": "CASCADE/GameCanvas/SafeArea/Receiver",
+        "bounds": {
+          "x": 131.039154,
+          "y": 132.710541,
+          "width": 27.3186646,
+          "height": 41.0545044
+        },
+        "fontPixels": 19.7061615,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "TargetSymbol",
+        "path": "CASCADE/GameCanvas/SafeArea/Receiver/TargetRow/TargetSymbol",
+        "text": "D",
+        "button": "CASCADE/GameCanvas/SafeArea/Receiver",
+        "bounds": {
+          "x": 192.245178,
+          "y": 132.710541,
+          "width": 27.3186646,
+          "height": 41.0545044
+        },
+        "fontPixels": 19.7061615,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "TargetSymbol",
+        "path": "CASCADE/GameCanvas/SafeArea/Receiver/TargetRow/TargetSymbol",
+        "text": "O",
+        "button": "CASCADE/GameCanvas/SafeArea/Receiver",
+        "bounds": {
+          "x": 222.8482,
+          "y": 132.710541,
+          "width": 27.31865,
+          "height": 41.0545044
+        },
+        "fontPixels": 19.7061615,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "TargetSymbol",
+        "path": "CASCADE/GameCanvas/SafeArea/Receiver/TargetRow/TargetSymbol",
+        "text": "G",
+        "button": "CASCADE/GameCanvas/SafeArea/Receiver",
+        "bounds": {
+          "x": 253.451233,
+          "y": 132.710541,
+          "width": 27.3186951,
+          "height": 41.0545044
+        },
+        "fontPixels": 19.7061615,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Actions/Undo/Label",
+        "text": "Скасувати · 2",
+        "button": "CASCADE/GameCanvas/SafeArea/Actions/Undo",
+        "bounds": {
+          "x": 21.1840057,
+          "y": 35.7200623,
+          "width": 99.94751,
+          "height": 51.9999847
+        },
+        "fontPixels": 14.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Actions/Drop/Label",
+        "text": "Униз",
+        "button": "CASCADE/GameCanvas/SafeArea/Actions/Drop",
+        "bounds": {
+          "x": 198.868469,
+          "y": 35.7200623,
+          "width": 99.94748,
+          "height": 51.9999847
+        },
+        "fontPixels": 19.04,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

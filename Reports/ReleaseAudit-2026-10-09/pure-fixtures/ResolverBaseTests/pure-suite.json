@@ -1,0 +1,52 @@
+[
+  {
+    "test": "ResolverBaseTests.LastSwapPreservesWholeRowAndWins()",
+    "status": "Passed",
+    "ms": 18.735300000000002
+  },
+  {
+    "test": "ResolverBaseTests.TargetOnPlatformDoesNotWinUntilReceiver()",
+    "status": "Passed",
+    "ms": 0.3052
+  },
+  {
+    "test": "ResolverBaseTests.ReceiverComparesEverySlot()",
+    "status": "Passed",
+    "ms": 0.071000000000000008
+  },
+  {
+    "test": "ResolverBaseTests.InvalidAndClosedCommandsAreFreeAndReturnSameSnapshot()",
+    "status": "Passed",
+    "ms": 0.43620000000000003
+  },
+  {
+    "test": "ResolverBaseTests.EqualPairIsFree()",
+    "status": "Passed",
+    "ms": 0.11910000000000001
+  },
+  {
+    "test": "ResolverBaseTests.TerminalSnapshotsRejectFurtherCommands()",
+    "status": "Passed",
+    "ms": 0.10110000000000001
+  },
+  {
+    "test": "ResolverBaseTests.FourFloorsKeepOnePersistentRowAndResetLocalDurability()",
+    "status": "Passed",
+    "ms": 0.1519
+  },
+  {
+    "test": "ResolverBaseTests.SameInputGivesEqualStateAndStableEvents()",
+    "status": "Passed",
+    "ms": 0.3507
+  },
+  {
+    "test": "ResolverBaseTests.RandomCommandsConserveMultisetAndStableDurability()",
+    "status": "Passed",
+    "ms": 15.4074
+  },
+  {
+    "test": "ResolverBaseTests.StateFromDifferentMultisetIsRejected()",
+    "status": "Passed",
+    "ms": 0.1003
+  }
+]

@@ -1,0 +1,5 @@
+{
+    "name": "Cascade.Domain",
+    "rootNamespace": "Cascade.Domain",
+    "noEngineReferences": true
+}

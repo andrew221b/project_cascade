@@ -1,0 +1,1 @@
+New local device build 202610102 replaces 202610101 in place. Existing com.vickand.cascade identifier/signing configuration retained. Temporary build settings restored by DevicePlayerBuild. No gameplay rules, prices, purchase IDs or schemas changed.

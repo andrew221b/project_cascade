@@ -1,0 +1,135 @@
+25-victory: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+27-parcel: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+28-parcel-open: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+01-home: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+02-settings: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+03-settings-0: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+04-settings-1: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+05-settings-2: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+06-settings-3: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+07-settings-4: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+08-map: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+09-map-night: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+10-island: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+11-shop-tools: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+12-shop-mika: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+13-shop-background: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+14-shop-frames: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+15-coins: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+16-no-ads: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+17-bag: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+18-trophies: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+19-supplies: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+20-game: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+21-game-words: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+22-game-mixed: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+23-pause: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+24-checkpoint: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+26-failure: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+29-comic: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+30-dialogue: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+31-guide: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+32-effect-guide: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+33-tutorial: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+34-journal: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+35-workshop: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+36-requests: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+37-records: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+38-contracts: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+39-story-ending: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+40-word-language: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+41-target: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+42-test-ad: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+43-save-recovery: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+44-small-shop: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 
+45-large-text: System.ArgumentException: Expected a report filename and positive dimensions.
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x0007f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:25 
+  at Cascade.Editor.Playable.ScreenGalleryCapture+<Guard>d__20.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/ScreenGalleryCapture.cs:140 

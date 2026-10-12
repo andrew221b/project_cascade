@@ -1,0 +1,36 @@
+{
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "copy",
+      "from",
+      "--device",
+      "86ED6044-764E-5091-8CFE-C94C101E8DA8",
+      "--source",
+      "Documents/cascade-profile.json",
+      "--destination",
+      "Reports/iPhoneInstall-Oct11-202610111/profile-before.json",
+      "--domain-type",
+      "appDataContainer",
+      "--domain-identifier",
+      "com.vickand.cascade",
+      "--json-output",
+      "Reports/iPhoneInstall-Oct11-202610111/profile-backup.json"
+    ],
+    "commandType" : "devicectl.device.copy.from",
+    "environment" : {
+      "TERM" : "dumb"
+    },
+    "jsonVersion" : 3,
+    "outcome" : "success",
+    "version" : "518.33"
+  },
+  "result" : {
+    "destination" : "file:///Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/iPhoneInstall-Oct11-202610111/profile-before.json",
+    "deviceIdentifier" : "86ED6044-764E-5091-8CFE-C94C101E8DA8",
+    "domain" : "appDataContainer",
+    "domainIdentifier" : "com.vickand.cascade",
+    "source" : "Documents/cascade-profile.json"
+  }
+}

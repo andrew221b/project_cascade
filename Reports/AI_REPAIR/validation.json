@@ -1,0 +1,25 @@
+{
+  "active_meta_guids": 16573,
+  "duplicate_guids": {},
+  "duplicate_guid_count": 0,
+  "assistant": "2.20.0-pre.1",
+  "generators_installed": false,
+  "mcp_project_root": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity",
+  "live_mcp_read_and_compiled_command": "PASS",
+  "asset_refresh": "PASS",
+  "console_errors": 0,
+  "console_warnings": [
+    "Prior Account API warning retained in Console; cloud connection is now verified and Assistant input is enabled."
+  ],
+  "not_run": [
+    "Cloud AI chat/generation request",
+    "Player build",
+    "Gameplay tests (gameplay not implemented yet)"
+  ],
+  "cloud_link": {
+    "project_name": "CascadeUnity",
+    "organization": "shapeinc25",
+    "created_by": "user",
+    "assistant_input_enabled": true
+  }
+}

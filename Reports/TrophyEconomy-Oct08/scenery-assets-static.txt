@@ -1,0 +1,23 @@
+Scenery atlas static validation — 8 October 2026
+PASS: preserved source RGBA, 1254x1254.
+PASS: sixteen measured crop bounds inside the texture.
+Cell 0: (96, 15, 163, 297), 16853 alpha>=32 pixels.
+Cell 1: (406, 15, 161, 297), 16921 alpha>=32 pixels.
+Cell 2: (718, 15, 164, 297), 16985 alpha>=32 pixels.
+Cell 3: (1028, 15, 168, 297), 17393 alpha>=32 pixels.
+Cell 4: (42, 348, 261, 233), 24292 alpha>=32 pixels.
+Cell 5: (355, 396, 259, 185), 20038 alpha>=32 pixels.
+Cell 6: (669, 396, 256, 183), 15458 alpha>=32 pixels.
+Cell 7: (971, 396, 260, 185), 19389 alpha>=32 pixels.
+Cell 8: (40, 641, 241, 237), 29964 alpha>=32 pixels.
+Cell 9: (352, 643, 241, 235), 31976 alpha>=32 pixels.
+Cell 10: (661, 643, 244, 237), 30813 alpha>=32 pixels.
+Cell 11: (973, 643, 243, 236), 30898 alpha>=32 pixels.
+Cell 12: (105, 909, 144, 336), 27466 alpha>=32 pixels.
+Cell 13: (415, 909, 145, 336), 28043 alpha>=32 pixels.
+Cell 14: (729, 909, 146, 337), 27739 alpha>=32 pixels.
+Cell 15: (1028, 910, 138, 336), 26241 alpha>=32 pixels.
+PASS: crop bounds do not intersect; no neighbour silhouette in a sprite crop.
+PASS: four separate crane poses have different wing extents.
+PASS: final source PNG is byte-identical to imagegen output; no image processing applied.
+NOT RUN: Unity compile, PlayMode, native visual inspection, phone build. Parent agent owns runtime validation.

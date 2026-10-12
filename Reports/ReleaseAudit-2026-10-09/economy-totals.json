@@ -1,0 +1,30 @@
+{
+  "nodes": 540,
+  "earnedCoins": 27000,
+  "trophies": 38,
+  "totalCatalogPrice": 28800,
+  "tools": [
+    {
+      "tool": "Wayfinder",
+      "price": 120
+    },
+    {
+      "tool": "UndoSpool",
+      "price": 80
+    },
+    {
+      "tool": "ReturnHourglass",
+      "price": 200
+    },
+    {
+      "tool": "SignalLantern",
+      "price": 160
+    },
+    {
+      "tool": "LandingLens",
+      "price": 100
+    }
+  ],
+  "ledgerMaxGrants": 10000,
+  "overflowRejected": true
+}

@@ -1,0 +1,355 @@
+{
+  "pose": "target-ru",
+  "before": {
+    "Screen": "Playing",
+    "Attempt": "59e9edc6-bb53-44b0-b638-6a70609bb904",
+    "Hash": "d3dbc68589c5b37494f4660fb67824b1ba8e0635b6a921d69bfd4530fef12bce",
+    "Status": "Playing",
+    "Route": 0,
+    "Stage": -1,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "after": {
+    "Screen": "Playing",
+    "Attempt": "59e9edc6-bb53-44b0-b638-6a70609bb904",
+    "Hash": "d3dbc68589c5b37494f4660fb67824b1ba8e0635b6a921d69bfd4530fef12bce",
+    "Status": "Playing",
+    "Route": 0,
+    "Stage": -1,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 390,
+    "height": 844,
+    "locale": "ru",
+    "largeText": false,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Pause",
+        "path": "CASCADE/GameCanvas/SafeArea/Header/Pause",
+        "interactable": true,
+        "bounds": {
+          "x": 334.98,
+          "y": 728.2961,
+          "width": 48.0,
+          "height": 47.99994
+        }
+      },
+      {
+        "name": "Hint",
+        "path": "CASCADE/GameCanvas/SafeArea/Header/Hint",
+        "interactable": false,
+        "bounds": {
+          "x": 7.02000237,
+          "y": 728.2961,
+          "width": 48.0,
+          "height": 47.99994
+        }
+      },
+      {
+        "name": "Dismiss instruction",
+        "path": "CASCADE/GameCanvas/SafeArea/Quiet instruction paper/Dismiss instruction",
+        "interactable": true,
+        "bounds": {
+          "x": 318.3022,
+          "y": 674.2961,
+          "width": 44.0,
+          "height": 44.0
+        }
+      },
+      {
+        "name": "Receiver",
+        "path": "CASCADE/GameCanvas/SafeArea/Receiver",
+        "interactable": true,
+        "bounds": {
+          "x": 72.99999,
+          "y": 115.760025,
+          "width": 244.000031,
+          "height": 100.000015
+        }
+      },
+      {
+        "name": "Undo",
+        "path": "CASCADE/GameCanvas/SafeArea/Actions/Undo",
+        "interactable": false,
+        "bounds": {
+          "x": 25.8180065,
+          "y": 41.7600327,
+          "width": 121.811035,
+          "height": 52.0000076
+        }
+      },
+      {
+        "name": "Drop",
+        "path": "CASCADE/GameCanvas/SafeArea/Actions/Drop",
+        "interactable": false,
+        "bounds": {
+          "x": 242.370941,
+          "y": 41.7600327,
+          "width": 121.811066,
+          "height": 52.0000076
+        }
+      },
+      {
+        "name": "Field tools",
+        "path": "CASCADE/GameCanvas/SafeArea/Actions/Field tools",
+        "interactable": false,
+        "bounds": {
+          "x": 161.1636,
+          "y": 41.7600327,
+          "width": 67.6728058,
+          "height": 52.0000076
+        }
+      },
+      {
+        "name": "Closetarget",
+        "path": "CASCADE/GameCanvas/SafeArea/TargetZoom/Closetarget",
+        "interactable": true,
+        "bounds": {
+          "x": 82.2120056,
+          "y": 199.75795,
+          "width": 225.576019,
+          "height": 60.36287
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Level",
+        "path": "CASCADE/GameCanvas/SafeArea/Header/Carved chapter plaque/Level",
+        "text": "Уровень 2",
+        "button": null,
+        "bounds": {
+          "x": 91.2999954,
+          "y": 737.2961,
+          "width": 207.400024,
+          "height": 29.999939
+        },
+        "fontPixels": 17.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Feedback",
+        "path": "CASCADE/GameCanvas/SafeArea/Quiet instruction paper/Feedback",
+        "text": "Проверяем задачу…",
+        "button": null,
+        "bounds": {
+          "x": 41.6978035,
+          "y": 678.2961,
+          "width": 276.60437,
+          "height": 36.0
+        },
+        "fontPixels": 16.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Engraving edge",
+        "path": "CASCADE/GameCanvas/SafeArea/Floors/Floor1/Device attachments/Platform legend/Remaining wood/Engraving edge",
+        "text": "2",
+        "button": null,
+        "bounds": {
+          "x": 178.999985,
+          "y": 451.9556,
+          "width": 31.9999847,
+          "height": 11.2860413
+        },
+        "fontPixels": 13.5432,
+        "overflow": true,
+        "splitWords": []
+      },
+      {
+        "name": "Durability",
+        "path": "CASCADE/GameCanvas/SafeArea/Floors/Floor1/Device attachments/Platform legend/Remaining wood/Durability",
+        "text": "2",
+        "button": null,
+        "bounds": {
+          "x": 178.999985,
+          "y": 452.4572,
+          "width": 31.9999847,
+          "height": 11.2860107
+        },
+        "fontPixels": 13.5432,
+        "overflow": true,
+        "splitWords": []
+      },
+      {
+        "name": "ReceiverLabel",
+        "path": "CASCADE/GameCanvas/SafeArea/Receiver/ReceiverLabel",
+        "text": "Собери этот ряд",
+        "button": "CASCADE/GameCanvas/SafeArea/Receiver",
+        "bounds": {
+          "x": 72.99999,
+          "y": 209.760025,
+          "width": 244.000031,
+          "height": 28.0000153
+        },
+        "fontPixels": 16.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Actions/Undo/Label",
+        "text": "Отмена · 2",
+        "button": "CASCADE/GameCanvas/SafeArea/Actions/Undo",
+        "bounds": {
+          "x": 25.8180065,
+          "y": 41.7600327,
+          "width": 121.811035,
+          "height": 52.0000076
+        },
+        "fontPixels": 17.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Actions/Drop/Label",
+        "text": "Вниз",
+        "button": "CASCADE/GameCanvas/SafeArea/Actions/Drop",
+        "bounds": {
+          "x": 242.370941,
+          "y": 41.7600327,
+          "width": 121.811066,
+          "height": 52.0000076
+        },
+        "fontPixels": 17.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "ZoomTitle",
+        "path": "CASCADE/GameCanvas/SafeArea/TargetZoom/ZoomTitle",
+        "text": "Собери такой же ряд",
+        "button": null,
+        "bounds": {
+          "x": 25.8180065,
+          "y": 561.935242,
+          "width": 338.364,
+          "height": 75.45355
+        },
+        "fontPixels": 22.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/TargetZoom/Closetarget/Label",
+        "text": "Закрыть цель",
+        "button": "CASCADE/GameCanvas/SafeArea/TargetZoom/Closetarget",
+        "bounds": {
+          "x": 82.2120056,
+          "y": 199.75795,
+          "width": 225.576019,
+          "height": 60.36287
+        },
+        "fontPixels": 18.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "ShapeName",
+        "path": "CASCADE/GameCanvas/SafeArea/TargetZoom/ZoomTokenRow/ZoomToken0/ShapeName",
+        "text": "треугольник",
+        "button": null,
+        "bounds": {
+          "x": 37.0968056,
+          "y": 436.682251,
+          "width": 78.9516144,
+          "height": 20.5233765
+        },
+        "fontPixels": 12.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Position",
+        "path": "CASCADE/GameCanvas/SafeArea/TargetZoom/ZoomTokenRow/ZoomToken0/Position",
+        "text": "1",
+        "button": null,
+        "bounds": {
+          "x": 37.0968056,
+          "y": 418.5734,
+          "width": 78.9516144,
+          "height": 21.7306213
+        },
+        "fontPixels": 13.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "ShapeName",
+        "path": "CASCADE/GameCanvas/SafeArea/TargetZoom/ZoomTokenRow/ZoomToken1/ShapeName",
+        "text": "круг",
+        "button": null,
+        "bounds": {
+          "x": 116.048416,
+          "y": 436.682251,
+          "width": 78.9516144,
+          "height": 20.5233765
+        },
+        "fontPixels": 12.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Position",
+        "path": "CASCADE/GameCanvas/SafeArea/TargetZoom/ZoomTokenRow/ZoomToken1/Position",
+        "text": "2",
+        "button": null,
+        "bounds": {
+          "x": 116.048416,
+          "y": 418.5734,
+          "width": 78.9516144,
+          "height": 21.7306213
+        },
+        "fontPixels": 13.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "ShapeName",
+        "path": "CASCADE/GameCanvas/SafeArea/TargetZoom/ZoomTokenRow/ZoomToken2/ShapeName",
+        "text": "квадрат",
+        "button": null,
+        "bounds": {
+          "x": 195.000031,
+          "y": 436.682251,
+          "width": 78.95157,
+          "height": 20.5233765
+        },
+        "fontPixels": 12.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Position",
+        "path": "CASCADE/GameCanvas/SafeArea/TargetZoom/ZoomTokenRow/ZoomToken2/Position",
+        "text": "3",
+        "button": null,
+        "bounds": {
+          "x": 195.000031,
+          "y": 418.5734,
+          "width": 78.95157,
+          "height": 21.7306213
+        },
+        "fontPixels": 13.0,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

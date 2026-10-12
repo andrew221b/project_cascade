@@ -1,0 +1,37 @@
+[
+  {
+    "test": "CompletionProgressTests.LegacyVersionThreeRepresentativeBindingsKeepThreeReplayableStages()",
+    "status": "Passed",
+    "ms": 3510.134
+  },
+  {
+    "test": "CompletionProgressTests.GatedFinalesKeepTheirPublishedTargetsAndDevicesAndProveTheSameTwelveFailingBindings()",
+    "status": "Passed",
+    "ms": 13.031600000000001
+  },
+  {
+    "test": "CompletionProgressTests.AStampFromAnIntermediateStageSurvivesCheckpointSaveAndAddsItsFullLevelBonus()",
+    "status": "Passed",
+    "ms": 32.3343
+  },
+  {
+    "test": "CompletionProgressTests.AccessOpensOnlyTheNextNodeAndExplicitReplaysWithoutErasingOlderOutOfOrderClears()",
+    "status": "Passed",
+    "ms": 1.0156
+  },
+  {
+    "test": "CompletionProgressTests.InsertedLevelsBeforeAnExistingClearStayReplayableButDoNotResetContinue()",
+    "status": "Passed",
+    "ms": 0.1129
+  },
+  {
+    "test": "CompletionProgressTests.WholeRunRatingResourcesAndCheckpointRestoreAreDurableAndReplayCannotFarmLights()",
+    "status": "Passed",
+    "ms": 81.718
+  },
+  {
+    "test": "CompletionProgressTests.StarsRespondToHintRouteAndExplosionAndOldVersionTwoPlansStillRestore()",
+    "status": "Passed",
+    "ms": 30.1765
+  }
+]

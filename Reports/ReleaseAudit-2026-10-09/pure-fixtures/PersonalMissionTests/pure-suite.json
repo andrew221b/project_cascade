@@ -1,0 +1,62 @@
+[
+  {
+    "test": "PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(C03)",
+    "status": "Passed",
+    "ms": 38.5566
+  },
+  {
+    "test": "PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(C06)",
+    "status": "Passed",
+    "ms": 3.488
+  },
+  {
+    "test": "PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(C07)",
+    "status": "Passed",
+    "ms": 4.6899000000000006
+  },
+  {
+    "test": "PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(C11)",
+    "status": "Passed",
+    "ms": 3.3625000000000003
+  },
+  {
+    "test": "PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(C14)",
+    "status": "Passed",
+    "ms": 8.0701
+  },
+  {
+    "test": "PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(C37)",
+    "status": "Passed",
+    "ms": 37.8725
+  },
+  {
+    "test": "PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(C65)",
+    "status": "Passed",
+    "ms": 80.122700000000009
+  },
+  {
+    "test": "PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(C120)",
+    "status": "Passed",
+    "ms": 179.76760000000002
+  },
+  {
+    "test": "PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(C360)",
+    "status": "Passed",
+    "ms": 11.9764
+  },
+  {
+    "test": "PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(C500)",
+    "status": "Passed",
+    "ms": 998.35
+  },
+  {
+    "test": "PersonalMissionTests.AcceptedMissionAndCampaignCheckpointSurviveSaveAndModeSwitch()",
+    "status": "Passed",
+    "ms": 98.466000000000008
+  },
+  {
+    "test": "PersonalMissionTests.DeclineUsesProgressIntervalAndCancellationNeverReturnsAnOffer()",
+    "status": "Passed",
+    "ms": 4.5971
+  }
+]

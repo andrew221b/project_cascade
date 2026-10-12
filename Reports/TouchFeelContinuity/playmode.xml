@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Passed" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-06 06:59:10Z" end-time="2026-10-06 06:59:14Z" duration="4.5364689">
+  <test-suite type="TestSuite" id="1082" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="74" result="Passed" start-time="2026-10-06 06:59:10Z" end-time="2026-10-06 06:59:14Z" duration="4.536469" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1076" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="74" result="Passed" start-time="2026-10-06 06:59:10Z" end-time="2026-10-06 06:59:14Z" duration="4.494769" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="93320" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1077" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="74" result="Passed" start-time="2026-10-06 06:59:10Z" end-time="2026-10-06 06:59:14Z" duration="4.493920" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1078" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="74" result="Passed" start-time="2026-10-06 06:59:10Z" end-time="2026-10-06 06:59:14Z" duration="4.493418" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1001" name="PlayableTests" fullname="Cascade.Tests.PlayableTests" classname="Cascade.Tests.PlayableTests" runstate="Runnable" testcasecount="74" result="Passed" start-time="2026-10-06 06:59:10Z" end-time="2026-10-06 06:59:14Z" duration="4.492412" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1015" name="FarDragKeepsUnmovedDuplicateInItsOwnSeat" fullname="Cascade.Tests.PlayableTests.FarDragKeepsUnmovedDuplicateInItsOwnSeat" methodname="FarDragKeepsUnmovedDuplicateInItsOwnSeat" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="618826984" result="Passed" start-time="2026-10-06 06:59:10Z" end-time="2026-10-06 06:59:11Z" duration="1.831069" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1014" name="ReleasedDragTransfersItsPoseIntoAtomicExchange" fullname="Cascade.Tests.PlayableTests.ReleasedDragTransfersItsPoseIntoAtomicExchange" methodname="ReleasedDragTransfersItsPoseIntoAtomicExchange" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="888049069" result="Passed" start-time="2026-10-06 06:59:12Z" end-time="2026-10-06 06:59:14Z" duration="2.634304" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/TouchFeelContinuity/playmode.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

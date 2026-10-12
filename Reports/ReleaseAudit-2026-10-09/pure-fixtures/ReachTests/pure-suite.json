@@ -1,0 +1,47 @@
+[
+  {
+    "test": "ReachTests.WorkshopTrailHasProofAndPinnedReplay(0)",
+    "status": "Passed",
+    "ms": 41.1311
+  },
+  {
+    "test": "ReachTests.WorkshopTrailHasProofAndPinnedReplay(1)",
+    "status": "Passed",
+    "ms": 0.2122
+  },
+  {
+    "test": "ReachTests.WorkshopTrailHasProofAndPinnedReplay(2)",
+    "status": "Passed",
+    "ms": 0.3251
+  },
+  {
+    "test": "ReachTests.WorkshopTrailHasProofAndPinnedReplay(3)",
+    "status": "Passed",
+    "ms": 0.2859
+  },
+  {
+    "test": "ReachTests.WorkshopTrailHasProofAndPinnedReplay(4)",
+    "status": "Passed",
+    "ms": 0.521
+  },
+  {
+    "test": "ReachTests.WorkshopTrailHasProofAndPinnedReplay(5)",
+    "status": "Passed",
+    "ms": 3.0526
+  },
+  {
+    "test": "ReachTests.DragAcrossTwoPiecesConsumesChargeAndLocalUndoRestoresIt()",
+    "status": "Passed",
+    "ms": 1.5763
+  },
+  {
+    "test": "ReachTests.ClosedCorridorAndInvalidEndpointsDoNotSpendCharge()",
+    "status": "Passed",
+    "ms": 0.2702
+  },
+  {
+    "test": "ReachTests.RegularCampaignCannotSpendAnUnownedRibbon()",
+    "status": "Passed",
+    "ms": 0.168
+  }
+]

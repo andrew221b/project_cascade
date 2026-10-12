@@ -1,0 +1,134 @@
+MAC STORAGE CLEANUP REVIEW — 2026-10-09
+STATUS: Awaiting explicit approval. Nothing deleted.
+All sizes: GiB (1024^3 bytes), allocated-block estimates.
+Currently free: 63.87 GiB
+BASE plan expected reclaim: 30.73 GiB
+OPTIONAL ShapeMania Bee: 16.11 GiB
+
+BASE — exact approved targets would be these directories only:
+
+Xcode DerivedData: 15.899 GiB
+  0.985 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/ModuleCache.noindex
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  0.000 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/CompilationCache.noindex
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  0.003 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  0.036 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/SymbolCache.noindex
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  2.671 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-fkjusqmtoflqcwbegybhjmiebazz/Build
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  0.121 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-fkjusqmtoflqcwbegybhjmiebazz/Index.noindex
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  0.054 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-fkjusqmtoflqcwbegybhjmiebazz/TextIndex
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  5.563 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-azgxumsngmrmtjbuiokhzwpfksmi/Build
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  0.690 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-azgxumsngmrmtjbuiokhzwpfksmi/Index.noindex
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  0.106 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-azgxumsngmrmtjbuiokhzwpfksmi/TextIndex
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  0.000 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-ainutfgfmiliozguitjuaejeenll/Build
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  0.129 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-ainutfgfmiliozguitjuaejeenll/Index.noindex
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  0.089 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-ainutfgfmiliozguitjuaejeenll/TextIndex
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  2.799 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-eppqidsxoncjiocwikzkbsurlbmu/Build
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  0.125 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-eppqidsxoncjiocwikzkbsurlbmu/Index.noindex
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  0.057 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-eppqidsxoncjiocwikzkbsurlbmu/TextIndex
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  0.004 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-aaissopjccttkvbrkggavkupxqsk/Build
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  1.723 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/App-goxoztfoveuunhaypewiwfrreajn/Build
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  0.548 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/App-goxoztfoveuunhaypewiwfrreajn/Index.noindex
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  0.001 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/App-goxoztfoveuunhaypewiwfrreajn/TextIndex
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  0.000 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-gssnhlhcyiizbxfzrsdbvfnarzpu/Build
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  0.103 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-gssnhlhcyiizbxfzrsdbvfnarzpu/Index.noindex
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  0.092 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-gssnhlhcyiizbxfzrsdbvfnarzpu/TextIndex
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  0.001 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-dcoaevgpijwelpdvcwvsgiibspse/Build
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  0.000 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-dcoaevgpijwelpdvcwvsgiibspse/Index.noindex
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+
+Temporary Xcode output: 6.886 GiB
+  6.693 GiB  /private/tmp/shape-release-xcode-derived-20261008/Build
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  0.191 GiB  /private/tmp/shape-release-xcode-derived-20261008/ModuleCache.noindex
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  0.000 GiB  /private/tmp/shape-release-xcode-derived-20261008/CompilationCache.noindex
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+  0.001 GiB  /private/tmp/shape-release-xcode-derived-20261008/SDKStatCaches.noindex
+    Generated build products or indexes; preserve SourcePackages, archives, project files
+
+Browser/app caches: 2.142 GiB
+  0.448 GiB  /Users/andrew/Library/Caches/Google/Chrome/Profile 6/Cache
+    Disposable web/graphics cache only; preserve profiles, cookies, history, local storage and conversations
+  0.105 GiB  /Users/andrew/Library/Caches/Google/Chrome/Profile 6/Code Cache
+    Disposable web/graphics cache only; preserve profiles, cookies, history, local storage and conversations
+  1.274 GiB  /Users/andrew/Library/Caches/Google/Chrome/Profile 1/Cache
+    Disposable web/graphics cache only; preserve profiles, cookies, history, local storage and conversations
+  0.269 GiB  /Users/andrew/Library/Caches/Google/Chrome/Profile 1/Code Cache
+    Disposable web/graphics cache only; preserve profiles, cookies, history, local storage and conversations
+  0.039 GiB  /Users/andrew/Library/Caches/Google/Chrome/Default/Cache
+    Disposable web/graphics cache only; preserve profiles, cookies, history, local storage and conversations
+  0.007 GiB  /Users/andrew/Library/Caches/Google/Chrome/Default/Code Cache
+    Disposable web/graphics cache only; preserve profiles, cookies, history, local storage and conversations
+
+Homebrew downloads: 1.569 GiB
+  1.569 GiB  /Users/andrew/Library/Caches/Homebrew/downloads
+    Downloaded installers; no installed tools removed
+
+Python download cache: 0.318 GiB
+  0.318 GiB  /Users/andrew/Library/Caches/pip
+    Cached HTTP downloads and wheels; no environments removed
+
+npm download cache: 3.349 GiB
+  3.349 GiB  /Users/andrew/.npm/_cacache
+    Cached package download data; no installed packages or source removed
+
+Updater cache: 0.563 GiB
+  0.207 GiB  /Users/andrew/Library/Caches/UnityHub/pending
+    Downloaded Unity Hub updater; no Unity editor/modules removed
+  0.186 GiB  /Users/andrew/Library/Caches/unityhub-updater/pending
+    Downloaded Unity Hub updater; no Unity editor/modules removed
+  0.169 GiB  /Users/andrew/Library/Caches/antigravity-updater/pending
+    Downloaded app updater; no app removed
+
+OPTIONAL — requires separate approval:
+16.106 GiB  /Users/andrew/Desktop/unity projects/unity_projects/shape_sorting-final/Library/Bee
+Generated Bee/IL2CPP build cache only; preserve Assets, source, scenes, ProjectSettings, Packages, Library/PackageCache and all .meta
+Separate explicit approval; project must be closed and no build/cache file in use; next build recreates cache and may take longer
+
+PRECONDITIONS:
+Xcode and Chrome must be closed safely; no force-quit or discarding unsaved work.
+No installation, build or updater may use the chosen files. Skip any active/changed/unexpected path.
+Current Cascade Editor and its Library/Temp are preserved. Codex active caches are deferred.
+Caches will be recreated; first builds/downloads can take longer.
+Actual recovered space will be measured with df after deletion. No broad wildcard cleanup.
+
+PRESERVED:
+All authored project assets/source/scenes/settings/packages/.meta; CascadeUnity Library/Temp while active
+Personal files, Downloads, photos, videos, documents, saves and backups
+SourcePackages, Unity PackageCache, Unity Asset Store archives, project Packages
+Xcode Archives, iOS DeviceSupport, simulator devices/data/runtime installations
+Codex sessions/generated images/attachments, Cursor User/history/snapshots
+macOS system files, update payloads, swap, /private/var/db, system-managed caches and /private/var/folders wholesale
+Temporary source/test harnesses, cloud backups and downloaded attachments in /private/tmp
+
+SCAN LIMITS:
+macOS privacy/permissions prevented measuring some protected directories; no Full Disk Access requested
+Broad home/Library scan was interrupted after targeted directories were measured; Containers/Group Containers timed out
+No deletion, application quitting, tests, reimport or player build executed
+
+CASCADE SPACE:
+Current free space exceeds an estimated 30 GiB working allowance; this is a capacity estimate, not proof of a successful build.
+Actual reimport/player build: NOT RUN.

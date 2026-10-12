@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Passed" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-08 17:57:21Z" end-time="2026-10-08 17:57:28Z" duration="7.2055904">
+  <test-suite type="TestSuite" id="1159" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="140" result="Passed" start-time="2026-10-08 17:57:21Z" end-time="2026-10-08 17:57:28Z" duration="7.205590" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1153" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="140" result="Passed" start-time="2026-10-08 17:57:22Z" end-time="2026-10-08 17:57:28Z" duration="6.844442" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24227" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1154" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="140" result="Passed" start-time="2026-10-08 17:57:22Z" end-time="2026-10-08 17:57:28Z" duration="6.838070" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1155" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="140" result="Passed" start-time="2026-10-08 17:57:22Z" end-time="2026-10-08 17:57:28Z" duration="6.836884" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1009" name="GuidedLessonFlowTests" fullname="Cascade.Tests.GuidedLessonFlowTests" classname="Cascade.Tests.GuidedLessonFlowTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-10-08 17:57:22Z" end-time="2026-10-08 17:57:28Z" duration="6.835134" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1015" name="DisablingTutorialsDoesNotLeaveAnInputLockOrOpenFilms" fullname="Cascade.Tests.GuidedLessonFlowTests.DisablingTutorialsDoesNotLeaveAnInputLockOrOpenFilms" methodname="DisablingTutorialsDoesNotLeaveAnInputLockOrOpenFilms" classname="Cascade.Tests.GuidedLessonFlowTests" runstate="Runnable" seed="630846935" result="Passed" start-time="2026-10-08 17:57:22Z" end-time="2026-10-08 17:57:27Z" duration="4.958042" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1012" name="UndoIsIntroducedOnFirstAvailabilityAndRestoresWithMotion" fullname="Cascade.Tests.GuidedLessonFlowTests.UndoIsIntroducedOnFirstAvailabilityAndRestoresWithMotion" methodname="UndoIsIntroducedOnFirstAvailabilityAndRestoresWithMotion" classname="Cascade.Tests.GuidedLessonFlowTests" runstate="Runnable" seed="50716893" result="Passed" start-time="2026-10-08 17:57:27Z" end-time="2026-10-08 17:57:28Z" duration="1.753567" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+Saving results to: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/TouchUndo-Final-Oct08/playmode.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -1,0 +1,1 @@
+3 catalogue views and 18 world motion poses captured; puzzle state preserved by native capture guard.

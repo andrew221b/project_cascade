@@ -1,0 +1,72 @@
+{
+  "CloudPost_LettersOnTheBreeze": {
+    "seconds": 60.0,
+    "channels": 2,
+    "peak": 0.71997,
+    "rms": 0.11864,
+    "seam": 0.0
+  },
+  "CopperOrchard_GoldenAfternoon": {
+    "seconds": 55.385,
+    "channels": 2,
+    "peak": 0.65543,
+    "rms": 0.11999,
+    "seam": 0.0
+  },
+  "GlassLagoon_ReflectedMoon": {
+    "seconds": 72.0,
+    "channels": 2,
+    "peak": 0.68359,
+    "rms": 0.11999,
+    "seam": 0.0
+  },
+  "GreatBeacon_TheWayHome": {
+    "seconds": 57.6,
+    "channels": 2,
+    "peak": 0.65936,
+    "rms": 0.11999,
+    "seam": 0.0
+  },
+  "Menu_HomeAmongCloudsBalanced": {
+    "seconds": 68.571,
+    "channels": 2,
+    "peak": 0.70261,
+    "rms": 0.11999,
+    "seam": 0.0
+  },
+  "MossArchive_StoriesInTheLeaves": {
+    "seconds": 80.0,
+    "channels": 2,
+    "peak": 0.66519,
+    "rms": 0.11999,
+    "seam": 0.0
+  },
+  "RainMill_RainOnCedar": {
+    "seconds": 75.789,
+    "channels": 2,
+    "peak": 0.71997,
+    "rms": 0.0984,
+    "seam": 0.0
+  },
+  "SnowSpire_WarmLightInSnow": {
+    "seconds": 73.846,
+    "channels": 2,
+    "peak": 0.71997,
+    "rms": 0.09269,
+    "seam": 0.0
+  },
+  "StarObservatory_ConstellationLullaby": {
+    "seconds": 48.0,
+    "channels": 2,
+    "peak": 0.4613,
+    "rms": 0.07499,
+    "seam": 0.0
+  },
+  "WindGarden_PaperWings": {
+    "seconds": 62.609,
+    "channels": 2,
+    "peak": 0.71997,
+    "rms": 0.11635,
+    "seam": 0.0
+  }
+}

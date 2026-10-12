@@ -1,0 +1,1 @@
+Native Editor restart: fake coins/tools/cosmetics/no-ad entitlement reset=True; earned wallet=40; real completed levels=1; compiler failed=False.

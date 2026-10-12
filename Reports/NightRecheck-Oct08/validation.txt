@@ -1,0 +1,5 @@
+One directional source: RGBA(0.670, 0.790, 1.000, 1.000); ambient RGBA(0.380, 0.460, 0.630, 1.000)
+PASS:16 stars; moving meteor at paired poses; ambient clock stable while paused.
+PASS: Reduced Motion suppresses meteor/visitors; Effects Off hides optional sky and visitors.
+PASS: clock resumes;390/320px captures preserve puzzle hash.
+PASS: final UK Large Text Undo has no TMP overflow and8px inner margins.

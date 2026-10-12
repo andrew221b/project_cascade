@@ -1,0 +1,56 @@
+[
+  {
+    "file": "day.png",
+    "device": "CASCADE Store Capture iPad Oct09",
+    "deviceId": "345BDCD1-D9BB-4E1F-A2B5-E097655989B1",
+    "capture": "xcrun simctl io screenshot --mask=ignored (unmasked native framebuffer)",
+    "nativeStatus": "day ready; Playing; 2064x2752; 2026-10-09T15:50:33.0023800Z",
+    "capturedUtc": "2026-10-09T15:50:33.442049+00:00",
+    "sha256": "bff4a6c709fdb550033ad0c02de7dba1a4f37d93d76d7c5bd092f49dd31bc69e"
+  },
+  {
+    "file": "night.png",
+    "device": "CASCADE Store Capture iPad Oct09",
+    "deviceId": "345BDCD1-D9BB-4E1F-A2B5-E097655989B1",
+    "capture": "xcrun simctl io screenshot --mask=ignored (unmasked native framebuffer)",
+    "nativeStatus": "night ready; Playing; 2064x2752; 2026-10-09T15:50:35.6668830Z",
+    "capturedUtc": "2026-10-09T15:50:36.091353+00:00",
+    "sha256": "5a49e6ed9ef9e868af04b2465cafd1717e86306e107ebcad4d08e687bf6de016"
+  },
+  {
+    "file": "advanced.png",
+    "device": "CASCADE Store Capture iPad Oct09",
+    "deviceId": "345BDCD1-D9BB-4E1F-A2B5-E097655989B1",
+    "capture": "xcrun simctl io screenshot --mask=ignored (unmasked native framebuffer)",
+    "nativeStatus": "advanced ready; Playing; 2064x2752; 2026-10-09T15:50:38.3019420Z",
+    "capturedUtc": "2026-10-09T15:50:38.734323+00:00",
+    "sha256": "a412be75431548b9f9d90d3fedd830ad5b70d85ac6d01251bb481cc14d357e68"
+  },
+  {
+    "file": "words.png",
+    "device": "CASCADE Store Capture iPad Oct09",
+    "deviceId": "345BDCD1-D9BB-4E1F-A2B5-E097655989B1",
+    "capture": "xcrun simctl io screenshot --mask=ignored (unmasked native framebuffer)",
+    "nativeStatus": "words ready; Playing; 2064x2752; 2026-10-09T15:50:40.9693750Z",
+    "capturedUtc": "2026-10-09T15:50:41.306361+00:00",
+    "sha256": "c4efadd19b25b44dd285ada296fa004fe5df42e8d504fcab4bf5e874e6fb65bb"
+  },
+  {
+    "file": "bag.png",
+    "device": "CASCADE Store Capture iPad Oct09",
+    "deviceId": "345BDCD1-D9BB-4E1F-A2B5-E097655989B1",
+    "capture": "xcrun simctl io screenshot --mask=ignored (unmasked native framebuffer)",
+    "nativeStatus": "bag ready; Playing; 2064x2752; 2026-10-09T15:50:43.6022410Z",
+    "capturedUtc": "2026-10-09T15:50:43.919395+00:00",
+    "sha256": "536bc8f0a49f0bbc8bbdfa8cabedeacb4dfa68c2d831dea6f77062aabdca1536"
+  },
+  {
+    "file": "map.png",
+    "device": "CASCADE Store Capture iPad Oct09",
+    "deviceId": "345BDCD1-D9BB-4E1F-A2B5-E097655989B1",
+    "capture": "xcrun simctl io screenshot --mask=ignored (unmasked native framebuffer)",
+    "nativeStatus": "map ready; JourneyMap; 2064x2752; 2026-10-09T15:50:46.3356910Z",
+    "capturedUtc": "2026-10-09T15:50:46.758328+00:00",
+    "sha256": "929d9e6e36c8416fb360caf881cb028a8564dfe74d8e89868d40d0b91243fc4d"
+  }
+]

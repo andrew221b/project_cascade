@@ -1,0 +1,4 @@
+System.InvalidOperationException: Unproved triad C20 stage 3 / Repair
+  at Cascade.Application.CampaignTriads.Build (Cascade.Domain.LevelDefinition source, System.Threading.CancellationToken cancellation, System.Int32 budget) [0x002af] in <2fd7a5e807b644fb9824ee7a2731985b>:0 
+  at Cascade.Application.DescentRun.Build (Cascade.Domain.LevelDefinition source, Cascade.Application.DeliveryMood mood, System.Threading.CancellationToken cancellation, System.Int32 budget, System.Int32 version) [0x00012] in <2fd7a5e807b644fb9824ee7a2731985b>:0 
+  at Audit.Main (System.String[] args) [0x000d2] in <2fd7a5e807b644fb9824ee7a2731985b>:0 

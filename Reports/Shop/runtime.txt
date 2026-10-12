@@ -1,0 +1,1 @@
+PASS: native UI purchases, equip without repeat charge, guide and revealed status, two free undos, one paid spool, collapsed-floor restriction, exact hourglass rewind, disk reload, one-use limits, guide expiration, low-balance disabled state. Synthetic 1200-coin wallet in an isolated profile. Ten native captures. No live store, physical input or phone build.

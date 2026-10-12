@@ -1,0 +1,5 @@
+15:54:46  Acquired tunnel connection to device.
+15:54:46  Enabling developer disk image services.
+15:54:47  Acquired usage assertion.
+File received from Device
+/tmp/cascade-corrected-profile-preinstall.json

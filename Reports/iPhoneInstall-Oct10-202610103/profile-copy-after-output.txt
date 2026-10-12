@@ -1,0 +1,5 @@
+15:43:26  Acquired tunnel connection to device.
+15:43:26  Enabling developer disk image services.
+15:43:26  Acquired usage assertion.
+File received from Device
+/tmp/cascade-iphone-profile-202610103-after.json

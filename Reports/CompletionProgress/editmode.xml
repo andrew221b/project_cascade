@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="6" result="Failed(Child)" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-06 13:21:08Z" end-time="2026-10-06 13:25:06Z" duration="238.119748">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="508" result="Failed" site="Child" start-time="2026-10-06 13:21:08Z" end-time="2026-10-06 13:25:06Z" duration="238.119748" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1550" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="507" result="Failed" site="Child" start-time="2026-10-06 13:21:08Z" end-time="2026-10-06 13:25:06Z" duration="238.002838" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="93320" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1551" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="507" result="Failed" site="Child" start-time="2026-10-06 13:21:08Z" end-time="2026-10-06 13:25:06Z" duration="238.002687" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1552" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="507" result="Failed" site="Child" start-time="2026-10-06 13:21:08Z" end-time="2026-10-06 13:25:06Z" duration="238.002581" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1179" name="CompletionProgressTests" fullname="Cascade.Tests.CompletionProgressTests" classname="Cascade.Tests.CompletionProgressTests" runstate="Runnable" testcasecount="4" result="Failed" site="Child" start-time="2026-10-06 13:21:08Z" end-time="2026-10-06 13:25:06Z" duration="237.521590" total="4" passed="3" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1181" name="AccessOpensOnlyTheNextNodeAndExplicitReplaysWithoutErasingOlderOutOfOrderClears" fullname="Cascade.Tests.CompletionProgressTests.AccessOpensOnlyTheNextNodeAndExplicitReplaysWithoutErasingOlderOutOfOrderClears" methodname="AccessOpensOnlyTheNextNodeAndExplicitReplaysWithoutErasingOlderOutOfOrderClears" classname="Cascade.Tests.CompletionProgressTests" runstate="Runnable" seed="1774548284" result="Passed" start-time="2026-10-06 13:21:08Z" end-time="2026-10-06 13:21:08Z" duration="0.120950" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1180" name="EveryFreshCampaignDefinitionHasThreeProvenStagesIncludingEarlyLocalizedLessons" fullname="Cascade.Tests.CompletionProgressTests.EveryFreshCampaignDefinitionHasThreeProvenStagesIncludingEarlyLocalizedLessons" methodname="EveryFreshCampaignDefinitionHasThreeProvenStagesIncludingEarlyLocalizedLessons" classname="Cascade.Tests.CompletionProgressTests" runstate="Runnable" seed="300593365" result="Failed" start-time="2026-10-06 13:21:08Z" end-time="2026-10-06 13:25:06Z" duration="237.031111" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Fresh levels may never silently fall back to one stage: C06,C08,C27,C06_en,C06_ru,C06_uk,C08_en,C08_ru,C08_uk,C27_en,C27_ru,C27_uk
+  Expected: <empty>
+  But was:  < "C06", "C08", "C27", "C06_en", "C06_ru", "C06_uk", "C08_en", "C08_ru", "C08_uk", "C27_en"... >
+]]></message>
+                <stack-trace><![CDATA[at Cascade.Tests.CompletionProgressTests.EveryFreshCampaignDefinitionHasThreeProvenStagesIncludingEarlyLocalizedLessons () [0x001d1] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Tests/EditMode/CompletionProgressTests.cs:36
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1183" name="StarsRespondToHintRouteAndExplosionAndOldVersionTwoPlansStillRestore" fullname="Cascade.Tests.CompletionProgressTests.StarsRespondToHintRouteAndExplosionAndOldVersionTwoPlansStillRestore" methodname="StarsRespondToHintRouteAndExplosionAndOldVersionTwoPlansStillRestore" classname="Cascade.Tests.CompletionProgressTests" runstate="Runnable" seed="457517942" result="Passed" start-time="2026-10-06 13:25:06Z" end-time="2026-10-06 13:25:06Z" duration="0.070053" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1182" name="WholeRunRatingResourcesAndCheckpointRestoreAreDurableAndReplayCannotFarmLights" fullname="Cascade.Tests.CompletionProgressTests.WholeRunRatingResourcesAndCheckpointRestoreAreDurableAndReplayCannotFarmLights" methodname="WholeRunRatingResourcesAndCheckpointRestoreAreDurableAndReplayCannotFarmLights" classname="Cascade.Tests.CompletionProgressTests" runstate="Runnable" seed="1925977114" result="Passed" start-time="2026-10-06 13:25:06Z" end-time="2026-10-06 13:25:06Z" duration="0.036291" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1327" name="DescentTests" fullname="Cascade.Tests.DescentTests" classname="Cascade.Tests.DescentTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-06 13:25:06Z" end-time="2026-10-06 13:25:06Z" duration="0.480135" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1330" name="CheckpointSaveRestoresExactlyAndRejectsAChangedFutureRecipe" fullname="Cascade.Tests.DescentTests.CheckpointSaveRestoresExactlyAndRejectsAChangedFutureRecipe" methodname="CheckpointSaveRestoresExactlyAndRejectsAChangedFutureRecipe" classname="Cascade.Tests.DescentTests" runstate="Runnable" seed="1441477187" result="Passed" start-time="2026-10-06 13:25:06Z" end-time="2026-10-06 13:25:06Z" duration="0.163345" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1329" name="VersionOneRecipesKeepTheirExactDeviceFreeStagesAndOldHashFormula" fullname="Cascade.Tests.DescentTests.VersionOneRecipesKeepTheirExactDeviceFreeStagesAndOldHashFormula" methodname="VersionOneRecipesKeepTheirExactDeviceFreeStagesAndOldHashFormula" classname="Cascade.Tests.DescentTests" runstate="Runnable" seed="85160659" result="Passed" start-time="2026-10-06 13:25:06Z" end-time="2026-10-06 13:25:06Z" duration="0.125638" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

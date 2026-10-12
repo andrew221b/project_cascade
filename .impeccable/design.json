@@ -1,0 +1,992 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-06T08:59:02.152639+00:00",
+  "title": "Design System: CASCADE",
+  "extensions": {
+    "colorMeta": {
+      "ui-ink": {
+        "role": "neutral",
+        "displayName": "UI Ink",
+        "tonalRamp": [
+          "oklch(0.150 0.03663 202.53)",
+          "oklch(0.264 0.03663 202.53)",
+          "oklch(0.379 0.03663 202.53)",
+          "oklch(0.493 0.03663 202.53)",
+          "oklch(0.607 0.03663 202.53)",
+          "oklch(0.721 0.03663 202.53)",
+          "oklch(0.836 0.03663 202.53)",
+          "oklch(0.950 0.03663 202.53)"
+        ]
+      },
+      "high-contrast-ink": {
+        "role": "neutral",
+        "displayName": "High Contrast Ink",
+        "tonalRamp": [
+          "oklch(0.150 0.03396 203.35)",
+          "oklch(0.264 0.03396 203.35)",
+          "oklch(0.379 0.03396 203.35)",
+          "oklch(0.493 0.03396 203.35)",
+          "oklch(0.607 0.03396 203.35)",
+          "oklch(0.721 0.03396 203.35)",
+          "oklch(0.836 0.03396 203.35)",
+          "oklch(0.950 0.03396 203.35)"
+        ]
+      },
+      "ui-paper": {
+        "role": "neutral",
+        "displayName": "UI Paper",
+        "tonalRamp": [
+          "oklch(0.150 0.04135 91.72)",
+          "oklch(0.264 0.04135 91.72)",
+          "oklch(0.379 0.04135 91.72)",
+          "oklch(0.493 0.04135 91.72)",
+          "oklch(0.607 0.04135 91.72)",
+          "oklch(0.721 0.04135 91.72)",
+          "oklch(0.836 0.04135 91.72)",
+          "oklch(0.950 0.04135 91.72)"
+        ]
+      },
+      "drop-gold": {
+        "role": "primary",
+        "displayName": "Descend / travel gold",
+        "tonalRamp": [
+          "oklch(0.150 0.14040 78.55)",
+          "oklch(0.264 0.14040 78.55)",
+          "oklch(0.379 0.14040 78.55)",
+          "oklch(0.493 0.14040 78.55)",
+          "oklch(0.607 0.14040 78.55)",
+          "oklch(0.721 0.14040 78.55)",
+          "oklch(0.836 0.14040 78.55)",
+          "oklch(0.950 0.14040 78.55)"
+        ]
+      },
+      "hover-tint": {
+        "role": "neutral",
+        "displayName": "Hover Tint",
+        "tonalRamp": [
+          "oklch(0.150 0.05536 89.91)",
+          "oklch(0.264 0.05536 89.91)",
+          "oklch(0.379 0.05536 89.91)",
+          "oklch(0.493 0.05536 89.91)",
+          "oklch(0.607 0.05536 89.91)",
+          "oklch(0.721 0.05536 89.91)",
+          "oklch(0.836 0.05536 89.91)",
+          "oklch(0.950 0.05536 89.91)"
+        ]
+      },
+      "pressed-tint": {
+        "role": "neutral",
+        "displayName": "Pressed Tint",
+        "tonalRamp": [
+          "oklch(0.150 0.02911 141.21)",
+          "oklch(0.264 0.02911 141.21)",
+          "oklch(0.379 0.02911 141.21)",
+          "oklch(0.493 0.02911 141.21)",
+          "oklch(0.607 0.02911 141.21)",
+          "oklch(0.721 0.02911 141.21)",
+          "oklch(0.836 0.02911 141.21)",
+          "oklch(0.950 0.02911 141.21)"
+        ]
+      },
+      "disabled-tint": {
+        "role": "neutral",
+        "displayName": "Disabled Tint",
+        "tonalRamp": [
+          "oklch(0.150 0.02114 121.87)",
+          "oklch(0.264 0.02114 121.87)",
+          "oklch(0.379 0.02114 121.87)",
+          "oklch(0.493 0.02114 121.87)",
+          "oklch(0.607 0.02114 121.87)",
+          "oklch(0.721 0.02114 121.87)",
+          "oklch(0.836 0.02114 121.87)",
+          "oklch(0.950 0.02114 121.87)"
+        ]
+      },
+      "preview-gold": {
+        "role": "neutral",
+        "displayName": "Preview Gold",
+        "tonalRamp": [
+          "oklch(0.150 0.14127 81.54)",
+          "oklch(0.264 0.14127 81.54)",
+          "oklch(0.379 0.14127 81.54)",
+          "oklch(0.493 0.14127 81.54)",
+          "oklch(0.607 0.14127 81.54)",
+          "oklch(0.721 0.14127 81.54)",
+          "oklch(0.836 0.14127 81.54)",
+          "oklch(0.950 0.14127 81.54)"
+        ]
+      },
+      "legal-landing": {
+        "role": "secondary",
+        "displayName": "Legal Landing",
+        "tonalRamp": [
+          "oklch(0.150 0.10469 174.97)",
+          "oklch(0.264 0.10469 174.97)",
+          "oklch(0.379 0.10469 174.97)",
+          "oklch(0.493 0.10469 174.97)",
+          "oklch(0.607 0.10469 174.97)",
+          "oklch(0.721 0.10469 174.97)",
+          "oklch(0.836 0.10469 174.97)",
+          "oklch(0.950 0.10469 174.97)"
+        ]
+      },
+      "blocked-landing": {
+        "role": "secondary",
+        "displayName": "Blocked Landing",
+        "tonalRamp": [
+          "oklch(0.150 0.18247 33.01)",
+          "oklch(0.264 0.18247 33.01)",
+          "oklch(0.379 0.18247 33.01)",
+          "oklch(0.493 0.18247 33.01)",
+          "oklch(0.607 0.18247 33.01)",
+          "oklch(0.721 0.18247 33.01)",
+          "oklch(0.836 0.18247 33.01)",
+          "oklch(0.950 0.18247 33.01)"
+        ]
+      },
+      "map-current": {
+        "role": "primary",
+        "displayName": "Map Current",
+        "tonalRamp": [
+          "oklch(0.150 0.14293 80.71)",
+          "oklch(0.264 0.14293 80.71)",
+          "oklch(0.379 0.14293 80.71)",
+          "oklch(0.493 0.14293 80.71)",
+          "oklch(0.607 0.14293 80.71)",
+          "oklch(0.721 0.14293 80.71)",
+          "oklch(0.836 0.14293 80.71)",
+          "oklch(0.950 0.14293 80.71)"
+        ]
+      },
+      "map-restored": {
+        "role": "secondary",
+        "displayName": "Map Restored",
+        "tonalRamp": [
+          "oklch(0.150 0.08667 166.07)",
+          "oklch(0.264 0.08667 166.07)",
+          "oklch(0.379 0.08667 166.07)",
+          "oklch(0.493 0.08667 166.07)",
+          "oklch(0.607 0.08667 166.07)",
+          "oklch(0.721 0.08667 166.07)",
+          "oklch(0.836 0.08667 166.07)",
+          "oklch(0.950 0.08667 166.07)"
+        ]
+      },
+      "path-open": {
+        "role": "primary",
+        "displayName": "Path Open",
+        "tonalRamp": [
+          "oklch(0.150 0.13788 70.32)",
+          "oklch(0.264 0.13788 70.32)",
+          "oklch(0.379 0.13788 70.32)",
+          "oklch(0.493 0.13788 70.32)",
+          "oklch(0.607 0.13788 70.32)",
+          "oklch(0.721 0.13788 70.32)",
+          "oklch(0.836 0.13788 70.32)",
+          "oklch(0.950 0.13788 70.32)"
+        ]
+      },
+      "path-future": {
+        "role": "neutral",
+        "displayName": "Path Future",
+        "tonalRamp": [
+          "oklch(0.150 0.03687 151.90)",
+          "oklch(0.264 0.03687 151.90)",
+          "oklch(0.379 0.03687 151.90)",
+          "oklch(0.493 0.03687 151.90)",
+          "oklch(0.607 0.03687 151.90)",
+          "oklch(0.721 0.03687 151.90)",
+          "oklch(0.836 0.03687 151.90)",
+          "oklch(0.950 0.03687 151.90)"
+        ]
+      },
+      "setting-paper": {
+        "role": "neutral",
+        "displayName": "Setting Paper",
+        "tonalRamp": [
+          "oklch(0.150 0.04863 90.69)",
+          "oklch(0.264 0.04863 90.69)",
+          "oklch(0.379 0.04863 90.69)",
+          "oklch(0.493 0.04863 90.69)",
+          "oklch(0.607 0.04863 90.69)",
+          "oklch(0.721 0.04863 90.69)",
+          "oklch(0.836 0.04863 90.69)",
+          "oklch(0.950 0.04863 90.69)"
+        ]
+      },
+      "switch-on": {
+        "role": "secondary",
+        "displayName": "Switch On",
+        "tonalRamp": [
+          "oklch(0.150 0.09204 178.91)",
+          "oklch(0.264 0.09204 178.91)",
+          "oklch(0.379 0.09204 178.91)",
+          "oklch(0.493 0.09204 178.91)",
+          "oklch(0.607 0.09204 178.91)",
+          "oklch(0.721 0.09204 178.91)",
+          "oklch(0.836 0.09204 178.91)",
+          "oklch(0.950 0.09204 178.91)"
+        ]
+      },
+      "switch-off": {
+        "role": "neutral",
+        "displayName": "Switch Off",
+        "tonalRamp": [
+          "oklch(0.150 0.03427 122.35)",
+          "oklch(0.264 0.03427 122.35)",
+          "oklch(0.379 0.03427 122.35)",
+          "oklch(0.493 0.03427 122.35)",
+          "oklch(0.607 0.03427 122.35)",
+          "oklch(0.721 0.03427 122.35)",
+          "oklch(0.836 0.03427 122.35)",
+          "oklch(0.950 0.03427 122.35)"
+        ]
+      },
+      "triangle-yellow": {
+        "role": "secondary",
+        "displayName": "Triangle Yellow",
+        "tonalRamp": [
+          "oklch(0.150 0.14301 82.82)",
+          "oklch(0.264 0.14301 82.82)",
+          "oklch(0.379 0.14301 82.82)",
+          "oklch(0.493 0.14301 82.82)",
+          "oklch(0.607 0.14301 82.82)",
+          "oklch(0.721 0.14301 82.82)",
+          "oklch(0.836 0.14301 82.82)",
+          "oklch(0.950 0.14301 82.82)"
+        ]
+      },
+      "circle-mint": {
+        "role": "secondary",
+        "displayName": "Circle Mint",
+        "tonalRamp": [
+          "oklch(0.150 0.10974 176.42)",
+          "oklch(0.264 0.10974 176.42)",
+          "oklch(0.379 0.10974 176.42)",
+          "oklch(0.493 0.10974 176.42)",
+          "oklch(0.607 0.10974 176.42)",
+          "oklch(0.721 0.10974 176.42)",
+          "oklch(0.836 0.10974 176.42)",
+          "oklch(0.950 0.10974 176.42)"
+        ]
+      },
+      "square-coral": {
+        "role": "secondary",
+        "displayName": "Square Coral",
+        "tonalRamp": [
+          "oklch(0.150 0.11951 28.50)",
+          "oklch(0.264 0.11951 28.50)",
+          "oklch(0.379 0.11951 28.50)",
+          "oklch(0.493 0.11951 28.50)",
+          "oklch(0.607 0.11951 28.50)",
+          "oklch(0.721 0.11951 28.50)",
+          "oklch(0.836 0.11951 28.50)",
+          "oklch(0.950 0.11951 28.50)"
+        ]
+      },
+      "diamond-lilac": {
+        "role": "secondary",
+        "displayName": "Diamond Lilac",
+        "tonalRamp": [
+          "oklch(0.150 0.10026 304.52)",
+          "oklch(0.264 0.10026 304.52)",
+          "oklch(0.379 0.10026 304.52)",
+          "oklch(0.493 0.10026 304.52)",
+          "oklch(0.607 0.10026 304.52)",
+          "oklch(0.721 0.10026 304.52)",
+          "oklch(0.836 0.10026 304.52)",
+          "oklch(0.950 0.10026 304.52)"
+        ]
+      },
+      "star-sky": {
+        "role": "secondary",
+        "displayName": "Star Sky",
+        "tonalRamp": [
+          "oklch(0.150 0.10054 230.52)",
+          "oklch(0.264 0.10054 230.52)",
+          "oklch(0.379 0.10054 230.52)",
+          "oklch(0.493 0.10054 230.52)",
+          "oklch(0.607 0.10054 230.52)",
+          "oklch(0.721 0.10054 230.52)",
+          "oklch(0.836 0.10054 230.52)",
+          "oklch(0.950 0.10054 230.52)"
+        ]
+      },
+      "hexagon-apricot": {
+        "role": "secondary",
+        "displayName": "Hexagon Apricot",
+        "tonalRamp": [
+          "oklch(0.150 0.12800 61.11)",
+          "oklch(0.264 0.12800 61.11)",
+          "oklch(0.379 0.12800 61.11)",
+          "oklch(0.493 0.12800 61.11)",
+          "oklch(0.607 0.12800 61.11)",
+          "oklch(0.721 0.12800 61.11)",
+          "oklch(0.836 0.12800 61.11)",
+          "oklch(0.950 0.12800 61.11)"
+        ]
+      },
+      "tile-ivory": {
+        "role": "neutral",
+        "displayName": "Tile Ivory",
+        "tonalRamp": [
+          "oklch(0.150 0.04953 88.08)",
+          "oklch(0.264 0.04953 88.08)",
+          "oklch(0.379 0.04953 88.08)",
+          "oklch(0.493 0.04953 88.08)",
+          "oklch(0.607 0.04953 88.08)",
+          "oklch(0.721 0.04953 88.08)",
+          "oklch(0.836 0.04953 88.08)",
+          "oklch(0.950 0.04953 88.08)"
+        ]
+      },
+      "warm-graphite": {
+        "role": "neutral",
+        "displayName": "Warm Graphite",
+        "tonalRamp": [
+          "oklch(0.150 0.02904 209.42)",
+          "oklch(0.264 0.02904 209.42)",
+          "oklch(0.379 0.02904 209.42)",
+          "oklch(0.493 0.02904 209.42)",
+          "oklch(0.607 0.02904 209.42)",
+          "oklch(0.721 0.02904 209.42)",
+          "oklch(0.836 0.02904 209.42)",
+          "oklch(0.950 0.02904 209.42)"
+        ]
+      },
+      "hardware-gold": {
+        "role": "primary",
+        "displayName": "Hardware Gold",
+        "tonalRamp": [
+          "oklch(0.150 0.13328 80.77)",
+          "oklch(0.264 0.13328 80.77)",
+          "oklch(0.379 0.13328 80.77)",
+          "oklch(0.493 0.13328 80.77)",
+          "oklch(0.607 0.13328 80.77)",
+          "oklch(0.721 0.13328 80.77)",
+          "oklch(0.836 0.13328 80.77)",
+          "oklch(0.950 0.13328 80.77)"
+        ]
+      },
+      "receiver-ivory": {
+        "role": "neutral",
+        "displayName": "Receiver Ivory",
+        "tonalRamp": [
+          "oklch(0.150 0.08460 88.85)",
+          "oklch(0.264 0.08460 88.85)",
+          "oklch(0.379 0.08460 88.85)",
+          "oklch(0.493 0.08460 88.85)",
+          "oklch(0.607 0.08460 88.85)",
+          "oklch(0.721 0.08460 88.85)",
+          "oklch(0.836 0.08460 88.85)",
+          "oklch(0.950 0.08460 88.85)"
+        ]
+      },
+      "platform-mint": {
+        "role": "primary",
+        "displayName": "Platform Mint",
+        "tonalRamp": [
+          "oklch(0.150 0.09067 180.44)",
+          "oklch(0.264 0.09067 180.44)",
+          "oklch(0.379 0.09067 180.44)",
+          "oklch(0.493 0.09067 180.44)",
+          "oklch(0.607 0.09067 180.44)",
+          "oklch(0.721 0.09067 180.44)",
+          "oklch(0.836 0.09067 180.44)",
+          "oklch(0.950 0.09067 180.44)"
+        ]
+      },
+      "device-coral": {
+        "role": "secondary",
+        "displayName": "Device Coral",
+        "tonalRamp": [
+          "oklch(0.150 0.12227 32.15)",
+          "oklch(0.264 0.12227 32.15)",
+          "oklch(0.379 0.12227 32.15)",
+          "oklch(0.493 0.12227 32.15)",
+          "oklch(0.607 0.12227 32.15)",
+          "oklch(0.721 0.12227 32.15)",
+          "oklch(0.836 0.12227 32.15)",
+          "oklch(0.950 0.12227 32.15)"
+        ]
+      },
+      "contact-shadow": {
+        "role": "neutral",
+        "displayName": "Contact Shadow",
+        "tonalRamp": [
+          "oklch(0.150 0.03742 209.46)",
+          "oklch(0.264 0.03742 209.46)",
+          "oklch(0.379 0.03742 209.46)",
+          "oklch(0.493 0.03742 209.46)",
+          "oklch(0.607 0.03742 209.46)",
+          "oklch(0.721 0.03742 209.46)",
+          "oklch(0.836 0.03742 209.46)",
+          "oklch(0.950 0.03742 209.46)"
+        ]
+      },
+      "wood-fallback": {
+        "role": "neutral",
+        "displayName": "Wood Fallback",
+        "tonalRamp": [
+          "oklch(0.150 0.12089 52.73)",
+          "oklch(0.264 0.12089 52.73)",
+          "oklch(0.379 0.12089 52.73)",
+          "oklch(0.493 0.12089 52.73)",
+          "oklch(0.607 0.12089 52.73)",
+          "oklch(0.721 0.12089 52.73)",
+          "oklch(0.836 0.12089 52.73)",
+          "oklch(0.950 0.12089 52.73)"
+        ]
+      },
+      "hemp-rope": {
+        "role": "primary",
+        "displayName": "Hemp Rope",
+        "tonalRamp": [
+          "oklch(0.150 0.10602 67.47)",
+          "oklch(0.264 0.10602 67.47)",
+          "oklch(0.379 0.10602 67.47)",
+          "oklch(0.493 0.10602 67.47)",
+          "oklch(0.607 0.10602 67.47)",
+          "oklch(0.721 0.10602 67.47)",
+          "oklch(0.836 0.10602 67.47)",
+          "oklch(0.950 0.10602 67.47)"
+        ]
+      },
+      "wood-chip-dark": {
+        "role": "neutral",
+        "displayName": "Wood Chip Dark",
+        "tonalRamp": [
+          "oklch(0.150 0.12443 48.77)",
+          "oklch(0.264 0.12443 48.77)",
+          "oklch(0.379 0.12443 48.77)",
+          "oklch(0.493 0.12443 48.77)",
+          "oklch(0.607 0.12443 48.77)",
+          "oklch(0.721 0.12443 48.77)",
+          "oklch(0.836 0.12443 48.77)",
+          "oklch(0.950 0.12443 48.77)"
+        ]
+      },
+      "wood-chip-light": {
+        "role": "neutral",
+        "displayName": "Wood Chip Light",
+        "tonalRamp": [
+          "oklch(0.150 0.13099 65.80)",
+          "oklch(0.264 0.13099 65.80)",
+          "oklch(0.379 0.13099 65.80)",
+          "oklch(0.493 0.13099 65.80)",
+          "oklch(0.607 0.13099 65.80)",
+          "oklch(0.721 0.13099 65.80)",
+          "oklch(0.836 0.13099 65.80)",
+          "oklch(0.950 0.13099 65.80)"
+        ]
+      },
+      "menu-ink": {
+        "role": "neutral",
+        "displayName": "Menu Ink",
+        "tonalRamp": [
+          "oklch(0.150 0.03275 203.73)",
+          "oklch(0.264 0.03275 203.73)",
+          "oklch(0.379 0.03275 203.73)",
+          "oklch(0.493 0.03275 203.73)",
+          "oklch(0.607 0.03275 203.73)",
+          "oklch(0.721 0.03275 203.73)",
+          "oklch(0.836 0.03275 203.73)",
+          "oklch(0.950 0.03275 203.73)"
+        ]
+      },
+      "menu-paper": {
+        "role": "neutral",
+        "displayName": "Folio Paper",
+        "tonalRamp": [
+          "oklch(0.150 0.02026 99.05)",
+          "oklch(0.264 0.02026 99.05)",
+          "oklch(0.379 0.02026 99.05)",
+          "oklch(0.493 0.02026 99.05)",
+          "oklch(0.607 0.02026 99.05)",
+          "oklch(0.721 0.02026 99.05)",
+          "oklch(0.836 0.02026 99.05)",
+          "oklch(0.950 0.02026 99.05)"
+        ]
+      },
+      "menu-sage": {
+        "role": "neutral",
+        "displayName": "Sage Action",
+        "tonalRamp": [
+          "oklch(0.150 0.02339 160.95)",
+          "oklch(0.264 0.02339 160.95)",
+          "oklch(0.379 0.02339 160.95)",
+          "oklch(0.493 0.02339 160.95)",
+          "oklch(0.607 0.02339 160.95)",
+          "oklch(0.721 0.02339 160.95)",
+          "oklch(0.836 0.02339 160.95)",
+          "oklch(0.950 0.02339 160.95)"
+        ]
+      },
+      "contact-success": {
+        "role": "semantic",
+        "displayName": "Contact Success",
+        "tonalRamp": [
+          "oklch(0.150 0.07667 176.24)",
+          "oklch(0.264 0.07667 176.24)",
+          "oklch(0.379 0.07667 176.24)",
+          "oklch(0.493 0.07667 176.24)",
+          "oklch(0.607 0.07667 176.24)",
+          "oklch(0.721 0.07667 176.24)",
+          "oklch(0.836 0.07667 176.24)",
+          "oklch(0.950 0.07667 176.24)"
+        ]
+      },
+      "navigation-cream": {
+        "role": "neutral",
+        "displayName": "Navigation Cream",
+        "canonical": "rgb(100% 97% 84%)",
+        "tonalRamp": [
+          "oklch(0.150 0.04385 96.38)",
+          "oklch(0.264 0.04385 96.38)",
+          "oklch(0.379 0.04385 96.38)",
+          "oklch(0.493 0.04385 96.38)",
+          "oklch(0.607 0.04385 96.38)",
+          "oklch(0.721 0.04385 96.38)",
+          "oklch(0.836 0.04385 96.38)",
+          "oklch(0.950 0.04385 96.38)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "menu-title": {
+        "displayName": "Menu Title",
+        "purpose": "Shared left-aligned menu headings, 30 reference units, Bold; compact word confirmation 28."
+      },
+      "region-speaker": {
+        "displayName": "Region Speaker",
+        "purpose": "Map region and dialogue speaker, Bold."
+      },
+      "level-title": {
+        "displayName": "Level Title",
+        "purpose": "Lesson header, Bold; journey uses the shorter task role."
+      },
+      "journey-task": {
+        "displayName": "Journey Task",
+        "purpose": "Journey gameplay destination and map task, Bold."
+      },
+      "dialogue": {
+        "displayName": "Dialogue",
+        "purpose": "Short dialogue sentences, Regular."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Feedback, instruction, help and result copy, Regular."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Action labels, Bold."
+      },
+      "focus": {
+        "displayName": "Focus",
+        "purpose": "Selected symbol in optional precision controls, Regular."
+      },
+      "secondary": {
+        "displayName": "Secondary",
+        "purpose": "Map restored count, Regular; Skip story uses Bold at this size."
+      },
+      "receiver-label": {
+        "displayName": "Receiver Label",
+        "purpose": "Complete destination label, Bold; compensated by canvas scale."
+      },
+      "device": {
+        "displayName": "Device",
+        "purpose": "Explanation text, Regular, compensated by canvas scale; device glyphs use Bold."
+      },
+      "token-glyph": {
+        "displayName": "Token Glyph",
+        "purpose": "Live Bold face that lifts and scales with the held token."
+      },
+      "target-glyph": {
+        "displayName": "Target Glyph",
+        "purpose": "Live Bold face in the complete receiver order."
+      },
+      "menu-body": {
+        "displayName": "Menu Body",
+        "purpose": "Menu reading copy starts at 20 reference units, with enough height for large text."
+      },
+      "menu-action": {
+        "displayName": "Menu Action",
+        "purpose": "22-unit Bold primary/menu captions; short actions do not wrap."
+      },
+      "menu-compact-action": {
+        "displayName": "Compact Menu Action",
+        "purpose": "20-unit Bold compact actions and direct settings tabs."
+      },
+      "navigation-heading": {
+        "displayName": "Navigation Heading",
+        "purpose": "29-unit Bold maximum, 21 minimum; local auto-size range for play choice, shelf, comic and shop headings."
+      },
+      "navigation-action": {
+        "displayName": "Navigation Action",
+        "purpose": "24-unit Bold maximum, 18 minimum; large text raises the maximum by 1.10. Left-aligned beside authored action art."
+      },
+      "navigation-detail": {
+        "displayName": "Navigation Detail",
+        "purpose": "17-unit Regular maximum, 14 minimum; one short live explanation below a play-choice action."
+      }
+    },
+    "shadows": [
+      {
+        "name": "soft-contact",
+        "value": "alpha = (1 - smoothstep(0.25, 1, length((uv - 0.5) * 2)))^2",
+        "purpose": "Native contact shader on fitted quads beneath tokens, platforms and receiver; references colors.contact-shadow. Playing pieces seat their mesh bottom on visible wood at 0.365 of the padded floor rectangle; token shadows align just below that surface. Cast Unity shadows are disabled."
+      }
+    ],
+    "motion": [
+      {
+        "name": "hold-preview",
+        "value": "immediate; clamp(64 / (screenCellSpan * 0.78), 1.10, 2.5)",
+        "purpose": "Native body and live glyph scale/lift together while fixed cells retain hit testing. X displacement is bounded to 1.15 cell spacings, or 3.15 with a Ribbon Reach charge; upward pointer delta to 0.45 cell spacings."
+      },
+      {
+        "name": "selection",
+        "value": "100ms cubic ease-out",
+        "purpose": "Focus selection, distinct from immediate held feedback. Reduced Motion applies focus directly."
+      },
+      {
+        "name": "exchange",
+        "value": "190ms cubic ease-out",
+        "purpose": "Short opposing arcs describe the committed atomic adjacent, linked or charged endpoint exchange."
+      },
+      {
+        "name": "device-response",
+        "value": "180ms contact / 240ms bomb / 130ms fracture",
+        "purpose": "Local rail recoil capped at 0.025 world units. Screen shake is opt-in, off by default, and suppressed by Reduced Motion."
+      },
+      {
+        "name": "fall-and-land",
+        "value": "300ms quadratic vertical fall + at least 190ms damped landing",
+        "purpose": "Map source pieces to committed destinations. Landing uses sin(t * pi) * exp(-5t) * 0.09 world-unit lift; damped alternating rotation up to 5deg and up to 8% squash. Reduced Motion has no bounce. Presentation only."
+      },
+      {
+        "name": "delivery",
+        "value": "340ms hold",
+        "purpose": "Result UI follows final visual synchronization. Dust/audio tails do not determine gameplay or command completion."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "55ms state hold",
+        "purpose": "No causal travel, recoil or deformation; at most two stationary dust fades per burst. Ambient layers show phase zero."
+      },
+      {
+        "name": "ambient-wheel",
+        "value": "18deg + phase * 7deg/s",
+        "purpose": "Legacy wheel phase remains in source, but the incidental lower-right wheel is hidden in the current surface."
+      },
+      {
+        "name": "ambient-clouds",
+        "value": "normalized phase rates 0.017 / 0.026 / 0.035 per second; wrap span 1.7",
+        "purpose": "Three separate transparent cloud planes at different depths and widths; original art tinted by region."
+      },
+      {
+        "name": "ambient-plants",
+        "value": "sin(phase * 0.65 + sideOffset) * 1.6deg",
+        "purpose": "Mirrored lower-corner cutouts pivot about their stems; side offset is 0 or 1."
+      },
+      {
+        "name": "ambient-glider",
+        "value": "angle = phase * 0.07; x = sin(angle) * viewportWidth * 0.34; rotation = -6deg + sin(angle) * 9deg",
+        "purpose": "Whole rotated 3:2 image fits the bounded gap between feedback and top floor. Height is at most min(viewportHeight * 0.05, gap * 0.5), vertical drift is gap * 0.08. Fades during held input; hidden for an unavailable gap; menu pose is separate."
+      },
+      {
+        "name": "ambient-lifecycle",
+        "value": "unscaled presentation phase; stop while paused or suspended",
+        "purpose": "Presentation-only. Explicit pause and suspension stop phase; map/dialogue decoration can continue while puzzle input is paused. Reduced Motion paints phase zero."
+      },
+      {
+        "name": "wood-load-and-wind",
+        "value": "target sag 0.045 world units × grounded weight; wind sin(phase × 0.65 + floor × 0.52) × 0.025",
+        "purpose": "Bounded springs bend the painted strip and sway two continuous hemp ropes from above the viewport through rail attachments to the receiver. Holding releases apparent weight; deterministic puzzle state remains authoritative."
+      },
+      {
+        "name": "pictorial-guide",
+        "value": "7s demonstration loop; Reduced Motion fixed at 2s",
+        "purpose": "Source-piece cause/effect over precomputed resolver outcomes. Reduced Motion shows stationary before ghosts and settled after pose; no playable commands."
+      },
+      {
+        "name": "regional-weather",
+        "value": "native separate rain/snow/pollen meshes and map UI; presentation-clock phase",
+        "purpose": "Eight original regional backgrounds; live layer movement follows explicit pause/suspension and Reduced Motion. No gameplay-state authority."
+      },
+      {
+        "name": "map-parallax",
+        "value": "tilt * 5 + (sin(phase * .12) * 1.5, sin(phase * .17) * 1.1); lerp by 1 - exp(-4 * unscaledDeltaTime)",
+        "purpose": "One shared transform carries island art, invisible stop/conversation targets, current arrow and small standing Mika. Calibrated GravitySensor input where available, desktop mouse fallback and ambient drift; bounded target <=6.5 horizontal /6.1 vertical reference units. Reduced Motion or suspension sets zero offset. Separate map clouds drift at another depth. Presentation only; physical gyro quality unverified."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "native-reference-canvas",
+        "value": "390 × 844 Unity reference units; height-scaled"
+      },
+      {
+        "name": "native-content-width-cap",
+        "value": "430 Unity reference units; Screen.safeArea"
+      },
+      {
+        "name": "precision-input",
+        "value": "explicit Comfort preference; no width or row-count breakpoint"
+      },
+      {
+        "name": "supported-orientation",
+        "value": "portrait enforced on iOS/Android; 1440 × 900 desktop-wide baseline; 844 × 390 landscape diagnostic rejected; short desktop windows unsupported"
+      }
+    ],
+    "lighting": [
+      {
+        "name": "workshop-key-and-fill",
+        "value": "warm directional key: intensity 1.05, RGB (1, 0.96, 0.88); sky fill: intensity 0.35, RGB (0.64, 0.85, 1); flat ambient RGB (0.69, 0.79, 0.80)",
+        "purpose": "Native Unity scene illumination, no cast shadows; existing surface tokens unchanged."
+      }
+    ],
+    "reactionMotion20261006": {
+      "toolMarks": "Painted directly on tool body; no separate tag",
+      "reaction": "1.18s central tool beat, localized woven caption below, <=8 UI motifs",
+      "wood": "Four authored damage stages, matching ballistic splinters across span",
+      "wind": "1.05s directional warning before existing landing permutation; progressive cosmetic spring pressure",
+      "controls": "Wood/brass/enamel, cream teal labels, dark amber primary, short settings tabs",
+      "accessibility": "Pause, Reduced Motion, Off/Low motifs, physical padding, simulated safe insets; real phones unverified"
+    },
+    "singleCordReactions20261006": {
+      "suspension": "One continuous cord per tool, physical handle endpoints, shared wind pendulum",
+      "sequence": "Original body+symbol reparents from exact source pose; consumed dock empty; .42s flight, particles .46s, status .88s, total1.72s; Undo restores same object",
+      "silhouette": "Clean sibling alpha atlases, native narrow antialias edge, no duplicated Outline",
+      "validation": "Native canonical two-stage witnesses and focused pause/quiet/suspension checks; see Reports/ReactionSequence"
+    },
+    "flexibleRopes20261006": {
+      "model": "View-only constrained point chains; pinned visible floors and tool grips, damping, soft bend resistance, coherent local wind, gust velocity",
+      "rendering": "Cubic curves and continuous world-length antialiased hemp braid; slight slack, no accordion folds",
+      "accessibility": "Pause freezes; Reduced Motion taut and still; resize/topology safely resets affected spans",
+      "validation": "Reports/FlexibleRopes"
+    },
+    "originalDepartureWind20261006": {
+      "identity": "No clone; original restored to hidden home after beat, canonical used flags hide consumed dock",
+      "wind": "Gentle continuous deck/rope springs; shared directional velocity kick on canonical gust; bounded .22 world sway and 2.4deg roll",
+      "validation": "Reports/OriginalDeparture"
+    },
+    "physicalPresentation20261006": {
+      "weight": "Lift/swap/landing impulses reach sag, roll and neighboring rope spans; guided gravitational figures and bounded rocking",
+      "debris": "Isolated pooled PhysX rigid bodies with mass, spin, wind and cosmetic plank contacts; pause/quiet/cleanup",
+      "light": "Actual URP clear coat, deforming shadow-receiving timber top, alpha cutout wood/fragment masks, cylindrical live rope light; illustrated UI/backdrop retained",
+      "layout": "Old receiver children inactive immediately before deferred destruction",
+      "validation": "Reports/PhysicalPresentation;9 distinct scenarios passed across focused runs, including3/3 lifecycle retest after unload/cancel cleanup fixes; native mobile pipeline sample; real devices/performance/full suite not run"
+    },
+    "navigation20261006": {
+      "authority": "Docs/NAVIGATION_REWORK.md; scoped merge preserving the Sky Wind Workshop",
+      "home": [
+        "Start game",
+        "Shop",
+        "Settings",
+        "Remove ads"
+      ],
+      "playChoice": [
+        "Story (automatic existing campaign bindings)",
+        "Shapes",
+        "Words",
+        "Mixed"
+      ],
+      "story": "Three square comic scenes: Gran and the Great Beacon; storm and saved last light; Mika, Pip the frog and Rue the older fox promise to repair the way home. Finish/skip records HeardStory 1000 in the existing validated field. Opening story replays it; the concrete attempt stays pinned.",
+      "soloShelf": "Up to nine existing numbered enamel plaques per page, exact concrete-mode/puzzle-locale filter, completed check, page count and Continue/Play level action. Horizontal drag cancels child clicks; shared MenuSwipe also accepts desktop wheel input. First/last pages clamp.",
+      "navigationAction": "Original sliced amber/teal enamel artwork, 84% safe-content width; 8.5% safe-content height or 11.8% with explanation. Caption insets top 1/right 7/bottom 1/left 4 reference units within the label rect. Amber uses Menu Ink; teal uses Navigation Cream. Painted workshop remains visible between controls.",
+      "back": "Map and shelf return to play choice; choice returns Home. Shop collection/workshop and My things return Shop. Settings/help retain their opener. Earlier/Later page controls are absent from map and solo shelf.",
+      "map": "Eight regional island illustrations, 160 stops over 33 pages; island artwork keeps normalized stretch placement and plaza anchors. Invisible island targets 76 × 72 reference units. Small Mika feet meet the actual next island and use a separate invisible 64 × 80 conversation target. Goal: Great Beacon, next task and Go to level/Continue/Talk to friend are separate live copy.",
+      "mapSky": "Original MapSky covers the viewport at source aspect. MapAvailability substitutes painted blue sky with the same plate at screen coordinates, preserving island contours, original cloud brushwork and nearest-island locked desaturation. Gameplay clouds/foliage/glider/weather hide while map sky is active; separate map UI atmosphere remains.",
+      "assets": [
+        "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Navigation/MenuIcons.png",
+        "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Navigation/OpeningComic.png",
+        "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Navigation/MapSky.png"
+      ],
+      "shop": "Keepsakes, Workshop and My things reuse earned local objects. Remove ads states ads are already off. No price, purchase, package, entitlement, gameplay-rule or save-schema change.",
+      "evidence": "Reports/Navigation/impeccable-verdict.md: SHIP for scored F1 sky/F2 conversation targets only. 16 native Editor PNGs include 4 corrected map poses; shifted pose is explicit +6/+4, not hardware tilt. Initial 5/6 plus swipe 1/1 supplies 6 distinct passing scoped PlayMode cases. Expanded map 1/1 repeats an existing case; localization 2/2. Compact 320 × 693 target 52.5 × 65.7 pixels, Story 53.7 and Travel 56.9 high; normal 390 × 844 target 64 × 80. No full-suite, physical-device, gyro/FPS, accessibility, native editorial, comprehension/enjoyment or release certification. Current phone-build outcome belongs to report."
+    }
+  },
+  "components": [
+    {
+      "name": "Descend / Deliver and travel",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Native Unity Button with gold nine-slice Image, Bold TMP and ColorBlock tints. Gameplay height is compensated; menu/dialogue heights follow their native layout. Descend becomes Deliver only at a matching final-floor row. Documentation is native-only; HTML/CSS preview intentionally absent.",
+      "html": "",
+      "css": ""
+    },
+    {
+      "name": "Utility and menu action",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Gameplay utility buttons retain their own compensated band. Incumbent menu controls retain 52-pixel sage/gold actions, deep teal ink, 8/3-unit text padding and fixed footer baselines where used. The current Home/play/shelf/shop extension uses the separate illustrated amber/teal enamel navigation variants. No HTML/CSS preview; Reports/MenuReset is the earlier checkpoint and Reports/Navigation records current navigation.",
+      "html": "",
+      "css": ""
+    },
+    {
+      "name": "Optional precision control",
+      "kind": "button",
+      "refersTo": "button-direction",
+      "description": "Native authored chevron focus controls and left/right exchange actions. Enabled explicitly in Comfort; never forced by row length. Documentation is native-only; HTML/CSS preview intentionally absent.",
+      "html": "",
+      "css": ""
+    },
+    {
+      "name": "Held persistent piece",
+      "kind": "custom",
+      "refersTo": "letter-token",
+      "description": "Native beveled symbol mesh plus live TMP glyph. Immediate lift, 1.10–2.5 scale toward a 64-pixel face, fixed input cells and adjacent legality preview, plus one charged endpoint exchange across one/two intervening pieces in R01–R06 or after collecting ribbon in B01–B06. Body and glyph move together; release routes through the existing resolver. Documentation is native-only; HTML/CSS preview intentionally absent.",
+      "html": "",
+      "css": ""
+    },
+    {
+      "name": "Regional platform",
+      "kind": "custom",
+      "refersTo": "platform",
+      "description": "Native compact WoodBoard strip with body-band UV framing, continuous hemp suspension and graphite wear seams. Localized wood and bomb counters replace strength/fuse beads. Six original transparent tool illustrations hang from strapped sockets with separate SymbolId pockets; tapping opens the matching animated guide. Linked edges share a cord. Source-piece falls, springs and wood chips consume committed events. Native-only; HTML/CSS preview intentionally absent.",
+      "html": "",
+      "css": ""
+    },
+    {
+      "name": "Complete receiving cradle",
+      "kind": "custom",
+      "refersTo": "receiver",
+      "description": "Native gold rim, ivory inset, sockets and the complete ordered target. Inspectable through target zoom; fail compares target and delivered row, win seats the row before result actions. Documentation is native-only; HTML/CSS preview intentionally absent.",
+      "html": "",
+      "css": ""
+    },
+    {
+      "name": "Journey route and stop",
+      "kind": "nav",
+      "refersTo": "map-island-target",
+      "description": "Native uGUI over eight regional art kits and 33 pages for 160 nodes. Invisible 76 × 72 plaza targets select islands; small standing Mika has an independent 64 × 80 conversation target. MapSky covers the viewport and MapAvailability samples the same sky at screen coordinates while desaturating locked island scenery. Localized You are here marks actual saved progress. Shared art/target parallax and swipe/wheel paging replace page-arrow controls. Legacy map-stop fills remain historical tokens. Native-only; evidence in Reports/Navigation.",
+      "html": "",
+      "css": ""
+    },
+    {
+      "name": "Story frame",
+      "kind": "card",
+      "refersTo": "paper-panel",
+      "description": "Native paper nine-slice panel, thin brass detail, live speaker and short dialogue with Continue/Skip story. Original alpha portrait and regional background. Opening dialogue pauses puzzle input. Documentation is native-only; HTML/CSS preview intentionally absent.",
+      "html": "",
+      "css": ""
+    },
+    {
+      "name": "Comfort and sound setting",
+      "kind": "custom",
+      "refersTo": "setting",
+      "description": "Native labelled paper row with track color and positional knob. Preferences persist in the checksum-protected local schema1 profile. Larger text excludes symbol faces and explicit font/layout overrides remain. Documentation is native-only; HTML/CSS preview intentionally absent.",
+      "html": "",
+      "css": ""
+    },
+    {
+      "name": "Exact-order magnifier",
+      "kind": "custom",
+      "refersTo": "target-zoom",
+      "description": "Native safe-area paper surface with four columns and up to two rows, original shape contours/live glyphs and position labels. Pauses gameplay; no browser counterpart. Documentation is native-only; HTML/CSS preview intentionally absent.",
+      "html": "",
+      "css": ""
+    },
+    {
+      "name": "Language carousel",
+      "kind": "custom",
+      "refersTo": "language-carousel",
+      "description": "One native language name and two broad chevrons in a 64-pixel row. UI changes immediately; word browsing needs separate confirmation and preserves the current attempt. Native Unity, no HTML/CSS preview.",
+      "html": "",
+      "css": ""
+    },
+    {
+      "name": "Illustrated primary navigation action",
+      "kind": "button",
+      "description": "Native sliced amber enamel with dark live Balsamiq lettering and an original action picture. Start game, Story and the next level use this variant; source artwork supplies painted depth. Local auto-size and safe-content geometry are documented in navigation20261006. No HTML/CSS counterpart.",
+      "html": "",
+      "css": "",
+      "refersTo": "navigation-primary"
+    },
+    {
+      "name": "Illustrated secondary navigation action",
+      "kind": "button",
+      "description": "Native sliced teal enamel, cream live caption/detail and original action picture. Home destinations and concrete play choices preserve the complete painted WorkshopPortrait around individual buttons. No HTML/CSS counterpart.",
+      "html": "",
+      "css": "",
+      "refersTo": "navigation-secondary"
+    },
+    {
+      "name": "Numbered level shelf",
+      "kind": "nav",
+      "description": "Native shelf of up to nine numbered enamel plaques with completed checks, page count and one Continue/Play level action. It filters existing concrete modes/locales. Horizontal swipe cancels a plaque click before turning the page; desktop wheel also pages. No Earlier/Later controls or gameplay grid. No HTML/CSS counterpart.",
+      "html": "",
+      "css": "",
+      "refersTo": "level-plaque"
+    },
+    {
+      "name": "Opening comic",
+      "kind": "card",
+      "description": "Three original square scenes on an ivory frame, separate live story text and 1/3 count. Gran and the beacon lead through the storm to Mika/Pip/Rue and the last-light goal. Continue/To the map, Skip story and replay preserve the pinned puzzle; finish/skip saves HeardStory 1000 in the existing field. No HTML/CSS counterpart.",
+      "html": "",
+      "css": "",
+      "refersTo": "paper-panel"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Sky Wind Workshop",
+    "overview": "**Creative North Star: \"The Sky Wind Workshop\"**\n\nA small keeper carries light through floating islands and wind-powered toy machines. Painted honey wood, braided hemp, warm brass, ivory letter tiles and six colored silhouettes make the puzzle tangible. Mika's patched overalls, saffron scarf and lantern connect the mechanism to a warm, imperfect character. Painted regional skies and isometric routes give each delivery a place and a neighbour.\n\nReal beveled meshes, an orthographic view, live lettering and separate illustrated scenery share the same bright storybook world. The hand touches the row directly; quiet controls leave room for the machine and its complete gold destination. Paper panels support short dialogue and navigation. This is the author-delegated, code-led extension of the established world; no approved composite image exists for pixel-perfect fidelity claims.\n\nThis record merges the implemented P14 journey revision into the P12/P13 system. Sources are `CascadeGame.cs`, `.Flow.cs`, `.Journey.cs`, `.Touch.cs`, `TokenSlot.cs`, `ToyMachineView.cs`, `LayeredWorld.cs`, `JourneyStory.cs`, `ToyAssetBuilder.cs` and `MotionProfile.asset`. `Docs/JOURNEY_SURFACE_BRIEF.md` owns the surface contract; `Docs/P14_FLOW.md` owns implementation scope and validation limits. Native captures and review live in `Reports/Journey`. `Docs/JOURNEY_ASSET_PROVENANCE.md` records the 12 original regional/character rasters; earlier mesh, font and audio provenance remains in the P12/P13 documents. The sidecar records native components and motion, with no fabricated HTML/CSS counterparts. Its synthesized tonal ramps are preview aids, not shipped palette additions.\n\nP16 extends these existing controls with durable local progress and recovery in `CascadeGame.Save.cs`, `Persistence/` and `Application/AttemptRecord.cs`. `Docs/P16_SAVE.md` owns the save contract; `Reports/P16` holds native recovery fixtures and test evidence. This extension adds no visual tokens or raster assets. Editor evidence does not verify physical-device power loss, OS kill, full player builds, native-language approval or human enjoyment.\n\nP17 extends the same paper, mint and brass surfaces with a travel bag, journal,\nrequests, workshop, keepsake collection, earned parcel and personal routes in\n`CascadeGame.Rewards.cs`. `JourneyRewards.cs`, `PlayerProfile.cs` and\n`CascadeGame.Save.cs` supply the local facts behind those views;\n`Docs/P17_META.md` owns their progression contract. Nine new transparent\nillustrations keep the incumbent painted material character; exact prompts and\nalpha/margin limitations are in `Docs/META_ASSET_PROVENANCE.md`. This ordinary\nextension adds no shared visual tokens. `Reports/P17/README.md` records 333/333\nEditMode, 46/47 full PlayMode and a corrected focused 1/1 navigation result,\nplus 44 inspected native frames, including three requested carousel views. The\nindependent verdict scores both listed findings resolved, disposition ship at P17 scope. The approved wooden workshop extension now follows the contracts in\n`Docs/VISUAL_MOTION_REWORK.md` and `Docs/WOODLAND_SURFACE_BRIEF.md`.\n\nP18 makes two narrow clarity corrections within this world: the stable `Hint`\nkey displays `Помощь`/`Поміч` in RU/UK, and map paging reuses the authored\ndirection chevron. `Docs/P18_INTEGRATION.md` owns this phase's contract;\n`Reports/P18/impeccable-review.md` records ship at this correction scope. Three\nfinal 320 × 693 native Editor frames confirm the corrected RU caption, RU guide\nand UK map against the existing system. The 3/3 focused tests and matching\n157-puzzle traces establish their stated behavior boundaries; the roughly\n100 ms whole-Editor frame observation is not a device performance pass.\nPhysical devices, final player build, child comprehension and human enjoyment\nremain unverified. This historical phase added no visual tokens or artwork. The current wood,\nmotion and world extension is recorded below.\n\nThe Woodland checkpoint uses `ToyMachineView.Woodland.cs`, `PuzzleEventPlayer.cs`,\n`CascadeGame.DeviceDemo.cs`, `WoodBoardGraphic.cs`, `WorldMotion.cs`,\n`WorldWeatherGraphic.cs`, `LayeredWorld.cs` and the expanded `JourneyStory.cs`.\nEight regional art kits now cover 160 stops over 33 pages; three original kits\nare retained and five original Base/Map pairs plus WoodBoard are documented in\n`Docs/WOODLAND_ASSET_PROVENANCE.md`. Source-piece trajectories and board springs\nare presentation effects over the unchanged deterministic rule core. Native\nstills and sampled motion live in `Reports/Woodland`; the 5/5 EditMode and\n16/16 focused PlayMode checkpoint predates the final guide/CanvasRenderer fix.\nThe final renderer correction passed 4/4 affected UI regressions in\n`Reports/WoodlandFix/playmode.xml` at 11:29:09–11:29:16 UTC; fresh native guide,\nmap and bag captures show wood/weather. Review/build were pending at that\nhistorical checkpoint; the Craft results below supersede those statuses. Physical iOS/Android, haptics, mobile performance,\nnon-reader understanding, native editorial, live Ads/IAP and human enjoyment\nremain NOT RUN. The service boundary is disabled mock code; online remains\ndesign-only. These Woodland results are historical checkpoints.\n\nThe Craft extension follows `Docs/CRAFT_REWORK.md`: `CascadeGame.Craft.cs`,\n`CascadeGame.Rewards.cs`, `ToyMachineView.Ropes.cs`, `ToyMachineView.Woodland.cs`,\n`PuzzleEventPlayer.cs` and `LayeredWorld.cs` implement object shelves, simultaneous\nselection, continuous ropes, visual weight and composed scenery. Six optional\nR01–R06 Ribbon Reach trials now use the shared deterministic resolver under\nrules2.1-longreach; C01–C160 retain rules2.0 and their content hashes. The original\nWorkshopRoom and WindGardenPanorama generated rasters and metadata are recorded\nin `Docs/AssetPrompts/Craft/provenance.json`, with exact prompts alongside them.\nThe palette, font, symbols and paper/wood/brass identity are preserved.\n`Reports/Craft/design-documentation.md` records source evidence and remaining\nvalidation limits. `Reports/Craft/impeccable-verdict.md` records ship for seven\nscored findings, including map edges and physical grounding; it does not approve\nthe entire product. `Reports/CraftFinal/playmode.xml` passed three affected\nregressions, a subset of the earlier seven. The Mac standalone build succeeded\nwith zero errors and 346 warnings. A locked-Mac C160 player sample at 1440 × 900\non M4 Pro measured median 16.703 ms / p95 17.520 ms over 240 frames after 90\nwarm-up frames. The invalid GC counter supplies no allocation evidence. This\nshort sample is neither verified foreground nor mobile performance. Native\nplayer visual confirmation is blocked by the locked Mac; physical devices,\nhuman enjoyment and release readiness remain unverified.\n\nThe device/map extension follows `Docs/DEVICES_REWORK.md` and the implemented\n`CascadeGame.Devices.cs`, `CascadeGame.DeviceDemo.cs`, `CascadeGame.Craft.cs`,\n`CascadeGame.Journey.cs` and `MapAvailability.shader`. Six original tool rasters\nretain generated pixels and provenance in `Docs/AssetPrompts/Devices`. Mounted\nmatching-piece sockets, explicit counters and an eleven-part guide replace the\ncoded beads and floating contact faces. The map uses the island artwork itself\nfor availability and current-location cues. Palette, typography and SymbolId\nidentity stay intact. Current native captures and validation status belong to\n`Reports/Devices` and `Reports/DevicesRegression`; the pending final confirmation\nmust not inherit the earlier Craft review or build verdict.\n\nThe navigation extension follows `Docs/NAVIGATION_REWORK.md` and the implemented\n`CascadeGame.Navigation.cs`, `.Flow.cs`, `.Journey.cs`, `MapParallax.cs`,\n`MenuSwipe.cs`, `LayeredWorld.cs`, `SoftSceneryGraphic.cs` and\n`MapAvailability.shader`. It keeps WorkshopPortrait, Balsamiq and the painted\nwood/brass/enamel world while replacing the former Home-as-map/menu folio flow.\nOriginal MenuIcons, OpeningComic and MapSky rasters support the four-action\nHome, separate play choice, three-scene opening and continuous map sky. Source\ncolors remain normative; the cream navigation caption is live TMP ink, not a\nmeasured enamel texture color. `Reports/Navigation/impeccable-verdict.md` records\nSHIP for the two scored sky/target corrections. Six distinct scoped PlayMode\ncases have passing evidence across the initial 5/6 and corrected swipe 1/1;\nthe expanded map 1/1 repeats an existing case. Localization passed 2/2. Sixteen\nnative Editor PNGs include four corrected map poses; the +6/+4 shifted pose is\nexplicitly staged. Safe areas are simulated. These results do not establish a\nfull-suite run, physical touch/gyro, mobile FPS, accessibility, native editorial\napproval, human comprehension/enjoyment or release readiness. Current build\nstatus belongs to the Navigation report.",
+    "keyCharacteristics": [
+      "Direct touch lifts a piece and its live glyph together; the receiver stays visible.",
+      "Six stable silhouettes and colors retain their identity across eight regions.",
+      "Wood grain, hemp suspension, brass joints and soft contact shadows make the machine tangible.",
+      "Mika, Pip and Rue connect short optional dialogue to a concrete destination.",
+      "Illustrated routes distinguish the current path from future-region browsing.",
+      "Separate clouds, rooted plants, a glider and regional weather give the sky restrained life.",
+      "The painted workshop surrounds illustrated enamel actions; Home, play choice and travel each have a clear role."
+    ],
+    "rules": [
+      {
+        "name": "The Shared Identity Rule",
+        "body": "Use the same silhouette and material for a SymbolId in the row, target, device contact and magnifier; glyph symbols use live text on ivory bodies.",
+        "section": "colors"
+      },
+      {
+        "name": "The Live Face Rule",
+        "body": "Move and scale a letter with its mesh face through selection, holding, exchange and landing; never bake gameplay letters into scenery.",
+        "section": "typography"
+      },
+      {
+        "name": "The Complete Machine Rule",
+        "body": "Keep the persistent row, remaining floors and complete receiver order visible together; changing row length must preserve clear physical rail proportions.",
+        "section": "layout"
+      },
+      {
+        "name": "The Honest Path Rule",
+        "body": "Distinguish the browsed stop from the reached stop; future art must never imply unlocked or saved progress.",
+        "section": "layout"
+      },
+      {
+        "name": "The Clear Flight Rule",
+        "body": "Decorative motion must fit wholly outside the row, receiver and feedback; a lower render layer alone is not sufficient separation.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** reuse each authored silhouette and material wherever its SymbolId appears.",
+      "**Do** move and scale the live glyph with its selected or held body.",
+      "**Do** preserve the complete target and the direct-touch default.",
+      "**Do** keep precision controls an explicit Comfort preference.",
+      "**Do** bind the map marker to saved first-clear campaign receipts and label future previews honestly.",
+      "**Do** move map islands, their invisible targets and the small standing Mika together, retaining the separate broad conversation target.",
+      "**Do** select the story's region before showing its character and dialogue.",
+      "**Do** bound ambient art outside gameplay information and freeze its phase while paused or suspended.",
+      "**Do** inspect native 390 × 844, 320 × 693 and wide Editor captures after layout changes.",
+      "**Do** preserve original assets, licenses, generation provenance and Unity meta identities."
+    ],
+    "donts": [
+      "**Don't** turn physical rails into full-width rectangular cards or restore the crowded default toolbar.",
+      "**Don't** bake gameplay text into imagery or change symbol identity to indicate state.",
+      "**Don't** let presentation, animation completion, scenery, physics or ad callbacks change puzzle state.",
+      "**Don't** portray browsed islands as reached or unsaved previews as durable progress.",
+      "**Don't** describe online concepts or disabled mock Ads/IAP boundaries as live integration; Ribbon Reach is local optional play, not a purchased ability.",
+      "**Don't** describe local ranks, known parcels or keepsakes as global online services; their saved local implementations are documented in PRODUCT.md.",
+      "**Don't** copy ShapeMania screens, characters, sprites, props or materials into this world.",
+      "**Don't** equate Editor captures and automated tests with device, haptic, performance, build, native-language or human-enjoyment proof."
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "claimedClears": 540,
+  "acceptedClears": 540,
+  "coins": 27000,
+  "conflict": false,
+  "proof": "Actual local migration merge accepts fabricated allowed-node receipts; no gameplay replay or source hash lookup at this boundary. Not a live service attack."
+}

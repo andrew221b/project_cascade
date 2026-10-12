@@ -1,0 +1,7 @@
+PASS 4 complete spoken pages at 365×122
+PASS 02-dialogue-ru.png
+PASS 4 complete spoken pages at 364×173
+PASS 04-dialogue-uk-large.png
+PASS 05-night-fail.png
+PASS RU/UK dialogue and night defeat corrections; prior map frames retained.
+Completed: True

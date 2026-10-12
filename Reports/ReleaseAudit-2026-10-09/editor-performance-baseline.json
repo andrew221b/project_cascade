@@ -1,0 +1,14 @@
+{
+  "surface": "Home, 120 frames, Unity Editor on this Mac",
+  "cpuMedianMs": 1.03,
+  "cpuMaxMs": 2.46,
+  "gpuMedianMs": 0.699,
+  "gpuMaxMs": 1.804,
+  "gcMedianBytes": 192,
+  "gcMaxBytes": 59384,
+  "batches": [
+    13,
+    14
+  ],
+  "limit": "Editor baseline, not iPhone player performance, heat or cold-start validation"
+}

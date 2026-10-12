@@ -1,0 +1,220 @@
+{
+  "date": "2026-10-09",
+  "phases": {
+    "ReleaseFixes-Oct09-4 / editmode": {
+      "result": "Passed",
+      "total": "21",
+      "passed": "21",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "ReleaseFixes-Oct09-final / editmode": {
+      "result": "Passed",
+      "total": "12",
+      "passed": "12",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "ReleaseFixes-Oct09-certificates / editmode": {
+      "result": "Passed",
+      "total": "4",
+      "passed": "4",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "ReleaseFixes-Oct09-final-safety / editmode": {
+      "result": "Passed",
+      "total": "44",
+      "passed": "44",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "ReleaseFixes-Oct09-evidence / editmode": {
+      "result": "Passed",
+      "total": "31",
+      "passed": "31",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "ReleaseFixes-Oct09-6 / playmode": {
+      "result": "Failed(Child)",
+      "total": "15",
+      "passed": "14",
+      "failed": "1",
+      "skipped": "0"
+    },
+    "ReleaseFixes-Oct09-story / playmode": {
+      "result": "Passed",
+      "total": "1",
+      "passed": "1",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "ReleaseFixes-Oct09-hanging / playmode": {
+      "result": "Failed(Child)",
+      "total": "2",
+      "passed": "1",
+      "failed": "1",
+      "skipped": "0"
+    },
+    "ReleaseFixes-Oct09-hanging-final / playmode": {
+      "result": "Passed",
+      "total": "1",
+      "passed": "1",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "LifePhysics-Oct09-final-poses / editmode": {
+      "result": "Passed",
+      "total": "25",
+      "passed": "25",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "LifePhysics-Oct09-final / playmode": {
+      "result": "Failed(Child)",
+      "total": "6",
+      "passed": "4",
+      "failed": "2",
+      "skipped": "0"
+    },
+    "LifePhysics-Oct09-verified / playmode": {
+      "result": "Failed(Child)",
+      "total": "2",
+      "passed": "1",
+      "failed": "1",
+      "skipped": "0"
+    },
+    "LifePhysics-Oct09-contact-final / playmode": {
+      "result": "Passed",
+      "total": "1",
+      "passed": "1",
+      "failed": "0",
+      "skipped": "0"
+    }
+  },
+  "pureSuite": {
+    "pass": 555,
+    "fail": 0,
+    "skip": 2,
+    "timeouts": [],
+    "fixtures": 48,
+    "method": "Actual pure production C# and NUnit methods via isolated fixture processes,90-second fixture watchdog; native Unity tests excluded."
+  },
+  "serverBoundary": "66 passed; fake SDK transport, not deployed/live concurrency",
+  "storeVerifier": "12 passed; mocked official adapters, not a live store transaction",
+  "publishedRecipes": "540 recipes / 6471 primary and localized witness replays",
+  "scope": "555-case broad pure sweep preceded the final scoped repairs; 44-case economic safety and 31-case evidence compatibility passed after affected changes. Old failed reports retained as diagnostic evidence; corrected/renamed cases validated separately. Full Unity suite not repeated.",
+  "notRun": [
+    "Mobile export/build/install",
+    "Physical iPhone/Android launch, input latency, FPS, heat and memory",
+    "Live AdMob/SSV, store sandbox/restore/refund",
+    "Live Unity Cloud concurrent initialization/purchase/sync",
+    "Human playtesting of enjoyment and progression"
+  ],
+  "releaseGuide": "Docs/RELEASE_SETUP_OCT09.md",
+  "motionFollowup": {
+    "note": "Earlier reproduction reports retain failures. Final evidence: all nine world scores and reset recovery passed in LifePhysics-Oct09-final; hanging five-prop geometry/impulse/suspend passed after correction in LifePhysics-Oct09-contact-final; wind pause/Reduced Motion passed in LifePhysics-Oct09-verified; latest pure poses/ad tests 25 PASS. Visual UK320 in LifePhysics-Oct09-visual, no state change.",
+    "productionConfiguration": "Deferred by author; IDs still absent; no live flags enabled",
+    "physicalDevice": "Not run; no phone build requested",
+    "subjectiveMusicAndEnjoyment": "Not established by score/signal checks"
+  },
+  "progressionBagFollowup": {
+    "nativeEditMode": {
+      "passed": 61,
+      "failed": 0,
+      "report": "Reports/OpeningReplay-Oct09/editmode.xml"
+    },
+    "nativeLandingInput": {
+      "passed": 4,
+      "failedFixture": 1,
+      "report": "Reports/OpeningReplay-Oct09/playmode.xml",
+      "fixtureFixed": true
+    },
+    "nativeJourneyAttempts": [
+      "Reports/OpeningReplay-Oct09/playmode.xml",
+      "Reports/OpeningJourney-Oct09/playmode.xml"
+    ],
+    "finalNativeBagJourney": "NOT RUN: Mac locked; stale Editor scriptCompilationFailed, fresh code not loaded",
+    "compilerChecks": {
+      "presentationPlayer": "PASS",
+      "presentationEditor": "PASS",
+      "playModeFixtures": "PASS",
+      "runtimeValidated": false
+    },
+    "backendBoundary": {
+      "passed": 76,
+      "liveServices": false
+    },
+    "publishedCampaign": {
+      "recipes": 540,
+      "distinctThreeStageRecipes": 540,
+      "localizedWitnesses": 6471,
+      "changedRepeatNodes": [
+        "C207",
+        "C209",
+        "C237",
+        "C251",
+        "C299",
+        "C301"
+      ],
+      "legacyProofsPreserved": true
+    },
+    "configs": [
+      "Configs/admob.json",
+      "Configs/release-ids.json"
+    ],
+    "mobileBuildInstall": "NOT RUN: not authorized",
+    "newPanelVisualReview": "NOT RUN: Mac locked",
+    "humanEnjoyment": "NOT RUN",
+    "openingCoachCompatibility": "Cleared C01 suppresses opening swap rehearsal on later nodes; new PlayMode regression compiles but is NOT RUN while Mac is locked.",
+    "currentBombRecipes": {
+      "bombCount": 340,
+      "fuseAtLeastInitialDurability": 0
+    }
+  },
+  "campaignRoadmapFollowup": {
+    "scope": "actual current packaged catalogue",
+    "changedTriads": 62,
+    "primaryTriads": 540,
+    "distinctTriads": 540,
+    "optimalStageProofs": 1620,
+    "localizedAndPrimaryReplays": 6471,
+    "bombWindows": 335,
+    "benefitAblations": 646,
+    "lowerDurabilityProbes": 3292,
+    "backendChecks": 80,
+    "backendTransport": "fake SDK, not live",
+    "meanActionsPerStageByWorld": [
+      3.03,
+      3.87,
+      4.37,
+      4.89,
+      4.91,
+      4.94,
+      5.39,
+      5.68,
+      5.81
+    ],
+    "humanEnjoyment": "NOT VALIDATED",
+    "freshPlayMode": "BLOCKED",
+    "freshScreens": "BLOCKED",
+    "blocker": "Locked Mac; stale primary editor and license IPC timeout in isolated batch project",
+    "archivedScreenshotCount": 59,
+    "pendingScreens": 4,
+    "canvasBrowserChecks": [
+      "opened 63 cards",
+      "dialog opens actual captured image",
+      "comment save and clear",
+      "no JavaScript errors"
+    ],
+    "mobileBuild": "NOT RUN per user instruction",
+    "transformDependencyChecks": {
+      "entryPermutations": 372,
+      "gameplayGusts": 12,
+      "rowChanged": true,
+      "unchangedSolutionWithoutTransformWins": 0,
+      "startingTransforms": 0
+    }
+  }
+}

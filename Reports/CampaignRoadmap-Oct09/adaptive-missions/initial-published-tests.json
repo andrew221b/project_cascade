@@ -1,0 +1,78 @@
+[
+  {
+    "test": "PersonalMissionTests.ChallengeRespondsToConfidenceAndRecoveryWithoutInventoryInputs()",
+    "status": "Passed",
+    "ms": 4.5693
+  },
+  {
+    "test": "PersonalMissionTests.ConfidentMissionUsesPublishedDifficultyAndIsSolvableWithEmptyBag(C251)",
+    "status": "Passed",
+    "ms": 40.179
+  },
+  {
+    "test": "PersonalMissionTests.ConfidentMissionUsesPublishedDifficultyAndIsSolvableWithEmptyBag(C500)",
+    "status": "Passed",
+    "ms": 740.54730000000006
+  },
+  {
+    "test": "PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(C03)",
+    "status": "Passed",
+    "ms": 7.6461000000000006
+  },
+  {
+    "test": "PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(C06)",
+    "status": "Passed",
+    "ms": 1.7787000000000002
+  },
+  {
+    "test": "PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(C07)",
+    "status": "Passed",
+    "ms": 4.1775
+  },
+  {
+    "test": "PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(C11)",
+    "status": "Passed",
+    "ms": 3.5050000000000003
+  },
+  {
+    "test": "PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(C14)",
+    "status": "Passed",
+    "ms": 5.0073
+  },
+  {
+    "test": "PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(C37)",
+    "status": "Passed",
+    "ms": 28.8135
+  },
+  {
+    "test": "PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(C65)",
+    "status": "Passed",
+    "ms": 63.1015
+  },
+  {
+    "test": "PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(C120)",
+    "status": "Passed",
+    "ms": 91.01
+  },
+  {
+    "test": "PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(C360)",
+    "status": "Failed",
+    "ms": 360.3174,
+    "error": "NUnit.Framework.AssertionException:   C360\n  Expected: not null\n  But was:  null\n\n  at NUnit.Framework.Assert.That[TActual] (TActual actual, NUnit.Framework.Constraints.IResolveConstraint expression, System.String message, System.Object[] args) [0x00039] in <f577cd9686154d6ab10efd7e65e64366>:0 \n  at Cascade.Tests.PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays (System.String node) [0x0007b] in <4894dc84291d44c4af2f6119b982a253>:0 \n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <6d12fe1da04245109430a5171a76b388>:0 "
+  },
+  {
+    "test": "PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(C500)",
+    "status": "Passed",
+    "ms": 927.8628
+  },
+  {
+    "test": "PersonalMissionTests.AcceptedMissionAndCampaignCheckpointSurviveSaveAndModeSwitch()",
+    "status": "Passed",
+    "ms": 71.431300000000007
+  },
+  {
+    "test": "PersonalMissionTests.DeclineUsesProgressIntervalAndCancellationNeverReturnsAnOffer()",
+    "status": "Passed",
+    "ms": 5.4374
+  }
+]

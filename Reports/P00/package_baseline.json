@@ -1,0 +1,59 @@
+{
+  "editor": "6000.3.8f1",
+  "revision": "1c7db571dde0",
+  "template": "com.unity.template.urp-blank@17.0.14",
+  "direct_dependencies": {
+    "com.unity.ai.navigation": {
+      "requested": "2.0.0",
+      "resolved": "2.0.0",
+      "source": "registry"
+    },
+    "com.unity.collab-proxy": {
+      "requested": "2.2.0",
+      "resolved": "2.2.0",
+      "source": "registry"
+    },
+    "com.unity.ide.rider": {
+      "requested": "3.0.27",
+      "resolved": "3.0.27",
+      "source": "registry"
+    },
+    "com.unity.ide.visualstudio": {
+      "requested": "2.0.22",
+      "resolved": "2.0.22",
+      "source": "registry"
+    },
+    "com.unity.inputsystem": {
+      "requested": "1.18.0",
+      "resolved": "1.18.0",
+      "source": "registry"
+    },
+    "com.unity.render-pipelines.universal": {
+      "requested": "17.0.1",
+      "resolved": "17.3.0",
+      "source": "builtin"
+    },
+    "com.unity.test-framework": {
+      "requested": "1.4.2",
+      "resolved": "1.6.0",
+      "source": "builtin"
+    },
+    "com.unity.timeline": {
+      "requested": "1.8.6",
+      "resolved": "1.8.6",
+      "source": "registry"
+    },
+    "com.unity.ugui": {
+      "requested": "2.0.0",
+      "resolved": "2.0.0",
+      "source": "builtin"
+    },
+    "com.unity.visualscripting": {
+      "requested": "1.9.1",
+      "resolved": "1.9.1",
+      "source": "registry"
+    }
+  },
+  "change_note": "Docs/P00_SETUP.md",
+  "custom_embedded_packages": []
+}

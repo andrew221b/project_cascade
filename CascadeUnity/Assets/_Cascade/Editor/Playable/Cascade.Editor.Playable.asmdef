@@ -1,0 +1,25 @@
+{
+    "name": "Cascade.Editor.Playable",
+    "rootNamespace": "Cascade.Editor.Playable",
+    "references": [
+        "Cascade.Presentation",
+        "Unity.TextMeshPro",
+        "Unity.ugui",
+        "Unity.InputSystem",
+        "Cascade.Application",
+        "Cascade.Content",
+        "Cascade.Domain",
+        "Cascade.Solver",
+        "Unity.Localization",
+        "Unity.Localization.Editor",
+        "Unity.Addressables",
+        "Unity.Addressables.Editor",
+        "Unity.ResourceManager",
+        "Unity.Newtonsoft.Json",
+        "Cascade.Persistence",
+        "Unity.Notifications"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ]
+}

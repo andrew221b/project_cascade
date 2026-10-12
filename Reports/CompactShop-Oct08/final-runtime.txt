@@ -1,0 +1,11 @@
+Final native pass after catalogue alignment and coin-card contrast correction.
+coin-packs-ru: TMP overflow=0
+coin-packs-uk-small: TMP overflow=0
+owned-hat-ru: TMP overflow=0
+Unready video buttons=0
+Acquisition/scope duplicate labels=0
+Back/wallet vertical difference=0
+Trophy description line count=1
+price-ru: TMP overflow=0
+Ready video buttons=1
+Temporary profile; purchases/ad grants not exercised; puzzle state guarded by native capture. No phone build.

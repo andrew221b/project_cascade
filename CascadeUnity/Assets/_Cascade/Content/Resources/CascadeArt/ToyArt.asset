@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ef5f149eb2774421b5aac4a7f2b36ad, type: 3}
+  m_Name: ToyArt
+  m_EditorClassIdentifier: Cascade.Presentation::Cascade.Presentation.ToyArt
+  shapes:
+  - {fileID: 4300000, guid: be03833f778c2493c9a812fe7483e294, type: 2}
+  - {fileID: 4300000, guid: 92236402ffcb242938139bc23e4f90ad, type: 2}
+  - {fileID: 4300000, guid: a6ae569e55e624ae5bf8eb56ffeaada4, type: 2}
+  - {fileID: 4300000, guid: 1f2608c7a424f4809836abbb6ac07142, type: 2}
+  - {fileID: 4300000, guid: 3749678c51adb454e8e9df6d2c5b989d, type: 2}
+  - {fileID: 4300000, guid: 9b26ea3b2e4494fcbb9141dcbec59d32, type: 2}
+  tile: {fileID: 4300000, guid: 09ee2a6ff56b247a2966c3ce531445a0, type: 2}
+  beam: {fileID: 4300000, guid: b80335953010d4b9c8c548ccd4492a53, type: 2}
+  disk: {fileID: 4300000, guid: 5466808ebcbcf4b59b8ae6a9e9426c68, type: 2}
+  quad: {fileID: 4300000, guid: 92b9e0128a5b941da9d90722c05a58a9, type: 2}
+  colors:
+  - {fileID: 2100000, guid: b98927de1b5e14f718197ff6fa624cdb, type: 2}
+  - {fileID: 2100000, guid: b396ce352aed146beb29611ae0a3fd2b, type: 2}
+  - {fileID: 2100000, guid: 5190e19125323442ebe5c8c48dc8e4bc, type: 2}
+  - {fileID: 2100000, guid: 9c7d57f6ba32241bc943a3f53d48d10f, type: 2}
+  - {fileID: 2100000, guid: 82478d50f80fc4f8c903ce84ebbb667f, type: 2}
+  - {fileID: 2100000, guid: 553983ae4a18e4186ba4453ecfc8e789, type: 2}
+  cream: {fileID: 2100000, guid: 28216af5de3d54efebfcd09ff4210e86, type: 2}
+  graphite: {fileID: 2100000, guid: 8fdeb6c5dd86b48629bc88a8c56b6718, type: 2}
+  gold: {fileID: 2100000, guid: 6f2db384ad953405f94e4ca9c4eec629, type: 2}
+  paleGold: {fileID: 2100000, guid: 4679156d1a8b8403dae61a99e9808b7f, type: 2}
+  teal: {fileID: 2100000, guid: c14c9c15b7c63455d9e2434c920f66e0, type: 2}
+  coral: {fileID: 2100000, guid: 24cc58901b82c45b89cd2dc671d7ca69, type: 2}
+  shadow: {fileID: 2100000, guid: 0251fd8946f8b42d8933d174d6bf59ba, type: 2}
+  backdrop: {fileID: 2100000, guid: 9d47cd8a5409b4027a87096e7a677bef, type: 2}
+  bodyFont: {fileID: 11400000, guid: eac1e40dff9da4021ae3beba17dea739, type: 2}
+  titleFont: {fileID: 11400000, guid: d5b8821f7f926433a940a070f9b07884, type: 2}
+  displayFont: {fileID: 11400000, guid: d5b8821f7f926433a940a070f9b07884, type: 2}
+  panel: {fileID: 21300000, guid: 83368e940a6a94434836303f56ae936d, type: 3}

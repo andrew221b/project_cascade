@@ -1,0 +1,17 @@
+{
+  "phase": "P03",
+  "tests": {
+    "total": "62",
+    "passed": "62",
+    "failed": "0",
+    "skipped": "0"
+  },
+  "console_errors": 0,
+  "not_run": [
+    "Runtime lifecycle/pause",
+    "PlayMode",
+    "Player build",
+    "Visual QA",
+    "Content parity"
+  ]
+}

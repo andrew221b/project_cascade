@@ -1,0 +1,9 @@
+{
+  "outcome": "success",
+  "cascade_processes": [
+    {
+      "executable": "file:///private/var/containers/Bundle/Application/B71B2F50-D80F-4BD6-A4FE-2C4EFE2BD309/CASCADE.app/CASCADE",
+      "processIdentifier": 77951
+    }
+  ]
+}

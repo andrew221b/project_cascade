@@ -1,0 +1,1 @@
+PASS: 540 campaign recipes, 6471 primary/localized witness replays; published resources match.

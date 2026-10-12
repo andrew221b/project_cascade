@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="4" result="Passed" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-07 20:38:22Z" end-time="2026-10-07 20:38:22Z" duration="0.1039879">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="732" result="Passed" start-time="2026-10-07 20:38:22Z" end-time="2026-10-07 20:38:22Z" duration="0.103988" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1805" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="731" result="Passed" start-time="2026-10-07 20:38:22Z" end-time="2026-10-07 20:38:22Z" duration="0.098760" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24227" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1806" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="731" result="Passed" start-time="2026-10-07 20:38:22Z" end-time="2026-10-07 20:38:22Z" duration="0.098532" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1807" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="731" result="Passed" start-time="2026-10-07 20:38:22Z" end-time="2026-10-07 20:38:22Z" duration="0.098392" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1788" name="WorldPrologueTests" fullname="Cascade.Tests.WorldPrologueTests" classname="Cascade.Tests.WorldPrologueTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-07 20:38:22Z" end-time="2026-10-07 20:38:22Z" duration="0.097826" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1790" name="EveryIslandGetsADistinctOpeningWithItsCurrentGoal" fullname="Cascade.Tests.WorldPrologueTests.EveryIslandGetsADistinctOpeningWithItsCurrentGoal" methodname="EveryIslandGetsADistinctOpeningWithItsCurrentGoal" classname="Cascade.Tests.WorldPrologueTests" runstate="Runnable" seed="176030987" result="Passed" start-time="2026-10-07 20:38:22Z" end-time="2026-10-07 20:38:22Z" duration="0.009310" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1792" name="EveryStoryKeyHasAnEnglishRussianAndUkrainianSourceEntry" fullname="Cascade.Tests.WorldPrologueTests.EveryStoryKeyHasAnEnglishRussianAndUkrainianSourceEntry" methodname="EveryStoryKeyHasAnEnglishRussianAndUkrainianSourceEntry" classname="Cascade.Tests.WorldPrologueTests" runstate="Runnable" seed="997713427" result="Passed" start-time="2026-10-07 20:38:22Z" end-time="2026-10-07 20:38:22Z" duration="0.077261" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1789" name="EveryWorldHasFourAuthoredComicPagesAndItsOwnResident" fullname="Cascade.Tests.WorldPrologueTests.EveryWorldHasFourAuthoredComicPagesAndItsOwnResident" methodname="EveryWorldHasFourAuthoredComicPagesAndItsOwnResident" classname="Cascade.Tests.WorldPrologueTests" runstate="Runnable" seed="2094549539" result="Passed" start-time="2026-10-07 20:38:22Z" end-time="2026-10-07 20:38:22Z" duration="0.002365" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1791" name="OccasionalLevelAsidesAndAllStoryReceiptsFitExistingSaveValidation" fullname="Cascade.Tests.WorldPrologueTests.OccasionalLevelAsidesAndAllStoryReceiptsFitExistingSaveValidation" methodname="OccasionalLevelAsidesAndAllStoryReceiptsFitExistingSaveValidation" classname="Cascade.Tests.WorldPrologueTests" runstate="Runnable" seed="705216197" result="Passed" start-time="2026-10-07 20:38:22Z" end-time="2026-10-07 20:38:22Z" duration="0.003407" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

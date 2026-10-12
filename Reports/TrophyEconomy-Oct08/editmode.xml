@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="77" result="Passed" total="77" passed="77" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-08 00:58:43Z" end-time="2026-10-08 00:58:44Z" duration="0.5582386">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="779" result="Passed" start-time="2026-10-08 00:58:43Z" end-time="2026-10-08 00:58:44Z" duration="0.558239" total="77" passed="77" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1860" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="778" result="Passed" start-time="2026-10-08 00:58:43Z" end-time="2026-10-08 00:58:44Z" duration="0.545016" total="77" passed="77" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24227" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1861" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="778" result="Passed" start-time="2026-10-08 00:58:43Z" end-time="2026-10-08 00:58:44Z" duration="0.544830" total="77" passed="77" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1862" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="778" result="Passed" start-time="2026-10-08 00:58:43Z" end-time="2026-10-08 00:58:44Z" duration="0.544655" total="77" passed="77" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1216" name="CoinEconomyTests" fullname="Cascade.Tests.CoinEconomyTests" classname="Cascade.Tests.CoinEconomyTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-08 00:58:43Z" end-time="2026-10-08 00:58:44Z" duration="0.087994" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1220" name="OneStepGuideExpiresOnSwapAndFailedToolSavePreservesItsState" fullname="Cascade.Tests.CoinEconomyTests.OneStepGuideExpiresOnSwapAndFailedToolSavePreservesItsState" methodname="OneStepGuideExpiresOnSwapAndFailedToolSavePreservesItsState" classname="Cascade.Tests.CoinEconomyTests" runstate="Runnable" seed="1015921298" result="Passed" start-time="2026-10-08 00:58:43Z" end-time="2026-10-08 00:58:44Z" duration="0.034806" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1218" name="PaidPendingValueIsDeliveredAboveWalletThresholdAndSaveFailureCanRetry" fullname="Cascade.Tests.CoinEconomyTests.PaidPendingValueIsDeliveredAboveWalletThresholdAndSaveFailureCanRetry" methodname="PaidPendingValueIsDeliveredAboveWalletThresholdAndSaveFailureCanRetry" classname="Cascade.Tests.CoinEconomyTests" runstate="Runnable" seed="1813320657" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.006758" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1222" name="PreviewCoinPackNeverWritesFakeValueIntoProfile" fullname="Cascade.Tests.CoinEconomyTests.PreviewCoinPackNeverWritesFakeValueIntoProfile" methodname="PreviewCoinPackNeverWritesFakeValueIntoProfile" classname="Cascade.Tests.CoinEconomyTests" runstate="Runnable" seed="729989178" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.027971" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1219" name="ThirdToolCannotSpendStockOrMutateAttemptAfterReload" fullname="Cascade.Tests.CoinEconomyTests.ThirdToolCannotSpendStockOrMutateAttemptAfterReload" methodname="ThirdToolCannotSpendStockOrMutateAttemptAfterReload" classname="Cascade.Tests.CoinEconomyTests" runstate="Runnable" seed="1581240178" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.008877" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1221" name="UndoExpiresGuideAndLegacyToolFlagsRemainLoadable" fullname="Cascade.Tests.CoinEconomyTests.UndoExpiresGuideAndLegacyToolFlagsRemainLoadable" methodname="UndoExpiresGuideAndLegacyToolFlagsRemainLoadable" classname="Cascade.Tests.CoinEconomyTests" runstate="Runnable" seed="442559035" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.004158" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1217" name="VerifiedPacksAreExactlyOnceAndCannotChangeProductOnReplay" fullname="Cascade.Tests.CoinEconomyTests.VerifiedPacksAreExactlyOnceAndCannotChangeProductOnReplay" methodname="VerifiedPacksAreExactlyOnceAndCannotChangeProductOnReplay" classname="Cascade.Tests.CoinEconomyTests" runstate="Runnable" seed="1801776720" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000242" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1619" name="RewardTests" fullname="Cascade.Tests.RewardTests" classname="Cascade.Tests.RewardTests" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.085777" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1631" name="AlreadyBoughtRareLookConvertsOnceToSmallCoinsAndCloudKeepsClaim" fullname="Cascade.Tests.RewardTests.AlreadyBoughtRareLookConvertsOnceToSmallCoinsAndCloudKeepsClaim" methodname="AlreadyBoughtRareLookConvertsOnceToSmallCoinsAndCloudKeepsClaim" classname="Cascade.Tests.RewardTests" runstate="Runnable" seed="342983161" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.024217" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1627" name="DeviceRequestsUseSuccessfulUniqueNodesRatherThanRepeatedActions" fullname="Cascade.Tests.RewardTests.DeviceRequestsUseSuccessfulUniqueNodesRatherThanRepeatedActions" methodname="DeviceRequestsUseSuccessfulUniqueNodesRatherThanRepeatedActions" classname="Cascade.Tests.RewardTests" runstate="Runnable" seed="269657508" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.001320" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1622" name="FortyClearsAndFourChaptersYieldExactlyTwoThousand" fullname="Cascade.Tests.RewardTests.FortyClearsAndFourChaptersYieldExactlyTwoThousand" methodname="FortyClearsAndFourChaptersYieldExactlyTwoThousand" classname="Cascade.Tests.RewardTests" runstate="Runnable" seed="1222491619" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000288" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1626" name="HintAndUndoAnnotationsDoNotRewriteTheMeaningOfBestRoute" fullname="Cascade.Tests.RewardTests.HintAndUndoAnnotationsDoNotRewriteTheMeaningOfBestRoute" methodname="HintAndUndoAnnotationsDoNotRewriteTheMeaningOfBestRoute" classname="Cascade.Tests.RewardTests" runstate="Runnable" seed="1780954921" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.001010" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1630" name="LaterParcelsAreRareFixedPrizesAndReplayCannotRerollThem" fullname="Cascade.Tests.RewardTests.LaterParcelsAreRareFixedPrizesAndReplayCannotRerollThem" methodname="LaterParcelsAreRareFixedPrizesAndReplayCannotRerollThem" classname="Cascade.Tests.RewardTests" runstate="Runnable" seed="24221431" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.001379" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1629" name="MissingClearAuthorityAndInvalidGiftReceiptsAreRejected" fullname="Cascade.Tests.RewardTests.MissingClearAuthorityAndInvalidGiftReceiptsAreRejected" methodname="MissingClearAuthorityAndInvalidGiftReceiptsAreRejected" classname="Cascade.Tests.RewardTests" runstate="Runnable" seed="384403197" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000957" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1625" name="ObjectiveAndLocaleRecordsStaySeparateWhileDeliveryStillCounts" fullname="Cascade.Tests.RewardTests.ObjectiveAndLocaleRecordsStaySeparateWhileDeliveryStillCounts" methodname="ObjectiveAndLocaleRecordsStaySeparateWhileDeliveryStillCounts" classname="Cascade.Tests.RewardTests" runstate="Runnable" seed="244476262" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.001537" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1621" name="PendingParcelsReserveCapacityAndAllFortyClearsCannotGenerateFiller" fullname="Cascade.Tests.RewardTests.PendingParcelsReserveCapacityAndAllFortyClearsCannotGenerateFiller" methodname="PendingParcelsReserveCapacityAndAllFortyClearsCannotGenerateFiller" classname="Cascade.Tests.RewardTests" runstate="Runnable" seed="770131513" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000345" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1628" name="SavedClaimsCannotReopenAndOlderProfileCanAcquireNewFields" fullname="Cascade.Tests.RewardTests.SavedClaimsCannotReopenAndOlderProfileCanAcquireNewFields" methodname="SavedClaimsCannotReopenAndOlderProfileCanAcquireNewFields" classname="Cascade.Tests.RewardTests" runstate="Runnable" seed="2099078902" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.010270" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1623" name="SkippingC26DoesNotPretendThatWorkshopIsComplete" fullname="Cascade.Tests.RewardTests.SkippingC26DoesNotPretendThatWorkshopIsComplete" methodname="SkippingC26DoesNotPretendThatWorkshopIsComplete" classname="Cascade.Tests.RewardTests" runstate="Runnable" seed="579081247" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000203" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1620" name="ThreeNewLightsEarnOneKnownFragmentAndReplayCannotFarm" fullname="Cascade.Tests.RewardTests.ThreeNewLightsEarnOneKnownFragmentAndReplayCannotFarm" methodname="ThreeNewLightsEarnOneKnownFragmentAndReplayCannotFarm" classname="Cascade.Tests.RewardTests" runstate="Runnable" seed="1454943295" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000205" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1624" name="VisitStampsNeverResetOnGapsAndIgnoreRepeatedDates" fullname="Cascade.Tests.RewardTests.VisitStampsNeverResetOnGapsAndIgnoreRepeatedDates" methodname="VisitStampsNeverResetOnGapsAndIgnoreRepeatedDates" classname="Cascade.Tests.RewardTests" runstate="Runnable" seed="2035982227" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000287" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1643" name="ScreenCosmeticTests" fullname="Cascade.Tests.ScreenCosmeticTests" classname="Cascade.Tests.ScreenCosmeticTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.114931" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1644" name="AppendedCatalogPricesUseCoinsAndPreserveMikaAndLootIds" fullname="Cascade.Tests.ScreenCosmeticTests.AppendedCatalogPricesUseCoinsAndPreserveMikaAndLootIds" methodname="AppendedCatalogPricesUseCoinsAndPreserveMikaAndLootIds" classname="Cascade.Tests.ScreenCosmeticTests" runstate="Runnable" seed="921071302" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.029152" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1648" name="IndependentRemoteAndLocalSlotChangesMergeWithoutSpending" fullname="Cascade.Tests.ScreenCosmeticTests.IndependentRemoteAndLocalSlotChangesMergeWithoutSpending" methodname="IndependentRemoteAndLocalSlotChangesMergeWithoutSpending" classname="Cascade.Tests.ScreenCosmeticTests" runstate="Runnable" seed="22915994" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.008414" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1649" name="LocalUnequipWinsSimultaneousRemoteChange" fullname="Cascade.Tests.ScreenCosmeticTests.LocalUnequipWinsSimultaneousRemoteChange" methodname="LocalUnequipWinsSimultaneousRemoteChange" classname="Cascade.Tests.ScreenCosmeticTests" runstate="Runnable" seed="447610988" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.005359" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1647" name="MissingSlotsAreOmittedAndDurableSlotsSurviveModeSwitchReload" fullname="Cascade.Tests.ScreenCosmeticTests.MissingSlotsAreOmittedAndDurableSlotsSurviveModeSwitchReload" methodname="MissingSlotsAreOmittedAndDurableSlotsSurviveModeSwitchReload" classname="Cascade.Tests.ScreenCosmeticTests" runstate="Runnable" seed="553995790" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.060935" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1645" name="OwnershipCategoryAndIndependentSlotsAreEnforced" fullname="Cascade.Tests.ScreenCosmeticTests.OwnershipCategoryAndIndependentSlotsAreEnforced" methodname="OwnershipCategoryAndIndependentSlotsAreEnforced" classname="Cascade.Tests.ScreenCosmeticTests" runstate="Runnable" seed="1167290978" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.003989" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1651" name="PreviewServiceCannotPersistentlyEquipScreenItems" fullname="Cascade.Tests.ScreenCosmeticTests.PreviewServiceCannotPersistentlyEquipScreenItems" methodname="PreviewServiceCannotPersistentlyEquipScreenItems" classname="Cascade.Tests.ScreenCosmeticTests" runstate="Runnable" seed="798735679" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000789" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1646" name="PurchaseAndEquipFailuresRollBackAndCanRetry" fullname="Cascade.Tests.ScreenCosmeticTests.PurchaseAndEquipFailuresRollBackAndCanRetry" methodname="PurchaseAndEquipFailuresRollBackAndCanRetry" classname="Cascade.Tests.ScreenCosmeticTests" runstate="Runnable" seed="159999819" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.001860" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1650" name="RejectedOwnershipFallsBackToRemoteAndJoiningDeviceAdoptsAccountSlots" fullname="Cascade.Tests.ScreenCosmeticTests.RejectedOwnershipFallsBackToRemoteAndJoiningDeviceAdoptsAccountSlots" methodname="RejectedOwnershipFallsBackToRemoteAndJoiningDeviceAdoptsAccountSlots" classname="Cascade.Tests.ScreenCosmeticTests" runstate="Runnable" seed="225785094" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.003557" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1652" name="ShopTests" fullname="Cascade.Tests.ShopTests" classname="Cascade.Tests.ShopTests" runstate="Runnable" testcasecount="20" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.120558" total="20" passed="20" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1660" name="AnAlreadyReadyRowDoesNotWasteAScroll" fullname="Cascade.Tests.ShopTests.AnAlreadyReadyRowDoesNotWasteAScroll" methodname="AnAlreadyReadyRowDoesNotWasteAScroll" classname="Cascade.Tests.ShopTests" runstate="Runnable" seed="829438394" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000445" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1659" name="AssistanceCannotEarnThreeStarsOrRewindAnAwardedDelivery" fullname="Cascade.Tests.ShopTests.AssistanceCannotEarnThreeStarsOrRewindAnAwardedDelivery" methodname="AssistanceCannotEarnThreeStarsOrRewindAnAwardedDelivery" classname="Cascade.Tests.ShopTests" runstate="Runnable" seed="1887171273" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.028538" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1661" name="DurableTransactionReloadKeepsPurchasedStockAndHourglassExpense" fullname="Cascade.Tests.ShopTests.DurableTransactionReloadKeepsPurchasedStockAndHourglassExpense" methodname="DurableTransactionReloadKeepsPurchasedStockAndHourglassExpense" classname="Cascade.Tests.ShopTests" runstate="Runnable" seed="1791162609" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.051057" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1673" name="EarnedCosmeticAndEquipmentSurviveModeSwitchAndDurableReload" fullname="Cascade.Tests.ShopTests.EarnedCosmeticAndEquipmentSurviveModeSwitchAndDurableReload" methodname="EarnedCosmeticAndEquipmentSurviveModeSwitchAndDurableReload" classname="Cascade.Tests.ShopTests" runstate="Runnable" seed="52715430" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.008575" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1664" name="ExpandedTrophiesEquipWithoutChangingParcelReceiptsOrPuzzleStats" fullname="Cascade.Tests.ShopTests.ExpandedTrophiesEquipWithoutChangingParcelReceiptsOrPuzzleStats" methodname="ExpandedTrophiesEquipWithoutChangingParcelReceiptsOrPuzzleStats" classname="Cascade.Tests.ShopTests" runstate="Runnable" seed="296858833" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.001784" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1658" name="GuideRequiresCurrentProofExpiresAtCollapseAndPersistsUsage" fullname="Cascade.Tests.ShopTests.GuideRequiresCurrentProofExpiresAtCollapseAndPersistsUsage" methodname="GuideRequiresCurrentProofExpiresAtCollapseAndPersistsUsage" classname="Cascade.Tests.ShopTests" runstate="Runnable" seed="989561807" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.008696" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1662" name="LanternCommitsExactlyOneProvedMoveWithStockAndRestoresProof" fullname="Cascade.Tests.ShopTests.LanternCommitsExactlyOneProvedMoveWithStockAndRestoresProof" methodname="LanternCommitsExactlyOneProvedMoveWithStockAndRestoresProof" classname="Cascade.Tests.ShopTests" runstate="Runnable" seed="925244884" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.007985" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1663" name="NewToolsRollbackOnFailedPersistenceAndLensNeverChangesRow" fullname="Cascade.Tests.ShopTests.NewToolsRollbackOnFailedPersistenceAndLensNeverChangesRow" methodname="NewToolsRollbackOnFailedPersistenceAndLensNeverChangesRow" classname="Cascade.Tests.ShopTests" runstate="Runnable" seed="1175526320" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.008384" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1654" name="OrdinaryUndoNeverCrossesCollapseAndHourglassRestoresExactCheckpoint" fullname="Cascade.Tests.ShopTests.OrdinaryUndoNeverCrossesCollapseAndHourglassRestoresExactCheckpoint" methodname="OrdinaryUndoNeverCrossesCollapseAndHourglassRestoresExactCheckpoint" classname="Cascade.Tests.ShopTests" runstate="Runnable" seed="537122992" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000318" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1655" name="PaidSpoolIsOneExtraLocalUndoAndCannotBeReused" fullname="Cascade.Tests.ShopTests.PaidSpoolIsOneExtraLocalUndoAndCannotBeReused" methodname="PaidSpoolIsOneExtraLocalUndoAndCannotBeReused" classname="Cascade.Tests.ShopTests" runstate="Runnable" seed="173758386" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000188" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1665" name="PremiumLooksNeedOnlyVirtualCoinsAndNeverSpendStars" fullname="Cascade.Tests.ShopTests.PremiumLooksNeedOnlyVirtualCoinsAndNeverSpendStars" methodname="PremiumLooksNeedOnlyVirtualCoinsAndNeverSpendStars" classname="Cascade.Tests.ShopTests" runstate="Runnable" seed="2034929369" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000132" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1656" name="PurchaseCapsWalletAndPermanentOwnershipAreEnforced" fullname="Cascade.Tests.ShopTests.PurchaseCapsWalletAndPermanentOwnershipAreEnforced" methodname="PurchaseCapsWalletAndPermanentOwnershipAreEnforced" classname="Cascade.Tests.ShopTests" runstate="Runnable" seed="31756675" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000175" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1672" name="PurchasedTrophyStaysPermanentWhenItsMilestoneIsLaterEarned" fullname="Cascade.Tests.ShopTests.PurchasedTrophyStaysPermanentWhenItsMilestoneIsLaterEarned" methodname="PurchasedTrophyStaysPermanentWhenItsMilestoneIsLaterEarned" classname="Cascade.Tests.ShopTests" runstate="Runnable" seed="443415492" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000853" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1657" name="SaveFailureRollsBackCoinsStockHistoryAndToolFlags" fullname="Cascade.Tests.ShopTests.SaveFailureRollsBackCoinsStockHistoryAndToolFlags" methodname="SaveFailureRollsBackCoinsStockHistoryAndToolFlags" classname="Cascade.Tests.ShopTests" runstate="Runnable" seed="1039920414" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000228" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1670" name="TrophyMilestonesRequireTheirExactUniqueClearThreshold" fullname="Cascade.Tests.ShopTests.TrophyMilestonesRequireTheirExactUniqueClearThreshold" classname="Cascade.Tests.ShopTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.001086" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1666" name="TrophyMilestonesRequireTheirExactUniqueClearThreshold(&quot;wind_chime&quot;,15)" fullname="Cascade.Tests.ShopTests.TrophyMilestonesRequireTheirExactUniqueClearThreshold(&quot;wind_chime&quot;,15)" methodname="TrophyMilestonesRequireTheirExactUniqueClearThreshold" classname="Cascade.Tests.ShopTests" runstate="Runnable" seed="1698908536" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000305" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1667" name="TrophyMilestonesRequireTheirExactUniqueClearThreshold(&quot;rain_badge&quot;,30)" fullname="Cascade.Tests.ShopTests.TrophyMilestonesRequireTheirExactUniqueClearThreshold(&quot;rain_badge&quot;,30)" methodname="TrophyMilestonesRequireTheirExactUniqueClearThreshold" classname="Cascade.Tests.ShopTests" runstate="Runnable" seed="1586543548" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000097" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1668" name="TrophyMilestonesRequireTheirExactUniqueClearThreshold(&quot;copper_acorn&quot;,45)" fullname="Cascade.Tests.ShopTests.TrophyMilestonesRequireTheirExactUniqueClearThreshold(&quot;copper_acorn&quot;,45)" methodname="TrophyMilestonesRequireTheirExactUniqueClearThreshold" classname="Cascade.Tests.ShopTests" runstate="Runnable" seed="1956155277" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000134" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1669" name="TrophyMilestonesRequireTheirExactUniqueClearThreshold(&quot;beacon_brooch&quot;,60)" fullname="Cascade.Tests.ShopTests.TrophyMilestonesRequireTheirExactUniqueClearThreshold(&quot;beacon_brooch&quot;,60)" methodname="TrophyMilestonesRequireTheirExactUniqueClearThreshold" classname="Cascade.Tests.ShopTests" runstate="Runnable" seed="583972397" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000162" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1671" name="TrophyReplayCannotFarmOwnershipAndEarnedTrophyCannotBeBoughtAgain" fullname="Cascade.Tests.ShopTests.TrophyReplayCannotFarmOwnershipAndEarnedTrophyCannotBeBoughtAgain" methodname="TrophyReplayCannotFarmOwnershipAndEarnedTrophyCannotBeBoughtAgain" classname="Cascade.Tests.ShopTests" runstate="Runnable" seed="2129847869" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000197" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1653" name="TwoFreeUndosDoNotRefillAfterCommandsOrReload" fullname="Cascade.Tests.ShopTests.TwoFreeUndosDoNotRefillAfterCommandsOrReload" methodname="TwoFreeUndosDoNotRefillAfterCommandsOrReload" classname="Cascade.Tests.ShopTests" runstate="Runnable" seed="958461099" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000194" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1782" name="TrophyEconomyTests" fullname="Cascade.Tests.TrophyEconomyTests" classname="Cascade.Tests.TrophyEconomyTests" runstate="Runnable" testcasecount="16" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.068090" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1797" name="EarnedSceneryUsesItsOwnSlotAndSurvivesSaveModeChangeAndTwoDeviceClaim" fullname="Cascade.Tests.TrophyEconomyTests.EarnedSceneryUsesItsOwnSlotAndSurvivesSaveModeChangeAndTwoDeviceClaim" methodname="EarnedSceneryUsesItsOwnSlotAndSurvivesSaveModeChangeAndTwoDeviceClaim" classname="Cascade.Tests.TrophyEconomyTests" runstate="Runnable" seed="75650020" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.033840" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1795" name="ExistingRecipeZeroAndOneReceiptsRemainByteStableWhenNewOrdersMint" fullname="Cascade.Tests.TrophyEconomyTests.ExistingRecipeZeroAndOneReceiptsRemainByteStableWhenNewOrdersMint" methodname="ExistingRecipeZeroAndOneReceiptsRemainByteStableWhenNewOrdersMint" classname="Cascade.Tests.TrophyEconomyTests" runstate="Runnable" seed="1867336392" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.001569" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1793" name="LegacyCompleteGroupIncomeNeverDecreasesForScatteredClears" fullname="Cascade.Tests.TrophyEconomyTests.LegacyCompleteGroupIncomeNeverDecreasesForScatteredClears" methodname="LegacyCompleteGroupIncomeNeverDecreasesForScatteredClears" classname="Cascade.Tests.TrophyEconomyTests" runstate="Runnable" seed="1429544787" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.007426" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1792" name="MilestonesIgnoreRouteOrderUnknownsDuplicatesAndModeReplay" fullname="Cascade.Tests.TrophyEconomyTests.MilestonesIgnoreRouteOrderUnknownsDuplicatesAndModeReplay" methodname="MilestonesIgnoreRouteOrderUnknownsDuplicatesAndModeReplay" classname="Cascade.Tests.TrophyEconomyTests" runstate="Runnable" seed="120831994" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000559" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1796" name="NewCosmeticClaimFailureRollsBackAndOwnedFindConvertsOnlyOnce" fullname="Cascade.Tests.TrophyEconomyTests.NewCosmeticClaimFailureRollsBackAndOwnedFindConvertsOnlyOnce" methodname="NewCosmeticClaimFailureRollsBackAndOwnedFindConvertsOnlyOnce" classname="Cascade.Tests.TrophyEconomyTests" runstate="Runnable" seed="1510918335" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000495" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1799" name="NewLooksCannotUseLegacyAppearancePaymentGrantsButPriorGrantsStillValidate" fullname="Cascade.Tests.TrophyEconomyTests.NewLooksCannotUseLegacyAppearancePaymentGrantsButPriorGrantsStillValidate" methodname="NewLooksCannotUseLegacyAppearancePaymentGrantsButPriorGrantsStillValidate" classname="Cascade.Tests.TrophyEconomyTests" runstate="Runnable" seed="206547912" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000332" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1791" name="PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd" fullname="Cascade.Tests.TrophyEconomyTests.PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd" classname="Cascade.Tests.TrophyEconomyTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.005289" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1783" name="PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(0,0)" fullname="Cascade.Tests.TrophyEconomyTests.PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(0,0)" methodname="PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd" classname="Cascade.Tests.TrophyEconomyTests" runstate="Runnable" seed="1095828425" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000155" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1784" name="PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(9,360)" fullname="Cascade.Tests.TrophyEconomyTests.PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(9,360)" methodname="PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd" classname="Cascade.Tests.TrophyEconomyTests" runstate="Runnable" seed="1694495493" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000146" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1785" name="PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(10,500)" fullname="Cascade.Tests.TrophyEconomyTests.PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(10,500)" methodname="PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd" classname="Cascade.Tests.TrophyEconomyTests" runstate="Runnable" seed="769351934" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000148" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1786" name="PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(11,540)" fullname="Cascade.Tests.TrophyEconomyTests.PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(11,540)" methodname="PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd" classname="Cascade.Tests.TrophyEconomyTests" runstate="Runnable" seed="691034181" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000149" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1787" name="PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(39,1860)" fullname="Cascade.Tests.TrophyEconomyTests.PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(39,1860)" methodname="PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd" classname="Cascade.Tests.TrophyEconomyTests" runstate="Runnable" seed="579366850" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000257" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1788" name="PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(40,2000)" fullname="Cascade.Tests.TrophyEconomyTests.PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(40,2000)" methodname="PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd" classname="Cascade.Tests.TrophyEconomyTests" runstate="Runnable" seed="186936666" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000280" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1789" name="PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(160,8000)" fullname="Cascade.Tests.TrophyEconomyTests.PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(160,8000)" methodname="PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd" classname="Cascade.Tests.TrophyEconomyTests" runstate="Runnable" seed="1321689258" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000770" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1790" name="PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(540,27000)" fullname="Cascade.Tests.TrophyEconomyTests.PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(540,27000)" methodname="PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd" classname="Cascade.Tests.TrophyEconomyTests" runstate="Runnable" seed="1205407664" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.002834" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1794" name="RecipeTwoAddsFixedExpansionTrackWithoutChangingEarlierTracks" fullname="Cascade.Tests.TrophyEconomyTests.RecipeTwoAddsFixedExpansionTrackWithoutChangingEarlierTracks" methodname="RecipeTwoAddsFixedExpansionTrackWithoutChangingEarlierTracks" classname="Cascade.Tests.TrophyEconomyTests" runstate="Runnable" seed="677693837" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.003890" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1798" name="RejectedScenePurchaseDuplicateBecomesClaimableAsEarnedScenery" fullname="Cascade.Tests.TrophyEconomyTests.RejectedScenePurchaseDuplicateBecomesClaimableAsEarnedScenery" methodname="RejectedScenePurchaseDuplicateBecomesClaimableAsEarnedScenery" classname="Cascade.Tests.TrophyEconomyTests" runstate="Runnable" seed="1953717226" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.013875" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1805" name="WardrobeParcelTests" fullname="Cascade.Tests.WardrobeParcelTests" classname="Cascade.Tests.WardrobeParcelTests" runstate="Runnable" testcasecount="15" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.065889" total="15" passed="15" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1815" name="AlternateToolFallbackOnAnotherDeviceKeepsTheCanonicalClaim" fullname="Cascade.Tests.WardrobeParcelTests.AlternateToolFallbackOnAnotherDeviceKeepsTheCanonicalClaim" methodname="AlternateToolFallbackOnAnotherDeviceKeepsTheCanonicalClaim" classname="Cascade.Tests.WardrobeParcelTests" runstate="Runnable" seed="600261849" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.003120" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1816" name="ArchivedCosmeticPurchaseLeavesAnIncomingDuplicateChestClaimable" fullname="Cascade.Tests.WardrobeParcelTests.ArchivedCosmeticPurchaseLeavesAnIncomingDuplicateChestClaimable" methodname="ArchivedCosmeticPurchaseLeavesAnIncomingDuplicateChestClaimable" classname="Cascade.Tests.WardrobeParcelTests" runstate="Runnable" seed="313180348" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.003769" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1806" name="CatalogKeepsPublishedPricesAndNewLooksUseOnlyCoins" fullname="Cascade.Tests.WardrobeParcelTests.CatalogKeepsPublishedPricesAndNewLooksUseOnlyCoins" methodname="CatalogKeepsPublishedPricesAndNewLooksUseOnlyCoins" classname="Cascade.Tests.WardrobeParcelTests" runstate="Runnable" seed="1055543507" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000373" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1811" name="ChestAndNewLookSurviveDurableSaveModeSwitchAndReload" fullname="Cascade.Tests.WardrobeParcelTests.ChestAndNewLookSurviveDurableSaveModeSwitchAndReload" methodname="ChestAndNewLookSurviveDurableSaveModeSwitchAndReload" classname="Cascade.Tests.WardrobeParcelTests" runstate="Runnable" seed="1882536170" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.027755" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1819" name="ConflictingOfflineFragmentsKeepRemoteReceiptsAndFillOnlyMissingOrders" fullname="Cascade.Tests.WardrobeParcelTests.ConflictingOfflineFragmentsKeepRemoteReceiptsAndFillOnlyMissingOrders" methodname="ConflictingOfflineFragmentsKeepRemoteReceiptsAndFillOnlyMissingOrders" classname="Cascade.Tests.WardrobeParcelTests" runstate="Runnable" seed="1640088691" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.001928" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1820" name="DisjointOfflineClearsMintOnlyMissingCanonicalChests" fullname="Cascade.Tests.WardrobeParcelTests.DisjointOfflineClearsMintOnlyMissingCanonicalChests" methodname="DisjointOfflineClearsMintOnlyMissingCanonicalChests" classname="Cascade.Tests.WardrobeParcelTests" runstate="Runnable" seed="782014195" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.001999" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1817" name="ExistingClaimedCosmeticCannotBeConvertedByAnotherDevice" fullname="Cascade.Tests.WardrobeParcelTests.ExistingClaimedCosmeticCannotBeConvertedByAnotherDevice" methodname="ExistingClaimedCosmeticCannotBeConvertedByAnotherDevice" classname="Cascade.Tests.WardrobeParcelTests" runstate="Runnable" seed="197884902" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.005082" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1810" name="FullToolStackAndOwnedCosmeticConvertOnceToTwentyCoins" fullname="Cascade.Tests.WardrobeParcelTests.FullToolStackAndOwnedCosmeticConvertOnceToTwentyCoins" methodname="FullToolStackAndOwnedCosmeticConvertOnceToTwentyCoins" classname="Cascade.Tests.WardrobeParcelTests" runstate="Runnable" seed="1237247379" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000727" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1808" name="OldMintedCoinsCosmeticsAndClaimsKeepTheirOriginalRecipe" fullname="Cascade.Tests.WardrobeParcelTests.OldMintedCoinsCosmeticsAndClaimsKeepTheirOriginalRecipe" methodname="OldMintedCoinsCosmeticsAndClaimsKeepTheirOriginalRecipe" classname="Cascade.Tests.WardrobeParcelTests" runstate="Runnable" seed="1010850684" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.002099" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1813" name="RejectedToolDeltaLeavesItsChestClaimableAndKeepsRemoteStock" fullname="Cascade.Tests.WardrobeParcelTests.RejectedToolDeltaLeavesItsChestClaimableAndKeepsRemoteStock" methodname="RejectedToolDeltaLeavesItsChestClaimableAndKeepsRemoteStock" classname="Cascade.Tests.WardrobeParcelTests" runstate="Runnable" seed="1506418463" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.002374" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1809" name="ToolChestClaimAndGrantAreAtomicRetryableAndExactlyOnce" fullname="Cascade.Tests.WardrobeParcelTests.ToolChestClaimAndGrantAreAtomicRetryableAndExactlyOnce" methodname="ToolChestClaimAndGrantAreAtomicRetryableAndExactlyOnce" classname="Cascade.Tests.WardrobeParcelTests" runstate="Runnable" seed="1954829831" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.000414" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1814" name="ToolGrantsNeedPublishedEarnedReceiptAndCannotFinanceUnknownNodes" fullname="Cascade.Tests.WardrobeParcelTests.ToolGrantsNeedPublishedEarnedReceiptAndCannotFinanceUnknownNodes" methodname="ToolGrantsNeedPublishedEarnedReceiptAndCannotFinanceUnknownNodes" classname="Cascade.Tests.WardrobeParcelTests" runstate="Runnable" seed="1645532025" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.003106" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1812" name="TwoDevicesClaimingOneChestMergeOneToolAndOneReceipt" fullname="Cascade.Tests.WardrobeParcelTests.TwoDevicesClaimingOneChestMergeOneToolAndOneReceipt" methodname="TwoDevicesClaimingOneChestMergeOneToolAndOneReceipt" classname="Cascade.Tests.WardrobeParcelTests" runstate="Runnable" seed="1743881536" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.003999" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1818" name="UnownedDuplicateCompensationCannotFinanceANegativeWallet" fullname="Cascade.Tests.WardrobeParcelTests.UnownedDuplicateCompensationCannotFinanceANegativeWallet" methodname="UnownedDuplicateCompensationCannotFinanceANegativeWallet" classname="Cascade.Tests.WardrobeParcelTests" runstate="Runnable" seed="988724481" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.003904" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1807" name="VersionOneHasRareFixedLooksAndReplayCannotRerollReceipts" fullname="Cascade.Tests.WardrobeParcelTests.VersionOneHasRareFixedLooksAndReplayCannotRerollReceipts" methodname="VersionOneHasRareFixedLooksAndReplayCannotRerollReceipts" classname="Cascade.Tests.WardrobeParcelTests" runstate="Runnable" seed="688774873" result="Passed" start-time="2026-10-08 00:58:44Z" end-time="2026-10-08 00:58:44Z" duration="0.003812" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

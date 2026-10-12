@@ -1,0 +1,308 @@
+[
+  {
+    "file": "01-home.png",
+    "title": "01. Главное меню",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "02-settings.png",
+    "title": "02. Настройки",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "03-settings-0.png",
+    "title": "03. Звук и движение",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "04-settings-1.png",
+    "title": "04. Удобство и помощь",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "05-settings-2.png",
+    "title": "05. Языки",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "06-settings-3.png",
+    "title": "06. Напоминания",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "07-settings-4.png",
+    "title": "07. Облачное сохранение",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "08-map.png",
+    "title": "08. Карта и переходы между мирами",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "09-map-night.png",
+    "title": "09. Ночной мир",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "10-island.png",
+    "title": "10. Уровни открытого острова",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "11a-shop-shelf.png",
+    "title": "Полки инструментов",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "11-shop-tools.png",
+    "title": "11. Магазин — помощь",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "12a-trophy-shelf.png",
+    "title": "Полки костюмов",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "12-shop-mika.png",
+    "title": "12. Магазин — костюмы Мики",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "13-shop-background.png",
+    "title": "13. Магазин — анимации фона",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "14-shop-frames.png",
+    "title": "14. Магазин — рамки",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "15-coins.png",
+    "title": "15. Пакеты монет",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "16-no-ads.png",
+    "title": "16. Отключение рекламы",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "17-bag.png",
+    "title": "17. Мои вещи",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "18-trophies.png",
+    "title": "18. Коллекция трофеев",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "19-supplies.png",
+    "title": "19. Сумка с инструментами",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "20-game.png",
+    "title": "20. Игра — фигуры",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "21-game-words.png",
+    "title": "21. Игра — слова",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "22-game-mixed.png",
+    "title": "22. Игра — микс",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "23-pause.png",
+    "title": "23. Пауза",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "24-checkpoint.png",
+    "title": "24. Завершённый этап",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "25-victory.png",
+    "title": "25. Победа и статистика",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "26-failure.png",
+    "title": "26. Проигрыш",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "27-parcel.png",
+    "title": "27. Посылка",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "28-parcel-open.png",
+    "title": "28. Полученная награда",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "29-comic.png",
+    "title": "29. Сюжетный комикс",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "30-dialogue.png",
+    "title": "30. Диалог на карте",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "31-guide.png",
+    "title": "31. Как играть",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "32-effect-guide.png",
+    "title": "32. Объяснение эффекта",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "33-tutorial.png",
+    "title": "33. Анимированное обучение",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "34-journal.png",
+    "title": "34. Журнал",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "35-workshop.png",
+    "title": "35. Мастерская",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "36-requests.png",
+    "title": "36. Просьбы жителей",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "37-records.png",
+    "title": "37. Рекорды",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "38-contracts.png",
+    "title": "38. Задания",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "39-story-ending.png",
+    "title": "39. Итог путешествия",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "40-word-language.png",
+    "title": "40. Выбор языка слов",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "41-target.png",
+    "title": "41. Просмотр цели",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "42-test-ad.png",
+    "title": "42. Тестовая реклама с наградой",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "43-save-recovery.png",
+    "title": "43. Восстановление сохранения",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "44-small-shop.png",
+    "title": "44. Магазин — узкий экран",
+    "width": 320,
+    "height": 693
+  },
+  {
+    "file": "45-large-text.png",
+    "title": "45. Меню — крупный текст",
+    "width": 320,
+    "height": 693
+  },
+  {
+    "file": "46-settings-large.png",
+    "title": "Настройки — крупный текст, UK",
+    "width": 320,
+    "height": 693
+  },
+  {
+    "file": "47-records-large.png",
+    "title": "Рекорды — крупный текст, UK",
+    "width": 320,
+    "height": 693
+  },
+  {
+    "file": "48-dialogue-large.png",
+    "title": "Диалог — крупный текст, UK",
+    "width": 320,
+    "height": 693
+  },
+  {
+    "file": "49-comic-large.png",
+    "title": "Комикс — крупный текст, UK",
+    "width": 320,
+    "height": 693
+  }
+]

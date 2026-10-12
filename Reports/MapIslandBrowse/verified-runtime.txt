@@ -1,0 +1,17 @@
+Focused native Editor checks
+RUN EveryWorldComicHasThreeRealPanelsAndPreservesThePinnedMiddleStage
+PASS EveryWorldComicHasThreeRealPanelsAndPreservesThePinnedMiddleStage
+CAPTURE map-first-ru.png
+CAPTURE island-first-ru.png
+CAPTURE map-second-ru.png
+SCENE comic-first-ru.png texture=1536x1024 sprite=(x:0.00, y:682.67, width:512.00, height:341.33) canvas=1
+CAPTURE comic-first-ru.png
+SCENE comic-speaker-ru.png texture=1536x1024 sprite=(x:0.00, y:682.67, width:512.00, height:341.33) canvas=1
+CAPTURE comic-speaker-ru.png
+CAPTURE map-middle-ru-small.png
+CAPTURE map-night-uk-small.png
+CAPTURE island-night-uk-small.png
+SCENE comic-night-uk-small.png texture=1536x1024 sprite=(x:0.00, y:0.00, width:512.00, height:341.33) canvas=0.82109
+CAPTURE comic-night-uk-small.png
+VISUAL CAPTURES 9
+COMPLETE

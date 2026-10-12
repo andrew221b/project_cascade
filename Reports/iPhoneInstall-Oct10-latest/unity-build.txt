@@ -1,0 +1,5 @@
+Result Succeeded
+Errors 0
+Warnings 360
+Duration 00:00:33.1835010
+Output /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/iPhone-Oct10-063648

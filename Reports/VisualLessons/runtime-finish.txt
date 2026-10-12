@@ -1,0 +1,2 @@
+PASS settled native score and metrics with contrasting values
+Native Editor fixture only. No phone build/device comprehension/full-suite/FPS claim.

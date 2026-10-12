@@ -1,0 +1,1 @@
+PASS: actual six-card Shop/Bag grid, inline selection and purchase, exact prices, insufficient wallet feedback with no spending, EN/RU/UK compact layout/overflow, sixth-tool purchase, isolated repair film and actual kit application, direct trophy shopping. No device build/install or live purchase/advertisement test.

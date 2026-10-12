@@ -1,0 +1,22 @@
+{
+  "campaign_stages": 1620,
+  "lower_hp_unsolvable": 2581,
+  "lower_hp_delivery_loses_lesson": 367,
+  "unknown": 0,
+  "lessons": {
+    "Swap": 69,
+    "Repair": 228,
+    "Bomb": 186,
+    "Key": 93,
+    "Stamp": 60,
+    "Ribbon": 21,
+    "BombHourglass": 18,
+    "Bridge": 150,
+    "LinkedPairs": 156,
+    "Fragile": 132,
+    "Mirror": 138,
+    "Rollers": 228,
+    "LiveGust": 9,
+    "ClosedPath": 132
+  }
+}

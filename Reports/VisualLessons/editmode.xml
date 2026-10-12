@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="19" result="Passed" total="19" passed="19" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-07 10:19:15Z" end-time="2026-10-07 10:19:17Z" duration="1.1532517">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="665" result="Passed" start-time="2026-10-07 10:19:15Z" end-time="2026-10-07 10:19:17Z" duration="1.153252" total="19" passed="19" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1729" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="664" result="Passed" start-time="2026-10-07 10:19:16Z" end-time="2026-10-07 10:19:17Z" duration="0.805973" total="19" passed="19" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="79826" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1730" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="664" result="Passed" start-time="2026-10-07 10:19:16Z" end-time="2026-10-07 10:19:17Z" duration="0.805642" total="19" passed="19" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1731" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="664" result="Passed" start-time="2026-10-07 10:19:16Z" end-time="2026-10-07 10:19:17Z" duration="0.805468" total="19" passed="19" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1477" name="MechanicLessonTests" fullname="Cascade.Tests.MechanicLessonTests" classname="Cascade.Tests.MechanicLessonTests" runstate="Runnable" testcasecount="19" result="Passed" start-time="2026-10-07 10:19:16Z" end-time="2026-10-07 10:19:17Z" duration="0.805005" total="19" passed="19" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1490" name="AcceptedSwapDropAndFarSwapHaveDistinctPracticeCompletions" fullname="Cascade.Tests.MechanicLessonTests.AcceptedSwapDropAndFarSwapHaveDistinctPracticeCompletions" methodname="AcceptedSwapDropAndFarSwapHaveDistinctPracticeCompletions" classname="Cascade.Tests.MechanicLessonTests" runstate="Runnable" seed="1529135237" result="Passed" start-time="2026-10-07 10:19:16Z" end-time="2026-10-07 10:19:16Z" duration="0.006474" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1488" name="ActualGustIsTaughtUntilItMovesTheRowAndDamagesTheWood" fullname="Cascade.Tests.MechanicLessonTests.ActualGustIsTaughtUntilItMovesTheRowAndDamagesTheWood" methodname="ActualGustIsTaughtUntilItMovesTheRowAndDamagesTheWood" classname="Cascade.Tests.MechanicLessonTests" runstate="Runnable" seed="1500052365" result="Passed" start-time="2026-10-07 10:19:16Z" end-time="2026-10-07 10:19:16Z" duration="0.352872" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1486" name="ContactsResolvedOnArrivalDoNotAskThePlayerToRepeatThem" fullname="Cascade.Tests.MechanicLessonTests.ContactsResolvedOnArrivalDoNotAskThePlayerToRepeatThem" methodname="ContactsResolvedOnArrivalDoNotAskThePlayerToRepeatThem" classname="Cascade.Tests.MechanicLessonTests" runstate="Runnable" seed="1486570864" result="Passed" start-time="2026-10-07 10:19:16Z" end-time="2026-10-07 10:19:16Z" duration="0.000598" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1492" name="DescendingCannotPretendThatAControlOrPurchasedToolWasUsed" fullname="Cascade.Tests.MechanicLessonTests.DescendingCannotPretendThatAControlOrPurchasedToolWasUsed" methodname="DescendingCannotPretendThatAControlOrPurchasedToolWasUsed" classname="Cascade.Tests.MechanicLessonTests" runstate="Runnable" seed="432549374" result="Passed" start-time="2026-10-07 10:19:16Z" end-time="2026-10-07 10:19:16Z" duration="0.000255" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1495" name="EntryLessonsObserveTheNextBoardPermutation" fullname="Cascade.Tests.MechanicLessonTests.EntryLessonsObserveTheNextBoardPermutation" classname="Cascade.Tests.MechanicLessonTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-07 10:19:16Z" end-time="2026-10-07 10:19:16Z" duration="0.001028" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1493" name="EntryLessonsObserveTheNextBoardPermutation(ShiftLeftOne)" fullname="Cascade.Tests.MechanicLessonTests.EntryLessonsObserveTheNextBoardPermutation(ShiftLeftOne)" methodname="EntryLessonsObserveTheNextBoardPermutation" classname="Cascade.Tests.MechanicLessonTests" runstate="Runnable" seed="1135827505" result="Passed" start-time="2026-10-07 10:19:16Z" end-time="2026-10-07 10:19:16Z" duration="0.000253" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1494" name="EntryLessonsObserveTheNextBoardPermutation(ShiftRightOne)" fullname="Cascade.Tests.MechanicLessonTests.EntryLessonsObserveTheNextBoardPermutation(ShiftRightOne)" methodname="EntryLessonsObserveTheNextBoardPermutation" classname="Cascade.Tests.MechanicLessonTests" runstate="Runnable" seed="1757292784" result="Passed" start-time="2026-10-07 10:19:16Z" end-time="2026-10-07 10:19:16Z" duration="0.000040" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1497" name="FrostAndBlockedPathsNeedTheirRealConsequences" fullname="Cascade.Tests.MechanicLessonTests.FrostAndBlockedPathsNeedTheirRealConsequences" methodname="FrostAndBlockedPathsNeedTheirRealConsequences" classname="Cascade.Tests.MechanicLessonTests" runstate="Runnable" seed="242265589" result="Passed" start-time="2026-10-07 10:19:16Z" end-time="2026-10-07 10:19:16Z" duration="0.000273" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1481" name="FutureMirrorReallyReversesOnTheNextPlatform" fullname="Cascade.Tests.MechanicLessonTests.FutureMirrorReallyReversesOnTheNextPlatform" methodname="FutureMirrorReallyReversesOnTheNextPlatform" classname="Cascade.Tests.MechanicLessonTests" runstate="Runnable" seed="637614493" result="Passed" start-time="2026-10-07 10:19:16Z" end-time="2026-10-07 10:19:16Z" duration="0.001406" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1480" name="InitialMirrorHasAlreadyRunAndNeverPromisesAReceiverEffect" fullname="Cascade.Tests.MechanicLessonTests.InitialMirrorHasAlreadyRunAndNeverPromisesAReceiverEffect" methodname="InitialMirrorHasAlreadyRunAndNeverPromisesAReceiverEffect" classname="Cascade.Tests.MechanicLessonTests" runstate="Runnable" seed="2081693304" result="Passed" start-time="2026-10-07 10:19:16Z" end-time="2026-10-07 10:19:16Z" duration="0.000231" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1483" name="InvalidOrRepeatedAcknowledgementsAreRejected" fullname="Cascade.Tests.MechanicLessonTests.InvalidOrRepeatedAcknowledgementsAreRejected" methodname="InvalidOrRepeatedAcknowledgementsAreRejected" classname="Cascade.Tests.MechanicLessonTests" runstate="Runnable" seed="1662656974" result="Passed" start-time="2026-10-07 10:19:16Z" end-time="2026-10-07 10:19:16Z" duration="0.002345" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1489" name="LandingContactsCompleteOnArrivalWithoutACommandOnTheNewBoard" fullname="Cascade.Tests.MechanicLessonTests.LandingContactsCompleteOnArrivalWithoutACommandOnTheNewBoard" methodname="LandingContactsCompleteOnArrivalWithoutACommandOnTheNewBoard" classname="Cascade.Tests.MechanicLessonTests" runstate="Runnable" seed="451749215" result="Passed" start-time="2026-10-07 10:19:16Z" end-time="2026-10-07 10:19:16Z" duration="0.002795" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1491" name="LeavingTheTeachingBoardRetiresItsCueWithoutInventingAnEntryEffect" fullname="Cascade.Tests.MechanicLessonTests.LeavingTheTeachingBoardRetiresItsCueWithoutInventingAnEntryEffect" methodname="LeavingTheTeachingBoardRetiresItsCueWithoutInventingAnEntryEffect" classname="Cascade.Tests.MechanicLessonTests" runstate="Runnable" seed="235396715" result="Passed" start-time="2026-10-07 10:19:16Z" end-time="2026-10-07 10:19:16Z" duration="0.000201" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1482" name="LegacyProfileStartsUnseenAndAcknowledgementSurvivesSerialization" fullname="Cascade.Tests.MechanicLessonTests.LegacyProfileStartsUnseenAndAcknowledgementSurvivesSerialization" methodname="LegacyProfileStartsUnseenAndAcknowledgementSurvivesSerialization" classname="Cascade.Tests.MechanicLessonTests" runstate="Runnable" seed="1091046713" result="Passed" start-time="2026-10-07 10:19:16Z" end-time="2026-10-07 10:19:17Z" duration="0.013146" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1484" name="NewLessonIdsAppendWithoutRenumberingExistingSaveValues" fullname="Cascade.Tests.MechanicLessonTests.NewLessonIdsAppendWithoutRenumberingExistingSaveValues" methodname="NewLessonIdsAppendWithoutRenumberingExistingSaveValues" classname="Cascade.Tests.MechanicLessonTests" runstate="Runnable" seed="1641230087" result="Passed" start-time="2026-10-07 10:19:17Z" end-time="2026-10-07 10:19:17Z" duration="0.000541" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1496" name="SurfaceExamplesFollowBridgeLinkedAndFragileConsequences" fullname="Cascade.Tests.MechanicLessonTests.SurfaceExamplesFollowBridgeLinkedAndFragileConsequences" methodname="SurfaceExamplesFollowBridgeLinkedAndFragileConsequences" classname="Cascade.Tests.MechanicLessonTests" runstate="Runnable" seed="1660713656" result="Passed" start-time="2026-10-07 10:19:17Z" end-time="2026-10-07 10:19:17Z" duration="0.000432" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1487" name="UnusedContactsAreCompletedOnlyByTheirActualAcceptedEvents" fullname="Cascade.Tests.MechanicLessonTests.UnusedContactsAreCompletedOnlyByTheirActualAcceptedEvents" methodname="UnusedContactsAreCompletedOnlyByTheirActualAcceptedEvents" classname="Cascade.Tests.MechanicLessonTests" runstate="Runnable" seed="1570833067" result="Passed" start-time="2026-10-07 10:19:17Z" end-time="2026-10-07 10:19:17Z" duration="0.000263" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1478" name="VisibleCombinationFindsEachEffectOnceWithoutChangingTheLevel" fullname="Cascade.Tests.MechanicLessonTests.VisibleCombinationFindsEachEffectOnceWithoutChangingTheLevel" methodname="VisibleCombinationFindsEachEffectOnceWithoutChangingTheLevel" classname="Cascade.Tests.MechanicLessonTests" runstate="Runnable" seed="1505915000" result="Passed" start-time="2026-10-07 10:19:17Z" end-time="2026-10-07 10:19:17Z" duration="0.001508" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1485" name="VisibleLessonsWaitForTheirBoardAndNeverPromiseAnAlreadyAppliedEntry" fullname="Cascade.Tests.MechanicLessonTests.VisibleLessonsWaitForTheirBoardAndNeverPromiseAnAlreadyAppliedEntry" methodname="VisibleLessonsWaitForTheirBoardAndNeverPromiseAnAlreadyAppliedEntry" classname="Cascade.Tests.MechanicLessonTests" runstate="Runnable" seed="1693752519" result="Passed" start-time="2026-10-07 10:19:17Z" end-time="2026-10-07 10:19:17Z" duration="0.000204" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1479" name="WindOnLandingIsDifferentFromRollersAndPassingFloorsRetiresTheirLessons" fullname="Cascade.Tests.MechanicLessonTests.WindOnLandingIsDifferentFromRollersAndPassingFloorsRetiresTheirLessons" methodname="WindOnLandingIsDifferentFromRollersAndPassingFloorsRetiresTheirLessons" classname="Cascade.Tests.MechanicLessonTests" runstate="Runnable" seed="1562679363" result="Passed" start-time="2026-10-07 10:19:17Z" end-time="2026-10-07 10:19:17Z" duration="0.000160" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

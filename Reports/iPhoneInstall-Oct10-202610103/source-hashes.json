@@ -1,0 +1,11 @@
+{
+  "CascadeUnity/Assets/_Cascade/Presentation/CascadeGame.cs": "a7798572916c6026f1af36c4ef5049179ab746c480a25ad775bd64aac026945c",
+  "CascadeUnity/Assets/_Cascade/Presentation/CascadeGame.Woodland.cs": "e811f65fe90c5e236d6a7f9a03e33cfea4cecddb3e2da0bb6655f5735c1640f8",
+  "CascadeUnity/Assets/_Cascade/Presentation/ToyMachineView.Woodland.cs": "d548a5f55360ac0d642535aaddb324220b657c57f286060cda26878b7e549f85",
+  "CascadeUnity/Assets/_Cascade/Presentation/ReceiverAttraction.cs": "813f905f1c0a64397ab2c42fb3d14aeec38e94f463266b04c053733f6d35d9e2",
+  "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/ReceiverMagic.shader": "344fb543cfd92acb924fcb3e060237c9ef3b89a0fa2141f00b2e6d5e6dd745da",
+  "CascadeUnity/Assets/_Cascade/Presentation/CascadeGame.ScreenCosmetics.cs": "997775f0d3467bed6d96ef577b4c88572528e0bcc47aaeee41f9acb52671d4ae",
+  "CascadeUnity/Assets/_Cascade/Presentation/CascadeGame.Shop.cs": "bd1f07f125fba68a853b12b74432fed7e45fec733854aa4d7281ab18f959363c",
+  "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Devices/CircularSawDisc.png": "55bb5ea9254914613fe3d4aaabf1f17c565a01e901e8c871c937a05c77a62aee",
+  "CascadeUnity/Assets/_Cascade/Editor/Playable/DevicePlayerBuild.cs": "b11e151708be687ffb8979b24d3df52936669a96b47243073ffff53508887adf"
+}

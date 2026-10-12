@@ -1,0 +1,199 @@
+{
+  "pose": "basics-ru",
+  "before": {
+    "Screen": "Devices",
+    "Attempt": "5f8573a8-4436-46a7-84b6-a83145cdffb6",
+    "Hash": "e015ec5538a2013c0c2ec340cc5453ca671b447aade0955e5d2c7d3f96129bdd",
+    "Status": "Playing",
+    "Route": 0,
+    "Stage": -1,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "after": {
+    "Screen": "Devices",
+    "Attempt": "5f8573a8-4436-46a7-84b6-a83145cdffb6",
+    "Hash": "e015ec5538a2013c0c2ec340cc5453ca671b447aade0955e5d2c7d3f96129bdd",
+    "Status": "Playing",
+    "Route": 0,
+    "Stage": -1,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 390,
+    "height": 844,
+    "locale": "ru",
+    "largeText": false,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Tools&effects",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Tools&effects",
+        "interactable": true,
+        "bounds": {
+          "x": 37.0968056,
+          "y": 113.760017,
+          "width": 315.806427,
+          "height": 52.0000076
+        }
+      },
+      {
+        "name": "Back",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Back",
+        "interactable": true,
+        "bounds": {
+          "x": 37.0968056,
+          "y": 49.7600174,
+          "width": 315.806427,
+          "height": 52.0000076
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Menu title",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Menu title",
+        "text": "Как играть",
+        "button": null,
+        "bounds": {
+          "x": 70.9332,
+          "y": 716.6151,
+          "width": 248.133575,
+          "height": 47.5357666
+        },
+        "fontPixels": 28.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Menu description",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Menu description",
+        "text": "Расставь фигурки и доставь ряд.",
+        "button": null,
+        "bounds": {
+          "x": 70.9332,
+          "y": 646.443237,
+          "width": 248.133575,
+          "height": 67.15375
+        },
+        "fontPixels": 18.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Demo result",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/From piece to hanging tool/Demo result",
+        "text": "Починено",
+        "button": null,
+        "bounds": {
+          "x": 198.00766,
+          "y": 522.699341,
+          "width": 144.368591,
+          "height": 31.69049
+        },
+        "fontPixels": 16.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Guide gesture",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Guide gesture",
+        "text": "Меняй соседние элементы. Число на доске — сколько обменов осталось. На нуле ряд падает.",
+        "button": null,
+        "bounds": {
+          "x": 52.1351929,
+          "y": 399.71,
+          "width": 285.729553,
+          "height": 69.41733
+        },
+        "fontPixels": 17.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Guide tag",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Guide tag",
+        "text": "Картинка на предмете показывает, что ему нужно. Поставь эту фигуру или букву над ним.",
+        "button": null,
+        "bounds": {
+          "x": 52.1351929,
+          "y": 325.010925,
+          "width": 285.729553,
+          "height": 69.4173
+        },
+        "fontPixels": 16.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Guide stages",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Guide stages",
+        "text": "Собери ряд по образцу и спускайся. Пройди 3 этапа, чтобы открыть следующий уровень.",
+        "button": null,
+        "bounds": {
+          "x": 52.1351929,
+          "y": 254.8391,
+          "width": 285.729553,
+          "height": 70.17183
+        },
+        "fontPixels": 16.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Guide stars",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Guide stars",
+        "text": "Меньше ходов — больше звёзд. Играй снова и улучшай рекорд. За 3 новых огонька — трофей.",
+        "button": null,
+        "bounds": {
+          "x": 52.1351929,
+          "y": 188.43988,
+          "width": 285.729553,
+          "height": 66.3991852
+        },
+        "fontPixels": 16.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Tools&effects/Label",
+        "text": "Предметы и эффекты",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Tools&effects",
+        "bounds": {
+          "x": 37.0968056,
+          "y": 113.760017,
+          "width": 315.806427,
+          "height": 52.0000076
+        },
+        "fontPixels": 22.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Back/Label",
+        "text": "Назад",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Back",
+        "bounds": {
+          "x": 37.0968056,
+          "y": 49.7600174,
+          "width": 315.806427,
+          "height": 52.0000076
+        },
+        "fontPixels": 22.0,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

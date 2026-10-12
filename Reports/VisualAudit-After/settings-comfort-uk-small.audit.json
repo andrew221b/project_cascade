@@ -1,0 +1,332 @@
+{
+  "pose": "settings-comfort-uk-small",
+  "before": {
+    "Screen": "Settings",
+    "Attempt": "8d724f0e-bc59-47a2-92bf-c5f4ab4f0f1c",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "after": {
+    "Screen": "Settings",
+    "Attempt": "8d724f0e-bc59-47a2-92bf-c5f4ab4f0f1c",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 320,
+    "height": 693,
+    "locale": "uk",
+    "largeText": true,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Soundeffects",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Soundeffects",
+        "interactable": true,
+        "bounds": {
+          "x": 30.4383945,
+          "y": 478.788116,
+          "width": 83.2896042,
+          "height": 52.00003
+        }
+      },
+      {
+        "name": "Comfort",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Comfort",
+        "interactable": true,
+        "bounds": {
+          "x": 118.355186,
+          "y": 478.788116,
+          "width": 83.28959,
+          "height": 52.00003
+        }
+      },
+      {
+        "name": "Languages",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Languages",
+        "interactable": true,
+        "bounds": {
+          "x": 206.271973,
+          "y": 478.788116,
+          "width": 83.28958,
+          "height": 52.00003
+        }
+      },
+      {
+        "name": "Highcontrast:Off",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Highcontrast:Off",
+        "interactable": true,
+        "bounds": {
+          "x": 30.4383945,
+          "y": 415.594849,
+          "width": 259.12323,
+          "height": 51.99997
+        }
+      },
+      {
+        "name": "Largertext:On",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Largertext:On",
+        "interactable": true,
+        "bounds": {
+          "x": 30.4383945,
+          "y": 355.594849,
+          "width": 259.12323,
+          "height": 51.99997
+        }
+      },
+      {
+        "name": "Preciseinput:Off",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Preciseinput:Off",
+        "interactable": true,
+        "bounds": {
+          "x": 30.4383945,
+          "y": 295.594849,
+          "width": 259.12323,
+          "height": 52.0
+        }
+      },
+      {
+        "name": "Tutorialhelp:On",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Tutorialhelp:On",
+        "interactable": true,
+        "bounds": {
+          "x": 30.4383945,
+          "y": 235.594833,
+          "width": 259.12323,
+          "height": 52.0000153
+        }
+      },
+      {
+        "name": "Dead-endwarning:On",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Dead-endwarning:On",
+        "interactable": true,
+        "bounds": {
+          "x": 30.4383945,
+          "y": 175.594833,
+          "width": 259.12323,
+          "height": 52.0000153
+        }
+      },
+      {
+        "name": "Advertisingprivacy",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Advertisingprivacy",
+        "interactable": true,
+        "bounds": {
+          "x": 30.4383945,
+          "y": 115.594833,
+          "width": 259.12323,
+          "height": 52.0
+        }
+      },
+      {
+        "name": "Back",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Back",
+        "interactable": true,
+        "bounds": {
+          "x": 30.4383945,
+          "y": 43.720047,
+          "width": 259.12323,
+          "height": 51.9999771
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Menu title",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Menu title",
+        "text": "Налаштування",
+        "button": null,
+        "bounds": {
+          "x": 58.2016068,
+          "y": 588.405457,
+          "width": 203.596771,
+          "height": 39.03125
+        },
+        "fontPixels": 22.99052,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Menu description",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Menu description",
+        "text": "Зручність і допомога",
+        "button": null,
+        "bounds": {
+          "x": 58.2016068,
+          "y": 530.788147,
+          "width": 203.596771,
+          "height": 55.13922
+        },
+        "fontPixels": 14.7796211,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Soundeffects/Label",
+        "text": "Звук",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Soundeffects",
+        "bounds": {
+          "x": 30.4383945,
+          "y": 478.788116,
+          "width": 83.2896042,
+          "height": 52.00003
+        },
+        "fontPixels": 18.06398,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Comfort/Label",
+        "text": "Зручно",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Comfort",
+        "bounds": {
+          "x": 118.355186,
+          "y": 478.788116,
+          "width": 83.28959,
+          "height": 52.00003
+        },
+        "fontPixels": 18.06398,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Languages/Label",
+        "text": "Мова",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Languages",
+        "bounds": {
+          "x": 206.271973,
+          "y": 478.788116,
+          "width": 83.28958,
+          "height": 52.00003
+        },
+        "fontPixels": 18.06398,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Highcontrast:Off/Label",
+        "text": "Чіткіший текст",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Highcontrast:Off",
+        "bounds": {
+          "x": 47.28141,
+          "y": 415.594849,
+          "width": 177.49939,
+          "height": 51.99997
+        },
+        "fontPixels": 19.87038,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Largertext:On/Label",
+        "text": "Великий текст",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Largertext:On",
+        "bounds": {
+          "x": 47.28141,
+          "y": 355.594849,
+          "width": 177.49939,
+          "height": 51.99997
+        },
+        "fontPixels": 19.87038,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Preciseinput:Off/Label",
+        "text": "Точний вибір",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Preciseinput:Off",
+        "bounds": {
+          "x": 47.28141,
+          "y": 295.594849,
+          "width": 177.49939,
+          "height": 52.0
+        },
+        "fontPixels": 19.87038,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Tutorialhelp:On/Label",
+        "text": "Допомога в грі",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Tutorialhelp:On",
+        "bounds": {
+          "x": 47.28141,
+          "y": 235.594849,
+          "width": 177.49939,
+          "height": 52.0
+        },
+        "fontPixels": 19.87038,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Dead-endwarning:On/Label",
+        "text": "Показувати глухий кут",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Dead-endwarning:On",
+        "bounds": {
+          "x": 47.28141,
+          "y": 175.594833,
+          "width": 177.49939,
+          "height": 52.0000153
+        },
+        "fontPixels": 15.76493,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Advertisingprivacy/Label",
+        "text": "Налаштування реклами",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Advertisingprivacy",
+        "bounds": {
+          "x": 30.4383945,
+          "y": 115.594833,
+          "width": 259.12323,
+          "height": 52.0
+        },
+        "fontPixels": 19.87038,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Back/Label",
+        "text": "Назад",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Back",
+        "bounds": {
+          "x": 30.4383945,
+          "y": 43.720005,
+          "width": 259.12323,
+          "height": 52.00002
+        },
+        "fontPixels": 19.87038,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

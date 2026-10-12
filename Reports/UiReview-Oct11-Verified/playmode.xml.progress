@@ -1,0 +1,17 @@
+2026-10-11T08:49:02.7779180Z CascadeUnity
+2026-10-11T08:49:02.7918470Z /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll
+2026-10-11T08:49:02.7956170Z Cascade
+2026-10-11T08:49:02.7965950Z Cascade.Tests
+2026-10-11T08:49:02.7978690Z Cascade.Tests.GuidedLessonFlowTests
+2026-10-11T08:49:02.8024640Z Cascade.Tests.GuidedLessonFlowTests.BagExpandsInlineAndAppliesItsSelectedIconExactlyOnce
+2026-10-11T08:49:05.3414810Z Cascade.Tests.PlayableTests
+2026-10-11T08:49:05.3442330Z Cascade.Tests.PlayableTests.FailureOffersFreeRetryWithoutAnUndoButton
+2026-10-11T08:49:49.6236350Z Cascade.Tests.PlayableTests.MouseTapTapCommitsOnceAndUndoRestores
+2026-10-11T08:49:53.6067960Z Cascade.Tests.PlayableTests.ProvenDeadEndDoesNotConsumeOrRevealAHint
+2026-10-11T08:49:54.8868650Z Cascade.Tests.PlayableTests.ReloadAfterLandingPreservesEntryTransformAndCannotUndoBrokenFloor
+2026-10-11T08:50:09.6201070Z Cascade.Tests.PlayableTests.RibbonDragPersistsAndUndoRestoresCharge
+2026-10-11T08:50:11.9636000Z Cascade.Tests.ScreenCosmeticFlowTests
+2026-10-11T08:50:11.9651600Z Cascade.Tests.ScreenCosmeticFlowTests.EquippedLeavesAreOpaqueAndDriftWithWind
+2026-10-11T08:50:37.8542500Z Cascade.Tests.ScreenCosmeticFlowTests.EveryScreenStyleHasItsOwnPreviewAndUnifiedCatalogue
+2026-10-11T08:50:39.3379090Z Cascade.Tests.ScreenCosmeticFlowTests.IndependentStylesCanEquipRemoveAndSurviveMenuRoundTrip
+2026-10-11T08:50:42.3693200Z Cascade.Tests.ScreenCosmeticFlowTests.InventoryAndShopHaveClearActionsAndLargerCards

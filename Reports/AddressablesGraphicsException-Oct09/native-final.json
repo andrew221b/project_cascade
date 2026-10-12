@@ -1,0 +1,19 @@
+{
+  "editor_state": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"success\": true,\n  \"message\": \"Retrieved editor state.\",\n  \"data\": {\n    \"IsPlaying\": false,\n    \"IsPaused\": false,\n    \"IsCompiling\": false,\n    \"IsUpdating\": false,\n    \"ApplicationPath\": \"/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app\",\n    \"ApplicationContentsPath\": \"/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents\",\n    \"TimeSinceStartup\": 151552.01982920803\n  }\n}"
+      }
+    ]
+  },
+  "console": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"success\": true,\n  \"message\": \"Retrieved 0 log entries.\",\n  \"data\": []\n}"
+      }
+    ]
+  }
+}
+

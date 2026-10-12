@@ -1,0 +1,20 @@
+PASS 01-unopened.png
+PASS 02-requests-ru.png
+PASS 03-records-ru.png
+PASS 04-workshop.png
+PASS 05-settings-uk.png
+PASS 06-requests-uk.png
+PASS 07-records-uk.png
+PASS 08-trails-uk.png
+PASS 09-costume-uk.png
+PASS 10-map-tabs-uk.png
+PASS all 8 measured Ukrainian dialogue pages with Large Text; no overflowing body/action.
+PASS 11-dialogue-uk.png
+FAIL System.InvalidOperationException: Text overflow: Label / До карти
+  at Cascade.Editor.Playable.LocalizedJournalReview.FitText (TMPro.TextMeshProUGUI t) [0x00031] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/LocalizedJournalReview.cs:92 
+  at Cascade.Editor.Playable.LocalizedJournalReview.Labels (Cascade.Presentation.CascadeGame g) [0x00042] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/LocalizedJournalReview.cs:93 
+  at Cascade.Editor.Playable.LocalizedJournalReview+<>c__DisplayClass15_0.<Run>b__5 (Cascade.Presentation.CascadeGame x) [0x00088] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/LocalizedJournalReview.cs:78 
+  at Cascade.Editor.Playable.LocalizedJournalReview+<>c__DisplayClass16_0.<Shot>b__0 (Cascade.Presentation.CascadeGame x) [0x00000] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/LocalizedJournalReview.cs:90 
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x001ff] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:37 
+  at Cascade.Editor.Playable.LocalizedJournalReview+<Guard>d__22.MoveNext () [0x0006b] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/LocalizedJournalReview.cs:115 
+Completed: False

@@ -1,0 +1,52 @@
+[
+  {
+    "test": "KeyRepairTests.KeyCannotRetroactivelyAuthorizeClosedSwap()",
+    "status": "Passed",
+    "ms": 13.2161
+  },
+  {
+    "test": "KeyRepairTests.KeyContactOpensOnlyFutureCommands()",
+    "status": "Passed",
+    "ms": 3.4571
+  },
+  {
+    "test": "KeyRepairTests.SignedRepairDoesNotClampNegativeIntermediateHp()",
+    "status": "Passed",
+    "ms": 0.6571
+  },
+  {
+    "test": "KeyRepairTests.RepairCanSaveFloorAndIsOneShot()",
+    "status": "Passed",
+    "ms": 0.16110000000000002
+  },
+  {
+    "test": "KeyRepairTests.OneShotRepairCannotBeFarmedByReturningToContact()",
+    "status": "Passed",
+    "ms": 0.10070000000000001
+  },
+  {
+    "test": "KeyRepairTests.RepairAndBlastAreSummedBeforeOneCollapse()",
+    "status": "Passed",
+    "ms": 0.23240000000000002
+  },
+  {
+    "test": "KeyRepairTests.ShiftPrecedesBothEntrySensors()",
+    "status": "Passed",
+    "ms": 1.0010000000000001
+  },
+  {
+    "test": "KeyRepairTests.DropRemainsForcedEvenWhenRepairHasAddedDurability()",
+    "status": "Passed",
+    "ms": 0.1075
+  },
+  {
+    "test": "KeyRepairTests.CompositeContactAndPredictionUseIdenticalTransition()",
+    "status": "Passed",
+    "ms": 1.2626000000000002
+  },
+  {
+    "test": "KeyRepairTests.DeviceUseFlagsResetOnNewFloor()",
+    "status": "Passed",
+    "ms": 0.15560000000000002
+  }
+]

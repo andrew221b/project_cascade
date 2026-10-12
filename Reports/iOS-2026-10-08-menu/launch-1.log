@@ -1,0 +1,17 @@
+19:17:14  Acquired tunnel connection to device.
+19:17:14  Enabling developer disk image services.
+19:17:14  Acquired usage assertion.
+ERROR: The application failed to launch. (com.apple.dt.CoreDeviceError error 10002 (0x2712))
+       BundleIdentifier = com.vickand.cascade
+       ----------------------------------------
+           The request to open "com.vickand.cascade" failed. (FBSOpenApplicationServiceErrorDomain error 1 (0x01))
+           NSLocalizedFailureReason = The request was denied by service delegate (SBMainWorkspace) for reason: Locked ("Unable to launch com.vickand.cascade because the device was not, or could not be, unlocked").
+           FBSOpenApplicationRequestID = 0xb051
+           BSErrorCodeDescription = RequestDenied
+       ----------------------------------------
+               The operation couldn’t be completed. Unable to launch com.vickand.cascade because the device was not, or could not be, unlocked. (FBSOpenApplicationErrorDomain error 7 (0x07))
+               BSErrorCodeDescription = Locked
+               NSLocalizedFailureReason = Unable to launch com.vickand.cascade because the device was not, or could not be, unlocked.
+real 13.60
+user 0.05
+sys 0.02

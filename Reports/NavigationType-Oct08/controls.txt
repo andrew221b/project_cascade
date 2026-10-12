@@ -1,0 +1,4 @@
+PASS actual Collect -> one saved receipt -> one Next control -> original Home; puzzle hash unchanged.
+PASS actual guide arrows advance/restore the page; generated PNG and shared 48-unit row.
+PASS narrow UK Large Text: page count >= 22 physical units, aligned arrow centres, no title/counter overflow.
+Completed: True

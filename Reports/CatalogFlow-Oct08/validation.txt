@@ -1,0 +1,1 @@
+PASS: item tap selects only, description appears in preview, trophy pager stays in catalogue, Shop back reaches Home, My things and Journal navigation return correctly, guide tile absent. Thirteen native RU/UK captures; isolated profile. Physical-device touch not run.

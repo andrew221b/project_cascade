@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="4" result="Passed" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-06 11:21:11Z" end-time="2026-10-06 11:21:24Z" duration="12.6124317">
+  <test-suite type="TestSuite" id="1092" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="84" result="Passed" start-time="2026-10-06 11:21:11Z" end-time="2026-10-06 11:21:24Z" duration="12.612432" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1086" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="84" result="Passed" start-time="2026-10-06 11:21:11Z" end-time="2026-10-06 11:21:24Z" duration="12.521116" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="93320" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1087" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="84" result="Passed" start-time="2026-10-06 11:21:11Z" end-time="2026-10-06 11:21:24Z" duration="12.519317" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1088" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="84" result="Passed" start-time="2026-10-06 11:21:11Z" end-time="2026-10-06 11:21:24Z" duration="12.518152" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1001" name="PlayableTests" fullname="Cascade.Tests.PlayableTests" classname="Cascade.Tests.PlayableTests" runstate="Runnable" testcasecount="84" result="Passed" start-time="2026-10-06 11:21:11Z" end-time="2026-10-06 11:21:24Z" duration="12.516919" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1054" name="BackgroundDepthAndFloatingIslandsStayInsideTheQuietFlightBand" fullname="Cascade.Tests.PlayableTests.BackgroundDepthAndFloatingIslandsStayInsideTheQuietFlightBand" methodname="BackgroundDepthAndFloatingIslandsStayInsideTheQuietFlightBand" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="160458686" result="Passed" start-time="2026-10-06 11:21:11Z" end-time="2026-10-06 11:21:13Z" duration="2.093029" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1045" name="DustTailsDoNotKeepUndoLockedAndFeedbackStaysBounded" fullname="Cascade.Tests.PlayableTests.DustTailsDoNotKeepUndoLockedAndFeedbackStaysBounded" methodname="DustTailsDoNotKeepUndoLockedAndFeedbackStaysBounded" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="360404115" result="Passed" start-time="2026-10-06 11:21:13Z" end-time="2026-10-06 11:21:18Z" duration="4.760316" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1053" name="LayeredCloudsMoveWithoutStateChangesAndFreezeWhenPaused" fullname="Cascade.Tests.PlayableTests.LayeredCloudsMoveWithoutStateChangesAndFreezeWhenPaused" methodname="LayeredCloudsMoveWithoutStateChangesAndFreezeWhenPaused" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1667677224" result="Passed" start-time="2026-10-06 11:21:18Z" end-time="2026-10-06 11:21:19Z" duration="0.730417" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1055" name="WorldScoresCrossfadeAndMutePreservesPlaybackPosition" fullname="Cascade.Tests.PlayableTests.WorldScoresCrossfadeAndMutePreservesPlaybackPosition" methodname="WorldScoresCrossfadeAndMutePreservesPlaybackPosition" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="2032311268" result="Passed" start-time="2026-10-06 11:21:19Z" end-time="2026-10-06 11:21:24Z" duration="4.882279" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/Atmosphere/playmode.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

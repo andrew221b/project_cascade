@@ -1,0 +1,6 @@
+{
+  "pass": 5,
+  "fail": 0,
+  "skip": 1,
+  "method": "Standalone actual pure C# / NUnit assertions; fixture root adapted; content helper invokes unchanged production importer. No native Unity API tests."
+}

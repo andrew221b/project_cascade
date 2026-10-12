@@ -1,0 +1,23 @@
+{
+  "metadataCount": 620,
+  "missingMetadata": [],
+  "duplicateGuids": [],
+  "contentCopies": {
+    "levels": true,
+    "localized_levels": true,
+    "campaign_extension": true,
+    "words_en": true,
+    "words_ru": true,
+    "words_uk": true,
+    "production_triad_recipes": true,
+    "production_triad_manifest": true
+  },
+  "restoredHistoricalExports": [
+    "P07/csharp_balance.json",
+    "P09/csharp_localized_balance.json",
+    "OutcomeMotion/curves.csv",
+    "CampaignLogic-Oct08/authored-proofs.csv",
+    "P10/C35_authoring_roundtrip.json",
+    "P10/C35_authoring_roundtrip.proof.json"
+  ]
+}

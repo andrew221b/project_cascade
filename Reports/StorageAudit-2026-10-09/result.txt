@@ -1,0 +1,56 @@
+MAC STORAGE CLEANUP RESULT — 2026-10-09
+User approval: Очисти все
+Deleted 42 of 42 exact approved directories; no skipped paths or deletion errors.
+Generated/cache directory sizes removed: 46.74 GiB (du estimate).
+Actual free-space gain during removal: 36.19 GiB (38.86 GB).
+Free now: 103.54 GiB (111.18 GB).
+The physical free-space gain differs from summed directory sizes; df/statvfs is the final capacity measurement.
+Xcode, Chrome and Unity Hub quit normally before cleanup. Cascade Editor stayed open.
+Protected project source entries: 6907 before and 6907 after; metadata changes: 0.
+Assets, Packages, ProjectSettings, their source/meta files, SourcePackages, PackageCache, Xcode Archives, simulator data and Codex sessions preserved.
+Current free space exceeds a conservative estimated 30 GiB Cascade working allowance.
+Actual Unity reimport/player build: NOT RUN (this task verified disk capacity, not build correctness).
+
+Deleted exact paths:
+0.985 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/ModuleCache.noindex
+0.000 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/CompilationCache.noindex
+0.003 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex
+0.036 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/SymbolCache.noindex
+2.671 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-fkjusqmtoflqcwbegybhjmiebazz/Build
+0.121 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-fkjusqmtoflqcwbegybhjmiebazz/Index.noindex
+0.054 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-fkjusqmtoflqcwbegybhjmiebazz/TextIndex
+5.563 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-azgxumsngmrmtjbuiokhzwpfksmi/Build
+0.690 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-azgxumsngmrmtjbuiokhzwpfksmi/Index.noindex
+0.106 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-azgxumsngmrmtjbuiokhzwpfksmi/TextIndex
+0.000 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-ainutfgfmiliozguitjuaejeenll/Build
+0.129 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-ainutfgfmiliozguitjuaejeenll/Index.noindex
+0.089 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-ainutfgfmiliozguitjuaejeenll/TextIndex
+2.799 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-eppqidsxoncjiocwikzkbsurlbmu/Build
+0.125 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-eppqidsxoncjiocwikzkbsurlbmu/Index.noindex
+0.057 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-eppqidsxoncjiocwikzkbsurlbmu/TextIndex
+0.004 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-aaissopjccttkvbrkggavkupxqsk/Build
+1.723 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/App-goxoztfoveuunhaypewiwfrreajn/Build
+0.548 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/App-goxoztfoveuunhaypewiwfrreajn/Index.noindex
+0.001 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/App-goxoztfoveuunhaypewiwfrreajn/TextIndex
+0.000 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-gssnhlhcyiizbxfzrsdbvfnarzpu/Build
+0.103 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-gssnhlhcyiizbxfzrsdbvfnarzpu/Index.noindex
+0.000 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-gssnhlhcyiizbxfzrsdbvfnarzpu/TextIndex
+0.001 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-dcoaevgpijwelpdvcwvsgiibspse/Build
+0.000 GiB  /Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-dcoaevgpijwelpdvcwvsgiibspse/Index.noindex
+6.693 GiB  /private/tmp/shape-release-xcode-derived-20261008/Build
+0.191 GiB  /private/tmp/shape-release-xcode-derived-20261008/ModuleCache.noindex
+0.000 GiB  /private/tmp/shape-release-xcode-derived-20261008/CompilationCache.noindex
+0.001 GiB  /private/tmp/shape-release-xcode-derived-20261008/SDKStatCaches.noindex
+0.448 GiB  /Users/andrew/Library/Caches/Google/Chrome/Profile 6/Cache
+0.105 GiB  /Users/andrew/Library/Caches/Google/Chrome/Profile 6/Code Cache
+1.274 GiB  /Users/andrew/Library/Caches/Google/Chrome/Profile 1/Cache
+0.269 GiB  /Users/andrew/Library/Caches/Google/Chrome/Profile 1/Code Cache
+0.039 GiB  /Users/andrew/Library/Caches/Google/Chrome/Default/Cache
+0.007 GiB  /Users/andrew/Library/Caches/Google/Chrome/Default/Code Cache
+1.569 GiB  /Users/andrew/Library/Caches/Homebrew/downloads
+0.318 GiB  /Users/andrew/Library/Caches/pip
+3.349 GiB  /Users/andrew/.npm/_cacache
+0.207 GiB  /Users/andrew/Library/Caches/UnityHub/pending
+0.186 GiB  /Users/andrew/Library/Caches/unityhub-updater/pending
+0.169 GiB  /Users/andrew/Library/Caches/antigravity-updater/pending
+16.106 GiB  /Users/andrew/Desktop/unity projects/unity_projects/shape_sorting-final/Library/Bee

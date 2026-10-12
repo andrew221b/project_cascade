@@ -1,0 +1,6 @@
+{
+    "name": "Cascade.Editor.Validation",
+    "rootNamespace": "Cascade.Editor.Validation",
+    "references": ["UnityEditor.TestRunner", "UnityEngine.TestRunner"],
+    "includePlatforms": ["Editor"]
+}

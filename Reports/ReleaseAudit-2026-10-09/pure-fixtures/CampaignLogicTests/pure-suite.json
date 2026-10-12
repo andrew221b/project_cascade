@@ -1,0 +1,7 @@
+[
+  {
+    "test": "CampaignLogicTests.EveryAuthoredPuzzleHasAnExecutableExactDelivery()",
+    "status": "Passed",
+    "ms": 14525.1229
+  }
+]

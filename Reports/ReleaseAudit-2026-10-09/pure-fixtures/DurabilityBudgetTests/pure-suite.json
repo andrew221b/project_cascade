@@ -1,0 +1,102 @@
+[
+  {
+    "test": "DurabilityBudgetTests.CampaignAndMissionHaveNoReducibleLessonBudgetOrStartingTransform(C01)",
+    "status": "Passed",
+    "ms": 26.0543
+  },
+  {
+    "test": "DurabilityBudgetTests.CampaignAndMissionHaveNoReducibleLessonBudgetOrStartingTransform(C02)",
+    "status": "Passed",
+    "ms": 1.8696000000000002
+  },
+  {
+    "test": "DurabilityBudgetTests.CampaignAndMissionHaveNoReducibleLessonBudgetOrStartingTransform(C07)",
+    "status": "Passed",
+    "ms": 5.5021
+  },
+  {
+    "test": "DurabilityBudgetTests.CampaignAndMissionHaveNoReducibleLessonBudgetOrStartingTransform(C08)",
+    "status": "Passed",
+    "ms": 4.2306
+  },
+  {
+    "test": "DurabilityBudgetTests.CampaignAndMissionHaveNoReducibleLessonBudgetOrStartingTransform(C09)",
+    "status": "Passed",
+    "ms": 1.3318
+  },
+  {
+    "test": "DurabilityBudgetTests.CampaignAndMissionHaveNoReducibleLessonBudgetOrStartingTransform(C10)",
+    "status": "Passed",
+    "ms": 5.5346
+  },
+  {
+    "test": "DurabilityBudgetTests.CampaignAndMissionHaveNoReducibleLessonBudgetOrStartingTransform(C11)",
+    "status": "Passed",
+    "ms": 3.9298
+  },
+  {
+    "test": "DurabilityBudgetTests.CampaignAndMissionHaveNoReducibleLessonBudgetOrStartingTransform(C12)",
+    "status": "Passed",
+    "ms": 3.5519000000000003
+  },
+  {
+    "test": "DurabilityBudgetTests.CampaignAndMissionHaveNoReducibleLessonBudgetOrStartingTransform(C13)",
+    "status": "Passed",
+    "ms": 87.8176
+  },
+  {
+    "test": "DurabilityBudgetTests.CampaignAndMissionHaveNoReducibleLessonBudgetOrStartingTransform(C14)",
+    "status": "Passed",
+    "ms": 8.4531000000000009
+  },
+  {
+    "test": "DurabilityBudgetTests.CampaignAndMissionHaveNoReducibleLessonBudgetOrStartingTransform(C37)",
+    "status": "Passed",
+    "ms": 44.0183
+  },
+  {
+    "test": "DurabilityBudgetTests.CampaignAndMissionHaveNoReducibleLessonBudgetOrStartingTransform(C65)",
+    "status": "Passed",
+    "ms": 85.0048
+  },
+  {
+    "test": "DurabilityBudgetTests.CampaignAndMissionHaveNoReducibleLessonBudgetOrStartingTransform(C120)",
+    "status": "Passed",
+    "ms": 211.98870000000002
+  },
+  {
+    "test": "DurabilityBudgetTests.CampaignAndMissionHaveNoReducibleLessonBudgetOrStartingTransform(C360)",
+    "status": "Passed",
+    "ms": 12.5484
+  },
+  {
+    "test": "DurabilityBudgetTests.CampaignAndMissionHaveNoReducibleLessonBudgetOrStartingTransform(C500)",
+    "status": "Passed",
+    "ms": 828.4823
+  },
+  {
+    "test": "DurabilityBudgetTests.CancellationNeverAcceptsAnUncalibratedBudget()",
+    "status": "Passed",
+    "ms": 2.5399000000000003
+  },
+  {
+    "test": "DurabilityBudgetTests.WindAndCoupledFragileBridgeResolveFinalContactsBeforeBreak(False,False)",
+    "status": "Passed",
+    "ms": 4.1144
+  },
+  {
+    "test": "DurabilityBudgetTests.WindAndCoupledFragileBridgeResolveFinalContactsBeforeBreak(False,True)",
+    "status": "Passed",
+    "ms": 0.091900000000000009
+  },
+  {
+    "test": "DurabilityBudgetTests.WindAndCoupledFragileBridgeResolveFinalContactsBeforeBreak(True,False)",
+    "status": "Passed",
+    "ms": 0.085600000000000009
+  },
+  {
+    "test": "DurabilityBudgetTests.WindAndCoupledFragileBridgeResolveFinalContactsBeforeBreak(True,True)",
+    "status": "Passed",
+    "ms": 0.079300000000000009
+  }
+]

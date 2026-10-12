@@ -1,0 +1,82 @@
+{
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "info",
+      "apps",
+      "--device",
+      "86ED6044-764E-5091-8CFE-C94C101E8DA8",
+      "--json-output",
+      "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/iPhoneInstall-Oct10-latest/apps-after.json"
+    ],
+    "commandType" : "devicectl.device.info.apps",
+    "environment" : {
+      "TERM" : "dumb"
+    },
+    "jsonVersion" : 3,
+    "outcome" : "success",
+    "version" : "518.33"
+  },
+  "result" : {
+    "apps" : [
+      {
+        "appClip" : false,
+        "builtByDeveloper" : true,
+        "bundleIdentifier" : "com.vickand.cascade",
+        "bundleVersion" : "202610102",
+        "defaultApp" : false,
+        "hidden" : false,
+        "internalApp" : false,
+        "name" : "CASCADE",
+        "removable" : true,
+        "url" : "file:///private/var/containers/Bundle/Application/B9196961-6B3B-4CAB-AC17-F9F65277479C/CASCADE.app/",
+        "version" : "0.1.0"
+      },
+      {
+        "appClip" : false,
+        "builtByDeveloper" : true,
+        "bundleIdentifier" : "com.vickand.shapemania",
+        "bundleVersion" : "5",
+        "defaultApp" : false,
+        "hidden" : false,
+        "internalApp" : false,
+        "name" : "ShapeMania",
+        "removable" : true,
+        "url" : "file:///private/var/containers/Bundle/Application/46CDA068-F854-49EA-8785-77094BC3C481/ShapeMania.app/",
+        "version" : "2"
+      },
+      {
+        "appClip" : false,
+        "builtByDeveloper" : true,
+        "bundleIdentifier" : "app.uskeep.vickand",
+        "bundleVersion" : "4",
+        "defaultApp" : false,
+        "hidden" : false,
+        "internalApp" : false,
+        "name" : "Uskeep",
+        "removable" : true,
+        "url" : "file:///private/var/containers/Bundle/Application/63EB3E05-E102-432C-8A35-E06A532CDDE5/App.app/",
+        "version" : "1.0"
+      },
+      {
+        "appClip" : false,
+        "builtByDeveloper" : true,
+        "bundleIdentifier" : "com.DefaultCompany.drop-it",
+        "bundleVersion" : "0",
+        "defaultApp" : false,
+        "hidden" : false,
+        "internalApp" : false,
+        "name" : "drop_it",
+        "removable" : true,
+        "url" : "file:///private/var/containers/Bundle/Application/B46EC098-30AC-4756-83DB-299DD9B2AC1D/dropit.app/",
+        "version" : "1.0"
+      }
+    ],
+    "defaultAppsIncluded" : false,
+    "deviceIdentifier" : "86ED6044-764E-5091-8CFE-C94C101E8DA8",
+    "hiddenAppsIncluded" : false,
+    "internalAppsIncluded" : false,
+    "removableAppsIncluded" : true
+  }
+}

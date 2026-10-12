@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="9" result="Passed" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-05 12:54:58Z" end-time="2026-10-05 12:54:59Z" duration="0.4557653">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="477" result="Passed" start-time="2026-10-05 12:54:58Z" end-time="2026-10-05 12:54:59Z" duration="0.455765" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1513" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="476" result="Passed" start-time="2026-10-05 12:54:59Z" end-time="2026-10-05 12:54:59Z" duration="0.293483" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="84036" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1514" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="476" result="Passed" start-time="2026-10-05 12:54:59Z" end-time="2026-10-05 12:54:59Z" duration="0.292632" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1515" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="476" result="Passed" start-time="2026-10-05 12:54:59Z" end-time="2026-10-05 12:54:59Z" duration="0.291831" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1414" name="ReachTests" fullname="Cascade.Tests.ReachTests" classname="Cascade.Tests.ReachTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-10-05 12:54:59Z" end-time="2026-10-05 12:54:59Z" duration="0.289723" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1423" name="ClosedCorridorAndInvalidEndpointsDoNotSpendCharge" fullname="Cascade.Tests.ReachTests.ClosedCorridorAndInvalidEndpointsDoNotSpendCharge" methodname="ClosedCorridorAndInvalidEndpointsDoNotSpendCharge" classname="Cascade.Tests.ReachTests" runstate="Runnable" seed="1636074061" result="Passed" start-time="2026-10-05 12:54:59Z" end-time="2026-10-05 12:54:59Z" duration="0.197244" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1422" name="DragAcrossTwoPiecesConsumesOneChargeAndUndoRestoresIt" fullname="Cascade.Tests.ReachTests.DragAcrossTwoPiecesConsumesOneChargeAndUndoRestoresIt" methodname="DragAcrossTwoPiecesConsumesOneChargeAndUndoRestoresIt" classname="Cascade.Tests.ReachTests" runstate="Runnable" seed="1920835299" result="Passed" start-time="2026-10-05 12:54:59Z" end-time="2026-10-05 12:54:59Z" duration="0.008649" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1424" name="RegularCampaignCannotSpendAnUnownedRibbon" fullname="Cascade.Tests.ReachTests.RegularCampaignCannotSpendAnUnownedRibbon" methodname="RegularCampaignCannotSpendAnUnownedRibbon" classname="Cascade.Tests.ReachTests" runstate="Runnable" seed="1732058468" result="Passed" start-time="2026-10-05 12:54:59Z" end-time="2026-10-05 12:54:59Z" duration="0.001517" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1421" name="WorkshopTrailHasProofAndPinnedReplay" fullname="Cascade.Tests.ReachTests.WorkshopTrailHasProofAndPinnedReplay" classname="Cascade.Tests.ReachTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-05 12:54:59Z" end-time="2026-10-05 12:54:59Z" duration="0.060105" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1415" name="WorkshopTrailHasProofAndPinnedReplay(0)" fullname="Cascade.Tests.ReachTests.WorkshopTrailHasProofAndPinnedReplay(0)" methodname="WorkshopTrailHasProofAndPinnedReplay" classname="Cascade.Tests.ReachTests" runstate="Runnable" seed="1829789221" result="Passed" start-time="2026-10-05 12:54:59Z" end-time="2026-10-05 12:54:59Z" duration="0.016935" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1416" name="WorkshopTrailHasProofAndPinnedReplay(1)" fullname="Cascade.Tests.ReachTests.WorkshopTrailHasProofAndPinnedReplay(1)" methodname="WorkshopTrailHasProofAndPinnedReplay" classname="Cascade.Tests.ReachTests" runstate="Runnable" seed="1391147009" result="Passed" start-time="2026-10-05 12:54:59Z" end-time="2026-10-05 12:54:59Z" duration="0.001062" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1417" name="WorkshopTrailHasProofAndPinnedReplay(2)" fullname="Cascade.Tests.ReachTests.WorkshopTrailHasProofAndPinnedReplay(2)" methodname="WorkshopTrailHasProofAndPinnedReplay" classname="Cascade.Tests.ReachTests" runstate="Runnable" seed="1321941181" result="Passed" start-time="2026-10-05 12:54:59Z" end-time="2026-10-05 12:54:59Z" duration="0.002675" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1418" name="WorkshopTrailHasProofAndPinnedReplay(3)" fullname="Cascade.Tests.ReachTests.WorkshopTrailHasProofAndPinnedReplay(3)" methodname="WorkshopTrailHasProofAndPinnedReplay" classname="Cascade.Tests.ReachTests" runstate="Runnable" seed="97322138" result="Passed" start-time="2026-10-05 12:54:59Z" end-time="2026-10-05 12:54:59Z" duration="0.001793" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1419" name="WorkshopTrailHasProofAndPinnedReplay(4)" fullname="Cascade.Tests.ReachTests.WorkshopTrailHasProofAndPinnedReplay(4)" methodname="WorkshopTrailHasProofAndPinnedReplay" classname="Cascade.Tests.ReachTests" runstate="Runnable" seed="1396743007" result="Passed" start-time="2026-10-05 12:54:59Z" end-time="2026-10-05 12:54:59Z" duration="0.004008" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1420" name="WorkshopTrailHasProofAndPinnedReplay(5)" fullname="Cascade.Tests.ReachTests.WorkshopTrailHasProofAndPinnedReplay(5)" methodname="WorkshopTrailHasProofAndPinnedReplay" classname="Cascade.Tests.ReachTests" runstate="Runnable" seed="1137599840" result="Passed" start-time="2026-10-05 12:54:59Z" end-time="2026-10-05 12:54:59Z" duration="0.026801" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

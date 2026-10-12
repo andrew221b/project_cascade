@@ -1,0 +1,3 @@
+bomb-letter-0 | Bomb painted letter | Л
+bomb-letter-1 | Bomb painted letter | Л
+bomb-defused | Bomb painted letter | Л

@@ -1,0 +1,12 @@
+{
+  "url": "http://192.168.0.40:49323/Doicr5iPMZiabD7StPKcvg/slides.pdf",
+  "root_url": "http://192.168.0.40:49323/Doicr5iPMZiabD7StPKcvg/",
+  "host": "192.168.0.40",
+  "port": 49323,
+  "pid": 33796,
+  "pdf_bytes": 452921,
+  "mode": "plain_pdf_slides",
+  "only_slides_pdf_exposed": true,
+  "pdf_download_verified": true,
+  "pdf_sha256": "2e11ee07eb1354fe2d26484c00091c3c46b2c93523b9191b6ac6a6436929ef62"
+}

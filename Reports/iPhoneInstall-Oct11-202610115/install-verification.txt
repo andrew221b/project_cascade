@@ -1,0 +1,8 @@
+Installed application: CASCADE
+Bundle identifier: com.vickand.cascade
+Version: 0.1.0
+Build: 202610115
+Device: iPhone 17 (iPhone18,3)
+Installation: confirmed by devicectl device info apps.
+Launch verification: not completed; CoreDevice disconnected immediately after connecting for the launch check.
+Local codesign --verify --deep --strict: CSSMERR_TP_NOT_TRUSTED (also reported for previous local device artifacts); device installation succeeded.

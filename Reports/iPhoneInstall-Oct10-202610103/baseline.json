@@ -1,0 +1,12 @@
+{
+  "gitCommit": "19a4fb9e00dd4d011af7e8861f7e3464f3f6f755",
+  "dirtyEntries": 750,
+  "unity": "6000.3.8f1",
+  "target": "iOS DeviceSDK",
+  "configuration": "Unity Development / Xcode Release",
+  "scene": "Assets/_Cascade/Scenes/CascadePlayable.unity",
+  "bundleId": "com.vickand.cascade",
+  "previousBuild": "202610102",
+  "newBuild": "202610103",
+  "latestValidation": "FourFloorSpacing-Oct10 native review exit 0"
+}

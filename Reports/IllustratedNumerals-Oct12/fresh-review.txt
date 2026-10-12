@@ -1,0 +1,1 @@
+PASS: fresh Unity Editor captures for map, island level rows and live gameplay HUD; isolated QA profile; no purchases or production save writes.

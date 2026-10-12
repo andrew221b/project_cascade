@@ -1,0 +1,1 @@
+hero=RGBA(1.000, 1.000, 1.000, 1.000) rect=(157.72, 290.50) scale=(0.68, 0.68, 0.68); button=(270.37, 56.00); rewards=Earned gold illustration:(112.65, 117.71) | Earned lights illustration:(101.39, 117.71); score=(292.90, 128.27)

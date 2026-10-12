@@ -1,0 +1,62 @@
+{
+  "distinct_passing_cases": 15,
+  "test_names": [
+    "Cascade.Tests.PlayableTests.ConnectedRopesSurviveReducedMotionAndResize",
+    "Cascade.Tests.PlayableTests.DeliveryKeepsTargetVisibleAndWaitsBeforeShowingResultControls",
+    "Cascade.Tests.PlayableTests.DeviceGuidesAndWeatherHaveNativeRenderersWithoutChangingTheAttempt",
+    "Cascade.Tests.PlayableTests.EffectsOffRemovesWeatherAndPresentationSyncPreservesBoardWeight",
+    "Cascade.Tests.PlayableTests.EveryAnimatedStageCanBeInterruptedWithoutReapplyingRules",
+    "Cascade.Tests.PlayableTests.GiftChoiceChangesNextOrderAndMenusBlockPuzzleInput",
+    "Cascade.Tests.PlayableTests.GliderWholeSilhouetteStaysInTheEmptyFlightBand",
+    "Cascade.Tests.PlayableTests.HomePauseAndSettingsPreserveAttemptAndFreezeCoaching",
+    "Cascade.Tests.PlayableTests.LayeredCloudsMoveWithoutStateChangesAndFreezeWhenPaused",
+    "Cascade.Tests.PlayableTests.MouseTapTapWinsAndUndoRestores",
+    "Cascade.Tests.PlayableTests.ReducedMotionKeepsPosesStillThroughoutCommittedEvents",
+    "Cascade.Tests.PlayableTests.SettingsChangeActualPresentationPreferences",
+    "Cascade.Tests.PlayableTests.TouchAdjacentDragWinsWithoutSpawningTokens",
+    "Cascade.Tests.PlayableTests.WoodWeightAndGlyphDepthRemainPresentationOnly",
+    "Cascade.Tests.PlayableTests.WordLanguageNeedsConfirmationAndAppliesOnlyAtNextStart"
+  ],
+  "runs": [
+    {
+      "report": "Polish",
+      "passed": 12,
+      "failed": 3
+    },
+    {
+      "report": "PolishTiming",
+      "passed": 0,
+      "failed": 3
+    },
+    {
+      "report": "PolishBackground",
+      "passed": 2,
+      "failed": 2
+    },
+    {
+      "report": "PolishIsolated",
+      "passed": 0,
+      "failed": 2
+    },
+    {
+      "report": "PolishTrace",
+      "passed": 0,
+      "failed": 2
+    },
+    {
+      "report": "PolishFinal",
+      "passed": 0,
+      "failed": 2
+    },
+    {
+      "report": "PolishValidated",
+      "passed": 4,
+      "failed": 0
+    }
+  ],
+  "native_stills": 47,
+  "motion_frames": 32,
+  "player_build": "Succeeded",
+  "player_errors": 0,
+  "player_warnings": 346
+}

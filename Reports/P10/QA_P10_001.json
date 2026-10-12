@@ -1,0 +1,36 @@
+{
+  "id": "QA_P10_001",
+  "node_id": "QA_P10_001",
+  "title": "One careful exchange",
+  "lesson": "swap",
+  "locale": "en",
+  "rules_version": "2.0",
+  "start": [
+    "s:B",
+    "s:A",
+    "s:C"
+  ],
+  "target": [
+    "s:A",
+    "s:B",
+    "s:C"
+  ],
+  "floors": [
+    {
+      "hp": 1,
+      "edges": [
+        true,
+        true
+      ],
+      "fragile": [],
+      "linked": null,
+      "shift": 0,
+      "mirror": false,
+      "bridge": null,
+      "bomb": null,
+      "key": null,
+      "repair": null,
+      "stamp": null
+    }
+  ]
+}

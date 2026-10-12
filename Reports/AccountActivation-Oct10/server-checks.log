@@ -1,0 +1,4 @@
+CSSM_ModuleLoad(): One or more parameters passed to a function were not valid.
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/CascadeAccountCCM/CascadeAccount/CascadeAccount.csproj : warning NU1900: Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json. [/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/CascadeAccountCCM/CascadeAccount.Tests/CascadeAccount.Tests.csproj]
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/CascadeAccountCCM/CascadeAccount/CascadeAccount.csproj : warning NU1900: Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json.
+Cloud Code boundary checks: 80 PASS; fake SDK transport, no live Cloud Save claim.

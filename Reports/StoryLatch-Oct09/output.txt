@@ -1,0 +1,7 @@
+StoryConversationTests: cumulative 5 passed, 0 failed
+WorldPrologueTests: cumulative 9 passed, 0 failed
+GuidedPracticeTests: cumulative 23 passed, 0 failed
+AttemptTests: cumulative 40 passed, 0 failed
+CompletionProgressTests: cumulative 48 passed, 0 failed
+LevelDefinitionTests: cumulative 88 passed, 0 failed
+BridgeStampTests: cumulative 96 passed, 0 failed

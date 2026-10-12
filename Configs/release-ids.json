@@ -1,0 +1,36 @@
+{
+  "iosBundleId": "",
+  "appleAppId": "",
+  "appleTeamId": "",
+  "appleIssuerId": "",
+  "appleKeyId": "",
+  "androidPackageName": "",
+  "androidKeystoreAlias": "",
+  "admobPublisherId": "",
+  "unityProjectId": "a1b8a760-5a0c-4c2d-8ae7-54c1b411259a",
+  "unityEnvironmentName": "production",
+  "unityEnvironmentId": "",
+  "cloudCodeModuleName": "CascadeAccount",
+  "receiptVerifierUrl": "",
+  "supportUrl": "",
+  "privacyPolicyUrl": "",
+  "storeProducts": [
+    {
+      "productId": "cascade.no_automatic_ads",
+      "type": "NonConsumable"
+    },
+    {
+      "productId": "cascade.coins_240",
+      "type": "Consumable"
+    },
+    {
+      "productId": "cascade.coins_480",
+      "type": "Consumable"
+    }
+  ],
+  "serverSecretNames": [
+    "CASCADE_RECEIPT_VERIFIER_URL",
+    "CASCADE_RECEIPT_VERIFIER_TOKEN"
+  ],
+  "termsOfUseUrl": ""
+}

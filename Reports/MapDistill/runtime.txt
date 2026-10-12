@@ -1,0 +1,10 @@
+PASS Map with three prior solved levels
+PASS Redundant task/count/marker removed
+PASS Supported alpha halo, no raycast interception
+PASS Visible pulse evolves
+PASS RU map no TMP overflow
+PASS UK small Large Text no TMP overflow
+PASS UK Mix fits
+PASS Reduced Motion halo steady
+PASS Map polish preserves pinned puzzle state
+Native Editor visual pass; isolated fixture. No phone build/device/full suite/performance claim.

@@ -1,0 +1,5 @@
+PASS support EmptyPlatform: approach, rest, fixed feet at stopped phase, input departure and cooldown.
+PASS support Receiver: approach, rest, fixed feet at stopped phase, input departure and cooldown.
+PASS support Shape: approach, rest, fixed feet at stopped phase, input departure and cooldown.
+PASS support Board: approach, rest, fixed feet at stopped phase, input departure and cooldown.
+PASS occupied-support idle gate, gust and disappearing support; puzzle hash unchanged.

@@ -1,0 +1,1 @@
+PASS: real slow optimal three-stage witness rates 2.5, saves/restores as 2.5, drives two full and one half star, and appears with halves in level cards and map totals. RU390 and UK320 Large Text native captures. No device build/install or live cloud sync claim.

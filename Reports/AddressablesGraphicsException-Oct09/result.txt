@@ -1,0 +1,27 @@
+ADDRESSABLES / GRAPHICS SETTINGS EDITOR EXCEPTION — 9 October 2026
+
+Confirmed observations:
+- Active MCP project is CascadeUnity, Unity 6000.3.8f1; editor stopped and idle.
+- Original Console exception preserved in native-baseline.json.
+- Installed Addressables 2.8.1 startup cleanup removes generated link.xml via AssetDatabase.DeleteAsset, which invokes the built-in Graphics Settings asset processor.
+- Unity's published 6000.3 processor accesses currentProvider.inspector.globalSettings without guarding the inspector. Window restoration/initialization is a likely mechanism; original timing was not reproduced and the exact null member is not confirmed.
+- GraphicsSettings maps the existing URP global asset GUID correctly. Native asset loading succeeded for PC_RPAsset and UniversalRenderPipelineGlobalSettings. Project Settings window was already closed (0 instances) and generated Addressables link.xml absent.
+
+Recovery and checks:
+- Used public AssetDatabase.Refresh with Graphics Settings closed, then requested script reload.
+- Preserved the original error, then cleared Console explicitly to establish a fresh retest baseline and requested a second reload.
+- Native post-retest state: not playing, not compiling, not updating; Console: 0 errors and 0 warnings.
+- GraphicsSettings, QualitySettings, URP global asset/.meta, manifest and package lock SHA256 values unchanged.
+- No production script, package, render configuration or scene changes; no probe assets/.meta remain.
+
+Limits:
+- One diagnostic command did not compile (internal URP type and namespace resolution); it did not execute.
+- Internal callback inspection was rejected because System.Reflection is disallowed by the MCP command sandbox.
+- A fresh generated XML deletion probe was rejected because it requires interactive confirmation unsupported through MCP. No temporary XML/.meta was created. Exact deletion/reload timing and player/Addressables builds NOT RUN.
+- Current editor recovery is validated; recurrence during later builds remains unverified. Do not mask exceptions or patch PackageCache.
+
+Workaround if it recurs:
+Close Project Settings (especially Graphics), allow the editor to finish loading, then use Assets > Refresh or restart the editor with Project Settings closed. Keep user assets and existing URP configuration intact.
+
+Primary source:
+https://raw.githubusercontent.com/Unity-Technologies/UnityCsReference/6000.3/Editor/Mono/Inspector/GraphicsSettingsInspectors/RenderPipelineGlobalSettingsAssetProcessor.cs

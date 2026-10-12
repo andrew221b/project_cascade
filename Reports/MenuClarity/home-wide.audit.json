@@ -1,0 +1,161 @@
+{
+  "pose": "home-wide",
+  "before": {
+    "Screen": "Home",
+    "Attempt": "8766975b-837d-483b-a345-d5e063971a38",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "after": {
+    "Screen": "Home",
+    "Attempt": "8766975b-837d-483b-a345-d5e063971a38",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 1440,
+    "height": 900,
+    "locale": "ru",
+    "largeText": false,
+    "simulatedInsets": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "buttons": [
+      {
+        "name": "Startgame",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Startgame",
+        "interactable": true,
+        "bounds": {
+          "x": 527.417053,
+          "y": 364.5,
+          "width": 385.1659,
+          "height": 76.5
+        }
+      },
+      {
+        "name": "Shop",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Shop",
+        "interactable": true,
+        "bounds": {
+          "x": 527.417053,
+          "y": 272.7,
+          "width": 385.1659,
+          "height": 76.5
+        }
+      },
+      {
+        "name": "Settings",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Settings",
+        "interactable": true,
+        "bounds": {
+          "x": 527.417053,
+          "y": 180.899979,
+          "width": 385.1659,
+          "height": 76.5000458
+        }
+      },
+      {
+        "name": "Removeads",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Removeads",
+        "interactable": true,
+        "bounds": {
+          "x": 527.417053,
+          "y": 89.1000061,
+          "width": 385.1659,
+          "height": 76.50003
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "CASCADE",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/CASCADE",
+        "text": "CASCADE",
+        "button": null,
+        "bounds": {
+          "x": 527.417053,
+          "y": 796.5,
+          "width": 385.1659,
+          "height": 76.50006
+        },
+        "fontPixels": 45.85308,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Startgame/Label",
+        "text": "Начать игру",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Startgame",
+        "bounds": {
+          "x": 627.5602,
+          "y": 372.150024,
+          "width": 250.357788,
+          "height": 61.19998
+        },
+        "fontPixels": 25.5924168,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Shop/Label",
+        "text": "Магазин",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Shop",
+        "bounds": {
+          "x": 627.5602,
+          "y": 280.35,
+          "width": 250.357788,
+          "height": 61.2000122
+        },
+        "fontPixels": 25.5924168,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Settings/Label",
+        "text": "Настройки",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Settings",
+        "bounds": {
+          "x": 627.5602,
+          "y": 188.549988,
+          "width": 250.357788,
+          "height": 61.2000122
+        },
+        "fontPixels": 25.5924168,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Removeads/Label",
+        "text": "Отключить рекламу",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Removeads",
+        "bounds": {
+          "x": 627.5602,
+          "y": 96.7499847,
+          "width": 250.357788,
+          "height": 61.2000427
+        },
+        "fontPixels": 25.4324646,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

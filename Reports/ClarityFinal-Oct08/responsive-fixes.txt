@@ -1,0 +1,1 @@
+PASS: narrow UK Large Text settings and dialogue captures; dialogue chunk and Not now caption fit.

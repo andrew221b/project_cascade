@@ -1,0 +1,1 @@
+PASS: finger targets shelf then Use; other tool selection blocked; puzzle hash and coins unchanged.

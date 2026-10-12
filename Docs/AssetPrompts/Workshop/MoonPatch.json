@@ -1,0 +1,45 @@
+{
+  "asset": "MoonPatch",
+  "tool": "image_gen.imagegen",
+  "transparent_background": true,
+  "image_inputs": [],
+  "inspected_style_references": [
+    "CascadeArt/Journey/Mika.png",
+    "CascadeArt/Journey/WindGardenMap.png",
+    "CascadeArt/Journey/RainMillMap.png"
+  ],
+  "source": "/Users/andrew/.codex/generated_images/01a10b3a-39d2-7350-bd89-7eb4386c5f0c/exec-0b94a1b3-6f7a-4b98-864b-b6675ba91e7c.png",
+  "prompt": "Use case: illustration-story\nAsset type: one original shipping reward illustration for CASCADE, a cozy mobile puzzle game. Warm hand-painted storybook miniature with softly sculpted useful forms, subtle brush texture, imperfect handcrafted details and a friendly irregular silhouette. Match the established Sky Wind Workshop identity: weathered wood, warm brass, satin mint enamel, ivory canvas, tiny restrained coral accents. Soft directional sunlight from the upper left; softly shaded lower right. Rich tactile material differences without glossy stock-icon rendering or photorealism.\nPrimary request: Moon Patch, one handmade crescent-shaped cloth patch for a small keeper's overalls. A broad softly rounded crescent in warm ivory linen, with a narrow celadon cloth backing peeking unevenly around the edge. Large visible cream and pale-sage hand stitches trace both the outer curve and inner curve; a small repaired seam crosses the lower horn. Tactile woven fabric, imperfect quilting and softly padded form show affection and use. No face, star, cloud, embroidery symbols, writing or extra props. Crescent horns turn to the right, with broad open transparent space between them. Near-frontal view with only slight tilt. Entire patch inside the central 70\u201375 percent of the square canvas with generous transparent margin, no tight crop.\nComposition/framing: a single centered object, fully visible, square canvas about 1024 x 1024 pixels, 10\u201315 percent clear empty margin on all four sides. Clear broad shapes legible at 180\u2013300 pixel display size. Near-frontal view with a slight tilt and gentle storybook perspective. No extra disconnected decorations or miniature collage.\nBackground: actual native PNG alpha transparency outside the exact silhouette and within open gaps; preserve all white and cream object paint. Clean soft antialiased edges. No backdrop, no painted checkerboard, no ground rectangle, no scene-wide glow, no vignette, no cast shadow outside the silhouette.\nConstraints: no words, letters, numbers, pseudo-lettering, logos, watermark, UI frame, label, character, copied artwork, or game tokens. It is a useful handmade keepsake from a painted story world, never a generic isolated 3D stock icon.",
+  "inspection": {
+    "name": "MoonPatch",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_range": [
+      0,
+      255
+    ],
+    "transparent_percent": 60.11,
+    "partial_percent": 39.86,
+    "visible_bbox_alpha16": [
+      143,
+      99,
+      1118,
+      1160
+    ],
+    "visible_margins_percent": [
+      11.4,
+      7.9,
+      10.8,
+      7.5
+    ],
+    "rgba_equal_to_source": true,
+    "embedded_prompt_matches": true
+  },
+  "visual_review": "Ivory cloth, celadon backing and stitches read clearly; crescent opening remains transparent. About 7\u201311% margins; give the UI additional padding.",
+  "review_status": "accepted_for_parent_integration_review",
+  "gate_score": "unscored",
+  "shipping_pixel_edits": "none; source RGBA bytes preserved"
+}

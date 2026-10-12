@@ -1,0 +1,23 @@
+{
+  "analyzed_on": "2026-10-04",
+  "timezone": "Europe/Sofia",
+  "python_version": "3.14.0",
+  "python_unit_test_exit_code": 0,
+  "python_data_audit_exit_code": 0,
+  "audit_method": "Existing Tools/audit_data.py executed on a temporary copy; published Data and Reports were preserved.",
+  "baseline_changed_during_validation": [],
+  "unity_editmode": "NOT_RUN: no CASCADE gameplay tests exist yet",
+  "unity_playmode": "NOT_RUN: no CASCADE gameplay tests exist yet",
+  "unity_build": "NOT_RUN: P00 verifies environment only",
+  "csharp_parity": "NOT_RUN: no Domain/Solver C# implementation exists yet",
+  "device_qa": "NOT_RUN",
+  "visual_qa": "NOT_RUN",
+  "unity_import_exit_code": 0,
+  "unity_csharp_compile_error_count": 0,
+  "unity_batch_exit_success_marker": true,
+  "unity_editor_version": "m_EditorVersion: 6000.3.8f1\nm_EditorVersionWithRevision: 6000.3.8f1 (1c7db571dde0)",
+  "unity_live_mcp": "UNVERIFIED_FOR_CASCADE: initially responded for ShapeMania; later request stopped responding",
+  "local_git": "Initialized in package root at explicit user request",
+  "other_project_mutations": "No edits or save actions were directed at other projects",
+  "phase": "P00_COMPLETE; P01-P20_NOT_STARTED"
+}

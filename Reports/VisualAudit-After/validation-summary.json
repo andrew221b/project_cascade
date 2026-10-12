@@ -1,0 +1,37 @@
+{
+  "uniqueScreenPoses": 50,
+  "gameScreenEnumValues": 30,
+  "aliases": "PlayChoice draws map; Dialogue is an overlay",
+  "detailedStableStateAudits": 47,
+  "allDetailedStateAuditsStable": true,
+  "directCatalogueCaptures": [
+    "shop-ru",
+    "shop-uk-small",
+    "supplies-ru"
+  ],
+  "captureChecks": "PlayableCapture asserts immutable puzzle hash for every rendered pose",
+  "sizes": [
+    "390x844 portrait",
+    "320x693 UK LargeText and simulated safe insets",
+    "1440x900 representative wide"
+  ],
+  "audioFocusedFinal": {
+    "passed": 2,
+    "failed": 0
+  },
+  "audioFocusedInitial": {
+    "passed": 1,
+    "failed": 1,
+    "reason": "new test asserted gain during initial crossfade; timing fixed, runtime behavior retained"
+  },
+  "originalFindings": "findings.txt and catalogue-supplement-findings.txt preserve the TMP wordInfo measurement failure history; direct captures completed these routes; source now reads current character mesh",
+  "notRun": [
+    "phone build/install",
+    "physical-device/OS accessibility",
+    "live ads and IAP",
+    "full test suite",
+    "performance profiling",
+    "human enjoyment",
+    "audio listening"
+  ]
+}

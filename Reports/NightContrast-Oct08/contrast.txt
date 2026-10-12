@@ -1,0 +1,1 @@
+Night foreground palette: (.99,.98,.92), opaque. Median sampled adjacent dark sky (x125..270, y598..611 in 390x844 native frame): luminance 0.06304. Contrast ratio 8.85:1. This is a representative local sky measurement, not a guarantee for every animation pixel. Native lifecycle assertions and visual inspection cover the actual caption/shadow and paper/enamel roles.

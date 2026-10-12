@@ -1,0 +1,10 @@
+FAIL System.InvalidOperationException: Bare night copy must be light: Label
+  at Cascade.Editor.Playable.NightContrastReview.Bright (TMPro.TextMeshProUGUI t) [0x00000] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/NightContrastReview.cs:86 
+  at Cascade.Editor.Playable.NightContrastReview.Apply (Cascade.Presentation.CascadeGame g) [0x00079] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/NightContrastReview.cs:83 
+  at Cascade.Editor.Playable.NightContrastReview+<>c.<Run>b__12_0 (Cascade.Presentation.CascadeGame x) [0x00000] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/NightContrastReview.cs:50 
+  at Cascade.Editor.Playable.NightContrastReview+<>c__DisplayClass17_0.<Shot>b__0 (Cascade.Presentation.CascadeGame x) [0x00017] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/NightContrastReview.cs:97 
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x001ff] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:37 
+  at Cascade.Editor.Playable.NightContrastReview+<Guard>d__18.MoveNext () [0x00056] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/NightContrastReview.cs:106 
+Completed: False
+
+The assertion incorrectly rejected the established navigation cream (1,.97,.84). Runtime inspection confirmed the caption was light after preferences. Corrected the button assertion to accept this existing palette; bare sky assertions remain stricter.

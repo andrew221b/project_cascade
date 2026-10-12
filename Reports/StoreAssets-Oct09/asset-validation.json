@@ -1,0 +1,181 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "file": "Apple/iPhone-Large/01-creative.png",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true,
+      "sha256": "bf1a4a0dbfe6bfcc139e303b61c98c6c8a0a1fd1112a1b7ee2499a683b41a7f3"
+    },
+    {
+      "file": "Apple/iPhone-Large/02-creative.png",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true,
+      "sha256": "02f70c2090bb410dca747ad9b37d3d218bca7e348a4b4e60bbb2f7dad6ee1a6d"
+    },
+    {
+      "file": "Apple/iPhone-Large/03-creative.png",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true,
+      "sha256": "4f502e018bc67587f2b1b0a8797b286eb3f1a0a74319f85c602932b71b2b1e9e"
+    },
+    {
+      "file": "Apple/iPhone-Large/04-lifestyle.png",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true,
+      "sha256": "f1efc3e5e1a593f899e047805e6063449605a0cf7036f6fe4526fcf1fc255b09"
+    },
+    {
+      "file": "Apple/iPhone-Large/05-lifestyle.png",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true,
+      "sha256": "ebf869720c15903a5517e16a366c34265b9de953207edf56f43ac35f338e3a45"
+    },
+    {
+      "file": "Apple/iPhone-Medium/01-creative.png",
+      "width": 1206,
+      "height": 2622,
+      "opaque": true,
+      "sha256": "d182d4f0af549b8234bba63e6c6f1d65589eca83c1bfb712ee7a93781dfce2e5"
+    },
+    {
+      "file": "Apple/iPhone-Medium/02-creative.png",
+      "width": 1206,
+      "height": 2622,
+      "opaque": true,
+      "sha256": "335a2b31b5cb1a9983a6ec33cb578e8b2eac7c04b234eba0d11db2e6ab579b8a"
+    },
+    {
+      "file": "Apple/iPhone-Medium/03-creative.png",
+      "width": 1206,
+      "height": 2622,
+      "opaque": true,
+      "sha256": "68a84e8c8b12941c32b46a93e4a8932a1b639e834aeebb7079497dd928be2a38"
+    },
+    {
+      "file": "Apple/iPhone-Medium/04-lifestyle.png",
+      "width": 1206,
+      "height": 2622,
+      "opaque": true,
+      "sha256": "5cde94153a4c231576ab64c0f66e81dc12c95ec696d3074a19238c597063a26a"
+    },
+    {
+      "file": "Apple/iPhone-Medium/05-lifestyle.png",
+      "width": 1206,
+      "height": 2622,
+      "opaque": true,
+      "sha256": "d1d0968827c2469f5384184f979dd1eddc1fa7d9dd9c66eda925939d6cdc2101"
+    },
+    {
+      "file": "Apple/iPad-13/01-day.png",
+      "width": 2064,
+      "height": 2752,
+      "opaque": true,
+      "sha256": "62e0a2623c9bb95a340b3df6bfd0d4fbe8820b5971b8ef9ed94cc45efe4909fe"
+    },
+    {
+      "file": "Apple/iPad-13/02-night.png",
+      "width": 2064,
+      "height": 2752,
+      "opaque": true,
+      "sha256": "af7ece3c51daffc14d7ab9368fa703fed0d3e56d0f2b79924aadb34fc2f0a63f"
+    },
+    {
+      "file": "Apple/iPad-13/03-advanced.png",
+      "width": 2064,
+      "height": 2752,
+      "opaque": true,
+      "sha256": "b03f2921ddd4bea35c0ca7c6465cd7612d937625bcade2cdccc99b16e731ca72"
+    },
+    {
+      "file": "Apple/iPad-13/04-words.png",
+      "width": 2064,
+      "height": 2752,
+      "opaque": true,
+      "sha256": "5dce3323b7cc84d4a7b3fbb2a84f21b96808045fbaab80a3b0b1efae2887cf56"
+    },
+    {
+      "file": "Apple/iPad-13/05-bag.png",
+      "width": 2064,
+      "height": 2752,
+      "opaque": true,
+      "sha256": "96522e877ee85bd0eaa5d174bf864851b7d8fad15757e2848aa0c15e4af81e60"
+    },
+    {
+      "file": "Google/Screenshots/01-creative.png",
+      "width": 1080,
+      "height": 1920,
+      "opaque": true,
+      "sha256": "a950b7508c24071bdc87cd6bd4893b963394e702e058c9dc3125cd1530df5dc4"
+    },
+    {
+      "file": "Google/Screenshots/02-creative.png",
+      "width": 1080,
+      "height": 1920,
+      "opaque": true,
+      "sha256": "f81074c788c6fd84bca5a1a0ecbbc7e1099b2eefa2e4236830414de59b5d881f"
+    },
+    {
+      "file": "Google/Screenshots/03-creative.png",
+      "width": 1080,
+      "height": 1920,
+      "opaque": true,
+      "sha256": "0b9885a74f067a28945b16e62609ab620f177d2a5f78f4b7df3e0b7ef128bb29"
+    },
+    {
+      "file": "Google/Screenshots/04-lifestyle.png",
+      "width": 1080,
+      "height": 1920,
+      "opaque": true,
+      "sha256": "87b8391eb269b421828ca2a84f6a89ae197f0c9fad62fd5440cdbe2eb65b06eb"
+    },
+    {
+      "file": "Google/Screenshots/05-lifestyle.png",
+      "width": 1080,
+      "height": 1920,
+      "opaque": true,
+      "sha256": "9d23f5db22af79d874feb36bc1fa58da3b279fc2a9aeb9df6b15669b77b453cc"
+    },
+    {
+      "file": "Apple/icon-1024.png",
+      "width": 1024,
+      "height": 1024,
+      "pngColorType": 2,
+      "bytes": 1936521
+    },
+    {
+      "file": "Google/icon-512.png",
+      "width": 512,
+      "height": 512,
+      "pngColorType": 6,
+      "bytes": 606738
+    },
+    {
+      "file": "Google/feature-1024x500.png",
+      "width": 1024,
+      "height": 500,
+      "pngColorType": 2,
+      "bytes": 1016290
+    },
+    {
+      "file": "Apple/header-3840x1646.png",
+      "width": 3840,
+      "height": 1646,
+      "pngColorType": 2,
+      "bytes": 8565162
+    },
+    {
+      "file": "Apple/search-1920x1280.png",
+      "width": 1920,
+      "height": 1280,
+      "pngColorType": 2,
+      "bytes": 4284976
+    }
+  ],
+  "nativeSourceImages": 12
+}

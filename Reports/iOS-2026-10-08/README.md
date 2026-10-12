@@ -1,0 +1,9 @@
+# CASCADE iPhone build and installation — 8 October 2026
+
+Built the current working tree after the route-record arrow and metric changes. Source baseline: `19a4fb9` plus existing uncommitted project work; the build is not represented by that commit alone. Unity 6000.3.8f1 exported the single `CascadePlayable` scene for iOS IL2CPP to `CascadeUnity/Builds/CASCADE-iOS-2026-10-08`. `BuildReport`: **Succeeded**, 0 errors, 346 warnings, 40.21 seconds. The existing Localization iOS App Info metadata warning and Sentis/Metal shader warnings remain. See `unity-build.txt`.
+
+The new generated Xcode project uses the existing local device identity `com.vickand.cascade`, the same Developer Team and automatic development signing in its four app configurations. Its display name is CASCADE. Source Unity identifiers, prices, packages and save schema were not changed for installation. Earlier iOS exports and DerivedData were preserved.
+
+Xcode 26.6 compiled the generated CocoaPods workspace in Release for iPhoneOS: **BUILD SUCCEEDED**, exit 0 (`xcode-build.log`). The signed app is `CascadeUnity/Builds/CASCADE-iOS-2026-10-08-DerivedData/Build/Products/Release-iphoneos/CascadeUnity.app` (bundle ID `com.vickand.cascade`, expected team). CoreDevice reported successful installation on the paired iPhone 17 (`install.json`, `install.log`) and successful launch (`launch.json`, `launch.log`). A later process query still listed the app running (`processes.log`). No uninstall or data reset was performed.
+
+Unity native visual checks before export covered the final RU 390×844 and UK Large Text 320×693 route screens in `Reports/LocalizedJournal-Oct08/13-records-inline-ru.png` and `14-records-inline-uk.png`. The device build/install/launch prove deployment and process start; they do not prove physical-screen readability, touch feel, haptics, frame rate, audio balance, production ads or purchases. Those were not run during this installation.

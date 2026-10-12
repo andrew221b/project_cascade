@@ -1,0 +1,544 @@
+[
+  {
+    "test": "HalfStarResultsTests.FiveExactRatingSteps(12,0,False,True,80,6)",
+    "status": "Passed",
+    "ms": 13.3528
+  },
+  {
+    "test": "HalfStarResultsTests.FiveExactRatingSteps(12,0,False,True,127,5)",
+    "status": "Passed",
+    "ms": 0.0417
+  },
+  {
+    "test": "HalfStarResultsTests.FiveExactRatingSteps(12,1,False,True,80,5)",
+    "status": "Passed",
+    "ms": 0.019200000000000002
+  },
+  {
+    "test": "HalfStarResultsTests.FiveExactRatingSteps(14,1,False,True,80,4)",
+    "status": "Passed",
+    "ms": 0.017
+  },
+  {
+    "test": "HalfStarResultsTests.FiveExactRatingSteps(19,2,False,True,80,3)",
+    "status": "Passed",
+    "ms": 0.0176
+  },
+  {
+    "test": "HalfStarResultsTests.FiveExactRatingSteps(21,0,False,True,80,2)",
+    "status": "Passed",
+    "ms": 0.0171
+  },
+  {
+    "test": "HalfStarResultsTests.FiveExactRatingSteps(12,0,True,True,80,2)",
+    "status": "Passed",
+    "ms": 0.0158
+  },
+  {
+    "test": "HalfStarResultsTests.FiveExactRatingSteps(12,0,False,False,80,2)",
+    "status": "Passed",
+    "ms": 0.0177
+  },
+  {
+    "test": "HalfStarResultsTests.FiveExactRatingSteps(10,0,False,True,80,2)",
+    "status": "Passed",
+    "ms": 0.0172
+  },
+  {
+    "test": "HalfStarResultsTests.OldWholeRatingsRemainWholeAndMalformedHalvesAreRejected()",
+    "status": "Passed",
+    "ms": 64.9401
+  },
+  {
+    "test": "HalfStarResultsTests.ActualSlowOptimalWitnessAwardsAndPersistsTwoAndHalf()",
+    "status": "Passed",
+    "ms": 135.5428
+  },
+  {
+    "test": "HalfStarResultsTests.ReplayHalfCreditIsBoundedMonotoneAndPaidOnce()",
+    "status": "Passed",
+    "ms": 5.9358
+  },
+  {
+    "test": "HalfStarResultsTests.CloudMergeKeepsHalfAndSeparateBestScore()",
+    "status": "Passed",
+    "ms": 17.1665
+  },
+  {
+    "test": "FiveStarResultsTests.RankHasThreeMeaningfulStepsAndHelpRetainsItsCeiling(12,0,False,True,80,3)",
+    "status": "Passed",
+    "ms": 0.079700000000000007
+  },
+  {
+    "test": "FiveStarResultsTests.RankHasThreeMeaningfulStepsAndHelpRetainsItsCeiling(12,0,False,True,127,2)",
+    "status": "Passed",
+    "ms": 0.4036
+  },
+  {
+    "test": "FiveStarResultsTests.RankHasThreeMeaningfulStepsAndHelpRetainsItsCeiling(14,1,False,True,80,2)",
+    "status": "Passed",
+    "ms": 0.016900000000000002
+  },
+  {
+    "test": "FiveStarResultsTests.RankHasThreeMeaningfulStepsAndHelpRetainsItsCeiling(15,2,False,True,80,2)",
+    "status": "Passed",
+    "ms": 0.0165
+  },
+  {
+    "test": "FiveStarResultsTests.RankHasThreeMeaningfulStepsAndHelpRetainsItsCeiling(12,3,False,True,80,1)",
+    "status": "Passed",
+    "ms": 0.016300000000000002
+  },
+  {
+    "test": "FiveStarResultsTests.RankHasThreeMeaningfulStepsAndHelpRetainsItsCeiling(12,0,True,True,80,1)",
+    "status": "Passed",
+    "ms": 0.0162
+  },
+  {
+    "test": "FiveStarResultsTests.RankHasThreeMeaningfulStepsAndHelpRetainsItsCeiling(12,0,False,False,80,1)",
+    "status": "Passed",
+    "ms": 0.0161
+  },
+  {
+    "test": "FiveStarResultsTests.RankHasThreeMeaningfulStepsAndHelpRetainsItsCeiling(20,0,False,True,80,1)",
+    "status": "Passed",
+    "ms": 0.0158
+  },
+  {
+    "test": "FiveStarResultsTests.RankHasThreeMeaningfulStepsAndHelpRetainsItsCeiling(10,0,False,True,80,1)",
+    "status": "Passed",
+    "ms": 0.015700000000000002
+  },
+  {
+    "test": "FiveStarResultsTests.UnknownLegacyTimeCannotEarnSpeedStarAndBoundaryIsInclusive()",
+    "status": "Passed",
+    "ms": 0.099700000000000011
+  },
+  {
+    "test": "FiveStarResultsTests.UndoPreservesActualMovesAndTimeAndFailedCommandsDoNotCount()",
+    "status": "Passed",
+    "ms": 1.2139
+  },
+  {
+    "test": "FiveStarResultsTests.LegacyAttemptIsUnknownAndInvalidTelemetryIsRejected()",
+    "status": "Passed",
+    "ms": 0.32280000000000003
+  },
+  {
+    "test": "FiveStarResultsTests.AllThreeStageTelemetryAggregatesAndLegacyReceiptsAreNotRescored()",
+    "status": "Passed",
+    "ms": 442.8136
+  },
+  {
+    "test": "CompletionProgressTests.IndependentPersonalBestsRetainTheirOwnEvidenceUntilOneRunDominates()",
+    "status": "Failed",
+    "ms": 73.8294,
+    "error": "System.ArgumentException: Replay requires a prior clear and a valid rating.\n  at Cascade.Application.JourneyRewards.RecordReplayCredit (System.String node, System.Int32 stars, System.Boolean halfStar) [0x0003a] in <713b847b1ef44c6d92f1f375fde59d5f>:0 \n  at Cascade.Persistence.PlayerProfile.RecordClear (Cascade.Application.AttemptService attempt, Cascade.Application.LevelCompletion completion) [0x001c1] in <713b847b1ef44c6d92f1f375fde59d5f>:0 \n  at Cascade.Tests.CompletionProgressTests.<IndependentPersonalBestsRetainTheirOwnEvidenceUntilOneRunDominates>g__Record|4_1 (System.Int32 stars, System.Int32 score, Cascade.Tests.CompletionProgressTests+<>c__DisplayClass4_0& ) [0x00079] in <713b847b1ef44c6d92f1f375fde59d5f>:0 \n  at Cascade.Tests.CompletionProgressTests.IndependentPersonalBestsRetainTheirOwnEvidenceUntilOneRunDominates () [0x000e4] in <713b847b1ef44c6d92f1f375fde59d5f>:0 \n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <6d12fe1da04245109430a5171a76b388>:0 "
+  },
+  {
+    "test": "CompletionProgressTests.LegacyVersionThreeRepresentativeBindingsKeepThreeReplayableStages()",
+    "status": "Passed",
+    "ms": 3524.4599000000003
+  },
+  {
+    "test": "CompletionProgressTests.GatedFinalesKeepTheirPublishedTargetsAndDevicesAndProveTheSameTwelveFailingBindings()",
+    "status": "Passed",
+    "ms": 11.9295
+  },
+  {
+    "test": "CompletionProgressTests.AStampFromAnIntermediateStageSurvivesCheckpointSaveAndAddsItsFullLevelBonus()",
+    "status": "Passed",
+    "ms": 28.4461
+  },
+  {
+    "test": "CompletionProgressTests.AccessOpensOnlyTheNextNodeAndExplicitReplaysWithoutErasingOlderOutOfOrderClears()",
+    "status": "Passed",
+    "ms": 0.6927
+  },
+  {
+    "test": "CompletionProgressTests.InsertedLevelsBeforeAnExistingClearStayReplayableButDoNotResetContinue()",
+    "status": "Passed",
+    "ms": 0.10940000000000001
+  },
+  {
+    "test": "CompletionProgressTests.WholeRunRatingResourcesAndCheckpointRestoreAreDurableAndReplayCannotFarmLights()",
+    "status": "Passed",
+    "ms": 18.4391
+  },
+  {
+    "test": "CompletionProgressTests.StarsRespondToHintRouteAndExplosionAndOldVersionTwoPlansStillRestore()",
+    "status": "Passed",
+    "ms": 28.892500000000002
+  },
+  {
+    "test": "RewardTests.FirstParcelPaysCoinsAndItsReceiptCannotBeRerolledOrFarmed()",
+    "status": "Passed",
+    "ms": 0.74240000000000006
+  },
+  {
+    "test": "RewardTests.PendingParcelsReserveCapacityAndAllFortyClearsCannotGenerateFiller()",
+    "status": "Passed",
+    "ms": 0.9683
+  },
+  {
+    "test": "RewardTests.FortyClearsAndFourChaptersYieldExactlyTwoThousand()",
+    "status": "Passed",
+    "ms": 0.37220000000000003
+  },
+  {
+    "test": "RewardTests.ReplayReservePaysFourForTwoStarsAndOnlyTheIncrementUpToTen()",
+    "status": "Failed",
+    "ms": 0.1829,
+    "error": "System.ArgumentException: Replay requires a prior clear and a valid rating.\n  at Cascade.Application.JourneyRewards.RecordReplayCredit (System.String node, System.Int32 stars, System.Boolean halfStar) [0x0003a] in <713b847b1ef44c6d92f1f375fde59d5f>:0 \n  at Cascade.Tests.RewardTests.ReplayReservePaysFourForTwoStarsAndOnlyTheIncrementUpToTen () [0x000bb] in <713b847b1ef44c6d92f1f375fde59d5f>:0 \n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <6d12fe1da04245109430a5171a76b388>:0 "
+  },
+  {
+    "test": "RewardTests.SkippingC26DoesNotPretendThatWorkshopIsComplete()",
+    "status": "Failed",
+    "ms": 0.509,
+    "error": "NUnit.Framework.AssertionException:   Expected: 2000\n  But was:  1930\n\n  at NUnit.Framework.Assert.That[TActual] (TActual actual, NUnit.Framework.Constraints.IResolveConstraint expression, System.String message, System.Object[] args) [0x00039] in <f577cd9686154d6ab10efd7e65e64366>:0 \n  at NUnit.Framework.Assert.That[TActual] (TActual actual, NUnit.Framework.Constraints.IResolveConstraint expression) [0x00000] in <f577cd9686154d6ab10efd7e65e64366>:0 \n  at Cascade.Tests.RewardTests.SkippingC26DoesNotPretendThatWorkshopIsComplete () [0x000bf] in <713b847b1ef44c6d92f1f375fde59d5f>:0 \n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <6d12fe1da04245109430a5171a76b388>:0 "
+  },
+  {
+    "test": "RewardTests.VisitStampsNeverResetOnGapsAndIgnoreRepeatedDates()",
+    "status": "Passed",
+    "ms": 2.5956
+  },
+  {
+    "test": "RewardTests.ObjectiveAndLocaleRecordsStaySeparateWhileDeliveryStillCounts()",
+    "status": "Passed",
+    "ms": 1.6681000000000001
+  },
+  {
+    "test": "RewardTests.HintAndUndoAnnotationsDoNotRewriteTheMeaningOfBestRoute()",
+    "status": "Passed",
+    "ms": 1.0554000000000001
+  },
+  {
+    "test": "RewardTests.DeviceRequestsUseSuccessfulUniqueNodesRatherThanRepeatedActions()",
+    "status": "Passed",
+    "ms": 0.24300000000000002
+  },
+  {
+    "test": "RewardTests.SavedClaimsCannotReopenAndOlderProfileCanAcquireNewFields()",
+    "status": "Passed",
+    "ms": 10.59
+  },
+  {
+    "test": "RewardTests.MissingClearAuthorityAndInvalidGiftReceiptsAreRejected()",
+    "status": "Passed",
+    "ms": 0.2099
+  },
+  {
+    "test": "RewardTests.LaterParcelsAreRareFixedPrizesAndReplayCannotRerollThem()",
+    "status": "Passed",
+    "ms": 1.2611
+  },
+  {
+    "test": "RewardTests.AlreadyBoughtRareLookConvertsOnceToSmallCoinsAndCloudKeepsClaim()",
+    "status": "Passed",
+    "ms": 2.8289
+  },
+  {
+    "test": "CloudReconcilerTests.MergedStarAndScoreBestsKeepEachSourceProof()",
+    "status": "Failed",
+    "ms": 3.6061,
+    "error": "NUnit.Framework.AssertionException:   String lengths are both 64. Strings differ at index 0.\n  Expected: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"\n  But was:  \"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"\n  -----------^\n\n  at NUnit.Framework.Assert.That[TActual] (TActual actual, NUnit.Framework.Constraints.IResolveConstraint expression, System.String message, System.Object[] args) [0x00039] in <f577cd9686154d6ab10efd7e65e64366>:0 \n  at NUnit.Framework.Assert.That[TActual] (TActual actual, NUnit.Framework.Constraints.IResolveConstraint expression) [0x00000] in <f577cd9686154d6ab10efd7e65e64366>:0 \n  at Cascade.Tests.CloudReconcilerTests.MergedStarAndScoreBestsKeepEachSourceProof () [0x000fe] in <713b847b1ef44c6d92f1f375fde59d5f>:0 \n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <6d12fe1da04245109430a5171a76b388>:0 "
+  },
+  {
+    "test": "CloudReconcilerTests.ProgressMergesPerModeWhileLocalAttemptAndPreferencesRemainCoherent()",
+    "status": "Passed",
+    "ms": 2.2041
+  },
+  {
+    "test": "CloudReconcilerTests.MasteryUsesContentIdentityAndBestRoutesWithoutCrossingVersions()",
+    "status": "Passed",
+    "ms": 1.8458
+  },
+  {
+    "test": "CloudReconcilerTests.IndependentSpendsAndConsumptionsMergeAsDeltasWithoutAddingBalances()",
+    "status": "Failed",
+    "ms": 1.1153,
+    "error": "NUnit.Framework.AssertionException:   Expected: False\n  But was:  True\n\n  at NUnit.Framework.Assert.That[TActual] (TActual actual, NUnit.Framework.Constraints.IResolveConstraint expression, System.String message, System.Object[] args) [0x00039] in <f577cd9686154d6ab10efd7e65e64366>:0 \n  at NUnit.Framework.Assert.That[TActual] (TActual actual, NUnit.Framework.Constraints.IResolveConstraint expression) [0x00000] in <f577cd9686154d6ab10efd7e65e64366>:0 \n  at Cascade.Tests.CloudReconcilerTests.IndependentSpendsAndConsumptionsMergeAsDeltasWithoutAddingBalances () [0x00097] in <713b847b1ef44c6d92f1f375fde59d5f>:0 \n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <6d12fe1da04245109430a5171a76b388>:0 "
+  },
+  {
+    "test": "CloudReconcilerTests.ConcurrentOverspendOrDoubleConsumptionKeepsRemoteEconomy()",
+    "status": "Failed",
+    "ms": 0.605,
+    "error": "NUnit.Framework.AssertionException:   Expected: 100\n  But was:  150\n\n  at NUnit.Framework.Assert.That[TActual] (TActual actual, NUnit.Framework.Constraints.IResolveConstraint expression, System.String message, System.Object[] args) [0x00039] in <f577cd9686154d6ab10efd7e65e64366>:0 \n  at NUnit.Framework.Assert.That[TActual] (TActual actual, NUnit.Framework.Constraints.IResolveConstraint expression) [0x00000] in <f577cd9686154d6ab10efd7e65e64366>:0 \n  at Cascade.Tests.CloudReconcilerTests.ConcurrentOverspendOrDoubleConsumptionKeepsRemoteEconomy () [0x00085] in <713b847b1ef44c6d92f1f375fde59d5f>:0 \n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <6d12fe1da04245109430a5171a76b388>:0 "
+  },
+  {
+    "test": "CloudReconcilerTests.GrantsCannotChangeDisappearOrArriveThroughUnverifiedSync()",
+    "status": "Passed",
+    "ms": 4.0209
+  },
+  {
+    "test": "CloudReconcilerTests.VerifiedReceiptReplayAndHintStateReplayAreIdempotent()",
+    "status": "Passed",
+    "ms": 1.8665
+  },
+  {
+    "test": "CloudReconcilerTests.FirstImportScrubsPaidValueAndRetainsOnlyEarnedFinancedTools()",
+    "status": "Passed",
+    "ms": 1.7111
+  },
+  {
+    "test": "CloudReconcilerTests.ClaimedParcelsVisitsAndClearIncomeDoNotRepeatAcrossModesOrMerges()",
+    "status": "Failed",
+    "ms": 3.6143,
+    "error": "NUnit.Framework.AssertionException:   Expected: 264\n  But was:  240\n\n  at NUnit.Framework.Assert.That[TActual] (TActual actual, NUnit.Framework.Constraints.IResolveConstraint expression, System.String message, System.Object[] args) [0x00039] in <f577cd9686154d6ab10efd7e65e64366>:0 \n  at NUnit.Framework.Assert.That[TActual] (TActual actual, NUnit.Framework.Constraints.IResolveConstraint expression) [0x00000] in <f577cd9686154d6ab10efd7e65e64366>:0 \n  at Cascade.Tests.CloudReconcilerTests.ClaimedParcelsVisitsAndClearIncomeDoNotRepeatAcrossModesOrMerges () [0x00174] in <713b847b1ef44c6d92f1f375fde59d5f>:0 \n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <6d12fe1da04245109430a5171a76b388>:0 "
+  },
+  {
+    "test": "CloudReconcilerTests.ConflictingParcelClaimsKeepCanonicalGiftAndRemoteEconomy()",
+    "status": "Passed",
+    "ms": 0.60930000000000006
+  },
+  {
+    "test": "CloudReconcilerTests.UnknownUploadedNodesCannotFinanceInventory()",
+    "status": "Passed",
+    "ms": 0.3748
+  },
+  {
+    "test": "CloudReconcilerTests.InvalidAuthorityCannotBecomeTheConflictFallback()",
+    "status": "Passed",
+    "ms": 0.7256
+  },
+  {
+    "test": "CloudReconcilerTests.DeviceCheckpointsAreBoundedLeanAndRestoreAttemptWithoutReplacingProgress()",
+    "status": "Passed",
+    "ms": 4.1743000000000006
+  },
+  {
+    "test": "CloudReconcilerTests.MiddleDescentAndItsPinnedDirectionRemainOneDeviceCheckpoint()",
+    "status": "Passed",
+    "ms": 9.1093000000000011
+  },
+  {
+    "test": "ModeJourneyTests.JourneysKeepIndependentClearsDirectorAndStageAfterSaveReload()",
+    "status": "Passed",
+    "ms": 34.1802
+  },
+  {
+    "test": "ModeJourneyTests.LegacySchemaAssignsTheJourneyOnlyToItsSavedMode()",
+    "status": "Passed",
+    "ms": 29.2204
+  },
+  {
+    "test": "ModeJourneyTests.DuplicateOrActiveArchiveIsRejectedAndRewardsCannotBeDuplicated()",
+    "status": "Passed",
+    "ms": 0.3559
+  },
+  {
+    "test": "LevelDefinitionTests.CopiesInputCollectionsAndExposesReadOnlyViews()",
+    "status": "Passed",
+    "ms": 0.5825
+  },
+  {
+    "test": "LevelDefinitionTests.RepeatedSymbolsUseEqualityRatherThanPosition()",
+    "status": "Passed",
+    "ms": 0.0775
+  },
+  {
+    "test": "LevelDefinitionTests.RejectsChangedMultiset()",
+    "status": "Passed",
+    "ms": 0.2223
+  },
+  {
+    "test": "LevelDefinitionTests.RowBoundaries(2,False)",
+    "status": "Passed",
+    "ms": 0.30060000000000003
+  },
+  {
+    "test": "LevelDefinitionTests.RowBoundaries(3,True)",
+    "status": "Passed",
+    "ms": 0.046200000000000005
+  },
+  {
+    "test": "LevelDefinitionTests.RowBoundaries(8,True)",
+    "status": "Passed",
+    "ms": 0.0529
+  },
+  {
+    "test": "LevelDefinitionTests.RowBoundaries(9,False)",
+    "status": "Passed",
+    "ms": 0.0448
+  },
+  {
+    "test": "LevelDefinitionTests.FloorBoundaries(0,False)",
+    "status": "Passed",
+    "ms": 0.3245
+  },
+  {
+    "test": "LevelDefinitionTests.FloorBoundaries(1,True)",
+    "status": "Passed",
+    "ms": 0.2275
+  },
+  {
+    "test": "LevelDefinitionTests.FloorBoundaries(4,True)",
+    "status": "Passed",
+    "ms": 0.0505
+  },
+  {
+    "test": "LevelDefinitionTests.FloorBoundaries(5,False)",
+    "status": "Passed",
+    "ms": 0.049300000000000004
+  },
+  {
+    "test": "LevelDefinitionTests.DurabilityBoundaries(0,False)",
+    "status": "Passed",
+    "ms": 0.10010000000000001
+  },
+  {
+    "test": "LevelDefinitionTests.DurabilityBoundaries(1,True)",
+    "status": "Passed",
+    "ms": 0.0451
+  },
+  {
+    "test": "LevelDefinitionTests.DurabilityBoundaries(12,True)",
+    "status": "Passed",
+    "ms": 0.052700000000000004
+  },
+  {
+    "test": "LevelDefinitionTests.DurabilityBoundaries(13,False)",
+    "status": "Passed",
+    "ms": 0.0473
+  },
+  {
+    "test": "LevelDefinitionTests.RejectsWrongEdgeCountAndDuplicateFragileEdges()",
+    "status": "Passed",
+    "ms": 0.1188
+  },
+  {
+    "test": "LevelDefinitionTests.LinkedPairsMustBeDisjointAndInRange()",
+    "status": "Passed",
+    "ms": 0.14350000000000002
+  },
+  {
+    "test": "LevelDefinitionTests.RejectsInvalidBridgeAndKeyConfiguration()",
+    "status": "Passed",
+    "ms": 0.1486
+  },
+  {
+    "test": "LevelDefinitionTests.SensorMustFitRowAndReferenceItsTarget()",
+    "status": "Passed",
+    "ms": 0.1077
+  },
+  {
+    "test": "LevelDefinitionTests.BombBoundaries(0,1,False)",
+    "status": "Passed",
+    "ms": 0.13
+  },
+  {
+    "test": "LevelDefinitionTests.BombBoundaries(1,1,True)",
+    "status": "Passed",
+    "ms": 0.046200000000000005
+  },
+  {
+    "test": "LevelDefinitionTests.BombBoundaries(6,4,True)",
+    "status": "Passed",
+    "ms": 0.0451
+  },
+  {
+    "test": "LevelDefinitionTests.BombBoundaries(7,4,False)",
+    "status": "Passed",
+    "ms": 0.045000000000000005
+  },
+  {
+    "test": "LevelDefinitionTests.BombBoundaries(2,5,False)",
+    "status": "Passed",
+    "ms": 0.051300000000000005
+  },
+  {
+    "test": "LevelDefinitionTests.RepairBoundaries(0,False)",
+    "status": "Passed",
+    "ms": 0.09870000000000001
+  },
+  {
+    "test": "LevelDefinitionTests.RepairBoundaries(1,True)",
+    "status": "Passed",
+    "ms": 0.0455
+  },
+  {
+    "test": "LevelDefinitionTests.RepairBoundaries(3,True)",
+    "status": "Passed",
+    "ms": 0.045000000000000005
+  },
+  {
+    "test": "LevelDefinitionTests.RepairBoundaries(4,False)",
+    "status": "Passed",
+    "ms": 0.0446
+  },
+  {
+    "test": "LevelDefinitionTests.ShapeAndGlyphRemainDifferent()",
+    "status": "Passed",
+    "ms": 0.1242
+  },
+  {
+    "test": "LevelDefinitionTests.ShortAndLongNamespacesAgreeAndPreserveOriginalId()",
+    "status": "Passed",
+    "ms": 0.111
+  },
+  {
+    "test": "LevelDefinitionTests.RejectsInvalidIds(g:ua:І)",
+    "status": "Passed",
+    "ms": 0.15360000000000001
+  },
+  {
+    "test": "LevelDefinitionTests.RejectsInvalidIds(glyph:en:AB)",
+    "status": "Passed",
+    "ms": 0.0475
+  },
+  {
+    "test": "LevelDefinitionTests.RejectsInvalidIds(s:)",
+    "status": "Passed",
+    "ms": 0.044700000000000004
+  },
+  {
+    "test": "LevelDefinitionTests.RejectsInvalidIds(other:A)",
+    "status": "Passed",
+    "ms": 0.045200000000000004
+  },
+  {
+    "test": "LevelDefinitionTests.NormalizesCombiningTextAndDoesNotSplitSurrogatePairs()",
+    "status": "Passed",
+    "ms": 0.13620000000000002
+  },
+  {
+    "test": "LevelDefinitionTests.UkrainianAndRussianDistinctLettersRemainDistinct()",
+    "status": "Passed",
+    "ms": 0.162
+  },
+  {
+    "test": "LevelDefinitionTests.PositionalWordSignaturesDiffer()",
+    "status": "Passed",
+    "ms": 0.1252
+  },
+  {
+    "test": "LevelDefinitionTests.SevenSymbolMixedTargetIsAccepted()",
+    "status": "Passed",
+    "ms": 0.3257
+  },
+  {
+    "test": "LevelDefinitionTests.SegmentsMustCoverTargetWithoutOverlapAndMatchNamespace()",
+    "status": "Passed",
+    "ms": 0.1046
+  },
+  {
+    "test": "LevelDefinitionTests.DefaultSymbolAndUnknownTransformAreRejected()",
+    "status": "Passed",
+    "ms": 0.0863
+  },
+  {
+    "test": "HalfStarServerChecks.PublishedReplayVerifierAcceptsRealHalfAndRejectsInflatedBest()",
+    "status": "Passed",
+    "ms": 540.482
+  },
+  {
+    "test": "HalfStarServerChecks.ServerVerifiesHalfReplayCreditAndPreservesLegacyFloorCredit()",
+    "status": "Passed",
+    "ms": 22.617700000000003
+  },
+  {
+    "test": "HalfStarServerChecks.NewHalfFieldsDoNotAppearInLegacyJsonOrChangeItsRating()",
+    "status": "Passed",
+    "ms": 0.1438
+  }
+]

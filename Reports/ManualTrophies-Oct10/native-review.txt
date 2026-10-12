@@ -1,0 +1,1 @@
+PASS: third legacy leaf part grants ownership without auto-equipping; EN/RU/UK reward guidance and direct collection link, including 320px Large Text; real enable/remove callbacks immediately start/stop global foliage while preserving ownership; saved off choice survives reload/navigation; inline Shop owned style also toggles. No phone build or live cloud deployment.

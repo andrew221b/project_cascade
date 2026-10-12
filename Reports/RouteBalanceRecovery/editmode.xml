@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-05 19:03:40Z" end-time="2026-10-05 19:03:41Z" duration="0.769416">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="489" result="Passed" start-time="2026-10-05 19:03:40Z" end-time="2026-10-05 19:03:41Z" duration="0.769416" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1528" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="488" result="Passed" start-time="2026-10-05 19:03:40Z" end-time="2026-10-05 19:03:41Z" duration="0.590594" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="84036" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1529" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="488" result="Passed" start-time="2026-10-05 19:03:40Z" end-time="2026-10-05 19:03:41Z" duration="0.590414" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1530" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="488" result="Passed" start-time="2026-10-05 19:03:40Z" end-time="2026-10-05 19:03:41Z" duration="0.590290" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1424" name="PreparationTests" fullname="Cascade.Tests.PreparationTests" classname="Cascade.Tests.PreparationTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-05 19:03:40Z" end-time="2026-10-05 19:03:41Z" duration="0.589889" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1428" name="ChangedBudgetRestoresAllPreviousPinsAndTheirExactRoutes" fullname="Cascade.Tests.PreparationTests.ChangedBudgetRestoresAllPreviousPinsAndTheirExactRoutes" methodname="ChangedBudgetRestoresAllPreviousPinsAndTheirExactRoutes" classname="Cascade.Tests.PreparationTests" runstate="Runnable" seed="1397850595" result="Passed" start-time="2026-10-05 19:03:40Z" end-time="2026-10-05 19:03:41Z" duration="0.582579" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

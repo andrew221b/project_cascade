@@ -1,0 +1,14 @@
+{
+  "CFBundleIdentifier": "com.vickand.cascade",
+  "CFBundleShortVersionString": "0.1.0",
+  "CFBundleVersion": "202610091",
+  "MinimumOSVersion": "15.0",
+  "unityBuild": "Succeeded",
+  "xcodeBuildExitCode": 0,
+  "signingVerified": true,
+  "signingMethod": "codesign --verify --deep --strict, host keychain access",
+  "installation": "Succeeded",
+  "launch": "Succeeded",
+  "processAliveAfterLaunch": true,
+  "runtimeLimits": "No on-device visual, touch, performance or resume verification"
+}

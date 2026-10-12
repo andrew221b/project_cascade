@@ -1,0 +1,34 @@
+{
+  "error" : {
+    "code" : 4000,
+    "domain" : "com.apple.dt.CoreDeviceError",
+    "userInfo" : {
+      "DeviceIdentifier" : {
+        "string" : "86ED6044-764E-5091-8CFE-C94C101E8DA8"
+      },
+      "NSLocalizedDescription" : {
+        "string" : "The device disconnected immediately after connecting."
+      }
+    }
+  },
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "install",
+      "app",
+      "--device",
+      "86ED6044-764E-5091-8CFE-C94C101E8DA8",
+      "CascadeUnity/Builds/CASCADE-iOS-2026-10-08-touch-undo-DerivedData/Build/Products/Release-iphoneos/CascadeUnity.app",
+      "--json-output",
+      "Reports/iOS-2026-10-08-touch-undo/install.json"
+    ],
+    "commandType" : "devicectl.device.install.app",
+    "environment" : {
+      "TERM" : "dumb"
+    },
+    "jsonVersion" : 3,
+    "outcome" : "failed",
+    "version" : "518.33"
+  }
+}

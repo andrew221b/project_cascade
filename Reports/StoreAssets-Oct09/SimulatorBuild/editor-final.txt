@@ -1,0 +1,1 @@
+compileFailed=False; cloudEnabled=False; blankConfigRejected=True; AndroidIconKinds=Adaptive (API 26):2,2,2,2,2,2 | Round (API 25):1,1,1,1,1,1 | Legacy:1,1,1,1,1,1

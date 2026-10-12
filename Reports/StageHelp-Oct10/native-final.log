@@ -1,0 +1,870 @@
+Unity Editor version:    6000.3.8f1 (1c7db571dde0)
+Branch:                  6000.3/staging
+Build type:              Release
+Batch mode:              YES
+macOS version:           Version 26.3 (Build 25D125)
+Darwin version:          25.3.0
+Architecture:            arm64
+Running under Rosetta:   NO
+Available memory:        24576 MB
+Date:                    2026-10-10T09:19:57Z
+[Licensing::Module] Trying to connect to existing licensing client channel...
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-JHQtLqzaahrET4FrCzbWA" at "2026-10-10T09:19:57.881115Z"
+Launching external process: /Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/PackageManager/Server/UnityPackageManager
+
+COMMAND LINE ARGUMENTS:
+/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/MacOS/Unity
+-batchmode
+-projectPath
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity
+-licensingIpc
+LicenseClient-JHQtLqzaahrET4FrCzbWA
+-executeMethod
+Cascade.Editor.Release.StageHelpReview.BeginBatch
+-logFile
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/StageHelp-Oct10/native-final.log
+Successfully changed project path to: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity
+Canceling DisplayDialog: Recovering Scene Backups Scene backups from a previous Editor session have been detected. Your scene might have been backed up when an Editor instance did not close correctly. 
+
+Do you want to copy and preserve these backups in Assets/_Recovery/?
+This should not be called when not controlled by a human.
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [8715137152]  Target information:
+
+Player connection [8715137152]  * "[IP] 192.168.0.40 [Port] 55504 [Flags] 2 [Guid] 1840481389 [EditorId] 1840481389 [Version] 1048832 [Id] OSXEditor(0,Mac) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" 
+
+Player connection [8715137152] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [8715137152] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-657" after 0.0 seconds.
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.3+d7ffd15
+  Session Id:              45d9562be682470aa3cf2b0065d55d27
+  Correlation Id:          f812483d93adb0d9479e7504182b2bdf
+  External correlation Id: 1314342913923685228
+  Machine Id:              8oIzfkS5TI8W9oAuExG/QdceMqo=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-JHQtLqzaahrET4FrCzbWA" (connect: 0.00s, validation: 0.00s, handshake: 0.26s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-JHQtLqzaahrET4FrCzbWA-notifications" at "2026-10-10T09:19:58.142303Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 3574369707208-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.00
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] Licensing Background thread has ended after 0.26s
+[Licensing::Module] Licensing is initialized (took 0.09s).
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Artifact Garbage Collection - Removed 1 unused hashed content files
+[Licensing::Client] Successfully resolved entitlement details
+Refreshing native plugins compatible for Editor in 0.53 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.3.8f1 (1c7db571dde0)
+[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+ preferred device: Apple M4 Pro (high power)
+Metal devices available: 1
+0: Apple M4 Pro (high power)
+Using device Apple M4 Pro (high power)
+Initializing Metal device caps: Apple M4 Pro
+Mac GPU Family: 2
+Apple GPU Family: 9
+MSL Version: 3.0
+Has Float MSAA: 1
+Has Float Filtering: 1
+ReadWrite Texture Tier: 2
+Initialize mono
+Mono path[0] = '/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/Scripting/Managed'
+Mono path[1] = '/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/Scripting/MonoBleedingEdge/lib/mono/unityjit-macos'
+Mono config path = '/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/Scripting/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56657
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+[Licensing::Client] Successfully resolved entitlement details
+Register platform support module: /Applications/Unity/Hub/Editor/6000.3.8f1/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/6000.3.8f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
+Registered in 0.002102 seconds.
+- Loaded All Assemblies, in  0.173 seconds
+[usbmuxd] Start listen thread
+[usbmuxd] Listen thread started
+[usbmuxd] Send listen message
+Native extension for iOS target not found
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 45 ms
+Native extension for OSXStandalone target not found
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.291 seconds
+Domain Reload Profiling: 464ms
+	BeginReloadAssembly (47ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (5ms)
+	RebuildCommonClasses (16ms)
+	RebuildNativeTypeToScriptingClass (6ms)
+	initialDomainReloadingComplete (19ms)
+	LoadAllAssembliesAndSetupDomain (84ms)
+		LoadAssemblies (43ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (82ms)
+			TypeCache.Refresh (81ms)
+				TypeCache.ScanAssembly (74ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (291ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (271ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (123ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (43ms)
+			ProcessInitializeOnLoadAttributes (64ms)
+			ProcessInitializeOnLoadMethodAttributes (39ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+Package Manager log level set to [2]
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 56 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.ai.assistant@2.20.0-pre.1 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.ai.assistant@ceb45b7b3ebd)
+    com.unity.ai.inference@2.6.1 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.ai.inference@9a123aee5df7)
+    com.unity.ai.navigation@2.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.ai.navigation@f6367599281e)
+    com.unity.collab-proxy@2.2.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.collab-proxy@b26119cdd155)
+    com.unity.ide.rider@3.0.27 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.ide.rider@8ca554ad34c2)
+    com.unity.ide.visualstudio@2.0.22 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.ide.visualstudio@8140e851d83e)
+    com.unity.inputsystem@1.18.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.inputsystem@57d0e36f6123)
+    com.unity.localization@1.5.13 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.localization@ef5a0677859d)
+    com.unity.mobile.notifications@2.4.3 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.mobile.notifications@53b584f4d5cd)
+    com.unity.purchasing@5.4.4 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.purchasing@215c35b51cf4)
+    com.unity.services.authentication@3.6.1 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.services.authentication@1cdc3224fb13)
+    com.unity.services.cloudcode@2.10.3 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.services.cloudcode@a071dc58aed1)
+    com.unity.services.cloudsave@3.4.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.services.cloudsave@271cfa0557ba)
+    com.unity.timeline@1.8.6 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.timeline@9ac0df085fa8)
+    com.unity.visualscripting@1.9.1 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.visualscripting@80ee0eef820c)
+    com.unity.services.wire@1.4.1 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.services.wire@9a73acde80cc)
+    com.unity.nuget.newtonsoft-json@3.2.2 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.nuget.newtonsoft-json@4dfd81071c64)
+    com.unity.services.core@1.18.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.services.core@3464cb68d709)
+    com.unity.services.deployment@1.7.2 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.services.deployment@c07c64f9804b)
+    com.unity.addressables@2.8.1 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.addressables@2dc42e61a5f5)
+    com.unity.burst@1.8.27 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.burst@973857688024)
+    com.unity.dt.app-ui@2.1.1 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.dt.app-ui@8ac7e730dd5d)
+    com.unity.collections@2.6.2 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.collections@aea9d3bd5e19)
+    com.unity.mathematics@1.3.3 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.mathematics@19a9377c4ffa)
+    com.unity.nuget.mono-cecil@1.11.6 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.searcher@4.9.4 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.searcher@d45a78918735)
+    com.unity.services.deployment.api@1.1.3 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.services.deployment.api@9becf6da0f1a)
+    com.unity.profiling.core@1.0.3 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.profiling.core@8a49f7027d06)
+    com.unity.scriptablebuildpipeline@2.5.2 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.scriptablebuildpipeline@418957ab75a6)
+    com.unity.test-framework.performance@3.2.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.test-framework.performance@0840f58e4562)
+  Built-in packages:
+    com.unity.render-pipelines.universal@17.3.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.render-pipelines.universal@a6e30d1f59f5)
+    com.unity.test-framework@1.6.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.test-framework@0b7a23ab2e1d)
+    com.unity.ugui@2.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.ugui@bb329a87fcdc)
+    com.unity.modules.jsonserialize@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.jsonserialize)
+    com.unity.modules.ui@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.ui)
+    com.unity.modules.imgui@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.imgui)
+    com.unity.modules.audio@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.audio)
+    com.unity.modules.director@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.director)
+    com.unity.modules.animation@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.animation)
+    com.unity.modules.particlesystem@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.particlesystem)
+    com.unity.ext.nunit@2.0.5 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.ext.nunit@d8c07649098d)
+    com.unity.modules.unitywebrequest@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.unitywebrequest)
+    com.unity.render-pipelines.core@17.3.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.render-pipelines.core@d6dfd1e235d5)
+    com.unity.shadergraph@17.3.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.shadergraph@d44b48771ebb)
+    com.unity.render-pipelines.universal-config@17.0.3 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.render-pipelines.universal-config@8dc1aab4af1d)
+    com.unity.modules.androidjni@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.androidjni)
+    com.unity.modules.uielements@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.uielements)
+    com.unity.modules.ai@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.ai)
+    com.unity.modules.imageconversion@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.imageconversion)
+    com.unity.2d.sprite@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.2d.sprite@08e067ec1643)
+    com.unity.modules.physics@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.physics)
+    com.unity.modules.terrain@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.terrain)
+    com.unity.modules.assetbundle@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.assetbundle)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.hierarchycore@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.hierarchycore)
+    com.unity.modules.screencapture@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.screencapture)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.01 seconds
+[ScriptCompilation] Requested script compilation because: Assetdatabase observed changes in script compilation related files
+[40m[32minfo[39m[22m[49m: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://unix:/tmp/ilpp.sock-8571dbb0b166e90a7ddf3fa052b5b554
+[40m[32minfo[39m[22m[49m: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+[40m[32minfo[39m[22m[49m: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+[40m[32minfo[39m[22m[49m: Microsoft.Hosting.Lifetime[0]
+      Content root path: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping application/grpc -
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping application/grpc - - 200 - application/grpc 17.9420ms
+Refreshing native plugins compatible for Editor in 3.61 ms, found 3 plugins.
+Starting: /Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/BuildPipeline/bee_backend --ipc --defer-dag-verification --dagfile="Library/Bee/900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity
+DisplayProgressbar: Compiling Scripts
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors application/grpc -
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+[40m[1m[33mwarn[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly unityeditor.ios.extensions.xcode has duplicate hint path. Ignoring "/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.iOS.Extensions.Xcode.dll" in favor of "/Applications/Unity/Hub/Editor/6000.3.8f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll"
+[40m[1m[33mwarn[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.runtime.interopservices.windowsruntime has duplicate hint path. Ignoring "/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/Scripting/UnityReferenceAssemblies/unity-4.8-api/Facades/System.Runtime.InteropServices.WindowsRuntime.dll" in favor of "/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/Scripting/NetStandard/Extensions/2.0.0/System.Runtime.InteropServices.WindowsRuntime.dll"
+[40m[1m[33mwarn[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.componentmodel.composition has duplicate hint path. Ignoring "/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/Scripting/UnityReferenceAssemblies/unity-4.8-api/System.ComponentModel.Composition.dll" in favor of "/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/Scripting/NetStandard/compat/2.1.0/shims/netfx/System.ComponentModel.Composition.dll"
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Unity.Burst.Cecil, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e with Library/PackageCache/com.unity.burst@973857688024/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Mono.Cecil, Version=0.11.5.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e with Library/PackageCache/com.unity.nuget.mono-cecil@ecb9724e46ff/Mono.Cecil.dll
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors application/grpc - - 200 - application/grpc 16.0816ms
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly application/grpc -
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      Processing assembly Library/Bee/artifacts/900b0aE.dag/Cascade.Presentation.dll, with 146 defines and 295 references
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      running Unity.Jobs.CodeGen.JobsILPostProcessor
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly application/grpc - - 200 - application/grpc 8.8813ms
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly application/grpc -
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly application/grpc -
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      Processing assembly Library/Bee/artifacts/900b0aE.dag/Cascade.Tests.EditMode.dll, with 144 defines and 289 references
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      running Unity.Jobs.CodeGen.JobsILPostProcessor
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly application/grpc - - 200 - application/grpc 2.3574ms
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      Processing assembly Library/Bee/artifacts/900b0aE.dag/Cascade.Editor.Playable.dll, with 144 defines and 320 references
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      running Unity.Jobs.CodeGen.JobsILPostProcessor
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly application/grpc - - 200 - application/grpc 4.0627ms
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly application/grpc -
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      Processing assembly Library/Bee/artifacts/900b0aE.dag/Cascade.Tests.PlayMode.dll, with 146 defines and 256 references
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      running Unity.Jobs.CodeGen.JobsILPostProcessor
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly application/grpc - - 200 - application/grpc 2.2860ms
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly application/grpc -
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      Processing assembly Library/Bee/artifacts/900b0aE.dag/Assembly-CSharp.dll, with 146 defines and 378 references
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      running Unity.Jobs.CodeGen.JobsILPostProcessor
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null with Library/Bee/artifacts/900b0aE.dag/Unity.Collections.dll
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved UnityEditor.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null with /Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/Scripting/Managed/UnityEngine/UnityEditor.CoreModule.dll
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null with /Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/Scripting/Managed/UnityEngine/UnityEngine.CoreModule.dll
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Unity.Burst.Cecil.Rocks, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e with Library/PackageCache/com.unity.burst@973857688024/Unity.Burst.CodeGen/Unity.Burst.Cecil.Rocks.dll
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly application/grpc -
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      Processing assembly Library/Bee/artifacts/900b0aE.dag/Assembly-CSharp-Editor.dll, with 144 defines and 427 references
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      running Unity.Jobs.CodeGen.JobsILPostProcessor
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly application/grpc - - 200 - application/grpc 165.6314ms
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly application/grpc - - 200 - application/grpc 33.6272ms
+ExitCode: 0 Duration: 2s968ms
+[1532/2118  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[2094/2118  1s] Csc Library/Bee/artifacts/900b0aE.dag/Cascade.Presentation.dll (+2 others)
+Assets/_Cascade/Presentation/OutcomeCeremony.cs(16,29): warning CS0108: 'OutcomeCeremony.light' hides inherited member 'Component.light'. Use the new keyword if hiding was intended.
+Assets/_Cascade/Presentation/NativeAdProvider.cs(66,72): warning CS0618: 'RequestConfiguration.TagForChildDirectedTreatment' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(66,124): warning CS0618: 'TagForChildDirectedTreatment' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(66,158): warning CS0618: 'TagForChildDirectedTreatment' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(67,17): warning CS0618: 'RequestConfiguration.TagForUnderAgeOfConsent' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(67,68): warning CS0618: 'TagForUnderAgeOfConsent' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(67,97): warning CS0618: 'TagForUnderAgeOfConsent' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/CascadeGame.Language.cs(11,16): warning CS0414: The field 'CascadeGame.languagePreview' is assigned but its value is never used
+[2095/2118  0s] ILPostProcess Library/Bee/artifacts/900b0aE.dag/post-processed/Cascade.Presentation.dll (+pdb)
+Processing assembly Library/Bee/artifacts/900b0aE.dag/Cascade.Presentation.dll, with 146 defines and 295 references
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[2096/2118  0s] CopyFiles Library/ScriptAssemblies/Cascade.Presentation.dll
+[2097/2118  0s] CopyFiles Library/ScriptAssemblies/Cascade.Presentation.pdb
+[2098/2118  0s] Csc Library/Bee/artifacts/900b0aE.dag/Cascade.Tests.EditMode.dll (+2 others)
+[2099/2118  0s] Csc Library/Bee/artifacts/900b0aE.dag/Cascade.Editor.Playable.dll (+2 others)
+Assets/_Cascade/Editor/Playable/DevicePlayerBuild.cs(23,31): warning CS0618: 'PlayerSettings.GetApplicationIdentifier(BuildTargetGroup)' is obsolete: 'Use GetApplicationIdentifier(NamedBuildTarget buildTarget) instead'
+Assets/_Cascade/Editor/Playable/DevicePlayerBuild.cs(27,17): warning CS0618: 'PlayerSettings.SetApplicationIdentifier(BuildTargetGroup, string)' is obsolete: 'Use SetApplicationIdentifier(NamedBuildTarget buildTarget, string identifier) instead'
+Assets/_Cascade/Editor/Playable/DevicePlayerBuild.cs(43,17): warning CS0618: 'PlayerSettings.SetApplicationIdentifier(BuildTargetGroup, string)' is obsolete: 'Use SetApplicationIdentifier(NamedBuildTarget buildTarget, string identifier) instead'
+Assets/_Cascade/Editor/Playable/StoreSimulatorBuild.cs(23,31): warning CS0618: 'PlayerSettings.GetApplicationIdentifier(BuildTargetGroup)' is obsolete: 'Use GetApplicationIdentifier(NamedBuildTarget buildTarget) instead'
+Assets/_Cascade/Editor/Playable/StoreSimulatorBuild.cs(27,17): warning CS0618: 'PlayerSettings.SetApplicationIdentifier(BuildTargetGroup, string)' is obsolete: 'Use SetApplicationIdentifier(NamedBuildTarget buildTarget, string identifier) instead'
+Assets/_Cascade/Editor/Playable/StoreSimulatorBuild.cs(40,17): warning CS0618: 'PlayerSettings.SetApplicationIdentifier(BuildTargetGroup, string)' is obsolete: 'Use SetApplicationIdentifier(NamedBuildTarget buildTarget, string identifier) instead'
+[2100/2118  0s] Csc Library/Bee/artifacts/900b0aE.dag/Cascade.Tests.PlayMode.dll (+2 others)
+[2101/2118  0s] ILPostProcess Library/Bee/artifacts/900b0aE.dag/post-processed/Cascade.Editor.Playable.dll (+pdb)
+Processing assembly Library/Bee/artifacts/900b0aE.dag/Cascade.Editor.Playable.dll, with 144 defines and 320 references
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[2102/2118  0s] ILPostProcess Library/Bee/artifacts/900b0aE.dag/post-processed/Cascade.Tests.EditMode.dll (+pdb)
+Processing assembly Library/Bee/artifacts/900b0aE.dag/Cascade.Tests.EditMode.dll, with 144 defines and 289 references
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[2103/2118  0s] CopyFiles Library/ScriptAssemblies/Cascade.Editor.Playable.dll
+[2104/2118  0s] CopyFiles Library/ScriptAssemblies/Cascade.Tests.EditMode.dll
+[2105/2118  0s] CopyFiles Library/ScriptAssemblies/Cascade.Tests.EditMode.pdb
+[2106/2118  0s] CopyFiles Library/ScriptAssemblies/Cascade.Editor.Playable.pdb
+[2107/2118  0s] Csc Library/Bee/artifacts/900b0aE.dag/Assembly-CSharp.dll (+2 others)
+[2108/2118  0s] ILPostProcess Library/Bee/artifacts/900b0aE.dag/post-processed/Cascade.Tests.PlayMode.dll (+pdb)
+Processing assembly Library/Bee/artifacts/900b0aE.dag/Cascade.Tests.PlayMode.dll, with 146 defines and 256 references
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[2109/2118  0s] CopyFiles Library/ScriptAssemblies/Cascade.Tests.PlayMode.pdb
+[2110/2118  0s] CopyFiles Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll
+[2111/2118  0s] Csc Library/Bee/artifacts/900b0aE.dag/Assembly-CSharp-Editor.dll (+2 others)
+[2112/2118  0s] ILPostProcess Library/Bee/artifacts/900b0aE.dag/post-processed/Assembly-CSharp.dll (+pdb)
+Processing assembly Library/Bee/artifacts/900b0aE.dag/Assembly-CSharp.dll, with 146 defines and 378 references
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[2113/2118  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.dll
+[2114/2118  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.pdb
+[2115/2118  0s] ILPostProcess Library/Bee/artifacts/900b0aE.dag/post-processed/Assembly-CSharp-Editor.dll (+pdb)
+Processing assembly Library/Bee/artifacts/900b0aE.dag/Assembly-CSharp-Editor.dll, with 144 defines and 427 references
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[2116/2118  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+[2117/2118  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.pdb
+*** Tundra build success (2.96 seconds), 25 items updated, 2118 evaluated
+Assets/_Cascade/Presentation/OutcomeCeremony.cs(16,29): warning CS0108: 'OutcomeCeremony.light' hides inherited member 'Component.light'. Use the new keyword if hiding was intended.
+Assets/_Cascade/Presentation/NativeAdProvider.cs(66,72): warning CS0618: 'RequestConfiguration.TagForChildDirectedTreatment' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(66,124): warning CS0618: 'TagForChildDirectedTreatment' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(66,158): warning CS0618: 'TagForChildDirectedTreatment' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(67,17): warning CS0618: 'RequestConfiguration.TagForUnderAgeOfConsent' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(67,68): warning CS0618: 'TagForUnderAgeOfConsent' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(67,97): warning CS0618: 'TagForUnderAgeOfConsent' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/CascadeGame.Language.cs(11,16): warning CS0414: The field 'CascadeGame.languagePreview' is assigned but its value is never used
+Assets/_Cascade/Editor/Playable/DevicePlayerBuild.cs(23,31): warning CS0618: 'PlayerSettings.GetApplicationIdentifier(BuildTargetGroup)' is obsolete: 'Use GetApplicationIdentifier(NamedBuildTarget buildTarget) instead'
+Assets/_Cascade/Editor/Playable/DevicePlayerBuild.cs(27,17): warning CS0618: 'PlayerSettings.SetApplicationIdentifier(BuildTargetGroup, string)' is obsolete: 'Use SetApplicationIdentifier(NamedBuildTarget buildTarget, string identifier) instead'
+Assets/_Cascade/Editor/Playable/DevicePlayerBuild.cs(43,17): warning CS0618: 'PlayerSettings.SetApplicationIdentifier(BuildTargetGroup, string)' is obsolete: 'Use SetApplicationIdentifier(NamedBuildTarget buildTarget, string identifier) instead'
+Assets/_Cascade/Editor/Playable/StoreSimulatorBuild.cs(23,31): warning CS0618: 'PlayerSettings.GetApplicationIdentifier(BuildTargetGroup)' is obsolete: 'Use GetApplicationIdentifier(NamedBuildTarget buildTarget) instead'
+Assets/_Cascade/Editor/Playable/StoreSimulatorBuild.cs(27,17): warning CS0618: 'PlayerSettings.SetApplicationIdentifier(BuildTargetGroup, string)' is obsolete: 'Use SetApplicationIdentifier(NamedBuildTarget buildTarget, string identifier) instead'
+Assets/_Cascade/Editor/Playable/StoreSimulatorBuild.cs(40,17): warning CS0618: 'PlayerSettings.SetApplicationIdentifier(BuildTargetGroup, string)' is obsolete: 'Use SetApplicationIdentifier(NamedBuildTarget buildTarget, string identifier) instead'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(66,124): warning CS0618: 'TagForChildDirectedTreatment' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(66,158): warning CS0618: 'TagForChildDirectedTreatment' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(67,17): warning CS0618: 'RequestConfiguration.TagForUnderAgeOfConsent' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(67,68): warning CS0618: 'TagForUnderAgeOfConsent' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(67,97): warning CS0618: 'TagForUnderAgeOfConsent' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/CascadeGame.Language.cs(11,16): warning CS0414: The field 'CascadeGame.languagePreview' is assigned but its value is never used
+Assets/_Cascade/Editor/Playable/DevicePlayerBuild.cs(43,17): warning CS0618: 'PlayerSettings.SetApplicationIdentifier(BuildTargetGroup, string)' is obsolete: 'Use SetApplicationIdentifier(NamedBuildTarget buildTarget, string identifier) instead'
+Assets/_Cascade/Editor/Playable/StoreSimulatorBuild.cs(23,31): warning CS0618: 'PlayerSettings.GetApplicationIdentifier(BuildTargetGroup)' is obsolete: 'Use GetApplicationIdentifier(NamedBuildTarget buildTarget) instead'
+Assets/_Cascade/Editor/Playable/StoreSimulatorBuild.cs(27,17): warning CS0618: 'PlayerSettings.SetApplicationIdentifier(BuildTargetGroup, string)' is obsolete: 'Use SetApplicationIdentifier(NamedBuildTarget buildTarget, string identifier) instead'
+Assets/_Cascade/Editor/Playable/StoreSimulatorBuild.cs(40,17): warning CS0618: 'PlayerSettings.SetApplicationIdentifier(BuildTargetGroup, string)' is obsolete: 'Use SetApplicationIdentifier(NamedBuildTarget buildTarget, string identifier) instead'
+AssetDatabase: script compilation time: 3.351369s
+Begin MonoManager ReloadAssembly
+Total cache size 267936684
+Total cache size after purge 267936684, took 00:00:00.1681263
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.618 seconds
+Refreshing native plugins compatible for Editor in 3.35 ms, found 3 plugins.
+Native extension for iOS target not found
+Native extension for Android target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 2.78 ms, found 3 plugins.
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.677 seconds
+Domain Reload Profiling: 3294ms
+	BeginReloadAssembly (89ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (11ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (33ms)
+	RebuildCommonClasses (17ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (22ms)
+	LoadAllAssembliesAndSetupDomain (481ms)
+		LoadAssemblies (241ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (268ms)
+			TypeCache.Refresh (210ms)
+				TypeCache.ScanAssembly (195ms)
+			BuildScriptInfoCaches (50ms)
+			ResolveRequiredComponents (6ms)
+	FinalizeReload (2677ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2349ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (16ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (127ms)
+			ProcessInitializeOnLoadAttributes (1951ms)
+			ProcessInitializeOnLoadMethodAttributes (251ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Refreshing native plugins compatible for Editor in 3.28 ms, found 3 plugins.
+Preloading 1 native plugins for Editor in 1.28 ms.
+Asset Pipeline Refresh (id=8173dd071e8d64a869b14a91090fed46): Total: 7.997 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=3582 ms
+		Asset DB Callback time: managed=377 ms, native=20 ms
+		Scripting: domain reloads=1, domain reload time=618 ms, compile time=3352 ms, other=46 ms
+		Project Asset Count: scripts=2965, non-scripts=6090
+		Asset File Changes: new=0, changed=4, moved=0, deleted=0
+		Scan Filter Count: 1
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 7.103ms
+	ApplyChangesToAssetFolders: 0.187ms
+	Scan: 600.277ms
+	OnSourceAssetsModified: 0.457ms
+	CategorizeAssetsWithTransientArtifact: 45.206ms
+	ProcessAssetsWithTransientArtifactChanges: 56.884ms
+	CategorizeAssets: 67.075ms
+	ImportOutOfDateAssets: 2691.389ms (-663.417ms without children)
+		CompileScripts: 3352.021ms
+		ReloadNativeAssets: 0.056ms
+		UnloadImportedAssets: 1.571ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.827ms
+		InitializingProgressBar: 0.000ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.000ms
+		OnDemandSchedulerStart: 0.331ms
+	PostProcessAllAssets: 383.461ms
+	Hotreload: 7.796ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.000ms
+	UnloadStreamsBegin: 2.487ms
+	PersistCurrentRevisions: 0.179ms
+	UnloadStreamsEnd: 0.000ms
+	GenerateScriptTypeHashes: 1.567ms
+	Untracked: 4134.932ms
+
+Application.AssetDatabase Initial Refresh End
+Launching external process: /Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Helpers/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.02 seconds
+Scanning for USB devices : 0.033ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-CascadeUnity
+2026-10-10 12:20:07.557 Unity[657:16413308] NSEventModifierFlagFunction specified to -setKeyEquivalentModifierMask: for item <NSMenuItem: 0xc7b555f40 SDF, ke='Command-F12'>, but is only supported for system-provided menu items; will not be used
+Unloading 63 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 13743 unused Assets / (21.8 MB). Loaded Objects now: 14566.
+Memory consumption went from 341.8 MB to 320.0 MB.
+Total: 19.174542 ms (FindLiveObjects: 0.564167 ms CreateObjectMapping: 0.347666 ms MarkObjects: 14.257334 ms  DeleteObjects: 4.004750 ms)
+
+2026-10-10 12:20:07.706 Unity[657:16413308] NSEventModifierFlagFunction specified to -setKeyEquivalentModifierMask: for item <NSMenuItem: 0xc7b554960 SDF, ke='Command-F12'>, but is only supported for system-provided menu items; will not be used
+Opening scene 'Assets/_Cascade/Scenes/CascadePlayable.unity'
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Cascade/Scenes/CascadePlayable.unity'
+	Deserialize:            14.248 ms
+	Integration:            154.938 ms
+	Integration of assets:  0.759 ms
+	Thread Wait Time:       0.000 ms
+	Total Operation Time:   169.944 ms
+Unloading 2 unused Assets / (0.8 KB). Loaded Objects now: 14604.
+Memory consumption went from 301.1 MB to 301.1 MB.
+Total: 12.597250 ms (FindLiveObjects: 0.292625 ms CreateObjectMapping: 0.150917 ms MarkObjects: 12.135417 ms  DeleteObjects: 0.018125 ms)
+
+Start importing Assets/_Cascade/Resources/CascadeArt/Cosmetics/ParcelBrooches.png using Guid(fbd95205c1d4a4056bdafc20655159ec) (TextureImporter) -> (artifact id: '0f729b45dc3186957276452add8dc364') in 0.129838666 seconds
+Refreshing native plugins compatible for Editor in 2.69 ms, found 3 plugins.
+Preloading 1 native plugins for Editor in 1.32 ms.
+Asset Pipeline Refresh (id=3cb723c6542e04f0ab3f3b883cd3e93c): Total: 0.202 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/_Cascade/Resources/CascadeArt/Cosmetics/ParcelBrooches.png using Guid(fbd95205c1d4a4056bdafc20655159ec) (TextureImporter) -> (artifact id: '0f729b45dc3186957276452add8dc364') in 0.125305959 seconds
+Refreshing native plugins compatible for Editor in 3.13 ms, found 3 plugins.
+Preloading 1 native plugins for Editor in 1.29 ms.
+Asset Pipeline Refresh (id=2176deebac8aa4e2dbc7dda2ba8af867): Total: 0.357 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+	Summary:
+		Imports: total=1 (actual=1, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=133 ms
+		Asset DB Callback time: managed=218 ms, native=5 ms
+		Scripting: domain reloads=0, domain reload time=0 ms, compile time=0 ms, other=0 ms
+		Project Asset Count: scripts=2965, non-scripts=6090
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 6
+	InvokeCustomDependenciesCallbacks: 0.000ms
+	InvokePackagesCallback: 0.000ms
+	ApplyChangesToAssetFolders: 0.044ms
+	Scan: 3.016ms
+	OnSourceAssetsModified: 0.000ms
+	CategorizeAssetsWithTransientArtifact: 0.006ms
+	ProcessAssetsWithTransientArtifactChanges: 0.028ms
+	CategorizeAssets: 1.255ms
+	ImportOutOfDateAssets: 127.132ms (0.079ms without children)
+		ImportManagerImport: 125.924ms (0.412ms without children)
+			ImportInProcess: 125.498ms
+			UpdateCategorizedAssets: 0.015ms
+		ReloadNativeAssets: 0.082ms
+		UnloadImportedAssets: 0.059ms
+		ReloadImportedAssets: 0.119ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.553ms
+		InitializingProgressBar: 0.002ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.000ms
+		OnDemandSchedulerStart: 0.314ms
+	PostProcessAllAssets: 218.767ms
+	Hotreload: 5.309ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.127ms
+	UnloadStreamsBegin: 0.009ms
+	PersistCurrentRevisions: 0.180ms
+	UnloadStreamsEnd: 0.000ms
+	Untracked: 1.391ms
+
+Asset Pipeline Refresh (id=20ffc83b7b62141eab8daa7a7b06a9b6): Total: 0.155 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+<CFData 0xc64425680 [0x208d775a0]>{length = 6, capacity = 6, bytes = 0x50f265ee53c2}
+Start importing ProjectSettings/EditorBuildSettings.asset using Guid(0000000000000000b000000000000000) (LibraryAssetImporter) -> (artifact id: '54457183baac8c3a5180d743e82c483c') in 0.001132667 seconds
+Start importing Assets/_Cascade/Content/Localization/LocalizationSettings.asset using Guid(c18a2f3602d214a15974139d1e61163a) (NativeFormatImporter) -> (artifact id: '7d7d9a48e9b578f73607d3f5b53ecb60') in 0.000706417 seconds
+Start importing Assets/_Cascade/Content/Localization/CascadeUI_ru.asset using Guid(52ab9cbec772546ab9ae030430c30abc) (NativeFormatImporter) -> (artifact id: 'dccfc038fa8aa9f509ace89624174a8a') in 0.001524917 seconds
+Start importing Assets/_Cascade/Content/Localization/CascadeUI_en.asset using Guid(72fdf029edab045078273fe7e379042e) (NativeFormatImporter) -> (artifact id: 'd34a138f9c97befa01069d6fd6852bcd') in 0.001336083 seconds
+Start importing Assets/_Cascade/Content/Localization/CascadeUI Shared Data.asset using Guid(b33500a1d6ebc45cd9bdf72e97fa93f5) (NativeFormatImporter) -> (artifact id: 'aae850bc2883abec0b56c048ee961407') in 0.000901083 seconds
+Start importing Assets/_Cascade/Content/Localization/CascadeUI.asset using Guid(f4abbf7fead424aab9690741edaed155) (NativeFormatImporter) -> (artifact id: 'f1a02c872f353a3417a92d176f286471') in 0.000490208 seconds
+Start importing Assets/_Cascade/Content/Resources/CascadeArt/Fonts/ShapeManiaInterface.asset using Guid(d5b8821f7f926433a940a070f9b07884) (NativeFormatImporter) -> (artifact id: '8e255e2de91c403ed3bcdcbcfcdd9a62') in 0.003763125 seconds
+Start importing Assets/_Cascade/Content/Localization/CascadeUI_uk.asset using Guid(578fe1e92a581400a87ea07edb44950d) (NativeFormatImporter) -> (artifact id: 'bcc11e64c7de55c7645bb378f439d0c3') in 0.001316959 seconds
+Start importing Assets/_Cascade/Content/Resources/CascadeArt/Fonts/InterfaceBody.asset using Guid(eac1e40dff9da4021ae3beba17dea739) (NativeFormatImporter) -> (artifact id: '285b9b6f1ffef138a130eb0ab3a5c036') in 0.003734291 seconds
+Refreshing native plugins compatible for Editor in 3.44 ms, found 3 plugins.
+Preloading 1 native plugins for Editor in 1.24 ms.
+Asset Pipeline Refresh (id=4a12814bb9e224121ab633074193656e): Total: 0.086 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+CASCADE UI tables: 5439 non-empty entries / 1813 keys.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Cascade.Editor.Playable.LocalizationAssets:Build () (at Assets/_Cascade/Editor/Playable/LocalizationAssets.cs:68)
+Cascade.Editor.Release.StageHelpReview:ConfigureArt () (at Assets/_Cascade/Editor/Release/StageHelpReview.cs:100)
+Cascade.Editor.Release.StageHelpReview:BeginBatch () (at Assets/_Cascade/Editor/Release/StageHelpReview.cs:28)
+
+(Filename: Assets/_Cascade/Editor/Playable/LocalizationAssets.cs Line: 68)
+
+[Project] Loading completed in 11.023 seconds
+	Project init time: 				9.127 seconds
+		Template init time: 		0.000 seconds
+		Package Manager init time: 		0.122 seconds
+		Asset Database init time: 		0.145 seconds
+		Global illumination init time: 	0.000 seconds
+		Assemblies load time: 			0.472 seconds
+		Unity extensions init time: 	0.013 seconds
+		Asset Database refresh time: 	7.998 seconds
+	Scene opening time: 			1.829 seconds
+##utp:{"type":"ProjectInfo","version":2,"phase":"Immediate","time":1791624008899,"processId":657,"projectLoad":11.022937292000002,"projectInit":9.127408625,"templateInit":0.0,"packageManagerInit":0.121665667,"assetDatabaseInit":0.144569833,"globalIlluminationInit":0.000385833,"assembliesLoad":0.471770083,"unityExtensionsInit":0.012632375,"assetDatabaseRefresh":7.99750075,"sceneOpening":1.828559917}
+##utp:{"type":"EditorInfo","version":2,"phase":"Immediate","time":1791624008899,"processId":657,"editorVersion":"6000.3.8f1 (1c7db571dde0)","branch":"6000.3/staging","buildType":"Release","platform":"OSX"}
+Subscribe to USB device events
+Thread 0x31d3d3000 may have been prematurely finalized
+Reloading assemblies for play mode.
+Reloading assemblies after forced synchronous recompile.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.743 seconds
+Refreshing native plugins compatible for Editor in 3.53 ms, found 3 plugins.
+Native extension for iOS target not found
+Native extension for Android target not found
+Native extension for OSXStandalone target not found
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+Refreshing native plugins compatible for Editor in 3.57 ms, found 3 plugins.
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.808 seconds
+Domain Reload Profiling: 3555ms
+	BeginReloadAssembly (395ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (56ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (273ms)
+	RebuildCommonClasses (26ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (38ms)
+	LoadAllAssembliesAndSetupDomain (281ms)
+		LoadAssemblies (74ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (236ms)
+			TypeCache.Refresh (8ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (218ms)
+			ResolveRequiredComponents (7ms)
+	FinalizeReload (2808ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2103ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (32ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (522ms)
+			ProcessInitializeOnLoadAttributes (1181ms)
+			ProcessInitializeOnLoadMethodAttributes (359ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (18ms)
+Asset Pipeline Refresh (id=fab0a5971ccb14693b14e166766290e6): Total: 4.025 seconds - Initiated by StopAssetImportingV2(ForceSynchronousImport | ForceDomainReload)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=3031 ms
+		Asset DB Callback time: managed=131 ms, native=0 ms
+		Scripting: domain reloads=1, domain reload time=860 ms, compile time=1 ms, other=0 ms
+		Project Asset Count: scripts=2965, non-scripts=6090
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 0.692ms
+	ApplyChangesToAssetFolders: 0.272ms
+	Scan: 0.000ms
+	OnSourceAssetsModified: 0.000ms
+	CategorizeAssetsWithTransientArtifact: 0.013ms
+	ProcessAssetsWithTransientArtifactChanges: 7.378ms
+	CategorizeAssets: 164.173ms
+	ImportOutOfDateAssets: 2819.130ms (2808.233ms without children)
+		CompileScripts: 0.637ms
+		CollectScriptTypesHashes: 7.583ms
+		ReloadNativeAssets: 1.156ms
+		UnloadImportedAssets: 0.039ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.847ms
+		InitializingProgressBar: 0.000ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.000ms
+		OnDemandSchedulerStart: 0.635ms
+	PostProcessAllAssets: 131.758ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.130ms
+	UnloadStreamsBegin: 0.039ms
+	PersistCurrentRevisions: 0.181ms
+	UnloadStreamsEnd: 0.001ms
+	GenerateScriptTypeHashes: 16.902ms
+	Untracked: 900.996ms
+
+Placeholder ConsentInformationClient
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+GoogleMobileAds.Ump.Unity.UmpClientFactory:ConsentInformationClient ()
+GoogleMobileAds.Ump.Api.ConsentInformation:Update (GoogleMobileAds.Ump.Api.ConsentRequestParameters,System.Action`1<GoogleMobileAds.Ump.Api.FormError>)
+Cascade.Presentation.NativeAdProvider:RequestPrivacy () (at Assets/_Cascade/Presentation/NativeAdProvider.cs:47)
+Cascade.Presentation.NativeAdProvider:Initialize (Cascade.Presentation.CascadeGame,Cascade.Application.AdService,Cascade.Presentation.MonetizationSettings) (at Assets/_Cascade/Presentation/NativeAdProvider.cs:34)
+Cascade.Presentation.CascadeGame:InitializeMonetization () (at Assets/_Cascade/Presentation/CascadeGame.Store.cs:31)
+Cascade.Presentation.CascadeGame:Awake () (at Assets/_Cascade/Presentation/CascadeGame.cs:81)
+
+(Filename: Assets/_Cascade/Presentation/NativeAdProvider.cs Line: 47)
+
+Consent Info updated.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+GoogleMobileAds.Ump.Unity.ConsentInformationClient:Update (GoogleMobileAds.Ump.Api.ConsentRequestParameters,System.Action,System.Action`1<GoogleMobileAds.Ump.Api.FormError>)
+GoogleMobileAds.Ump.Api.ConsentInformation:Update (GoogleMobileAds.Ump.Api.ConsentRequestParameters,System.Action`1<GoogleMobileAds.Ump.Api.FormError>)
+Cascade.Presentation.NativeAdProvider:RequestPrivacy () (at Assets/_Cascade/Presentation/NativeAdProvider.cs:47)
+Cascade.Presentation.NativeAdProvider:Initialize (Cascade.Presentation.CascadeGame,Cascade.Application.AdService,Cascade.Presentation.MonetizationSettings) (at Assets/_Cascade/Presentation/NativeAdProvider.cs:34)
+Cascade.Presentation.CascadeGame:InitializeMonetization () (at Assets/_Cascade/Presentation/CascadeGame.Store.cs:31)
+Cascade.Presentation.CascadeGame:Awake () (at Assets/_Cascade/Presentation/CascadeGame.cs:81)
+
+(Filename: Assets/_Cascade/Presentation/NativeAdProvider.cs Line: 47)
+
+Loaded scene 'Temp/__Backupscenes/0.backup'
+	Deserialize:            0.720 ms
+	Integration:            1646.948 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.672 ms
+	Total Operation Time:   1648.341 ms
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+Asset Pipeline Refresh (id=1a8f5fb38bb884b2198e2418afc6ae19): Total: 0.357 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=356 ms
+		Asset DB Callback time: managed=0 ms, native=0 ms
+		Scripting: domain reloads=0, domain reload time=0 ms, compile time=0 ms, other=0 ms
+		Project Asset Count: scripts=2965, non-scripts=6090
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 1
+	InvokeCustomDependenciesCallbacks: 0.000ms
+	InvokePackagesCallback: 0.000ms
+	ApplyChangesToAssetFolders: 0.135ms
+	Scan: 300.459ms
+	OnSourceAssetsModified: 0.000ms
+	CategorizeAssetsWithTransientArtifact: 0.001ms
+	ProcessAssetsWithTransientArtifactChanges: 0.133ms
+	CategorizeAssets: 46.638ms
+	ImportOutOfDateAssets: 1.181ms (0.191ms without children)
+		ReloadNativeAssets: 0.099ms
+		UnloadImportedAssets: 0.064ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.544ms
+		InitializingProgressBar: 0.000ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.000ms
+		OnDemandSchedulerStart: 0.284ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.272ms
+	UnloadStreamsBegin: 0.294ms
+	PersistCurrentRevisions: 0.175ms
+	UnloadStreamsEnd: 0.000ms
+	Untracked: 7.315ms
+
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+Start Indexing on Editor startup
+[Indexing] Starting Initial Indexing for Assets
+2026-10-10 12:20:15.464 Unity[657:16413308] NSEventModifierFlagFunction specified to -setKeyEquivalentModifierMask: for item <NSMenuItem: 0xc7b54fe80 SDF, ke='Command-F12'>, but is only supported for system-provided menu items; will not be used
+Created GICache directory at /Users/andrew/Library/Caches/com.unity3d.UnityEditor/GiCache. Took: 0.001s, timestamps: [16.758 - 16.759]
+InvalidOperationException: Sequence contains more than one matching element
+  at System.Linq.Enumerable.Single[TSource] (System.Collections.Generic.IEnumerable`1[T] source, System.Func`2[T,TResult] predicate) [0x0004a] in <2a8fff6ff3e54cfa88259e180adc29eb>:0 
+  at Cascade.Editor.Release.StageHelpReview+<Run>d__18.MoveNext () [0x00b0b] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Release/StageHelpReview.cs:159 
+  at UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) [0x00020] in /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/Coroutines.cs:17 
+
+(Filename: Assets/_Cascade/Editor/Release/StageHelpReview.cs Line: 159)
+
+[INFO ] [relay] relay.startup port=9002 mcpClientPort=9003 editorPid=657
+[INFO ] [relay] log === RELAY SERVER STARTED === (unity-ai-relay v1.0.12-build.99)
+[INFO ] [relay] log TLS trust: NODE_USE_SYSTEM_CA=on systemCAs=6 bundledCAs=145
+[INFO ] [relay] log Starting relay server...
+[INFO ] [relay] log Command line arguments: ["bun","/$bunfs/root/relay_mac_arm64","--relay","--port","9002","--mcp-client-port","9003","--editor-pid","657","--shutdown-delay","180","--log-dir","/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Logs"]
+[INFO ] [relay] log Parsed config: {"port":9002,"mcpClientPort":9003,"editorPid":"657","shutdownDelaySeconds":180}
+[INFO ] [relay] log Initializing relay components...
+[INFO ] [relay] log Creating RelayEditor...
+[INFO ] [relay] log WebSocket server started
+[INFO ] [relay] log Relay server initialization completed
+[INFO ] [relay] log MCP Client initialized at port: 9003
+[INFO ] [relay] log Unity MCP Relay server started | Port: 9003 | Endpoints: /mcp/start-server, /mcp/stop-server, /mcp/server-status, /mcp/call-tool
+[INFO ] [relay] log [shell-env] PATH augmented with shell environment (25 entries)
+[INFO ] [relay] log Unity client connected with ID: editor-657-u8kk5m (relay 1.0.12-build.99)
+[INFO ] [relay] connection.established clientId=editor-657-u8kk5m port=9002
+TrimDiskCacheJob: Current cache size 0mb
+[INFO ] [relay] log Client disconnected - blocking and caching for recovery
+[WARN ] [relay] connection.lost clientId=null
+[WARN ] [relay] log Client disconnected - sessions will persist until auto-shutdown, reason: Client disconnected
+[INFO ] [relay] log Auto-shutdown timer started due to client disconnection
+[40m[32minfo[39m[22m[49m: Microsoft.Hosting.Lifetime[0]
+      Application is shutting down...
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      ALC ILPP context 1 is unloading
+[INFO ] [relay] log Auto-shutdown timer fired after 180s inactivity, shutting down: Dedicated client disconnected
+[INFO ] [relay] log Shutdown: Initiating graceful shutdown: Dedicated client disconnected

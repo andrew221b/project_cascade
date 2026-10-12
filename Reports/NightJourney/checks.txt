@@ -1,0 +1,55 @@
+Focused correction run; previous native passes retained below.
+PASS JourneyStoryTests.WholeWorldMapsCoverEveryPublishedLevelAndEachIslandHasMultipleLevels
+PASS JourneyStoryTests.EveryPublishedStopBelongsToOnePageAndRegionWithoutCrossingBorders
+PASS JourneyStoryTests.NightEpilogueAppendsWithoutMovingPublishedWorldsOrPages
+PASS StoryConversationTests.IslandScenesCoverTheFullJourneyWithDistinctReceiptsAndRealExchanges
+PASS StoryConversationTests.CheckpointsOnlyInterruptBetweenSecondAndThirdStageAndDoNotCollideWithIslandOrIntroIds
+PASS StoryConversationTests.KnownResidentsGiveCurrentIslandGoalInsteadOfRepeatingTheirIntroduction
+PASS StoryConversationTests.ReadingInOneModeDoesNotConsumeStoryInAnotherMode
+PASS WorldPrologueTests.EveryWorldHasThreeAuthoredComicPagesAndItsOwnResident
+PASS WorldPrologueTests.EveryIslandGetsADistinctOpeningWithItsCurrentGoal
+PASS WorldPrologueTests.OccasionalLevelAsidesAndAllStoryReceiptsFitExistingSaveValidation
+PASS WorldPrologueTests.EveryStoryKeyHasAnEnglishRussianAndUkrainianSourceEntry
+PASS 637 existing puzzle pins and 24 unique night layouts
+PASS C161 source/3 locales and 3 calibrated descent stages
+PASS C162 source/3 locales and 3 calibrated descent stages
+PASS C163 source/3 locales and 3 calibrated descent stages
+PASS C164 source/3 locales and 3 calibrated descent stages
+PASS C165 source/3 locales and 3 calibrated descent stages
+PASS C166 source/3 locales and 3 calibrated descent stages
+PASS C167 source/3 locales and 3 calibrated descent stages
+PASS C168 source/3 locales and 3 calibrated descent stages
+PASS C169 source/3 locales and 3 calibrated descent stages
+PASS C170 source/3 locales and 3 calibrated descent stages
+PASS C171 source/3 locales and 3 calibrated descent stages
+PASS C172 source/3 locales and 3 calibrated descent stages
+PASS C173 source/3 locales and 3 calibrated descent stages
+PASS C174 source/3 locales and 3 calibrated descent stages
+PASS C175 source/3 locales and 3 calibrated descent stages
+PASS C176 source/3 locales and 3 calibrated descent stages
+PASS C177 source/3 locales and 3 calibrated descent stages
+PASS C178 source/3 locales and 3 calibrated descent stages
+PASS C179 source/3 locales and 3 calibrated descent stages
+PASS C180 source/3 locales and 3 calibrated descent stages
+PASS C181 source/3 locales and 3 calibrated descent stages
+PASS C182 source/3 locales and 3 calibrated descent stages
+PASS C183 source/3 locales and 3 calibrated descent stages
+PASS C184 source/3 locales and 3 calibrated descent stages
+PASS NavigationResumeTests.ContinuePreservesPlayingRouteAndDeliveredCheckpoint
+PASS NavigationResumeTests.PendingFinalCompletionReturnsToTheSameReceipt
+PASS NavigationResumeTests.BagAndGuideHaveNoPracticeEntryAndLegacyActionsRetainSavedDescent
+PASS NavigationResumeTests.OptionalStampTrailCannotReplaceAResumableCampaignFromUiOrDirectCalls
+PASS NavigationResumeTests.FirstIslandHidesUnavailableArrowsAndCannotBrowseLockedWorlds
+PASS WorldComicFlowTests.EveryWorldComicHasThreeRealPanelsAndPreservesThePinnedMiddleStage
+PASS WorldComicFlowTests.ComicReceiptsStayInTheirModeAndSeenComicsDoNotRepeatAfterReload
+PASS WorldComicFlowTests.OccasionalExchangeAppearsOnlyOnItsExactLevelAndKeepsTheBrowsedStop
+PASS NavigationResumeTests.LostContinueRetriesTheSameMiddleAndFinalStageAndRetainsClears
+PASS NavigationResumeTests.OpenedArrowsBrowseOnlyEarnedLevelsWithoutReplacingThePinnedRow
+PASS WorldComicFlowTests.IslandButtonsAndWorldBrowsingShowEveryUnseenOpeningOnceWithoutMovingTheRow
+PASS night-map-ru text overflow=
+PASS night-map-small text overflow=
+PASS comic-garden-ru text overflow=
+PASS night-gameplay-ru text overflow=
+PASS aster-dialogue-ru text overflow=
+PASS comic-night-ru text overflow=
+PASS comic-night-small text overflow=

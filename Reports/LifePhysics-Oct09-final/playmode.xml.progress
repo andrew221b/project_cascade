@@ -1,0 +1,13 @@
+2026-10-09T06:19:01.9781130Z CascadeUnity
+2026-10-09T06:19:02.5151910Z /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll
+2026-10-09T06:19:03.9335310Z Cascade
+2026-10-09T06:19:03.9402170Z Cascade.Tests
+2026-10-09T06:19:03.9426880Z Cascade.Tests.AudioFeedbackTests
+2026-10-09T06:19:04.1963600Z Cascade.Tests.AudioFeedbackTests.MapEntryChangesFromMenuToTheAudibleWorldScoreAndReturns
+2026-10-09T06:19:35.9092930Z Cascade.Tests.AudioFeedbackTests.OutputResetAndForegroundReturnRecoverTheEnabledThemeNearItsOldPosition
+2026-10-09T06:19:44.3116160Z Cascade.Tests.PlayableTests
+2026-10-09T06:19:44.3150850Z Cascade.Tests.PlayableTests.GustMovesDeckAndRopesMoreThanAmbientWithoutChangingThePuzzle
+2026-10-09T06:19:54.2196930Z Cascade.Tests.PlayableTests.SharedContactPropsHaveSeparateBodiesAndPreserveGameplayState
+2026-10-09T06:19:56.4121480Z Cascade.Tests.WorldVisitorLifecycleTests
+2026-10-09T06:19:56.4138740Z Cascade.Tests.WorldVisitorLifecycleTests.StageAndSceneryVaryVisitsWithoutMovingTheirBodyPivot
+2026-10-09T06:19:56.5129860Z Cascade.Tests.WorldVisitorLifecycleTests.VisitorsUseEightPhasesStableClockAndQualityLimits

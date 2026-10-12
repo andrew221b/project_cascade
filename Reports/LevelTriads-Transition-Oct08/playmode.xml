@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Failed(Child)" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-08 19:44:43Z" end-time="2026-10-08 19:45:56Z" duration="72.6080264">
+  <test-suite type="TestSuite" id="1162" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="143" result="Failed" site="Child" start-time="2026-10-08 19:44:43Z" end-time="2026-10-08 19:45:56Z" duration="72.608026" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1156" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="143" result="Failed" site="Child" start-time="2026-10-08 19:44:44Z" end-time="2026-10-08 19:45:56Z" duration="72.090734" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24227" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1157" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="143" result="Failed" site="Child" start-time="2026-10-08 19:44:44Z" end-time="2026-10-08 19:45:56Z" duration="72.084690" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1158" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="143" result="Failed" site="Child" start-time="2026-10-08 19:44:44Z" end-time="2026-10-08 19:45:56Z" duration="72.083412" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1009" name="GuidedLessonFlowTests" fullname="Cascade.Tests.GuidedLessonFlowTests" classname="Cascade.Tests.GuidedLessonFlowTests" runstate="Runnable" testcasecount="13" result="Failed" site="Child" start-time="2026-10-08 19:44:44Z" end-time="2026-10-08 19:45:56Z" duration="72.081645" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1010" name="FirstStageCanTeachUndoAtItsFirstCheckpointBeforeIndependentStages" fullname="Cascade.Tests.GuidedLessonFlowTests.FirstStageCanTeachUndoAtItsFirstCheckpointBeforeIndependentStages" methodname="FirstStageCanTeachUndoAtItsFirstCheckpointBeforeIndependentStages" classname="Cascade.Tests.GuidedLessonFlowTests" runstate="Runnable" seed="1956777820" result="Failed" start-time="2026-10-08 19:44:44Z" end-time="2026-10-08 19:45:21Z" duration="36.750856" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  The first legal Undo is on this checkpoint | screen=Checkpoint, stage=0, status=Won, ready=True, play=False, control=True, preparing=False, presenting=False, paused=False, popup=, pending=, saveError=False, conversation=False
+  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at Cascade.Tests.GuidedLessonFlowTests+<Await>d__16.MoveNext () [0x00185] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Tests/PlayMode/GuidedLessonFlowTests.cs:115
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in ./Library/PackageCache/com.unity.test-framework@0b7a23ab2e1d/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1011" name="PrimaryMechanicIsExplainedInStageOneAndLaterStagesAreIndependent" fullname="Cascade.Tests.GuidedLessonFlowTests.PrimaryMechanicIsExplainedInStageOneAndLaterStagesAreIndependent" methodname="PrimaryMechanicIsExplainedInStageOneAndLaterStagesAreIndependent" classname="Cascade.Tests.GuidedLessonFlowTests" runstate="Runnable" seed="813073155" result="Failed" start-time="2026-10-08 19:45:21Z" end-time="2026-10-08 19:45:56Z" duration="35.154861" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Stage two must be independently playable | screen=Playing, stage=0, status=Playing, ready=True, play=True, control=True, preparing=False, presenting=False, paused=False, popup=, pending=, saveError=False, conversation=False
+  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at Cascade.Tests.GuidedLessonFlowTests+<Await>d__16.MoveNext () [0x00185] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Tests/PlayMode/GuidedLessonFlowTests.cs:115
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in ./Library/PackageCache/com.unity.test-framework@0b7a23ab2e1d/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+Saving results to: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/LevelTriads-Transition-Oct08/playmode.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -1,0 +1,3783 @@
+{
+  "name": "GlassLagoon_ReflectedMoon",
+  "bpm": 72,
+  "seconds": 213.33333333333334,
+  "bars": 64,
+  "sections": [
+    {
+      "name": "intro",
+      "start": 0.0,
+      "bars": 4
+    },
+    {
+      "name": "verse",
+      "start": 13.333333333333334,
+      "bars": 8
+    },
+    {
+      "name": "chorus",
+      "start": 40.0,
+      "bars": 8
+    },
+    {
+      "name": "verse_varied",
+      "start": 66.66666666666667,
+      "bars": 8
+    },
+    {
+      "name": "chorus_answer",
+      "start": 93.33333333333334,
+      "bars": 8
+    },
+    {
+      "name": "bridge",
+      "start": 120.0,
+      "bars": 8
+    },
+    {
+      "name": "chorus_return",
+      "start": 146.66666666666669,
+      "bars": 8
+    },
+    {
+      "name": "chorus_coda",
+      "start": 173.33333333333334,
+      "bars": 8
+    },
+    {
+      "name": "turnaround",
+      "start": 200.0,
+      "bars": 4
+    }
+  ],
+  "notes": [
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 0,
+      "duration": 1.5,
+      "gain": 0.06544685822776891,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 1.659485898393447,
+      "duration": 1.5,
+      "gain": 0.06627450094925734,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 38,
+      "time": 0.04832018247049344,
+      "duration": 4.833333333333333,
+      "gain": 0.03291148557384546,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 3.3290189100336685,
+      "duration": 1.5,
+      "gain": 0.06438386406550047,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 4.996022360920187,
+      "duration": 1.5,
+      "gain": 0.0640902052254295,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 65,
+      "time": 4.1699366493396255,
+      "duration": 1.3333333333333335,
+      "gain": 0.22020611231264267,
+      "role": "response"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 69,
+      "time": 5.000807166682887,
+      "duration": 1.3333333333333335,
+      "gain": 0.2269107845431712,
+      "role": "response"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 6.6567317781329916,
+      "duration": 1.5,
+      "gain": 0.06238309882106333,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 8.330743676575178,
+      "duration": 1.5,
+      "gain": 0.06296736277644263,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 41,
+      "time": 6.7117194719210165,
+      "duration": 4.833333333333333,
+      "gain": 0.03453020117827647,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 10.004735568938665,
+      "duration": 1.5,
+      "gain": 0.06199916197880449,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 11.663637788073391,
+      "duration": 1.5,
+      "gain": 0.06649574225816245,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 65,
+      "time": 10.827368921656873,
+      "duration": 1.3333333333333335,
+      "gain": 0.2173133369759356,
+      "role": "response"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 62,
+      "time": 11.66418678563997,
+      "duration": 1.3333333333333335,
+      "gain": 0.22979002774399795,
+      "role": "response"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 13.335400479726134,
+      "duration": 1.5,
+      "gain": 0.1064366757927733,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 14.582029598610232,
+      "duration": 1.5,
+      "gain": 0.1009471652386452,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 15.424697384715447,
+      "duration": 1.5,
+      "gain": 0.09977042957694202,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 38,
+      "time": 13.372399377855379,
+      "duration": 4.833333333333333,
+      "gain": 0.05348489398743843,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "time": 13.551103770734283,
+      "duration": 0.8750000000000001,
+      "gain": 0.36661283074794626,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 14.576190408411472,
+      "duration": 0.625,
+      "gain": 0.37132471669352907,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 15.418770054621064,
+      "duration": 1.0,
+      "gain": 0.4049512568733892,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 16.664009312158232,
+      "duration": 1.5,
+      "gain": 0.10522102082820022,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 17.92073895457976,
+      "duration": 1.5,
+      "gain": 0.10254919013484293,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 18.745123190072693,
+      "duration": 1.5,
+      "gain": 0.0990309837403336,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 16.67050526574988,
+      "duration": 1.1250000000000002,
+      "gain": 0.3927286726196871,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 18.123176821228476,
+      "duration": 0.5416666666666667,
+      "gain": 0.3893578203790022,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 18.950670767145567,
+      "duration": 0.7083333333333334,
+      "gain": 0.3778676119137871,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 20.006516361176242,
+      "duration": 1.5,
+      "gain": 0.10066367865396572,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 21.24193483383749,
+      "duration": 1.5,
+      "gain": 0.10213927851572902,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 22.091131150706286,
+      "duration": 1.5,
+      "gain": 0.10932858920540452,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 41,
+      "time": 20.039072022288675,
+      "duration": 4.833333333333333,
+      "gain": 0.055893726064964844,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 20.203275789436425,
+      "duration": 0.8750000000000001,
+      "gain": 0.39607351048371137,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 21.251741923999603,
+      "duration": 0.625,
+      "gain": 0.37623285588569794,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "time": 22.075907967660942,
+      "duration": 1.0,
+      "gain": 0.39666597101237505,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 23.34225856759999,
+      "duration": 1.5,
+      "gain": 0.10959333265490448,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 24.58270777662422,
+      "duration": 1.5,
+      "gain": 0.09925544699306417,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 55,
+      "time": 25.415006764536397,
+      "duration": 1.5,
+      "gain": 0.10981436510955805,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 23.333983908881212,
+      "duration": 1.3333333333333335,
+      "gain": 0.36501385398160824,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 24.99165710753054,
+      "duration": 1.4166666666666667,
+      "gain": 0.3978982799514164,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 26.665961146923816,
+      "duration": 1.5,
+      "gain": 0.10804323821512252,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 55,
+      "time": 27.90865735440956,
+      "duration": 1.5,
+      "gain": 0.10568739706953846,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 28.758679015757917,
+      "duration": 1.5,
+      "gain": 0.10358870592068867,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 43,
+      "time": 26.71062931414712,
+      "duration": 4.833333333333333,
+      "gain": 0.052742549448928436,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 26.876265599182936,
+      "duration": 0.8750000000000001,
+      "gain": 0.36367972003374593,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 27.917626057832464,
+      "duration": 0.625,
+      "gain": 0.4033060320435902,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 28.753241559239225,
+      "duration": 1.0,
+      "gain": 0.37157858892033946,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 29.993398261307394,
+      "duration": 1.5,
+      "gain": 0.10796180929308355,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 31.24022748674274,
+      "duration": 1.5,
+      "gain": 0.108558127727581,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 32.086354773233275,
+      "duration": 1.5,
+      "gain": 0.10322030693345717,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "time": 29.99554928603951,
+      "duration": 1.1250000000000002,
+      "gain": 0.39999377134552594,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 67,
+      "time": 31.458828468744198,
+      "duration": 0.5416666666666667,
+      "gain": 0.3681546852008711,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 32.29579284088521,
+      "duration": 0.7083333333333334,
+      "gain": 0.4052354330341107,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 33.33253094236129,
+      "duration": 1.5,
+      "gain": 0.09913195112339619,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 34.58281712890456,
+      "duration": 1.5,
+      "gain": 0.1029402608984736,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 35.41620680869313,
+      "duration": 1.5,
+      "gain": 0.10848092458519928,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 46,
+      "time": 33.38182527309671,
+      "duration": 4.833333333333333,
+      "gain": 0.0547698929970868,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 33.54323908810122,
+      "duration": 0.8750000000000001,
+      "gain": 0.3710710269509101,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 34.58024732901151,
+      "duration": 0.625,
+      "gain": 0.3811886559239704,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 35.41732542523145,
+      "duration": 1.0,
+      "gain": 0.4023942569037419,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 36.66753360722604,
+      "duration": 1.5,
+      "gain": 0.11062555331375201,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 59,
+      "time": 37.92288513244377,
+      "duration": 1.5,
+      "gain": 0.10936996345465112,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 38.74167083649272,
+      "duration": 1.5,
+      "gain": 0.10112109849021737,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 36.658512859008404,
+      "duration": 1.3333333333333335,
+      "gain": 0.3935104042636387,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 38.32613048622418,
+      "duration": 1.4166666666666667,
+      "gain": 0.38600918892903385,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 39.99591598797917,
+      "duration": 1.5,
+      "gain": 0.14827042869654636,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 41.24522149933894,
+      "duration": 1.5,
+      "gain": 0.14538151159622206,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 42.08565520933642,
+      "duration": 1.5,
+      "gain": 0.15489214692599357,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 42.699382554595914,
+      "duration": 1.5,
+      "gain": 0.14230358975512594,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 38,
+      "time": 40.04708954177356,
+      "duration": 2.916666666666667,
+      "gain": 0.08068093366042131,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 40.0743571990925,
+      "duration": 2.666666666666667,
+      "gain": 0.07909376729447237,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 40.12197333492292,
+      "duration": 2.666666666666667,
+      "gain": 0.08060545436835895,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 72,
+      "time": 40.204261288084794,
+      "duration": 0.8750000000000001,
+      "gain": 0.47639156984135467,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 67,
+      "time": 41.259807642901194,
+      "duration": 0.625,
+      "gain": 0.4655886006232219,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 42.09051093592702,
+      "duration": 1.0,
+      "gain": 0.4576417129333461,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 43.32866137415779,
+      "duration": 1.5,
+      "gain": 0.14742411692873922,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 44.573654638364744,
+      "duration": 1.5,
+      "gain": 0.1421575879706049,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 45.422213502027134,
+      "duration": 1.5,
+      "gain": 0.14390111567932387,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 58,
+      "time": 46.039375904493696,
+      "duration": 1.5,
+      "gain": 0.1545604296420237,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 46,
+      "time": 43.368695265862556,
+      "duration": 2.916666666666667,
+      "gain": 0.08231451953972137,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 43.32900135234026,
+      "duration": 1.1250000000000002,
+      "gain": 0.49490944774406925,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 44.785515569538674,
+      "duration": 0.5416666666666667,
+      "gain": 0.4630664587177901,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 45.615477158717205,
+      "duration": 0.7083333333333334,
+      "gain": 0.470346498686578,
+      "role": "melody"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 50,
+      "time": 46.33814089422369,
+      "duration": 0.5833333333333334,
+      "gain": 0.1652804313083826,
+      "role": "response"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 46.675258664581975,
+      "duration": 1.5,
+      "gain": 0.15646795926968826,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 47.91921216580869,
+      "duration": 1.5,
+      "gain": 0.14974507989083172,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 48.74830615886433,
+      "duration": 1.5,
+      "gain": 0.14147373832685847,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 49.3768052783324,
+      "duration": 1.5,
+      "gain": 0.1441347183226903,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 41,
+      "time": 46.71374244770782,
+      "duration": 2.916666666666667,
+      "gain": 0.08204929585849419,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 46.74196280733845,
+      "duration": 2.666666666666667,
+      "gain": 0.07830011120325014,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 46.77057062970399,
+      "duration": 2.666666666666667,
+      "gain": 0.08137936180877722,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "time": 46.87822189221171,
+      "duration": 0.8750000000000001,
+      "gain": 0.49916825169635803,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 47.922322718764846,
+      "duration": 0.625,
+      "gain": 0.4665393635947462,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "time": 48.745126098896094,
+      "duration": 1.0,
+      "gain": 0.45817546392472586,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 49.99366231980639,
+      "duration": 1.5,
+      "gain": 0.15541604175695337,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 51.242575398291905,
+      "duration": 1.5,
+      "gain": 0.1553745679847936,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 55,
+      "time": 52.079030997476046,
+      "duration": 1.5,
+      "gain": 0.15405327490932585,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 52.70333797277459,
+      "duration": 1.5,
+      "gain": 0.1504429833943406,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 48,
+      "time": 50.040941841640766,
+      "duration": 2.916666666666667,
+      "gain": 0.07799526726678928,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "time": 49.99549251545572,
+      "duration": 1.3333333333333335,
+      "gain": 0.46837113574882616,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 51.66659957811412,
+      "duration": 1.4166666666666667,
+      "gain": 0.46912007541973066,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 53.333095669750435,
+      "duration": 1.5,
+      "gain": 0.14517548408260025,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 55,
+      "time": 54.590464814432686,
+      "duration": 1.5,
+      "gain": 0.14735905663339985,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 55.42648174941149,
+      "duration": 1.5,
+      "gain": 0.1554226911415298,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 59,
+      "time": 56.035455388129634,
+      "duration": 1.5,
+      "gain": 0.15672667454635217,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 43,
+      "time": 53.3805536935285,
+      "duration": 2.916666666666667,
+      "gain": 0.07651677996311537,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 53.406419573081415,
+      "duration": 2.666666666666667,
+      "gain": 0.08015968675841773,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 59,
+      "time": 53.443087557688614,
+      "duration": 2.666666666666667,
+      "gain": 0.07453636531873516,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 53.53440169512258,
+      "duration": 0.8750000000000001,
+      "gain": 0.45570860154305515,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 54.57760549901033,
+      "duration": 0.625,
+      "gain": 0.4617021222069015,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 55.42319211392076,
+      "duration": 1.0,
+      "gain": 0.4898563295777457,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 56.6648609389207,
+      "duration": 1.5,
+      "gain": 0.14493491931381602,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 57.91455994165498,
+      "duration": 1.5,
+      "gain": 0.15795316369778087,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 58.742831488443485,
+      "duration": 1.5,
+      "gain": 0.1549840455080617,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 59.37136208265291,
+      "duration": 1.5,
+      "gain": 0.15109348092357708,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 38,
+      "time": 56.70096928339401,
+      "duration": 2.916666666666667,
+      "gain": 0.07449027444434776,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 72,
+      "time": 56.65957204870773,
+      "duration": 1.1250000000000002,
+      "gain": 0.47419645248230474,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 67,
+      "time": 58.11776604110293,
+      "duration": 0.5416666666666667,
+      "gain": 0.5087392234273546,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 58.96092720469354,
+      "duration": 0.7083333333333334,
+      "gain": 0.48659628294401785,
+      "role": "melody"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 53,
+      "time": 59.67486648784785,
+      "duration": 0.5833333333333334,
+      "gain": 0.1624036956970701,
+      "role": "response"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 60.000057181521335,
+      "duration": 1.5,
+      "gain": 0.14310389092774542,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 61.254699601526745,
+      "duration": 1.5,
+      "gain": 0.14316171821986834,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 62.0854618475346,
+      "duration": 1.5,
+      "gain": 0.1419320390558222,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 58,
+      "time": 62.69999454806724,
+      "duration": 1.5,
+      "gain": 0.1516917022493342,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 46,
+      "time": 60.03704053903837,
+      "duration": 2.916666666666667,
+      "gain": 0.07996108331984532,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 60.077417134491036,
+      "duration": 2.666666666666667,
+      "gain": 0.07468613602046766,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 58,
+      "time": 60.119931145511245,
+      "duration": 2.666666666666667,
+      "gain": 0.07636415090870853,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 60.206533261955954,
+      "duration": 0.8750000000000001,
+      "gain": 0.46236160461379266,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 61.25763899098796,
+      "duration": 0.625,
+      "gain": 0.4578142410690358,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 62.09121606827324,
+      "duration": 1.0,
+      "gain": 0.4966374617361598,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 63.334903938805375,
+      "duration": 1.5,
+      "gain": 0.14613516640988933,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 59,
+      "time": 64.58538709362514,
+      "duration": 1.5,
+      "gain": 0.1517920609385191,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 65.41491296154737,
+      "duration": 1.5,
+      "gain": 0.15202380868309504,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 61,
+      "time": 66.05020048015069,
+      "duration": 1.5,
+      "gain": 0.15781604180249748,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 45,
+      "time": 63.36627555291091,
+      "duration": 2.916666666666667,
+      "gain": 0.07883447492260794,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 67,
+      "time": 63.32878573690038,
+      "duration": 1.3333333333333335,
+      "gain": 0.4601312037868663,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 65.00234838411271,
+      "duration": 1.4166666666666667,
+      "gain": 0.49644467173236023,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 66.66501008066311,
+      "duration": 1.5,
+      "gain": 0.10512738076354494,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 67.9225809696474,
+      "duration": 1.5,
+      "gain": 0.10875290572554197,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 68.75356104325697,
+      "duration": 1.5,
+      "gain": 0.09897582266355463,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 38,
+      "time": 66.71325297767746,
+      "duration": 4.833333333333333,
+      "gain": 0.05304185826219907,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "time": 66.8674150441402,
+      "duration": 0.8750000000000001,
+      "gain": 0.3688839622859148,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 67.92659183438413,
+      "duration": 0.625,
+      "gain": 0.38615639520979606,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 68.74884616900437,
+      "duration": 1.0,
+      "gain": 0.3966286231535247,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 69.99332585530853,
+      "duration": 1.5,
+      "gain": 0.10500910831720997,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 71.24276435755834,
+      "duration": 1.5,
+      "gain": 0.10385566038462754,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 72.08649246733073,
+      "duration": 1.5,
+      "gain": 0.09961121509036386,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 70.00740563591275,
+      "duration": 1.1250000000000002,
+      "gain": 0.37522286092328905,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 71.46310071355744,
+      "duration": 0.5416666666666667,
+      "gain": 0.39156996679908973,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 72.29940335578804,
+      "duration": 0.7083333333333334,
+      "gain": 0.37540104178563694,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 73.33589141592147,
+      "duration": 1.5,
+      "gain": 0.10967433660307761,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 74.58062851287711,
+      "duration": 1.5,
+      "gain": 0.10721357436022547,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 75.42460572450142,
+      "duration": 1.5,
+      "gain": 0.10153278818690921,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 41,
+      "time": 73.3692296669562,
+      "duration": 4.833333333333333,
+      "gain": 0.05460431771683916,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 73.53571518478535,
+      "duration": 0.8750000000000001,
+      "gain": 0.39348886244789844,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 74.58020345291192,
+      "duration": 0.625,
+      "gain": 0.3651995601305125,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "time": 75.41794136764143,
+      "duration": 1.0,
+      "gain": 0.3748812146586962,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 76.65847193936204,
+      "duration": 1.5,
+      "gain": 0.10855697273890591,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 55,
+      "time": 77.92530878697832,
+      "duration": 1.5,
+      "gain": 0.0990028940949227,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 78.74681845134124,
+      "duration": 1.5,
+      "gain": 0.10642950286108037,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 76.66996812771355,
+      "duration": 1.3333333333333335,
+      "gain": 0.37062443437107734,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 78.3402704730546,
+      "duration": 1.4166666666666667,
+      "gain": 0.3738184016628113,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 80.00131901361941,
+      "duration": 1.5,
+      "gain": 0.10058404654425526,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 81.24989816789568,
+      "duration": 1.5,
+      "gain": 0.10312530085821807,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 55,
+      "time": 82.08730457863486,
+      "duration": 1.5,
+      "gain": 0.10884915805030618,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 48,
+      "time": 80.0351321632236,
+      "duration": 4.833333333333333,
+      "gain": 0.05742092212522648,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 80.20545196899008,
+      "duration": 0.8750000000000001,
+      "gain": 0.40130262257878974,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 81.2480225415908,
+      "duration": 0.625,
+      "gain": 0.3763505169664013,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 82.08318701885214,
+      "duration": 1.0,
+      "gain": 0.4003038342929331,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 83.32774042115207,
+      "duration": 1.5,
+      "gain": 0.1050001737397753,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 84.5869847829009,
+      "duration": 1.5,
+      "gain": 0.10828951507910627,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 85.42473853329419,
+      "duration": 1.5,
+      "gain": 0.10462256235763845,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "time": 83.33174903083616,
+      "duration": 1.1250000000000002,
+      "gain": 0.40040989153559053,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "time": 84.79217982216448,
+      "duration": 0.5416666666666667,
+      "gain": 0.4029484580833792,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 85.6253088441571,
+      "duration": 0.7083333333333334,
+      "gain": 0.3809745282481895,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 86.6648142700712,
+      "duration": 1.5,
+      "gain": 0.1012019198022349,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 87.912472079209,
+      "duration": 1.5,
+      "gain": 0.10175968938268137,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 88.74812214334757,
+      "duration": 1.5,
+      "gain": 0.10825228188880463,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 46,
+      "time": 86.70105737256591,
+      "duration": 4.833333333333333,
+      "gain": 0.05371828006055632,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 86.8819221026317,
+      "duration": 0.8750000000000001,
+      "gain": 0.37537637235706917,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 87.91699449867313,
+      "duration": 0.625,
+      "gain": 0.38456788697843064,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 88.7445864517858,
+      "duration": 1.0,
+      "gain": 0.3769479747857058,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 90.00273499638725,
+      "duration": 1.5,
+      "gain": 0.10171427731445008,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 59,
+      "time": 91.24824971211147,
+      "duration": 1.5,
+      "gain": 0.10776088810291119,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 92.09267436865889,
+      "duration": 1.5,
+      "gain": 0.11015388055419194,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 89.99892606220143,
+      "duration": 1.3333333333333335,
+      "gain": 0.4004734287320613,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 91.67331113160353,
+      "duration": 1.4166666666666667,
+      "gain": 0.3741728704816333,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 93.33576384341256,
+      "duration": 1.5,
+      "gain": 0.14979422519146038,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 94.58551364231243,
+      "duration": 1.5,
+      "gain": 0.15703342349597169,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 95.42342709713104,
+      "duration": 1.5,
+      "gain": 0.15421871823076425,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 96.03950823932271,
+      "duration": 1.5,
+      "gain": 0.15192199595137326,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 38,
+      "time": 93.36797133130882,
+      "duration": 2.916666666666667,
+      "gain": 0.07556137995806116,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 93.40500093920501,
+      "duration": 2.666666666666667,
+      "gain": 0.07560092850674578,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 93.43824594835043,
+      "duration": 2.666666666666667,
+      "gain": 0.07944624471977184,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 72,
+      "time": 93.54135572863017,
+      "duration": 0.8750000000000001,
+      "gain": 0.5087534822885769,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 67,
+      "time": 94.58160339138763,
+      "duration": 0.625,
+      "gain": 0.4762170908662578,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 95.41359687023078,
+      "duration": 1.0,
+      "gain": 0.4853822003805107,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 96.6744624310449,
+      "duration": 1.5,
+      "gain": 0.1461634649649291,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 97.91402991877081,
+      "duration": 1.5,
+      "gain": 0.15387940226526753,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 98.7577540203925,
+      "duration": 1.5,
+      "gain": 0.15562950292002026,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 58,
+      "time": 99.3792334882865,
+      "duration": 1.5,
+      "gain": 0.14224261211447334,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 46,
+      "time": 96.71633182942405,
+      "duration": 2.916666666666667,
+      "gain": 0.08227961472647133,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 96.67177373225896,
+      "duration": 1.1250000000000002,
+      "gain": 0.46360348389483674,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 98.12801714935351,
+      "duration": 0.5416666666666667,
+      "gain": 0.4816873939124396,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 98.94916781923607,
+      "duration": 0.7083333333333334,
+      "gain": 0.4678254729370646,
+      "role": "melody"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 50,
+      "time": 99.67125920971738,
+      "duration": 0.5833333333333334,
+      "gain": 0.16469640235745628,
+      "role": "response"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 100.00957050962525,
+      "duration": 1.5,
+      "gain": 0.15788018613124863,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 101.24320807847084,
+      "duration": 1.5,
+      "gain": 0.14247845880486282,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 102.0833467015704,
+      "duration": 1.5,
+      "gain": 0.15726375325780098,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 102.70204241651665,
+      "duration": 1.5,
+      "gain": 0.15013110751642203,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 41,
+      "time": 100.03454292920483,
+      "duration": 2.916666666666667,
+      "gain": 0.08305420623417549,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 100.06705512869672,
+      "duration": 2.666666666666667,
+      "gain": 0.0780988416023948,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 100.10931796494705,
+      "duration": 2.666666666666667,
+      "gain": 0.08269392733516195,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "time": 100.2028887888634,
+      "duration": 0.8750000000000001,
+      "gain": 0.45916614719598914,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 101.25887468061343,
+      "duration": 0.625,
+      "gain": 0.5011418043047638,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "time": 102.08975187240242,
+      "duration": 1.0,
+      "gain": 0.5021297443672629,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 103.34325069034834,
+      "duration": 1.5,
+      "gain": 0.14800012028172324,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 104.58914530805781,
+      "duration": 1.5,
+      "gain": 0.15467603678274333,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 55,
+      "time": 105.40940127765406,
+      "duration": 1.5,
+      "gain": 0.14763608464300887,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 106.03617434038942,
+      "duration": 1.5,
+      "gain": 0.14208502494619524,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 48,
+      "time": 103.38352259203718,
+      "duration": 2.916666666666667,
+      "gain": 0.07461102479371906,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "time": 103.3321432505375,
+      "duration": 1.3333333333333335,
+      "gain": 0.4703004616271725,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 105.00285598762018,
+      "duration": 1.4166666666666667,
+      "gain": 0.4702443566640144,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 106.6599165256121,
+      "duration": 1.5,
+      "gain": 0.15079355693698837,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 55,
+      "time": 107.92460220569431,
+      "duration": 1.5,
+      "gain": 0.15011318145428246,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 108.74144158187644,
+      "duration": 1.5,
+      "gain": 0.14504579433599346,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 59,
+      "time": 109.38416336943918,
+      "duration": 1.5,
+      "gain": 0.15359902910821413,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 43,
+      "time": 106.69994400167352,
+      "duration": 2.916666666666667,
+      "gain": 0.07504383839527892,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 106.73582772427942,
+      "duration": 2.666666666666667,
+      "gain": 0.07869222608686473,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 59,
+      "time": 106.78333623445155,
+      "duration": 2.666666666666667,
+      "gain": 0.07741217689512006,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 106.86703482659291,
+      "duration": 0.8750000000000001,
+      "gain": 0.47305302308570063,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 107.91000603659872,
+      "duration": 0.625,
+      "gain": 0.4897850797518909,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 108.75427162430934,
+      "duration": 1.0,
+      "gain": 0.48374520194076714,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 110.00301499031485,
+      "duration": 1.5,
+      "gain": 0.15691760244197211,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 111.24575001984066,
+      "duration": 1.5,
+      "gain": 0.15590132382250538,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 112.08703726547992,
+      "duration": 1.5,
+      "gain": 0.15234784590200082,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 112.70738602595704,
+      "duration": 1.5,
+      "gain": 0.14898852843627025,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 38,
+      "time": 110.04903747775012,
+      "duration": 2.916666666666667,
+      "gain": 0.07907549137497141,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 72,
+      "time": 110.00722302474624,
+      "duration": 1.1250000000000002,
+      "gain": 0.507664869928697,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 67,
+      "time": 111.45473676022333,
+      "duration": 0.5416666666666667,
+      "gain": 0.48710262850173264,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 67,
+      "time": 112.29195178425881,
+      "duration": 0.7083333333333334,
+      "gain": 0.507043598167329,
+      "role": "melody"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 55,
+      "time": 113.00383358593282,
+      "duration": 0.5833333333333334,
+      "gain": 0.16307472898334252,
+      "role": "response"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 113.33081787216034,
+      "duration": 1.5,
+      "gain": 0.15317849126519475,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 114.57344795655828,
+      "duration": 1.5,
+      "gain": 0.15176168638541282,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 115.41566975882053,
+      "duration": 1.5,
+      "gain": 0.14147002181737167,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 58,
+      "time": 116.03552641586955,
+      "duration": 1.5,
+      "gain": 0.15588986498700003,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 46,
+      "time": 113.37706823815921,
+      "duration": 2.916666666666667,
+      "gain": 0.077603781281653,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 113.39585989420729,
+      "duration": 2.666666666666667,
+      "gain": 0.0789791934649166,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 58,
+      "time": 113.45541609746857,
+      "duration": 2.666666666666667,
+      "gain": 0.07909341252714962,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 113.54077600202919,
+      "duration": 0.8750000000000001,
+      "gain": 0.50683992129955,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 114.57994327632035,
+      "duration": 0.625,
+      "gain": 0.4791753887250953,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 115.4078389497312,
+      "duration": 1.0,
+      "gain": 0.4667061315041379,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 116.66375509552634,
+      "duration": 1.5,
+      "gain": 0.14647857575261317,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 59,
+      "time": 117.9237125666766,
+      "duration": 1.5,
+      "gain": 0.15128703870612917,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 118.75221621959727,
+      "duration": 1.5,
+      "gain": 0.1578198796111897,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 61,
+      "time": 119.37419952016756,
+      "duration": 1.5,
+      "gain": 0.15608283117269992,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 45,
+      "time": 116.71351308834097,
+      "duration": 2.916666666666667,
+      "gain": 0.07764891731655284,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 67,
+      "time": 116.66931169818379,
+      "duration": 1.3333333333333335,
+      "gain": 0.4579162891251564,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 118.33477369870499,
+      "duration": 1.4166666666666667,
+      "gain": 0.45717908561863646,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 120.00139404636606,
+      "duration": 1.5,
+      "gain": 0.10660994621855925,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 120.07370396921628,
+      "duration": 1.5,
+      "gain": 0.11508076215816307,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 122.07987316709557,
+      "duration": 1.5,
+      "gain": 0.10696007544748094,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 41,
+      "time": 120.04317202894603,
+      "duration": 4.833333333333333,
+      "gain": 0.05996405978428804,
+      "role": "bass"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 60,
+      "time": 120.42489357761185,
+      "duration": 1.0833333333333335,
+      "gain": 0.39389189788069745,
+      "role": "melody"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 64,
+      "time": 121.67208043425592,
+      "duration": 0.5,
+      "gain": 0.3931190495572508,
+      "role": "melody"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 62,
+      "time": 122.49217065670726,
+      "duration": 0.6666666666666667,
+      "gain": 0.4020657223518545,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 123.32459799563827,
+      "duration": 1.5,
+      "gain": 0.10606229503289552,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 55,
+      "time": 123.39142058896199,
+      "duration": 1.5,
+      "gain": 0.11514399384740442,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 125.42497736346499,
+      "duration": 1.5,
+      "gain": 0.11736650587633818,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 59,
+      "time": 123.74932556519848,
+      "duration": 1.0833333333333335,
+      "gain": 0.3773461600460129,
+      "role": "melody"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 62,
+      "time": 124.99385084492555,
+      "duration": 0.5,
+      "gain": 0.40014072536123724,
+      "role": "melody"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 60,
+      "time": 125.84030243999621,
+      "duration": 0.6666666666666667,
+      "gain": 0.38916846647502407,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 126.67005733180041,
+      "duration": 1.5,
+      "gain": 0.10663678146688131,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 126.72702384690801,
+      "duration": 1.5,
+      "gain": 0.11674410630515723,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 128.75612027866566,
+      "duration": 1.5,
+      "gain": 0.11635111257051456,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 38,
+      "time": 126.70547584081065,
+      "duration": 4.833333333333333,
+      "gain": 0.0583236739997659,
+      "role": "bass"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 65,
+      "time": 127.08425973130187,
+      "duration": 1.0833333333333335,
+      "gain": 0.3997844175895378,
+      "role": "melody"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 65,
+      "time": 128.3244771548681,
+      "duration": 0.5,
+      "gain": 0.3933881906816723,
+      "role": "melody"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 65,
+      "time": 129.16924043998887,
+      "duration": 0.6666666666666667,
+      "gain": 0.3734167514991323,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 130.00734250458058,
+      "duration": 1.5,
+      "gain": 0.11037598760304182,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 130.07248942368267,
+      "duration": 1.5,
+      "gain": 0.11375696438004126,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 132.0877325484095,
+      "duration": 1.5,
+      "gain": 0.10780969747787089,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 57,
+      "time": 130.00930658230055,
+      "duration": 1.3333333333333335,
+      "gain": 0.3863102670537384,
+      "role": "melody"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 62,
+      "time": 131.67645740715838,
+      "duration": 1.4166666666666667,
+      "gain": 0.38790749947408515,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 133.33767742445852,
+      "duration": 1.5,
+      "gain": 0.11807915823030947,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 133.40601750919032,
+      "duration": 1.5,
+      "gain": 0.11188385866645217,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 135.41719256741052,
+      "duration": 1.5,
+      "gain": 0.11110551408334637,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 41,
+      "time": 133.3690701501009,
+      "duration": 4.833333333333333,
+      "gain": 0.05816929052289037,
+      "role": "bass"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 62,
+      "time": 133.74017052814145,
+      "duration": 1.0833333333333335,
+      "gain": 0.3655446572095545,
+      "role": "melody"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 60,
+      "time": 135.0001436333875,
+      "duration": 0.5,
+      "gain": 0.40059579454111743,
+      "role": "melody"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 59,
+      "time": 135.84318049233653,
+      "duration": 0.6666666666666667,
+      "gain": 0.37337471868520555,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 136.65721290176418,
+      "duration": 1.5,
+      "gain": 0.11233963231098874,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 136.73993121257112,
+      "duration": 1.5,
+      "gain": 0.11675132950667928,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 138.75763297589683,
+      "duration": 1.5,
+      "gain": 0.11089944940775077,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 62,
+      "time": 137.0794088619128,
+      "duration": 1.0833333333333335,
+      "gain": 0.37648636279314673,
+      "role": "melody"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 62,
+      "time": 138.34148484142972,
+      "duration": 0.5,
+      "gain": 0.3780859642173521,
+      "role": "melody"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 69,
+      "time": 139.1598854942009,
+      "duration": 0.6666666666666667,
+      "gain": 0.3949965901397327,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 140.008383717508,
+      "duration": 1.5,
+      "gain": 0.10607852297782945,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 55,
+      "time": 140.0645497518058,
+      "duration": 1.5,
+      "gain": 0.11512003464341447,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 142.08477712528895,
+      "duration": 1.5,
+      "gain": 0.11576246105994344,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 43,
+      "time": 140.04585424568523,
+      "duration": 4.833333333333333,
+      "gain": 0.05617038722442653,
+      "role": "bass"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 59,
+      "time": 140.42059042549658,
+      "duration": 1.0833333333333335,
+      "gain": 0.38070940084346405,
+      "role": "melody"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 59,
+      "time": 141.67379320923834,
+      "duration": 0.5,
+      "gain": 0.3929871182318164,
+      "role": "melody"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 62,
+      "time": 142.5092646973741,
+      "duration": 0.6666666666666667,
+      "gain": 0.3999131478549644,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 143.34106233832094,
+      "duration": 1.5,
+      "gain": 0.11343772471225111,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 59,
+      "time": 143.3921490296172,
+      "duration": 1.5,
+      "gain": 0.11462067828122036,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 145.40776949795418,
+      "duration": 1.5,
+      "gain": 0.11698471953415847,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 65,
+      "time": 143.33383128378404,
+      "duration": 1.3333333333333335,
+      "gain": 0.3846031282644574,
+      "role": "melody"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 64,
+      "time": 145.00434261419431,
+      "duration": 1.4166666666666667,
+      "gain": 0.3902903577609203,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 146.65997031540235,
+      "duration": 1.5,
+      "gain": 0.1522856940733635,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 147.9170829275054,
+      "duration": 1.5,
+      "gain": 0.1525662001862466,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 148.750685995431,
+      "duration": 1.5,
+      "gain": 0.15698349584951907,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 149.38080027492956,
+      "duration": 1.5,
+      "gain": 0.14247686848306737,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 38,
+      "time": 146.70421360503747,
+      "duration": 2.916666666666667,
+      "gain": 0.07695275690778682,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 146.7381735196105,
+      "duration": 2.666666666666667,
+      "gain": 0.08314513485342623,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 146.78761760072086,
+      "duration": 2.666666666666667,
+      "gain": 0.0788590952879872,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 72,
+      "time": 146.88332140857534,
+      "duration": 0.8750000000000001,
+      "gain": 0.4899724973733516,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 67,
+      "time": 147.9149112653516,
+      "duration": 0.625,
+      "gain": 0.468608053115245,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 148.75342407447476,
+      "duration": 1.0,
+      "gain": 0.49743793978491646,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 150.00604512986294,
+      "duration": 1.5,
+      "gain": 0.15551419683003365,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 151.24083026835902,
+      "duration": 1.5,
+      "gain": 0.1525196303009576,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 152.0781393128065,
+      "duration": 1.5,
+      "gain": 0.15499580154798276,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 58,
+      "time": 152.7135989714139,
+      "duration": 1.5,
+      "gain": 0.15041118452999147,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 46,
+      "time": 150.03825886449317,
+      "duration": 2.916666666666667,
+      "gain": 0.07513296575177726,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 150.00455728781986,
+      "duration": 1.1250000000000002,
+      "gain": 0.46034210133919934,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 151.4502895390291,
+      "duration": 0.5416666666666667,
+      "gain": 0.45893496218630037,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 152.28767299989357,
+      "duration": 0.7083333333333334,
+      "gain": 0.49611285657489934,
+      "role": "melody"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 50,
+      "time": 152.99623422378642,
+      "duration": 0.5833333333333334,
+      "gain": 0.1643396050782381,
+      "role": "response"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 153.32564105305386,
+      "duration": 1.5,
+      "gain": 0.14406634827722514,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 154.57662856136025,
+      "duration": 1.5,
+      "gain": 0.1435006150961807,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 155.4129486849821,
+      "duration": 1.5,
+      "gain": 0.14567636977445386,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 156.04637964561928,
+      "duration": 1.5,
+      "gain": 0.15207511947528707,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 41,
+      "time": 153.3733962316925,
+      "duration": 2.916666666666667,
+      "gain": 0.07488678595500384,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 153.40190735699667,
+      "duration": 2.666666666666667,
+      "gain": 0.07530859464882479,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 153.44068375835482,
+      "duration": 2.666666666666667,
+      "gain": 0.081961703615951,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "time": 153.54517975798007,
+      "duration": 0.8750000000000001,
+      "gain": 0.4789475062924613,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 154.57723526019987,
+      "duration": 0.625,
+      "gain": 0.4965521251243016,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "time": 155.40932139604567,
+      "duration": 1.0,
+      "gain": 0.4674944739005149,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 156.6630275118241,
+      "duration": 1.5,
+      "gain": 0.15594408921909747,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 157.92540863215586,
+      "duration": 1.5,
+      "gain": 0.14564022653225414,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 55,
+      "time": 158.74420599244976,
+      "duration": 1.5,
+      "gain": 0.14715853607873697,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 159.3730221219866,
+      "duration": 1.5,
+      "gain": 0.15550673321873018,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 48,
+      "time": 156.71529000373314,
+      "duration": 2.916666666666667,
+      "gain": 0.07824953241568443,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "time": 156.66441159606617,
+      "duration": 1.3333333333333335,
+      "gain": 0.47048587036277917,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 158.34105889823152,
+      "duration": 1.4166666666666667,
+      "gain": 0.4956959615855324,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 159.9994350453797,
+      "duration": 1.5,
+      "gain": 0.15408746699995204,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 55,
+      "time": 161.25730938372297,
+      "duration": 1.5,
+      "gain": 0.1489835999516331,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 162.08582630123098,
+      "duration": 1.5,
+      "gain": 0.14565869230339357,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 59,
+      "time": 162.71603188595412,
+      "duration": 1.5,
+      "gain": 0.15297351872048254,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 43,
+      "time": 160.0514090732187,
+      "duration": 2.916666666666667,
+      "gain": 0.07492207118472399,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 160.07233744130684,
+      "duration": 2.666666666666667,
+      "gain": 0.07455345020730218,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 59,
+      "time": 160.12181823343548,
+      "duration": 2.666666666666667,
+      "gain": 0.0754122024924829,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 160.21073160328132,
+      "duration": 0.8750000000000001,
+      "gain": 0.5088305408189059,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 161.24013167308723,
+      "duration": 0.625,
+      "gain": 0.45609160805894383,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 162.07561548216088,
+      "duration": 1.0,
+      "gain": 0.473192112758673,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 163.32729338145134,
+      "duration": 1.5,
+      "gain": 0.14225932588991197,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 164.57336385373526,
+      "duration": 1.5,
+      "gain": 0.15694445945291535,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 165.4106699002847,
+      "duration": 1.5,
+      "gain": 0.15226905728786716,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 166.0344686588052,
+      "duration": 1.5,
+      "gain": 0.1499421021147749,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 38,
+      "time": 163.37457658914408,
+      "duration": 2.916666666666667,
+      "gain": 0.08080977370790522,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 72,
+      "time": 163.33594908435094,
+      "duration": 1.1250000000000002,
+      "gain": 0.4994691650619682,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 67,
+      "time": 164.78429286552105,
+      "duration": 0.5416666666666667,
+      "gain": 0.48201358924242005,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 165.62767257583718,
+      "duration": 0.7083333333333334,
+      "gain": 0.5079759434386838,
+      "role": "melody"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 53,
+      "time": 166.3304396413447,
+      "duration": 0.5833333333333334,
+      "gain": 0.1716615277793286,
+      "role": "response"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 166.65969327914638,
+      "duration": 1.5,
+      "gain": 0.14868256993004705,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 167.9250448103164,
+      "duration": 1.5,
+      "gain": 0.1543583736095556,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 168.74397785267445,
+      "duration": 1.5,
+      "gain": 0.15726970503011464,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 58,
+      "time": 169.38306401579982,
+      "duration": 1.5,
+      "gain": 0.15745551944532502,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 46,
+      "time": 166.69874635148312,
+      "duration": 2.916666666666667,
+      "gain": 0.07553378476971057,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 166.7424139058115,
+      "duration": 2.666666666666667,
+      "gain": 0.08049172356257712,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 58,
+      "time": 166.7733133850212,
+      "duration": 2.666666666666667,
+      "gain": 0.0771361559143999,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 166.86734452453382,
+      "duration": 0.8750000000000001,
+      "gain": 0.483021940249508,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 167.92106202514813,
+      "duration": 0.625,
+      "gain": 0.4561546779702322,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 168.7515128066132,
+      "duration": 1.0,
+      "gain": 0.47873565200226736,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 170.0065196282067,
+      "duration": 1.5,
+      "gain": 0.14166700526009787,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 59,
+      "time": 171.255453892085,
+      "duration": 1.5,
+      "gain": 0.15737017006423742,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 172.09168090092777,
+      "duration": 1.5,
+      "gain": 0.1437478662686627,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 61,
+      "time": 172.70629937909158,
+      "duration": 1.5,
+      "gain": 0.1546980518296721,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 45,
+      "time": 170.04301600749668,
+      "duration": 2.916666666666667,
+      "gain": 0.07952506247384176,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 67,
+      "time": 169.99057337570818,
+      "duration": 1.3333333333333335,
+      "gain": 0.5028234128489155,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 171.6734890854801,
+      "duration": 1.4166666666666667,
+      "gain": 0.46235255437209144,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 173.3341928205788,
+      "duration": 1.5,
+      "gain": 0.1571712959157462,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 174.58486428710998,
+      "duration": 1.5,
+      "gain": 0.1485103398746357,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 175.42228344781316,
+      "duration": 1.5,
+      "gain": 0.14867283614112844,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 176.04612604040685,
+      "duration": 1.5,
+      "gain": 0.1431148391541748,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 38,
+      "time": 173.3725530562468,
+      "duration": 2.916666666666667,
+      "gain": 0.08311601954300742,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 173.4106984643795,
+      "duration": 2.666666666666667,
+      "gain": 0.07610211749433175,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 173.44024574281664,
+      "duration": 2.666666666666667,
+      "gain": 0.07868206062184128,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 72,
+      "time": 173.54470034890846,
+      "duration": 0.8750000000000001,
+      "gain": 0.49315500032356197,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 67,
+      "time": 174.5894812569459,
+      "duration": 0.625,
+      "gain": 0.4787202071672288,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 175.41398145910784,
+      "duration": 1.0,
+      "gain": 0.4559108422155356,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 176.67127897859717,
+      "duration": 1.5,
+      "gain": 0.1416183918197135,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 177.92071752529006,
+      "duration": 1.5,
+      "gain": 0.14655868771809075,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 178.7435190386431,
+      "duration": 1.5,
+      "gain": 0.15399743795689508,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 58,
+      "time": 179.38311285245027,
+      "duration": 1.5,
+      "gain": 0.15782155629081687,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 46,
+      "time": 176.70467651850927,
+      "duration": 2.916666666666667,
+      "gain": 0.07739515917824934,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 176.67440086273322,
+      "duration": 1.1250000000000002,
+      "gain": 0.47326414349217194,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 178.11611154803222,
+      "duration": 0.5416666666666667,
+      "gain": 0.48049237122025407,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 178.95736958749677,
+      "duration": 0.7083333333333334,
+      "gain": 0.474676995863085,
+      "role": "melody"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 50,
+      "time": 179.67581514294073,
+      "duration": 0.5833333333333334,
+      "gain": 0.1635483848293266,
+      "role": "response"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 180.00777323189286,
+      "duration": 1.5,
+      "gain": 0.15201186773300948,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 181.25840587653823,
+      "duration": 1.5,
+      "gain": 0.15495174241859744,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 182.0909841678224,
+      "duration": 1.5,
+      "gain": 0.14996014146590592,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 182.70629363847334,
+      "duration": 1.5,
+      "gain": 0.14700004223965668,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 41,
+      "time": 180.03894265108897,
+      "duration": 2.916666666666667,
+      "gain": 0.07769655188175538,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 180.07464999953365,
+      "duration": 2.666666666666667,
+      "gain": 0.0796146865114387,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 180.11815923907903,
+      "duration": 2.666666666666667,
+      "gain": 0.07975795761138808,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "time": 180.21677254830672,
+      "duration": 0.8750000000000001,
+      "gain": 0.5092029771098128,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 181.25866165818059,
+      "duration": 0.625,
+      "gain": 0.4608048710537065,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "time": 182.0763241659047,
+      "duration": 1.0,
+      "gain": 0.5020761319316587,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 183.3317279003834,
+      "duration": 1.5,
+      "gain": 0.15524962070117582,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 184.59029885408907,
+      "duration": 1.5,
+      "gain": 0.1516574948699772,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 55,
+      "time": 185.41555728407798,
+      "duration": 1.5,
+      "gain": 0.1554257389308726,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 186.04767629829905,
+      "duration": 1.5,
+      "gain": 0.1575743789039111,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 48,
+      "time": 183.37875033580903,
+      "duration": 2.916666666666667,
+      "gain": 0.08049872833216916,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "time": 183.3389879929269,
+      "duration": 1.3333333333333335,
+      "gain": 0.462839725270343,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 185.0008953066927,
+      "duration": 1.4166666666666667,
+      "gain": 0.49492137891044236,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 186.67494026033503,
+      "duration": 1.5,
+      "gain": 0.14358536383085524,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 55,
+      "time": 187.90795125994939,
+      "duration": 1.5,
+      "gain": 0.141555617269702,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 188.7511659639314,
+      "duration": 1.5,
+      "gain": 0.14692210097534322,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 59,
+      "time": 189.37120709318623,
+      "duration": 1.5,
+      "gain": 0.14432663241878912,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 43,
+      "time": 186.70008063368823,
+      "duration": 2.916666666666667,
+      "gain": 0.07616878285527294,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 186.7338448476447,
+      "duration": 2.666666666666667,
+      "gain": 0.08140114304694392,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 59,
+      "time": 186.78690208827229,
+      "duration": 2.666666666666667,
+      "gain": 0.07715971866577954,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 186.88422807394204,
+      "duration": 0.8750000000000001,
+      "gain": 0.460734325265466,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 187.9109392268522,
+      "duration": 0.625,
+      "gain": 0.4944031787100112,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 188.7462906419143,
+      "duration": 1.0,
+      "gain": 0.5020183733028378,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 189.9960162900415,
+      "duration": 1.5,
+      "gain": 0.15487482915000036,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 191.2460923652372,
+      "duration": 1.5,
+      "gain": 0.14497082948516624,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 192.07877717151192,
+      "duration": 1.5,
+      "gain": 0.14788219327976193,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 192.71673417011857,
+      "duration": 1.5,
+      "gain": 0.15006741674857724,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 38,
+      "time": 190.04823025328733,
+      "duration": 2.916666666666667,
+      "gain": 0.07776140544930324,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 71,
+      "time": 189.99374482205124,
+      "duration": 1.1250000000000002,
+      "gain": 0.4954745840726597,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 191.450264827453,
+      "duration": 0.5416666666666667,
+      "gain": 0.48559440479277166,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 192.30132787884193,
+      "duration": 0.7083333333333334,
+      "gain": 0.4937439407428008,
+      "role": "melody"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 53,
+      "time": 192.9987452328884,
+      "duration": 0.5833333333333334,
+      "gain": 0.16656936673129752,
+      "role": "response"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 193.33677635575083,
+      "duration": 1.5,
+      "gain": 0.14693536772570748,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 194.57991895267392,
+      "duration": 1.5,
+      "gain": 0.14177540525799137,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 195.41883736665883,
+      "duration": 1.5,
+      "gain": 0.14695698557092032,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 58,
+      "time": 196.03967696057506,
+      "duration": 1.5,
+      "gain": 0.1476600409219549,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 46,
+      "time": 193.37818694879667,
+      "duration": 2.916666666666667,
+      "gain": 0.07629545604051385,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "time": 193.396392941241,
+      "duration": 2.666666666666667,
+      "gain": 0.07843988429555879,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 58,
+      "time": 193.44996504105484,
+      "duration": 2.666666666666667,
+      "gain": 0.07727341313237097,
+      "role": "harmony"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 193.54748493805502,
+      "duration": 0.8750000000000001,
+      "gain": 0.45804061119604506,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "time": 194.5903825915352,
+      "duration": 0.625,
+      "gain": 0.4964587016724513,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 60,
+      "time": 195.42346670674397,
+      "duration": 1.0,
+      "gain": 0.5030151249094225,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 196.66424759584294,
+      "duration": 1.5,
+      "gain": 0.15460063462746895,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 59,
+      "time": 197.912622911505,
+      "duration": 1.5,
+      "gain": 0.15659677917773981,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 198.7427570284713,
+      "duration": 1.5,
+      "gain": 0.15514243651642814,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 61,
+      "time": 199.37443826888796,
+      "duration": 1.5,
+      "gain": 0.15499359482595162,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 45,
+      "time": 196.71418951479185,
+      "duration": 2.916666666666667,
+      "gain": 0.07861558680009044,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "time": 196.67394666350594,
+      "duration": 1.3333333333333335,
+      "gain": 0.48279647738548753,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 64,
+      "time": 198.33767132699327,
+      "duration": 1.4166666666666667,
+      "gain": 0.5005275667366097,
+      "role": "melody"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 199.99471214958996,
+      "duration": 1.5,
+      "gain": 0.06525371784564622,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 55,
+      "time": 201.67232299248442,
+      "duration": 1.5,
+      "gain": 0.06254257828445182,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 43,
+      "time": 200.0345076345111,
+      "duration": 4.833333333333333,
+      "gain": 0.035010020230017494,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "time": 203.3358405356589,
+      "duration": 1.5,
+      "gain": 0.0678637701941912,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "time": 204.99734178640688,
+      "duration": 1.5,
+      "gain": 0.06543787358698801,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 65,
+      "time": 204.17145181051734,
+      "duration": 1.3333333333333335,
+      "gain": 0.23713998652453647,
+      "role": "response"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 69,
+      "time": 204.9934226099658,
+      "duration": 1.3333333333333335,
+      "gain": 0.23103178637079202,
+      "role": "response"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 206.66004728543692,
+      "duration": 1.5,
+      "gain": 0.06467286486390304,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 59,
+      "time": 208.33181392638494,
+      "duration": 1.5,
+      "gain": 0.06257494725206161,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "cello",
+      "pitch": 45,
+      "time": 206.71598646179456,
+      "duration": 4.833333333333333,
+      "gain": 0.034697149207121136,
+      "role": "bass"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "time": 209.99068750398118,
+      "duration": 1.5,
+      "gain": 0.06897268272527037,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "piano",
+      "pitch": 59,
+      "time": 211.66243132108696,
+      "duration": 1.5,
+      "gain": 0.06578885408426248,
+      "role": "accompaniment"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 65,
+      "time": 210.82894152163388,
+      "duration": 1.3333333333333335,
+      "gain": 0.22729811665075075,
+      "role": "response"
+    },
+    {
+      "instrument": "harp",
+      "pitch": 62,
+      "time": 211.6598934321801,
+      "duration": 1.3333333333333335,
+      "gain": 0.21751601079244542,
+      "role": "response"
+    }
+  ]
+}

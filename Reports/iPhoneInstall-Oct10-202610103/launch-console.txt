@@ -1,0 +1,46 @@
+15:53:05  Acquired tunnel connection to device.
+15:53:05  Enabling developer disk image services.
+15:53:06  Acquired usage assertion.
+2026-10-10 15:53:07.468 CASCADE[77823:6879743] UnityIAP UnityEarlyTransactionObserver: Created
+Launched application with com.vickand.cascade bundle identifier.
+CrashReporter: initialized
+Waiting for the application to terminate…
+2026-10-10 15:53:07.469 CASCADE[77823:6879743] UnityIAP UnityEarlyTransactionObserver: Registered for lifecycle events
+2026-10-10 15:53:07.542 CASCADE[77823:6879743] Built from '6000.3/staging' branch, Version '6000.3.8f1 (1c7db571dde0)', Build type 'Development', Scripting Backend 'il2cpp'
+2026-10-10 15:53:07.543 CASCADE[77823:6879743] MemoryManager: Using 'Default' Allocator.
+no boot config - using default values
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=4194304"
+    "memorysetup-bucket-allocator-block-count=1"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=4194304"
+    "memorysetup-profiler-bucket-allocator-block-count=1"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=4194304"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+-> applicationDidFinishLaunching()
+-> sceneWillEnterForeground()
+[libil2cpp] ERROR: Could not open /private/var/containers/Bundle/Application/491B09A1-CFD3-4166-8A0D-9C66C62BCDD9/CASCADE.app/Data/Managed/Metadata/global-metadata.dat
+   IL2CPP initialization failed
+The app terminated with the exit code 1.

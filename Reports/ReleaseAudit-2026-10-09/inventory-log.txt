@@ -1,0 +1,1 @@
+Resources: 248 source MiB 336.5 textures 121 audio 45 duplicate GUIDs 0 missing metas 0

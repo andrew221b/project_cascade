@@ -1,0 +1,21 @@
+{
+  "phase": "P08",
+  "tests": {
+    "total": "151",
+    "passed": "151",
+    "failed": "0",
+    "skipped": "0"
+  },
+  "script_compilation_failed": false,
+  "console_errors": 0,
+  "undo_all_core_fields": "PASS",
+  "stale_hint_guard": "PASS",
+  "unknown_no_consumption": "PASS",
+  "not_run": [
+    "Runtime lifecycle/animation",
+    "Visual/device input",
+    "PlayMode",
+    "Save persistence",
+    "Player build"
+  ]
+}

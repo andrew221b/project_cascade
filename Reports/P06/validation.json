@@ -1,0 +1,25 @@
+{
+  "phase": "P06",
+  "status": "MECHANICS_VERIFIED_DEPENDENT_GATES_PENDING",
+  "tests": {
+    "total": "90",
+    "passed": "90",
+    "failed": "0",
+    "skipped": "0"
+  },
+  "console_errors": 0,
+  "c35_minima": {
+    "delivery": 2,
+    "stamped": 4
+  },
+  "pending": [
+    "Application Undo P08",
+    "Production publication rejection P07/P10"
+  ],
+  "not_run": [
+    "PlayMode",
+    "Player build",
+    "Visual/device QA",
+    "Content parity"
+  ]
+}

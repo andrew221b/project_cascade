@@ -1,0 +1,517 @@
+[
+  {
+    "test": "LocalReminderTests.NoReminderWithoutPreferenceAndOsConsent(False,False)",
+    "status": "Passed",
+    "ms": 11.230400000000001
+  },
+  {
+    "test": "LocalReminderTests.NoReminderWithoutPreferenceAndOsConsent(False,True)",
+    "status": "Passed",
+    "ms": 0.027600000000000003
+  },
+  {
+    "test": "LocalReminderTests.NoReminderWithoutPreferenceAndOsConsent(True,False)",
+    "status": "Passed",
+    "ms": 0.0178
+  },
+  {
+    "test": "LocalReminderTests.ReminderIsTomorrowEveningEvenWhenSessionEndsBeforeEvening(0)",
+    "status": "Passed",
+    "ms": 1.9240000000000002
+  },
+  {
+    "test": "LocalReminderTests.ReminderIsTomorrowEveningEvenWhenSessionEndsBeforeEvening(17)",
+    "status": "Passed",
+    "ms": 0.025900000000000003
+  },
+  {
+    "test": "LocalReminderTests.ReminderIsTomorrowEveningEvenWhenSessionEndsBeforeEvening(23)",
+    "status": "Passed",
+    "ms": 0.018600000000000002
+  },
+  {
+    "test": "LocalReminderTests.NextLocalDayHandlesYearAndLeapDayBoundaries(2026,12,31,2027,1,1)",
+    "status": "Passed",
+    "ms": 0.0897
+  },
+  {
+    "test": "LocalReminderTests.NextLocalDayHandlesYearAndLeapDayBoundaries(2028,2,28,2028,2,29)",
+    "status": "Passed",
+    "ms": 0.020900000000000002
+  },
+  {
+    "test": "LocalReminderTests.NextLocalDayHandlesYearAndLeapDayBoundaries(2028,2,29,2028,3,1)",
+    "status": "Passed",
+    "ms": 0.019
+  },
+  {
+    "test": "LocalReminderTests.UtcIsNotMistakenForLocalCalendarTime()",
+    "status": "Passed",
+    "ms": 6.2738000000000005
+  },
+  {
+    "test": "LocalReminderTests.NewPreferencesRequestRemindersButStillNeedOsConsent()",
+    "status": "Passed",
+    "ms": 21.7386
+  },
+  {
+    "test": "CloudJournalTests.PendingRequestSurvivesRestart()",
+    "status": "Passed",
+    "ms": 35.3894
+  },
+  {
+    "test": "CloudJournalTests.CorruptMainUsesPreviousAtomicJournal()",
+    "status": "Passed",
+    "ms": 2.3188
+  },
+  {
+    "test": "CloudJournalTests.BothCorruptPreserveMainAndCreateDifferentDevice()",
+    "status": "Passed",
+    "ms": 1.7698
+  },
+  {
+    "test": "CloudJournalTests.InvalidPendingPairIsNeverSaved()",
+    "status": "Passed",
+    "ms": 0.1482
+  },
+  {
+    "test": "CloudJournalTests.PastPendingSequenceIsRejected()",
+    "status": "Passed",
+    "ms": 0.10110000000000001
+  },
+  {
+    "test": "CloudJournalTests.ExplicitProgressRejectionRetiresSnapshotButNeverReusesItsSequence()",
+    "status": "Passed",
+    "ms": 1.3155000000000001
+  },
+  {
+    "test": "CloudJournalTests.JsonProfileRoundTripHasNoDerivedProperties()",
+    "status": "Passed",
+    "ms": 6.3983
+  },
+  {
+    "test": "CloudJournalTests.ExistingAccountCandidateKeepsOriginalSessionNamespaceOnRestart()",
+    "status": "Passed",
+    "ms": 0.6288
+  },
+  {
+    "test": "CloudJournalTests.LegacyJournalUsesOriginalDefaultSdkSession()",
+    "status": "Passed",
+    "ms": 0.0874
+  },
+  {
+    "test": "CloudJournalTests.SavedReminderOptOutSurvivesNewDefaultAndPermissionMarker()",
+    "status": "Passed",
+    "ms": 0.2896
+  },
+  {
+    "test": "MechanicLessonTests.VisibleCombinationFindsEachEffectOnceWithoutChangingTheLevel()",
+    "status": "Passed",
+    "ms": 4.149
+  },
+  {
+    "test": "MechanicLessonTests.WindOnLandingIsDifferentFromRollersAndPassingFloorsRetiresTheirLessons()",
+    "status": "Passed",
+    "ms": 1.0707
+  },
+  {
+    "test": "MechanicLessonTests.InitialMirrorHasAlreadyRunAndNeverPromisesAReceiverEffect()",
+    "status": "Passed",
+    "ms": 0.4661
+  },
+  {
+    "test": "MechanicLessonTests.FutureMirrorReallyReversesOnTheNextPlatform()",
+    "status": "Passed",
+    "ms": 0.22310000000000002
+  },
+  {
+    "test": "MechanicLessonTests.LegacyProfileStartsUnseenAndAcknowledgementSurvivesSerialization()",
+    "status": "Passed",
+    "ms": 8.581900000000001
+  },
+  {
+    "test": "MechanicLessonTests.InvalidOrRepeatedAcknowledgementsAreRejected()",
+    "status": "Passed",
+    "ms": 0.20090000000000002
+  },
+  {
+    "test": "MechanicLessonTests.NewLessonIdsAppendWithoutRenumberingExistingSaveValues()",
+    "status": "Passed",
+    "ms": 0.45420000000000005
+  },
+  {
+    "test": "MechanicLessonTests.VisibleLessonsWaitForTheirBoardAndNeverPromiseAnAlreadyAppliedEntry()",
+    "status": "Passed",
+    "ms": 0.8515
+  },
+  {
+    "test": "MechanicLessonTests.ContactsResolvedOnArrivalDoNotAskThePlayerToRepeatThem()",
+    "status": "Passed",
+    "ms": 0.1562
+  },
+  {
+    "test": "MechanicLessonTests.UnusedContactsAreCompletedOnlyByTheirActualAcceptedEvents()",
+    "status": "Passed",
+    "ms": 0.2973
+  },
+  {
+    "test": "MechanicLessonTests.ActualGustIsTaughtUntilItMovesTheRowAndDamagesTheWood()",
+    "status": "Passed",
+    "ms": 0.2474
+  },
+  {
+    "test": "MechanicLessonTests.LandingContactsCompleteOnArrivalWithoutACommandOnTheNewBoard()",
+    "status": "Passed",
+    "ms": 0.2585
+  },
+  {
+    "test": "MechanicLessonTests.AcceptedSwapDropAndFarSwapHaveDistinctPracticeCompletions()",
+    "status": "Passed",
+    "ms": 0.2316
+  },
+  {
+    "test": "MechanicLessonTests.LeavingTheTeachingBoardDoesNotCountAsUsingItsMechanic()",
+    "status": "Passed",
+    "ms": 0.19140000000000001
+  },
+  {
+    "test": "MechanicLessonTests.DescendingCannotPretendThatAControlOrPurchasedToolWasUsed()",
+    "status": "Passed",
+    "ms": 0.1066
+  },
+  {
+    "test": "MechanicLessonTests.EntryLessonsObserveTheNextBoardPermutation(ShiftLeftOne)",
+    "status": "Passed",
+    "ms": 0.1144
+  },
+  {
+    "test": "MechanicLessonTests.EntryLessonsObserveTheNextBoardPermutation(ShiftRightOne)",
+    "status": "Passed",
+    "ms": 0.038
+  },
+  {
+    "test": "MechanicLessonTests.SurfaceExamplesFollowBridgeLinkedAndFragileConsequences()",
+    "status": "Passed",
+    "ms": 0.3241
+  },
+  {
+    "test": "MechanicLessonTests.FrostAndBlockedPathsNeedTheirRealConsequences()",
+    "status": "Passed",
+    "ms": 0.1983
+  },
+  {
+    "test": "CloudReplyReconcilerTests.RecoveredOlderPendingRequestDoesNotReplayAlreadyAcceptedPurchase()",
+    "status": "Passed",
+    "ms": 18.459500000000002
+  },
+  {
+    "test": "CloudReplyReconcilerTests.CurrentPurchaseMadeDuringRequestIsMergedOnce()",
+    "status": "Passed",
+    "ms": 1.3353000000000002
+  },
+  {
+    "test": "CloudReplyReconcilerTests.ServerEconomyConflictAdoptsRemoteDespiteUnsubmittedCurrentPurchase()",
+    "status": "Passed",
+    "ms": 0.5583
+  },
+  {
+    "test": "CloudReplyReconcilerTests.AtomicProfileMarkerAcknowledgesCrashReplayWithoutDuplicatingRemotePurchase()",
+    "status": "Passed",
+    "ms": 11.508600000000001
+  },
+  {
+    "test": "CloudReplyReconcilerTests.AtomicProfileMarkerRetainsAlreadyMergedInflightPurchaseOnReplay()",
+    "status": "Passed",
+    "ms": 9.5336
+  },
+  {
+    "test": "CloudReplyReconcilerTests.RecoveredJournalBackupRetainsAppliedProfileConflictAndMarker()",
+    "status": "Passed",
+    "ms": 9.249
+  },
+  {
+    "test": "CloudReplyReconcilerTests.ReplyAcknowledgmentRequiresExactDeviceRequestAndServerAcceptance()",
+    "status": "Passed",
+    "ms": 0.18330000000000002
+  },
+  {
+    "test": "CloudReplyReconcilerTests.ReconciliationKeepsLocalMarkersWithoutAdoptingAnotherDeviceMarker()",
+    "status": "Passed",
+    "ms": 0.86640000000000006
+  },
+  {
+    "test": "CloudReplyReconcilerTests.VerifiedGrantReplyPreservesPurchaseMadeDuringVerification()",
+    "status": "Passed",
+    "ms": 1.7906000000000002
+  },
+  {
+    "test": "LevelDefinitionTests.CopiesInputCollectionsAndExposesReadOnlyViews()",
+    "status": "Passed",
+    "ms": 0.5483
+  },
+  {
+    "test": "LevelDefinitionTests.RepeatedSymbolsUseEqualityRatherThanPosition()",
+    "status": "Passed",
+    "ms": 0.079
+  },
+  {
+    "test": "LevelDefinitionTests.RejectsChangedMultiset()",
+    "status": "Passed",
+    "ms": 0.3088
+  },
+  {
+    "test": "LevelDefinitionTests.RowBoundaries(2,False)",
+    "status": "Passed",
+    "ms": 0.25570000000000004
+  },
+  {
+    "test": "LevelDefinitionTests.RowBoundaries(3,True)",
+    "status": "Passed",
+    "ms": 0.0444
+  },
+  {
+    "test": "LevelDefinitionTests.RowBoundaries(8,True)",
+    "status": "Passed",
+    "ms": 0.0495
+  },
+  {
+    "test": "LevelDefinitionTests.RowBoundaries(9,False)",
+    "status": "Passed",
+    "ms": 0.044000000000000004
+  },
+  {
+    "test": "LevelDefinitionTests.FloorBoundaries(0,False)",
+    "status": "Passed",
+    "ms": 0.30360000000000004
+  },
+  {
+    "test": "LevelDefinitionTests.FloorBoundaries(1,True)",
+    "status": "Passed",
+    "ms": 0.1807
+  },
+  {
+    "test": "LevelDefinitionTests.FloorBoundaries(4,True)",
+    "status": "Passed",
+    "ms": 0.0545
+  },
+  {
+    "test": "LevelDefinitionTests.FloorBoundaries(5,False)",
+    "status": "Passed",
+    "ms": 0.0489
+  },
+  {
+    "test": "LevelDefinitionTests.DurabilityBoundaries(0,False)",
+    "status": "Passed",
+    "ms": 0.096800000000000011
+  },
+  {
+    "test": "LevelDefinitionTests.DurabilityBoundaries(1,True)",
+    "status": "Passed",
+    "ms": 0.0461
+  },
+  {
+    "test": "LevelDefinitionTests.DurabilityBoundaries(12,True)",
+    "status": "Passed",
+    "ms": 0.0431
+  },
+  {
+    "test": "LevelDefinitionTests.DurabilityBoundaries(13,False)",
+    "status": "Passed",
+    "ms": 0.043000000000000003
+  },
+  {
+    "test": "LevelDefinitionTests.RejectsWrongEdgeCountAndDuplicateFragileEdges()",
+    "status": "Passed",
+    "ms": 0.1233
+  },
+  {
+    "test": "LevelDefinitionTests.LinkedPairsMustBeDisjointAndInRange()",
+    "status": "Passed",
+    "ms": 0.1444
+  },
+  {
+    "test": "LevelDefinitionTests.RejectsInvalidBridgeAndKeyConfiguration()",
+    "status": "Passed",
+    "ms": 0.1437
+  },
+  {
+    "test": "LevelDefinitionTests.SensorMustFitRowAndReferenceItsTarget()",
+    "status": "Passed",
+    "ms": 0.1058
+  },
+  {
+    "test": "LevelDefinitionTests.BombBoundaries(0,1,False)",
+    "status": "Passed",
+    "ms": 0.1307
+  },
+  {
+    "test": "LevelDefinitionTests.BombBoundaries(1,1,True)",
+    "status": "Passed",
+    "ms": 0.0448
+  },
+  {
+    "test": "LevelDefinitionTests.BombBoundaries(6,4,True)",
+    "status": "Passed",
+    "ms": 0.0439
+  },
+  {
+    "test": "LevelDefinitionTests.BombBoundaries(7,4,False)",
+    "status": "Passed",
+    "ms": 0.0434
+  },
+  {
+    "test": "LevelDefinitionTests.BombBoundaries(2,5,False)",
+    "status": "Passed",
+    "ms": 0.044000000000000004
+  },
+  {
+    "test": "LevelDefinitionTests.RepairBoundaries(0,False)",
+    "status": "Passed",
+    "ms": 0.1013
+  },
+  {
+    "test": "LevelDefinitionTests.RepairBoundaries(1,True)",
+    "status": "Passed",
+    "ms": 0.0471
+  },
+  {
+    "test": "LevelDefinitionTests.RepairBoundaries(3,True)",
+    "status": "Passed",
+    "ms": 0.0437
+  },
+  {
+    "test": "LevelDefinitionTests.RepairBoundaries(4,False)",
+    "status": "Passed",
+    "ms": 0.0468
+  },
+  {
+    "test": "LevelDefinitionTests.ShapeAndGlyphRemainDifferent()",
+    "status": "Passed",
+    "ms": 0.0868
+  },
+  {
+    "test": "LevelDefinitionTests.ShortAndLongNamespacesAgreeAndPreserveOriginalId()",
+    "status": "Passed",
+    "ms": 0.1107
+  },
+  {
+    "test": "LevelDefinitionTests.RejectsInvalidIds(g:ua:І)",
+    "status": "Passed",
+    "ms": 0.1355
+  },
+  {
+    "test": "LevelDefinitionTests.RejectsInvalidIds(glyph:en:AB)",
+    "status": "Passed",
+    "ms": 0.0461
+  },
+  {
+    "test": "LevelDefinitionTests.RejectsInvalidIds(s:)",
+    "status": "Passed",
+    "ms": 0.045200000000000004
+  },
+  {
+    "test": "LevelDefinitionTests.RejectsInvalidIds(other:A)",
+    "status": "Passed",
+    "ms": 0.0426
+  },
+  {
+    "test": "LevelDefinitionTests.NormalizesCombiningTextAndDoesNotSplitSurrogatePairs()",
+    "status": "Passed",
+    "ms": 0.1355
+  },
+  {
+    "test": "LevelDefinitionTests.UkrainianAndRussianDistinctLettersRemainDistinct()",
+    "status": "Passed",
+    "ms": 0.1549
+  },
+  {
+    "test": "LevelDefinitionTests.PositionalWordSignaturesDiffer()",
+    "status": "Passed",
+    "ms": 0.1262
+  },
+  {
+    "test": "LevelDefinitionTests.SevenSymbolMixedTargetIsAccepted()",
+    "status": "Passed",
+    "ms": 0.35910000000000003
+  },
+  {
+    "test": "LevelDefinitionTests.SegmentsMustCoverTargetWithoutOverlapAndMatchNamespace()",
+    "status": "Passed",
+    "ms": 0.10350000000000001
+  },
+  {
+    "test": "LevelDefinitionTests.DefaultSymbolAndUnknownTransformAreRejected()",
+    "status": "Passed",
+    "ms": 0.0917
+  },
+  {
+    "test": "CloudReconcilerTests.MergedStarAndScoreBestsKeepEachSourceProof()",
+    "status": "Passed",
+    "ms": 4.0711
+  },
+  {
+    "test": "CloudReconcilerTests.ProgressMergesPerModeWhileLocalAttemptAndPreferencesRemainCoherent()",
+    "status": "Passed",
+    "ms": 3.4209
+  },
+  {
+    "test": "CloudReconcilerTests.MasteryUsesContentIdentityAndBestRoutesWithoutCrossingVersions()",
+    "status": "Passed",
+    "ms": 1.6044
+  },
+  {
+    "test": "CloudReconcilerTests.IndependentSpendsAndConsumptionsMergeAsDeltasWithoutAddingBalances()",
+    "status": "Passed",
+    "ms": 0.79280000000000006
+  },
+  {
+    "test": "CloudReconcilerTests.ConcurrentOverspendOrDoubleConsumptionKeepsRemoteEconomy()",
+    "status": "Passed",
+    "ms": 0.8922
+  },
+  {
+    "test": "CloudReconcilerTests.GrantsCannotChangeDisappearOrArriveThroughUnverifiedSync()",
+    "status": "Passed",
+    "ms": 2.4706
+  },
+  {
+    "test": "CloudReconcilerTests.VerifiedReceiptReplayAndHintStateReplayAreIdempotent()",
+    "status": "Passed",
+    "ms": 1.4003
+  },
+  {
+    "test": "CloudReconcilerTests.FirstImportScrubsPaidValueAndRetainsOnlyEarnedFinancedTools()",
+    "status": "Passed",
+    "ms": 1.3506
+  },
+  {
+    "test": "CloudReconcilerTests.ClaimedParcelsVisitsAndClearIncomeDoNotRepeatAcrossModesOrMerges()",
+    "status": "Passed",
+    "ms": 5.6077
+  },
+  {
+    "test": "CloudReconcilerTests.ConflictingParcelClaimsKeepCanonicalGiftAndRemoteEconomy()",
+    "status": "Passed",
+    "ms": 0.4481
+  },
+  {
+    "test": "CloudReconcilerTests.UnknownUploadedNodesCannotFinanceInventory()",
+    "status": "Passed",
+    "ms": 0.2655
+  },
+  {
+    "test": "CloudReconcilerTests.InvalidAuthorityCannotBecomeTheConflictFallback()",
+    "status": "Passed",
+    "ms": 0.268
+  },
+  {
+    "test": "CloudReconcilerTests.DeviceCheckpointsAreBoundedLeanAndRestoreAttemptWithoutReplacingProgress()",
+    "status": "Passed",
+    "ms": 3.5698000000000003
+  },
+  {
+    "test": "CloudReconcilerTests.MiddleDescentAndItsPinnedDirectionRemainOneDeviceCheckpoint()",
+    "status": "Passed",
+    "ms": 17.2808
+  }
+]

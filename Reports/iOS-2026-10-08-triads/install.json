@@ -1,0 +1,37 @@
+{
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "install",
+      "app",
+      "--device",
+      "86ED6044-764E-5091-8CFE-C94C101E8DA8",
+      "CascadeUnity/Builds/CASCADE-iOS-2026-10-08-triads-final-DerivedData/Build/Products/Release-iphoneos/CascadeUnity.app",
+      "--json-output",
+      "Reports/iOS-2026-10-08-triads/install.json"
+    ],
+    "commandType" : "devicectl.device.install.app",
+    "environment" : {
+      "TERM" : "dumb"
+    },
+    "jsonVersion" : 3,
+    "outcome" : "success",
+    "version" : "518.33"
+  },
+  "result" : {
+    "deviceIdentifier" : "86ED6044-764E-5091-8CFE-C94C101E8DA8",
+    "installedApplications" : [
+      {
+        "bundleID" : "com.vickand.cascade",
+        "databaseSequenceNumber" : 2004,
+        "databaseUUID" : "4339F797-3276-43B8-AF14-A2DADD234626",
+        "installationURL" : "file:///private/var/containers/Bundle/Application/7D56D98B-16B9-43B7-8E36-FCAF8650A4B9/CascadeUnity.app/",
+        "launchServicesIdentifier" : "unknown",
+        "options" : {
+
+        }
+      }
+    ]
+  }
+}

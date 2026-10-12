@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Passed" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-08 10:09:39Z" end-time="2026-10-08 10:09:39Z" duration="0.2249692">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="792" result="Passed" start-time="2026-10-08 10:09:39Z" end-time="2026-10-08 10:09:39Z" duration="0.224969" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1878" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="791" result="Passed" start-time="2026-10-08 10:09:39Z" end-time="2026-10-08 10:09:39Z" duration="0.150302" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24227" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1879" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="791" result="Passed" start-time="2026-10-08 10:09:39Z" end-time="2026-10-08 10:09:39Z" duration="0.150030" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1880" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="791" result="Passed" start-time="2026-10-08 10:09:39Z" end-time="2026-10-08 10:09:39Z" duration="0.149862" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1855" name="WorldLightingTests" fullname="Cascade.Tests.WorldLightingTests" classname="Cascade.Tests.WorldLightingTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-08 10:09:39Z" end-time="2026-10-08 10:09:39Z" duration="0.149351" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1860" name="ChangingPhaseReusesEnvironmentAndDisposalRestoresRenderSettings" fullname="Cascade.Tests.WorldLightingTests.ChangingPhaseReusesEnvironmentAndDisposalRestoresRenderSettings" methodname="ChangingPhaseReusesEnvironmentAndDisposalRestoresRenderSettings" classname="Cascade.Tests.WorldLightingTests" runstate="Runnable" seed="1673636573" result="Passed" start-time="2026-10-08 10:09:39Z" end-time="2026-10-08 10:09:39Z" duration="0.096806" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1857" name="EveryWorldHasSkyFillGroundBounceAndBoundedCloudTransmission" fullname="Cascade.Tests.WorldLightingTests.EveryWorldHasSkyFillGroundBounceAndBoundedCloudTransmission" methodname="EveryWorldHasSkyFillGroundBounceAndBoundedCloudTransmission" classname="Cascade.Tests.WorldLightingTests" runstate="Runnable" seed="1156408241" result="Passed" start-time="2026-10-08 10:09:39Z" end-time="2026-10-08 10:09:39Z" duration="0.003973" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1856" name="MoonComesFromUpperLeftAndCastsLiftedShadowToRight" fullname="Cascade.Tests.WorldLightingTests.MoonComesFromUpperLeftAndCastsLiftedShadowToRight" methodname="MoonComesFromUpperLeftAndCastsLiftedShadowToRight" classname="Cascade.Tests.WorldLightingTests" runstate="Runnable" seed="1938056884" result="Passed" start-time="2026-10-08 10:09:39Z" end-time="2026-10-08 10:09:39Z" duration="0.000343" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1859" name="RoundedCapsKeepSourceOutlineAndLeaveOriginalAssetsUntouched" fullname="Cascade.Tests.WorldLightingTests.RoundedCapsKeepSourceOutlineAndLeaveOriginalAssetsUntouched" methodname="RoundedCapsKeepSourceOutlineAndLeaveOriginalAssetsUntouched" classname="Cascade.Tests.WorldLightingTests" runstate="Runnable" seed="2090945612" result="Passed" start-time="2026-10-08 10:09:39Z" end-time="2026-10-08 10:09:39Z" duration="0.041796" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1858" name="WorkshopUsesSameWarmLampAfterEveryWorld" fullname="Cascade.Tests.WorldLightingTests.WorkshopUsesSameWarmLampAfterEveryWorld" methodname="WorkshopUsesSameWarmLampAfterEveryWorld" classname="Cascade.Tests.WorldLightingTests" runstate="Runnable" seed="144340672" result="Passed" start-time="2026-10-08 10:09:39Z" end-time="2026-10-08 10:09:39Z" duration="0.000391" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

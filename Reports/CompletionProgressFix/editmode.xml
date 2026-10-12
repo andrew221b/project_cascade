@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="7" result="Passed" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-06 13:32:26Z" end-time="2026-10-06 13:32:27Z" duration="1.2709016">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="510" result="Passed" start-time="2026-10-06 13:32:26Z" end-time="2026-10-06 13:32:27Z" duration="1.270902" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1552" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="509" result="Passed" start-time="2026-10-06 13:32:26Z" end-time="2026-10-06 13:32:27Z" duration="1.150047" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="93320" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1553" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="509" result="Passed" start-time="2026-10-06 13:32:26Z" end-time="2026-10-06 13:32:27Z" duration="1.149911" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1554" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="509" result="Passed" start-time="2026-10-06 13:32:26Z" end-time="2026-10-06 13:32:27Z" duration="1.149784" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1179" name="CompletionProgressTests" fullname="Cascade.Tests.CompletionProgressTests" classname="Cascade.Tests.CompletionProgressTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-06 13:32:26Z" end-time="2026-10-06 13:32:27Z" duration="0.738768" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1183" name="AccessOpensOnlyTheNextNodeAndExplicitReplaysWithoutErasingOlderOutOfOrderClears" fullname="Cascade.Tests.CompletionProgressTests.AccessOpensOnlyTheNextNodeAndExplicitReplaysWithoutErasingOlderOutOfOrderClears" methodname="AccessOpensOnlyTheNextNodeAndExplicitReplaysWithoutErasingOlderOutOfOrderClears" classname="Cascade.Tests.CompletionProgressTests" runstate="Runnable" seed="820064675" result="Passed" start-time="2026-10-06 13:32:27Z" end-time="2026-10-06 13:32:27Z" duration="0.127639" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1182" name="AStampFromAnIntermediateStageSurvivesCheckpointSaveAndAddsItsFullLevelBonus" fullname="Cascade.Tests.CompletionProgressTests.AStampFromAnIntermediateStageSurvivesCheckpointSaveAndAddsItsFullLevelBonus" methodname="AStampFromAnIntermediateStageSurvivesCheckpointSaveAndAddsItsFullLevelBonus" classname="Cascade.Tests.CompletionProgressTests" runstate="Runnable" seed="1649559646" result="Passed" start-time="2026-10-06 13:32:27Z" end-time="2026-10-06 13:32:27Z" duration="0.150812" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1181" name="GatedFinalesKeepTheirPublishedTargetsAndDevicesAndProveTheSameTwelveFailingBindings" fullname="Cascade.Tests.CompletionProgressTests.GatedFinalesKeepTheirPublishedTargetsAndDevicesAndProveTheSameTwelveFailingBindings" methodname="GatedFinalesKeepTheirPublishedTargetsAndDevicesAndProveTheSameTwelveFailingBindings" classname="Cascade.Tests.CompletionProgressTests" runstate="Runnable" seed="276355679" result="Passed" start-time="2026-10-06 13:32:27Z" end-time="2026-10-06 13:32:27Z" duration="0.026963" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1185" name="StarsRespondToHintRouteAndExplosionAndOldVersionTwoPlansStillRestore" fullname="Cascade.Tests.CompletionProgressTests.StarsRespondToHintRouteAndExplosionAndOldVersionTwoPlansStillRestore" methodname="StarsRespondToHintRouteAndExplosionAndOldVersionTwoPlansStillRestore" classname="Cascade.Tests.CompletionProgressTests" runstate="Runnable" seed="43326893" result="Passed" start-time="2026-10-06 13:32:27Z" end-time="2026-10-06 13:32:27Z" duration="0.072822" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1184" name="WholeRunRatingResourcesAndCheckpointRestoreAreDurableAndReplayCannotFarmLights" fullname="Cascade.Tests.CompletionProgressTests.WholeRunRatingResourcesAndCheckpointRestoreAreDurableAndReplayCannotFarmLights" methodname="WholeRunRatingResourcesAndCheckpointRestoreAreDurableAndReplayCannotFarmLights" classname="Cascade.Tests.CompletionProgressTests" runstate="Runnable" seed="146045508" result="Passed" start-time="2026-10-06 13:32:27Z" end-time="2026-10-06 13:32:27Z" duration="0.029463" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1329" name="DescentTests" fullname="Cascade.Tests.DescentTests" classname="Cascade.Tests.DescentTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-06 13:32:27Z" end-time="2026-10-06 13:32:27Z" duration="0.409809" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1332" name="CheckpointSaveRestoresExactlyAndRejectsAChangedFutureRecipe" fullname="Cascade.Tests.DescentTests.CheckpointSaveRestoresExactlyAndRejectsAChangedFutureRecipe" methodname="CheckpointSaveRestoresExactlyAndRejectsAChangedFutureRecipe" classname="Cascade.Tests.DescentTests" runstate="Runnable" seed="1706699722" result="Passed" start-time="2026-10-06 13:32:27Z" end-time="2026-10-06 13:32:27Z" duration="0.093598" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1331" name="VersionOneRecipesKeepTheirExactDeviceFreeStagesAndOldHashFormula" fullname="Cascade.Tests.DescentTests.VersionOneRecipesKeepTheirExactDeviceFreeStagesAndOldHashFormula" methodname="VersionOneRecipesKeepTheirExactDeviceFreeStagesAndOldHashFormula" classname="Cascade.Tests.DescentTests" runstate="Runnable" seed="414456323" result="Passed" start-time="2026-10-06 13:32:27Z" end-time="2026-10-06 13:32:27Z" duration="0.142918" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

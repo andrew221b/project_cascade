@@ -1,0 +1,3 @@
+19a4fb9e00dd4d011af7e8861f7e3464f3f6f755
+Dirty entries: 693
+Unity 6000.3.8f1; iOS arm64 IL2CPP; explicit development player; Xcode Release. Last native platform review clean. New device build 202610102; same bundle ID/team; preserve save. Delete old export/compiled directories only after installation; retain screenshots/reports/source assets.

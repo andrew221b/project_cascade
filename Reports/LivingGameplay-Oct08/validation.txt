@@ -1,0 +1,14 @@
+PASS world 0: two bird species, intermittent residents, bounded pool, motion/effects toggles.
+PASS world 1: two bird species, intermittent residents, bounded pool, motion/effects toggles.
+PASS world 2: two bird species, intermittent residents, bounded pool, motion/effects toggles.
+PASS world 3: two bird species, intermittent residents, bounded pool, motion/effects toggles.
+PASS world 4: two bird species, intermittent residents, bounded pool, motion/effects toggles.
+PASS world 5: two bird species, intermittent residents, bounded pool, motion/effects toggles.
+PASS world 6: two bird species, intermittent residents, bounded pool, motion/effects toggles.
+PASS world 7: two bird species, intermittent residents, bounded pool, motion/effects toggles.
+PASS world 8: two bird species, intermittent residents, bounded pool, motion/effects toggles.
+PASS fitted proportional plaque; varied landing positions and shape indices; consecutive nearby supports excluded.
+PASS input departure, guided finger/action gate and unchanged puzzle hash. Native 390/320 day, night, perch and finger captures.
+PASS targeted final lesson inset render and native Console: zero errors. Additional interior-flight capture inspected.
+PASS 6 EditMode motion cases and 5 unique PlayMode cases across focused runs: three guided actions and two visitor lifecycle/placement cases. Initial 20 fps test sampler aliased a 4 Hz wing beat; corrected to 60 fps over the same 60 seconds. Previously failing case passed on its targeted rerun; placement case passed again after corridor enlargement. Initial report retained.
+LIMITS: only representative day/night portraits rendered in this pass; nine world configurations exercised. No phone build/device-performance check, full game suite or new lighting validation. Editor stopped, background execution off and isolated profile override cleared.

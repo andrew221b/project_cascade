@@ -1,0 +1,557 @@
+{
+  "audit_date": "2026-10-09",
+  "generated_at": "2026-10-09T13:00:20.995108+03:00",
+  "status": "COMPLETED_ALL_42_APPROVED_TARGETS",
+  "size_method": "du allocated blocks; estimated savings, not guaranteed physical reclaim (APFS sharing, active files and growth may affect df)",
+  "free_bytes_before": 68583825408,
+  "base_expected_bytes": 32991019008,
+  "optional_expected_bytes": 17294106624,
+  "groups": {
+    "Xcode DerivedData": 17070899200,
+    "Temporary Xcode output": 7393792000,
+    "Browser/app caches": 2299944960,
+    "Homebrew downloads": 1684340736,
+    "Python download cache": 341835776,
+    "npm download cache": 3596001280,
+    "Updater cache": 604205056
+  },
+  "base_candidates": [
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/ModuleCache.noindex",
+      "allocated_kib": 1033312,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1791271454.1228888,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 37784881
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/CompilationCache.noindex",
+      "allocated_kib": 48,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1786452515.2845922,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 37784887
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex",
+      "allocated_kib": 2964,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1790742414.758677,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 37819673
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/SymbolCache.noindex",
+      "allocated_kib": 37912,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1790312981.4571817,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 37784216
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-fkjusqmtoflqcwbegybhjmiebazz/Build",
+      "allocated_kib": 2801200,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1791142740.4001677,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 55078525
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-fkjusqmtoflqcwbegybhjmiebazz/Index.noindex",
+      "allocated_kib": 126872,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1791142727.2528872,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 55078507
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-fkjusqmtoflqcwbegybhjmiebazz/TextIndex",
+      "allocated_kib": 56944,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1791143560.3897424,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 55095647
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-azgxumsngmrmtjbuiokhzwpfksmi/Build",
+      "allocated_kib": 5832796,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1786946799.4676044,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 37784322
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-azgxumsngmrmtjbuiokhzwpfksmi/Index.noindex",
+      "allocated_kib": 723064,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1791036692.857557,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 37784296
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-azgxumsngmrmtjbuiokhzwpfksmi/TextIndex",
+      "allocated_kib": 110992,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1791037524.133589,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 37823077
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-ainutfgfmiliozguitjuaejeenll/Build",
+      "allocated_kib": 432,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1791271445.4834116,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 55958885
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-ainutfgfmiliozguitjuaejeenll/Index.noindex",
+      "allocated_kib": 135400,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1791271453.8594663,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 55958850
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-ainutfgfmiliozguitjuaejeenll/TextIndex",
+      "allocated_kib": 92848,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1791272287.098338,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 55965068
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-eppqidsxoncjiocwikzkbsurlbmu/Build",
+      "allocated_kib": 2934560,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1790488880.3602576,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 52826755
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-eppqidsxoncjiocwikzkbsurlbmu/Index.noindex",
+      "allocated_kib": 130848,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1790495550.608754,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 52826738
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-eppqidsxoncjiocwikzkbsurlbmu/TextIndex",
+      "allocated_kib": 59844,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1790496388.0549586,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 52831558
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-aaissopjccttkvbrkggavkupxqsk/Build",
+      "allocated_kib": 3720,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1789832885.519421,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 49720390
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/App-goxoztfoveuunhaypewiwfrreajn/Build",
+      "allocated_kib": 1806248,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1790313182.5662491,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 51618165
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/App-goxoztfoveuunhaypewiwfrreajn/Index.noindex",
+      "allocated_kib": 574612,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1791145292.8245358,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 51618138
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/App-goxoztfoveuunhaypewiwfrreajn/TextIndex",
+      "allocated_kib": 572,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1791314836.6637242,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 51673972
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-gssnhlhcyiizbxfzrsdbvfnarzpu/Build",
+      "allocated_kib": 304,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1791336713.620615,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 56480868
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-gssnhlhcyiizbxfzrsdbvfnarzpu/Index.noindex",
+      "allocated_kib": 107868,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1791336715.8608613,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 56480846
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-gssnhlhcyiizbxfzrsdbvfnarzpu/TextIndex",
+      "allocated_kib": 96848,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1791337555.8217695,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 56490996
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-dcoaevgpijwelpdvcwvsgiibspse/Build",
+      "allocated_kib": 532,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1787117943.9588864,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 39806981
+    },
+    {
+      "path": "/Users/andrew/Library/Developer/Xcode/DerivedData/Unity-iPhone-dcoaevgpijwelpdvcwvsgiibspse/Index.noindex",
+      "allocated_kib": 60,
+      "group": "Xcode DerivedData",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1787117943.4982657,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 39806927
+    },
+    {
+      "path": "/private/tmp/shape-release-xcode-derived-20261008/Build",
+      "allocated_kib": 7018276,
+      "group": "Temporary Xcode output",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1791453762.9029107,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 57601907
+    },
+    {
+      "path": "/private/tmp/shape-release-xcode-derived-20261008/ModuleCache.noindex",
+      "allocated_kib": 200740,
+      "group": "Temporary Xcode output",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1791454961.1831648,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 57602466
+    },
+    {
+      "path": "/private/tmp/shape-release-xcode-derived-20261008/CompilationCache.noindex",
+      "allocated_kib": 28,
+      "group": "Temporary Xcode output",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1791453762.8266282,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 57602468
+    },
+    {
+      "path": "/private/tmp/shape-release-xcode-derived-20261008/SDKStatCaches.noindex",
+      "allocated_kib": 1456,
+      "group": "Temporary Xcode output",
+      "reason": "Generated build products or indexes; preserve SourcePackages, archives, project files",
+      "modified": 1791453763.1673136,
+      "approval_scope": "base",
+      "precondition": "Approval required; stop responsible applications/builds; remeasure and check open files before deletion; preserve SourcePackages and project files",
+      "root_device": 16777233,
+      "root_inode": 57602485
+    },
+    {
+      "path": "/Users/andrew/Library/Caches/Google/Chrome/Profile 6/Cache",
+      "allocated_kib": 469324,
+      "group": "Browser/app caches",
+      "reason": "Disposable web/graphics cache only; preserve profiles, cookies, history, local storage and conversations",
+      "approval_scope": "base",
+      "precondition": "Approval required; Chrome must be closed without discarding unsaved work; preserve history, passwords, cookies and profile data",
+      "root_device": 16777233,
+      "root_inode": 53645987
+    },
+    {
+      "path": "/Users/andrew/Library/Caches/Google/Chrome/Profile 6/Code Cache",
+      "allocated_kib": 110172,
+      "group": "Browser/app caches",
+      "reason": "Disposable web/graphics cache only; preserve profiles, cookies, history, local storage and conversations",
+      "approval_scope": "base",
+      "precondition": "Approval required; Chrome must be closed without discarding unsaved work; preserve history, passwords, cookies and profile data",
+      "root_device": 16777233,
+      "root_inode": 53645990
+    },
+    {
+      "path": "/Users/andrew/Library/Caches/Google/Chrome/Profile 1/Cache",
+      "allocated_kib": 1335692,
+      "group": "Browser/app caches",
+      "reason": "Disposable web/graphics cache only; preserve profiles, cookies, history, local storage and conversations",
+      "approval_scope": "base",
+      "precondition": "Approval required; Chrome must be closed without discarding unsaved work; preserve history, passwords, cookies and profile data",
+      "root_device": 16777233,
+      "root_inode": 52933330
+    },
+    {
+      "path": "/Users/andrew/Library/Caches/Google/Chrome/Profile 1/Code Cache",
+      "allocated_kib": 282380,
+      "group": "Browser/app caches",
+      "reason": "Disposable web/graphics cache only; preserve profiles, cookies, history, local storage and conversations",
+      "approval_scope": "base",
+      "precondition": "Approval required; Chrome must be closed without discarding unsaved work; preserve history, passwords, cookies and profile data",
+      "root_device": 16777233,
+      "root_inode": 52933334
+    },
+    {
+      "path": "/Users/andrew/Library/Caches/Google/Chrome/Default/Cache",
+      "allocated_kib": 40904,
+      "group": "Browser/app caches",
+      "reason": "Disposable web/graphics cache only; preserve profiles, cookies, history, local storage and conversations",
+      "approval_scope": "base",
+      "precondition": "Approval required; Chrome must be closed without discarding unsaved work; preserve history, passwords, cookies and profile data",
+      "root_device": 16777233,
+      "root_inode": 52934422
+    },
+    {
+      "path": "/Users/andrew/Library/Caches/Google/Chrome/Default/Code Cache",
+      "allocated_kib": 7568,
+      "group": "Browser/app caches",
+      "reason": "Disposable web/graphics cache only; preserve profiles, cookies, history, local storage and conversations",
+      "approval_scope": "base",
+      "precondition": "Approval required; Chrome must be closed without discarding unsaved work; preserve history, passwords, cookies and profile data",
+      "root_device": 16777233,
+      "root_inode": 52934421
+    },
+    {
+      "path": "/Users/andrew/Library/Caches/Homebrew/downloads",
+      "allocated_kib": 1644864,
+      "group": "Homebrew downloads",
+      "reason": "Downloaded installers; no installed tools removed",
+      "approval_scope": "base",
+      "precondition": "Approval required; verify no installation/download is active; preserve installed tools/packages and project dependencies",
+      "root_device": 16777233,
+      "root_inode": 9885527
+    },
+    {
+      "path": "/Users/andrew/Library/Caches/pip",
+      "allocated_kib": 333824,
+      "group": "Python download cache",
+      "reason": "Cached HTTP downloads and wheels; no environments removed",
+      "approval_scope": "base",
+      "precondition": "Approval required; verify no installation/download is active; preserve installed tools/packages and project dependencies",
+      "root_device": 16777233,
+      "root_inode": 3061291
+    },
+    {
+      "path": "/Users/andrew/.npm/_cacache",
+      "allocated_kib": 3511720,
+      "group": "npm download cache",
+      "reason": "Cached package download data; no installed packages or source removed",
+      "approval_scope": "base",
+      "precondition": "Approval required; verify no installation/download is active; preserve installed tools/packages and project dependencies",
+      "root_device": 16777233,
+      "root_inode": 2824803
+    },
+    {
+      "path": "/Users/andrew/Library/Caches/UnityHub/pending",
+      "allocated_kib": 217180,
+      "group": "Updater cache",
+      "reason": "Downloaded Unity Hub updater; no Unity editor/modules removed",
+      "approval_scope": "base",
+      "precondition": "Approval required; updater must not be installing; preserve apps, Unity editor and modules",
+      "root_device": 16777233,
+      "root_inode": 54417452
+    },
+    {
+      "path": "/Users/andrew/Library/Caches/unityhub-updater/pending",
+      "allocated_kib": 195276,
+      "group": "Updater cache",
+      "reason": "Downloaded Unity Hub updater; no Unity editor/modules removed",
+      "approval_scope": "base",
+      "precondition": "Approval required; updater must not be installing; preserve apps, Unity editor and modules",
+      "root_device": 16777233,
+      "root_inode": 3757959
+    },
+    {
+      "path": "/Users/andrew/Library/Caches/antigravity-updater/pending",
+      "allocated_kib": 177588,
+      "group": "Updater cache",
+      "reason": "Downloaded app updater; no app removed",
+      "approval_scope": "base",
+      "precondition": "Approval required; updater must not be installing; preserve apps, Unity editor and modules",
+      "root_device": 16777233,
+      "root_inode": 23693592
+    }
+  ],
+  "optional_candidates": [
+    {
+      "path": "/Users/andrew/Desktop/unity projects/unity_projects/shape_sorting-final/Library/Bee",
+      "allocated_kib": 16888776,
+      "group": "ShapeMania build cache",
+      "reason": "Generated Bee/IL2CPP build cache only; preserve Assets, source, scenes, ProjectSettings, Packages, Library/PackageCache and all .meta",
+      "approval_scope": "optional_shapemania_bee",
+      "precondition": "Separate explicit approval; project must be closed and no build/cache file in use; next build recreates cache and may take longer",
+      "root_device": 16777233,
+      "root_inode": 46933699
+    }
+  ],
+  "deferred_active_caches": [
+    {
+      "path": "/Users/andrew/Library/Caches/Codex/Default/Cache",
+      "allocated_kib": 54040,
+      "group": "Browser/app caches",
+      "reason": "Disposable web/graphics cache only; preserve profiles, cookies, history, local storage and conversations"
+    },
+    {
+      "path": "/Users/andrew/Library/Caches/Codex/Default/Code Cache",
+      "allocated_kib": 16,
+      "group": "Browser/app caches",
+      "reason": "Disposable web/graphics cache only; preserve profiles, cookies, history, local storage and conversations"
+    },
+    {
+      "path": "/Users/andrew/Library/Caches/com.unity3d.UnityEditor/bee",
+      "allocated_kib": 266832,
+      "group": "Unity global build cache",
+      "reason": "Generated Bee build artifacts; no project Library or PackageCache removed"
+    },
+    {
+      "path": "/Users/andrew/Library/Caches/Codex/Default/Partitions/codex-browser-app/Cache",
+      "allocated_kib": 479968,
+      "group": "Browser/app caches",
+      "reason": "Disposable web/graphics cache only; preserve profiles, cookies, history, local storage and conversations"
+    },
+    {
+      "path": "/Users/andrew/Library/Caches/Codex/Default/Partitions/codex-browser-app/Code Cache",
+      "allocated_kib": 178500,
+      "group": "Browser/app caches",
+      "reason": "Disposable web/graphics cache only; preserve profiles, cookies, history, local storage and conversations"
+    },
+    {
+      "path": "/Users/andrew/Library/Caches/Codex/Default/Partitions/codex-mcp-app-sandbox%3Ashared/Cache",
+      "allocated_kib": 24,
+      "group": "Browser/app caches",
+      "reason": "Disposable web/graphics cache only; preserve profiles, cookies, history, local storage and conversations"
+    },
+    {
+      "path": "/Users/andrew/Library/Caches/Codex/Default/Partitions/codex-mcp-app-sandbox%3Ashared/Code Cache",
+      "allocated_kib": 16,
+      "group": "Browser/app caches",
+      "reason": "Disposable web/graphics cache only; preserve profiles, cookies, history, local storage and conversations"
+    }
+  ],
+  "protected": [
+    "All authored project assets/source/scenes/settings/packages/.meta; CascadeUnity Library/Temp while active",
+    "Personal files, Downloads, photos, videos, documents, saves and backups",
+    "SourcePackages, Unity PackageCache, Unity Asset Store archives, project Packages",
+    "Xcode Archives, iOS DeviceSupport, simulator devices/data/runtime installations",
+    "Codex sessions/generated images/attachments, Cursor User/history/snapshots",
+    "macOS system files, update payloads, swap, /private/var/db, system-managed caches and /private/var/folders wholesale",
+    "Temporary source/test harnesses, cloud backups and downloaded attachments in /private/tmp"
+  ],
+  "measured_consumers_gib": {
+    "Unity project Library total (not additive with Desktop)": 34.58638,
+    "ShapeMania Library (includes Bee)": 22.142,
+    "CascadeUnity Library": 4.249,
+    "Xcode DerivedData total (contains protected SourcePackages)": 19.654,
+    "Xcode iOS DeviceSupport": 13.2,
+    "Simulator user devices/data": 35.256,
+    "Applications Unity installation (single version)": 20.292,
+    "Home Library Caches total": 10.658,
+    "Gradle caches (contains dependencies; preserve)": 4.579,
+    "Codex user data/history (preserve)": 20.196,
+    "Desktop total incl projects/personal files (preserve)": 59.845,
+    "private tmp total (most paths preserved)": 10.052,
+    "Library Updates (preserve)": 1.756,
+    "private var vm swap (preserve)": 2.0,
+    "private var tmp SpeechModelCache (system-managed; preserve)": 1.963
+  },
+  "scan_limits": [
+    "macOS privacy/permissions prevented measuring some protected directories; no Full Disk Access requested",
+    "Broad home/Library scan was interrupted after targeted directories were measured; Containers/Group Containers timed out",
+    "No deletion, application quitting, tests, reimport or player build executed"
+  ],
+  "cascade_space_assessment": {
+    "assets_gib": 0.3462,
+    "library_gib": 4.249,
+    "conservative_working_allowance_gib": 30,
+    "allowance_is_agent_estimate_not_Unity_requirement": true,
+    "free_gib": 63.87366485595703,
+    "capacity_estimate": "Current free space exceeds the conservative allowance; reassess after cleanup",
+    "real_reimport_or_player_build": "NOT_RUN"
+  },
+  "cleanup_result": "cleanup-result.json",
+  "approval_text": "Очисти все"
+}

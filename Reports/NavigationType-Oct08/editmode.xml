@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Passed" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-08 11:32:58Z" end-time="2026-10-08 11:33:00Z" duration="1.4786646">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="792" result="Passed" start-time="2026-10-08 11:32:58Z" end-time="2026-10-08 11:33:00Z" duration="1.478665" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1878" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="791" result="Passed" start-time="2026-10-08 11:32:59Z" end-time="2026-10-08 11:33:00Z" duration="1.130075" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24227" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1879" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="791" result="Passed" start-time="2026-10-08 11:32:59Z" end-time="2026-10-08 11:33:00Z" duration="1.129295" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1880" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="791" result="Passed" start-time="2026-10-08 11:32:59Z" end-time="2026-10-08 11:33:00Z" duration="1.128518" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1622" name="RewardTests" fullname="Cascade.Tests.RewardTests" classname="Cascade.Tests.RewardTests" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-08 11:32:59Z" end-time="2026-10-08 11:32:59Z" duration="0.930845" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1631" name="SavedClaimsCannotReopenAndOlderProfileCanAcquireNewFields" fullname="Cascade.Tests.RewardTests.SavedClaimsCannotReopenAndOlderProfileCanAcquireNewFields" methodname="SavedClaimsCannotReopenAndOlderProfileCanAcquireNewFields" classname="Cascade.Tests.RewardTests" runstate="Runnable" seed="1918246745" result="Passed" start-time="2026-10-08 11:32:59Z" end-time="2026-10-08 11:32:59Z" duration="0.408133" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1785" name="TrophyEconomyTests" fullname="Cascade.Tests.TrophyEconomyTests" classname="Cascade.Tests.TrophyEconomyTests" runstate="Runnable" testcasecount="16" result="Passed" start-time="2026-10-08 11:32:59Z" end-time="2026-10-08 11:33:00Z" duration="0.178046" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1799" name="NewCosmeticClaimFailureRollsBackAndOwnedFindConvertsOnlyOnce" fullname="Cascade.Tests.TrophyEconomyTests.NewCosmeticClaimFailureRollsBackAndOwnedFindConvertsOnlyOnce" methodname="NewCosmeticClaimFailureRollsBackAndOwnedFindConvertsOnlyOnce" classname="Cascade.Tests.TrophyEconomyTests" runstate="Runnable" seed="1429182884" result="Passed" start-time="2026-10-08 11:32:59Z" end-time="2026-10-08 11:33:00Z" duration="0.175569" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1808" name="WardrobeParcelTests" fullname="Cascade.Tests.WardrobeParcelTests" classname="Cascade.Tests.WardrobeParcelTests" runstate="Runnable" testcasecount="15" result="Passed" start-time="2026-10-08 11:33:00Z" end-time="2026-10-08 11:33:00Z" duration="0.015556" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1812" name="ToolChestClaimAndGrantAreAtomicRetryableAndExactlyOnce" fullname="Cascade.Tests.WardrobeParcelTests.ToolChestClaimAndGrantAreAtomicRetryableAndExactlyOnce" methodname="ToolChestClaimAndGrantAreAtomicRetryableAndExactlyOnce" classname="Cascade.Tests.WardrobeParcelTests" runstate="Runnable" seed="5577052" result="Passed" start-time="2026-10-08 11:33:00Z" end-time="2026-10-08 11:33:00Z" duration="0.013657" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

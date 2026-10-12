@@ -1,0 +1,1836 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="291" result="Passed" total="291" passed="291" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-04 22:20:08Z" end-time="2026-10-04 22:20:12Z" duration="3.7360108">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="291" result="Passed" start-time="2026-10-04 22:20:08Z" end-time="2026-10-04 22:20:12Z" duration="3.736011" total="291" passed="291" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1315" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="291" result="Passed" start-time="2026-10-04 22:20:08Z" end-time="2026-10-04 22:20:12Z" duration="3.732467" total="291" passed="291" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="84036" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1316" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="291" result="Passed" start-time="2026-10-04 22:20:08Z" end-time="2026-10-04 22:20:12Z" duration="3.732328" total="291" passed="291" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1317" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="291" result="Passed" start-time="2026-10-04 22:20:08Z" end-time="2026-10-04 22:20:12Z" duration="3.732214" total="291" passed="291" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1002" name="AttemptTests" fullname="Cascade.Tests.AttemptTests" classname="Cascade.Tests.AttemptTests" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-10-04 22:20:08Z" end-time="2026-10-04 22:20:08Z" duration="0.224391" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1006" name="ActualUndoRestoresBridgeStampKeyRepairAndDefuse" fullname="Cascade.Tests.AttemptTests.ActualUndoRestoresBridgeStampKeyRepairAndDefuse" methodname="ActualUndoRestoresBridgeStampKeyRepairAndDefuse" classname="Cascade.Tests.AttemptTests" runstate="Runnable" seed="1206796597" result="Passed" start-time="2026-10-04 22:20:08Z" end-time="2026-10-04 22:20:08Z" duration="0.015009" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1015" name="CancelledWorkerQueryIsUnknownAndDoesNotMutateAttempt" fullname="Cascade.Tests.AttemptTests.CancelledWorkerQueryIsUnknownAndDoesNotMutateAttempt" methodname="CancelledWorkerQueryIsUnknownAndDoesNotMutateAttempt" classname="Cascade.Tests.AttemptTests" runstate="Runnable" seed="1689268175" result="Passed" start-time="2026-10-04 22:20:08Z" end-time="2026-10-04 22:20:08Z" duration="0.022563" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1007" name="DeadEndSuggestsUndoAndUndoRestoresPlayable" fullname="Cascade.Tests.AttemptTests.DeadEndSuggestsUndoAndUndoRestoresPlayable" methodname="DeadEndSuggestsUndoAndUndoRestoresPlayable" classname="Cascade.Tests.AttemptTests" runstate="Runnable" seed="49603615" result="Passed" start-time="2026-10-04 22:20:08Z" end-time="2026-10-04 22:20:08Z" duration="0.032170" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1013" name="EquivalentCoreStatesHaveSameHashAcrossAttemptsAndCommands" fullname="Cascade.Tests.AttemptTests.EquivalentCoreStatesHaveSameHashAcrossAttemptsAndCommands" methodname="EquivalentCoreStatesHaveSameHashAcrossAttemptsAndCommands" classname="Cascade.Tests.AttemptTests" runstate="Runnable" seed="28246373" result="Passed" start-time="2026-10-04 22:20:08Z" end-time="2026-10-04 22:20:08Z" duration="0.024641" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1012" name="HintUsesActiveContractGoal" fullname="Cascade.Tests.AttemptTests.HintUsesActiveContractGoal" methodname="HintUsesActiveContractGoal" classname="Cascade.Tests.AttemptTests" runstate="Runnable" seed="1059515876" result="Passed" start-time="2026-10-04 22:20:08Z" end-time="2026-10-04 22:20:08Z" duration="0.014063" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1003" name="InvalidCommandsAndPredictionDoNotChangeHistory" fullname="Cascade.Tests.AttemptTests.InvalidCommandsAndPredictionDoNotChangeHistory" methodname="InvalidCommandsAndPredictionDoNotChangeHistory" classname="Cascade.Tests.AttemptTests" runstate="Runnable" seed="1750775625" result="Passed" start-time="2026-10-04 22:20:08Z" end-time="2026-10-04 22:20:08Z" duration="0.007770" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1014" name="PuzzleLocaleAndModeAreBoundAtAttemptStart" fullname="Cascade.Tests.AttemptTests.PuzzleLocaleAndModeAreBoundAtAttemptStart" methodname="PuzzleLocaleAndModeAreBoundAtAttemptStart" classname="Cascade.Tests.AttemptTests" runstate="Runnable" seed="1879002431" result="Passed" start-time="2026-10-04 22:20:08Z" end-time="2026-10-04 22:20:08Z" duration="0.001981" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1011" name="RetryPinsSameVersionButCreatesNewAttemptAndRejectsOldHint" fullname="Cascade.Tests.AttemptTests.RetryPinsSameVersionButCreatesNewAttemptAndRejectsOldHint" methodname="RetryPinsSameVersionButCreatesNewAttemptAndRejectsOldHint" classname="Cascade.Tests.AttemptTests" runstate="Runnable" seed="1830646561" result="Passed" start-time="2026-10-04 22:20:08Z" end-time="2026-10-04 22:20:08Z" duration="0.026749" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1010" name="RevealedHintIsMonotonicAcrossUndoAndCanBeReusedAtSameHash" fullname="Cascade.Tests.AttemptTests.RevealedHintIsMonotonicAcrossUndoAndCanBeReusedAtSameHash" methodname="RevealedHintIsMonotonicAcrossUndoAndCanBeReusedAtSameHash" classname="Cascade.Tests.AttemptTests" runstate="Runnable" seed="1267389580" result="Passed" start-time="2026-10-04 22:20:08Z" end-time="2026-10-04 22:20:08Z" duration="0.019523" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1004" name="RouteLengthRollsBackButUndoCountIsSeparate" fullname="Cascade.Tests.AttemptTests.RouteLengthRollsBackButUndoCountIsSeparate" methodname="RouteLengthRollsBackButUndoCountIsSeparate" classname="Cascade.Tests.AttemptTests" runstate="Runnable" seed="746200671" result="Passed" start-time="2026-10-04 22:20:08Z" end-time="2026-10-04 22:20:08Z" duration="0.010487" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1009" name="StaleHintCannotBeRevealedOrExecuted" fullname="Cascade.Tests.AttemptTests.StaleHintCannotBeRevealedOrExecuted" methodname="StaleHintCannotBeRevealedOrExecuted" classname="Cascade.Tests.AttemptTests" runstate="Runnable" seed="1332832008" result="Passed" start-time="2026-10-04 22:20:08Z" end-time="2026-10-04 22:20:08Z" duration="0.016684" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1005" name="UndoAcrossCollapseRestoresBombCountersAndOldFloor" fullname="Cascade.Tests.AttemptTests.UndoAcrossCollapseRestoresBombCountersAndOldFloor" methodname="UndoAcrossCollapseRestoresBombCountersAndOldFloor" classname="Cascade.Tests.AttemptTests" runstate="Runnable" seed="777098318" result="Passed" start-time="2026-10-04 22:20:08Z" end-time="2026-10-04 22:20:08Z" duration="0.001380" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1008" name="UnknownDoesNotConsumeHintOrHistory" fullname="Cascade.Tests.AttemptTests.UnknownDoesNotConsumeHintOrHistory" methodname="UnknownDoesNotConsumeHintOrHistory" classname="Cascade.Tests.AttemptTests" runstate="Runnable" seed="254752306" result="Passed" start-time="2026-10-04 22:20:08Z" end-time="2026-10-04 22:20:08Z" duration="0.013200" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1016" name="AuthoringTests" fullname="Cascade.Tests.AuthoringTests" classname="Cascade.Tests.AuthoringTests" runstate="Runnable" testcasecount="14" result="Passed" start-time="2026-10-04 22:20:08Z" end-time="2026-10-04 22:20:10Z" duration="1.902205" total="14" passed="14" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1031" name="ActualUnityUndoRedoRestoresDraftWithoutTouchingScene" fullname="Cascade.Tests.AuthoringTests.ActualUnityUndoRedoRestoresDraftWithoutTouchingScene" methodname="ActualUnityUndoRedoRestoresDraftWithoutTouchingScene" classname="Cascade.Tests.AuthoringTests" runstate="Runnable" seed="1009654291" result="Passed" start-time="2026-10-04 22:20:08Z" end-time="2026-10-04 22:20:08Z" duration="0.059808" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1026" name="ActualWorkshopExportMatchesItsProof" fullname="Cascade.Tests.AuthoringTests.ActualWorkshopExportMatchesItsProof" methodname="ActualWorkshopExportMatchesItsProof" classname="Cascade.Tests.AuthoringTests" runstate="Runnable" seed="1289382388" result="Passed" start-time="2026-10-04 22:20:08Z" end-time="2026-10-04 22:20:09Z" duration="0.445256" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1030" name="BypassableAndOnEntryKeysProduceWarnings" fullname="Cascade.Tests.AuthoringTests.BypassableAndOnEntryKeysProduceWarnings" methodname="BypassableAndOnEntryKeysProduceWarnings" classname="Cascade.Tests.AuthoringTests" runstate="Runnable" seed="518394584" result="Passed" start-time="2026-10-04 22:20:09Z" end-time="2026-10-04 22:20:09Z" duration="0.365865" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1029" name="CancellationIsUnknownWithoutMetrics" fullname="Cascade.Tests.AuthoringTests.CancellationIsUnknownWithoutMetrics" methodname="CancellationIsUnknownWithoutMetrics" classname="Cascade.Tests.AuthoringTests" runstate="Runnable" seed="1894755308" result="Passed" start-time="2026-10-04 22:20:09Z" end-time="2026-10-04 22:20:09Z" duration="0.228760" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1025" name="ExportRoundTripPinsHashRulesAndStampGoal" fullname="Cascade.Tests.AuthoringTests.ExportRoundTripPinsHashRulesAndStampGoal" methodname="ExportRoundTripPinsHashRulesAndStampGoal" classname="Cascade.Tests.AuthoringTests" runstate="Runnable" seed="490475644" result="Passed" start-time="2026-10-04 22:20:09Z" end-time="2026-10-04 22:20:10Z" duration="0.297449" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1023" name="LoadedDraftPreservesRulesAndOriginalSymbolIds" fullname="Cascade.Tests.AuthoringTests.LoadedDraftPreservesRulesAndOriginalSymbolIds" classname="Cascade.Tests.AuthoringTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.216432" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1018" name="LoadedDraftPreservesRulesAndOriginalSymbolIds(&quot;C01&quot;)" fullname="Cascade.Tests.AuthoringTests.LoadedDraftPreservesRulesAndOriginalSymbolIds(&quot;C01&quot;)" methodname="LoadedDraftPreservesRulesAndOriginalSymbolIds" classname="Cascade.Tests.AuthoringTests" runstate="Runnable" seed="128875816" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.048744" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1019" name="LoadedDraftPreservesRulesAndOriginalSymbolIds(&quot;C27&quot;)" fullname="Cascade.Tests.AuthoringTests.LoadedDraftPreservesRulesAndOriginalSymbolIds(&quot;C27&quot;)" methodname="LoadedDraftPreservesRulesAndOriginalSymbolIds" classname="Cascade.Tests.AuthoringTests" runstate="Runnable" seed="1648186112" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.043344" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1020" name="LoadedDraftPreservesRulesAndOriginalSymbolIds(&quot;C35&quot;)" fullname="Cascade.Tests.AuthoringTests.LoadedDraftPreservesRulesAndOriginalSymbolIds(&quot;C35&quot;)" methodname="LoadedDraftPreservesRulesAndOriginalSymbolIds" classname="Cascade.Tests.AuthoringTests" runstate="Runnable" seed="1902115524" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.039880" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1021" name="LoadedDraftPreservesRulesAndOriginalSymbolIds(&quot;C38&quot;)" fullname="Cascade.Tests.AuthoringTests.LoadedDraftPreservesRulesAndOriginalSymbolIds(&quot;C38&quot;)" methodname="LoadedDraftPreservesRulesAndOriginalSymbolIds" classname="Cascade.Tests.AuthoringTests" runstate="Runnable" seed="178593932" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.044068" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1022" name="LoadedDraftPreservesRulesAndOriginalSymbolIds(&quot;C40&quot;)" fullname="Cascade.Tests.AuthoringTests.LoadedDraftPreservesRulesAndOriginalSymbolIds(&quot;C40&quot;)" methodname="LoadedDraftPreservesRulesAndOriginalSymbolIds" classname="Cascade.Tests.AuthoringTests" runstate="Runnable" seed="513576417" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.039662" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1017" name="NewDraftWithoutJsonValidatesSolvesAndReplays" fullname="Cascade.Tests.AuthoringTests.NewDraftWithoutJsonValidatesSolvesAndReplays" methodname="NewDraftWithoutJsonValidatesSolvesAndReplays" classname="Cascade.Tests.AuthoringTests" runstate="Runnable" seed="658999528" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.038108" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1024" name="ResizeFloorsAndWordPlacementNeedNoRawJson" fullname="Cascade.Tests.AuthoringTests.ResizeFloorsAndWordPlacementNeedNoRawJson" methodname="ResizeFloorsAndWordPlacementNeedNoRawJson" classname="Cascade.Tests.AuthoringTests" runstate="Runnable" seed="1057082256" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.048604" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1027" name="StaleProofAndChangedObjectiveCannotExport" fullname="Cascade.Tests.AuthoringTests.StaleProofAndChangedObjectiveCannotExport" methodname="StaleProofAndChangedObjectiveCannotExport" classname="Cascade.Tests.AuthoringTests" runstate="Runnable" seed="19434942" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.062491" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1028" name="UnreachableStampAndBudgetUnknownAreNotPublicationProofs" fullname="Cascade.Tests.AuthoringTests.UnreachableStampAndBudgetUnknownAreNotPublicationProofs" methodname="UnreachableStampAndBudgetUnknownAreNotPublicationProofs" classname="Cascade.Tests.AuthoringTests" runstate="Runnable" seed="1488705843" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.133546" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1032" name="BridgeStampTests" fullname="Cascade.Tests.BridgeStampTests" classname="Cascade.Tests.BridgeStampTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.004064" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1033" name="BridgeClosesOnlyAfterAcceptedSwap" fullname="Cascade.Tests.BridgeStampTests.BridgeClosesOnlyAfterAcceptedSwap" methodname="BridgeClosesOnlyAfterAcceptedSwap" classname="Cascade.Tests.BridgeStampTests" runstate="Runnable" seed="1819633014" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.000566" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1039" name="C35DeliveryAndStampedMinimaAreTwoAndFour" fullname="Cascade.Tests.BridgeStampTests.C35DeliveryAndStampedMinimaAreTwoAndFour" methodname="C35DeliveryAndStampedMinimaAreTwoAndFour" classname="Cascade.Tests.BridgeStampTests" runstate="Runnable" seed="397997207" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001612" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1035" name="LinkedBridgeClosesAfterCompleteSwapAndLockedSubpairPreservesIt" fullname="Cascade.Tests.BridgeStampTests.LinkedBridgeClosesAfterCompleteSwapAndLockedSubpairPreservesIt" methodname="LinkedBridgeClosesAfterCompleteSwapAndLockedSubpairPreservesIt" classname="Cascade.Tests.BridgeStampTests" runstate="Runnable" seed="1818488571" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.000403" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1034" name="NoOpInvalidAndDropDoNotConsumeBridge" fullname="Cascade.Tests.BridgeStampTests.NoOpInvalidAndDropDoNotConsumeBridge" methodname="NoOpInvalidAndDropDoNotConsumeBridge" classname="Cascade.Tests.BridgeStampTests" runstate="Runnable" seed="1657945218" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.000166" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1036" name="SnapshotRestoresBridgeAndStampWithoutChangingTokens" fullname="Cascade.Tests.BridgeStampTests.SnapshotRestoresBridgeAndStampWithoutChangingTokens" methodname="SnapshotRestoresBridgeAndStampWithoutChangingTokens" classname="Cascade.Tests.BridgeStampTests" runstate="Runnable" seed="621161370" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.000201" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1037" name="StampDoesNotGateOrdinaryReceiver" fullname="Cascade.Tests.BridgeStampTests.StampDoesNotGateOrdinaryReceiver" methodname="StampDoesNotGateOrdinaryReceiver" classname="Cascade.Tests.BridgeStampTests" runstate="Runnable" seed="2066586703" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.000110" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1038" name="StampRecordsOnceAndEntryTransformCanCollectIt" fullname="Cascade.Tests.BridgeStampTests.StampRecordsOnceAndEntryTransformCanCollectIt" methodname="StampRecordsOnceAndEntryTransformCanCollectIt" classname="Cascade.Tests.BridgeStampTests" runstate="Runnable" seed="364072860" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.000156" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1040" name="UnreachableStampHasNoGoalState" fullname="Cascade.Tests.BridgeStampTests.UnreachableStampHasNoGoalState" methodname="UnreachableStampHasNoGoalState" classname="Cascade.Tests.BridgeStampTests" runstate="Runnable" seed="801131708" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.000132" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1041" name="ContentTests" fullname="Cascade.Tests.ContentTests" classname="Cascade.Tests.ContentTests" runstate="Runnable" testcasecount="126" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:11Z" duration="1.110762" total="126" passed="126" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1160" name="AllConcreteBindingsMatchPythonGraphs" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" testcasecount="117" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:11Z" duration="0.482338" total="117" passed="117" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1043" name="AllConcreteBindingsMatchPythonGraphs(&quot;C01_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C01_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1245048043" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.004124" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1044" name="AllConcreteBindingsMatchPythonGraphs(&quot;C01_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C01_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="448599467" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001598" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1045" name="AllConcreteBindingsMatchPythonGraphs(&quot;C01_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C01_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1002052814" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001610" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1046" name="AllConcreteBindingsMatchPythonGraphs(&quot;C02_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C02_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1993803829" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001635" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1047" name="AllConcreteBindingsMatchPythonGraphs(&quot;C02_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C02_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="927824152" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001736" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1048" name="AllConcreteBindingsMatchPythonGraphs(&quot;C02_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C02_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1233128806" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001606" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1049" name="AllConcreteBindingsMatchPythonGraphs(&quot;C03_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C03_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1483265927" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.002250" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1050" name="AllConcreteBindingsMatchPythonGraphs(&quot;C03_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C03_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1742950935" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.002332" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1051" name="AllConcreteBindingsMatchPythonGraphs(&quot;C03_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C03_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1706044098" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.002275" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1052" name="AllConcreteBindingsMatchPythonGraphs(&quot;C04_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C04_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="833175320" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.002233" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1053" name="AllConcreteBindingsMatchPythonGraphs(&quot;C04_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C04_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1128204153" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001797" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1054" name="AllConcreteBindingsMatchPythonGraphs(&quot;C04_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C04_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1559963961" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001731" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1055" name="AllConcreteBindingsMatchPythonGraphs(&quot;C05_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C05_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="906444759" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001775" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1056" name="AllConcreteBindingsMatchPythonGraphs(&quot;C05_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C05_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1668352570" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001815" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1057" name="AllConcreteBindingsMatchPythonGraphs(&quot;C05_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C05_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1110769882" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001804" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1058" name="AllConcreteBindingsMatchPythonGraphs(&quot;C06_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C06_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1527834554" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001671" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1059" name="AllConcreteBindingsMatchPythonGraphs(&quot;C06_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C06_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1039525317" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001636" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1060" name="AllConcreteBindingsMatchPythonGraphs(&quot;C06_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C06_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="2035967799" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001656" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1061" name="AllConcreteBindingsMatchPythonGraphs(&quot;C07_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C07_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="271577212" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001804" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1062" name="AllConcreteBindingsMatchPythonGraphs(&quot;C07_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C07_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="993233745" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001812" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1063" name="AllConcreteBindingsMatchPythonGraphs(&quot;C07_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C07_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1899395456" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001837" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1064" name="AllConcreteBindingsMatchPythonGraphs(&quot;C08_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C08_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1108242370" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001611" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1065" name="AllConcreteBindingsMatchPythonGraphs(&quot;C08_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C08_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1905854613" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001598" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1066" name="AllConcreteBindingsMatchPythonGraphs(&quot;C08_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C08_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="595016684" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001605" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1067" name="AllConcreteBindingsMatchPythonGraphs(&quot;C09_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C09_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1418220908" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001855" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1068" name="AllConcreteBindingsMatchPythonGraphs(&quot;C09_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C09_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1609240484" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001843" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1069" name="AllConcreteBindingsMatchPythonGraphs(&quot;C09_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C09_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="2078715679" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001850" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1070" name="AllConcreteBindingsMatchPythonGraphs(&quot;C10_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C10_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="865528449" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.002165" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1071" name="AllConcreteBindingsMatchPythonGraphs(&quot;C10_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C10_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="938679180" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001651" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1072" name="AllConcreteBindingsMatchPythonGraphs(&quot;C10_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C10_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="289515938" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001639" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1073" name="AllConcreteBindingsMatchPythonGraphs(&quot;C11_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C11_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1896398251" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.002276" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1074" name="AllConcreteBindingsMatchPythonGraphs(&quot;C11_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C11_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="321487352" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.002249" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1075" name="AllConcreteBindingsMatchPythonGraphs(&quot;C11_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C11_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1007598027" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.002249" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1076" name="AllConcreteBindingsMatchPythonGraphs(&quot;C12_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C12_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1365659199" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.003439" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1077" name="AllConcreteBindingsMatchPythonGraphs(&quot;C12_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C12_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1495599151" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.003349" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1078" name="AllConcreteBindingsMatchPythonGraphs(&quot;C12_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C12_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="925331969" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.003415" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1079" name="AllConcreteBindingsMatchPythonGraphs(&quot;C13_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C13_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="495337000" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001633" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1080" name="AllConcreteBindingsMatchPythonGraphs(&quot;C13_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C13_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1664101873" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001583" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1081" name="AllConcreteBindingsMatchPythonGraphs(&quot;C13_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C13_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="403046842" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001567" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1082" name="AllConcreteBindingsMatchPythonGraphs(&quot;C14_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C14_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1547434107" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001548" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1083" name="AllConcreteBindingsMatchPythonGraphs(&quot;C14_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C14_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1147307986" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001549" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1084" name="AllConcreteBindingsMatchPythonGraphs(&quot;C14_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C14_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="2119793361" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001606" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1085" name="AllConcreteBindingsMatchPythonGraphs(&quot;C15_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C15_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="264690712" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001923" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1086" name="AllConcreteBindingsMatchPythonGraphs(&quot;C15_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C15_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1252646337" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001915" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1087" name="AllConcreteBindingsMatchPythonGraphs(&quot;C15_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C15_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1180910088" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001885" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1088" name="AllConcreteBindingsMatchPythonGraphs(&quot;C16_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C16_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1583479237" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.002508" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1089" name="AllConcreteBindingsMatchPythonGraphs(&quot;C16_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C16_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="81180074" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.002515" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1090" name="AllConcreteBindingsMatchPythonGraphs(&quot;C16_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C16_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1766811581" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.002510" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1091" name="AllConcreteBindingsMatchPythonGraphs(&quot;C17_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C17_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="653610389" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001607" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1092" name="AllConcreteBindingsMatchPythonGraphs(&quot;C17_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C17_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1217146942" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001567" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1093" name="AllConcreteBindingsMatchPythonGraphs(&quot;C17_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C17_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="800703194" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001615" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1094" name="AllConcreteBindingsMatchPythonGraphs(&quot;C18_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C18_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="828752452" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001726" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1095" name="AllConcreteBindingsMatchPythonGraphs(&quot;C18_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C18_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="233117006" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001713" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1096" name="AllConcreteBindingsMatchPythonGraphs(&quot;C18_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C18_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1318027632" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001782" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1097" name="AllConcreteBindingsMatchPythonGraphs(&quot;C19_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C19_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="297730249" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.002039" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1098" name="AllConcreteBindingsMatchPythonGraphs(&quot;C19_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C19_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="136805673" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.002041" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1099" name="AllConcreteBindingsMatchPythonGraphs(&quot;C19_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C19_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="690228501" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.002013" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1100" name="AllConcreteBindingsMatchPythonGraphs(&quot;C20_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C20_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="407036130" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001549" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1101" name="AllConcreteBindingsMatchPythonGraphs(&quot;C20_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C20_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="575582921" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001518" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1102" name="AllConcreteBindingsMatchPythonGraphs(&quot;C20_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C20_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1466067315" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001545" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1103" name="AllConcreteBindingsMatchPythonGraphs(&quot;C21_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C21_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1301896774" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001795" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1104" name="AllConcreteBindingsMatchPythonGraphs(&quot;C21_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C21_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="617737478" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001541" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1105" name="AllConcreteBindingsMatchPythonGraphs(&quot;C21_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C21_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="804271755" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001694" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1106" name="AllConcreteBindingsMatchPythonGraphs(&quot;C22_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C22_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1416528160" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001543" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1107" name="AllConcreteBindingsMatchPythonGraphs(&quot;C22_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C22_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1084260716" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001544" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1108" name="AllConcreteBindingsMatchPythonGraphs(&quot;C22_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C22_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="806716801" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001533" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1109" name="AllConcreteBindingsMatchPythonGraphs(&quot;C23_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C23_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="552365934" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001792" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1110" name="AllConcreteBindingsMatchPythonGraphs(&quot;C23_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C23_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1688269207" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001819" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1111" name="AllConcreteBindingsMatchPythonGraphs(&quot;C23_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C23_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="172753419" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001801" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1112" name="AllConcreteBindingsMatchPythonGraphs(&quot;C24_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C24_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="185437913" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001914" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1113" name="AllConcreteBindingsMatchPythonGraphs(&quot;C24_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C24_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1032497554" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001732" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1114" name="AllConcreteBindingsMatchPythonGraphs(&quot;C24_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C24_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1522907091" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001730" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1115" name="AllConcreteBindingsMatchPythonGraphs(&quot;C25_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C25_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1632920957" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001484" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1116" name="AllConcreteBindingsMatchPythonGraphs(&quot;C25_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C25_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="871626752" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001523" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1117" name="AllConcreteBindingsMatchPythonGraphs(&quot;C25_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C25_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1993409406" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001511" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1118" name="AllConcreteBindingsMatchPythonGraphs(&quot;C27_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C27_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1927085742" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001925" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1119" name="AllConcreteBindingsMatchPythonGraphs(&quot;C27_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C27_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="843551658" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001661" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1120" name="AllConcreteBindingsMatchPythonGraphs(&quot;C27_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C27_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="653208276" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001656" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1121" name="AllConcreteBindingsMatchPythonGraphs(&quot;C28_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C28_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1561590243" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001540" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1122" name="AllConcreteBindingsMatchPythonGraphs(&quot;C28_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C28_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1982225318" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001544" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1123" name="AllConcreteBindingsMatchPythonGraphs(&quot;C28_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C28_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1528060410" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001553" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1124" name="AllConcreteBindingsMatchPythonGraphs(&quot;C29_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C29_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="311904098" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001668" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1125" name="AllConcreteBindingsMatchPythonGraphs(&quot;C29_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C29_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="211918060" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001647" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1126" name="AllConcreteBindingsMatchPythonGraphs(&quot;C29_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C29_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1869015885" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001643" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1127" name="AllConcreteBindingsMatchPythonGraphs(&quot;C30_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C30_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1636296391" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.089432" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1128" name="AllConcreteBindingsMatchPythonGraphs(&quot;C30_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C30_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1067645799" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.077521" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1129" name="AllConcreteBindingsMatchPythonGraphs(&quot;C30_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C30_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="88370346" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.078861" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1130" name="AllConcreteBindingsMatchPythonGraphs(&quot;C31_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C31_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1837054042" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001628" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1131" name="AllConcreteBindingsMatchPythonGraphs(&quot;C31_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C31_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1067928950" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001517" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1132" name="AllConcreteBindingsMatchPythonGraphs(&quot;C31_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C31_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1358793478" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001489" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1133" name="AllConcreteBindingsMatchPythonGraphs(&quot;C32_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C32_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="235103468" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001890" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1134" name="AllConcreteBindingsMatchPythonGraphs(&quot;C32_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C32_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="88300870" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001900" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1135" name="AllConcreteBindingsMatchPythonGraphs(&quot;C32_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C32_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1088518952" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001935" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1136" name="AllConcreteBindingsMatchPythonGraphs(&quot;C33_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C33_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1084463174" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001429" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1137" name="AllConcreteBindingsMatchPythonGraphs(&quot;C33_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C33_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="245537333" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001404" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1138" name="AllConcreteBindingsMatchPythonGraphs(&quot;C33_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C33_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="529570508" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001457" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1139" name="AllConcreteBindingsMatchPythonGraphs(&quot;C34_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C34_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1315521606" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001455" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1140" name="AllConcreteBindingsMatchPythonGraphs(&quot;C34_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C34_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="995646199" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001463" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1141" name="AllConcreteBindingsMatchPythonGraphs(&quot;C34_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C34_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="168385621" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001452" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1142" name="AllConcreteBindingsMatchPythonGraphs(&quot;C35_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C35_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="374193287" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.002074" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1143" name="AllConcreteBindingsMatchPythonGraphs(&quot;C35_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C35_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1031113303" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.002075" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1144" name="AllConcreteBindingsMatchPythonGraphs(&quot;C35_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C35_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="540394514" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.002053" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1145" name="AllConcreteBindingsMatchPythonGraphs(&quot;C36_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C36_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1594058162" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001647" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1146" name="AllConcreteBindingsMatchPythonGraphs(&quot;C36_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C36_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="468172476" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:10Z" duration="0.001629" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1147" name="AllConcreteBindingsMatchPythonGraphs(&quot;C36_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C36_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="184649388" result="Passed" start-time="2026-10-04 22:20:10Z" end-time="2026-10-04 22:20:11Z" duration="0.001630" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1148" name="AllConcreteBindingsMatchPythonGraphs(&quot;C37_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C37_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1425279750" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.005704" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1149" name="AllConcreteBindingsMatchPythonGraphs(&quot;C37_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C37_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1343315142" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.005767" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1150" name="AllConcreteBindingsMatchPythonGraphs(&quot;C37_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C37_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1508973901" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.005758" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1151" name="AllConcreteBindingsMatchPythonGraphs(&quot;C38_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C38_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1472101873" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001431" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1152" name="AllConcreteBindingsMatchPythonGraphs(&quot;C38_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C38_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="518128154" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001464" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1153" name="AllConcreteBindingsMatchPythonGraphs(&quot;C38_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C38_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1440737662" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001423" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1154" name="AllConcreteBindingsMatchPythonGraphs(&quot;C39_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C39_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="37020225" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.004441" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1155" name="AllConcreteBindingsMatchPythonGraphs(&quot;C39_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C39_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="992929534" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001605" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1156" name="AllConcreteBindingsMatchPythonGraphs(&quot;C39_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C39_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="740841250" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.002295" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1157" name="AllConcreteBindingsMatchPythonGraphs(&quot;C40_en&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C40_en&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="2085490552" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.003994" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1158" name="AllConcreteBindingsMatchPythonGraphs(&quot;C40_ru&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C40_ru&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="989992676" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.004150" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1159" name="AllConcreteBindingsMatchPythonGraphs(&quot;C40_uk&quot;)" fullname="Cascade.Tests.ContentTests.AllConcreteBindingsMatchPythonGraphs(&quot;C40_uk&quot;)" methodname="AllConcreteBindingsMatchPythonGraphs" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="405819418" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.004147" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1162" name="C26IsExplicitlyShapeOnlyWithoutInventedWords" fullname="Cascade.Tests.ContentTests.C26IsExplicitlyShapeOnlyWithoutInventedWords" methodname="C26IsExplicitlyShapeOnlyWithoutInventedWords" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="690202799" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000453" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1042" name="CountsDefaultsAndOriginalAssetsMatch" fullname="Cascade.Tests.ContentTests.CountsDefaultsAndOriginalAssetsMatch" methodname="CountsDefaultsAndOriginalAssetsMatch" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="2037328807" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.082744" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1167" name="EditorialAndLicenseLimitsRemainVisibleInMetadata" fullname="Cascade.Tests.ContentTests.EditorialAndLicenseLimitsRemainVisibleInMetadata" methodname="EditorialAndLicenseLimitsRemainVisibleInMetadata" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="682630764" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000516" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1168" name="ExportConcreteValidationSummary" fullname="Cascade.Tests.ContentTests.ExportConcreteValidationSummary" methodname="ExportConcreteValidationSummary" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1809034078" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.361565" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1165" name="HashIsStableAcrossPropertyOrderAndPinsChangedContent" fullname="Cascade.Tests.ContentTests.HashIsStableAcrossPropertyOrderAndPinsChangedContent" methodname="HashIsStableAcrossPropertyOrderAndPinsChangedContent" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1661449668" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001528" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1163" name="MixedSevenAndTwoWordEightSegmentsAreBound" fullname="Cascade.Tests.ContentTests.MixedSevenAndTwoWordEightSegmentsAreBound" methodname="MixedSevenAndTwoWordEightSegmentsAreBound" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="1157597117" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000279" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1161" name="PrimaryImportKeepsIdsAndAllMinima" fullname="Cascade.Tests.ContentTests.PrimaryImportKeepsIdsAndAllMinima" methodname="PrimaryImportKeepsIdsAndAllMinima" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="2064175792" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.144145" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1166" name="RejectsCorruptWordSignatureAndUnsupportedRules" fullname="Cascade.Tests.ContentTests.RejectsCorruptWordSignatureAndUnsupportedRules" methodname="RejectsCorruptWordSignatureAndUnsupportedRules" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="735459615" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.002735" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1164" name="SameLettersInDifferentWordsShareSymbolId" fullname="Cascade.Tests.ContentTests.SameLettersInDifferentWordsShareSymbolId" methodname="SameLettersInDifferentWordsShareSymbolId" classname="Cascade.Tests.ContentTests" runstate="Runnable" seed="128393675" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000498" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1169" name="ConveyorBombTests" fullname="Cascade.Tests.ConveyorBombTests" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.003930" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1172" name="BlastDamageNeverCarriesToNextFloor" fullname="Cascade.Tests.ConveyorBombTests.BlastDamageNeverCarriesToNextFloor" methodname="BlastDamageNeverCarriesToNextFloor" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="1880947776" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000353" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1183" name="DefusedBombNeverCountsAgain" fullname="Cascade.Tests.ConveyorBombTests.DefusedBombNeverCountsAgain" methodname="DefusedBombNeverCountsAgain" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="1984938640" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000102" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1170" name="DefuseOnLastTickPrecedesExplosion" fullname="Cascade.Tests.ConveyorBombTests.DefuseOnLastTickPrecedesExplosion" methodname="DefuseOnLastTickPrecedesExplosion" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="108672446" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000143" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1175" name="DropTicksOldBombThenExplodesOrAbandons" fullname="Cascade.Tests.ConveyorBombTests.DropTicksOldBombThenExplodesOrAbandons" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000290" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1173" name="DropTicksOldBombThenExplodesOrAbandons(1,1,0)" fullname="Cascade.Tests.ConveyorBombTests.DropTicksOldBombThenExplodesOrAbandons(1,1,0)" methodname="DropTicksOldBombThenExplodesOrAbandons" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="756704743" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000124" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1174" name="DropTicksOldBombThenExplodesOrAbandons(2,0,1)" fullname="Cascade.Tests.ConveyorBombTests.DropTicksOldBombThenExplodesOrAbandons(2,0,1)" methodname="DropTicksOldBombThenExplodesOrAbandons" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="662282147" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000028" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="ParameterizedMethod" id="1180" name="EntryAppliesExactlyOneTransform" fullname="Cascade.Tests.ConveyorBombTests.EntryAppliesExactlyOneTransform" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000408" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1177" name="EntryAppliesExactlyOneTransform(ShiftLeftOne,&quot;ABCD&quot;)" fullname="Cascade.Tests.ConveyorBombTests.EntryAppliesExactlyOneTransform(ShiftLeftOne,&quot;ABCD&quot;)" methodname="EntryAppliesExactlyOneTransform" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="1605193276" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000122" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1178" name="EntryAppliesExactlyOneTransform(ShiftRightOne,&quot;CDAB&quot;)" fullname="Cascade.Tests.ConveyorBombTests.EntryAppliesExactlyOneTransform(ShiftRightOne,&quot;CDAB&quot;)" methodname="EntryAppliesExactlyOneTransform" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="1274333184" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000046" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1179" name="EntryAppliesExactlyOneTransform(MirrorNext,&quot;CBAD&quot;)" fullname="Cascade.Tests.ConveyorBombTests.EntryAppliesExactlyOneTransform(MirrorNext,&quot;CBAD&quot;)" methodname="EntryAppliesExactlyOneTransform" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="1585875094" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000046" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1176" name="EntryTransformRunsBeforeContactWithoutTick" fullname="Cascade.Tests.ConveyorBombTests.EntryTransformRunsBeforeContactWithoutTick" methodname="EntryTransformRunsBeforeContactWithoutTick" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="502947965" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000129" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1181" name="NextFloorBombDoesNotTickOnLanding" fullname="Cascade.Tests.ConveyorBombTests.NextFloorBombDoesNotTickOnLanding" methodname="NextFloorBombDoesNotTickOnLanding" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="967439218" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000585" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1182" name="NoOpAndPreviewCannotAdvanceBomb" fullname="Cascade.Tests.ConveyorBombTests.NoOpAndPreviewCannotAdvanceBomb" methodname="NoOpAndPreviewCannotAdvanceBomb" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="1771249005" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001106" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1171" name="UsefulBlastDeliversTargetAndPreservesSymbols" fullname="Cascade.Tests.ConveyorBombTests.UsefulBlastDeliversTargetAndPreservesSymbols" methodname="UsefulBlastDeliversTargetAndPreservesSymbols" classname="Cascade.Tests.ConveyorBombTests" runstate="Runnable" seed="2075655530" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000125" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1184" name="KeyRepairTests" fullname="Cascade.Tests.KeyRepairTests" classname="Cascade.Tests.KeyRepairTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.002266" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1193" name="CompositeContactAndPredictionUseIdenticalTransition" fullname="Cascade.Tests.KeyRepairTests.CompositeContactAndPredictionUseIdenticalTransition" methodname="CompositeContactAndPredictionUseIdenticalTransition" classname="Cascade.Tests.KeyRepairTests" runstate="Runnable" seed="1647200771" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000409" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1194" name="DeviceUseFlagsResetOnNewFloor" fullname="Cascade.Tests.KeyRepairTests.DeviceUseFlagsResetOnNewFloor" methodname="DeviceUseFlagsResetOnNewFloor" classname="Cascade.Tests.KeyRepairTests" runstate="Runnable" seed="941615065" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000142" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1192" name="DropRemainsForcedEvenWhenRepairHasAddedDurability" fullname="Cascade.Tests.KeyRepairTests.DropRemainsForcedEvenWhenRepairHasAddedDurability" methodname="DropRemainsForcedEvenWhenRepairHasAddedDurability" classname="Cascade.Tests.KeyRepairTests" runstate="Runnable" seed="1738569964" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000087" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1185" name="KeyCannotRetroactivelyAuthorizeClosedSwap" fullname="Cascade.Tests.KeyRepairTests.KeyCannotRetroactivelyAuthorizeClosedSwap" methodname="KeyCannotRetroactivelyAuthorizeClosedSwap" classname="Cascade.Tests.KeyRepairTests" runstate="Runnable" seed="719996275" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000091" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1186" name="KeyContactOpensOnlyFutureCommands" fullname="Cascade.Tests.KeyRepairTests.KeyContactOpensOnlyFutureCommands" methodname="KeyContactOpensOnlyFutureCommands" classname="Cascade.Tests.KeyRepairTests" runstate="Runnable" seed="1302136188" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000126" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1189" name="OneShotRepairCannotBeFarmedByReturningToContact" fullname="Cascade.Tests.KeyRepairTests.OneShotRepairCannotBeFarmedByReturningToContact" methodname="OneShotRepairCannotBeFarmedByReturningToContact" classname="Cascade.Tests.KeyRepairTests" runstate="Runnable" seed="1605728518" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000092" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1190" name="RepairAndBlastAreSummedBeforeOneCollapse" fullname="Cascade.Tests.KeyRepairTests.RepairAndBlastAreSummedBeforeOneCollapse" methodname="RepairAndBlastAreSummedBeforeOneCollapse" classname="Cascade.Tests.KeyRepairTests" runstate="Runnable" seed="82392898" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000172" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1188" name="RepairCanSaveFloorAndIsOneShot" fullname="Cascade.Tests.KeyRepairTests.RepairCanSaveFloorAndIsOneShot" methodname="RepairCanSaveFloorAndIsOneShot" classname="Cascade.Tests.KeyRepairTests" runstate="Runnable" seed="1579944163" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000146" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1191" name="ShiftPrecedesBothEntrySensors" fullname="Cascade.Tests.KeyRepairTests.ShiftPrecedesBothEntrySensors" methodname="ShiftPrecedesBothEntrySensors" classname="Cascade.Tests.KeyRepairTests" runstate="Runnable" seed="2011914287" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000102" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1187" name="SignedRepairDoesNotClampNegativeIntermediateHp" fullname="Cascade.Tests.KeyRepairTests.SignedRepairDoesNotClampNegativeIntermediateHp" methodname="SignedRepairDoesNotClampNegativeIntermediateHp" classname="Cascade.Tests.KeyRepairTests" runstate="Runnable" seed="415647143" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000137" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1195" name="LevelDefinitionTests" fullname="Cascade.Tests.LevelDefinitionTests" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" testcasecount="40" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.006715" total="40" passed="40" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1223" name="BombBoundaries" fullname="Cascade.Tests.LevelDefinitionTests.BombBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000760" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1218" name="BombBoundaries(0,1,False)" fullname="Cascade.Tests.LevelDefinitionTests.BombBoundaries(0,1,False)" methodname="BombBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="2145468322" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000313" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1219" name="BombBoundaries(1,1,True)" fullname="Cascade.Tests.LevelDefinitionTests.BombBoundaries(1,1,True)" methodname="BombBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1669433156" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000024" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1220" name="BombBoundaries(6,4,True)" fullname="Cascade.Tests.LevelDefinitionTests.BombBoundaries(6,4,True)" methodname="BombBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1706591829" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000023" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1221" name="BombBoundaries(7,4,False)" fullname="Cascade.Tests.LevelDefinitionTests.BombBoundaries(7,4,False)" methodname="BombBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="2107976969" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000023" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1222" name="BombBoundaries(2,5,False)" fullname="Cascade.Tests.LevelDefinitionTests.BombBoundaries(2,5,False)" methodname="BombBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1432208038" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000022" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1196" name="CopiesInputCollectionsAndExposesReadOnlyViews" fullname="Cascade.Tests.LevelDefinitionTests.CopiesInputCollectionsAndExposesReadOnlyViews" methodname="CopiesInputCollectionsAndExposesReadOnlyViews" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1789546409" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000499" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1241" name="DefaultSymbolAndUnknownTransformAreRejected" fullname="Cascade.Tests.LevelDefinitionTests.DefaultSymbolAndUnknownTransformAreRejected" methodname="DefaultSymbolAndUnknownTransformAreRejected" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1866083289" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000183" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1213" name="DurabilityBoundaries" fullname="Cascade.Tests.LevelDefinitionTests.DurabilityBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000436" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1209" name="DurabilityBoundaries(0,False)" fullname="Cascade.Tests.LevelDefinitionTests.DurabilityBoundaries(0,False)" methodname="DurabilityBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="132109268" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000088" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1210" name="DurabilityBoundaries(1,True)" fullname="Cascade.Tests.LevelDefinitionTests.DurabilityBoundaries(1,True)" methodname="DurabilityBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="223888588" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000021" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1211" name="DurabilityBoundaries(12,True)" fullname="Cascade.Tests.LevelDefinitionTests.DurabilityBoundaries(12,True)" methodname="DurabilityBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="2095084536" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000021" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1212" name="DurabilityBoundaries(13,False)" fullname="Cascade.Tests.LevelDefinitionTests.DurabilityBoundaries(13,False)" methodname="DurabilityBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1210104937" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000022" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="ParameterizedMethod" id="1208" name="FloorBoundaries" fullname="Cascade.Tests.LevelDefinitionTests.FloorBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000727" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1204" name="FloorBoundaries(0,False)" fullname="Cascade.Tests.LevelDefinitionTests.FloorBoundaries(0,False)" methodname="FloorBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1252345632" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000215" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1205" name="FloorBoundaries(1,True)" fullname="Cascade.Tests.LevelDefinitionTests.FloorBoundaries(1,True)" methodname="FloorBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="130282942" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000176" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1206" name="FloorBoundaries(4,True)" fullname="Cascade.Tests.LevelDefinitionTests.FloorBoundaries(4,True)" methodname="FloorBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1360641210" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000027" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1207" name="FloorBoundaries(5,False)" fullname="Cascade.Tests.LevelDefinitionTests.FloorBoundaries(5,False)" methodname="FloorBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="3552505" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000028" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1215" name="LinkedPairsMustBeDisjointAndInRange" fullname="Cascade.Tests.LevelDefinitionTests.LinkedPairsMustBeDisjointAndInRange" methodname="LinkedPairsMustBeDisjointAndInRange" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="425429095" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000095" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1236" name="NormalizesCombiningTextAndDoesNotSplitSurrogatePairs" fullname="Cascade.Tests.LevelDefinitionTests.NormalizesCombiningTextAndDoesNotSplitSurrogatePairs" methodname="NormalizesCombiningTextAndDoesNotSplitSurrogatePairs" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="400372432" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000193" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1238" name="PositionalWordSignaturesDiffer" fullname="Cascade.Tests.LevelDefinitionTests.PositionalWordSignaturesDiffer" methodname="PositionalWordSignaturesDiffer" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1917644591" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000123" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1198" name="RejectsChangedMultiset" fullname="Cascade.Tests.LevelDefinitionTests.RejectsChangedMultiset" methodname="RejectsChangedMultiset" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1218996698" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000030" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1216" name="RejectsInvalidBridgeAndKeyConfiguration" fullname="Cascade.Tests.LevelDefinitionTests.RejectsInvalidBridgeAndKeyConfiguration" methodname="RejectsInvalidBridgeAndKeyConfiguration" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="955085137" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000104" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1235" name="RejectsInvalidIds" fullname="Cascade.Tests.LevelDefinitionTests.RejectsInvalidIds" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000403" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1231" name="RejectsInvalidIds(&quot;g:ua:І&quot;)" fullname="Cascade.Tests.LevelDefinitionTests.RejectsInvalidIds(&quot;g:ua:І&quot;)" methodname="RejectsInvalidIds" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="131017655" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000075" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1232" name="RejectsInvalidIds(&quot;glyph:en:AB&quot;)" fullname="Cascade.Tests.LevelDefinitionTests.RejectsInvalidIds(&quot;glyph:en:AB&quot;)" methodname="RejectsInvalidIds" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1450441028" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000020" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1233" name="RejectsInvalidIds(&quot;s:&quot;)" fullname="Cascade.Tests.LevelDefinitionTests.RejectsInvalidIds(&quot;s:&quot;)" methodname="RejectsInvalidIds" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="2132924184" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000016" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1234" name="RejectsInvalidIds(&quot;other:A&quot;)" fullname="Cascade.Tests.LevelDefinitionTests.RejectsInvalidIds(&quot;other:A&quot;)" methodname="RejectsInvalidIds" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="628199295" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000015" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1214" name="RejectsWrongEdgeCountAndDuplicateFragileEdges" fullname="Cascade.Tests.LevelDefinitionTests.RejectsWrongEdgeCountAndDuplicateFragileEdges" methodname="RejectsWrongEdgeCountAndDuplicateFragileEdges" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="319114717" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000093" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1228" name="RepairBoundaries" fullname="Cascade.Tests.LevelDefinitionTests.RepairBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000405" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1224" name="RepairBoundaries(0,False)" fullname="Cascade.Tests.LevelDefinitionTests.RepairBoundaries(0,False)" methodname="RepairBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="763842023" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000073" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1225" name="RepairBoundaries(1,True)" fullname="Cascade.Tests.LevelDefinitionTests.RepairBoundaries(1,True)" methodname="RepairBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1429042063" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000021" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1226" name="RepairBoundaries(3,True)" fullname="Cascade.Tests.LevelDefinitionTests.RepairBoundaries(3,True)" methodname="RepairBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1248864979" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000018" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1227" name="RepairBoundaries(4,False)" fullname="Cascade.Tests.LevelDefinitionTests.RepairBoundaries(4,False)" methodname="RepairBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="2021723926" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000018" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1197" name="RepeatedSymbolsUseEqualityRatherThanPosition" fullname="Cascade.Tests.LevelDefinitionTests.RepeatedSymbolsUseEqualityRatherThanPosition" methodname="RepeatedSymbolsUseEqualityRatherThanPosition" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1604561242" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000044" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1203" name="RowBoundaries" fullname="Cascade.Tests.LevelDefinitionTests.RowBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000493" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1199" name="RowBoundaries(2,False)" fullname="Cascade.Tests.LevelDefinitionTests.RowBoundaries(2,False)" methodname="RowBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1196233976" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000156" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1200" name="RowBoundaries(3,True)" fullname="Cascade.Tests.LevelDefinitionTests.RowBoundaries(3,True)" methodname="RowBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1774588279" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000017" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1201" name="RowBoundaries(8,True)" fullname="Cascade.Tests.LevelDefinitionTests.RowBoundaries(8,True)" methodname="RowBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="878655349" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000022" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1202" name="RowBoundaries(9,False)" fullname="Cascade.Tests.LevelDefinitionTests.RowBoundaries(9,False)" methodname="RowBoundaries" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="931812780" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000022" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1240" name="SegmentsMustCoverTargetWithoutOverlapAndMatchNamespace" fullname="Cascade.Tests.LevelDefinitionTests.SegmentsMustCoverTargetWithoutOverlapAndMatchNamespace" methodname="SegmentsMustCoverTargetWithoutOverlapAndMatchNamespace" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="666007418" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000084" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1217" name="SensorMustFitRowAndReferenceItsTarget" fullname="Cascade.Tests.LevelDefinitionTests.SensorMustFitRowAndReferenceItsTarget" methodname="SensorMustFitRowAndReferenceItsTarget" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1780561438" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000079" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1239" name="SevenSymbolMixedTargetIsAccepted" fullname="Cascade.Tests.LevelDefinitionTests.SevenSymbolMixedTargetIsAccepted" methodname="SevenSymbolMixedTargetIsAccepted" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1948088253" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000223" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1229" name="ShapeAndGlyphRemainDifferent" fullname="Cascade.Tests.LevelDefinitionTests.ShapeAndGlyphRemainDifferent" methodname="ShapeAndGlyphRemainDifferent" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1159356398" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000049" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1230" name="ShortAndLongNamespacesAgreeAndPreserveOriginalId" fullname="Cascade.Tests.LevelDefinitionTests.ShortAndLongNamespacesAgreeAndPreserveOriginalId" methodname="ShortAndLongNamespacesAgreeAndPreserveOriginalId" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="1975992640" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000080" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1237" name="UkrainianAndRussianDistinctLettersRemainDistinct" fullname="Cascade.Tests.LevelDefinitionTests.UkrainianAndRussianDistinctLettersRemainDistinct" methodname="UkrainianAndRussianDistinctLettersRemainDistinct" classname="Cascade.Tests.LevelDefinitionTests" runstate="Runnable" seed="525032079" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000113" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1242" name="LinkedFragileTests" fullname="Cascade.Tests.LinkedFragileTests" classname="Cascade.Tests.LinkedFragileTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.002034" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1249" name="BothLinkedCommandsProduceIdenticalStateAndCost" fullname="Cascade.Tests.LinkedFragileTests.BothLinkedCommandsProduceIdenticalStateAndCost" methodname="BothLinkedCommandsProduceIdenticalStateAndCost" classname="Cascade.Tests.LinkedFragileTests" runstate="Runnable" seed="1430311330" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000270" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1247" name="C27MustUnlockBeforeLinkedExchange" fullname="Cascade.Tests.LinkedFragileTests.C27MustUnlockBeforeLinkedExchange" methodname="C27MustUnlockBeforeLinkedExchange" classname="Cascade.Tests.LinkedFragileTests" runstate="Runnable" seed="1613153572" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000142" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1246" name="CanonicalLinkedFixturesWin" fullname="Cascade.Tests.LinkedFragileTests.CanonicalLinkedFixturesWin" classname="Cascade.Tests.LinkedFragileTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000524" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1243" name="CanonicalLinkedFixturesWin(&quot;C25&quot;,&quot;BADC&quot;,&quot;ABCD&quot;,1,False)" fullname="Cascade.Tests.LinkedFragileTests.CanonicalLinkedFixturesWin(&quot;C25&quot;,&quot;BADC&quot;,&quot;ABCD&quot;,1,False)" methodname="CanonicalLinkedFixturesWin" classname="Cascade.Tests.LinkedFragileTests" runstate="Runnable" seed="631231114" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000230" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1244" name="CanonicalLinkedFixturesWin(&quot;C26&quot;,&quot;AABA&quot;,&quot;AAAB&quot;,1,False)" fullname="Cascade.Tests.LinkedFragileTests.CanonicalLinkedFixturesWin(&quot;C26&quot;,&quot;AABA&quot;,&quot;AAAB&quot;,1,False)" methodname="CanonicalLinkedFixturesWin" classname="Cascade.Tests.LinkedFragileTests" runstate="Runnable" seed="1206914036" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000055" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1245" name="CanonicalLinkedFixturesWin(&quot;C28&quot;,&quot;BADC&quot;,&quot;ABCD&quot;,3,True)" fullname="Cascade.Tests.LinkedFragileTests.CanonicalLinkedFixturesWin(&quot;C28&quot;,&quot;BADC&quot;,&quot;ABCD&quot;,3,True)" methodname="CanonicalLinkedFixturesWin" classname="Cascade.Tests.LinkedFragileTests" runstate="Runnable" seed="1998457894" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000055" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1250" name="EqualSubpairStillCostsItsFragilityAndOneBombTick" fullname="Cascade.Tests.LinkedFragileTests.EqualSubpairStillCostsItsFragilityAndOneBombTick" methodname="EqualSubpairStillCostsItsFragilityAndOneBombTick" classname="Cascade.Tests.LinkedFragileTests" runstate="Runnable" seed="1524518775" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000148" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1251" name="LinkedCommandTicksArmedBombOnce" fullname="Cascade.Tests.LinkedFragileTests.LinkedCommandTicksArmedBombOnce" methodname="LinkedCommandTicksArmedBombOnce" classname="Cascade.Tests.LinkedFragileTests" runstate="Runnable" seed="1980264992" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000098" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1248" name="OneLockedSubpairRejectsWholeAtomicCommand" fullname="Cascade.Tests.LinkedFragileTests.OneLockedSubpairRejectsWholeAtomicCommand" methodname="OneLockedSubpairRejectsWholeAtomicCommand" classname="Cascade.Tests.LinkedFragileTests" runstate="Runnable" seed="453345760" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000123" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1253" name="UnlinkedMiddleEdgeIsAnOrdinarySwap" fullname="Cascade.Tests.LinkedFragileTests.UnlinkedMiddleEdgeIsAnOrdinarySwap" methodname="UnlinkedMiddleEdgeIsAnOrdinarySwap" classname="Cascade.Tests.LinkedFragileTests" runstate="Runnable" seed="654936966" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000087" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1252" name="WholeLinkedNoOpIsFree" fullname="Cascade.Tests.LinkedFragileTests.WholeLinkedNoOpIsFree" methodname="WholeLinkedNoOpIsFree" classname="Cascade.Tests.LinkedFragileTests" runstate="Runnable" seed="26510902" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000073" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1254" name="ResolverBaseTests" fullname="Cascade.Tests.ResolverBaseTests" classname="Cascade.Tests.ResolverBaseTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.028121" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1259" name="EqualPairIsFree" fullname="Cascade.Tests.ResolverBaseTests.EqualPairIsFree" methodname="EqualPairIsFree" classname="Cascade.Tests.ResolverBaseTests" runstate="Runnable" seed="554694715" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000151" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1261" name="FourFloorsKeepOnePersistentRowAndResetLocalDurability" fullname="Cascade.Tests.ResolverBaseTests.FourFloorsKeepOnePersistentRowAndResetLocalDurability" methodname="FourFloorsKeepOnePersistentRowAndResetLocalDurability" classname="Cascade.Tests.ResolverBaseTests" runstate="Runnable" seed="1179009649" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000148" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1258" name="InvalidAndClosedCommandsAreFreeAndReturnSameSnapshot" fullname="Cascade.Tests.ResolverBaseTests.InvalidAndClosedCommandsAreFreeAndReturnSameSnapshot" methodname="InvalidAndClosedCommandsAreFreeAndReturnSameSnapshot" classname="Cascade.Tests.ResolverBaseTests" runstate="Runnable" seed="1101602624" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000120" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1255" name="LastSwapPreservesWholeRowAndWins" fullname="Cascade.Tests.ResolverBaseTests.LastSwapPreservesWholeRowAndWins" methodname="LastSwapPreservesWholeRowAndWins" classname="Cascade.Tests.ResolverBaseTests" runstate="Runnable" seed="1432492505" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000222" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1263" name="RandomCommandsConserveMultisetAndStableDurability" fullname="Cascade.Tests.ResolverBaseTests.RandomCommandsConserveMultisetAndStableDurability" methodname="RandomCommandsConserveMultisetAndStableDurability" classname="Cascade.Tests.ResolverBaseTests" runstate="Runnable" seed="1033513212" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.026042" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1257" name="ReceiverComparesEverySlot" fullname="Cascade.Tests.ResolverBaseTests.ReceiverComparesEverySlot" methodname="ReceiverComparesEverySlot" classname="Cascade.Tests.ResolverBaseTests" runstate="Runnable" seed="791029202" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000105" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1262" name="SameInputGivesEqualStateAndStableEvents" fullname="Cascade.Tests.ResolverBaseTests.SameInputGivesEqualStateAndStableEvents" methodname="SameInputGivesEqualStateAndStableEvents" classname="Cascade.Tests.ResolverBaseTests" runstate="Runnable" seed="1609071114" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000202" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1264" name="StateFromDifferentMultisetIsRejected" fullname="Cascade.Tests.ResolverBaseTests.StateFromDifferentMultisetIsRejected" methodname="StateFromDifferentMultisetIsRejected" classname="Cascade.Tests.ResolverBaseTests" runstate="Runnable" seed="1286569144" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000066" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1256" name="TargetOnPlatformDoesNotWinUntilReceiver" fullname="Cascade.Tests.ResolverBaseTests.TargetOnPlatformDoesNotWinUntilReceiver" methodname="TargetOnPlatformDoesNotWinUntilReceiver" classname="Cascade.Tests.ResolverBaseTests" runstate="Runnable" seed="2127648278" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000195" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1260" name="TerminalSnapshotsRejectFurtherCommands" fullname="Cascade.Tests.ResolverBaseTests.TerminalSnapshotsRejectFurtherCommands" methodname="TerminalSnapshotsRejectFurtherCommands" classname="Cascade.Tests.ResolverBaseTests" runstate="Runnable" seed="1366500784" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000097" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1265" name="SolverTests" fullname="Cascade.Tests.SolverTests" classname="Cascade.Tests.SolverTests" runstate="Runnable" testcasecount="48" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:12Z" duration="0.445896" total="48" passed="48" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1307" name="BudgetAndCancellationReturnUnknownWithoutDeadStateClaims" fullname="Cascade.Tests.SolverTests.BudgetAndCancellationReturnUnknownWithoutDeadStateClaims" methodname="BudgetAndCancellationReturnUnknownWithoutDeadStateClaims" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1804686826" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000245" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1309" name="C35SeparateGoalMinimaAndReverseDistancesMatch" fullname="Cascade.Tests.SolverTests.C35SeparateGoalMinimaAndReverseDistancesMatch" methodname="C35SeparateGoalMinimaAndReverseDistancesMatch" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1979555410" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001965" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1308" name="ExhaustedGraphCanProveUnsolvable" fullname="Cascade.Tests.SolverTests.ExhaustedGraphCanProveUnsolvable" methodname="ExhaustedGraphCanProveUnsolvable" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1857297834" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.000122" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1314" name="ExportVerifiedCanonicalMetrics" fullname="Cascade.Tests.SolverTests.ExportVerifiedCanonicalMetrics" methodname="ExportVerifiedCanonicalMetrics" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="2037919251" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.193525" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1306" name="FortyCanonicalGraphsMatchPythonMetricsAndPath" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" testcasecount="40" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:12Z" duration="0.247048" total="40" passed="40" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1266" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C01&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C01&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="761709836" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.002280" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1267" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C02&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C02&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="991473755" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001741" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1268" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C03&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C03&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1488469565" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001816" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1269" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C04&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C04&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1005735538" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001747" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1270" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C05&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C05&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1987304539" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001968" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1271" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C06&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C06&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="950965917" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001727" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1272" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C07&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C07&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="2105381610" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001985" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1273" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C08&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C08&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="678314960" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001750" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1274" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C09&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C09&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1988331106" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.002171" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1275" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C10&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C10&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1509997180" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001874" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1276" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C11&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C11&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="339067543" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.002841" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1277" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C12&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C12&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="2043678695" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.004580" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1278" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C13&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C13&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="77736641" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001728" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1279" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C14&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C14&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="878591460" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001709" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1280" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C15&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C15&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="2005415005" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.002111" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1281" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C16&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C16&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1360338495" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.002897" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1282" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C17&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C17&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1478864424" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001716" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1283" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C18&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C18&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1245920403" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001820" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1284" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C19&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C19&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1221197352" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.002347" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1285" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C20&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C20&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="445821653" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001709" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1286" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C21&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C21&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1248804339" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001732" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1287" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C22&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C22&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1884357672" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001687" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1288" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C23&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C23&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="490439631" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001933" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1289" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C24&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C24&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1093697372" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.002081" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1290" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C25&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C25&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1411688432" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001645" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1291" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C26&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C26&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1188298152" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001656" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1292" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C27&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C27&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="75245693" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001860" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1293" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C28&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C28&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1239495237" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001750" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1294" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C29&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C29&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="440142074" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:11Z" duration="0.001977" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1295" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C30&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C30&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1172919186" result="Passed" start-time="2026-10-04 22:20:11Z" end-time="2026-10-04 22:20:12Z" duration="0.157489" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1296" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C31&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C31&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1256496438" result="Passed" start-time="2026-10-04 22:20:12Z" end-time="2026-10-04 22:20:12Z" duration="0.001894" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1297" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C32&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C32&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1362641879" result="Passed" start-time="2026-10-04 22:20:12Z" end-time="2026-10-04 22:20:12Z" duration="0.002530" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1298" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C33&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C33&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="783443757" result="Passed" start-time="2026-10-04 22:20:12Z" end-time="2026-10-04 22:20:12Z" duration="0.001585" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1299" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C34&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C34&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="2058132976" result="Passed" start-time="2026-10-04 22:20:12Z" end-time="2026-10-04 22:20:12Z" duration="0.001687" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1300" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C35&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C35&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1486253492" result="Passed" start-time="2026-10-04 22:20:12Z" end-time="2026-10-04 22:20:12Z" duration="0.002217" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1301" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C36&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C36&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="111423874" result="Passed" start-time="2026-10-04 22:20:12Z" end-time="2026-10-04 22:20:12Z" duration="0.001979" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1302" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C37&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C37&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="246277684" result="Passed" start-time="2026-10-04 22:20:12Z" end-time="2026-10-04 22:20:12Z" duration="0.009710" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1303" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C38&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C38&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="781295814" result="Passed" start-time="2026-10-04 22:20:12Z" end-time="2026-10-04 22:20:12Z" duration="0.001605" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1304" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C39&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C39&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1001862594" result="Passed" start-time="2026-10-04 22:20:12Z" end-time="2026-10-04 22:20:12Z" duration="0.001562" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1305" name="FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C40&quot;)" fullname="Cascade.Tests.SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(&quot;C40&quot;)" methodname="FortyCanonicalGraphsMatchPythonMetricsAndPath" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="805688023" result="Passed" start-time="2026-10-04 22:20:12Z" end-time="2026-10-04 22:20:12Z" duration="0.003541" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1313" name="LegacyGlyphShorthandPreservesPersistedId" fullname="Cascade.Tests.SolverTests.LegacyGlyphShorthandPreservesPersistedId" methodname="LegacyGlyphShorthandPreservesPersistedId" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1767907445" result="Passed" start-time="2026-10-04 22:20:12Z" end-time="2026-10-04 22:20:12Z" duration="0.000173" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1310" name="LinkedEquivalentCommandsCountAsOneChoice" fullname="Cascade.Tests.SolverTests.LinkedEquivalentCommandsCountAsOneChoice" methodname="LinkedEquivalentCommandsCountAsOneChoice" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1266381753" result="Passed" start-time="2026-10-04 22:20:12Z" end-time="2026-10-04 22:20:12Z" duration="0.001506" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1312" name="SearchCanStartFromCurrentSnapshotAndNeedsNoVisualIdentity" fullname="Cascade.Tests.SolverTests.SearchCanStartFromCurrentSnapshotAndNeedsNoVisualIdentity" methodname="SearchCanStartFromCurrentSnapshotAndNeedsNoVisualIdentity" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="1818263935" result="Passed" start-time="2026-10-04 22:20:12Z" end-time="2026-10-04 22:20:12Z" duration="0.000270" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1311" name="UnreachableContractCannotBePublished" fullname="Cascade.Tests.SolverTests.UnreachableContractCannotBePublished" methodname="UnreachableContractCannotBePublished" classname="Cascade.Tests.SolverTests" runstate="Runnable" seed="506823153" result="Passed" start-time="2026-10-04 22:20:12Z" end-time="2026-10-04 22:20:12Z" duration="0.000168" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

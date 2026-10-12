@@ -1,0 +1,1 @@
+PASS: Settings exposes Restore purchases, Privacy Policy and Terms of Use. Both full documents scroll to the end, close back to Settings and leave gameplay state unchanged. Isolated QA profile only. Native store transactions are not configured or tested.

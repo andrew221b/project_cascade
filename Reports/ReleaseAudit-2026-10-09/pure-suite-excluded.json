@@ -1,0 +1,12 @@
+[
+  "ContentTests.cs",
+  "WorldLightingTests.cs",
+  "WindAudioEnvelopeTests.cs",
+  "DialoguePagesTests.cs",
+  "CampaignExtensionTests.cs",
+  "WildlifeMotionTests.cs",
+  "LocalizationTests.cs",
+  "LiveGustTests.cs",
+  "WildlifePerchMotionTests.cs",
+  "AuthoringTests.cs"
+]

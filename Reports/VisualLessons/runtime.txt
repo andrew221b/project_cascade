@@ -1,0 +1,37 @@
+PASS first swap pauses live row/weather
+PASS close only arms live practice
+PASS actual drag completes persistent lesson once
+PASS completed swap does not repeat
+PASS future mirror not dumped upfront
+PASS entry film precedes actual drop
+PASS actual mirror landing completes lesson
+PASS first tool pauses before consumption
+PASS close does not auto-use bought tool
+PASS explicit real use consumes once and completes tutorial
+PASS isolated film Bomb
+PASS isolated film Key
+PASS isolated film Repair
+PASS isolated film Ribbon
+PASS isolated film Stamp
+PASS isolated film BombHourglass
+PASS isolated film Bridge
+PASS isolated film LinkedPairs
+PASS isolated film Fragile
+PASS isolated film ClosedPath
+PASS isolated film Rollers
+PASS isolated film Mirror
+PASS isolated film LandingWind
+PASS isolated film Gust
+PASS isolated film Wayfinder
+PASS isolated film UndoSpool
+PASS isolated film ReturnHourglass
+PASS isolated film SignalLantern
+PASS isolated film LandingLens
+PASS isolated film LiveGust
+PASS isolated film Swap
+PASS isolated film Descent
+PASS isolated film Undo
+PASS isolated film Hint
+PASS isolated film FarSwap
+PASS isolated film Toolbag
+Native Editor fixture only. No phone build/device comprehension/full-suite/FPS claim.

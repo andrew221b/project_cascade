@@ -1,0 +1,62 @@
+[
+  {
+    "test": "LessonRouteTests.ContactRouteCanPrepareBeforeTheRealLessonOutcome()",
+    "status": "Passed",
+    "ms": 22.026300000000003
+  },
+  {
+    "test": "LessonRouteTests.UnreachableOptionalEffectNeverFallsBackToOrdinaryDelivery()",
+    "status": "Passed",
+    "ms": 0.28700000000000003
+  },
+  {
+    "test": "LessonRouteTests.CannotLeaveTeachingFloorToFindAnEffectOnAnotherFloor()",
+    "status": "Passed",
+    "ms": 0.1705
+  },
+  {
+    "test": "LessonRouteTests.FutureContactCanCompleteOnTheImmediateNextArrival()",
+    "status": "Passed",
+    "ms": 0.5601
+  },
+  {
+    "test": "LessonRouteTests.FutureContactCannotSkipItsBoardToReachAnOrdinaryDelivery()",
+    "status": "Passed",
+    "ms": 0.22
+  },
+  {
+    "test": "LessonRouteTests.EntryLessonUsesTheActualNextLanding(MirrorNext,Mirror,CBA)",
+    "status": "Passed",
+    "ms": 0.4177
+  },
+  {
+    "test": "LessonRouteTests.EntryLessonUsesTheActualNextLanding(ShiftRightOne,Rollers,CAB)",
+    "status": "Passed",
+    "ms": 1.1123
+  },
+  {
+    "test": "LessonRouteTests.EntryLessonUsesTheActualNextLanding(ShiftLeftOne,LandingWind,BCA)",
+    "status": "Passed",
+    "ms": 0.1264
+  },
+  {
+    "test": "LessonRouteTests.FarSwapRequiresAnOwnedLegalReachAndSolvableContinuation()",
+    "status": "Passed",
+    "ms": 0.5159
+  },
+  {
+    "test": "LessonRouteTests.LegalLessonActionWithoutDeliveryContinuationIsUnavailable()",
+    "status": "Passed",
+    "ms": 0.1165
+  },
+  {
+    "test": "LessonRouteTests.DescentAndLiveGustFollowRealResolverTiming()",
+    "status": "Passed",
+    "ms": 0.6114
+  },
+  {
+    "test": "LessonRouteTests.SharedBudgetCancellationAndOwnerOnlyLessonsReturnNoCommand()",
+    "status": "Passed",
+    "ms": 0.8363
+  }
+]

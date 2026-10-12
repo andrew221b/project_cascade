@@ -1,0 +1,32 @@
+[
+  {
+    "test": "DescentTests.PublishedDescentCurvesAreProvenAndPreserveTheReceiverAndFinalDevices",
+    "status": "Skipped",
+    "reason": "Historical full-catalog version2 generation/report export; current version6 independently audited in full."
+  },
+  {
+    "test": "DescentTests.VersionOneRecipesKeepTheirExactDeviceFreeStagesAndOldHashFormula()",
+    "status": "Passed",
+    "ms": 75.2791
+  },
+  {
+    "test": "DescentTests.CheckpointSaveRestoresExactlyAndRejectsAChangedFutureRecipe()",
+    "status": "Passed",
+    "ms": 114.89410000000001
+  },
+  {
+    "test": "DescentTests.OnlyTheThirdDeliveryClearsAndRecordsUseWholeDescentPerformance()",
+    "status": "Passed",
+    "ms": 32.5283
+  },
+  {
+    "test": "DescentTests.AdvanceRequiresDeliveryAndRetryKeepsTheCheckpointAndConditions()",
+    "status": "Passed",
+    "ms": 29.099800000000002
+  },
+  {
+    "test": "DescentTests.EarlyLessonsUseStagesUnprovenPlansFallBackAndLegacySingleSavesRestore()",
+    "status": "Passed",
+    "ms": 1.5965
+  }
+]

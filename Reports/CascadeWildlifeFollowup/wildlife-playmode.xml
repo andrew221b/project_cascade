@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Passed" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-11 16:10:25Z" end-time="2026-10-11 16:10:25Z" duration="0.6236028">
+  <test-suite type="TestSuite" id="1176" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="156" result="Passed" start-time="2026-10-11 16:10:25Z" end-time="2026-10-11 16:10:25Z" duration="0.623603" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1170" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="156" result="Passed" start-time="2026-10-11 16:10:25Z" end-time="2026-10-11 16:10:25Z" duration="0.575471" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="2150" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1171" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="156" result="Passed" start-time="2026-10-11 16:10:25Z" end-time="2026-10-11 16:10:25Z" duration="0.572228" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1172" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="156" result="Passed" start-time="2026-10-11 16:10:25Z" end-time="2026-10-11 16:10:25Z" duration="0.571308" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1167" name="WorldVisitorLifecycleTests" fullname="Cascade.Tests.WorldVisitorLifecycleTests" classname="Cascade.Tests.WorldVisitorLifecycleTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-11 16:10:25Z" end-time="2026-10-11 16:10:25Z" duration="0.570236" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1169" name="StageAndSceneryVaryVisitsWithoutMovingTheirBodyPivot" fullname="Cascade.Tests.WorldVisitorLifecycleTests.StageAndSceneryVaryVisitsWithoutMovingTheirBodyPivot" methodname="StageAndSceneryVaryVisitsWithoutMovingTheirBodyPivot" classname="Cascade.Tests.WorldVisitorLifecycleTests" runstate="Runnable" seed="782884836" result="Passed" start-time="2026-10-11 16:10:25Z" end-time="2026-10-11 16:10:25Z" duration="0.045331" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1168" name="VisitorsUseEightPhasesStableClockAndQualityLimits" fullname="Cascade.Tests.WorldVisitorLifecycleTests.VisitorsUseEightPhasesStableClockAndQualityLimits" methodname="VisitorsUseEightPhasesStableClockAndQualityLimits" classname="Cascade.Tests.WorldVisitorLifecycleTests" runstate="Runnable" seed="1808137242" result="Passed" start-time="2026-10-11 16:10:25Z" end-time="2026-10-11 16:10:25Z" duration="0.519177" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -1,0 +1,76 @@
+{
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "info",
+      "files",
+      "--device",
+      "86ED6044-764E-5091-8CFE-C94C101E8DA8",
+      "--domain-type",
+      "appDataContainer",
+      "--domain-identifier",
+      "com.vickand.cascade",
+      "--subdirectory",
+      "Documents",
+      "--json-output",
+      "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/iPhoneInstall-Oct10-latest/save-files-before.json"
+    ],
+    "commandType" : "devicectl.device.info.files",
+    "environment" : {
+      "TERM" : "dumb"
+    },
+    "jsonVersion" : 3,
+    "outcome" : "success",
+    "version" : "518.33"
+  },
+  "result" : {
+    "deviceIdentifier" : "86ED6044-764E-5091-8CFE-C94C101E8DA8",
+    "domain" : "appDataContainer",
+    "domainIdentifier" : "com.vickand.cascade",
+    "files" : [
+      {
+        "metadata" : {
+          "extendedAttributes" : {
+            "com.apple.dataprotection.policy.exception-applied-by" : "com.apple.containermanagerd"
+          },
+          "lastModDate" : "2026-10-09T15:10:47.000Z",
+          "ownerGid" : 501,
+          "ownerUid" : 501,
+          "permissions" : 420,
+          "size" : 37045
+        },
+        "name" : "cascade-profile.json",
+        "relativePath" : "cascade-profile.json",
+        "resources" : {
+          "isDirectory" : false,
+          "isHidden" : false,
+          "isReadable" : true,
+          "isSymbolicLink" : false,
+          "isWritable" : true
+        }
+      },
+      {
+        "metadata" : {
+          "extendedAttributes" : {
+            "com.apple.dataprotection.policy.exception-applied-by" : "com.apple.containermanagerd"
+          },
+          "lastModDate" : "2026-10-09T15:10:47.000Z",
+          "ownerGid" : 501,
+          "ownerUid" : 501,
+          "permissions" : 420,
+          "size" : 37045
+        },
+        "name" : "cascade-profile.json.bak",
+        "relativePath" : "cascade-profile.json.bak",
+        "resources" : {
+          "isDirectory" : false,
+          "isHidden" : false,
+          "isReadable" : true,
+          "isSymbolicLink" : false,
+          "isWritable" : true
+        }
+      }
+    ]
+  }
+}

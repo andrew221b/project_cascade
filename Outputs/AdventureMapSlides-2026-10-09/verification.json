@@ -1,0 +1,13 @@
+{
+  "slides": 35,
+  "sections": 10,
+  "verified_png_crops": 56,
+  "all_crops_match_decoded_original_pixels": true,
+  "full_source_coverage": true,
+  "original_copy_sha256_matches": true,
+  "html_local_links_valid": true,
+  "zip_integrity_pass": true,
+  "archive_files": 61,
+  "archive_bytes": 796725,
+  "archive_sha256": "4a66420bd25f9c79146aa469b13792dcc149cbbdaabad0cd3ca2e605a3b9c43c"
+}

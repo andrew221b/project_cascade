@@ -1,0 +1,77 @@
+[
+  {
+    "test": "WardrobeParcelTests.CatalogKeepsPublishedPricesAndNewLooksUseOnlyCoins()",
+    "status": "Passed",
+    "ms": 11.5577
+  },
+  {
+    "test": "WardrobeParcelTests.VersionOneHasRareFixedLooksAndReplayCannotRerollReceipts()",
+    "status": "Passed",
+    "ms": 68.3194
+  },
+  {
+    "test": "WardrobeParcelTests.OldMintedCoinsCosmeticsAndClaimsKeepTheirOriginalRecipe()",
+    "status": "Passed",
+    "ms": 25.1506
+  },
+  {
+    "test": "WardrobeParcelTests.ToolChestClaimAndGrantAreAtomicRetryableAndExactlyOnce()",
+    "status": "Passed",
+    "ms": 1.9499000000000002
+  },
+  {
+    "test": "WardrobeParcelTests.FullToolStackAndOwnedCosmeticConvertOnceToTwentyCoins()",
+    "status": "Passed",
+    "ms": 0.69890000000000008
+  },
+  {
+    "test": "WardrobeParcelTests.ChestAndNewLookSurviveDurableSaveModeSwitchAndReload()",
+    "status": "Passed",
+    "ms": 50.571200000000005
+  },
+  {
+    "test": "WardrobeParcelTests.TwoDevicesClaimingOneChestMergeOneToolAndOneReceipt()",
+    "status": "Passed",
+    "ms": 19.6384
+  },
+  {
+    "test": "WardrobeParcelTests.RejectedToolDeltaLeavesItsChestClaimableAndKeepsRemoteStock()",
+    "status": "Passed",
+    "ms": 1.6486
+  },
+  {
+    "test": "WardrobeParcelTests.ToolGrantsNeedPublishedEarnedReceiptAndCannotFinanceUnknownNodes()",
+    "status": "Passed",
+    "ms": 4.274
+  },
+  {
+    "test": "WardrobeParcelTests.AlternateToolFallbackOnAnotherDeviceKeepsTheCanonicalClaim()",
+    "status": "Passed",
+    "ms": 1.7163000000000002
+  },
+  {
+    "test": "WardrobeParcelTests.ArchivedCosmeticPurchaseLeavesAnIncomingDuplicateChestClaimable()",
+    "status": "Passed",
+    "ms": 2.7654
+  },
+  {
+    "test": "WardrobeParcelTests.ExistingClaimedCosmeticCannotBeConvertedByAnotherDevice()",
+    "status": "Passed",
+    "ms": 3.8068
+  },
+  {
+    "test": "WardrobeParcelTests.UnownedDuplicateCompensationCannotFinanceANegativeWallet()",
+    "status": "Passed",
+    "ms": 3.2241
+  },
+  {
+    "test": "WardrobeParcelTests.ConflictingOfflineFragmentsKeepRemoteReceiptsAndFillOnlyMissingOrders()",
+    "status": "Passed",
+    "ms": 1.2956
+  },
+  {
+    "test": "WardrobeParcelTests.DisjointOfflineClearsMintOnlyMissingCanonicalChests()",
+    "status": "Passed",
+    "ms": 1.5427000000000002
+  }
+]

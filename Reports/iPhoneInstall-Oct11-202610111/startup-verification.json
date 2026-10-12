@@ -1,0 +1,9 @@
+{
+  "runningAfter12Seconds": true,
+  "processes": [
+    {
+      "executable": "file:///private/var/containers/Bundle/Application/61A98144-D6BB-4746-8251-82DAB02EAF06/CASCADE.app/CASCADE",
+      "processIdentifier": 81712
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+[
+  {
+    "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/Menu_HomeAmongCloudsBalanced.wav",
+    "durationSeconds": 68.57142857142857,
+    "sourceBytes": 12096044,
+    "pcmBytes": 12096000,
+    "loadType": [
+      "2"
+    ],
+    "preload": [
+      "0"
+    ],
+    "background": [
+      "1"
+    ],
+    "compression": [
+      "1"
+    ]
+  },
+  {
+    "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/WindGarden_PaperWings.wav",
+    "durationSeconds": 62.60868480725624,
+    "sourceBytes": 11044216,
+    "pcmBytes": 11044172,
+    "loadType": [
+      "2"
+    ],
+    "preload": [
+      "0"
+    ],
+    "background": [
+      "1"
+    ],
+    "compression": [
+      "1"
+    ]
+  },
+  {
+    "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/RainMill_RainOnCedar.wav",
+    "durationSeconds": 75.78945578231293,
+    "sourceBytes": 13369304,
+    "pcmBytes": 13369260,
+    "loadType": [
+      "2"
+    ],
+    "preload": [
+      "0"
+    ],
+    "background": [
+      "1"
+    ],
+    "compression": [
+      "1"
+    ]
+  },
+  {
+    "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/CopperOrchard_GoldenAfternoon.wav",
+    "durationSeconds": 55.38460317460317,
+    "sourceBytes": 9769888,
+    "pcmBytes": 9769844,
+    "loadType": [
+      "2"
+    ],
+    "preload": [
+      "0"
+    ],
+    "background": [
+      "1"
+    ],
+    "compression": [
+      "1"
+    ]
+  },
+  {
+    "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/CloudPost_LettersOnTheBreeze.wav",
+    "durationSeconds": 60.0,
+    "sourceBytes": 10584044,
+    "pcmBytes": 10584000,
+    "loadType": [
+      "2"
+    ],
+    "preload": [
+      "0"
+    ],
+    "background": [
+      "1"
+    ],
+    "compression": [
+      "1"
+    ]
+  },
+  {
+    "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/GlassLagoon_ReflectedMoon.wav",
+    "durationSeconds": 72.0,
+    "sourceBytes": 12700844,
+    "pcmBytes": 12700800,
+    "loadType": [
+      "2"
+    ],
+    "preload": [
+      "0"
+    ],
+    "background": [
+      "1"
+    ],
+    "compression": [
+      "1"
+    ]
+  },
+  {
+    "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/MossArchive_StoriesInTheLeaves.wav",
+    "durationSeconds": 80.0,
+    "sourceBytes": 14112044,
+    "pcmBytes": 14112000,
+    "loadType": [
+      "2"
+    ],
+    "preload": [
+      "0"
+    ],
+    "background": [
+      "1"
+    ],
+    "compression": [
+      "1"
+    ]
+  },
+  {
+    "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/SnowSpire_WarmLightInSnow.wav",
+    "durationSeconds": 73.84614512471656,
+    "sourceBytes": 13026504,
+    "pcmBytes": 13026460,
+    "loadType": [
+      "2"
+    ],
+    "preload": [
+      "0"
+    ],
+    "background": [
+      "1"
+    ],
+    "compression": [
+      "1"
+    ]
+  },
+  {
+    "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/GreatBeacon_TheWayHome.wav",
+    "durationSeconds": 57.6,
+    "sourceBytes": 10160684,
+    "pcmBytes": 10160640,
+    "loadType": [
+      "2"
+    ],
+    "preload": [
+      "0"
+    ],
+    "background": [
+      "1"
+    ],
+    "compression": [
+      "1"
+    ]
+  },
+  {
+    "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/StarObservatory_ConstellationLullaby.wav",
+    "durationSeconds": 48.0,
+    "sourceBytes": 8467244,
+    "pcmBytes": 8467200,
+    "loadType": [
+      "2"
+    ],
+    "preload": [
+      "0"
+    ],
+    "background": [
+      "1"
+    ],
+    "compression": [
+      "1"
+    ]
+  },
+  {
+    "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/LivingWind.wav",
+    "durationSeconds": 11.650022675736961,
+    "sourceBytes": 2055108,
+    "pcmBytes": 2055064,
+    "loadType": [
+      "0"
+    ],
+    "preload": [
+      "1"
+    ],
+    "background": [
+      "0"
+    ],
+    "compression": [
+      "0"
+    ]
+  }
+]

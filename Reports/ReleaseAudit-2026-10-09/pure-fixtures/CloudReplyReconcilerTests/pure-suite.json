@@ -1,0 +1,47 @@
+[
+  {
+    "test": "CloudReplyReconcilerTests.RecoveredOlderPendingRequestDoesNotReplayAlreadyAcceptedPurchase()",
+    "status": "Passed",
+    "ms": 103.4641
+  },
+  {
+    "test": "CloudReplyReconcilerTests.CurrentPurchaseMadeDuringRequestIsMergedOnce()",
+    "status": "Passed",
+    "ms": 1.6177000000000001
+  },
+  {
+    "test": "CloudReplyReconcilerTests.ServerEconomyConflictAdoptsRemoteDespiteUnsubmittedCurrentPurchase()",
+    "status": "Passed",
+    "ms": 0.5894
+  },
+  {
+    "test": "CloudReplyReconcilerTests.AtomicProfileMarkerAcknowledgesCrashReplayWithoutDuplicatingRemotePurchase()",
+    "status": "Passed",
+    "ms": 43.494
+  },
+  {
+    "test": "CloudReplyReconcilerTests.AtomicProfileMarkerRetainsAlreadyMergedInflightPurchaseOnReplay()",
+    "status": "Passed",
+    "ms": 10.212
+  },
+  {
+    "test": "CloudReplyReconcilerTests.RecoveredJournalBackupRetainsAppliedProfileConflictAndMarker()",
+    "status": "Passed",
+    "ms": 10.9853
+  },
+  {
+    "test": "CloudReplyReconcilerTests.ReplyAcknowledgmentRequiresExactDeviceRequestAndServerAcceptance()",
+    "status": "Passed",
+    "ms": 0.1506
+  },
+  {
+    "test": "CloudReplyReconcilerTests.ReconciliationKeepsLocalMarkersWithoutAdoptingAnotherDeviceMarker()",
+    "status": "Passed",
+    "ms": 0.8963000000000001
+  },
+  {
+    "test": "CloudReplyReconcilerTests.VerifiedGrantReplyPreservesPurchaseMadeDuringVerification()",
+    "status": "Passed",
+    "ms": 1.3116
+  }
+]

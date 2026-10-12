@@ -1,0 +1,7 @@
+15:43:21  Acquired tunnel connection to device.
+15:43:21  Enabling developer disk image services.
+15:43:22  Acquired usage assertion.
+Apps installed:
+Name      Bundle Identifier     Version   Bundle Version
+-------   -------------------   -------   --------------
+CASCADE   com.vickand.cascade   0.1.0     202610103     

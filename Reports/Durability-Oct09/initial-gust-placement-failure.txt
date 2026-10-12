@@ -1,0 +1,10 @@
+C13
+System.ArgumentException: Floors[1].Gust: Live gust requires a lower playable floor and a shift.
+Parameter name: level
+  at Cascade.Domain.LevelValidator.ThrowIfInvalid (Cascade.Domain.LevelDefinition level, System.Collections.Generic.IReadOnlyDictionary`2[TKey,TValue] words) [0x00021] in <4849829962c644f0965f55da7f23f155>:0 
+  at Cascade.Domain.PuzzleResolver..ctor (Cascade.Domain.LevelDefinition level) [0x00008] in <4849829962c644f0965f55da7f23f155>:0 
+  at Cascade.Application.CampaignTriads.Construct (Cascade.Domain.LevelDefinition source, Cascade.Application.MechanicLesson family, System.Int32 stage, System.Int32 seed, System.Int32 boost) [0x00fdc] in <4849829962c644f0965f55da7f23f155>:0 
+  at Cascade.Application.CampaignTriads.BuildVariant (Cascade.Domain.LevelDefinition source, System.Threading.CancellationToken cancellation, System.Int32 budget, System.Int32 variation, System.Int32 boost, Cascade.Application.DescentRun baseline) [0x0007f] in <4849829962c644f0965f55da7f23f155>:0 
+  at Cascade.Application.CampaignTriads.Build (Cascade.Domain.LevelDefinition source, System.Threading.CancellationToken cancellation, System.Int32 budget) [0x00000] in <4849829962c644f0965f55da7f23f155>:0 
+  at Cascade.Application.DescentRun.Build (Cascade.Domain.LevelDefinition source, Cascade.Application.DeliveryMood mood, System.Threading.CancellationToken cancellation, System.Int32 budget, System.Int32 version) [0x00012] in <4849829962c644f0965f55da7f23f155>:0 
+  at Audit.Main (System.String[] args) [0x00112] in <4849829962c644f0965f55da7f23f155>:0 

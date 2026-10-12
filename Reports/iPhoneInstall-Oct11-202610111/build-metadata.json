@@ -1,0 +1,18 @@
+{
+  "app": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/iPhoneInstall-Oct11-202610111/DerivedData/Build/Products/Release-iphoneos/CASCADE.app",
+  "bundleIdentifier": "com.vickand.cascade",
+  "version": "0.1.0",
+  "buildNumber": "202610111",
+  "exportDataFilesVerified": 34,
+  "signatureVerified": true,
+  "projectSettingsPreserved": true,
+  "sourceUnchanged": true,
+  "installedBuildNumber": "202610111",
+  "installSucceeded": true,
+  "profilePreservedByteForByte": true,
+  "launched": true,
+  "runningAfter12Seconds": true,
+  "unityExportErrors": 0,
+  "unityExportWarnings": 358,
+  "xcodeExitCode": 0
+}

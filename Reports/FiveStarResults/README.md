@@ -1,0 +1,13 @@
+# Five-star rating and menu readability — 7 October 2026
+
+45 focused EditMode cases PASS, 4.1417433 seconds: new rating thresholds/fast boundary/unknown legacy time, actual-move/Undo and timer restore, three-stage aggregation, legacy/new receipts; existing attempt/tool transactions, localization and selected completion/save regressions. `editmode.xml` is the runner evidence. Full catalog proof, full suite and formal PlayMode test suite were not rerun.
+
+Native Unity MCP inspection: thirteen retained camera-render captures (390×844,320×693 with Large Text and simulated safe insets,1440×900), opened for visual inspection. Covers animated result arrival/final rank, five stars, score2000, moves13, time0:33, generated gold/firefly rewards, shop, bag, settings, language carousel, main menu, dialogue, first-use wind, target view and local test ad. The three-stage C03 witness and timings10/11/12 seconds are an isolated fixture; C01/C02 clear receipts are fixture prerequisites. These images are Editor renders, not phone screenshots.
+
+Runtime assertions: five-star finite ceremony/final progress, unchanged clear count and puzzle hash while presenting results,48px small-screen continuation, no text overflow/missing translations in captured templates, foreground playable time advances; menu/focus loss/pause/first-use explanation/target view/test-ad time stays fixed, and a preparing input frame does not advance time. Reduced Motion settles stars and score. A final initialization-order correction assigns instruction/target button art after loading the shared atlas. `runtime.txt` records the final checks.
+
+The early driver used a translated button caption instead of its stable name and expected a manually set preparing flag to survive the readiness updater. The harness was corrected; final targeted runtime checks passed. No game state or purchases were issued by the capture/animation code. Review profile detached, Play Mode stopped; final source compilation passed, latest console read had0errors. Whitespace-only cleanup followed that compile.
+
+Generated atlases/backgrounds preserve originals and alpha. Exact prompts and paths are in `Docs/AssetPrompts/RewardEmblems.md` and `Docs/AssetPrompts/QuietWorkshop.md`. Domain/Solver/content hashes, wood budgets, prices, first-clear rewards and real SDK keys were unchanged.
+
+NOT RUN: phone export/install, physical device/insets/accessibility/sensors, OS store/ad integration, profiling/audio listening and human enjoyment testing. Existing PlayMode rating expectations were migrated to five; those tests were not run this turn. No claim of universal UI coverage or an absence of all bugs.

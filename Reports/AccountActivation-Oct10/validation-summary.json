@@ -1,0 +1,14 @@
+{
+  "client_and_config_checks": 43,
+  "cloud_code_boundary_checks": 80,
+  "transport": "SDK doubles; actual source compiled",
+  "native_unity_exit_code": 0,
+  "cloud_enabled": false,
+  "player_accounts_client_id_filled": false,
+  "module_published_locally": true,
+  "remote_deployment": false,
+  "live_oauth_verified": false,
+  "phone_build": false,
+  "nuget_vulnerability_audit": "unavailable: NU1900",
+  "release_account_deletion": "still required"
+}

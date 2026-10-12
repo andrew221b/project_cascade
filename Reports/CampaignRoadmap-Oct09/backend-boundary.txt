@@ -1,0 +1,1 @@
+Cloud Code boundary checks: 80 PASS; fake SDK transport, no live Cloud Save claim.

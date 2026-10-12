@@ -1,0 +1,21 @@
+{
+    "width": 390,
+    "height": 844,
+    "minimumDeviceTextPixels": 0.0,
+    "buttons": [
+        {
+            "name": "Next completed level",
+            "x": 29.25000762939453,
+            "y": 80.0,
+            "width": 331.4999694824219,
+            "height": 48.0
+        },
+        {
+            "name": "Completion map",
+            "x": 105.30000305175781,
+            "y": 16.00002670288086,
+            "width": 179.40000915527345,
+            "height": 48.000003814697269
+        }
+    ]
+}

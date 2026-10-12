@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Failed(Child)" total="2" passed="1" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-09 06:28:09Z" end-time="2026-10-09 06:28:29Z" duration="20.2131805">
+  <test-suite type="TestSuite" id="1167" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="147" result="Failed" site="Child" start-time="2026-10-09 06:28:09Z" end-time="2026-10-09 06:28:29Z" duration="20.213181" total="2" passed="1" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1161" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="147" result="Failed" site="Child" start-time="2026-10-09 06:28:09Z" end-time="2026-10-09 06:28:29Z" duration="19.675382" total="2" passed="1" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24227" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1162" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="147" result="Failed" site="Child" start-time="2026-10-09 06:28:10Z" end-time="2026-10-09 06:28:29Z" duration="19.144382" total="2" passed="1" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1163" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="147" result="Failed" site="Child" start-time="2026-10-09 06:28:11Z" end-time="2026-10-09 06:28:29Z" duration="18.244768" total="2" passed="1" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1046" name="PlayableTests" fullname="Cascade.Tests.PlayableTests" classname="Cascade.Tests.PlayableTests" runstate="Runnable" testcasecount="91" result="Failed" site="Child" start-time="2026-10-09 06:28:11Z" end-time="2026-10-09 06:28:29Z" duration="18.239753" total="2" passed="1" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1088" name="GustMovesDeckAndRopesMoreThanAmbientWithoutChangingThePuzzle" fullname="Cascade.Tests.PlayableTests.GustMovesDeckAndRopesMoreThanAmbientWithoutChangingThePuzzle" methodname="GustMovesDeckAndRopesMoreThanAmbientWithoutChangingThePuzzle" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1830315469" result="Passed" start-time="2026-10-09 06:28:11Z" end-time="2026-10-09 06:28:27Z" duration="15.705235" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1127" name="SharedContactPropsHaveSeparateBodiesAndPreserveGameplayState" fullname="Cascade.Tests.PlayableTests.SharedContactPropsHaveSeparateBodiesAndPreserveGameplayState" methodname="SharedContactPropsHaveSeparateBodiesAndPreserveGameplayState" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1551118194" result="Failed" start-time="2026-10-09 06:28:27Z" end-time="2026-10-09 06:28:29Z" duration="2.255982" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Physical bodies 2/3: (x:-0.64, y:-0.73, width:0.48, height:0.45) / (x:-0.63, y:-0.33, width:0.50, height:0.48)
+  Expected: False
+  But was:  True
+]]></message>
+                <stack-trace><![CDATA[at Cascade.Tests.PlayableTests+<SharedContactPropsHaveSeparateBodiesAndPreserveGameplayState>d__100.MoveNext () [0x00240] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Tests/PlayMode/PlayableTests.cs:1468
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in ./Library/PackageCache/com.unity.test-framework@0b7a23ab2e1d/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+Saving results to: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/LifePhysics-Oct09-verified/playmode.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

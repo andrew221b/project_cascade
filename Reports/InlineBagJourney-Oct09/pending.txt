@@ -1,0 +1,1 @@
+Final PlayMode + visual validation pending: locked Mac. Unity Editor reports stale scriptCompilationFailed with no errors returned by Console MCP; fresh presentation type not loaded. Standalone Unity compiler checks do not replace PlayMode/device validation.

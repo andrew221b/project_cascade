@@ -1,0 +1,42 @@
+[
+  {
+    "test": "EffectBudgetTests.EveryBenefitIsNeededInCampaignAndMissionStages(C02)",
+    "status": "Passed",
+    "ms": 25.0349
+  },
+  {
+    "test": "EffectBudgetTests.EveryBenefitIsNeededInCampaignAndMissionStages(C04)",
+    "status": "Passed",
+    "ms": 3.0311000000000003
+  },
+  {
+    "test": "EffectBudgetTests.EveryBenefitIsNeededInCampaignAndMissionStages(C06)",
+    "status": "Passed",
+    "ms": 3.1342000000000003
+  },
+  {
+    "test": "EffectBudgetTests.EveryBenefitIsNeededInCampaignAndMissionStages(C07)",
+    "status": "Passed",
+    "ms": 5.0068
+  },
+  {
+    "test": "EffectBudgetTests.EveryBenefitIsNeededInCampaignAndMissionStages(C65)",
+    "status": "Passed",
+    "ms": 81.821
+  },
+  {
+    "test": "EffectBudgetTests.EveryBenefitIsNeededInCampaignAndMissionStages(C120)",
+    "status": "Passed",
+    "ms": 177.8829
+  },
+  {
+    "test": "EffectBudgetTests.EveryBenefitIsNeededInCampaignAndMissionStages(C360)",
+    "status": "Passed",
+    "ms": 12.308300000000001
+  },
+  {
+    "test": "EffectBudgetTests.EveryBenefitIsNeededInCampaignAndMissionStages(C500)",
+    "status": "Passed",
+    "ms": 812.3201
+  }
+]

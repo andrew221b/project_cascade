@@ -1,0 +1,57 @@
+[
+  {
+    "test": "LocalReminderTests.NoReminderWithoutPreferenceAndOsConsent(False,False)",
+    "status": "Passed",
+    "ms": 5.3437
+  },
+  {
+    "test": "LocalReminderTests.NoReminderWithoutPreferenceAndOsConsent(False,True)",
+    "status": "Passed",
+    "ms": 0.0359
+  },
+  {
+    "test": "LocalReminderTests.NoReminderWithoutPreferenceAndOsConsent(True,False)",
+    "status": "Passed",
+    "ms": 0.0213
+  },
+  {
+    "test": "LocalReminderTests.ReminderIsTomorrowEveningEvenWhenSessionEndsBeforeEvening(0)",
+    "status": "Passed",
+    "ms": 2.244
+  },
+  {
+    "test": "LocalReminderTests.ReminderIsTomorrowEveningEvenWhenSessionEndsBeforeEvening(17)",
+    "status": "Passed",
+    "ms": 0.023
+  },
+  {
+    "test": "LocalReminderTests.ReminderIsTomorrowEveningEvenWhenSessionEndsBeforeEvening(23)",
+    "status": "Passed",
+    "ms": 0.0188
+  },
+  {
+    "test": "LocalReminderTests.NextLocalDayHandlesYearAndLeapDayBoundaries(2026,12,31,2027,1,1)",
+    "status": "Passed",
+    "ms": 0.0925
+  },
+  {
+    "test": "LocalReminderTests.NextLocalDayHandlesYearAndLeapDayBoundaries(2028,2,28,2028,2,29)",
+    "status": "Passed",
+    "ms": 0.021
+  },
+  {
+    "test": "LocalReminderTests.NextLocalDayHandlesYearAndLeapDayBoundaries(2028,2,29,2028,3,1)",
+    "status": "Passed",
+    "ms": 0.0187
+  },
+  {
+    "test": "LocalReminderTests.UtcIsNotMistakenForLocalCalendarTime()",
+    "status": "Passed",
+    "ms": 2.0013
+  },
+  {
+    "test": "LocalReminderTests.NewPreferencesDefaultToNoReminders()",
+    "status": "Passed",
+    "ms": 0.14650000000000002
+  }
+]

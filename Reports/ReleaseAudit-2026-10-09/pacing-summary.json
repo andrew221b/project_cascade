@@ -1,0 +1,26 @@
+{
+  "orderedBy": "actual JourneyStory.NodeIds, including interleaved teaching nodes; ID numerical order is not progression",
+  "bands": [
+    {
+      "levels": "1\u201360",
+      "minimumActionsMean": 3.04,
+      "stagesAtMost2Actions": 61
+    },
+    {
+      "levels": "61\u2013180",
+      "minimumActionsMean": 4.1,
+      "stagesAtMost2Actions": 34
+    },
+    {
+      "levels": "181\u2013360",
+      "minimumActionsMean": 4.54,
+      "stagesAtMost2Actions": 67
+    },
+    {
+      "levels": "361\u2013540",
+      "minimumActionsMean": 5.6,
+      "stagesAtMost2Actions": 26
+    }
+  ],
+  "limit": "Solver actions do not establish human enjoyment"
+}

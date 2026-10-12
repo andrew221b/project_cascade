@@ -1,0 +1,22 @@
+[
+  {
+    "test": "WorldPrologueTests.EveryWorldHasFourAuthoredComicPagesAndItsOwnResident()",
+    "status": "Passed",
+    "ms": 13.819700000000001
+  },
+  {
+    "test": "WorldPrologueTests.EveryIslandGetsADistinctOpeningWithItsCurrentGoal()",
+    "status": "Passed",
+    "ms": 4.5087
+  },
+  {
+    "test": "WorldPrologueTests.OccasionalLevelAsidesAndAllStoryReceiptsFitExistingSaveValidation()",
+    "status": "Passed",
+    "ms": 5.5017000000000005
+  },
+  {
+    "test": "WorldPrologueTests.EveryStoryKeyHasAnEnglishRussianAndUkrainianSourceEntry()",
+    "status": "Passed",
+    "ms": 69.4772
+  }
+]

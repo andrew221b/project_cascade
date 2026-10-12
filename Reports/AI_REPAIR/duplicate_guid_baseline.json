@@ -1,0 +1,90 @@
+{
+  "package_versions": {
+    "com.unity.ai.assistant": "2.20.0-pre.1",
+    "com.unity.ai.generators": "1.7.0-pre.1"
+  },
+  "duplicate_guid_count": 1365,
+  "examples": {
+    "9c7211b69cfb4b63b36aec46e7fd4fb7": [
+      "com.unity.ai.assistant/Modules/Unity.AI.Image.meta",
+      "com.unity.ai.generators/Modules/Unity.AI.Image.meta"
+    ],
+    "8892a182655c5cc418753dbbf9a55fab": [
+      "com.unity.ai.assistant/Modules/Unity.AI.Generators.Sdk.meta",
+      "com.unity.ai.generators/Modules/Unity.AI.Generators.Sdk.meta"
+    ],
+    "7767c3a5308c1564e95557683426d62b": [
+      "com.unity.ai.assistant/Modules/Unity.AI.Animate.meta",
+      "com.unity.ai.generators/Modules/Unity.AI.Animate.meta"
+    ],
+    "d344fbed61535be4e86bf09f3c9b173e": [
+      "com.unity.ai.assistant/Modules/Unity.AI.Generators.Tools.meta",
+      "com.unity.ai.generators/Modules/Unity.AI.Generators.Tools.meta"
+    ],
+    "4b5968763bdba4ff39dc5af76e3d5804": [
+      "com.unity.ai.assistant/Modules/Unity.AI.Sound.meta",
+      "com.unity.ai.generators/Modules/Unity.AI.Sound.meta"
+    ],
+    "2795edff522074fecb6a6d4b5c19d453": [
+      "com.unity.ai.assistant/Modules/Unity.AI.Mesh.meta",
+      "com.unity.ai.generators/Modules/Unity.AI.Mesh.meta"
+    ],
+    "e7baa494c61f4315a86b48c87094cff7": [
+      "com.unity.ai.assistant/Modules/Unity.AI.Generators.Contexts.meta",
+      "com.unity.ai.generators/Modules/Unity.AI.Generators.Contexts.meta"
+    ],
+    "6ea07431370bfa84f85d66781c0e513d": [
+      "com.unity.ai.assistant/Modules/Generators-README.md.meta",
+      "com.unity.ai.generators/Modules/README.md.meta"
+    ],
+    "7c819f5bf38d447f851c17d7c665e18b": [
+      "com.unity.ai.assistant/Modules/Unity.AI.Generators.Asset.meta",
+      "com.unity.ai.generators/Modules/Unity.AI.Generators.Asset.meta"
+    ],
+    "625f62a79c0e4a6439108536b138aee7": [
+      "com.unity.ai.assistant/Modules/Unity.AI.ModelSelector.meta",
+      "com.unity.ai.generators/Modules/Unity.AI.ModelSelector.meta"
+    ],
+    "d3efb4360c10c4f52a10759f3a182f84": [
+      "com.unity.ai.assistant/Modules/Unity.AI.Generators.Redux.meta",
+      "com.unity.ai.generators/Modules/Unity.AI.Generators.Redux.meta"
+    ],
+    "ed37672e70d86c9489887fcd1df7178f": [
+      "com.unity.ai.assistant/Modules/Unity.AI.Pbr.meta",
+      "com.unity.ai.generators/Modules/Unity.AI.Pbr.meta"
+    ],
+    "20a8dad79f50c0b45ab7a485ad92aee3": [
+      "com.unity.ai.assistant/Modules/Unity.AI.Generators.IO.meta",
+      "com.unity.ai.generators/Modules/Unity.AI.Generators.IO.meta"
+    ],
+    "9779296b7fec447ab27ccd79f7fd0689": [
+      "com.unity.ai.assistant/Modules/Unity.AI.Generators.UI.meta",
+      "com.unity.ai.generators/Modules/Unity.AI.Generators.UI.meta"
+    ],
+    "18d5d0b3a90f402aa2b85013acb20fcf": [
+      "com.unity.ai.assistant/Modules/Unity.AI.Generators.UI/Actions.meta",
+      "com.unity.ai.generators/Modules/Unity.AI.Generators.UI/Actions.meta"
+    ],
+    "dd0cb6126ee14d95ab9bac4e121cdc6e": [
+      "com.unity.ai.assistant/Modules/Unity.AI.Generators.UI/AssemblyInfo.cs.meta",
+      "com.unity.ai.generators/Modules/Unity.AI.Generators.UI/AssemblyInfo.cs.meta"
+    ],
+    "44bd0c6211084984a742675e77a87c50": [
+      "com.unity.ai.assistant/Modules/Unity.AI.Generators.UI/Unity.AI.Generators.UI.asmdef.meta",
+      "com.unity.ai.generators/Modules/Unity.AI.Generators.UI/Unity.AI.Generators.UI.asmdef.meta"
+    ],
+    "856a8171d33f411889a2c253ffc143c0": [
+      "com.unity.ai.assistant/Modules/Unity.AI.Generators.UI/Shaders.meta",
+      "com.unity.ai.generators/Modules/Unity.AI.Generators.UI/Shaders.meta"
+    ],
+    "cd3cc53ebec8486ea1e38e727e582e9b": [
+      "com.unity.ai.assistant/Modules/Unity.AI.Generators.UI/Components.meta",
+      "com.unity.ai.generators/Modules/Unity.AI.Generators.UI/Components.meta"
+    ],
+    "00eaccfb86da4f0e965a6ef9ec785c7c": [
+      "com.unity.ai.assistant/Modules/Unity.AI.Generators.UI/Utilities.meta",
+      "com.unity.ai.generators/Modules/Unity.AI.Generators.UI/Utilities.meta"
+    ]
+  },
+  "source": "Read-only scan of the two installed official package caches; Console screenshot confirmed the same GUID conflicts."
+}

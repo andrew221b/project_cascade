@@ -1,0 +1,42 @@
+[
+  {
+    "test": "BridgeStampTests.BridgeClosesOnlyAfterAcceptedSwap()",
+    "status": "Passed",
+    "ms": 17.0288
+  },
+  {
+    "test": "BridgeStampTests.NoOpInvalidAndDropDoNotConsumeBridge()",
+    "status": "Passed",
+    "ms": 0.49920000000000003
+  },
+  {
+    "test": "BridgeStampTests.LinkedBridgeClosesAfterCompleteSwapAndLockedSubpairPreservesIt()",
+    "status": "Passed",
+    "ms": 1.1660000000000001
+  },
+  {
+    "test": "BridgeStampTests.SnapshotRestoresBridgeAndStampWithoutChangingTokens()",
+    "status": "Passed",
+    "ms": 0.45320000000000005
+  },
+  {
+    "test": "BridgeStampTests.StampDoesNotGateOrdinaryReceiver()",
+    "status": "Passed",
+    "ms": 0.23670000000000002
+  },
+  {
+    "test": "BridgeStampTests.StampRecordsOnceAndEntryTransformCanCollectIt()",
+    "status": "Passed",
+    "ms": 1.1377000000000002
+  },
+  {
+    "test": "BridgeStampTests.C35DeliveryAndStampedMinimaAreTwoAndFour()",
+    "status": "Passed",
+    "ms": 3.2037
+  },
+  {
+    "test": "BridgeStampTests.UnreachableStampHasNoGoalState()",
+    "status": "Passed",
+    "ms": 0.1804
+  }
+]

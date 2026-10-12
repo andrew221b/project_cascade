@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="6" result="Failed(Child)" total="6" passed="4" failed="2" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-08 19:36:19Z" end-time="2026-10-08 19:38:00Z" duration="100.9096713">
+  <test-suite type="TestSuite" id="1162" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="143" result="Failed" site="Child" start-time="2026-10-08 19:36:19Z" end-time="2026-10-08 19:38:00Z" duration="100.909671" total="6" passed="4" failed="2" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1156" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="143" result="Failed" site="Child" start-time="2026-10-08 19:36:20Z" end-time="2026-10-08 19:38:00Z" duration="100.449235" total="6" passed="4" failed="2" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24227" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1157" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="143" result="Failed" site="Child" start-time="2026-10-08 19:36:20Z" end-time="2026-10-08 19:38:00Z" duration="100.444067" total="6" passed="4" failed="2" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1158" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="143" result="Failed" site="Child" start-time="2026-10-08 19:36:20Z" end-time="2026-10-08 19:38:00Z" duration="100.443046" total="6" passed="4" failed="2" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1009" name="GuidedLessonFlowTests" fullname="Cascade.Tests.GuidedLessonFlowTests" classname="Cascade.Tests.GuidedLessonFlowTests" runstate="Runnable" testcasecount="13" result="Failed" site="Child" start-time="2026-10-08 19:36:20Z" end-time="2026-10-08 19:37:59Z" duration="98.956198" total="4" passed="2" failed="2" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1012" name="CompletionOffersNextAndMapAndNextStartsTheActualOpenNode" fullname="Cascade.Tests.GuidedLessonFlowTests.CompletionOffersNextAndMapAndNextStartsTheActualOpenNode" methodname="CompletionOffersNextAndMapAndNextStartsTheActualOpenNode" classname="Cascade.Tests.GuidedLessonFlowTests" runstate="Runnable" seed="614370937" result="Passed" start-time="2026-10-08 19:36:20Z" end-time="2026-10-08 19:36:32Z" duration="11.902584" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1010" name="FirstStageCanTeachUndoAtItsFirstCheckpointBeforeIndependentStages" fullname="Cascade.Tests.GuidedLessonFlowTests.FirstStageCanTeachUndoAtItsFirstCheckpointBeforeIndependentStages" methodname="FirstStageCanTeachUndoAtItsFirstCheckpointBeforeIndependentStages" classname="Cascade.Tests.GuidedLessonFlowTests" runstate="Runnable" seed="775613327" result="Failed" start-time="2026-10-08 19:36:32Z" end-time="2026-10-08 19:37:05Z" duration="33.060351" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  The first legal Undo is on this checkpoint
+  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at Cascade.Tests.GuidedLessonFlowTests+<Await>d__16.MoveNext () [0x0005f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Tests/PlayMode/GuidedLessonFlowTests.cs:113
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in ./Library/PackageCache/com.unity.test-framework@0b7a23ab2e1d/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1017" name="FreshCampaignUsesRelatedTriadsAndRetryKeepsThePuzzle" fullname="Cascade.Tests.GuidedLessonFlowTests.FreshCampaignUsesRelatedTriadsAndRetryKeepsThePuzzle" methodname="FreshCampaignUsesRelatedTriadsAndRetryKeepsThePuzzle" classname="Cascade.Tests.GuidedLessonFlowTests" runstate="Runnable" seed="1084275282" result="Passed" start-time="2026-10-08 19:37:05Z" end-time="2026-10-08 19:37:24Z" duration="18.657956" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1011" name="PrimaryMechanicIsExplainedInStageOneAndLaterStagesAreIndependent" fullname="Cascade.Tests.GuidedLessonFlowTests.PrimaryMechanicIsExplainedInStageOneAndLaterStagesAreIndependent" methodname="PrimaryMechanicIsExplainedInStageOneAndLaterStagesAreIndependent" classname="Cascade.Tests.GuidedLessonFlowTests" runstate="Runnable" seed="850804110" result="Failed" start-time="2026-10-08 19:37:24Z" end-time="2026-10-08 19:37:59Z" duration="35.179931" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Stage two must be independently playable
+  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at Cascade.Tests.GuidedLessonFlowTests+<Await>d__16.MoveNext () [0x0005f] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Tests/PlayMode/GuidedLessonFlowTests.cs:113
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in ./Library/PackageCache/com.unity.test-framework@0b7a23ab2e1d/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1153" name="WorldVisitorLifecycleTests" fullname="Cascade.Tests.WorldVisitorLifecycleTests" classname="Cascade.Tests.WorldVisitorLifecycleTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-08 19:37:59Z" end-time="2026-10-08 19:38:00Z" duration="1.484927" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1155" name="StageAndSceneryVaryVisitsWithoutMovingTheirBodyPivot" fullname="Cascade.Tests.WorldVisitorLifecycleTests.StageAndSceneryVaryVisitsWithoutMovingTheirBodyPivot" methodname="StageAndSceneryVaryVisitsWithoutMovingTheirBodyPivot" classname="Cascade.Tests.WorldVisitorLifecycleTests" runstate="Runnable" seed="1906277027" result="Passed" start-time="2026-10-08 19:37:59Z" end-time="2026-10-08 19:38:00Z" duration="1.141751" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1154" name="VisitorsUseEightPhasesStableClockAndQualityLimits" fullname="Cascade.Tests.WorldVisitorLifecycleTests.VisitorsUseEightPhasesStableClockAndQualityLimits" methodname="VisitorsUseEightPhasesStableClockAndQualityLimits" classname="Cascade.Tests.WorldVisitorLifecycleTests" runstate="Runnable" seed="2103132426" result="Passed" start-time="2026-10-08 19:38:00Z" end-time="2026-10-08 19:38:00Z" duration="0.341189" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/LevelTriads-Oct08/playmode.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

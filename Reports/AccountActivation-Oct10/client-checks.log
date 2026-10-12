@@ -1,0 +1,6 @@
+CSSM_ModuleLoad(): One or more parameters passed to a function were not valid.
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Tools/AccountFlowChecks/AccountFlowChecks.csproj : warning NU1900: Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json.
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/CascadeAccountCCM/CascadeAccount/CascadeAccount.csproj : warning NU1900: Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json. [/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Tools/AccountFlowChecks/AccountFlowChecks.csproj]
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Tools/AccountFlowChecks/AccountFlowChecks.csproj : warning NU1900: Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json.
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/CascadeAccountCCM/CascadeAccount/CascadeAccount.csproj : warning NU1900: Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json.
+Account activation: 43 PASS. Actual client/config sources; SDK transport faked. No live OAuth or device claim.

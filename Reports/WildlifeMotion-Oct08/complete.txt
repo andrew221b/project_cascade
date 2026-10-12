@@ -1,0 +1,11 @@
+World 0: visible native layered wildlife; selected phase 33.25
+World 1: visible native layered wildlife; selected phase 49.25
+World 2: visible native layered wildlife; selected phase 44.25
+World 3: visible native layered wildlife; selected phase 10.50
+World 4: visible native layered wildlife; selected phase 26.75
+World 5: visible native layered wildlife; selected phase 46.00
+World 6: visible native layered wildlife; selected phase 44.50
+World 7: visible native layered wildlife; selected phase 38.25
+World 8: visible native layered wildlife; selected phase 27.50
+PASS:9 native world contexts;17 assembled species;8-second enlarged film at24fps; puzzle hash unchanged.
+Isolated Editor render evidence. No phone build, physical-device performance or audio/haptic validation.

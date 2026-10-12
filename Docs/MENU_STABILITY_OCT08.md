@@ -1,0 +1,7 @@
+# iPhone startup and menu pass — 8 October 2026
+
+The paired iPhone produced four CASCADE watchdog reports after the previous install. The inspected report (`Reports/iOS-2026-10-08-startup-crash/last.ips`) shows the main thread waiting in Unity Localization/Addressables from `CascadeGame.InitializeUiLanguage` during `Awake`. Localization is now initialized without a synchronous wait, and the editor table builder keeps that setting off. Labels show their English source until the selected locale's table arrives, then update normally.
+
+Navigation uses Home as the clear parent for Shop and My things. My things is on Home; Shop no longer links back into it, and Journal is usable before the third clear. Catalogue cards select an item, while Look closer opens its preview. Descriptions appear only in that preview. Wooden shelf rails are removed from the catalogue; title, currency, and collection count share the header row. Settings section art is removed, and language is one choice for menus and future word puzzles. The active puzzle remains unchanged. Screen changes use a brief, reduced-motion-aware slide/fade.
+
+No prices, product IDs, saved schemas, gameplay rules, or packages changed. Unity flow review and native render captures are in `Reports/CatalogFlow-Oct08`; the iOS export and Xcode build are in `Reports/iOS-2026-10-08-menu`. On-device relaunch needs an unlocked iPhone for final confirmation.

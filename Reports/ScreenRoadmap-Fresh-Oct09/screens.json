@@ -1,0 +1,458 @@
+[
+  {
+    "file": "01-home.png",
+    "title": "01. Главное меню",
+    "width": 390,
+    "height": 844,
+    "screen": "Home",
+    "capturedUtc": "2026-10-09T13:58:26.9052470Z"
+  },
+  {
+    "file": "02-settings.png",
+    "title": "02. Настройки",
+    "width": 390,
+    "height": 844,
+    "screen": "Settings",
+    "capturedUtc": "2026-10-09T13:58:30.0434820Z"
+  },
+  {
+    "file": "03-settings-0.png",
+    "title": "03. Звук и движение",
+    "width": 390,
+    "height": 844,
+    "screen": "Settings",
+    "capturedUtc": "2026-10-09T13:58:32.2003750Z"
+  },
+  {
+    "file": "04-settings-1.png",
+    "title": "04. Удобство и помощь",
+    "width": 390,
+    "height": 844,
+    "screen": "Settings",
+    "capturedUtc": "2026-10-09T13:58:34.2913630Z"
+  },
+  {
+    "file": "05-settings-2.png",
+    "title": "05. Языки",
+    "width": 390,
+    "height": 844,
+    "screen": "Settings",
+    "capturedUtc": "2026-10-09T13:58:36.3648010Z"
+  },
+  {
+    "file": "06-settings-3.png",
+    "title": "06. Напоминания",
+    "width": 390,
+    "height": 844,
+    "screen": "Settings",
+    "capturedUtc": "2026-10-09T13:58:38.4751950Z"
+  },
+  {
+    "file": "07-settings-4.png",
+    "title": "07. Облачное сохранение",
+    "width": 390,
+    "height": 844,
+    "screen": "Settings",
+    "capturedUtc": "2026-10-09T13:58:40.6457160Z"
+  },
+  {
+    "file": "08-map.png",
+    "title": "08. Карта и переходы между мирами",
+    "width": 390,
+    "height": 844,
+    "screen": "JourneyMap",
+    "capturedUtc": "2026-10-09T13:58:42.8330080Z"
+  },
+  {
+    "file": "09-map-night.png",
+    "title": "09. Ночной мир",
+    "width": 390,
+    "height": 844,
+    "screen": "JourneyMap",
+    "capturedUtc": "2026-10-09T13:58:44.4124260Z"
+  },
+  {
+    "file": "10-island.png",
+    "title": "10. Уровни открытого острова",
+    "width": 390,
+    "height": 844,
+    "screen": "JourneyMap",
+    "capturedUtc": "2026-10-09T13:58:46.4777850Z"
+  },
+  {
+    "file": "11a-shop-shelf.png",
+    "title": "Полки инструментов",
+    "width": 390,
+    "height": 844,
+    "screen": "Shop",
+    "capturedUtc": "2026-10-09T13:58:49.5674220Z"
+  },
+  {
+    "file": "11b-tool-preview.png",
+    "title": "Инструмент — описание и покупка",
+    "width": 390,
+    "height": 844,
+    "screen": "Shop",
+    "capturedUtc": "2026-10-09T13:59:15.7640610Z"
+  },
+  {
+    "file": "11-shop-tools.png",
+    "title": "11. Магазин — помощь",
+    "width": 390,
+    "height": 844,
+    "screen": "Shop",
+    "capturedUtc": "2026-10-09T13:58:54.8435520Z"
+  },
+  {
+    "file": "12a-trophy-shelf.png",
+    "title": "Полки костюмов",
+    "width": 390,
+    "height": 844,
+    "screen": "Shop",
+    "capturedUtc": "2026-10-09T13:58:50.7775960Z"
+  },
+  {
+    "file": "12b-costume-preview.png",
+    "title": "Костюм — предпросмотр",
+    "width": 390,
+    "height": 844,
+    "screen": "Shop",
+    "capturedUtc": "2026-10-09T13:59:17.8996250Z"
+  },
+  {
+    "file": "12-shop-mika.png",
+    "title": "12. Магазин — костюмы Мики",
+    "width": 390,
+    "height": 844,
+    "screen": "Shop",
+    "capturedUtc": "2026-10-09T13:58:56.8998120Z"
+  },
+  {
+    "file": "13-shop-background.png",
+    "title": "13. Магазин — анимации фона",
+    "width": 390,
+    "height": 844,
+    "screen": "Shop",
+    "capturedUtc": "2026-10-09T13:58:58.9813690Z"
+  },
+  {
+    "file": "14-shop-frames.png",
+    "title": "14. Магазин — рамки",
+    "width": 390,
+    "height": 844,
+    "screen": "Shop",
+    "capturedUtc": "2026-10-09T13:59:01.1210600Z"
+  },
+  {
+    "file": "15-coins.png",
+    "title": "15. Пакеты монет",
+    "width": 390,
+    "height": 844,
+    "screen": "CoinPacks",
+    "capturedUtc": "2026-10-09T13:59:03.2686470Z"
+  },
+  {
+    "file": "16-no-ads.png",
+    "title": "16. Отключение рекламы",
+    "width": 390,
+    "height": 844,
+    "screen": "NoAds",
+    "capturedUtc": "2026-10-09T13:59:05.3751550Z"
+  },
+  {
+    "file": "17-bag.png",
+    "title": "17. Мои вещи",
+    "width": 390,
+    "height": 844,
+    "screen": "TravelBag",
+    "capturedUtc": "2026-10-09T13:59:07.4468900Z"
+  },
+  {
+    "file": "18-trophies.png",
+    "title": "18. Коллекция трофеев",
+    "width": 390,
+    "height": 844,
+    "screen": "Collection",
+    "capturedUtc": "2026-10-09T13:59:09.5463910Z"
+  },
+  {
+    "file": "19-supplies.png",
+    "title": "19. Сумка с инструментами",
+    "width": 390,
+    "height": 844,
+    "screen": "Supplies",
+    "capturedUtc": "2026-10-09T13:59:11.6889600Z"
+  },
+  {
+    "file": "20a-inline-bag.png",
+    "title": "Сумка — иконки над игровыми кнопками",
+    "width": 390,
+    "height": 844,
+    "screen": "Playing",
+    "capturedUtc": "2026-10-09T13:59:13.7099410Z"
+  },
+  {
+    "file": "20-game.png",
+    "title": "20. Игра — фигуры",
+    "width": 390,
+    "height": 844,
+    "screen": "Playing",
+    "capturedUtc": "2026-10-09T13:59:12.0309290Z"
+  },
+  {
+    "file": "21-game-words.png",
+    "title": "21. Игра — слова",
+    "width": 390,
+    "height": 844,
+    "screen": "Playing",
+    "capturedUtc": "2026-10-09T13:59:20.0519190Z"
+  },
+  {
+    "file": "22-game-mixed.png",
+    "title": "22. Игра — микс",
+    "width": 390,
+    "height": 844,
+    "screen": "Playing",
+    "capturedUtc": "2026-10-09T13:59:22.1658690Z"
+  },
+  {
+    "file": "23-pause.png",
+    "title": "23. Пауза",
+    "width": 390,
+    "height": 844,
+    "screen": "Pause",
+    "capturedUtc": "2026-10-09T13:59:25.2636970Z"
+  },
+  {
+    "file": "24-checkpoint.png",
+    "title": "24. Завершённый этап",
+    "width": 390,
+    "height": 844,
+    "screen": "Checkpoint",
+    "capturedUtc": "2026-10-09T13:59:27.4139670Z"
+  },
+  {
+    "file": "25-victory.png",
+    "title": "25. Победа и статистика",
+    "width": 390,
+    "height": 844,
+    "screen": "Win",
+    "capturedUtc": "2026-10-09T13:58:19.3365930Z"
+  },
+  {
+    "file": "26-failure.png",
+    "title": "26. Проигрыш",
+    "width": 390,
+    "height": 844,
+    "screen": "Fail",
+    "capturedUtc": "2026-10-09T13:59:29.5048610Z"
+  },
+  {
+    "file": "27-parcel.png",
+    "title": "27. Посылка",
+    "width": 390,
+    "height": 844,
+    "screen": "Parcel",
+    "capturedUtc": "2026-10-09T13:58:22.4939660Z"
+  },
+  {
+    "file": "28-parcel-open.png",
+    "title": "28. Полученная награда",
+    "width": 390,
+    "height": 844,
+    "screen": "Parcel",
+    "capturedUtc": "2026-10-09T13:58:24.2355010Z"
+  },
+  {
+    "file": "29-comic.png",
+    "title": "29. Сюжетный комикс",
+    "width": 390,
+    "height": 844,
+    "screen": "Prologue",
+    "capturedUtc": "2026-10-09T13:59:31.6451200Z"
+  },
+  {
+    "file": "30-dialogue.png",
+    "title": "30. Диалог на карте",
+    "width": 390,
+    "height": 844,
+    "screen": "JourneyMap",
+    "capturedUtc": "2026-10-09T13:59:33.7403350Z"
+  },
+  {
+    "file": "31-guide.png",
+    "title": "31. Как играть",
+    "width": 390,
+    "height": 844,
+    "screen": "Devices",
+    "capturedUtc": "2026-10-09T13:59:38.1644210Z"
+  },
+  {
+    "file": "32-effect-guide.png",
+    "title": "32. Объяснение эффекта",
+    "width": 390,
+    "height": 844,
+    "screen": "Devices",
+    "capturedUtc": "2026-10-09T13:59:40.2957820Z"
+  },
+  {
+    "file": "33-tutorial.png",
+    "title": "33. Анимированное обучение",
+    "width": 390,
+    "height": 844,
+    "screen": "Playing",
+    "capturedUtc": "2026-10-09T13:59:43.4149430Z"
+  },
+  {
+    "file": "34-journal.png",
+    "title": "34. Журнал",
+    "width": 390,
+    "height": 844,
+    "screen": "Journal",
+    "capturedUtc": "2026-10-09T13:59:46.5490700Z"
+  },
+  {
+    "file": "35-workshop.png",
+    "title": "35. Мастерская",
+    "width": 390,
+    "height": 844,
+    "screen": "Workshop",
+    "capturedUtc": "2026-10-09T13:59:48.6403400Z"
+  },
+  {
+    "file": "36-requests.png",
+    "title": "36. Просьбы жителей",
+    "width": 390,
+    "height": 844,
+    "screen": "JourneyMap",
+    "capturedUtc": "2026-10-09T13:59:50.8131270Z"
+  },
+  {
+    "file": "37-records.png",
+    "title": "37. Рекорды",
+    "width": 390,
+    "height": 844,
+    "screen": "Records",
+    "capturedUtc": "2026-10-09T13:59:52.8482830Z"
+  },
+  {
+    "file": "38-contracts.png",
+    "title": "38. Задания",
+    "width": 390,
+    "height": 844,
+    "screen": "Contracts",
+    "capturedUtc": "2026-10-09T13:59:58.1613600Z"
+  },
+  {
+    "file": "39-story-ending.png",
+    "title": "39. Итог путешествия",
+    "width": 390,
+    "height": 844,
+    "screen": "JourneyEnd",
+    "capturedUtc": "2026-10-09T14:00:00.1821710Z"
+  },
+  {
+    "file": "40-word-language.png",
+    "title": "40. Выбор языка слов",
+    "width": 390,
+    "height": 844,
+    "screen": "WordLanguage",
+    "capturedUtc": "2026-10-09T14:00:02.2811860Z"
+  },
+  {
+    "file": "41-target.png",
+    "title": "41. Просмотр цели",
+    "width": 390,
+    "height": 844,
+    "screen": "Playing",
+    "capturedUtc": "2026-10-09T14:00:04.4312010Z"
+  },
+  {
+    "file": "42-test-ad.png",
+    "title": "42. Тестовая реклама с наградой",
+    "width": 390,
+    "height": 844,
+    "screen": "Playing",
+    "capturedUtc": "2026-10-09T14:00:06.5431710Z"
+  },
+  {
+    "file": "43-save-recovery.png",
+    "title": "43. Восстановление сохранения",
+    "width": 390,
+    "height": 844,
+    "screen": "SaveRecovery",
+    "capturedUtc": "2026-10-09T14:00:09.6455360Z"
+  },
+  {
+    "file": "44-small-shop.png",
+    "title": "44. Магазин — узкий экран",
+    "width": 320,
+    "height": 693,
+    "screen": "Shop",
+    "capturedUtc": "2026-10-09T14:00:11.7995610Z"
+  },
+  {
+    "file": "45-large-text.png",
+    "title": "45. Меню — крупный текст",
+    "width": 320,
+    "height": 693,
+    "screen": "Home",
+    "capturedUtc": "2026-10-09T14:00:13.8888310Z"
+  },
+  {
+    "file": "46-settings-large.png",
+    "title": "Настройки — крупный текст, UK",
+    "width": 320,
+    "height": 693,
+    "screen": "Settings",
+    "capturedUtc": "2026-10-09T14:00:15.9955670Z"
+  },
+  {
+    "file": "47-records-large.png",
+    "title": "Рекорды — крупный текст, UK",
+    "width": 320,
+    "height": 693,
+    "screen": "Records",
+    "capturedUtc": "2026-10-09T14:00:18.0989080Z"
+  },
+  {
+    "file": "48-dialogue-large.png",
+    "title": "Диалог — крупный текст, UK",
+    "width": 320,
+    "height": 693,
+    "screen": "JourneyMap",
+    "capturedUtc": "2026-10-09T14:00:20.2262960Z"
+  },
+  {
+    "file": "49-comic-large.png",
+    "title": "Комикс — крупный текст, UK",
+    "width": 320,
+    "height": 693,
+    "screen": "Prologue",
+    "capturedUtc": "2026-10-09T14:00:22.3461010Z"
+  },
+  {
+    "file": "50-tool-large.png",
+    "title": "Предмет — крупный текст, UK",
+    "width": 320,
+    "height": 693,
+    "screen": "Shop",
+    "capturedUtc": "2026-10-09T14:00:24.4787510Z"
+  },
+  {
+    "file": "51-shop-english.png",
+    "title": "Каталог — EN",
+    "width": 390,
+    "height": 844,
+    "screen": "Shop",
+    "capturedUtc": "2026-10-09T14:00:26.5773020Z"
+  },
+  {
+    "file": "mission-offer.png",
+    "title": "Личная миссия — принять или отказаться",
+    "width": 390,
+    "height": 844,
+    "screen": "JourneyMap",
+    "capturedUtc": "2026-10-09T13:59:36.0008310Z"
+  }
+]

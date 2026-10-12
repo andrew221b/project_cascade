@@ -1,0 +1,183 @@
+PASS locale ru
+PASS selected appearance 0
+PASS outfit or fitted badge 0
+PASS preview is isolated 0
+PASS fitted badge 0
+PASS selected appearance 1
+PASS outfit or fitted badge 1
+PASS preview is isolated 1
+PASS fitted badge 1
+PASS selected appearance 2
+PASS outfit or fitted badge 2
+PASS preview is isolated 2
+PASS selected appearance 3
+PASS outfit or fitted badge 3
+PASS preview is isolated 3
+PASS selected appearance 4
+PASS outfit or fitted badge 4
+PASS preview is isolated 4
+PASS fitted badge 4
+PASS selected appearance 5
+PASS outfit or fitted badge 5
+PASS preview is isolated 5
+PASS selected appearance 6
+PASS outfit or fitted badge 6
+PASS preview is isolated 6
+PASS fitted badge 6
+PASS selected appearance 7
+PASS outfit or fitted badge 7
+PASS preview is isolated 7
+PASS fitted badge 7
+PASS text fits Label
+PASS text fits Page heading
+PASS text fits Trophy collection count
+PASS text fits Catalogue guidance
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Selected object title
+PASS text fits Selected object benefit
+PASS text fits Trophy acquisition
+PASS text fits Trophy cosmetic scope
+PASS text fits Label
+PASS locale uk
+PASS text fits Label
+PASS text fits Page heading
+PASS text fits Wallet coins
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Selected object title
+PASS text fits Selected object benefit
+PASS text fits Trophy acquisition
+PASS text fits Trophy cosmetic scope
+PASS text fits Label
+PASS text fits Label
+PASS locale ru
+PASS equip sky
+PASS selected set sky
+PASS text fits CASCADE
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS Mika present on Home
+PASS worn appearance on Mika welcomes you
+PASS Mika present on Journal
+PASS worn appearance on Mika reads
+PASS equip leaf
+PASS selected set leaf
+PASS text fits CASCADE
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS Mika present on Home
+PASS worn appearance on Mika welcomes you
+PASS equip moon
+PASS selected set moon
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Region
+PASS text fits Journey goal
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Mode stars total
+PASS text fits Map step progress
+PASS text fits Label
+PASS text fits Label
+PASS Mika present on JourneyMap
+PASS worn appearance on Mika on the path
+PASS bounded equipped atmosphere
+PASS atmosphere never blocks touch
+PASS reduced motion freezes atmosphere
+PASS effects off hides atmosphere
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Region
+PASS text fits Journey goal
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Mode stars total
+PASS text fits Map step progress
+PASS text fits Label
+PASS text fits Label
+PASS text fits Speaker name
+PASS text fits Conversation line
+PASS text fits Conversation progress
+PASS text fits Label
+PASS text fits Label
+PASS Mika dialogue wears outfit
+PASS other speaker has no Mika clothing
+PASS equip rain_badge
+PASS selected set rain_badge
+PASS earned costume equips durably even in preview shop
+PASS equipped earned costume saved
+PASS text fits Level
+PASS text fits Label
+PASS text fits Feedback
+PASS text fits Devices
+PASS text fits Engraving edge
+PASS text fits Durability
+PASS text fits Symbol
+PASS text fits Symbol
+PASS text fits Symbol
+PASS text fits ReceiverLabel
+PASS text fits TargetSymbol
+PASS text fits TargetSymbol
+PASS text fits TargetSymbol
+PASS text fits Result summary
+PASS text fits Label
+PASS text fits Label
+PASS text fits Label
+PASS text fits Outcome heading
+PASS Mika present on Fail
+PASS worn appearance on Mika's outcome
+PASS loss changes to dressed thinking pose
+PASS Mika present on JourneyEnd
+PASS worn appearance on Mika at home
+PASS text fits Level
+PASS text fits Label
+PASS text fits Label
+PASS text fits Feedback
+PASS text fits Devices
+PASS text fits Engraving edge
+PASS text fits Durability
+PASS text fits Symbol
+PASS text fits Symbol
+PASS text fits Symbol
+PASS text fits ReceiverLabel
+PASS text fits TargetSymbol
+PASS text fits TargetSymbol
+PASS text fits TargetSymbol
+PASS text fits Label
+PASS text fits Label
+PASS appearance checks preserve puzzle state

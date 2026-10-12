@@ -1,0 +1,1 @@
+PASS: real successful/rejected shape and word delivery, one rainbow thread renderer, two colour-flow frames, frozen flow while suspended, unchanged puzzle hash and cleanup. Native shader compiled. No iPhone build/install or physical-device validation.

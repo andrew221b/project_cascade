@@ -1,0 +1,52 @@
+[
+  {
+    "test": "GuidedPracticeTests.OtherTapDragKeyboardDropAndHintCannotSpendAMove()",
+    "status": "Passed",
+    "ms": 35.7612
+  },
+  {
+    "test": "GuidedPracticeTests.ShownPairAcceptsTapOrDragThenExplicitlyReleases(False)",
+    "status": "Passed",
+    "ms": 0.8728
+  },
+  {
+    "test": "GuidedPracticeTests.ShownPairAcceptsTapOrDragThenExplicitlyReleases(True)",
+    "status": "Passed",
+    "ms": 0.0339
+  },
+  {
+    "test": "GuidedPracticeTests.ObservationAllowsLifecycleButNoPlayerActions()",
+    "status": "Passed",
+    "ms": 0.1694
+  },
+  {
+    "test": "GuidedPracticeTests.PauseResumeCannotLoseOrQueueTheRequiredAction()",
+    "status": "Passed",
+    "ms": 0.1751
+  },
+  {
+    "test": "GuidedPracticeTests.UndoLessonAllowsOnlyUndoAndCannotRepeatAfterStateChanges()",
+    "status": "Passed",
+    "ms": 0.2521
+  },
+  {
+    "test": "GuidedPracticeTests.ToolLessonAuthorizesOnlyItsInventoryTransactionEvenInPausedBag()",
+    "status": "Passed",
+    "ms": 0.10980000000000001
+  },
+  {
+    "test": "GuidedPracticeTests.HintRequestPhaseCannotMovePiecesAndMovePhaseCannotUseAnotherHint()",
+    "status": "Passed",
+    "ms": 0.27240000000000003
+  },
+  {
+    "test": "GuidedPracticeTests.RequiredReachHasOnlyItsTwoEndpointsAndNoAdjacentAlternative(False)",
+    "status": "Passed",
+    "ms": 0.8156
+  },
+  {
+    "test": "GuidedPracticeTests.RequiredReachHasOnlyItsTwoEndpointsAndNoAdjacentAlternative(True)",
+    "status": "Passed",
+    "ms": 0.0405
+  }
+]

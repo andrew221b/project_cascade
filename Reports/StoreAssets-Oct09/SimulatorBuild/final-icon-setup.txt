@@ -1,0 +1,1 @@
+Editor compilation: PASS; Unity 6 icon importer: PASS; iOS SDK=DeviceSDK; production bundle=com.Unity-Technologies.com.unity.template.urp-blank

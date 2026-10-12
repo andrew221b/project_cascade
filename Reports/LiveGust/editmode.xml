@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="30" result="Failed(Child)" total="30" passed="29" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-07 05:11:37Z" end-time="2026-10-07 05:15:35Z" duration="238.6262007">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="596" result="Failed" site="Child" start-time="2026-10-07 05:11:37Z" end-time="2026-10-07 05:15:35Z" duration="238.626201" total="30" passed="29" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1655" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="595" result="Failed" site="Child" start-time="2026-10-07 05:11:37Z" end-time="2026-10-07 05:15:35Z" duration="237.913299" total="30" passed="29" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="79826" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1656" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="595" result="Failed" site="Child" start-time="2026-10-07 05:11:37Z" end-time="2026-10-07 05:15:35Z" duration="237.912027" total="30" passed="29" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1657" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="595" result="Failed" site="Child" start-time="2026-10-07 05:11:37Z" end-time="2026-10-07 05:15:35Z" duration="237.911333" total="30" passed="29" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1340" name="DescentTests" fullname="Cascade.Tests.DescentTests" classname="Cascade.Tests.DescentTests" runstate="Runnable" testcasecount="6" result="Failed" site="Child" start-time="2026-10-07 05:11:37Z" end-time="2026-10-07 05:15:03Z" duration="205.588918" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1345" name="AdvanceRequiresDeliveryAndRetryKeepsTheCheckpointAndConditions" fullname="Cascade.Tests.DescentTests.AdvanceRequiresDeliveryAndRetryKeepsTheCheckpointAndConditions" methodname="AdvanceRequiresDeliveryAndRetryKeepsTheCheckpointAndConditions" classname="Cascade.Tests.DescentTests" runstate="Runnable" seed="2090045250" result="Passed" start-time="2026-10-07 05:11:39Z" end-time="2026-10-07 05:11:40Z" duration="1.187864" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1343" name="CheckpointSaveRestoresExactlyAndRejectsAChangedFutureRecipe" fullname="Cascade.Tests.DescentTests.CheckpointSaveRestoresExactlyAndRejectsAChangedFutureRecipe" methodname="CheckpointSaveRestoresExactlyAndRejectsAChangedFutureRecipe" classname="Cascade.Tests.DescentTests" runstate="Runnable" seed="1202476531" result="Passed" start-time="2026-10-07 05:11:40Z" end-time="2026-10-07 05:11:41Z" duration="0.591498" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1346" name="EarlyLessonsUseStagesUnprovenPlansFallBackAndLegacySingleSavesRestore" fullname="Cascade.Tests.DescentTests.EarlyLessonsUseStagesUnprovenPlansFallBackAndLegacySingleSavesRestore" methodname="EarlyLessonsUseStagesUnprovenPlansFallBackAndLegacySingleSavesRestore" classname="Cascade.Tests.DescentTests" runstate="Runnable" seed="1884732532" result="Passed" start-time="2026-10-07 05:11:41Z" end-time="2026-10-07 05:11:41Z" duration="0.022728" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1344" name="OnlyTheThirdDeliveryClearsAndRecordsUseWholeDescentPerformance" fullname="Cascade.Tests.DescentTests.OnlyTheThirdDeliveryClearsAndRecordsUseWholeDescentPerformance" methodname="OnlyTheThirdDeliveryClearsAndRecordsUseWholeDescentPerformance" classname="Cascade.Tests.DescentTests" runstate="Runnable" seed="632706019" result="Passed" start-time="2026-10-07 05:11:41Z" end-time="2026-10-07 05:11:41Z" duration="0.429513" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1341" name="PublishedDescentCurvesAreProvenAndPreserveTheReceiverAndFinalDevices" fullname="Cascade.Tests.DescentTests.PublishedDescentCurvesAreProvenAndPreserveTheReceiverAndFinalDevices" methodname="PublishedDescentCurvesAreProvenAndPreserveTheReceiverAndFinalDevices" classname="Cascade.Tests.DescentTests" runstate="Runnable" seed="1358834415" result="Failed" start-time="2026-10-07 05:11:41Z" end-time="2026-10-07 05:15:03Z" duration="201.728037" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[Timeout value of 180000 ms was exceeded. If this is intended, increase the timeout value using a TimeoutAttribute.]]></message>
+                <stack-trace><![CDATA[]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1342" name="VersionOneRecipesKeepTheirExactDeviceFreeStagesAndOldHashFormula" fullname="Cascade.Tests.DescentTests.VersionOneRecipesKeepTheirExactDeviceFreeStagesAndOldHashFormula" methodname="VersionOneRecipesKeepTheirExactDeviceFreeStagesAndOldHashFormula" classname="Cascade.Tests.DescentTests" runstate="Runnable" seed="1532881649" result="Passed" start-time="2026-10-07 05:15:03Z" end-time="2026-10-07 05:15:03Z" duration="0.133685" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestSuite" id="1658" name="EditMode" fullname="Cascade.Tests.EditMode" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-10-07 05:15:03Z" end-time="2026-10-07 05:15:04Z" duration="1.437714" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1643" name="LiveGustTests" fullname="Cascade.Tests.EditMode.LiveGustTests" classname="Cascade.Tests.EditMode.LiveGustTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-10-07 05:15:03Z" end-time="2026-10-07 05:15:04Z" duration="1.437515" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1644" name="GustUsesFinalContactsAndCanBreakBeforeTheReceiver" fullname="Cascade.Tests.EditMode.LiveGustTests.GustUsesFinalContactsAndCanBreakBeforeTheReceiver" methodname="GustUsesFinalContactsAndCanBreakBeforeTheReceiver" classname="Cascade.Tests.EditMode.LiveGustTests" runstate="Runnable" seed="1537337864" result="Passed" start-time="2026-10-07 05:15:03Z" end-time="2026-10-07 05:15:03Z" duration="0.003155" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1654" name="NewRecipesProveAllStagesIncludingDamage" fullname="Cascade.Tests.EditMode.LiveGustTests.NewRecipesProveAllStagesIncludingDamage" classname="Cascade.Tests.EditMode.LiveGustTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-07 05:15:03Z" end-time="2026-10-07 05:15:04Z" duration="1.432758" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1647" name="NewRecipesProveAllStagesIncludingDamage(&quot;C02&quot;)" fullname="Cascade.Tests.EditMode.LiveGustTests.NewRecipesProveAllStagesIncludingDamage(&quot;C02&quot;)" methodname="NewRecipesProveAllStagesIncludingDamage" classname="Cascade.Tests.EditMode.LiveGustTests" runstate="Runnable" seed="1641516271" result="Passed" start-time="2026-10-07 05:15:03Z" end-time="2026-10-07 05:15:03Z" duration="0.325162" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1648" name="NewRecipesProveAllStagesIncludingDamage(&quot;C03&quot;)" fullname="Cascade.Tests.EditMode.LiveGustTests.NewRecipesProveAllStagesIncludingDamage(&quot;C03&quot;)" methodname="NewRecipesProveAllStagesIncludingDamage" classname="Cascade.Tests.EditMode.LiveGustTests" runstate="Runnable" seed="759106432" result="Passed" start-time="2026-10-07 05:15:03Z" end-time="2026-10-07 05:15:03Z" duration="0.143454" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1649" name="NewRecipesProveAllStagesIncludingDamage(&quot;C04&quot;)" fullname="Cascade.Tests.EditMode.LiveGustTests.NewRecipesProveAllStagesIncludingDamage(&quot;C04&quot;)" methodname="NewRecipesProveAllStagesIncludingDamage" classname="Cascade.Tests.EditMode.LiveGustTests" runstate="Runnable" seed="1533063223" result="Passed" start-time="2026-10-07 05:15:03Z" end-time="2026-10-07 05:15:03Z" duration="0.132845" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1650" name="NewRecipesProveAllStagesIncludingDamage(&quot;C06&quot;)" fullname="Cascade.Tests.EditMode.LiveGustTests.NewRecipesProveAllStagesIncludingDamage(&quot;C06&quot;)" methodname="NewRecipesProveAllStagesIncludingDamage" classname="Cascade.Tests.EditMode.LiveGustTests" runstate="Runnable" seed="1094068016" result="Passed" start-time="2026-10-07 05:15:03Z" end-time="2026-10-07 05:15:04Z" duration="0.128487" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1651" name="NewRecipesProveAllStagesIncludingDamage(&quot;C07&quot;)" fullname="Cascade.Tests.EditMode.LiveGustTests.NewRecipesProveAllStagesIncludingDamage(&quot;C07&quot;)" methodname="NewRecipesProveAllStagesIncludingDamage" classname="Cascade.Tests.EditMode.LiveGustTests" runstate="Runnable" seed="107971665" result="Passed" start-time="2026-10-07 05:15:04Z" end-time="2026-10-07 05:15:04Z" duration="0.144201" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1652" name="NewRecipesProveAllStagesIncludingDamage(&quot;C29&quot;)" fullname="Cascade.Tests.EditMode.LiveGustTests.NewRecipesProveAllStagesIncludingDamage(&quot;C29&quot;)" methodname="NewRecipesProveAllStagesIncludingDamage" classname="Cascade.Tests.EditMode.LiveGustTests" runstate="Runnable" seed="1796667428" result="Passed" start-time="2026-10-07 05:15:04Z" end-time="2026-10-07 05:15:04Z" duration="0.347717" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1653" name="NewRecipesProveAllStagesIncludingDamage(&quot;C81&quot;)" fullname="Cascade.Tests.EditMode.LiveGustTests.NewRecipesProveAllStagesIncludingDamage(&quot;C81&quot;)" methodname="NewRecipesProveAllStagesIncludingDamage" classname="Cascade.Tests.EditMode.LiveGustTests" runstate="Runnable" seed="861030058" result="Passed" start-time="2026-10-07 05:15:04Z" end-time="2026-10-07 05:15:04Z" duration="0.209969" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-case id="1645" name="NoOpDoesNotTickAndEarlyDescentAvoidsGust" fullname="Cascade.Tests.EditMode.LiveGustTests.NoOpDoesNotTickAndEarlyDescentAvoidsGust" methodname="NoOpDoesNotTickAndEarlyDescentAvoidsGust" classname="Cascade.Tests.EditMode.LiveGustTests" runstate="Runnable" seed="1110504611" result="Passed" start-time="2026-10-07 05:15:04Z" end-time="2026-10-07 05:15:04Z" duration="0.000372" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1646" name="PredictionReplayAndUndoKeepExactGustState" fullname="Cascade.Tests.EditMode.LiveGustTests.PredictionReplayAndUndoKeepExactGustState" methodname="PredictionReplayAndUndoKeepExactGustState" classname="Cascade.Tests.EditMode.LiveGustTests" runstate="Runnable" seed="119926153" result="Passed" start-time="2026-10-07 05:15:04Z" end-time="2026-10-07 05:15:04Z" duration="0.000399" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestFixture" id="1626" name="WindConflictTests" fullname="Cascade.Tests.WindConflictTests" classname="Cascade.Tests.WindConflictTests" runstate="Runnable" testcasecount="14" result="Passed" start-time="2026-10-07 05:15:04Z" end-time="2026-10-07 05:15:35Z" duration="30.880923" total="14" passed="14" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1642" name="LinkedFragileFallAndWindResolveAllContactsOnTheFinalRow" fullname="Cascade.Tests.WindConflictTests.LinkedFragileFallAndWindResolveAllContactsOnTheFinalRow" methodname="LinkedFragileFallAndWindResolveAllContactsOnTheFinalRow" classname="Cascade.Tests.WindConflictTests" runstate="Runnable" seed="250826789" result="Passed" start-time="2026-10-07 05:15:04Z" end-time="2026-10-07 05:15:04Z" duration="0.004688" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1634" name="OldRawWindSaveKeepsItsExactPinAndCommandsAfterFreshCalibration" fullname="Cascade.Tests.WindConflictTests.OldRawWindSaveKeepsItsExactPinAndCommandsAfterFreshCalibration" methodname="OldRawWindSaveKeepsItsExactPinAndCommandsAfterFreshCalibration" classname="Cascade.Tests.WindConflictTests" runstate="Runnable" seed="331537443" result="Passed" start-time="2026-10-07 05:15:04Z" end-time="2026-10-07 05:15:04Z" duration="0.003400" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1633" name="VerifiedPlannerDoesNotPublishUnknownOrCanceledCalibration" fullname="Cascade.Tests.WindConflictTests.VerifiedPlannerDoesNotPublishUnknownOrCanceledCalibration" methodname="VerifiedPlannerDoesNotPublishUnknownOrCanceledCalibration" classname="Cascade.Tests.WindConflictTests" runstate="Runnable" seed="384221932" result="Passed" start-time="2026-10-07 05:15:04Z" end-time="2026-10-07 05:15:04Z" duration="0.000489" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1632" name="VerifiedPlannerPreservesAProvedWindRecipeAndItsRecoveryLanding" fullname="Cascade.Tests.WindConflictTests.VerifiedPlannerPreservesAProvedWindRecipeAndItsRecoveryLanding" methodname="VerifiedPlannerPreservesAProvedWindRecipeAndItsRecoveryLanding" classname="Cascade.Tests.WindConflictTests" runstate="Runnable" seed="1300344962" result="Passed" start-time="2026-10-07 05:15:04Z" end-time="2026-10-07 05:15:04Z" duration="0.020077" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1631" name="VerifiedPlannerReplacesAnImpossiblePeakWithProvedRecovery" fullname="Cascade.Tests.WindConflictTests.VerifiedPlannerReplacesAnImpossiblePeakWithProvedRecovery" classname="Cascade.Tests.WindConflictTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-07 05:15:04Z" end-time="2026-10-07 05:15:04Z" duration="0.031845" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1627" name="VerifiedPlannerReplacesAnImpossiblePeakWithProvedRecovery(&quot;C29&quot;,Wind)" fullname="Cascade.Tests.WindConflictTests.VerifiedPlannerReplacesAnImpossiblePeakWithProvedRecovery(&quot;C29&quot;,Wind)" methodname="VerifiedPlannerReplacesAnImpossiblePeakWithProvedRecovery" classname="Cascade.Tests.WindConflictTests" runstate="Runnable" seed="867225335" result="Passed" start-time="2026-10-07 05:15:04Z" end-time="2026-10-07 05:15:04Z" duration="0.003337" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1628" name="VerifiedPlannerReplacesAnImpossiblePeakWithProvedRecovery(&quot;C32&quot;,Wind)" fullname="Cascade.Tests.WindConflictTests.VerifiedPlannerReplacesAnImpossiblePeakWithProvedRecovery(&quot;C32&quot;,Wind)" methodname="VerifiedPlannerReplacesAnImpossiblePeakWithProvedRecovery" classname="Cascade.Tests.WindConflictTests" runstate="Runnable" seed="505357784" result="Passed" start-time="2026-10-07 05:15:04Z" end-time="2026-10-07 05:15:04Z" duration="0.012697" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1629" name="VerifiedPlannerReplacesAnImpossiblePeakWithProvedRecovery(&quot;C17&quot;,Tight)" fullname="Cascade.Tests.WindConflictTests.VerifiedPlannerReplacesAnImpossiblePeakWithProvedRecovery(&quot;C17&quot;,Tight)" methodname="VerifiedPlannerReplacesAnImpossiblePeakWithProvedRecovery" classname="Cascade.Tests.WindConflictTests" runstate="Runnable" seed="880543008" result="Passed" start-time="2026-10-07 05:15:04Z" end-time="2026-10-07 05:15:04Z" duration="0.000398" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1630" name="VerifiedPlannerReplacesAnImpossiblePeakWithProvedRecovery(&quot;C42&quot;,Tight)" fullname="Cascade.Tests.WindConflictTests.VerifiedPlannerReplacesAnImpossiblePeakWithProvedRecovery(&quot;C42&quot;,Tight)" methodname="VerifiedPlannerReplacesAnImpossiblePeakWithProvedRecovery" classname="Cascade.Tests.WindConflictTests" runstate="Runnable" seed="185962051" result="Passed" start-time="2026-10-07 05:15:04Z" end-time="2026-10-07 05:15:04Z" duration="0.014612" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="ParameterizedMethod" id="1641" name="WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint" fullname="Cascade.Tests.WindConflictTests.WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint" classname="Cascade.Tests.WindConflictTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-07 05:15:04Z" end-time="2026-10-07 05:15:35Z" duration="30.695482" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1635" name="WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint(&quot;C29&quot;,&quot;en&quot;)" fullname="Cascade.Tests.WindConflictTests.WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint(&quot;C29&quot;,&quot;en&quot;)" methodname="WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint" classname="Cascade.Tests.WindConflictTests" runstate="Runnable" seed="159825028" result="Passed" start-time="2026-10-07 05:15:04Z" end-time="2026-10-07 05:15:05Z" duration="0.061126" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1636" name="WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint(&quot;C29&quot;,&quot;ru&quot;)" fullname="Cascade.Tests.WindConflictTests.WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint(&quot;C29&quot;,&quot;ru&quot;)" methodname="WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint" classname="Cascade.Tests.WindConflictTests" runstate="Runnable" seed="1729410972" result="Passed" start-time="2026-10-07 05:15:05Z" end-time="2026-10-07 05:15:05Z" duration="0.059398" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1637" name="WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint(&quot;C29&quot;,&quot;uk&quot;)" fullname="Cascade.Tests.WindConflictTests.WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint(&quot;C29&quot;,&quot;uk&quot;)" methodname="WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint" classname="Cascade.Tests.WindConflictTests" runstate="Runnable" seed="9074284" result="Passed" start-time="2026-10-07 05:15:05Z" end-time="2026-10-07 05:15:05Z" duration="0.059098" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1638" name="WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint(&quot;C32&quot;,&quot;en&quot;)" fullname="Cascade.Tests.WindConflictTests.WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint(&quot;C32&quot;,&quot;en&quot;)" methodname="WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint" classname="Cascade.Tests.WindConflictTests" runstate="Runnable" seed="64943555" result="Passed" start-time="2026-10-07 05:15:05Z" end-time="2026-10-07 05:15:14Z" duration="9.801762" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1639" name="WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint(&quot;C32&quot;,&quot;ru&quot;)" fullname="Cascade.Tests.WindConflictTests.WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint(&quot;C32&quot;,&quot;ru&quot;)" methodname="WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint" classname="Cascade.Tests.WindConflictTests" runstate="Runnable" seed="613666540" result="Passed" start-time="2026-10-07 05:15:14Z" end-time="2026-10-07 05:15:25Z" duration="10.364729" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1640" name="WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint(&quot;C32&quot;,&quot;uk&quot;)" fullname="Cascade.Tests.WindConflictTests.WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint(&quot;C32&quot;,&quot;uk&quot;)" methodname="WindDescentProvesActualCombinedConditionsAndRestoresItsCheckpoint" classname="Cascade.Tests.WindConflictTests" runstate="Runnable" seed="823587710" result="Passed" start-time="2026-10-07 05:15:25Z" end-time="2026-10-07 05:15:35Z" duration="10.348701" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

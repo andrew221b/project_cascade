@@ -1,0 +1,17 @@
+[
+  {
+    "test": "PreviewMonetizationTests.TestShopItemsRespectStockCapAndDoNotSpendCoins()",
+    "status": "Passed",
+    "ms": 9.4309000000000012
+  },
+  {
+    "test": "PreviewMonetizationTests.TestAdsAndPurchasesNeverPersistFakeMoneyOwnershipOrReceipts()",
+    "status": "Passed",
+    "ms": 184.1344
+  },
+  {
+    "test": "PreviewMonetizationTests.TestPurchaseSaveFailureDoesNotPublishAnEntitlement()",
+    "status": "Passed",
+    "ms": 0.1558
+  }
+]

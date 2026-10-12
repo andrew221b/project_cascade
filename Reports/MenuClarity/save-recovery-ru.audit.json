@@ -1,0 +1,98 @@
+{
+  "pose": "save-recovery-ru",
+  "before": {
+    "Screen": "SaveRecovery",
+    "Attempt": "8766975b-837d-483b-a345-d5e063971a38",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "after": {
+    "Screen": "SaveRecovery",
+    "Attempt": "8766975b-837d-483b-a345-d5e063971a38",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 390,
+    "height": 844,
+    "locale": "ru",
+    "largeText": false,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Startanewpuzzle",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Startanewpuzzle",
+        "interactable": true,
+        "bounds": {
+          "x": 37.0968056,
+          "y": 297.847626,
+          "width": 315.806427,
+          "height": 52.0
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Menu title",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Menu title",
+        "text": "Твой путь",
+        "button": null,
+        "bounds": {
+          "x": 70.9332,
+          "y": 716.6151,
+          "width": 248.133575,
+          "height": 47.5357666
+        },
+        "fontPixels": 28.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Recovery explanation",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Recovery explanation",
+        "text": "Не удалось открыть эту задачу. Твои огни сохранены. Можно начать новую.",
+        "button": null,
+        "bounds": {
+          "x": 67.17361,
+          "y": 403.482666,
+          "width": 255.652771,
+          "height": 173.543274
+        },
+        "fontPixels": 20.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Startanewpuzzle/Label",
+        "text": "Начать новую задачу",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Startanewpuzzle",
+        "bounds": {
+          "x": 37.0968056,
+          "y": 297.847626,
+          "width": 315.806427,
+          "height": 51.99997
+        },
+        "fontPixels": 22.0,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

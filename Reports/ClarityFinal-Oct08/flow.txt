@@ -1,0 +1,1 @@
+PASS: trophy/tool detail, shelf Back, My things parent restore, unchanged puzzle hash and coin balance. Isolated Editor profile.

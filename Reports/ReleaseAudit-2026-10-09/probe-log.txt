@@ -1,0 +1,6 @@
+Triads: 100
+Triads: 200
+Triads: 300
+Triads: 400
+Triads: 500
+Independent probes complete.

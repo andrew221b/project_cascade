@@ -1,0 +1,3 @@
+exit code: 0
+Unity iOS Development export: Succeeded, 0 errors, 358 warnings.
+Xcode Release build: succeeded for arm64.

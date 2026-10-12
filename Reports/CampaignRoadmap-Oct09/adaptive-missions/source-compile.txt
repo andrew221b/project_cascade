@@ -1,0 +1,21 @@
+Domain source compile PASS
+Solver source compile PASS
+Application source compile PASS
+Content source compile PASS
+Persistence source compile PASS
+error CS0006: Metadata file 'Library/Bee/artifacts/900b0aE.dag/DOTween.Modules.ref.dll' could not be found
+error CS0006: Metadata file 'Library/Bee/artifacts/900b0aE.dag/Unity.InputSystem.ref.dll' could not be found
+error CS0006: Metadata file 'Library/Bee/artifacts/900b0aE.dag/Unity.Localization.ref.dll' could not be found
+error CS0006: Metadata file 'Library/Bee/artifacts/900b0aE.dag/Unity.Notifications.Android.ref.dll' could not be found
+error CS0006: Metadata file 'Library/Bee/artifacts/900b0aE.dag/Unity.Notifications.iOS.ref.dll' could not be found
+error CS0006: Metadata file 'Library/Bee/artifacts/900b0aE.dag/Unity.Purchasing.ref.dll' could not be found
+error CS0006: Metadata file 'Library/Bee/artifacts/900b0aE.dag/Unity.ResourceManager.ref.dll' could not be found
+error CS0006: Metadata file 'Library/Bee/artifacts/900b0aE.dag/Unity.Services.Authentication.PlayerAccounts.ref.dll' could not be found
+error CS0006: Metadata file 'Library/Bee/artifacts/900b0aE.dag/Unity.Services.Authentication.ref.dll' could not be found
+error CS0006: Metadata file 'Library/Bee/artifacts/900b0aE.dag/Unity.Services.CloudCode.ref.dll' could not be found
+error CS0006: Metadata file 'Library/Bee/artifacts/900b0aE.dag/Unity.Services.CloudSave.ref.dll' could not be found
+error CS0006: Metadata file 'Library/Bee/artifacts/900b0aE.dag/Unity.Services.Core.Environments.ref.dll' could not be found
+error CS0006: Metadata file 'Library/Bee/artifacts/900b0aE.dag/Unity.Services.Core.ref.dll' could not be found
+error CS0006: Metadata file 'Library/Bee/artifacts/900b0aE.dag/Unity.TextMeshPro.ref.dll' could not be found
+error CS0006: Metadata file 'Library/Bee/artifacts/900b0aE.dag/UnityEditor.UI.ref.dll' could not be found
+error CS0006: Metadata file 'Library/Bee/artifacts/900b0aE.dag/UnityEngine.UI.ref.dll' could not be found

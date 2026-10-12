@@ -1,0 +1,52 @@
+{
+  "seconds": 48.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "pcm_bits": 16,
+  "peak": 0.43359375,
+  "clipping_samples": 0,
+  "rms": 0.07498586587715399,
+  "rms_a": 0.0662769450046777,
+  "rms_b": 0.08278361385890314,
+  "b_over_a_db": 1.9316379924209546,
+  "bar_rms": [
+    0.06914843477126499,
+    0.07422242650316636,
+    0.06389209698321052,
+    0.048894134299283916,
+    0.07670416504269685,
+    0.0799813449945221,
+    0.060406332465241165,
+    0.04948016750346635,
+    0.07871696494890527,
+    0.08086377314599852,
+    0.0967810241759833,
+    0.07974445142804845,
+    0.0824611933517737,
+    0.09611856099273203,
+    0.07957211700932561,
+    0.06319502555086548
+  ],
+  "seam_by_channel": [
+    0.001739501953125,
+    0.0
+  ],
+  "seam_jump_dbfs": -55.19150158574453,
+  "adjacent_difference_99_9pct": 0.02984619140625,
+  "dc_by_channel": [
+    -1.953482537763369e-08,
+    4.53337700368776e-07
+  ],
+  "sha256": "ce31f3f5a0c3c4897a9828fdfefc2bd0b4ba24d899cfe8be2bc9388a1439f97d",
+  "provenance": "Original score in Tools/compose_cascade_score.swift, observatory(); macOS built-in General MIDI instrument playback; no third-party recording, composition or bank copied.",
+  "existing_world_music_sha256_preserved": {
+    "WindGarden_PaperWings": "c1dc48087e27e7355f2c00f7c4b784ed21658b647c1b6c6f0e6cbe1e07e7c7cf",
+    "RainMill_RainOnCedar": "1c02505f3bc92362b6f217e50220423b6e5b38d2fc4a50ae069a22e4195981c2",
+    "CopperOrchard_GoldenAfternoon": "88418ab0a7c64e8645b535631d8b2f05e35f9058082e932977f3b2fae3339cb0",
+    "CloudPost_LettersOnTheBreeze": "7d408078804547be8f8a777b97efcf70536409f4ec5c775d9f497980b573cbd3",
+    "GlassLagoon_ReflectedMoon": "52af0ca79a6db6183395fb5e59872cfbfabfc5b0c788553761cb4de3b828dc2b",
+    "MossArchive_StoriesInTheLeaves": "b95ce2e33a5c0185660292e3593c3d2ce67a19ce8cff995385590e991238e9cd",
+    "SnowSpire_WarmLightInSnow": "3acd98314296b0fa5e6f2c2be125208accb827ca1b343c75d99bd2353f76687d",
+    "GreatBeacon_TheWayHome": "69fe33897ac1985313e455858b0f8e6168529d216ce4332e98ae5534bc81a963"
+  }
+}

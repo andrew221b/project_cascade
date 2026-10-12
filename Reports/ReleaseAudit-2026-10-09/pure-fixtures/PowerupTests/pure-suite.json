@@ -1,0 +1,42 @@
+[
+  {
+    "test": "PowerupTests.AuthoredTacticalLessonIsSolvableAndReplayable(0)",
+    "status": "Passed",
+    "ms": 42.0
+  },
+  {
+    "test": "PowerupTests.AuthoredTacticalLessonIsSolvableAndReplayable(1)",
+    "status": "Passed",
+    "ms": 0.3436
+  },
+  {
+    "test": "PowerupTests.AuthoredTacticalLessonIsSolvableAndReplayable(2)",
+    "status": "Passed",
+    "ms": 0.34800000000000003
+  },
+  {
+    "test": "PowerupTests.AuthoredTacticalLessonIsSolvableAndReplayable(3)",
+    "status": "Passed",
+    "ms": 0.57900000000000007
+  },
+  {
+    "test": "PowerupTests.AuthoredTacticalLessonIsSolvableAndReplayable(4)",
+    "status": "Passed",
+    "ms": 1.0665
+  },
+  {
+    "test": "PowerupTests.AuthoredTacticalLessonIsSolvableAndReplayable(5)",
+    "status": "Passed",
+    "ms": 1.0974000000000002
+  },
+  {
+    "test": "PowerupTests.HourglassProtectsTwoTicksButNeverProtectsWood()",
+    "status": "Passed",
+    "ms": 0.525
+  },
+  {
+    "test": "PowerupTests.RibbonCarriesDownAndCannotBeCollectedTwice()",
+    "status": "Passed",
+    "ms": 0.89140000000000008
+  }
+]

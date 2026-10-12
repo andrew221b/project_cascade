@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /
+Sitemap: https://cascade-sky-gardens.active-seed-4233.chatgpt.site/sitemap.xml

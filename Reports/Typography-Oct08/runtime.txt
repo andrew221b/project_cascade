@@ -1,0 +1,8 @@
+Lens ownership/result lines=1
+Coin extra result lines=0
+Final native screenshot set complete. Gameplay state hash guarded per capture. Temporary visual reward fixtures; acquisition/economy behavior not tested. Static frames use Reduced Motion; no phone build.
+OVERFLOW knight: Trophy shelf page / 2 / 2
+OVERFLOW knight: Trophy acquisition / Рідкісна посилка або монети
+Incomplete trophy result lines=1
+Final narrow pass complete; 6 tool/guide variants, knight/scenery, unopened and fragment; no overflow unless reported above.
+Final compact trophy recheck: 0 TMP overflows; page counter and acquisition leading corrected. Prior knight overflow entries are resolved.

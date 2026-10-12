@@ -1,0 +1,27 @@
+HalfStarResultsTests: cumulative 13 passed, 0 failed
+FiveStarResultsTests: cumulative 26 passed, 0 failed
+FAIL CompletionProgressTests.IndependentPersonalBestsRetainTheirOwnEvidenceUntilOneRunDominates(): Replay requires a prior clear and a valid rating.
+CompletionProgressTests: cumulative 33 passed, 1 failed
+FAIL RewardTests.ReplayReservePaysFourForTwoStarsAndOnlyTheIncrementUpToTen(): Replay requires a prior clear and a valid rating.
+FAIL RewardTests.SkippingC26DoesNotPretendThatWorkshopIsComplete():   Expected: 2000
+  But was:  1930
+
+RewardTests: cumulative 44 passed, 3 failed
+FAIL CloudReconcilerTests.MergedStarAndScoreBestsKeepEachSourceProof():   String lengths are both 64. Strings differ at index 0.
+  Expected: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  But was:  "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  -----------^
+
+FAIL CloudReconcilerTests.IndependentSpendsAndConsumptionsMergeAsDeltasWithoutAddingBalances():   Expected: False
+  But was:  True
+
+FAIL CloudReconcilerTests.ConcurrentOverspendOrDoubleConsumptionKeepsRemoteEconomy():   Expected: 100
+  But was:  150
+
+FAIL CloudReconcilerTests.ClaimedParcelsVisitsAndClearIncomeDoNotRepeatAcrossModesOrMerges():   Expected: 264
+  But was:  240
+
+CloudReconcilerTests: cumulative 54 passed, 7 failed
+ModeJourneyTests: cumulative 57 passed, 7 failed
+LevelDefinitionTests: cumulative 97 passed, 7 failed
+HalfStarServerChecks: cumulative 100 passed, 7 failed

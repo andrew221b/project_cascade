@@ -1,0 +1,10 @@
+Unready video buttons=0
+Removed status/scope labels=0
+Ready video buttons=1
+Temporary profile; purchases/ad rewards not exercised. Gameplay hash preserved per capture; static Reduced Motion; no phone build.
+OVERFLOW coin-packs-ru: Pack quantity / ×240
+OVERFLOW coin-packs-ru: Pack use / На трофей или инструменты
+OVERFLOW coin-packs-ru: Pack quantity / ×480
+OVERFLOW coin-packs-ru: Fair help rules / До 2 инструментов за этап. С ними — до 2 звёзд за уровень.
+Back/wallet vertical difference=0
+Trophy description line count=1

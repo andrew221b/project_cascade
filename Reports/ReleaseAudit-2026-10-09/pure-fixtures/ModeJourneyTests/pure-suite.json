@@ -1,0 +1,17 @@
+[
+  {
+    "test": "ModeJourneyTests.JourneysKeepIndependentClearsDirectorAndStageAfterSaveReload()",
+    "status": "Passed",
+    "ms": 179.6113
+  },
+  {
+    "test": "ModeJourneyTests.LegacySchemaAssignsTheJourneyOnlyToItsSavedMode()",
+    "status": "Passed",
+    "ms": 29.9741
+  },
+  {
+    "test": "ModeJourneyTests.DuplicateOrActiveArchiveIsRejectedAndRewardsCannotBeDuplicated()",
+    "status": "Passed",
+    "ms": 2.1046
+  }
+]

@@ -1,0 +1,6 @@
+Result=Succeeded
+Duration=00:00:30.5055090
+Size=1563122502
+Errors=0
+Warnings=346
+Output=/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/CASCADE-iOS

@@ -1,0 +1,1 @@
+10 native camera views captured in isolated profile; capture helper confirmed gameplay hash unchanged.

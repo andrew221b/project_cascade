@@ -1,0 +1,14 @@
+{
+    "width": 390,
+    "height": 844,
+    "minimumDeviceTextPixels": 0.0,
+    "buttons": [
+        {
+            "name": "Continuecompletion",
+            "x": 52.13519287109375,
+            "y": 49.76001739501953,
+            "width": 285.72955322265627,
+            "height": 48.0
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "test": "TutorialCoachTests.HelpOnlyAccumulatesInForegroundAndNeverChangesState()",
+    "status": "Passed",
+    "ms": 16.883300000000002
+  },
+  {
+    "test": "TutorialCoachTests.DestroyedTeachingFloorCannotKeepTutorialWaiting()",
+    "status": "Passed",
+    "ms": 1.8517000000000001
+  },
+  {
+    "test": "TutorialCoachTests.RepeatedInvalidIsSpecificToTheSameEdgeAndResetsAfterAcceptedState()",
+    "status": "Passed",
+    "ms": 1.0739
+  },
+  {
+    "test": "TutorialCoachTests.CompletionAndDisabledCoachingDoNotAccumulateIdleHelp()",
+    "status": "Passed",
+    "ms": 0.13470000000000001
+  }
+]

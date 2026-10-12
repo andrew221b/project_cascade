@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Passed" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-08 00:20:11Z" end-time="2026-10-08 00:20:11Z" duration="0.0426087">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="763" result="Passed" start-time="2026-10-08 00:20:11Z" end-time="2026-10-08 00:20:11Z" duration="0.042609" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1842" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="762" result="Passed" start-time="2026-10-08 00:20:11Z" end-time="2026-10-08 00:20:11Z" duration="0.033502" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24227" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1843" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="762" result="Passed" start-time="2026-10-08 00:20:11Z" end-time="2026-10-08 00:20:11Z" duration="0.033336" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1844" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="762" result="Passed" start-time="2026-10-08 00:20:11Z" end-time="2026-10-08 00:20:11Z" duration="0.033189" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1776" name="StoryConversationTests" fullname="Cascade.Tests.StoryConversationTests" classname="Cascade.Tests.StoryConversationTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-08 00:20:11Z" end-time="2026-10-08 00:20:11Z" duration="0.032752" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1778" name="CheckpointsOnlyInterruptBetweenSecondAndThirdStageAndDoNotCollideWithIslandOrIntroIds" fullname="Cascade.Tests.StoryConversationTests.CheckpointsOnlyInterruptBetweenSecondAndThirdStageAndDoNotCollideWithIslandOrIntroIds" methodname="CheckpointsOnlyInterruptBetweenSecondAndThirdStageAndDoNotCollideWithIslandOrIntroIds" classname="Cascade.Tests.StoryConversationTests" runstate="Runnable" seed="1706318150" result="Passed" start-time="2026-10-08 00:20:11Z" end-time="2026-10-08 00:20:11Z" duration="0.014675" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1777" name="IslandScenesCoverTheFullJourneyWithDistinctReceiptsAndRealExchanges" fullname="Cascade.Tests.StoryConversationTests.IslandScenesCoverTheFullJourneyWithDistinctReceiptsAndRealExchanges" methodname="IslandScenesCoverTheFullJourneyWithDistinctReceiptsAndRealExchanges" classname="Cascade.Tests.StoryConversationTests" runstate="Runnable" seed="790357029" result="Passed" start-time="2026-10-08 00:20:11Z" end-time="2026-10-08 00:20:11Z" duration="0.006246" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1779" name="KnownResidentsGiveCurrentIslandGoalInsteadOfRepeatingTheirIntroduction" fullname="Cascade.Tests.StoryConversationTests.KnownResidentsGiveCurrentIslandGoalInsteadOfRepeatingTheirIntroduction" methodname="KnownResidentsGiveCurrentIslandGoalInsteadOfRepeatingTheirIntroduction" classname="Cascade.Tests.StoryConversationTests" runstate="Runnable" seed="831476915" result="Passed" start-time="2026-10-08 00:20:11Z" end-time="2026-10-08 00:20:11Z" duration="0.003752" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1781" name="MidIslandScenesCoverEveryIslandWithoutReplacingPublishedLaterAsides" fullname="Cascade.Tests.StoryConversationTests.MidIslandScenesCoverEveryIslandWithoutReplacingPublishedLaterAsides" methodname="MidIslandScenesCoverEveryIslandWithoutReplacingPublishedLaterAsides" classname="Cascade.Tests.StoryConversationTests" runstate="Runnable" seed="991766513" result="Passed" start-time="2026-10-08 00:20:11Z" end-time="2026-10-08 00:20:11Z" duration="0.001917" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1780" name="ReadingInOneModeDoesNotConsumeStoryInAnotherMode" fullname="Cascade.Tests.StoryConversationTests.ReadingInOneModeDoesNotConsumeStoryInAnotherMode" methodname="ReadingInOneModeDoesNotConsumeStoryInAnotherMode" classname="Cascade.Tests.StoryConversationTests" runstate="Runnable" seed="385982360" result="Passed" start-time="2026-10-08 00:20:11Z" end-time="2026-10-08 00:20:11Z" duration="0.001602" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -1,0 +1,6 @@
+{
+    "name": "Cascade.Application",
+    "rootNamespace": "Cascade.Application",
+    "references": ["Cascade.Domain", "Cascade.Solver"],
+    "noEngineReferences": true
+}

@@ -1,0 +1,2 @@
+Eight-device account scale: 4403339 decoded / 3043832 stored / 1456532 reply bytes; 1074 proved clears, 10000 grants retained per baseline; full-ledger merge 178 ms on this Mac.
+Cloud Code boundary checks: 66 PASS; fake SDK transport, no live Cloud Save claim.

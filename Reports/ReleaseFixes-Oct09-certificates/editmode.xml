@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="4" result="Passed" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-09 04:54:45Z" end-time="2026-10-09 04:55:00Z" duration="15.7493821">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="859" result="Passed" start-time="2026-10-09 04:54:45Z" end-time="2026-10-09 04:55:00Z" duration="15.749382" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1959" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="858" result="Passed" start-time="2026-10-09 04:54:46Z" end-time="2026-10-09 04:55:00Z" duration="14.855726" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24227" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1960" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="858" result="Passed" start-time="2026-10-09 04:54:46Z" end-time="2026-10-09 04:55:00Z" duration="14.853587" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1961" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="858" result="Passed" start-time="2026-10-09 04:54:46Z" end-time="2026-10-09 04:55:00Z" duration="14.852106" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1237" name="CloudSchedulingTests" fullname="Cascade.Tests.CloudSchedulingTests" classname="Cascade.Tests.CloudSchedulingTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-09 04:54:46Z" end-time="2026-10-09 04:54:47Z" duration="0.945970" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1238" name="RepeatedGameplaySavesCannotDefeatOfflineBackoffOrSuccessCooldown" fullname="Cascade.Tests.CloudSchedulingTests.RepeatedGameplaySavesCannotDefeatOfflineBackoffOrSuccessCooldown" methodname="RepeatedGameplaySavesCannotDefeatOfflineBackoffOrSuccessCooldown" classname="Cascade.Tests.CloudSchedulingTests" runstate="Runnable" seed="1692443491" result="Passed" start-time="2026-10-09 04:54:46Z" end-time="2026-10-09 04:54:47Z" duration="0.900038" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1671" name="PublishedTriadStoreTests" fullname="Cascade.Tests.PublishedTriadStoreTests" classname="Cascade.Tests.PublishedTriadStoreTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-09 04:54:47Z" end-time="2026-10-09 04:55:00Z" duration="13.901812" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1673" name="CachedStagesNeverShareMutableRunState" fullname="Cascade.Tests.PublishedTriadStoreTests.CachedStagesNeverShareMutableRunState" methodname="CachedStagesNeverShareMutableRunState" classname="Cascade.Tests.PublishedTriadStoreTests" runstate="Runnable" seed="934798995" result="Passed" start-time="2026-10-09 04:54:47Z" end-time="2026-10-09 04:54:51Z" duration="4.711267" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1672" name="EveryPublishedAndLocalizedCertificateReplaysWithoutRegeneration" fullname="Cascade.Tests.PublishedTriadStoreTests.EveryPublishedAndLocalizedCertificateReplaysWithoutRegeneration" methodname="EveryPublishedAndLocalizedCertificateReplaysWithoutRegeneration" classname="Cascade.Tests.PublishedTriadStoreTests" runstate="Runnable" seed="372887346" result="Passed" start-time="2026-10-09 04:54:51Z" end-time="2026-10-09 04:54:58Z" duration="6.644569" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1674" name="StaleCatalogOrCustomDraftCannotUsePublishedCertificates" fullname="Cascade.Tests.PublishedTriadStoreTests.StaleCatalogOrCustomDraftCannotUsePublishedCertificates" methodname="StaleCatalogOrCustomDraftCannotUsePublishedCertificates" classname="Cascade.Tests.PublishedTriadStoreTests" runstate="Runnable" seed="1848540755" result="Passed" start-time="2026-10-09 04:54:58Z" end-time="2026-10-09 04:55:00Z" duration="2.541698" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -1,0 +1,5 @@
+Initial native capture aborted before any frames.
+Unity localization editor toolbar: EditorStyles.get_popup → GameViewLanguageMenu.AddToolbarsToGameViews, InitializeOnLoad.
+Repeated CascadeGame.UpdateDescent line49 NullReference with uninitialized runtime Interaction following script/domain reload in Play Mode. No CascadeGame.Start exception was found in the editor log. Stopped Play Mode; waited for IsCompiling/IsUpdating false; fresh start follows. This is an observed editor failure, not a passing validation result.
+
+Confirmation attempt before capture: the editor reload issue recurred at Play entry (Localization GameViewLanguageMenu EditorStyles popup initialization; nonserialized Interaction absent while scene and Feedback existed). No frames or player changes were accepted from that session. Stopped and restart after settled compilation.

@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Menu_HomeAmongClouds",
+    "seconds": 202.10526077097506,
+    "notes": 466,
+    "peak": 0.7300000190734863,
+    "rms": 0.10021954029798508,
+    "seam": 0.0,
+    "sha256": "1d9302a30cfb448d281577e78808a17d3cc5aa10a37ffc330ee9211c4d540130"
+  },
+  {
+    "name": "WindGarden_PaperWings",
+    "seconds": 182.85714285714286,
+    "notes": 466,
+    "peak": 0.7299999594688416,
+    "rms": 0.10338544100522995,
+    "seam": 0.0,
+    "sha256": "4793d80937e4cc2b670e7455482d54025596ffb38eb374ab5338bff280d9da67"
+  },
+  {
+    "name": "RainMill_RainOnCedar",
+    "seconds": 219.42857142857142,
+    "notes": 466,
+    "peak": 0.7299999594688416,
+    "rms": 0.10110399127006531,
+    "seam": 0.0,
+    "sha256": "6754664194237993ee41eb50fab97511b67185f9d59f0082074afdcd682186f7"
+  },
+  {
+    "name": "CopperOrchard_GoldenAfternoon",
+    "seconds": 178.60464852607709,
+    "notes": 466,
+    "peak": 0.7145445346832275,
+    "rms": 0.10500000417232513,
+    "seam": 0.0,
+    "sha256": "f990c8bfbb66c8b5e3188ed65f2d6b875cbf85411aaa438da758f8a34448fa93"
+  },
+  {
+    "name": "CloudPost_LettersOnTheBreeze",
+    "seconds": 192.0,
+    "notes": 466,
+    "peak": 0.7043904066085815,
+    "rms": 0.10499999672174454,
+    "seam": 0.0,
+    "sha256": "492e300cc107da3984b2db32fdea2c60f44ed536f3691a79ffc701ff7748d173"
+  },
+  {
+    "name": "GlassLagoon_ReflectedMoon",
+    "seconds": 213.33333333333334,
+    "notes": 466,
+    "peak": 0.7169879674911499,
+    "rms": 0.10499999672174454,
+    "seam": 1.8189894035458565e-12,
+    "sha256": "86ca13f27ea22193c5777f71219f1bc07e0d080af1c827b035b6830d63d7aee7"
+  },
+  {
+    "name": "MossArchive_StoriesInTheLeaves",
+    "seconds": 225.882358276644,
+    "notes": 466,
+    "peak": 0.7242743372917175,
+    "rms": 0.10499999672174454,
+    "seam": 0.0,
+    "sha256": "c80d47fcba517d3468974ef62937d69e1d1d698d79d22b99fdd54ac629dd6daa"
+  },
+  {
+    "name": "SnowSpire_WarmLightInSnow",
+    "seconds": 213.33333333333334,
+    "notes": 466,
+    "peak": 0.7300000190734863,
+    "rms": 0.09922226518392563,
+    "seam": 0.0,
+    "sha256": "99ea6207f9710c56f8b42a728bc688d822542ae6fa3db0adbd0714fce1a4cf58"
+  },
+  {
+    "name": "GreatBeacon_TheWayHome",
+    "seconds": 187.31707482993198,
+    "notes": 466,
+    "peak": 0.6589502096176147,
+    "rms": 0.10500000417232513,
+    "seam": 0.0,
+    "sha256": "cc18a4430f24f59216aad99e21357a3117aa24844e033b94c80714c3d10f9ecf"
+  },
+  {
+    "name": "StarObservatory_ConstellationLullaby",
+    "seconds": 232.72727891156464,
+    "notes": 466,
+    "peak": 0.7300000190734863,
+    "rms": 0.10240966826677322,
+    "seam": 0.0,
+    "sha256": "7f7bb84648ac1dc8f56321dd088812219485561597e2ba1cb5b13c1b7033e604"
+  }
+]

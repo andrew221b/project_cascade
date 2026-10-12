@@ -1,0 +1,7 @@
+Assets/_Cascade/Presentation/NativeAdProvider.cs(66,72): warning CS0618: 'RequestConfiguration.TagForChildDirectedTreatment' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(66,124): warning CS0618: 'TagForChildDirectedTreatment' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(66,158): warning CS0618: 'TagForChildDirectedTreatment' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(67,17): warning CS0618: 'RequestConfiguration.TagForUnderAgeOfConsent' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(67,68): warning CS0618: 'TagForUnderAgeOfConsent' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(67,97): warning CS0618: 'TagForUnderAgeOfConsent' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/CascadeGame.Language.cs(11,16): warning CS0414: The field 'CascadeGame.languagePreview' is assigned but its value is never used

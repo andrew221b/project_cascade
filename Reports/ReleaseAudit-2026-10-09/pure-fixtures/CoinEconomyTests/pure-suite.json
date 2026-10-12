@@ -1,0 +1,32 @@
+[
+  {
+    "test": "CoinEconomyTests.VerifiedPacksAreExactlyOnceAndCannotChangeProductOnReplay()",
+    "status": "Passed",
+    "ms": 6.8976000000000006
+  },
+  {
+    "test": "CoinEconomyTests.PaidPendingValueIsDeliveredAboveWalletThresholdAndSaveFailureCanRetry()",
+    "status": "Passed",
+    "ms": 0.38530000000000003
+  },
+  {
+    "test": "CoinEconomyTests.ThirdToolCannotSpendStockOrMutateAttemptAfterReload()",
+    "status": "Passed",
+    "ms": 35.7043
+  },
+  {
+    "test": "CoinEconomyTests.OneStepGuideExpiresOnSwapAndFailedToolSavePreservesItsState()",
+    "status": "Passed",
+    "ms": 3.1349
+  },
+  {
+    "test": "CoinEconomyTests.UndoExpiresGuideAndLegacyToolFlagsRemainLoadable()",
+    "status": "Passed",
+    "ms": 1.8815000000000002
+  },
+  {
+    "test": "CoinEconomyTests.PreviewCoinPackNeverWritesFakeValueIntoProfile()",
+    "status": "Passed",
+    "ms": 93.9811
+  }
+]

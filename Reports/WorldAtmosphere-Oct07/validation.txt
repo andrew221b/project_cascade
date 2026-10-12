@@ -1,0 +1,12 @@
+World 0: wildlife=1; stars=0; pose=5.20; source=RGBA(1.000, 0.960, 0.840, 1.000); ambient=RGBA(0.670, 0.790, 0.810, 1.000)
+World 1: wildlife=2; stars=0; pose=59.20; source=RGBA(0.840, 0.940, 1.000, 1.000); ambient=RGBA(0.590, 0.720, 0.780, 1.000)
+World 2: wildlife=1; stars=0; pose=32.00; source=RGBA(1.000, 0.790, 0.530, 1.000); ambient=RGBA(0.740, 0.660, 0.590, 1.000)
+World 3: wildlife=2; stars=0; pose=34.40; source=RGBA(1.000, 0.980, 0.920, 1.000); ambient=RGBA(0.710, 0.800, 0.870, 1.000)
+World 4: wildlife=1; stars=0; pose=29.20; source=RGBA(0.860, 1.000, 0.970, 1.000); ambient=RGBA(0.550, 0.770, 0.790, 1.000)
+World 5: wildlife=2; stars=0; pose=55.60; source=RGBA(0.960, 1.000, 0.790, 1.000); ambient=RGBA(0.600, 0.730, 0.610, 1.000)
+World 6: wildlife=1; stars=0; pose=11.60; source=RGBA(0.800, 0.900, 1.000, 1.000); ambient=RGBA(0.690, 0.770, 0.880, 1.000)
+World 7: wildlife=1; stars=0; pose=10.80; source=RGBA(1.000, 0.750, 0.430, 1.000); ambient=RGBA(0.760, 0.630, 0.530, 1.000)
+World 8: wildlife=1; stars=16; pose=11.60; source=RGBA(0.670, 0.790, 1.000, 1.000); ambient=RGBA(0.380, 0.460, 0.630, 1.000)
+PASS: all9 worlds resolve wildlife; same phase stable; night meteor; Reduced Motion; effects off; one directional source; puzzle hash unchanged.
+Native Editor renders:9 worlds at two poses, night meteor/reduced mode and map390/320. Explicit poses do not establish human enjoyment or device performance. No phone build.
+Native focused PlayMode:1/1 cricket lifecycle PASS; playmode.xml. Reviewed native night/map/skiff frames. No device speaker/haptic listening test.

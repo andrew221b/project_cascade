@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="11" result="Failed(Child)" total="11" passed="10" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-08 21:26:50Z" end-time="2026-10-08 21:27:02Z" duration="11.9521826">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="808" result="Failed" site="Child" start-time="2026-10-08 21:26:50Z" end-time="2026-10-08 21:27:02Z" duration="11.952183" total="11" passed="10" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1898" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="807" result="Failed" site="Child" start-time="2026-10-08 21:26:52Z" end-time="2026-10-08 21:27:02Z" duration="10.793136" total="11" passed="10" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24227" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1899" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="807" result="Failed" site="Child" start-time="2026-10-08 21:26:52Z" end-time="2026-10-08 21:27:02Z" duration="10.791581" total="11" passed="10" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1900" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="807" result="Failed" site="Child" start-time="2026-10-08 21:26:52Z" end-time="2026-10-08 21:27:02Z" duration="10.790683" total="11" passed="10" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1588" name="PersonalMissionTests" fullname="Cascade.Tests.PersonalMissionTests" classname="Cascade.Tests.PersonalMissionTests" runstate="Runnable" testcasecount="11" result="Failed" site="Child" start-time="2026-10-08 21:26:52Z" end-time="2026-10-08 21:27:02Z" duration="10.788392" total="11" passed="10" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1599" name="AcceptedMissionAndCampaignCheckpointSurviveSaveAndModeSwitch" fullname="Cascade.Tests.PersonalMissionTests.AcceptedMissionAndCampaignCheckpointSurviveSaveAndModeSwitch" methodname="AcceptedMissionAndCampaignCheckpointSurviveSaveAndModeSwitch" classname="Cascade.Tests.PersonalMissionTests" runstate="Runnable" seed="644076048" result="Passed" start-time="2026-10-08 21:26:56Z" end-time="2026-10-08 21:26:58Z" duration="1.533306" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1600" name="DeclineUsesProgressIntervalAndCancellationNeverReturnsAnOffer" fullname="Cascade.Tests.PersonalMissionTests.DeclineUsesProgressIntervalAndCancellationNeverReturnsAnOffer" methodname="DeclineUsesProgressIntervalAndCancellationNeverReturnsAnOffer" classname="Cascade.Tests.PersonalMissionTests" runstate="Runnable" seed="329455274" result="Passed" start-time="2026-10-08 21:26:58Z" end-time="2026-10-08 21:26:58Z" duration="0.023091" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1598" name="MissionsAreHarderWithinABoundedBandAndEveryStageReplays" fullname="Cascade.Tests.PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays" classname="Cascade.Tests.PersonalMissionTests" runstate="Runnable" testcasecount="9" result="Failed" site="Child" start-time="2026-10-08 21:26:58Z" end-time="2026-10-08 21:27:02Z" duration="4.563611" total="9" passed="8" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1589" name="MissionsAreHarderWithinABoundedBandAndEveryStageReplays(&quot;C03&quot;)" fullname="Cascade.Tests.PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(&quot;C03&quot;)" methodname="MissionsAreHarderWithinABoundedBandAndEveryStageReplays" classname="Cascade.Tests.PersonalMissionTests" runstate="Runnable" seed="1129811662" result="Passed" start-time="2026-10-08 21:26:58Z" end-time="2026-10-08 21:26:58Z" duration="0.057548" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1590" name="MissionsAreHarderWithinABoundedBandAndEveryStageReplays(&quot;C06&quot;)" fullname="Cascade.Tests.PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(&quot;C06&quot;)" methodname="MissionsAreHarderWithinABoundedBandAndEveryStageReplays" classname="Cascade.Tests.PersonalMissionTests" runstate="Runnable" seed="1036009892" result="Passed" start-time="2026-10-08 21:26:58Z" end-time="2026-10-08 21:26:58Z" duration="0.019236" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1591" name="MissionsAreHarderWithinABoundedBandAndEveryStageReplays(&quot;C11&quot;)" fullname="Cascade.Tests.PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(&quot;C11&quot;)" methodname="MissionsAreHarderWithinABoundedBandAndEveryStageReplays" classname="Cascade.Tests.PersonalMissionTests" runstate="Runnable" seed="1513485020" result="Passed" start-time="2026-10-08 21:26:58Z" end-time="2026-10-08 21:26:58Z" duration="0.035649" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1592" name="MissionsAreHarderWithinABoundedBandAndEveryStageReplays(&quot;C14&quot;)" fullname="Cascade.Tests.PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(&quot;C14&quot;)" methodname="MissionsAreHarderWithinABoundedBandAndEveryStageReplays" classname="Cascade.Tests.PersonalMissionTests" runstate="Runnable" seed="1613974445" result="Failed" start-time="2026-10-08 21:26:58Z" end-time="2026-10-08 21:26:58Z" duration="0.408697" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  C14
+  Expected: not null
+  But was:  null
+]]></message>
+                  <stack-trace><![CDATA[at Cascade.Tests.PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays (System.String node) [0x00063] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Tests/EditMode/PersonalMissionTests.cs:28
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case id="1593" name="MissionsAreHarderWithinABoundedBandAndEveryStageReplays(&quot;C37&quot;)" fullname="Cascade.Tests.PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(&quot;C37&quot;)" methodname="MissionsAreHarderWithinABoundedBandAndEveryStageReplays" classname="Cascade.Tests.PersonalMissionTests" runstate="Runnable" seed="1734049351" result="Passed" start-time="2026-10-08 21:26:58Z" end-time="2026-10-08 21:26:59Z" duration="0.117641" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1594" name="MissionsAreHarderWithinABoundedBandAndEveryStageReplays(&quot;C65&quot;)" fullname="Cascade.Tests.PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(&quot;C65&quot;)" methodname="MissionsAreHarderWithinABoundedBandAndEveryStageReplays" classname="Cascade.Tests.PersonalMissionTests" runstate="Runnable" seed="201375942" result="Passed" start-time="2026-10-08 21:26:59Z" end-time="2026-10-08 21:26:59Z" duration="0.319773" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1595" name="MissionsAreHarderWithinABoundedBandAndEveryStageReplays(&quot;C120&quot;)" fullname="Cascade.Tests.PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(&quot;C120&quot;)" methodname="MissionsAreHarderWithinABoundedBandAndEveryStageReplays" classname="Cascade.Tests.PersonalMissionTests" runstate="Runnable" seed="579761034" result="Passed" start-time="2026-10-08 21:26:59Z" end-time="2026-10-08 21:27:00Z" duration="1.233463" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1596" name="MissionsAreHarderWithinABoundedBandAndEveryStageReplays(&quot;C360&quot;)" fullname="Cascade.Tests.PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(&quot;C360&quot;)" methodname="MissionsAreHarderWithinABoundedBandAndEveryStageReplays" classname="Cascade.Tests.PersonalMissionTests" runstate="Runnable" seed="328219472" result="Passed" start-time="2026-10-08 21:27:00Z" end-time="2026-10-08 21:27:00Z" duration="0.076120" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1597" name="MissionsAreHarderWithinABoundedBandAndEveryStageReplays(&quot;C500&quot;)" fullname="Cascade.Tests.PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(&quot;C500&quot;)" methodname="MissionsAreHarderWithinABoundedBandAndEveryStageReplays" classname="Cascade.Tests.PersonalMissionTests" runstate="Runnable" seed="934113091" result="Passed" start-time="2026-10-08 21:27:00Z" end-time="2026-10-08 21:27:02Z" duration="2.288449" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

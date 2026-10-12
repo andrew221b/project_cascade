@@ -1,0 +1,67 @@
+[
+  {
+    "test": "AttemptTests.InvalidCommandsAndPredictionDoNotChangeHistory()",
+    "status": "Passed",
+    "ms": 34.2323
+  },
+  {
+    "test": "AttemptTests.RouteLengthRollsBackButUndoCountIsSeparate()",
+    "status": "Passed",
+    "ms": 1.4355
+  },
+  {
+    "test": "AttemptTests.HourglassAcrossCollapseRestoresBombCountersAndOldFloor()",
+    "status": "Passed",
+    "ms": 12.9318
+  },
+  {
+    "test": "AttemptTests.ActualUndoRestoresBridgeStampKeyRepairAndDefuse()",
+    "status": "Passed",
+    "ms": 0.5157
+  },
+  {
+    "test": "AttemptTests.DeadEndOnBrokenFloorNeedsHourglassToRestorePlayable()",
+    "status": "Passed",
+    "ms": 3.5794
+  },
+  {
+    "test": "AttemptTests.UnknownDoesNotConsumeHintOrHistory()",
+    "status": "Passed",
+    "ms": 0.97600000000000009
+  },
+  {
+    "test": "AttemptTests.StaleHintCannotBeRevealedOrExecuted()",
+    "status": "Passed",
+    "ms": 1.0948
+  },
+  {
+    "test": "AttemptTests.RevealedHintIsMonotonicAcrossUndoAndCanBeReusedAtSameHash()",
+    "status": "Passed",
+    "ms": 1.5365
+  },
+  {
+    "test": "AttemptTests.RetryPinsSameVersionButCreatesNewAttemptAndRejectsOldHint()",
+    "status": "Passed",
+    "ms": 2.3533
+  },
+  {
+    "test": "AttemptTests.HintUsesActiveContractGoal()",
+    "status": "Passed",
+    "ms": 1.6718000000000002
+  },
+  {
+    "test": "AttemptTests.EquivalentCoreStatesHaveSameHashAcrossAttemptsAndCommands()",
+    "status": "Passed",
+    "ms": 1.6941000000000002
+  },
+  {
+    "test": "AttemptTests.PuzzleLocaleAndModeAreBoundAtAttemptStart()",
+    "status": "Passed",
+    "ms": 3.0736000000000003
+  },
+  {
+    "test": "AttemptTests.CancelledWorkerQueryIsUnknownAndDoesNotMutateAttempt()",
+    "status": "Passed",
+    "ms": 1.183
+  }
+]

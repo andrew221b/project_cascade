@@ -1,0 +1,3 @@
+# Device validation build — 9 October 2026
+
+Development iOS export for the explicitly requested iPhone installation. Use the previously documented CASCADE development bundle identifier com.vickand.cascade and the existing signing certificate's team F8297DBPDU for this export only. Restore the project's original identifier, name and signing settings after export. Configs/release-ids.json remains unfilled; no production identifiers, prices, monetization flags or gameplay rules change. Export only CascadePlayable, matching the existing explicit single-scene build helper; SampleScene is not the game's entry point. This is not a store submission build.

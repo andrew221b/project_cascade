@@ -1,0 +1,5 @@
+MechanicLessonTests: cumulative 22 passed, 0 failed
+LessonRouteTests: cumulative 34 passed, 0 failed
+GuidedPracticeTests: cumulative 48 passed, 0 failed
+LevelDefinitionTests: cumulative 88 passed, 0 failed
+LinkedFragileTests: cumulative 98 passed, 0 failed

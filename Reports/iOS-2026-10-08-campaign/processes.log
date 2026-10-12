@@ -1,0 +1,28 @@
+20:20:31  Acquired tunnel connection to device.
+20:20:31  Enabling developer disk image services.
+20:20:32  Acquired usage assertion.
+ERROR: An error occurred evaluating a value using the specified filter. (com.apple.dt.CoreDeviceError error -1 (0xFFFFFFFF))
+       Backtrace = (
+       	0   CoreFoundation                      0x000000019b5d78fc __exceptionPreprocess + 176
+       	1   libobjc.A.dylib                     0x000000019b0ae418 objc_exception_throw + 88
+       	2   Foundation                          0x000000019d743100 -[NSInPredicateOperator performPrimitiveOperationUsingObject:andObject:] + 452
+       	3   Foundation                          0x000000019d6f9050 -[NSComparisonPredicate evaluateWithObject:substitutionVariables:] + 352
+       	4   CoreDeviceCLISupport                0x00000001010b90e8 -[NSPredicate(CoreDeviceAdditions) cd_evaluateWithObject:substitutionVariables:error:] + 68
+       	5   CoreDeviceCLISupport                0x00000001011824c4 objectdestroyTm + 1540
+       	6   CoreDeviceCLISupport                0x000000010116b168 __swift_memcpy0_1 + 54236
+       	7   CoreDeviceCLISupport                0x000000010116db08 __swift_memcpy0_1 + 64892
+       	8   libswiftCore.dylib                  0x00000001aea2132c $ss14_ArrayProtocolPsE6filterySay7ElementQzGSbAEKXEKF + 880
+       	9   CoreDeviceCLISupport                0x000000010116ac2c __swift_memcpy0_1 + 52896
+       	10  CoreDeviceCLISupport                0x000000010116b2f0 __swift_memcpy0_1 + 54628
+       	11  devicectl                           0x000000010099be7c __swift_memcpy0_1 + 46048
+       	12  devicectl                           0x000000010096f9b1 __swift_noop_void_return + 17561
+       	13  CoreDeviceCLISupport                0x00000001010e3e79 __swift_memcpy18_8 + 40417
+       	14  CoreDeviceCLISupport                0x00000001010e4ef9 __swift_memcpy18_8 + 44641
+       	15  devicectl                           0x000000010096fc91 __swift_noop_void_return + 18297
+       	16  devicectl                           0x0000000100a1b525 __swift_store_extra_inhabitant_indexTm + 98461
+       	17  devicectl                           0x000000010096a789 async_MainTQ4_ + 1
+       	18  devicectl                           0x000000010096aa3d async_MainTY6_ + 321
+       	19  libswift_Concurrency.dylib          0x000000029a83c41d _ZL22completeTaskAndReleasePN5swift12AsyncContextEPNS_10SwiftErrorE + 1
+       )
+       NSLocalizedFailureReason = Can't use in/contains operator with collection file:///System/Library/PrivateFrameworks/EmailDaemon.framework/maild (not a collection)
+       Name = NSInvalidArgumentException

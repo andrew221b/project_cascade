@@ -1,0 +1,45 @@
+{
+  "phase": "P11",
+  "status": "COMPLETE",
+  "editmode": {
+    "total": 305,
+    "passed": 305,
+    "failed": 0
+  },
+  "playmode": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0
+  },
+  "input_validation": "Virtual Mouse/Touchscreen events through real InputSystem, EventSystem, GraphicRaycaster. All 40 primary levels, 92 commands, all 15 event kinds; physical devices not tested.",
+  "fixed_reproductions": [
+    "Second touch on same slot stealing active gesture",
+    "TouchPhase.Canceled over adjacent slot causing a commit",
+    "Secondary mouse release ending primary gesture",
+    "A new gesture recovers after lifecycle cancellation while stale release cannot steal it"
+  ],
+  "usability_fixes": [
+    "Hint button no longer overlays precise input",
+    "Precise controls show cost and update immediately",
+    "Consumed bridge reads closed from Domain",
+    "Explicit Deliver label for ordered last-floor row",
+    "Preview shows repair/blast/contact effects"
+  ],
+  "visual": [
+    "C01-portrait.png",
+    "C38-portrait.png",
+    "C32-compact.png",
+    "C37-en-portrait.png"
+  ],
+  "visual_scope": "Gray technical playable at 390x844 and 320x693. No final art approval.",
+  "editor": "Compilation succeeded; fresh Console empty. Simulator closed; NRE stopped after import/reload; reopening Simulator not tested.",
+  "poc_report": "Docs/POC_REVIEW.md and Reports/P11/concept_audit.json",
+  "not_run": [
+    "physical iPhone/Android input",
+    "player build",
+    "mobile profiling",
+    "final visual and glyph QA",
+    "P13 real motion interruption matrix",
+    "human fun playtest"
+  ]
+}

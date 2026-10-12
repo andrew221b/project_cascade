@@ -1,0 +1,7 @@
+2026-10-11 — completion screen review
+
+Native Unity screenshots inspected at 390×844 RU and 320×693 UK:
+- result-ru.png
+- result-uk-small.png
+
+Passed before the review continued into the shop: three-star result, 1800 score without a thousands separator, generated gold multiplication and colon glyphs, full-opacity Mika, normal-weight victory title, no side actions while claiming the trophy, wide/compact score plaque, and unchanged completion receipt/puzzle state. The full FiveStarReview later stopped on the pre-existing shop overflow `Owned stock / × 0`; this is outside the completion screen changes. Full test suite, physical-device gameplay, and human usability test were not run.

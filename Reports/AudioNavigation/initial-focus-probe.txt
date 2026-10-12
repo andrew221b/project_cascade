@@ -1,0 +1,6 @@
+Unity 6000.3.8f1 current patched code, isolated fresh profile
+fresh Home prefs=True/True flags=True/True suspended=True paused=True listener=False/1 editorMute=False sources=CASCADE score A:Menu_HomeAmongCloudsBalanced:Loaded:False:0:0;CASCADE score B:::False:0:0;Living island wind:LivingWind:Loaded:False:0:0;Rain beneath the mill:RainBed:Loaded:False:0:0
+after focus return prefs=True/True flags=True/True suspended=False paused=True listener=False/1 editorMute=False sources=CASCADE score A:Menu_HomeAmongCloudsBalanced:Loaded:True:0.19:0.9287982;CASCADE score B:::False:0:0;Living island wind:LivingWind:Loaded:True:0.001455422:0.9287982;Rain beneath the mill:RainBed:Loaded:True:0:0.9287916
+Listener PCM peak=0.07476816 rms=0.0131666530745631 samples=1691648
+Menu cue alive after 2 frames=True
+Navigation cue alive immediately=True

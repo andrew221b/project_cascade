@@ -1,0 +1,1 @@
+Official Unity relay: Play=False; CompilationFailed=False; mapShaderFound=True; shaderErrors=0; scene=Assets/_Cascade/Scenes/CascadePlayable.unity. Isolated review profile cleared. No phone build/export/install.

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-11 16:33:24Z" end-time="2026-10-11 16:33:31Z" duration="6.9428512">
+  <test-suite type="TestSuite" id="1176" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="156" result="Passed" start-time="2026-10-11 16:33:24Z" end-time="2026-10-11 16:33:31Z" duration="6.942851" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1170" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="156" result="Passed" start-time="2026-10-11 16:33:24Z" end-time="2026-10-11 16:33:31Z" duration="6.878439" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="2150" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1171" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="156" result="Passed" start-time="2026-10-11 16:33:24Z" end-time="2026-10-11 16:33:31Z" duration="6.835042" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1172" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="156" result="Passed" start-time="2026-10-11 16:33:24Z" end-time="2026-10-11 16:33:31Z" duration="6.833930" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1051" name="PlayableTests" fullname="Cascade.Tests.PlayableTests" classname="Cascade.Tests.PlayableTests" runstate="Runnable" testcasecount="93" result="Passed" start-time="2026-10-11 16:33:24Z" end-time="2026-10-11 16:33:31Z" duration="6.832503" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1069" name="PhoneShakeKeepsPiecesSeatedAndRespectsReducedMotion" fullname="Cascade.Tests.PlayableTests.PhoneShakeKeepsPiecesSeatedAndRespectsReducedMotion" methodname="PhoneShakeKeepsPiecesSeatedAndRespectsReducedMotion" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1938717339" result="Passed" start-time="2026-10-11 16:33:24Z" end-time="2026-10-11 16:33:31Z" duration="6.803186" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+Saving results to: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/PhoneTilt-Oct11-Recheck/playmode.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

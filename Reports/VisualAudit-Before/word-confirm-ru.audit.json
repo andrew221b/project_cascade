@@ -1,0 +1,135 @@
+{
+  "pose": "word-confirm-ru",
+  "before": {
+    "Screen": "WordLanguage",
+    "Attempt": "bba515c0-24f2-4688-a727-763241d6a29c",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "after": {
+    "Screen": "WordLanguage",
+    "Attempt": "bba515c0-24f2-4688-a727-763241d6a29c",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 390,
+    "height": 844,
+    "locale": "ru",
+    "largeText": false,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Back",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Navigation heading/Back",
+        "interactable": true,
+        "bounds": {
+          "x": 32.88606,
+          "y": 702.3534,
+          "width": 62.8605232,
+          "height": 62.47754
+        }
+      },
+      {
+        "name": "Usefornewpuzzles",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Usefornewpuzzles",
+        "interactable": true,
+        "bounds": {
+          "x": 37.0968056,
+          "y": 267.6662,
+          "width": 315.806427,
+          "height": 64.13556
+        }
+      },
+      {
+        "name": "Keepmychoice",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Keepmychoice",
+        "interactable": true,
+        "bounds": {
+          "x": 37.0968056,
+          "y": 177.121841,
+          "width": 315.806427,
+          "height": 64.1355743
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Page heading",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Navigation heading/Page heading",
+        "text": "Сменить язык слов?",
+        "button": null,
+        "bounds": {
+          "x": 102.363464,
+          "y": 703.4862,
+          "width": 238.208282,
+          "height": 60.2119141
+        },
+        "fontPixels": 24.85,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Language confirmation",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Language confirmation cloth/Language confirmation",
+        "text": "Новые задачи: Українська. Этот ряд не изменится.",
+        "button": null,
+        "bounds": {
+          "x": 59.3536339,
+          "y": 410.424377,
+          "width": 271.292725,
+          "height": 152.1145
+        },
+        "fontPixels": 21.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Usefornewpuzzles/Label",
+        "text": "Для новых задач",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Usefornewpuzzles",
+        "bounds": {
+          "x": 119.206474,
+          "y": 274.079742,
+          "width": 205.27417,
+          "height": 51.30844
+        },
+        "fontPixels": 24.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Keepmychoice/Label",
+        "text": "Оставить как было",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Keepmychoice",
+        "bounds": {
+          "x": 119.206474,
+          "y": 183.535385,
+          "width": 205.27417,
+          "height": 51.30847
+        },
+        "fontPixels": 21.5,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

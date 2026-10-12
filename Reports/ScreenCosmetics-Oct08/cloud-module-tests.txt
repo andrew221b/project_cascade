@@ -1,0 +1,8 @@
+Recorded stdout from the completed 2026-10-08 linked-module run; no new run.
+
+Command: /private/tmp/cascade-dotnet9/dotnet run --project CascadeAccount.Tests/CascadeAccount.Tests.csproj -c Release --no-restore
+Working directory: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/CascadeAccountCCM
+Environment: DOTNET_CLI_HOME=/private/tmp/cascade-dotnet-cli; DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1; DOTNET_CLI_TELEMETRY_OPTOUT=1
+Completed tool session: 3655, exit code 0
+
+Cloud Code boundary checks: 50 PASS; fake SDK transport, no live Cloud Save claim.

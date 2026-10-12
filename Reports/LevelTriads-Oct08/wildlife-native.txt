@@ -1,0 +1,1 @@
+PASS: safe-support landing after four idle seconds, rest, input departure, unchanged puzzle hash. Native minute sample: maximum 5 actors, presence 240/240 samples. No physical-device FPS claim.

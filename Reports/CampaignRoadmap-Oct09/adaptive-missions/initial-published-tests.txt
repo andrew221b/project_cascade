@@ -1,0 +1,5 @@
+FAIL PersonalMissionTests.MissionsAreHarderWithinABoundedBandAndEveryStageReplays(C360):   C360
+  Expected: not null
+  But was:  null
+
+PersonalMissionTests: cumulative 14 passed, 1 failed

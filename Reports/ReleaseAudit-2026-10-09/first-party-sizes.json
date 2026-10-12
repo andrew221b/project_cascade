@@ -1,0 +1,34 @@
+{
+  "Domain": {
+    "files": 8,
+    "lines": 734
+  },
+  "Solver": {
+    "files": 3,
+    "lines": 240
+  },
+  "Application": {
+    "files": 22,
+    "lines": 2229
+  },
+  "Content": {
+    "files": 8,
+    "lines": 1117
+  },
+  "Persistence": {
+    "files": 7,
+    "lines": 637
+  },
+  "Presentation": {
+    "files": 125,
+    "lines": 13501
+  },
+  "Editor": {
+    "files": 75,
+    "lines": 6998
+  },
+  "Tests": {
+    "files": 71,
+    "lines": 9308
+  }
+}

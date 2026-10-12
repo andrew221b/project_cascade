@@ -1,0 +1,10 @@
+[Log] Menu_HomeAmongClouds: 2ch 68.6s Streaming bg=True preload=False
+[Log] WindGarden_PaperWings: 2ch 62.6s Streaming bg=True preload=False
+[Log] RainMill_RainOnCedar: 2ch 75.8s Streaming bg=True preload=False
+[Log] CopperOrchard_GoldenAfternoon: 2ch 55.4s Streaming bg=True preload=False
+[Log] CloudPost_LettersOnTheBreeze: 2ch 60.0s Streaming bg=True preload=False
+[Log] GlassLagoon_ReflectedMoon: 2ch 72.0s Streaming bg=True preload=False
+[Log] MossArchive_StoriesInTheLeaves: 2ch 80.0s Streaming bg=True preload=False
+[Log] SnowSpire_WarmLightInSnow: 2ch 73.8s Streaming bg=True preload=False
+[Log] GreatBeacon_TheWayHome: 2ch 57.6s Streaming bg=True preload=False
+[Log] listener=1 sources=12 active=3 score=Menu_HomeAmongClouds compileFailed=False

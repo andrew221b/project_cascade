@@ -1,0 +1,1130 @@
+{
+  "source_format": "JPEG",
+  "source_dimensions": [
+    244,
+    1280
+  ],
+  "source_sha256": "478bb0efc0fed3c9a3e4bce8057907e474e182cf3b7a7a212213bc9ad9fa9bb1",
+  "reading_order": "section top to bottom; each row left to right",
+  "pixel_policy": "native-size deterministic crops, PNG, no AI regeneration, no enlargement, no extra JPEG compression",
+  "slides": [
+    {
+      "kind": "slide",
+      "file": "slides/section_01/slide_001_r01_c01.png",
+      "box": [
+        4,
+        34,
+        121,
+        90
+      ],
+      "number": 1,
+      "section": 1,
+      "row": 1,
+      "column": 1
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_01/slide_002_r01_c02.png",
+      "box": [
+        123,
+        34,
+        240,
+        90
+      ],
+      "number": 2,
+      "section": 1,
+      "row": 1,
+      "column": 2
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_01/slide_003_r02_c01.png",
+      "box": [
+        4,
+        93,
+        121,
+        149
+      ],
+      "number": 3,
+      "section": 1,
+      "row": 2,
+      "column": 1
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_01/slide_004_r02_c02.png",
+      "box": [
+        123,
+        93,
+        240,
+        149
+      ],
+      "number": 4,
+      "section": 1,
+      "row": 2,
+      "column": 2
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_02/slide_005_r01_c01.png",
+      "box": [
+        4,
+        167,
+        121,
+        222
+      ],
+      "number": 5,
+      "section": 2,
+      "row": 1,
+      "column": 1
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_02/slide_006_r01_c02.png",
+      "box": [
+        123,
+        167,
+        240,
+        222
+      ],
+      "number": 6,
+      "section": 2,
+      "row": 1,
+      "column": 2
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_02/slide_007_r02_c01.png",
+      "box": [
+        4,
+        226,
+        121,
+        282
+      ],
+      "number": 7,
+      "section": 2,
+      "row": 2,
+      "column": 1
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_02/slide_008_r02_c02.png",
+      "box": [
+        123,
+        226,
+        240,
+        282
+      ],
+      "number": 8,
+      "section": 2,
+      "row": 2,
+      "column": 2
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_02/slide_009_r03_c01.png",
+      "box": [
+        4,
+        285,
+        121,
+        341
+      ],
+      "number": 9,
+      "section": 2,
+      "row": 3,
+      "column": 1
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_03/slide_010_r01_c01.png",
+      "box": [
+        4,
+        359,
+        121,
+        414
+      ],
+      "number": 10,
+      "section": 3,
+      "row": 1,
+      "column": 1
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_03/slide_011_r01_c02.png",
+      "box": [
+        123,
+        359,
+        240,
+        414
+      ],
+      "number": 11,
+      "section": 3,
+      "row": 1,
+      "column": 2
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_03/slide_012_r02_c01.png",
+      "box": [
+        4,
+        418,
+        121,
+        474
+      ],
+      "number": 12,
+      "section": 3,
+      "row": 2,
+      "column": 1
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_03/slide_013_r02_c02.png",
+      "box": [
+        123,
+        418,
+        240,
+        474
+      ],
+      "number": 13,
+      "section": 3,
+      "row": 2,
+      "column": 2
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_04/slide_014_r01_c01.png",
+      "box": [
+        4,
+        491,
+        121,
+        547
+      ],
+      "number": 14,
+      "section": 4,
+      "row": 1,
+      "column": 1
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_04/slide_015_r01_c02.png",
+      "box": [
+        123,
+        491,
+        240,
+        547
+      ],
+      "number": 15,
+      "section": 4,
+      "row": 1,
+      "column": 2
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_04/slide_016_r02_c01.png",
+      "box": [
+        4,
+        551,
+        121,
+        606
+      ],
+      "number": 16,
+      "section": 4,
+      "row": 2,
+      "column": 1
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_04/slide_017_r02_c02.png",
+      "box": [
+        123,
+        551,
+        240,
+        606
+      ],
+      "number": 17,
+      "section": 4,
+      "row": 2,
+      "column": 2
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_05/slide_018_r01_c01.png",
+      "box": [
+        4,
+        624,
+        121,
+        679
+      ],
+      "number": 18,
+      "section": 5,
+      "row": 1,
+      "column": 1
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_05/slide_019_r01_c02.png",
+      "box": [
+        123,
+        624,
+        240,
+        679
+      ],
+      "number": 19,
+      "section": 5,
+      "row": 1,
+      "column": 2
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_05/slide_020_r02_c01.png",
+      "box": [
+        4,
+        683,
+        121,
+        739
+      ],
+      "number": 20,
+      "section": 5,
+      "row": 2,
+      "column": 1
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_05/slide_021_r02_c02.png",
+      "box": [
+        123,
+        683,
+        240,
+        739
+      ],
+      "number": 21,
+      "section": 5,
+      "row": 2,
+      "column": 2
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_06/slide_022_r01_c01.png",
+      "box": [
+        4,
+        757,
+        121,
+        812
+      ],
+      "number": 22,
+      "section": 6,
+      "row": 1,
+      "column": 1
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_06/slide_023_r01_c02.png",
+      "box": [
+        123,
+        757,
+        240,
+        812
+      ],
+      "number": 23,
+      "section": 6,
+      "row": 1,
+      "column": 2
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_06/slide_024_r02_c01.png",
+      "box": [
+        4,
+        816,
+        121,
+        871
+      ],
+      "number": 24,
+      "section": 6,
+      "row": 2,
+      "column": 1
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_07/slide_025_r01_c01.png",
+      "box": [
+        4,
+        889,
+        121,
+        945
+      ],
+      "number": 25,
+      "section": 7,
+      "row": 1,
+      "column": 1
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_07/slide_026_r01_c02.png",
+      "box": [
+        123,
+        889,
+        240,
+        945
+      ],
+      "number": 26,
+      "section": 7,
+      "row": 1,
+      "column": 2
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_07/slide_027_r02_c01.png",
+      "box": [
+        4,
+        949,
+        121,
+        1004
+      ],
+      "number": 27,
+      "section": 7,
+      "row": 2,
+      "column": 1
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_07/slide_028_r02_c02.png",
+      "box": [
+        123,
+        949,
+        240,
+        1004
+      ],
+      "number": 28,
+      "section": 7,
+      "row": 2,
+      "column": 2
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_08/slide_029_r01_c01.png",
+      "box": [
+        4,
+        1022,
+        121,
+        1077
+      ],
+      "number": 29,
+      "section": 8,
+      "row": 1,
+      "column": 1
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_08/slide_030_r01_c02.png",
+      "box": [
+        123,
+        1022,
+        240,
+        1077
+      ],
+      "number": 30,
+      "section": 8,
+      "row": 1,
+      "column": 2
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_08/slide_031_r02_c01.png",
+      "box": [
+        4,
+        1081,
+        121,
+        1137
+      ],
+      "number": 31,
+      "section": 8,
+      "row": 2,
+      "column": 1
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_08/slide_032_r02_c02.png",
+      "box": [
+        123,
+        1081,
+        240,
+        1137
+      ],
+      "number": 32,
+      "section": 8,
+      "row": 2,
+      "column": 2
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_09/slide_033_r01_c01.png",
+      "box": [
+        4,
+        1154,
+        121,
+        1210
+      ],
+      "number": 33,
+      "section": 9,
+      "row": 1,
+      "column": 1
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_09/slide_034_r01_c02.png",
+      "box": [
+        123,
+        1154,
+        240,
+        1210
+      ],
+      "number": 34,
+      "section": 9,
+      "row": 1,
+      "column": 2
+    },
+    {
+      "kind": "slide",
+      "file": "slides/section_10/slide_035_r01_c01.png",
+      "box": [
+        4,
+        1225,
+        117,
+        1267
+      ],
+      "number": 35,
+      "section": 10,
+      "row": 1,
+      "column": 1
+    }
+  ],
+  "sections": [
+    {
+      "kind": "section",
+      "file": "sections/section_01.png",
+      "box": [
+        0,
+        22,
+        244,
+        152
+      ],
+      "section": 1
+    },
+    {
+      "kind": "section",
+      "file": "sections/section_02.png",
+      "box": [
+        0,
+        152,
+        244,
+        345
+      ],
+      "section": 2
+    },
+    {
+      "kind": "section",
+      "file": "sections/section_03.png",
+      "box": [
+        0,
+        345,
+        244,
+        477
+      ],
+      "section": 3
+    },
+    {
+      "kind": "section",
+      "file": "sections/section_04.png",
+      "box": [
+        0,
+        477,
+        244,
+        610
+      ],
+      "section": 4
+    },
+    {
+      "kind": "section",
+      "file": "sections/section_05.png",
+      "box": [
+        0,
+        610,
+        244,
+        743
+      ],
+      "section": 5
+    },
+    {
+      "kind": "section",
+      "file": "sections/section_06.png",
+      "box": [
+        0,
+        743,
+        244,
+        875
+      ],
+      "section": 6
+    },
+    {
+      "kind": "section",
+      "file": "sections/section_07.png",
+      "box": [
+        0,
+        875,
+        244,
+        1008
+      ],
+      "section": 7
+    },
+    {
+      "kind": "section",
+      "file": "sections/section_08.png",
+      "box": [
+        0,
+        1008,
+        244,
+        1141
+      ],
+      "section": 8
+    },
+    {
+      "kind": "section",
+      "file": "sections/section_09.png",
+      "box": [
+        0,
+        1141,
+        244,
+        1215
+      ],
+      "section": 9
+    },
+    {
+      "kind": "section",
+      "file": "sections/section_10.png",
+      "box": [
+        0,
+        1215,
+        244,
+        1280
+      ],
+      "section": 10
+    }
+  ],
+  "intro": {
+    "kind": "intro",
+    "file": "sections/00_intro.png",
+    "box": [
+      0,
+      0,
+      244,
+      22
+    ]
+  },
+  "all_crops": [
+    {
+      "box": [
+        0,
+        0,
+        244,
+        22
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/sections/00_intro.png"
+    },
+    {
+      "box": [
+        0,
+        22,
+        244,
+        152
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/sections/section_01.png"
+    },
+    {
+      "box": [
+        0,
+        22,
+        244,
+        34
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/headers/section_01_header.png"
+    },
+    {
+      "box": [
+        4,
+        34,
+        121,
+        90
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_01/slide_001_r01_c01.png"
+    },
+    {
+      "box": [
+        123,
+        34,
+        240,
+        90
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_01/slide_002_r01_c02.png"
+    },
+    {
+      "box": [
+        4,
+        93,
+        121,
+        149
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_01/slide_003_r02_c01.png"
+    },
+    {
+      "box": [
+        123,
+        93,
+        240,
+        149
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_01/slide_004_r02_c02.png"
+    },
+    {
+      "box": [
+        0,
+        152,
+        244,
+        345
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/sections/section_02.png"
+    },
+    {
+      "box": [
+        0,
+        152,
+        244,
+        167
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/headers/section_02_header.png"
+    },
+    {
+      "box": [
+        4,
+        167,
+        121,
+        222
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_02/slide_005_r01_c01.png"
+    },
+    {
+      "box": [
+        123,
+        167,
+        240,
+        222
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_02/slide_006_r01_c02.png"
+    },
+    {
+      "box": [
+        4,
+        226,
+        121,
+        282
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_02/slide_007_r02_c01.png"
+    },
+    {
+      "box": [
+        123,
+        226,
+        240,
+        282
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_02/slide_008_r02_c02.png"
+    },
+    {
+      "box": [
+        4,
+        285,
+        121,
+        341
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_02/slide_009_r03_c01.png"
+    },
+    {
+      "box": [
+        0,
+        345,
+        244,
+        477
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/sections/section_03.png"
+    },
+    {
+      "box": [
+        0,
+        345,
+        244,
+        359
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/headers/section_03_header.png"
+    },
+    {
+      "box": [
+        4,
+        359,
+        121,
+        414
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_03/slide_010_r01_c01.png"
+    },
+    {
+      "box": [
+        123,
+        359,
+        240,
+        414
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_03/slide_011_r01_c02.png"
+    },
+    {
+      "box": [
+        4,
+        418,
+        121,
+        474
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_03/slide_012_r02_c01.png"
+    },
+    {
+      "box": [
+        123,
+        418,
+        240,
+        474
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_03/slide_013_r02_c02.png"
+    },
+    {
+      "box": [
+        0,
+        477,
+        244,
+        610
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/sections/section_04.png"
+    },
+    {
+      "box": [
+        0,
+        477,
+        244,
+        491
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/headers/section_04_header.png"
+    },
+    {
+      "box": [
+        4,
+        491,
+        121,
+        547
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_04/slide_014_r01_c01.png"
+    },
+    {
+      "box": [
+        123,
+        491,
+        240,
+        547
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_04/slide_015_r01_c02.png"
+    },
+    {
+      "box": [
+        4,
+        551,
+        121,
+        606
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_04/slide_016_r02_c01.png"
+    },
+    {
+      "box": [
+        123,
+        551,
+        240,
+        606
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_04/slide_017_r02_c02.png"
+    },
+    {
+      "box": [
+        0,
+        610,
+        244,
+        743
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/sections/section_05.png"
+    },
+    {
+      "box": [
+        0,
+        610,
+        244,
+        624
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/headers/section_05_header.png"
+    },
+    {
+      "box": [
+        4,
+        624,
+        121,
+        679
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_05/slide_018_r01_c01.png"
+    },
+    {
+      "box": [
+        123,
+        624,
+        240,
+        679
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_05/slide_019_r01_c02.png"
+    },
+    {
+      "box": [
+        4,
+        683,
+        121,
+        739
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_05/slide_020_r02_c01.png"
+    },
+    {
+      "box": [
+        123,
+        683,
+        240,
+        739
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_05/slide_021_r02_c02.png"
+    },
+    {
+      "box": [
+        0,
+        743,
+        244,
+        875
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/sections/section_06.png"
+    },
+    {
+      "box": [
+        0,
+        743,
+        244,
+        757
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/headers/section_06_header.png"
+    },
+    {
+      "box": [
+        4,
+        757,
+        121,
+        812
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_06/slide_022_r01_c01.png"
+    },
+    {
+      "box": [
+        123,
+        757,
+        240,
+        812
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_06/slide_023_r01_c02.png"
+    },
+    {
+      "box": [
+        4,
+        816,
+        121,
+        871
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_06/slide_024_r02_c01.png"
+    },
+    {
+      "box": [
+        0,
+        875,
+        244,
+        1008
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/sections/section_07.png"
+    },
+    {
+      "box": [
+        0,
+        875,
+        244,
+        889
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/headers/section_07_header.png"
+    },
+    {
+      "box": [
+        4,
+        889,
+        121,
+        945
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_07/slide_025_r01_c01.png"
+    },
+    {
+      "box": [
+        123,
+        889,
+        240,
+        945
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_07/slide_026_r01_c02.png"
+    },
+    {
+      "box": [
+        4,
+        949,
+        121,
+        1004
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_07/slide_027_r02_c01.png"
+    },
+    {
+      "box": [
+        123,
+        949,
+        240,
+        1004
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_07/slide_028_r02_c02.png"
+    },
+    {
+      "box": [
+        0,
+        1008,
+        244,
+        1141
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/sections/section_08.png"
+    },
+    {
+      "box": [
+        0,
+        1008,
+        244,
+        1022
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/headers/section_08_header.png"
+    },
+    {
+      "box": [
+        4,
+        1022,
+        121,
+        1077
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_08/slide_029_r01_c01.png"
+    },
+    {
+      "box": [
+        123,
+        1022,
+        240,
+        1077
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_08/slide_030_r01_c02.png"
+    },
+    {
+      "box": [
+        4,
+        1081,
+        121,
+        1137
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_08/slide_031_r02_c01.png"
+    },
+    {
+      "box": [
+        123,
+        1081,
+        240,
+        1137
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_08/slide_032_r02_c02.png"
+    },
+    {
+      "box": [
+        0,
+        1141,
+        244,
+        1215
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/sections/section_09.png"
+    },
+    {
+      "box": [
+        0,
+        1141,
+        244,
+        1154
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/headers/section_09_header.png"
+    },
+    {
+      "box": [
+        4,
+        1154,
+        121,
+        1210
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_09/slide_033_r01_c01.png"
+    },
+    {
+      "box": [
+        123,
+        1154,
+        240,
+        1210
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_09/slide_034_r01_c02.png"
+    },
+    {
+      "box": [
+        0,
+        1215,
+        244,
+        1280
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/sections/section_10.png"
+    },
+    {
+      "box": [
+        0,
+        1215,
+        244,
+        1225
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/headers/section_10_header.png"
+    },
+    {
+      "box": [
+        4,
+        1225,
+        117,
+        1267
+      ],
+      "output": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Outputs/AdventureMapSlides-2026-10-09/Adventure_Map_Slides/slides/section_10/slide_035_r01_c01.png"
+    }
+  ]
+}

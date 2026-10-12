@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Failed(Child)" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-06 04:41:15Z" end-time="2026-10-06 04:41:21Z" duration="5.7417449">
+  <test-suite type="TestSuite" id="1074" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="66" result="Failed" site="Child" start-time="2026-10-06 04:41:15Z" end-time="2026-10-06 04:41:21Z" duration="5.741745" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1068" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="66" result="Failed" site="Child" start-time="2026-10-06 04:41:15Z" end-time="2026-10-06 04:41:21Z" duration="5.719994" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="93320" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1069" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="66" result="Failed" site="Child" start-time="2026-10-06 04:41:15Z" end-time="2026-10-06 04:41:21Z" duration="5.718653" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1070" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="66" result="Failed" site="Child" start-time="2026-10-06 04:41:15Z" end-time="2026-10-06 04:41:21Z" duration="5.717740" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1001" name="PlayableTests" fullname="Cascade.Tests.PlayableTests" classname="Cascade.Tests.PlayableTests" runstate="Runnable" testcasecount="66" result="Failed" site="Child" start-time="2026-10-06 04:41:15Z" end-time="2026-10-06 04:41:21Z" duration="5.716678" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1031" name="DestroyingEventPlayerSynchronizesTheCommittedResult" fullname="Cascade.Tests.PlayableTests.DestroyingEventPlayerSynchronizesTheCommittedResult" methodname="DestroyingEventPlayerSynchronizesTheCommittedResult" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1726299626" result="Passed" start-time="2026-10-06 04:41:15Z" end-time="2026-10-06 04:41:17Z" duration="1.669198" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1034" name="ReducedMotionKeepsPosesStillThroughoutCommittedEvents" fullname="Cascade.Tests.PlayableTests.ReducedMotionKeepsPosesStillThroughoutCommittedEvents" methodname="ReducedMotionKeepsPosesStillThroughoutCommittedEvents" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1639367106" result="Failed" start-time="2026-10-06 04:41:17Z" end-time="2026-10-06 04:41:18Z" duration="0.477221" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: less than 0.00100000005f
+  But was:  0.0750339031f
+]]></message>
+                <stack-trace><![CDATA[at Cascade.Tests.PlayableTests+<ReducedMotionKeepsPosesStillThroughoutCommittedEvents>d__50.MoveNext () [0x00143] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Tests/PlayMode/PlayableTests.cs:654
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in ./Library/PackageCache/com.unity.test-framework@0b7a23ab2e1d/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1025" name="ToolReactionFreezesExpiresAndRespectsQuietFeedbackWithoutChangingState" fullname="Cascade.Tests.PlayableTests.ToolReactionFreezesExpiresAndRespectsQuietFeedbackWithoutChangingState" methodname="ToolReactionFreezesExpiresAndRespectsQuietFeedbackWithoutChangingState" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="699231882" result="Passed" start-time="2026-10-06 04:41:18Z" end-time="2026-10-06 04:41:21Z" duration="3.558797" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/Reactions/playmode.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

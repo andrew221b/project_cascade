@@ -1,0 +1,50 @@
+{
+  "console": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"success\": true,\n  \"message\": \"Retrieved 1 log entries.\",\n  \"data\": [\n    {\n      \"Message\": \"NullReferenceException: Object reference not set to an instance of an object\",\n      \"Type\": \"Error\",\n      \"File\": \"/Users/bokken/build/output/unity/unity/Editor/Mono/Inspector/GraphicsSettingsInspectors/RenderPipelineGlobalSettingsAssetProcessor.cs\",\n      \"Line\": 15,\n      \"StackTrace\": \"UnityEditor.Mono.Inspector.GraphicsSettingsInspectors.RenderPipelineGlobalSettingsAssetProcessor.OnWillDeleteAsset (System.String assetPath, UnityEditor.RemoveAssetOptions option) (at /Users/bokken/build/output/unity/unity/Editor/Mono/Inspector/GraphicsSettingsInspectors/RenderPipelineGlobalSettingsAssetProcessor.cs:15)\\nSystem.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at <032c206a1674455bacfc3546f1de5ef3>:0)\\nRethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.\\nSystem.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at <032c206a1674455bacfc3546f1de5ef3>:0)\\nSystem.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) (at <032c206a1674455bacfc3546f1de5ef3>:0)\\nUnityEditor.AssetModificationProcessorInternal.OnWillDeleteAssets (System.String[] assetPaths, UnityEditor.AssetDeleteResult[] outPathDeletionResults, UnityEditor.RemoveAssetOptions options) (at /Users/bokken/build/output/unity/unity/Editor/Mono/AssetModificationProcessor.cs:280)\\nUnityEditor.AssetDatabase:DeleteAsset(String)\\nAddressablesPlayerBuildProcessor:RemovePlayerBuildLinkXML(AddressableAssetSettings) (at ./Library/PackageCache/com.unity.addressables@2dc42e61a5f5/Editor/Build/AddressablesPlayerBuildProcessor.cs:47)\\nAddressablesPlayerBuildProcessor:CleanTemporaryPlayerBuildData() (at ./Library/PackageCache/com.unity.addressables@2dc42e61a5f5/Editor/Build/AddressablesPlayerBuildProcessor.cs:39)\\nUnityEditor.EditorAssemblies:ProcessInitializeOnLoadMethodAttributes() (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorAssemblies.cs:153)\"\n    }\n  ]\n}"
+      }
+    ]
+  },
+  "readonly_assets": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"success\": true,\n  \"message\": \"Command executed successfully.\",\n  \"data\": {\n    \"isCompilationSuccessful\": true,\n    \"isExecutionSuccessful\": true,\n    \"executionId\": 1,\n    \"compilationLogs\": \"\",\n    \"executionLogs\": \"[Log] Unity=6000.3.8f1; DefaultRP=PC_RPAsset; URPGlobalAsset=UniversalRenderPipelineGlobalSettings\\n[Log] ProjectSettingsWindows=0\",\n    \"localFixedCode\": \"using System;\\r\\nusing System.Linq;\\r\\nusing UnityEngine;\\r\\nusing UnityEditor;\\r\\nusing UnityEngine.Rendering;\\r\\n\\r\\nnamespace Unity.AI.Assistant.Agent.Dynamic.Extension.Editor\\r\\n{\\r\\n    internal class CommandScript : IRunCommand\\r\\n    {\\r\\n        public void Execute(ExecutionResult result)\\r\\n        {\\r\\n            if (Application.dataPath != \\\"/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets\\\")\\r\\n                throw new InvalidOperationException(\\\"Unexpected project root\\\");\\r\\n            var settings = AssetDatabase.LoadMainAssetAtPath(\\\"Assets/Settings/UniversalRenderPipelineGlobalSettings.asset\\\");\\r\\n            result.Log(\\\"Unity=\\\" + Application.unityVersion + \\\"; DefaultRP=\\\" + (GraphicsSettings.defaultRenderPipeline ? GraphicsSettings.defaultRenderPipeline.name : \\\"NULL\\\") + \\\"; URPGlobalAsset=\\\" + (settings ? settings.name : \\\"NULL\\\"));\\r\\n            result.Log(\\\"ProjectSettingsWindows=\\\" + Resources.FindObjectsOfTypeAll<EditorWindow>().Count(w => w.GetType().Name == \\\"ProjectSettingsWindow\\\"));\\r\\n        }\\r\\n    }\\r\\n}\",\n    \"result\": \"Command executed successfully.\"\n  }\n}"
+      }
+    ],
+    "structuredContent": {
+      "success": true,
+      "message": "Command executed successfully.",
+      "data": {
+        "isCompilationSuccessful": true,
+        "isExecutionSuccessful": true,
+        "executionId": 1,
+        "compilationLogs": "",
+        "executionLogs": "[Log] Unity=6000.3.8f1; DefaultRP=PC_RPAsset; URPGlobalAsset=UniversalRenderPipelineGlobalSettings\n[Log] ProjectSettingsWindows=0",
+        "localFixedCode": "using System;\r\nusing System.Linq;\r\nusing UnityEngine;\r\nusing UnityEditor;\r\nusing UnityEngine.Rendering;\r\n\r\nnamespace Unity.AI.Assistant.Agent.Dynamic.Extension.Editor\r\n{\r\n    internal class CommandScript : IRunCommand\r\n    {\r\n        public void Execute(ExecutionResult result)\r\n        {\r\n            if (Application.dataPath != \"/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets\")\r\n                throw new InvalidOperationException(\"Unexpected project root\");\r\n            var settings = AssetDatabase.LoadMainAssetAtPath(\"Assets/Settings/UniversalRenderPipelineGlobalSettings.asset\");\r\n            result.Log(\"Unity=\" + Application.unityVersion + \"; DefaultRP=\" + (GraphicsSettings.defaultRenderPipeline ? GraphicsSettings.defaultRenderPipeline.name : \"NULL\") + \"; URPGlobalAsset=\" + (settings ? settings.name : \"NULL\"));\r\n            result.Log(\"ProjectSettingsWindows=\" + Resources.FindObjectsOfTypeAll<EditorWindow>().Count(w => w.GetType().Name == \"ProjectSettingsWindow\"));\r\n        }\r\n    }\r\n}",
+        "result": "Command executed successfully."
+      }
+    }
+  },
+  "delete_probe_attempt": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"success\": false,\n  \"error\": \"UNEXPECTED_ERROR: User interactions are not supported for MCP tool calls. Tools requiring user interaction cannot be called via MCP.\"\n}"
+      }
+    ],
+    "isError": true
+  },
+  "internal_probe_attempt": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"success\": false,\n  \"error\": \"UNEXPECTED_ERROR: Script uses one or more unauthorized namespaces: Namespace System.Reflection is imported at line 3. Remove this usage and retry.\"\n}"
+      }
+    ],
+    "isError": true
+  }
+}
+

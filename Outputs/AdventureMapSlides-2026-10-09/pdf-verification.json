@@ -1,0 +1,16 @@
+{
+  "pdf": "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/output/pdf/Adventure_Map_Slides.pdf",
+  "pages": 35,
+  "images_per_page": 1,
+  "extra_text": false,
+  "bytes": 452921,
+  "all_embedded_images_match_source_pixels": true,
+  "all_pages_rendered": true,
+  "visual_review_pages": [
+    1,
+    18,
+    35
+  ],
+  "temporary_renders_removed": true,
+  "lan_pdf_bytes_verified": true
+}

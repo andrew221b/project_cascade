@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Passed" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-08 19:53:24Z" end-time="2026-10-08 19:53:49Z" duration="24.9557813">
+  <test-suite type="TestSuite" id="1162" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="143" result="Passed" start-time="2026-10-08 19:53:24Z" end-time="2026-10-08 19:53:49Z" duration="24.955781" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1156" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="143" result="Passed" start-time="2026-10-08 19:53:24Z" end-time="2026-10-08 19:53:49Z" duration="24.470845" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24227" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1157" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="143" result="Passed" start-time="2026-10-08 19:53:24Z" end-time="2026-10-08 19:53:49Z" duration="24.466142" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1158" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="143" result="Passed" start-time="2026-10-08 19:53:24Z" end-time="2026-10-08 19:53:49Z" duration="24.465185" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1009" name="GuidedLessonFlowTests" fullname="Cascade.Tests.GuidedLessonFlowTests" classname="Cascade.Tests.GuidedLessonFlowTests" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-10-08 19:53:24Z" end-time="2026-10-08 19:53:49Z" duration="24.463893" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1010" name="FirstStageTeachesUndoBeforeIndependentStages" fullname="Cascade.Tests.GuidedLessonFlowTests.FirstStageTeachesUndoBeforeIndependentStages" methodname="FirstStageTeachesUndoBeforeIndependentStages" classname="Cascade.Tests.GuidedLessonFlowTests" runstate="Runnable" seed="1245785107" result="Passed" start-time="2026-10-08 19:53:24Z" end-time="2026-10-08 19:53:32Z" duration="7.745847" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1011" name="PrimaryMechanicIsExplainedInStageOneAndLaterStagesAreIndependent" fullname="Cascade.Tests.GuidedLessonFlowTests.PrimaryMechanicIsExplainedInStageOneAndLaterStagesAreIndependent" methodname="PrimaryMechanicIsExplainedInStageOneAndLaterStagesAreIndependent" classname="Cascade.Tests.GuidedLessonFlowTests" runstate="Runnable" seed="1764262981" result="Passed" start-time="2026-10-08 19:53:32Z" end-time="2026-10-08 19:53:49Z" duration="16.558839" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+Saving results to: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/LevelTriads-Final-Oct08/playmode.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

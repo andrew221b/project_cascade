@@ -1,0 +1,29 @@
+{
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "info",
+      "processes",
+      "--device",
+      "86ED6044-764E-5091-8CFE-C94C101E8DA8",
+      "--filter",
+      "processIdentifier == 77743",
+      "--json-output",
+      "Reports/iPhoneInstall-Oct10-202610103/processes.json"
+    ],
+    "commandType" : "devicectl.device.info.processes",
+    "environment" : {
+      "TERM" : "dumb"
+    },
+    "jsonVersion" : 3,
+    "outcome" : "success",
+    "version" : "518.33"
+  },
+  "result" : {
+    "deviceIdentifier" : "86ED6044-764E-5091-8CFE-C94C101E8DA8",
+    "runningProcesses" : [
+
+    ]
+  }
+}

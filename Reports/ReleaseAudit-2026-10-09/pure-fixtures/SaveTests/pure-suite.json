@@ -1,0 +1,52 @@
+[
+  {
+    "test": "SaveTests.EveryBuiltInPrefixRestoresExactStateAndUndoHistory()",
+    "status": "Passed",
+    "ms": 221.06470000000002
+  },
+  {
+    "test": "SaveTests.UndoCountAndHintUsedRemainIndependentOfShortenedRoute()",
+    "status": "Passed",
+    "ms": 2.2308
+  },
+  {
+    "test": "SaveTests.TamperedRouteAndPinsCannotBecomeAnotherPuzzle()",
+    "status": "Passed",
+    "ms": 2.1635
+  },
+  {
+    "test": "SaveTests.FirstClearReceiptIsStableAcrossLanguagesBindingsAndUndo()",
+    "status": "Passed",
+    "ms": 82.0497
+  },
+  {
+    "test": "SaveTests.OptionalObjectiveAndPinnedWordLocaleRestore()",
+    "status": "Passed",
+    "ms": 8.617700000000001
+  },
+  {
+    "test": "SaveTests.CorruptPrimaryUsesBackupWithoutLosingTheLastGoodBackupOnWrite()",
+    "status": "Passed",
+    "ms": 21.4866
+  },
+  {
+    "test": "SaveTests.InterruptedTemporaryWriteIsNotACommit()",
+    "status": "Passed",
+    "ms": 7.9178000000000006
+  },
+  {
+    "test": "SaveTests.UnreadableFilesAndFutureSchemaAreNotSilentlyDiscarded()",
+    "status": "Passed",
+    "ms": 6.7036000000000007
+  },
+  {
+    "test": "SaveTests.IncompatibleContentKeepsValidMetaProgressAndRequiresExplicitRestart()",
+    "status": "Passed",
+    "ms": 8.0847
+  },
+  {
+    "test": "SaveTests.ChecksumFailureAndDuplicateReceiptsAreRejected()",
+    "status": "Passed",
+    "ms": 7.0973000000000006
+  }
+]

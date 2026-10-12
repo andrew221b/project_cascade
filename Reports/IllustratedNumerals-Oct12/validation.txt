@@ -1,0 +1,16 @@
+Illustrated numerals and ambient-atlas crop review — 12 October
+
+PASS — Unity 6.3 Roslyn compilation using the project's cached Editor response files, with temporary outputs under /private/tmp:
+- Cascade.Domain
+- Cascade.Solver
+- Cascade.Content
+- Cascade.Application
+- Cascade.Persistence
+- Cascade.Presentation (includes MenuSpriteCounter.cs)
+- Cascade.Editor.Playable (includes StoryMenuReviewOct11.cs)
+
+No C# compilation errors. Existing warnings are in OutcomeCeremony, NativeAdProvider, CascadeGame.Language, and editor build-setting calls; none were introduced by the numeral renderer or review assertions.
+
+PASS — git diff --check for affected source, docs, and task-log files.
+
+NOT RUN — Unity Editor import/compilation, runtime captures or overflow assertions, Unity Test Runner, device build/install, and physical-device review. The Mac is locked, and the connected Unity MCP points at a different project. StoryMenuReviewOct11 now covers shop, supplies, coin packs, journal, island level records, and gameplay HUD in EN/RU/UK, including Ukrainian Large Text; it still needs to run in the actual CascadeUnity Editor before visual verification can be claimed.

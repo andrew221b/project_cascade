@@ -1,0 +1,1 @@
+10 retained native Unity Editor renders. Isolated review save; synthetic motion fixture and actual C03 shake. Simulated safe insets at320/390. Final footer64.14/52.66px. No real phone, purchase, ads, hardware sensor or FPS validation.

@@ -1,0 +1,20 @@
+{
+  "CFBundleIdentifier": "com.vickand.cascade",
+  "CFBundleShortVersionString": "0.1.0",
+  "CFBundleVersion": "202610102",
+  "MinimumOSVersion": "15.0",
+  "installation": "Succeeded",
+  "installedVersionVerified": true,
+  "profileBytesPreserved": true,
+  "profileSha256": "ea1eb2816e6d52dd7dc7aba161853298745474c17b9c8cc0ab15b350fbb2eb13",
+  "projectSettingsRestored": true,
+  "unityBuild": "Succeeded",
+  "unityErrors": 0,
+  "unityWarnings": 360,
+  "xcodeBuildExitCode": 0,
+  "signingVerified": true,
+  "launch": "success",
+  "processStillRunning": true,
+  "deletedOldBuildDirectories": 8,
+  "runtimeLimits": "Launch and process lifetime checked. On-device visual, touch, audio, pause/resume not exercised."
+}

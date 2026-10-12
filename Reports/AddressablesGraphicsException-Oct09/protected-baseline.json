@@ -1,0 +1,26 @@
+{
+  "CascadeUnity/ProjectSettings/GraphicsSettings.asset": {
+    "sha256": "6736f33dc62c35b0e7a88e275242080bc7a1d94c91154d18fceb332b661a6bce",
+    "bytes": 2615
+  },
+  "CascadeUnity/ProjectSettings/QualitySettings.asset": {
+    "sha256": "6814d6cc3eb850dd7d2a069a8b17ba9f7591deba8b1758a855978bd9c8627643",
+    "bytes": 3662
+  },
+  "CascadeUnity/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset": {
+    "sha256": "8dc42418c5452abca7ac9b35ff69c5655637490c14124d4d4b61ccebb7accb23",
+    "bytes": 22844
+  },
+  "CascadeUnity/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset.meta": {
+    "sha256": "f61661d8bc8dbe531daf09f6211ef978c7ba145c9207c8e76524396ae0722d7c",
+    "bytes": 189
+  },
+  "CascadeUnity/Packages/manifest.json": {
+    "sha256": "7852edd439eca16ecb9f92b2f255df5831c8673b478c807196906f279da37898",
+    "bytes": 779
+  },
+  "CascadeUnity/Packages/packages-lock.json": {
+    "sha256": "f4802853093b8e4fc74e23f561ea839321224b4a6f09a58dd309293420c349f5",
+    "bytes": 14117
+  }
+}

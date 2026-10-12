@@ -1,0 +1,17 @@
+
+> cascade-receipt-verifier@1.0.0 test
+> node --test verify.test.mjs
+
+✔ returns only the exact verified product and transaction (1.0665ms)
+✔ rejects untrusted bundle, unknown SKU and store (0.0855ms)
+✔ rejects revoked, shared, mismatched and multi-quantity Apple evidence (0.094083ms)
+✔ Google publisher API, rather than submitted state, decides eligibility (0.689ms)
+✔ store outage propagates so the pending purchase can retry (0.181792ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 70.861667

@@ -1,0 +1,2 @@
+PASS: fresh authored pins; actual C09 entry transition; 9 native portrait captures, including EN/RU/UK legacy checkpoints.
+Physical-device gameplay is not measured by these captures.

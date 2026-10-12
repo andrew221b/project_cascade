@@ -1,0 +1,52 @@
+[
+  {
+    "test": "LinkedFragileTests.CanonicalLinkedFixturesWin(C25,BADC,ABCD,1,False)",
+    "status": "Passed",
+    "ms": 16.587600000000002
+  },
+  {
+    "test": "LinkedFragileTests.CanonicalLinkedFixturesWin(C26,AABA,AAAB,1,False)",
+    "status": "Passed",
+    "ms": 0.0632
+  },
+  {
+    "test": "LinkedFragileTests.CanonicalLinkedFixturesWin(C28,BADC,ABCD,3,True)",
+    "status": "Passed",
+    "ms": 0.1757
+  },
+  {
+    "test": "LinkedFragileTests.C27MustUnlockBeforeLinkedExchange()",
+    "status": "Passed",
+    "ms": 0.3869
+  },
+  {
+    "test": "LinkedFragileTests.OneLockedSubpairRejectsWholeAtomicCommand()",
+    "status": "Passed",
+    "ms": 0.4289
+  },
+  {
+    "test": "LinkedFragileTests.BothLinkedCommandsProduceIdenticalStateAndCost()",
+    "status": "Passed",
+    "ms": 0.66260000000000008
+  },
+  {
+    "test": "LinkedFragileTests.EqualSubpairStillCostsItsFragilityAndOneBombTick()",
+    "status": "Passed",
+    "ms": 0.25120000000000003
+  },
+  {
+    "test": "LinkedFragileTests.LinkedCommandTicksArmedBombOnce()",
+    "status": "Passed",
+    "ms": 0.1061
+  },
+  {
+    "test": "LinkedFragileTests.WholeLinkedNoOpIsFree()",
+    "status": "Passed",
+    "ms": 0.1268
+  },
+  {
+    "test": "LinkedFragileTests.UnlinkedMiddleEdgeIsAnOrdinarySwap()",
+    "status": "Passed",
+    "ms": 0.094
+  }
+]

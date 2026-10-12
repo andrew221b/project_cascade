@@ -1,0 +1,9 @@
+Label|Купить|color=RGBA(1.000, 1.000, 1.000, 1.000)|font=18|auto=False|rect=(107.62, 48.00)|anchor=(0.07, 0.00)-(0.42, 1.00)|mat=McLaren - Regular Material|gradient=False
+Number symbol fallback 0|К|color=RGBA(1.000, 0.700, 0.120, 1.000)|font=11.7|auto=False|rect=(8.64, 19.80)|anchor=(0.50, 0.50)-(0.50, 0.50)|mat=McLaren - Regular Material|gradient=False
+Number symbol fallback 1|у|color=RGBA(1.000, 0.700, 0.120, 1.000)|font=11.7|auto=False|rect=(8.64, 19.80)|anchor=(0.50, 0.50)-(0.50, 0.50)|mat=McLaren - Regular Material|gradient=False
+Number symbol fallback 2|п|color=RGBA(1.000, 0.700, 0.120, 1.000)|font=11.7|auto=False|rect=(8.64, 19.80)|anchor=(0.50, 0.50)-(0.50, 0.50)|mat=McLaren - Regular Material|gradient=False
+Number symbol fallback 3|и|color=RGBA(1.000, 0.700, 0.120, 1.000)|font=11.7|auto=False|rect=(8.64, 19.80)|anchor=(0.50, 0.50)-(0.50, 0.50)|mat=McLaren - Regular Material|gradient=False
+Number symbol fallback 4|т|color=RGBA(1.000, 0.700, 0.120, 1.000)|font=11.7|auto=False|rect=(8.64, 19.80)|anchor=(0.50, 0.50)-(0.50, 0.50)|mat=McLaren - Regular Material|gradient=False
+Number symbol fallback 5|ь|color=RGBA(1.000, 0.700, 0.120, 1.000)|font=11.7|auto=False|rect=(8.64, 19.80)|anchor=(0.50, 0.50)-(0.50, 0.50)|mat=McLaren - Regular Material|gradient=False
+Coin price|× 360|color=RGBA(1.000, 1.000, 1.000, 1.000)|font=18|auto=False|rect=(110.69, 40.32)|anchor=(0.57, 0.08)-(0.93, 0.92)|mat=CASCADE celebration EnamelLabel|gradient=False
+Number symbol fallback 0|<null>|color=RGBA(1.000, 0.700, 0.120, 1.000)|font=36|auto=False|rect=(200.00, 50.00)|anchor=(0.50, 0.50)-(0.50, 0.50)|mat=McLaren - Regular Material|gradient=False

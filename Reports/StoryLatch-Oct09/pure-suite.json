@@ -1,0 +1,482 @@
+[
+  {
+    "test": "StoryConversationTests.IslandScenesCoverTheFullJourneyWithDistinctReceiptsAndRealExchanges()",
+    "status": "Passed",
+    "ms": 17.0201
+  },
+  {
+    "test": "StoryConversationTests.CheckpointsOnlyInterruptBetweenSecondAndThirdStageAndDoNotCollideWithIslandOrIntroIds()",
+    "status": "Passed",
+    "ms": 7.2034
+  },
+  {
+    "test": "StoryConversationTests.KnownResidentsGiveCurrentIslandGoalInsteadOfRepeatingTheirIntroduction()",
+    "status": "Passed",
+    "ms": 1.3912
+  },
+  {
+    "test": "StoryConversationTests.ReadingInOneModeDoesNotConsumeStoryInAnotherMode()",
+    "status": "Passed",
+    "ms": 1.7283000000000002
+  },
+  {
+    "test": "StoryConversationTests.MidIslandScenesCoverEveryIslandWithoutReplacingPublishedLaterAsides()",
+    "status": "Passed",
+    "ms": 2.0256000000000003
+  },
+  {
+    "test": "WorldPrologueTests.EveryWorldHasFourAuthoredComicPagesAndItsOwnResident()",
+    "status": "Passed",
+    "ms": 5.3183000000000007
+  },
+  {
+    "test": "WorldPrologueTests.EveryIslandGetsADistinctOpeningWithItsCurrentGoal()",
+    "status": "Passed",
+    "ms": 0.4138
+  },
+  {
+    "test": "WorldPrologueTests.OccasionalLevelAsidesAndAllStoryReceiptsFitExistingSaveValidation()",
+    "status": "Passed",
+    "ms": 2.4508
+  },
+  {
+    "test": "WorldPrologueTests.EveryStoryKeyHasAnEnglishRussianAndUkrainianSourceEntry()",
+    "status": "Passed",
+    "ms": 42.8975
+  },
+  {
+    "test": "GuidedPracticeTests.OtherTapDragKeyboardDropAndHintCannotSpendAMove()",
+    "status": "Passed",
+    "ms": 17.6838
+  },
+  {
+    "test": "GuidedPracticeTests.ShownPairAcceptsTapOrDragThenExplicitlyReleases(False)",
+    "status": "Passed",
+    "ms": 0.3875
+  },
+  {
+    "test": "GuidedPracticeTests.ShownPairAcceptsTapOrDragThenExplicitlyReleases(True)",
+    "status": "Passed",
+    "ms": 0.0328
+  },
+  {
+    "test": "GuidedPracticeTests.ObservationAllowsLifecycleButNoPlayerActions()",
+    "status": "Passed",
+    "ms": 0.1545
+  },
+  {
+    "test": "GuidedPracticeTests.MechanicSuggestionPreservesHeldTouchAndAllowsUndoAndOtherPairs()",
+    "status": "Passed",
+    "ms": 0.5058
+  },
+  {
+    "test": "GuidedPracticeTests.PauseResumeCannotLoseOrQueueTheRequiredAction()",
+    "status": "Passed",
+    "ms": 0.1051
+  },
+  {
+    "test": "GuidedPracticeTests.UndoLessonAllowsOnlyUndoAndCannotRepeatAfterStateChanges()",
+    "status": "Passed",
+    "ms": 0.0898
+  },
+  {
+    "test": "GuidedPracticeTests.FirstUndoLessonRestoresWithoutRatingOrAllowanceCostAndSurvivesSave()",
+    "status": "Passed",
+    "ms": 1.9998
+  },
+  {
+    "test": "GuidedPracticeTests.FirstLessonFlagDoesNotExemptAnUnguidedUndo(False)",
+    "status": "Passed",
+    "ms": 0.11800000000000001
+  },
+  {
+    "test": "GuidedPracticeTests.FirstLessonFlagDoesNotExemptAnUnguidedUndo(True)",
+    "status": "Passed",
+    "ms": 0.029
+  },
+  {
+    "test": "GuidedPracticeTests.ToolLessonAuthorizesOnlyItsInventoryTransactionEvenInPausedBag()",
+    "status": "Passed",
+    "ms": 0.11230000000000001
+  },
+  {
+    "test": "GuidedPracticeTests.HintRequestPhaseCannotMovePiecesAndMovePhaseCannotUseAnotherHint()",
+    "status": "Passed",
+    "ms": 0.1918
+  },
+  {
+    "test": "GuidedPracticeTests.RequiredReachHasOnlyItsTwoEndpointsAndNoAdjacentAlternative(False)",
+    "status": "Passed",
+    "ms": 0.3925
+  },
+  {
+    "test": "GuidedPracticeTests.RequiredReachHasOnlyItsTwoEndpointsAndNoAdjacentAlternative(True)",
+    "status": "Passed",
+    "ms": 0.0349
+  },
+  {
+    "test": "AttemptTests.InvalidCommandsAndPredictionDoNotChangeHistory()",
+    "status": "Passed",
+    "ms": 7.9987
+  },
+  {
+    "test": "AttemptTests.RouteLengthRollsBackButUndoCountIsSeparate()",
+    "status": "Passed",
+    "ms": 0.4282
+  },
+  {
+    "test": "AttemptTests.HourglassAcrossCollapseRestoresBombCountersAndOldFloor()",
+    "status": "Passed",
+    "ms": 1.6862000000000001
+  },
+  {
+    "test": "AttemptTests.ActualUndoRestoresBridgeStampKeyRepairAndDefuse()",
+    "status": "Passed",
+    "ms": 0.3458
+  },
+  {
+    "test": "AttemptTests.DeadEndOnBrokenFloorAllowsUndoOrHourglassToRestorePlayable()",
+    "status": "Passed",
+    "ms": 1.1092
+  },
+  {
+    "test": "AttemptTests.ManualDescentFromIntactWoodCanUndoAndSurvivesReplay()",
+    "status": "Passed",
+    "ms": 0.4
+  },
+  {
+    "test": "AttemptTests.ManualDescentThatExplodesTheWoodCanUndo()",
+    "status": "Passed",
+    "ms": 0.1967
+  },
+  {
+    "test": "AttemptTests.AutomaticCollapseCanUndoAfterSaveAndAcceptAnotherSwap()",
+    "status": "Passed",
+    "ms": 0.3724
+  },
+  {
+    "test": "AttemptTests.RejectedReceiverCanUndoButVictoryCannot()",
+    "status": "Passed",
+    "ms": 0.1837
+  },
+  {
+    "test": "AttemptTests.UnknownDoesNotConsumeHintOrHistory()",
+    "status": "Passed",
+    "ms": 0.799
+  },
+  {
+    "test": "AttemptTests.StaleHintCannotBeRevealedOrExecuted()",
+    "status": "Passed",
+    "ms": 0.8466
+  },
+  {
+    "test": "AttemptTests.RevealedHintIsMonotonicAcrossUndoAndCanBeReusedAtSameHash()",
+    "status": "Passed",
+    "ms": 1.2413
+  },
+  {
+    "test": "AttemptTests.RetryPinsSameVersionButCreatesNewAttemptAndRejectsOldHint()",
+    "status": "Passed",
+    "ms": 0.9735
+  },
+  {
+    "test": "AttemptTests.HintUsesActiveContractGoal()",
+    "status": "Passed",
+    "ms": 0.6832
+  },
+  {
+    "test": "AttemptTests.EquivalentCoreStatesHaveSameHashAcrossAttemptsAndCommands()",
+    "status": "Passed",
+    "ms": 1.5704
+  },
+  {
+    "test": "AttemptTests.PuzzleLocaleAndModeAreBoundAtAttemptStart()",
+    "status": "Passed",
+    "ms": 1.1641000000000001
+  },
+  {
+    "test": "AttemptTests.CancelledWorkerQueryIsUnknownAndDoesNotMutateAttempt()",
+    "status": "Passed",
+    "ms": 1.2523
+  },
+  {
+    "test": "CompletionProgressTests.IndependentPersonalBestsRetainTheirOwnEvidenceUntilOneRunDominates()",
+    "status": "Passed",
+    "ms": 85.6773
+  },
+  {
+    "test": "CompletionProgressTests.LegacyVersionThreeRepresentativeBindingsKeepThreeReplayableStages()",
+    "status": "Passed",
+    "ms": 3270.1307
+  },
+  {
+    "test": "CompletionProgressTests.GatedFinalesKeepTheirPublishedTargetsAndDevicesAndProveTheSameTwelveFailingBindings()",
+    "status": "Passed",
+    "ms": 10.0317
+  },
+  {
+    "test": "CompletionProgressTests.AStampFromAnIntermediateStageSurvivesCheckpointSaveAndAddsItsFullLevelBonus()",
+    "status": "Passed",
+    "ms": 27.4938
+  },
+  {
+    "test": "CompletionProgressTests.AccessOpensOnlyTheNextNodeAndExplicitReplaysWithoutErasingOlderOutOfOrderClears()",
+    "status": "Passed",
+    "ms": 0.5782
+  },
+  {
+    "test": "CompletionProgressTests.InsertedLevelsBeforeAnExistingClearStayReplayableButDoNotResetContinue()",
+    "status": "Passed",
+    "ms": 0.1356
+  },
+  {
+    "test": "CompletionProgressTests.WholeRunRatingResourcesAndCheckpointRestoreAreDurableAndReplayCannotFarmLights()",
+    "status": "Passed",
+    "ms": 27.4223
+  },
+  {
+    "test": "CompletionProgressTests.StarsRespondToHintRouteAndExplosionAndOldVersionTwoPlansStillRestore()",
+    "status": "Passed",
+    "ms": 26.4056
+  },
+  {
+    "test": "LevelDefinitionTests.CopiesInputCollectionsAndExposesReadOnlyViews()",
+    "status": "Passed",
+    "ms": 0.4934
+  },
+  {
+    "test": "LevelDefinitionTests.RepeatedSymbolsUseEqualityRatherThanPosition()",
+    "status": "Passed",
+    "ms": 0.0756
+  },
+  {
+    "test": "LevelDefinitionTests.RejectsChangedMultiset()",
+    "status": "Passed",
+    "ms": 0.43320000000000003
+  },
+  {
+    "test": "LevelDefinitionTests.RowBoundaries(2,False)",
+    "status": "Passed",
+    "ms": 0.2195
+  },
+  {
+    "test": "LevelDefinitionTests.RowBoundaries(3,True)",
+    "status": "Passed",
+    "ms": 0.0415
+  },
+  {
+    "test": "LevelDefinitionTests.RowBoundaries(8,True)",
+    "status": "Passed",
+    "ms": 0.10450000000000001
+  },
+  {
+    "test": "LevelDefinitionTests.RowBoundaries(9,False)",
+    "status": "Passed",
+    "ms": 0.0405
+  },
+  {
+    "test": "LevelDefinitionTests.FloorBoundaries(0,False)",
+    "status": "Passed",
+    "ms": 0.2928
+  },
+  {
+    "test": "LevelDefinitionTests.FloorBoundaries(1,True)",
+    "status": "Passed",
+    "ms": 0.1734
+  },
+  {
+    "test": "LevelDefinitionTests.FloorBoundaries(4,True)",
+    "status": "Passed",
+    "ms": 0.0446
+  },
+  {
+    "test": "LevelDefinitionTests.FloorBoundaries(5,False)",
+    "status": "Passed",
+    "ms": 0.0436
+  },
+  {
+    "test": "LevelDefinitionTests.DurabilityBoundaries(0,False)",
+    "status": "Passed",
+    "ms": 0.087000000000000008
+  },
+  {
+    "test": "LevelDefinitionTests.DurabilityBoundaries(1,True)",
+    "status": "Passed",
+    "ms": 0.04
+  },
+  {
+    "test": "LevelDefinitionTests.DurabilityBoundaries(12,True)",
+    "status": "Passed",
+    "ms": 0.039900000000000005
+  },
+  {
+    "test": "LevelDefinitionTests.DurabilityBoundaries(13,False)",
+    "status": "Passed",
+    "ms": 0.0398
+  },
+  {
+    "test": "LevelDefinitionTests.RejectsWrongEdgeCountAndDuplicateFragileEdges()",
+    "status": "Passed",
+    "ms": 0.1073
+  },
+  {
+    "test": "LevelDefinitionTests.LinkedPairsMustBeDisjointAndInRange()",
+    "status": "Passed",
+    "ms": 0.1211
+  },
+  {
+    "test": "LevelDefinitionTests.RejectsInvalidBridgeAndKeyConfiguration()",
+    "status": "Passed",
+    "ms": 0.1254
+  },
+  {
+    "test": "LevelDefinitionTests.SensorMustFitRowAndReferenceItsTarget()",
+    "status": "Passed",
+    "ms": 0.0932
+  },
+  {
+    "test": "LevelDefinitionTests.BombBoundaries(0,1,False)",
+    "status": "Passed",
+    "ms": 0.117
+  },
+  {
+    "test": "LevelDefinitionTests.BombBoundaries(1,1,True)",
+    "status": "Passed",
+    "ms": 0.0407
+  },
+  {
+    "test": "LevelDefinitionTests.BombBoundaries(6,4,True)",
+    "status": "Passed",
+    "ms": 0.0398
+  },
+  {
+    "test": "LevelDefinitionTests.BombBoundaries(7,4,False)",
+    "status": "Passed",
+    "ms": 0.0397
+  },
+  {
+    "test": "LevelDefinitionTests.BombBoundaries(2,5,False)",
+    "status": "Passed",
+    "ms": 0.0395
+  },
+  {
+    "test": "LevelDefinitionTests.RepairBoundaries(0,False)",
+    "status": "Passed",
+    "ms": 0.08950000000000001
+  },
+  {
+    "test": "LevelDefinitionTests.RepairBoundaries(1,True)",
+    "status": "Passed",
+    "ms": 0.049
+  },
+  {
+    "test": "LevelDefinitionTests.RepairBoundaries(3,True)",
+    "status": "Passed",
+    "ms": 0.0446
+  },
+  {
+    "test": "LevelDefinitionTests.RepairBoundaries(4,False)",
+    "status": "Passed",
+    "ms": 0.0446
+  },
+  {
+    "test": "LevelDefinitionTests.ShapeAndGlyphRemainDifferent()",
+    "status": "Passed",
+    "ms": 0.08660000000000001
+  },
+  {
+    "test": "LevelDefinitionTests.ShortAndLongNamespacesAgreeAndPreserveOriginalId()",
+    "status": "Passed",
+    "ms": 0.113
+  },
+  {
+    "test": "LevelDefinitionTests.RejectsInvalidIds(g:ua:І)",
+    "status": "Passed",
+    "ms": 0.1187
+  },
+  {
+    "test": "LevelDefinitionTests.RejectsInvalidIds(glyph:en:AB)",
+    "status": "Passed",
+    "ms": 0.041100000000000005
+  },
+  {
+    "test": "LevelDefinitionTests.RejectsInvalidIds(s:)",
+    "status": "Passed",
+    "ms": 0.039
+  },
+  {
+    "test": "LevelDefinitionTests.RejectsInvalidIds(other:A)",
+    "status": "Passed",
+    "ms": 0.038700000000000005
+  },
+  {
+    "test": "LevelDefinitionTests.NormalizesCombiningTextAndDoesNotSplitSurrogatePairs()",
+    "status": "Passed",
+    "ms": 0.12050000000000001
+  },
+  {
+    "test": "LevelDefinitionTests.UkrainianAndRussianDistinctLettersRemainDistinct()",
+    "status": "Passed",
+    "ms": 0.1267
+  },
+  {
+    "test": "LevelDefinitionTests.PositionalWordSignaturesDiffer()",
+    "status": "Passed",
+    "ms": 0.10590000000000001
+  },
+  {
+    "test": "LevelDefinitionTests.SevenSymbolMixedTargetIsAccepted()",
+    "status": "Passed",
+    "ms": 0.184
+  },
+  {
+    "test": "LevelDefinitionTests.SegmentsMustCoverTargetWithoutOverlapAndMatchNamespace()",
+    "status": "Passed",
+    "ms": 0.0946
+  },
+  {
+    "test": "LevelDefinitionTests.DefaultSymbolAndUnknownTransformAreRejected()",
+    "status": "Passed",
+    "ms": 0.0737
+  },
+  {
+    "test": "BridgeStampTests.BridgeClosesOnlyAfterAcceptedSwap()",
+    "status": "Passed",
+    "ms": 0.2889
+  },
+  {
+    "test": "BridgeStampTests.NoOpInvalidAndDropDoNotConsumeBridge()",
+    "status": "Passed",
+    "ms": 0.112
+  },
+  {
+    "test": "BridgeStampTests.LinkedBridgeClosesAfterCompleteSwapAndLockedSubpairPreservesIt()",
+    "status": "Passed",
+    "ms": 0.1212
+  },
+  {
+    "test": "BridgeStampTests.SnapshotRestoresBridgeAndStampWithoutChangingTokens()",
+    "status": "Passed",
+    "ms": 0.19
+  },
+  {
+    "test": "BridgeStampTests.StampDoesNotGateOrdinaryReceiver()",
+    "status": "Passed",
+    "ms": 0.11170000000000001
+  },
+  {
+    "test": "BridgeStampTests.StampRecordsOnceAndEntryTransformCanCollectIt()",
+    "status": "Passed",
+    "ms": 0.1462
+  },
+  {
+    "test": "BridgeStampTests.C35DeliveryAndStampedMinimaAreTwoAndFour()",
+    "status": "Passed",
+    "ms": 0.6701
+  },
+  {
+    "test": "BridgeStampTests.UnreachableStampHasNoGoalState()",
+    "status": "Passed",
+    "ms": 0.09820000000000001
+  }
+]

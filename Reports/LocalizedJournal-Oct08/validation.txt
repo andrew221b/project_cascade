@@ -1,0 +1,4 @@
+PASS 13-records-inline-ru.png
+PASS 14-records-inline-uk.png
+PASS compact inline route metrics in RU and narrow UK Large Text; no paper fact cards; puzzle and wallet unchanged.
+Completed: True

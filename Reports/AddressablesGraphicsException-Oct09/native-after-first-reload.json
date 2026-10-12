@@ -1,0 +1,35 @@
+{
+  "editor_state": {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"success\": true,\n  \"message\": \"Retrieved editor state.\",\n  \"data\": {\n    \"IsPlaying\": false,\n    \"IsPaused\": false,\n    \"IsCompiling\": false,\n    \"IsUpdating\": false,\n    \"ApplicationPath\": \"/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app\",\n    \"ApplicationContentsPath\": \"/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents\",\n    \"TimeSinceStartup\": 151304.00668362502\n  }\n}"
+        }
+      ]
+    }
+  },
+  "console": {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"success\": true,\n  \"message\": \"Retrieved 1 log entries.\",\n  \"data\": [\n    {\n      \"Message\": \"NullReferenceException: Object reference not set to an instance of an object\",\n      \"Type\": \"Error\",\n      \"File\": \"/Users/bokken/build/output/unity/unity/Editor/Mono/Inspector/GraphicsSettingsInspectors/RenderPipelineGlobalSettingsAssetProcessor.cs\",\n      \"Line\": 15,\n      \"StackTrace\": \"UnityEditor.Mono.Inspector.GraphicsSettingsInspectors.RenderPipelineGlobalSettingsAssetProcessor.OnWillDeleteAsset (System.String assetPath, UnityEditor.RemoveAssetOptions option) (at /Users/bokken/build/output/unity/unity/Editor/Mono/Inspector/GraphicsSettingsInspectors/RenderPipelineGlobalSettingsAssetProcessor.cs:15)\\nSystem.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at <032c206a1674455bacfc3546f1de5ef3>:0)\\nRethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.\\nSystem.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) (at <032c206a1674455bacfc3546f1de5ef3>:0)\\nSystem.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) (at <032c206a1674455bacfc3546f1de5ef3>:0)\\nUnityEditor.AssetModificationProcessorInternal.OnWillDeleteAssets (System.String[] assetPaths, UnityEditor.AssetDeleteResult[] outPathDeletionResults, UnityEditor.RemoveAssetOptions options) (at /Users/bokken/build/output/unity/unity/Editor/Mono/AssetModificationProcessor.cs:280)\\nUnityEditor.AssetDatabase:DeleteAsset(String)\\nAddressablesPlayerBuildProcessor:RemovePlayerBuildLinkXML(AddressableAssetSettings) (at ./Library/PackageCache/com.unity.addressables@2dc42e61a5f5/Editor/Build/AddressablesPlayerBuildProcessor.cs:47)\\nAddressablesPlayerBuildProcessor:CleanTemporaryPlayerBuildData() (at ./Library/PackageCache/com.unity.addressables@2dc42e61a5f5/Editor/Build/AddressablesPlayerBuildProcessor.cs:39)\\nUnityEditor.EditorAssemblies:ProcessInitializeOnLoadMethodAttributes() (at /Users/bokken/build/output/unity/unity/Editor/Mono/EditorAssemblies.cs:153)\"\n    }\n  ]\n}"
+        }
+      ]
+    }
+  },
+  "source_check": {
+    "status": "fulfilled",
+    "value": {
+      "chunk_id": "26ffd4",
+      "wall_time_seconds": 0.00000625,
+      "exit_code": 0,
+      "original_token_count": 18,
+      "output": "Graphics/Quality/URP/package baseline changes: []\nTemporary probes: []\n"
+    }
+  }
+}
+

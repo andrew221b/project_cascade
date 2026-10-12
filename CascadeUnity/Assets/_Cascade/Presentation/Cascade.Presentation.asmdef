@@ -1,0 +1,27 @@
+{
+    "name": "Cascade.Presentation",
+    "rootNamespace": "Cascade.Presentation",
+    "references": [
+        "Cascade.Domain",
+        "Cascade.Solver",
+        "Cascade.Application",
+        "Cascade.Content",
+        "Unity.ugui",
+        "Unity.TextMeshPro",
+        "Unity.InputSystem",
+        "Unity.Localization",
+        "Unity.ResourceManager",
+        "Cascade.Persistence",
+        "Unity.Purchasing",
+        "DOTween.Modules",
+        "Unity.Services.Core",
+        "Unity.Services.Authentication",
+        "Unity.Services.Authentication.PlayerAccounts",
+        "Unity.Services.CloudCode",
+        "Unity.Services.CloudSave",
+        "Unity.Notifications.Android",
+        "Unity.Notifications.iOS",
+        "Unity.Newtonsoft.Json",
+        "Unity.Services.Core.Environments"
+    ]
+}

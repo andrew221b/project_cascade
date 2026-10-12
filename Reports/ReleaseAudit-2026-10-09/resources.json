@@ -1,0 +1,3546 @@
+{
+  "files": 248,
+  "sourceBytes": 352852514,
+  "textures": [
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/SkyWorkshop.png",
+      "sourceBytes": 1489523,
+      "width": 850,
+      "height": 1850,
+      "rgbaUncompressedBytes": 6290000,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Panel.png",
+      "sourceBytes": 838,
+      "width": 64,
+      "height": 64,
+      "rgbaUncompressedBytes": 16384,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "0",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/TravelTools.png",
+      "sourceBytes": 1824010,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/TutorialHand.png",
+      "sourceBytes": 745500,
+      "width": 1192,
+      "height": 1320,
+      "rgbaUncompressedBytes": 6293760,
+      "maxTextureSize": [
+        "2048",
+        "256",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/TravelTreasures.png",
+      "sourceBytes": 2280503,
+      "width": 1024,
+      "height": 1536,
+      "rgbaUncompressedBytes": 6291456,
+      "maxTextureSize": [
+        "2048",
+        "1536",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "0",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Workshop/BeaconModel.png",
+      "sourceBytes": 1391894,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Workshop/MoonPatch.png",
+      "sourceBytes": 1508337,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Workshop/ResultMedals.png",
+      "sourceBytes": 1316511,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Workshop/RewardEmblems.png",
+      "sourceBytes": 1298201,
+      "width": 1774,
+      "height": 887,
+      "rgbaUncompressedBytes": 6294152,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "0",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Workshop/SunButton.png",
+      "sourceBytes": 1558541,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Workshop/BridgeLantern.png",
+      "sourceBytes": 1468919,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Workshop/Parcel.png",
+      "sourceBytes": 1630985,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Workshop/LeafPin.png",
+      "sourceBytes": 1324603,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Workshop/CompletionAtlas.png",
+      "sourceBytes": 1656080,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "0",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Workshop/CelebrationPaper.png",
+      "sourceBytes": 1881794,
+      "width": 1536,
+      "height": 1024,
+      "rgbaUncompressedBytes": 6291456,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "0",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Workshop/SkyRibbon.png",
+      "sourceBytes": 986300,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Workshop/RainPump.png",
+      "sourceBytes": 2078906,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Workshop/PostGlider.png",
+      "sourceBytes": 1447043,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Craft/WindGardenPanorama.png",
+      "sourceBytes": 1740085,
+      "width": 1672,
+      "height": 941,
+      "rgbaUncompressedBytes": 6293408,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Craft/WindGardenSky.png",
+      "sourceBytes": 1649955,
+      "width": 1672,
+      "height": 941,
+      "rgbaUncompressedBytes": 6293408,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Craft/WorkshopPortrait.png",
+      "sourceBytes": 1810284,
+      "width": 941,
+      "height": 1672,
+      "rgbaUncompressedBytes": 6293408,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Craft/FloatingGardenIslands.png",
+      "sourceBytes": 1176192,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Craft/WorkshopRoomQuiet.png",
+      "sourceBytes": 1789806,
+      "width": 1672,
+      "height": 941,
+      "rgbaUncompressedBytes": 6293408,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Craft/WorkshopRoom.png",
+      "sourceBytes": 1865308,
+      "width": 1672,
+      "height": 941,
+      "rgbaUncompressedBytes": 6293408,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Craft/WorkshopPortraitQuiet.png",
+      "sourceBytes": 1805313,
+      "width": 941,
+      "height": 1672,
+      "rgbaUncompressedBytes": 6293408,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Woodland/WoodBoard.png",
+      "sourceBytes": 569102,
+      "width": 2172,
+      "height": 724,
+      "rgbaUncompressedBytes": 6290112,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Woodland/GreatBeaconBase.png",
+      "sourceBytes": 1755960,
+      "width": 863,
+      "height": 1823,
+      "rgbaUncompressedBytes": 6292996,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Woodland/GlassLagoonMap.png",
+      "sourceBytes": 2297998,
+      "width": 862,
+      "height": 1825,
+      "rgbaUncompressedBytes": 6292600,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Woodland/BranchStops.png",
+      "sourceBytes": 849825,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Woodland/SnowSpireMap.png",
+      "sourceBytes": 2223185,
+      "width": 863,
+      "height": 1822,
+      "rgbaUncompressedBytes": 6289544,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Woodland/MossArchiveMap.png",
+      "sourceBytes": 2136068,
+      "width": 863,
+      "height": 1823,
+      "rgbaUncompressedBytes": 6292996,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Woodland/MossArchiveBase.png",
+      "sourceBytes": 1867705,
+      "width": 862,
+      "height": 1824,
+      "rgbaUncompressedBytes": 6289152,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Woodland/StarObservatoryBase.png",
+      "sourceBytes": 1851980,
+      "width": 862,
+      "height": 1824,
+      "rgbaUncompressedBytes": 6289152,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Woodland/StarObservatoryMap.png",
+      "sourceBytes": 2379122,
+      "width": 864,
+      "height": 1821,
+      "rgbaUncompressedBytes": 6293376,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Woodland/CloudPostBase.png",
+      "sourceBytes": 1728449,
+      "width": 862,
+      "height": 1824,
+      "rgbaUncompressedBytes": 6289152,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Woodland/GlassLagoonBase.png",
+      "sourceBytes": 1837785,
+      "width": 863,
+      "height": 1823,
+      "rgbaUncompressedBytes": 6292996,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Woodland/SnowSpireBase.png",
+      "sourceBytes": 1627520,
+      "width": 863,
+      "height": 1823,
+      "rgbaUncompressedBytes": 6292996,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Woodland/CloudPostMap.png",
+      "sourceBytes": 2232138,
+      "width": 864,
+      "height": 1821,
+      "rgbaUncompressedBytes": 6293376,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Woodland/LagoonSkiff.png",
+      "sourceBytes": 1350612,
+      "width": 1312,
+      "height": 1199,
+      "rgbaUncompressedBytes": 6292352,
+      "maxTextureSize": [
+        "2048",
+        "512",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Woodland/GreatBeaconMap.png",
+      "sourceBytes": 2067694,
+      "width": 864,
+      "height": 1821,
+      "rgbaUncompressedBytes": 6293376,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Woodland/ObservatoryIslands.png",
+      "sourceBytes": 2207313,
+      "width": 1223,
+      "height": 1286,
+      "rgbaUncompressedBytes": 6291112,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Reactions/EnamelControls.png",
+      "sourceBytes": 1143461,
+      "width": 2172,
+      "height": 724,
+      "rgbaUncompressedBytes": 6290112,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "0",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Reactions/PlatformSurfaces.png",
+      "sourceBytes": 1400491,
+      "width": 1881,
+      "height": 836,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Reactions/ToolMotifs.png",
+      "sourceBytes": 1731442,
+      "width": 1536,
+      "height": 1024,
+      "rgbaUncompressedBytes": 6291456,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "0",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Reactions/PlatformProps.png",
+      "sourceBytes": 1915059,
+      "width": 1536,
+      "height": 1024,
+      "rgbaUncompressedBytes": 6291456,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "0",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Reactions/Announcement.png",
+      "sourceBytes": 1595434,
+      "width": 2172,
+      "height": 724,
+      "rgbaUncompressedBytes": 6290112,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "0",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Reactions/ToolMotifsClean.png",
+      "sourceBytes": 1991456,
+      "width": 1536,
+      "height": 1024,
+      "rgbaUncompressedBytes": 6291456,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "0",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Reactions/ToolBodiesClean.png",
+      "sourceBytes": 2014797,
+      "width": 1536,
+      "height": 1024,
+      "rgbaUncompressedBytes": 6291456,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "0",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Reactions/ToolBodies.png",
+      "sourceBytes": 2208639,
+      "width": 1536,
+      "height": 1024,
+      "rgbaUncompressedBytes": 6291456,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "0",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Reactions/TimberStates.png",
+      "sourceBytes": 1833188,
+      "width": 2172,
+      "height": 724,
+      "rgbaUncompressedBytes": 6290112,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "0",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Navigation/WorldComic0.png",
+      "sourceBytes": 3511964,
+      "width": 1536,
+      "height": 1024,
+      "rgbaUncompressedBytes": 6291456,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Navigation/WorldComic1.png",
+      "sourceBytes": 3473894,
+      "width": 1536,
+      "height": 1024,
+      "rgbaUncompressedBytes": 6291456,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Navigation/WorldComic2.png",
+      "sourceBytes": 3228128,
+      "width": 1536,
+      "height": 1024,
+      "rgbaUncompressedBytes": 6291456,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Navigation/StoryPaperStrip.png",
+      "sourceBytes": 1588233,
+      "width": 2172,
+      "height": 724,
+      "rgbaUncompressedBytes": 6290112,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Navigation/OpeningComic.png",
+      "sourceBytes": 2773930,
+      "width": 2172,
+      "height": 724,
+      "rgbaUncompressedBytes": 6290112,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Navigation/WorldComic0Identity.png",
+      "sourceBytes": 3121539,
+      "width": 1536,
+      "height": 1024,
+      "rgbaUncompressedBytes": 6291456,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Navigation/ArrowPairOct08.png",
+      "sourceBytes": 1280909,
+      "width": 1536,
+      "height": 1024,
+      "rgbaUncompressedBytes": 6291456,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Navigation/WorldComicDeparture.png",
+      "sourceBytes": 3601436,
+      "width": 1536,
+      "height": 1024,
+      "rgbaUncompressedBytes": 6291456,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Navigation/MapSky.png",
+      "sourceBytes": 1371475,
+      "width": 1672,
+      "height": 941,
+      "rgbaUncompressedBytes": 6293408,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Navigation/WorldComicDepartureIdentity.png",
+      "sourceBytes": 3347226,
+      "width": 1536,
+      "height": 1024,
+      "rgbaUncompressedBytes": 6291456,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Navigation/MenuIcons.png",
+      "sourceBytes": 2528480,
+      "width": 1536,
+      "height": 1024,
+      "rgbaUncompressedBytes": 6291456,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Cosmetics/SkyCourier.png",
+      "sourceBytes": 1917193,
+      "width": 1448,
+      "height": 1086,
+      "rgbaUncompressedBytes": 6290112,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Cosmetics/FoxMask.png",
+      "sourceBytes": 2071827,
+      "width": 1448,
+      "height": 1086,
+      "rgbaUncompressedBytes": 6290112,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Cosmetics/MothMask.png",
+      "sourceBytes": 1848587,
+      "width": 1448,
+      "height": 1086,
+      "rgbaUncompressedBytes": 6290112,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Cosmetics/BeeSuit.png",
+      "sourceBytes": 1548783,
+      "width": 1448,
+      "height": 1086,
+      "rgbaUncompressedBytes": 6290112,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Cosmetics/GardenFestival.png",
+      "sourceBytes": 1974435,
+      "width": 1448,
+      "height": 1086,
+      "rgbaUncompressedBytes": 6290112,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Cosmetics/JesterSuit.png",
+      "sourceBytes": 1686890,
+      "width": 1448,
+      "height": 1086,
+      "rgbaUncompressedBytes": 6290112,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Cosmetics/StarKnight.png",
+      "sourceBytes": 2108988,
+      "width": 1448,
+      "height": 1086,
+      "rgbaUncompressedBytes": 6290112,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Cosmetics/RainExplorer.png",
+      "sourceBytes": 1856778,
+      "width": 1448,
+      "height": 1086,
+      "rgbaUncompressedBytes": 6290112,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Cosmetics/ConstellationMage.png",
+      "sourceBytes": 1777152,
+      "width": 1448,
+      "height": 1086,
+      "rgbaUncompressedBytes": 6290112,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Cosmetics/CloudGardener.png",
+      "sourceBytes": 1977702,
+      "width": 1448,
+      "height": 1086,
+      "rgbaUncompressedBytes": 6290112,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Cosmetics/ExplorerHat.png",
+      "sourceBytes": 2151435,
+      "width": 1448,
+      "height": 1086,
+      "rgbaUncompressedBytes": 6290112,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Cosmetics/WinterHood.png",
+      "sourceBytes": 1512092,
+      "width": 1448,
+      "height": 1086,
+      "rgbaUncompressedBytes": 6290112,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Cosmetics/MushroomCap.png",
+      "sourceBytes": 1515495,
+      "width": 1448,
+      "height": 1086,
+      "rgbaUncompressedBytes": 6290112,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Cosmetics/FrogSuit.png",
+      "sourceBytes": 2122856,
+      "width": 1448,
+      "height": 1086,
+      "rgbaUncompressedBytes": 6290112,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Cosmetics/PirateHat.png",
+      "sourceBytes": 1777632,
+      "width": 1448,
+      "height": 1086,
+      "rgbaUncompressedBytes": 6290112,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Cosmetics/SkyPilot.png",
+      "sourceBytes": 1956390,
+      "width": 1448,
+      "height": 1086,
+      "rgbaUncompressedBytes": 6290112,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Cosmetics/MoonObserver.png",
+      "sourceBytes": 1840592,
+      "width": 1448,
+      "height": 1086,
+      "rgbaUncompressedBytes": 6290112,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Cosmetics/SceneryAtlasOct08.png",
+      "sourceBytes": 1300747,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Cosmetics/AmbientAtlas.png",
+      "sourceBytes": 1145407,
+      "width": 1774,
+      "height": 887,
+      "rgbaUncompressedBytes": 6294152,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "1"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Journey/RainMillBase.png",
+      "sourceBytes": 1202348,
+      "width": 910,
+      "height": 1728,
+      "rgbaUncompressedBytes": 6289920,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Journey/Glider.png",
+      "sourceBytes": 1717541,
+      "width": 1536,
+      "height": 1024,
+      "rgbaUncompressedBytes": 6291456,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Journey/RainMillMap.png",
+      "sourceBytes": 1850033,
+      "width": 863,
+      "height": 1823,
+      "rgbaUncompressedBytes": 6292996,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Journey/CopperOrchardBase.png",
+      "sourceBytes": 1299003,
+      "width": 862,
+      "height": 1825,
+      "rgbaUncompressedBytes": 6292600,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Journey/Rue.png",
+      "sourceBytes": 2003857,
+      "width": 1194,
+      "height": 1317,
+      "rgbaUncompressedBytes": 6289992,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Journey/Residents.png",
+      "sourceBytes": 3169231,
+      "width": 1536,
+      "height": 1024,
+      "rgbaUncompressedBytes": 6291456,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "0",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Journey/Cloud.png",
+      "sourceBytes": 870987,
+      "width": 1774,
+      "height": 887,
+      "rgbaUncompressedBytes": 6294152,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Journey/MikaThinking.png",
+      "sourceBytes": 2571931,
+      "width": 1024,
+      "height": 1536,
+      "rgbaUncompressedBytes": 6291456,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Journey/Aster.png",
+      "sourceBytes": 2484892,
+      "width": 1199,
+      "height": 1312,
+      "rgbaUncompressedBytes": 6292352,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Journey/WindGardenBase.png",
+      "sourceBytes": 1165490,
+      "width": 862,
+      "height": 1825,
+      "rgbaUncompressedBytes": 6292600,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Journey/WindGardenMap.png",
+      "sourceBytes": 1731336,
+      "width": 863,
+      "height": 1823,
+      "rgbaUncompressedBytes": 6292996,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Journey/CopperOrchardMap.png",
+      "sourceBytes": 1849029,
+      "width": 863,
+      "height": 1823,
+      "rgbaUncompressedBytes": 6292996,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Journey/Mika.png",
+      "sourceBytes": 2635762,
+      "width": 1024,
+      "height": 1536,
+      "rgbaUncompressedBytes": 6291456,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Journey/GardenPlants.png",
+      "sourceBytes": 1429226,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Journey/Pip.png",
+      "sourceBytes": 2017863,
+      "width": 1199,
+      "height": 1312,
+      "rgbaUncompressedBytes": 6292352,
+      "maxTextureSize": [
+        "2048",
+        "1024",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Atmosphere/Insects.png",
+      "sourceBytes": 1459711,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Atmosphere/Birds.png",
+      "sourceBytes": 1076696,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Devices/RibbonSpool.png",
+      "sourceBytes": 1445395,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "512",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Devices/BrassKey.png",
+      "sourceBytes": 942521,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "512",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Devices/Bomb.png",
+      "sourceBytes": 1160762,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "512",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Devices/FrostFlask.png",
+      "sourceBytes": 1130441,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "512",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "0",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Devices/RepairKit.png",
+      "sourceBytes": 1811858,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "512",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Devices/Hourglass.png",
+      "sourceBytes": 1437759,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "512",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Devices/NailHead.png",
+      "sourceBytes": 658872,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "64",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "0",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Devices/Stamp.png",
+      "sourceBytes": 1096554,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "512",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Devices/BombSafe.png",
+      "sourceBytes": 1096697,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "512",
+        "512",
+        "512",
+        "512",
+        "512"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Resources/CascadeArt/Cosmetics/ScreenFramesOct08.png",
+      "sourceBytes": 921561,
+      "width": 1254,
+      "height": 1254,
+      "rgbaUncompressedBytes": 6290064,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Resources/CascadeArt/Atmosphere/InsectRigOct08.png",
+      "sourceBytes": 2631595,
+      "width": 1024,
+      "height": 1536,
+      "rgbaUncompressedBytes": 6291456,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "0",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Resources/CascadeArt/Atmosphere/WorldVisitorsOct08.png",
+      "sourceBytes": 2408426,
+      "width": 1024,
+      "height": 1536,
+      "rgbaUncompressedBytes": 6291456,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "2",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Resources/CascadeArt/Atmosphere/BirdRigOct08.png",
+      "sourceBytes": 2262812,
+      "width": 1024,
+      "height": 1536,
+      "rgbaUncompressedBytes": 6291456,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "0",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "GoogleMobileAds/Editor/Resources/Ump/ConsentForm.png",
+      "sourceBytes": 239390,
+      "width": 973,
+      "height": 1574,
+      "rgbaUncompressedBytes": 6126008,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "GoogleMobileAds/Editor/Resources/PlaceholderAds/AdImages/AdInspectorHome.png",
+      "sourceBytes": 33310,
+      "width": 645,
+      "height": 1395,
+      "rgbaUncompressedBytes": 3599100,
+      "maxTextureSize": [
+        "2048",
+        "2048",
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "file": "GoogleMobileAds/Editor/Resources/PlaceholderAds/AdImages/320x100.png",
+      "sourceBytes": 27345,
+      "width": 320,
+      "height": 100,
+      "rgbaUncompressedBytes": 128000,
+      "maxTextureSize": [
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1"
+      ]
+    },
+    {
+      "file": "GoogleMobileAds/Editor/Resources/PlaceholderAds/AdImages/1024x768.png",
+      "sourceBytes": 206289,
+      "width": 1024,
+      "height": 768,
+      "rgbaUncompressedBytes": 3145728,
+      "maxTextureSize": [
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1"
+      ]
+    },
+    {
+      "file": "GoogleMobileAds/Editor/Resources/PlaceholderAds/AdImages/468x60.png",
+      "sourceBytes": 20218,
+      "width": 468,
+      "height": 60,
+      "rgbaUncompressedBytes": 112320,
+      "maxTextureSize": [
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1"
+      ]
+    },
+    {
+      "file": "GoogleMobileAds/Editor/Resources/PlaceholderAds/AdImages/300x250.png",
+      "sourceBytes": 46644,
+      "width": 300,
+      "height": 250,
+      "rgbaUncompressedBytes": 300000,
+      "maxTextureSize": [
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1"
+      ]
+    },
+    {
+      "file": "GoogleMobileAds/Editor/Resources/PlaceholderAds/AdImages/320x50.png",
+      "sourceBytes": 14916,
+      "width": 320,
+      "height": 50,
+      "rgbaUncompressedBytes": 64000,
+      "maxTextureSize": [
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1"
+      ]
+    },
+    {
+      "file": "GoogleMobileAds/Editor/Resources/PlaceholderAds/AdImages/768x1024.png",
+      "sourceBytes": 181896,
+      "width": 768,
+      "height": 1024,
+      "rgbaUncompressedBytes": 3145728,
+      "maxTextureSize": [
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1"
+      ]
+    },
+    {
+      "file": "GoogleMobileAds/Editor/Resources/PlaceholderAds/AdImages/480x320.png",
+      "sourceBytes": 67392,
+      "width": 480,
+      "height": 320,
+      "rgbaUncompressedBytes": 614400,
+      "maxTextureSize": [
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1"
+      ]
+    },
+    {
+      "file": "GoogleMobileAds/Editor/Resources/PlaceholderAds/AdImages/728x90.png",
+      "sourceBytes": 32942,
+      "width": 728,
+      "height": 90,
+      "rgbaUncompressedBytes": 262080,
+      "maxTextureSize": [
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1"
+      ]
+    },
+    {
+      "file": "GoogleMobileAds/Editor/Resources/PlaceholderAds/AdImages/320x480.png",
+      "sourceBytes": 64507,
+      "width": 320,
+      "height": 480,
+      "rgbaUncompressedBytes": 614400,
+      "maxTextureSize": [
+        "2048",
+        "2048"
+      ],
+      "readable": [
+        "0"
+      ],
+      "compression": [
+        "1"
+      ]
+    }
+  ],
+  "audio": [
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Woodland/WindBed.wav",
+      "durationSeconds": 8.0,
+      "sourceBytes": 384044,
+      "pcmBytes": 384000,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "0"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Woodland/RainBed.wav",
+      "durationSeconds": 8.0,
+      "sourceBytes": 384044,
+      "pcmBytes": 384000,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "0"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/LandAlternate.wav",
+      "durationSeconds": 0.12997732426303854,
+      "sourceBytes": 5776,
+      "pcmBytes": 5732,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/FragileAlternate.wav",
+      "durationSeconds": 0.12997732426303854,
+      "sourceBytes": 5776,
+      "pcmBytes": 5732,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Bridge.wav",
+      "durationSeconds": 0.12997732426303854,
+      "sourceBytes": 5776,
+      "pcmBytes": 5732,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/SelectAlternate.wav",
+      "durationSeconds": 0.12997732426303854,
+      "sourceBytes": 5776,
+      "pcmBytes": 5732,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Fragile.wav",
+      "durationSeconds": 0.12997732426303854,
+      "sourceBytes": 5776,
+      "pcmBytes": 5732,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Bomb.wav",
+      "durationSeconds": 0.34,
+      "sourceBytes": 15038,
+      "pcmBytes": 14994,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Land.wav",
+      "durationSeconds": 0.12997732426303854,
+      "sourceBytes": 5776,
+      "pcmBytes": 5732,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Defuse.wav",
+      "durationSeconds": 0.12997732426303854,
+      "sourceBytes": 5776,
+      "pcmBytes": 5732,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/CloudWorkshopLoop.wav",
+      "durationSeconds": 24.0,
+      "sourceBytes": 1058444,
+      "pcmBytes": 1058400,
+      "loadType": [
+        "2"
+      ],
+      "preload": [
+        "0"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Select.wav",
+      "durationSeconds": 0.12997732426303854,
+      "sourceBytes": 5776,
+      "pcmBytes": 5732,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Unlock.wav",
+      "durationSeconds": 0.12997732426303854,
+      "sourceBytes": 5776,
+      "pcmBytes": 5732,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Repair.wav",
+      "durationSeconds": 0.28,
+      "sourceBytes": 12392,
+      "pcmBytes": 12348,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/SwapAlternate.wav",
+      "durationSeconds": 0.12997732426303854,
+      "sourceBytes": 5776,
+      "pcmBytes": 5732,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Reject.wav",
+      "durationSeconds": 0.12997732426303854,
+      "sourceBytes": 5776,
+      "pcmBytes": 5732,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Stamp.wav",
+      "durationSeconds": 0.12997732426303854,
+      "sourceBytes": 5776,
+      "pcmBytes": 5732,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Swap.wav",
+      "durationSeconds": 0.12997732426303854,
+      "sourceBytes": 5776,
+      "pcmBytes": 5732,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Success.wav",
+      "durationSeconds": 0.5799546485260771,
+      "sourceBytes": 25620,
+      "pcmBytes": 25576,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/RainMill_RainOnCedar.wav",
+      "durationSeconds": 75.78945578231293,
+      "sourceBytes": 13369304,
+      "pcmBytes": 13369260,
+      "loadType": [
+        "2"
+      ],
+      "preload": [
+        "0"
+      ],
+      "background": [
+        "1"
+      ],
+      "compression": [
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/MossArchive_StoriesInTheLeaves.wav",
+      "durationSeconds": 80.0,
+      "sourceBytes": 14112044,
+      "pcmBytes": 14112000,
+      "loadType": [
+        "2"
+      ],
+      "preload": [
+        "0"
+      ],
+      "background": [
+        "1"
+      ],
+      "compression": [
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/Success_Home.wav",
+      "durationSeconds": 1.6930839002267575,
+      "sourceBytes": 298704,
+      "pcmBytes": 298660,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/TimberSnap.wav",
+      "durationSeconds": 0.94,
+      "sourceBytes": 82952,
+      "pcmBytes": 82908,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/SnowSpire_WarmLightInSnow.wav",
+      "durationSeconds": 73.84614512471656,
+      "sourceBytes": 13026504,
+      "pcmBytes": 13026460,
+      "loadType": [
+        "2"
+      ],
+      "preload": [
+        "0"
+      ],
+      "background": [
+        "1"
+      ],
+      "compression": [
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/Defuse_Release.wav",
+      "durationSeconds": 1.0749206349206348,
+      "sourceBytes": 189660,
+      "pcmBytes": 189616,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/Bomb_Puff.wav",
+      "durationSeconds": 1.24,
+      "sourceBytes": 218780,
+      "pcmBytes": 218736,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/Menu_HomeAmongClouds.wav",
+      "durationSeconds": 68.57142857142857,
+      "sourceBytes": 12096044,
+      "pcmBytes": 12096000,
+      "loadType": [
+        "2"
+      ],
+      "preload": [
+        "0"
+      ],
+      "background": [
+        "1"
+      ],
+      "compression": [
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/CloudPost_LettersOnTheBreeze.wav",
+      "durationSeconds": 60.0,
+      "sourceBytes": 10584044,
+      "pcmBytes": 10584000,
+      "loadType": [
+        "2"
+      ],
+      "preload": [
+        "0"
+      ],
+      "background": [
+        "1"
+      ],
+      "compression": [
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/StarObservatory_ConstellationLullaby.wav",
+      "durationSeconds": 48.0,
+      "sourceBytes": 8467244,
+      "pcmBytes": 8467200,
+      "loadType": [
+        "2"
+      ],
+      "preload": [
+        "0"
+      ],
+      "background": [
+        "1"
+      ],
+      "compression": [
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/WindGarden_PaperWings.wav",
+      "durationSeconds": 62.60868480725624,
+      "sourceBytes": 11044216,
+      "pcmBytes": 11044172,
+      "loadType": [
+        "2"
+      ],
+      "preload": [
+        "0"
+      ],
+      "background": [
+        "1"
+      ],
+      "compression": [
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/Repair_Chimes.wav",
+      "durationSeconds": 1.4431972789115646,
+      "sourceBytes": 254624,
+      "pcmBytes": 254580,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/Fragile_Creak.wav",
+      "durationSeconds": 0.638639455782313,
+      "sourceBytes": 112700,
+      "pcmBytes": 112656,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/Unlock_Turn.wav",
+      "durationSeconds": 1.021156462585034,
+      "sourceBytes": 180176,
+      "pcmBytes": 180132,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/NightCrickets.wav",
+      "durationSeconds": 4.2,
+      "sourceBytes": 201644,
+      "pcmBytes": 201600,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/LivingWind.wav",
+      "durationSeconds": 11.650022675736961,
+      "sourceBytes": 2055108,
+      "pcmBytes": 2055064,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/Swap_Slide.wav",
+      "durationSeconds": 1.0916099773242631,
+      "sourceBytes": 192604,
+      "pcmBytes": 192560,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/Stamp_Paper.wav",
+      "durationSeconds": 0.23882086167800454,
+      "sourceBytes": 42172,
+      "pcmBytes": 42128,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/Bridge_Unfold.wav",
+      "durationSeconds": 1.4624263038548753,
+      "sourceBytes": 258016,
+      "pcmBytes": 257972,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/GreatBeacon_TheWayHome.wav",
+      "durationSeconds": 57.6,
+      "sourceBytes": 10160684,
+      "pcmBytes": 10160640,
+      "loadType": [
+        "2"
+      ],
+      "preload": [
+        "0"
+      ],
+      "background": [
+        "1"
+      ],
+      "compression": [
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/Select_Touch.wav",
+      "durationSeconds": 0.200702947845805,
+      "sourceBytes": 35448,
+      "pcmBytes": 35404,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/Land_Clacks.wav",
+      "durationSeconds": 0.9285260770975057,
+      "sourceBytes": 163836,
+      "pcmBytes": 163792,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/GlassLagoon_ReflectedMoon.wav",
+      "durationSeconds": 72.0,
+      "sourceBytes": 12700844,
+      "pcmBytes": 12700800,
+      "loadType": [
+        "2"
+      ],
+      "preload": [
+        "0"
+      ],
+      "background": [
+        "1"
+      ],
+      "compression": [
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/Reject_Nudge.wav",
+      "durationSeconds": 0.6,
+      "sourceBytes": 105884,
+      "pcmBytes": 105840,
+      "loadType": [
+        "0"
+      ],
+      "preload": [
+        "1"
+      ],
+      "background": [
+        "0"
+      ],
+      "compression": [
+        "0"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/CopperOrchard_GoldenAfternoon.wav",
+      "durationSeconds": 55.38460317460317,
+      "sourceBytes": 9769888,
+      "pcmBytes": 9769844,
+      "loadType": [
+        "2"
+      ],
+      "preload": [
+        "0"
+      ],
+      "background": [
+        "1"
+      ],
+      "compression": [
+        "1"
+      ]
+    },
+    {
+      "file": "_Cascade/Content/Resources/CascadeArt/Audio/Atmosphere/Menu_HomeAmongCloudsBalanced.wav",
+      "durationSeconds": 68.57142857142857,
+      "sourceBytes": 12096044,
+      "pcmBytes": 12096000,
+      "loadType": [
+        "2"
+      ],
+      "preload": [
+        "0"
+      ],
+      "background": [
+        "1"
+      ],
+      "compression": [
+        "1"
+      ]
+    }
+  ],
+  "note": "Source file size / uncompressed theoretical texture bounds, not actual player memory or build size."
+}

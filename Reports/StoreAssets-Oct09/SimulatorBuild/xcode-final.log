@@ -1,0 +1,434 @@
+Lib arch: arm64
+Host arch: arm64
+Bee arch: arm64
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Il2CppOutputProject/IL2CPP/build/deploy_arm64/il2cpp --compile-cpp --platform=iOS --baselib-directory=Libraries --incremental-g-c-time-slice=3 --dotnetprofile=unityaot-macos --usymtool-path=/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Helpers/usymtool --profiler-report --print-command-line --static-lib-il2-cpp --emit-source-mapping --generatedcppdir=Il2CppOutputProject/Source/il2cppOutput --custom-il2-cpp-root=Il2CppOutputProject/IL2CPP --architecture=arm64 --outputpath=/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/StoreAssets-Oct09/SimulatorBuild/DerivedData/Build/Products/Release-iphonesimulator/libGameAssembly.a --cachedirectory=Il2CppTempDirArtifacts/Release/artifacts/arm64 --configuration=Release --target-is-simulator --tool-chain-path=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --sysroot-path=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk
+Starting: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Il2CppOutputProject/IL2CPP/build/deploy_arm64/bee_backend/mac-arm64/bee_backend --verbose --threads=12 --ipc --dagfile="Il2CppTempDirArtifacts/Release/artifacts/arm64/buildstate/bee.dag" --continue-on-failure --profile="Il2CppTempDirArtifacts/Release/artifacts/arm64/buildstate/backend1.traceevents" FinalProgram
+WorkingDir: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final
+Rebuilding DAG because FileSignature timestamp changed: Il2CppTempDirArtifacts/Release/artifacts/arm64/buildstate/bee-inputdata.json
+*** il2cpp requires additional run (0.03 seconds), 0 items updated, 0 evaluated
+ExitCode: 4 Duration: 0s226ms
+Starting: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Il2CppOutputProject/IL2CPP/build/deploy_arm64/bee_backend/mac-arm64/bee_backend --verbose --threads=12 --ipc --dagfile="Il2CppTempDirArtifacts/Release/artifacts/arm64/buildstate/bee.dag" --continue-on-failure --dagfilejson="Il2CppTempDirArtifacts/Release/artifacts/arm64/buildstate/bee.dag.json" --profile="Il2CppTempDirArtifacts/Release/artifacts/arm64/buildstate/backend2.traceevents" FinalProgram
+WorkingDir: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final
+Finished compiling graph: 960 nodes, 1920 flattened edges (1920 ToBuild, 3 ToUse), maximum node priority 12
+[  2/770    0s] CopyFiles /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/StoreAssets-Oct09/SimulatorBuild/DerivedData/Build/Products/Release-iphonesimulator/baselib.a
+[765/770    0s] C_iOS_sim_arm64 Il2CppTempDirArtifacts/Release/artifacts/arm64/a5or/kw9nf0h3nn42.o
+##### CommandLine
+"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++" -Wswitch -Wno-trigraphs -Wno-tautological-compare -Wno-invalid-offsetof -Wno-implicitly-unsigned-literal -Wno-integer-overflow -Wno-shift-negative-value -Wno-unknown-attributes -Wno-implicit-function-declaration -Wno-null-conversion -Wno-missing-declarations -Wno-unused-value -Wno-pragma-once-outside-header -Wno-unknown-warning-option -Wno-undef-prefix -fvisibility=hidden -isysroot "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk" -fexceptions -g -O3 -fno-strict-overflow -ffunction-sections -fdata-sections -fmessage-length=0 -pipe -DBASELIB_INLINE_NAMESPACE=il2cpp_baselib -DIL2CPP_MONO_DEBUGGER_DISABLED -DRUNTIME_IL2CPP -DTARGET_ARM64 -DIL2CPP_ENABLE_WRITE_BARRIERS=1 -DIL2CPP_INCREMENTAL_TIME_SLICE=3 -DHAVE_BDWGC_GC -DNDEBUG -I"." -I"Il2CppOutputProject/Source/il2cppOutput" -I"Il2CppOutputProject/IL2CPP/libil2cpp/pch" -I"Il2CppOutputProject/IL2CPP/libil2cpp" -I"Il2CppOutputProject/IL2CPP/external/baselib/Include" -I"Il2CppOutputProject/IL2CPP/libil2cpp/os/ClassLibraryPAL/brotli/include" -I"Il2CppOutputProject/IL2CPP/external/baselib/Platforms/IOS/Include" -o "Il2CppTempDirArtifacts/Release/artifacts/arm64/a5or/kw9nf0h3nn42.o" -fcolor-diagnostics -arch arm64 -fobjc-abi-version=2 -fobjc-legacy-dispatch -target arm64-apple-ios11.0-simulator -mios-version-min=11.0 -c -x c "Il2CppOutputProject/Source/il2cppOutput/Il2CppMetadataUsage.c"
+[766/770    1s] C_iOS_sim_arm64 Il2CppTempDirArtifacts/Release/artifacts/arm64/a5or/s3aq41iz0rcg.o
+##### CommandLine
+"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++" -std=c++17 -Wswitch -Wno-trigraphs -Wno-tautological-compare -Wno-invalid-offsetof -Wno-implicitly-unsigned-literal -Wno-integer-overflow -Wno-shift-negative-value -Wno-unknown-attributes -Wno-implicit-function-declaration -Wno-null-conversion -Wno-missing-declarations -Wno-unused-value -Wno-pragma-once-outside-header -Wno-unknown-warning-option -Wno-undef-prefix -fvisibility=hidden -isysroot "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk" -fexceptions -frtti -g -O3 -fno-strict-overflow -ffunction-sections -fdata-sections -fmessage-length=0 -pipe -DBASELIB_INLINE_NAMESPACE=il2cpp_baselib -DIL2CPP_MONO_DEBUGGER_DISABLED -DRUNTIME_IL2CPP -DTARGET_ARM64 -DIL2CPP_ENABLE_WRITE_BARRIERS=1 -DIL2CPP_INCREMENTAL_TIME_SLICE=3 -DHAVE_BDWGC_GC -DNDEBUG -I"." -I"Il2CppOutputProject/Source/il2cppOutput" -I"Il2CppOutputProject/IL2CPP/libil2cpp/pch" -I"Il2CppOutputProject/IL2CPP/libil2cpp" -I"Il2CppOutputProject/IL2CPP/external/baselib/Include" -I"Il2CppOutputProject/IL2CPP/libil2cpp/os/ClassLibraryPAL/brotli/include" -I"Il2CppOutputProject/IL2CPP/external/baselib/Platforms/IOS/Include" -o "Il2CppTempDirArtifacts/Release/artifacts/arm64/a5or/s3aq41iz0rcg.o" -fcolor-diagnostics -stdlib=libc++ -arch arm64 -fobjc-abi-version=2 -fobjc-legacy-dispatch -target arm64-apple-ios11.0-simulator -mios-version-min=11.0 -c -x c++ "Il2CppOutputProject/Source/il2cppOutput/Cascade.Presentation__6.cpp"
+[767/770    4s] C_iOS_sim_arm64 Il2CppTempDirArtifacts/Release/artifacts/arm64/a5or/0yailr61b8az.o
+##### CommandLine
+"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++" -std=c++17 -Wswitch -Wno-trigraphs -Wno-tautological-compare -Wno-invalid-offsetof -Wno-implicitly-unsigned-literal -Wno-integer-overflow -Wno-shift-negative-value -Wno-unknown-attributes -Wno-implicit-function-declaration -Wno-null-conversion -Wno-missing-declarations -Wno-unused-value -Wno-pragma-once-outside-header -Wno-unknown-warning-option -Wno-undef-prefix -fvisibility=hidden -isysroot "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk" -fexceptions -frtti -g -O3 -fno-strict-overflow -ffunction-sections -fdata-sections -fmessage-length=0 -pipe -DBASELIB_INLINE_NAMESPACE=il2cpp_baselib -DIL2CPP_MONO_DEBUGGER_DISABLED -DRUNTIME_IL2CPP -DTARGET_ARM64 -DIL2CPP_ENABLE_WRITE_BARRIERS=1 -DIL2CPP_INCREMENTAL_TIME_SLICE=3 -DHAVE_BDWGC_GC -DNDEBUG -I"." -I"Il2CppOutputProject/Source/il2cppOutput" -I"Il2CppOutputProject/IL2CPP/libil2cpp/pch" -I"Il2CppOutputProject/IL2CPP/libil2cpp" -I"Il2CppOutputProject/IL2CPP/external/baselib/Include" -I"Il2CppOutputProject/IL2CPP/libil2cpp/os/ClassLibraryPAL/brotli/include" -I"Il2CppOutputProject/IL2CPP/external/baselib/Platforms/IOS/Include" -o "Il2CppTempDirArtifacts/Release/artifacts/arm64/a5or/0yailr61b8az.o" -fcolor-diagnostics -stdlib=libc++ -arch arm64 -fobjc-abi-version=2 -fobjc-legacy-dispatch -target arm64-apple-ios11.0-simulator -mios-version-min=11.0 -c -x c++ "Il2CppOutputProject/Source/il2cppOutput/Cascade.Presentation.cpp"
+[768/770    1s] Lib_iOS_sim_arm64_11.0 Il2CppTempDirArtifacts/Release/artifacts/arm64/a5or/libGameAssembly.a
+##### CommandLine
+"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool" -arch_only arm64 -static -filelist "Il2CppTempDirArtifacts/Release/artifacts/arm64/a5or/libGameAssembly.objectfiles" -o "Il2CppTempDirArtifacts/Release/artifacts/arm64/a5or/libGameAssembly.a"
+##### Output
+libtool: warning: 'ts632ckg0gqd.o' has no symbols
+[769/770    0s] CopyFiles /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/StoreAssets-Oct09/SimulatorBuild/DerivedData/Build/Products/Release-iphonesimulator/libGameAssembly.a
+*** il2cpp build success (6.24 seconds), 6 items updated, 770 evaluated
+ExitCode: 0 Duration: 6s258ms
+Success: 
+
+
+
+<module-includes>:1:9: note: in file included from <module-includes>:1:
+1 | #import "Headers/UnityFramework.h"
+  |         `- note: in file included from <module-includes>:1:
+2 | 
+
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/UnityFramework/UnityFramework.h:70:1: warning: umbrella header for module 'UnityFramework' does not include header 'AppDelegateListener.h'
+68 | 
+69 | @end
+70 | 
+   | `- warning: umbrella header for module 'UnityFramework' does not include header 'AppDelegateListener.h'
+
+<module-includes>:1:9: note: in file included from <module-includes>:1:
+1 | #import "Headers/UnityFramework.h"
+  |         `- note: in file included from <module-includes>:1:
+2 | 
+
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/UnityFramework/UnityFramework.h:70:1: warning: umbrella header for module 'UnityFramework' does not include header 'RedefinePlatforms.h'
+68 | 
+69 | @end
+70 | 
+   | `- warning: umbrella header for module 'UnityFramework' does not include header 'RedefinePlatforms.h'
+
+<module-includes>:1:9: note: in file included from <module-includes>:1:
+1 | #import "Headers/UnityFramework.h"
+  |         `- note: in file included from <module-includes>:1:
+2 | 
+
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/UnityFramework/UnityFramework.h:70:1: warning: umbrella header for module 'UnityFramework' does not include header 'UndefinePlatforms.h'
+68 | 
+69 | @end
+70 | 
+   | `- warning: umbrella header for module 'UnityFramework' does not include header 'UndefinePlatforms.h'
+
+<module-includes>:1:9: note: in file included from <module-includes>:1:
+1 | #import "Headers/UnityFramework.h"
+  |         `- note: in file included from <module-includes>:1:
+2 | 
+
+4 warnings generated.
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/UnityFramework/UnityFramework.h:70:1: warning: umbrella header for module 'UnityFramework' does not include header 'UnityViewControllerListener.h'
+68 | 
+69 | @end
+70 | 
+   | `- warning: umbrella header for module 'UnityFramework' does not include header 'UnityViewControllerListener.h'
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/SK2/Extensions/PromotionInfoExtensions.swift:9:1: warning: extension declares a conformance of imported type 'PromotionInfo' to imported protocol 'Encodable'; this will not behave correctly if the owners of 'StoreKit' introduce this conformance in the future
+extension Product.PromotionInfo : Encodable {
+^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/SK2/Extensions/PromotionInfoExtensions.swift:9:1: note: add '@retroactive' to silence this warning
+extension Product.PromotionInfo : Encodable {
+^                                 ~~~~~~~~~
+                                  @retroactive Encodable
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/SK2/Extensions/ProductExtensions.swift:5:1: warning: extension declares a conformance of imported type 'Product' to imported protocol 'Encodable'; this will not behave correctly if the owners of 'StoreKit' introduce this conformance in the future
+extension Product : Encodable {
+^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/SK2/Extensions/ProductExtensions.swift:5:1: note: add '@retroactive' to silence this warning
+extension Product : Encodable {
+^                   ~~~~~~~~~
+                    @retroactive Encodable
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/UnityFramework/UnityFramework.h:38:12: warning: public class 'UnityFramework.UnityFramework' shadows module 'UnityFramework', which may cause failures when importing 'UnityFramework' or its clients in some configurations; please rename either the class 'UnityFramework.UnityFramework' or the module 'UnityFramework', or see https://github.com/apple/swift/issues/56573 for workarounds
+@interface UnityFramework : NSObject
+           ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/UnityFramework/UnityFramework.h:38:12: warning: public class 'UnityFramework.UnityFramework' shadows module 'UnityFramework', which may cause failures when importing 'UnityFramework' or its clients in some configurations; please rename either the class 'UnityFramework.UnityFramework' or the module 'UnityFramework', or see https://github.com/apple/swift/issues/56573 for workarounds
+@interface UnityFramework : NSObject
+           ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/SK2/ExternalPurchaseStandalone.swift:117:82: warning: left side of nil coalescing operator '??' has non-optional type 'String', so the right side is never used
+            let response = ExternalPurchaseTokenResponse(tokenValue: token.value ?? "", tokenType: tokenType)
+                                                                     ~~~~~~~~~~~~^~~~~
+                                                                                
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityPurchasingInAppBrowser.swift:134:45: warning: 'windows' was deprecated in iOS 15.0: Use UIWindowScene.windows on a relevant window scene instead
+                return UIApplication.shared.windows
+                                            ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:112:11: warning: unnecessary check for 'iOS'; enclosing scope ensures guard will always be true
+    guard #available(iOS 15.0, macOS 12.0, tvOS 15.0, visionOS 1.0, *) else { return }
+          ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:111:13: note: enclosing scope here
+public func unityPurchasing_SetNativeCallback(_ callback: UnityPurchasingCallbackDelegateType) {
+            ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:131:11: warning: unnecessary check for 'iOS'; enclosing scope ensures guard will always be true
+    guard #available(iOS 15.0, macOS 12.0, tvOS 15.0, visionOS 1.0, *) else { return }
+          ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:130:13: note: enclosing scope here
+public func unityPurchasing_AddTransactionObserver() {
+            ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:141:11: warning: unnecessary check for 'iOS'; enclosing scope ensures guard will always be true
+    guard #available(iOS 15.0, macOS 12.0, tvOS 15.0, visionOS 1.0, *) else { return }
+          ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:140:13: note: enclosing scope here
+public func unityPurchasing_FetchProducts(_ productJsonCString: UnsafePointer<CChar>) {
+            ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:154:11: warning: unnecessary check for 'iOS'; enclosing scope ensures guard will always be true
+    guard #available(iOS 15.0, macOS 12.0, tvOS 15.0, visionOS 1.0, *) else { return }
+          ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:153:13: note: enclosing scope here
+public func unityPurchasing_PurchaseProduct(_ productJsonCString: UnsafePointer<CChar>, optionsJsonCString: UnsafePointer<CChar>) {
+            ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:169:11: warning: unnecessary check for 'iOS'; enclosing scope ensures guard will always be true
+    guard #available(iOS 15.0, macOS 12.0, tvOS 15.0, visionOS 1.0, *) else { return nil }
+          ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:168:13: note: enclosing scope here
+public func unityPurchasing_FetchAppReceipt() -> UnsafeMutablePointer<CChar>? {
+            ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:328:11: warning: unnecessary check for 'iOS'; enclosing scope ensures guard will always be true
+    guard #available(iOS 15.0, macOS 12.0, tvOS 15.0, visionOS 1.0, *) else { return }
+          ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:327:13: note: enclosing scope here
+public func unityPurchasing_FetchPurchases() {
+            ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:337:11: warning: unnecessary check for 'iOS'; enclosing scope ensures guard will always be true
+    guard #available(iOS 15.0, macOS 12.0, tvOS 15.0, visionOS 1.0, *) else { return }
+          ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:336:13: note: enclosing scope here
+public func unityPurchasing_FetchTransactionForProductId(_ productIdCString: UnsafePointer<CChar>) {
+            ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:347:11: warning: unnecessary check for 'iOS'; enclosing scope ensures guard will always be true
+    guard #available(iOS 15.0, macOS 12.0, tvOS 15.0, visionOS 1.0, *) else { return false }
+          ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:346:13: note: enclosing scope here
+public func unityPurchasing_CanMakePayments() -> Bool {
+            ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:354:11: warning: unnecessary check for 'iOS'; enclosing scope ensures guard will always be true
+    guard #available(iOS 15.0, macOS 12.0, tvOS 15.0, visionOS 1.0, *) else { return }
+          ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:353:13: note: enclosing scope here
+public func unityPurchasing_PresentCodeRedemptionSheet() {
+            ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:363:11: warning: unnecessary check for 'iOS'; enclosing scope ensures guard will always be true
+    guard #available(iOS 15.0, macOS 12.0, tvOS 15.0, visionOS 1.0, *) else { return }
+          ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:362:13: note: enclosing scope here
+public func unityPurchasing_RefreshAppReceipt() {
+            ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:372:11: warning: unnecessary check for 'iOS'; enclosing scope ensures guard will always be true
+    guard #available(iOS 15.0, macOS 12.0, tvOS 15.0, visionOS 1.0, *) else { return }
+          ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:371:13: note: enclosing scope here
+public func unityPurchasing_FinishTransaction(transactionId: UnsafePointer<CChar>, logFinishTransaction: Bool) {
+            ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:390:11: warning: unnecessary check for 'iOS'; enclosing scope ensures guard will always be true
+    guard #available(iOS 15.0, macOS 12.0, tvOS 15.0, visionOS 1.0, *) else { return }
+          ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:389:13: note: enclosing scope here
+public func unityPurchasing_checkEntitlement(_ productJsonCString: UnsafePointer<CChar>) {
+            ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:400:11: warning: unnecessary check for 'iOS'; enclosing scope ensures guard will always be true
+    guard #available(iOS 15.0, macOS 12.0, tvOS 15.0, visionOS 1.0, *) else { return }
+          ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:399:13: note: enclosing scope here
+public func unityPurchasing_RestoreTransactions() {
+            ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:409:11: warning: unnecessary check for 'iOS'; enclosing scope ensures guard will always be true
+    guard #available(iOS 15.0, macOS 12.0, tvOS 15.0, visionOS 1.0, *) else { return }
+          ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:408:13: note: enclosing scope here
+public func unityPurchasing_FetchStorePromotionOrder() {
+            ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:418:11: warning: unnecessary check for 'iOS'; enclosing scope ensures guard will always be true
+    guard #available(iOS 15.0, macOS 12.0, tvOS 15.0, visionOS 1.0, *) else { return }
+          ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:417:13: note: enclosing scope here
+public func unityPurchasing_UpdateStorePromotionOrder(_ jsonCString: UnsafePointer<CChar>) {
+            ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:434:11: warning: unnecessary check for 'iOS'; enclosing scope ensures guard will always be true
+    guard #available(iOS 15.0, macOS 12.0, tvOS 15.0, visionOS 1.0, *) else { return }
+          ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:433:13: note: enclosing scope here
+public func unityPurchasing_FetchStorePromotionVisibility(productIdCString: UnsafePointer<CChar>) {
+            ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:444:11: warning: unnecessary check for 'iOS'; enclosing scope ensures guard will always be true
+    guard #available(iOS 15.0, macOS 12.0, tvOS 15.0, visionOS 1.0, *) else { return }
+          ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:443:13: note: enclosing scope here
+public func unityPurchasing_UpdateStorePromotionVisibility(productIdCString: UnsafePointer<CChar>, visibilityCString: UnsafePointer<CChar>) {
+            ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:455:11: warning: unnecessary check for 'iOS'; enclosing scope ensures guard will always be true
+    guard #available(iOS 15.0, macOS 12.0, tvOS 15.0, visionOS 1.0, *) else { return }
+          ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:454:13: note: enclosing scope here
+public func unityPurchasing_InterceptPromotionalPurchases() {
+            ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:464:11: warning: unnecessary check for 'iOS'; enclosing scope ensures guard will always be true
+    guard #available(iOS 15.0, macOS 12.0, tvOS 15.0, visionOS 1.0, *) else { return }
+          ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:463:13: note: enclosing scope here
+public func unityPurchasing_ContinuePromotionalPurchases() {
+            ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:473:11: warning: unnecessary check for 'iOS'; enclosing scope ensures guard will always be true
+    guard #available(iOS 15.0, macOS 12.0, tvOS 15.0, visionOS 1.0, *) else { return }
+          ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityStoreKitPlugin.swift:472:13: note: enclosing scope here
+public func unityPurchasing_FetchStorefront() {
+            ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/SK2/Extensions/ProductExtensions.swift:5:1: warning: extension declares a conformance of imported type 'Product' to imported protocol 'Encodable'; this will not behave correctly if the owners of 'StoreKit' introduce this conformance in the future
+extension Product : Encodable {
+^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/SK2/Extensions/ProductExtensions.swift:5:1: note: add '@retroactive' to silence this warning
+extension Product : Encodable {
+^                   ~~~~~~~~~
+                    @retroactive Encodable
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/SK2/UseCases/TransactionObserverUseCase.swift:85:15: warning: 'catch' block is unreachable because no errors are thrown in 'do' block
+            } catch {
+              ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/SK2/Extensions/PromotionInfoExtensions.swift:9:1: warning: extension declares a conformance of imported type 'PromotionInfo' to imported protocol 'Encodable'; this will not behave correctly if the owners of 'StoreKit' introduce this conformance in the future
+extension Product.PromotionInfo : Encodable {
+^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/SK2/Extensions/PromotionInfoExtensions.swift:9:1: note: add '@retroactive' to silence this warning
+extension Product.PromotionInfo : Encodable {
+^                                 ~~~~~~~~~
+                                  @retroactive Encodable
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.mobile.notifications/Runtime/iOS/Plugins/UnityNotificationManager.m:103:14: warning: block implicitly retains 'self'; explicitly mention 'self' to indicate this is intended behavior [-Wimplicit-retain-self]
+  103 |             [_lock lock];
+      |              ^
+      |              self->
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.mobile.notifications/Runtime/iOS/Plugins/UnityNotificationManager.m:104:35: warning: block implicitly retains 'self'; explicitly mention 'self' to indicate this is intended behavior [-Wimplicit-retain-self]
+  104 |             if (registerRemote && _remoteNotificationsRegistered == UNAuthorizationStatusNotDetermined)
+      |                                   ^
+      |                                   self->
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.mobile.notifications/Runtime/iOS/Plugins/UnityNotificationManager.m:109:25: warning: block implicitly retains 'self'; explicitly mention 'self' to indicate this is intended behavior [-Wimplicit-retain-self]
+  109 |                     if (_pendingRemoteAuthRequests == nil)
+      |                         ^
+      |                         self->
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.mobile.notifications/Runtime/iOS/Plugins/UnityNotificationManager.m:110:25: warning: block implicitly retains 'self'; explicitly mention 'self' to indicate this is intended behavior [-Wimplicit-retain-self]
+  110 |                         _pendingRemoteAuthRequests = [NSPointerArray pointerArrayWithOptions: NSPointerFunctionsOpaqueMemory];
+      |                         ^
+      |                         self->
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.mobile.notifications/Runtime/iOS/Plugins/UnityNotificationManager.m:111:22: warning: block implicitly retains 'self'; explicitly mention 'self' to indicate this is intended behavior [-Wimplicit-retain-self]
+  111 |                     [_pendingRemoteAuthRequests addPointer: request];
+      |                      ^
+      |                      self->
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.mobile.notifications/Runtime/iOS/Plugins/UnityNotificationManager.m:118:41: warning: block implicitly retains 'self'; explicitly mention 'self' to indicate this is intended behavior [-Wimplicit-retain-self]
+  118 |                 authData.deviceToken = [_deviceToken UTF8String];
+      |                                         ^
+      |                                         self->
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.mobile.notifications/Runtime/iOS/Plugins/UnityNotificationManager.m:119:14: warning: block implicitly retains 'self'; explicitly mention 'self' to indicate this is intended behavior [-Wimplicit-retain-self]
+  119 |             [_lock unlock];
+      |              ^
+      |              self->
+7 warnings generated.
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityPurchasing.m:125:62: warning: 'transactionReceipt' is deprecated: first deprecated in iOS 7.0 [-Wdeprecated-declarations]
+  125 |         receipt = [[NSString alloc] initWithData:transaction.transactionReceipt encoding: NSUTF8StringEncoding];
+      |                                                              ^~~~~~~~~~~~~~~~~~
+      |                                                              -[NSBundle appStoreReceiptURL]
+In module 'StoreKit' imported from /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityPurchasing.h:1:
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/System/Library/Frameworks/StoreKit.framework/Headers/SKPaymentTransaction.h:50:50: note: 'transactionReceipt' has been explicitly marked deprecated here
+   50 | @property(nonatomic, readonly, nullable) NSData *transactionReceipt API_DEPRECATED_WITH_REPLACEMENT("-[NSBundle appStoreReceiptURL]", ios(3.0, 7.0), macCatalyst(13.0, 13.0)) API_UNAVAILABLE(visionos) API_UNAVAILABLE(macos, watchos);
+      |                                                  ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityPurchasing.m:461:38: warning: 'transactionReceipt' is deprecated: first deprecated in iOS 7.0 [-Wdeprecated-declarations]
+  461 |     NSString* receipt = [transaction.transactionReceipt base64EncodedStringWithOptions:0];
+      |                                      ^~~~~~~~~~~~~~~~~~
+      |                                      -[NSBundle appStoreReceiptURL]
+In module 'StoreKit' imported from /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityPurchasing.h:1:
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/System/Library/Frameworks/StoreKit.framework/Headers/SKPaymentTransaction.h:50:50: note: 'transactionReceipt' has been explicitly marked deprecated here
+   50 | @property(nonatomic, readonly, nullable) NSData *transactionReceipt API_DEPRECATED_WITH_REPLACEMENT("-[NSBundle appStoreReceiptURL]", ios(3.0, 7.0), macCatalyst(13.0, 13.0)) API_UNAVAILABLE(visionos) API_UNAVAILABLE(macos, watchos);
+      |                                                  ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityPurchasing.m:723:21: warning: comparison between pointer and integer ('void *' and 'NSUInteger' (aka 'unsigned long')) [-Wpointer-integer-compare]
+  723 |             if (nil != [[product introductoryPrice] numberOfPeriods]) {
+      |                 ~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityPurchasing.m:730:25: warning: comparison between pointer and integer ('void *' and 'NSUInteger' (aka 'unsigned long')) [-Wpointer-integer-compare]
+  730 |                 if (nil != [[[product introductoryPrice] subscriptionPeriod] numberOfUnits]) {
+      |                     ~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityPurchasing.m:736:25: warning: comparison between pointer and integer ('void *' and 'SKProductPeriodUnit' (aka 'enum SKProductPeriodUnit')) [-Wpointer-integer-compare]
+  736 |                 if (nil != [[[product introductoryPrice] subscriptionPeriod] unit]) {
+      |                     ~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityPurchasing.m:755:21: warning: comparison between pointer and integer ('void *' and 'NSUInteger' (aka 'unsigned long')) [-Wpointer-integer-compare]
+  755 |             if (nil !=  [[product subscriptionPeriod] numberOfUnits]) {
+      |                 ~~~ ^   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityPurchasing.m:761:21: warning: comparison between pointer and integer ('void *' and 'SKProductPeriodUnit' (aka 'enum SKProductPeriodUnit')) [-Wpointer-integer-compare]
+  761 |             if (nil != [[product subscriptionPeriod] unit]) {
+      |                 ~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityPurchasing.m:715:14: warning: @available does not guard availability here; use if (@available) instead [-Wunsupported-availability-guard]
+  715 |         if ((@available(iOS 11_2, macOS 10_13_2, tvOS 11_2, *)) && (nil != [product introductoryPrice]))  {
+      |              ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityPurchasing.m:754:14: warning: @available does not guard availability here; use if (@available) instead [-Wunsupported-availability-guard]
+  754 |         if ((@available(iOS 11_2, macOS 10_13_2, tvOS 11_2, *)) && (nil != [product subscriptionPeriod]))  {
+      |              ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityPurchasing.m:724:69: warning: implicit conversion loses integer precision: 'NSUInteger' (aka 'unsigned long') to 'int' [-Wshorten-64-to-32]
+  724 |                 NSNumber *numberOfPeriods = [NSNumber numberWithInt:[[product introductoryPrice] numberOfPeriods]];
+      |                                             ~                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityPurchasing.m:731:71: warning: implicit conversion loses integer precision: 'NSUInteger' (aka 'unsigned long') to 'int' [-Wshorten-64-to-32]
+  731 |                     NSNumber *numberOfUnits = [NSNumber numberWithInt:[[[product introductoryPrice] subscriptionPeriod] numberOfUnits]];
+      |                                               ~                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityPurchasing.m:737:62: warning: implicit conversion loses integer precision: 'SKProductPeriodUnit' (aka 'enum SKProductPeriodUnit') to 'int' [-Wshorten-64-to-32]
+  737 |                     NSNumber *unit = [NSNumber numberWithInt:[[[product introductoryPrice] subscriptionPeriod] unit]];
+      |                                      ~                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityPurchasing.m:756:67: warning: implicit conversion loses integer precision: 'NSUInteger' (aka 'unsigned long') to 'int' [-Wshorten-64-to-32]
+  756 |                 NSNumber *numberOfUnits = [NSNumber numberWithInt:[[product subscriptionPeriod] numberOfUnits]];
+      |                                           ~                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Libraries/com.unity.purchasing/Plugins/UnityPurchasing/iOS/UnityPurchasing.m:762:58: warning: implicit conversion loses integer precision: 'SKProductPeriodUnit' (aka 'enum SKProductPeriodUnit') to 'int' [-Wshorten-64-to-32]
+  762 |                 NSNumber *unit = [NSNumber numberWithInt:[[product subscriptionPeriod] unit]];
+      |                                  ~                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+14 warnings generated.
+In file included from /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/UI/UnityView.mm:1:
+In file included from /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/Prefix.pch:13:
+In file included from /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/Unity/UnityInterface.h:7:
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/Unity/UnityRendering.h:195:16: warning: 'useCVTextureCache' is deprecated [-Wdeprecated-declarations]
+  195 | typedef struct RenderingSurfaceParams
+      |                ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/UI/UnityView.mm:216:44: note: in implicit copy constructor for 'RenderingSurfaceParams' first required here
+  216 |         [GetMainDisplay() recreateSurface: params];
+      |                                            ^
+In file included from /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/UI/UnityView.mm:1:
+In file included from /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/Prefix.pch:13:
+In file included from /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/Unity/UnityInterface.h:7:
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/Unity/UnityRendering.h:212:44: note: 'useCVTextureCache' has been explicitly marked deprecated here
+  212 |     int useCVTextureCache   __attribute__((deprecated));
+      |                                            ^
+1 warning generated.
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/iPhone_Sensors.mm:593:16: warning: 'hasAttitudeAndRotationRate' is deprecated: first deprecated in iOS 14.0 - Use -hasAttitude and -hasRotationRate methods instead [-Wdeprecated-declarations]
+  593 |     if (motion.hasAttitudeAndRotationRate)
+      |                ^
+In file included from /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/iPhone_Sensors.mm:12:
+In file included from /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/System/Library/Frameworks/GameController.framework/Headers/GameController.h:47:
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/System/Library/Frameworks/GameController.framework/Headers/GCMotion.h:175:38: note: 'hasAttitudeAndRotationRate' has been explicitly marked deprecated here
+  175 | @property (nonatomic, readonly) BOOL hasAttitudeAndRotationRate API_DEPRECATED("Use -hasAttitude and -hasRotationRate methods instead", macos(10.13, 11.0), ios(11.0, 14.0), tvos(11.0, 14.0));
+      |                                      ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/iPhone_Sensors.mm:630:20: warning: 'controllerPausedHandler' is deprecated: first deprecated in iOS 13.0 - Use the Menu button found on the controller's input profile, if it exists. [-Wdeprecated-declarations]
+  630 |     if (controller.controllerPausedHandler == nil)
+      |                    ^
+In file included from /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/iPhone_Sensors.mm:12:
+In file included from /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/System/Library/Frameworks/GameController.framework/Headers/GameController.h:71:
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/System/Library/Frameworks/GameController.framework/Headers/GCController.h:157:46: note: 'controllerPausedHandler' has been explicitly marked deprecated here
+  157 | @property (nonatomic, copy, nullable) void (^controllerPausedHandler)(GCController *controller) API_DEPRECATED("Use the Menu button found on the controller's input profile, if it exists.", macos(10.9, 10.15), ios(7.0, 13.0), tvos(9.0, 13.0));
+      |                                              ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/iPhone_Sensors.mm:631:20: warning: 'controllerPausedHandler' is deprecated: first deprecated in iOS 13.0 - Use the Menu button found on the controller's input profile, if it exists. [-Wdeprecated-declarations]
+  631 |         controller.controllerPausedHandler = gControllerHandler;
+      |                    ^
+In file included from /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/iPhone_Sensors.mm:12:
+In file included from /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/System/Library/Frameworks/GameController.framework/Headers/GameController.h:71:
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/System/Library/Frameworks/GameController.framework/Headers/GCController.h:157:46: note: 'controllerPausedHandler' has been explicitly marked deprecated here
+  157 | @property (nonatomic, copy, nullable) void (^controllerPausedHandler)(GCController *controller) API_DEPRECATED("Use the Menu button found on the controller's input profile, if it exists.", macos(10.9, 10.15), ios(7.0, 13.0), tvos(9.0, 13.0));
+      |                                              ^
+3 warnings generated.
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/Unity/UnityWebRequest.mm:219:47: warning: 'SecTrustGetCertificateAtIndex' is deprecated: first deprecated in iOS 15.0 [-Wdeprecated-declarations]
+  219 |         SecCertificateRef serverCertificate = SecTrustGetCertificateAtIndex(serverTrust, 0);
+      |                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                               SecTrustCopyCertificateChain
+In file included from /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/Unity/UnityWebRequest.mm:1:
+In file included from /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/Prefix.pch:8:
+In file included from /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h:92:
+In file included from /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSURLCredential.h:9:
+In file included from /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/System/Library/Frameworks/Security.framework/Headers/Security.h:36:
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecTrust.h:536:19: note: 'SecTrustGetCertificateAtIndex' has been explicitly marked deprecated here
+  536 | SecCertificateRef SecTrustGetCertificateAtIndex(SecTrustRef trust, CFIndex ix)
+      |                   ^
+1 warning generated.
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/UnityAppController.mm:291:1: warning: implementing deprecated method [-Wdeprecated-implementations]
+  291 | - (void)application:(UIApplication*)application willChangeStatusBarOrientation:(UIInterfaceOrientation)newStatusBarOrientation duration:(NSTimeInterval)duration
+      | ^
+In file included from /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/UnityAppController.mm:1:
+In file included from /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/Prefix.pch:9:
+In file included from /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:9:
+In file included from /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKitCore.h:34:
+In file included from /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIAccessibility.h:20:
+In file included from /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIAccessibilityElement.h:12:
+In file included from /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIAccessibilityIdentification.h:13:
+In file included from /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIAlertController.h:9:
+In file included from /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIViewController.h:12:
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h:393:1: note: method 'application:willChangeStatusBarOrientation:duration:' declared here
+  393 | - (void)application:(UIApplication *)application willChangeStatusBarOrientation:(UIInterfaceOrientation)newStatusBarOrientation duration:(NSTimeInterval)duration API_DEPRECATED("Use viewWillTransitionToSize:withTransitionCoordinator: instead.", ios(2.0, 13.0)) API_UNAVAILABLE(tvos) API_UNAVAILABLE(visionos, watchos);
+      | ^
+1 warning generated.
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/Unity/DisplayManager.mm:204:10: warning: unused variable 'depthFmtChanged' [-Wunused-variable]
+  204 |     bool depthFmtChanged    = surface->disableDepthAndStencil != params.disableDepthAndStencil;
+      |          ^~~~~~~~~~~~~~~
+In file included from /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/Unity/DisplayManager.mm:1:
+In file included from /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/Prefix.pch:13:
+In file included from /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/Unity/UnityInterface.h:7:
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/Unity/UnityRendering.h:195:16: warning: 'useCVTextureCache' is deprecated [-Wdeprecated-declarations]
+  195 | typedef struct RenderingSurfaceParams
+      |                ^
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/Unity/DisplayManager.mm:331:32: note: in implicit copy constructor for 'RenderingSurfaceParams' first required here
+  331 |         [self recreateSurface: params];
+      |                                ^
+In file included from /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/Unity/DisplayManager.mm:1:
+In file included from /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/Prefix.pch:13:
+In file included from /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/Unity/UnityInterface.h:7:
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Classes/Unity/UnityRendering.h:212:44: note: 'useCVTextureCache' has been explicitly marked deprecated here
+  212 |     int useCVTextureCache   __attribute__((deprecated));
+      |                                            ^
+2 warnings generated.
+warning: Run script build phase 'Run Script' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'GameAssembly' from project 'Unity-iPhone')
+note: Removed stale file '/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/StoreAssets-Oct09/SimulatorBuild/DerivedData/Build/Intermediates.noindex/PrecompiledHeaders/SharedPrecompiledHeaders/2074423844431260689/Prefix.pch.gch'
+
+note: Removed stale file '/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/StoreAssets-Oct09/SimulatorBuild/DerivedData/Build/Intermediates.noindex/PrecompiledHeaders/SharedPrecompiledHeaders/322740572369264040/Prefix.pch.gch'
+
+note: Removed stale file '/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/StoreAssets-Oct09/SimulatorBuild/DerivedData/Build/Intermediates.noindex/PrecompiledHeaders/SharedPrecompiledHeaders/322740572369264040/Prefix.pchscan.gch'
+
+note: Removed stale file '/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/StoreAssets-Oct09/SimulatorBuild/DerivedData/Build/Intermediates.noindex/PrecompiledHeaders/SharedPrecompiledHeaders/6033377336809877398/Prefix.pch.gch'
+
+note: Removed stale file '/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/StoreAssets-Oct09/SimulatorBuild/DerivedData/Build/Intermediates.noindex/PrecompiledHeaders/SharedPrecompiledHeaders/6293020365980272697/Prefix.pch.gch'
+
+note: Removed stale file '/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/StoreAssets-Oct09/SimulatorBuild/DerivedData/Build/Intermediates.noindex/Unity-iPhone.build/Release-iphonesimulator/UnityFramework.build/Script-1C9AFDBF75BA0D3BF0AB0CDC.sh'
+
+note: Removed stale file '/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/StoreAssets-Oct09/SimulatorBuild/DerivedData/Build/Intermediates.noindex/Unity-iPhone.build/Release-iphonesimulator/UnityFramework.build/Script-68BABA1974FC0809A1B5F005.sh'
+
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Builds/StoreSimulator-Oct09-final/Unity-iPhone.xcodeproj: warning: tasks in 'Copy Headers' are delayed by unsandboxed script phases; set ENABLE_USER_SCRIPT_SANDBOXING=YES to enable sandboxing (in target 'UnityFramework' from project 'Unity-iPhone')
+warning: Run script build phase 'Check Unity Framework ABI' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'UnityFramework' from project 'Unity-iPhone')
+warning: Run script build phase 'Unity Process symbols for UnityFramework' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'UnityFramework' from project 'Unity-iPhone')
+note: Removed stale file '/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/StoreAssets-Oct09/SimulatorBuild/DerivedData/Build/Intermediates.noindex/Unity-iPhone.build/Release-iphonesimulator/Unity-iPhone.build/Script-94111E100155F2314C9955F0.sh'
+
+warning: Run script build phase 'Unity Process symbols for Unity-iPhone' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'Unity-iPhone' from project 'Unity-iPhone')

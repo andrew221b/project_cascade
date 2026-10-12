@@ -1,0 +1,4 @@
+15:56:16  Acquired tunnel connection to device.
+15:56:16  Enabling developer disk image services.
+15:56:16  Acquired usage assertion.
+Launched application with com.vickand.cascade bundle identifier.

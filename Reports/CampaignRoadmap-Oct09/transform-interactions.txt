@@ -1,0 +1,10 @@
+60 packaged triads checked; 255 lower-durability counterexample probes
+120 packaged triads checked; 498 lower-durability counterexample probes
+180 packaged triads checked; 823 lower-durability counterexample probes
+240 packaged triads checked; 1212 lower-durability counterexample probes
+300 packaged triads checked; 1428 lower-durability counterexample probes
+360 packaged triads checked; 1836 lower-durability counterexample probes
+420 packaged triads checked; 2345 lower-durability counterexample probes
+480 packaged triads checked; 2814 lower-durability counterexample probes
+540 packaged triads checked; 3292 lower-durability counterexample probes
+PASS: 540 distinct packaged triads; 1620 optimal stage certificates; 6471 primary/localized witness replays; 335 live bomb deadlines; 646 benefit ablations; 3292 lower-durability probes; 372 effective entry permutations and 12 effective gusts whose removal invalidates the certified solution; atomic multisets and no idle/starting-transform boards. Human enjoyment/device input are not proved.

@@ -1,0 +1,28 @@
+{
+    "width": 360,
+    "height": 608,
+    "minimumDeviceTextPixels": 0.0,
+    "buttons": [
+        {
+            "name": "Sign in with Apple",
+            "x": 53.183013916015628,
+            "y": 235.54432678222657,
+            "width": 253.63394165039063,
+            "height": 51.99998474121094
+        },
+        {
+            "name": "Sign in with Google",
+            "x": 53.183013916015628,
+            "y": 192.49501037597657,
+            "width": 253.63394165039063,
+            "height": 52.0
+        },
+        {
+            "name": "Continuewithoutanaccount",
+            "x": 53.183013916015628,
+            "y": 149.4456787109375,
+            "width": 253.63394165039063,
+            "height": 51.99998474121094
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+{
+  "seed": 91357,
+  "traces": 4000,
+  "transitions": 16228,
+  "verified": "No exceptions; persistent row multiset after accepted and rejected commands; terminal status ends trace. Canonical first40; not a proof of all rule combinations."
+}

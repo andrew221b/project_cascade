@@ -1,0 +1,67 @@
+[
+  {
+    "test": "CloudReconcilerTests.ProgressMergesPerModeWhileLocalAttemptAndPreferencesRemainCoherent()",
+    "status": "Passed",
+    "ms": 125.80600000000001
+  },
+  {
+    "test": "CloudReconcilerTests.MasteryUsesContentIdentityAndBestRoutesWithoutCrossingVersions()",
+    "status": "Passed",
+    "ms": 1.671
+  },
+  {
+    "test": "CloudReconcilerTests.IndependentSpendsAndConsumptionsMergeAsDeltasWithoutAddingBalances()",
+    "status": "Passed",
+    "ms": 9.3134
+  },
+  {
+    "test": "CloudReconcilerTests.ConcurrentOverspendOrDoubleConsumptionKeepsRemoteEconomy()",
+    "status": "Passed",
+    "ms": 0.9608000000000001
+  },
+  {
+    "test": "CloudReconcilerTests.GrantsCannotChangeDisappearOrArriveThroughUnverifiedSync()",
+    "status": "Passed",
+    "ms": 3.0381
+  },
+  {
+    "test": "CloudReconcilerTests.VerifiedReceiptReplayAndHintStateReplayAreIdempotent()",
+    "status": "Passed",
+    "ms": 1.312
+  },
+  {
+    "test": "CloudReconcilerTests.FirstImportScrubsPaidValueAndRetainsOnlyEarnedFinancedTools()",
+    "status": "Passed",
+    "ms": 1.5375
+  },
+  {
+    "test": "CloudReconcilerTests.ClaimedParcelsVisitsAndClearIncomeDoNotRepeatAcrossModesOrMerges()",
+    "status": "Passed",
+    "ms": 6.9101
+  },
+  {
+    "test": "CloudReconcilerTests.ConflictingParcelClaimsKeepCanonicalGiftAndRemoteEconomy()",
+    "status": "Passed",
+    "ms": 0.3997
+  },
+  {
+    "test": "CloudReconcilerTests.UnknownUploadedNodesCannotFinanceInventory()",
+    "status": "Passed",
+    "ms": 0.22640000000000002
+  },
+  {
+    "test": "CloudReconcilerTests.InvalidAuthorityCannotBecomeTheConflictFallback()",
+    "status": "Passed",
+    "ms": 2.1701
+  },
+  {
+    "test": "CloudReconcilerTests.DeviceCheckpointsAreBoundedLeanAndRestoreAttemptWithoutReplacingProgress()",
+    "status": "Passed",
+    "ms": 4.6242
+  },
+  {
+    "test": "CloudReconcilerTests.MiddleDescentAndItsPinnedDirectionRemainOneDeviceCheckpoint()",
+    "status": "Passed",
+    "ms": 19.9831
+  }
+]

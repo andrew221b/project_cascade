@@ -1,0 +1,57 @@
+{
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "process",
+      "launch",
+      "--device",
+      "86ED6044-764E-5091-8CFE-C94C101E8DA8",
+      "--terminate-existing",
+      "com.vickand.cascade",
+      "--json-output",
+      "Reports/iOS-2026-10-08-triads/relaunch.json"
+    ],
+    "commandType" : "devicectl.device.process.launch",
+    "environment" : {
+      "TERM" : "dumb"
+    },
+    "jsonVersion" : 3,
+    "outcome" : "success",
+    "version" : "518.33"
+  },
+  "result" : {
+    "deviceIdentifier" : "86ED6044-764E-5091-8CFE-C94C101E8DA8",
+    "launchOptions" : {
+      "activatedWhenStarted" : true,
+      "arguments" : [
+
+      ],
+      "environmentVariables" : {
+        "TERM" : "dumb"
+      },
+      "platformSpecificOptions" : {
+
+      },
+      "startStopped" : false,
+      "terminateExistingInstances" : true,
+      "user" : {
+        "active" : true
+      }
+    },
+    "process" : {
+      "auditToken" : [
+        4294967295,
+        501,
+        501,
+        501,
+        501,
+        66471,
+        0,
+        187965
+      ],
+      "executable" : "file:///private/var/containers/Bundle/Application/7D56D98B-16B9-43B7-8E36-FCAF8650A4B9/CascadeUnity.app/CascadeUnity",
+      "processIdentifier" : 66471
+    }
+  }
+}

@@ -1,0 +1,242 @@
+[
+  {
+    "fixture": "LocalReminderTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "LevelDefinitionTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "InteractionConflictTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "LessonRouteTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "DescentTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "WindConflictTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "CloudJournalTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "FiveStarResultsTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "ReachTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "DurabilityBudgetTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "StoryConversationTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "CloudReconcilerTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "MechanicLessonTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "ReleasePersistenceTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "CampaignLogicTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "PowerupTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "ScreenCosmeticTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "ShopTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "JourneyStoryTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "InteractionTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "AdServiceTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "TutorialCoachTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "CloudReplyReconcilerTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "RewardTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "AttemptTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "SaveTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "PersonalMissionTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "TrophyEconomyTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "ResolverBaseTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "CoinEconomyTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "BridgeStampTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "GuidedPracticeTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "KeyRepairTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "BombChallengeTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "CampaignTriadTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "SolverTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "ModeJourneyTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "CompletionProgressTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "PreviewMonetizationTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "WorldPrologueTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "EffectBudgetTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "ConveyorBombTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "WardrobeParcelTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "StarObservatoryLevelTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "DirectorTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "EarlyMechanicsTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "LinkedFragileTests",
+    "status": "finished",
+    "exit": 0
+  },
+  {
+    "fixture": "PreparationTests",
+    "status": "finished",
+    "exit": 0
+  }
+]

@@ -1,0 +1,387 @@
+{
+  "pose": "map-ru",
+  "before": {
+    "Screen": "JourneyMap",
+    "Attempt": "8d724f0e-bc59-47a2-92bf-c5f4ab4f0f1c",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "after": {
+    "Screen": "JourneyMap",
+    "Attempt": "8d724f0e-bc59-47a2-92bf-c5f4ab4f0f1c",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 390,
+    "height": 844,
+    "locale": "ru",
+    "largeText": false,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Island1",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Parallax island world/Island1",
+        "interactable": true,
+        "bounds": {
+          "x": 60.4662132,
+          "y": 327.2508,
+          "width": 76.0000153,
+          "height": 72.0
+        }
+      },
+      {
+        "name": "Island2",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Parallax island world/Island2",
+        "interactable": true,
+        "bounds": {
+          "x": 188.2926,
+          "y": 366.8316,
+          "width": 76.0,
+          "height": 72.0
+        }
+      },
+      {
+        "name": "TalktoMika",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Parallax island world/TalktoMika",
+        "interactable": true,
+        "bounds": {
+          "x": 194.2926,
+          "y": 396.7857,
+          "width": 64.0,
+          "height": 80.0
+        }
+      },
+      {
+        "name": "Island3",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Parallax island world/Island3",
+        "interactable": false,
+        "bounds": {
+          "x": 116.860229,
+          "y": 408.611328,
+          "width": 76.0,
+          "height": 72.0
+        }
+      },
+      {
+        "name": "Island4",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Parallax island world/Island4",
+        "interactable": false,
+        "bounds": {
+          "x": 210.8502,
+          "y": 443.244568,
+          "width": 75.9999847,
+          "height": 71.99994
+        }
+      },
+      {
+        "name": "Island5",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Parallax island world/Island5",
+        "interactable": false,
+        "bounds": {
+          "x": 271.0038,
+          "y": 486.6734,
+          "width": 76.0,
+          "height": 72.0
+        }
+      },
+      {
+        "name": "Back",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Map heading/Back",
+        "interactable": true,
+        "bounds": {
+          "x": 27.24666,
+          "y": 723.647339,
+          "width": 57.0707321,
+          "height": 50.61432
+        }
+      },
+      {
+        "name": "Map bag",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Map heading/Map bag",
+        "interactable": true,
+        "bounds": {
+          "x": 312.8121,
+          "y": 725.6034,
+          "width": 48.0,
+          "height": 48.0
+        }
+      },
+      {
+        "name": "MapmodeShapes",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Map mode tabs/MapmodeShapes",
+        "interactable": true,
+        "bounds": {
+          "x": 29.3708267,
+          "y": 658.578857,
+          "width": 108.188744,
+          "height": 52.0
+        }
+      },
+      {
+        "name": "MapmodeWords",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Map mode tabs/MapmodeWords",
+        "interactable": false,
+        "bounds": {
+          "x": 140.905624,
+          "y": 658.578857,
+          "width": 108.188751,
+          "height": 52.0
+        }
+      },
+      {
+        "name": "MapmodeMixed",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Map mode tabs/MapmodeMixed",
+        "interactable": false,
+        "bounds": {
+          "x": 252.44043,
+          "y": 658.578857,
+          "width": 108.188721,
+          "height": 52.0
+        }
+      },
+      {
+        "name": "Travel",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Journey task/Travel",
+        "interactable": true,
+        "bounds": {
+          "x": 84.58055,
+          "y": 111.520004,
+          "width": 220.838882,
+          "height": 56.16002
+        }
+      },
+      {
+        "name": "Story",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Journey task/Story",
+        "interactable": true,
+        "bounds": {
+          "x": 44.4280243,
+          "y": 45.64003,
+          "width": 301.143982,
+          "height": 56.1599655
+        }
+      },
+      {
+        "name": "Previousopenedlevel",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Journey task/Previousopenedlevel",
+        "interactable": true,
+        "bounds": {
+          "x": 27.6978035,
+          "y": 111.520004,
+          "width": 48.5176353,
+          "height": 56.16002
+        }
+      },
+      {
+        "name": "Nextopenedlevel",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Journey task/Nextopenedlevel",
+        "interactable": false,
+        "bounds": {
+          "x": 313.784576,
+          "y": 111.520004,
+          "width": 48.51761,
+          "height": 56.16002
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "You are here",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Parallax island world/You are here marker/You are here",
+        "text": "Вы здесь · 0/3",
+        "button": null,
+        "bounds": {
+          "x": 147.341019,
+          "y": 309.269165,
+          "width": 157.903183,
+          "height": 43.0085144
+        },
+        "fontPixels": 17.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Region",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Map heading/Region",
+        "text": "Ветряные сады",
+        "button": null,
+        "bounds": {
+          "x": 98.1526947,
+          "y": 743.763245,
+          "width": 197.1534,
+          "height": 33.74292
+        },
+        "fontPixels": 26.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Journey goal",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Map heading/Journey goal",
+        "text": "Наша цель — Большой маяк",
+        "button": null,
+        "bounds": {
+          "x": 98.1526947,
+          "y": 720.402832,
+          "width": 197.1534,
+          "height": 24.0093384
+        },
+        "fontPixels": 14.75,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Map mode tabs/MapmodeShapes/Label",
+        "text": "Фигуры",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Map mode tabs/MapmodeShapes",
+        "bounds": {
+          "x": 29.3708267,
+          "y": 658.578857,
+          "width": 108.188744,
+          "height": 52.0
+        },
+        "fontPixels": 20.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Map mode tabs/MapmodeWords/Label",
+        "text": "Слова",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Map mode tabs/MapmodeWords",
+        "bounds": {
+          "x": 140.905624,
+          "y": 658.578857,
+          "width": 108.188751,
+          "height": 52.0
+        },
+        "fontPixels": 20.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Map mode tabs/MapmodeMixed/Label",
+        "text": "Всё вместе",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Map mode tabs/MapmodeMixed",
+        "bounds": {
+          "x": 252.44043,
+          "y": 658.578857,
+          "width": 108.188721,
+          "height": 52.0
+        },
+        "fontPixels": 17.8,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Selected mode progress",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Selected mode progress",
+        "text": "3 / 155",
+        "button": null,
+        "bounds": {
+          "x": 101.01,
+          "y": 611.7345,
+          "width": 112.788,
+          "height": 30.1815186
+        },
+        "fontPixels": 16.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Mode stars total",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Mode stars total",
+        "text": "11",
+        "button": null,
+        "bounds": {
+          "x": 247.634369,
+          "y": 611.7345,
+          "width": 48.8748474,
+          "height": 30.1815186
+        },
+        "fontPixels": 16.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Next task",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Journey task/Next task",
+        "text": "Открой ветровые ворота",
+        "button": null,
+        "bounds": {
+          "x": 47.77407,
+          "y": 207.640015,
+          "width": 294.451843,
+          "height": 38.88002
+        },
+        "fontPixels": 23.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Map step progress",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Journey task/Map step progress",
+        "text": "До нового мира: 12 · пройдено 3/15",
+        "button": null,
+        "bounds": {
+          "x": 47.77407,
+          "y": 170.920029,
+          "width": 294.451843,
+          "height": 34.5599823
+        },
+        "fontPixels": 16.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Journey task/Travel/Label",
+        "text": "Уровень 4",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Journey task/Travel",
+        "bounds": {
+          "x": 84.58055,
+          "y": 111.520004,
+          "width": 220.838882,
+          "height": 56.16002
+        },
+        "fontPixels": 18.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Journey task/Story/Label",
+        "text": "Поговорить: Брам",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Journey task/Story",
+        "bounds": {
+          "x": 44.4280243,
+          "y": 45.64003,
+          "width": 301.143982,
+          "height": 56.1599655
+        },
+        "fontPixels": 18.0,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

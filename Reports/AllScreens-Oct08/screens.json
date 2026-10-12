@@ -1,0 +1,86 @@
+[
+  {
+    "file": "01-home.png",
+    "title": "01. Главное меню",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "02-settings.png",
+    "title": "02. Настройки",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "03-settings-0.png",
+    "title": "03. Звук и движение",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "04-settings-1.png",
+    "title": "04. Удобство и помощь",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "05-settings-2.png",
+    "title": "05. Языки",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "06-settings-3.png",
+    "title": "06. Напоминания",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "07-settings-4.png",
+    "title": "07. Облачное сохранение",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "08-map.png",
+    "title": "08. Карта и переходы между мирами",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "09-map-night.png",
+    "title": "09. Ночной мир",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "10-island.png",
+    "title": "10. Уровни открытого острова",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "11-shop-tools.png",
+    "title": "11. Магазин — помощь",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "25-victory.png",
+    "title": "25. Победа и статистика",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "27-parcel.png",
+    "title": "27. Посылка",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "28-parcel-open.png",
+    "title": "28. Полученная награда",
+    "width": 390,
+    "height": 844
+  }
+]

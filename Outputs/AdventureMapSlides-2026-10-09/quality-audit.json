@@ -1,0 +1,278 @@
+{
+  "input_pixels": [
+    244,
+    1280
+  ],
+  "saved_original_is_identical_to_attachment": true,
+  "separate_png_files": 35,
+  "slide_dimensions": [
+    {
+      "file": "slides/section_01/slide_001_r01_c01.png",
+      "pixels": [
+        117,
+        56
+      ]
+    },
+    {
+      "file": "slides/section_01/slide_002_r01_c02.png",
+      "pixels": [
+        117,
+        56
+      ]
+    },
+    {
+      "file": "slides/section_01/slide_003_r02_c01.png",
+      "pixels": [
+        117,
+        56
+      ]
+    },
+    {
+      "file": "slides/section_01/slide_004_r02_c02.png",
+      "pixels": [
+        117,
+        56
+      ]
+    },
+    {
+      "file": "slides/section_02/slide_005_r01_c01.png",
+      "pixels": [
+        117,
+        55
+      ]
+    },
+    {
+      "file": "slides/section_02/slide_006_r01_c02.png",
+      "pixels": [
+        117,
+        55
+      ]
+    },
+    {
+      "file": "slides/section_02/slide_007_r02_c01.png",
+      "pixels": [
+        117,
+        56
+      ]
+    },
+    {
+      "file": "slides/section_02/slide_008_r02_c02.png",
+      "pixels": [
+        117,
+        56
+      ]
+    },
+    {
+      "file": "slides/section_02/slide_009_r03_c01.png",
+      "pixels": [
+        117,
+        56
+      ]
+    },
+    {
+      "file": "slides/section_03/slide_010_r01_c01.png",
+      "pixels": [
+        117,
+        55
+      ]
+    },
+    {
+      "file": "slides/section_03/slide_011_r01_c02.png",
+      "pixels": [
+        117,
+        55
+      ]
+    },
+    {
+      "file": "slides/section_03/slide_012_r02_c01.png",
+      "pixels": [
+        117,
+        56
+      ]
+    },
+    {
+      "file": "slides/section_03/slide_013_r02_c02.png",
+      "pixels": [
+        117,
+        56
+      ]
+    },
+    {
+      "file": "slides/section_04/slide_014_r01_c01.png",
+      "pixels": [
+        117,
+        56
+      ]
+    },
+    {
+      "file": "slides/section_04/slide_015_r01_c02.png",
+      "pixels": [
+        117,
+        56
+      ]
+    },
+    {
+      "file": "slides/section_04/slide_016_r02_c01.png",
+      "pixels": [
+        117,
+        55
+      ]
+    },
+    {
+      "file": "slides/section_04/slide_017_r02_c02.png",
+      "pixels": [
+        117,
+        55
+      ]
+    },
+    {
+      "file": "slides/section_05/slide_018_r01_c01.png",
+      "pixels": [
+        117,
+        55
+      ]
+    },
+    {
+      "file": "slides/section_05/slide_019_r01_c02.png",
+      "pixels": [
+        117,
+        55
+      ]
+    },
+    {
+      "file": "slides/section_05/slide_020_r02_c01.png",
+      "pixels": [
+        117,
+        56
+      ]
+    },
+    {
+      "file": "slides/section_05/slide_021_r02_c02.png",
+      "pixels": [
+        117,
+        56
+      ]
+    },
+    {
+      "file": "slides/section_06/slide_022_r01_c01.png",
+      "pixels": [
+        117,
+        55
+      ]
+    },
+    {
+      "file": "slides/section_06/slide_023_r01_c02.png",
+      "pixels": [
+        117,
+        55
+      ]
+    },
+    {
+      "file": "slides/section_06/slide_024_r02_c01.png",
+      "pixels": [
+        117,
+        55
+      ]
+    },
+    {
+      "file": "slides/section_07/slide_025_r01_c01.png",
+      "pixels": [
+        117,
+        56
+      ]
+    },
+    {
+      "file": "slides/section_07/slide_026_r01_c02.png",
+      "pixels": [
+        117,
+        56
+      ]
+    },
+    {
+      "file": "slides/section_07/slide_027_r02_c01.png",
+      "pixels": [
+        117,
+        55
+      ]
+    },
+    {
+      "file": "slides/section_07/slide_028_r02_c02.png",
+      "pixels": [
+        117,
+        55
+      ]
+    },
+    {
+      "file": "slides/section_08/slide_029_r01_c01.png",
+      "pixels": [
+        117,
+        55
+      ]
+    },
+    {
+      "file": "slides/section_08/slide_030_r01_c02.png",
+      "pixels": [
+        117,
+        55
+      ]
+    },
+    {
+      "file": "slides/section_08/slide_031_r02_c01.png",
+      "pixels": [
+        117,
+        56
+      ]
+    },
+    {
+      "file": "slides/section_08/slide_032_r02_c02.png",
+      "pixels": [
+        117,
+        56
+      ]
+    },
+    {
+      "file": "slides/section_09/slide_033_r01_c01.png",
+      "pixels": [
+        117,
+        56
+      ]
+    },
+    {
+      "file": "slides/section_09/slide_034_r01_c02.png",
+      "pixels": [
+        117,
+        56
+      ]
+    },
+    {
+      "file": "slides/section_10/slide_035_r01_c01.png",
+      "pixels": [
+        113,
+        42
+      ]
+    }
+  ],
+  "additional_attachment_is_phone_screenshot": true,
+  "readable_high_resolution_source_found_in_thread_attachments": false,
+  "quality_request_status": "Resolved after user directed investigation to adjacent chat; native-size individual PNGs exported from the full-resolution local source.",
+  "latest_attachment": {
+    "file": "D54CFDF7-A4AD-47C4-A2D8-DC0D9D8CA546/1-Photo-1.jpg",
+    "pixels": [
+      244,
+      1280
+    ],
+    "bytes": 83571,
+    "identical_to_first_attachment": true
+  },
+  "resolved_source": {
+    "thread": "Выполнить инструкции из MD",
+    "thread_id": "01a1089e-7eaf-75a1-8066-dbfc48df27a1",
+    "file": "Reports/ScreenRoadmap-Oct09/cascade-navigation-clear.png",
+    "pixels": [
+      4400,
+      23050
+    ],
+    "export_folder": "Outputs/CascadeSlides-FullResolution-2026-10-09",
+    "individual_files": 38
+  }
+}

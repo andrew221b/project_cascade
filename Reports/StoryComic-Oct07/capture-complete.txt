@@ -1,0 +1,1 @@
+48 isolated native Unity captures. Puzzle hash checked per frame; no player save used.

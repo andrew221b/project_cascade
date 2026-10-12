@@ -1,0 +1,1 @@
+PASS: 540 campaign triads; 6471 exact primary/localized stage replays; 2948 lower-HP probes; 641 benefit ablations; 39 actual focused NUnit methods. Slowest campaign plus audits 1051 ms.

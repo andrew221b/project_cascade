@@ -1,0 +1,37 @@
+[
+  {
+    "test": "CloudJournalTests.PendingRequestSurvivesRestart()",
+    "status": "Passed",
+    "ms": 107.1011
+  },
+  {
+    "test": "CloudJournalTests.CorruptMainUsesPreviousAtomicJournal()",
+    "status": "Passed",
+    "ms": 4.471
+  },
+  {
+    "test": "CloudJournalTests.BothCorruptPreserveMainAndCreateDifferentDevice()",
+    "status": "Passed",
+    "ms": 2.2621
+  },
+  {
+    "test": "CloudJournalTests.InvalidPendingPairIsNeverSaved()",
+    "status": "Passed",
+    "ms": 1.5886
+  },
+  {
+    "test": "CloudJournalTests.PastPendingSequenceIsRejected()",
+    "status": "Passed",
+    "ms": 0.10450000000000001
+  },
+  {
+    "test": "CloudJournalTests.ExplicitProgressRejectionRetiresSnapshotButNeverReusesItsSequence()",
+    "status": "Passed",
+    "ms": 0.6936
+  },
+  {
+    "test": "CloudJournalTests.JsonProfileRoundTripHasNoDerivedProperties()",
+    "status": "Passed",
+    "ms": 7.678
+  }
+]

@@ -1,0 +1,242 @@
+[
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C01)",
+    "status": "Passed",
+    "ms": 27.9054
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C02)",
+    "status": "Passed",
+    "ms": 1.2815
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C03)",
+    "status": "Passed",
+    "ms": 1.3840000000000001
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C04)",
+    "status": "Passed",
+    "ms": 1.6329
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C05)",
+    "status": "Passed",
+    "ms": 1.2394
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C06)",
+    "status": "Passed",
+    "ms": 1.1033
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C07)",
+    "status": "Passed",
+    "ms": 1.2014
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C08)",
+    "status": "Passed",
+    "ms": 1.3854
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C09)",
+    "status": "Passed",
+    "ms": 2.8157
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C10)",
+    "status": "Passed",
+    "ms": 1.33
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C11)",
+    "status": "Passed",
+    "ms": 2.0704000000000002
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C12)",
+    "status": "Passed",
+    "ms": 2.4767
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C13)",
+    "status": "Passed",
+    "ms": 1.2469000000000001
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C14)",
+    "status": "Passed",
+    "ms": 1.3039
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C15)",
+    "status": "Passed",
+    "ms": 1.4040000000000001
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C16)",
+    "status": "Passed",
+    "ms": 1.7167000000000001
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C17)",
+    "status": "Passed",
+    "ms": 1.5251000000000001
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C18)",
+    "status": "Passed",
+    "ms": 1.2499
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C19)",
+    "status": "Passed",
+    "ms": 1.4044
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C20)",
+    "status": "Passed",
+    "ms": 1.1958
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C21)",
+    "status": "Passed",
+    "ms": 1.3482
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C22)",
+    "status": "Passed",
+    "ms": 0.9532
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C23)",
+    "status": "Passed",
+    "ms": 1.0718
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C24)",
+    "status": "Passed",
+    "ms": 1.3857000000000002
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C25)",
+    "status": "Passed",
+    "ms": 1.5765
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C26)",
+    "status": "Passed",
+    "ms": 1.1073
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C27)",
+    "status": "Passed",
+    "ms": 1.2347000000000001
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C28)",
+    "status": "Passed",
+    "ms": 1.121
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C29)",
+    "status": "Passed",
+    "ms": 2.1497
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C30)",
+    "status": "Passed",
+    "ms": 84.062
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C31)",
+    "status": "Passed",
+    "ms": 1.3804
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C32)",
+    "status": "Passed",
+    "ms": 1.749
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C33)",
+    "status": "Passed",
+    "ms": 1.2723
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C34)",
+    "status": "Passed",
+    "ms": 1.1993
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C35)",
+    "status": "Passed",
+    "ms": 1.9056000000000002
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C36)",
+    "status": "Passed",
+    "ms": 1.3025
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C37)",
+    "status": "Passed",
+    "ms": 5.7723
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C38)",
+    "status": "Passed",
+    "ms": 1.0641
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C39)",
+    "status": "Passed",
+    "ms": 1.0636
+  },
+  {
+    "test": "SolverTests.FortyCanonicalGraphsMatchPythonMetricsAndPath(C40)",
+    "status": "Passed",
+    "ms": 2.0881000000000003
+  },
+  {
+    "test": "SolverTests.BudgetAndCancellationReturnUnknownWithoutDeadStateClaims()",
+    "status": "Passed",
+    "ms": 1.8589
+  },
+  {
+    "test": "SolverTests.ExhaustedGraphCanProveUnsolvable()",
+    "status": "Passed",
+    "ms": 0.2394
+  },
+  {
+    "test": "SolverTests.C35SeparateGoalMinimaAndReverseDistancesMatch()",
+    "status": "Passed",
+    "ms": 3.7677
+  },
+  {
+    "test": "SolverTests.LinkedEquivalentCommandsCountAsOneChoice()",
+    "status": "Passed",
+    "ms": 0.87930000000000008
+  },
+  {
+    "test": "SolverTests.UnreachableContractCannotBePublished()",
+    "status": "Passed",
+    "ms": 0.1568
+  },
+  {
+    "test": "SolverTests.SearchCanStartFromCurrentSnapshotAndNeedsNoVisualIdentity()",
+    "status": "Passed",
+    "ms": 0.4566
+  },
+  {
+    "test": "SolverTests.LegacyGlyphShorthandPreservesPersistedId()",
+    "status": "Passed",
+    "ms": 0.19840000000000002
+  },
+  {
+    "test": "SolverTests.ExportVerifiedCanonicalMetrics",
+    "status": "Skipped",
+    "reason": "Historical full-catalog version2 generation/report export; current version6 independently audited in full."
+  }
+]

@@ -1,0 +1,19 @@
+✔ returns only the exact verified product and transaction (1.098709ms)
+✔ rejects untrusted bundle, unknown SKU and store (0.091875ms)
+✔ rejects revoked, shared, mismatched and multi-quantity Apple evidence (0.098083ms)
+✔ Google publisher API, rather than submitted state, decides eligibility (0.711834ms)
+✔ store outage propagates so the pending purchase can retry (0.718333ms)
+✔ service authorization rejects missing, malformed and wrong tokens before contacting stores (0.483083ms)
+✔ service configuration cannot silently omit a secret, project or environment (0.085375ms)
+✔ authorized calls cannot cross project or environment boundaries (0.104208ms)
+✔ caller identity is required, bounded and cannot be manufactured with verdict fields (0.141333ms)
+✔ backend returns the exact publisher-verified PascalCase Cloud Code contract (0.403959ms)
+✔ no authenticated binding verdict is emitted until the publisher accepts the purchase (0.152417ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 54.212166

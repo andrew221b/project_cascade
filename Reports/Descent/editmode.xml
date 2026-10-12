@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="12" result="Passed" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-05 20:52:06Z" end-time="2026-10-05 20:52:51Z" duration="44.6071942">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="501" result="Passed" start-time="2026-10-05 20:52:06Z" end-time="2026-10-05 20:52:51Z" duration="44.607194" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1542" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="500" result="Passed" start-time="2026-10-05 20:52:06Z" end-time="2026-10-05 20:52:51Z" duration="44.604583" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="93320" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1543" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="500" result="Passed" start-time="2026-10-05 20:52:06Z" end-time="2026-10-05 20:52:51Z" duration="44.604437" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1544" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="500" result="Passed" start-time="2026-10-05 20:52:06Z" end-time="2026-10-05 20:52:51Z" duration="44.604305" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1320" name="DescentTests" fullname="Cascade.Tests.DescentTests" classname="Cascade.Tests.DescentTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-05 20:52:06Z" end-time="2026-10-05 20:52:50Z" duration="44.249834" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1324" name="AdvanceRequiresDeliveryAndRetryKeepsTheCheckpointAndConditions" fullname="Cascade.Tests.DescentTests.AdvanceRequiresDeliveryAndRetryKeepsTheCheckpointAndConditions" methodname="AdvanceRequiresDeliveryAndRetryKeepsTheCheckpointAndConditions" classname="Cascade.Tests.DescentTests" runstate="Runnable" seed="1674552722" result="Passed" start-time="2026-10-05 20:52:06Z" end-time="2026-10-05 20:52:06Z" duration="0.075491" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1322" name="CheckpointSaveRestoresExactlyAndRejectsAChangedFutureRecipe" fullname="Cascade.Tests.DescentTests.CheckpointSaveRestoresExactlyAndRejectsAChangedFutureRecipe" methodname="CheckpointSaveRestoresExactlyAndRejectsAChangedFutureRecipe" classname="Cascade.Tests.DescentTests" runstate="Runnable" seed="1075827557" result="Passed" start-time="2026-10-05 20:52:06Z" end-time="2026-10-05 20:52:07Z" duration="0.076668" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1323" name="OnlyTheThirdDeliveryClearsAndRecordsUseWholeDescentPerformance" fullname="Cascade.Tests.DescentTests.OnlyTheThirdDeliveryClearsAndRecordsUseWholeDescentPerformance" methodname="OnlyTheThirdDeliveryClearsAndRecordsUseWholeDescentPerformance" classname="Cascade.Tests.DescentTests" runstate="Runnable" seed="1608725841" result="Passed" start-time="2026-10-05 20:52:07Z" end-time="2026-10-05 20:52:07Z" duration="0.055405" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1321" name="PublishedDescentCurvesAreProvenAndPreserveTheReceiverAndFinalDevices" fullname="Cascade.Tests.DescentTests.PublishedDescentCurvesAreProvenAndPreserveTheReceiverAndFinalDevices" methodname="PublishedDescentCurvesAreProvenAndPreserveTheReceiverAndFinalDevices" classname="Cascade.Tests.DescentTests" runstate="Runnable" seed="388760397" result="Passed" start-time="2026-10-05 20:52:07Z" end-time="2026-10-05 20:52:50Z" duration="43.789952" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1325" name="UnprovenPlansAndLessonsRetainSinglePuzzlesAndLegacySavesHaveNoDescent" fullname="Cascade.Tests.DescentTests.UnprovenPlansAndLessonsRetainSinglePuzzlesAndLegacySavesHaveNoDescent" methodname="UnprovenPlansAndLessonsRetainSinglePuzzlesAndLegacySavesHaveNoDescent" classname="Cascade.Tests.DescentTests" runstate="Runnable" seed="1235957124" result="Passed" start-time="2026-10-05 20:52:50Z" end-time="2026-10-05 20:52:50Z" duration="0.000388" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1326" name="DirectorTests" fullname="Cascade.Tests.DirectorTests" classname="Cascade.Tests.DirectorTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-05 20:52:50Z" end-time="2026-10-05 20:52:51Z" duration="0.353890" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1329" name="AllLateRecipesPreserveIdentitiesDevicesMultisetsAndBoundWood" fullname="Cascade.Tests.DirectorTests.AllLateRecipesPreserveIdentitiesDevicesMultisetsAndBoundWood" methodname="AllLateRecipesPreserveIdentitiesDevicesMultisetsAndBoundWood" classname="Cascade.Tests.DirectorTests" runstate="Runnable" seed="1469021741" result="Passed" start-time="2026-10-05 20:52:51Z" end-time="2026-10-05 20:52:51Z" duration="0.071699" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1331" name="DirectedSaveReconstructsExactCommandsAndRejectsTamperedRecipes" fullname="Cascade.Tests.DirectorTests.DirectedSaveReconstructsExactCommandsAndRejectsTamperedRecipes" methodname="DirectedSaveReconstructsExactCommandsAndRejectsTamperedRecipes" classname="Cascade.Tests.DirectorTests" runstate="Runnable" seed="1103500636" result="Passed" start-time="2026-10-05 20:52:51Z" end-time="2026-10-05 20:52:51Z" duration="0.000616" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1327" name="DirectorAlternatesConfidencePeakAndRecoveryAndDoesNotCountAResultTwice" fullname="Cascade.Tests.DirectorTests.DirectorAlternatesConfidencePeakAndRecoveryAndDoesNotCountAResultTwice" methodname="DirectorAlternatesConfidencePeakAndRecoveryAndDoesNotCountAResultTwice" classname="Cascade.Tests.DirectorTests" runstate="Runnable" seed="1948317782" result="Passed" start-time="2026-10-05 20:52:51Z" end-time="2026-10-05 20:52:51Z" duration="0.002355" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1328" name="FailedAndAbandonedAttemptsEaseTheNextDeliveryButRetryKeepsItsPin" fullname="Cascade.Tests.DirectorTests.FailedAndAbandonedAttemptsEaseTheNextDeliveryButRetryKeepsItsPin" methodname="FailedAndAbandonedAttemptsEaseTheNextDeliveryButRetryKeepsItsPin" classname="Cascade.Tests.DirectorTests" runstate="Runnable" seed="1646292234" result="Passed" start-time="2026-10-05 20:52:51Z" end-time="2026-10-05 20:52:51Z" duration="0.000400" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1333" name="IrregularWindIsSmoothBoundedAndNotAShortLoop" fullname="Cascade.Tests.DirectorTests.IrregularWindIsSmoothBoundedAndNotAShortLoop" methodname="IrregularWindIsSmoothBoundedAndNotAShortLoop" classname="Cascade.Tests.DirectorTests" runstate="Runnable" seed="383748125" result="Passed" start-time="2026-10-05 20:52:51Z" end-time="2026-10-05 20:52:51Z" duration="0.017821" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1332" name="LegacyProfilesGetCalmDefaultsWithoutChangingTheirAttempt" fullname="Cascade.Tests.DirectorTests.LegacyProfilesGetCalmDefaultsWithoutChangingTheirAttempt" methodname="LegacyProfilesGetCalmDefaultsWithoutChangingTheirAttempt" classname="Cascade.Tests.DirectorTests" runstate="Runnable" seed="553362834" result="Passed" start-time="2026-10-05 20:52:51Z" end-time="2026-10-05 20:52:51Z" duration="0.008362" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1330" name="WindUsesTheExactResolverAndKeepsContactsOnTheFinalRow" fullname="Cascade.Tests.DirectorTests.WindUsesTheExactResolverAndKeepsContactsOnTheFinalRow" methodname="WindUsesTheExactResolverAndKeepsContactsOnTheFinalRow" classname="Cascade.Tests.DirectorTests" runstate="Runnable" seed="2077391100" result="Passed" start-time="2026-10-05 20:52:51Z" end-time="2026-10-05 20:52:51Z" duration="0.104013" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

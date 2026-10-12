@@ -1,0 +1,306 @@
+{
+  "pose": "settings-language-ru",
+  "before": {
+    "Screen": "Settings",
+    "Attempt": "8d724f0e-bc59-47a2-92bf-c5f4ab4f0f1c",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "after": {
+    "Screen": "Settings",
+    "Attempt": "8d724f0e-bc59-47a2-92bf-c5f4ab4f0f1c",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 390,
+    "height": 844,
+    "locale": "ru",
+    "largeText": false,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Soundeffects",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Soundeffects",
+        "interactable": true,
+        "bounds": {
+          "x": 37.0968056,
+          "y": 594.443237,
+          "width": 101.5092,
+          "height": 52.0
+        }
+      },
+      {
+        "name": "Comfort",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Comfort",
+        "interactable": true,
+        "bounds": {
+          "x": 144.245392,
+          "y": 594.443237,
+          "width": 101.509216,
+          "height": 52.0
+        }
+      },
+      {
+        "name": "Languages",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Languages",
+        "interactable": true,
+        "bounds": {
+          "x": 251.394,
+          "y": 594.443237,
+          "width": 101.509171,
+          "height": 52.0
+        }
+      },
+      {
+        "name": "UiLocalePrevious",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/UiLocale carousel/UiLocalePrevious",
+        "interactable": true,
+        "bounds": {
+          "x": 44.616,
+          "y": 460.2084,
+          "width": 63.161274,
+          "height": 64.00003
+        }
+      },
+      {
+        "name": "UiLocaleNext",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/UiLocale carousel/UiLocaleNext",
+        "interactable": true,
+        "bounds": {
+          "x": 282.2227,
+          "y": 460.2084,
+          "width": 63.1612854,
+          "height": 64.00003
+        }
+      },
+      {
+        "name": "PuzzleLocalePrevious",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/PuzzleLocale carousel/PuzzleLocalePrevious",
+        "interactable": true,
+        "bounds": {
+          "x": 44.616,
+          "y": 286.665131,
+          "width": 63.161274,
+          "height": 64.0
+        }
+      },
+      {
+        "name": "PuzzleLocaleNext",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/PuzzleLocale carousel/PuzzleLocaleNext",
+        "interactable": true,
+        "bounds": {
+          "x": 282.2227,
+          "y": 286.665131,
+          "width": 63.1612854,
+          "height": 64.0
+        }
+      },
+      {
+        "name": "PuzzleLocaleen",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/PuzzleLocaleen",
+        "interactable": false,
+        "bounds": {
+          "x": 37.0968056,
+          "y": 184.667236,
+          "width": 315.806427,
+          "height": 52.0
+        }
+      },
+      {
+        "name": "Back",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Back",
+        "interactable": true,
+        "bounds": {
+          "x": 37.0968056,
+          "y": 49.7600174,
+          "width": 315.806427,
+          "height": 52.0000076
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Menu title",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Menu title",
+        "text": "Настройки",
+        "button": null,
+        "bounds": {
+          "x": 70.9332,
+          "y": 716.6151,
+          "width": 248.133575,
+          "height": 47.5357666
+        },
+        "fontPixels": 28.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Menu description",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Menu description",
+        "text": "Языки",
+        "button": null,
+        "bounds": {
+          "x": 70.9332,
+          "y": 646.443237,
+          "width": 248.133575,
+          "height": 67.15375
+        },
+        "fontPixels": 18.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Soundeffects/Label",
+        "text": "Звук",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Soundeffects",
+        "bounds": {
+          "x": 37.0968056,
+          "y": 594.443237,
+          "width": 101.5092,
+          "height": 52.0
+        },
+        "fontPixels": 20.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Comfort/Label",
+        "text": "Удобно",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Comfort",
+        "bounds": {
+          "x": 144.245392,
+          "y": 594.443237,
+          "width": 101.509216,
+          "height": 52.0
+        },
+        "fontPixels": 20.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Languages/Label",
+        "text": "Язык",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Languages",
+        "bounds": {
+          "x": 251.394,
+          "y": 594.443237,
+          "width": 101.509171,
+          "height": 52.0
+        },
+        "fontPixels": 20.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "UI language help",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/UI language help",
+        "text": "Язык меню",
+        "button": null,
+        "bounds": {
+          "x": 70.9332,
+          "y": 531.7538,
+          "width": 248.133575,
+          "height": 45.2721558
+        },
+        "fontPixels": 22.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Selected language",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/UiLocale carousel/Selected language",
+        "text": "Русский",
+        "button": null,
+        "bounds": {
+          "x": 107.777275,
+          "y": 460.2084,
+          "width": 174.4454,
+          "height": 64.00003
+        },
+        "fontPixels": 22.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Word language help",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Word language help",
+        "text": "Слова в новых задачах",
+        "button": null,
+        "bounds": {
+          "x": 70.9332,
+          "y": 361.9832,
+          "width": 248.133575,
+          "height": 75.45361
+        },
+        "fontPixels": 22.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Selected language",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/PuzzleLocale carousel/Selected language",
+        "text": "English",
+        "button": null,
+        "bounds": {
+          "x": 107.777275,
+          "y": 286.665131,
+          "width": 174.4454,
+          "height": 64.0
+        },
+        "fontPixels": 22.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/PuzzleLocaleen/Label",
+        "text": "Для новых задач",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/PuzzleLocaleen",
+        "bounds": {
+          "x": 37.0968056,
+          "y": 184.667236,
+          "width": 315.806427,
+          "height": 52.0
+        },
+        "fontPixels": 22.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Back/Label",
+        "text": "Назад",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Back",
+        "bounds": {
+          "x": 37.0968056,
+          "y": 49.7600174,
+          "width": 315.806427,
+          "height": 52.0000076
+        },
+        "fontPixels": 22.0,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

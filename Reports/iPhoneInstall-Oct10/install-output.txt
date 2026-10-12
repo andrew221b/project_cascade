@@ -1,0 +1,10 @@
+07:32:37  Acquired tunnel connection to device.
+07:32:37  Enabling developer disk image services.
+07:32:38  Acquired usage assertion.
+App installed:
+• bundleID: com.vickand.cascade
+• installationURL: file:///private/var/containers/Bundle/Application/5E6E4D71-C3BF-4FD7-98B5-5C4E77D21030/CASCADE.app/
+• launchServicesIdentifier: unknown
+• databaseUUID: 4339F797-3276-43B8-AF14-A2DADD234626
+• databaseSequenceNumber: 2372
+• options: 

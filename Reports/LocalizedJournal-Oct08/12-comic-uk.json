@@ -1,0 +1,21 @@
+{
+    "width": 320,
+    "height": 693,
+    "minimumDeviceTextPixels": 0.0,
+    "buttons": [
+        {
+            "name": "Back",
+            "x": 35.12730407714844,
+            "y": 557.5780639648438,
+            "width": 48.0,
+            "height": 48.0
+        },
+        {
+            "name": "Next comic page",
+            "x": 187.1199951171875,
+            "y": 114.29708099365235,
+            "width": 96.0,
+            "height": 43.99999237060547
+        }
+    ]
+}

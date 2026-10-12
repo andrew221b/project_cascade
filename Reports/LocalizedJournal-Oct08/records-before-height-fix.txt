@@ -1,0 +1,10 @@
+PASS 01-unopened.png
+PASS 02-requests-ru.png
+FAIL System.InvalidOperationException: Text overflow: Clean route value / 13
+  at Cascade.Editor.Playable.LocalizedJournalReview.FitText (TMPro.TextMeshProUGUI t) [0x00031] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/LocalizedJournalReview.cs:92 
+  at Cascade.Editor.Playable.LocalizedJournalReview.ClearFooter (Cascade.Presentation.CascadeGame g, System.String paper, System.String action) [0x00093] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/LocalizedJournalReview.cs:100 
+  at Cascade.Editor.Playable.LocalizedJournalReview.Records (Cascade.Presentation.CascadeGame g) [0x00000] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/LocalizedJournalReview.cs:102 
+  at Cascade.Editor.Playable.LocalizedJournalReview+<>c__DisplayClass16_0.<Shot>b__0 (Cascade.Presentation.CascadeGame x) [0x00000] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/LocalizedJournalReview.cs:90 
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x001ff] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:37 
+  at Cascade.Editor.Playable.LocalizedJournalReview+<Guard>d__22.MoveNext () [0x0006b] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/LocalizedJournalReview.cs:115 
+Completed: False

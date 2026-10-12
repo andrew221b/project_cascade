@@ -1,0 +1,6 @@
+Native Unity Play Mode:15 captures,390×844 and320×693.
+Visual review:16 trophies on two shelves; four new costumes; owned color/locked gray; EN/RU/UK; Ukrainian long hat title with Large Text; centered icon coin price; light disabled-price/loading labels; first-use fingertip at shelf/Mika; eased tap rise/rest; worn map/portrait; tool chest reveal.
+Scoped metrics: all checked shelf/back/page/action/buy hit rectangles >=44×44px, inside capture.
+Screenshots/explicit animation poses are not frame-by-frame motion, human-enjoyment or physical-device validation.
+Economy:85 focused pure-C# checks; Cloud Code43 fake-transport checks; production Cloud Save/deployment NOT RUN.
+No phone build/install; isolated temporary Editor profile, no player save.

@@ -1,0 +1,101 @@
+Privacy Policy
+
+DRAFT — publisher review pending. Updated 2026-10-09
+
+This notice explains how CASCADE handles information in the game, on this website and when you contact support. It distinguishes information kept on your device from information used by optional connected features. The availability of sign-in, cloud saves, advertising and purchases depends on the released version and your choices.
+
+Who is responsible and how to contact us
+
+CASCADE is provided by Andrii Plashevskyi, based in Canada. Contact shapeinc25@gmail.com for privacy questions or requests, and shapeinc25@gmail.com for game support. Our correspondence address is 173 Victor Lewis Dr, Winnipeg, MB R3P 1Z9, Canada. These details identify the game publisher; Apple, Google and Unity also have their own privacy responsibilities for the services they operate.
+
+Playing without a linked account
+
+Your device stores your campaign progress, current puzzle and move history, level records, inventory, earned rewards, purchased entitlements, language and accessibility settings, tutorial history and reminder preferences. These files are used to resume play and prevent duplicate rewards. They are not uploaded by the local-save feature itself.
+
+Uninstalling the game, clearing its storage or losing the device can remove local progress. A device backup operated by Apple or Google may separately include app data according to your device settings and those providers' terms. A local save is not a promise of a cloud backup. Optional network features can still contact their providers when enabled, even if you have not linked an Apple or Google identity.
+
+Optional sign-in and cloud progress
+
+Where enabled, CASCADE uses Unity Gaming Services Authentication, Unity Player Accounts, Cloud Code and Cloud Save. An anonymous game identifier may be created when connected services are initialized. Choosing Apple or Google sign-in links a provider identity through the hosted Unity Player Accounts service. That service and your identity provider handle the sign-in exchange. The game publisher does not ask for or receive your Apple or Google password.
+
+Connected account data can include a game player identifier, provider linkage, authentication tokens managed by the SDK, a device/save namespace, your campaign state, records, settings included in the game profile, inventory, rewards, transaction grant records and sync revisions. The profile is processed to back up and reconcile progress, restore eligible entitlements and avoid crediting a reward twice. Connection metadata, including IP address, device/software details and service logs, may be processed by the service providers for delivery and security.
+
+Linking and loading are separate choices when an existing account already has a save. Do not assume that signing in automatically combines every item from two saves. Linked saves may retain transaction and conflict-resolution records so that reconnection does not duplicate rewards. We do not use your sign-in to publish your scores, create a public profile or send promotional email.
+
+Payments, purchase verification and restoration
+
+Apple App Store or Google Play handles payment and billing information. CASCADE does not receive your complete payment card details. To fulfill and verify a purchase, the game and its verification service may process the store, product identifier, transaction identifier, signed receipt or purchase token, app/package identifier, purchase status and a pseudonymous account association. Store receipts may contain additional store-supplied transaction details.
+
+Verification and grant records are used to issue the correct entitlement, handle pending purchases and prevent duplicate grants or fraud. The current catalog distinguishes a non-consumable removal of automatic ads from consumable coin packs. Restore purchases retrieves eligible store entitlements for the same store account; it does not recreate already consumed coin packs. A remaining game balance can be recovered through a successfully synchronized game account when that feature is enabled.
+
+Do not email us passwords, full payment card details or authentication tokens. For support, a transaction/order reference and your game player identifier are normally enough to start an investigation. Apple and Google control their own purchase histories and refund processing.
+
+Advertising and your privacy choices
+
+When advertising is enabled, CASCADE uses Google AdMob and the Google User Messaging Platform to request ads and collect applicable privacy choices. Depending on the platform, region, consent and SDK configuration, Google and its advertising partners may process IP address, approximate location inferred from it, advertising or other device identifiers, device/software information, ad views and interactions, diagnostics and fraud-prevention signals. An ad partner may use its own technologies and privacy policy.
+
+Where consent is required, the consent flow determines whether ads may be requested. Where applicable, Advertising privacy in the game reopens privacy options. On iOS, tracking permission is governed separately by the operating system when tracking is used; declining it must not be represented as permission to track. Contextual or limited ads can still involve operational processing and are not necessarily data-free.
+
+Purchasing removal of automatic ads suppresses automatic advertising according to the product description. Optional rewarded offers may remain available if the game shows them and you choose to view one. We do not describe an optional rewarded ad as necessary for permission to play. Advertising choices made on one device or within one consent framework may need to be made again on another.
+
+Local reminders, permissions and device controls
+
+CASCADE can schedule local reminders on your device. They start disabled; the game asks the operating system for permission only after you turn reminders on in Settings. If permission is denied, reminders stay disabled until you choose otherwise. You can change the game setting or the operating system's notification settings at any time. Reminders are scheduled locally and do not use a publisher-operated remote push service.
+
+Notifications are queued on the device for the next 14 days and refreshed when you return to the game. Some evening messages may include the number of paths cleared in your local save. Notification text may be visible on your lock screen according to your device settings. The schedule and progress count stay on the device; CASCADE does not register for a remote push service or send reminder data to a server. Sound, haptics and presentation effects use the corresponding device capabilities. The game does not need access to your contacts, photos, precise location, microphone or camera for its core puzzle play. Optional device-motion presentation is local and does not determine puzzle rules.
+
+Website, cookies and optional measurement
+
+This website serves static pages and game artwork. Its hosting provider can process ordinary request information, such as IP address, requested URL, time, browser information and security logs, to deliver the site and protect it. Self-hosted fonts and artwork do not require a third-party font or image request.
+
+The website uses browser storage for preferences you choose, such as pausing decorative motion and remembering cookie choices. The interactive puzzle example runs in your browser and does not submit its moves to a server. It does not sign you in to the game.
+
+Optional audience measurement is disabled unless a measurement provider is configured and you give the requested consent. If enabled, the cookie settings panel identifies the configured provider and allows accepting or declining measurement with equal prominence. Declining does not block the website. Measurement can include page visits, interactions and technical browser information. Turning it off stops future requests from this site; previously collected data is governed by the provider's retention and deletion controls. Opening a store or service link takes you to that provider's site and privacy practices.
+
+Support correspondence
+
+When you contact us, we process the contact details you supply, your message and any optional screenshots, device/app version, game identifier or purchase reference you include. We use this information to respond, investigate a fault, address a purchase problem or fulfill a privacy request. Send only information relevant to the issue. Support links create an email in your own mail application; this website does not silently upload a form or create a support ticket.
+
+Purposes and legal bases
+
+Where EU, EEA or UK data-protection law applies, processing necessary to provide the game or a requested connected feature is generally based on performance of our agreement with you. Security, duplicate-grant prevention, service reliability and resolving support issues can be based on legitimate interests, subject to the balancing and safeguards required by law. Records required for tax, accounting, lawful requests or consumer protection are processed to comply with legal obligations.
+
+Optional tracking, advertising personalization or website measurement relies on consent where required. You can withdraw consent through the relevant privacy controls without affecting the lawfulness of earlier processing. The exact role and legal basis of an independent service provider is described in its own notice. We do not treat acceptance of Terms as blanket consent to optional tracking.
+
+Who can receive information
+
+Relevant information may be processed by Unity for authentication and cloud game services; Google for Play billing, sign-in, AdMob and its consent tools; Apple for App Store billing, sign-in and device services; the configured receipt-verification infrastructure; the website hosting provider; and personnel or service providers who help answer support requests. Access is limited to the purpose of the service. Data can also be disclosed when required by law, to protect legal rights or security, or in a legitimate business transfer with appropriate notice and safeguards.
+
+We do not offer your game save for sale. Advertising-provider processing can fall within legal definitions of sharing or targeted advertising in some jurisdictions. Your applicable choices must be respected; a general statement about not selling saves does not remove those rights. We do not disclose more information than is reasonably necessary for the relevant purpose.
+
+International processing and security
+
+Our providers may process information in countries other than where you live. When a restricted international transfer is made, an appropriate lawful safeguard must be used, such as an adequacy decision or approved contractual safeguards. You can ask the publisher for details relevant to your data; provider-specific transfer information is also in the notices linked below.
+
+We use platform authentication, encrypted transport for connected services, server-side purchase verification and access controls to protect information. No system can guarantee absolute security or permanent availability. Keep your store and identity accounts secure. If you believe an account or purchase has been compromised, contact support and the relevant provider promptly.
+
+How long information is kept
+
+Local files remain on your device until replaced, deleted, removed with the app or affected by device backup/restore settings. Connected progress is retained while needed to provide the requested account and recovery features, unless you request deletion or a shorter applicable period requires removal. Support information is retained only for the issue and justified follow-up or recordkeeping needs.
+
+Purchase, fraud-prevention or legal records may need to be retained for a longer period required by law or necessary to resolve disputes and prevent duplicate claims. Data retained after an approved deletion request must be limited to that purpose, with access restricted where appropriate. We do not promise a single fixed deletion period for records that are subject to different legal obligations. The publisher must maintain an operational retention schedule before connected features are released.
+
+Your rights, deletion and complaints
+
+Depending on your location, you can request access, correction, deletion, restriction, portability or objection, and withdraw consent. You may also have rights concerning targeted advertising, sale or sharing and automated decisions. CASCADE does not use your puzzle performance to make decisions with legal or similarly significant effects. We do not discriminate against you for exercising applicable privacy rights.
+
+Send a request to shapeinc25@gmail.com and include enough information to locate the game account. We may ask for proportionate verification to prevent another person from deleting your save. Never provide your password. We respond within the period required by applicable law and explain any lawful reason for retaining limited records or declining a request. You can complain to the relevant data-protection authority; EU, EEA and UK users may contact their local supervisory authority.
+
+Removing a local save or uninstalling does not delete data already synchronized to cloud services. Managing or deleting a Unity Player Accounts identity is also not, by itself, a confirmed deletion of CASCADE's game data in other services. Use the CASCADE data-request contact for that request. Deleting game data does not cancel an Apple or Google account, erase a provider's purchase history or automatically refund a purchase. Before release of account creation, the publisher must enable and verify the required in-game account-deletion route and the external request route.
+
+Children and family use
+
+Use the age rating and audience information in the relevant store listing to decide whether CASCADE is appropriate. A parent or guardian should supervise a child where required and control purchases and device permissions. A store rating is not itself consent to collect a child's personal information.
+
+We do not knowingly collect a child's personal information contrary to applicable child-protection laws. If you believe a child has provided such information without the required authorization, contact shapeinc25@gmail.com so the publisher can investigate and remove it where required. Before enabling connected services or ads for children or a mixed-age audience, the publisher must confirm the audience classification and configure any required parental consent, age-appropriate treatment and provider settings. This policy does not claim that an unimplemented age gate or parental-consent flow already exists.
+
+Provider notices and policy changes
+
+The following notices explain provider-specific processing: Unity Privacy Policy (https://unity.com/legal/privacy-policy), Google Privacy Policy (https://policies.google.com/privacy), Google Advertising technologies (https://policies.google.com/technologies/ads), and Apple Privacy Policy (https://www.apple.com/legal/privacy/). These notices do not replace the publisher's responsibility to describe and control CASCADE's actual data flows.
+
+We may update this policy when features, providers or legal requirements change. The date at the top identifies the current version. Material changes require appropriate notice, and new consent where required; they are not retroactively treated as permission for unrelated processing. A copy of the policy is available within the game, including when the device is offline.

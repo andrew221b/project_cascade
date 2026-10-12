@@ -1,0 +1,156 @@
+{
+  "Bomb_Puff": {
+    "seconds": 1.24,
+    "channels": 2,
+    "peak": 0.44998,
+    "rms": 0.04055,
+    "seam": 0.0
+  },
+  "Bridge_Unfold": {
+    "seconds": 1.462,
+    "channels": 2,
+    "peak": 0.39996,
+    "rms": 0.05198,
+    "seam": 6e-05
+  },
+  "CloudPost_LettersOnTheBreeze": {
+    "seconds": 60.0,
+    "channels": 2,
+    "peak": 0.71997,
+    "rms": 0.1064,
+    "seam": 0.004
+  },
+  "CopperOrchard_GoldenAfternoon": {
+    "seconds": 55.385,
+    "channels": 2,
+    "peak": 0.56662,
+    "rms": 0.11998,
+    "seam": 0.00079
+  },
+  "Defuse_Release": {
+    "seconds": 1.075,
+    "channels": 2,
+    "peak": 0.39996,
+    "rms": 0.0659,
+    "seam": 0.0
+  },
+  "Fragile_Creak": {
+    "seconds": 0.639,
+    "channels": 2,
+    "peak": 0.44998,
+    "rms": 0.00953,
+    "seam": 0.0
+  },
+  "GlassLagoon_ReflectedMoon": {
+    "seconds": 72.0,
+    "channels": 2,
+    "peak": 0.70929,
+    "rms": 0.11998,
+    "seam": 0.00043
+  },
+  "GreatBeacon_TheWayHome": {
+    "seconds": 57.6,
+    "channels": 2,
+    "peak": 0.54614,
+    "rms": 0.11998,
+    "seam": 0.00204
+  },
+  "Land_Clacks": {
+    "seconds": 0.929,
+    "channels": 2,
+    "peak": 0.44998,
+    "rms": 0.01248,
+    "seam": 0.0
+  },
+  "LivingWind": {
+    "seconds": 11.65,
+    "channels": 2,
+    "peak": 0.64996,
+    "rms": 0.07242,
+    "seam": 0.00485
+  },
+  "Menu_HomeAmongClouds": {
+    "seconds": 68.571,
+    "channels": 2,
+    "peak": 0.65982,
+    "rms": 0.11999,
+    "seam": 0.00137
+  },
+  "MossArchive_StoriesInTheLeaves": {
+    "seconds": 80.0,
+    "channels": 2,
+    "peak": 0.63202,
+    "rms": 0.11999,
+    "seam": 0.00146
+  },
+  "RainMill_RainOnCedar": {
+    "seconds": 75.789,
+    "channels": 2,
+    "peak": 0.71997,
+    "rms": 0.08276,
+    "seam": 0.00381
+  },
+  "Reject_Nudge": {
+    "seconds": 0.6,
+    "channels": 2,
+    "peak": 0.44998,
+    "rms": 0.02799,
+    "seam": 0.0
+  },
+  "Repair_Chimes": {
+    "seconds": 1.443,
+    "channels": 2,
+    "peak": 0.39996,
+    "rms": 0.04384,
+    "seam": 0.0
+  },
+  "Select_Touch": {
+    "seconds": 0.201,
+    "channels": 2,
+    "peak": 0.44998,
+    "rms": 0.04312,
+    "seam": 0.0
+  },
+  "SnowSpire_WarmLightInSnow": {
+    "seconds": 73.846,
+    "channels": 2,
+    "peak": 0.71997,
+    "rms": 0.09572,
+    "seam": 0.00543
+  },
+  "Stamp_Paper": {
+    "seconds": 0.239,
+    "channels": 2,
+    "peak": 0.44998,
+    "rms": 0.04795,
+    "seam": 0.0
+  },
+  "Success_Home": {
+    "seconds": 1.693,
+    "channels": 2,
+    "peak": 0.39996,
+    "rms": 0.05489,
+    "seam": 3e-05
+  },
+  "Swap_Slide": {
+    "seconds": 1.092,
+    "channels": 2,
+    "peak": 0.44998,
+    "rms": 0.03321,
+    "seam": 0.0
+  },
+  "Unlock_Turn": {
+    "seconds": 1.021,
+    "channels": 2,
+    "peak": 0.39996,
+    "rms": 0.06436,
+    "seam": 3e-05
+  },
+  "WindGarden_PaperWings": {
+    "seconds": 62.609,
+    "channels": 2,
+    "peak": 0.51779,
+    "rms": 0.11998,
+    "seam": 0.00156
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "scope": "Unity macOS Editor frame intervals, not mobile CPU/GPU/device performance",
+  "frames": 120,
+  "medianMs": 99.974788725376129,
+  "p95Ms": 102.07770764827728,
+  "allocatedStartBytes": 2357980712,
+  "allocatedEndBytes": 2355889672,
+  "monoUsedBytes": 2042507264,
+  "gameplayUnchanged": true,
+  "largeText": true,
+  "highContrast": true
+}

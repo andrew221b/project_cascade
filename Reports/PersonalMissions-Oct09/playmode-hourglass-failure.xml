@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Failed(Child)" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-08 21:38:33Z" end-time="2026-10-08 21:39:03Z" duration="30.1366429">
+  <test-suite type="TestSuite" id="1164" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="144" result="Failed" site="Child" start-time="2026-10-08 21:38:33Z" end-time="2026-10-08 21:39:03Z" duration="30.136643" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1158" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="144" result="Failed" site="Child" start-time="2026-10-08 21:38:33Z" end-time="2026-10-08 21:39:03Z" duration="29.542596" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24227" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1159" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="144" result="Failed" site="Child" start-time="2026-10-08 21:38:33Z" end-time="2026-10-08 21:39:03Z" duration="29.536951" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1160" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="144" result="Failed" site="Child" start-time="2026-10-08 21:38:33Z" end-time="2026-10-08 21:39:03Z" duration="29.535714" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1042" name="PersonalMissionFlowTests" fullname="Cascade.Tests.PersonalMissionFlowTests" classname="Cascade.Tests.PersonalMissionFlowTests" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-10-08 21:38:33Z" end-time="2026-10-08 21:39:03Z" duration="29.533993" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1043" name="MapOfferDeclineAcceptanceRestartAndThreeStagesPreserveCampaign" fullname="Cascade.Tests.PersonalMissionFlowTests.MapOfferDeclineAcceptanceRestartAndThreeStagesPreserveCampaign" methodname="MapOfferDeclineAcceptanceRestartAndThreeStagesPreserveCampaign" classname="Cascade.Tests.PersonalMissionFlowTests" runstate="Runnable" seed="542637758" result="Failed" start-time="2026-10-08 21:38:33Z" end-time="2026-10-08 21:39:03Z" duration="29.330562" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Mission flow: offer; screen=JourneyMap, offered=False, active=False, due=8, clears=7, planning=False, control=False, play=False, saveError=False
+  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at Cascade.Tests.PersonalMissionFlowTests+<Ready>d__8.MoveNext () [0x00073] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Tests/PlayMode/PersonalMissionFlowTests.cs:51
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in ./Library/PackageCache/com.unity.test-framework@0b7a23ab2e1d/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+Saving results to: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/PersonalMissions-Oct09/playmode.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

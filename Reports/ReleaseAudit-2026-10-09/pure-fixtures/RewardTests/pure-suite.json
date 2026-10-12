@@ -1,0 +1,62 @@
+[
+  {
+    "test": "RewardTests.ThreeNewLightsEarnOneKnownFragmentAndReplayCannotFarm()",
+    "status": "Passed",
+    "ms": 27.5254
+  },
+  {
+    "test": "RewardTests.PendingParcelsReserveCapacityAndAllFortyClearsCannotGenerateFiller()",
+    "status": "Passed",
+    "ms": 7.4168
+  },
+  {
+    "test": "RewardTests.FortyClearsAndFourChaptersYieldExactlyTwoThousand()",
+    "status": "Passed",
+    "ms": 1.5488000000000002
+  },
+  {
+    "test": "RewardTests.SkippingC26DoesNotPretendThatWorkshopIsComplete()",
+    "status": "Passed",
+    "ms": 1.3376000000000001
+  },
+  {
+    "test": "RewardTests.VisitStampsNeverResetOnGapsAndIgnoreRepeatedDates()",
+    "status": "Passed",
+    "ms": 11.8094
+  },
+  {
+    "test": "RewardTests.ObjectiveAndLocaleRecordsStaySeparateWhileDeliveryStillCounts()",
+    "status": "Passed",
+    "ms": 6.0118
+  },
+  {
+    "test": "RewardTests.HintAndUndoAnnotationsDoNotRewriteTheMeaningOfBestRoute()",
+    "status": "Passed",
+    "ms": 2.3753
+  },
+  {
+    "test": "RewardTests.DeviceRequestsUseSuccessfulUniqueNodesRatherThanRepeatedActions()",
+    "status": "Passed",
+    "ms": 0.2692
+  },
+  {
+    "test": "RewardTests.SavedClaimsCannotReopenAndOlderProfileCanAcquireNewFields()",
+    "status": "Passed",
+    "ms": 92.1679
+  },
+  {
+    "test": "RewardTests.MissingClearAuthorityAndInvalidGiftReceiptsAreRejected()",
+    "status": "Passed",
+    "ms": 1.9492
+  },
+  {
+    "test": "RewardTests.LaterParcelsAreRareFixedPrizesAndReplayCannotRerollThem()",
+    "status": "Passed",
+    "ms": 2.0349
+  },
+  {
+    "test": "RewardTests.AlreadyBoughtRareLookConvertsOnceToSmallCoinsAndCloudKeepsClaim()",
+    "status": "Passed",
+    "ms": 15.6951
+  }
+]

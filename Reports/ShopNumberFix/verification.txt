@@ -1,0 +1,1 @@
+caption=Купить; color=RGBA(0.990, 0.980, 0.920, 1.000); stale-counter=no; price=× 360; hidden-0of3=True

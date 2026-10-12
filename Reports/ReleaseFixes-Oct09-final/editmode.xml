@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="12" result="Passed" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-09 04:37:51Z" end-time="2026-10-09 04:37:52Z" duration="1.6527673">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="855" result="Passed" start-time="2026-10-09 04:37:51Z" end-time="2026-10-09 04:37:52Z" duration="1.652767" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1953" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="854" result="Passed" start-time="2026-10-09 04:37:51Z" end-time="2026-10-09 04:37:52Z" duration="1.234214" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24227" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1954" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="854" result="Passed" start-time="2026-10-09 04:37:51Z" end-time="2026-10-09 04:37:52Z" duration="1.233970" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1955" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="854" result="Passed" start-time="2026-10-09 04:37:51Z" end-time="2026-10-09 04:37:52Z" duration="1.233732" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1205" name="CloudJournalTests" fullname="Cascade.Tests.CloudJournalTests" classname="Cascade.Tests.CloudJournalTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-09 04:37:51Z" end-time="2026-10-09 04:37:52Z" duration="0.886454" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1208" name="BothCorruptPreserveMainAndCreateDifferentDevice" fullname="Cascade.Tests.CloudJournalTests.BothCorruptPreserveMainAndCreateDifferentDevice" methodname="BothCorruptPreserveMainAndCreateDifferentDevice" classname="Cascade.Tests.CloudJournalTests" runstate="Runnable" seed="366847516" result="Passed" start-time="2026-10-09 04:37:51Z" end-time="2026-10-09 04:37:52Z" duration="0.432162" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1207" name="CorruptMainUsesPreviousAtomicJournal" fullname="Cascade.Tests.CloudJournalTests.CorruptMainUsesPreviousAtomicJournal" methodname="CorruptMainUsesPreviousAtomicJournal" classname="Cascade.Tests.CloudJournalTests" runstate="Runnable" seed="1664239989" result="Passed" start-time="2026-10-09 04:37:52Z" end-time="2026-10-09 04:37:52Z" duration="0.211169" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1211" name="ExplicitProgressRejectionRetiresSnapshotButNeverReusesItsSequence" fullname="Cascade.Tests.CloudJournalTests.ExplicitProgressRejectionRetiresSnapshotButNeverReusesItsSequence" methodname="ExplicitProgressRejectionRetiresSnapshotButNeverReusesItsSequence" classname="Cascade.Tests.CloudJournalTests" runstate="Runnable" seed="297803287" result="Passed" start-time="2026-10-09 04:37:52Z" end-time="2026-10-09 04:37:52Z" duration="0.001672" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1209" name="InvalidPendingPairIsNeverSaved" fullname="Cascade.Tests.CloudJournalTests.InvalidPendingPairIsNeverSaved" methodname="InvalidPendingPairIsNeverSaved" classname="Cascade.Tests.CloudJournalTests" runstate="Runnable" seed="894430197" result="Passed" start-time="2026-10-09 04:37:52Z" end-time="2026-10-09 04:37:52Z" duration="0.000944" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1212" name="JsonProfileRoundTripHasNoDerivedProperties" fullname="Cascade.Tests.CloudJournalTests.JsonProfileRoundTripHasNoDerivedProperties" methodname="JsonProfileRoundTripHasNoDerivedProperties" classname="Cascade.Tests.CloudJournalTests" runstate="Runnable" seed="794411362" result="Passed" start-time="2026-10-09 04:37:52Z" end-time="2026-10-09 04:37:52Z" duration="0.018198" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1210" name="PastPendingSequenceIsRejected" fullname="Cascade.Tests.CloudJournalTests.PastPendingSequenceIsRejected" methodname="PastPendingSequenceIsRejected" classname="Cascade.Tests.CloudJournalTests" runstate="Runnable" seed="1271092328" result="Passed" start-time="2026-10-09 04:37:52Z" end-time="2026-10-09 04:37:52Z" duration="0.000304" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1206" name="PendingRequestSurvivesRestart" fullname="Cascade.Tests.CloudJournalTests.PendingRequestSurvivesRestart" methodname="PendingRequestSurvivesRestart" classname="Cascade.Tests.CloudJournalTests" runstate="Runnable" seed="1599275655" result="Passed" start-time="2026-10-09 04:37:52Z" end-time="2026-10-09 04:37:52Z" duration="0.000841" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1680" name="ReleasePersistenceTests" fullname="Cascade.Tests.ReleasePersistenceTests" classname="Cascade.Tests.ReleasePersistenceTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-09 04:37:52Z" end-time="2026-10-09 04:37:52Z" duration="0.346260" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1681" name="AutosaveCapturesAnImmutableSnapshotAndKeepsNewestCheckpoint" fullname="Cascade.Tests.ReleasePersistenceTests.AutosaveCapturesAnImmutableSnapshotAndKeepsNewestCheckpoint" methodname="AutosaveCapturesAnImmutableSnapshotAndKeepsNewestCheckpoint" classname="Cascade.Tests.ReleasePersistenceTests" runstate="Runnable" seed="68598984" result="Passed" start-time="2026-10-09 04:37:52Z" end-time="2026-10-09 04:37:52Z" duration="0.284771" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1682" name="DurablePurchaseBarrierCannotBeOverwrittenByAnOlderAutosave" fullname="Cascade.Tests.ReleasePersistenceTests.DurablePurchaseBarrierCannotBeOverwrittenByAnOlderAutosave" methodname="DurablePurchaseBarrierCannotBeOverwrittenByAnOlderAutosave" classname="Cascade.Tests.ReleasePersistenceTests" runstate="Runnable" seed="150273367" result="Passed" start-time="2026-10-09 04:37:52Z" end-time="2026-10-09 04:37:52Z" duration="0.020081" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1683" name="FailedBackgroundWriteRemainsRetryableAndReportsTheError" fullname="Cascade.Tests.ReleasePersistenceTests.FailedBackgroundWriteRemainsRetryableAndReportsTheError" methodname="FailedBackgroundWriteRemainsRetryableAndReportsTheError" classname="Cascade.Tests.ReleasePersistenceTests" runstate="Runnable" seed="1528492275" result="Passed" start-time="2026-10-09 04:37:52Z" end-time="2026-10-09 04:37:52Z" duration="0.011187" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1685" name="LargeProfileTransportRetainsEveryReceiptAndAcceptsLegacyJson" fullname="Cascade.Tests.ReleasePersistenceTests.LargeProfileTransportRetainsEveryReceiptAndAcceptsLegacyJson" methodname="LargeProfileTransportRetainsEveryReceiptAndAcceptsLegacyJson" classname="Cascade.Tests.ReleasePersistenceTests" runstate="Runnable" seed="980527586" result="Passed" start-time="2026-10-09 04:37:52Z" end-time="2026-10-09 04:37:52Z" duration="0.012584" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1684" name="SmallCompressedBombCannotExpandPastTheDecodedBudget" fullname="Cascade.Tests.ReleasePersistenceTests.SmallCompressedBombCannotExpandPastTheDecodedBudget" methodname="SmallCompressedBombCannotExpandPastTheDecodedBudget" classname="Cascade.Tests.ReleasePersistenceTests" runstate="Runnable" seed="920160738" result="Passed" start-time="2026-10-09 04:37:52Z" end-time="2026-10-09 04:37:52Z" duration="0.016812" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="8" result="Failed(Child)" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-09 06:17:06Z" end-time="2026-10-09 06:17:06Z" duration="0.8199026">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="865" result="Failed" site="Child" start-time="2026-10-09 06:17:06Z" end-time="2026-10-09 06:17:06Z" duration="0.819903" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1965" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="864" result="Failed" site="Child" start-time="2026-10-09 06:17:06Z" end-time="2026-10-09 06:17:06Z" duration="0.324190" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24227" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1966" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="864" result="Failed" site="Child" start-time="2026-10-09 06:17:06Z" end-time="2026-10-09 06:17:06Z" duration="0.323823" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1967" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="864" result="Failed" site="Child" start-time="2026-10-09 06:17:06Z" end-time="2026-10-09 06:17:06Z" duration="0.323599" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1909" name="WildlifeMotionTests" fullname="Cascade.Tests.WildlifeMotionTests" classname="Cascade.Tests.WildlifeMotionTests" runstate="Runnable" testcasecount="6" result="Failed" site="Child" start-time="2026-10-09 06:17:06Z" end-time="2026-10-09 06:17:06Z" duration="0.322344" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1910" name="BirdRoutesVaryTheirCurvatureSpeedAndPerspectiveWithoutClockDrift" fullname="Cascade.Tests.WildlifeMotionTests.BirdRoutesVaryTheirCurvatureSpeedAndPerspectiveWithoutClockDrift" methodname="BirdRoutesVaryTheirCurvatureSpeedAndPerspectiveWithoutClockDrift" classname="Cascade.Tests.WildlifeMotionTests" runstate="Runnable" seed="1296497630" result="Failed" start-time="2026-10-09 06:17:06Z" end-time="2026-10-09 06:17:06Z" duration="0.287559" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: greater than 0.0199999996f
+  But was:  0.0162275843f
+]]></message>
+                <stack-trace><![CDATA[at Cascade.Tests.WildlifeMotionTests.BirdRoutesVaryTheirCurvatureSpeedAndPerspectiveWithoutClockDrift () [0x00176] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Tests/EditMode/WildlifeMotionTests.cs:25
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1914" name="BirdsAlternateFlapsAndStableGlidesWithoutAJump" fullname="Cascade.Tests.WildlifeMotionTests.BirdsAlternateFlapsAndStableGlidesWithoutAJump" classname="Cascade.Tests.WildlifeMotionTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-09 06:17:06Z" end-time="2026-10-09 06:17:06Z" duration="0.010813" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1912" name="BirdsAlternateFlapsAndStableGlidesWithoutAJump(SmallBird,4.0f)" fullname="Cascade.Tests.WildlifeMotionTests.BirdsAlternateFlapsAndStableGlidesWithoutAJump(SmallBird,4.0f)" methodname="BirdsAlternateFlapsAndStableGlidesWithoutAJump" classname="Cascade.Tests.WildlifeMotionTests" runstate="Runnable" seed="1727478724" result="Passed" start-time="2026-10-09 06:17:06Z" end-time="2026-10-09 06:17:06Z" duration="0.006619" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1913" name="BirdsAlternateFlapsAndStableGlidesWithoutAJump(SoaringBird,1.6f)" fullname="Cascade.Tests.WildlifeMotionTests.BirdsAlternateFlapsAndStableGlidesWithoutAJump(SoaringBird,1.6f)" methodname="BirdsAlternateFlapsAndStableGlidesWithoutAJump" classname="Cascade.Tests.WildlifeMotionTests" runstate="Runnable" seed="1825775122" result="Passed" start-time="2026-10-09 06:17:06Z" end-time="2026-10-09 06:17:06Z" duration="0.003480" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1915" name="DragonflyHoversAndDartsWithContinuousAcceleration" fullname="Cascade.Tests.WildlifeMotionTests.DragonflyHoversAndDartsWithContinuousAcceleration" methodname="DragonflyHoversAndDartsWithContinuousAcceleration" classname="Cascade.Tests.WildlifeMotionTests" runstate="Runnable" seed="1474978332" result="Passed" start-time="2026-10-09 06:17:06Z" end-time="2026-10-09 06:17:06Z" duration="0.003327" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1916" name="NightMothLoopsNearLightAndFrozenClockRetainsItsPose" fullname="Cascade.Tests.WildlifeMotionTests.NightMothLoopsNearLightAndFrozenClockRetainsItsPose" methodname="NightMothLoopsNearLightAndFrozenClockRetainsItsPose" classname="Cascade.Tests.WildlifeMotionTests" runstate="Runnable" seed="1116420194" result="Passed" start-time="2026-10-09 06:17:06Z" end-time="2026-10-09 06:17:06Z" duration="0.000480" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1911" name="SharedHookBodiesSettleWithContactsAndReactToAnImpulse" fullname="Cascade.Tests.WildlifeMotionTests.SharedHookBodiesSettleWithContactsAndReactToAnImpulse" methodname="SharedHookBodiesSettleWithContactsAndReactToAnImpulse" classname="Cascade.Tests.WildlifeMotionTests" runstate="Runnable" seed="679803006" result="Passed" start-time="2026-10-09 06:17:06Z" end-time="2026-10-09 06:17:06Z" duration="0.013112" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1917" name="WildlifePerchMotionTests" fullname="Cascade.Tests.WildlifePerchMotionTests" classname="Cascade.Tests.WildlifePerchMotionTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-09 06:17:06Z" end-time="2026-10-09 06:17:06Z" duration="0.000586" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1918" name="LandingSlowsAtContactWhileTakeoffAcceleratesFromRest" fullname="Cascade.Tests.WildlifePerchMotionTests.LandingSlowsAtContactWhileTakeoffAcceleratesFromRest" methodname="LandingSlowsAtContactWhileTakeoffAcceleratesFromRest" classname="Cascade.Tests.WildlifePerchMotionTests" runstate="Runnable" seed="330057014" result="Passed" start-time="2026-10-09 06:17:06Z" end-time="2026-10-09 06:17:06Z" duration="0.000157" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1919" name="OccupiedSupportsWaitLongerAndWingFoldingCannotSnap" fullname="Cascade.Tests.WildlifePerchMotionTests.OccupiedSupportsWaitLongerAndWingFoldingCannotSnap" methodname="OccupiedSupportsWaitLongerAndWingFoldingCannotSnap" classname="Cascade.Tests.WildlifePerchMotionTests" runstate="Runnable" seed="881928969" result="Passed" start-time="2026-10-09 06:17:06Z" end-time="2026-10-09 06:17:06Z" duration="0.000111" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -1,0 +1,82 @@
+[
+  {
+    "test": "TrophyEconomyTests.PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(0,0)",
+    "status": "Passed",
+    "ms": 8.257
+  },
+  {
+    "test": "TrophyEconomyTests.PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(9,360)",
+    "status": "Passed",
+    "ms": 1.542
+  },
+  {
+    "test": "TrophyEconomyTests.PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(10,500)",
+    "status": "Passed",
+    "ms": 0.1062
+  },
+  {
+    "test": "TrophyEconomyTests.PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(11,540)",
+    "status": "Passed",
+    "ms": 0.1075
+  },
+  {
+    "test": "TrophyEconomyTests.PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(39,1860)",
+    "status": "Passed",
+    "ms": 0.1867
+  },
+  {
+    "test": "TrophyEconomyTests.PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(40,2000)",
+    "status": "Passed",
+    "ms": 0.1829
+  },
+  {
+    "test": "TrophyEconomyTests.PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(160,8000)",
+    "status": "Passed",
+    "ms": 1.5562
+  },
+  {
+    "test": "TrophyEconomyTests.PublishedClearMilestonesKeepEarlyIncomeAndContinueToCampaignEnd(540,27000)",
+    "status": "Passed",
+    "ms": 2.0429
+  },
+  {
+    "test": "TrophyEconomyTests.MilestonesIgnoreRouteOrderUnknownsDuplicatesAndModeReplay()",
+    "status": "Passed",
+    "ms": 55.0354
+  },
+  {
+    "test": "TrophyEconomyTests.LegacyCompleteGroupIncomeNeverDecreasesForScatteredClears()",
+    "status": "Passed",
+    "ms": 3.3051000000000004
+  },
+  {
+    "test": "TrophyEconomyTests.RecipeTwoAddsFixedExpansionTrackWithoutChangingEarlierTracks()",
+    "status": "Passed",
+    "ms": 9.4431000000000012
+  },
+  {
+    "test": "TrophyEconomyTests.ExistingRecipeZeroAndOneReceiptsRemainByteStableWhenNewOrdersMint()",
+    "status": "Passed",
+    "ms": 1.4169
+  },
+  {
+    "test": "TrophyEconomyTests.NewCosmeticClaimFailureRollsBackAndOwnedFindConvertsOnlyOnce()",
+    "status": "Passed",
+    "ms": 0.81170000000000009
+  },
+  {
+    "test": "TrophyEconomyTests.EarnedSceneryUsesItsOwnSlotAndSurvivesSaveModeChangeAndTwoDeviceClaim()",
+    "status": "Passed",
+    "ms": 87.85090000000001
+  },
+  {
+    "test": "TrophyEconomyTests.RejectedScenePurchaseDuplicateBecomesClaimableAsEarnedScenery()",
+    "status": "Passed",
+    "ms": 11.254100000000001
+  },
+  {
+    "test": "TrophyEconomyTests.NewLooksCannotUseLegacyAppearancePaymentGrantsButPriorGrantsStillValidate()",
+    "status": "Passed",
+    "ms": 1.3648
+  }
+]

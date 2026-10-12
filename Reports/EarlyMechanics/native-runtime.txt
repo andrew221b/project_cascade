@@ -1,0 +1,6 @@
+Native MCP captures: 9.
+Ambient gust beyond baseline=0.3438981; idle puzzle hash unchanged=True
+Bomb reaction=True; real fracture=True; break particles=22; pre-landing wind warning=True
+Captures never changed the committed puzzle state. Landing forecast bounds do not overlap any active hanging tool body in this matrix. Safe insets / large RU text are Editor fixtures, not physical phone checks.
+Final changed views confirmed: wind warning before fracture / supported row=True; physical fracture=True; compact bomb countdown has one line. Forecast / tool bounds remain clear.
+Final MCP: compilation successful; Console error entries=0; Play Mode stopped; isolated review profile detached.

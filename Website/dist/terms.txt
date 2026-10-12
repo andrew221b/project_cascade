@@ -1,0 +1,85 @@
+Terms of Use
+
+DRAFT — publisher review pending. Updated 2026-10-09
+
+These Terms describe the relationship between you and the CASCADE publisher for the game, this website and optional connected features. They explain purchases, saves and fair use. Mandatory consumer and privacy rights remain in place.
+
+Publisher and agreement
+
+CASCADE is provided by Andrii Plashevskyi, based in Canada, with correspondence address 173 Victor Lewis Dr, Winnipeg, MB R3P 1Z9, Canada. Contact shapeinc25@gmail.com for questions about these Terms. The version date is shown at the top. By using the game where these Terms are presented as part of its agreement, you agree to them to the extent permitted by applicable law. Privacy information is provided separately in the Privacy Policy; these Terms do not grant optional advertising or tracking consent.
+
+If you cannot legally enter into this agreement, a parent or guardian must authorize your use where required. Follow the store's age rating, local eligibility requirements and parental controls. If you do not agree, do not use the game or connected features. This does not waive any right to a refund or remedy that the law or your store gives you.
+
+Your license to play
+
+The publisher grants you a personal, limited, non-exclusive and non-transferable license to install and use an authorized copy of CASCADE for lawful personal entertainment, subject to these Terms and the applicable store rules. The game, artwork, characters, music, writing, software and branding remain the property of their respective rights holders. Buying an item does not transfer ownership of those materials.
+
+You may share your own ordinary gameplay screenshots or recordings for personal discussion and non-misleading coverage, subject to lawful third-party rights and platform rules. Do not present yourself as the publisher, remove ownership notices, redistribute game assets as a competing product, or use the artwork for unrelated commercial merchandise without permission. Rights that applicable law grants for interoperability, accessibility, criticism or other lawful uses are not removed by these Terms.
+
+Puzzle play, updates and connected availability
+
+CASCADE is a single-player puzzle game in which one persistent row is reordered across platforms to an exact receiver target. Shape, word and mixed modes can have separate progression. Mechanics, difficulty and content may be adjusted to fix faults and improve play, but the publisher must not misrepresent what a paid product provides.
+
+Core local play and optional connected features have different availability. Sign-in, synchronization, purchase verification and ads require the relevant provider, configuration and network connection. We may maintain or update those services. No uninterrupted connection, permanent cloud retention, fixed future content schedule or guaranteed score is promised. We will give notice of significant changes where required and respect paid entitlements and mandatory remedies.
+
+This website's small reorder example illustrates the core idea. It is not the full mobile game and does not synchronize its moves or rewards to your account. Promotional artwork is illustrative; native gameplay images show the referenced version, which may change with updates.
+
+Accounts, security and saves
+
+Where offered, Apple or Google sign-in is handled through Unity Player Accounts. Keep your identity and store accounts secure and use information you are authorized to provide. You are responsible for activity you authorize; contact support if you believe your game account has been compromised. Do not share passwords or authentication tokens with the publisher.
+
+Local progress is stored on the device and can be lost if storage is removed or the device is lost. Linking an account is optional where the game permits local play. Cloud backup is available only after the connected feature is enabled and synchronization succeeds. Review any account-choice screen before loading an existing account. Two saves do not automatically create a combined balance or duplicate entitlements.
+
+Support may require a player identifier and transaction reference to investigate a lost purchase. The publisher cannot restore a save that was never backed up or recover an account controlled solely by another provider without that provider's verification. Use the data-request contact in the Privacy Policy to request game-data deletion; uninstalling and deleting an external identity are different actions.
+
+Purchases and virtual items
+
+If purchases are available, the price, currency and product description displayed by Apple App Store or Google Play at confirmation control that purchase. Your store processes payment under its own terms. Do not assume a website illustration or an unconfigured preview is a live offer. The current catalog contains removal of automatic ads and consumable coin packs; it does not create a subscription merely by showing a recurring reminder.
+
+Coins, tools, rewards and cosmetics are for use inside CASCADE. They have no cash value, are not a bank deposit or investment, and cannot be redeemed for money or transferred outside supported game features. Do not sell or exchange accounts, balances or items through unauthorized services. A cosmetic trophy changes appearance; tools can have a described gameplay effect. Read the item's cost, limits and consequence before using it.
+
+A consumable is used up when spent. Removal of automatic ads is a non-consumable entitlement for the relevant store account, subject to verification and store rules. Optional rewarded ads can remain if clearly offered separately. Purchases are processed through the store rather than by sending card information to this website. Verification can leave an order pending until the store and server confirm it; repeatedly tapping does not authorize duplicate grants.
+
+Restoration, refunds and problems
+
+Restore purchases in the game requests eligible entitlements from the current store account. Use the same Apple or Google store account that made the purchase. Non-consumable entitlements may be restored after verification. Already consumed coin packs are not purchased again or recredited by pressing Restore. Successfully synchronized remaining inventory may be recovered separately through the game account.
+
+Refunds and cancellation requests follow the relevant store process and applicable consumer law. Nothing in these Terms removes mandatory refund, conformity, withdrawal or other consumer rights. Digital-content withdrawal rules and any required consent are governed by law and the platform's purchase process; we do not assume that merely playing waives them. If an entitlement is refunded, revoked or found invalid, the game may remove the corresponding entitlement according to store rules and lawful safeguards.
+
+For a missing item, avoid repurchasing until the issue is investigated. Contact shapeinc25@gmail.com with your platform, app version, game identifier if available and store order reference. Never send a password or full card details. The publisher can investigate fulfillment but cannot override Apple or Google's own account or billing controls.
+
+Ads, reminders and choices
+
+If the released version includes ads, automatic ads must appear at appropriate transitions rather than interrupting an active puzzle. An optional rewarded offer describes what can be earned before you choose it. An interrupted or unverified ad may not produce a reward. Advertising providers operate under their own policies and the privacy choices applicable to you.
+
+Local reminders require operating-system permission. You can disable them in the game or device settings without losing the license to play. Optional tracking or measurement consent is separate from these Terms and can be declined or withdrawn through the appropriate controls. We do not treat a notification permission as consent to advertising profiling.
+
+Fair use and prohibited conduct
+
+Do not interfere with service security, impersonate another person, submit fraudulent receipts, exploit a defect to repeatedly obtain paid items, manipulate server grants, use stolen accounts, introduce malicious code, or intentionally damage another user's access. Do not bypass a lawful payment or access control. Automated security research or interoperability permitted by law remains subject to the applicable legal safeguards.
+
+If you discover a serious fault, report it privately to shapeinc25@gmail.com with enough information to reproduce it without exposing another person's data. The publisher may investigate suspected abuse and restrict connected features proportionately where justified. We do not promise to remove legitimate offline progress merely because a network request failed, and an adverse action can be raised with support.
+
+Support, suspension and ending use
+
+You can stop playing, uninstall the app and request applicable game-data deletion. Stopping use does not automatically cancel an external store or identity account or erase a store's lawful billing records. The publisher can suspend connected access for a material violation, security incident, legal obligation or service discontinuation, with notice and an opportunity to resolve the issue where appropriate and feasible.
+
+Restrictions should be proportionate to the issue. Where a service or paid feature is materially discontinued, the publisher must respect applicable consumer rights and any required remedy. Contact shapeinc25@gmail.com to challenge a restriction or ask for help. Do not send sensitive credentials as proof.
+
+Faults, responsibility and mandatory rights
+
+We aim to provide a functional game and correct faults, but software can contain errors and services can be temporarily unavailable. To the extent permitted by law, features are supplied as described for the released version, without an additional guarantee that every device, future operating-system update or network condition will be supported.
+
+Nothing excludes liability that cannot lawfully be excluded, including applicable liability for fraud, intentional misconduct, personal injury, gross negligence or mandatory consumer remedies. For other claims, responsibility is limited only to the extent permitted by the law that applies to you. These Terms do not impose a blanket waiver of rights, mandatory arbitration or an invented monetary liability cap. Back up recoverable progress and report a fault before relying on repeated purchases to solve it.
+
+Apple, Google and other provider terms
+
+Your store and identity provider have separate agreements for their services. For an App Store distribution where Apple's standard Licensed Application End User License Agreement applies, it also governs the license subject to the platform's rules: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/. These Terms do not appoint the publisher to act on behalf of Apple, Google or Unity or override their mandatory conditions.
+
+Apple is not responsible for providing CASCADE support beyond the responsibilities assigned to it by the applicable store agreement and law. Google is not the game publisher. Claims about the game should go to the publisher; billing and provider-account issues may require the relevant platform. Links on the website do not imply that those providers endorse CASCADE.
+
+Applicable law, disputes and changes
+
+The publisher's country is Canada. The applicable rules for a dispute depend on that jurisdiction and any mandatory protections in your place of residence. These Terms do not take away a consumer's right to rely on mandatory local law or access a competent court. Please contact shapeinc25@gmail.com first so we can try to resolve an issue directly; doing so is not a condition that removes a legal right.
+
+We may revise these Terms for a change in the game, providers or legal obligations. Material changes require appropriate notice and, where required, a new agreement. We do not retroactively change a completed purchase's description. If a provision is unenforceable, the remaining provisions apply to the extent lawful. The Privacy Policy remains the separate notice for personal information.

@@ -1,0 +1,22 @@
+[
+  {
+    "test": "PreparationTests.FinalDevicesAndStampGoalAreSolvedWithoutMutatingAttempt()",
+    "status": "Passed",
+    "ms": 566.9521
+  },
+  {
+    "test": "PreparationTests.CancelledOrUnknownWorkCannotUnlockOrSupplyAMinimum()",
+    "status": "Passed",
+    "ms": 436.97380000000004
+  },
+  {
+    "test": "PreparationTests.PreparationGateCannotBeBypassedByFocusOrPresentationCompletion()",
+    "status": "Passed",
+    "ms": 440.8935
+  },
+  {
+    "test": "PreparationTests.ChangedBudgetRestoresAllPreviousPinsAndTheirExactRoutes()",
+    "status": "Passed",
+    "ms": 579.29770000000008
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "name": "campaign_extension.json",
+    "same": true,
+    "sourceBytes": 1738745,
+    "sha256": "24aa7582f13d792a67a2ae1f2e48026b3d0ee1d675c7e057a89b275f77e76e84"
+  },
+  {
+    "name": "campaign_durability_v1.json",
+    "same": true,
+    "sourceBytes": 42092,
+    "sha256": "5268d45bd22cfd18603e39e0483e041ac1f8294285adbd20197e712f7edce839"
+  },
+  {
+    "name": "words_uk.json",
+    "same": true,
+    "sourceBytes": 13861,
+    "sha256": "48f65cc8df3be0539023b937e7e2cec1c59c12f3423ccc255c7bf23f5192792f"
+  },
+  {
+    "name": "words_ru.json",
+    "same": true,
+    "sourceBytes": 13467,
+    "sha256": "613e1b4b80b697e66697b33ec536ff64d359289a1df7f1d6827e420436557fb5"
+  },
+  {
+    "name": "words_en.json",
+    "same": true,
+    "sourceBytes": 14898,
+    "sha256": "0c92dc0ef70a6fbf78c1907f4835e36c71317ffdffbe6be32f86cca1854e23c5"
+  },
+  {
+    "name": "levels.json",
+    "same": true,
+    "sourceBytes": 34043,
+    "sha256": "b69fa4e774b17290c66fa5fa6dc3306c28db2bdac8646ca442fac77200cb5948"
+  },
+  {
+    "name": "localized_levels.json",
+    "same": true,
+    "sourceBytes": 104013,
+    "sha256": "e861d2482b36dbe67d37ee5ee4e3ced3e22a7c710122db839bf93e1c56d15b33"
+  }
+]

@@ -1,0 +1,9 @@
+# Night sky text contrast — 8 October 2026
+
+The target caption was correctly light when rendering a night frame, then the generic preference pass overwrote it with day ink. Reproduced in native Unity: RGBA(.990,.980,.920,1) became (.160,.280,.290,1) with world 8 still active.
+
+Use one world-aware foreground pass for the target caption after preferences, layout and frame rendering. Night uses existing warm paper white; day retains the current ink/High Contrast ink. Sky captions use a small soft navy shadow at night with no outline; existing paper and enamel roles retain their foreground. The shared type repaint also recognizes active gameplay. No gameplay, economy, assets, package, schema or IDs change.
+
+The same preference reset affected teal buttons outside the menu hierarchy (dialogue Next and loss navigation). Restore their foreground from the actual enamel sprite. The visual review also exposed the long Ukrainian undo caption at narrow Large Text: use the existing rewind medal plus the unchanged remaining count, or the existing bag icon for the existing stocked-tool route. Button command/availability, target and type size are unchanged; no new localization keys or assets.
+
+Native Unity review completed on a disposable profile: night result, night game, 320×693 Ukrainian Large Text/High Contrast, night loss, night map dialogue, and return to the day world. The target stays light after preferences and layout; enamel labels retain warm light ink. A later user correction removed the redundant "Your row" and "Try another way" captions entirely, along with the failure ribbon. The final failure frame is `Reports/MapDialogue-Oct08/05-night-fail.png`; the earlier `Reports/NightContrast-Oct08/validation.txt` records the contrast lifecycle pass before that simplification. The gameplay hash and wallet stayed unchanged; native Console had zero errors. A phone install and physical-device contrast test were not performed.

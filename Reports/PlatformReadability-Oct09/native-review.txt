@@ -1,0 +1,2 @@
+PASS: mirror, rollers, fragile, linked-pair lessons open automatically before any move; no state mutation. Actual linked swap changes four positions atomically. Eight native 390x844 renders; isolated temporary profile. No iPhone build/install.
+FINAL VISUAL CHECK PENDING: first render exposed missing CanvasRenderer on custom inlays; requirement fixed in source. Unity MCP disconnected during reload; Mac locked. Earlier board PNGs are diagnostic, not final approval.

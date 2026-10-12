@@ -1,0 +1,176 @@
+[
+  {
+    "name": "Bomb",
+    "source": "/Users/andrew/.codex/generated_images/01a10c47-ccd6-7c72-9a4f-aea1f2f2e67c/exec-0a278941-a852-400c-ab38-630e439d236a.png",
+    "prompt": "Use case: illustration-story. Asset type: one isolated transparent game device sprite for CASCADE, a warm handmade sky workshop puzzle. Match the existing mint enamel leaf pin with worn brass rim and honey-gold handpainted wooden board seen in context: painterly 2.5D volume, rounded tactile toy proportions, warm upper-left light, subtly irregular painted edges, honey wood and warm brass, soft brush strokes. Composition: square image, exactly one large centered object with 8% clear margin; close framed, simple strong silhouette readable at 48 pixels. Background: genuine transparent alpha including openings. No scene, no ground plane, no cast shadow outside the object, no frame, no badge or square button, no lettering, no text, no watermark. Restrained details, broad color areas.\nSubject: A very recognizable friendly cartoon ball bomb: one squat round charcoal-navy sphere with a short brass fuse collar at its top and a chunky curved golden rope fuse ending in one small orange ember. Large simple sphere, broad warm painted highlight. Non-scary toy character, no face, absolutely no symbol or emblem painted on the sphere. The fuse clearly projects above the silhouette.",
+    "file": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Devices/Bomb.png",
+    "tool": "built-in image_gen.imagegen",
+    "transparent_background": true,
+    "native_sha256": "b47ae2bd38fd3ca60b462fe1ee6ec95b53503a710b9047da49821232a27969e3",
+    "final_sha256": "02b26c6b4c25f6998044e16c5e17f4cef3fb00c4557d7bbac56b13f637b00e55",
+    "rgba_pixel_sha256": "0ababc58ce6012dac7c922f349d1c57fc964a9805890ccdf33eb9ba4c7f6be38",
+    "native_pixels_preserved": true,
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "nonzero_alpha_bbox": [
+      89,
+      49,
+      1216,
+      1246
+    ],
+    "fully_transparent_fraction": 0.588844247053766,
+    "generation_count": 1,
+    "metadata_embedded": true
+  },
+  {
+    "name": "RepairKit",
+    "source": "/Users/andrew/.codex/generated_images/01a10c47-ccd6-7c72-9a4f-aea1f2f2e67c/exec-3d38018c-40bd-4bcf-813c-0bf078e2f78b.png",
+    "prompt": "Use case: illustration-story. Asset type: one isolated transparent game device sprite for CASCADE, a warm handmade sky workshop puzzle. Match the existing mint enamel leaf pin with worn brass rim and honey-gold handpainted wooden board seen in context: painterly 2.5D volume, rounded tactile toy proportions, warm upper-left light, subtly irregular painted edges, honey wood and warm brass, soft brush strokes. Composition: square image, exactly one large centered object with 8% clear margin; close framed, simple strong silhouette readable at 48 pixels. Background: genuine transparent alpha including openings. No scene, no ground plane, no cast shadow outside the object, no frame, no badge or square button, no lettering, no text, no watermark. Restrained details, broad color areas.\nSubject: A small mint-painted wooden repair toolbox, squat open-topped rectangular box with one thick rounded wooden carry handle, one little honey-wood-handled hammer tucked inside and projecting above the rim. Large warm-ivory plus cross painted on front face. Three-quarter view, recognizable simple repair kit silhouette.",
+    "file": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Devices/RepairKit.png",
+    "tool": "built-in image_gen.imagegen",
+    "transparent_background": true,
+    "native_sha256": "4eaae70cf56a1f0155e665d6ace80fdccfe16b69be1d14b5f0d71fcd4799c008",
+    "final_sha256": "50a82d9907f1832591f1acad6d096d2cee45558dfda4558f111077ca073b9699",
+    "rgba_pixel_sha256": "15610b69d5eca9630ff30eb69a87edb72b6a9f7cd877901b8c06f31bf24a1ff8",
+    "native_pixels_preserved": true,
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "nonzero_alpha_bbox": [
+      0,
+      0,
+      1234,
+      1254
+    ],
+    "fully_transparent_fraction": 0.38990700253606325,
+    "generation_count": 1,
+    "metadata_embedded": true
+  },
+  {
+    "name": "BrassKey",
+    "source": "/Users/andrew/.codex/generated_images/01a10c47-ccd6-7c72-9a4f-aea1f2f2e67c/exec-72af5762-9e8f-493b-a1e2-07508dc1795e.png",
+    "prompt": "Use case: illustration-story. Asset type: one isolated transparent game device sprite for CASCADE, a warm handmade sky workshop puzzle. Match the existing mint enamel leaf pin with worn brass rim and honey-gold handpainted wooden board seen in context: painterly 2.5D volume, rounded tactile toy proportions, warm upper-left light, subtly irregular painted edges, honey wood and warm brass, soft brush strokes. Composition: square image, exactly one large centered object with 8% clear margin; close framed, simple strong silhouette readable at 48 pixels. Background: genuine transparent alpha including openings. No scene, no ground plane, no cast shadow outside the object, no frame, no badge or square button, no lettering, no text, no watermark. Restrained details, broad color areas.\nSubject: One oversized old-fashioned warm brass key at a diagonal. Large round bow with a clear open round hole, thick straight shaft, two large key teeth at its end. Broad simple forms, slightly worn handpainted brass, no delicate filigree. Recognizable key silhouette.",
+    "file": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Devices/BrassKey.png",
+    "tool": "built-in image_gen.imagegen",
+    "transparent_background": true,
+    "native_sha256": "f9de87ecf90e82e0101c35bf9142facafab71095c9e0fd6a9bacab39864e1749",
+    "final_sha256": "f057a15d4c147946cd8bbeb7ffa44043de171f7f9af0e2575e595f1497fc2861",
+    "rgba_pixel_sha256": "4d9a55fb1eb2260754890fec13078ab7f44073b359b3f4311391ac3fa72adfc4",
+    "native_pixels_preserved": true,
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "nonzero_alpha_bbox": [
+      41,
+      19,
+      1222,
+      1230
+    ],
+    "fully_transparent_fraction": 0.7428299616665268,
+    "generation_count": 1,
+    "metadata_embedded": true
+  },
+  {
+    "name": "Stamp",
+    "source": "/Users/andrew/.codex/generated_images/01a10c47-ccd6-7c72-9a4f-aea1f2f2e67c/exec-be416234-33e4-45d3-bc56-e893ee05ff05.png",
+    "prompt": "Use case: illustration-story. Asset type: one isolated transparent game device sprite for CASCADE, a warm handmade sky workshop puzzle. Match the existing mint enamel leaf pin with worn brass rim and honey-gold handpainted wooden board seen in context: painterly 2.5D volume, rounded tactile toy proportions, warm upper-left light, subtly irregular painted edges, honey wood and warm brass, soft brush strokes. Composition: square image, exactly one large centered object with 8% clear margin; close framed, simple strong silhouette readable at 48 pixels. Background: genuine transparent alpha including openings. No scene, no ground plane, no cast shadow outside the object, no frame, no badge or square button, no lettering, no text, no watermark. Restrained details, broad color areas.\nSubject: One friendly wooden-handled rubber stamp. Rounded honey-wood knob and short neck over a chunky broad coral rubber stamping base; three-quarter angle exposes the underside enough to reveal a single large warm-ivory five-point star seal. Immediately recognizable stamp silhouette, no separate paper or ink pad.",
+    "file": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Devices/Stamp.png",
+    "tool": "built-in image_gen.imagegen",
+    "transparent_background": true,
+    "native_sha256": "f1974b3ff41e75e8813e6d6168c387327861cffe822022e8574c19f26ba19ed6",
+    "final_sha256": "3a2a439c8733d5e8550e184d7e2d5379804986fd1405ca20d658ff01d1e504c3",
+    "rgba_pixel_sha256": "9809fdbe7a042a9b6b65c11ca2129bbf40074ce2d07952621189c6e28ed230b0",
+    "native_pixels_preserved": true,
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "nonzero_alpha_bbox": [
+      89,
+      53,
+      1138,
+      1214
+    ],
+    "fully_transparent_fraction": 0.6379267365165124,
+    "generation_count": 1,
+    "metadata_embedded": true
+  },
+  {
+    "name": "RibbonSpool",
+    "source": "/Users/andrew/.codex/generated_images/01a10c47-ccd6-7c72-9a4f-aea1f2f2e67c/exec-a817212c-6de4-4a71-bb9f-3d3aa6a2631a.png",
+    "prompt": "Use case: illustration-story. Asset type: one isolated transparent game device sprite for CASCADE, a warm handmade sky workshop puzzle. Match the existing mint enamel leaf pin with worn brass rim and honey-gold handpainted wooden board seen in context: painterly 2.5D volume, rounded tactile toy proportions, warm upper-left light, subtly irregular painted edges, honey wood and warm brass, soft brush strokes. Composition: square image, exactly one large centered object with 8% clear margin; close framed, simple strong silhouette readable at 48 pixels. Background: genuine transparent alpha including openings. No scene, no ground plane, no cast shadow outside the object, no frame, no badge or square button, no lettering, no text, no watermark. Restrained details, broad color areas.\nSubject: One chunky wooden reel wrapped with sky-blue ribbon. Two rounded honey-wood flanges frame a thick band of rich blue ribbon. A single large blue ribbon end unfurls to one side, very clearly visible. Three-quarter view, simple readable reel silhouette, no extra sewing tools.",
+    "file": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Devices/RibbonSpool.png",
+    "tool": "built-in image_gen.imagegen",
+    "transparent_background": true,
+    "native_sha256": "3a58d9f9a969af1140083c607a61e2dfa4a11e9ece2b05677434a4510d71fbac",
+    "final_sha256": "76a322b4d78d07836a360730a68ab540293bd5ce1c9a40a3cbf9ffe81e704fb2",
+    "rgba_pixel_sha256": "39bcb0d39d03d59192c9743c9d2170dd83bc2e430fed8e142f13a3350ef0f5f4",
+    "native_pixels_preserved": true,
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "nonzero_alpha_bbox": [
+      0,
+      39,
+      1192,
+      1254
+    ],
+    "fully_transparent_fraction": 0.5315799648461447,
+    "generation_count": 1,
+    "metadata_embedded": true
+  },
+  {
+    "name": "Hourglass",
+    "source": "/Users/andrew/.codex/generated_images/01a10c47-ccd6-7c72-9a4f-aea1f2f2e67c/exec-7ad067c5-d949-4633-99c6-4039e6346edf.png",
+    "prompt": "Use case: illustration-story. Asset type: one isolated transparent game device sprite for CASCADE, a warm handmade sky workshop puzzle. Match the existing mint enamel leaf pin with worn brass rim and honey-gold handpainted wooden board seen in context: painterly 2.5D volume, rounded tactile toy proportions, warm upper-left light, subtly irregular painted edges, honey wood and warm brass, soft brush strokes. Composition: square image, exactly one large centered object with 8% clear margin; close framed, simple strong silhouette readable at 48 pixels. Background: genuine transparent alpha including openings. No scene, no ground plane, no cast shadow outside the object, no frame, no badge or square button, no lettering, no text, no watermark. Restrained details, broad color areas.\nSubject: One chunky hourglass with warm brass rims and honey-wood upright side supports; two clear glass bulbs pinched in center, visible bright turquoise sand collected in bottom bulb and a little sand in upper bulb connected by a narrow sand stream. Upright, front three-quarter view. Clear silhouette, transparent gaps, simple broad forms.",
+    "file": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Devices/Hourglass.png",
+    "tool": "built-in image_gen.imagegen",
+    "transparent_background": true,
+    "native_sha256": "c93897dbd9abb536451fefe5dfa7e7490784909691bb9d1f57c159783736d3c9",
+    "final_sha256": "4a309da388cf1a4ab10d041fca934c16eb690e65242d6d1cd5cd0b21122635a7",
+    "rgba_pixel_sha256": "f97c6a37685646c76b7adf515f60206d7da59e2eeeb17c788c187783920684cb",
+    "native_pixels_preserved": true,
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "nonzero_alpha_bbox": [
+      24,
+      33,
+      1214,
+      1254
+    ],
+    "fully_transparent_fraction": 0.5657131628549408,
+    "generation_count": 1,
+    "metadata_embedded": true
+  }
+]

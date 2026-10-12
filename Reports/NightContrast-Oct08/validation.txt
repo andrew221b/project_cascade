@@ -1,0 +1,8 @@
+PASS 01-night-result.png
+PASS 02-night-game.png
+PASS 03-night-settings-uk.png
+PASS 04-night-failure.png
+PASS 05-night-map-dialogue.png
+PASS 06-day-return.png
+PASS six native contexts; repeated settings application, narrow Ukrainian Large Text/High Contrast, day return, night loss/result and paper dialogue.
+Completed: True

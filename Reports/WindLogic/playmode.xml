@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="13" result="Failed(Child)" total="13" passed="10" failed="3" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-07 02:47:26Z" end-time="2026-10-07 02:47:59Z" duration="33.0466874">
+  <test-suite type="TestSuite" id="1110" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="99" result="Failed" site="Child" start-time="2026-10-07 02:47:26Z" end-time="2026-10-07 02:47:59Z" duration="33.046687" total="13" passed="10" failed="3" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1104" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="99" result="Failed" site="Child" start-time="2026-10-07 02:47:26Z" end-time="2026-10-07 02:47:59Z" duration="32.920124" total="13" passed="10" failed="3" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="79826" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1105" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="99" result="Failed" site="Child" start-time="2026-10-07 02:47:26Z" end-time="2026-10-07 02:47:59Z" duration="32.914137" total="13" passed="10" failed="3" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1106" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="99" result="Failed" site="Child" start-time="2026-10-07 02:47:26Z" end-time="2026-10-07 02:47:59Z" duration="32.911411" total="13" passed="10" failed="3" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1004" name="PlayableTests" fullname="Cascade.Tests.PlayableTests" classname="Cascade.Tests.PlayableTests" runstate="Runnable" testcasecount="90" result="Failed" site="Child" start-time="2026-10-07 02:47:26Z" end-time="2026-10-07 02:47:52Z" duration="25.660432" total="6" passed="3" failed="3" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1036" name="DirectedWindIsForecastInTheGuideAndPlayableThroughRealInput" fullname="Cascade.Tests.PlayableTests.DirectedWindIsForecastInTheGuideAndPlayableThroughRealInput" methodname="DirectedWindIsForecastInTheGuideAndPlayableThroughRealInput" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="291566992" result="Failed" label="Error" start-time="2026-10-07 02:47:26Z" end-time="2026-10-07 02:47:30Z" duration="3.460551" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[System.InvalidOperationException : Sequence contains no matching element]]></message>
+                <stack-trace><![CDATA[  at System.Linq.Enumerable.Single[TSource] (System.Collections.Generic.IEnumerable`1[T] source, System.Func`2[T,TResult] predicate) [0x00070] in <2a8fff6ff3e54cfa88259e180adc29eb>:0
+  at Cascade.Tests.PlayableTests+<ClickButton>d__10.MoveNext () [0x00072] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Tests/PlayMode/PlayableTests.cs:68
+  at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in ./Library/PackageCache/com.unity.test-framework@0b7a23ab2e1d/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44 ]]></stack-trace>
+              </failure>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1039" name="EarlyContactsForecastFractureAndWindPlayBeforeOneWholeLevelReward" fullname="Cascade.Tests.PlayableTests.EarlyContactsForecastFractureAndWindPlayBeforeOneWholeLevelReward" methodname="EarlyContactsForecastFractureAndWindPlayBeforeOneWholeLevelReward" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1985232091" result="Passed" start-time="2026-10-07 02:47:30Z" end-time="2026-10-07 02:47:43Z" duration="12.807127" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1046" name="GustMovesDeckAndRopesMoreThanAmbientWithoutChangingThePuzzle" fullname="Cascade.Tests.PlayableTests.GustMovesDeckAndRopesMoreThanAmbientWithoutChangingThePuzzle" methodname="GustMovesDeckAndRopesMoreThanAmbientWithoutChangingThePuzzle" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1692318368" result="Failed" start-time="2026-10-07 02:47:43Z" end-time="2026-10-07 02:47:48Z" duration="5.605442" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: greater than 1.66815171E-05f
+  But was:  1.19153701E-05f
+]]></message>
+                <stack-trace><![CDATA[at Cascade.Tests.PlayableTests+<GustMovesDeckAndRopesMoreThanAmbientWithoutChangingThePuzzle>d__59.MoveNext () [0x0021e] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Tests/PlayMode/PlayableTests.cs:826
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in ./Library/PackageCache/com.unity.test-framework@0b7a23ab2e1d/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1007" name="PickupDragThenFarSwapWinsAndUndoRestoresTool" fullname="Cascade.Tests.PlayableTests.PickupDragThenFarSwapWinsAndUndoRestoresTool" methodname="PickupDragThenFarSwapWinsAndUndoRestoresTool" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="639553755" result="Failed" start-time="2026-10-07 02:47:48Z" end-time="2026-10-07 02:47:49Z" duration="1.034269" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: 1
+  But was:  0
+]]></message>
+                <stack-trace><![CDATA[at Cascade.Tests.PlayableTests+<PickupDragThenFarSwapWinsAndUndoRestoresTool>d__17.MoveNext () [0x0019d] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Tests/PlayMode/PlayableTests.cs:125
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in ./Library/PackageCache/com.unity.test-framework@0b7a23ab2e1d/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1037" name="UnprovenTightVariantIsRecalibratedBeforeAnyInputOpens" fullname="Cascade.Tests.PlayableTests.UnprovenTightVariantIsRecalibratedBeforeAnyInputOpens" methodname="UnprovenTightVariantIsRecalibratedBeforeAnyInputOpens" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1218737530" result="Passed" start-time="2026-10-07 02:47:49Z" end-time="2026-10-07 02:47:50Z" duration="1.044458" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1064" name="WindKeepsItsPositionAcrossRegionsAndFadesBeforeSleeping" fullname="Cascade.Tests.PlayableTests.WindKeepsItsPositionAcrossRegionsAndFadesBeforeSleeping" methodname="WindKeepsItsPositionAcrossRegionsAndFadesBeforeSleeping" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="683284816" result="Passed" start-time="2026-10-07 02:47:50Z" end-time="2026-10-07 02:47:52Z" duration="1.638334" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1095" name="RoundLoadingLifecycleTests" fullname="Cascade.Tests.RoundLoadingLifecycleTests" classname="Cascade.Tests.RoundLoadingLifecycleTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-07 02:47:52Z" end-time="2026-10-07 02:47:59Z" duration="7.043314" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1096" name="CompletingAPlanKeepsPauseSettingsAndHomeAndNeverSavesAPlaceholder" fullname="Cascade.Tests.RoundLoadingLifecycleTests.CompletingAPlanKeepsPauseSettingsAndHomeAndNeverSavesAPlaceholder" methodname="CompletingAPlanKeepsPauseSettingsAndHomeAndNeverSavesAPlaceholder" classname="Cascade.Tests.RoundLoadingLifecycleTests" runstate="Runnable" seed="900178779" result="Passed" start-time="2026-10-07 02:47:52Z" end-time="2026-10-07 02:47:53Z" duration="1.222699" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1097" name="DisablingDuringAPlanKeepsTheSavedAttemptAndRestartsTheRequestedDescent" fullname="Cascade.Tests.RoundLoadingLifecycleTests.DisablingDuringAPlanKeepsTheSavedAttemptAndRestartsTheRequestedDescent" methodname="DisablingDuringAPlanKeepsTheSavedAttemptAndRestartsTheRequestedDescent" classname="Cascade.Tests.RoundLoadingLifecycleTests" runstate="Runnable" seed="93244375" result="Passed" start-time="2026-10-07 02:47:53Z" end-time="2026-10-07 02:47:54Z" duration="1.089973" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1100" name="FailedDescentKeepsTheSavedAttemptAndItsRetryButtonRestartsTheSameRequest" fullname="Cascade.Tests.RoundLoadingLifecycleTests.FailedDescentKeepsTheSavedAttemptAndItsRetryButtonRestartsTheSameRequest" methodname="FailedDescentKeepsTheSavedAttemptAndItsRetryButtonRestartsTheSameRequest" classname="Cascade.Tests.RoundLoadingLifecycleTests" runstate="Runnable" seed="97725422" result="Passed" start-time="2026-10-07 02:47:54Z" end-time="2026-10-07 02:47:55Z" duration="1.074950" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1098" name="RestoredCheckpointSurvivesDisableAndCanAdvanceToTheNextSavedStage" fullname="Cascade.Tests.RoundLoadingLifecycleTests.RestoredCheckpointSurvivesDisableAndCanAdvanceToTheNextSavedStage" methodname="RestoredCheckpointSurvivesDisableAndCanAdvanceToTheNextSavedStage" classname="Cascade.Tests.RoundLoadingLifecycleTests" runstate="Runnable" seed="855643796" result="Passed" start-time="2026-10-07 02:47:55Z" end-time="2026-10-07 02:47:56Z" duration="1.106612" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1101" name="RewardGrantWhileLoadingKeepsTheLastSavedAttemptAndDescentTogether" fullname="Cascade.Tests.RoundLoadingLifecycleTests.RewardGrantWhileLoadingKeepsTheLastSavedAttemptAndDescentTogether" methodname="RewardGrantWhileLoadingKeepsTheLastSavedAttemptAndDescentTogether" classname="Cascade.Tests.RoundLoadingLifecycleTests" runstate="Runnable" seed="302657230" result="Passed" start-time="2026-10-07 02:47:56Z" end-time="2026-10-07 02:47:58Z" duration="1.144670" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1099" name="WinningToolPublishesCompletionBeforeShowingTheResultAndCannotPublishTwice" fullname="Cascade.Tests.RoundLoadingLifecycleTests.WinningToolPublishesCompletionBeforeShowingTheResultAndCannotPublishTwice" methodname="WinningToolPublishesCompletionBeforeShowingTheResultAndCannotPublishTwice" classname="Cascade.Tests.RoundLoadingLifecycleTests" runstate="Runnable" seed="1096134873" result="Passed" start-time="2026-10-07 02:47:58Z" end-time="2026-10-07 02:47:59Z" duration="1.402726" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1102" name="WindAudioLifecycleTests" fullname="Cascade.Tests.WindAudioLifecycleTests" classname="Cascade.Tests.WindAudioLifecycleTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-07 02:47:59Z" end-time="2026-10-07 02:47:59Z" duration="0.205686" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1103" name="DisablingFeedbackSilencesWindWithoutRestartingOrReplacingItsLoop" fullname="Cascade.Tests.WindAudioLifecycleTests.DisablingFeedbackSilencesWindWithoutRestartingOrReplacingItsLoop" methodname="DisablingFeedbackSilencesWindWithoutRestartingOrReplacingItsLoop" classname="Cascade.Tests.WindAudioLifecycleTests" runstate="Runnable" seed="839222602" result="Passed" start-time="2026-10-07 02:47:59Z" end-time="2026-10-07 02:47:59Z" duration="0.204588" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/WindLogic/playmode.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

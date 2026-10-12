@@ -1,0 +1,14 @@
+World 0: key=(-0.43, 0.64, -0.64); intensity=1.370; ambient=Trilight; reflection=CASCADE sky reflection 0; shadow=0.76.
+World 1: key=(0.25, 0.72, -0.65); intensity=1.092; ambient=Trilight; reflection=CASCADE sky reflection 1; shadow=0.60.
+World 2: key=(-0.58, 0.43, -0.69); intensity=1.593; ambient=Trilight; reflection=CASCADE sky reflection 2; shadow=0.78.
+World 3: key=(0.36, 0.69, -0.63); intensity=1.438; ambient=Trilight; reflection=CASCADE sky reflection 3; shadow=0.70.
+World 4: key=(-0.32, 0.65, -0.69); intensity=1.430; ambient=Trilight; reflection=CASCADE sky reflection 4; shadow=0.70.
+World 5: key=(0.43, 0.59, -0.68); intensity=1.405; ambient=Trilight; reflection=CASCADE sky reflection 5; shadow=0.78.
+World 6: key=(-0.44, 0.64, -0.63); intensity=1.380; ambient=Trilight; reflection=CASCADE sky reflection 6; shadow=0.72.
+World 7: key=(0.58, 0.40, -0.71); intensity=1.642; ambient=Trilight; reflection=CASCADE sky reflection 7; shadow=0.80.
+World 8: key=(-0.39, 0.58, -0.72); intensity=1.523; ambient=Trilight; reflection=CASCADE sky reflection 8; shadow=0.83.
+Mobile quality: Mobile / Mobile_RPAsset
+PASS: nine source profiles; real HDR reflection and hemispherical ambient; actual opposite-key render; lifted-contact render; mobile quality; map/workshop/shop/result; one realtime light; puzzle hash unchanged.
+Native Editor portrait renders only; not physical-device performance or perceptual testing. Illustrated surfaces use 2.5D relief; painted building occlusion is not recovered geometry.
+PASS: final cloud reflection attenuation; settled night ceremony/contrast; one visible moon on map; unchanged puzzle hash.
+Final result image uses explicit completed presentation pose after portrait reflow, not ceremony timing evidence. Final Console: zero errors. Entire active scene: one directional light. Play stopped; profile override cleared; temporary HDR cubes: zero.

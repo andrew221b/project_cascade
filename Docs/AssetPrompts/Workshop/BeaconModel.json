@@ -1,0 +1,45 @@
+{
+  "asset": "BeaconModel",
+  "tool": "image_gen.imagegen",
+  "transparent_background": true,
+  "image_inputs": [],
+  "inspected_style_references": [
+    "CascadeArt/Journey/Mika.png",
+    "CascadeArt/Journey/WindGardenMap.png",
+    "CascadeArt/Journey/RainMillMap.png"
+  ],
+  "source": "/Users/andrew/.codex/generated_images/01a10b3a-39d2-7350-bd89-7eb4386c5f0c/exec-ba2cf6d8-8569-4c5f-80bf-54ff152ccb35.png",
+  "prompt": "Use case: illustration-story\nAsset type: one original shipping reward illustration for CASCADE, a cozy mobile puzzle game. Warm hand-painted storybook miniature with softly sculpted useful forms, subtle brush texture, imperfect handcrafted details and a friendly irregular silhouette. Match the established Sky Wind Workshop identity: weathered wood, warm brass, satin mint enamel, ivory canvas, tiny restrained coral accents. Soft directional sunlight from the upper left; softly shaded lower right. Rich tactile material differences without glossy stock-icon rendering or photorealism.\nPrimary request: Beacon Model, a miniature ivory-and-brass lighthouse lantern on a small irregular mossy stone base. Short gently tapering ivory tower body with one little arched mint wooden door and one small unmarked window, topped by a generous warm brass lantern room with a clear ring of posts, pale golden lit glass and a softly domed weathered brass cap. Slightly uneven handmade plaster and tiny exposed stone details connect it to a keeper's workshop. The golden lantern room is the main focal point. A simple small brass finial, no flag or symbol. Keep the silhouette compact and charming, with moss and a few short sage leaves at the foot; no island landscape. No light rays or glow outside its silhouette.\nComposition/framing: a single centered object, fully visible, square canvas about 1024 x 1024 pixels, 10\u201315 percent clear empty margin on all four sides. Clear broad shapes legible at 180\u2013300 pixel display size. Three-quarter view with gentle storybook perspective. No extra disconnected decorations or miniature collage.\nBackground: actual native PNG alpha transparency outside the exact silhouette and within open gaps; preserve all white and cream object paint. Clean soft antialiased edges. No backdrop, no painted checkerboard, no ground rectangle, no scene-wide glow, no vignette, no cast shadow outside the silhouette.\nConstraints: no words, letters, numbers, pseudo-lettering, logos, watermark, UI frame, label, character, copied artwork, or game tokens. It is a useful handmade keepsake from a painted story world, never a generic isolated 3D stock icon.",
+  "inspection": {
+    "name": "BeaconModel",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_range": [
+      0,
+      255
+    ],
+    "transparent_percent": 63.55,
+    "partial_percent": 36.42,
+    "visible_bbox_alpha16": [
+      229,
+      17,
+      1034,
+      1231
+    ],
+    "visible_margins_percent": [
+      18.3,
+      1.4,
+      17.5,
+      1.8
+    ],
+    "rgba_equal_to_source": true,
+    "embedded_prompt_matches": true
+  },
+  "visual_review": "Ivory tower and warm brass light read clearly. Top/bottom visible margins are about 1\u20132%; it requires generous vertical UI padding.",
+  "review_status": "accepted_for_parent_integration_review",
+  "gate_score": "unscored",
+  "shipping_pixel_edits": "none; source RGBA bytes preserved"
+}

@@ -1,0 +1,13 @@
+Focused native Editor checks
+RUN EveryWorldComicHasThreeRealPanelsAndPreservesThePinnedMiddleStage
+PASS EveryWorldComicHasThreeRealPanelsAndPreservesThePinnedMiddleStage
+CAPTURE map-first-ru.png
+CAPTURE island-first-ru.png
+CAPTURE map-second-ru.png
+SCENE comic-first-ru.png texture=1536x1024 sprite=(x:0.00, y:682.67, width:512.00, height:341.33) canvas=1
+CAPTURE comic-first-ru.png
+SCENE comic-speaker-ru.png texture=1536x1024 sprite=(x:0.00, y:682.67, width:512.00, height:341.33) canvas=1
+FAIL System.InvalidOperationException: Comic aspect ratio changed
+  at Cascade.Editor.Playable.MapBrowseReviewOnce+<>c__DisplayClass14_0.<Capture>b__0 (Cascade.Presentation.CascadeGame game) [0x00210] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/MapBrowseReviewOnce.cs:88
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x001ff] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:37
+  at Cascade.Editor.Playable.MapBrowseReviewOnce+<Guard>d__8.MoveNext () [0x00041] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/MapBrowseReviewOnce.cs:41

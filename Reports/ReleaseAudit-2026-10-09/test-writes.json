@@ -1,0 +1,102 @@
+[
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/DescentTests.cs",
+    "call": "File.WriteAllLines(Path.Combine(dir,\"curves.csv\"),lines);"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/ContentTests.cs",
+    "call": "File.WriteAllText(Path.Combine(ReferenceFixtures.PackageRoot, \"Reports/P09/csharp_localized_balance.json\"), JsonConvert.SerializeObject(results, Formatting.Indented));"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/CloudJournalTests.cs",
+    "call": "File.WriteAllText(path,\"broken\");"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/CloudJournalTests.cs",
+    "call": "File.WriteAllText(path,\"broken\");"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/CampaignLogicTests.cs",
+    "call": "File.WriteAllLines(Path.Combine(directory,\"authored-proofs.csv\"),rows);"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/AdServiceTests.cs",
+    "call": "File.WriteAllText(store.Path,envelope.ToString());"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/CloudReplyReconcilerTests.cs",
+    "call": "File.WriteAllText(journalPath,\"broken\");"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/SaveTests.cs",
+    "call": "File.WriteAllText(Path.Combine(report,\"replay-count.txt\"),count+\" committed prefixes plus \"+(catalog.PrimaryLevels.Count+catalog.LocalizedLevels.Count)+\" initial states verified\\n\");"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/SaveTests.cs",
+    "call": "File.WriteAllText(store.Path,\"{truncated\");"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/SaveTests.cs",
+    "call": "File.WriteAllText(store.Path+\".tmp\",\"{half\");"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/SaveTests.cs",
+    "call": "File.WriteAllText(store.Path,\"broken\");"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/SaveTests.cs",
+    "call": "File.WriteAllText(store.BackupPath,\"also broken\");"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/SaveTests.cs",
+    "call": "File.WriteAllText(store.Path,future);"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/SaveTests.cs",
+    "call": "File.WriteAllText(store.Path,json.ToString());"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/LocalizationTests.cs",
+    "call": "File.WriteAllText(Path.Combine(folder,\"table-completeness.txt\"),checks+\" non-empty entries;"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/SolverTests.cs",
+    "call": "File.WriteAllText(path, JsonConvert.SerializeObject(results, Formatting.Indented));"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/ModeJourneyTests.cs",
+    "call": "File.WriteAllText(path,envelope.ToString());"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/CompletionProgressTests.cs",
+    "call": "File.WriteAllLines(Path.Combine(dir,\"curves.csv\"),lines);"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/AuthoringTests.cs",
+    "call": "File.WriteAllText(Path.Combine(folder, \"C35_authoring_roundtrip.json\"), draft.Source().ToString());"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/AuthoringTests.cs",
+    "call": "File.WriteAllText(Path.Combine(folder, \"C35_authoring_roundtrip.proof.json\"), metadata.ToString());"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/DirectorTests.cs",
+    "call": "File.WriteAllLines(Path.Combine(directory,\"wind-proofs.txt\"),lines);"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/DirectorTests.cs",
+    "call": "File.WriteAllText(file,envelope.ToString());"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/EarlyMechanicsTests.cs",
+    "call": "File.WriteAllLines(Path.Combine(dir,\"curves.csv\"),lines);"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/EarlyMechanicsTests.cs",
+    "call": "File.WriteAllLines(path,new[]{\"puzzle,locale,first,second,final\"}.Concat(lines.Values));"
+  },
+  {
+    "file": "CascadeUnity/Assets/_Cascade/Tests/EditMode/EarlyMechanicsTests.cs",
+    "call": "File.WriteAllLines(path,new[]{\"puzzle,locale,first,second,final\"}.Concat(lines.Values));"
+  }
+]

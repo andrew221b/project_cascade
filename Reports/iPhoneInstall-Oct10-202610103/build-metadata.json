@@ -1,0 +1,28 @@
+{
+  "CFBundleIdentifier": "com.vickand.cascade",
+  "CFBundleShortVersionString": "0.1.0",
+  "CFBundleVersion": "202610103",
+  "MinimumOSVersion": "15.0",
+  "CFBundleSupportedPlatforms": [
+    "iPhoneOS"
+  ],
+  "unityBuild": "Succeeded",
+  "unityErrors": 0,
+  "unityWarnings": 348,
+  "xcodeBuildExitCode": 0,
+  "projectSettingsRestored": true,
+  "signingVerified": true,
+  "installation": "Succeeded",
+  "preinstallProfileSha256": "1e6ce85cfe2f70765502958218ebf04ae102d87d0a5307fe846caefc50985afc",
+  "installedVersionVerified": true,
+  "profileBytesPreserved": true,
+  "profileSha256": "1e6ce85cfe2f70765502958218ebf04ae102d87d0a5307fe846caefc50985afc",
+  "profileBytes": 51773,
+  "startupVerification": "Succeeded",
+  "resourcePhaseRestored": true,
+  "finalDataFilesVerified": 34,
+  "launchedSuccessfully": true,
+  "launchProcessIdentifier": 77951,
+  "processRunningAfter12Seconds": true,
+  "finalProcessRunning": true
+}

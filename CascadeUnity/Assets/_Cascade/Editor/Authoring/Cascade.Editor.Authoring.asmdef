@@ -1,0 +1,8 @@
+{
+    "name": "Cascade.Editor.Authoring",
+    "rootNamespace": "Cascade.Editor.Authoring",
+    "references": ["Cascade.Domain", "Cascade.Solver", "Cascade.Content"],
+    "includePlatforms": ["Editor"],
+    "overrideReferences": true,
+    "precompiledReferences": ["Newtonsoft.Json.dll"]
+}

@@ -1,0 +1,37 @@
+{
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "install",
+      "app",
+      "--device",
+      "86ED6044-764E-5091-8CFE-C94C101E8DA8",
+      "--json-output",
+      "Reports/iPhoneInstall-Oct10/install.json",
+      "/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/iPhoneInstall-Oct10/DerivedData/Build/Products/Release-iphoneos/CASCADE.app"
+    ],
+    "commandType" : "devicectl.device.install.app",
+    "environment" : {
+      "TERM" : "dumb"
+    },
+    "jsonVersion" : 3,
+    "outcome" : "success",
+    "version" : "518.33"
+  },
+  "result" : {
+    "deviceIdentifier" : "86ED6044-764E-5091-8CFE-C94C101E8DA8",
+    "installedApplications" : [
+      {
+        "bundleID" : "com.vickand.cascade",
+        "databaseSequenceNumber" : 2372,
+        "databaseUUID" : "4339F797-3276-43B8-AF14-A2DADD234626",
+        "installationURL" : "file:///private/var/containers/Bundle/Application/5E6E4D71-C3BF-4FD7-98B5-5C4E77D21030/CASCADE.app/",
+        "launchServicesIdentifier" : "unknown",
+        "options" : {
+
+        }
+      }
+    ]
+  }
+}

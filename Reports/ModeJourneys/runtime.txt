@@ -1,0 +1,2 @@
+PASS: native map tabs, separate progress, 160-node Mixed route, exact mid-stage and time disk round trip, no home mode selector, 24 independent cosmetic paper bodies / six alpha sprites / finite fade / Reduced Motion.
+Editor camera captures with simulated safe insets. No phone build/device test.

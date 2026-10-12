@@ -1,0 +1,22 @@
+[
+  {
+    "test": "ReleasePersistenceTests.AutosaveCapturesAnImmutableSnapshotAndKeepsNewestCheckpoint()",
+    "status": "Passed",
+    "ms": 283.2702
+  },
+  {
+    "test": "ReleasePersistenceTests.DurablePurchaseBarrierCannotBeOverwrittenByAnOlderAutosave()",
+    "status": "Passed",
+    "ms": 15.2497
+  },
+  {
+    "test": "ReleasePersistenceTests.FailedBackgroundWriteRemainsRetryableAndReportsTheError()",
+    "status": "Passed",
+    "ms": 10.1859
+  },
+  {
+    "test": "ReleasePersistenceTests.LargeProfileTransportRetainsEveryReceiptAndAcceptsLegacyJson()",
+    "status": "Passed",
+    "ms": 14.7003
+  }
+]

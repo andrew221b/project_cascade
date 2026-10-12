@@ -1,0 +1,32 @@
+[
+  {
+    "test": "EarlyMechanicsTests.EveryChangedEarlyDefinitionAndRepresentativeLatePlansHaveReplayableThreeStageProofs()",
+    "status": "Passed",
+    "ms": 5790.7988000000005
+  },
+  {
+    "test": "EarlyMechanicsTests.FirstIslandIntroducesRealContactsAndThenHourglassBridgeAndLinkedSwaps()",
+    "status": "Passed",
+    "ms": 18.8103
+  },
+  {
+    "test": "EarlyMechanicsTests.WideEarlyRowsPreferTheProvenSingleShiftWithoutExhaustingAReverseSearch()",
+    "status": "Passed",
+    "ms": 3338.0734
+  },
+  {
+    "test": "EarlyMechanicsTests.IntroductoryBombAndHourglassAppearOnTheProvenUsefulRoute()",
+    "status": "Passed",
+    "ms": 47.074000000000005
+  },
+  {
+    "test": "EarlyMechanicsTests.OldVersionThreeCheckpointKeepsItsHashAndV4DoesNotReuseItsCache()",
+    "status": "Passed",
+    "ms": 3.7562
+  },
+  {
+    "test": "EarlyMechanicsTests.DirectorAdaptsAfterFirstIslandAndEveryEarlyMoodRetainsAProof()",
+    "status": "Passed",
+    "ms": 37.0381
+  }
+]

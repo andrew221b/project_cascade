@@ -1,0 +1,5 @@
+ParallelStoryTests: cumulative 4 passed, 0 failed
+ModeJourneyTests: cumulative 7 passed, 0 failed
+WorldPrologueTests: cumulative 11 passed, 0 failed
+StoryConversationTests: cumulative 16 passed, 0 failed
+LevelDefinitionTests: cumulative 56 passed, 0 failed

@@ -1,0 +1,187 @@
+{
+  "pose": "reach-ru",
+  "before": {
+    "Screen": "ReachChallenges",
+    "Attempt": "8d724f0e-bc59-47a2-92bf-c5f4ab4f0f1c",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "after": {
+    "Screen": "ReachChallenges",
+    "Attempt": "8d724f0e-bc59-47a2-92bf-c5f4ab4f0f1c",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 390,
+    "height": 844,
+    "locale": "ru",
+    "largeText": false,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "RibbonSpoolChoice",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/RibbonSpoolChoice",
+        "interactable": true,
+        "bounds": {
+          "x": 142.365616,
+          "y": 588.344,
+          "width": 105.268753,
+          "height": 58.0992432
+        }
+      },
+      {
+        "name": "ReachPrevious",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/ReachPrevious",
+        "interactable": true,
+        "bounds": {
+          "x": 37.0968056,
+          "y": 340.164581,
+          "width": 67.67279,
+          "height": 52.00003
+        }
+      },
+      {
+        "name": "ReachNext",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/ReachNext",
+        "interactable": true,
+        "bounds": {
+          "x": 285.2304,
+          "y": 340.164581,
+          "width": 67.67282,
+          "height": 52.00003
+        }
+      },
+      {
+        "name": "Trythistrail",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Trythistrail",
+        "interactable": true,
+        "bounds": {
+          "x": 37.0968056,
+          "y": 113.760017,
+          "width": 315.806427,
+          "height": 52.0000076
+        }
+      },
+      {
+        "name": "Back",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Back",
+        "interactable": true,
+        "bounds": {
+          "x": 37.0968056,
+          "y": 49.7600174,
+          "width": 139.1052,
+          "height": 52.0000076
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Menu title",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Menu title",
+        "text": "Волшебная лента",
+        "button": null,
+        "bounds": {
+          "x": 70.9332,
+          "y": 716.6151,
+          "width": 248.133575,
+          "height": 47.5357666
+        },
+        "fontPixels": 28.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Menu description",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Menu description",
+        "text": "Одна лента — обмен через одну или две фигуры.",
+        "button": null,
+        "bounds": {
+          "x": 70.9332,
+          "y": 646.443237,
+          "width": 248.133575,
+          "height": 67.15375
+        },
+        "fontPixels": 18.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Reach number",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Reach number",
+        "text": "1 / 6",
+        "button": null,
+        "bounds": {
+          "x": 112.2888,
+          "y": 328.029053,
+          "width": 165.422409,
+          "height": 64.13556
+        },
+        "fontPixels": 23.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Reach instruction",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Reach instruction",
+        "text": "Перетащи фигуру через соседнюю. Лента сработает один раз. Отмена вернёт её.",
+        "button": null,
+        "bounds": {
+          "x": 44.616,
+          "y": 199.75795,
+          "width": 300.767975,
+          "height": 116.953079
+        },
+        "fontPixels": 20.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Trythistrail/Label",
+        "text": "В путь",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Trythistrail",
+        "bounds": {
+          "x": 37.0968056,
+          "y": 113.760017,
+          "width": 315.806427,
+          "height": 52.0000076
+        },
+        "fontPixels": 22.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Back/Label",
+        "text": "Назад",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Back",
+        "bounds": {
+          "x": 37.0968056,
+          "y": 49.7600174,
+          "width": 139.1052,
+          "height": 52.0000076
+        },
+        "fontPixels": 20.0,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

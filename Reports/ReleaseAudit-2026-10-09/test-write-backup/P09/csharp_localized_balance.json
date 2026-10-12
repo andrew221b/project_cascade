@@ -1,0 +1,1991 @@
+[
+  {
+    "id": "C01_en",
+    "node": "C01",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "60da8d990ba491e5daf82384dec80ba4c3fa2c3b09c1153a63c9ef8728af0f4d",
+    "minimum": 1,
+    "metrics": {
+      "States": 4,
+      "Transitions": 3,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C01_ru",
+    "node": "C01",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "468a9c220d9983a6e02c87f11b7901442d7332444ce37a0b02c161b6000ae764",
+    "minimum": 1,
+    "metrics": {
+      "States": 4,
+      "Transitions": 3,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C01_uk",
+    "node": "C01",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "8184be3429d108ab1ebca4311f745f8627e29571598a0c4f77cb5fcf8093ad9d",
+    "minimum": 1,
+    "metrics": {
+      "States": 4,
+      "Transitions": 3,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C02_en",
+    "node": "C02",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "926cb5e4e31da3337ba94153a07fd7e645099514d20e9cadb9aaea92cb65b9fd",
+    "minimum": 2,
+    "metrics": {
+      "States": 8,
+      "Transitions": 9,
+      "DeadStates": 1,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C02_ru",
+    "node": "C02",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "b9b1e8c23372c1832396d23eb8e459cd13627047323d56e7caabd610d782ac0f",
+    "minimum": 2,
+    "metrics": {
+      "States": 8,
+      "Transitions": 9,
+      "DeadStates": 1,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C02_uk",
+    "node": "C02",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "9f93d5aab213e4849fa980a2b0af4d6649c607a598fa0220fb0d59a19874a54d",
+    "minimum": 2,
+    "metrics": {
+      "States": 8,
+      "Transitions": 9,
+      "DeadStates": 1,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C03_en",
+    "node": "C03",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "736563ab4e9a7270ef64a2a1cf57373223673a5bb309720b22ac9a03c6b14861",
+    "minimum": 2,
+    "metrics": {
+      "States": 14,
+      "Transitions": 20,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 0.6667,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C03_ru",
+    "node": "C03",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "c239a8ee58c580789aeed2b544d3616f50eb0336d1f47bf4e2993b4107d66ebf",
+    "minimum": 2,
+    "metrics": {
+      "States": 14,
+      "Transitions": 20,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 0.6667,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C03_uk",
+    "node": "C03",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "ee0c923d4aad9cf400e904b97bff5dec103d11e69449ac7fc245ff48a388f330",
+    "minimum": 2,
+    "metrics": {
+      "States": 14,
+      "Transitions": 20,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 0.6667,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C04_en",
+    "node": "C04",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "7ff3e67b00a3a63e2e1ab000616fbc2edd82ca52ce6f5cd7ab2c8d59f8880492",
+    "minimum": 2,
+    "metrics": {
+      "States": 13,
+      "Transitions": 16,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C04_ru",
+    "node": "C04",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "14266ad911cab14d595ea70433475fee0dacd49b8ee8681c31c255dea5aaa618",
+    "minimum": 2,
+    "metrics": {
+      "States": 13,
+      "Transitions": 16,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C04_uk",
+    "node": "C04",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "92d5963f97894830abb76d7fe60e8feffea983724bc0d9ff04d41ca1df2589a9",
+    "minimum": 2,
+    "metrics": {
+      "States": 13,
+      "Transitions": 16,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C05_en",
+    "node": "C05",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "b6cabf507734b20d70868db88799f6936e31e4b3b9e509820019889d4178852a",
+    "minimum": 3,
+    "metrics": {
+      "States": 16,
+      "Transitions": 32,
+      "DeadStates": 3,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 3,
+      "ForcedRatio": 0.7143,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C05_ru",
+    "node": "C05",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "bec2344fd97d34f6dd3b49952f72af0b7ce6009bff5939ac8cbe8b152d4d94b3",
+    "minimum": 3,
+    "metrics": {
+      "States": 16,
+      "Transitions": 32,
+      "DeadStates": 3,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 3,
+      "ForcedRatio": 0.7143,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C05_uk",
+    "node": "C05",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "47f653f696e3a72fe907ee56a12e257fecf5e1c8dc1ed4407bb8e47ef31a1ddf",
+    "minimum": 3,
+    "metrics": {
+      "States": 16,
+      "Transitions": 32,
+      "DeadStates": 3,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 3,
+      "ForcedRatio": 0.7143,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C06_en",
+    "node": "C06",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "19417022d1752192ae3530b4e0de6078ea0773b19355e5ebba622da7394dfbf5",
+    "minimum": 3,
+    "metrics": {
+      "States": 8,
+      "Transitions": 8,
+      "DeadStates": 1,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C06_ru",
+    "node": "C06",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "d073aeb3afb9ade6b22c9d7758dea59b3227a2f4f101bf3a2c09f9ba003f4004",
+    "minimum": 3,
+    "metrics": {
+      "States": 8,
+      "Transitions": 8,
+      "DeadStates": 1,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C06_uk",
+    "node": "C06",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "c8057103a787fa7b18b1bea50e0019f5d995c08bb0fea1d7cb7225ebad10cebd",
+    "minimum": 3,
+    "metrics": {
+      "States": 8,
+      "Transitions": 8,
+      "DeadStates": 1,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C07_en",
+    "node": "C07",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "6eb72278d655de78b905522d3725ce20582b973bb708d1e28e2f8663161a1f9b",
+    "minimum": 2,
+    "metrics": {
+      "States": 27,
+      "Transitions": 39,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 3,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C07_ru",
+    "node": "C07",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "68dc1903f90588b1db65327b769f02f0fd680da74c4b775da6e8fd7674cce33b",
+    "minimum": 2,
+    "metrics": {
+      "States": 27,
+      "Transitions": 39,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 3,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C07_uk",
+    "node": "C07",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "bc799cd2df30c2a6853b13eb9a4472cb78884846c0f4e03499bc6c6cf7053fe6",
+    "minimum": 2,
+    "metrics": {
+      "States": 27,
+      "Transitions": 39,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 3,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C08_en",
+    "node": "C08",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "130d484bc6503beef0fc1519e5449f4af678114dda05cedf59b8a98a7fccee1b",
+    "minimum": 2,
+    "metrics": {
+      "States": 8,
+      "Transitions": 8,
+      "DeadStates": 1,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C08_ru",
+    "node": "C08",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "7b8415a65f20ec6b22e0ad56b5e8847793db42c19c57cdbf1d033e4d34d4987f",
+    "minimum": 2,
+    "metrics": {
+      "States": 8,
+      "Transitions": 8,
+      "DeadStates": 1,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C08_uk",
+    "node": "C08",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "b82e6f154e7b6afb807366b32c5c195f878f6b770a3455a3b2243f07dbc80964",
+    "minimum": 2,
+    "metrics": {
+      "States": 8,
+      "Transitions": 8,
+      "DeadStates": 1,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C09_en",
+    "node": "C09",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "bf9fd88365fa28e73176ad94f1d60a78d2e0052e30291b1a0523204361c88c19",
+    "minimum": 2,
+    "metrics": {
+      "States": 34,
+      "Transitions": 52,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 4,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C09_ru",
+    "node": "C09",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "5d2253ac1939daf1260a1b33048b645cbd489f946e48ee27d7b9bb97276a7a1b",
+    "minimum": 2,
+    "metrics": {
+      "States": 34,
+      "Transitions": 52,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 4,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C09_uk",
+    "node": "C09",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "749163a21981984157f35902bacc8c96117d1fd0d19d813a0a20dac0f3cc59da",
+    "minimum": 2,
+    "metrics": {
+      "States": 34,
+      "Transitions": 52,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 4,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C10_en",
+    "node": "C10",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "ec352d194a2668c523bb33dfb6c32fdbe4866c5427b8b5af2d3d83562d882b36",
+    "minimum": 2,
+    "metrics": {
+      "States": 17,
+      "Transitions": 20,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 0.6667,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C10_ru",
+    "node": "C10",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "dc71503e157fa35c30f3bfc99070917f87055f4f38ef8115d98d9ae289fdaba0",
+    "minimum": 2,
+    "metrics": {
+      "States": 17,
+      "Transitions": 20,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 0.6667,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C10_uk",
+    "node": "C10",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "11dd3e22290cfb832f9552f41775853c3f3d24221cf764513d89ba4bb8fefc26",
+    "minimum": 2,
+    "metrics": {
+      "States": 17,
+      "Transitions": 20,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 0.6667,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C11_en",
+    "node": "C11",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "77cff16bb66889d4941bec967f5ea57c5d7f4f3b445c1fe90184e798fe02a02e",
+    "minimum": 3,
+    "metrics": {
+      "States": 57,
+      "Transitions": 132,
+      "DeadStates": 23,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C11_ru",
+    "node": "C11",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "8bcad8a6152cf6590ec2c10f175dc59082a03535fa0350d221ce3b53c4a79210",
+    "minimum": 3,
+    "metrics": {
+      "States": 57,
+      "Transitions": 132,
+      "DeadStates": 23,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C11_uk",
+    "node": "C11",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "2c51654c9a34d939c5576f5eef40a49015cd85a5419949a13cd265f963cdfeea",
+    "minimum": 3,
+    "metrics": {
+      "States": 57,
+      "Transitions": 132,
+      "DeadStates": 23,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C12_en",
+    "node": "C12",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "ff2e4dc323869bf70c6fac6ea226b23765021d468929267a0cc2cf8e32d44eec",
+    "minimum": 3,
+    "metrics": {
+      "States": 141,
+      "Transitions": 300,
+      "DeadStates": 44,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 5,
+      "ForcedRatio": 0.8,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C12_ru",
+    "node": "C12",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "e5e56f7964f435d835fbd3bf5968dce23ac54b46a3c44d91c75cb5e89e9d3f64",
+    "minimum": 3,
+    "metrics": {
+      "States": 141,
+      "Transitions": 300,
+      "DeadStates": 44,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 5,
+      "ForcedRatio": 0.8,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C12_uk",
+    "node": "C12",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "8b5e4c724ff9c52cded05a7c829b0f9d7beb594339a6a99d5be52ec4aa782e26",
+    "minimum": 3,
+    "metrics": {
+      "States": 141,
+      "Transitions": 300,
+      "DeadStates": 44,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 5,
+      "ForcedRatio": 0.8,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C13_en",
+    "node": "C13",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "b7678712195b432a7647952d00cf303d0c4ad69212954d9e1f504486fd72c231",
+    "minimum": 2,
+    "metrics": {
+      "States": 9,
+      "Transitions": 8,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C13_ru",
+    "node": "C13",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "da4ac422fc6f9f25927584b1e77615cc0a9baed465d1dece72712f59197a3ce3",
+    "minimum": 2,
+    "metrics": {
+      "States": 9,
+      "Transitions": 8,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C13_uk",
+    "node": "C13",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "b180fd2b7e258de7e05522f033e8c3079356e337ef5e2aaf8702588fef4c524a",
+    "minimum": 2,
+    "metrics": {
+      "States": 9,
+      "Transitions": 8,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C14_en",
+    "node": "C14",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "e7cee494da5e117500e7c3f74032ac9ea1325d26a8ad7415c3b68915d32cbabb",
+    "minimum": 1,
+    "metrics": {
+      "States": 5,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C14_ru",
+    "node": "C14",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "a09576359101e22ceb325332efcd71e1d63b301867e757da8797919d74965dd0",
+    "minimum": 1,
+    "metrics": {
+      "States": 5,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C14_uk",
+    "node": "C14",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "13d359a38e786a3229f5d17b940b5a19bda4e23d139f425ab9e1f8e0c1bbcf16",
+    "minimum": 1,
+    "metrics": {
+      "States": 5,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C15_en",
+    "node": "C15",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "9de844920c9833ee3d6fb3e9fb802fd6886f841c4a31cf45cd8c3290b72a9733",
+    "minimum": 2,
+    "metrics": {
+      "States": 41,
+      "Transitions": 58,
+      "DeadStates": 8,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 3,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 3
+    }
+  },
+  {
+    "id": "C15_ru",
+    "node": "C15",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "351da03432a51abd58d0c7d0a494dda4f4c42c1f1a4b0cfba25362ba44ed5b52",
+    "minimum": 2,
+    "metrics": {
+      "States": 41,
+      "Transitions": 58,
+      "DeadStates": 8,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 3,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 3
+    }
+  },
+  {
+    "id": "C15_uk",
+    "node": "C15",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "2e91cb96d01053348bdbc3e8ef4a3c750adbd47ff69f8051329f780e35444daf",
+    "minimum": 2,
+    "metrics": {
+      "States": 41,
+      "Transitions": 58,
+      "DeadStates": 8,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 3,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 3
+    }
+  },
+  {
+    "id": "C16_en",
+    "node": "C16",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "9e9b1e3956ee58c6852e40cae0feea551b9492e4075eb92a1ea4b9b16398e7d5",
+    "minimum": 3,
+    "metrics": {
+      "States": 68,
+      "Transitions": 180,
+      "DeadStates": 26,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 4,
+      "ForcedRatio": 0.75,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C16_ru",
+    "node": "C16",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "eaaa72257a2541148f5819d1c670f04c58728e0fb95ab09d389fcc4ad350fcbb",
+    "minimum": 3,
+    "metrics": {
+      "States": 68,
+      "Transitions": 180,
+      "DeadStates": 26,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 4,
+      "ForcedRatio": 0.75,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C16_uk",
+    "node": "C16",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "570e98c34e5ba4263db9fa625199724727233004212c0f3dedaf5809539ee06f",
+    "minimum": 3,
+    "metrics": {
+      "States": 68,
+      "Transitions": 180,
+      "DeadStates": 26,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 4,
+      "ForcedRatio": 0.75,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C17_en",
+    "node": "C17",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "b87fb1ace51944a5adf8db7a822d50b6861204bd8ce94ae570189d3e094d32eb",
+    "minimum": 2,
+    "metrics": {
+      "States": 9,
+      "Transitions": 10,
+      "DeadStates": 1,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C17_ru",
+    "node": "C17",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "648dc380407f2b5f61d612b60e2691344e082350051ac8cd2f40aaf681016c79",
+    "minimum": 2,
+    "metrics": {
+      "States": 9,
+      "Transitions": 10,
+      "DeadStates": 1,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C17_uk",
+    "node": "C17",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "4de86a125dcd9f366f4654be1b4de743cb196df546f3298c5840797b4ec1ad57",
+    "minimum": 2,
+    "metrics": {
+      "States": 9,
+      "Transitions": 10,
+      "DeadStates": 1,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C18_en",
+    "node": "C18",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "500d70b17678d2624c7af94dbf2e6233f68753719bac7cadd0f8886badb7de81",
+    "minimum": 3,
+    "metrics": {
+      "States": 20,
+      "Transitions": 32,
+      "DeadStates": 4,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 0.75,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C18_ru",
+    "node": "C18",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "388356be1a260f5f4577f2bcd844eba837c681339d3e8ce8d3f235d626fc28f1",
+    "minimum": 3,
+    "metrics": {
+      "States": 20,
+      "Transitions": 32,
+      "DeadStates": 4,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 0.75,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C18_uk",
+    "node": "C18",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "039c88f4ae93079d722a436a425dffb73410c5f7fe3627ec563b228bee439192",
+    "minimum": 3,
+    "metrics": {
+      "States": 20,
+      "Transitions": 32,
+      "DeadStates": 4,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 0.75,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C19_en",
+    "node": "C19",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "2082776397c93748cbb0d487a948a8fcc4bdf98bef929129bf6b81746aff992a",
+    "minimum": 4,
+    "metrics": {
+      "States": 44,
+      "Transitions": 91,
+      "DeadStates": 10,
+      "EarliestDeadDepth": 3,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C19_ru",
+    "node": "C19",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "f5b63c0ae700bc83c1892744a8c06beeeb91616f4efc0624ac887229be7b7ba4",
+    "minimum": 4,
+    "metrics": {
+      "States": 44,
+      "Transitions": 91,
+      "DeadStates": 10,
+      "EarliestDeadDepth": 3,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C19_uk",
+    "node": "C19",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "86fdb4ae349e732b4485b10fd3d25ad73a0160cfe1255e0b26b7893c6faffd04",
+    "minimum": 4,
+    "metrics": {
+      "States": 44,
+      "Transitions": 91,
+      "DeadStates": 10,
+      "EarliestDeadDepth": 3,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C20_en",
+    "node": "C20",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "83a5a7b0033b15642bb66045f4647ed4703937a7d0ab6de534fa23521a02d4e3",
+    "minimum": 1,
+    "metrics": {
+      "States": 5,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C20_ru",
+    "node": "C20",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "178df044de986ff5494d7c9e9125ea490e662a7415ed052682f02840f5a6cf9f",
+    "minimum": 1,
+    "metrics": {
+      "States": 5,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C20_uk",
+    "node": "C20",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "c84d131a666c084a4a609114f89050df70b6a3c21fb48ef58058c6dfe47bc831",
+    "minimum": 1,
+    "metrics": {
+      "States": 5,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C21_en",
+    "node": "C21",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "459169f505dbf87238926dd2ddd5a1640a0158e5a01e08f8065c3b5f2650a05d",
+    "minimum": 1,
+    "metrics": {
+      "States": 11,
+      "Transitions": 12,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C21_ru",
+    "node": "C21",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "4b9b56b1decec5d7fb780919806d1ddcd0efa3db25685886169a7a8bfea4494d",
+    "minimum": 1,
+    "metrics": {
+      "States": 11,
+      "Transitions": 12,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C21_uk",
+    "node": "C21",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "48d25daf74b66bfa1ee9ceea626735d424c93b7166bf3bd06593ceed4df17a65",
+    "minimum": 1,
+    "metrics": {
+      "States": 11,
+      "Transitions": 12,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C22_en",
+    "node": "C22",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "4178272a8d618ded97f6da062ad27fdd83cdc3ede04022f0c0ee1e94116a496b",
+    "minimum": 1,
+    "metrics": {
+      "States": 5,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C22_ru",
+    "node": "C22",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "d54f3715de075d397ae2e39bc19230bdc24fa2c7e234aa98910b41a208de4ce9",
+    "minimum": 1,
+    "metrics": {
+      "States": 5,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C22_uk",
+    "node": "C22",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "62be47e250948c7c1ad434eba28617f15b93f37695d60038d59f1fa444c61203",
+    "minimum": 1,
+    "metrics": {
+      "States": 5,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C23_en",
+    "node": "C23",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "4d18d723b68ed48a82a0f9e4f738438be3085dec18c00341fc9b3059d3cb7466",
+    "minimum": 2,
+    "metrics": {
+      "States": 25,
+      "Transitions": 44,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C23_ru",
+    "node": "C23",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "b399b6841c62f96e82e2d415ee389356a2e943e025b427c54fcf26d8a0154b2f",
+    "minimum": 2,
+    "metrics": {
+      "States": 25,
+      "Transitions": 44,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C23_uk",
+    "node": "C23",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "b076feeb4653a885cc157fa50060640e5b4c3edadba7a211e55e3e1dc0587c04",
+    "minimum": 2,
+    "metrics": {
+      "States": 25,
+      "Transitions": 44,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C24_en",
+    "node": "C24",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "40aa0ea4af268347ec3a249ddefcb25f5a0da7fb8d4b4837ee38c2e8f06e1c29",
+    "minimum": 2,
+    "metrics": {
+      "States": 31,
+      "Transitions": 44,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 4,
+      "ForcedRatio": 0.6667,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C24_ru",
+    "node": "C24",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "e4015525afdf4af8fbcd1a4857b442c24338b1bc9d33e26e9f5d9fd48981d12e",
+    "minimum": 2,
+    "metrics": {
+      "States": 31,
+      "Transitions": 44,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 4,
+      "ForcedRatio": 0.6667,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C24_uk",
+    "node": "C24",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "6d79a3eab17472568ab08cf298ba5d81d471a69e6da5222b117c964509b3efd3",
+    "minimum": 2,
+    "metrics": {
+      "States": 31,
+      "Transitions": 44,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 4,
+      "ForcedRatio": 0.6667,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C25_en",
+    "node": "C25",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "c5300af9505ba20a55826c3177d7b8ea9d18fa2807cc027cab9c8cbd97e2b30a",
+    "minimum": 1,
+    "metrics": {
+      "States": 4,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C25_ru",
+    "node": "C25",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "de7253b11f0ae299066a98d5f3e79992d6fe055e99290db9c79a41e092f06101",
+    "minimum": 1,
+    "metrics": {
+      "States": 4,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C25_uk",
+    "node": "C25",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "2dd8d2cac442ef0c0476e564cc2486c420ce654209caffb6c9a5e696122316bc",
+    "minimum": 1,
+    "metrics": {
+      "States": 4,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C27_en",
+    "node": "C27",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "f74f31e7aff21a951d25ba6ac820042cd8417a73b26b4236fc2525e183c34c7f",
+    "minimum": 4,
+    "metrics": {
+      "States": 14,
+      "Transitions": 26,
+      "DeadStates": 3,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C27_ru",
+    "node": "C27",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "7a76e2098db645f42d879ce9672779165c18db171654247c95bf656ed875d848",
+    "minimum": 4,
+    "metrics": {
+      "States": 14,
+      "Transitions": 26,
+      "DeadStates": 3,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C27_uk",
+    "node": "C27",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "62f400498a89bc3277cd1f64474cd5d89f250563192d170e2507a910951a992c",
+    "minimum": 4,
+    "metrics": {
+      "States": 14,
+      "Transitions": 26,
+      "DeadStates": 3,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C28_en",
+    "node": "C28",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "3b25d3c583e82d019ed37be08a13bf321ae7fd98d0f9774156676a574e2e8174",
+    "minimum": 1,
+    "metrics": {
+      "States": 7,
+      "Transitions": 12,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C28_ru",
+    "node": "C28",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "1e2c4c92f5b63c3e0db173274909f915fc7d8fddb239096fb39756568056294c",
+    "minimum": 1,
+    "metrics": {
+      "States": 7,
+      "Transitions": 12,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C28_uk",
+    "node": "C28",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "c8c10f71a111fee97bae613212a1557323907c24fcac58582373808c70ae7dce",
+    "minimum": 1,
+    "metrics": {
+      "States": 7,
+      "Transitions": 12,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C29_en",
+    "node": "C29",
+    "locale": "en",
+    "mode": "Mixed",
+    "hash": "c9e4600fbd1d9cda452b7d542a9b4fd9ff4be4342318ceeab7c4aab526a01445",
+    "minimum": 2,
+    "metrics": {
+      "States": 20,
+      "Transitions": 30,
+      "DeadStates": 3,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 0.6667,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C29_ru",
+    "node": "C29",
+    "locale": "ru",
+    "mode": "Mixed",
+    "hash": "99da40acb0f9b7538aaa5e4a7e2791ebc2436abe38288afb61b3ec7afd7a8231",
+    "minimum": 2,
+    "metrics": {
+      "States": 20,
+      "Transitions": 30,
+      "DeadStates": 3,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 0.6667,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C29_uk",
+    "node": "C29",
+    "locale": "uk",
+    "mode": "Mixed",
+    "hash": "fa8be03fa8d80283792b8d46bee86432eadac1d70b3b8bacea5e3b9f72a5c93b",
+    "minimum": 2,
+    "metrics": {
+      "States": 20,
+      "Transitions": 30,
+      "DeadStates": 3,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 0.6667,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C30_en",
+    "node": "C30",
+    "locale": "en",
+    "mode": "Mixed",
+    "hash": "7b480215263429cc5a43b0b68f13497d8fb260e577bd22d7a02c1bcaa7ee4c9f",
+    "minimum": 9,
+    "metrics": {
+      "States": 2898,
+      "Transitions": 13485,
+      "DeadStates": 1973,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 4,
+      "ForcedRatio": 0.2317,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C30_ru",
+    "node": "C30",
+    "locale": "ru",
+    "mode": "Mixed",
+    "hash": "628e4ff1409bc618a4927db16ba5121a8c57ea18ac91840a26303e6da71dfbf5",
+    "minimum": 9,
+    "metrics": {
+      "States": 2898,
+      "Transitions": 13485,
+      "DeadStates": 1973,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 4,
+      "ForcedRatio": 0.2317,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C30_uk",
+    "node": "C30",
+    "locale": "uk",
+    "mode": "Mixed",
+    "hash": "fc5abd1dddc77e0770ac738a8b9931d6751a6e5dcdd7ba1c811774afc494e1ec",
+    "minimum": 9,
+    "metrics": {
+      "States": 2898,
+      "Transitions": 13485,
+      "DeadStates": 1973,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 4,
+      "ForcedRatio": 0.2317,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C31_en",
+    "node": "C31",
+    "locale": "en",
+    "mode": "Mixed",
+    "hash": "ca3cc6ac31a4664b616d513965850dc9305c26c27fae6c745d81d3bc24f767f7",
+    "minimum": 2,
+    "metrics": {
+      "States": 13,
+      "Transitions": 17,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C31_ru",
+    "node": "C31",
+    "locale": "ru",
+    "mode": "Mixed",
+    "hash": "0bc41544b5525c76822cab90a956e3af80167efea32a451f84bd38d34d75c254",
+    "minimum": 2,
+    "metrics": {
+      "States": 13,
+      "Transitions": 17,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C31_uk",
+    "node": "C31",
+    "locale": "uk",
+    "mode": "Mixed",
+    "hash": "151a89a03be154cafac9ba7f4d0fe567dbd954cd0e4c3889f1f3d484393c68fe",
+    "minimum": 2,
+    "metrics": {
+      "States": 13,
+      "Transitions": 17,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C32_en",
+    "node": "C32",
+    "locale": "en",
+    "mode": "Mixed",
+    "hash": "36c6e9831d19d2949b998ff7c1353f92547db3f2bb60d9f2389a6e8687a42b45",
+    "minimum": 2,
+    "metrics": {
+      "States": 44,
+      "Transitions": 72,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 0.6667,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C32_ru",
+    "node": "C32",
+    "locale": "ru",
+    "mode": "Mixed",
+    "hash": "6ba7aa55d16918e6333afc71a2e416d83c2510d962c0a43679c42d0c041c3562",
+    "minimum": 2,
+    "metrics": {
+      "States": 44,
+      "Transitions": 72,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 0.6667,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C32_uk",
+    "node": "C32",
+    "locale": "uk",
+    "mode": "Mixed",
+    "hash": "31ad05073d9cfae68dc6b668e2fbdcbd4756828500d1a64b107b81f30ee37451",
+    "minimum": 2,
+    "metrics": {
+      "States": 44,
+      "Transitions": 72,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 0.6667,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C33_en",
+    "node": "C33",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "3dfd734dd5c9910c6145c3b34cfdba385e948489f8f804cc830b986c4ed7b41c",
+    "minimum": 1,
+    "metrics": {
+      "States": 5,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C33_ru",
+    "node": "C33",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "b55d0bc0654aa6b75ab4a924f8b26dbdd2120cc9ae4bd5ef112f49b6f138aa81",
+    "minimum": 1,
+    "metrics": {
+      "States": 5,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C33_uk",
+    "node": "C33",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "c850a6e12281d7405891b694e5d1e2232b273d87be2ba2f3b42d9025b39e57e3",
+    "minimum": 1,
+    "metrics": {
+      "States": 5,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C34_en",
+    "node": "C34",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "5580b91c89c33099953e60f763d0169bcbcdb8b2a2d305b6901b9f019c965a79",
+    "minimum": 2,
+    "metrics": {
+      "States": 13,
+      "Transitions": 15,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C34_ru",
+    "node": "C34",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "fede8e45d544ef5f3c4964db1e24b32c0ed5f9acbab84e843635fea1b59bd946",
+    "minimum": 2,
+    "metrics": {
+      "States": 13,
+      "Transitions": 15,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C34_uk",
+    "node": "C34",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "a30757393a4f1e241e128a5c57dbab9995d41b15c97d525e427ab47545b97542",
+    "minimum": 2,
+    "metrics": {
+      "States": 13,
+      "Transitions": 15,
+      "DeadStates": 2,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C35_en",
+    "node": "C35",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "33ae85c861ec45ce15ad56cdf4241972a9a6138d7d1f80125ed40a78389541c6",
+    "minimum": 2,
+    "metrics": {
+      "States": 77,
+      "Transitions": 160,
+      "DeadStates": 14,
+      "EarliestDeadDepth": 3,
+      "NearOptimalFirstStatesPlusTwo": 3,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 2
+    }
+  },
+  {
+    "id": "C35_ru",
+    "node": "C35",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "195ddbc3ad0b9dd327d9a9d3092462fb209f9a0b1fa7338838f5d17bb4c4e41e",
+    "minimum": 2,
+    "metrics": {
+      "States": 77,
+      "Transitions": 160,
+      "DeadStates": 14,
+      "EarliestDeadDepth": 3,
+      "NearOptimalFirstStatesPlusTwo": 3,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 2
+    }
+  },
+  {
+    "id": "C35_uk",
+    "node": "C35",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "b60704e0fecae227d3fa2b1798937682656e07c4c356300bfcaf690fc2b438b1",
+    "minimum": 2,
+    "metrics": {
+      "States": 77,
+      "Transitions": 160,
+      "DeadStates": 14,
+      "EarliestDeadDepth": 3,
+      "NearOptimalFirstStatesPlusTwo": 3,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 2
+    }
+  },
+  {
+    "id": "C36_en",
+    "node": "C36",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "b6085d137b0e7fdeb171c36f57eca5f4af0d6cead3c65c6d07593129535e8bae",
+    "minimum": 2,
+    "metrics": {
+      "States": 36,
+      "Transitions": 52,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 4,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C36_ru",
+    "node": "C36",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "6694b9569b2ed7d298d952d6e8c3ff48db2b9cb1ab1b65c1f454a423d0a59d26",
+    "minimum": 2,
+    "metrics": {
+      "States": 36,
+      "Transitions": 52,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 4,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C36_uk",
+    "node": "C36",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "08b929c99fceb162aa9d56d897bd37dd6f0c599fcf4dcb5d10c3b2d5c4e9eee7",
+    "minimum": 2,
+    "metrics": {
+      "States": 36,
+      "Transitions": 52,
+      "DeadStates": 6,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 4,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C37_en",
+    "node": "C37",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "0fde4cfd7179a1d005a5a15f52dd210d5e42ffe0d446db6e091e2432965fc27d",
+    "minimum": 6,
+    "metrics": {
+      "States": 365,
+      "Transitions": 875,
+      "DeadStates": 163,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 0.75,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C37_ru",
+    "node": "C37",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "f16ee6f4366d824f96fa073a635cfbe6d24d3416b2310246918493110b292140",
+    "minimum": 6,
+    "metrics": {
+      "States": 365,
+      "Transitions": 875,
+      "DeadStates": 163,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 0.75,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C37_uk",
+    "node": "C37",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "073b4f1cafe867a2f0b366b4edcadb3ea7d0f5e1fe24f161a150505ba753c7dd",
+    "minimum": 6,
+    "metrics": {
+      "States": 365,
+      "Transitions": 875,
+      "DeadStates": 163,
+      "EarliestDeadDepth": 1,
+      "NearOptimalFirstStatesPlusTwo": 2,
+      "ForcedRatio": 0.75,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C38_en",
+    "node": "C38",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "6c185ee3cee0278bc2a1678f0a86e528ca3460d2a0678390ff0d648510350e72",
+    "minimum": 2,
+    "metrics": {
+      "States": 7,
+      "Transitions": 7,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C38_ru",
+    "node": "C38",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "38099f01077da3fed81c746d9e20785ffa35bc49e3c04709159c4874c3582d7d",
+    "minimum": 2,
+    "metrics": {
+      "States": 7,
+      "Transitions": 7,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C38_uk",
+    "node": "C38",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "b5fcbac58945e50b5e9ae1e597af91b7717c94b8709ce658be9eed7cb444fd39",
+    "minimum": 2,
+    "metrics": {
+      "States": 7,
+      "Transitions": 7,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C39_en",
+    "node": "C39",
+    "locale": "en",
+    "mode": "Words",
+    "hash": "6e16db3a1b6c617c62ece394a7b023f977d9e69020929bad1bddc724cf3234d4",
+    "minimum": 1,
+    "metrics": {
+      "States": 4,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C39_ru",
+    "node": "C39",
+    "locale": "ru",
+    "mode": "Words",
+    "hash": "9f1556f6e49a28e5d49e74a6e65ef652a0d18db766ee982a50e7742a377bd001",
+    "minimum": 1,
+    "metrics": {
+      "States": 4,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C39_uk",
+    "node": "C39",
+    "locale": "uk",
+    "mode": "Words",
+    "hash": "b18171eae315549f963179bd917d1ca5c1367210789673b762e5b4e8052dfde5",
+    "minimum": 1,
+    "metrics": {
+      "States": 4,
+      "Transitions": 4,
+      "DeadStates": 0,
+      "EarliestDeadDepth": null,
+      "NearOptimalFirstStatesPlusTwo": 1,
+      "ForcedRatio": 1.0,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C40_en",
+    "node": "C40",
+    "locale": "en",
+    "mode": "Mixed",
+    "hash": "61895ea472a5a91a868b07a6331a160fd2f3f15bade6520cb88e095e8b7bf118",
+    "minimum": 3,
+    "metrics": {
+      "States": 97,
+      "Transitions": 239,
+      "DeadStates": 30,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 5,
+      "ForcedRatio": 0.8,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C40_ru",
+    "node": "C40",
+    "locale": "ru",
+    "mode": "Mixed",
+    "hash": "fb1992ab3117f713314e1821d0e60fcd1b46857e691d8ebef2cd69c1cea20863",
+    "minimum": 3,
+    "metrics": {
+      "States": 97,
+      "Transitions": 239,
+      "DeadStates": 30,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 5,
+      "ForcedRatio": 0.8,
+      "TerminalVariants": 1
+    }
+  },
+  {
+    "id": "C40_uk",
+    "node": "C40",
+    "locale": "uk",
+    "mode": "Mixed",
+    "hash": "d7eebd894ee3c735d08d108101337810d0a5ede9aba0c48687988f55918129d6",
+    "minimum": 3,
+    "metrics": {
+      "States": 97,
+      "Transitions": 239,
+      "DeadStates": 30,
+      "EarliestDeadDepth": 2,
+      "NearOptimalFirstStatesPlusTwo": 5,
+      "ForcedRatio": 0.8,
+      "TerminalVariants": 1
+    }
+  }
+]

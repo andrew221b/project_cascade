@@ -1,0 +1,10 @@
+{
+  "outcome": "Editor state recovered; likely Graphics Settings inspector initialization issue, not a confirmed permanent fix",
+  "protected_hash_changes": [],
+  "probe_artifacts": [],
+  "console_errors_or_warnings_after_retest": 0,
+  "editor_idle": true,
+  "source_or_package_fix": "NONE",
+  "original_delete_xml_reproduction": "NOT_RUN; MCP requires unsupported interactive confirmation",
+  "player_build": "NOT_RUN"
+}

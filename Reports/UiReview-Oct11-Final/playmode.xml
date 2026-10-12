@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="9" result="Failed(Child)" total="9" passed="7" failed="2" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-11 08:46:01Z" end-time="2026-10-11 08:46:55Z" duration="54.1513648">
+  <test-suite type="TestSuite" id="1176" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="156" result="Failed" site="Child" start-time="2026-10-11 08:46:01Z" end-time="2026-10-11 08:46:55Z" duration="54.151365" total="9" passed="7" failed="2" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1170" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="156" result="Failed" site="Child" start-time="2026-10-11 08:46:01Z" end-time="2026-10-11 08:46:55Z" duration="54.138268" total="9" passed="7" failed="2" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="2150" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1171" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="156" result="Failed" site="Child" start-time="2026-10-11 08:46:01Z" end-time="2026-10-11 08:46:55Z" duration="54.135107" total="9" passed="7" failed="2" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1172" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="156" result="Failed" site="Child" start-time="2026-10-11 08:46:01Z" end-time="2026-10-11 08:46:55Z" duration="54.134270" total="9" passed="7" failed="2" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1051" name="PlayableTests" fullname="Cascade.Tests.PlayableTests" classname="Cascade.Tests.PlayableTests" runstate="Runnable" testcasecount="93" result="Failed" site="Child" start-time="2026-10-11 08:46:01Z" end-time="2026-10-11 08:46:48Z" duration="46.719674" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1126" name="FailureOffersFreeRetryWithoutAnUndoButton" fullname="Cascade.Tests.PlayableTests.FailureOffersFreeRetryWithoutAnUndoButton" methodname="FailureOffersFreeRetryWithoutAnUndoButton" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1713588072" result="Passed" start-time="2026-10-11 08:46:01Z" end-time="2026-10-11 08:46:34Z" duration="32.494700" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1052" name="MouseTapTapCommitsOnceAndUndoRestores" fullname="Cascade.Tests.PlayableTests.MouseTapTapCommitsOnceAndUndoRestores" methodname="MouseTapTapCommitsOnceAndUndoRestores" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1111812752" result="Passed" start-time="2026-10-11 08:46:34Z" end-time="2026-10-11 08:46:38Z" duration="4.880767" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1130" name="ProvenDeadEndDoesNotConsumeOrRevealAHint" fullname="Cascade.Tests.PlayableTests.ProvenDeadEndDoesNotConsumeOrRevealAHint" methodname="ProvenDeadEndDoesNotConsumeOrRevealAHint" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="893928079" result="Passed" start-time="2026-10-11 08:46:38Z" end-time="2026-10-11 08:46:41Z" duration="2.977606" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1132" name="ReloadAfterLandingPreservesEntryTransformAndCannotUndoBrokenFloor" fullname="Cascade.Tests.PlayableTests.ReloadAfterLandingPreservesEntryTransformAndCannotUndoBrokenFloor" methodname="ReloadAfterLandingPreservesEntryTransformAndCannotUndoBrokenFloor" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="93325799" result="Passed" start-time="2026-10-11 08:46:41Z" end-time="2026-10-11 08:46:46Z" duration="5.014184" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1056" name="RibbonDragPersistsAndCannotUndoDestroyedBoard" fullname="Cascade.Tests.PlayableTests.RibbonDragPersistsAndCannotUndoDestroyedBoard" methodname="RibbonDragPersistsAndCannotUndoDestroyedBoard" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="376392685" result="Failed" start-time="2026-10-11 08:46:46Z" end-time="2026-10-11 08:46:48Z" duration="1.342481" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: 1
+  But was:  0
+]]></message>
+                <stack-trace><![CDATA[at Cascade.Tests.PlayableTests+<RibbonDragPersistsAndCannotUndoDestroyedBoard>d__20.MoveNext () [0x0016d] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Tests/PlayMode/PlayableTests.cs:173
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in ./Library/PackageCache/com.unity.test-framework@0b7a23ab2e1d/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1153" name="ScreenCosmeticFlowTests" fullname="Cascade.Tests.ScreenCosmeticFlowTests" classname="Cascade.Tests.ScreenCosmeticFlowTests" runstate="Runnable" testcasecount="4" result="Failed" site="Child" start-time="2026-10-11 08:46:48Z" end-time="2026-10-11 08:46:55Z" duration="7.413204" total="4" passed="3" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1156" name="EquippedLeavesAreOpaqueAndDriftWithWind" fullname="Cascade.Tests.ScreenCosmeticFlowTests.EquippedLeavesAreOpaqueAndDriftWithWind" methodname="EquippedLeavesAreOpaqueAndDriftWithWind" classname="Cascade.Tests.ScreenCosmeticFlowTests" runstate="Runnable" seed="756961852" result="Failed" start-time="2026-10-11 08:46:48Z" end-time="2026-10-11 08:46:50Z" duration="1.948482" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at Cascade.Tests.ScreenCosmeticFlowTests+<EquippedLeavesAreOpaqueAndDriftWithWind>d__11.MoveNext () [0x00192] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Tests/PlayMode/ScreenCosmeticFlowTests.cs:69
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in ./Library/PackageCache/com.unity.test-framework@0b7a23ab2e1d/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1154" name="EveryScreenStyleHasItsOwnPreviewAndUnifiedCatalogue" fullname="Cascade.Tests.ScreenCosmeticFlowTests.EveryScreenStyleHasItsOwnPreviewAndUnifiedCatalogue" methodname="EveryScreenStyleHasItsOwnPreviewAndUnifiedCatalogue" classname="Cascade.Tests.ScreenCosmeticFlowTests" runstate="Runnable" seed="33176007" result="Passed" start-time="2026-10-11 08:46:50Z" end-time="2026-10-11 08:46:51Z" duration="1.456379" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1157" name="IndependentStylesCanEquipRemoveAndSurviveMenuRoundTrip" fullname="Cascade.Tests.ScreenCosmeticFlowTests.IndependentStylesCanEquipRemoveAndSurviveMenuRoundTrip" methodname="IndependentStylesCanEquipRemoveAndSurviveMenuRoundTrip" classname="Cascade.Tests.ScreenCosmeticFlowTests" runstate="Runnable" seed="2025925462" result="Passed" start-time="2026-10-11 08:46:51Z" end-time="2026-10-11 08:46:54Z" duration="2.995183" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1155" name="InventoryAndShopHaveClearActionsAndLargerCards" fullname="Cascade.Tests.ScreenCosmeticFlowTests.InventoryAndShopHaveClearActionsAndLargerCards" methodname="InventoryAndShopHaveClearActionsAndLargerCards" classname="Cascade.Tests.ScreenCosmeticFlowTests" runstate="Runnable" seed="1682819769" result="Passed" start-time="2026-10-11 08:46:54Z" end-time="2026-10-11 08:46:55Z" duration="1.010855" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+Saving results to: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/UiReview-Oct11-Final/playmode.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -1,0 +1,272 @@
+{
+  "CloudPost_LettersOnTheBreeze": {
+    "before": {
+      "seconds": 60.0,
+      "peak": 0.719970703125,
+      "rms": 0.10639934306324662,
+      "clipped_samples": 0,
+      "seam": 0.003997802734375,
+      "spectral_centroid_hz": 810.3577646686324,
+      "b_over_a_db": 2.8079206302228146,
+      "phrase_boundary_db": 5.910096086459808
+    },
+    "after": {
+      "seconds": 60.0,
+      "peak": 0.719970703125,
+      "rms": 0.11864086988573812,
+      "clipped_samples": 0,
+      "seam": 0.0,
+      "spectral_centroid_hz": 396.23137383933897,
+      "b_over_a_db": 0.7360159515720768,
+      "phrase_boundary_db": 2.2089523080411686
+    },
+    "solo_semitones_min": -12,
+    "solo_semitones_max": -12,
+    "before_sha256": "7d408078804547be8f8a777b97efcf70536409f4ec5c775d9f497980b573cbd3",
+    "after_sha256": "4b67f465e1a267455aff9c2b636ca55b214421bd8a31868bab3bd58489826d6e",
+    "meta_sha256": "8c71efa346e91f3e1e5a46d4219da45f6f4507f6e78719dcbb01c7918acd9027"
+  },
+  "CopperOrchard_GoldenAfternoon": {
+    "before": {
+      "seconds": 55.38460317460317,
+      "peak": 0.566619873046875,
+      "rms": 0.11998472658821431,
+      "clipped_samples": 0,
+      "seam": 0.00079345703125,
+      "spectral_centroid_hz": 1062.570050700696,
+      "b_over_a_db": 1.4051625875625033,
+      "phrase_boundary_db": 7.377412915723712
+    },
+    "after": {
+      "seconds": 55.38460317460317,
+      "peak": 0.655426025390625,
+      "rms": 0.11998607203883235,
+      "clipped_samples": 0,
+      "seam": 0.0,
+      "spectral_centroid_hz": 924.4811665404324,
+      "b_over_a_db": 1.35797643977804,
+      "phrase_boundary_db": 4.637294442560574
+    },
+    "solo_semitones_min": -12,
+    "solo_semitones_max": -12,
+    "before_sha256": "88418ab0a7c64e8645b535631d8b2f05e35f9058082e932977f3b2fae3339cb0",
+    "after_sha256": "c9cf80109ca47acdd4f3fe48ed57cb46020f1d40e4a474c629528e3b524fe8c7",
+    "meta_sha256": "a16c533e44c4b5becc9961d7ae0f2ae3f6a4aee5719339f99ec2ce5a02c4977f"
+  },
+  "GlassLagoon_ReflectedMoon": {
+    "before": {
+      "seconds": 72.0,
+      "peak": 0.70928955078125,
+      "rms": 0.11998475157888776,
+      "clipped_samples": 0,
+      "seam": 0.00042724609375,
+      "spectral_centroid_hz": 875.6985334486424,
+      "b_over_a_db": 1.8404419767147793,
+      "phrase_boundary_db": 7.3516217407056486
+    },
+    "after": {
+      "seconds": 72.0,
+      "peak": 0.68359375,
+      "rms": 0.11998581379549855,
+      "clipped_samples": 0,
+      "seam": 0.0,
+      "spectral_centroid_hz": 556.5960973274026,
+      "b_over_a_db": 0.8686146345457563,
+      "phrase_boundary_db": 3.2766321923475763
+    },
+    "solo_semitones_min": -13,
+    "solo_semitones_max": -12,
+    "before_sha256": "52af0ca79a6db6183395fb5e59872cfbfabfc5b0c788553761cb4de3b828dc2b",
+    "after_sha256": "d0d24ce82e4e56190d62282a7cfc851ae3e19dad97e250ec9b66dde97778c045",
+    "meta_sha256": "e8501bc3a11739bf54571cd89f63333f1c33cfd5a430f42a074d0831db0374e0"
+  },
+  "GreatBeacon_TheWayHome": {
+    "before": {
+      "seconds": 57.6,
+      "peak": 0.546142578125,
+      "rms": 0.11998479673536573,
+      "clipped_samples": 0,
+      "seam": 0.002044677734375,
+      "spectral_centroid_hz": 1060.193525417252,
+      "b_over_a_db": 1.2950288306213418,
+      "phrase_boundary_db": 7.942386081914945
+    },
+    "after": {
+      "seconds": 57.6,
+      "peak": 0.65936279296875,
+      "rms": 0.11998610250175912,
+      "clipped_samples": 0,
+      "seam": 0.0,
+      "spectral_centroid_hz": 879.0873938012444,
+      "b_over_a_db": 1.775332373900741,
+      "phrase_boundary_db": 4.972485310586326
+    },
+    "solo_semitones_min": -12,
+    "solo_semitones_max": -12,
+    "before_sha256": "69fe33897ac1985313e455858b0f8e6168529d216ce4332e98ae5534bc81a963",
+    "after_sha256": "3f0c16147af01e5bc42cf9562e9dfa4381a061c1fafeb837602c2e64a685eadb",
+    "meta_sha256": "86fb2921997b97aac3bd83bdef5fe63e0013032e390e546dd5c6fa309f4ac344"
+  },
+  "Menu_HomeAmongCloudsBalanced": {
+    "before": {
+      "seconds": 68.57142857142857,
+      "peak": 0.705078125,
+      "rms": 0.11998509145949215,
+      "clipped_samples": 0,
+      "seam": 0.001861572265625,
+      "spectral_centroid_hz": 994.2994097072303,
+      "b_over_a_db": 4.824900194294523,
+      "phrase_boundary_db": 4.8189322892430155
+    },
+    "after": {
+      "seconds": 68.57142857142857,
+      "peak": 0.702606201171875,
+      "rms": 0.11998653126871381,
+      "clipped_samples": 0,
+      "seam": 0.0,
+      "spectral_centroid_hz": 841.9746885894946,
+      "b_over_a_db": 3.3670334542821894,
+      "phrase_boundary_db": 4.205764169345515
+    },
+    "solo_semitones_min": -12,
+    "solo_semitones_max": -12,
+    "before_sha256": "417a6961a95f925ec91877105c4467340707d761b7a86c5c522c1e439e397c3e",
+    "after_sha256": "2d270fde6bea46f25f31215fa582a0774c2d356c0ddaec1b49064825b72058a4",
+    "meta_sha256": "24b6f38a6ab7ce0320e50c97a3b182420888963a47d9b4f4bf91d93541c8bab3"
+  },
+  "MossArchive_StoriesInTheLeaves": {
+    "before": {
+      "seconds": 80.0,
+      "peak": 0.63201904296875,
+      "rms": 0.1199851272878787,
+      "clipped_samples": 0,
+      "seam": 0.00146484375,
+      "spectral_centroid_hz": 820.4742329949344,
+      "b_over_a_db": 1.8688341002699485,
+      "phrase_boundary_db": 6.614573255868596
+    },
+    "after": {
+      "seconds": 80.0,
+      "peak": 0.665191650390625,
+      "rms": 0.11998589357433627,
+      "clipped_samples": 0,
+      "seam": 0.0,
+      "spectral_centroid_hz": 567.7273484796741,
+      "b_over_a_db": 1.291808088155716,
+      "phrase_boundary_db": 5.319953639556367
+    },
+    "solo_semitones_min": -13,
+    "solo_semitones_max": -12,
+    "before_sha256": "b95ce2e33a5c0185660292e3593c3d2ce67a19ce8cff995385590e991238e9cd",
+    "after_sha256": "6e17b7f0bd15edda14000dfd6bdbb0162eb108142f9a6e5282875565e4df8f0f",
+    "meta_sha256": "f0a324b5f8f8dc592a1a4c4a7125a9508c0a9329be0c325aff79bb3a19c5d9a5"
+  },
+  "RainMill_RainOnCedar": {
+    "before": {
+      "seconds": 75.78945578231293,
+      "peak": 0.719970703125,
+      "rms": 0.08276347535181139,
+      "clipped_samples": 0,
+      "seam": 0.003814697265625,
+      "spectral_centroid_hz": 826.1436845499169,
+      "b_over_a_db": 2.5173344641041107,
+      "phrase_boundary_db": 4.728539768582135
+    },
+    "after": {
+      "seconds": 75.78945578231293,
+      "peak": 0.719970703125,
+      "rms": 0.0984045738331702,
+      "clipped_samples": 0,
+      "seam": 0.0,
+      "spectral_centroid_hz": 694.5839271618447,
+      "b_over_a_db": 1.5699979843484457,
+      "phrase_boundary_db": 3.075295419125814
+    },
+    "solo_semitones_min": -13,
+    "solo_semitones_max": -12,
+    "before_sha256": "1c02505f3bc92362b6f217e50220423b6e5b38d2fc4a50ae069a22e4195981c2",
+    "after_sha256": "8be0ae7a8a1cdd4a5ed9706963cc57fe49eed6f6f3c7d7972be5209d066ae378",
+    "meta_sha256": "ddfdcc6640e7085c69e6e46e5abda599c164ee63b88f5d9ba0c556f64bf21778"
+  },
+  "SnowSpire_WarmLightInSnow": {
+    "before": {
+      "seconds": 73.84614512471656,
+      "peak": 0.719970703125,
+      "rms": 0.09572257373465963,
+      "clipped_samples": 0,
+      "seam": 0.00543212890625,
+      "spectral_centroid_hz": 476.1168775901267,
+      "b_over_a_db": 1.7986513989593498,
+      "phrase_boundary_db": 2.385958053822132
+    },
+    "after": {
+      "seconds": 73.84614512471656,
+      "peak": 0.719970703125,
+      "rms": 0.09268714654855836,
+      "clipped_samples": 0,
+      "seam": 0.0,
+      "spectral_centroid_hz": 396.38400069016774,
+      "b_over_a_db": 0.8389989788906805,
+      "phrase_boundary_db": 3.0552570489660895
+    },
+    "solo_semitones_min": -12,
+    "solo_semitones_max": -12,
+    "before_sha256": "3acd98314296b0fa5e6f2c2be125208accb827ca1b343c75d99bd2353f76687d",
+    "after_sha256": "c43f82f107d29a5d2592a1cb2bbff8d97259cdc11b121617cc6c7912b516fbb2",
+    "meta_sha256": "b3a78b57aa5c8c463015b230629806f2a2ec2f208b82dd3995075c59641d3ac1"
+  },
+  "StarObservatory_ConstellationLullaby": {
+    "before": {
+      "seconds": 48.0,
+      "peak": 0.43359375,
+      "rms": 0.07498586587715399,
+      "clipped_samples": 0,
+      "seam": 0.001739501953125,
+      "spectral_centroid_hz": 543.5978068693375,
+      "b_over_a_db": 1.9316379924209546,
+      "phrase_boundary_db": 5.176029598646718
+    },
+    "after": {
+      "seconds": 48.0,
+      "peak": 0.4613037109375,
+      "rms": 0.07498756193706649,
+      "clipped_samples": 0,
+      "seam": 0.0,
+      "spectral_centroid_hz": 448.55907213434153,
+      "b_over_a_db": 1.7721780637365017,
+      "phrase_boundary_db": 3.9318687909831924
+    },
+    "solo_semitones_min": -12,
+    "solo_semitones_max": -12,
+    "before_sha256": "ce31f3f5a0c3c4897a9828fdfefc2bd0b4ba24d899cfe8be2bc9388a1439f97d",
+    "after_sha256": "92599c6377f7176a0c5de9856ed5aca55205fe7f0c74632adb610e8c577cce58",
+    "meta_sha256": "ce36b71471d1b2b66c70e149d644472d1a195b1acb603326d3aa26d2d38c9201"
+  },
+  "WindGarden_PaperWings": {
+    "before": {
+      "seconds": 62.60868480725624,
+      "peak": 0.517791748046875,
+      "rms": 0.11998464021035936,
+      "clipped_samples": 0,
+      "seam": 0.001556396484375,
+      "spectral_centroid_hz": 955.2375120711765,
+      "b_over_a_db": 1.1024532594493268,
+      "phrase_boundary_db": 6.215551709197802
+    },
+    "after": {
+      "seconds": 62.60868480725624,
+      "peak": 0.719970703125,
+      "rms": 0.11635030229693066,
+      "clipped_samples": 0,
+      "seam": 0.0,
+      "spectral_centroid_hz": 690.90991414372,
+      "b_over_a_db": 1.2945304908002522,
+      "phrase_boundary_db": 3.5741247278166615
+    },
+    "solo_semitones_min": -12,
+    "solo_semitones_max": -12,
+    "before_sha256": "c1dc48087e27e7355f2c00f7c4b784ed21658b647c1b6c6f0e6cbe1e07e7c7cf",
+    "after_sha256": "451472865d2f6f55ea0e44be45bccd69d88f2e4063de1d7b7600ceb12ca245ae",
+    "meta_sha256": "30d0587759cc38e5194a6aad143e00f2a3759ff5f51a945f2070cd56f14c6a23"
+  }
+}

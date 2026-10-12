@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="4" result="Passed" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-07 20:41:36Z" end-time="2026-10-07 20:41:50Z" duration="14.0647976">
+  <test-suite type="TestSuite" id="1141" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="125" result="Passed" start-time="2026-10-07 20:41:36Z" end-time="2026-10-07 20:41:50Z" duration="14.064798" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1135" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="125" result="Passed" start-time="2026-10-07 20:41:36Z" end-time="2026-10-07 20:41:50Z" duration="14.057952" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24227" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1136" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="125" result="Passed" start-time="2026-10-07 20:41:36Z" end-time="2026-10-07 20:41:50Z" duration="14.056820" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1137" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="125" result="Passed" start-time="2026-10-07 20:41:36Z" end-time="2026-10-07 20:41:50Z" duration="14.055758" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1130" name="WorldComicFlowTests" fullname="Cascade.Tests.WorldComicFlowTests" classname="Cascade.Tests.WorldComicFlowTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-07 20:41:36Z" end-time="2026-10-07 20:41:50Z" duration="14.054306" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1132" name="ComicReceiptsStayInTheirModeAndSeenComicsDoNotRepeatAfterReload" fullname="Cascade.Tests.WorldComicFlowTests.ComicReceiptsStayInTheirModeAndSeenComicsDoNotRepeatAfterReload" methodname="ComicReceiptsStayInTheirModeAndSeenComicsDoNotRepeatAfterReload" classname="Cascade.Tests.WorldComicFlowTests" runstate="Runnable" seed="147732346" result="Passed" start-time="2026-10-07 20:41:36Z" end-time="2026-10-07 20:41:40Z" duration="3.514936" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1131" name="EveryWorldComicHasFourRealPanelsAndPreservesThePinnedMiddleStage" fullname="Cascade.Tests.WorldComicFlowTests.EveryWorldComicHasFourRealPanelsAndPreservesThePinnedMiddleStage" methodname="EveryWorldComicHasFourRealPanelsAndPreservesThePinnedMiddleStage" classname="Cascade.Tests.WorldComicFlowTests" runstate="Runnable" seed="1774701008" result="Passed" start-time="2026-10-07 20:41:40Z" end-time="2026-10-07 20:41:42Z" duration="2.560846" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1133" name="IslandButtonsAndWorldBrowsingShowEveryUnseenOpeningOnceWithoutMovingTheRow" fullname="Cascade.Tests.WorldComicFlowTests.IslandButtonsAndWorldBrowsingShowEveryUnseenOpeningOnceWithoutMovingTheRow" methodname="IslandButtonsAndWorldBrowsingShowEveryUnseenOpeningOnceWithoutMovingTheRow" classname="Cascade.Tests.WorldComicFlowTests" runstate="Runnable" seed="1938298145" result="Passed" start-time="2026-10-07 20:41:42Z" end-time="2026-10-07 20:41:46Z" duration="4.016051" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1134" name="OccasionalExchangeAppearsOnlyOnItsExactLevelAndKeepsTheBrowsedStop" fullname="Cascade.Tests.WorldComicFlowTests.OccasionalExchangeAppearsOnlyOnItsExactLevelAndKeepsTheBrowsedStop" methodname="OccasionalExchangeAppearsOnlyOnItsExactLevelAndKeepsTheBrowsedStop" classname="Cascade.Tests.WorldComicFlowTests" runstate="Runnable" seed="2064586524" result="Passed" start-time="2026-10-07 20:41:46Z" end-time="2026-10-07 20:41:50Z" duration="3.955313" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+Saving results to: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/StoryComic-Oct07/playmode.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

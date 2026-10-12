@@ -1,0 +1,243 @@
+{
+  "pose": "fail-ru",
+  "before": {
+    "Screen": "Fail",
+    "Attempt": "98580068-0547-4c93-a99d-2364a6f8e183",
+    "Hash": "aa9e8b244b394d30682305236c4e562e423d3c7f58a745333f08b033f7b888df",
+    "Status": "Lost",
+    "Route": 1,
+    "Stage": -1,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": false
+  },
+  "after": {
+    "Screen": "Fail",
+    "Attempt": "98580068-0547-4c93-a99d-2364a6f8e183",
+    "Hash": "aa9e8b244b394d30682305236c4e562e423d3c7f58a745333f08b033f7b888df",
+    "Status": "Lost",
+    "Route": 1,
+    "Stage": -1,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": false
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 390,
+    "height": 844,
+    "locale": "ru",
+    "largeText": false,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Pause",
+        "path": "CASCADE/GameCanvas/SafeArea/Header/Pause",
+        "interactable": true,
+        "bounds": {
+          "x": 334.98,
+          "y": 728.2961,
+          "width": 48.0,
+          "height": 47.99994
+        }
+      },
+      {
+        "name": "Dismiss instruction",
+        "path": "CASCADE/GameCanvas/SafeArea/Quiet instruction paper/Dismiss instruction",
+        "interactable": true,
+        "bounds": {
+          "x": 318.3022,
+          "y": 674.2961,
+          "width": 44.0,
+          "height": 44.0
+        }
+      },
+      {
+        "name": "Receiver",
+        "path": "CASCADE/GameCanvas/SafeArea/Receiver",
+        "interactable": true,
+        "bounds": {
+          "x": 72.99999,
+          "y": 265.76004,
+          "width": 244.000031,
+          "height": 99.99997
+        }
+      },
+      {
+        "name": "Resulthome",
+        "path": "CASCADE/GameCanvas/SafeArea/Result controls/Resulthome",
+        "interactable": true,
+        "bounds": {
+          "x": 201.767273,
+          "y": 41.760006,
+          "width": 162.414734,
+          "height": 48.0000038
+        }
+      },
+      {
+        "name": "Undo",
+        "path": "CASCADE/GameCanvas/SafeArea/Result controls/Undo",
+        "interactable": true,
+        "bounds": {
+          "x": 66.42168,
+          "y": 41.7600327,
+          "width": 118.4274,
+          "height": 160.0
+        }
+      },
+      {
+        "name": "Retry",
+        "path": "CASCADE/GameCanvas/SafeArea/Result controls/Retry",
+        "interactable": true,
+        "bounds": {
+          "x": 25.8180065,
+          "y": 97.76002,
+          "width": 338.364,
+          "height": 48.0000076
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Level",
+        "path": "CASCADE/GameCanvas/SafeArea/Header/Carved chapter plaque/Level",
+        "text": "Уровень 1",
+        "button": null,
+        "bounds": {
+          "x": 91.2999954,
+          "y": 737.2961,
+          "width": 207.400024,
+          "height": 29.999939
+        },
+        "fontPixels": 17.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Feedback",
+        "path": "CASCADE/GameCanvas/SafeArea/Quiet instruction paper/Feedback",
+        "text": "Ряды пока разные.",
+        "button": null,
+        "bounds": {
+          "x": 41.6978035,
+          "y": 678.2961,
+          "width": 276.60437,
+          "height": 36.0
+        },
+        "fontPixels": 16.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "ReceiverLabel",
+        "path": "CASCADE/GameCanvas/SafeArea/Receiver/ReceiverLabel",
+        "text": "Цель",
+        "button": "CASCADE/GameCanvas/SafeArea/Receiver",
+        "bounds": {
+          "x": 72.99999,
+          "y": 359.76004,
+          "width": 244.000031,
+          "height": 28.0
+        },
+        "fontPixels": 16.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Your row",
+        "path": "CASCADE/GameCanvas/SafeArea/Receiver/Your row",
+        "text": "Твой ряд",
+        "button": "CASCADE/GameCanvas/SafeArea/Receiver",
+        "bounds": {
+          "x": 77.87999,
+          "y": 196.76001,
+          "width": 234.240036,
+          "height": 23.00003
+        },
+        "fontPixels": 15.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Result summary",
+        "path": "CASCADE/GameCanvas/SafeArea/Result controls/Result summary",
+        "text": "Почти! Верни ход и попробуй ещё.",
+        "button": null,
+        "bounds": {
+          "x": 25.8180065,
+          "y": 155.360031,
+          "width": 338.364,
+          "height": 46.40001
+        },
+        "fontPixels": 18.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Result controls/Resulthome/Label",
+        "text": "Карта",
+        "button": "CASCADE/GameCanvas/SafeArea/Result controls/Resulthome",
+        "bounds": {
+          "x": 201.767273,
+          "y": 41.760006,
+          "width": 162.414734,
+          "height": 48.0000038
+        },
+        "fontPixels": 18.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Result controls/Undo/Label",
+        "text": "Мои инструменты",
+        "button": "CASCADE/GameCanvas/SafeArea/Result controls/Undo",
+        "bounds": {
+          "x": 66.42168,
+          "y": 41.7600327,
+          "width": 118.4274,
+          "height": 160.0
+        },
+        "fontPixels": 14.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Result controls/Retry/Label",
+        "text": "Заново",
+        "button": "CASCADE/GameCanvas/SafeArea/Result controls/Retry",
+        "bounds": {
+          "x": 25.8180065,
+          "y": 97.76002,
+          "width": 338.364,
+          "height": 48.0000076
+        },
+        "fontPixels": 18.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Outcome heading",
+        "path": "CASCADE/GameCanvas/SafeArea/Lantern delivery story/Stage celebration ribbon/Outcome heading",
+        "text": "Попробуем иначе.",
+        "button": null,
+        "bounds": {
+          "x": 94.2427139,
+          "y": 535.866,
+          "width": 201.514557,
+          "height": 74.45007
+        },
+        "fontPixels": 22.0,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

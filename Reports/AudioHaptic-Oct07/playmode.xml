@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="6" result="Passed" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-07 17:19:32Z" end-time="2026-10-07 17:19:59Z" duration="27.0872177">
+  <test-suite type="TestSuite" id="1139" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="124" result="Passed" start-time="2026-10-07 17:19:32Z" end-time="2026-10-07 17:19:59Z" duration="27.087218" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1133" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="124" result="Passed" start-time="2026-10-07 17:19:32Z" end-time="2026-10-07 17:19:59Z" duration="26.510439" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="79826" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1134" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="124" result="Passed" start-time="2026-10-07 17:19:33Z" end-time="2026-10-07 17:19:59Z" duration="25.568285" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1135" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="124" result="Passed" start-time="2026-10-07 17:19:33Z" end-time="2026-10-07 17:19:59Z" duration="25.510822" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1001" name="AudioFeedbackTests" fullname="Cascade.Tests.AudioFeedbackTests" classname="Cascade.Tests.AudioFeedbackTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-07 17:19:33Z" end-time="2026-10-07 17:19:51Z" duration="17.216985" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1005" name="HapticsAreThrottledAndRespectPreferenceAndSuspension" fullname="Cascade.Tests.AudioFeedbackTests.HapticsAreThrottledAndRespectPreferenceAndSuspension" methodname="HapticsAreThrottledAndRespectPreferenceAndSuspension" classname="Cascade.Tests.AudioFeedbackTests" runstate="Runnable" seed="247582773" result="Passed" start-time="2026-10-07 17:19:34Z" end-time="2026-10-07 17:19:44Z" duration="10.152697" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1002" name="MenuClickFinishesAcrossNavigationAndReducedEffectsWithoutDuplicateVoices" fullname="Cascade.Tests.AudioFeedbackTests.MenuClickFinishesAcrossNavigationAndReducedEffectsWithoutDuplicateVoices" methodname="MenuClickFinishesAcrossNavigationAndReducedEffectsWithoutDuplicateVoices" classname="Cascade.Tests.AudioFeedbackTests" runstate="Runnable" seed="2036866269" result="Passed" start-time="2026-10-07 17:19:44Z" end-time="2026-10-07 17:19:46Z" duration="2.248748" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1004" name="OutputResetAndForegroundReturnRecoverTheEnabledThemeNearItsOldPosition" fullname="Cascade.Tests.AudioFeedbackTests.OutputResetAndForegroundReturnRecoverTheEnabledThemeNearItsOldPosition" methodname="OutputResetAndForegroundReturnRecoverTheEnabledThemeNearItsOldPosition" classname="Cascade.Tests.AudioFeedbackTests" runstate="Runnable" seed="1958603415" result="Passed" start-time="2026-10-07 17:19:46Z" end-time="2026-10-07 17:19:49Z" duration="2.659300" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+Attempting to get `time` on an audio source that has a resource that is not a clip will always return 0.
+]]></output>
+            </test-case>
+            <test-case id="1003" name="SoundMuteStopsCuesWhileMusicContinuesAndNewClicksResume" fullname="Cascade.Tests.AudioFeedbackTests.SoundMuteStopsCuesWhileMusicContinuesAndNewClicksResume" methodname="SoundMuteStopsCuesWhileMusicContinuesAndNewClicksResume" classname="Cascade.Tests.AudioFeedbackTests" runstate="Runnable" seed="1022017277" result="Passed" start-time="2026-10-07 17:19:49Z" end-time="2026-10-07 17:19:51Z" duration="1.856454" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1026" name="PlayableTests" fullname="Cascade.Tests.PlayableTests" classname="Cascade.Tests.PlayableTests" runstate="Runnable" testcasecount="90" result="Passed" start-time="2026-10-07 17:19:51Z" end-time="2026-10-07 17:19:59Z" duration="8.288315" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1086" name="WindKeepsItsPositionAcrossRegionsAndFadesBeforeSleeping" fullname="Cascade.Tests.PlayableTests.WindKeepsItsPositionAcrossRegionsAndFadesBeforeSleeping" methodname="WindKeepsItsPositionAcrossRegionsAndFadesBeforeSleeping" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1063437061" result="Passed" start-time="2026-10-07 17:19:51Z" end-time="2026-10-07 17:19:53Z" duration="2.269331" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+]]></output>
+            </test-case>
+            <test-case id="1085" name="WorldScoresCrossfadeAndMutePreservesPlaybackPosition" fullname="Cascade.Tests.PlayableTests.WorldScoresCrossfadeAndMutePreservesPlaybackPosition" methodname="WorldScoresCrossfadeAndMutePreservesPlaybackPosition" classname="Cascade.Tests.PlayableTests" runstate="Runnable" seed="1617425811" result="Passed" start-time="2026-10-07 17:19:53Z" end-time="2026-10-07 17:19:59Z" duration="6.016289" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+Saving results to: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/AudioHaptic-Oct07/playmode.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

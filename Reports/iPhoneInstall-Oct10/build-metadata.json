@@ -1,0 +1,15 @@
+{
+  "CFBundleIdentifier": "com.vickand.cascade",
+  "CFBundleShortVersionString": "0.1.0",
+  "CFBundleVersion": "202610101",
+  "MinimumOSVersion": "15.0",
+  "unityBuild": "Succeeded",
+  "unityErrors": 0,
+  "unityWarnings": 360,
+  "xcodeBuildExitCode": 0,
+  "signingVerified": true,
+  "installation": "Succeeded",
+  "launch": "Blocked: iPhone locked",
+  "runtimeLimits": "No on-device launch, visual, touch, audio or resume verification. Installed as an update; no uninstall or data reset.",
+  "projectSettingsRestored": true
+}

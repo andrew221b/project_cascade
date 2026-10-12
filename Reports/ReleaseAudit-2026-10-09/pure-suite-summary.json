@@ -1,0 +1,8 @@
+{
+  "pass": 555,
+  "fail": 0,
+  "skip": 2,
+  "timeouts": [],
+  "fixtures": 48,
+  "method": "Actual pure production C# and NUnit methods via isolated fixture processes,90-second fixture watchdog; native Unity tests excluded."
+}

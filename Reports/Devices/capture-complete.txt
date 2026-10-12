@@ -1,0 +1,1 @@
+12 native captures. Gameplay executed only in the hourglass transition, outside the state-invariant capture.

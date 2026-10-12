@@ -1,0 +1,72 @@
+[
+  {
+    "test": "InteractionTests.TapTapCommitsOneAdjacentExchange()",
+    "status": "Passed",
+    "ms": 81.47760000000001
+  },
+  {
+    "test": "InteractionTests.CancelledAndLongDragNeverSpendDurability(-1)",
+    "status": "Passed",
+    "ms": 20.9005
+  },
+  {
+    "test": "InteractionTests.CancelledAndLongDragNeverSpendDurability(0)",
+    "status": "Passed",
+    "ms": 20.8409
+  },
+  {
+    "test": "InteractionTests.CancelledAndLongDragNeverSpendDurability(2)",
+    "status": "Passed",
+    "ms": 19.0627
+  },
+  {
+    "test": "InteractionTests.AdjacentDragAcceptsOnlyItsCapturedPointer()",
+    "status": "Passed",
+    "ms": 19.7981
+  },
+  {
+    "test": "InteractionTests.PresentationDropsInputWithoutQueueAndDoesNotMutateCore()",
+    "status": "Passed",
+    "ms": 20.363
+  },
+  {
+    "test": "InteractionTests.PauseFocusAndCancelledPointerCannotQueueOrTick()",
+    "status": "Passed",
+    "ms": 19.0697
+  },
+  {
+    "test": "InteractionTests.PrecisionPreviewAndExecutionUseTheSameCost()",
+    "status": "Passed",
+    "ms": 21.848000000000003
+  },
+  {
+    "test": "InteractionTests.InvalidLockedSwapAndNoOpPreserveSelectionAndState()",
+    "status": "Passed",
+    "ms": 20.137
+  },
+  {
+    "test": "InteractionTests.CompactModeDoesNotPretendEightLargeHitAreas(8,320,True)",
+    "status": "Passed",
+    "ms": 0.1837
+  },
+  {
+    "test": "InteractionTests.CompactModeDoesNotPretendEightLargeHitAreas(7,390,True)",
+    "status": "Passed",
+    "ms": 0.0279
+  },
+  {
+    "test": "InteractionTests.CompactModeDoesNotPretendEightLargeHitAreas(8,600,False)",
+    "status": "Passed",
+    "ms": 0.0247
+  },
+  {
+    "test": "InteractionTests.CompactModeDoesNotPretendEightLargeHitAreas(6,320,False)",
+    "status": "Passed",
+    "ms": 0.024
+  },
+  {
+    "test": "InteractionTests.OrdinaryUndoCannotRestoreAnAwardedDelivery()",
+    "status": "Passed",
+    "ms": 19.1067
+  }
+]

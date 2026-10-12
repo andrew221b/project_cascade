@@ -1,0 +1,1 @@
+PASS: four native Unity renders; moving Undo with duplicate symbols, restored row, completion without score diamond. These do not measure physical-device touch latency or FPS.

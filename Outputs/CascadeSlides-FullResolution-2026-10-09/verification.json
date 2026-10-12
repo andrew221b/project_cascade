@@ -1,0 +1,28 @@
+{
+  "source_dimensions": [
+    4400,
+    23050
+  ],
+  "individual_png_files": 38,
+  "route_files": 34,
+  "archive_files": 4,
+  "route_dimensions": [
+    2101,
+    1011
+  ],
+  "archive_dimensions": [
+    971,
+    761
+  ],
+  "all_crops_match_source_pixels": true,
+  "zip_integrity_pass": true,
+  "archive_contains_png_only": true,
+  "visual_review_slides": [
+    1,
+    18,
+    38
+  ],
+  "source_snapshot_sha256": "8abc8af2e27935e56601a0a4f4797525e834a08f2e9318824826bce401a687e4",
+  "zip_bytes": 20772823,
+  "zip_sha256": "0cadda8a59f1a5a4fa6c84ed830a3df2a648c3faacb73c32fb901497b71000ad"
+}

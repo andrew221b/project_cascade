@@ -1,0 +1,87 @@
+[
+  {
+    "test": "HalfStarResultsTests.FiveExactRatingSteps(12,0,False,True,80,6)",
+    "status": "Passed",
+    "ms": 15.0929
+  },
+  {
+    "test": "HalfStarResultsTests.FiveExactRatingSteps(12,0,False,True,127,5)",
+    "status": "Passed",
+    "ms": 0.0397
+  },
+  {
+    "test": "HalfStarResultsTests.FiveExactRatingSteps(12,1,False,True,80,5)",
+    "status": "Passed",
+    "ms": 0.0189
+  },
+  {
+    "test": "HalfStarResultsTests.FiveExactRatingSteps(14,1,False,True,80,4)",
+    "status": "Passed",
+    "ms": 0.017
+  },
+  {
+    "test": "HalfStarResultsTests.FiveExactRatingSteps(19,2,False,True,80,3)",
+    "status": "Passed",
+    "ms": 0.0176
+  },
+  {
+    "test": "HalfStarResultsTests.FiveExactRatingSteps(21,0,False,True,80,2)",
+    "status": "Passed",
+    "ms": 0.0175
+  },
+  {
+    "test": "HalfStarResultsTests.FiveExactRatingSteps(12,0,True,True,80,2)",
+    "status": "Passed",
+    "ms": 0.0164
+  },
+  {
+    "test": "HalfStarResultsTests.FiveExactRatingSteps(12,0,False,False,80,2)",
+    "status": "Passed",
+    "ms": 0.0181
+  },
+  {
+    "test": "HalfStarResultsTests.FiveExactRatingSteps(10,0,False,True,80,2)",
+    "status": "Passed",
+    "ms": 0.0178
+  },
+  {
+    "test": "HalfStarResultsTests.OldWholeRatingsRemainWholeAndMalformedHalvesAreRejected()",
+    "status": "Passed",
+    "ms": 81.506700000000009
+  },
+  {
+    "test": "HalfStarResultsTests.ActualSlowOptimalWitnessAwardsAndPersistsTwoAndHalf()",
+    "status": "Passed",
+    "ms": 151.71040000000002
+  },
+  {
+    "test": "HalfStarResultsTests.ReplayHalfCreditIsBoundedMonotoneAndPaidOnce()",
+    "status": "Passed",
+    "ms": 7.6012
+  },
+  {
+    "test": "HalfStarResultsTests.CloudMergeKeepsHalfAndSeparateBestScore()",
+    "status": "Passed",
+    "ms": 18.8216
+  },
+  {
+    "test": "HalfStarServerChecks.PublishedReplayVerifierAcceptsRealHalfAndRejectsInflatedBest()",
+    "status": "Passed",
+    "ms": 608.51780000000008
+  },
+  {
+    "test": "HalfStarServerChecks.ServerVerifiesHalfReplayCreditAndPreservesLegacyFloorCredit()",
+    "status": "Passed",
+    "ms": 25.099600000000002
+  },
+  {
+    "test": "HalfStarServerChecks.ActualUndoWitnessEarnsOneAndHalfAndServerVerifiesIt()",
+    "status": "Passed",
+    "ms": 0.76540000000000008
+  },
+  {
+    "test": "HalfStarServerChecks.NewHalfFieldsDoNotAppearInLegacyJsonOrChangeItsRating()",
+    "status": "Passed",
+    "ms": 0.3674
+  }
+]

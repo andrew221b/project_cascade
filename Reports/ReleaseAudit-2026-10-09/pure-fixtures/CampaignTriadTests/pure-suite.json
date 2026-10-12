@@ -1,0 +1,17 @@
+[
+  {
+    "test": "CampaignTriadTests.RepairActuallyAddsNeededDurabilityAndDisablingItLosesTheSamePuzzle()",
+    "status": "Passed",
+    "ms": 23.729300000000002
+  },
+  {
+    "test": "CampaignTriadTests.RibbonAndFrostHaveRealGameplayConsequencesInAllThreeTasks()",
+    "status": "Passed",
+    "ms": 5.5583
+  },
+  {
+    "test": "CampaignTriadTests.TriadCheckpointRoundTripsThroughTheActualProfileStoreAndRetainsUndo()",
+    "status": "Passed",
+    "ms": 94.6556
+  }
+]

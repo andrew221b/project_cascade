@@ -1,0 +1,14 @@
+{
+    "width": 390,
+    "height": 844,
+    "minimumDeviceTextPixels": 0.0,
+    "buttons": [
+        {
+            "name": "Claim trophy",
+            "x": 85.97160339355469,
+            "y": 25.760005950927736,
+            "width": 218.0568084716797,
+            "height": 48.000003814697269
+        }
+    ]
+}

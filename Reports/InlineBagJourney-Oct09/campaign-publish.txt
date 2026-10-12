@@ -1,0 +1,7 @@
+Distinct recipe: C207 variant 1
+Distinct recipe: C209 variant 1
+Distinct recipe: C237 variant 1
+Distinct recipe: C251 variant 1
+Distinct recipe: C299 variant 1
+Distinct recipe: C301 variant 1
+PASS: 540 campaign recipes, 6471 primary/localized witness replays; resources published; existing metadata preserved.

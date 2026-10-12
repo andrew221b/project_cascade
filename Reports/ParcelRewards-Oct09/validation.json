@@ -1,0 +1,11 @@
+{
+  "pureNUnit": {"passed": 109, "failed": 0},
+  "cloudCodeBoundary": {"passed": 80, "transport": "fake SDK"},
+  "nativeUnityUI": "NOT RUN",
+  "liveCloud": "NOT RUN; redeploy shared recipe 3 sources before release",
+  "iphoneBuild": "NOT RUN",
+  "recipe": 3,
+  "guaranteedNewParcelCoins": 20,
+  "extraCampaignCoinsAt540Clears": 1080,
+  "legacyReceipts": "unchanged"
+}

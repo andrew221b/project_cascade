@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Passed" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-07 03:37:15Z" end-time="2026-10-07 03:37:27Z" duration="11.9574788">
+  <test-suite type="TestSuite" id="1112" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="101" result="Passed" start-time="2026-10-07 03:37:15Z" end-time="2026-10-07 03:37:27Z" duration="11.957479" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1106" name="Cascade.Tests.PlayMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.PlayMode.dll" runstate="Runnable" testcasecount="101" result="Passed" start-time="2026-10-07 03:37:15Z" end-time="2026-10-07 03:37:27Z" duration="11.794295" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="79826" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1107" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="101" result="Passed" start-time="2026-10-07 03:37:15Z" end-time="2026-10-07 03:37:27Z" duration="11.792381" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1108" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="101" result="Passed" start-time="2026-10-07 03:37:15Z" end-time="2026-10-07 03:37:27Z" duration="11.791343" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1103" name="WindAudioLifecycleTests" fullname="Cascade.Tests.WindAudioLifecycleTests" classname="Cascade.Tests.WindAudioLifecycleTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-07 03:37:15Z" end-time="2026-10-07 03:37:27Z" duration="11.789953" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1104" name="DisablingFeedbackSilencesWindWithoutRestartingOrReplacingItsLoop" fullname="Cascade.Tests.WindAudioLifecycleTests.DisablingFeedbackSilencesWindWithoutRestartingOrReplacingItsLoop" methodname="DisablingFeedbackSilencesWindWithoutRestartingOrReplacingItsLoop" classname="Cascade.Tests.WindAudioLifecycleTests" runstate="Runnable" seed="1996381065" result="Passed" start-time="2026-10-07 03:37:15Z" end-time="2026-10-07 03:37:17Z" duration="2.066816" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+There are no audio listeners in the scene. Please ensure there is always one audio listener in the scene
+]]></output>
+            </test-case>
+            <test-case id="1105" name="IndependentMusicAndSoundControlsAndOwnerDisablePreserveLoopPositions" fullname="Cascade.Tests.WindAudioLifecycleTests.IndependentMusicAndSoundControlsAndOwnerDisablePreserveLoopPositions" methodname="IndependentMusicAndSoundControlsAndOwnerDisablePreserveLoopPositions" classname="Cascade.Tests.WindAudioLifecycleTests" runstate="Runnable" seed="835525789" result="Passed" start-time="2026-10-07 03:37:17Z" end-time="2026-10-07 03:37:27Z" duration="9.716306" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Placeholder ConsentInformationClient
+Consent Info updated.
+Attempting to get `time` on an audio source that has a resource that is not a clip will always return 0.
+Attempting to get `time` on an audio source that has a resource that is not a clip will always return 0.
+Saving results to: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/VisualAuditAudio/playmode.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

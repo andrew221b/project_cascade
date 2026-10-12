@@ -1,0 +1,1 @@
+PASS: nine worlds sampled for 180 seconds at 10 Hz; max visitors=4 (max one extra); stable pooled renderers=49; freeze/resume; Reduced Motion; unchanged puzzle hash. All 17 dorsal/side species captured; actual Fly route recorded for four styles over 18 seconds at 12 fps. Native Unity camera renders, not synthetic screenshots. No phone build or physical-device performance test.

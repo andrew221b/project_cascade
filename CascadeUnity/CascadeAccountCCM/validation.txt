@@ -1,0 +1,60 @@
+2026-10-07 Cloud Code module validation
+
+SDK: official .NET 9.0.318 installed in /tmp/cascade-dotnet9 for this task.
+Production NuGets: Unity CloudCode APIs 0.0.21, Core 0.0.1, Logging 7.0.1, Newtonsoft.Json 13.0.3.
+
+PASS: actual Release solution build, 0 warnings / 0 errors.
+PASS: actual Linux x64 Release publish using FolderProfile; output bin/Release/net9.0/publish.
+PASS: 31 boundary assertions using production module/shared source and actual SDK DTOs via fake transport.
+Covered: actual embedded 184-node catalog; protected context identity; absent read; coherent bootstrap;
+durable duplicate request IDs and payload reuse rejection; stale revision and monotonic sequence;
+server-owned baseline ignores forged body base; new device cannot duplicate legacy tool stock;
+old sequence after receipt eviction; CAS conflict; request payload budget; verifier config fail-closed;
+global transaction owner same-player retry / other-player rejection; guarded first-create race;
+unsupported atomic creation rejects explicitly; response-budget rejection preserves committed state;
+ninth installation replaces oldest checkpoint; receipt sequence remains after checkpoint eviction;
+returning evicted device retains remote economy; differing nonempty joining economy reports conflict.
+Final scoped marker update: uploaded CloudAppliedRequestId / CloudAppliedEconomyConflict are excluded
+from the server JSON contract and explicitly scrubbed from account/baseline objects. Added assertions
+verify raw stored JSON contains neither marker, read/purchase replies reset accidental legacy values,
+and the next successful save removes legacy marker fields without changing the economic baseline.
+Final current-source Release build: 0 warnings / 0 errors. Final scoped module suite: 31 PASS.
+Linux publish above predates this final marker scrub; it was not repeated by request. Re-publish current
+source through the documented build/deployment workflow before deploying any server assembly.
+PASS: ccMR modulePath resolves to CascadeAccount.sln; installed CloudCode 2.8 importer field verified.
+PASS: source diff whitespace check; pure linked sources have no UnityEngine dependency.
+
+NOT RUN: live Cloud Code deployment, Cloud Save requests, parallel real worker races, actual store receipts.
+NOT VERIFIED: Cloud Save accepts the synthetic guard on a missing key. Unity documentation requires
+omitting writeLock during creation and does not guarantee atomic create-if-absent. Guarded creation
+must be validated or replaced with a trusted atomic provisioning / transaction store BEFORE activation.
+The module deliberately rejects unsupported creation instead of attempting an unlocked overwrite.
+This fake transport models safe guarded creation; it does not prove that Unity implements that behavior.
+
+NOT IMPLEMENTED: cryptographic store-to-player appAccountToken / obfuscatedExternalAccountId binding;
+refund / revocation ingestion; complete server replay verification for offline clear claims.
+See README.md and Backend/ReceiptVerifier/README.md for activation configuration and limits.
+
+2026-10-07 wardrobe/chest scoped update
+PASS: 43 current-source Cloud Code boundary assertions through the same fake SDK transport.
+The current embedded catalog contains540 published nodes (the184-node build above is historical).
+Added coverage: shared16-look catalog/prices; omitted RecipeVersion0 preserves prior-recipe JSON
+baseline checksums; earned tool claim sync without accepting unverified paid/ad grants; replay grants
+one tool; joining device retains canonical tools and leaves an unrepresented chest claimable;
+forged tool product rejected; conflicting offline fragments preserve remote receipts, fill missing
+orders, and cross safely from12 original fragments into recipe1 bonus chests.
+PASS: 85 focused pure-C# source checks using standalone NUnit assertions and Unity's installed
+compiler/Mono runtime, including legacy restore, atomic rollback, durable reload, capped fallback,
+recipe0 preservation, concurrent same-tool receipt, duplicate cosmetic conflict and negative wallet.
+These are not Unity Editor test execution, a Unity/player build, live cloud verification or a claim
+that the economic cadence is enjoyable. No new publish or deployment was run after this update.
+
+2026-10-08 screen cosmetic scoped update
+PASS: 50 current-source fake SDK boundary checks, including7 new screen catalog price, omitted
+legacy-slot/hash, financed purchase/equip, persisted independent slots, joining-device adoption,
+unowned selection and wrong-category rejection checks. The original16 IDs/prices and recipes remain.
+PASS: 93 focused pure-C# source checks via standalone NUnit assertions using installed Unity
+compiler/Mono, including8 new exact-price/coin-only, ownership/category, independent equipment,
+atomic save rollback/retry, default JSON omission, durable mode/reload and three-way merge checks.
+PASS: focused source whitespace check. No new package, Unity Editor/runtime test, player build,
+publish or live deployment was run; Mac remains locked. Existing activation limitations still apply.

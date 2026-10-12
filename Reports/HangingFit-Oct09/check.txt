@@ -1,0 +1,1 @@
+PASS: old tight-gap footprint reproduces overflow; 11988 fitted angle/gap/scale cases clear timer, cord and deck reserves. Native animation NOT RUN.

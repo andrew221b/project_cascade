@@ -1,0 +1,10 @@
+PASS threshold wind_chime
+PASS threshold rain_badge
+PASS threshold copper_acorn
+PASS threshold beacon_brooch
+PASS TrophyReplayCannotFarmOwnershipAndEarnedTrophyCannotBeBoughtAgain
+PASS PurchasedTrophyStaysPermanentWhenItsMilestoneIsLaterEarned
+PASS EarnedCosmeticAndEquipmentSurviveModeSwitchAndDurableReload
+PASS PurchaseCapsWalletAndPermanentOwnershipAreEnforced
+PASS ExpandedTrophiesEquipWithoutChangingParcelReceiptsOrPuzzleStats
+PASS 9 focused cosmetic ownership cases; first-four fragment route, eight IDs and price240 preserved.

@@ -1,0 +1,67 @@
+[
+  {
+    "test": "FiveStarResultsTests.RankHasFiveMeaningfulStepsAndHelpRetainsItsCeiling(12,0,False,True,80,5)",
+    "status": "Passed",
+    "ms": 5.8943
+  },
+  {
+    "test": "FiveStarResultsTests.RankHasFiveMeaningfulStepsAndHelpRetainsItsCeiling(12,0,False,True,127,4)",
+    "status": "Passed",
+    "ms": 0.0318
+  },
+  {
+    "test": "FiveStarResultsTests.RankHasFiveMeaningfulStepsAndHelpRetainsItsCeiling(14,1,False,True,80,4)",
+    "status": "Passed",
+    "ms": 0.0166
+  },
+  {
+    "test": "FiveStarResultsTests.RankHasFiveMeaningfulStepsAndHelpRetainsItsCeiling(15,2,False,True,80,3)",
+    "status": "Passed",
+    "ms": 0.016800000000000002
+  },
+  {
+    "test": "FiveStarResultsTests.RankHasFiveMeaningfulStepsAndHelpRetainsItsCeiling(12,3,False,True,80,2)",
+    "status": "Passed",
+    "ms": 0.0196
+  },
+  {
+    "test": "FiveStarResultsTests.RankHasFiveMeaningfulStepsAndHelpRetainsItsCeiling(12,0,True,True,80,2)",
+    "status": "Passed",
+    "ms": 0.0154
+  },
+  {
+    "test": "FiveStarResultsTests.RankHasFiveMeaningfulStepsAndHelpRetainsItsCeiling(12,0,False,False,80,1)",
+    "status": "Passed",
+    "ms": 0.015600000000000001
+  },
+  {
+    "test": "FiveStarResultsTests.RankHasFiveMeaningfulStepsAndHelpRetainsItsCeiling(20,0,False,True,80,1)",
+    "status": "Passed",
+    "ms": 0.019
+  },
+  {
+    "test": "FiveStarResultsTests.RankHasFiveMeaningfulStepsAndHelpRetainsItsCeiling(10,0,False,True,80,1)",
+    "status": "Passed",
+    "ms": 0.0184
+  },
+  {
+    "test": "FiveStarResultsTests.UnknownLegacyTimeCannotEarnSpeedStarAndBoundaryIsInclusive()",
+    "status": "Passed",
+    "ms": 0.096800000000000011
+  },
+  {
+    "test": "FiveStarResultsTests.UndoPreservesActualMovesAndTimeAndFailedCommandsDoNotCount()",
+    "status": "Passed",
+    "ms": 94.6312
+  },
+  {
+    "test": "FiveStarResultsTests.LegacyAttemptIsUnknownAndInvalidTelemetryIsRejected()",
+    "status": "Passed",
+    "ms": 2.1006
+  },
+  {
+    "test": "FiveStarResultsTests.AllThreeStageTelemetryAggregatesAndLegacyReceiptsAreNotRescored()",
+    "status": "Passed",
+    "ms": 479.57980000000003
+  }
+]

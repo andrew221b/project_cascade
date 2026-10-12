@@ -1,0 +1,6 @@
+TrophyEconomyTests: cumulative 19 passed, 0 failed
+WardrobeParcelTests: cumulative 34 passed, 0 failed
+ScreenCosmeticTests: cumulative 42 passed, 0 failed
+CloudReconcilerTests: cumulative 56 passed, 0 failed
+LevelDefinitionTests: cumulative 96 passed, 0 failed
+RewardTests: cumulative 109 passed, 0 failed

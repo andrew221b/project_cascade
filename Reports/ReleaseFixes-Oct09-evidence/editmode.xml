@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="31" result="Passed" total="31" passed="31" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-09 05:40:27Z" end-time="2026-10-09 05:40:46Z" duration="18.0847727">
+  <test-suite type="TestSuite" id="1000" name="CascadeUnity" fullname="CascadeUnity" runstate="Runnable" testcasecount="863" result="Passed" start-time="2026-10-09 05:40:27Z" end-time="2026-10-09 05:40:46Z" duration="18.084773" total="31" passed="31" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1963" name="Cascade.Tests.EditMode.dll" fullname="/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/ScriptAssemblies/Cascade.Tests.EditMode.dll" runstate="Runnable" testcasecount="862" result="Passed" start-time="2026-10-09 05:40:28Z" end-time="2026-10-09 05:40:46Z" duration="17.332544" total="31" passed="31" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24227" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1964" name="Cascade" fullname="Cascade" runstate="Runnable" testcasecount="862" result="Passed" start-time="2026-10-09 05:40:28Z" end-time="2026-10-09 05:40:46Z" duration="17.331930" total="31" passed="31" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1965" name="Tests" fullname="Cascade.Tests" runstate="Runnable" testcasecount="862" result="Passed" start-time="2026-10-09 05:40:28Z" end-time="2026-10-09 05:40:46Z" duration="17.331308" total="31" passed="31" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1205" name="CloudJournalTests" fullname="Cascade.Tests.CloudJournalTests" classname="Cascade.Tests.CloudJournalTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-09 05:40:28Z" end-time="2026-10-09 05:40:30Z" duration="1.629065" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1208" name="BothCorruptPreserveMainAndCreateDifferentDevice" fullname="Cascade.Tests.CloudJournalTests.BothCorruptPreserveMainAndCreateDifferentDevice" methodname="BothCorruptPreserveMainAndCreateDifferentDevice" classname="Cascade.Tests.CloudJournalTests" runstate="Runnable" seed="1015862159" result="Passed" start-time="2026-10-09 05:40:29Z" end-time="2026-10-09 05:40:29Z" duration="0.778315" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1207" name="CorruptMainUsesPreviousAtomicJournal" fullname="Cascade.Tests.CloudJournalTests.CorruptMainUsesPreviousAtomicJournal" methodname="CorruptMainUsesPreviousAtomicJournal" classname="Cascade.Tests.CloudJournalTests" runstate="Runnable" seed="924897889" result="Passed" start-time="2026-10-09 05:40:29Z" end-time="2026-10-09 05:40:30Z" duration="0.357280" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1211" name="ExplicitProgressRejectionRetiresSnapshotButNeverReusesItsSequence" fullname="Cascade.Tests.CloudJournalTests.ExplicitProgressRejectionRetiresSnapshotButNeverReusesItsSequence" methodname="ExplicitProgressRejectionRetiresSnapshotButNeverReusesItsSequence" classname="Cascade.Tests.CloudJournalTests" runstate="Runnable" seed="1073776914" result="Passed" start-time="2026-10-09 05:40:30Z" end-time="2026-10-09 05:40:30Z" duration="0.005777" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1209" name="InvalidPendingPairIsNeverSaved" fullname="Cascade.Tests.CloudJournalTests.InvalidPendingPairIsNeverSaved" methodname="InvalidPendingPairIsNeverSaved" classname="Cascade.Tests.CloudJournalTests" runstate="Runnable" seed="1344026996" result="Passed" start-time="2026-10-09 05:40:30Z" end-time="2026-10-09 05:40:30Z" duration="0.003912" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1212" name="JsonProfileRoundTripHasNoDerivedProperties" fullname="Cascade.Tests.CloudJournalTests.JsonProfileRoundTripHasNoDerivedProperties" methodname="JsonProfileRoundTripHasNoDerivedProperties" classname="Cascade.Tests.CloudJournalTests" runstate="Runnable" seed="6777842" result="Passed" start-time="2026-10-09 05:40:30Z" end-time="2026-10-09 05:40:30Z" duration="0.113134" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1210" name="PastPendingSequenceIsRejected" fullname="Cascade.Tests.CloudJournalTests.PastPendingSequenceIsRejected" methodname="PastPendingSequenceIsRejected" classname="Cascade.Tests.CloudJournalTests" runstate="Runnable" seed="1670339" result="Passed" start-time="2026-10-09 05:40:30Z" end-time="2026-10-09 05:40:30Z" duration="0.000746" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1206" name="PendingRequestSurvivesRestart" fullname="Cascade.Tests.CloudJournalTests.PendingRequestSurvivesRestart" methodname="PendingRequestSurvivesRestart" classname="Cascade.Tests.CloudJournalTests" runstate="Runnable" seed="1535022059" result="Passed" start-time="2026-10-09 05:40:30Z" end-time="2026-10-09 05:40:30Z" duration="0.004324" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1213" name="CloudReconcilerTests" fullname="Cascade.Tests.CloudReconcilerTests" classname="Cascade.Tests.CloudReconcilerTests" runstate="Runnable" testcasecount="14" result="Passed" start-time="2026-10-09 05:40:30Z" end-time="2026-10-09 05:40:31Z" duration="1.594484" total="14" passed="14" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1222" name="ClaimedParcelsVisitsAndClearIncomeDoNotRepeatAcrossModesOrMerges" fullname="Cascade.Tests.CloudReconcilerTests.ClaimedParcelsVisitsAndClearIncomeDoNotRepeatAcrossModesOrMerges" methodname="ClaimedParcelsVisitsAndClearIncomeDoNotRepeatAcrossModesOrMerges" classname="Cascade.Tests.CloudReconcilerTests" runstate="Runnable" seed="1719415567" result="Passed" start-time="2026-10-09 05:40:30Z" end-time="2026-10-09 05:40:30Z" duration="0.488005" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1218" name="ConcurrentOverspendOrDoubleConsumptionKeepsRemoteEconomy" fullname="Cascade.Tests.CloudReconcilerTests.ConcurrentOverspendOrDoubleConsumptionKeepsRemoteEconomy" methodname="ConcurrentOverspendOrDoubleConsumptionKeepsRemoteEconomy" classname="Cascade.Tests.CloudReconcilerTests" runstate="Runnable" seed="1415071736" result="Passed" start-time="2026-10-09 05:40:30Z" end-time="2026-10-09 05:40:30Z" duration="0.009061" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1223" name="ConflictingParcelClaimsKeepCanonicalGiftAndRemoteEconomy" fullname="Cascade.Tests.CloudReconcilerTests.ConflictingParcelClaimsKeepCanonicalGiftAndRemoteEconomy" methodname="ConflictingParcelClaimsKeepCanonicalGiftAndRemoteEconomy" classname="Cascade.Tests.CloudReconcilerTests" runstate="Runnable" seed="94776027" result="Passed" start-time="2026-10-09 05:40:30Z" end-time="2026-10-09 05:40:30Z" duration="0.005723" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1226" name="DeviceCheckpointsAreBoundedLeanAndRestoreAttemptWithoutReplacingProgress" fullname="Cascade.Tests.CloudReconcilerTests.DeviceCheckpointsAreBoundedLeanAndRestoreAttemptWithoutReplacingProgress" methodname="DeviceCheckpointsAreBoundedLeanAndRestoreAttemptWithoutReplacingProgress" classname="Cascade.Tests.CloudReconcilerTests" runstate="Runnable" seed="657586552" result="Passed" start-time="2026-10-09 05:40:30Z" end-time="2026-10-09 05:40:31Z" duration="0.413060" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1221" name="FirstImportScrubsPaidValueAndRetainsOnlyEarnedFinancedTools" fullname="Cascade.Tests.CloudReconcilerTests.FirstImportScrubsPaidValueAndRetainsOnlyEarnedFinancedTools" methodname="FirstImportScrubsPaidValueAndRetainsOnlyEarnedFinancedTools" classname="Cascade.Tests.CloudReconcilerTests" runstate="Runnable" seed="1679367677" result="Passed" start-time="2026-10-09 05:40:31Z" end-time="2026-10-09 05:40:31Z" duration="0.017367" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1219" name="GrantsCannotChangeDisappearOrArriveThroughUnverifiedSync" fullname="Cascade.Tests.CloudReconcilerTests.GrantsCannotChangeDisappearOrArriveThroughUnverifiedSync" methodname="GrantsCannotChangeDisappearOrArriveThroughUnverifiedSync" classname="Cascade.Tests.CloudReconcilerTests" runstate="Runnable" seed="1231416595" result="Passed" start-time="2026-10-09 05:40:31Z" end-time="2026-10-09 05:40:31Z" duration="0.030862" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1217" name="IndependentSpendsAndConsumptionsMergeAsDeltasWithoutAddingBalances" fullname="Cascade.Tests.CloudReconcilerTests.IndependentSpendsAndConsumptionsMergeAsDeltasWithoutAddingBalances" methodname="IndependentSpendsAndConsumptionsMergeAsDeltasWithoutAddingBalances" classname="Cascade.Tests.CloudReconcilerTests" runstate="Runnable" seed="595227661" result="Passed" start-time="2026-10-09 05:40:31Z" end-time="2026-10-09 05:40:31Z" duration="0.006647" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1225" name="InvalidAuthorityCannotBecomeTheConflictFallback" fullname="Cascade.Tests.CloudReconcilerTests.InvalidAuthorityCannotBecomeTheConflictFallback" methodname="InvalidAuthorityCannotBecomeTheConflictFallback" classname="Cascade.Tests.CloudReconcilerTests" runstate="Runnable" seed="1619410885" result="Passed" start-time="2026-10-09 05:40:31Z" end-time="2026-10-09 05:40:31Z" duration="0.009349" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1216" name="MasteryUsesContentIdentityAndBestRoutesWithoutCrossingVersions" fullname="Cascade.Tests.CloudReconcilerTests.MasteryUsesContentIdentityAndBestRoutesWithoutCrossingVersions" methodname="MasteryUsesContentIdentityAndBestRoutesWithoutCrossingVersions" classname="Cascade.Tests.CloudReconcilerTests" runstate="Runnable" seed="622129304" result="Passed" start-time="2026-10-09 05:40:31Z" end-time="2026-10-09 05:40:31Z" duration="0.014982" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1214" name="MergedStarAndScoreBestsKeepEachSourceProof" fullname="Cascade.Tests.CloudReconcilerTests.MergedStarAndScoreBestsKeepEachSourceProof" methodname="MergedStarAndScoreBestsKeepEachSourceProof" classname="Cascade.Tests.CloudReconcilerTests" runstate="Runnable" seed="2099952137" result="Passed" start-time="2026-10-09 05:40:31Z" end-time="2026-10-09 05:40:31Z" duration="0.025138" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1227" name="MiddleDescentAndItsPinnedDirectionRemainOneDeviceCheckpoint" fullname="Cascade.Tests.CloudReconcilerTests.MiddleDescentAndItsPinnedDirectionRemainOneDeviceCheckpoint" methodname="MiddleDescentAndItsPinnedDirectionRemainOneDeviceCheckpoint" classname="Cascade.Tests.CloudReconcilerTests" runstate="Runnable" seed="493387866" result="Passed" start-time="2026-10-09 05:40:31Z" end-time="2026-10-09 05:40:31Z" duration="0.548372" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1215" name="ProgressMergesPerModeWhileLocalAttemptAndPreferencesRemainCoherent" fullname="Cascade.Tests.CloudReconcilerTests.ProgressMergesPerModeWhileLocalAttemptAndPreferencesRemainCoherent" methodname="ProgressMergesPerModeWhileLocalAttemptAndPreferencesRemainCoherent" classname="Cascade.Tests.CloudReconcilerTests" runstate="Runnable" seed="1935223253" result="Passed" start-time="2026-10-09 05:40:31Z" end-time="2026-10-09 05:40:31Z" duration="0.006362" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1224" name="UnknownUploadedNodesCannotFinanceInventory" fullname="Cascade.Tests.CloudReconcilerTests.UnknownUploadedNodesCannotFinanceInventory" methodname="UnknownUploadedNodesCannotFinanceInventory" classname="Cascade.Tests.CloudReconcilerTests" runstate="Runnable" seed="1016584849" result="Passed" start-time="2026-10-09 05:40:31Z" end-time="2026-10-09 05:40:31Z" duration="0.001426" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1220" name="VerifiedReceiptReplayAndHintStateReplayAreIdempotent" fullname="Cascade.Tests.CloudReconcilerTests.VerifiedReceiptReplayAndHintStateReplayAreIdempotent" methodname="VerifiedReceiptReplayAndHintStateReplayAreIdempotent" classname="Cascade.Tests.CloudReconcilerTests" runstate="Runnable" seed="179414623" result="Passed" start-time="2026-10-09 05:40:31Z" end-time="2026-10-09 05:40:31Z" duration="0.006208" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1248" name="CompletionProgressTests" fullname="Cascade.Tests.CompletionProgressTests" classname="Cascade.Tests.CompletionProgressTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-09 05:40:31Z" end-time="2026-10-09 05:40:34Z" duration="2.092513" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1249" name="IndependentPersonalBestsRetainTheirOwnEvidenceUntilOneRunDominates" fullname="Cascade.Tests.CompletionProgressTests.IndependentPersonalBestsRetainTheirOwnEvidenceUntilOneRunDominates" methodname="IndependentPersonalBestsRetainTheirOwnEvidenceUntilOneRunDominates" classname="Cascade.Tests.CompletionProgressTests" runstate="Runnable" seed="1542998150" result="Passed" start-time="2026-10-09 05:40:33Z" end-time="2026-10-09 05:40:34Z" duration="0.280921" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1674" name="PublishedTriadStoreTests" fullname="Cascade.Tests.PublishedTriadStoreTests" classname="Cascade.Tests.PublishedTriadStoreTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-09 05:40:34Z" end-time="2026-10-09 05:40:45Z" duration="11.104056" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1677" name="CachedStagesNeverShareMutableRunState" fullname="Cascade.Tests.PublishedTriadStoreTests.CachedStagesNeverShareMutableRunState" methodname="CachedStagesNeverShareMutableRunState" classname="Cascade.Tests.PublishedTriadStoreTests" runstate="Runnable" seed="749360753" result="Passed" start-time="2026-10-09 05:40:34Z" end-time="2026-10-09 05:40:36Z" duration="2.352828" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1676" name="EveryPublishedAndLocalizedCertificateReplaysWithoutRegeneration" fullname="Cascade.Tests.PublishedTriadStoreTests.EveryPublishedAndLocalizedCertificateReplaysWithoutRegeneration" methodname="EveryPublishedAndLocalizedCertificateReplaysWithoutRegeneration" classname="Cascade.Tests.PublishedTriadStoreTests" runstate="Runnable" seed="1496025594" result="Passed" start-time="2026-10-09 05:40:36Z" end-time="2026-10-09 05:40:42Z" duration="6.281742" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1675" name="PartialOrCorruptRecipePublicationIsRejected" fullname="Cascade.Tests.PublishedTriadStoreTests.PartialOrCorruptRecipePublicationIsRejected" methodname="PartialOrCorruptRecipePublicationIsRejected" classname="Cascade.Tests.PublishedTriadStoreTests" runstate="Runnable" seed="1140588509" result="Passed" start-time="2026-10-09 05:40:42Z" end-time="2026-10-09 05:40:42Z" duration="0.220377" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1678" name="StaleCatalogOrCustomDraftCannotUsePublishedCertificates" fullname="Cascade.Tests.PublishedTriadStoreTests.StaleCatalogOrCustomDraftCannotUsePublishedCertificates" methodname="StaleCatalogOrCustomDraftCannotUsePublishedCertificates" classname="Cascade.Tests.PublishedTriadStoreTests" runstate="Runnable" seed="1662881710" result="Passed" start-time="2026-10-09 05:40:42Z" end-time="2026-10-09 05:40:45Z" duration="2.245706" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1690" name="ReleasePersistenceTests" fullname="Cascade.Tests.ReleasePersistenceTests" classname="Cascade.Tests.ReleasePersistenceTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-09 05:40:45Z" end-time="2026-10-09 05:40:46Z" duration="0.904462" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1691" name="AutosaveCapturesAnImmutableSnapshotAndKeepsNewestCheckpoint" fullname="Cascade.Tests.ReleasePersistenceTests.AutosaveCapturesAnImmutableSnapshotAndKeepsNewestCheckpoint" methodname="AutosaveCapturesAnImmutableSnapshotAndKeepsNewestCheckpoint" classname="Cascade.Tests.ReleasePersistenceTests" runstate="Runnable" seed="787574094" result="Passed" start-time="2026-10-09 05:40:45Z" end-time="2026-10-09 05:40:45Z" duration="0.733760" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1692" name="DurablePurchaseBarrierCannotBeOverwrittenByAnOlderAutosave" fullname="Cascade.Tests.ReleasePersistenceTests.DurablePurchaseBarrierCannotBeOverwrittenByAnOlderAutosave" methodname="DurablePurchaseBarrierCannotBeOverwrittenByAnOlderAutosave" classname="Cascade.Tests.ReleasePersistenceTests" runstate="Runnable" seed="1221963164" result="Passed" start-time="2026-10-09 05:40:45Z" end-time="2026-10-09 05:40:45Z" duration="0.051909" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1693" name="FailedBackgroundWriteRemainsRetryableAndReportsTheError" fullname="Cascade.Tests.ReleasePersistenceTests.FailedBackgroundWriteRemainsRetryableAndReportsTheError" methodname="FailedBackgroundWriteRemainsRetryableAndReportsTheError" classname="Cascade.Tests.ReleasePersistenceTests" runstate="Runnable" seed="1674762110" result="Passed" start-time="2026-10-09 05:40:45Z" end-time="2026-10-09 05:40:45Z" duration="0.026628" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1695" name="LargeProfileTransportRetainsEveryReceiptAndAcceptsLegacyJson" fullname="Cascade.Tests.ReleasePersistenceTests.LargeProfileTransportRetainsEveryReceiptAndAcceptsLegacyJson" methodname="LargeProfileTransportRetainsEveryReceiptAndAcceptsLegacyJson" classname="Cascade.Tests.ReleasePersistenceTests" runstate="Runnable" seed="1750989451" result="Passed" start-time="2026-10-09 05:40:45Z" end-time="2026-10-09 05:40:46Z" duration="0.033562" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1694" name="SmallCompressedBombCannotExpandPastTheDecodedBudget" fullname="Cascade.Tests.ReleasePersistenceTests.SmallCompressedBombCannotExpandPastTheDecodedBudget" methodname="SmallCompressedBombCannotExpandPastTheDecodedBudget" classname="Cascade.Tests.ReleasePersistenceTests" runstate="Runnable" seed="1244412369" result="Passed" start-time="2026-10-09 05:40:46Z" end-time="2026-10-09 05:40:46Z" duration="0.055920" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: /Users/andrew/Library/Application Support/DefaultCompany/CascadeUnity/TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

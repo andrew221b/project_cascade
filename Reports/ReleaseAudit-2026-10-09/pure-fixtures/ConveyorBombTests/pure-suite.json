@@ -1,0 +1,62 @@
+[
+  {
+    "test": "ConveyorBombTests.DefuseOnLastTickPrecedesExplosion()",
+    "status": "Passed",
+    "ms": 16.9158
+  },
+  {
+    "test": "ConveyorBombTests.UsefulBlastDeliversTargetAndPreservesSymbols()",
+    "status": "Passed",
+    "ms": 1.2053
+  },
+  {
+    "test": "ConveyorBombTests.BlastDamageNeverCarriesToNextFloor()",
+    "status": "Passed",
+    "ms": 0.3683
+  },
+  {
+    "test": "ConveyorBombTests.DropTicksOldBombThenExplodesOrAbandons(1,1,0)",
+    "status": "Passed",
+    "ms": 0.1469
+  },
+  {
+    "test": "ConveyorBombTests.DropTicksOldBombThenExplodesOrAbandons(2,0,1)",
+    "status": "Passed",
+    "ms": 0.0352
+  },
+  {
+    "test": "ConveyorBombTests.EntryTransformRunsBeforeContactWithoutTick()",
+    "status": "Passed",
+    "ms": 1.1075000000000002
+  },
+  {
+    "test": "ConveyorBombTests.EntryAppliesExactlyOneTransform(ShiftLeftOne,ABCD)",
+    "status": "Passed",
+    "ms": 0.0975
+  },
+  {
+    "test": "ConveyorBombTests.EntryAppliesExactlyOneTransform(ShiftRightOne,CDAB)",
+    "status": "Passed",
+    "ms": 0.051000000000000004
+  },
+  {
+    "test": "ConveyorBombTests.EntryAppliesExactlyOneTransform(MirrorNext,CBAD)",
+    "status": "Passed",
+    "ms": 0.1129
+  },
+  {
+    "test": "ConveyorBombTests.NextFloorBombDoesNotTickOnLanding()",
+    "status": "Passed",
+    "ms": 0.97000000000000008
+  },
+  {
+    "test": "ConveyorBombTests.NoOpAndPreviewCannotAdvanceBomb()",
+    "status": "Passed",
+    "ms": 0.8727
+  },
+  {
+    "test": "ConveyorBombTests.DefusedBombNeverCountsAgain()",
+    "status": "Passed",
+    "ms": 0.10310000000000001
+  }
+]

@@ -1,0 +1,7 @@
+Body: 72 Cyrillic/apostrophe characters verified; static 80/8, scale 1 and baked glyph tables retained.
+Title: 72 Cyrillic/apostrophe characters verified; static 80/8, scale 1 and baked glyph tables retained.
+McLaren Cyrillic fallback = existing Balsamiq Sans Regular; weight 700 = existing Bold asset. Nunito reading font retained for all locales.
+English asset was previously untracked: git HEAD comparison unavailable. Link-only replacement was checked against its complete pre-edit contents during the edit. No source/atlas/meta edit to McLaren.
+No new font atlas, download, package or GUID. Static asset links verified; typography builder preserves them.
+Actual TTF specimen compared locally; near-matching cap height (Balsamiq 58 / McLaren 57 at 80-point bake).
+Native Unity rendering/locale switching/320px layout NOT RUN: bounded Unity MCP project-root request did not return. No iPhone build or compilation-only check.

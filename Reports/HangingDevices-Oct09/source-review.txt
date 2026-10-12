@@ -1,0 +1,9 @@
+Source/asset review only — 2026-10-09
+BranchStops: RGBA 1254x1254; 1156618 fully transparent pixels; all four corners alpha 0.
+PNG SHA256: 585887cc14e75617c477e6d647abde19712770fea38a5cd4dbf85b5697eb351a
+META SHA256: 8be30bc06b2f47d7784da2787ae7c0950aa3b24d2f7d3242bebff4237467d0d8
+Existing illustrated shader: unconditional alpha clip, per-renderer atlas UV, world lighting. No runtime alpha-test keyword dependency.
+All six live dock types share desired rope length 64 screen pixels, bounded by the next deck or receiver caption and the current animated body/timer footprint with 10-pixel clearance.
+Native visual check, PlayMode regression and player render NOT RUN: bounded Unity MCP project-root query did not return. Previous native app access reported a locked Mac.
+No iPhone export/build/install; no compilation-only check.
+Pending native review: six bodies at 390/320 widths, 1–4 floors, bomb countdown, body reactions, gust, pause/reduced motion; branch stops on daytime/night skies. Dense layouts may shorten cords to preserve clearance.

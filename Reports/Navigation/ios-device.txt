@@ -1,0 +1,8 @@
+Device=iPhone 17
+CoreDevice installation=success
+CoreDevice launch=blocked: device locked
+BundleIdentifier=com.vickand.cascade
+User app data not erased; update uses the same bundle ID.
+User requested stopping automatic phone updates; no launch retry or further device action.
+Future phone builds/installations require a separate explicit request.
+Physical screen, gyro, touch, haptics and FPS were not inspected.

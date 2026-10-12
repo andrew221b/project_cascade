@@ -1,0 +1,42 @@
+[
+  {
+    "test": "ScreenCosmeticTests.AppendedCatalogPricesUseCoinsAndPreserveMikaAndLootIds()",
+    "status": "Passed",
+    "ms": 121.93230000000001
+  },
+  {
+    "test": "ScreenCosmeticTests.OwnershipCategoryAndIndependentSlotsAreEnforced()",
+    "status": "Passed",
+    "ms": 3.2562
+  },
+  {
+    "test": "ScreenCosmeticTests.PurchaseAndEquipFailuresRollBackAndCanRetry()",
+    "status": "Passed",
+    "ms": 1.578
+  },
+  {
+    "test": "ScreenCosmeticTests.MissingSlotsAreOmittedAndDurableSlotsSurviveModeSwitchReload()",
+    "status": "Passed",
+    "ms": 68.232
+  },
+  {
+    "test": "ScreenCosmeticTests.IndependentRemoteAndLocalSlotChangesMergeWithoutSpending()",
+    "status": "Passed",
+    "ms": 19.4781
+  },
+  {
+    "test": "ScreenCosmeticTests.LocalUnequipWinsSimultaneousRemoteChange()",
+    "status": "Passed",
+    "ms": 4.0494
+  },
+  {
+    "test": "ScreenCosmeticTests.RejectedOwnershipFallsBackToRemoteAndJoiningDeviceAdoptsAccountSlots()",
+    "status": "Passed",
+    "ms": 2.0137
+  },
+  {
+    "test": "ScreenCosmeticTests.PreviewServiceCannotPersistentlyEquipScreenItems()",
+    "status": "Passed",
+    "ms": 0.4998
+  }
+]

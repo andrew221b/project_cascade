@@ -1,0 +1,137 @@
+{
+  "captures": [
+    {
+      "capture": "bomb-garden.png",
+      "width": 390,
+      "height": 844,
+      "minButtonPixels": 48.0
+    },
+    {
+      "capture": "copper-map.png",
+      "width": 390,
+      "height": 844,
+      "minButtonPixels": 60.0
+    },
+    {
+      "capture": "copper-orchard.png",
+      "width": 390,
+      "height": 844,
+      "minButtonPixels": 48.0
+    },
+    {
+      "capture": "direct-c01-small.png",
+      "width": 320,
+      "height": 693,
+      "minButtonPixels": 47.999969482421875
+    },
+    {
+      "capture": "direct-c01.png",
+      "width": 390,
+      "height": 844,
+      "minButtonPixels": 48.0
+    },
+    {
+      "capture": "fail.png",
+      "width": 320,
+      "height": 693,
+      "minButtonPixels": 47.999969482421875
+    },
+    {
+      "capture": "guide.png",
+      "width": 390,
+      "height": 844,
+      "minButtonPixels": 59.99998474121094
+    },
+    {
+      "capture": "held-piece.png",
+      "width": 390,
+      "height": 844,
+      "minButtonPixels": 48.0
+    },
+    {
+      "capture": "map-phone.png",
+      "width": 390,
+      "height": 844,
+      "minButtonPixels": 60.0
+    },
+    {
+      "capture": "map-small.png",
+      "width": 320,
+      "height": 693,
+      "minButtonPixels": 49.265380859375
+    },
+    {
+      "capture": "map-wide.png",
+      "width": 1440,
+      "height": 900,
+      "minButtonPixels": 63.98095703125
+    },
+    {
+      "capture": "mika-dialogue-small.png",
+      "width": 320,
+      "height": 693,
+      "minButtonPixels": 52.668006896972656
+    },
+    {
+      "capture": "mika-dialogue.png",
+      "width": 390,
+      "height": 844,
+      "minButtonPixels": 64.14402770996094
+    },
+    {
+      "capture": "mixed8.png",
+      "width": 320,
+      "height": 693,
+      "minButtonPixels": 47.999969482421875
+    },
+    {
+      "capture": "pause.png",
+      "width": 390,
+      "height": 844,
+      "minButtonPixels": 59.999969482421875
+    },
+    {
+      "capture": "pip-dialogue.png",
+      "width": 390,
+      "height": 844,
+      "minButtonPixels": 64.14402770996094
+    },
+    {
+      "capture": "rain-map.png",
+      "width": 390,
+      "height": 844,
+      "minButtonPixels": 60.0
+    },
+    {
+      "capture": "rain-mill.png",
+      "width": 390,
+      "height": 844,
+      "minButtonPixels": 48.0
+    },
+    {
+      "capture": "rain-small.png",
+      "width": 320,
+      "height": 693,
+      "minButtonPixels": 47.999969482421875
+    },
+    {
+      "capture": "rue-dialogue-small.png",
+      "width": 320,
+      "height": 693,
+      "minButtonPixels": 52.668006896972656
+    },
+    {
+      "capture": "settings.png",
+      "width": 320,
+      "height": 693,
+      "minButtonPixels": 49.26539611816406
+    },
+    {
+      "capture": "win.png",
+      "width": 390,
+      "height": 844,
+      "minButtonPixels": 47.999977111816406
+    }
+  ],
+  "limit": "Editor pixels; symbol hit cells are not Buttons and this does not certify physical touch"
+}

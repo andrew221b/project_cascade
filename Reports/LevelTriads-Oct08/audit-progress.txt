@@ -1,0 +1,1 @@
+540 primary triads; 6471 stages; latest C540 104 ms; slowest 757 ms

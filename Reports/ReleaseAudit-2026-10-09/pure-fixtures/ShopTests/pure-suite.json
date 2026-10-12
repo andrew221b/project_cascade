@@ -1,0 +1,102 @@
+[
+  {
+    "test": "ShopTests.TwoFreeUndosDoNotRefillAfterCommandsOrReload()",
+    "status": "Passed",
+    "ms": 36.3402
+  },
+  {
+    "test": "ShopTests.OrdinaryUndoNeverCrossesCollapseAndHourglassRestoresExactCheckpoint()",
+    "status": "Passed",
+    "ms": 1.4222000000000001
+  },
+  {
+    "test": "ShopTests.PaidSpoolIsOneExtraLocalUndoAndCannotBeReused()",
+    "status": "Passed",
+    "ms": 1.8285
+  },
+  {
+    "test": "ShopTests.PurchaseCapsWalletAndPermanentOwnershipAreEnforced()",
+    "status": "Passed",
+    "ms": 2.2945
+  },
+  {
+    "test": "ShopTests.SaveFailureRollsBackCoinsStockHistoryAndToolFlags()",
+    "status": "Passed",
+    "ms": 0.5194
+  },
+  {
+    "test": "ShopTests.GuideRequiresCurrentProofExpiresAtCollapseAndPersistsUsage()",
+    "status": "Passed",
+    "ms": 7.3109
+  },
+  {
+    "test": "ShopTests.AssistanceCannotEarnThreeStarsOrRewindAnAwardedDelivery()",
+    "status": "Passed",
+    "ms": 7.9247000000000005
+  },
+  {
+    "test": "ShopTests.AnAlreadyReadyRowDoesNotWasteAScroll()",
+    "status": "Passed",
+    "ms": 0.2222
+  },
+  {
+    "test": "ShopTests.DurableTransactionReloadKeepsPurchasedStockAndHourglassExpense()",
+    "status": "Passed",
+    "ms": 107.0415
+  },
+  {
+    "test": "ShopTests.LanternCommitsExactlyOneProvedMoveWithStockAndRestoresProof()",
+    "status": "Passed",
+    "ms": 3.867
+  },
+  {
+    "test": "ShopTests.NewToolsRollbackOnFailedPersistenceAndLensNeverChangesRow()",
+    "status": "Passed",
+    "ms": 4.2248
+  },
+  {
+    "test": "ShopTests.ExpandedTrophiesEquipWithoutChangingParcelReceiptsOrPuzzleStats()",
+    "status": "Passed",
+    "ms": 2.6429
+  },
+  {
+    "test": "ShopTests.PremiumLooksNeedOnlyVirtualCoinsAndNeverSpendStars()",
+    "status": "Passed",
+    "ms": 0.1481
+  },
+  {
+    "test": "ShopTests.TrophyMilestonesRequireTheirExactUniqueClearThreshold(wind_chime,15)",
+    "status": "Passed",
+    "ms": 0.47540000000000004
+  },
+  {
+    "test": "ShopTests.TrophyMilestonesRequireTheirExactUniqueClearThreshold(rain_badge,30)",
+    "status": "Passed",
+    "ms": 0.11420000000000001
+  },
+  {
+    "test": "ShopTests.TrophyMilestonesRequireTheirExactUniqueClearThreshold(copper_acorn,45)",
+    "status": "Passed",
+    "ms": 0.0796
+  },
+  {
+    "test": "ShopTests.TrophyMilestonesRequireTheirExactUniqueClearThreshold(beacon_brooch,60)",
+    "status": "Passed",
+    "ms": 0.1495
+  },
+  {
+    "test": "ShopTests.TrophyReplayCannotFarmOwnershipAndEarnedTrophyCannotBeBoughtAgain()",
+    "status": "Passed",
+    "ms": 0.33190000000000003
+  },
+  {
+    "test": "ShopTests.PurchasedTrophyStaysPermanentWhenItsMilestoneIsLaterEarned()",
+    "status": "Passed",
+    "ms": 0.5727
+  },
+  {
+    "test": "ShopTests.EarnedCosmeticAndEquipmentSurviveModeSwitchAndDurableReload()",
+    "status": "Passed",
+    "ms": 10.4114
+  }
+]

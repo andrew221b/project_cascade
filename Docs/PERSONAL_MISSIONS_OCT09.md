@@ -1,0 +1,9 @@
+# Personal map missions — 9 October 2026
+
+Replace the Requests menu with an optional resident dialogue on the map after 3–5 new campaign completions in the selected mode. Count progression rather than elapsed minutes, so idle time, retries and replays cannot cause repeated interruptions. Story dialogue takes priority; a prepared offer survives leaving the map, decline advances the next interval, and acceptance starts one separately pinned three-stage mission.
+
+Generate deterministic variants from the latest completed, localized campaign source, keeping its row and introduced mechanic vocabulary. All three stages use the production resolver and the same primary principle. The minimum total route must exceed the source triad by at least one action and at most max(4, one third of its minimum); the first stage must be harder and later stages cannot be easier. Every board and primary device must matter. Candidates outside this band, duplicates or unproved recipes are discarded. Work is bounded, cancellable and off the UI thread; no failed candidate is offered.
+
+Add optional mission memory to each existing mode journey without changing envelope schema or stable content IDs. Save the campaign attempt/checkpoint before mounting an accepted mission; restore it on return or when explicitly choosing a campaign level. Save mission attempts normally so interruption resumes the same recipe. Mission wins record a separate help count and rating, never campaign clears, map stars, parcels or director difficulty. No prices, packages, physics or domain transitions change. Existing quest/reward history remains intact; its former menu is hidden.
+
+No further iPhone export, Xcode build or installation until requested. Perform one focused solver/save validation and a small native dialogue/navigation inspection after edits; do not use repeated player builds as a verification loop.

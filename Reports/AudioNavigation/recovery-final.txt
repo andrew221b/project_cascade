@@ -1,0 +1,2 @@
+Unity 6000.3.8f1; native focused coroutine invocation, not TestRunner XML; isolated profiles.
+PASS AudioFeedbackTests.OutputResetAndForegroundReturnRecoverTheEnabledThemeNearItsOldPosition

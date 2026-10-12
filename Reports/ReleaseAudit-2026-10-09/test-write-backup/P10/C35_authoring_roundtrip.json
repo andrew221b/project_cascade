@@ -1,0 +1,43 @@
+{
+  "id": "C35",
+  "title": "Необязательная печать",
+  "lesson": "stamp",
+  "rules_version": "2.0",
+  "start": [
+    "s:A",
+    "s:C",
+    "s:B",
+    "s:D"
+  ],
+  "target": [
+    "s:A",
+    "s:B",
+    "s:C",
+    "s:D"
+  ],
+  "floors": [
+    {
+      "hp": 5,
+      "edges": [
+        true,
+        true,
+        true
+      ],
+      "fragile": [],
+      "linked": null,
+      "shift": 0,
+      "mirror": false,
+      "bridge": null,
+      "bomb": null,
+      "key": null,
+      "repair": null,
+      "stamp": {
+        "slot": 0,
+        "symbol": "s:C",
+        "value": 1
+      }
+    }
+  ],
+  "node_id": "C35",
+  "locale": "en"
+}

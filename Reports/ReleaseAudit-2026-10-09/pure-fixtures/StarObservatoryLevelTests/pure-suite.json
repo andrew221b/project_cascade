@@ -1,0 +1,247 @@
+[
+  {
+    "test": "StarObservatoryLevelTests.PublishedAppendPreservesAll637OldPuzzlePinsAndHasDistinctLayouts()",
+    "status": "Passed",
+    "ms": 81.7705
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C161)",
+    "status": "Passed",
+    "ms": 69.4892
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C162)",
+    "status": "Passed",
+    "ms": 59.068000000000005
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C163)",
+    "status": "Passed",
+    "ms": 54.0293
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C164)",
+    "status": "Passed",
+    "ms": 53.374500000000005
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C165)",
+    "status": "Passed",
+    "ms": 84.4353
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C166)",
+    "status": "Passed",
+    "ms": 251.7063
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C167)",
+    "status": "Passed",
+    "ms": 150.3845
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C168)",
+    "status": "Passed",
+    "ms": 348.0534
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C169)",
+    "status": "Passed",
+    "ms": 500.3107
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C170)",
+    "status": "Passed",
+    "ms": 632.73930000000007
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C171)",
+    "status": "Passed",
+    "ms": 241.8579
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C172)",
+    "status": "Passed",
+    "ms": 1226.3131
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C173)",
+    "status": "Passed",
+    "ms": 186.5946
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C174)",
+    "status": "Passed",
+    "ms": 226.4334
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C175)",
+    "status": "Passed",
+    "ms": 205.2234
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C176)",
+    "status": "Passed",
+    "ms": 144.0438
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C177)",
+    "status": "Passed",
+    "ms": 35.103100000000005
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C178)",
+    "status": "Passed",
+    "ms": 27.5391
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C179)",
+    "status": "Passed",
+    "ms": 51.4065
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C180)",
+    "status": "Passed",
+    "ms": 31.6735
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C181)",
+    "status": "Passed",
+    "ms": 230.99280000000002
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C182)",
+    "status": "Passed",
+    "ms": 255.7303
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C183)",
+    "status": "Passed",
+    "ms": 683.52
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(C184)",
+    "status": "Passed",
+    "ms": 107.271
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C161)",
+    "status": "Passed",
+    "ms": 45.8352
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C162)",
+    "status": "Passed",
+    "ms": 51.3692
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C163)",
+    "status": "Passed",
+    "ms": 41.6753
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C164)",
+    "status": "Passed",
+    "ms": 40.3252
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C165)",
+    "status": "Passed",
+    "ms": 95.2753
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C166)",
+    "status": "Passed",
+    "ms": 256.1317
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C167)",
+    "status": "Passed",
+    "ms": 174.6801
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C168)",
+    "status": "Passed",
+    "ms": 314.7511
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C169)",
+    "status": "Passed",
+    "ms": 759.0646
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C170)",
+    "status": "Passed",
+    "ms": 1283.1369
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C171)",
+    "status": "Passed",
+    "ms": 711.7306
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C172)",
+    "status": "Passed",
+    "ms": 1263.3799000000001
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C173)",
+    "status": "Passed",
+    "ms": 222.89030000000002
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C174)",
+    "status": "Passed",
+    "ms": 275.0622
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C175)",
+    "status": "Passed",
+    "ms": 262.0332
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C176)",
+    "status": "Passed",
+    "ms": 235.97580000000002
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C177)",
+    "status": "Passed",
+    "ms": 35.048500000000004
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C178)",
+    "status": "Passed",
+    "ms": 31.509
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C179)",
+    "status": "Passed",
+    "ms": 59.4219
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C180)",
+    "status": "Passed",
+    "ms": 33.560500000000005
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C181)",
+    "status": "Passed",
+    "ms": 229.1381
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C182)",
+    "status": "Passed",
+    "ms": 352.1839
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C183)",
+    "status": "Passed",
+    "ms": 285.5049
+  },
+  {
+    "test": "StarObservatoryLevelTests.EachObservatoryDescentProvesThreeStagesIncludingTheExistingLiveGust(C184)",
+    "status": "Passed",
+    "ms": 339.04150000000004
+  }
+]

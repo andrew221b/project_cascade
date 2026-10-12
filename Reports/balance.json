@@ -1,0 +1,745 @@
+{
+  "levels": [
+    {
+      "id": "C01",
+      "title": "Первый обмен",
+      "lesson": "swap",
+      "solvable": true,
+      "optimal_actions": 1,
+      "path": [
+        0
+      ],
+      "states": 4,
+      "transitions": 3,
+      "dead_states": 0,
+      "earliest_dead_depth": null,
+      "near_optimal_first_states_plus2": 1,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C02",
+      "title": "Два обмена",
+      "lesson": "swap",
+      "solvable": true,
+      "optimal_actions": 2,
+      "path": [
+        1,
+        0
+      ],
+      "states": 8,
+      "transitions": 9,
+      "dead_states": 1,
+      "earliest_dead_depth": 1,
+      "near_optimal_first_states_plus2": 1,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C03",
+      "title": "Сохраняем весь ряд",
+      "lesson": "collapse",
+      "solvable": true,
+      "optimal_actions": 2,
+      "path": [
+        0,
+        2
+      ],
+      "states": 14,
+      "transitions": 20,
+      "dead_states": 2,
+      "earliest_dead_depth": 1,
+      "near_optimal_first_states_plus2": 2,
+      "forced_ratio": 0.6667,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C04",
+      "title": "Собрать ещё не доставить",
+      "lesson": "drop",
+      "solvable": true,
+      "optimal_actions": 2,
+      "path": [
+        0,
+        "D"
+      ],
+      "states": 13,
+      "transitions": 16,
+      "dead_states": 2,
+      "earliest_dead_depth": 1,
+      "near_optimal_first_states_plus2": 1,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C05",
+      "title": "Повторяющиеся символы",
+      "lesson": "duplicates",
+      "solvable": true,
+      "optimal_actions": 3,
+      "path": [
+        0,
+        2,
+        "D"
+      ],
+      "states": 16,
+      "transitions": 32,
+      "dead_states": 3,
+      "earliest_dead_depth": 1,
+      "near_optimal_first_states_plus2": 3,
+      "forced_ratio": 0.7143,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C06",
+      "title": "Разные связи",
+      "lesson": "locked",
+      "solvable": true,
+      "optimal_actions": 3,
+      "path": [
+        0,
+        "D",
+        2
+      ],
+      "states": 8,
+      "transitions": 8,
+      "dead_states": 1,
+      "earliest_dead_depth": 1,
+      "near_optimal_first_states_plus2": 1,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C07",
+      "title": "Спуститься раньше",
+      "lesson": "drop",
+      "solvable": true,
+      "optimal_actions": 2,
+      "path": [
+        "D",
+        0
+      ],
+      "states": 27,
+      "transitions": 39,
+      "dead_states": 6,
+      "earliest_dead_depth": 2,
+      "near_optimal_first_states_plus2": 3,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C08",
+      "title": "Средняя пара внизу",
+      "lesson": "locked",
+      "solvable": true,
+      "optimal_actions": 2,
+      "path": [
+        "D",
+        1
+      ],
+      "states": 8,
+      "transitions": 8,
+      "dead_states": 1,
+      "earliest_dead_depth": 2,
+      "near_optimal_first_states_plus2": 2,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C09",
+      "title": "Посадочный сдвиг",
+      "lesson": "conveyor",
+      "solvable": true,
+      "optimal_actions": 2,
+      "path": [
+        "D",
+        "D"
+      ],
+      "states": 34,
+      "transitions": 52,
+      "dead_states": 6,
+      "earliest_dead_depth": 2,
+      "near_optimal_first_states_plus2": 4,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C10",
+      "title": "Подготовить левый сдвиг",
+      "lesson": "conveyor",
+      "solvable": true,
+      "optimal_actions": 2,
+      "path": [
+        2,
+        "D"
+      ],
+      "states": 17,
+      "transitions": 20,
+      "dead_states": 2,
+      "earliest_dead_depth": 1,
+      "near_optimal_first_states_plus2": 2,
+      "forced_ratio": 0.6667,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C11",
+      "title": "Правый сдвиг",
+      "lesson": "conveyor",
+      "solvable": true,
+      "optimal_actions": 3,
+      "path": [
+        2,
+        "D",
+        "D"
+      ],
+      "states": 57,
+      "transitions": 132,
+      "dead_states": 23,
+      "earliest_dead_depth": 1,
+      "near_optimal_first_states_plus2": 2,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C12",
+      "title": "Пять элементов",
+      "lesson": "conveyor",
+      "solvable": true,
+      "optimal_actions": 3,
+      "path": [
+        3,
+        "D",
+        "D"
+      ],
+      "states": 141,
+      "transitions": 300,
+      "dead_states": 44,
+      "earliest_dead_depth": 2,
+      "near_optimal_first_states_plus2": 5,
+      "forced_ratio": 0.8,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C13",
+      "title": "Последний такт бомбы",
+      "lesson": "bomb",
+      "solvable": true,
+      "optimal_actions": 2,
+      "path": [
+        0,
+        "D"
+      ],
+      "states": 9,
+      "transitions": 8,
+      "dead_states": 0,
+      "earliest_dead_depth": null,
+      "near_optimal_first_states_plus2": 1,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C14",
+      "title": "Взрыв помогает доставить",
+      "lesson": "bomb",
+      "solvable": true,
+      "optimal_actions": 1,
+      "path": [
+        0
+      ],
+      "states": 5,
+      "transitions": 4,
+      "dead_states": 0,
+      "earliest_dead_depth": null,
+      "near_optimal_first_states_plus2": 1,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C15",
+      "title": "Бомбу можно оставить",
+      "lesson": "bomb",
+      "solvable": true,
+      "optimal_actions": 2,
+      "path": [
+        "D",
+        0
+      ],
+      "states": 41,
+      "transitions": 58,
+      "dead_states": 8,
+      "earliest_dead_depth": 2,
+      "near_optimal_first_states_plus2": 3,
+      "forced_ratio": 1.0,
+      "terminal_variants": 3
+    },
+    {
+      "id": "C16",
+      "title": "Обычная передышка",
+      "lesson": "breather",
+      "solvable": true,
+      "optimal_actions": 3,
+      "path": [
+        "D",
+        0,
+        2
+      ],
+      "states": 68,
+      "transitions": 180,
+      "dead_states": 26,
+      "earliest_dead_depth": 2,
+      "near_optimal_first_states_plus2": 4,
+      "forced_ratio": 0.75,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C17",
+      "title": "Ключ открывает маршрут",
+      "lesson": "key",
+      "solvable": true,
+      "optimal_actions": 2,
+      "path": [
+        1,
+        0
+      ],
+      "states": 9,
+      "transitions": 10,
+      "dead_states": 1,
+      "earliest_dead_depth": 1,
+      "near_optimal_first_states_plus2": 1,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C18",
+      "title": "Ремонт после удара",
+      "lesson": "repair",
+      "solvable": true,
+      "optimal_actions": 3,
+      "path": [
+        0,
+        1,
+        "D"
+      ],
+      "states": 20,
+      "transitions": 32,
+      "dead_states": 4,
+      "earliest_dead_depth": 1,
+      "near_optimal_first_states_plus2": 1,
+      "forced_ratio": 0.75,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C19",
+      "title": "Ключ и обратный ход",
+      "lesson": "key",
+      "solvable": true,
+      "optimal_actions": 4,
+      "path": [
+        0,
+        0,
+        1,
+        "D"
+      ],
+      "states": 44,
+      "transitions": 91,
+      "dead_states": 10,
+      "earliest_dead_depth": 3,
+      "near_optimal_first_states_plus2": 2,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C20",
+      "title": "Бомба и ремонт вместе",
+      "lesson": "bomb_repair",
+      "solvable": true,
+      "optimal_actions": 1,
+      "path": [
+        0
+      ],
+      "states": 5,
+      "transitions": 4,
+      "dead_states": 0,
+      "earliest_dead_depth": null,
+      "near_optimal_first_states_plus2": 1,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C21",
+      "title": "Хрупкое ребро",
+      "lesson": "fragile",
+      "solvable": true,
+      "optimal_actions": 1,
+      "path": [
+        0
+      ],
+      "states": 11,
+      "transitions": 12,
+      "dead_states": 2,
+      "earliest_dead_depth": 1,
+      "near_optimal_first_states_plus2": 1,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C22",
+      "title": "Цена выше остатка",
+      "lesson": "fragile_repair",
+      "solvable": true,
+      "optimal_actions": 1,
+      "path": [
+        0
+      ],
+      "states": 5,
+      "transitions": 4,
+      "dead_states": 0,
+      "earliest_dead_depth": null,
+      "near_optimal_first_states_plus2": 1,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C23",
+      "title": "Беречь верхнюю платформу",
+      "lesson": "fragile",
+      "solvable": true,
+      "optimal_actions": 2,
+      "path": [
+        0,
+        2
+      ],
+      "states": 25,
+      "transitions": 44,
+      "dead_states": 6,
+      "earliest_dead_depth": 1,
+      "near_optimal_first_states_plus2": 2,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C24",
+      "title": "Посадка после дорогого хода",
+      "lesson": "fragile_conveyor",
+      "solvable": true,
+      "optimal_actions": 2,
+      "path": [
+        2,
+        "D"
+      ],
+      "states": 31,
+      "transitions": 44,
+      "dead_states": 6,
+      "earliest_dead_depth": 2,
+      "near_optimal_first_states_plus2": 4,
+      "forced_ratio": 0.6667,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C25",
+      "title": "Две пары за раз",
+      "lesson": "linked",
+      "solvable": true,
+      "optimal_actions": 1,
+      "path": [
+        0
+      ],
+      "states": 4,
+      "transitions": 4,
+      "dead_states": 0,
+      "earliest_dead_depth": null,
+      "near_optimal_first_states_plus2": 1,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C26",
+      "title": "Одинаковая первая пара",
+      "lesson": "linked_duplicates",
+      "solvable": true,
+      "optimal_actions": 1,
+      "path": [
+        0
+      ],
+      "states": 4,
+      "transitions": 4,
+      "dead_states": 0,
+      "earliest_dead_depth": null,
+      "near_optimal_first_states_plus2": 1,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C27",
+      "title": "Сначала разомкнуть путь",
+      "lesson": "key_linked",
+      "solvable": true,
+      "optimal_actions": 4,
+      "path": [
+        1,
+        1,
+        0,
+        "D"
+      ],
+      "states": 14,
+      "transitions": 26,
+      "dead_states": 3,
+      "earliest_dead_depth": 2,
+      "near_optimal_first_states_plus2": 1,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C28",
+      "title": "Общая цена двух пар",
+      "lesson": "fragile_linked",
+      "solvable": true,
+      "optimal_actions": 1,
+      "path": [
+        0
+      ],
+      "states": 7,
+      "transitions": 12,
+      "dead_states": 0,
+      "earliest_dead_depth": null,
+      "near_optimal_first_states_plus2": 2,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C29",
+      "title": "Фигуры обрамляют слово",
+      "lesson": "mixed",
+      "solvable": true,
+      "optimal_actions": 2,
+      "path": [
+        2,
+        "D"
+      ],
+      "states": 20,
+      "transitions": 30,
+      "dead_states": 3,
+      "earliest_dead_depth": 1,
+      "near_optimal_first_states_plus2": 2,
+      "forced_ratio": 0.6667,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C30",
+      "title": "Две фигуры, слово, две фигуры",
+      "lesson": "mixed7",
+      "solvable": true,
+      "optimal_actions": 9,
+      "path": [
+        0,
+        2,
+        1,
+        3,
+        2,
+        1,
+        5,
+        4,
+        "D"
+      ],
+      "states": 2898,
+      "transitions": 13485,
+      "dead_states": 1973,
+      "earliest_dead_depth": 1,
+      "near_optimal_first_states_plus2": 4,
+      "forced_ratio": 0.2317,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C31",
+      "title": "Смешанный ряд и ключ",
+      "lesson": "mixed_key",
+      "solvable": true,
+      "optimal_actions": 2,
+      "path": [
+        2,
+        1
+      ],
+      "states": 13,
+      "transitions": 17,
+      "dead_states": 2,
+      "earliest_dead_depth": 1,
+      "near_optimal_first_states_plus2": 1,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C32",
+      "title": "Восемь мест, два слова",
+      "lesson": "mixed8",
+      "solvable": true,
+      "optimal_actions": 2,
+      "path": [
+        0,
+        6
+      ],
+      "states": 44,
+      "transitions": 72,
+      "dead_states": 6,
+      "earliest_dead_depth": 1,
+      "near_optimal_first_states_plus2": 2,
+      "forced_ratio": 0.6667,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C33",
+      "title": "Одноразовый мост",
+      "lesson": "bridge",
+      "solvable": true,
+      "optimal_actions": 1,
+      "path": [
+        0
+      ],
+      "states": 5,
+      "transitions": 4,
+      "dead_states": 0,
+      "earliest_dead_depth": null,
+      "near_optimal_first_states_plus2": 1,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C34",
+      "title": "Не потратить мост зря",
+      "lesson": "bridge",
+      "solvable": true,
+      "optimal_actions": 2,
+      "path": [
+        1,
+        0
+      ],
+      "states": 13,
+      "transitions": 15,
+      "dead_states": 2,
+      "earliest_dead_depth": 1,
+      "near_optimal_first_states_plus2": 1,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C35",
+      "title": "Необязательная печать",
+      "lesson": "stamp",
+      "solvable": true,
+      "optimal_actions": 2,
+      "path": [
+        1,
+        "D"
+      ],
+      "states": 77,
+      "transitions": 160,
+      "dead_states": 14,
+      "earliest_dead_depth": 3,
+      "near_optimal_first_states_plus2": 3,
+      "forced_ratio": 1.0,
+      "terminal_variants": 2
+    },
+    {
+      "id": "C36",
+      "title": "Печать на посадке",
+      "lesson": "stamp_conveyor",
+      "solvable": true,
+      "optimal_actions": 2,
+      "path": [
+        "D",
+        "D"
+      ],
+      "states": 36,
+      "transitions": 52,
+      "dead_states": 6,
+      "earliest_dead_depth": 2,
+      "near_optimal_first_states_plus2": 4,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C37",
+      "title": "Три согласованных этажа",
+      "lesson": "combo",
+      "solvable": true,
+      "optimal_actions": 6,
+      "path": [
+        0,
+        3,
+        1,
+        0,
+        3,
+        2
+      ],
+      "states": 365,
+      "transitions": 875,
+      "dead_states": 163,
+      "earliest_dead_depth": 1,
+      "near_optimal_first_states_plus2": 2,
+      "forced_ratio": 0.75,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C38",
+      "title": "Ключ ремонтирует маршрут",
+      "lesson": "key_repair",
+      "solvable": true,
+      "optimal_actions": 2,
+      "path": [
+        1,
+        0
+      ],
+      "states": 7,
+      "transitions": 7,
+      "dead_states": 0,
+      "earliest_dead_depth": null,
+      "near_optimal_first_states_plus2": 1,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C39",
+      "title": "Связанные пары и взрыв",
+      "lesson": "linked_bomb",
+      "solvable": true,
+      "optimal_actions": 1,
+      "path": [
+        0
+      ],
+      "states": 4,
+      "transitions": 4,
+      "dead_states": 0,
+      "earliest_dead_depth": null,
+      "near_optimal_first_states_plus2": 1,
+      "forced_ratio": 1.0,
+      "terminal_variants": 1
+    },
+    {
+      "id": "C40",
+      "title": "Передай целый смешанный ряд",
+      "lesson": "mixed_bridge",
+      "solvable": true,
+      "optimal_actions": 3,
+      "path": [
+        1,
+        "D",
+        "D"
+      ],
+      "states": 97,
+      "transitions": 239,
+      "dead_states": 30,
+      "earliest_dead_depth": 2,
+      "near_optimal_first_states_plus2": 5,
+      "forced_ratio": 0.8,
+      "terminal_variants": 1
+    }
+  ],
+  "total_states": 4228,
+  "total_transitions": 16136,
+  "localized_variants": 117,
+  "word_counts": {
+    "en": 40,
+    "ru": 35,
+    "uk": 36
+  },
+  "note": "Exhaustive per-fixture graph; not all possible levels and not user testing."
+}

@@ -1,0 +1,7 @@
+Assets/_Cascade/Presentation/OutcomeCeremony.cs(15,29): warning CS0108: 'OutcomeCeremony.light' hides inherited member 'Component.light'. Use the new keyword if hiding was intended.
+Assets/_Cascade/Presentation/NativeAdProvider.cs(65,72): warning CS0618: 'RequestConfiguration.TagForChildDirectedTreatment' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(65,124): warning CS0618: 'TagForChildDirectedTreatment' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(65,158): warning CS0618: 'TagForChildDirectedTreatment' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(66,17): warning CS0618: 'RequestConfiguration.TagForUnderAgeOfConsent' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(66,68): warning CS0618: 'TagForUnderAgeOfConsent' is obsolete: 'Use AgeRestrictedTreatment instead.'
+Assets/_Cascade/Presentation/NativeAdProvider.cs(66,97): warning CS0618: 'TagForUnderAgeOfConsent' is obsolete: 'Use AgeRestrictedTreatment instead.'

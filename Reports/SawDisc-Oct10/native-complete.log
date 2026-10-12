@@ -1,0 +1,796 @@
+Unity Editor version:    6000.3.8f1 (1c7db571dde0)
+Branch:                  6000.3/staging
+Build type:              Release
+Batch mode:              YES
+macOS version:           Version 26.3 (Build 25D125)
+Darwin version:          25.3.0
+Architecture:            arm64
+Running under Rosetta:   NO
+Available memory:        24576 MB
+Date:                    2026-10-10T11:05:00Z
+[Licensing::Module] Trying to connect to existing licensing client channel...
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-JHQtLqzaahrET4FrCzbWA" at "2026-10-10T11:05:00.196345Z"
+Launching external process: /Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/PackageManager/Server/UnityPackageManager
+
+COMMAND LINE ARGUMENTS:
+/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/MacOS/Unity
+-batchmode
+-job-worker-count
+2
+-projectPath
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity
+-licensingIpc
+LicenseClient-JHQtLqzaahrET4FrCzbWA
+-executeMethod
+Cascade.Editor.Release.SawDiscReview.BeginBatch
+-logFile
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Reports/SawDisc-Oct10/native-complete.log
+Successfully changed project path to: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity
+/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity
+Canceling DisplayDialog: Recovering Scene Backups Scene backups from a previous Editor session have been detected. Your scene might have been backed up when an Editor instance did not close correctly. 
+
+Do you want to copy and preserve these backups in Assets/_Recovery/?
+This should not be called when not controlled by a human.
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [8715137152]  Target information:
+
+Player connection [8715137152]  * "[IP] 192.168.0.40 [Port] 55504 [Flags] 2 [Guid] 662753993 [EditorId] 662753993 [Version] 1048832 [Id] OSXEditor(0,Mac) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" 
+
+Player connection [8715137152] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [8715137152] Host joined alternative multi-casting on [225.0.0.222:34997]...
+JobSystem: Creating JobQueue using job-worker-count value 2
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-11046" after 0.1 seconds.
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.3+d7ffd15
+  Session Id:              36a5a2b1b6f844ebb527504a37664de3
+  Correlation Id:          f812483d93adb0d9479e7504182b2bdf
+  External correlation Id: 9119250304306714567
+  Machine Id:              8oIzfkS5TI8W9oAuExG/QdceMqo=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-JHQtLqzaahrET4FrCzbWA" (connect: 0.00s, validation: 0.00s, handshake: 0.26s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-JHQtLqzaahrET4FrCzbWA-notifications" at "2026-10-10T11:05:00.458209Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 3574369707208-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.00
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] Licensing Background thread has ended after 0.26s
+[Licensing::Module] Licensing is initialized (took 0.08s).
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+[Licensing::Client] Successfully resolved entitlement details
+Refreshing native plugins compatible for Editor in 0.54 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.3.8f1 (1c7db571dde0)
+[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+ preferred device: Apple M4 Pro (high power)
+Metal devices available: 1
+0: Apple M4 Pro (high power)
+Using device Apple M4 Pro (high power)
+Initializing Metal device caps: Apple M4 Pro
+Mac GPU Family: 2
+Apple GPU Family: 9
+MSL Version: 3.0
+Has Float MSAA: 1
+Has Float Filtering: 1
+ReadWrite Texture Tier: 2
+Initialize mono
+Mono path[0] = '/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/Scripting/Managed'
+Mono path[1] = '/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/Scripting/MonoBleedingEdge/lib/mono/unityjit-macos'
+Mono config path = '/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/Scripting/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56046
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+[Licensing::Client] Successfully resolved entitlement details
+Register platform support module: /Applications/Unity/Hub/Editor/6000.3.8f1/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/6000.3.8f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
+Registered in 0.002724 seconds.
+- Loaded All Assemblies, in  0.178 seconds
+[usbmuxd] Start listen thread
+[usbmuxd] Listen thread started
+[usbmuxd] Send listen message
+Native extension for iOS target not found
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 49 ms
+Native extension for OSXStandalone target not found
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.294 seconds
+Domain Reload Profiling: 472ms
+	BeginReloadAssembly (51ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (14ms)
+	RebuildCommonClasses (17ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (20ms)
+	LoadAllAssembliesAndSetupDomain (83ms)
+		LoadAssemblies (37ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (82ms)
+			TypeCache.Refresh (81ms)
+				TypeCache.ScanAssembly (74ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (294ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (274ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (128ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (45ms)
+			ProcessInitializeOnLoadAttributes (67ms)
+			ProcessInitializeOnLoadMethodAttributes (31ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+Package Manager log level set to [2]
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 56 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.ai.assistant@2.20.0-pre.1 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.ai.assistant@ceb45b7b3ebd)
+    com.unity.ai.inference@2.6.1 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.ai.inference@9a123aee5df7)
+    com.unity.ai.navigation@2.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.ai.navigation@f6367599281e)
+    com.unity.collab-proxy@2.2.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.collab-proxy@b26119cdd155)
+    com.unity.ide.rider@3.0.27 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.ide.rider@8ca554ad34c2)
+    com.unity.ide.visualstudio@2.0.22 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.ide.visualstudio@8140e851d83e)
+    com.unity.inputsystem@1.18.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.inputsystem@57d0e36f6123)
+    com.unity.localization@1.5.13 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.localization@ef5a0677859d)
+    com.unity.mobile.notifications@2.4.3 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.mobile.notifications@53b584f4d5cd)
+    com.unity.purchasing@5.4.4 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.purchasing@215c35b51cf4)
+    com.unity.services.authentication@3.6.1 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.services.authentication@1cdc3224fb13)
+    com.unity.services.cloudcode@2.10.3 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.services.cloudcode@a071dc58aed1)
+    com.unity.services.cloudsave@3.4.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.services.cloudsave@271cfa0557ba)
+    com.unity.timeline@1.8.6 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.timeline@9ac0df085fa8)
+    com.unity.visualscripting@1.9.1 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.visualscripting@80ee0eef820c)
+    com.unity.services.wire@1.4.1 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.services.wire@9a73acde80cc)
+    com.unity.nuget.newtonsoft-json@3.2.2 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.nuget.newtonsoft-json@4dfd81071c64)
+    com.unity.services.core@1.18.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.services.core@3464cb68d709)
+    com.unity.services.deployment@1.7.2 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.services.deployment@c07c64f9804b)
+    com.unity.addressables@2.8.1 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.addressables@2dc42e61a5f5)
+    com.unity.burst@1.8.27 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.burst@973857688024)
+    com.unity.dt.app-ui@2.1.1 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.dt.app-ui@8ac7e730dd5d)
+    com.unity.collections@2.6.2 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.collections@aea9d3bd5e19)
+    com.unity.mathematics@1.3.3 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.mathematics@19a9377c4ffa)
+    com.unity.nuget.mono-cecil@1.11.6 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.searcher@4.9.4 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.searcher@d45a78918735)
+    com.unity.services.deployment.api@1.1.3 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.services.deployment.api@9becf6da0f1a)
+    com.unity.profiling.core@1.0.3 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.profiling.core@8a49f7027d06)
+    com.unity.scriptablebuildpipeline@2.5.2 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.scriptablebuildpipeline@418957ab75a6)
+    com.unity.test-framework.performance@3.2.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.test-framework.performance@0840f58e4562)
+  Built-in packages:
+    com.unity.render-pipelines.universal@17.3.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.render-pipelines.universal@a6e30d1f59f5)
+    com.unity.test-framework@1.6.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.test-framework@0b7a23ab2e1d)
+    com.unity.ugui@2.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.ugui@bb329a87fcdc)
+    com.unity.modules.jsonserialize@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.jsonserialize)
+    com.unity.modules.ui@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.ui)
+    com.unity.modules.imgui@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.imgui)
+    com.unity.modules.audio@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.audio)
+    com.unity.modules.director@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.director)
+    com.unity.modules.animation@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.animation)
+    com.unity.modules.particlesystem@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.particlesystem)
+    com.unity.ext.nunit@2.0.5 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.ext.nunit@d8c07649098d)
+    com.unity.modules.unitywebrequest@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.unitywebrequest)
+    com.unity.render-pipelines.core@17.3.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.render-pipelines.core@d6dfd1e235d5)
+    com.unity.shadergraph@17.3.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.shadergraph@d44b48771ebb)
+    com.unity.render-pipelines.universal-config@17.0.3 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.render-pipelines.universal-config@8dc1aab4af1d)
+    com.unity.modules.androidjni@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.androidjni)
+    com.unity.modules.uielements@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.uielements)
+    com.unity.modules.ai@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.ai)
+    com.unity.modules.imageconversion@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.imageconversion)
+    com.unity.2d.sprite@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.2d.sprite@08e067ec1643)
+    com.unity.modules.physics@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.physics)
+    com.unity.modules.terrain@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.terrain)
+    com.unity.modules.assetbundle@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.assetbundle)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.hierarchycore@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.hierarchycore)
+    com.unity.modules.screencapture@1.0.0 (location: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Library/PackageCache/com.unity.modules.screencapture)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.00 seconds
+[ScriptCompilation] Requested script compilation because: Assetdatabase observed changes in script compilation related files
+Found a lingering IL Post Processing runner process with PID 10886. Killing it.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.Scripting.ScriptCompilation.ILPostProcessingProgram:KillLingeringILPPRunner () (at /Users/bokken/build/output/unity/unity/Editor/Mono/Scripting/ScriptCompilation/ILPostProcessingProgram.cs:54)
+UnityEditor.Scripting.ScriptCompilation.ILPostProcessingProgram:EnsureRunningAndGetSocketOrNamedPipeImpl ()
+UnityEditor.Scripting.ScriptCompilation.ILPostProcessingProgram:EnsureRunningAndGetSocketOrNamedPipe () (at /Users/bokken/build/output/unity/unity/Editor/Mono/Scripting/ScriptCompilation/ILPostProcessingProgram.cs:20)
+UnityEditor.Scripting.ScriptCompilation.UnityBeeDriver:BuildRequestFor (Bee.BeeDriver.RunnableProgram,string,string,bool,NiceIO.NPath,UnityEditor.Scripting.ScriptCompilation.ILPostProcessingProgram,UnityEditor.Scripting.ScriptCompilation.UnityBeeDriver/CacheMode,Bee.BeeDriver.StdOutMode,Bee.BeeDriver.RunnableProgram) (at /Users/bokken/build/output/unity/unity/Editor/Mono/Scripting/ScriptCompilation/BeeDriver/UnityBeeDriver.cs:150)
+UnityEditor.Scripting.ScriptCompilation.UnityBeeDriver:BuildRequestFor (Bee.BeeDriver.RunnableProgram,UnityEditor.Scripting.ScriptCompilation.EditorCompilation,string,UnityEditor.Scripting.ScriptCompilation.UnityBeeDriver/CacheMode,string,bool) (at /Users/bokken/build/output/unity/unity/Editor/Mono/Scripting/ScriptCompilation/BeeDriver/UnityBeeDriver.cs:129)
+UnityEditor.Scripting.ScriptCompilation.EditorCompilation:CompileScriptsWithSettings (UnityEditor.Scripting.ScriptCompilation.ScriptAssemblySettings) (at /Users/bokken/build/output/unity/unity/Editor/Mono/Scripting/ScriptCompilation/EditorCompilation.cs:853)
+UnityEditor.Scripting.ScriptCompilation.EditorCompilation:CompileScripts (UnityEditor.Scripting.ScriptCompilation.EditorScriptCompilationOptions,UnityEditor.BuildTarget,int,string[]) (at /Users/bokken/build/output/unity/unity/Editor/Mono/Scripting/ScriptCompilation/EditorCompilation.cs:716)
+UnityEditor.Scripting.ScriptCompilation.EditorCompilationInterface/<>c__DisplayClass21_0:<CompileScripts>b__0 () (at /Users/bokken/build/output/unity/unity/Editor/Mono/Scripting/ScriptCompilation/EditorCompilationInterface.cs:184)
+UnityEditor.Scripting.ScriptCompilation.EditorCompilationInterface:EmitExceptionAsError<UnityEditor.Scripting.ScriptCompilation.EditorCompilation/CompileStatus> (System.Func`1<UnityEditor.Scripting.ScriptCompilation.EditorCompilation/CompileStatus>,UnityEditor.Scripting.ScriptCompilation.EditorCompilation/CompileStatus) (at /Users/bokken/build/output/unity/unity/Editor/Mono/Scripting/ScriptCompilation/EditorCompilationInterface.cs:49)
+UnityEditor.Scripting.ScriptCompilation.EditorCompilationInterface:CompileScripts (UnityEditor.Scripting.ScriptCompilation.EditorScriptCompilationOptions,UnityEditor.BuildTarget,int,string[]) (at /Users/bokken/build/output/unity/unity/Editor/Mono/Scripting/ScriptCompilation/EditorCompilationInterface.cs:184)
+
+(Filename: /Users/bokken/build/output/unity/unity/Editor/Mono/Scripting/ScriptCompilation/ILPostProcessingProgram.cs Line: 54)
+
+[40m[32minfo[39m[22m[49m: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://unix:/tmp/ilpp.sock-8571dbb0b166e90a7ddf3fa052b5b554
+[40m[32minfo[39m[22m[49m: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+[40m[32minfo[39m[22m[49m: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+[40m[32minfo[39m[22m[49m: Microsoft.Hosting.Lifetime[0]
+      Content root path: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping application/grpc -
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping application/grpc - - 200 - application/grpc 17.6631ms
+Refreshing native plugins compatible for Editor in 3.38 ms, found 3 plugins.
+Starting: /Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/BuildPipeline/bee_backend --ipc --defer-dag-verification --dagfile="Library/Bee/900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity
+DisplayProgressbar: Compiling Scripts
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors application/grpc -
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+[40m[1m[33mwarn[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly unityeditor.ios.extensions.xcode has duplicate hint path. Ignoring "/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.iOS.Extensions.Xcode.dll" in favor of "/Applications/Unity/Hub/Editor/6000.3.8f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll"
+[40m[1m[33mwarn[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.runtime.interopservices.windowsruntime has duplicate hint path. Ignoring "/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/Scripting/UnityReferenceAssemblies/unity-4.8-api/Facades/System.Runtime.InteropServices.WindowsRuntime.dll" in favor of "/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/Scripting/NetStandard/Extensions/2.0.0/System.Runtime.InteropServices.WindowsRuntime.dll"
+[40m[1m[33mwarn[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.componentmodel.composition has duplicate hint path. Ignoring "/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/Scripting/UnityReferenceAssemblies/unity-4.8-api/System.ComponentModel.Composition.dll" in favor of "/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/Scripting/NetStandard/compat/2.1.0/shims/netfx/System.ComponentModel.Composition.dll"
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Unity.Burst.Cecil, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e with Library/PackageCache/com.unity.burst@973857688024/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Mono.Cecil, Version=0.11.5.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e with Library/PackageCache/com.unity.nuget.mono-cecil@ecb9724e46ff/Mono.Cecil.dll
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors application/grpc - - 200 - application/grpc 15.0116ms
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly application/grpc -
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      Processing assembly Library/Bee/artifacts/900b0aE.dag/Assembly-CSharp-Editor.dll, with 144 defines and 427 references
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      running Unity.Jobs.CodeGen.JobsILPostProcessor
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null with Library/Bee/artifacts/900b0aE.dag/Unity.Collections.dll
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved UnityEditor.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null with /Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/Scripting/Managed/UnityEngine/UnityEditor.CoreModule.dll
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null with /Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Resources/Scripting/Managed/UnityEngine/UnityEngine.CoreModule.dll
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[40m[32minfo[39m[22m[49m: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Resolved Unity.Burst.Cecil.Rocks, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e with Library/PackageCache/com.unity.burst@973857688024/Unity.Burst.CodeGen/Unity.Burst.Cecil.Rocks.dll
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly application/grpc - - 200 - application/grpc 184.0040ms
+ExitCode: 0 Duration: 1s557ms
+[1537/2118  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[2114/2118  1s] Csc Library/Bee/artifacts/900b0aE.dag/Assembly-CSharp-Editor.dll (+2 others)
+[2115/2118  0s] ILPostProcess Library/Bee/artifacts/900b0aE.dag/post-processed/Assembly-CSharp-Editor.dll (+pdb)
+Processing assembly Library/Bee/artifacts/900b0aE.dag/Assembly-CSharp-Editor.dll, with 144 defines and 427 references
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[2116/2118  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.pdb
+[2117/2118  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+*** Tundra build success (1.54 seconds), 5 items updated, 2118 evaluated
+AssetDatabase: script compilation time: 1.876427s
+Total cache size 268179660
+Total cache size after purge 268179660, took 00:00:00.0622435
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.600 seconds
+Refreshing native plugins compatible for Editor in 3.25 ms, found 3 plugins.
+Native extension for iOS target not found
+Native extension for Android target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 2.79 ms, found 3 plugins.
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.585 seconds
+Domain Reload Profiling: 3184ms
+	BeginReloadAssembly (93ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (27ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (18ms)
+	RebuildCommonClasses (18ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (23ms)
+	LoadAllAssembliesAndSetupDomain (459ms)
+		LoadAssemblies (217ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (272ms)
+			TypeCache.Refresh (215ms)
+				TypeCache.ScanAssembly (201ms)
+			BuildScriptInfoCaches (49ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (2585ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2406ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (17ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (128ms)
+			ProcessInitializeOnLoadAttributes (1901ms)
+			ProcessInitializeOnLoadMethodAttributes (356ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (2ms)
+Refreshing native plugins compatible for Editor in 3.41 ms, found 3 plugins.
+Preloading 1 native plugins for Editor in 1.32 ms.
+Asset Pipeline Refresh (id=7e9863fb3e8924a21b9e3aedc2b985ba): Total: 6.549 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=3399 ms
+		Asset DB Callback time: managed=607 ms, native=16 ms
+		Scripting: domain reloads=1, domain reload time=600 ms, compile time=1877 ms, other=48 ms
+		Project Asset Count: scripts=2965, non-scripts=6091
+		Asset File Changes: new=0, changed=1, moved=0, deleted=0
+		Scan Filter Count: 1
+	InvokeCustomDependenciesCallbacks: 0.000ms
+	InvokePackagesCallback: 6.556ms
+	ApplyChangesToAssetFolders: 0.198ms
+	Scan: 532.638ms
+	OnSourceAssetsModified: 0.476ms
+	CategorizeAssetsWithTransientArtifact: 41.493ms
+	ProcessAssetsWithTransientArtifactChanges: 56.597ms
+	CategorizeAssets: 72.762ms
+	ImportOutOfDateAssets: 2599.615ms (719.314ms without children)
+		CompileScripts: 1877.126ms
+		ReloadNativeAssets: 0.068ms
+		UnloadImportedAssets: 1.814ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.961ms
+		InitializingProgressBar: 0.000ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.000ms
+		OnDemandSchedulerStart: 0.332ms
+	PostProcessAllAssets: 609.085ms
+	Hotreload: 8.116ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.000ms
+	UnloadStreamsBegin: 2.189ms
+	PersistCurrentRevisions: 0.180ms
+	UnloadStreamsEnd: 0.000ms
+	GenerateScriptTypeHashes: 1.571ms
+	Untracked: 2619.344ms
+
+Application.AssetDatabase Initial Refresh End
+Launching external process: /Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents/Helpers/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.02 seconds
+Scanning for USB devices : 0.034ms
+Initializing Unity extensions:
+The currently available disk space (189 MB) is lower than the suggested threshold of 256 MBs. We strongly suggest that you free up some space before resuming work in the Editor.
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-CascadeUnity
+2026-10-10 14:05:08.211 Unity[11046:16555117] NSEventModifierFlagFunction specified to -setKeyEquivalentModifierMask: for item <NSMenuItem: 0x9ecd6e080 SDF, ke='Command-F12'>, but is only supported for system-provided menu items; will not be used
+Unloading 63 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 13751 unused Assets / (21.5 MB). Loaded Objects now: 14574.
+Memory consumption went from 331.4 MB to 309.9 MB.
+Total: 18.438750 ms (FindLiveObjects: 0.503500 ms CreateObjectMapping: 0.285167 ms MarkObjects: 13.846666 ms  DeleteObjects: 3.803167 ms)
+
+2026-10-10 14:05:08.284 Unity[11046:16555117] NSEventModifierFlagFunction specified to -setKeyEquivalentModifierMask: for item <NSMenuItem: 0x9ecd6c6e0 SDF, ke='Command-F12'>, but is only supported for system-provided menu items; will not be used
+Opening scene 'Assets/_Cascade/Scenes/CascadePlayable.unity'
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/_Cascade/Scenes/CascadePlayable.unity'
+	Deserialize:            16.110 ms
+	Integration:            200.326 ms
+	Integration of assets:  0.754 ms
+	Thread Wait Time:       0.029 ms
+	Total Operation Time:   217.219 ms
+Unloading 2 unused Assets / (1.0 KB). Loaded Objects now: 14612.
+Memory consumption went from 290.7 MB to 290.7 MB.
+Total: 12.799709 ms (FindLiveObjects: 0.279875 ms CreateObjectMapping: 0.175125 ms MarkObjects: 12.329292 ms  DeleteObjects: 0.015209 ms)
+
+Start importing Assets/_Cascade/Content/Resources/CascadeArt/Devices/CircularSawDisc.png using Guid(5060193313c254aecba9459f9d8c8aed) (TextureImporter) -> (artifact id: 'f6c55c2a822d7c29febcba351f8c25ec') in 0.088386834 seconds
+Refreshing native plugins compatible for Editor in 2.63 ms, found 3 plugins.
+Preloading 1 native plugins for Editor in 1.30 ms.
+Asset Pipeline Refresh (id=d5920efed86144b2798b9a399723fc80): Total: 0.167 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/_Cascade/Content/Resources/CascadeArt/Devices/CircularSawDisc.png using Guid(5060193313c254aecba9459f9d8c8aed) (TextureImporter) -> (artifact id: 'f6c55c2a822d7c29febcba351f8c25ec') in 0.079741709 seconds
+Refreshing native plugins compatible for Editor in 3.39 ms, found 3 plugins.
+Preloading 1 native plugins for Editor in 1.37 ms.
+Asset Pipeline Refresh (id=6cf4b406208d444f38c3db75327a6b4a): Total: 0.400 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+	Summary:
+		Imports: total=1 (actual=1, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=87 ms
+		Asset DB Callback time: managed=305 ms, native=6 ms
+		Scripting: domain reloads=0, domain reload time=0 ms, compile time=0 ms, other=0 ms
+		Project Asset Count: scripts=2965, non-scripts=6091
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 7
+	InvokeCustomDependenciesCallbacks: 0.000ms
+	InvokePackagesCallback: 0.000ms
+	ApplyChangesToAssetFolders: 0.049ms
+	Scan: 3.250ms
+	OnSourceAssetsModified: 0.000ms
+	CategorizeAssetsWithTransientArtifact: 0.005ms
+	ProcessAssetsWithTransientArtifactChanges: 0.029ms
+	CategorizeAssets: 1.308ms
+	ImportOutOfDateAssets: 81.533ms (0.093ms without children)
+		ImportManagerImport: 80.316ms (0.392ms without children)
+			ImportInProcess: 79.913ms
+			UpdateCategorizedAssets: 0.011ms
+		ReloadNativeAssets: 0.084ms
+		UnloadImportedAssets: 0.077ms
+		ReloadImportedAssets: 0.100ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.553ms
+		InitializingProgressBar: 0.004ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.000ms
+		OnDemandSchedulerStart: 0.306ms
+	PostProcessAllAssets: 306.318ms
+	Hotreload: 5.597ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.129ms
+	UnloadStreamsBegin: 0.010ms
+	PersistCurrentRevisions: 0.175ms
+	UnloadStreamsEnd: 0.000ms
+	Untracked: 1.448ms
+
+Asset Pipeline Refresh (id=3f378c2f9ec824e4a971943b9d47f63c): Total: 0.138 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+<CFData 0x9e01c1e00 [0x208d775a0]>{length = 6, capacity = 6, bytes = 0x50f265ee53c2}
+Start importing ProjectSettings/EditorBuildSettings.asset using Guid(0000000000000000b000000000000000) (LibraryAssetImporter) -> (artifact id: '54457183baac8c3a5180d743e82c483c') in 0.001485833 seconds
+Start importing Assets/_Cascade/Content/Localization/LocalizationSettings.asset using Guid(c18a2f3602d214a15974139d1e61163a) (NativeFormatImporter) -> (artifact id: '3ab162929231b79a7b13713ae850d3c0') in 0.000494 seconds
+Start importing Assets/_Cascade/Content/Localization/CascadeUI_ru.asset using Guid(52ab9cbec772546ab9ae030430c30abc) (NativeFormatImporter) -> (artifact id: '148d3d38d8cfbaabb894a3a31ba23bbf') in 0.001056125 seconds
+Start importing Assets/_Cascade/Content/Localization/CascadeUI_en.asset using Guid(72fdf029edab045078273fe7e379042e) (NativeFormatImporter) -> (artifact id: 'cb050f5a9679b626eb0d12a55a606e27') in 0.000750417 seconds
+Start importing Assets/_Cascade/Content/Localization/CascadeUI Shared Data.asset using Guid(b33500a1d6ebc45cd9bdf72e97fa93f5) (NativeFormatImporter) -> (artifact id: 'f10619548daea6f942654f7f8c3c0cfc') in 0.000666042 seconds
+Start importing Assets/_Cascade/Content/Localization/CascadeUI.asset using Guid(f4abbf7fead424aab9690741edaed155) (NativeFormatImporter) -> (artifact id: 'f1a02c872f353a3417a92d176f286471') in 0.000493834 seconds
+Start importing Assets/_Cascade/Content/Resources/CascadeArt/Fonts/ShapeManiaInterface.asset using Guid(d5b8821f7f926433a940a070f9b07884) (NativeFormatImporter) -> (artifact id: '8e255e2de91c403ed3bcdcbcfcdd9a62') in 0.00348675 seconds
+Start importing Assets/_Cascade/Content/Localization/CascadeUI_uk.asset using Guid(578fe1e92a581400a87ea07edb44950d) (NativeFormatImporter) -> (artifact id: '62f9ca1f514ab1fc858d463747da704e') in 0.00118825 seconds
+Start importing Assets/_Cascade/Content/Resources/CascadeArt/Fonts/InterfaceBody.asset using Guid(eac1e40dff9da4021ae3beba17dea739) (NativeFormatImporter) -> (artifact id: '285b9b6f1ffef138a130eb0ab3a5c036') in 0.003536541 seconds
+Refreshing native plugins compatible for Editor in 3.47 ms, found 3 plugins.
+Preloading 1 native plugins for Editor in 3.07 ms.
+Asset Pipeline Refresh (id=62fd07e1a37814bddb57f8d60a429bae): Total: 0.081 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+CASCADE UI tables: 5490 non-empty entries / 1830 keys.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Cascade.Editor.Playable.LocalizationAssets:Build () (at Assets/_Cascade/Editor/Playable/LocalizationAssets.cs:68)
+Cascade.Editor.Release.SawDiscReview:BeginBatch () (at Assets/_Cascade/Editor/Release/SawDiscReview.cs:34)
+
+(Filename: Assets/_Cascade/Editor/Playable/LocalizationAssets.cs Line: 68)
+
+[Project] Loading completed in 9.397 seconds
+	Project init time: 				7.663 seconds
+		Template init time: 		0.000 seconds
+		Package Manager init time: 		0.165 seconds
+		Asset Database init time: 		0.153 seconds
+		Global illumination init time: 	0.000 seconds
+		Assemblies load time: 			0.479 seconds
+		Unity extensions init time: 	0.013 seconds
+		Asset Database refresh time: 	6.549 seconds
+	Scene opening time: 			1.668 seconds
+##utp:{"type":"ProjectInfo","version":2,"phase":"Immediate","time":1791630309589,"processId":11046,"projectLoad":9.39707125,"projectInit":7.662975792,"templateInit":0.0,"packageManagerInit":0.165021417,"assetDatabaseInit":0.153400125,"globalIlluminationInit":0.00040675,"assembliesLoad":0.479469,"unityExtensionsInit":0.013034792,"assetDatabaseRefresh":6.549292292,"sceneOpening":1.667758834}
+##utp:{"type":"EditorInfo","version":2,"phase":"Immediate","time":1791630309589,"processId":11046,"editorVersion":"6000.3.8f1 (1c7db571dde0)","branch":"6000.3/staging","buildType":"Release","platform":"OSX"}
+Subscribe to USB device events
+Thread 0x33d147000 may have been prematurely finalized
+Reloading assemblies for play mode.
+Reloading assemblies after forced synchronous recompile.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.606 seconds
+Refreshing native plugins compatible for Editor in 2.77 ms, found 3 plugins.
+Native extension for iOS target not found
+Native extension for Android target not found
+Native extension for OSXStandalone target not found
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+Refreshing native plugins compatible for Editor in 2.88 ms, found 3 plugins.
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.072 seconds
+Domain Reload Profiling: 1682ms
+	BeginReloadAssembly (342ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (25ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (266ms)
+	RebuildCommonClasses (18ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (22ms)
+	LoadAllAssembliesAndSetupDomain (221ms)
+		LoadAssemblies (61ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (184ms)
+			TypeCache.Refresh (7ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (169ms)
+			ResolveRequiredComponents (6ms)
+	FinalizeReload (1072ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (873ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (17ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (135ms)
+			ProcessInitializeOnLoadAttributes (514ms)
+			ProcessInitializeOnLoadMethodAttributes (202ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (13ms)
+Asset Pipeline Refresh (id=29610e5371edb4e58b8f5c1cc8b33a67): Total: 1.914 seconds - Initiated by StopAssetImportingV2(ForceSynchronousImport | ForceDomainReload)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=1186 ms
+		Asset DB Callback time: managed=101 ms, native=0 ms
+		Scripting: domain reloads=1, domain reload time=625 ms, compile time=1 ms, other=0 ms
+		Project Asset Count: scripts=2965, non-scripts=6091
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 0.604ms
+	ApplyChangesToAssetFolders: 0.149ms
+	Scan: 0.000ms
+	OnSourceAssetsModified: 0.001ms
+	CategorizeAssetsWithTransientArtifact: 0.001ms
+	ProcessAssetsWithTransientArtifactChanges: 5.466ms
+	CategorizeAssets: 72.427ms
+	ImportOutOfDateAssets: 1081.641ms (1074.452ms without children)
+		CompileScripts: 0.543ms
+		CollectScriptTypesHashes: 4.625ms
+		ReloadNativeAssets: 0.963ms
+		UnloadImportedAssets: 0.026ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.731ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.000ms
+		OnDemandSchedulerStart: 0.300ms
+	PostProcessAllAssets: 101.329ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.130ms
+	UnloadStreamsBegin: 0.042ms
+	PersistCurrentRevisions: 0.174ms
+	UnloadStreamsEnd: 0.000ms
+	GenerateScriptTypeHashes: 3.763ms
+	Untracked: 652.102ms
+
+Placeholder ConsentInformationClient
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+GoogleMobileAds.Ump.Unity.UmpClientFactory:ConsentInformationClient ()
+GoogleMobileAds.Ump.Api.ConsentInformation:Update (GoogleMobileAds.Ump.Api.ConsentRequestParameters,System.Action`1<GoogleMobileAds.Ump.Api.FormError>)
+Cascade.Presentation.NativeAdProvider:RequestPrivacy () (at Assets/_Cascade/Presentation/NativeAdProvider.cs:47)
+Cascade.Presentation.NativeAdProvider:Initialize (Cascade.Presentation.CascadeGame,Cascade.Application.AdService,Cascade.Presentation.MonetizationSettings) (at Assets/_Cascade/Presentation/NativeAdProvider.cs:34)
+Cascade.Presentation.CascadeGame:InitializeMonetization () (at Assets/_Cascade/Presentation/CascadeGame.Store.cs:31)
+Cascade.Presentation.CascadeGame:Awake () (at Assets/_Cascade/Presentation/CascadeGame.cs:81)
+
+(Filename: Assets/_Cascade/Presentation/NativeAdProvider.cs Line: 47)
+
+Consent Info updated.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+GoogleMobileAds.Ump.Unity.ConsentInformationClient:Update (GoogleMobileAds.Ump.Api.ConsentRequestParameters,System.Action,System.Action`1<GoogleMobileAds.Ump.Api.FormError>)
+GoogleMobileAds.Ump.Api.ConsentInformation:Update (GoogleMobileAds.Ump.Api.ConsentRequestParameters,System.Action`1<GoogleMobileAds.Ump.Api.FormError>)
+Cascade.Presentation.NativeAdProvider:RequestPrivacy () (at Assets/_Cascade/Presentation/NativeAdProvider.cs:47)
+Cascade.Presentation.NativeAdProvider:Initialize (Cascade.Presentation.CascadeGame,Cascade.Application.AdService,Cascade.Presentation.MonetizationSettings) (at Assets/_Cascade/Presentation/NativeAdProvider.cs:34)
+Cascade.Presentation.CascadeGame:InitializeMonetization () (at Assets/_Cascade/Presentation/CascadeGame.Store.cs:31)
+Cascade.Presentation.CascadeGame:Awake () (at Assets/_Cascade/Presentation/CascadeGame.cs:81)
+
+(Filename: Assets/_Cascade/Presentation/NativeAdProvider.cs Line: 47)
+
+Loaded scene 'Temp/__Backupscenes/0.backup'
+	Deserialize:            0.749 ms
+	Integration:            1181.168 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.953 ms
+	Total Operation Time:   1182.871 ms
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+Asset Pipeline Refresh (id=a6b389f90299e4689a13749368426e8b): Total: 0.318 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=318 ms
+		Asset DB Callback time: managed=0 ms, native=0 ms
+		Scripting: domain reloads=0, domain reload time=0 ms, compile time=0 ms, other=0 ms
+		Project Asset Count: scripts=2965, non-scripts=6091
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 1
+	InvokeCustomDependenciesCallbacks: 0.000ms
+	InvokePackagesCallback: 0.000ms
+	ApplyChangesToAssetFolders: 0.106ms
+	Scan: 265.260ms
+	CategorizeAssetsWithTransientArtifact: 0.001ms
+	ProcessAssetsWithTransientArtifactChanges: 0.056ms
+	CategorizeAssets: 45.896ms
+	ImportOutOfDateAssets: 1.202ms (0.209ms without children)
+		ReloadNativeAssets: 0.103ms
+		UnloadImportedAssets: 0.064ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.529ms
+		OnDemandSchedulerStart: 0.297ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.184ms
+	UnloadStreamsBegin: 0.253ms
+	PersistCurrentRevisions: 0.176ms
+	UnloadStreamsEnd: 0.000ms
+	Untracked: 5.276ms
+
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+Start Indexing on Editor startup
+[Indexing] Starting Initial Indexing for Assets
+2026-10-10 14:05:13.447 Unity[11046:16555117] NSEventModifierFlagFunction specified to -setKeyEquivalentModifierMask: for item <NSMenuItem: 0x9ecd63a20 SDF, ke='Command-F12'>, but is only supported for system-provided menu items; will not be used
+Created GICache directory at /Users/andrew/Library/Caches/com.unity3d.UnityEditor/GiCache. Took: 0.001s, timestamps: [12.558 - 12.559]
+CASCADE disc face: shape; 33.4 pixels
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Cascade.Editor.Release.SawDiscReview:CheckFace (Cascade.Presentation.CascadeGame,bool) (at Assets/_Cascade/Editor/Release/SawDiscReview.cs:75)
+Cascade.Editor.Release.SawDiscReview/<>c:<Run>b__14_1 (Cascade.Presentation.CascadeGame) (at Assets/_Cascade/Editor/Release/SawDiscReview.cs:89)
+Cascade.Editor.Playable.PlayableCapture/<CaptureSettled>d__4:MoveNext () (at Assets/_Cascade/Editor/Playable/PlayableCapture.cs:39)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/Coroutines.cs:17)
+
+(Filename: Assets/_Cascade/Editor/Release/SawDiscReview.cs Line: 75)
+
+CASCADE disc face: W; 27.4 pixels
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Cascade.Editor.Release.SawDiscReview:CheckFace (Cascade.Presentation.CascadeGame,bool) (at Assets/_Cascade/Editor/Release/SawDiscReview.cs:75)
+Cascade.Editor.Release.SawDiscReview/<>c:<Run>b__14_6 (Cascade.Presentation.CascadeGame) (at Assets/_Cascade/Editor/Release/SawDiscReview.cs:97)
+Cascade.Editor.Playable.PlayableCapture/<CaptureSettled>d__4:MoveNext () (at Assets/_Cascade/Editor/Playable/PlayableCapture.cs:39)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/Coroutines.cs:17)
+
+(Filename: Assets/_Cascade/Editor/Release/SawDiscReview.cs Line: 75)
+
+CASCADE disc face: Ж; 27.4 pixels
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Cascade.Editor.Release.SawDiscReview:CheckFace (Cascade.Presentation.CascadeGame,bool) (at Assets/_Cascade/Editor/Release/SawDiscReview.cs:75)
+Cascade.Editor.Release.SawDiscReview/<>c:<Run>b__14_6 (Cascade.Presentation.CascadeGame) (at Assets/_Cascade/Editor/Release/SawDiscReview.cs:97)
+Cascade.Editor.Playable.PlayableCapture/<CaptureSettled>d__4:MoveNext () (at Assets/_Cascade/Editor/Playable/PlayableCapture.cs:39)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/Coroutines.cs:17)
+
+(Filename: Assets/_Cascade/Editor/Release/SawDiscReview.cs Line: 75)
+
+CASCADE disc face: Ї; 27.4 pixels
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Cascade.Editor.Release.SawDiscReview:CheckFace (Cascade.Presentation.CascadeGame,bool) (at Assets/_Cascade/Editor/Release/SawDiscReview.cs:75)
+Cascade.Editor.Release.SawDiscReview/<>c:<Run>b__14_6 (Cascade.Presentation.CascadeGame) (at Assets/_Cascade/Editor/Release/SawDiscReview.cs:97)
+Cascade.Editor.Playable.PlayableCapture/<CaptureSettled>d__4:MoveNext () (at Assets/_Cascade/Editor/Playable/PlayableCapture.cs:39)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/Coroutines.cs:17)
+
+(Filename: Assets/_Cascade/Editor/Release/SawDiscReview.cs Line: 75)
+
+[INFO ] [relay] relay.startup port=9001 mcpClientPort=9002 editorPid=11046
+[INFO ] [relay] log === RELAY SERVER STARTED === (unity-ai-relay v1.0.12-build.99)
+[INFO ] [relay] log TLS trust: NODE_USE_SYSTEM_CA=on systemCAs=6 bundledCAs=145
+[INFO ] [relay] log Starting relay server...
+[INFO ] [relay] log Command line arguments: ["bun","/$bunfs/root/relay_mac_arm64","--relay","--port","9001","--mcp-client-port","9002","--editor-pid","11046","--shutdown-delay","180","--log-dir","/Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Logs"]
+[INFO ] [relay] log Parsed config: {"port":9001,"mcpClientPort":9002,"editorPid":"11046","shutdownDelaySeconds":180}
+[INFO ] [relay] log Initializing relay components...
+[INFO ] [relay] log Creating RelayEditor...
+[INFO ] [relay] log WebSocket server started
+[INFO ] [relay] log Relay server initialization completed
+[INFO ] [relay] log MCP Client initialized at port: 9002
+[INFO ] [relay] log Unity MCP Relay server started | Port: 9002 | Endpoints: /mcp/start-server, /mcp/stop-server, /mcp/server-status, /mcp/call-tool
+[INFO ] [relay] log [shell-env] PATH augmented with shell environment (25 entries)
+[INFO ] [relay] log Unity client connected with ID: editor-11046-6axy0a (relay 1.0.12-build.99)
+[INFO ] [relay] connection.established clientId=editor-11046-6axy0a port=9001
+CASCADE disc face: shape; 21.5 pixels
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/StackTrace.cs:35)
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Cascade.Editor.Release.SawDiscReview:CheckFace (Cascade.Presentation.CascadeGame,bool) (at Assets/_Cascade/Editor/Release/SawDiscReview.cs:75)
+Cascade.Editor.Release.SawDiscReview/<>c:<Run>b__14_3 (Cascade.Presentation.CascadeGame) (at Assets/_Cascade/Editor/Release/SawDiscReview.cs:102)
+Cascade.Editor.Playable.PlayableCapture/<CaptureSettled>d__4:MoveNext () (at Assets/_Cascade/Editor/Playable/PlayableCapture.cs:39)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/Coroutines.cs:17)
+
+(Filename: Assets/_Cascade/Editor/Release/SawDiscReview.cs Line: 75)
+
+InvalidOperationException: Sequence contains no matching element
+  at System.Linq.Enumerable.Single[TSource] (System.Collections.Generic.IEnumerable`1[T] source, System.Func`2[T,TResult] predicate) [0x00070] in <2a8fff6ff3e54cfa88259e180adc29eb>:0 
+  at Cascade.Editor.Release.SawDiscReview.CheckFace (Cascade.Presentation.CascadeGame g, System.Boolean film) [0x00028] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Release/SawDiscReview.cs:68 
+  at Cascade.Editor.Release.SawDiscReview+<>c.<Run>b__14_4 (Cascade.Presentation.CascadeGame owner) [0x00000] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Release/SawDiscReview.cs:106 
+  at Cascade.Editor.Playable.PlayableCapture+<CaptureSettled>d__4.MoveNext () [0x00200] in /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Editor/Playable/PlayableCapture.cs:39 
+  at UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) [0x00020] in /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/Coroutines.cs:17 
+
+(Filename: Assets/_Cascade/Editor/Release/SawDiscReview.cs Line: 68)
+
+TrimDiskCacheJob: Current cache size 0mb
+[INFO ] [relay] log Client disconnected - blocking and caching for recovery
+[WARN ] [relay] connection.lost clientId=null
+[WARN ] [relay] log Client disconnected - sessions will persist until auto-shutdown, reason: Client disconnected
+[INFO ] [relay] log Auto-shutdown timer started due to client disconnection

@@ -1,0 +1,7149 @@
+{
+  "seed": 26100712,
+  "trials": 7205,
+  "levels": [
+    {
+      "id": "C185",
+      "world": 0,
+      "island": 0,
+      "teaching_node": 2,
+      "minimum": 3,
+      "witness": [
+        "D",
+        "D",
+        1
+      ],
+      "states": 35,
+      "structure_sha256": "bad69a3e0352fed4b00b2ba8e40c0875cdeb45d92413debf71e46c4a2bc11b6b"
+    },
+    {
+      "id": "C186",
+      "world": 0,
+      "island": 0,
+      "teaching_node": 3,
+      "minimum": 4,
+      "witness": [
+        0,
+        2,
+        "D",
+        "D"
+      ],
+      "states": 64,
+      "structure_sha256": "e701d80c45fffecfc93c88ecf93096273eaeb11435f0862fae90d0be7a4d8a13"
+    },
+    {
+      "id": "C187",
+      "world": 0,
+      "island": 0,
+      "teaching_node": 1,
+      "minimum": 3,
+      "witness": [
+        0,
+        1,
+        0
+      ],
+      "states": 12,
+      "structure_sha256": "b9d2e2d42afeb5baf2d623c65c368f783c99a58c4d8199a009481ef8444aecb0"
+    },
+    {
+      "id": "C188",
+      "world": 0,
+      "island": 0,
+      "teaching_node": 2,
+      "minimum": 3,
+      "witness": [
+        0,
+        1,
+        "D"
+      ],
+      "states": 15,
+      "structure_sha256": "868ea5f76039a6997b559402cf42743a5d2949e7287775a8ba222e44ac8522fa"
+    },
+    {
+      "id": "C189",
+      "world": 0,
+      "island": 0,
+      "teaching_node": 1,
+      "minimum": 4,
+      "witness": [
+        0,
+        1,
+        0,
+        "D"
+      ],
+      "states": 24,
+      "structure_sha256": "85b0089ffed2f2669c8667bbcc9119bc3f3afcc4e477ebd5351288da8de931b9"
+    },
+    {
+      "id": "C190",
+      "world": 0,
+      "island": 0,
+      "teaching_node": 3,
+      "minimum": 4,
+      "witness": [
+        0,
+        2,
+        1,
+        0
+      ],
+      "states": 49,
+      "structure_sha256": "a23534f32bb036dca1a8b33e94539d4ff523d99ad7be5c09e1811d4e79fc8536"
+    },
+    {
+      "id": "C191",
+      "world": 0,
+      "island": 0,
+      "teaching_node": 3,
+      "minimum": 3,
+      "witness": [
+        "D",
+        1,
+        "D"
+      ],
+      "states": 71,
+      "structure_sha256": "bb070eaf979524beb61a4667fd68c09e0662ef446af269dd5d55c10aaebdc15b"
+    },
+    {
+      "id": "C192",
+      "world": 0,
+      "island": 0,
+      "teaching_node": 2,
+      "minimum": 4,
+      "witness": [
+        1,
+        0,
+        "D",
+        "D"
+      ],
+      "states": 40,
+      "structure_sha256": "778e2f17569d84718f92d9eaf08f610fe4cf5644e51dd1fbeea96ac20e4bcc96"
+    },
+    {
+      "id": "C193",
+      "world": 0,
+      "island": 0,
+      "teaching_node": 3,
+      "minimum": 3,
+      "witness": [
+        1,
+        "D",
+        "D"
+      ],
+      "states": 61,
+      "structure_sha256": "991da753bb8d49e4d7c5dd287ea65b59f7b5e8a097369cc293e33599abd02ea6"
+    },
+    {
+      "id": "C194",
+      "world": 0,
+      "island": 1,
+      "teaching_node": 6,
+      "minimum": 4,
+      "witness": [
+        0,
+        2,
+        "D",
+        1
+      ],
+      "states": 86,
+      "structure_sha256": "505ef930352a94246cfb506fa32af41970ac4a90c8121952edb41e19f415e0c8"
+    },
+    {
+      "id": "C195",
+      "world": 0,
+      "island": 1,
+      "teaching_node": 3,
+      "minimum": 3,
+      "witness": [
+        "D",
+        "D",
+        0
+      ],
+      "states": 78,
+      "structure_sha256": "83c8852c9e78ef1f28f641708220d972bfe7fdd55cda4e3e47adf3c36d35903f"
+    },
+    {
+      "id": "C196",
+      "world": 0,
+      "island": 1,
+      "teaching_node": 3,
+      "minimum": 3,
+      "witness": [
+        0,
+        2,
+        1
+      ],
+      "states": 25,
+      "structure_sha256": "377ffbedec8e85fda5f6125f0e610b13c035223345b00fd22e165f172357a2ed"
+    },
+    {
+      "id": "C197",
+      "world": 0,
+      "island": 1,
+      "teaching_node": 5,
+      "minimum": 4,
+      "witness": [
+        2,
+        "D",
+        "D",
+        "D"
+      ],
+      "states": 43,
+      "structure_sha256": "6cefb08b8c5fd2d350e738986a89915a682fc213ace59780c01ed1ca17085544"
+    },
+    {
+      "id": "C198",
+      "world": 0,
+      "island": 1,
+      "teaching_node": 5,
+      "minimum": 4,
+      "witness": [
+        0,
+        2,
+        "D",
+        "D"
+      ],
+      "states": 27,
+      "structure_sha256": "ee4b91bcbcab3550326a8fdcdeaaa4bf1ea3fc6b3834c7062dfd99b257e31f1d"
+    },
+    {
+      "id": "C199",
+      "world": 0,
+      "island": 1,
+      "teaching_node": 5,
+      "minimum": 3,
+      "witness": [
+        2,
+        "D",
+        "D"
+      ],
+      "states": 31,
+      "structure_sha256": "5533a125e303b83359906a86e59885d0dfd7b40b1397ec9cc0e57d9cf0f2f46c"
+    },
+    {
+      "id": "C200",
+      "world": 0,
+      "island": 1,
+      "teaching_node": 3,
+      "minimum": 4,
+      "witness": [
+        0,
+        1,
+        0,
+        "D"
+      ],
+      "states": 49,
+      "structure_sha256": "40eca20b2eb947209629ed5ba75c64baf5bdf34fc317c2e439f18a8f1abf7e43"
+    },
+    {
+      "id": "C201",
+      "world": 0,
+      "island": 1,
+      "teaching_node": 3,
+      "minimum": 4,
+      "witness": [
+        2,
+        1,
+        "D",
+        "D"
+      ],
+      "states": 88,
+      "structure_sha256": "897a24a87768187cf19e1e009ca18225ecf92b7fbc37d62b0ce7cd640d9c64f8"
+    },
+    {
+      "id": "C202",
+      "world": 0,
+      "island": 1,
+      "teaching_node": 4,
+      "minimum": 3,
+      "witness": [
+        1,
+        2,
+        "D"
+      ],
+      "states": 29,
+      "structure_sha256": "c8da8b9a1c8e7d823901a764df004b8a5ae6223404c55616cffd127ec376f48e"
+    },
+    {
+      "id": "C203",
+      "world": 0,
+      "island": 2,
+      "teaching_node": 6,
+      "minimum": 4,
+      "witness": [
+        0,
+        "D",
+        1,
+        "D"
+      ],
+      "states": 83,
+      "structure_sha256": "cf55ad4d150d14a76f7229e64f0ed4310110d72aaaf7dd28c8baf84a236fa776"
+    },
+    {
+      "id": "C204",
+      "world": 0,
+      "island": 2,
+      "teaching_node": 8,
+      "minimum": 4,
+      "witness": [
+        0,
+        1,
+        2,
+        "D"
+      ],
+      "states": 67,
+      "structure_sha256": "60c8b6e86f9b4791e02b8bf7debec609fb356293c80472cde4902ca31497c850"
+    },
+    {
+      "id": "C205",
+      "world": 0,
+      "island": 2,
+      "teaching_node": 9,
+      "minimum": 4,
+      "witness": [
+        1,
+        2,
+        "D",
+        "D"
+      ],
+      "states": 97,
+      "structure_sha256": "8714d9479b81196b1675b6f4d61955be0b0d3c0be616e713f44f537ac353efc4"
+    },
+    {
+      "id": "C206",
+      "world": 0,
+      "island": 2,
+      "teaching_node": 6,
+      "minimum": 4,
+      "witness": [
+        1,
+        "D",
+        0,
+        "D"
+      ],
+      "states": 88,
+      "structure_sha256": "750790497c4b4f64304a690760a84106d29b89a3746aba247445daaf77e830ce"
+    },
+    {
+      "id": "C207",
+      "world": 0,
+      "island": 2,
+      "teaching_node": 9,
+      "minimum": 4,
+      "witness": [
+        1,
+        0,
+        "D",
+        2
+      ],
+      "states": 63,
+      "structure_sha256": "8c4718c5d6f7e1e5f31812825938a1ca14a94e78399c9a8cb26107b6bfb3f782"
+    },
+    {
+      "id": "C208",
+      "world": 0,
+      "island": 2,
+      "teaching_node": 7,
+      "minimum": 5,
+      "witness": [
+        1,
+        0,
+        2,
+        1,
+        "D"
+      ],
+      "states": 72,
+      "structure_sha256": "7330a52a5da0a2048c1c83a32aaf40aba21dec7768047cf31fac733503376595"
+    },
+    {
+      "id": "C209",
+      "world": 0,
+      "island": 2,
+      "teaching_node": 5,
+      "minimum": 4,
+      "witness": [
+        1,
+        "D",
+        "D",
+        "D"
+      ],
+      "states": 29,
+      "structure_sha256": "ba7f7a539845e69c6f55ef38982a5f33a5dd3902484ade8fea637459ec819011"
+    },
+    {
+      "id": "C210",
+      "world": 0,
+      "island": 2,
+      "teaching_node": 3,
+      "minimum": 4,
+      "witness": [
+        1,
+        0,
+        2,
+        "D"
+      ],
+      "states": 48,
+      "structure_sha256": "0ae92b1c380aae8c47beec6eb139413836bc0a90beaee892add553b3a19d6fa9"
+    },
+    {
+      "id": "C211",
+      "world": 0,
+      "island": 2,
+      "teaching_node": 3,
+      "minimum": 5,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        "D"
+      ],
+      "states": 90,
+      "structure_sha256": "bf55eced199f9f28f93f576d370d04e77af486883d05aa5834227a4a52d8744c"
+    },
+    {
+      "id": "C212",
+      "world": 0,
+      "island": 3,
+      "teaching_node": 9,
+      "minimum": 5,
+      "witness": [
+        0,
+        1,
+        2,
+        0,
+        "D"
+      ],
+      "states": 73,
+      "structure_sha256": "cdf52e91b3664cc2c6e937fa3ebdfc34cd5288feba5f3d107ea789d4b075d4b9"
+    },
+    {
+      "id": "C213",
+      "world": 0,
+      "island": 3,
+      "teaching_node": 7,
+      "minimum": 5,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1
+      ],
+      "states": 72,
+      "structure_sha256": "d1638fdb3d7417d92e286d9e0327e1eea8eb5d7b95d282e6ebb30294d3c7f356"
+    },
+    {
+      "id": "C214",
+      "world": 0,
+      "island": 3,
+      "teaching_node": 6,
+      "minimum": 6,
+      "witness": [
+        0,
+        1,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 143,
+      "structure_sha256": "83076986434abba99960263f4d52b5535a41d7b28cfd3c9341309468075a1a85"
+    },
+    {
+      "id": "C215",
+      "world": 0,
+      "island": 3,
+      "teaching_node": 12,
+      "minimum": 5,
+      "witness": [
+        0,
+        2,
+        3,
+        2,
+        1
+      ],
+      "states": 226,
+      "structure_sha256": "64921e8e1df22a81c5cb0592f76a8acad26b773456e995fa3faa78aa4e8c6ebb"
+    },
+    {
+      "id": "C216",
+      "world": 0,
+      "island": 3,
+      "teaching_node": 12,
+      "minimum": 5,
+      "witness": [
+        0,
+        0,
+        1,
+        0,
+        "D"
+      ],
+      "states": 226,
+      "structure_sha256": "db966477db665eb05971fb482bba533d4e2af8325790660de386c46770af8a16"
+    },
+    {
+      "id": "C217",
+      "world": 0,
+      "island": 3,
+      "teaching_node": 3,
+      "minimum": 5,
+      "witness": [
+        1,
+        2,
+        1,
+        "D",
+        "D"
+      ],
+      "states": 138,
+      "structure_sha256": "d1e665fb046d419f264e2914ad5b1f0b6410daa740dbf1d061cf395d171bf2e4"
+    },
+    {
+      "id": "C218",
+      "world": 0,
+      "island": 3,
+      "teaching_node": 12,
+      "minimum": 5,
+      "witness": [
+        1,
+        2,
+        2,
+        1,
+        0
+      ],
+      "states": 245,
+      "structure_sha256": "2aa95a14df7897a420403e6ed58c9346f2fb26e65fad76b11bf8e4f37a064e5c"
+    },
+    {
+      "id": "C219",
+      "world": 0,
+      "island": 3,
+      "teaching_node": 5,
+      "minimum": 5,
+      "witness": [
+        1,
+        0,
+        2,
+        "D",
+        "D"
+      ],
+      "states": 34,
+      "structure_sha256": "47acad621fefbe2cd2232ad69d4b4539ee94707e64c6fe37c2dc3bbc5063aeef"
+    },
+    {
+      "id": "C220",
+      "world": 0,
+      "island": 3,
+      "teaching_node": 3,
+      "minimum": 6,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        "D",
+        "D"
+      ],
+      "states": 143,
+      "structure_sha256": "a55cf58fe555d1faaa34823ccbf78103b2277e13fe74f6f6c2625629373415be"
+    },
+    {
+      "id": "C221",
+      "world": 0,
+      "island": 4,
+      "teaching_node": 11,
+      "minimum": 5,
+      "witness": [
+        0,
+        1,
+        2,
+        1,
+        "D"
+      ],
+      "states": 63,
+      "structure_sha256": "867ad7f1953bb516b40d4ea3f10318c27bd51366d2ba1995b07cdde7fdf11d3f"
+    },
+    {
+      "id": "C222",
+      "world": 0,
+      "island": 4,
+      "teaching_node": 12,
+      "minimum": 5,
+      "witness": [
+        1,
+        3,
+        "D",
+        3,
+        2
+      ],
+      "states": 225,
+      "structure_sha256": "5c911bd2c5bc5747cc29ebe4cc395c3a29818a850b8f7148a157b101bde887ca"
+    },
+    {
+      "id": "C223",
+      "world": 0,
+      "island": 4,
+      "teaching_node": 12,
+      "minimum": 7,
+      "witness": [
+        1,
+        2,
+        1,
+        3,
+        1,
+        0,
+        "D"
+      ],
+      "states": 542,
+      "structure_sha256": "877f3aed3b689b9922fcf6b1de308d18ad38f480f4cb85db3591202c3d41b9b7"
+    },
+    {
+      "id": "C224",
+      "world": 0,
+      "island": 4,
+      "teaching_node": 3,
+      "minimum": 5,
+      "witness": [
+        0,
+        1,
+        2,
+        1,
+        0
+      ],
+      "states": 71,
+      "structure_sha256": "479a4f3de2c043aa1990641bd9a0c1370d331fd39c135a9d88bc33bfe7273521"
+    },
+    {
+      "id": "C225",
+      "world": 0,
+      "island": 4,
+      "teaching_node": 7,
+      "minimum": 5,
+      "witness": [
+        1,
+        0,
+        2,
+        1,
+        0
+      ],
+      "states": 71,
+      "structure_sha256": "8874a46e13ba7d988c49cbae0bb96cd38edebce0764f835393adc3ed38e904e7"
+    },
+    {
+      "id": "C226",
+      "world": 0,
+      "island": 4,
+      "teaching_node": 3,
+      "minimum": 5,
+      "witness": [
+        1,
+        0,
+        2,
+        "D",
+        "D"
+      ],
+      "states": 115,
+      "structure_sha256": "e199291607aa14fecad39ceea87c067d4807dbc934efb8af342b1035268d7e4b"
+    },
+    {
+      "id": "C227",
+      "world": 0,
+      "island": 4,
+      "teaching_node": 12,
+      "minimum": 5,
+      "witness": [
+        1,
+        3,
+        1,
+        3,
+        "D"
+      ],
+      "states": 245,
+      "structure_sha256": "047ce80fd1a6ef0f48527ac0da080c822164ccf3fc2a87fdc7e8d3de25424b0c"
+    },
+    {
+      "id": "C228",
+      "world": 0,
+      "island": 4,
+      "teaching_node": 12,
+      "minimum": 5,
+      "witness": [
+        1,
+        0,
+        0,
+        1,
+        "D"
+      ],
+      "states": 345,
+      "structure_sha256": "63577c9a5ae57f65fedb496267bf8fbf561bfe76f666908bb15cc98bac184a87"
+    },
+    {
+      "id": "C229",
+      "world": 0,
+      "island": 4,
+      "teaching_node": 12,
+      "minimum": 6,
+      "witness": [
+        0,
+        1,
+        2,
+        3,
+        1,
+        "D"
+      ],
+      "states": 302,
+      "structure_sha256": "15d99a310198fcfc75d9faf179731ed19beb2a63c7258a243cf27f5d09de4120"
+    },
+    {
+      "id": "C230",
+      "world": 1,
+      "island": 0,
+      "teaching_node": 12,
+      "minimum": 5,
+      "witness": [
+        0,
+        1,
+        "D",
+        "D",
+        "D"
+      ],
+      "states": 506,
+      "structure_sha256": "e5b9c4e6fa84618214220c74e6ebb4ad27c211ce089ff625ba7dd686d8a9672c"
+    },
+    {
+      "id": "C231",
+      "world": 1,
+      "island": 0,
+      "teaching_node": 14,
+      "minimum": 5,
+      "witness": [
+        1,
+        0,
+        2,
+        1,
+        "D"
+      ],
+      "states": 53,
+      "structure_sha256": "7c5374d4ea302d9271392fd69d526eba52fc6a650eaee6dad80db36ebcd19463"
+    },
+    {
+      "id": "C232",
+      "world": 1,
+      "island": 0,
+      "teaching_node": 10,
+      "minimum": 5,
+      "witness": [
+        2,
+        "D",
+        2,
+        "D",
+        "D"
+      ],
+      "states": 169,
+      "structure_sha256": "b19232a480a0963a05b100d767a390deb390f7cf4075a7c506ba4ef6385426ff"
+    },
+    {
+      "id": "C233",
+      "world": 1,
+      "island": 0,
+      "teaching_node": 11,
+      "minimum": 5,
+      "witness": [
+        2,
+        "D",
+        0,
+        "D",
+        "D"
+      ],
+      "states": 159,
+      "structure_sha256": "1859327fa46103bb8f3081058043eb3bfa9f8a86e503459c251b62b0ebdead96"
+    },
+    {
+      "id": "C234",
+      "world": 1,
+      "island": 0,
+      "teaching_node": 7,
+      "minimum": 6,
+      "witness": [
+        1,
+        2,
+        1,
+        0,
+        "D",
+        "D"
+      ],
+      "states": 76,
+      "structure_sha256": "656ece4dd56fa76e2f5cb8b5b6e93c2afdb6d6ca3b99da22134bc887c7ee53be"
+    },
+    {
+      "id": "C235",
+      "world": 1,
+      "island": 0,
+      "teaching_node": 15,
+      "minimum": 6,
+      "witness": [
+        1,
+        2,
+        1,
+        "D",
+        0,
+        1
+      ],
+      "states": 51,
+      "structure_sha256": "6f2b1bbe8d020bfe74ccb10d2e35757e5c0321e734b9c17fc245cc6eb288899e"
+    },
+    {
+      "id": "C236",
+      "world": 1,
+      "island": 0,
+      "teaching_node": 7,
+      "minimum": 5,
+      "witness": [
+        1,
+        "D",
+        "D",
+        2,
+        1
+      ],
+      "states": 73,
+      "structure_sha256": "2a39972af3776f0af2c8b80f037da4151c6a44b4e0014d3ea9a44fd58a998730"
+    },
+    {
+      "id": "C237",
+      "world": 1,
+      "island": 0,
+      "teaching_node": 15,
+      "minimum": 5,
+      "witness": [
+        1,
+        2,
+        0,
+        1,
+        2
+      ],
+      "states": 87,
+      "structure_sha256": "fed79d26ca0a032dd18531ac6d7d04b0d33d7e69cec32d92fd6e92e571b621a9"
+    },
+    {
+      "id": "C238",
+      "world": 1,
+      "island": 0,
+      "teaching_node": 15,
+      "minimum": 6,
+      "witness": [
+        1,
+        "D",
+        0,
+        2,
+        1,
+        0
+      ],
+      "states": 96,
+      "structure_sha256": "42aedaa5d0bce136f7c22eea25c3face402bf7c1502b0789315012a62caefd33"
+    },
+    {
+      "id": "C239",
+      "world": 1,
+      "island": 1,
+      "teaching_node": 6,
+      "minimum": 5,
+      "witness": [
+        "D",
+        "D",
+        0,
+        1,
+        0
+      ],
+      "states": 52,
+      "structure_sha256": "6365ed533575f3c7009d4b9a2b10de279262d9e8eb94d93ee21e46806f559fa0"
+    },
+    {
+      "id": "C240",
+      "world": 1,
+      "island": 1,
+      "teaching_node": 15,
+      "minimum": 5,
+      "witness": [
+        1,
+        2,
+        "D",
+        1,
+        0
+      ],
+      "states": 99,
+      "structure_sha256": "77170061a3ec3d102604fad5154b385a013abeeee0885a0019ac27b751b02b19"
+    },
+    {
+      "id": "C241",
+      "world": 1,
+      "island": 1,
+      "teaching_node": 12,
+      "minimum": 5,
+      "witness": [
+        "D",
+        1,
+        3,
+        2,
+        1
+      ],
+      "states": 513,
+      "structure_sha256": "eb9c813c139b9966c86e52f0e14c731fca89553ee170273796f65f358a473ee8"
+    },
+    {
+      "id": "C242",
+      "world": 1,
+      "island": 1,
+      "teaching_node": 21,
+      "minimum": 5,
+      "witness": [
+        1,
+        0,
+        2,
+        1,
+        0
+      ],
+      "states": 68,
+      "structure_sha256": "68456b1ff4ddfc7176b551683dca3d09f6cb9d9fbc045218605b39658c8fdeb3"
+    },
+    {
+      "id": "C243",
+      "world": 1,
+      "island": 1,
+      "teaching_node": 19,
+      "minimum": 5,
+      "witness": [
+        0,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 65,
+      "structure_sha256": "331c65fe2ba8d0e3b485919149589222d20df71b1b519cf6eae82e1b5f42410f"
+    },
+    {
+      "id": "C244",
+      "world": 1,
+      "island": 1,
+      "teaching_node": 6,
+      "minimum": 5,
+      "witness": [
+        "D",
+        2,
+        "D",
+        1,
+        "D"
+      ],
+      "states": 56,
+      "structure_sha256": "bff31f5dea6cafacec9068e943cd7c6b3af98647e3e6c477e82587ac1b06961d"
+    },
+    {
+      "id": "C245",
+      "world": 1,
+      "island": 1,
+      "teaching_node": 12,
+      "minimum": 5,
+      "witness": [
+        1,
+        2,
+        "D",
+        0,
+        3
+      ],
+      "states": 459,
+      "structure_sha256": "1caf064b450557b36d7e7f2ea31e59bfbb61c1af07112ebcfa8e6e31a91c162c"
+    },
+    {
+      "id": "C246",
+      "world": 1,
+      "island": 1,
+      "teaching_node": 11,
+      "minimum": 6,
+      "witness": [
+        0,
+        1,
+        "D",
+        "D",
+        0,
+        1
+      ],
+      "states": 183,
+      "structure_sha256": "1c3bcc34438dcf2f0494a888d5fce755d249a1ed987c9c143e6b06eaf6b4a835"
+    },
+    {
+      "id": "C247",
+      "world": 1,
+      "island": 1,
+      "teaching_node": 9,
+      "minimum": 5,
+      "witness": [
+        0,
+        2,
+        1,
+        2,
+        "D"
+      ],
+      "states": 73,
+      "structure_sha256": "8e8e3142da799c62792f1c3466daff6cf80b9690f903dec32b25aec3a9910ede"
+    },
+    {
+      "id": "C248",
+      "world": 1,
+      "island": 2,
+      "teaching_node": 13,
+      "minimum": 6,
+      "witness": [
+        2,
+        0,
+        1,
+        0,
+        2,
+        "D"
+      ],
+      "states": 110,
+      "structure_sha256": "02fcf3417a4621700fc6e836019f00daa0427c789064e00a0e391db8f41c7532"
+    },
+    {
+      "id": "C249",
+      "world": 1,
+      "island": 2,
+      "teaching_node": 19,
+      "minimum": 6,
+      "witness": [
+        "D",
+        1,
+        0,
+        2,
+        1,
+        "D"
+      ],
+      "states": 127,
+      "structure_sha256": "f649b1553e52bd7a74ea6872e97981902cc1517d33656d0ba19062447e3b94ac"
+    },
+    {
+      "id": "C250",
+      "world": 1,
+      "island": 2,
+      "teaching_node": 19,
+      "minimum": 7,
+      "witness": [
+        0,
+        "D",
+        1,
+        0,
+        2,
+        1,
+        "D"
+      ],
+      "states": 127,
+      "structure_sha256": "f31c6916fda66be0682f03aae5a9ac8867cc31455068b517f867f47efeb7c276"
+    },
+    {
+      "id": "C251",
+      "world": 1,
+      "island": 2,
+      "teaching_node": 19,
+      "minimum": 6,
+      "witness": [
+        0,
+        0,
+        1,
+        2,
+        "D",
+        1
+      ],
+      "states": 82,
+      "structure_sha256": "63e47d1978a7f71d24e41d3c707d2539e134330f91c8c94ebadb5fd196dc4a74"
+    },
+    {
+      "id": "C252",
+      "world": 1,
+      "island": 2,
+      "teaching_node": 12,
+      "minimum": 6,
+      "witness": [
+        0,
+        3,
+        "D",
+        "D",
+        1,
+        3
+      ],
+      "states": 651,
+      "structure_sha256": "aee3587c9e313f8d407fa3e63d80473a704c3a1621120022099f1f7ee4416185"
+    },
+    {
+      "id": "C253",
+      "world": 1,
+      "island": 2,
+      "teaching_node": 20,
+      "minimum": 6,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        "D"
+      ],
+      "states": 120,
+      "structure_sha256": "431b7b8b50e61c39e09ae5cfd255fa579f8c0466354b462cd534c3f5a6207e97"
+    },
+    {
+      "id": "C254",
+      "world": 1,
+      "island": 2,
+      "teaching_node": 22,
+      "minimum": 6,
+      "witness": [
+        1,
+        0,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 132,
+      "structure_sha256": "6136bb29f37d4d97cd0c9f7165396bd154c6cd9bc4e65df6845f45e2c093121d"
+    },
+    {
+      "id": "C255",
+      "world": 1,
+      "island": 2,
+      "teaching_node": 15,
+      "minimum": 6,
+      "witness": [
+        "D",
+        0,
+        1,
+        0,
+        2,
+        1
+      ],
+      "states": 123,
+      "structure_sha256": "320a8071e2b887e29cffa224b8f9905e0a9bbcbec299617e8a73ff3949881124"
+    },
+    {
+      "id": "C256",
+      "world": 1,
+      "island": 2,
+      "teaching_node": 12,
+      "minimum": 6,
+      "witness": [
+        0,
+        1,
+        3,
+        "D",
+        1,
+        3
+      ],
+      "states": 567,
+      "structure_sha256": "fc6c250d0002f57f3b50444931ef895c06969e5a31915eb2259e5fd80a34d50a"
+    },
+    {
+      "id": "C257",
+      "world": 1,
+      "island": 3,
+      "teaching_node": 27,
+      "minimum": 6,
+      "witness": [
+        "D",
+        0,
+        1,
+        2,
+        1,
+        "D"
+      ],
+      "states": 111,
+      "structure_sha256": "0e3ce4557e71f7a83e67b19e5820d794ed0d9d0f19cf9405cfb86f3f0ab62d88"
+    },
+    {
+      "id": "C258",
+      "world": 1,
+      "island": 3,
+      "teaching_node": 18,
+      "minimum": 6,
+      "witness": [
+        0,
+        1,
+        2,
+        1,
+        "D",
+        "D"
+      ],
+      "states": 180,
+      "structure_sha256": "62a62d978f707299a947e0799a64c66290e3788aa456532a152d25c989a90da6"
+    },
+    {
+      "id": "C259",
+      "world": 1,
+      "island": 3,
+      "teaching_node": 20,
+      "minimum": 6,
+      "witness": [
+        2,
+        1,
+        0,
+        2,
+        1,
+        "D"
+      ],
+      "states": 319,
+      "structure_sha256": "f8d9290d4b613bb0d00c07fe97bcf72ce0d885ed32922e947b18da2c438d97f6"
+    },
+    {
+      "id": "C260",
+      "world": 1,
+      "island": 3,
+      "teaching_node": 12,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        3,
+        2,
+        0,
+        3,
+        "D"
+      ],
+      "states": 541,
+      "structure_sha256": "d395549bbd6fea497f6471ef2a84155c5598aa100f0d7f2a3749e1dacd500bb9"
+    },
+    {
+      "id": "C261",
+      "world": 1,
+      "island": 3,
+      "teaching_node": 27,
+      "minimum": 6,
+      "witness": [
+        1,
+        "D",
+        0,
+        1,
+        2,
+        "D"
+      ],
+      "states": 111,
+      "structure_sha256": "66ef507403881e744bb40e05b272ebfd972fa4d8ac5b6d9cc82d6a90116f8c29"
+    },
+    {
+      "id": "C262",
+      "world": 1,
+      "island": 3,
+      "teaching_node": 16,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 134,
+      "structure_sha256": "f4f9d631e7cc363f1312afaa4208efe6d29fbf7e6e24d9563439f03dc46eea57"
+    },
+    {
+      "id": "C263",
+      "world": 1,
+      "island": 3,
+      "teaching_node": 20,
+      "minimum": 6,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        "D"
+      ],
+      "states": 120,
+      "structure_sha256": "4903189f3dc9e80f3c16432b2492526cc449c6d4e9343afe17b61bc9c2726bd8"
+    },
+    {
+      "id": "C264",
+      "world": 1,
+      "island": 3,
+      "teaching_node": 20,
+      "minimum": 6,
+      "witness": [
+        1,
+        0,
+        1,
+        2,
+        1,
+        "D"
+      ],
+      "states": 107,
+      "structure_sha256": "4c5b21360d2a8a80a2c8f550a5d2429d790f24c37744acd00f4350c8bcb90fc5"
+    },
+    {
+      "id": "C265",
+      "world": 1,
+      "island": 3,
+      "teaching_node": 19,
+      "minimum": 6,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0
+      ],
+      "states": 66,
+      "structure_sha256": "ecb3958a6adc0437aebcc75a680ff567a4a3f6d60c28feba2b507577be1c6834"
+    },
+    {
+      "id": "C266",
+      "world": 1,
+      "island": 4,
+      "teaching_node": 15,
+      "minimum": 6,
+      "witness": [
+        2,
+        "D",
+        0,
+        1,
+        2,
+        "D"
+      ],
+      "states": 117,
+      "structure_sha256": "d22a247f7d99387feb2d2388636cd0639eadb430d173ffba4131aa582f9cd946"
+    },
+    {
+      "id": "C267",
+      "world": 1,
+      "island": 4,
+      "teaching_node": 13,
+      "minimum": 6,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0
+      ],
+      "states": 95,
+      "structure_sha256": "930aaf443f46653c762ecca7b2918f9c0e5de75c1a00d50fcb64b72ac1b0e96b"
+    },
+    {
+      "id": "C268",
+      "world": 1,
+      "island": 4,
+      "teaching_node": 18,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 143,
+      "structure_sha256": "2f57b3c5966fb2e99c581089343cba60209891eaa06ce6dfdbeb068a936c4644"
+    },
+    {
+      "id": "C269",
+      "world": 1,
+      "island": 4,
+      "teaching_node": 20,
+      "minimum": 6,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0
+      ],
+      "states": 102,
+      "structure_sha256": "d47966c84cda1d193c64e59920e23e48d2776411f85a8dcfacb686d0965b05b0"
+    },
+    {
+      "id": "C270",
+      "world": 1,
+      "island": 4,
+      "teaching_node": 12,
+      "minimum": 6,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        3,
+        "D"
+      ],
+      "states": 560,
+      "structure_sha256": "52f4dc180f5328fca0a927db01cd1d112a44a58ce96f6bdc698b7000424e3987"
+    },
+    {
+      "id": "C271",
+      "world": 1,
+      "island": 4,
+      "teaching_node": 20,
+      "minimum": 6,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0
+      ],
+      "states": 196,
+      "structure_sha256": "63b285ad942a1528e6069aa9f151a24b29a45d12b03e2d3956ec9d11f761cf64"
+    },
+    {
+      "id": "C272",
+      "world": 1,
+      "island": 4,
+      "teaching_node": 27,
+      "minimum": 6,
+      "witness": [
+        1,
+        "D",
+        0,
+        2,
+        1,
+        "D"
+      ],
+      "states": 87,
+      "structure_sha256": "80187afa30a5fc7c33480e70a55a42f870580efcc63e0175ca5512aedbb0997f"
+    },
+    {
+      "id": "C273",
+      "world": 1,
+      "island": 4,
+      "teaching_node": 12,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        2,
+        "D",
+        0,
+        2,
+        1
+      ],
+      "states": 819,
+      "structure_sha256": "e59a52ceaa9a6206cf0153d1ac75cd439c6174a5a64f7a6334e83e657299ef2b"
+    },
+    {
+      "id": "C274",
+      "world": 1,
+      "island": 4,
+      "teaching_node": 29,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 365,
+      "structure_sha256": "51b5f2c125269535e04167a5c44e3d05d9a64d298313ccc46d75db635e8d24bb"
+    },
+    {
+      "id": "C275",
+      "world": 2,
+      "island": 0,
+      "teaching_node": 19,
+      "minimum": 7,
+      "witness": [
+        2,
+        1,
+        0,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 115,
+      "structure_sha256": "da23758746f3e8f929645e98baa2310dc5bc11d3582fe38f363c659fafa9e3f8"
+    },
+    {
+      "id": "C276",
+      "world": 2,
+      "island": 0,
+      "teaching_node": 23,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 132,
+      "structure_sha256": "fa585fb0908561511155e8dddd3a0cd479e466e9bc56eb0caeb54cce68a789b7"
+    },
+    {
+      "id": "C277",
+      "world": 2,
+      "island": 0,
+      "teaching_node": 31,
+      "minimum": 8,
+      "witness": [
+        2,
+        3,
+        1,
+        0,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 435,
+      "structure_sha256": "ebcec84c877b1e6f428869f2312b479afc61a7d1b6ef48c5399ec47797109904"
+    },
+    {
+      "id": "C278",
+      "world": 2,
+      "island": 0,
+      "teaching_node": 31,
+      "minimum": 7,
+      "witness": [
+        1,
+        0,
+        2,
+        1,
+        0,
+        3,
+        "D"
+      ],
+      "states": 459,
+      "structure_sha256": "87250c31e9531d9fc251c17a21830c2cca2c158717d4439b6b76225a335fb632"
+    },
+    {
+      "id": "C279",
+      "world": 2,
+      "island": 0,
+      "teaching_node": 29,
+      "minimum": 7,
+      "witness": [
+        1,
+        0,
+        2,
+        1,
+        3,
+        "D",
+        "D"
+      ],
+      "states": 573,
+      "structure_sha256": "ee9e8537a9fbc246a8d1108bb675cb2b2bbe3a9fe1c6070132689b502156a261"
+    },
+    {
+      "id": "C280",
+      "world": 2,
+      "island": 0,
+      "teaching_node": 20,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        2,
+        1,
+        0,
+        "D",
+        "D"
+      ],
+      "states": 195,
+      "structure_sha256": "cb454d2fb8ef26f72c7d428d20a1ce28f14f9755ea29a5220a5dd39731445562"
+    },
+    {
+      "id": "C281",
+      "world": 2,
+      "island": 0,
+      "teaching_node": 29,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        3,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 366,
+      "structure_sha256": "eb4240948d53928d0f152a0c88ec01435f23fd5b9cf513347ca5ce77ea91869a"
+    },
+    {
+      "id": "C282",
+      "world": 2,
+      "island": 0,
+      "teaching_node": 31,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        3,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 432,
+      "structure_sha256": "9ccbdb6bb23cc834cc6810a8dc5a258c5f356d4380fb7d985e896c5fac0fb54e"
+    },
+    {
+      "id": "C283",
+      "world": 2,
+      "island": 0,
+      "teaching_node": 29,
+      "minimum": 7,
+      "witness": [
+        1,
+        0,
+        2,
+        1,
+        3,
+        2,
+        "D"
+      ],
+      "states": 361,
+      "structure_sha256": "75481c0b361b43bfdd11d278d24d4c251b9af3fe5b29eb54839777bdcb4a489f"
+    },
+    {
+      "id": "C284",
+      "world": 2,
+      "island": 0,
+      "teaching_node": 19,
+      "minimum": 7,
+      "witness": [
+        0,
+        0,
+        1,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 73,
+      "structure_sha256": "6b6a4f13f2fa711a2f7dc82bd80a61ce50b210edb43c7befe493782d8e436c61"
+    },
+    {
+      "id": "C285",
+      "world": 2,
+      "island": 1,
+      "teaching_node": 31,
+      "minimum": 7,
+      "witness": [
+        2,
+        "D",
+        1,
+        0,
+        2,
+        1,
+        "D"
+      ],
+      "states": 432,
+      "structure_sha256": "b9add4cb0d2edb389083f58583d69ad1cd03da27a15cbe368763b050dd0a2218"
+    },
+    {
+      "id": "C286",
+      "world": 2,
+      "island": 1,
+      "teaching_node": 31,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        0,
+        3,
+        2,
+        1,
+        "D"
+      ],
+      "states": 270,
+      "structure_sha256": "5009eeac0479e72cdbc8b5a7560f95c4cff0d2705242480f0110fe9c77fefc31"
+    },
+    {
+      "id": "C287",
+      "world": 2,
+      "island": 1,
+      "teaching_node": 18,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 158,
+      "structure_sha256": "ac1ec8455eb2d988bee776e2ea21602ee80abbcad9091b9121705359dbe6728c"
+    },
+    {
+      "id": "C288",
+      "world": 2,
+      "island": 1,
+      "teaching_node": 15,
+      "minimum": 7,
+      "witness": [
+        1,
+        2,
+        "D",
+        0,
+        1,
+        2,
+        "D"
+      ],
+      "states": 340,
+      "structure_sha256": "75442056fd15888f9927059db111a4bd1503e0c4b82078d36be5843a43d1b0e9"
+    },
+    {
+      "id": "C289",
+      "world": 2,
+      "island": 1,
+      "teaching_node": 19,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 107,
+      "structure_sha256": "be4044560febb09e2bfb6094c9dd76cc2ede21b10a780dd607595ec019a5c472"
+    },
+    {
+      "id": "C290",
+      "world": 2,
+      "island": 1,
+      "teaching_node": 29,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        3,
+        2,
+        1
+      ],
+      "states": 476,
+      "structure_sha256": "1b2a470903ae265848a6aa90433026c7e01a5e8ba28e4426acf0a374022c6632"
+    },
+    {
+      "id": "C291",
+      "world": 2,
+      "island": 1,
+      "teaching_node": 31,
+      "minimum": 7,
+      "witness": [
+        2,
+        "D",
+        1,
+        0,
+        2,
+        3,
+        "D"
+      ],
+      "states": 470,
+      "structure_sha256": "242bf0bb1fb5336b60fad6fa4e78e44d4afe52ec5f69746e8716432c5df11455"
+    },
+    {
+      "id": "C292",
+      "world": 2,
+      "island": 1,
+      "teaching_node": 34,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        2,
+        1,
+        0,
+        1,
+        "D"
+      ],
+      "states": 110,
+      "structure_sha256": "3915b5977b7841e1365ee5b6e3af3e94e11724814dec0617351f99dd3404ec75"
+    },
+    {
+      "id": "C293",
+      "world": 2,
+      "island": 1,
+      "teaching_node": 15,
+      "minimum": 7,
+      "witness": [
+        1,
+        2,
+        "D",
+        0,
+        1,
+        0,
+        2
+      ],
+      "states": 221,
+      "structure_sha256": "7c53f0b2cdf3a9244b7fa0c3e27f403809de3feb36bec60a80c0dfb7840275fa"
+    },
+    {
+      "id": "C294",
+      "world": 2,
+      "island": 1,
+      "teaching_node": 31,
+      "minimum": 7,
+      "witness": [
+        0,
+        2,
+        1,
+        0,
+        3,
+        2,
+        1
+      ],
+      "states": 357,
+      "structure_sha256": "1fc0f1aa08c9e90bf34a4fe2e8c9b58bf07e0bff73cc72953a61ebcf1f536341"
+    },
+    {
+      "id": "C295",
+      "world": 2,
+      "island": 2,
+      "teaching_node": 31,
+      "minimum": 7,
+      "witness": [
+        2,
+        "D",
+        1,
+        0,
+        2,
+        1,
+        3
+      ],
+      "states": 359,
+      "structure_sha256": "05979204e8ce245d40a5494866cf22a7a8fcc1975396bfc41216b6bd3a5f6f9b"
+    },
+    {
+      "id": "C296",
+      "world": 2,
+      "island": 2,
+      "teaching_node": 29,
+      "minimum": 8,
+      "witness": [
+        1,
+        0,
+        2,
+        3,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 480,
+      "structure_sha256": "8309c640e1303c4683f6fa4dbd1a109dff2757577f0b035aa909559cf15413cc"
+    },
+    {
+      "id": "C297",
+      "world": 2,
+      "island": 2,
+      "teaching_node": 20,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 116,
+      "structure_sha256": "e8807a7669036d456e5a2d17ed764356a1aeba853f642230b5b4d22a636783d6"
+    },
+    {
+      "id": "C298",
+      "world": 2,
+      "island": 2,
+      "teaching_node": 29,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        3,
+        2,
+        1,
+        "D",
+        "D"
+      ],
+      "states": 562,
+      "structure_sha256": "520f61902bec45a4bcf43ac0b92ce34e35a6aa05265377a0031d9592cc0bdce8"
+    },
+    {
+      "id": "C299",
+      "world": 2,
+      "island": 2,
+      "teaching_node": 17,
+      "minimum": 7,
+      "witness": [
+        1,
+        2,
+        0,
+        1,
+        0,
+        2,
+        "D"
+      ],
+      "states": 107,
+      "structure_sha256": "61861deafc40ac4b3c46c79c05868e075a9a3f077f1dc60a0ba28d346d07302f"
+    },
+    {
+      "id": "C300",
+      "world": 2,
+      "island": 2,
+      "teaching_node": 31,
+      "minimum": 8,
+      "witness": [
+        1,
+        0,
+        2,
+        1,
+        0,
+        3,
+        2,
+        1
+      ],
+      "states": 476,
+      "structure_sha256": "2aac3dbedf2260e6d55457a37d263570d45261ab364c297543d225cbd4076949"
+    },
+    {
+      "id": "C301",
+      "world": 2,
+      "island": 2,
+      "teaching_node": 17,
+      "minimum": 7,
+      "witness": [
+        1,
+        2,
+        1,
+        "D",
+        0,
+        1,
+        2
+      ],
+      "states": 69,
+      "structure_sha256": "355e59c80a544564b6cc7ae52685895ff064de897f6c71ce68e6b4503917057a"
+    },
+    {
+      "id": "C302",
+      "world": 2,
+      "island": 2,
+      "teaching_node": 31,
+      "minimum": 7,
+      "witness": [
+        2,
+        1,
+        0,
+        2,
+        3,
+        2,
+        "D"
+      ],
+      "states": 439,
+      "structure_sha256": "15b9ff481ee4ee238fd7caf57a906ffd948eebf5259d99348fce6d998a8f01ff"
+    },
+    {
+      "id": "C303",
+      "world": 2,
+      "island": 2,
+      "teaching_node": 29,
+      "minimum": 7,
+      "witness": [
+        1,
+        2,
+        1,
+        0,
+        3,
+        "D",
+        "D"
+      ],
+      "states": 578,
+      "structure_sha256": "89940329d307826d7b86ccf4992686b9136b402c2e254a82cd9bc30410a23110"
+    },
+    {
+      "id": "C304",
+      "world": 2,
+      "island": 2,
+      "teaching_node": 19,
+      "minimum": 7,
+      "witness": [
+        2,
+        "D",
+        1,
+        0,
+        2,
+        1,
+        "D"
+      ],
+      "states": 217,
+      "structure_sha256": "d8bd84e7bed007b46775b5918eb0387f45f2dc62f80138ff20140b69e12df7af"
+    },
+    {
+      "id": "C305",
+      "world": 2,
+      "island": 3,
+      "teaching_node": 22,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 122,
+      "structure_sha256": "5ea2d661088e377355fffad8392499ae4b07647fb11a868d608bad524c5c3975"
+    },
+    {
+      "id": "C306",
+      "world": 2,
+      "island": 3,
+      "teaching_node": 31,
+      "minimum": 8,
+      "witness": [
+        0,
+        "D",
+        1,
+        0,
+        2,
+        3,
+        2,
+        1
+      ],
+      "states": 529,
+      "structure_sha256": "12f2c22639333caae6938694cb16952546bd202bda66dd4b2ff1b23505894644"
+    },
+    {
+      "id": "C307",
+      "world": 2,
+      "island": 3,
+      "teaching_node": 29,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        2,
+        1,
+        3,
+        2,
+        "D"
+      ],
+      "states": 463,
+      "structure_sha256": "981bc77d01fc25d810b3d12f1892942ee34717cb943c5927d13e563f756b1924"
+    },
+    {
+      "id": "C308",
+      "world": 2,
+      "island": 3,
+      "teaching_node": 31,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        3,
+        2,
+        1
+      ],
+      "states": 365,
+      "structure_sha256": "e660b5a81e0a898071d58fac5e2a0c596e5fbb6b4e370abd64a7be9d4f158d7f"
+    },
+    {
+      "id": "C309",
+      "world": 2,
+      "island": 3,
+      "teaching_node": 19,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 101,
+      "structure_sha256": "2d829eb8082345d402bb1197d66059a9856eddcaa9fa7ad420738df5bfd83822"
+    },
+    {
+      "id": "C310",
+      "world": 2,
+      "island": 3,
+      "teaching_node": 27,
+      "minimum": 7,
+      "witness": [
+        1,
+        "D",
+        0,
+        1,
+        2,
+        1,
+        0
+      ],
+      "states": 88,
+      "structure_sha256": "3ab8ed5e7632242be7a183b924cee72c3816b8eef212b18d5cd6d9f3ca637f48"
+    },
+    {
+      "id": "C311",
+      "world": 2,
+      "island": 3,
+      "teaching_node": 33,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        2,
+        0,
+        1,
+        0,
+        "D"
+      ],
+      "states": 140,
+      "structure_sha256": "025c87175e2a9350f261278f37616806f6d9d86aaed2ab6e67c6c22a63006d85"
+    },
+    {
+      "id": "C312",
+      "world": 2,
+      "island": 3,
+      "teaching_node": 31,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        2,
+        1,
+        3,
+        2,
+        "D"
+      ],
+      "states": 351,
+      "structure_sha256": "3835b8014cd27fb859c363d3f87cbb59b11f65330ed64ad83ba0902b3bff526a"
+    },
+    {
+      "id": "C313",
+      "world": 2,
+      "island": 3,
+      "teaching_node": 35,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 78,
+      "structure_sha256": "11be2f2cedf1380d9c885046d90a23d135d315b727e9d2a6d0f084228c342941"
+    },
+    {
+      "id": "C314",
+      "world": 2,
+      "island": 3,
+      "teaching_node": 29,
+      "minimum": 8,
+      "witness": [
+        1,
+        2,
+        1,
+        0,
+        3,
+        2,
+        1,
+        0
+      ],
+      "states": 476,
+      "structure_sha256": "361d9542492ca4a81f49c03b0da285f8a6c39c1b7e085c2282ff6b156eaa0dd5"
+    },
+    {
+      "id": "C315",
+      "world": 2,
+      "island": 4,
+      "teaching_node": 29,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        2,
+        3,
+        2,
+        1,
+        0
+      ],
+      "states": 365,
+      "structure_sha256": "be1aeac6e4878312cc587f16f4c3a6f1a36780fef67c59c66fdf2be3860a2b2e"
+    },
+    {
+      "id": "C316",
+      "world": 2,
+      "island": 4,
+      "teaching_node": 40,
+      "minimum": 7,
+      "witness": [
+        1,
+        0,
+        2,
+        3,
+        1,
+        "D",
+        2
+      ],
+      "states": 460,
+      "structure_sha256": "3f644e7f2e273ef7363472a731b873e2aa5f7028e8ab349f22387db44eca8b1e"
+    },
+    {
+      "id": "C317",
+      "world": 2,
+      "island": 4,
+      "teaching_node": 31,
+      "minimum": 8,
+      "witness": [
+        2,
+        1,
+        2,
+        3,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 379,
+      "structure_sha256": "51d2870690a8f1e1a6f629de203804d312570b714ac069f2d9812f3baa684a19"
+    },
+    {
+      "id": "C318",
+      "world": 2,
+      "island": 4,
+      "teaching_node": 29,
+      "minimum": 7,
+      "witness": [
+        0,
+        2,
+        1,
+        3,
+        2,
+        1,
+        0
+      ],
+      "states": 361,
+      "structure_sha256": "96e0dccf8eceb2a384da928b1d45fca418df41755717b529138a43bd9277fa7e"
+    },
+    {
+      "id": "C319",
+      "world": 2,
+      "island": 4,
+      "teaching_node": 27,
+      "minimum": 7,
+      "witness": [
+        "D",
+        0,
+        1,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 111,
+      "structure_sha256": "fbced0f65a2709a038777f8fd80c3c518f7d1dd87a9aa995d4f97b9f6a5d6e6d"
+    },
+    {
+      "id": "C320",
+      "world": 2,
+      "island": 4,
+      "teaching_node": 29,
+      "minimum": 7,
+      "witness": [
+        0,
+        2,
+        1,
+        3,
+        2,
+        "D",
+        "D"
+      ],
+      "states": 567,
+      "structure_sha256": "6bfa7d49c623e882e21c18e949d96a9f63f413daa87669a5cca9e6d64a27cec4"
+    },
+    {
+      "id": "C321",
+      "world": 2,
+      "island": 4,
+      "teaching_node": 40,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        3,
+        2
+      ],
+      "states": 350,
+      "structure_sha256": "5b7f0ead8ced0b1e3b0ee42c88ad8fa3c2826fe0f2b2b6267471f5485356a22c"
+    },
+    {
+      "id": "C322",
+      "world": 2,
+      "island": 4,
+      "teaching_node": 34,
+      "minimum": 7,
+      "witness": [
+        1,
+        0,
+        2,
+        1,
+        0,
+        "D",
+        "D"
+      ],
+      "states": 182,
+      "structure_sha256": "beeff1449c9d246d2fb383b9386fd529d937b505292f3108db235dc5d2d5fe2a"
+    },
+    {
+      "id": "C323",
+      "world": 2,
+      "island": 4,
+      "teaching_node": 31,
+      "minimum": 9,
+      "witness": [
+        0,
+        2,
+        3,
+        2,
+        1,
+        0,
+        2,
+        1,
+        "D"
+      ],
+      "states": 375,
+      "structure_sha256": "d71434d66e585e9c13b1c8ef07aec3906b2b90f7c69237b9f27115c3e468d14f"
+    },
+    {
+      "id": "C324",
+      "world": 2,
+      "island": 4,
+      "teaching_node": 40,
+      "minimum": 9,
+      "witness": [
+        0,
+        2,
+        1,
+        0,
+        3,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 584,
+      "structure_sha256": "67e47b2354cfe84625d850e2dc120bfdeec158cf99a4c3a662a32988920b81f2"
+    },
+    {
+      "id": "C325",
+      "world": 3,
+      "island": 0,
+      "teaching_node": 41,
+      "minimum": 8,
+      "witness": [
+        0,
+        2,
+        1,
+        3,
+        2,
+        0,
+        "D",
+        "D"
+      ],
+      "states": 851,
+      "structure_sha256": "aab75eee5be4661b2aaeccf4b1eda2be515499597e9c740b2e4b99042b3fe4cc"
+    },
+    {
+      "id": "C326",
+      "world": 3,
+      "island": 0,
+      "teaching_node": 40,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        "D",
+        3,
+        2
+      ],
+      "states": 683,
+      "structure_sha256": "e2954f0f9784a2c7e196284754bd8cedc548b370dc665bec633f15aa38072183"
+    },
+    {
+      "id": "C327",
+      "world": 3,
+      "island": 0,
+      "teaching_node": 44,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        3,
+        1,
+        0,
+        3,
+        "D"
+      ],
+      "states": 582,
+      "structure_sha256": "4cbe4e222b60da82445a889c45d56cb0d1d5080540f1f7ad36028c1ea57ee0f1"
+    },
+    {
+      "id": "C328",
+      "world": 3,
+      "island": 0,
+      "teaching_node": 40,
+      "minimum": 8,
+      "witness": [
+        0,
+        2,
+        1,
+        0,
+        3,
+        2,
+        1,
+        "D"
+      ],
+      "states": 481,
+      "structure_sha256": "f04a54f67e6e4a2686408c682175f18c18551a51f71e2fbc098a2f8433fbed25"
+    },
+    {
+      "id": "C329",
+      "world": 3,
+      "island": 0,
+      "teaching_node": 45,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        3,
+        "D",
+        "D",
+        1,
+        0,
+        3
+      ],
+      "states": 971,
+      "structure_sha256": "a9d0fb86c8631b4ea062ac05838d8885578b1df7e9cf0bfefb59db0a6006108a"
+    },
+    {
+      "id": "C330",
+      "world": 3,
+      "island": 0,
+      "teaching_node": 45,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        3,
+        2,
+        1,
+        1,
+        2,
+        "D"
+      ],
+      "states": 731,
+      "structure_sha256": "91da0fe256a7e1ce6ed4ae138a5eeea6f6aa13f37eb5cd6fb03103e9d332b7f5"
+    },
+    {
+      "id": "C331",
+      "world": 3,
+      "island": 0,
+      "teaching_node": 41,
+      "minimum": 7,
+      "witness": [
+        1,
+        "D",
+        1,
+        0,
+        2,
+        1,
+        0
+      ],
+      "states": 796,
+      "structure_sha256": "f64f94c5541126b3dd68ee42c4c50cc9819bcaf6308a4da301b50ba28afba602"
+    },
+    {
+      "id": "C332",
+      "world": 3,
+      "island": 1,
+      "teaching_node": 44,
+      "minimum": 8,
+      "witness": [
+        0,
+        2,
+        1,
+        0,
+        3,
+        2,
+        1,
+        "D"
+      ],
+      "states": 582,
+      "structure_sha256": "aec4870cca4b1da6420a52101a3c2b5aeb1e44637e8aa0f2f74333f1a7df5536"
+    },
+    {
+      "id": "C333",
+      "world": 3,
+      "island": 1,
+      "teaching_node": 29,
+      "minimum": 8,
+      "witness": [
+        1,
+        0,
+        2,
+        1,
+        3,
+        2,
+        1,
+        0
+      ],
+      "states": 476,
+      "structure_sha256": "f06de434f9425210c4cf3937ad94924d09ffdfc9240408edd80515a0e1c38648"
+    },
+    {
+      "id": "C334",
+      "world": 3,
+      "island": 1,
+      "teaching_node": 49,
+      "minimum": 7,
+      "witness": [
+        0,
+        3,
+        2,
+        1,
+        2,
+        "D",
+        0
+      ],
+      "states": 953,
+      "structure_sha256": "6ff5b735ccbc28bf56d9ef50a46e9bec24032688384c5a3b9bd372ca3c4cfe82"
+    },
+    {
+      "id": "C335",
+      "world": 3,
+      "island": 1,
+      "teaching_node": 29,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        3,
+        "D"
+      ],
+      "states": 584,
+      "structure_sha256": "2e52754228e1db0e6add394e072a5dda600f73d8516d9b056a24b1c3317317e9"
+    },
+    {
+      "id": "C336",
+      "world": 3,
+      "island": 1,
+      "teaching_node": 43,
+      "minimum": 8,
+      "witness": [
+        2,
+        1,
+        3,
+        2,
+        1,
+        "D",
+        "D",
+        3
+      ],
+      "states": 1036,
+      "structure_sha256": "c62f210fb291f35354624a5cf39ec19d859717a3ccde5cc08652f36ee71d8a76"
+    },
+    {
+      "id": "C337",
+      "world": 3,
+      "island": 1,
+      "teaching_node": 47,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        0,
+        "D",
+        "D",
+        0,
+        1,
+        3
+      ],
+      "states": 1257,
+      "structure_sha256": "641708f26407f2beb909087e18422f840482ae3169ca0d8a3c0fd914b693755a"
+    },
+    {
+      "id": "C338",
+      "world": 3,
+      "island": 1,
+      "teaching_node": 37,
+      "minimum": 8,
+      "witness": [
+        0,
+        2,
+        1,
+        3,
+        1,
+        0,
+        3,
+        "D"
+      ],
+      "states": 1363,
+      "structure_sha256": "222a22fa0ea2a19d42bd7c1c44818dff3156c54a377985794857d1a94daaa07b"
+    },
+    {
+      "id": "C339",
+      "world": 3,
+      "island": 2,
+      "teaching_node": 41,
+      "minimum": 8,
+      "witness": [
+        "D",
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        3
+      ],
+      "states": 971,
+      "structure_sha256": "7695914eaf818e8c0e26ad4a1beff43fd702e8544f53afb71b9159134f6da7ee"
+    },
+    {
+      "id": "C340",
+      "world": 3,
+      "island": 2,
+      "teaching_node": 55,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 782,
+      "structure_sha256": "845fb9625e29aa8c29b9357dc7aa7f61a2e5fe116a885c5e94b75349fc82664d"
+    },
+    {
+      "id": "C341",
+      "world": 3,
+      "island": 2,
+      "teaching_node": 49,
+      "minimum": 7,
+      "witness": [
+        0,
+        2,
+        1,
+        3,
+        2,
+        "D",
+        0
+      ],
+      "states": 843,
+      "structure_sha256": "bd59be5919a0e00ced74e463861f4904ec5370472c395437696c3925834320cd"
+    },
+    {
+      "id": "C342",
+      "world": 3,
+      "island": 2,
+      "teaching_node": 47,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        1,
+        0,
+        "D"
+      ],
+      "states": 723,
+      "structure_sha256": "e33d83b4f6b242c121dadcbafaa258f79e37d50f711a90c49cc342b31ac1664c"
+    },
+    {
+      "id": "C343",
+      "world": 3,
+      "island": 2,
+      "teaching_node": 51,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        1,
+        3,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 603,
+      "structure_sha256": "4d11d69ab382f21a9b47397e5d5aad3016cec0aa612c5ed5688e9623d25a12ad"
+    },
+    {
+      "id": "C344",
+      "world": 3,
+      "island": 2,
+      "teaching_node": 52,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        "D",
+        1,
+        0,
+        3,
+        2,
+        1
+      ],
+      "states": 824,
+      "structure_sha256": "bfc4dcd85e432f168b0100f4312439c9c682a65e8096937ac42b1f7a0090bddf"
+    },
+    {
+      "id": "C345",
+      "world": 3,
+      "island": 2,
+      "teaching_node": 46,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        0,
+        0,
+        3,
+        2,
+        1
+      ],
+      "states": 464,
+      "structure_sha256": "eeecbf502c863ba5923556a2c6d1a0f59190e26c33a60c98ff8851ed94c8c9b2"
+    },
+    {
+      "id": "C346",
+      "world": 3,
+      "island": 3,
+      "teaching_node": 47,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        0,
+        "D",
+        "D",
+        0,
+        3,
+        2
+      ],
+      "states": 1137,
+      "structure_sha256": "ea95679abe2bcdacbed891f085535c31775be777f8ffb46005e6a8be8a175490"
+    },
+    {
+      "id": "C347",
+      "world": 3,
+      "island": 3,
+      "teaching_node": 49,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        0,
+        3,
+        3,
+        2,
+        "D",
+        "D"
+      ],
+      "states": 1250,
+      "structure_sha256": "2646f73a4f7f08231664bce2b018b99fd7da832e7155258aa8c0b92ed7978911"
+    },
+    {
+      "id": "C348",
+      "world": 3,
+      "island": 3,
+      "teaching_node": 52,
+      "minimum": 6,
+      "witness": [
+        0,
+        1,
+        3,
+        "D",
+        1,
+        0
+      ],
+      "states": 361,
+      "structure_sha256": "f2c1030c2523f62d8cd50183d2369a41258c765d2ec3b932cd3d46050a138775"
+    },
+    {
+      "id": "C349",
+      "world": 3,
+      "island": 3,
+      "teaching_node": 47,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        2,
+        1,
+        "D",
+        "D",
+        1,
+        0
+      ],
+      "states": 1017,
+      "structure_sha256": "ef0ace1720f90922a34519b9ba9a27e82f5496838d78969117e42aaac834193b"
+    },
+    {
+      "id": "C350",
+      "world": 3,
+      "island": 3,
+      "teaching_node": 59,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        3,
+        2,
+        1,
+        3,
+        1,
+        "D"
+      ],
+      "states": 1234,
+      "structure_sha256": "4ac625d896dc67cf0c2c17a04af2d262d25f3b8986e69b76321c760e2e6005c9"
+    },
+    {
+      "id": "C351",
+      "world": 3,
+      "island": 3,
+      "teaching_node": 59,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        2,
+        1,
+        "D",
+        2,
+        1,
+        0
+      ],
+      "states": 2032,
+      "structure_sha256": "fcbaafda60c3a3d2f829a0f689055bdde99fe6e5dde57555f2b22c871ed5c071"
+    },
+    {
+      "id": "C352",
+      "world": 3,
+      "island": 3,
+      "teaching_node": 48,
+      "minimum": 6,
+      "witness": [
+        1,
+        1,
+        3,
+        2,
+        1,
+        "D"
+      ],
+      "states": 352,
+      "structure_sha256": "9d62829c400ecdc34973eb773b8698a845c756bed7863c8845f2bdd342a61f47"
+    },
+    {
+      "id": "C353",
+      "world": 3,
+      "island": 4,
+      "teaching_node": 61,
+      "minimum": 8,
+      "witness": [
+        0,
+        2,
+        1,
+        0,
+        3,
+        2,
+        1,
+        "D"
+      ],
+      "states": 687,
+      "structure_sha256": "8216b9aa2f70bf4e42f7e76365c4530cef7a2ded348188465241b6442c705e01"
+    },
+    {
+      "id": "C354",
+      "world": 3,
+      "island": 4,
+      "teaching_node": 59,
+      "minimum": 8,
+      "witness": [
+        2,
+        1,
+        3,
+        "D",
+        1,
+        "D",
+        0,
+        3
+      ],
+      "states": 1854,
+      "structure_sha256": "e1e8d45a12cbfad023a4df558d4f44a73dbdda23102935b3d820d205f63382ad"
+    },
+    {
+      "id": "C355",
+      "world": 3,
+      "island": 4,
+      "teaching_node": 45,
+      "minimum": 6,
+      "witness": [
+        2,
+        "D",
+        "D",
+        0,
+        1,
+        2
+      ],
+      "states": 1091,
+      "structure_sha256": "0665cea5e8897efd21910d1255b30607e8eac79b8d53a8363d13a6df6e9b0e7e"
+    },
+    {
+      "id": "C356",
+      "world": 3,
+      "island": 4,
+      "teaching_node": 50,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        0,
+        2,
+        1,
+        "D"
+      ],
+      "states": 540,
+      "structure_sha256": "00754b24111a5297df5f2ec11d6ee5f1b4481c83548761f056ebb5b6b18b91f7"
+    },
+    {
+      "id": "C357",
+      "world": 3,
+      "island": 4,
+      "teaching_node": 49,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 780,
+      "structure_sha256": "9ab1e20d96b251f24a84ce8a7eff59322b35fb01cf51bcee613712d84049a706"
+    },
+    {
+      "id": "C358",
+      "world": 3,
+      "island": 4,
+      "teaching_node": 55,
+      "minimum": 8,
+      "witness": [
+        1,
+        0,
+        2,
+        1,
+        1,
+        0,
+        "D",
+        "D"
+      ],
+      "states": 1262,
+      "structure_sha256": "f3d694d3f7a56172caeb83eae72e437be5e5a7b0fe7ebb3e010f2e63a9bdc96a"
+    },
+    {
+      "id": "C359",
+      "world": 3,
+      "island": 4,
+      "teaching_node": 49,
+      "minimum": 6,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        0,
+        "D"
+      ],
+      "states": 514,
+      "structure_sha256": "90c6f31bf94dcbdd9e8ce470eb8ed37a3329e91f346339ce770240a5a02b99f5"
+    },
+    {
+      "id": "C360",
+      "world": 3,
+      "island": 4,
+      "teaching_node": 50,
+      "minimum": 8,
+      "witness": [
+        0,
+        2,
+        1,
+        3,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 687,
+      "structure_sha256": "530d940b4a1a26f33f7f61bf3c35727898c423b105dd87cae2de2f7872da78a5"
+    },
+    {
+      "id": "C361",
+      "world": 4,
+      "island": 0,
+      "teaching_node": 68,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        3,
+        2,
+        "D",
+        1
+      ],
+      "states": 898,
+      "structure_sha256": "ae20f822516df144fb1d232d1187d2ebbe31fc89c2fa7ba800359a8b76ea31f2"
+    },
+    {
+      "id": "C362",
+      "world": 4,
+      "island": 0,
+      "teaching_node": 68,
+      "minimum": 10,
+      "witness": [
+        1,
+        2,
+        1,
+        0,
+        1,
+        3,
+        "D",
+        2,
+        1,
+        0
+      ],
+      "states": 1692,
+      "structure_sha256": "3ceed6a970411789caecf619aaccc33a025e4a77acc0c458f952c7c8b6c00526"
+    },
+    {
+      "id": "C363",
+      "world": 4,
+      "island": 0,
+      "teaching_node": 60,
+      "minimum": 7,
+      "witness": [
+        0,
+        "D",
+        2,
+        3,
+        2,
+        1,
+        0
+      ],
+      "states": 731,
+      "structure_sha256": "e2693fd38010c25941ec38b286bf7f4b3a7d611200d079d4363d23c7e671aab5"
+    },
+    {
+      "id": "C364",
+      "world": 4,
+      "island": 0,
+      "teaching_node": 69,
+      "minimum": 9,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        3,
+        2,
+        1,
+        "D"
+      ],
+      "states": 942,
+      "structure_sha256": "4440b042c81dce3fb84c7366fd77543280efcdc298568a96f14cdc43e4d175b7"
+    },
+    {
+      "id": "C365",
+      "world": 4,
+      "island": 0,
+      "teaching_node": 68,
+      "minimum": 9,
+      "witness": [
+        1,
+        2,
+        1,
+        0,
+        3,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 1191,
+      "structure_sha256": "850120edea38d86fca7d04baaa18f9f3005f7ce76b2069e0b739ac6ad8da9260"
+    },
+    {
+      "id": "C366",
+      "world": 4,
+      "island": 0,
+      "teaching_node": 67,
+      "minimum": 8,
+      "witness": [
+        2,
+        1,
+        0,
+        3,
+        2,
+        1,
+        "D",
+        "D"
+      ],
+      "states": 1213,
+      "structure_sha256": "88195fecc90f6287423526eb59c95c201d31bdc52761f8b3b0f6af1b9a16ebde"
+    },
+    {
+      "id": "C367",
+      "world": 4,
+      "island": 0,
+      "teaching_node": 53,
+      "minimum": 8,
+      "witness": [
+        0,
+        0,
+        1,
+        2,
+        1,
+        0,
+        3,
+        "D"
+      ],
+      "states": 552,
+      "structure_sha256": "753c75f4ae136e8d885e633cbaf5b5e5fd66b14c6a8c54af9ddad8b0050d1593"
+    },
+    {
+      "id": "C368",
+      "world": 4,
+      "island": 1,
+      "teaching_node": 70,
+      "minimum": 9,
+      "witness": [
+        0,
+        1,
+        2,
+        1,
+        0,
+        3,
+        2,
+        1,
+        "D"
+      ],
+      "states": 2206,
+      "structure_sha256": "2744dd897648337ae0535c7ad58d6e39c8937454f74f6a14eccf78c1d64d9b32"
+    },
+    {
+      "id": "C369",
+      "world": 4,
+      "island": 1,
+      "teaching_node": 70,
+      "minimum": 8,
+      "witness": [
+        1,
+        0,
+        2,
+        3,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 2025,
+      "structure_sha256": "c375b96c1889a660b540353cf9c1eb0c387374e0e21b7eb3c17de1fa15a66a07"
+    },
+    {
+      "id": "C370",
+      "world": 4,
+      "island": 1,
+      "teaching_node": 54,
+      "minimum": 6,
+      "witness": [
+        0,
+        1,
+        0,
+        3,
+        3,
+        2
+      ],
+      "states": 300,
+      "structure_sha256": "b6e38054164b356cbac15edfda2b13e5ea375d509805ad7e3c3b5bc7eefdcb4f"
+    },
+    {
+      "id": "C371",
+      "world": 4,
+      "island": 1,
+      "teaching_node": 73,
+      "minimum": 9,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        3,
+        "D",
+        2
+      ],
+      "states": 1383,
+      "structure_sha256": "1c30aa775c417238a6e8197954653baf0458bc64e35b8127cf6d5418c48c98ac"
+    },
+    {
+      "id": "C372",
+      "world": 4,
+      "island": 1,
+      "teaching_node": 71,
+      "minimum": 9,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        3,
+        2,
+        1,
+        "D"
+      ],
+      "states": 1779,
+      "structure_sha256": "5c7acbf37d4f3017e7ea96e31c7250f40b7fec563c4dc67a8d55e285b51a3616"
+    },
+    {
+      "id": "C373",
+      "world": 4,
+      "island": 1,
+      "teaching_node": 73,
+      "minimum": 9,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        3,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 993,
+      "structure_sha256": "b05e6f71d510cc6d2c4af7af5918f450f2a7a9eea54acdb80f5d34400b76571d"
+    },
+    {
+      "id": "C374",
+      "world": 4,
+      "island": 1,
+      "teaching_node": 73,
+      "minimum": 7,
+      "witness": [
+        1,
+        0,
+        2,
+        1,
+        3,
+        "D",
+        "D"
+      ],
+      "states": 1072,
+      "structure_sha256": "f9287e8f952aabd340d9e098f23353e002e6ab303cf59719b4b14d0baa181875"
+    },
+    {
+      "id": "C375",
+      "world": 4,
+      "island": 2,
+      "teaching_node": 73,
+      "minimum": 8,
+      "witness": [
+        1,
+        2,
+        1,
+        0,
+        3,
+        2,
+        "D",
+        1
+      ],
+      "states": 1112,
+      "structure_sha256": "82035c5f496f888066a710de440637a3dc835f7596a8f9bcd219668e9ca20405"
+    },
+    {
+      "id": "C376",
+      "world": 4,
+      "island": 2,
+      "teaching_node": 75,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        3,
+        2,
+        "D",
+        1
+      ],
+      "states": 1167,
+      "structure_sha256": "d1536fbbcb7e54b4e59fe0970de1a83618e2024d58fa935bb3d8e96aa6ca43df"
+    },
+    {
+      "id": "C377",
+      "world": 4,
+      "island": 2,
+      "teaching_node": 70,
+      "minimum": 6,
+      "witness": [
+        1,
+        0,
+        3,
+        2,
+        "D",
+        "D"
+      ],
+      "states": 1298,
+      "structure_sha256": "c6143ff043314c4cc1240ba09b430d742aebcb0a21c603dcfd33c72cadba645c"
+    },
+    {
+      "id": "C378",
+      "world": 4,
+      "island": 2,
+      "teaching_node": 70,
+      "minimum": 10,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        3,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 2123,
+      "structure_sha256": "ffa81b78189525301a268233a47353fe78c5aab90673b9649db179074a1703bb"
+    },
+    {
+      "id": "C379",
+      "world": 4,
+      "island": 2,
+      "teaching_node": 67,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        2,
+        1,
+        "D",
+        0,
+        1,
+        3
+      ],
+      "states": 1233,
+      "structure_sha256": "58157e8a41bae4b7b2769d2afb58d812a2ba36c00227418c39fd1c072bdafcdb"
+    },
+    {
+      "id": "C380",
+      "world": 4,
+      "island": 2,
+      "teaching_node": 67,
+      "minimum": 8,
+      "witness": [
+        1,
+        "D",
+        2,
+        1,
+        3,
+        2,
+        0,
+        1
+      ],
+      "states": 1367,
+      "structure_sha256": "a10d7c9341979cd983ee5e0368da89215fdbf5e30404e0e2f3d2fbebc27ac553"
+    },
+    {
+      "id": "C381",
+      "world": 4,
+      "island": 2,
+      "teaching_node": 70,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        3,
+        "D",
+        "D"
+      ],
+      "states": 1919,
+      "structure_sha256": "f4152f3890d6d9bc64c87e892401b8844d80d189047f4ab2db3a9a9f638249af"
+    },
+    {
+      "id": "C382",
+      "world": 4,
+      "island": 3,
+      "teaching_node": 75,
+      "minimum": 10,
+      "witness": [
+        0,
+        1,
+        2,
+        1,
+        0,
+        3,
+        "D",
+        2,
+        1,
+        0
+      ],
+      "states": 1556,
+      "structure_sha256": "d69baa8ed59282807179aa27510fe8e1aceab3333a3276de91972f8fd9811c4e"
+    },
+    {
+      "id": "C383",
+      "world": 4,
+      "island": 3,
+      "teaching_node": 72,
+      "minimum": 8,
+      "witness": [
+        1,
+        0,
+        2,
+        1,
+        0,
+        3,
+        2,
+        "D"
+      ],
+      "states": 654,
+      "structure_sha256": "e9c4ef9bf6ca950d3d06760d19630ce75ee32f980ae5b5e98bff1407c2282b6a"
+    },
+    {
+      "id": "C384",
+      "world": 4,
+      "island": 3,
+      "teaching_node": 67,
+      "minimum": 7,
+      "witness": [
+        1,
+        0,
+        3,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 1035,
+      "structure_sha256": "828839a9dad2ab98dc5340634617c298df86933ec47908b1136e2307a51fe22a"
+    },
+    {
+      "id": "C385",
+      "world": 4,
+      "island": 3,
+      "teaching_node": 67,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        3,
+        2,
+        "D"
+      ],
+      "states": 1000,
+      "structure_sha256": "a9e8ed8b527b4acc289cc98c4dbe4ed9a93b2c7300d8991c04b7c2a5ed58b130"
+    },
+    {
+      "id": "C386",
+      "world": 4,
+      "island": 3,
+      "teaching_node": 71,
+      "minimum": 9,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        "D",
+        3,
+        2,
+        1
+      ],
+      "states": 1328,
+      "structure_sha256": "7ccfc4e839df134fe929ed61e65db59f07725cbbfd2c815cd8d115ac8023999a"
+    },
+    {
+      "id": "C387",
+      "world": 4,
+      "island": 3,
+      "teaching_node": 75,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        2,
+        1,
+        0,
+        3,
+        "D",
+        2
+      ],
+      "states": 972,
+      "structure_sha256": "707af922042f1d46e93a571a1f4f11e95fb0ae155f22d6e90116cfc8a311298f"
+    },
+    {
+      "id": "C388",
+      "world": 4,
+      "island": 3,
+      "teaching_node": 82,
+      "minimum": 9,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        3,
+        2,
+        1,
+        "D"
+      ],
+      "states": 590,
+      "structure_sha256": "930bada6eea83e49f6434f3ab3c8fddad4a5b684dcf68a01d77392ac428c5db9"
+    },
+    {
+      "id": "C389",
+      "world": 4,
+      "island": 4,
+      "teaching_node": 85,
+      "minimum": 9,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        3,
+        2,
+        "D",
+        1,
+        0
+      ],
+      "states": 897,
+      "structure_sha256": "3341e40351d950952fdce03d959b1ee737e57664bf0e29e0b149eb7fdc52909c"
+    },
+    {
+      "id": "C390",
+      "world": 4,
+      "island": 4,
+      "teaching_node": 78,
+      "minimum": 8,
+      "witness": [
+        2,
+        1,
+        0,
+        1,
+        3,
+        2,
+        1,
+        0
+      ],
+      "states": 497,
+      "structure_sha256": "38904bfa1c589a22fa0324ca047982ed63b20e02887f407c93b43b77aba415e6"
+    },
+    {
+      "id": "C391",
+      "world": 4,
+      "island": 4,
+      "teaching_node": 71,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        "D",
+        "D"
+      ],
+      "states": 1070,
+      "structure_sha256": "88a5cde3794b3379cd92cdb8ad12e4683b4166edf885ad87d40c9ff456ff2289"
+    },
+    {
+      "id": "C392",
+      "world": 4,
+      "island": 4,
+      "teaching_node": 88,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        2,
+        1,
+        0,
+        3,
+        "D",
+        "D"
+      ],
+      "states": 1160,
+      "structure_sha256": "e923fbda9fdb2b2ea2464a54bce689478f54240e0bab24f6c34ed530f7588bd3"
+    },
+    {
+      "id": "C393",
+      "world": 4,
+      "island": 4,
+      "teaching_node": 70,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        "D",
+        3,
+        2,
+        1
+      ],
+      "states": 1807,
+      "structure_sha256": "71747b8fe76b04ac5ec3f297ec840949b187f11ee76c3bf207c82b160751b367"
+    },
+    {
+      "id": "C394",
+      "world": 4,
+      "island": 4,
+      "teaching_node": 77,
+      "minimum": 8,
+      "witness": [
+        1,
+        2,
+        1,
+        0,
+        3,
+        2,
+        "D",
+        1
+      ],
+      "states": 1092,
+      "structure_sha256": "6ec6e27872954f2c29953674ab5c8a15f5e34b6e7b070ca11b14225c22dbdc14"
+    },
+    {
+      "id": "C395",
+      "world": 4,
+      "island": 4,
+      "teaching_node": 77,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        0,
+        3,
+        "D",
+        2,
+        1
+      ],
+      "states": 767,
+      "structure_sha256": "bfa6a447db028c34929c885a6d5dc8a62fe2873d1da085c7d160614acab101e1"
+    },
+    {
+      "id": "C396",
+      "world": 4,
+      "island": 4,
+      "teaching_node": 88,
+      "minimum": 9,
+      "witness": [
+        1,
+        0,
+        2,
+        3,
+        2,
+        1,
+        2,
+        0,
+        1
+      ],
+      "states": 741,
+      "structure_sha256": "981194d331382d429c184862e74289f6eb1a08da91a36acac7c70911d32ba1e7"
+    },
+    {
+      "id": "C397",
+      "world": 5,
+      "island": 0,
+      "teaching_node": 77,
+      "minimum": 8,
+      "witness": [
+        0,
+        2,
+        1,
+        3,
+        2,
+        1,
+        "D",
+        "D"
+      ],
+      "states": 1134,
+      "structure_sha256": "8da151b9825ef6e2144b4703e9fd3be004fb06fcad1de787d734a6cbc755a8a4"
+    },
+    {
+      "id": "C398",
+      "world": 5,
+      "island": 0,
+      "teaching_node": 89,
+      "minimum": 10,
+      "witness": [
+        0,
+        1,
+        3,
+        "D",
+        0,
+        1,
+        2,
+        "D",
+        3,
+        4
+      ],
+      "states": 4633,
+      "structure_sha256": "72f1aec2d5decd0b21c09b61f73d1ff39dad769699a2188ee9b8f5fbf1480d81"
+    },
+    {
+      "id": "C399",
+      "world": 5,
+      "island": 0,
+      "teaching_node": 91,
+      "minimum": 8,
+      "witness": [
+        3,
+        "D",
+        1,
+        3,
+        2,
+        1,
+        0,
+        3
+      ],
+      "states": 3696,
+      "structure_sha256": "f295c75d68a81b86d60dd096b0076e7e996ba44518f99f25d18e7eaef48c48eb"
+    },
+    {
+      "id": "C400",
+      "world": 5,
+      "island": 0,
+      "teaching_node": 86,
+      "minimum": 8,
+      "witness": [
+        "D",
+        1,
+        2,
+        3,
+        1,
+        0,
+        2,
+        1
+      ],
+      "states": 1048,
+      "structure_sha256": "aac2c19479c69a6e54a2a72a34923b3032616f01fbaad77f52c601b7f810b889"
+    },
+    {
+      "id": "C401",
+      "world": 5,
+      "island": 0,
+      "teaching_node": 89,
+      "minimum": 8,
+      "witness": [
+        2,
+        1,
+        "D",
+        1,
+        "D",
+        4,
+        3,
+        2
+      ],
+      "states": 5566,
+      "structure_sha256": "2a00c4590977e35d32aac9c54ef81b23d430e0f86af0c683b7fc55891045d474"
+    },
+    {
+      "id": "C402",
+      "world": 5,
+      "island": 0,
+      "teaching_node": 81,
+      "minimum": 9,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        3,
+        2,
+        1,
+        0
+      ],
+      "states": 661,
+      "structure_sha256": "4be292bf36da905561540e104bbc4f06423a349bb7acfb3fd8f3feb80c4ea7e4"
+    },
+    {
+      "id": "C403",
+      "world": 5,
+      "island": 0,
+      "teaching_node": 93,
+      "minimum": 6,
+      "witness": [
+        2,
+        1,
+        "D",
+        "D",
+        2,
+        1
+      ],
+      "states": 784,
+      "structure_sha256": "b6cd678dfcd8533cfa72f04015a993d8d6baab6e54d790ee42a877988ebd0af0"
+    },
+    {
+      "id": "C404",
+      "world": 5,
+      "island": 1,
+      "teaching_node": 98,
+      "minimum": 9,
+      "witness": [
+        1,
+        2,
+        1,
+        3,
+        "D",
+        0,
+        1,
+        0,
+        3
+      ],
+      "states": 1475,
+      "structure_sha256": "670e1c20c351415439126e78a2d0aa4eb08c0747c1f1ecb5c7bd0feaaec53bf5"
+    },
+    {
+      "id": "C405",
+      "world": 5,
+      "island": 1,
+      "teaching_node": 81,
+      "minimum": 8,
+      "witness": [
+        0,
+        2,
+        1,
+        3,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 901,
+      "structure_sha256": "1c863a008df511988c86ea4c94d58470bb736bf8e62a5a172ae689a0a4491a47"
+    },
+    {
+      "id": "C406",
+      "world": 5,
+      "island": 1,
+      "teaching_node": 94,
+      "minimum": 7,
+      "witness": [
+        0,
+        4,
+        3,
+        2,
+        0,
+        4,
+        "D"
+      ],
+      "states": 1790,
+      "structure_sha256": "67c1198df0241dea6a00992460392700c726a782e223d18b3ccb96ec5859f3f7"
+    },
+    {
+      "id": "C407",
+      "world": 5,
+      "island": 1,
+      "teaching_node": 79,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        3,
+        2,
+        1,
+        0
+      ],
+      "states": 491,
+      "structure_sha256": "a1c5b8d1acc1f65e4fa5bf39725be01325246a6c6302130ff12f4e7b46046d56"
+    },
+    {
+      "id": "C408",
+      "world": 5,
+      "island": 1,
+      "teaching_node": 89,
+      "minimum": 9,
+      "witness": [
+        1,
+        3,
+        "D",
+        1,
+        0,
+        2,
+        1,
+        2,
+        3
+      ],
+      "states": 3054,
+      "structure_sha256": "4cb54de1fefecb835458d7da6520212dbbbe3d4073fa3062941862a713dad1e8"
+    },
+    {
+      "id": "C409",
+      "world": 5,
+      "island": 1,
+      "teaching_node": 82,
+      "minimum": 8,
+      "witness": [
+        1,
+        0,
+        2,
+        1,
+        "D",
+        0,
+        3,
+        2
+      ],
+      "states": 740,
+      "structure_sha256": "973eba6cb19d6ae93a2e16c6939322b0b4acd6e911ef82dec66cfbc4123d901d"
+    },
+    {
+      "id": "C410",
+      "world": 5,
+      "island": 1,
+      "teaching_node": 85,
+      "minimum": 7,
+      "witness": [
+        2,
+        1,
+        0,
+        3,
+        2,
+        1,
+        "D"
+      ],
+      "states": 769,
+      "structure_sha256": "035a52596008775454f43e6b94314aa9d0deb2106d8237a9016b5fbe9132c0f5"
+    },
+    {
+      "id": "C411",
+      "world": 5,
+      "island": 2,
+      "teaching_node": 98,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        2,
+        1,
+        4,
+        1,
+        "D",
+        0
+      ],
+      "states": 6268,
+      "structure_sha256": "87509ef006e1dbf03b583fdf40c5d16a93df1ba45c97b6d3b0139a1127a6d0ff"
+    },
+    {
+      "id": "C412",
+      "world": 5,
+      "island": 2,
+      "teaching_node": 97,
+      "minimum": 8,
+      "witness": [
+        0,
+        2,
+        4,
+        "D",
+        0,
+        2,
+        3,
+        "D"
+      ],
+      "states": 3283,
+      "structure_sha256": "86a03d60c33e535746d1fc787661d598fa3f48200606f99e2a0b8f0ae89869c6"
+    },
+    {
+      "id": "C413",
+      "world": 5,
+      "island": 2,
+      "teaching_node": 93,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        0,
+        3,
+        2,
+        "D",
+        0
+      ],
+      "states": 858,
+      "structure_sha256": "116e289da997e00e3d58c2b78bc904718055cc9b9ffdd5c67689d889edea0513"
+    },
+    {
+      "id": "C414",
+      "world": 5,
+      "island": 2,
+      "teaching_node": 98,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        "D",
+        0,
+        1,
+        "D",
+        3,
+        2
+      ],
+      "states": 4847,
+      "structure_sha256": "efbb8b77b7c3e476cf9161754ffd14fddbb94bf80cc7f84905a3eda70a1238c4"
+    },
+    {
+      "id": "C415",
+      "world": 5,
+      "island": 2,
+      "teaching_node": 95,
+      "minimum": 8,
+      "witness": [
+        2,
+        1,
+        3,
+        2,
+        3,
+        2,
+        4,
+        "D"
+      ],
+      "states": 2882,
+      "structure_sha256": "1694e908bef344e70a938f60183c6002d72bb62ef26387d1bfbf7f135cacf234"
+    },
+    {
+      "id": "C416",
+      "world": 5,
+      "island": 2,
+      "teaching_node": 103,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        0,
+        "D",
+        3,
+        4
+      ],
+      "states": 3985,
+      "structure_sha256": "58a9f2c44b84835cd6a5aa2b5a0aa5ff7036e5d3ac6e0c4925a90d960514ef77"
+    },
+    {
+      "id": "C417",
+      "world": 5,
+      "island": 2,
+      "teaching_node": 96,
+      "minimum": 6,
+      "witness": [
+        3,
+        4,
+        3,
+        "D",
+        "D",
+        "D"
+      ],
+      "states": 3570,
+      "structure_sha256": "3406d348cd616ae2d7816c4d1a212dcd4be3e3c87f7b21ad4eaf36dbca05fa09"
+    },
+    {
+      "id": "C418",
+      "world": 5,
+      "island": 3,
+      "teaching_node": 98,
+      "minimum": 8,
+      "witness": [
+        3,
+        2,
+        4,
+        3,
+        "D",
+        "D",
+        0,
+        1
+      ],
+      "states": 6370,
+      "structure_sha256": "572c45c1aa85aeea6d052c9dd2bab18d541f71682047ed1c35bcef7413b7e8ed"
+    },
+    {
+      "id": "C419",
+      "world": 5,
+      "island": 3,
+      "teaching_node": 107,
+      "minimum": 9,
+      "witness": [
+        1,
+        2,
+        1,
+        3,
+        1,
+        "D",
+        2,
+        1,
+        0
+      ],
+      "states": 3345,
+      "structure_sha256": "7dace1078b4a7c4f9d155d183c135d8cb9bb17ce833a5581c6d344db026a73da"
+    },
+    {
+      "id": "C420",
+      "world": 5,
+      "island": 3,
+      "teaching_node": 90,
+      "minimum": 9,
+      "witness": [
+        0,
+        2,
+        4,
+        3,
+        "D",
+        0,
+        1,
+        0,
+        3
+      ],
+      "states": 1612,
+      "structure_sha256": "b89471538adf6afe922e5bf462df5e16f88934f4eeb4fa5e8de4398dbfc72909"
+    },
+    {
+      "id": "C421",
+      "world": 5,
+      "island": 3,
+      "teaching_node": 96,
+      "minimum": 9,
+      "witness": [
+        0,
+        3,
+        2,
+        4,
+        0,
+        2,
+        1,
+        "D",
+        "D"
+      ],
+      "states": 5402,
+      "structure_sha256": "26658aa6500557982e44edfcc133b73131406c20e38acfd2a43a2a1ceeac8a75"
+    },
+    {
+      "id": "C422",
+      "world": 5,
+      "island": 3,
+      "teaching_node": 98,
+      "minimum": 11,
+      "witness": [
+        3,
+        "D",
+        0,
+        1,
+        3,
+        0,
+        1,
+        3,
+        4,
+        3,
+        2
+      ],
+      "states": 8353,
+      "structure_sha256": "a409a9d7ad67fe26311192b64f4766ce704e5bae4289fba9526432a9aed50c76"
+    },
+    {
+      "id": "C423",
+      "world": 5,
+      "island": 3,
+      "teaching_node": 103,
+      "minimum": 8,
+      "witness": [
+        0,
+        "D",
+        1,
+        0,
+        "D",
+        2,
+        4,
+        3
+      ],
+      "states": 5641,
+      "structure_sha256": "b5d4b2ad0c6894279aeebf494a1f28c5ea593090a76c14ecd0a0a8ed51a60452"
+    },
+    {
+      "id": "C424",
+      "world": 5,
+      "island": 3,
+      "teaching_node": 107,
+      "minimum": 9,
+      "witness": [
+        1,
+        2,
+        3,
+        4,
+        2,
+        1,
+        0,
+        2,
+        "D"
+      ],
+      "states": 2530,
+      "structure_sha256": "6fcf5ea009533ec5415975b2ce38dbe3d623d37b70e48866b06134751a548042"
+    },
+    {
+      "id": "C425",
+      "world": 5,
+      "island": 4,
+      "teaching_node": 98,
+      "minimum": 9,
+      "witness": [
+        "D",
+        0,
+        1,
+        0,
+        3,
+        0,
+        4,
+        3,
+        2
+      ],
+      "states": 6566,
+      "structure_sha256": "26def817a1ea49ce876a816e28d4868624ee534a308936117e2b025f55e0775d"
+    },
+    {
+      "id": "C426",
+      "world": 5,
+      "island": 4,
+      "teaching_node": 103,
+      "minimum": 8,
+      "witness": [
+        0,
+        4,
+        "D",
+        4,
+        "D",
+        3,
+        2,
+        1
+      ],
+      "states": 5402,
+      "structure_sha256": "1d0701893a252127c1825add1a7bae10e94a7c26ee9388532be699ab55de348c"
+    },
+    {
+      "id": "C427",
+      "world": 5,
+      "island": 4,
+      "teaching_node": 103,
+      "minimum": 9,
+      "witness": [
+        0,
+        1,
+        0,
+        1,
+        2,
+        4,
+        1,
+        2,
+        4
+      ],
+      "states": 2721,
+      "structure_sha256": "765e3d3ae5dacd22a399cae3727c24b83af110c0f7484e0c985b2159282ef71f"
+    },
+    {
+      "id": "C428",
+      "world": 5,
+      "island": 4,
+      "teaching_node": 97,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        4,
+        1,
+        3,
+        2,
+        "D",
+        "D"
+      ],
+      "states": 3090,
+      "structure_sha256": "38bce4785c5b51753e58a9c5a0163c72df318ee04c18e6cc81e3fcfad37d9504"
+    },
+    {
+      "id": "C429",
+      "world": 5,
+      "island": 4,
+      "teaching_node": 107,
+      "minimum": 8,
+      "witness": [
+        3,
+        "D",
+        1,
+        2,
+        1,
+        "D",
+        0,
+        1
+      ],
+      "states": 4150,
+      "structure_sha256": "d1708a063493fd55bc68646c1543d9d510380c6c1a5083b0c531f6c41bfd2a8d"
+    },
+    {
+      "id": "C430",
+      "world": 5,
+      "island": 4,
+      "teaching_node": 109,
+      "minimum": 8,
+      "witness": [
+        0,
+        2,
+        4,
+        3,
+        4,
+        "D",
+        2,
+        "D"
+      ],
+      "states": 4927,
+      "structure_sha256": "5058537e70ffc6125e6cb529e434a15485075b34ad26093e570a2393c74e7ff6"
+    },
+    {
+      "id": "C431",
+      "world": 5,
+      "island": 4,
+      "teaching_node": 108,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        0,
+        "D",
+        "D",
+        1,
+        0
+      ],
+      "states": 2562,
+      "structure_sha256": "cb6242cb7a3352c2df69d030fd8a104367d1abf5b924e3133110fea04ab2c4d4"
+    },
+    {
+      "id": "C432",
+      "world": 5,
+      "island": 4,
+      "teaching_node": 101,
+      "minimum": 8,
+      "witness": [
+        1,
+        0,
+        0,
+        1,
+        2,
+        1,
+        4,
+        "D"
+      ],
+      "states": 2015,
+      "structure_sha256": "9325dca6c90a4cf48c4a118054dacb162bbce073a56728a19051747f1e0af50a"
+    },
+    {
+      "id": "C433",
+      "world": 6,
+      "island": 0,
+      "teaching_node": 113,
+      "minimum": 8,
+      "witness": [
+        0,
+        2,
+        0,
+        1,
+        3,
+        "D",
+        2,
+        4
+      ],
+      "states": 5010,
+      "structure_sha256": "99ea48b9aa279164a77be914b9f9e155a7fe3c0ac2af6019ce7449591ae5e7d0"
+    },
+    {
+      "id": "C434",
+      "world": 6,
+      "island": 0,
+      "teaching_node": 104,
+      "minimum": 10,
+      "witness": [
+        0,
+        1,
+        0,
+        3,
+        2,
+        "D",
+        2,
+        1,
+        0,
+        3
+      ],
+      "states": 1893,
+      "structure_sha256": "53cd09b9054e0006e54ad01c96cf6f79b232d073f2c5f208b055202b8a005ddf"
+    },
+    {
+      "id": "C435",
+      "world": 6,
+      "island": 0,
+      "teaching_node": 103,
+      "minimum": 8,
+      "witness": [
+        0,
+        3,
+        "D",
+        1,
+        4,
+        "D",
+        3,
+        2
+      ],
+      "states": 4772,
+      "structure_sha256": "0d8b328726f4b49d10524943c874de791883f81ba2d95c6e82d3a2cc56b80777"
+    },
+    {
+      "id": "C436",
+      "world": 6,
+      "island": 0,
+      "teaching_node": 115,
+      "minimum": 8,
+      "witness": [
+        1,
+        0,
+        2,
+        1,
+        3,
+        0,
+        "D",
+        2
+      ],
+      "states": 4226,
+      "structure_sha256": "81cad9e131de2a53f9036865b34c552d46f6b65084f6b77ac467eadcaef9001d"
+    },
+    {
+      "id": "C437",
+      "world": 6,
+      "island": 0,
+      "teaching_node": 102,
+      "minimum": 8,
+      "witness": [
+        3,
+        3,
+        4,
+        2,
+        1,
+        2,
+        "D",
+        "D"
+      ],
+      "states": 3355,
+      "structure_sha256": "2b89f1534f97efbdc2d7d689fbe63798ca73604f17109f7caf35a244cd0961e6"
+    },
+    {
+      "id": "C438",
+      "world": 6,
+      "island": 0,
+      "teaching_node": 117,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        "D",
+        3,
+        2
+      ],
+      "states": 3474,
+      "structure_sha256": "7d39390d4875e5b39e5d37aae5defa5b254e3b73b10190ef7c6b0358818ee1a7"
+    },
+    {
+      "id": "C439",
+      "world": 6,
+      "island": 0,
+      "teaching_node": 114,
+      "minimum": 7,
+      "witness": [
+        1,
+        2,
+        0,
+        2,
+        1,
+        "D",
+        3
+      ],
+      "states": 584,
+      "structure_sha256": "ad1625ea3ad3ca643d5417486c8e9890371b893bd67f52c92a000489017354e4"
+    },
+    {
+      "id": "C440",
+      "world": 6,
+      "island": 1,
+      "teaching_node": 110,
+      "minimum": 10,
+      "witness": [
+        4,
+        "D",
+        1,
+        0,
+        3,
+        0,
+        1,
+        4,
+        2,
+        3
+      ],
+      "states": 3428,
+      "structure_sha256": "01a884e818256aee765b6ab83dba9b2260e68c2dbfcf49f6428fde8092a77911"
+    },
+    {
+      "id": "C441",
+      "world": 6,
+      "island": 1,
+      "teaching_node": 105,
+      "minimum": 8,
+      "witness": [
+        2,
+        "D",
+        0,
+        3,
+        0,
+        1,
+        0,
+        "D"
+      ],
+      "states": 670,
+      "structure_sha256": "fe09993ffc16b0f2ba74591e6e907e874d8aa8ef8bb689d98c6f07dc35e04f29"
+    },
+    {
+      "id": "C442",
+      "world": 6,
+      "island": 1,
+      "teaching_node": 112,
+      "minimum": 8,
+      "witness": [
+        4,
+        "D",
+        1,
+        0,
+        2,
+        4,
+        3,
+        "D"
+      ],
+      "states": 4878,
+      "structure_sha256": "efb1686b14c308357586624b3dcd3402177a5202d9641db9e997580c5d565fa5"
+    },
+    {
+      "id": "C443",
+      "world": 6,
+      "island": 1,
+      "teaching_node": 113,
+      "minimum": 10,
+      "witness": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2,
+        "D",
+        3,
+        4
+      ],
+      "states": 4806,
+      "structure_sha256": "6d071f41c760b568f70012f56e03bd1ae9318db570b7bbb8091830d21ed1dc84"
+    },
+    {
+      "id": "C444",
+      "world": 6,
+      "island": 1,
+      "teaching_node": 103,
+      "minimum": 8,
+      "witness": [
+        1,
+        3,
+        "D",
+        1,
+        0,
+        2,
+        4,
+        "D"
+      ],
+      "states": 3438,
+      "structure_sha256": "7066ce20e7fff3aca99cd647c9bb2ba3deace8e8e3a9fcf9012abf226e2f89ab"
+    },
+    {
+      "id": "C445",
+      "world": 6,
+      "island": 1,
+      "teaching_node": 103,
+      "minimum": 9,
+      "witness": [
+        "D",
+        1,
+        0,
+        1,
+        2,
+        1,
+        2,
+        "D",
+        "D"
+      ],
+      "states": 7119,
+      "structure_sha256": "b9cef619336462c198925c5bcd49c2bcd43d57ffb0c270889453870964c90e28"
+    },
+    {
+      "id": "C446",
+      "world": 6,
+      "island": 1,
+      "teaching_node": 117,
+      "minimum": 6,
+      "witness": [
+        2,
+        3,
+        2,
+        1,
+        "D",
+        4
+      ],
+      "states": 4948,
+      "structure_sha256": "b1154e4e041128b3fa9275a6834492a0e6753b52c86abd9f38da584e253ae42b"
+    },
+    {
+      "id": "C447",
+      "world": 6,
+      "island": 2,
+      "teaching_node": 121,
+      "minimum": 9,
+      "witness": [
+        0,
+        1,
+        2,
+        3,
+        2,
+        0,
+        "D",
+        3,
+        4
+      ],
+      "states": 8791,
+      "structure_sha256": "d24414a5025bd67add90aa7b0a56aa3ade6b97b335bcc7c87af7a4cc0cc97b44"
+    },
+    {
+      "id": "C448",
+      "world": 6,
+      "island": 2,
+      "teaching_node": 124,
+      "minimum": 11,
+      "witness": [
+        0,
+        0,
+        1,
+        2,
+        1,
+        3,
+        2,
+        1,
+        0,
+        4,
+        "D"
+      ],
+      "states": 3909,
+      "structure_sha256": "517adbef5a8a96493b82c296c7ee0fae2c80264244414ff8979363fee6bafc1b"
+    },
+    {
+      "id": "C449",
+      "world": 6,
+      "island": 2,
+      "teaching_node": 119,
+      "minimum": 8,
+      "witness": [
+        1,
+        0,
+        2,
+        1,
+        0,
+        "D",
+        3,
+        2
+      ],
+      "states": 5866,
+      "structure_sha256": "a32068c7f49902690a9bd1e84ab36d5831b84882093fdc1202dc9dc1bf79103a"
+    },
+    {
+      "id": "C450",
+      "world": 6,
+      "island": 2,
+      "teaching_node": 124,
+      "minimum": 8,
+      "witness": [
+        1,
+        0,
+        1,
+        2,
+        1,
+        4,
+        3,
+        "D"
+      ],
+      "states": 2114,
+      "structure_sha256": "99bedd6108e746a097f38c4992f91ab594b079ced078d0468372e2bb6e6d816e"
+    },
+    {
+      "id": "C451",
+      "world": 6,
+      "island": 2,
+      "teaching_node": 116,
+      "minimum": 9,
+      "witness": [
+        1,
+        0,
+        2,
+        1,
+        0,
+        1,
+        0,
+        4,
+        "D"
+      ],
+      "states": 4962,
+      "structure_sha256": "dc69bddf4a0cc46980a398e939b54d1e4a490e39f3a10fa627d75f1175f9f4ba"
+    },
+    {
+      "id": "C452",
+      "world": 6,
+      "island": 2,
+      "teaching_node": 118,
+      "minimum": 11,
+      "witness": [
+        0,
+        1,
+        2,
+        0,
+        1,
+        0,
+        2,
+        "D",
+        3,
+        2,
+        4
+      ],
+      "states": 15192,
+      "structure_sha256": "29e71833a8336608a01c30a5720fd808b3d65b68de935b5b19fef6418c2f2ef7"
+    },
+    {
+      "id": "C453",
+      "world": 6,
+      "island": 2,
+      "teaching_node": 123,
+      "minimum": 9,
+      "witness": [
+        0,
+        1,
+        0,
+        1,
+        2,
+        1,
+        3,
+        "D",
+        2
+      ],
+      "states": 2434,
+      "structure_sha256": "033190f7ffd75536563de6684745c4cc52c4b42fd21b9f8426acb39ab2ffa5a5"
+    },
+    {
+      "id": "C454",
+      "world": 6,
+      "island": 3,
+      "teaching_node": 131,
+      "minimum": 10,
+      "witness": [
+        1,
+        0,
+        3,
+        0,
+        1,
+        2,
+        1,
+        3,
+        "D",
+        2
+      ],
+      "states": 7347,
+      "structure_sha256": "793b4525c777a87f9e653d76b792d8ba1a3ee99c6b406ab161ac8f6168ce14c0"
+    },
+    {
+      "id": "C455",
+      "world": 6,
+      "island": 3,
+      "teaching_node": 113,
+      "minimum": 8,
+      "witness": [
+        2,
+        1,
+        3,
+        2,
+        0,
+        "D",
+        1,
+        3
+      ],
+      "states": 3306,
+      "structure_sha256": "51fd20aae7312e2bd8c717211dac435c0a0b6f23da270d6555e9c84c0ee0a4e6"
+    },
+    {
+      "id": "C456",
+      "world": 6,
+      "island": 3,
+      "teaching_node": 130,
+      "minimum": 9,
+      "witness": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        "D",
+        0,
+        2,
+        1
+      ],
+      "states": 7468,
+      "structure_sha256": "443411eedd8e204889d25d69ed632e4c22449980c93d8d06a030d1a942fdfb92"
+    },
+    {
+      "id": "C457",
+      "world": 6,
+      "island": 3,
+      "teaching_node": 114,
+      "minimum": 9,
+      "witness": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        2,
+        "D",
+        1,
+        3
+      ],
+      "states": 1313,
+      "structure_sha256": "2ebef1a3e70acd4e2b71a426e1f30ae7e214a1571e82655b0992de5aa1065c5b"
+    },
+    {
+      "id": "C458",
+      "world": 6,
+      "island": 3,
+      "teaching_node": 126,
+      "minimum": 11,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        3,
+        2,
+        1,
+        0,
+        4,
+        3,
+        "D"
+      ],
+      "states": 3928,
+      "structure_sha256": "dd20dc59f80afddc072ce9734b1642dc3440613ad145f1be45e3bbaee9a8c0fe"
+    },
+    {
+      "id": "C459",
+      "world": 6,
+      "island": 3,
+      "teaching_node": 124,
+      "minimum": 8,
+      "witness": [
+        0,
+        0,
+        2,
+        3,
+        2,
+        1,
+        4,
+        "D"
+      ],
+      "states": 2008,
+      "structure_sha256": "9254bf9c786fd929d49438eca69028e8627a8d8cbd2a610db8a8ac126342ab84"
+    },
+    {
+      "id": "C460",
+      "world": 6,
+      "island": 3,
+      "teaching_node": 128,
+      "minimum": 7,
+      "witness": [
+        2,
+        3,
+        2,
+        0,
+        1,
+        "D",
+        2
+      ],
+      "states": 4919,
+      "structure_sha256": "b2421633c03a740f9a01e097839b6b080bc1c705c0b8535004498202e9616791"
+    },
+    {
+      "id": "C461",
+      "world": 6,
+      "island": 4,
+      "teaching_node": 129,
+      "minimum": 9,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        0,
+        "D",
+        1,
+        0,
+        3
+      ],
+      "states": 7943,
+      "structure_sha256": "f522fde94472fd4429777e1dbc0a0c9f0b9eb51f15caf77ad7125bffc896d134"
+    },
+    {
+      "id": "C462",
+      "world": 6,
+      "island": 4,
+      "teaching_node": 122,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        1,
+        2,
+        1,
+        3,
+        4,
+        "D"
+      ],
+      "states": 1905,
+      "structure_sha256": "79d635582ae44cda200f28fd60f38cd7f743db0fbb9b39b88f7a19e1f3bf8591"
+    },
+    {
+      "id": "C463",
+      "world": 6,
+      "island": 4,
+      "teaching_node": 117,
+      "minimum": 7,
+      "witness": [
+        1,
+        1,
+        2,
+        1,
+        3,
+        2,
+        "D"
+      ],
+      "states": 2064,
+      "structure_sha256": "7f4da33bd46eff6cb329fc475f5468db0c0791ade632fa17cda10d0ecb3749ab"
+    },
+    {
+      "id": "C464",
+      "world": 6,
+      "island": 4,
+      "teaching_node": 134,
+      "minimum": 11,
+      "witness": [
+        1,
+        2,
+        1,
+        0,
+        2,
+        1,
+        3,
+        "D",
+        2,
+        4,
+        3
+      ],
+      "states": 5295,
+      "structure_sha256": "63dcaf18478946bbb7ee253d666ecae7f1279feb2bbab03ad7dd98f56e0a05b2"
+    },
+    {
+      "id": "C465",
+      "world": 6,
+      "island": 4,
+      "teaching_node": 135,
+      "minimum": 10,
+      "witness": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        2,
+        1,
+        "D",
+        3,
+        2
+      ],
+      "states": 7809,
+      "structure_sha256": "93b429f6e0e66110e269153b3d42caea54765db9abaef2968072715ca74a2c3e"
+    },
+    {
+      "id": "C466",
+      "world": 6,
+      "island": 4,
+      "teaching_node": 119,
+      "minimum": 12,
+      "witness": [
+        0,
+        1,
+        0,
+        3,
+        0,
+        1,
+        2,
+        1,
+        "D",
+        3,
+        2,
+        4
+      ],
+      "states": 12685,
+      "structure_sha256": "ef2b55644dbe5bde90d7ab0605f075bd3dcd2f8cfb0ca2465768b73068f38f4b"
+    },
+    {
+      "id": "C467",
+      "world": 6,
+      "island": 4,
+      "teaching_node": 132,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        1,
+        "D",
+        2,
+        1,
+        4
+      ],
+      "states": 2280,
+      "structure_sha256": "a8a5ddee461a5875944c5b5da09d28836e096134c260d5794591d3999c64b206"
+    },
+    {
+      "id": "C468",
+      "world": 6,
+      "island": 4,
+      "teaching_node": 135,
+      "minimum": 10,
+      "witness": [
+        3,
+        2,
+        0,
+        1,
+        2,
+        3,
+        2,
+        4,
+        "D",
+        3
+      ],
+      "states": 8332,
+      "structure_sha256": "53a303bf4218823add5ab85843d2dcd0b2ec45a2b0a0526bad81af02e411e8cf"
+    },
+    {
+      "id": "C469",
+      "world": 7,
+      "island": 0,
+      "teaching_node": 126,
+      "minimum": 9,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        3,
+        2,
+        1,
+        4
+      ],
+      "states": 1974,
+      "structure_sha256": "677abb4ebdf4a5d04ee24dba4a4d193107e5c6f9805f341c68d4113c7e52fcfa"
+    },
+    {
+      "id": "C470",
+      "world": 7,
+      "island": 0,
+      "teaching_node": 132,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        4,
+        1,
+        2,
+        3,
+        "D",
+        4
+      ],
+      "states": 6252,
+      "structure_sha256": "000c2e8bfff963d002c647b6382699e6bccc3d3d2509a163719dcd8c4a771439"
+    },
+    {
+      "id": "C471",
+      "world": 7,
+      "island": 0,
+      "teaching_node": 139,
+      "minimum": 9,
+      "witness": [
+        1,
+        2,
+        3,
+        0,
+        2,
+        1,
+        3,
+        2,
+        "D"
+      ],
+      "states": 16183,
+      "structure_sha256": "cef066a9e74d405b3de7b6e3405c1d35a3b28c81334b70f227be70ce9b61680e"
+    },
+    {
+      "id": "C472",
+      "world": 7,
+      "island": 0,
+      "teaching_node": 124,
+      "minimum": 9,
+      "witness": [
+        0,
+        1,
+        3,
+        2,
+        1,
+        4,
+        3,
+        2,
+        "D"
+      ],
+      "states": 2515,
+      "structure_sha256": "9ff2e657a58f129bb02d03227e5d88b92819a3021dcc2a7aae85baa4da37ca05"
+    },
+    {
+      "id": "C473",
+      "world": 7,
+      "island": 0,
+      "teaching_node": 140,
+      "minimum": 9,
+      "witness": [
+        0,
+        0,
+        1,
+        3,
+        "D",
+        0,
+        3,
+        4,
+        "D"
+      ],
+      "states": 13254,
+      "structure_sha256": "608e75d139a1ffc69deb6cf6938a25fd63f57b894b07ee476b8fc46e0425fe6f"
+    },
+    {
+      "id": "C474",
+      "world": 7,
+      "island": 0,
+      "teaching_node": 130,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        0,
+        1,
+        "D",
+        2,
+        1,
+        0
+      ],
+      "states": 3124,
+      "structure_sha256": "3c9de5708b7383365fd843b83136a85f6726f44e30f8ba5a6ab64100980050c9"
+    },
+    {
+      "id": "C475",
+      "world": 7,
+      "island": 0,
+      "teaching_node": 139,
+      "minimum": 7,
+      "witness": [
+        2,
+        0,
+        2,
+        1,
+        2,
+        3,
+        "D"
+      ],
+      "states": 4970,
+      "structure_sha256": "da22c2910fdfc5dec5e9647d8c7eee05538c5ecb14e3bc56fe028812ede5e6a3"
+    },
+    {
+      "id": "C476",
+      "world": 7,
+      "island": 1,
+      "teaching_node": 146,
+      "minimum": 10,
+      "witness": [
+        0,
+        1,
+        "D",
+        0,
+        1,
+        0,
+        2,
+        4,
+        1,
+        4
+      ],
+      "states": 8468,
+      "structure_sha256": "dcdd0caae70030cc44e01651d8b7251a7fc4a76611d2b664c5447b0a3a5b66bb"
+    },
+    {
+      "id": "C477",
+      "world": 7,
+      "island": 1,
+      "teaching_node": 131,
+      "minimum": 11,
+      "witness": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        2,
+        1,
+        0,
+        3,
+        2,
+        "D"
+      ],
+      "states": 5234,
+      "structure_sha256": "3cace4f99a08adb57971dd8dc7da507cba8673e0fb36ff72ea40ed5321fd15cb"
+    },
+    {
+      "id": "C478",
+      "world": 7,
+      "island": 1,
+      "teaching_node": 139,
+      "minimum": 9,
+      "witness": [
+        0,
+        3,
+        "D",
+        2,
+        1,
+        0,
+        3,
+        2,
+        3
+      ],
+      "states": 11485,
+      "structure_sha256": "f4269135eeb3e6fe1bab656cf910b2845238eba0012d6cf45696b20fd5e39aa3"
+    },
+    {
+      "id": "C479",
+      "world": 7,
+      "island": 1,
+      "teaching_node": 132,
+      "minimum": 9,
+      "witness": [
+        1,
+        0,
+        3,
+        0,
+        1,
+        2,
+        1,
+        3,
+        "D"
+      ],
+      "states": 6040,
+      "structure_sha256": "d6ff39afdc7d7e3c4773d7bd90f0a0df96f4c27bf03ab257e0f151335a3b6652"
+    },
+    {
+      "id": "C480",
+      "world": 7,
+      "island": 1,
+      "teaching_node": 134,
+      "minimum": 12,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        3,
+        2,
+        1,
+        4,
+        3,
+        2
+      ],
+      "states": 11255,
+      "structure_sha256": "519ba7f3d2c82b40c6fa5e3855c71d64adae45f94f874de673af1771bab08727"
+    },
+    {
+      "id": "C481",
+      "world": 7,
+      "island": 1,
+      "teaching_node": 126,
+      "minimum": 11,
+      "witness": [
+        0,
+        1,
+        1,
+        0,
+        2,
+        1,
+        3,
+        4,
+        3,
+        2,
+        "D"
+      ],
+      "states": 9033,
+      "structure_sha256": "d6a35e1a97fb13fee01c6bd128bc126dfc3f2f8dd41b964f299f449e5571ea0c"
+    },
+    {
+      "id": "C482",
+      "world": 7,
+      "island": 1,
+      "teaching_node": 138,
+      "minimum": 7,
+      "witness": [
+        0,
+        4,
+        "D",
+        0,
+        1,
+        3,
+        0
+      ],
+      "states": 7040,
+      "structure_sha256": "88b99db84bbc74b5e867e366027461c362a63ae45044ca6379f4f298611b9e98"
+    },
+    {
+      "id": "C483",
+      "world": 7,
+      "island": 2,
+      "teaching_node": 132,
+      "minimum": 8,
+      "witness": [
+        0,
+        2,
+        4,
+        1,
+        "D",
+        2,
+        3,
+        4
+      ],
+      "states": 6973,
+      "structure_sha256": "a6f19f43ce15ff8df08502bf929ffdbd9e887176023268afaeb72e290e058e89"
+    },
+    {
+      "id": "C484",
+      "world": 7,
+      "island": 2,
+      "teaching_node": 148,
+      "minimum": 8,
+      "witness": [
+        2,
+        3,
+        2,
+        3,
+        2,
+        1,
+        0,
+        "D"
+      ],
+      "states": 4428,
+      "structure_sha256": "f0dc3840a7c46e998499f53a9a5e161aff431fd1fc2fbedccd27cff2ce027fb0"
+    },
+    {
+      "id": "C485",
+      "world": 7,
+      "island": 2,
+      "teaching_node": 145,
+      "minimum": 8,
+      "witness": [
+        1,
+        "D",
+        0,
+        3,
+        2,
+        1,
+        4,
+        "D"
+      ],
+      "states": 17781,
+      "structure_sha256": "bf03444bb2ccb3bb7dde45a4d99fad02d31507ae83a176c550ebfb7f5d2ac476"
+    },
+    {
+      "id": "C486",
+      "world": 7,
+      "island": 2,
+      "teaching_node": 147,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        2,
+        3,
+        0,
+        2,
+        4,
+        "D"
+      ],
+      "states": 4656,
+      "structure_sha256": "265a27b72b6bfd8f50ca1db248f6f4133634135f3efb551aa71c5bd314e4bf88"
+    },
+    {
+      "id": "C487",
+      "world": 7,
+      "island": 2,
+      "teaching_node": 138,
+      "minimum": 8,
+      "witness": [
+        0,
+        2,
+        0,
+        2,
+        1,
+        0,
+        1,
+        "D"
+      ],
+      "states": 4223,
+      "structure_sha256": "1584bc0533049f849849ba0fbaa5b56561e18be3ba482029113345f86b5acc68"
+    },
+    {
+      "id": "C488",
+      "world": 7,
+      "island": 2,
+      "teaching_node": 147,
+      "minimum": 8,
+      "witness": [
+        0,
+        2,
+        1,
+        2,
+        3,
+        1,
+        2,
+        "D"
+      ],
+      "states": 12753,
+      "structure_sha256": "7db05722fafe189e3bde1b3e33c14d4f738416dedfb35d3229d4bcf05d3a74ba"
+    },
+    {
+      "id": "C489",
+      "world": 7,
+      "island": 2,
+      "teaching_node": 131,
+      "minimum": 8,
+      "witness": [
+        0,
+        2,
+        1,
+        0,
+        4,
+        1,
+        "D",
+        "D"
+      ],
+      "states": 4126,
+      "structure_sha256": "58b477cdee0347b0a26278254c3052ff2891136f42e3e357c305b950bd62a855"
+    },
+    {
+      "id": "C490",
+      "world": 7,
+      "island": 3,
+      "teaching_node": 156,
+      "minimum": 9,
+      "witness": [
+        0,
+        0,
+        1,
+        2,
+        1,
+        3,
+        0,
+        3,
+        "D"
+      ],
+      "states": 3906,
+      "structure_sha256": "a13c9ec54a3a75aeb04f1f57dca6b2a82c89870a919ce239db6a47f618bd38a7"
+    },
+    {
+      "id": "C491",
+      "world": 7,
+      "island": 3,
+      "teaching_node": 142,
+      "minimum": 10,
+      "witness": [
+        0,
+        2,
+        1,
+        2,
+        1,
+        0,
+        1,
+        0,
+        3,
+        "D"
+      ],
+      "states": 13353,
+      "structure_sha256": "5ee7db83ecb7f13b6015a4e050f380a7d048452e6cfe9389a978c3b174c38a76"
+    },
+    {
+      "id": "C492",
+      "world": 7,
+      "island": 3,
+      "teaching_node": 148,
+      "minimum": 7,
+      "witness": [
+        3,
+        1,
+        3,
+        2,
+        3,
+        2,
+        "D"
+      ],
+      "states": 3753,
+      "structure_sha256": "3b10c66e28e61c68445153dd0840feea47632bda0bf2d723dbc3c0202574461c"
+    },
+    {
+      "id": "C493",
+      "world": 7,
+      "island": 3,
+      "teaching_node": 140,
+      "minimum": 8,
+      "witness": [
+        1,
+        1,
+        2,
+        1,
+        3,
+        2,
+        4,
+        "D"
+      ],
+      "states": 9532,
+      "structure_sha256": "638585b7b6a1b30a27647deee38f2a4e5dead338003c6284b1b7ad84d33aad47"
+    },
+    {
+      "id": "C494",
+      "world": 7,
+      "island": 3,
+      "teaching_node": 140,
+      "minimum": 9,
+      "witness": [
+        2,
+        0,
+        2,
+        3,
+        2,
+        1,
+        0,
+        4,
+        "D"
+      ],
+      "states": 11477,
+      "structure_sha256": "04b9092194400d080366d465a321fa5dab02652b88d6d49393a9df0929715e0d"
+    },
+    {
+      "id": "C495",
+      "world": 7,
+      "island": 3,
+      "teaching_node": 151,
+      "minimum": 8,
+      "witness": [
+        0,
+        4,
+        3,
+        2,
+        4,
+        3,
+        "D",
+        "D"
+      ],
+      "states": 13609,
+      "structure_sha256": "7fb2aa16a50132293fa7b1a0ed4335db8a42fc6978fa580d06e303f8bde7b79f"
+    },
+    {
+      "id": "C496",
+      "world": 7,
+      "island": 3,
+      "teaching_node": 155,
+      "minimum": 6,
+      "witness": [
+        4,
+        0,
+        1,
+        2,
+        4,
+        "D"
+      ],
+      "states": 2603,
+      "structure_sha256": "fe69cd8b6ed9b26419b8218573570bec8eea37bd9ba62d3dfe852bde81adadaa"
+    },
+    {
+      "id": "C497",
+      "world": 7,
+      "island": 4,
+      "teaching_node": 141,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        3,
+        4,
+        2,
+        4,
+        "D",
+        "D"
+      ],
+      "states": 15178,
+      "structure_sha256": "0f31d691898cf79b296c231d8c0ebb973eca7106f324506295774247dd6b37b7"
+    },
+    {
+      "id": "C498",
+      "world": 7,
+      "island": 4,
+      "teaching_node": 144,
+      "minimum": 8,
+      "witness": [
+        0,
+        3,
+        2,
+        3,
+        2,
+        0,
+        3,
+        "D"
+      ],
+      "states": 7155,
+      "structure_sha256": "c8ae4843ce78277aa01734c3f5375a30714197e93cf569d7892f734d8dea38e2"
+    },
+    {
+      "id": "C499",
+      "world": 7,
+      "island": 4,
+      "teaching_node": 157,
+      "minimum": 8,
+      "witness": [
+        2,
+        1,
+        3,
+        2,
+        3,
+        4,
+        "D",
+        "D"
+      ],
+      "states": 17948,
+      "structure_sha256": "6c0c495368662dc202f393ee82f6c78c2de3ad3e51471962a3314778e4c3dda9"
+    },
+    {
+      "id": "C500",
+      "world": 7,
+      "island": 4,
+      "teaching_node": 160,
+      "minimum": 8,
+      "witness": [
+        1,
+        3,
+        2,
+        0,
+        3,
+        2,
+        1,
+        "D"
+      ],
+      "states": 7789,
+      "structure_sha256": "0755393e6cbad6042b6e432de963dc108a380212bfa88ae20c47197edf6a5235"
+    },
+    {
+      "id": "C501",
+      "world": 7,
+      "island": 4,
+      "teaching_node": 152,
+      "minimum": 8,
+      "witness": [
+        0,
+        0,
+        1,
+        3,
+        0,
+        3,
+        4,
+        "D"
+      ],
+      "states": 2935,
+      "structure_sha256": "c631d13e85fb5411bfca4f5684d7fb8937e2a0d39cb3e2974419d7a9a42aabd8"
+    },
+    {
+      "id": "C502",
+      "world": 7,
+      "island": 4,
+      "teaching_node": 155,
+      "minimum": 8,
+      "witness": [
+        2,
+        2,
+        4,
+        3,
+        0,
+        3,
+        4,
+        "D"
+      ],
+      "states": 5282,
+      "structure_sha256": "c13f7db3d7cc96ba30ca8f4d7bffd6e5b96ef94020a8ed3f379942c8c451e595"
+    },
+    {
+      "id": "C503",
+      "world": 7,
+      "island": 4,
+      "teaching_node": 141,
+      "minimum": 9,
+      "witness": [
+        0,
+        2,
+        3,
+        3,
+        2,
+        1,
+        "D",
+        2,
+        "D"
+      ],
+      "states": 8452,
+      "structure_sha256": "4db370b59261f3778b4e2c873a85f8dec220606060dd3c120fd11f35cda8e8a2"
+    },
+    {
+      "id": "C504",
+      "world": 7,
+      "island": 4,
+      "teaching_node": 141,
+      "minimum": 8,
+      "witness": [
+        1,
+        0,
+        3,
+        2,
+        3,
+        2,
+        "D",
+        "D"
+      ],
+      "states": 13195,
+      "structure_sha256": "29987a893f67a1861edcb08009a91ee35867fc6cd9f76cb65d422bd8e71b3b22"
+    },
+    {
+      "id": "C505",
+      "world": 8,
+      "island": 0,
+      "teaching_node": 145,
+      "minimum": 8,
+      "witness": [
+        2,
+        "D",
+        0,
+        4,
+        3,
+        2,
+        1,
+        "D"
+      ],
+      "states": 8805,
+      "structure_sha256": "d91b18da6308d3bf6a7700662f7ec9a589cb8c8b242dde30d3326fe2073c6fc3"
+    },
+    {
+      "id": "C506",
+      "world": 8,
+      "island": 0,
+      "teaching_node": 153,
+      "minimum": 9,
+      "witness": [
+        0,
+        1,
+        0,
+        4,
+        3,
+        0,
+        2,
+        3,
+        "D"
+      ],
+      "states": 8442,
+      "structure_sha256": "63b0a5abbdc352c7aa1a2ba906a2e509fb01158fd17891715484e0fbac6c0c0e"
+    },
+    {
+      "id": "C507",
+      "world": 8,
+      "island": 0,
+      "teaching_node": 150,
+      "minimum": 8,
+      "witness": [
+        1,
+        2,
+        0,
+        2,
+        4,
+        "D",
+        1,
+        2
+      ],
+      "states": 3584,
+      "structure_sha256": "ea071dd70398b685d7804f9af6f8e5ec778670192868dbb509431ead65d5ae86"
+    },
+    {
+      "id": "C508",
+      "world": 8,
+      "island": 0,
+      "teaching_node": 153,
+      "minimum": 10,
+      "witness": [
+        2,
+        2,
+        0,
+        3,
+        2,
+        1,
+        2,
+        1,
+        0,
+        3
+      ],
+      "states": 3574,
+      "structure_sha256": "b9a8ca1535763ee0f3ef1c8e081d1781c958c94be1800b053c727d7691eb7c7a"
+    },
+    {
+      "id": "C509",
+      "world": 8,
+      "island": 0,
+      "teaching_node": 160,
+      "minimum": 9,
+      "witness": [
+        0,
+        1,
+        2,
+        1,
+        1,
+        0,
+        3,
+        4,
+        "D"
+      ],
+      "states": 5955,
+      "structure_sha256": "929701fe01b3bfce7886b33cbb5fd2793be642138e78eee0fc2de6c7a4a850f7"
+    },
+    {
+      "id": "C510",
+      "world": 8,
+      "island": 0,
+      "teaching_node": 152,
+      "minimum": 9,
+      "witness": [
+        0,
+        2,
+        3,
+        4,
+        4,
+        3,
+        0,
+        1,
+        "D"
+      ],
+      "states": 5021,
+      "structure_sha256": "26093667984f7ae5d7f05d49097c91da59095ce3f23204f7e70e7026cc195b7b"
+    },
+    {
+      "id": "C511",
+      "world": 8,
+      "island": 0,
+      "teaching_node": 165,
+      "minimum": 8,
+      "witness": [
+        0,
+        3,
+        2,
+        0,
+        1,
+        3,
+        4,
+        "D"
+      ],
+      "states": 2248,
+      "structure_sha256": "8be7bdd0b569bad6c23433bc075f820624a9b1b801fadd1c3e8947ae9bf302b1"
+    },
+    {
+      "id": "C512",
+      "world": 8,
+      "island": 1,
+      "teaching_node": 152,
+      "minimum": 8,
+      "witness": [
+        1,
+        1,
+        0,
+        4,
+        1,
+        0,
+        3,
+        "D"
+      ],
+      "states": 5056,
+      "structure_sha256": "30443e4808db824219e1337902da604be5f109b68deb664f634e3598fe1b0b31"
+    },
+    {
+      "id": "C513",
+      "world": 8,
+      "island": 1,
+      "teaching_node": 153,
+      "minimum": 8,
+      "witness": [
+        1,
+        0,
+        3,
+        3,
+        2,
+        4,
+        1,
+        "D"
+      ],
+      "states": 6058,
+      "structure_sha256": "44fc35e7fa48f5802d208e7e06560f4c96093482fe392c3a9b9ba4a6f2183770"
+    },
+    {
+      "id": "C514",
+      "world": 8,
+      "island": 1,
+      "teaching_node": 159,
+      "minimum": 7,
+      "witness": [
+        1,
+        0,
+        3,
+        2,
+        0,
+        1,
+        "D"
+      ],
+      "states": 6785,
+      "structure_sha256": "1db9a29e1b7313391003842257b2101e01aba1c4ba4f413110d3bd0024bad06d"
+    },
+    {
+      "id": "C515",
+      "world": 8,
+      "island": 1,
+      "teaching_node": 168,
+      "minimum": 9,
+      "witness": [
+        2,
+        3,
+        2,
+        4,
+        "D",
+        1,
+        3,
+        0,
+        4
+      ],
+      "states": 4103,
+      "structure_sha256": "7331e61cf096b2976094920c8bb99950dd3aa359962663f443b0fee7a87e4df5"
+    },
+    {
+      "id": "C516",
+      "world": 8,
+      "island": 1,
+      "teaching_node": 151,
+      "minimum": 8,
+      "witness": [
+        1,
+        2,
+        3,
+        2,
+        0,
+        3,
+        "D",
+        "D"
+      ],
+      "states": 16606,
+      "structure_sha256": "76e4294571524f36b6a9a9fdc15cefd69ca21514603e55692590bca8adeb758e"
+    },
+    {
+      "id": "C517",
+      "world": 8,
+      "island": 1,
+      "teaching_node": 154,
+      "minimum": 8,
+      "witness": [
+        1,
+        0,
+        4,
+        1,
+        4,
+        3,
+        0,
+        "D"
+      ],
+      "states": 8346,
+      "structure_sha256": "64c745364212bfc07b315d9b1f7b7a42699ada51716c48779fb15917be3cd7bd"
+    },
+    {
+      "id": "C518",
+      "world": 8,
+      "island": 1,
+      "teaching_node": 161,
+      "minimum": 7,
+      "witness": [
+        1,
+        0,
+        2,
+        1,
+        1,
+        "D",
+        "D"
+      ],
+      "states": 1467,
+      "structure_sha256": "405cf270931e3bbe632d25a9a198eaa657874d436787d8ad5846fad5576c67e2"
+    },
+    {
+      "id": "C519",
+      "world": 8,
+      "island": 2,
+      "teaching_node": 175,
+      "minimum": 10,
+      "witness": [
+        1,
+        3,
+        0,
+        1,
+        0,
+        4,
+        3,
+        "D",
+        2,
+        "D"
+      ],
+      "states": 6668,
+      "structure_sha256": "3ffeb2bcdbec0d217abf3484118ca9e85c4e6c63c8d96f364150d0a9081e692a"
+    },
+    {
+      "id": "C520",
+      "world": 8,
+      "island": 2,
+      "teaching_node": 162,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        "D",
+        "D",
+        3
+      ],
+      "states": 1485,
+      "structure_sha256": "19540fa878f5f752c0a7dd63fdb71618d9ed05b9b1dbc6e580b5d962002d6a65"
+    },
+    {
+      "id": "C521",
+      "world": 8,
+      "island": 2,
+      "teaching_node": 162,
+      "minimum": 7,
+      "witness": [
+        0,
+        1,
+        2,
+        1,
+        1,
+        "D",
+        "D"
+      ],
+      "states": 1380,
+      "structure_sha256": "ed9c7b13b3baaa83d56302147e57ec8097f70bb00539eb3ea0ca167a28136a3b"
+    },
+    {
+      "id": "C522",
+      "world": 8,
+      "island": 2,
+      "teaching_node": 173,
+      "minimum": 9,
+      "witness": [
+        1,
+        3,
+        0,
+        1,
+        3,
+        4,
+        3,
+        "D",
+        "D"
+      ],
+      "states": 7109,
+      "structure_sha256": "6e1151f01cc4c7374116d2141c04ef882895b0ff0c7cdbbfe448a137de5235d0"
+    },
+    {
+      "id": "C523",
+      "world": 8,
+      "island": 2,
+      "teaching_node": 155,
+      "minimum": 10,
+      "witness": [
+        0,
+        1,
+        1,
+        0,
+        3,
+        0,
+        1,
+        3,
+        4,
+        "D"
+      ],
+      "states": 12657,
+      "structure_sha256": "f03630cc33f0e3662127e048d26c431377853f480d6780b8fa017e96d1c71d23"
+    },
+    {
+      "id": "C524",
+      "world": 8,
+      "island": 2,
+      "teaching_node": 167,
+      "minimum": 10,
+      "witness": [
+        0,
+        "D",
+        0,
+        1,
+        3,
+        2,
+        1,
+        3,
+        0,
+        4
+      ],
+      "states": 4159,
+      "structure_sha256": "067465d6c6d880dca210bef6b7505e5f24a1d17e5271d73004a9ee07d9b9a20a"
+    },
+    {
+      "id": "C525",
+      "world": 8,
+      "island": 2,
+      "teaching_node": 163,
+      "minimum": 6,
+      "witness": [
+        0,
+        1,
+        2,
+        "D",
+        "D",
+        "D"
+      ],
+      "states": 1231,
+      "structure_sha256": "d17c6f58b576fd033eb549370a885ddc81fae4a0582aea0df3a193cc4fcfbad7"
+    },
+    {
+      "id": "C526",
+      "world": 8,
+      "island": 3,
+      "teaching_node": 166,
+      "minimum": 12,
+      "witness": [
+        3,
+        4,
+        3,
+        "D",
+        3,
+        "D",
+        2,
+        1,
+        0,
+        3,
+        2,
+        1
+      ],
+      "states": 7741,
+      "structure_sha256": "592ab1d4b0576a1c41c76a2fe77e52f8628d3dcdcee630291a69eb3704008e68"
+    },
+    {
+      "id": "C527",
+      "world": 8,
+      "island": 3,
+      "teaching_node": 169,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        2,
+        "D",
+        0,
+        2,
+        1,
+        3
+      ],
+      "states": 13770,
+      "structure_sha256": "6d5b9bb848a455febfc70e3c4465e4728796ca894402eacb3cebfade1918becb"
+    },
+    {
+      "id": "C528",
+      "world": 8,
+      "island": 3,
+      "teaching_node": 165,
+      "minimum": 8,
+      "witness": [
+        1,
+        3,
+        4,
+        3,
+        2,
+        "D",
+        1,
+        4
+      ],
+      "states": 2273,
+      "structure_sha256": "6b4ef92670f3b663ec91c6a86b9dfcfa902b5ba588570c435051e0d435365e67"
+    },
+    {
+      "id": "C529",
+      "world": 8,
+      "island": 3,
+      "teaching_node": 174,
+      "minimum": 9,
+      "witness": [
+        0,
+        4,
+        1,
+        2,
+        "D",
+        1,
+        0,
+        "D",
+        "D"
+      ],
+      "states": 6647,
+      "structure_sha256": "7a95a4b583fe07b4377f18b342ffcd7ad8e5266c9f6d772ea8ff8a1a49a5c421"
+    },
+    {
+      "id": "C530",
+      "world": 8,
+      "island": 3,
+      "teaching_node": 168,
+      "minimum": 8,
+      "witness": [
+        "D",
+        0,
+        1,
+        2,
+        3,
+        2,
+        1,
+        "D"
+      ],
+      "states": 5942,
+      "structure_sha256": "66c4a5dbaab99d8e103aee74dad300248be1ada31bb4f79cdd4b060d39b66406"
+    },
+    {
+      "id": "C531",
+      "world": 8,
+      "island": 3,
+      "teaching_node": 178,
+      "minimum": 8,
+      "witness": [
+        1,
+        0,
+        1,
+        2,
+        0,
+        2,
+        3,
+        "D"
+      ],
+      "states": 671,
+      "structure_sha256": "e5cc282e87f3e6f1c19dbef17593a8617db5f111313a22fb1981ed874ba7fb23"
+    },
+    {
+      "id": "C532",
+      "world": 8,
+      "island": 3,
+      "teaching_node": 162,
+      "minimum": 6,
+      "witness": [
+        2,
+        3,
+        "D",
+        "D",
+        0,
+        2
+      ],
+      "states": 1376,
+      "structure_sha256": "cc6ef7724d69a40bf19c7e8cb74fe969a61a244c84c493ccab8c103d0e1323fe"
+    },
+    {
+      "id": "C533",
+      "world": 8,
+      "island": 4,
+      "teaching_node": 182,
+      "minimum": 8,
+      "witness": [
+        0,
+        1,
+        3,
+        "D",
+        "D",
+        1,
+        4,
+        1
+      ],
+      "states": 10568,
+      "structure_sha256": "a9cfeca7631187bc9199bb3247cb9ffd6a7e145688ad44ad90531db735a2557f"
+    },
+    {
+      "id": "C534",
+      "world": 8,
+      "island": 4,
+      "teaching_node": 166,
+      "minimum": 8,
+      "witness": [
+        3,
+        2,
+        1,
+        "D",
+        "D",
+        0,
+        1,
+        2
+      ],
+      "states": 4654,
+      "structure_sha256": "602e35fe1c0c186e7a2b22447ab5131b56c8de46668b04681234dc96be2d6e0c"
+    },
+    {
+      "id": "C535",
+      "world": 8,
+      "island": 4,
+      "teaching_node": 174,
+      "minimum": 8,
+      "witness": [
+        0,
+        2,
+        1,
+        0,
+        2,
+        1,
+        4,
+        "D"
+      ],
+      "states": 3912,
+      "structure_sha256": "58e2c22957684e891944b62fa496eadd7e918a2107364e67e5d03bce99761d12"
+    },
+    {
+      "id": "C536",
+      "world": 8,
+      "island": 4,
+      "teaching_node": 165,
+      "minimum": 10,
+      "witness": [
+        1,
+        3,
+        4,
+        "D",
+        2,
+        "D",
+        1,
+        0,
+        2,
+        4
+      ],
+      "states": 3888,
+      "structure_sha256": "d742cfd1ac1fe9c84f83529c04aaa63fdd702a0c9cb5ac8dbcf7a64554755e6c"
+    },
+    {
+      "id": "C537",
+      "world": 8,
+      "island": 4,
+      "teaching_node": 165,
+      "minimum": 9,
+      "witness": [
+        0,
+        1,
+        0,
+        3,
+        "D",
+        0,
+        2,
+        1,
+        2
+      ],
+      "states": 3656,
+      "structure_sha256": "69c831a5147b393a09bb8e013b9757f4aebbd16852e4ca058595e8f3d28047fb"
+    },
+    {
+      "id": "C538",
+      "world": 8,
+      "island": 4,
+      "teaching_node": 174,
+      "minimum": 12,
+      "witness": [
+        0,
+        1,
+        2,
+        1,
+        0,
+        2,
+        4,
+        1,
+        1,
+        2,
+        3,
+        "D"
+      ],
+      "states": 5842,
+      "structure_sha256": "0fb90a5bae37b1c6a436421a04e06cb04779763a926193623f39b10f8380f7f1"
+    },
+    {
+      "id": "C539",
+      "world": 8,
+      "island": 4,
+      "teaching_node": 168,
+      "minimum": 6,
+      "witness": [
+        1,
+        "D",
+        "D",
+        0,
+        1,
+        "D"
+      ],
+      "states": 1851,
+      "structure_sha256": "08c0331fca44761d734b53777de7ca35b5e7ce4545fc509b476485a30d60e55d"
+    },
+    {
+      "id": "C540",
+      "world": 8,
+      "island": 4,
+      "teaching_node": 166,
+      "minimum": 8,
+      "witness": [
+        "D",
+        "D",
+        1,
+        2,
+        1,
+        3,
+        2,
+        3
+      ],
+      "states": 5025,
+      "structure_sha256": "3ba3253a8c61452095489b2bb57c4dbd68fe006e4927cb23867fab2d6a4b44b4"
+    }
+  ],
+  "incumbent_pins": {
+    "C01": "146b431f11369a45d0f63608644e6acc838443204c5a9b00740559199b23ff86",
+    "C02": "4de74eae6c726b6853a3c1da7e10cbc919e0ceb81217296c726b9c4320609858",
+    "C03": "c9282453132f8cdc5546077d6e59c364c02cff0959c5512a29bb545468e25209",
+    "C04": "cbcff9802e9c7437fe72335ee79a6e6cffa1ab42c184e74ec3476c1eee3c1e47",
+    "C05": "c1a8109a0c0998876c6aec440552b47ef9ecf240cf2358e15282d6c3044187a4",
+    "C06": "1da58dc77277e6e5e3fc200f688ed5bfd8d91d5c78da7b4916d097139cfa2299",
+    "C07": "56be041327f811f42b33d0484bee04c318c8bf045b48be007118cb9e4e87ff2b",
+    "C08": "6702570dd102a1c08101824a633dd19ad32a8400fa33f4c9f991520a5e7d5330",
+    "C09": "5b8fd9d8223caf3a020166e66c8dbae1964ab416263e1d1c87bdf7b6188f62fa",
+    "C10": "52ea278d2dcdd056cb08c37556eaac0d444a52960186f9c39d70875ff3e59c81",
+    "C11": "6d085756812d44ccf429ea88733f6fc11e19e5df7c1c6212d8721e0b530cd99a",
+    "C12": "ae4b9ec0a0c0a9fa0c32e0edb498deb1a3a6664613116ede07907e4e7c6c8992",
+    "C13": "37f1d63961f4b4c2167f29574e35344c9b69b1b505e8ba14c8d745cf11656957",
+    "C14": "c7d2b5e5519e7cb3c339c259f9ddbb761b426950e3a9607e24d3141c11141377",
+    "C15": "101a954d60d78bda1d172ca25d5d9dbfb24e9915471a42c9388588bf3cadfaee",
+    "C16": "b3062c15ffed4397cc7b790d23bcd3f5585d90df20ff95235c1e41f134c70753",
+    "C17": "b8e3bd32951d200d9076a98e8b057b3fa39840a1a508935b7fb8ff889d0356c4",
+    "C18": "c85ed498d66bbcbeca37aff8dbafd8494717c792437250e0425029da009b96ee",
+    "C19": "b1ceb94e42c9612a77d0a2633603f7c2be0475c8e0fe6dbd0fc72b249d4369cc",
+    "C20": "bdbd557bf04a6f0f65db32676c13d794cf94979f6014836c325e42e02f954aa1",
+    "C21": "d17f37b362bbb472c09ae88866143ec6bf502dc78a6c23c225f802b62487fdb0",
+    "C22": "b198ac4321ee7d9201477bc60d314d3e68fa99368beacd44b33b1ce70e817ea7",
+    "C23": "15b9536201205eef8041389de3b88a7d6cb3eb75f4e1a82c8bd636190af12d48",
+    "C24": "c24de06c1b526e21cc40012516300a77fa7a1c0d4afbbb052937a92a39b4c10c",
+    "C25": "dff04998ca067fc1877cf368a93d1acd6b5bc5e13e11767d019d0782238f4e67",
+    "C26": "e021586614c9c9fb7dbddd1c210daa26deaf3f8b7b9ee853d4b606360da33cb7",
+    "C27": "71b4c49f9eac108d75e912ea72d61f80ae75f5af5dc20d869b558658e1105020",
+    "C28": "f099d2a1e2aa752de827c0465c75952994c055fa866b74a04d25ca9e8748bee3",
+    "C29": "cb872895366a267c23580faaa82afe5d5dd7a687bbd90150503a7e0e801783e9",
+    "C30": "f55ae3c609c557930929730327d224f7e496f6aa9bdf0a3ecbd987ec691aa41a",
+    "C31": "20b8d33ef5cdd3e4d432020e7303e751ef68cdf520244d59e69fb85d4a8b7c74",
+    "C32": "ff8698260983cfb7cdc45b08395154b51bac6c1ce7ca0092705d217f4333e51d",
+    "C33": "8200acfd5397f189ce4cebea8e22ba96ae5c2308a25a06849d9df481f7495412",
+    "C34": "c7149d2be3f4258dc04c93c88484e9f3a2ab6a2da7751778c078c32e954ec7bf",
+    "C35": "cc3419af475fddd39c9510a910cd1e02978c23fb618e2b06e37cd55587707074",
+    "C36": "d9953901d38641e2099bfb6fba4b7be0ec7b341a6f1bc49eb2472ac90a307a46",
+    "C37": "97b7bf9ffe473fc6d6c7e2c9f56abe4b3a3fde627c0e389886252208440c5418",
+    "C38": "14467a6aa1760442b9a56f170f4d512c0f41a246f4fa92ed8ba5f9dd2bd9fba0",
+    "C39": "880b380434f759771584cb41ddb13cc0bbf84d0bb0e04602ed6ded0ee7c7807c",
+    "C40": "e7d8fac6056e622be18c9879eeeae7d2c68b74c781733aeddaffb43059084c3a",
+    "C41": "23c4662ac931ccd221155a13a5b465bb488912dc6fdc9158fa55e7fee7be2114",
+    "C42": "c32caf3b88b2424a035b03d52b63e9cb4b3cf58ddd1cc27cfceb9e4650cb77c8",
+    "C43": "8f549c92cf93c0cff4acc91c587683d2c52a3329c871a7d5a1945d1864d8add5",
+    "C44": "11838f71d00b5b6e3a2b9f081fa1a8c5ac2d6923e4ef2e04a64004b042a940f7",
+    "C45": "a5b2be7e056d5823580a0fcdeb28af5966c220f50c3dfecf5bcf3998fb692417",
+    "C46": "3d47d30b307ee18a2d2845f5c23aa02ff9fe3a3b9665d861482afb859a9a78b9",
+    "C47": "cb43d767d36f5ebbfafda165d8ca838e5138fba85dc3956a2acdd479182d11ae",
+    "C48": "c3d3e8a6b463f06e88f9cb9296cc30a33757336e478902407378ecbae4a073c1",
+    "C49": "5c51fc57ad5695e0a866eccee0dd2a7877fc25a38af2da144cfc46906823402f",
+    "C50": "75d5e91208926351649f577a535423088e7f35ed06c4c3cc274efc5a9bd3e0a2",
+    "C51": "1c71cd4540161a013156e03408d1db4558b94396e9c4c6706efdc05817231a6c",
+    "C52": "5291a331e4f7d8300d8218ac392fcf2b134fc13206a8e85190d2fe6f1b8a579c",
+    "C53": "4a2894ad8bdd0a6754cb0b91c7df497ae506cea9dc120e95e68072127db019f6",
+    "C54": "b79d5626df1a00235ef3877e3fb0b2226f4c93d3bb3e4170b9ef372213d28be6",
+    "C55": "bb63c17d2ae144087f63c64087bc7651be6ee9a03de75b2dcad80eee7bc86835",
+    "C56": "38614234da272c9e08537a2e228f75303fe615515a10cf9713669ffffe22b147",
+    "C57": "3edaed445ee0d788da912e79abf1c7ab745263ea22d0e739c355ea876b0044e0",
+    "C58": "301a3c8c9c8c6988600e5fb19d1cb7967965973e8594cbf171a97641fe93b054",
+    "C59": "313979353fe5f8130c2ad2ff1e78cac8271a6423d9cde7dbe9fc61d8ecf747aa",
+    "C60": "cf7ab8736cc2fe7690749a9bfa6f7c3e3e05e07ea77d37bf525b15e043b4c473",
+    "C61": "2e3d8821b753ac682794df8fb83d251a0712fd0594da2dcdfb520d2ec7a28687",
+    "C62": "3b49e379b75209ce08552973473276cbd238ca263ab5b6a2cfa57910df2d3086",
+    "C63": "6975a192ddf35cc8fd391899cbc396bbfb19f9372c564326c9ba475c041670b2",
+    "C64": "0df129728b0b14b85f57175ca5db8f4875392adc0c2eaae508d00b4ec9a96303",
+    "C65": "809d13c037ded2d86408f2dac5d1c95b2e2fe8faf54da2cc08fb61c70311ef62",
+    "C66": "fd542f03997b52bd6e76d263ce2b16df544eedd487bf13d4d5e87b3130a30c18",
+    "C67": "d6674eb77e896b02a6c1d5374cea51566ed0d6315adc8287cc7d90067cdb5c87",
+    "C68": "fe7cc9c746dd148a685ddc2b2e36e652367ba315aadff961091cfbb1eb71ecf7",
+    "C69": "475b0dba4e9cfd3a4b688b509669d3368c11f9406f6bcee8bf5ea6ef6ee8448c",
+    "C70": "4379f2665c0fffc16666ac155ac2298549514071b24f922f82b1ce57b170a3fd",
+    "C71": "ad024a6cbe3f0908bb5fd8218702a2fb62ce7e682f737929f03cbe7c0d53a48b",
+    "C72": "b6cde53860d5692f78f0aa09abf978fdeff68ff6487cb271ae8c650c759c9490",
+    "C73": "a8a9bd08964ca113d0ee9e4c9eafa79911659dedf3a506e38da7d7ed83fd0e12",
+    "C74": "7386a6ddbde5187c101197b9fe7210e997f0d3d50852aff7ac0e984bfcecf2d9",
+    "C75": "6a6bda71536faa4127466a5965372477fee79103f82923cd4ee9ef024b4d051d",
+    "C76": "804360cfef3f16574a54d2cd04c1de40eb45c34ee71c9f1ad02182c22ada69f7",
+    "C77": "ee174cd4b8a2e69214c9b16307ccfe82cdba4651b95d9004612ecda2514ac8c1",
+    "C78": "bcf36a9d7463b760257291228b49ced4dca3af3f8f73ed8e6652e6bd1933ff85",
+    "C79": "bb1e5ec122a8fdde569f431ba05f2d7aa6b2624c45eb2f8cf8bd186d0346ebb1",
+    "C80": "328640b281f4fcf8df0e2d900d9cc3c9300fbcda42c701925766e34916213e17",
+    "C81": "f1302dce790ffba298eb07e6369781bcf0b945d09b9ee5f40de585b1f91ef621",
+    "C82": "c742516771816fd711cd3c707c8f99b0314192f4c0c51853c1b8e4580ff860e1",
+    "C83": "70535176532759c972a8f8013df883ce3dce28ccbd7a4450229a183645fb1b91",
+    "C84": "65309595d379e812d424a36d4f5a63a5440c426e1d182625d5f4ec01b078d79c",
+    "C85": "fde0074538b357f06bf662aa1dd1468689fa0ab8c5be35d1e4579d7ecf2ae5c0",
+    "C86": "02715b39b3c75d268f19dd9e91a24419090717a0591d770e47095b7293c4b68f",
+    "C87": "f2434f1c24e1b786f4b57bb867dcfe6dee8e237402dde822b4aa0d6688a5b7f9",
+    "C88": "b83e29de2b941a776ebcb6f662ed6ec6b51942ea86a14d8c371982e21517084f",
+    "C89": "608e0b37451dfb11edf35eb5e3fca5d12e6dbaf67ec4a98933712e7ca520f32b",
+    "C90": "4db915aeac6c269b3ea83135281e494577918f057ae28cdbc0fd4da01ea2e3ac",
+    "C91": "831457f3942133243ab00865cf822a1afd0dd2c8b8bbd861023bbca5f9f1da29",
+    "C92": "914497f3db956f8eb02cef3e6269d26c5175b59400474ff60fc70e603fe8cd53",
+    "C93": "111ce4755eeeb76858f7dcea0b4d7f804cf03e9b12405d28a399cfdba51143fd",
+    "C94": "3682636b4cbf105517a7a79bed281c6b796dcd7d815176b19db71dc371bebf58",
+    "C95": "a276c1dfd0d0cd4fe6af388296b196dd937b538e57dca1d8056a653fc283c28a",
+    "C96": "53b95ba1fd37ec0d2c2dfd7fa3ab5fe274b341d0f9f15ab81ff1e6a69d9a1e09",
+    "C97": "a04c390ed5585a6c70c2406e4163b175e1326b9b04aede414a361be22990555b",
+    "C98": "085e1ee062e2f345b6dc08a07d7931880dbef340a2e31c5606633dd3dd7cab12",
+    "C99": "5b74e662525611aede09c05b3c6b46bfed68e32b7e9b7ec1a260675723dda0f3",
+    "C100": "dcd8c7a6293576106274509d9bcbfd68c1c5f7ba5aedfd9893d2d0bd26c94b6d",
+    "C101": "62f802ac15a05ad2d9c51ad3596eed7b0abdf7861292caf8e7d5d1a030792fe0",
+    "C102": "972aefba3b5390d7a0576c661d38959c3ecd94cf59e4f6c511ced4d6ba900d5d",
+    "C103": "0c661d50fd9b641e69b309868c3ac0178bb8d7c5f8068c7331567734f4b239c7",
+    "C104": "cb272cf5c51013d69d1f0486d21df63f2e1ac11b1d498486584cb10dc23637bb",
+    "C105": "3c3813a2f560c2d8fbaf7558b340389a7a5fa7b6c809a1474e96cbedeeabfbd7",
+    "C106": "27a1b730e65ee36248f9631936e12106ec882b8c810fd81c2ef8393f744465aa",
+    "C107": "280a6f17acf9c17535bb9131bad29a66ad4fdebda6e51d5f02e81f5d63eb7e17",
+    "C108": "b08cdc9e68783fe5e02daa5ed3479ad29f1f6210647106a2c1eb87fc30a8488a",
+    "C109": "3cc62ec4f5c08e29f45bf3c33957a4264a23e572d1ba892917b523ca489d27da",
+    "C110": "0665157f8efe7dcdffb85798d9dcedbca6e49159bb9b7e463953881ea7864d39",
+    "C111": "9e593b66dc7e046a5b6ba2092442be15fee80d59e2f6c08dcc45c3d00a26ce2e",
+    "C112": "1e4a455bd6e0fc5f43c5cc32b9606a5340508d8cbb10f045e33711563f95facf",
+    "C113": "dee02454b0c4a2a5869f16b0464cd72dd14b56b4a267cb8028a4f6b3e43b832a",
+    "C114": "11c706a4e9bc07b895141e3d314aae54ec83c1b2998d215c87d01704fc36dd4c",
+    "C115": "6c3bc3e094f30f86fda4905bb8a5b951a2868d710bc2c4ebbc28fc3ad49678de",
+    "C116": "4237304da001b7b4e759803bde31ae06802b33cafc35acd4e2d190d2f4aa717f",
+    "C117": "c3b67bd13c7d23fc43c9322948afc4e377e6514e2c9f9d5735babaf117723ab5",
+    "C118": "a2751491ecf277714cfb113810144bc4ef75186cfd4ffa93b1ffc5358bb3ebd1",
+    "C119": "d6c8973e7cd0fbbe30c019001f2434fb855f28582e0c446f0cba8492642826d0",
+    "C120": "3900f8c1ea9aef2abddd3f8c3c19e87ce4f08c17968af129288b03ff7a6b6429",
+    "C121": "53017d33a2db2bafa974fcd9707734cb11a511cd10baab9f8f70bca43dad46ec",
+    "C122": "35b7982a569d1a8b316d902f425ddd7dc1bacc2d7354a3e5be305eb12230c688",
+    "C123": "ac5c41dd32adc33ec826cd40323c3e2af6c00ff9116fe2d2fadbac977e5b3762",
+    "C124": "0ef8a6ae2238ab2f422704e49b95e9f28dc0dc889528f0dc8758a5ff70c5c110",
+    "C125": "46abe0b7779f97c2e171f405ed65405996ed8f7d7d5c3d2cb77b7daea4ec8b62",
+    "C126": "abda5a072eeddfab6b3fa80dc5e2c01a28a12d1c94d8793f26e819a7e6e4ce8b",
+    "C127": "483deb2b43c4596bf8a8433a03c196d63fbc9333c34e1a8d085c42c01cc52439",
+    "C128": "5693d2ac1c263cba357c8c8f5a730a2ac01c11420e901588288e0d0729a7652c",
+    "C129": "7494d0a425302f125d855df5a5c60d1458004b7f89f8988c38df029ce67f41f8",
+    "C130": "c0930d690754027ae6f32e8a929de23cf1cf2befbc767da3feb27c83a8272292",
+    "C131": "e16af7e60dafd11f2140e4b53048b63c10185fa03023de8817eeb8545eaa7205",
+    "C132": "3e3ad40347544bdb9f8e44f263d6f00fe7155188c97b9f6c8663cc202dc85b35",
+    "C133": "ea783a8627a57c75e4b9ef86c8f022a8fe5004dd852661dbdc0e99752702da68",
+    "C134": "069acf0ab8f3830d73fe218988bea8a6096b6ef8eba486a8be0b1883927c57fc",
+    "C135": "d9047b0d9bf47c51ee8fff888461f0d453b3e1d1acd3d6410c178b7730b62d43",
+    "C136": "eb0d7436a447c2925a994005c5e080312895623f58751e5ab4d9ed75d97af14b",
+    "C137": "8d32ff828acb0b32bfff8e3c259126fc0bfe7718b3f949919946bbeef2c6ed2f",
+    "C138": "e93eddba65ecb4656f44a46929fc4eb4efe4f456ecde1e5ea5d6c26caeda79b5",
+    "C139": "57d368447fe3f5d67094c61de7c43ab5b53a03a3d525a74da17d1d40107cbaf4",
+    "C140": "a610992ed19a0fa023eb46a5e1a8640e62c58c1ce15416e6bd8854977bf17b43",
+    "C141": "ca6f7a0ed1e0401f98042ea4cd5a4fd309ff1704a6efa1109436e7e9a9aeaa2b",
+    "C142": "0136f22730579968edc3dc901a286f5c6f4583daf47a9fa9b6106a4dd7dccdf2",
+    "C143": "c91b89245068a6bdac83d30ae31db7f03b576aaff5fbe4f4f558c98646696c0e",
+    "C144": "4df2faf37c1ff53e50496fb75aa2d05244c0087ddd088668fdcd3c98f13d1d80",
+    "C145": "e43a63ce552045dedf4dd92996fbe2f3d63bc2978a7ec79b9b323f785156c4e6",
+    "C146": "a9b9cfa53486dbfd3c9441f6a8e6374377b12f7fbaf51d238ff2879eddc10056",
+    "C147": "2bb810cf76bb70eafd0194f744a2ca4df7dca7cfc78406214b6dc759592e5ef8",
+    "C148": "63fbc2665d0c00bcfa60bad2695b9a7e0d7af11c0c6d5b9751d8861b35d2044f",
+    "C149": "9bc417fcd2f9dbc8d8c2e2eb9c6ba8a6c5bf4a0ef1cecf5f8cd7e46b37b1bef3",
+    "C150": "55a6a8f8b7909b57c64ad7673ef57882879c5b4203a60094de1b5fabadb906a5",
+    "C151": "c4d004af64705fb5b97a17bd211b4ea87fee860647c34d099269838d2f66599e",
+    "C152": "c1f3a431dca9e07eb9c88dd807735560e63d0d3e88ebe6ffbcd12a139b3f4aef",
+    "C153": "6db6224b716ea394d4e463792d336191773658cd0b8c58abd672b930d90ec735",
+    "C154": "a4f19a20a78c9b14aea79ec18d247e6d22f84f3477775da68f8f5d2b3e6288e7",
+    "C155": "cbb06913d6c503fb040ffb355c11f1e62bc83a1f501cb9df714f56463c098428",
+    "C156": "e692ef169e3be5409e9cb4c091156068d3be36df5b143a961ffd4600b4cabf9b",
+    "C157": "bc9132b627d124a2ae691cba036aaa9079f0129d0c7a30a8052eb5b1b350be8a",
+    "C158": "c97c4a0467a58af47a247a9bd5da0b357a9ea0de236ae00bacff4d03eea7cb06",
+    "C159": "a7d2a48204c4df955af11b25c039e88301cd922c765714662d573359a6868861",
+    "C160": "1fb074b06a0760605cdbc67098fb6dbcd8703510155276a29000eaa0bf03e984",
+    "C161": "9b75cdcc32d7389cf25d9ba02b6b0421b021ee691c7d6028ec6ba470ce473703",
+    "C162": "58dda6e8c89c60092f01d2dca25895553fa1e5b09145b12ef71b4adfe0c10981",
+    "C163": "6be2a76dbfff2c428d4da4550f441382eac559a2eef45dffa9a78acd72dc3478",
+    "C164": "9bbb5a5c189694c78e9421960ebff92ff57c43cfee290810d824303f181e6b3b",
+    "C165": "93270819dcd85a865550dd679e9c186c403c22da8b322903066d2efa389ee74f",
+    "C166": "b9ff9158270353f3dd4f1274833f3d76ae6ddd00d45723f9643fd0d439ee6ac4",
+    "C167": "ef8fabac31986fa3a4a882a119a8bce93008fa70c0af30119cb96796a95fbc55",
+    "C168": "4ed9a00645fd175590a187745941480e3c9d2ccca346038db68815fdf06a8f50",
+    "C169": "4dff55b84d8f923cbb6f84972c925f5d243337c216fb19340ac3e1d1ffbc3a90",
+    "C170": "d8276fbfd6c14c01fdefdcf0aa8f0d8de2e50df23c8edcbc823b24f017b443d6",
+    "C171": "f3ba008cedebcb3e12985afb5e8015151542a0ba8d6979133abf63257c5f850f",
+    "C172": "ce1de5ba8112ee9a948ee4768d5c725dae8508414039e1af9243b4dc42b30aeb",
+    "C173": "be572a5d259a59f97e0b3f16ff7ee8f33f871e399fff7667f8b726a23f689364",
+    "C174": "fc5106e0ab524638e5a611c2ccfb76b880157975ac3e8134772e2eb2bfd83e83",
+    "C175": "a49b2289457f135398427e6699ad11bfbae02d5b426986b901c638a7c1282dc3",
+    "C176": "ae37eb94f0d1e7330778459964b94a8a0aa57aba92372e188b1aa7e2d4dc7f9d",
+    "C177": "a5b59b5eb6b8f67ecd09548ea3af2769782fab762fc0a84a869e6a6a55ff9961",
+    "C178": "9e49e669333aeff4491d32176bed771b9a5671bb99c00e0fa1c775f4acb43540",
+    "C179": "81088bef1c70bdc1ee2a46cfc575ebb65cfb734723e62d67e63350fad403ca27",
+    "C180": "141d5ebf083a2428fb153c47ccc83c57f8443f7f4cdc287eb574e4b2d331356c",
+    "C181": "b1ccab95d094e5bfb0ca708d9e5c3669b135e36bbdb317e9820d85fa53acceb9",
+    "C182": "3b60d2323bb0bab2ab5d835bcb8de97636f7cfb6210b9bd3c318d01f943a648a",
+    "C183": "d9b50d6780dba2b5053d2b0a75f8b0982d2d387d64345cec43d67a77c2d75868",
+    "C184": "1814dfe46df94c8df87105b104a80b70a83d5a931d71b41204349b2dafdb09d3",
+    "C41_en": "d66388839cc4dcfc5510200bb23fc0bb07d0b4e5f441fbc18ae478a7a9cce61b",
+    "C41_ru": "2e627e2c70e21a92c224c0b770fd0e21791ee6b1b307acca5431c450b050cf33",
+    "C41_uk": "5157ac67193690cba425bacff759e4fcfacbbc9bfccab13e4f4a1ba677e2ba9a",
+    "C42_en": "189205fe5a800beee241f29e8e5b13e2a9c7f06312f0fa48a04579d0f1b30371",
+    "C42_ru": "c7fe9a8fbe5967748ab5df418ae91f5501dbebc937d3d63aae80f688065b2693",
+    "C42_uk": "6e77679ffbde0b3ae5dd8d42a261d0ef8c6925ed2d16230c2f4f5f8490e691be",
+    "C43_en": "0fc3b3051bb6a73473adf91ecee86817e607624befab06aadc9d8eeb379e93c2",
+    "C43_ru": "1b522d8119cc7b8fe5f2da5054df38f44f0817169409578dbf346cd04442ff03",
+    "C43_uk": "3533e2c01986a82cd6fd584a9b99e619b0b4681e2187371f9bdfeaa8558352f6",
+    "C44_en": "85072bf9192a727bbfd3679a0c0e6c6529878af94b29b1aa447ad01496aff1dd",
+    "C44_ru": "b7e55ec95119e0de3a03f00cbc2114605ff2d458481978ff3ea2d3bb0cb17ae0",
+    "C44_uk": "1674e1afd6ed26126b9f6317432f6dc68a6e95d7b084a10f3163694c8b622ee0",
+    "C45_en": "67f3cbb53e5cece12c63535a74be48590feaae373e6bf5c9557ba5c58ecdf924",
+    "C45_ru": "4b623d1d421de0f5743ce7e304f6fa12b6c0c27a3ff6c6f589fcdd51fc2b4a12",
+    "C45_uk": "2ae8b35ad9b853704b090c8eeebcb83dd9b6d373a4a95ee8c2e3c8a30954fa71",
+    "C46_en": "a3c2fd02b35fbbaa94f2bf54d5434fbabc9e8cdf048072238fef020fbac7efd1",
+    "C46_ru": "44c40ca4b8fd88538de811667e7944d45256c96e1d9ba483ac70696f1d7181a3",
+    "C46_uk": "8653cad77f8e40d0bfdeb77cbaecc78405ca2b53a65dffaa1579570070480b52",
+    "C47_en": "7ac76acf9a9ed3d1adddd75070a357087db779ae1a1f179381ec781ea7b06114",
+    "C47_ru": "be2c97d130d668e2181a71b0b908e7f74fa4e5d3b1e87ad709d620a342750f20",
+    "C47_uk": "e4c62b66dfefbea6e875e8bbfcd4c48147599e84d26b6b405bdcd173db364d90",
+    "C48_en": "84e6f57562bdc186d6705e70fa7842bbdd6b0e99ad18f8bd9f33fa40ed808b8c",
+    "C48_ru": "468b0b37aa508cec30b9ac221c51c53a56c2b4d0d5a406b37bde0d5448c2bfb0",
+    "C48_uk": "55c14eebb61653e381e19ac97dd5b3f49240ea3d85d205119f86d4e018e68e56",
+    "C49_en": "9e5f2b91e97222dd1454ba233e5c95b6317c81254772e986d7dfe2b24eaa4e7a",
+    "C49_ru": "e154726631d02f3ae9cc1620601c5717509fab83071cb05741342c70172457c8",
+    "C49_uk": "f216d50e9a311325622500b886d39dfd33a6237a76e386433d96d6f3efa095cd",
+    "C50_en": "37eb20b9ba1dcee2f4919837351fe8a98bec3e386458944d33bdb293d827eb5f",
+    "C50_ru": "b41c751691ec9ad2160b70de021d686db41e88246695853f53ca7422379b0a57",
+    "C50_uk": "f715e24c2ab737aa48c5a374b47bb2ecf3316945e50a26f290ddf6dac10d1eba",
+    "C51_en": "a9b855b447357aa232ede33c99cfa763b82ff9e32472117dc2a96c3a4279e66f",
+    "C51_ru": "89e5c40bd6908ea3ab76e1251149ca91e65c9966d850ea368cc908f2e0f136b3",
+    "C51_uk": "5a584c880f9440137a262567cdca77928ac3a6fcaf232a5f77a5e6dc037cee3e",
+    "C52_en": "f066cb4b5b1159acf2e71d0c0c4d9ec6f88015463f4b82792dfedec1be20f486",
+    "C52_ru": "ed96934c5af121a126e16fa3489474f4607444d3f9441291059a01ee7b41790f",
+    "C52_uk": "09fd83f31d4ac8667790637d489b10a58ba2d48faaca05b8123672cd4f7b264e",
+    "C53_en": "0fcb80618427113684daae4215b7c9db12937cbcf4ca77be3ee374fdb0c608d8",
+    "C53_ru": "c9c6969867011e8654d9e71ed0d8d227cd683482c3b243041c747a4d07d3dd91",
+    "C53_uk": "c3feef06759cfa1c6a4c697c910fe9586bb5d24287860720ccac3117e3ece59a",
+    "C54_en": "34bc55450eb04bc174ffc6cfa653f3897582f319fa2bd4b9e77d44783d5a0532",
+    "C54_ru": "6eeb4a34a4dfa2777cadaf59043312fff28b20543b16b18ea28776a2d505476b",
+    "C54_uk": "f7ed135772f1266730c3d7e4a0f189952c6bbc3d24e06c3ccc42283bb45ae871",
+    "C55_en": "1be9f5a17be3d234812e29fac2ca847d7e118ef9c1f418850734ee3d84f76355",
+    "C55_ru": "6a31cee2220ea4b8bc12cc286c84ba8e4b1a44483d258f1433fea93487bdebca",
+    "C55_uk": "28fb2b3e4122ecec7b00e2d597cc3e4a0b02cfb6528ce30a5c835cdd4fd20fbf",
+    "C56_en": "af2e69571c8029a36f95ff7047a986c2da7b753dd51852e7e8789511f0f3d7fc",
+    "C56_ru": "0c1c40fe6f9e82f3e69ce17c94278d3c6b2f1fae1a1f663e2ff7a375f8a86d62",
+    "C56_uk": "cb3dbe7ed7324d6c9422b14e01482182bdcd6938b12edc64e79fb17be6a84e46",
+    "C57_en": "abd197175a1ceb895c1d81271708b1a0b8b68fb7ca7fdc2ea37d474cc08a23f6",
+    "C57_ru": "d7b1393dae38ecf9c2c20708a284332928ba8536e6257addfa0292dc6494cbb7",
+    "C57_uk": "dbef306fa7d712b3356bb28539451a448ae260e97a72cc7c521c25b7eaa33c5f",
+    "C58_en": "359c9579e15c4240665ab6a7eebca16271b9325cda22c630e7e20a4c0437d131",
+    "C58_ru": "0ca1de80306905d853e06fd7ece834975a713af136d5cc4a6ad2909367883777",
+    "C58_uk": "68d1a52f72292311d8934ff153846426ecc9cc9f59f5fc2a0ee797f6b4bb42d3",
+    "C59_en": "c4b35be13c20fb6d620e755f5d70f12a6748a68475fcb8a1afab47c6cc147e58",
+    "C59_ru": "67759055c92e96ebd420212d2a406c926d454ac41b801cd48d5866cf75d19526",
+    "C59_uk": "33042e824232b6e068ebe9c50e2cf2ab4c452d334677da7046864b16078fc37b",
+    "C60_en": "ffb3df9124e76aef5ec58e7bbb18eddadcb133c3606c33c7f5ad457c579ca90a",
+    "C60_ru": "d60e3e16d81498346d9825b26ef31be361655cbc986c2f67d828d2e0462f635c",
+    "C60_uk": "e74eb242f6132de68405cccd88e1c90c72660e81197a8d2a958db13f4b657ac4",
+    "C61_en": "c3c9251561e3f4f61297a513640c2a0ced8f638bdddf33fe1c1babc1ced70b2c",
+    "C61_ru": "883592199ee2337a555a517335e21b5997efd4a7747ab1437d5748bc86c1b60b",
+    "C61_uk": "d9a222963394ec645ed91de635b1c79d3eea6e69f5e08f9d90ad50243440cad1",
+    "C62_en": "05a02fbef0f0b68c91bf5248467f8296aee18b8fe291c85fd100541726f09faf",
+    "C62_ru": "02c0e14912f8cf84d6d02582d354fcd72c9a103c6201e6d13568a94aead5c81d",
+    "C62_uk": "c0a0bbd86a2cc5852e0467deccf983b68012340ef209bbc97f48ad583b0cc940",
+    "C63_en": "0e50adf5ae828314d4ae0b3082e104fec5ffaacb1f67fd6d766eeef1f20545c0",
+    "C63_ru": "8ab14f2cde662cbadda1774aa0506d620dfe0d0b31fc9429a841fe0f57171246",
+    "C63_uk": "b626c90783f43c0a753655f64e9830a57d30c0c9ad9e8193cd01bfc464d151f2",
+    "C64_en": "c5591159402bea70e2fa0513ffeeeebaf8a01ce4d669433a5a8e2630fdc3112c",
+    "C64_ru": "44aed3b94943d80b46476daa47c69e52f4a623c85d35a37b086e0bcf440da58a",
+    "C64_uk": "fede834ec82c09788d8f4c6fdcea27ead440917a4bffd4cb3f57a10007fc5a07",
+    "C65_en": "a9e9a589d695766d49d7aacf6f12f55359cf35a0c93fd79c85aa98ed5e9015ed",
+    "C65_ru": "995b750d3985c6dfdbc662709d85f410042e53be40f48321b67e82a94e4e6bdf",
+    "C65_uk": "32019b0820fa2bccb777f07954707448af5d4c290e27cf19c85b689b67a05041",
+    "C66_en": "20768fb39d9a9101a7757b1924fd61ea05fa9cf561cc6f7fd81b94ddfb0a817f",
+    "C66_ru": "006b52c456c83a0c50fb8e388f3f69a9109de62a095c23083364c0379eb6316d",
+    "C66_uk": "b0f6574c2aadce4e366c64b15d3c81041ad0e7f30374487b7e466442ea01454d",
+    "C67_en": "15ce01d0efd43fad6893ad6610724db9a1dc12944008d5cc077e48117b7ef469",
+    "C67_ru": "4d9beed454e7af93216a14092051f0a680a4ccd888aa7c30699d99185f3e6a55",
+    "C67_uk": "dc3ed6db30668277ede848cbc8567b0995dd7e663ccd88da10cf45b5f002b275",
+    "C68_en": "d81c1ff65a29bb25532c43fc825ec758a8c3c047cc1a2c97224b9395119a98b6",
+    "C68_ru": "988e309102f0b83d5d2e9c7ceda1cf56f95ccff247fd7cff1c05682b7c9fbcfe",
+    "C68_uk": "c7b13636630d353e17b7fada8c9253564a3e1303fa9f83b3a02dfb09bd562d6f",
+    "C69_en": "a65b548467f603429979fa76f6b37d6460fc0c3441e1dfe76a1913aa37a9a8f3",
+    "C69_ru": "93cc45baa48652b4a4ab421522c24f960167e980c4db544373702ad28169b411",
+    "C69_uk": "fbad0116a07d665180248390cfda46981bcbcd96396fdf3a7e15eff469e30856",
+    "C70_en": "460ce3871167c5ce56febe8b647c5689119c156813008ced33c69f1b3004e44e",
+    "C70_ru": "d2cbb15aed55938d5c88f282f9bbced5317fe66046b2219806c97ec46f220072",
+    "C70_uk": "967aff627f4305dd5cda27dc11e87a04c98262a00ef45252da7fcd815bffa5a9",
+    "C71_en": "de4ad92f87e2d2f69f0f0960ef9df2d0030d21c8bc5400f993d15fbd40cf9e1e",
+    "C71_ru": "248112ac3fce8c6e1eef0d074647ca046dfbf692bebc66c2a5bd8778df6df971",
+    "C71_uk": "4324af1469c7062abb7ac87a718c8c72a019fa508476bea2df084b850d46043f",
+    "C72_en": "e2a6c76aaf79025ba13a85e1840fb44537a162de2ad49a53a0408de8b243e908",
+    "C72_ru": "22d235cbfdb04c9ee668e5e3b758a73ec93a2d4916a8304345a3d9b581e273b3",
+    "C72_uk": "654ffe75926a195dd7cc036d1a14b08a586c24e19fff9a13dd4fd998412bbfe1",
+    "C73_en": "9b0bc24a8cc5144a6ab5809e248bcbc87201bde8c83998070e236f6ac39c830a",
+    "C73_ru": "e6db38e7ae70745a77dc5ccef66d3c60fa3e89a8a3636bdfaa5a55e592822a0c",
+    "C73_uk": "c01444418b73ca397b318193676a5d5502a901faccbc63caac9146ff3a797f54",
+    "C74_en": "aa03115eb6108e0499cf7a45be46f5946933cd56f47c9a03c0ab516e2c194bb4",
+    "C74_ru": "cfef2ebcbfdb5c4dc51fa8860085cdfe84b87f02523e3ca4822777867e1e3558",
+    "C74_uk": "76ac423e043ae996cd8152f1608cdc584bb83736f2c954311cbc45cb794e1ba4",
+    "C75_en": "29e17a155c60a784c8b5e31404f31a573c3f94054a6647bc6009016a605062b6",
+    "C75_ru": "7ad000e61805a1e18a7703cc83002a683412694ff3d97d1dbe2f6b6176ff6e10",
+    "C75_uk": "352322cd4f918216c264e36d0070d05c12687213c553a77b1080c0912037b085",
+    "C76_en": "410a3d7bf6cad0cf0f0ad3f8ae09fcfcba1799957b62352bccdcd348e559a106",
+    "C76_ru": "04c981352890258a07ea5e14948eac6dafc50e6ad4d8f6672351c466e9bdf2bd",
+    "C76_uk": "8fe7995a63af8ac51e0db78afc0f7078d96c60a5884e010350e4cbd4374b3285",
+    "C77_en": "51703ba8b905d7ecd9786ffcdba6f9ac6ed116b06b821292424154c6e1fdd1e4",
+    "C77_ru": "032436132e2cd0ec51bec4f53768536477d145216047d740a33a3542af7e59fe",
+    "C77_uk": "1c70121b5d817b770e127d6b8daa4db3a9e8e0cd060055932697041d82cb93a7",
+    "C78_en": "d1ef01d5e12e5835ea331e231c5239f2027a2349653b0c2f8a7de50012c00189",
+    "C78_ru": "5e7f168a8c64e822f710dfcd9c3bb5a9c678ef22e3c24d2ff23de8f56136a4bd",
+    "C78_uk": "16545cbdfad6c7f0fd04b2ace567b88c270fd1c78e7f95d3e77ff31598099625",
+    "C79_en": "a8342533d61a2fb611877031f9920ab4084a53aca8ee524f4d7bc070a8b98540",
+    "C79_ru": "2d613606ee047638d72775b0a924a70a118ae0841bbab6d6a5d37364489b2141",
+    "C79_uk": "03454f920f0ea8aa4fd6991d895ae4f7ad311ea1903c4d96af4c1497ded47934",
+    "C80_en": "2faab30e656d43c485c35c73bf243ad7c3700b33cde61b732bbd8cc95331c7f2",
+    "C80_ru": "1807e3400994e11d492d73ee179ac7c3ed41433d362ff592f7aafea31351cd33",
+    "C80_uk": "48a873e10941eae07c1d3abbea4b3e6dd6e6fe800912ca1e86c2c21bec3c0a9b",
+    "C81_en": "9e9468a174c4952624e60728d35321cdf0b81010656e861a4968699cf7b22b8b",
+    "C81_ru": "67ccee6cedc88c17b3416c5ea7e074d51794eea22964cfd489bc31e4a03c4ae2",
+    "C81_uk": "9518e17b9420dc11af2a6d610c6a1641027686e9271a1d83a65b48b12e436d31",
+    "C82_en": "d2fa93c317a72ba42f30549ba46597f6bda36cc398f73a8cd22aba63e7e6199d",
+    "C82_ru": "9be7433a70d23a45f0792c78c8a37b86e7f2a758424d9eb4e7ce5833d2d9ca3f",
+    "C82_uk": "84323fff8299e5d61e9daeaccbadb07b8417aecc34016d4f2dc25badc8c2a4e5",
+    "C83_en": "873d8f9dd216899bdb2a30cf11fd137ed281d5e154e304c9de2c63b1d41b2530",
+    "C83_ru": "cc621fefcc3a7f415bb2948274ace82e3bbe7f93844d9943eb46b173b1ebd6fd",
+    "C83_uk": "01f632b66d938131a641770c5eb92845d4ea14d29d5868b08e670b71c9511213",
+    "C84_en": "c5b1eab53aa9ebac6e31f945efaa1a59e8c43eb561fc090ee83b81beec87d8c9",
+    "C84_ru": "c5178bf4ed631dbe2ed723eae0ba3a9511045d3260559221fa23e6f7213d01fd",
+    "C84_uk": "7cd3d6052f10129fab6adfc49881f727cdc5494f75263f113fab15181b732ab9",
+    "C85_en": "92a519b1cf2115cd662e9843f8e8b7df26fedc789f8d3bd5b9a0dd05c5fbaf19",
+    "C85_ru": "67a9f5b4ffaec9ac7bfa7d1299a0ea95791e962f339536ddb2a0986ffe99ba67",
+    "C85_uk": "d6ad8e52e82710ffadc5a675d7b690b674490aaf40dbcf2e5508a3656f06a329",
+    "C86_en": "10d69ed96e65310eb0d67448e854b0c85f710b3488ec3568517a468583b1a430",
+    "C86_ru": "15d1a075b88e5aa7a7d24b83a7978e512fc6064f475ed3ecab81eac19d79fc2f",
+    "C86_uk": "64b833d1da5b6a401f91e8bf13937bbf0ecc2d830f1e0e0bac50e2aa9dea85a6",
+    "C87_en": "76ff2c66c74ec73a1d1af76c544daa1a6c61e0e8b3b690793733e8676c14de07",
+    "C87_ru": "16fdcc7271f6d2902f24b09c6e83e6fd2eca19f458b4e1463e759330b09f788d",
+    "C87_uk": "1833882f0adbd0dd36f331b8a2fcba49c6f2f2dd31718f13bcfae862dbfb296d",
+    "C88_en": "943189ae78d7704f0341786d50f9fb071a4d419cc5af3a36115fece782405611",
+    "C88_ru": "bd95f50fa8786c31af3f1a3411bdb7e5dae7dfc444a8ef50bc2e54abb1b4daf2",
+    "C88_uk": "856786fee047e66a4f4f06b83ca4ba599103163978ba2eba059da8aa74408e6d",
+    "C89_en": "1064e4b18a1eb2ef270ae6a70e5cc15db716e6841b666e193a2c0f299bf62bd1",
+    "C89_ru": "e5c536649b4d70fa7babcbace759bf03ad35133e87baeb1f0060098abb6336d8",
+    "C89_uk": "be9c02af2b98c3574fa5c4f6ba2c1056fd5ff8f387e453c568b8c2dad55841bb",
+    "C90_en": "c57ec94d4a1eae5fd93705b413c47b9c88d6471abd6a67b6fbb5753fb1482d47",
+    "C90_ru": "8c11b6176cfac17f1dc903e82f6a7648a2dd5e353b6b0543bc92461cfce810bc",
+    "C90_uk": "1236ec8911b26dca01b183f6c2edb39c482e7a8c48e30d390d9800b3df2e57b1",
+    "C91_en": "6916df7f6291116be7c5fd5437c032b7949956d64e0679d341d21f4429a3734d",
+    "C91_ru": "5d6242171c4cad25c8d7fc3e330dc873dd3be06a4ad5b7560540f8882b62fff5",
+    "C91_uk": "a08d906892c851393564c6488dd3b92641cae2bf09b7f25e5a466eb3bc797201",
+    "C92_en": "70838beb10604ddcc05dbce3c6ca7ad239442b977f58f925fbcb67134dc704d8",
+    "C92_ru": "b9cadecf4473471e29d9b928d9b17baa441648023f8e01922dcd0b6cfea00d6a",
+    "C92_uk": "3154afa34dd322192f978ebcdab47fb0567ba6542b57afced19e5a3e505e6024",
+    "C93_en": "9d3634413d108f236f3cce6e5bd4c81e59881d9cc2c9e9d542642029033db79b",
+    "C93_ru": "9d80a55b47b73de4173ff62e2feb0149f2934c29e11871e0e928e44a0ce267f5",
+    "C93_uk": "ffa1d741653b34504bb931bd00dc39c44ccba59efd7a51d2b22450b9e1856d33",
+    "C94_en": "7cd71c00b8497feb6cd6b231e41a71f4699c2a272f79aa7b0e320d77a4374f2d",
+    "C94_ru": "5d39ee0e11853849a4324b0193142c2642cf3c24400370454a9d8aab3cae1b38",
+    "C94_uk": "5ff5b1b38724fe578249887c1a8e106924188cfa734bc7b159563eb5f98f9aec",
+    "C95_en": "078190a39e82bee074f061175ee52e9c92a5afde5ad211ac187a98abc6ea3edd",
+    "C95_ru": "93c6cfb522cc1c3f0da54f05bdf944bcdbfb877ba62fecb393efb2d8f74f8cbb",
+    "C95_uk": "292a01c98ee9bf1242d9dbbb9fb6b9d1c1e06dde4eaa7c1266b301bfbbd47c91",
+    "C96_en": "dbc7a47189b79220845b653f2f9f0edebdeb4a50366ada8eab0c843f3db73319",
+    "C96_ru": "73e2d34cc2c46445088ad37d7c04a0280bfd91b19decc7c61f9768d490e329af",
+    "C96_uk": "f831c2c3a314241e2e81d975541531367581f79312d76e50942f1ec1187c8d51",
+    "C97_en": "b8e1edd2a810ec9a4c7639dea69f339b1209c73c4c660fb3ef462b883f242411",
+    "C97_ru": "4143c732305875ed278e92c12407a75c02ca3f7a881c58c0144fb486db7066d9",
+    "C97_uk": "6b3ccddf797c1b986114ca2e4e7ecadc0525d70b600863702802b23bf1e6c2f0",
+    "C98_en": "8bd8aa942a53721a3aa2009913d7c452a1e15ffa41d08b13c69390d7056a0347",
+    "C98_ru": "c9d5088e01291e55b1cb576d6cc40703c42b8993ecda3da388afb46760186c96",
+    "C98_uk": "cf112706b824e8f9a96d28c53f4009c6a1bdf9cd6e6b4ef7f953558fbb0bf4ef",
+    "C99_en": "8a69e20656f5fc77e1a1c7f8f682a4dfe7fb8eea9e5959d8a2cf9ae46e084059",
+    "C99_ru": "a56219404515da03f285593b759685cb0d547089c3214a2dc8423b35d747fb20",
+    "C99_uk": "6d675300a156f3bae4c6dc33b2f0143b2bd828a297e88d3fa51927af08ea1a32",
+    "C100_en": "6019523a0f8b8064cff3076c0ff4d20d589a7b25d3889328c418386dfc4b4144",
+    "C100_ru": "7bd88c279f9c6554592476b708d57153a9146c28086257e038fcf013efb1c4d3",
+    "C100_uk": "9a4bf738274d30f426aba31279d1245a44d5998a625e053610b90bea101d2604",
+    "C101_en": "4532925d6077ff4e50be8a1547bd8b7ec40d6596a6200861b8ad81f6a8045f38",
+    "C101_ru": "9645306a81a0d866d7e0bddcaa237e93a71f43ae39e9144c6ea23bd62aea8b2e",
+    "C101_uk": "b34b09352a3986c449ae73be2c5c3648c0b83a90231294b50edf7bc0a4cbd830",
+    "C102_en": "1366b32cefd168cbce006316da5babf446ac67dd105073b8fb0c488ac7aeb2a1",
+    "C102_ru": "6217e2be5ad46688a23596d2c0f1eefce8e3159bc70abd615608a1e4f3226eee",
+    "C102_uk": "9585b340d7763d16c2048f1c34b9377aed8e1825a231ab00594d326353b6aafa",
+    "C103_en": "7a2ebc8a71811dfe05458dc723fa9a9db575b242ece2b8aaa596af5b67f68470",
+    "C103_ru": "8334153bca65e7df8f8b13cc271e2ccfd9e56e69d93d5aa6d9fc7d9617c766e6",
+    "C103_uk": "3b29dad3ad2f0b9e41cfa41492cf585df6a9505fda1765e7f179d862fb126756",
+    "C104_en": "779cd5ce67a80993cc5acffb7765a70beb84471a476962a91fe09b7d4aaaf7be",
+    "C104_ru": "4152da1a6253b9bc43751a82d5ab3bc4831f33f548094220bb27226e5dbd7a21",
+    "C104_uk": "064f4bbbc7ea8fb7b408036c0f0456615b52d40188c45232246732f195800da9",
+    "C105_en": "8ba0200b77795b560076a54d60a79bdb0fc0ae788a70fce0de424fff1d89661e",
+    "C105_ru": "c0f4f6af0f61e7d3a8b242c773beb5b93ffe23c0b94e1ba4bc4967d7ef5ad987",
+    "C105_uk": "4847aaea6405a598549e208865a5580b65302ba66bd9a3ef5aebdbacc5a7342f",
+    "C106_en": "a8b05e89c4328b8d52c77f1c5dc10441f183459739ec8cdc7455254fe76d8542",
+    "C106_ru": "5806bd38c3a0c03a61aa7da1d1d6891b99cd63fe9fbe75e954b758e3cb3305d8",
+    "C106_uk": "2d22e2d5c74a152517d7cbdd8fc9801e96fced31f815825ee0509b0cad7fa35d",
+    "C107_en": "422107929a6932ee65fedbbd0548a628c6f179345c01399540141353d549d975",
+    "C107_ru": "a77000b48277a6c7c658c160b9d1b9ad2a8b4e104a8af8b45e8602519a09d9c5",
+    "C107_uk": "86208c68e7bbab2267318604c95f52d4db986fb6fbc3ab38e1c9be913b85829b",
+    "C108_en": "9323d182768901eda1b627a7f0db3b13671924d267d80d287a38a1f5380e51af",
+    "C108_ru": "5100283ebeefe0d766a6b286041c11e195596ce487c188d8ae0822144f9b6f04",
+    "C108_uk": "38ab2dcc034fae4c89882e9f0d55cbe71580f3681acbc5e16a496175ae39a1bb",
+    "C109_en": "7ebfad9fdea124f9856518b8ee4bc495890600868d03462258e0d71bd790618a",
+    "C109_ru": "95610cb1e6c9a03f8dd564789f6ce598b78b9c468a08cf59e224af468e9f68ed",
+    "C109_uk": "1e1522ade51f585b377222018999c974b2024379e8252339f57c5ab0c378d65c",
+    "C110_en": "62eae5d4471872af99bb52c8bab5262b18a2f7837512e076136dff7a8a0aaae8",
+    "C110_ru": "b1d9024d76ac71ad59df58a2ff0f51deb362afd162bbdd5eacb3fa10ab1a2558",
+    "C110_uk": "152ae0e524087df2b94bbef940508a3f58ea760867b1fdedb7bc3d38cb2d115a",
+    "C111_en": "fe53a9efbb960d4e79cd09a7401decbab5562a94bf833f5516c989e5f76d72c0",
+    "C111_ru": "607317f8164822796ad01b446fdca8b7ff672eb02e34aad2cd6c8563b4fcad45",
+    "C111_uk": "1df670c22a9e5c2d68311eb6518f54fe830a0fcf9ebc8c53188f2d370593d020",
+    "C112_en": "71958a5a491aaa0993188fa4625284522203a401f51ed38697a3c5dd4102cd28",
+    "C112_ru": "e64e08d39ef2746dfeabb286b8d0e7fec0713b4ef6b6b1cb7544b03f378e884e",
+    "C112_uk": "d85929ca58bbe9f2e418203e842a6c9a85b255bdb658848725a0039c1b054691",
+    "C113_en": "a8efedaaa445456d538fcdd83010001bd0809e0fb99e20be1ee76a5500bb4fae",
+    "C113_ru": "eea9a8a731c1bd5aa82d98d8a799b4c47e349585c84a0ca7bd605203bb499260",
+    "C113_uk": "8173b007379f7259db1171dd40211e4bf37751d2954f68329fbd90c737e28b14",
+    "C114_en": "06d953276bdb1c9cd820dd1d8356bb1acb3e71ba3f863f4df26922c45569a8b8",
+    "C114_ru": "4a5e32466f1a432cde61e7172e5ba6b9b7bd4384f4a60a3640f6e4d5f23a41c3",
+    "C114_uk": "b5786b0484817aa7ad2f66aafe2853153132d6635de4377f36c6a97e95c3ea1e",
+    "C115_en": "35ca3aced8691bc0f1a90e19dce352c5e112bb9e91fa0a667f25d2f75d42f210",
+    "C115_ru": "1ad5c8b684878a627019b692d0bde83440844fe6d18aa24f4f8954849f43043b",
+    "C115_uk": "b21dcca0f86d6fb6e9f70533432bf4fd6e9182efde74f4eb771ebeaf83cc6ca9",
+    "C116_en": "bd663e5b1519ad929a49aa9df30b23ccc912539f974e7008bc6a73b9e4b12c43",
+    "C116_ru": "d01047255018b617f4f95afc3cc8858f1c62c8dad3503b9d46e3040e6bc3c64c",
+    "C116_uk": "37144d5ffce780f909aa4ee25295559accac41bf8fb497666ae93886b0a0e3c9",
+    "C117_en": "7c97f921656c9c4798bc9e8b4c4b37abc3edab92acacc3836d59f3c7c391ab95",
+    "C117_ru": "36818a9e7e1ca0a3932ea4ca091aab00b518532c255292ba907faef1229aecab",
+    "C117_uk": "ad9e52c0f9e820c5da8164c985f0207b8fbe2dae07c3ab94b42a8d1fce5b693b",
+    "C118_en": "5ee547f4301fb7b501e21b925bb923312460028749c5088d0052855b34ec4c6a",
+    "C118_ru": "1b09846443275ff1629572f1085465cd9d2fc9a059c8b49ca64c874f34569281",
+    "C118_uk": "13aac5e260669c58ff4bbbf515bf7a772f35291a20d38c9e41346e49f4b1da9d",
+    "C119_en": "c737617dcfe75bf4a946c37b608db5c1f3f544df766e6dbbfcb80bc22f30f080",
+    "C119_ru": "083963ac808e2fd410e38fd0fb100f28a23fdc5bfa029cbbf0b114561d74a3e5",
+    "C119_uk": "4cf710f035fa3562c92e8d138df51e538015d750a8d9184cd604d6a8ec031472",
+    "C120_en": "8ae2a3b32ab61189016948d327a344d53f7e245f385997044d3443ecfa3c19c1",
+    "C120_ru": "e908a2f56c66f7e94a061e79c070a1dff41f33124fd179148fd04fe03d46dbdc",
+    "C120_uk": "4b1f5149f09b546658eea0ca6a4d6e90552750c0c877f822faa7816243db915a",
+    "C121_en": "f25bf58d2727edd16da4372b33559cae7e6fba074969be0e9bd43d8c8b376086",
+    "C121_ru": "5f1d08e88aa7086ec7a656950835af8fd55e99069bebf0ea4ae68f490d53f48d",
+    "C121_uk": "8dea65365f9dbbe5457b97cfbfa6cc4085c2e649b0244a3eebc272cc7b147cd6",
+    "C122_en": "942aa0f528588a1c2723a4635791cdde762aefe5f3a1e50d6ab29c426e7b78e3",
+    "C122_ru": "5f66c85bb117e4d43880d6db0f76e949302b32f162b3010d1493789ea37c0812",
+    "C122_uk": "87c792fd1de5c9cf0a4917a14a06df97db29d389f4313a7d181d242ff7ee1ce1",
+    "C123_en": "bb12a456d3ac1510058ee41e92f26d05cf1fcdfc2e6a46af590563c8a933ba17",
+    "C123_ru": "2f51c2217e7f91955d27a9dedfaf76bf5752c19d6337085d4d8fc70f5cb6f90b",
+    "C123_uk": "654f5d898b2cf2a19121a4b4c3f97d2e0c49d15de278d2168f858774730d447c",
+    "C124_en": "860e8f13bd2ea122fee57acc799a1b5fad4e34d215d1abe0bf34cdf7e667d07a",
+    "C124_ru": "c235b59dc2a402587cf0d079bbcc3c1373293be668bea626576bfdf4f0e35537",
+    "C124_uk": "67b4c5dcaaba52a5f8519cc124104f2d8397dd75c13d1184f4ae66ae8846d59b",
+    "C125_en": "a8a88604d2e9c8d5c32b63756870910815a1083ef8d225127f3902b165b12c3b",
+    "C125_ru": "147bb0a358d7dbe6311978ac2352b9855abd34932859f8d3c7cff36474f88e4a",
+    "C125_uk": "0026ed3cfd9ce9a38d67bbb78455c58a86b3fd70f2bba455323f0f6b4625d98a",
+    "C126_en": "c671ae5ff2bed933083bb4521607ec3980c8c5477dfca77f00cab01ac5c13682",
+    "C126_ru": "594cefb629c150bfb311ed9a618c11af52bfe089b3771955ffcd53cc5349fe03",
+    "C126_uk": "0c610845c1d4a181c5abf700d5eb9cf5878ff4b33b434d50e7243e746c22bb5e",
+    "C127_en": "ee707e62070ea27544565842ba6e574156fd2f96f85f584cccf02ef9b21e0a34",
+    "C127_ru": "8f71c12517a2c492c3ffb8671db88d8ab49b513e92e78b4f275be327072fe76a",
+    "C127_uk": "6548ca0da7e324261b6f3355c330042e73c7bf8959040b2b58b6fabb8ef060ae",
+    "C128_en": "489da2f0d960304456455936bea8efbe2f89a7a8248a55a0e2ce53acf7876ac1",
+    "C128_ru": "a8029b4f03966cfa3c9030a1e507b6731299e7c71bdb0ad098c8384643034fd1",
+    "C128_uk": "c09ce22939cbd22c87d0b798198583c3ac4c18b73b5fc0db5b68a7bbf403b20d",
+    "C129_en": "d1b9c25f248e68472fbfd449b75df6d6510ea6edb19b129c1571a54a69abdcbc",
+    "C129_ru": "862a0220baa3e1ae3dc56bf120d70f8ba1f4e471a5b6e2c3e21742c023d40db8",
+    "C129_uk": "a22654ba5cd598191cb77bcb7242521aaa22553124a1583da58a032468f1a83f",
+    "C130_en": "cb613325cf3e30fe63e08b923ef5490705f2b5b3b66600445a4d3d3027e8d29f",
+    "C130_ru": "be51349bb80d24868c71a5f11c60255deb91eab6edc7f742cd40b84275dd72a4",
+    "C130_uk": "68af5be7bf7fbd3fce72ba73cf5fee09816bcaeb0ac5bc027126aa77f560ea63",
+    "C131_en": "1b8576b412ba745ed3982e6c1ff9b13802b4e7b7d086f3cc8105cdbecd3d924b",
+    "C131_ru": "b70e9c0a5657064b435069bf9713c8b4af09eb09153a3cf710ac7da6674046c3",
+    "C131_uk": "64109e8d33b10f5d96f8d0e8aa8a318fb51063bc8f6167504fb40e762efb89f6",
+    "C132_en": "f8023c4df1859ac0abc8af1cdda59fd8cfb9a85af83dc8f7c768d9ede161069d",
+    "C132_ru": "8f05e06549a7f51de4925ca8464c7485da4b9076a3d0ff34c852770f08e2dcfe",
+    "C132_uk": "b7ff29166f81d79235d1376382ec72c69a177f9e1e233e48eba587c7e6e7e09b",
+    "C133_en": "cfef4d61fb5ecec4222992315ee350667615ad867110ab053a1d2541d73b9cb9",
+    "C133_ru": "23177c6b55867b2b17b638c6fbb7bd78b38567c8a94ee20518e13808f99cf217",
+    "C133_uk": "b08798c788a1480bc104aab454a99ba4560e960654a1cb60654b75b29abde592",
+    "C134_en": "88c966abdbf7561b65dcb6aa3a317a8ed45b35063ce3ffe354a4dffe938dddb6",
+    "C134_ru": "2083113790ef06b6145b820e7dc9a349cb8df147203ea57ca19b9cb3b4e52734",
+    "C134_uk": "9e120d6433d70a48aaed84a1bfa005901db2f6eb34a4d4a05e239f6927cb637b",
+    "C135_en": "3c139d84cae43839dc55269c13dce636138ec3704ac3bdc3a43596e27139707b",
+    "C135_ru": "7b54208b3c2b8f0288b3ce62ef883c44325736226a301c397134d22e1330bb9c",
+    "C135_uk": "e7e21209bf850f0e7d0a46b881574d986d3869c427597e5bf72732cbd2bbfc01",
+    "C136_en": "0f8fd7b1779e3207c45a14d920f71e16019b6663bc4a1928bc003880b956825f",
+    "C136_ru": "8ff47982016d4d558d2558572c3a6100c32e8d6ac50ca534c43e217e5b428da0",
+    "C136_uk": "45af25770c48cda2e403ef86c29a1096e79caadc2ffbaeae401ad1ef15fc7109",
+    "C137_en": "de2ab7f31fdbc92fbf80fb2948d9796bd5b1a3a0051b27b098f28d3c9967eb1d",
+    "C137_ru": "250f1fece65f8ac320b3757a9e74ddf20a864ca0e7d36800903d4c09395eb15f",
+    "C137_uk": "7d5690727fa046b67bf3b0bb613b547ed3105b8ded0662d722a6158cca1e5b32",
+    "C138_en": "dab086836fd26293ef375db0a1337e7b10deed79ab49f0f1d98b0bcbb3a65cc1",
+    "C138_ru": "2a5c3c9ceead1511b284339cb8c869c2e312bcedec241c60b4b75ff7d0b3841f",
+    "C138_uk": "55e29ed924661f9fdc7d0de74918605adaed3a0d77d63f91f534511ed99e6368",
+    "C139_en": "d650afba2d8c3ec87429112e283aae0a7c8597c2b5087ccdbce4e7f7f35e06c7",
+    "C139_ru": "6e28a498512be50f14ac3bb4ad92d4af56cd34ae164fb8ea56d070d3e973a98d",
+    "C139_uk": "9eea1aacaca17bf190366e1ff66336e11ab0496be356d9dd368a01e73da9967d",
+    "C140_en": "6108199aa453a34e15bfebfc0ff51a50bea066158e3b4f0a7327270efe4a0d42",
+    "C140_ru": "71f9da1f714e84b4446653ed76185b1d468e8b89953a13b21e68aa1d0f96764d",
+    "C140_uk": "b14bb6d2d29804dda7cdeda5f0f231aae6b6021a7ec04a65193bff7f2ed253fd",
+    "C141_en": "22ea6a92af839edb4d990c689f7ce44dddb0fcae307c8eedc38d1dc628b3e6ac",
+    "C141_ru": "2bd40c8a206c31343985e4727226288143b88120a168220db4bcc164d49ecb12",
+    "C141_uk": "db642771864f1c802551b698ff47a3b163d436f6f71156579170adad1376a70a",
+    "C142_en": "5cb6b2ff7dee3666f074259feb0214eb133bb3bb250aed30dd2a5698b6e3e5bd",
+    "C142_ru": "73ed89fc51926aa9115bf5d6cdeb199502129224bf795f313cea70de6351f12d",
+    "C142_uk": "5d0be4939dfb6468ff52a9a8a5c66cdf000eefa71fe7ac81520a2f2fd1d46f16",
+    "C143_en": "b50aa2db56c69e568afdbd68549fc060c624105b2087e82d49e41ddfb6c0a918",
+    "C143_ru": "24e5afc1911bab9f8d0cd1283706c3b97c53e66eb25a33155dcf83982bbf501f",
+    "C143_uk": "be751c8c4d6be19573ee84496408b65d0f367b68ce5487e387ec36d0d7bd7863",
+    "C144_en": "e3f0db3f30b5ac537f47e77189d08c7b7dd32db92e4b5e84199b80b5485aa119",
+    "C144_ru": "967c623ad8e1d0a57ff78f2b5cc49b3b36972d62d8dec142aa837097ef47d9ee",
+    "C144_uk": "d801df0c997832b2e5ece56bb7cbbe161c080039ae7f146aad83f7de4141abff",
+    "C145_en": "218989438c0968f6f5cfb029e7aef66f050417391e0f60be767cc91f089105e2",
+    "C145_ru": "1d99dc794251a8e91f8d7f23f8f7e9aa3be8d409d185efce03bb2d65b187c8a1",
+    "C145_uk": "31fc82261a355882c99bb4c86b763c8adee2f2057637a8d886bcd2f1b3b6f963",
+    "C146_en": "05a25288a8e5a56dfe0c8bd4338140437eb8baf1d9ceb5ec2c1f861dcb70715d",
+    "C146_ru": "ea763c97d168067fa471585eae6b16e5e1a23b11ef6e74468b836c4fbcefcf06",
+    "C146_uk": "83c25d250811df3f793676999d450e02734446237abc98f602087695bf14636b",
+    "C147_en": "ebee39fffe6e4670a8de4740996a0fbe34847dc1b1644c2d89a198e569aa4704",
+    "C147_ru": "ebed0d4b1b2bf20289ea1e6a94d348a62f7c57a79d6798f8a25851aea8f6a9d7",
+    "C147_uk": "ba5e98825919076bd7b47a8bbf5e7dcc814efde2565e86b5dfece173ce286103",
+    "C148_en": "b15a1bdccc07b5f9e49ed75ab11dc7f19dad2671fd966d815c0aa9e867432c5b",
+    "C148_ru": "11b84725d5cf17e16465d3c1cf2e7b681602d7a29ca443af15d1d8faa54a3e88",
+    "C148_uk": "f61f2d92d797648a108b2f3cf4942e728beb38ee88be3274f87b08dce1f1267f",
+    "C149_en": "9978b783b223762864db3e6aacd01f5f0b5d848ab10d0449bdce4ef75cc80d35",
+    "C149_ru": "0c5f7f0da330221dfe1e82926e4a5a8a4f50d011609df41de3bb1b0458355782",
+    "C149_uk": "a62e2abccc9641f8f1b70b46172309b9ee3c81949314a3abf720b0ac5c77572d",
+    "C150_en": "6d5a24027cb36e4d7c969ab93c0e9af45f092f20810a6dcaffbc263630b4b810",
+    "C150_ru": "78c016ae266ae88b1ec480ba9f7860023fa014464a1c3766db30d7849afeb35f",
+    "C150_uk": "bb2951e762848f81121869d80767094fc132bc343e21a49b4c55c8ea6ead0703",
+    "C151_en": "d4cddce2434a255d92e602e2283d7c76cb76e6e3d477642e1e60fd935a04f3a2",
+    "C151_ru": "64b4b49f3378072b5ee4db166ca5f93e0f48b3496ad8f82e11b2bcd440a1d613",
+    "C151_uk": "cb1189ffa78a29fc4da80bfb3def5e6d9be1bf7aef291e8c67b29abf073f296f",
+    "C152_en": "c32c2dbc3238195ac5d7b809a5d27263438914cd371c01cd3167c66ff0b5e5fa",
+    "C152_ru": "fb7e94a09b0b64916efe467016732bcbf1685f9c1d1e1db198a7d4313bec14ed",
+    "C152_uk": "e851eb6d36a7fde0fd05e352d6c0274fa0ecd1299c787bf83d8d4933eae4da91",
+    "C153_en": "9c108e09eed74bee3ed9ff14e9e994ef5a445d1e9b54be9cb931f0e98781e5f2",
+    "C153_ru": "850c921c66f019b27528287fb3083e4503b31362d68484bf9fc645fad005057a",
+    "C153_uk": "65c30969f4a7761287c73f2f8278d4a7bac310c42221563efb07bd9cb3e1e748",
+    "C154_en": "7d4e8d0bc1e4163a1142b1d2a47d88f230af539c4dd1b521281bf4eb1bfa2e0c",
+    "C154_ru": "05e098852ce7d529615c87100c5b8360cfc313578edeae53f5f8f0bfe48e8a87",
+    "C154_uk": "445a9e574acab1c24b9189406da4feca325e4920fae3d42219e5ea8b67b2cdf6",
+    "C155_en": "37a24a5a3931256f4fbc79b6aaa0e721b820f12c62136eee8da9b0469329b6c6",
+    "C155_ru": "04bce8acad63214ea4df4fe6e1f7344d5b3c9ca6b9a75387dd8a65cc9d8f282f",
+    "C155_uk": "0b4f8512ee1aa2b393125eee54a57c202691b6894182cc31d2f29c7c3b4d7a09",
+    "C156_en": "e1928383070f57a0fadd35248835ab3a46e65be724513736ba55e6fecb4db6a9",
+    "C156_ru": "d8b34f1a84d93a4cb5d1b7d929e146c93954ccd4614d718330313883c06024f9",
+    "C156_uk": "37e991bf6ccf10d88deb29297f0461599a4b991979c498a497f96f29f759f91a",
+    "C157_en": "8dc26aadec479b999bacea846549a0f6755e14dec9a825753e74d22d4b5da9ce",
+    "C157_ru": "24cb069e0e91febac832d5685b7d714fa0a5e18e602fda30f9251bd2194dc1c4",
+    "C157_uk": "f8ce1b1ef802e1d11e34688e78a6379d97906abe6d5eb9385d1cb9cfa946d96d",
+    "C158_en": "e60a31259efc815dae71a90cdb7690c400adaf3cd13b2a2f40b2660179860e72",
+    "C158_ru": "40cac769997991e386dff1caa9407bdc063bec36f7235c65c1d13f5d2f6692f6",
+    "C158_uk": "df6cfafd74d3650b2f9b4e26a9f24fa893a4653a9337bdf4457922c23871ba00",
+    "C159_en": "086f6c365627daeffeb1ac9db258b2692c25d0198f00e1373f5a487e35b6f278",
+    "C159_ru": "9154d330726b4f7607353176e330b0924ceea7288f67698c78b1e78649b16355",
+    "C159_uk": "9ac1c4111ceaa17638d9ef3a0a7197f50b6b1ad92e2251561d6ebc6bea51039e",
+    "C160_en": "b21b17ceeef61c5c696fa850ddc83d514dcf8810afeaf8aa95daf802b817afb9",
+    "C160_ru": "70309b87f6622b356c47236f082bc8151c718e37f64e480d6dade063f182592e",
+    "C160_uk": "621bcfa5b133be2edd982a47fdf5091c5fc6e996bbfcb7ae8a121a46abb0d000",
+    "C161_en": "7953ef943def1c1448b52f68dd54fc2d1d539bbc8098d1e02b762d1cb7096459",
+    "C161_ru": "d54c1c758a4447f5c624cf46c8dfe883cfbb50085872d2243ab4d3bbb9a9ea79",
+    "C161_uk": "755186c0c3aa45c4fcb9638d1f4452f346507f0b3c0a29ba91c4710e5918b827",
+    "C162_en": "cca7441862b0a518715cc157e2f8531a19f70dd486989d878058a2e1b80a597c",
+    "C162_ru": "e14bfb68fa711466553e013b5c21f13c5be9be273a418503e6cd4d76479e9a29",
+    "C162_uk": "64f648d9685e937fbff52ec1980a1e534338bd17af7a317ea6a03a8a0f3c08dc",
+    "C163_en": "a8b37366c2d535b877f7c75cf20550d4c9f271e35cfa630d907b6efb9f015db4",
+    "C163_ru": "c4897c57d12b3094846b5baf2edcdd8a66e9192e54ac8a1a379f931d09fa609b",
+    "C163_uk": "24c44080c0a17b3bc3cacd60efc0976727558136b04c4e124f4de5089051a53f",
+    "C164_en": "ca7d336fabdcd1adb2259b826a63a322b702457c3bd12814375690e0511c36a6",
+    "C164_ru": "7e6245d0d4b336500a90bcbdf9a9785fdf492798c14a7fd7a92929fd84b8d998",
+    "C164_uk": "9ccc16caeffd4232d3824fda75ba3483c013186550fa479b9fb55c01e4981c43",
+    "C165_en": "21f7810edddd15d1a7f0f062f85c59b5aef6d359a5e0d9a41a5bb949b18b0464",
+    "C165_ru": "00eb4f2e3b35569d3fbb492ce90aa367343d03d7884a8ced6c2f22e985014a52",
+    "C165_uk": "f17a88b717459c000484adbd3d4d7bb7f60c4130dd1dd1fef33ec707a8ecf338",
+    "C166_en": "4ceb6fd38f56357f6570891f82dc0a851d4c4f787efa01b94f8083c141dc112a",
+    "C166_ru": "3168937255ef8a0f5ea8e57018660d14a4f1df1468f29b13e18f0b3b9e4bdd00",
+    "C166_uk": "c689a59bef4c771b5d743d19116eaf2e75ec2f18ce5d2792bec86d49363f8076",
+    "C167_en": "5a3f95e5e04e16cb997a2ff82b635e8317543bdc5f2cdcf8a8f2caa91314891b",
+    "C167_ru": "b9f19e1165d35e82fc730c481fa8592ee6b72fd5771ee0e00065c90170699bf1",
+    "C167_uk": "8943991551ac9cfd48d91d1eb8c84c2b9cf6160b57b6ac24cf578ce1fb867c00",
+    "C168_en": "20e1727c2a025b4f64ebc910ccaf781b4039c1ab87a9278726db9d1931c0407b",
+    "C168_ru": "fe6df8c167f21747238c0e61bbc22d41e24e2e633eb52d5d3663be53487f48da",
+    "C168_uk": "add0321d222a1455e38eebe7569e723de3ae8ffcf36061c549cbb7a808c76bec",
+    "C169_en": "49f052b7c597921ed2894ba91028e7ea76d1ba7b91ff134ff442fb265f26aa4b",
+    "C169_ru": "451d080aeeb605d1f191d5b98ef24ed88c39709ba615e3487d85b341f325667f",
+    "C169_uk": "14c9935d20a6c248b4e07148890b1ce3c6ab985f23acb26c08bdf8776c0c5824",
+    "C170_en": "6465d4bd8eb29a580c610d38e6efb95eaf27a2c4d3a1c791a2b711c075e375a1",
+    "C170_ru": "c52aa2b2be03c2d88daa3287c2b3248b5495b4ecb1f11c7fd622771769116b09",
+    "C170_uk": "83a2fa28b372add555d6037e5630b998281c9539a8fcdba8302d8904caf0c84c",
+    "C171_en": "177e6cf5716e38ba73308f40b45ca60be931b36551e3d9db59c17b99a674f72f",
+    "C171_ru": "caec0d55cea68db73b82ba3097e817900a4565d56b05da9028951c999333c38b",
+    "C171_uk": "1cd47e8ed74f633a8dbbbccb4878b289b6ce523fd7d723f4f3fd666ec378ff9d",
+    "C172_en": "16b95dc6178dfb5982aeb23ffd4c26e27ef672fbdd613ad846409e01e115854c",
+    "C172_ru": "99a95b8b0e435b0232ec1c154bf155c0d03592e9d9b9bc2ac4e7cda81c988287",
+    "C172_uk": "54e2f5c5210c0e7db0604b14da7c1c7472990bd4f085f0d8b70406b7fc66aa9b",
+    "C173_en": "8fd197f8497cc6e0804bbe17469722ce78f2b406677f0fb14ee41441e1d3452b",
+    "C173_ru": "0a9f4aa5032e788c5fb43e4870b58a24b377196c11951ff8366acfd339c2138e",
+    "C173_uk": "1079706620476607072aac0cf8658ff33122ea49fa6b4b1652070dc63b404aba",
+    "C174_en": "38aadcc15a227f4b6858f0ec04cb8a339c0d2fa1d4049ab920814df342135503",
+    "C174_ru": "873b2a8d08e47adc8c705ec3b239bca60d33105e9adad5465e91a9fa6928d768",
+    "C174_uk": "96324822334345d39a23e5bb28d8b0b4fc1e41fd6fa756f524ead1ef275ecb1d",
+    "C175_en": "1497adab8c8a7a72e2e4a4913ba16ffdef8465230aec5546c810cda6d745d383",
+    "C175_ru": "18e65f871dd2e39f7d67be1d21baececae02f1b97955cf09235c1561c07fe21c",
+    "C175_uk": "67715a1de2bbf842a4800bbc5a449822fd8e163e1a014753a3d736ae9d4066e5",
+    "C176_en": "aacf84bdc3b391ddd52b4cea109346ecdff8daede753e1cef8e977f4addc6265",
+    "C176_ru": "e6c69192fe274d48f2c75d95e8c0538f86d9618bd0856832a8d926885ebd1de2",
+    "C176_uk": "a881f84c5995af2a307ec6bffc9db1a79c3680f38ee7f51187b6783a27664c63",
+    "C177_en": "03717c1efe9cd301751343b97ed1bb9d89105de69c76dc9d166b80ae43e44ac2",
+    "C177_ru": "ac175eb85c57dfd19deac9730fed753a058eedc08b0eec54fe87067b96e7ee05",
+    "C177_uk": "eea1d0907faffb437e01b2f866f63b18d40cf50c439d2f19bc829f3f3e144168",
+    "C178_en": "9344c2a708757e01810fec5e00627933477903e3bcb68821a4616e40f0b6e98d",
+    "C178_ru": "31f7f46990ec9ae7f3db3376b34a5896a6626592eb4d2701974911b16a9bd792",
+    "C178_uk": "9d4feda7b44cdf3175a6b48d3c584b28e934d3ea3ec67acd32cfe114943fdfb8",
+    "C179_en": "9b339b0e7b4206830bf930d565ab2459b57e5528ff3c57b3e104658bcdbf4347",
+    "C179_ru": "60e034ad55b00c25c35af66361f6eeaf441d51a3b63c6b148ddfb4d70e1cbaa3",
+    "C179_uk": "f2371f1cb126cc62b544b9a855f309d25c656f77486ff5b88182714c7b407cf3",
+    "C180_en": "e1cdd57cf35c5852089370fd79930d491cce2c7cb658e11ea106c05315586c25",
+    "C180_ru": "353229c377ab8d7a39fe5f4467b0e2a9faaf915b3f79764bfe9fa5c6819124d3",
+    "C180_uk": "e47110b79b5597fe717779935d1790653126ddafad79700967da8e5341fd4558",
+    "C181_en": "40562e13a876024cfd40c87264c833143ffb816342b87ee8a781968f34a5e574",
+    "C181_ru": "7b5c3e254647bac3586be54c4db391184dbf547968c677b4475d671ebd2e393f",
+    "C181_uk": "10ac47b300622903d1029fdc9907298ca766b651cf64ecc30e4b4251f38a98e8",
+    "C182_en": "179feb9cb8442a0fed319862e33b7ad5a1b9a27cfa2fa8e9518e2bdcfbbb6561",
+    "C182_ru": "f12c7b2ff0d1c745421999f873fbfedd6838d194996a2c6e19c568ee10c36c79",
+    "C182_uk": "5ffe4a46d4758284d6f02fdf52fec107dd61af7e7a007c605e0efbba5aec9396",
+    "C183_en": "1a1237d116b37f97bbf32c68a5fb6b3417809000ebc12bf3f50a071e6d18fafa",
+    "C183_ru": "93087b9fafa2f7e2a4bff67c3ff22635cb5a8aba6043112ab342919db704dba8",
+    "C183_uk": "b696f05e3ee857862b7695d162033e22ea205ae32c53325d4ceec3eb06080242",
+    "C184_en": "884a0f3fc4e40e255d719a285665bbc5b0b02e196b40e4fab2d5ecc127960777",
+    "C184_ru": "28de6ba6c22f12cf7807b3132d36f226a3a78770a1aad32b0dc6ee58acd3fc91",
+    "C184_uk": "132899d11bdc69fc4b3bff9482a53ec15ff0a7775b10ee807dda8e560d9ccb1d"
+  }
+}

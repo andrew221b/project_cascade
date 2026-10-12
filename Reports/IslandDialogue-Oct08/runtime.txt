@@ -1,0 +1,4 @@
+Native dialog geometry: all45 scenes, EN/RU/UK, both speakers; narrow320 Large Text. Temporary availability fixture, not gameplay/acquisition proof.
+Measured lines=270; text/bounds/gap violations=0; minimum gap(px)=8.001411; puzzle hash unchanged=True
+Map heading font=StorybookDisplay (map heading); Reduced Motion static captures; animated delivery already uses existing scene tween/typewriter.
+Standard390 English body font=InterfaceBody; TMP overflow=False

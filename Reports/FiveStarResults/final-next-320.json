@@ -1,0 +1,28 @@
+{
+    "width": 320,
+    "height": 693,
+    "minimumDeviceTextPixels": 0.0,
+    "buttons": [
+        {
+            "name": "Continue completion",
+            "x": 70.54080200195313,
+            "y": 51.72003173828125,
+            "width": 178.91839599609376,
+            "height": 62.0
+        },
+        {
+            "name": "Retry completed level",
+            "x": 10.387210845947266,
+            "y": 51.72003173828125,
+            "width": 52.441585540771487,
+            "height": 62.0
+        },
+        {
+            "name": "Completion map",
+            "x": 257.1711730957031,
+            "y": 51.72003173828125,
+            "width": 52.44158935546875,
+            "height": 62.0
+        }
+    ]
+}

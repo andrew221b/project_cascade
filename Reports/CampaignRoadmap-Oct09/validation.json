@@ -1,0 +1,55 @@
+{
+  "scope": "actual current packaged catalogue",
+  "changedTriads": 62,
+  "primaryTriads": 540,
+  "distinctTriads": 540,
+  "optimalStageProofs": 1620,
+  "localizedAndPrimaryReplays": 6471,
+  "bombWindows": 335,
+  "benefitAblations": 646,
+  "lowerDurabilityProbes": 3292,
+  "backendChecks": 80,
+  "backendTransport": "fake SDK, not live",
+  "meanActionsPerStageByWorld": [
+    3.03,
+    3.87,
+    4.37,
+    4.89,
+    4.91,
+    4.94,
+    5.39,
+    5.68,
+    5.81
+  ],
+  "humanEnjoyment": "NOT VALIDATED",
+  "freshPlayMode": "BLOCKED",
+  "freshScreens": "BLOCKED",
+  "blocker": "Locked Mac; stale primary editor and license IPC timeout in isolated batch project",
+  "archivedScreenshotCount": 59,
+  "pendingScreens": 4,
+  "canvasBrowserChecks": [
+    "opened 63 cards",
+    "dialog opens actual captured image",
+    "comment save and clear",
+    "no JavaScript errors"
+  ],
+  "mobileBuild": "NOT RUN per user instruction",
+  "transformDependencyChecks": {
+    "entryPermutations": 372,
+    "gameplayGusts": 12,
+    "rowChanged": true,
+    "unchangedSolutionWithoutTransformWins": 0,
+    "startingTransforms": 0
+  },
+  "adaptiveMissions": {
+    "pureTestsPassed": 15,
+    "pureTestsFailed": 0,
+    "publishedReference": true,
+    "confidenceExtraMinimum": 2,
+    "deferStruggleAt": 2,
+    "inventoryAffectsDifficulty": false,
+    "campaignRecipesChanged": false,
+    "nativeEditorImport": "not confirmed: internal backend failure; Mac locked during recovery",
+    "playerBuild": "not run"
+  }
+}

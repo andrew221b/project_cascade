@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"success\": true,\n  \"message\": \"Tool 'GetConsoleLogs' executed successfully\",\n  \"data\": {\n    \"logs\": [\n      {\n        \"message\": \"InvalidOperationException: Next C02 stage did not start.\\nCascade.Editor.Release.UndoOutcomeReview+<Until>d__5.MoveNext () (at Assets/_Cascade/Editor/Release/UndoOutcomeReview.cs:48)\\nUnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at /Users/bokken/build/output/unity/unity/Runtime/Export/Scripting/Coroutines.cs:17)\\n\",\n        \"stackTrace\": \"Assets/_Cascade/Editor/Release/UndoOutcomeReview.cs\",\n        \"type\": \"Error\",\n        \"timestamp\": \"[21:17:54]\"\n      }\n    ],\n    \"totalCount\": 1,\n    \"errorCount\": 1,\n    \"warningCount\": 0\n  }\n}"
+    }
+  ]
+}

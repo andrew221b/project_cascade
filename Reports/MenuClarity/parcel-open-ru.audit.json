@@ -1,0 +1,154 @@
+{
+  "pose": "parcel-open-ru",
+  "before": {
+    "Screen": "Parcel",
+    "Attempt": "8766975b-837d-483b-a345-d5e063971a38",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "after": {
+    "Screen": "Parcel",
+    "Attempt": "8766975b-837d-483b-a345-d5e063971a38",
+    "Hash": "99812f6e94f7efc4a2a32cc35c919715706ed1b9595cb149f804aa1bfb9871fa",
+    "Status": "Won",
+    "Route": 6,
+    "Stage": 2,
+    "Clears": 3,
+    "Preparing": false,
+    "Paused": true
+  },
+  "unchangedGameplay": true,
+  "measurements": {
+    "width": 390,
+    "height": 844,
+    "locale": "ru",
+    "largeText": false,
+    "simulatedInsets": [
+      0.018,
+      0.04,
+      0.018,
+      0.066
+    ],
+    "buttons": [
+      {
+        "name": "Keepgift",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Keepgift",
+        "interactable": true,
+        "bounds": {
+          "x": 63.4140053,
+          "y": 113.760017,
+          "width": 263.172028,
+          "height": 52.0000076
+        }
+      },
+      {
+        "name": "Back",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Back",
+        "interactable": true,
+        "bounds": {
+          "x": 37.0968056,
+          "y": 49.7600174,
+          "width": 315.806427,
+          "height": 52.0000076
+        }
+      }
+    ],
+    "labels": [
+      {
+        "name": "Gift title",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Gift ribbon/Gift title",
+        "text": "Это тебе!",
+        "button": null,
+        "bounds": {
+          "x": 82.51277,
+          "y": 690.477966,
+          "width": 224.974442,
+          "height": 60.3930664
+        },
+        "fontPixels": 23.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Gift name",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Gift name",
+        "text": "Листик",
+        "button": null,
+        "bounds": {
+          "x": 52.1351929,
+          "y": 605.698242,
+          "width": 285.729553,
+          "height": 52.06305
+        },
+        "fontPixels": 20.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Parcel promise",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Parcel promise",
+        "text": "Деталей: 1 / 3",
+        "button": null,
+        "bounds": {
+          "x": 52.1351929,
+          "y": 248.80278,
+          "width": 285.729553,
+          "height": 56.5902252
+        },
+        "fontPixels": 22.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Gift piece note",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Gift piece note",
+        "text": "Собери 3 части — получится вещь для Мики.",
+        "button": null,
+        "bounds": {
+          "x": 52.1351929,
+          "y": 212.585052,
+          "width": 285.729553,
+          "height": 41.4994965
+        },
+        "fontPixels": 13.95,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Keepgift/Label",
+        "text": "В путь",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Keepgift",
+        "bounds": {
+          "x": 63.4140053,
+          "y": 113.760017,
+          "width": 263.172028,
+          "height": 52.0000076
+        },
+        "fontPixels": 22.0,
+        "overflow": false,
+        "splitWords": []
+      },
+      {
+        "name": "Label",
+        "path": "CASCADE/GameCanvas/SafeArea/Menu/Back/Label",
+        "text": "Назад",
+        "button": "CASCADE/GameCanvas/SafeArea/Menu/Back",
+        "bounds": {
+          "x": 37.0968056,
+          "y": 49.7600174,
+          "width": 315.806427,
+          "height": 52.0000076
+        },
+        "fontPixels": 22.0,
+        "overflow": false,
+        "splitWords": []
+      }
+    ]
+  }
+}

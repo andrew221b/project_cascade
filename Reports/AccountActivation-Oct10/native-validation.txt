@@ -1,0 +1,2 @@
+PASS: native Editor compiled account runtime/editor sources; JSON applied via SerializedObject; SDK fields available; EN/RU/UK tables updated.
+No live login, backend deployment, player build or device verification. Cloud active=False.
