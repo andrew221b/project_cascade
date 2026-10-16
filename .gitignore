@@ -23,3 +23,33 @@ CascadeUnity/*.booproj
 CascadeUnity/*.svd
 CascadeUnity/*.pdb
 CascadeUnity/*.mdb
+
+# Publisher credentials and local backend output
+.env
+.env.*
+!.env.example
+*.p8
+*.p12
+*.mobileprovision
+*-service-account.json
+CascadeUnity/CascadeAccountCCM/**/bin/
+CascadeUnity/CascadeAccountCCM/**/obj/
+Tools/AccountFlowChecks/bin/
+Tools/AccountFlowChecks/obj/
+
+# Unity-generated data in Unity projects anywhere in this repository
+**/[Ll]ibrary/
+**/[Tt]emp/
+**/[Oo]bj/
+**/[Ll]ogs/
+**/[Uu]ser[Ss]ettings/
+**/[Bb]uild/
+**/[Bb]uilds/
+**/[Mm]emoryCaptures/
+**/[Rr]ecordings/
+
+# Reproducible local review captures and exported design documents.
+# Previously tracked reports remain versioned.
+/Reports/
+/Outputs/
+/output/

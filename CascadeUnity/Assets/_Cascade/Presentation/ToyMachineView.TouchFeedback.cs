@@ -44,13 +44,15 @@ namespace Cascade.Presentation
         {
             if(reducedMotion||!gameplayView||Frame==null||interaction.IsPaused||interaction.IsSuspended)return;
             impulse=Vector2.ClampMagnitude(impulse,1);
+            receiverMotion.Impulse(impulse.x,Mathf.Abs(impulse.y)*.3f);
             for(int f=0;f<floors.Count;f++){
                 var rig=floors[f];float response=1-f*.09f;
                 rig.swayVelocity+=impulse.x*1.3f*response;rig.sagVelocity+=Mathf.Abs(impulse.y)*.18f*response;
                 rig.rollVelocity-=impulse.x*(7+f*1.2f);
                 for(int side=0;side<2;side++)ropeSpans[side,f]?.Impulse(impulse*(side==0?.7f:.56f)*response);
             }
-            for(int i=0;i<tokens.Count;i++)rockVelocity[i]+=impulse.x*(12+i%3*2)/PieceMass(i);
+            for(int i=0;i<tokens.Count;i++)
+                rockVelocity[i]=Mathf.Clamp(rockVelocity[i]+impulse.x*(5.5f+i%3*.5f)/PieceMass(i),-6,6);
         }
     }
 }

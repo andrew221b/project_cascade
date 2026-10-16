@@ -73,14 +73,8 @@ namespace Cascade.Presentation
         }
         public void BeginShake(Vector2 impulse)
         {
-            if(Active||!game.Interaction.CanPlay||game.IsHoldingToken)return;
-            int size=game.Machine.TokenCount;
-            for(int i=0;i<size;i++){shakeStarts[i]=game.Machine.TokenVisualPosition(i);shakeTargets[i]=game.Machine.TokenPosition(i)+game.Machine.TokenSupportOffset(i);}
-            Begin(shakeStarts,shakeTargets,size);shaking=true;
-            for(int i=0;i<count;i++){
-                bodies[i].linearVelocity=new Vector3(impulse.x*(.8f+i%3*.08f),.95f+Mathf.Abs(impulse.y)*.9f,0);
-                bodies[i].angularVelocity=Vector3.forward*(impulse.x*(3.8f+i%2));
-            }
+            // Retained for older presentation callers. Phone motion cannot launch pieces.
+            if(!Active&&game.Interaction.CanPlay&&!game.IsHoldingToken)game.Machine.ShakeSuspension(impulse);
         }
         public void PresentShake()
         {

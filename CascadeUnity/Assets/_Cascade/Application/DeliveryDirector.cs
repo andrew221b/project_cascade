@@ -47,7 +47,7 @@ namespace Cascade.Application
                 i==WindFloor?(WindRight?EntryTransform.ShiftRightOne:EntryTransform.ShiftLeftOne):f.EntryTransform,
                 f.Bomb,f.Key,f.Repair,f.OneUseBridgeEdge,f.OptionalStamp,f.Powerup)).ToArray();
             return new LevelDefinition(source.PuzzleId,source.CampaignNodeId,source.SchemaVersion,source.RulesVersion,
-                hash,source.InitialSymbolIds,source.TargetSymbolIds,source.TargetSegments,floors,source.ReachCharges);
+                hash,source.InitialSymbolIds,source.TargetSymbolIds,source.TargetSegments,floors,source.ReachCharges,source.TeachingNode);
         }
     }
 
@@ -94,10 +94,10 @@ namespace Cascade.Application
     public static class DeliveryDirector
     {
         public static bool CanDirect(LevelDefinition source)=>source!=null&&source.CampaignNodeId.StartsWith("C",StringComparison.Ordinal)
-            &&int.TryParse(source.CampaignNodeId.Substring(1),out int node)&&node>=6&&node<=184;
+            &&int.TryParse(source.CampaignNodeId.Substring(1),out int node)&&node>=1&&node<=540&&source.CampaignLessonNumber>=6;
         public static int WindFloor(LevelDefinition source)
         {
-            if(int.TryParse(source.CampaignNodeId.Substring(1),out int node)&&node<=40&&source.Floors.Any(f=>f.OpenEdges.Any(e=>!e)))return -1;
+            if(source.CampaignLessonNumber<=40&&source.Floors.Any(f=>f.OpenEdges.Any(e=>!e)))return -1;
             for(int i=1;i<source.Floors.Count;i++)if(source.Floors[i].EntryTransform==EntryTransform.None)return i;return -1;
         }
         public static DirectionRecipe Plan(LevelDefinition source,DeliveryMood mood,DirectionRecipe previous=null)

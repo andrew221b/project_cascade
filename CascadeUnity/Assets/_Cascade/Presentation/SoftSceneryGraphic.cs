@@ -23,6 +23,9 @@ namespace Cascade.Presentation
             return sum/Mathf.Max(.001f,total);
         }
         Material availability;
+        int focusedIsland=-1;
+        static readonly int FocusId=Shader.PropertyToID("_FocusedIsland"),FocusPulseId=Shader.PropertyToID("_FocusPulse");
+        public void SetFocus(int island){if(focusedIsland==island)return;focusedIsland=island;availability?.SetFloat(FocusId,island);}
         Texture2D sky;Camera viewportCamera;float previousAspect=-1;
         public void SetAvailability(Vector2[] points,int unlocked)
             =>SetAvailability(points,Enumerable.Range(0,5).Select(i=>i<=unlocked).ToArray());
@@ -31,13 +34,15 @@ namespace Cascade.Presentation
             centers=points;
             var shader=Resources.Load<Shader>("CascadeArt/MapAvailability");if(shader==null)return;
             availability=new Material(shader);material=availability;
+            availability.SetFloat(FocusId,focusedIsland);
             for(int i=0;i<5;i++)availability.SetVector("_Island"+i,new Vector4(points[i].x,points[i].y,open[i]?1:0,0));
         }
         public void SetSky(Texture2D texture,Camera camera,bool night=false)
         {sky=texture;viewportCamera=camera;if(availability!=null&&sky!=null){availability.SetTexture("_SkyTex",sky);availability.SetFloat("_BlendSky",1);availability.SetFloat("_DarkSky",night?1:0);LateUpdate();}}
         void LateUpdate()
         {
-            if(game!=null){float next=game.ReducedMotion?0:game.Machine.AmbientPhase;if(!Mathf.Approximately(phase,next)){phase=next;for(int i=0;i<5;i++)islandDrift[i]=new Vector2(Mathf.Sin(phase*.31f+i*1.73f)*.65f,Mathf.Sin(phase*.55f+i*1.73f)*2.4f);SetVerticesDirty();}}
+            if(game!=null){float next=game.ReducedMotion?0:game.Machine.AmbientPhase;if(!Mathf.Approximately(phase,next)){phase=next;for(int i=0;i<5;i++)islandDrift[i]=new Vector2(Mathf.Sin(phase*.31f+i*1.73f)*.65f,Mathf.Sin(phase*.55f+i*1.73f)*2.4f);SetVerticesDirty();}
+                availability?.SetFloat(FocusPulseId,game.ConversationOpen?0:game.ReducedMotion ? .10f : .10f+Mathf.Sin(phase*1.1f)*.045f);}
             if(availability==null||sky==null||viewportCamera==null||Mathf.Approximately(previousAspect,viewportCamera.aspect))return;
             previousAspect=viewportCamera.aspect;float ratio=sky.width/(float)sky.height;
             float width=Mathf.Max(1,ratio/previousAspect),height=Mathf.Max(1,previousAspect/ratio);
@@ -65,6 +70,18 @@ namespace Cascade.Presentation
         SoftSceneryGraphic scenery;RectTransform rect;Vector2 uv;
         public void Initialize(SoftSceneryGraphic view,Vector2 point){scenery=view;rect=(RectTransform)transform;uv=point;}
         void LateUpdate(){if(scenery!=null)rect.anchoredPosition=scenery.Displacement(uv);}
+    }
+    public sealed class MapIslandProgressAnchor:MonoBehaviour
+    {
+        RectTransform island,badge;float clearance;bool right;
+        public void Initialize(RectTransform target,bool onRight,float gap)
+        {island=target;badge=(RectTransform)transform;right=onRight;clearance=gap;LateUpdate();}
+        void LateUpdate()
+        {
+            if(island==null||badge==null)return;
+            float distance=(island.rect.width+badge.rect.width)*.5f+clearance;
+            transform.position=island.TransformPoint(island.rect.center+Vector2.right*(right?distance:-distance));
+        }
     }
     public sealed class MapFlight:MonoBehaviour
     {

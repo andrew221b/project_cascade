@@ -4,6 +4,7 @@ No matching, clearing, falling-piece spawning, grid board or gameplay physics.
 EN default; RU/UK additional. Shapes, Words and Mixed share one SymbolId core.
 UI copy stays brief and actionable. Prefer clear visual state/examples over explanatory paragraphs; retain essential costs, limits and consequences. Story dialogue should reveal a character or move the story, without repeating UI instructions.
 Read only relevant Docs/Cxx.md, current task and actual affected files.
+UI standard: use a 4 logical pixel gap between icon and caption; centre the complete content group horizontally and vertically inside its control or board. Use the shared CenteredContentRow/vertical stack and existing button skins; verify EN/RU/UK and phone sizes. Plant decorations only on actual frames, foliage or supports.
 Domain and Solver are pure C#. The solver uses the same transition function.
 All swaps are atomic; preserve the multiset. Contacts use the final row.
 Presentation, tween completion and ad callbacks never change gameplay state.

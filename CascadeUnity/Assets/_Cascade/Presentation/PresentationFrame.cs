@@ -30,6 +30,7 @@ namespace Cascade.Presentation
         {
             Row = e.Row;
             switch (e.Kind) {
+                case PuzzleEventKind.CommandAccepted: Durability-=e.Value;break;
                 case PuzzleEventKind.FloorEntered:
                     ActiveFloor = e.Floor; Durability = e.Value; KeyUsed = RepairUsed = BridgeUsed = PowerupUsed = false; FrozenTicks=0;
                     var bomb = level.Floors[e.Floor].Bomb;
@@ -40,10 +41,11 @@ namespace Cascade.Presentation
                 case PuzzleEventKind.BombFrozen: FrozenTicks=e.Value;break;
                 case PuzzleEventKind.BombTicked: BombTicks = e.Value; break;
                 case PuzzleEventKind.BombDefused: BombPhase = BombPhase.Defused; BombTicks = 0; break;
-                case PuzzleEventKind.BombExploded: BombPhase = BombPhase.Exploded; break;
+                case PuzzleEventKind.BombExploded: BombPhase = BombPhase.Exploded;Durability-=e.Value; break;
                 case PuzzleEventKind.BombAbandoned: BombPhase = BombPhase.Abandoned; break;
                 case PuzzleEventKind.KeyOpened: KeyUsed = true; break;
-                case PuzzleEventKind.Repaired: RepairUsed = true; break;
+                case PuzzleEventKind.Repaired: RepairUsed = true;Durability+=e.Value; break;
+                case PuzzleEventKind.WindPermuted: Durability-=level.Floors[e.Floor].GustDamage;break;
                 case PuzzleEventKind.BridgeConsumed: BridgeUsed = true; break;
                 case PuzzleEventKind.StampCollected: StampBits |= e.Value; break;
                 case PuzzleEventKind.DurabilityResolved: Durability = e.Value; break;

@@ -26,14 +26,14 @@ namespace Cascade.Presentation
             var sheet=Rect("Advertisement cloth",previewAdSafe,new Vector2(.06f,.18f),new Vector2(.94f,.82f));
             var face=Background(sheet,Color.white,false);face.sprite=enamelControls[0];face.type=Image.Type.Sliced;
             var heading=Text("Test advertisement heading",sheet,new Vector2(.08f,.82f),new Vector2(.92f,.96f),26,"Test ad");heading.font=art.titleFont;heading.color=MenuPaper;
-            Picture("Video reward pouch",sheet,new Vector2(.27f,.47f),new Vector2(.73f,.78f),TravelArt(3),true);
-            var promise=Text("Advertisement promise",sheet,new Vector2(.08f,.31f),new Vector2(.92f,.48f),20,rewarded?(UiCopy)"Watch to the end for 40 coins.":"A short break between levels.");promise.color=MenuPaper;
+            Picture("Video reward pouch",sheet,new Vector2(.27f,.47f),new Vector2(.73f,.78f),RewardEmblem(0),true);
+            var promise=Text("Advertisement promise",sheet,new Vector2(.08f,.31f),new Vector2(.92f,.48f),30,rewarded?(CurrentScreen==GameScreen.Parcel?ReferenceCopy("Extra parcel rewards","Дополнительные награды","Додаткові нагороди"):UiCopy.Raw("× 40")):(UiCopy)"A short break between levels.");promise.color=MenuPaper;
             previewClock=Text("Test advertisement countdown",sheet,new Vector2(.08f,.21f),new Vector2(.92f,.31f),19,"");
             previewClock.color=MenuPaper;
-            previewFinish=Button(rewarded?(UiCopy)"Collect coins":"Continue",sheet,new Vector2(.10f,.08f),new Vector2(.90f,.21f),()=>FinishPreviewAd(true));
-            var enamel=previewFinish.GetComponent<Image>();enamel.sprite=enamelControls[0];enamel.type=Image.Type.Sliced;enamel.color=Color.white;previewFinish.interactable=false;previewFinish.GetComponentInChildren<TMP_Text>().color=MenuPaper;
+            previewFinish=Button(rewarded?(CurrentScreen==GameScreen.Parcel?(UiCopy)"Open parcel":"Collect coins"):"Continue",sheet,new Vector2(.10f,.08f),new Vector2(.90f,.21f),()=>FinishPreviewAd(true));
+            var enamel=previewFinish.GetComponent<Image>();enamel.sprite=enamelControls[0];enamel.type=Image.Type.Sliced;enamel.color=Color.white;previewFinish.interactable=false;previewFinish.GetComponentInChildren<TMP_Text>().color=MenuPaper;StandardAction(previewFinish);
             var cancel=Button("Close",previewAdSafe,new Vector2(.25f,.07f),new Vector2(.75f,.15f),()=>FinishPreviewAd(false));cancel.name="Close test advertisement";
-            var cancelFace=cancel.GetComponent<Image>();cancelFace.sprite=enamelControls[0];cancelFace.type=Image.Type.Sliced;cancelFace.color=Color.white;cancel.GetComponentInChildren<TMP_Text>().color=MenuPaper;
+            var cancelFace=cancel.GetComponent<Image>();cancelFace.sprite=enamelControls[0];cancelFace.type=Image.Type.Sliced;cancelFace.color=Color.white;cancel.GetComponentInChildren<TMP_Text>().color=MenuPaper;StandardAction(cancel,true);
             var opacity=previewAd.gameObject.AddComponent<CanvasGroup>();opacity.alpha=ReducedMotion?1:0;
             if(!ReducedMotion)previewArrival=DOTween.To(()=>opacity.alpha,v=>opacity.alpha=v,1,.20f).SetUpdate(true).SetEase(Ease.OutCubic).SetTarget(previewAd);
             TickPreviewAd();
@@ -49,6 +49,9 @@ namespace Cascade.Presentation
             previewFinish.interactable=seconds==0;
             if(seconds!=previewSeconds){previewSeconds=seconds;previewClock.SetCopy(seconds==0?(UiCopy)"All done":new UiCopy("{0} seconds",seconds));}
         }
+#if UNITY_EDITOR
+        void FinishPreviewAdReview()=>FinishPreviewAd(true);
+#endif
         void FinishPreviewAd(bool confirmed)
         {
             if(previewAd==null||confirmed&&!previewFinish.interactable)return;
@@ -58,7 +61,7 @@ namespace Cascade.Presentation
         }
         public void ShowCoinReward(int amount=40)
         {
-            if(!CanPresent||CurrentScreen!=GameScreen.Shop&&CurrentScreen!=GameScreen.CoinPacks)return;
+            if(!CanPresent||CurrentScreen!=GameScreen.Shop&&CurrentScreen!=GameScreen.CoinPacks&&CurrentScreen!=GameScreen.Parcel)return;
             coinArrival?.Kill();if(coinToast!=null)Destroy(coinToast.gameObject);
             coinToast=Rect("Video coins received",menuRoot,new Vector2(.09f,.34f),new Vector2(.91f,.45f));
             var face=Background(coinToast,new Color(.04f,.28f,.28f),false);face.sprite=art.panel;face.type=Image.Type.Sliced;
@@ -68,7 +71,7 @@ namespace Cascade.Presentation
             var group=coinToast.gameObject.AddComponent<CanvasGroup>();group.blocksRaycasts=false;
             var body=coinToast;var arrival=DOTween.Sequence().SetUpdate(true).SetTarget(body).SetLink(body.gameObject,LinkBehaviour.KillOnDisable);
             if(!ReducedMotion){body.localScale=Vector3.one*.94f;arrival.Append(body.DOScale(1,.30f).SetEase(Ease.OutBack));}
-            arrival.AppendInterval(1.7f).Append(DOTween.To(()=>group.alpha,v=>group.alpha=v,0,.30f)).OnComplete(()=>{if(body!=null)Destroy(body.gameObject);});
+            arrival.AppendInterval(3.7f).Append(DOTween.To(()=>group.alpha,v=>group.alpha=v,0,.30f)).OnComplete(()=>{if(body!=null)Destroy(body.gameObject);});
             coinArrival=arrival;feedback.Sound(ToyCue.Success);
         }
     }

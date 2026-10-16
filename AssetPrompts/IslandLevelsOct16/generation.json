@@ -1,0 +1,200 @@
+[
+  {
+    "name": "WindGarden",
+    "prompt": "Use case: stylized-concept. Edit the supplied screenshot into a PRODUCTION GAME BACKGROUND ONLY, portrait 9:16. Preserve the illustration quality, camera/perspective and layout of its scenery. REMOVE ALL UI: absolutely no back button, wooden title board, parchment counter, numbers, text, stars, level rows, green/gold buttons, scrollbars, logos or watermark. Seamlessly reconstruct the scenery behind all removed interface. A single spectacular LARGE floating island occupies the upper 44 percent of the portrait (topmost crest may touch the top), with wide terraces and buildings concentrated at the top and a cliff/waterfall extending to about 47 percent height. The rest of the portrait is spacious sky with softly hazy distant themed castle islands around the left and right margins and lower corners and soft clouds at the bottom. Match the reference composition closely so UI can be overlaid later at y=11%, y=20%, and y=31% downwards. Keep the middle/lower centre quiet sky, NOT another giant foreground island; no floor or framing wooden posts. Polished colourful hand-painted 3D storybook mobile game art, crisp fine materials, soft physical sunlight, rounded charming fantasy architecture, convincing atmospheric perspective. Keep the original proportional scale of the giant island. Keep this Wind Gardens world very close to the reference: green trees and foliage, cream cottages with terracotta roofs, the tall white wooden windmill toward the top right, a terraced giant floating sandstone island and the long bright waterfall on the right, blue daylight sky, very distant castle islands at the lower sides.",
+    "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-63779489-a63b-46f3-bbf3-56720a507f60.png",
+    "size": [
+      941,
+      1672
+    ],
+    "alphaBounds": [
+      0,
+      0,
+      941,
+      1672
+    ],
+    "sha256": "69beb69443b72183ea095dea5ccbf08e156f77c4776f5c2e1a72b54b5058b232",
+    "output": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/IslandLevelsOct16/WindGarden.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "RainMill",
+    "prompt": "Use case: stylized-concept. Edit the supplied screenshot into a PRODUCTION GAME BACKGROUND ONLY, portrait 9:16. Preserve the illustration quality, camera/perspective and layout of its scenery. REMOVE ALL UI: absolutely no back button, wooden title board, parchment counter, numbers, text, stars, level rows, green/gold buttons, scrollbars, logos or watermark. Seamlessly reconstruct the scenery behind all removed interface. A single spectacular LARGE floating island occupies the upper 44 percent of the portrait (topmost crest may touch the top), with wide terraces and buildings concentrated at the top and a cliff/waterfall extending to about 47 percent height. The rest of the portrait is spacious sky with softly hazy distant themed castle islands around the left and right margins and lower corners and soft clouds at the bottom. Match the reference composition closely so UI can be overlaid later at y=11%, y=20%, and y=31% downwards. Keep the middle/lower centre quiet sky, NOT another giant foreground island; no floor or framing wooden posts. Polished colourful hand-painted 3D storybook mobile game art, crisp fine materials, soft physical sunlight, rounded charming fantasy architecture, convincing atmospheric perspective. Keep the original proportional scale of the giant island. Reskin the scenery into Rain Mill: wet cedar mill buildings and a large wooden waterwheel, rain-fed channels and waterfalls, rich moss, ferns and rain-polished blue-grey cliffs, soft rainy turquoise sky and drifting pale clouds; warmly lit windows. Keep a cheerful readable storybook atmosphere, no dark desaturated overlay.",
+    "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-09da8e86-a0d1-43ab-b948-2de377e5b6eb.png",
+    "size": [
+      941,
+      1672
+    ],
+    "alphaBounds": [
+      0,
+      0,
+      941,
+      1672
+    ],
+    "sha256": "48e5265b01cea46f6aa8e13e1d63a4a1a1d0a4616df529c024efd072cccc8e58",
+    "output": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/IslandLevelsOct16/RainMill.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "CopperOrchard",
+    "prompt": "Use case: stylized-concept. Edit the supplied screenshot into a PRODUCTION GAME BACKGROUND ONLY, portrait 9:16. Preserve the illustration quality, camera/perspective and layout of its scenery. REMOVE ALL UI: absolutely no back button, wooden title board, parchment counter, numbers, text, stars, level rows, green/gold buttons, scrollbars, logos or watermark. Seamlessly reconstruct the scenery behind all removed interface. A single spectacular LARGE floating island occupies the upper 44 percent of the portrait (topmost crest may touch the top), with wide terraces and buildings concentrated at the top and a cliff/waterfall extending to about 47 percent height. The rest of the portrait is spacious sky with softly hazy distant themed castle islands around the left and right margins and lower corners and soft clouds at the bottom. Match the reference composition closely so UI can be overlaid later at y=11%, y=20%, and y=31% downwards. Keep the middle/lower centre quiet sky, NOT another giant foreground island; no floor or framing wooden posts. Polished colourful hand-painted 3D storybook mobile game art, crisp fine materials, soft physical sunlight, rounded charming fantasy architecture, convincing atmospheric perspective. Keep the original proportional scale of the giant island. Reskin the scenery into Copper Orchard: a terraced orchard of golden fruit and amber-leaf trees, copper-roof harvest cottages, small copper orchard machinery and lanterns, warm russet rock, golden late-afternoon peach-blue sky, very distant orchard village islands. Architecture and vegetation must be recognizably different from the windmill world.",
+    "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-fcb6164f-43e7-4bcc-8bbc-c2192b5e6488.png",
+    "size": [
+      941,
+      1672
+    ],
+    "alphaBounds": [
+      0,
+      0,
+      941,
+      1672
+    ],
+    "sha256": "0e7d624054a547be62c699d3648100bb5558ce3a8dfa3fa35f25b64a9b04a988",
+    "output": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/IslandLevelsOct16/CopperOrchard.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "CloudPost",
+    "prompt": "Use case: stylized-concept. Edit the supplied screenshot into a PRODUCTION GAME BACKGROUND ONLY, portrait 9:16. Preserve the illustration quality, camera/perspective and layout of its scenery. REMOVE ALL UI: absolutely no back button, wooden title board, parchment counter, numbers, text, stars, level rows, green/gold buttons, scrollbars, logos or watermark. Seamlessly reconstruct the scenery behind all removed interface. A single spectacular LARGE floating island occupies the upper 44 percent of the portrait (topmost crest may touch the top), with wide terraces and buildings concentrated at the top and a cliff/waterfall extending to about 47 percent height. The rest of the portrait is spacious sky with softly hazy distant themed castle islands around the left and right margins and lower corners and soft clouds at the bottom. Match the reference composition closely so UI can be overlaid later at y=11%, y=20%, and y=31% downwards. Keep the middle/lower centre quiet sky, NOT another giant foreground island; no floor or framing wooden posts. Polished colourful hand-painted 3D storybook mobile game art, crisp fine materials, soft physical sunlight, rounded charming fantasy architecture, convincing atmospheric perspective. Keep the original proportional scale of the giant island. Reskin the scenery into Cloud Post: a charming sky-post village, cream and aqua post buildings with curved blue roofs, brass mail tubes, a small moored postal balloon, mailbag hoists and wooden landing piers, bright flowering sky trees, high white cloud sea and pale azure sky; distinct postal architecture.",
+    "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-fcf3e77a-4b89-4e9d-ae30-454255406637.png",
+    "size": [
+      941,
+      1672
+    ],
+    "alphaBounds": [
+      0,
+      0,
+      941,
+      1672
+    ],
+    "sha256": "fa13eb46cf60af7dc7840c1a52b49ffe70da18fa6170ba332c39eed43679b8eb",
+    "output": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/IslandLevelsOct16/CloudPost.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "GlassLagoon",
+    "prompt": "Use case: stylized-concept. Edit the supplied screenshot into a PRODUCTION GAME BACKGROUND ONLY, portrait 9:16. Preserve the illustration quality, camera/perspective and layout of its scenery. REMOVE ALL UI: absolutely no back button, wooden title board, parchment counter, numbers, text, stars, level rows, green/gold buttons, scrollbars, logos or watermark. Seamlessly reconstruct the scenery behind all removed interface. A single spectacular LARGE floating island occupies the upper 44 percent of the portrait (topmost crest may touch the top), with wide terraces and buildings concentrated at the top and a cliff/waterfall extending to about 47 percent height. The rest of the portrait is spacious sky with softly hazy distant themed castle islands around the left and right margins and lower corners and soft clouds at the bottom. Match the reference composition closely so UI can be overlaid later at y=11%, y=20%, and y=31% downwards. Keep the middle/lower centre quiet sky, NOT another giant foreground island; no floor or framing wooden posts. Polished colourful hand-painted 3D storybook mobile game art, crisp fine materials, soft physical sunlight, rounded charming fantasy architecture, convincing atmospheric perspective. Keep the original proportional scale of the giant island. Reskin the scenery into Glass Lagoon: graceful white and mint-glass conservatories around luminous aquamarine pools, arched water channels, translucent glass lanterns, lush water lilies and willow gardens, reflective turquoise waterfall and pale opalescent cliffs, cool lavender-teal sky near dusk with distant lagoon islands. Keep the island clearly lit and beautifully coloured.",
+    "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-51fd40cc-45d9-48f9-91c3-ed9d12a9b89e.png",
+    "size": [
+      941,
+      1672
+    ],
+    "alphaBounds": [
+      0,
+      0,
+      941,
+      1672
+    ],
+    "sha256": "83ba3f53a4151d692208889072cfe9c4c4aef81501d052126ebc61dbc39d2b15",
+    "output": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/IslandLevelsOct16/GlassLagoon.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "MossArchive",
+    "prompt": "Use case: stylized-concept. Edit the supplied screenshot into a PRODUCTION GAME BACKGROUND ONLY, portrait 9:16. Preserve the illustration quality, camera/perspective and layout of its scenery. REMOVE ALL UI: absolutely no back button, wooden title board, parchment counter, numbers, text, stars, level rows, green/gold buttons, scrollbars, logos or watermark. Seamlessly reconstruct the scenery behind all removed interface. A single spectacular LARGE floating island occupies the upper 44 percent of the portrait (topmost crest may touch the top), with wide terraces and buildings concentrated at the top and a cliff/waterfall extending to about 47 percent height. The rest of the portrait is spacious sky with softly hazy distant themed castle islands around the left and right margins and lower corners and soft clouds at the bottom. Match the reference composition closely so UI can be overlaid later at y=11%, y=20%, and y=31% downwards. Keep the middle/lower centre quiet sky, NOT another giant foreground island; no floor or framing wooden posts. Polished colourful hand-painted 3D storybook mobile game art, crisp fine materials, soft physical sunlight, rounded charming fantasy architecture, convincing atmospheric perspective. Keep the original proportional scale of the giant island. Reskin the scenery into Moss Archive: a giant green moss-covered floating library island with tree-root book halls, round wooden doors, curved stone book towers, ivy, ferns and purple flowers, little hanging reading lamps, soft turquoise woodland daylight and very distant archive islands. Architectural details follow the library theme, no windmills.",
+    "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-25981e51-4b18-4e66-a8be-b961cfb35e03.png",
+    "size": [
+      941,
+      1672
+    ],
+    "alphaBounds": [
+      0,
+      0,
+      941,
+      1672
+    ],
+    "sha256": "db20f43ee087db44f8666aa9e30e244d7b49da2f45040c98277b3d1bdfd3151f",
+    "output": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/IslandLevelsOct16/MossArchive.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "SnowSpire",
+    "prompt": "Use case: stylized-concept. Edit the supplied screenshot into a PRODUCTION GAME BACKGROUND ONLY, portrait 9:16. Preserve the illustration quality, camera/perspective and layout of its scenery. REMOVE ALL UI: absolutely no back button, wooden title board, parchment counter, numbers, text, stars, level rows, green/gold buttons, scrollbars, logos or watermark. Seamlessly reconstruct the scenery behind all removed interface. A single spectacular LARGE floating island occupies the upper 44 percent of the portrait (topmost crest may touch the top), with wide terraces and buildings concentrated at the top and a cliff/waterfall extending to about 47 percent height. The rest of the portrait is spacious sky with softly hazy distant themed castle islands around the left and right margins and lower corners and soft clouds at the bottom. Match the reference composition closely so UI can be overlaid later at y=11%, y=20%, and y=31% downwards. Keep the middle/lower centre quiet sky, NOT another giant foreground island; no floor or framing wooden posts. Polished colourful hand-painted 3D storybook mobile game art, crisp fine materials, soft physical sunlight, rounded charming fantasy architecture, convincing atmospheric perspective. Keep the original proportional scale of the giant island. Reskin the scenery into Snow Spire: pale blue snowy floating cliffs, warm wooden alpine cottages with snowy steep roofs, a tall graceful ice-and-stone spire, snowy fir trees, small warm amber lamps, frozen waterfall and blue ice, clear frosty sky and far snowy islands. Cozy winter fairy tale, bright clean snow without blown-out white.",
+    "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-de043af0-14f2-4332-a10f-f4737dbebb32.png",
+    "size": [
+      941,
+      1672
+    ],
+    "alphaBounds": [
+      0,
+      0,
+      941,
+      1672
+    ],
+    "sha256": "027ce2919fbd4fb4cdd20056ea2c7ad217332ece33a74907ea35fa2ce5490577",
+    "output": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/IslandLevelsOct16/SnowSpire.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "GreatBeacon",
+    "prompt": "Use case: stylized-concept. Edit the supplied screenshot into a PRODUCTION GAME BACKGROUND ONLY, portrait 9:16. Preserve the illustration quality, camera/perspective and layout of its scenery. REMOVE ALL UI: absolutely no back button, wooden title board, parchment counter, numbers, text, stars, level rows, green/gold buttons, scrollbars, logos or watermark. Seamlessly reconstruct the scenery behind all removed interface. A single spectacular LARGE floating island occupies the upper 44 percent of the portrait (topmost crest may touch the top), with wide terraces and buildings concentrated at the top and a cliff/waterfall extending to about 47 percent height. The rest of the portrait is spacious sky with softly hazy distant themed castle islands around the left and right margins and lower corners and soft clouds at the bottom. Match the reference composition closely so UI can be overlaid later at y=11%, y=20%, and y=31% downwards. Keep the middle/lower centre quiet sky, NOT another giant foreground island; no floor or framing wooden posts. Polished colourful hand-painted 3D storybook mobile game art, crisp fine materials, soft physical sunlight, rounded charming fantasy architecture, convincing atmospheric perspective. Keep the original proportional scale of the giant island. Reskin the scenery into Great Beacon: a tall magnificent golden lighthouse on a floating island, smaller cream beacon-keeper houses, brass light conduits, luminous gold glass, sunlit ochre cliffs with deep green gardens, warm gold and rose late-sunset sky, distant beacon islands. Peaceful triumphant fairy tale, rich detailed materials.",
+    "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-06122a55-0185-4e29-9171-800514468932.png",
+    "size": [
+      941,
+      1672
+    ],
+    "alphaBounds": [
+      0,
+      0,
+      941,
+      1672
+    ],
+    "sha256": "cf7e2c4fac868cfb2fffa90e10bee4212cb260ddceba4724b9d360bdfba76264",
+    "output": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/IslandLevelsOct16/GreatBeacon.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "StarObservatory",
+    "prompt": "Use case: stylized-concept. Edit the supplied screenshot into a PRODUCTION GAME BACKGROUND ONLY, portrait 9:16. Preserve the illustration quality, camera/perspective and layout of its scenery. REMOVE ALL UI: absolutely no back button, wooden title board, parchment counter, numbers, text, stars, level rows, green/gold buttons, scrollbars, logos or watermark. Seamlessly reconstruct the scenery behind all removed interface. A single spectacular LARGE floating island occupies the upper 44 percent of the portrait (topmost crest may touch the top), with wide terraces and buildings concentrated at the top and a cliff/waterfall extending to about 47 percent height. The rest of the portrait is spacious sky with softly hazy distant themed castle islands around the left and right margins and lower corners and soft clouds at the bottom. Match the reference composition closely so UI can be overlaid later at y=11%, y=20%, and y=31% downwards. Keep the middle/lower centre quiet sky, NOT another giant foreground island; no floor or framing wooden posts. Polished colourful hand-painted 3D storybook mobile game art, crisp fine materials, soft physical sunlight, rounded charming fantasy architecture, convincing atmospheric perspective. Keep the original proportional scale of the giant island. Reskin the scenery into Star Observatory: a grand brass-and-blue observatory with telescope and astronomical domes, moonlit floating navy cliffs, silver-blue gardens and star flowers, warm amber observatory windows, deep indigo night sky and delicate constellations, distant observatory islands. The main island is richly visible in moonlight, not a black silhouette.",
+    "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-c73113eb-ed0d-46bf-a1ba-1ec56ce63c46.png",
+    "size": [
+      941,
+      1672
+    ],
+    "alphaBounds": [
+      0,
+      0,
+      941,
+      1672
+    ],
+    "sha256": "a68dc4bbce4889d60fe0b348a0ca8b65232b6429cf4d29c7d6f8026d56c8af14",
+    "output": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/IslandLevelsOct16/StarObservatory.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "LevelRow",
+    "prompt": "Use case: ui-mockup. Production game UI SPRITE extraction/recreation based on the provided screenshot. Create ONE SINGLE EMPTY horizontal level-row panel in exactly the same illustrated style as the first level row in the screenshot. Isolated on REAL TRANSPARENT background, nothing else. Wide aspect ratio 5:1. The panel fills the canvas with only a thin transparent shadow margin. Deep warm carved honey-brown timber outer rounded rectangular frame, strong bevel with warm gold inner rim, and light cream parchment inset. Inside the left end include the same EMPTY raised square rounded cream number badge with an amber-brown beveled border; badge width 15% of panel width and its height 76% of panel height, inset 3% from the left. The large rest of the panel remains blank cream paper. Include only two very fine vertical brown-gold separators at 53% and 73% panel width, running from 20% to 80% height. Match the original narrow rounded corners and polished wooden border, detailed physical shadows and warm materials. ABSOLUTELY NO numbers, text, stars, button, icons, leaf clusters, or scenery. This is one reusable empty panel, not a screenshot or sheet of several objects.",
+    "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-4ffc948d-4f19-4df0-b595-34bc97adb705.png",
+    "size": [
+      2048,
+      768
+    ],
+    "alphaBounds": [
+      32,
+      150,
+      2016,
+      575
+    ],
+    "sha256": "7797fc7f4c803d8a42669e840c727b34ab0cba58921f0690cabb6dd180c003cd",
+    "output": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/IslandLevelsOct16/LevelRow.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "name": "ProgressScroll",
+    "prompt": "Use case: ui-mockup. Create ONE SINGLE EMPTY parchment scroll UI plaque, matching the short horizontal star-progress scroll under the title in the supplied screenshot. Isolated on REAL TRANSPARENT background, no objects outside the scroll. Landscape aspect ratio exactly 3.1:1. Warm pale golden cream parchment with a flat generous central writing area, thick rolled curled vertical left and right edges, softly shaded warm orange-gold rim and physical soft drop shadow. The curls roll inward naturally and there are small round openings at their top/bottom ends. It fills the image with a thin transparent safety margin only. NO text, numbers, stars, emblems, buttons, wood, leaves, or background. Match the polished colourful hand-painted 3D fantasy mobile game style in the reference precisely.",
+    "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-8b1c933a-9fb3-4bbe-a7ff-ceb6630ba503.png",
+    "size": [
+      2206,
+      713
+    ],
+    "alphaBounds": [
+      45,
+      50,
+      2160,
+      651
+    ],
+    "sha256": "99339d71935bdb8893578b79a6d7f09bfe52097c1da46a6b77f09add0b80a282",
+    "output": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/IslandLevelsOct16/ProgressScroll.png",
+    "tool": "built-in image_gen"
+  }
+]

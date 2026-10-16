@@ -13,40 +13,40 @@ namespace Cascade.Tests
     {
         static AttemptService Board(int wood=12)=>new AttemptService(LevelDefinitionTests.Level(LevelDefinitionTests.Row("DCBA"),LevelDefinitionTests.Row("ABCD"),
             new[]{new FloorDefinition(wood,new[]{true,true,true}),new FloorDefinition(12,new[]{true,true,true})}));
-        [Test] public void TwoFreeUndosDoNotRefillAfterCommandsOrReload()
+        [Test] public void OneFreeUndoDoesNotRefillAfterCommandsOrReload()
         {
-            var a=Board();for(int i=0;i<2;i++){a.Execute(PuzzleCommand.Swap(0));Assert.That(a.Undo(),Is.True);}
+            var a=Board();for(int i=0;i<1;i++){a.Execute(PuzzleCommand.Swap(0));Assert.That(a.Undo(),Is.True);}
             a.Execute(PuzzleCommand.Swap(0));string hash=a.CurrentStateHash;Assert.That(a.Undo(),Is.False);Assert.That(a.CurrentStateHash,Is.EqualTo(hash));
             var restored=AttemptService.Restore(a.Level,AttemptRecord.Capture(a));Assert.That(restored.FreeUndoRemaining,Is.Zero);Assert.That(restored.CanUndo,Is.False);
-            restored.Retry();Assert.That(restored.FreeUndoRemaining,Is.EqualTo(2));
+            restored.Retry();Assert.That(restored.FreeUndoRemaining,Is.EqualTo(1));
         }
-        [Test] public void OrdinaryUndoNeverCrossesCollapseAndHourglassRestoresExactCheckpoint()
+        [Test] public void UndoAfterCollapseAndHourglassRestoreExactCheckpoint()
         {
             var a=Board(1);var before=a.Current;a.Execute(PuzzleCommand.Swap(0));a.Execute(PuzzleCommand.Swap(1));
             Assert.That(a.Current.ActiveFloor,Is.EqualTo(1));Assert.That(a.Undo(),Is.True);Assert.That(a.CanUndo,Is.False);
             Assert.That(a.TryUseToolAtomically(TravelTool.UndoSpool,()=>true),Is.False);
             Assert.That(a.TryUseToolAtomically(TravelTool.ReturnHourglass,()=>true),Is.True);Assert.That(a.Current,Is.SameAs(before));
             Assert.That(a.History,Is.Empty);Assert.That(a.HourglassUsed&&a.HintUsed,Is.True);
-            a.Execute(PuzzleCommand.Swap(0));Assert.That(a.TryUseToolAtomically(TravelTool.ReturnHourglass,()=>true),Is.False);
+            a.Execute(PuzzleCommand.Swap(0));Assert.That(a.TryUseToolAtomically(TravelTool.ReturnHourglass,()=>true),Is.True);
             Assert.That(AttemptService.Restore(a.Level,AttemptRecord.Capture(a)).HourglassUsed,Is.True);
         }
-        [Test] public void PaidSpoolIsOneExtraLocalUndoAndCannotBeReused()
+        [Test] public void EachOwnedSpoolGivesOneExtraLocalUndo()
         {
-            var a=Board();for(int i=0;i<2;i++){a.Execute(PuzzleCommand.Swap(0));a.Undo();}a.Execute(PuzzleCommand.Swap(0));
+            var a=Board();for(int i=0;i<1;i++){a.Execute(PuzzleCommand.Swap(0));a.Undo();}a.Execute(PuzzleCommand.Swap(0));
             var service=new AdService(new MonetizationLedger{UndoSpools=2},_=>{});
-            Assert.That(service.TryUseTool(TravelTool.UndoSpool,a),Is.True);Assert.That(a.RouteLength,Is.Zero);Assert.That(a.UndoCount,Is.EqualTo(3));
-            Assert.That(service.Ledger.UndoSpools,Is.EqualTo(1));a.Execute(PuzzleCommand.Swap(0));Assert.That(service.TryUseTool(TravelTool.UndoSpool,a),Is.False);
-            Assert.That(service.Ledger.UndoSpools,Is.EqualTo(1));Assert.That(a.FreeUndoRemaining,Is.Zero);
+            Assert.That(service.TryUseTool(TravelTool.UndoSpool,a),Is.True);Assert.That(a.RouteLength,Is.Zero);Assert.That(a.UndoCount,Is.EqualTo(2));
+            Assert.That(service.Ledger.UndoSpools,Is.EqualTo(1));a.Execute(PuzzleCommand.Swap(0));Assert.That(service.TryUseTool(TravelTool.UndoSpool,a),Is.True);
+            Assert.That(service.Ledger.UndoSpools,Is.Zero);Assert.That(a.FreeUndoRemaining,Is.Zero);
         }
-        [Test] public void PurchaseCapsWalletAndPermanentOwnershipAreEnforced()
+        [Test] public void PurchasesBeyondFiveRespectWalletAndPermanentOwnership()
         {
             var s=new AdService(new MonetizationLedger(),_=>{});var rewards=new JourneyRewards();
-            Assert.That(s.TryBuyTool(TravelTool.ReturnHourglass,199),Is.False);Assert.That(s.Ledger.SpentCoins,Is.Zero);
-            for(int i=0;i<5;i++)Assert.That(s.TryBuyTool(TravelTool.UndoSpool,1000),Is.True);
-            Assert.That(s.TryBuyTool(TravelTool.UndoSpool,1000),Is.False);Assert.That(s.CoinBalance(1000),Is.EqualTo(600));
-            Assert.That(s.TryBuyKeepsake("leaf",1000,rewards),Is.True);Assert.That(s.TryBuyKeepsake("leaf",1000,rewards),Is.False);
+            Assert.That(s.TryBuyTool(TravelTool.ReturnHourglass,299),Is.False);Assert.That(s.Ledger.SpentCoins,Is.Zero);
+            for(int i=0;i<6;i++)Assert.That(s.TryBuyTool(TravelTool.UndoSpool,1000),Is.True);
+            Assert.That(s.TryBuyTool(TravelTool.UndoSpool,720),Is.False);Assert.That(s.CoinBalance(1120),Is.EqualTo(400));
+            Assert.That(s.TryBuyKeepsake("leaf",1120,rewards),Is.True);Assert.That(s.TryBuyKeepsake("leaf",1120,rewards),Is.False);
             Assert.That(rewards.Equip("leaf",s.Ledger.Cosmetics),Is.True);rewards.Validate(s.Ledger.Cosmetics);
-            Assert.That(s.CoinBalance(1000),Is.EqualTo(360));Assert.That(s.TryBuyTool((TravelTool)99,1000),Is.False);
+            Assert.That(s.CoinBalance(1120),Is.EqualTo(40));Assert.That(s.TryBuyTool((TravelTool)99,1120),Is.False);
         }
         [Test] public void SaveFailureRollsBackCoinsStockHistoryAndToolFlags()
         {
@@ -64,13 +64,13 @@ namespace Cascade.Tests
             var loaded=AttemptService.Restore(a.Level,AttemptRecord.Capture(a));Assert.That(loaded.GuideActive,Is.True);
             a.Execute(PuzzleCommand.Drop);Assert.That(a.GuideActive,Is.False);Assert.That(a.GuideFloor,Is.EqualTo(-1));
             Assert.That(AttemptService.Restore(a.Level,AttemptRecord.Capture(a)).WayfinderUsed,Is.True);
-            Assert.That(s.TryUseTool(TravelTool.Wayfinder,a,AttemptService.CalculateHint(a.CaptureHintRequest())),Is.False);
+            Assert.That(s.TryUseTool(TravelTool.Wayfinder,a,AttemptService.CalculateHint(a.CaptureHintRequest())),Is.True);Assert.That(s.Ledger.WayfinderScrolls,Is.Zero);
         }
-        [Test] public void AssistanceCannotEarnThreeStarsOrRewindAnAwardedDelivery()
+        [Test] public void AssistanceCanEarnThreeStarsButCannotRewindAnAwardedDelivery()
         {
             var a=Board();var guide=AttemptService.CalculateHint(a.CaptureHintRequest());a.TryUseToolAtomically(TravelTool.Wayfinder,()=>true,guide);
             var route=PuzzleSolver.FindShortest(a.Resolver,a.Current).Path;foreach(var c in route)a.Execute(c);
-            Assert.That(a.Current.Status,Is.EqualTo(PuzzleStatus.Won));Assert.That(LevelCompletion.From(a,route.Count).Stars,Is.LessThan(3));
+            Assert.That(a.Current.Status,Is.EqualTo(PuzzleStatus.Won));Assert.That(LevelCompletion.From(a,route.Count).Stars,Is.EqualTo(3));
             Assert.That(a.Undo(),Is.False);Assert.That(a.TryUseToolAtomically(TravelTool.ReturnHourglass,()=>true),Is.False);
             var rewards=new JourneyRewards();rewards.RecordDelivery(a);Assert.That(rewards.Records.Single().BestClean,Is.Null);
         }
@@ -88,7 +88,7 @@ namespace Cascade.Tests
                 var a=Board(1);var profile=new PlayerProfile{Monetization=new MonetizationLedger{BonusCoins=600}};var store=new ProfileStore(Path.Combine(dir,"save.json"));
                 var s=MonetizationTransaction.Create(profile,store,()=>a);Assert.That(s.TryBuyTool(TravelTool.ReturnHourglass,0),Is.True);
                 a.Execute(PuzzleCommand.Swap(0));Assert.That(s.TryUseTool(TravelTool.ReturnHourglass,a),Is.True);
-                var saved=store.Load().Profile;Assert.That(saved.Monetization.ReturnHourglasses,Is.Zero);Assert.That(saved.Monetization.SpentCoins,Is.EqualTo(200));
+                var saved=store.Load().Profile;Assert.That(saved.Monetization.ReturnHourglasses,Is.Zero);Assert.That(saved.Monetization.SpentCoins,Is.EqualTo(300));
                 var restored=AttemptService.Restore(a.Level,saved.Attempt);Assert.That(restored.CurrentStateHash,Is.EqualTo(a.CurrentStateHash));Assert.That(restored.HourglassUsed,Is.True);
             } finally {if(Directory.Exists(dir))Directory.Delete(dir,true);}
         }
@@ -102,8 +102,8 @@ namespace Cascade.Tests
             Assert.That(service.ToolStock(TravelTool.SignalLantern),Is.EqualTo(1));Assert.That(a.LanternUsed&&a.HintUsed,Is.True);
             Assert.That(a.LastToolTransition.State,Is.SameAs(a.Current));
             Assert.That(AttemptService.Restore(a.Level,AttemptRecord.Capture(a)).LanternUsed,Is.True);
-            Assert.That(service.TryUseTool(TravelTool.SignalLantern,a,AttemptService.CalculateHint(a.CaptureHintRequest())),Is.False);
-            Assert.That(service.ToolStock(TravelTool.SignalLantern),Is.EqualTo(1));
+            Assert.That(service.TryUseTool(TravelTool.SignalLantern,a,AttemptService.CalculateHint(a.CaptureHintRequest())),Is.True);
+            Assert.That(service.ToolStock(TravelTool.SignalLantern),Is.Zero);
         }
         [Test] public void NewToolsRollbackOnFailedPersistenceAndLensNeverChangesRow()
         {
@@ -117,20 +117,33 @@ namespace Cascade.Tests
             var predicted=board.Predict(PuzzleCommand.Drop);Assert.That(lens.TryUseTool(TravelTool.LandingLens,board),Is.True);
             Assert.That(board.CurrentStateHash,Is.EqualTo(hash));Assert.That(board.LensUsed&&board.HintUsed,Is.True);
             Assert.That(AttemptService.Restore(board.Level,AttemptRecord.Capture(board)).LensUsed,Is.True);
-            Assert.That(lens.TryUseTool(TravelTool.LandingLens,board),Is.False);board.Execute(PuzzleCommand.Drop);
+            Assert.That(lens.TryUseTool(TravelTool.LandingLens,board),Is.True);Assert.That(lens.ToolStock(TravelTool.LandingLens),Is.Zero);board.Execute(PuzzleCommand.Drop);
             Assert.That(board.Current,Is.EqualTo(predicted.State));
         }
         [Test] public void ExpandedTrophiesEquipWithoutChangingParcelReceiptsOrPuzzleStats()
         {
-            var rewards=new JourneyRewards();var shop=new AdService(new MonetizationLedger(),_=>{});
-            foreach(string trophy in ShopCatalog.TrophyIds.Skip(4)){
+            var rewards=new JourneyRewards();var shop=new AdService(new MonetizationLedger{BonusCoins=5000},_=>{});
+            foreach(string trophy in ShopCatalog.TrophyIds.Skip(4).Take(4)){
                 Assert.That(shop.TryBuyKeepsake(trophy,5000,rewards),Is.True);Assert.That(shop.TryBuyKeepsake(trophy,5000,rewards),Is.False);
                 Assert.That(rewards.Equip(trophy,shop.Ledger.Cosmetics),Is.True);rewards.Validate(shop.Ledger.Cosmetics);shop.Ledger.Validate();
             }
-            Assert.That(rewards.Parcels,Is.Empty);Assert.That(JourneyRewards.Gifts.Length,Is.EqualTo(4));
-            Assert.That(ShopCatalog.TrophyIds.Length,Is.EqualTo(8));
+            rewards.Synchronize(Enumerable.Range(1,420).Select(i=>"C"+i));
+            foreach(string trophy in ShopCatalog.BonusTrophyIds){
+                Assert.That(shop.TryBuyKeepsake(trophy,5000,rewards),Is.True);Assert.That(shop.TryBuyKeepsake(trophy,5000,rewards),Is.False);
+                Assert.That(rewards.Equip(trophy,shop.Ledger.Cosmetics),Is.True);
+            }
+            Assert.That(JourneyRewards.Gifts.Length,Is.EqualTo(4));
+            Assert.That(ShopCatalog.MikaTrophyIds.Length,Is.EqualTo(30));
             var old=Newtonsoft.Json.JsonConvert.DeserializeObject<MonetizationLedger>("{}");old.Validate();
             Assert.That(old.SignalLanterns+old.LandingLenses,Is.Zero);
+        }
+        [Test] public void PremiumLooksNeedOnlyVirtualCoinsAndNeverSpendStars()
+        {
+            var rewards=new JourneyRewards();var shop=new AdService(new MonetizationLedger{BonusCoins=5000},_=>{});
+            Assert.That(shop.TryBuyKeepsake("sky_pilot",0,rewards),Is.True);
+            Assert.That(shop.Ledger.SpentCoins,Is.EqualTo(1440));
+            Assert.That(shop.TryBuyKeepsake("moth_mask",0,rewards),Is.True);
+            Assert.That(rewards.CosmeticClearCount,Is.Zero);Assert.That(rewards.Parcels,Is.Empty);
         }
         [TestCase("wind_chime",15)]
         [TestCase("rain_badge",30)]
@@ -156,7 +169,7 @@ namespace Cascade.Tests
             var shop=new AdService(new MonetizationLedger{BonusCoins=500},_=>{});
             Assert.That(shop.TryBuyKeepsake("wind_chime",0,rewards),Is.False);
             Assert.That(shop.Ledger.SpentCoins,Is.Zero);Assert.That(shop.Ledger.Cosmetics,Is.Empty);
-            Assert.That(rewards.Owns("unknown"),Is.False);Assert.That(ShopCatalog.KeepsakePrice,Is.EqualTo(240));
+            Assert.That(rewards.Owns("unknown"),Is.False);Assert.That(ShopCatalog.KeepsakePrice,Is.EqualTo(360));
         }
         [Test] public void PurchasedTrophyStaysPermanentWhenItsMilestoneIsLaterEarned()
         {
@@ -165,7 +178,7 @@ namespace Cascade.Tests
             Assert.That(rewards.Equip("rain_badge",shop.Ledger.Cosmetics),Is.True);
             rewards.Synchronize(Enumerable.Range(1,30).Select(i=>"C"+i));
             Assert.That(rewards.Equip("rain_badge"),Is.True);Assert.That(shop.TryBuyKeepsake("rain_badge",0,rewards),Is.False);
-            Assert.That(shop.Ledger.Cosmetics,Is.EquivalentTo(new[]{"rain_badge"}));Assert.That(shop.Ledger.SpentCoins,Is.EqualTo(240));
+            Assert.That(shop.Ledger.Cosmetics,Is.EquivalentTo(new[]{"rain_badge"}));Assert.That(shop.Ledger.SpentCoins,Is.EqualTo(360));
             rewards.Validate(shop.Ledger.Cosmetics);
         }
         [Test] public void EarnedCosmeticAndEquipmentSurviveModeSwitchAndDurableReload()

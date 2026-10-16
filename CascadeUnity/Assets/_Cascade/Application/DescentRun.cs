@@ -16,7 +16,8 @@ namespace Cascade.Application
         public int Minimum;
         public string[] Witness;
         public bool PublishedStart;
-        internal string Fingerprint => (int)Arrival+":"+string.Join(",",Wood??Array.Empty<int>())+":"+Minimum+":"+string.Join(",",Witness??Array.Empty<string>())+(PublishedStart?":published-start":"");
+        public TriadRecipe Triad;
+        internal string Fingerprint => (int)Arrival+":"+string.Join(",",Wood??Array.Empty<int>())+":"+Minimum+":"+string.Join(",",Witness??Array.Empty<string>())+(PublishedStart?":published-start":"")+(Triad==null?"":":triad:"+Triad.Fingerprint);
     }
     public sealed class DeliveryPerformance
     {
@@ -47,6 +48,7 @@ namespace Cascade.Application
         public LevelDefinition Level(LevelDefinition source,int stage)
         {
             if(stage<0||stage>2||source.ContentHash!=SourceHash)throw new ArgumentException("Unavailable descent source.");
+            if(Version==6)return Stages[stage].Triad.Bind(source,StageHash(stage));
             var basis=Directed(source);var recipe=Stages[stage];int n=basis.TargetSymbolIds.Count;
             var open=Enumerable.Repeat(true,n-1).ToArray();var initial=basis.TargetSymbolIds.ToArray();
             if(stage==2&&Version>=3&&recipe.PublishedStart)initial=basis.InitialSymbolIds.ToArray();
@@ -127,10 +129,10 @@ namespace Cascade.Application
                 i==0?recipe.Arrival:f.EntryTransform,f.Bomb,f.Key,f.Repair,f.OneUseBridgeEdge,f.OptionalStamp,f.Powerup)).ToArray();
             if(stage==1)floors[0]=LiveWind(floors[0]);
             return new LevelDefinition(basis.PuzzleId,basis.CampaignNodeId,basis.SchemaVersion,basis.RulesVersion,
-                StageHash(stage),initial,basis.TargetSymbolIds,basis.TargetSegments,floors,stage==2?basis.ReachCharges:0);
+                StageHash(stage),initial,basis.TargetSymbolIds,basis.TargetSegments,floors,stage==2?basis.ReachCharges:0,basis.TeachingNode);
         }
         static void Swap(SymbolId[] row,int edge){var a=row[edge];row[edge]=row[edge+1];row[edge+1]=a;}
-        static int NodeNumber(LevelDefinition source)=>int.TryParse(source.CampaignNodeId.Substring(1),out int node)?node:0;
+        static int NodeNumber(LevelDefinition source)=>source.CampaignLessonNumber;
         static SymbolId[] Rotate(SymbolId[] row,EntryTransform transform)=>transform==EntryTransform.ShiftRightOne?row.Skip(row.Length-1).Concat(row.Take(row.Length-1)).ToArray():row.Skip(1).Concat(row.Take(1)).ToArray();
         static int EarlyLesson(LevelDefinition source)
         {
@@ -139,7 +141,7 @@ namespace Cascade.Application
             return new[]{4,8,7,4,3,5}[node%6];
         }
         public static bool CanDescend(LevelDefinition source)=>source!=null&&source.CampaignNodeId.StartsWith("C",StringComparison.Ordinal)
-            &&NodeNumber(source)>=1&&NodeNumber(source)<=184;
+            &&int.TryParse(source.CampaignNodeId.Substring(1),out int node)&&node>=1&&node<=540;
         static bool Prove(DescentRun run,LevelDefinition source,int stage,CancellationToken cancellation,int budget)
         {
             var result=PuzzleSolver.FindShortest(new PuzzleResolver(run.Level(source,stage)),stateBudget:budget,cancellationToken:cancellation);
@@ -149,6 +151,7 @@ namespace Cascade.Application
         public static DescentRun Build(LevelDefinition source,DeliveryMood mood=DeliveryMood.Steady,
             CancellationToken cancellation=default,int budget=PuzzleSolver.DefaultStateBudget,int version=2)
         {
+            if(version==6)return CampaignTriads.Build(source,cancellation,budget);
             if((version<1||version>5)||!(version>=3?CanDescend(source):DeliveryDirector.CanDirect(source))||source.TargetSymbolIds.Distinct().Count()<2)return null;
             var direction=DeliveryDirector.Plan(source,mood);
             var run=new DescentRun {Version=version,SourceHash=source.ContentHash,Direction=direction,Stages=new DescentStage[3]};
@@ -191,12 +194,21 @@ namespace Cascade.Application
         }
         public void Validate(LevelDefinition source,string locale)
         {
-            if((Version<1||Version>5)||CompletedExplosions<0||source.ContentHash!=SourceHash||!(Version>=3?CanDescend(source):DeliveryDirector.CanDirect(source))||Stages==null||Stages.Length!=3
+            if((Version<1||Version>6)||CompletedExplosions<0||source.ContentHash!=SourceHash||!(Version>=3?CanDescend(source):DeliveryDirector.CanDirect(source))||Stages==null||Stages.Length!=3
                 ||Completed==null||Completed.Count>2||source.TargetSymbolIds.Distinct().Count()<2)throw new ArgumentException("Invalid descent checkpoint.");
             Directed(source);
             int explosions=0,flags=0;
             for(int i=0;i<3;i++) {
-                var s=Stages[i];if(s==null||s.Wood==null||s.Wood.Length!=(i==0?1:i==1?2:source.Floors.Count)
+                var s=Stages[i];
+                if(Version==6){
+                    if(s?.Triad==null||s.Triad.Start==null||s.Triad.Start.Length!=source.TargetSymbolIds.Count
+                        ||s.Triad.Start.OrderBy(x=>x).Where((x,index)=>x!=index).Any()||s.Triad.Boards==null||s.Triad.Boards.Length<1||s.Triad.Boards.Length>4
+                        ||s.Triad.Boards.Any(b=>b==null||b.Open==null||b.Fragile==null)||!Enum.IsDefined(typeof(MechanicLesson),s.Triad.Lesson)||s.Triad.Lesson!=Stages[0].Triad.Lesson
+                        ||s.Wood==null||!s.Wood.SequenceEqual(s.Triad.Boards.Select(b=>b.Hp))||s.Minimum<1||s.Minimum>1000||s.Witness==null||s.Witness.Length!=s.Minimum
+                        ||s.Arrival!=EntryTransform.None||s.PublishedStart||Direction!=null||LevelValidator.Validate(Level(source,i)).Count!=0)
+                        throw new ArgumentException("Invalid campaign triad recipe.");
+                }
+                else if(s==null||s.Triad!=null||s.Wood==null||s.Wood.Length!=(i==0?1:i==1?2:source.Floors.Count)
                     ||s.Wood.Any(w=>w<1||w>12)||!Enum.IsDefined(typeof(EntryTransform),s.Arrival)
                     ||(i==0&&s.Arrival!=EntryTransform.None)||(i==1&&s.Arrival!=EntryTransform.ShiftLeftOne&&s.Arrival!=EntryTransform.ShiftRightOne)
                     ||s.PublishedStart&&(Version<3||i!=2||s.Arrival!=EntryTransform.None||!s.Wood.SequenceEqual(Directed(source).Floors.Select(f=>f.BaseDurability)))
@@ -211,7 +223,7 @@ namespace Cascade.Application
             if(explosions!=CompletedExplosions)throw new ArgumentException("Invalid descent outcome totals.");
             if(CompletedToolFlags.HasValue&&CompletedToolFlags.Value!=flags)throw new ArgumentException("Invalid descent tool totals.");
             if(!CompletedToolFlags.HasValue)CompletedToolFlags=flags; // Reconstruct optional evidence from old canonical replays.
-            if(Stages[0].Minimum>=Stages[1].Minimum||!Stages[2].PublishedStart&&Stages[1].Minimum>Stages[2].Minimum)throw new ArgumentException("Invalid descent curve.");
+            if(Version<6&&(Stages[0].Minimum>=Stages[1].Minimum||!Stages[2].PublishedStart&&Stages[1].Minimum>Stages[2].Minimum))throw new ArgumentException("Invalid descent curve.");
         }
         static void Replay(LevelDefinition level,string locale,string[] commands)
         {

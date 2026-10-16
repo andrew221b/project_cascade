@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Cascade.Content;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -23,11 +24,49 @@ namespace Cascade.Persistence
         const int MaxBytes=8*1024*1024;
         readonly string path;
         bool futureVersion;
+        readonly object writes=new object(),disk=new object();
+        string pending;
+        Task writer;
+        Exception writeError;
+        public Exception WriteError { get { lock(writes)return writeError; } }
+        // Snapshot first: the worker never reads mutable gameplay objects.
+        public void QueueSave(PlayerProfile profile)
+        {
+            string text=Prepare(profile);
+            lock(writes) {
+                if(futureVersion)throw new InvalidOperationException("A newer save must remain untouched.");
+                pending=text;
+                if(writer==null||writer.IsCompleted)writer=Task.Run(Drain);
+            }
+        }
+        void Drain()
+        {
+            lock(disk)while(true) {
+                string next;
+                lock(writes) {next=pending;pending=null;if(next==null){writer=null;return;}}
+                try {Write(next);lock(writes)writeError=null;}
+                catch(Exception error) {lock(writes){writeError=error;if(pending==null)pending=next;writer=null;}return;}
+            }
+        }
+        public void Flush()
+        {
+            Task active;lock(writes)active=writer;
+            active?.GetAwaiter().GetResult();
+            Drain();
+            lock(writes)if(writeError!=null)throw new IOException("Profile write failed.",writeError);
+        }
+        static string Prepare(PlayerProfile profile)
+        {
+            profile.Validate();string text=Encode(profile);
+            if(Encoding.UTF8.GetByteCount(text)>MaxBytes)throw new InvalidDataException("Profile exceeds supported size.");
+            return text;
+        }
         public string Path=>path;
         public string BackupPath=>path+".bak";
         public ProfileStore(string path){this.path=System.IO.Path.GetFullPath(path);}
         public ProfileLoad Load()
         {
+            Flush();
             var main=TryRead(path,out bool future);
             futureVersion=future;
             if(future)return new ProfileLoad(new PlayerProfile(),SaveRecovery.NewerVersion);
@@ -40,11 +79,19 @@ namespace Cascade.Persistence
         }
         public void Save(PlayerProfile profile)
         {
+            string text=Prepare(profile);
+            // An economic/cloud commit supersedes queued older autosaves atomically.
+            lock(disk) {
+                lock(writes)pending=null;
+                Write(text);
+                lock(writes)writeError=null;
+            }
+        }
+        void Write(string text)
+        {
             if(futureVersion)throw new InvalidOperationException("A newer save must remain untouched.");
-            profile.Validate();
             Directory.CreateDirectory(System.IO.Path.GetDirectoryName(path));
-            string text=Encode(profile),temporary=path+".tmp";
-            if(Encoding.UTF8.GetByteCount(text)>MaxBytes)throw new InvalidDataException("Profile exceeds supported size.");
+            string temporary=path+".tmp";
             using(var stream=new FileStream(temporary,FileMode.Create,FileAccess.Write,FileShare.None)) {
                 byte[] data=Encoding.UTF8.GetBytes(text);stream.Write(data,0,data.Length);stream.Flush(true);
             }
@@ -83,6 +130,7 @@ namespace Cascade.Persistence
                 var profile=JsonConvert.DeserializeObject<PlayerProfile>(payload,new JsonSerializerSettings {MaxDepth=32,TypeNameHandling=TypeNameHandling.None});
                 if(profile==null)return null;
                 if(schema==1&&profile.Rewards?.Records!=null)profile.ModeRecords=profile.Rewards.Records.ToList();
+                profile.MigrateCoinEconomy();
                 profile.Validate();return profile;
             }
             catch(Exception e) when(e is IOException || e is UnauthorizedAccessException || e is JsonException || e is ArgumentException || e is OverflowException) { return null; }

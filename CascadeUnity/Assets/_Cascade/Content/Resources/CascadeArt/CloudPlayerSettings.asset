@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be368478774414a55bb7283e3de71680, type: 3}
+  m_Name: CloudPlayerSettings
+  m_EditorClassIdentifier: 
+  enabledForPlayers: 0
+  projectId: a1b8a760-5a0c-4c2d-8ae7-54c1b411259a
+  environment: production
+  moduleName: CascadeAccount
+  playerAccountsConfigured: 0
+  purchaseVerificationConfigured: 0

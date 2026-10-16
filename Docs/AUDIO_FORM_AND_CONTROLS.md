@@ -1,5 +1,7 @@
 # Music form and independent controls — 7 October 2026
 
+> Historical music revision. Active score now uses [the long-form acoustic arrangements](ACOUSTIC_SCORE_OCT09.md).
+
 ## Evidence and bounded change
 
 All nine authored scores were inspected in the existing Swift composer and measured from their shipped stereo 16-bit WAVs. They already have 32 bars in 6/8, a 16-bar A and 16-bar B, distinct melodic phrases, four-bar reply gaps, a restrained B countervoice, panned acoustic instruments and room reverb. The eight world scores have B/A RMS differences of 1.10–2.81 dB and bar-level ranges of 4.34–8.55 dB. There was no evidence for replacing their themes or regenerating them.

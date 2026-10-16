@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4af7abd550c649cb9a7ce10d282109e, type: 3}
+  m_Name: LegalSettings
+  m_EditorClassIdentifier: Cascade.Presentation::Cascade.Presentation.LegalSettings
+  privacyPolicyUrl: https://cascade-sky-gardens.active-seed-4233.chatgpt.site/privacy/
+  termsOfUseUrl: https://cascade-sky-gardens.active-seed-4233.chatgpt.site/terms/
+  supportUrl: https://cascade-sky-gardens.active-seed-4233.chatgpt.site/support/
+  publisherName: 
+  publisherCountry: 
+  supportEmail: 
+  privacyEmail: 
+  documentsApproved: 0
+  publicUrlsVerified: 0

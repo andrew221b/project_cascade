@@ -1,0 +1,957 @@
+{
+  "comics": [
+    [
+      [
+        "I'm expecting you at the beacon. Bring your lantern; the last bridge gets dark early.",
+        "Жду тебя на маяке. Возьми фонарь: у последнего моста рано темнеет.",
+        "Чекаю на тебе на маяку. Візьми ліхтар: біля останнього мосту рано сутеніє."
+      ],
+      [
+        "Gran sent this before the storm. The beacon hasn't shone since. I need to find out what happened.",
+        "Бабушка написала до бури. С тех пор маяк не горит. Надо узнать, что случилось.",
+        "Бабуся написала до бурі. Відтоді маяк не світить. Треба дізнатися, що сталося."
+      ],
+      [
+        "The road starts here, but half the boards are gone. I've saved enough timber to mend it.",
+        "Дорога начинается здесь, только половину досок унесло. Я собрал дерево для ремонта.",
+        "Дорога починається тут, тільки половину дощок знесло. Я зібрав дерево для ремонту."
+      ],
+      [
+        "Then I'll help. Is there any news from the beacon?",
+        "Тогда я помогу. А с маяка были вести?",
+        "Тоді я допоможу. А з маяка були звістки?"
+      ],
+      [
+        "No post yet. The bridges took the worst of it. We'll start with this one and work our way across.",
+        "Почты пока нет. Больше всего досталось мостам. Начнём с этого и проберёмся дальше.",
+        "Пошти поки немає. Найбільше дісталося мостам. Почнемо з цього й дістанемося далі."
+      ],
+      [
+        "Show me where the boards go. I'll hold the light while you fasten them.",
+        "Покажите, куда класть доски. Я посвечу, а вы их закрепите.",
+        "Покажіть, куди класти дошки. Я посвічу, а ви їх закріпите."
+      ],
+      [
+        "There's my old maker's mark. Still there after twenty winters. These new boards should last as long.",
+        "Вот моё клеймо. Двадцать зим прошло, а видно до сих пор. Новые доски тоже послужат.",
+        "Ось моє клеймо. Двадцять зим минуло, а досі видно. Нові дошки теж послужать."
+      ],
+      [
+        "Let's get them in place. Gran will want to know who helped me reach her.",
+        "Давайте их уложим. Бабушка наверняка спросит, кто помог мне добраться.",
+        "Нумо їх укладати. Бабуся напевно спитає, хто допоміг мені дістатися."
+      ]
+    ],
+    [
+      [
+        "The mill is quiet. Ben usually has it running before anyone's awake.",
+        "Мельница молчит. Обычно Бен запускает её раньше, чем все проснутся.",
+        "Млин мовчить. Зазвичай Бен запускає його раніше, ніж усі прокинуться."
+      ],
+      [
+        "I'll look for him. If the wheel stopped, where does the village get its water?",
+        "Пойду его поищу. Если колесо встало, откуда деревня берёт воду?",
+        "Піду його пошукаю. Якщо колесо стало, звідки село бере воду?"
+      ],
+      [
+        "From the wells, for now. The storm broke a gear, and the spare is on the far side of the stream.",
+        "Пока из колодцев. Буря сломала шестерню, а запасная осталась на другом берегу.",
+        "Поки з криниць. Буря зламала шестерню, а запасна лишилася на іншому березі."
+      ],
+      [
+        "Walter sent tools. Let's clear the crossing and bring the spare back.",
+        "Вальтер передал инструменты. Освободим переправу и принесём шестерню.",
+        "Вальтер передав інструменти. Звільнимо переправу й принесемо шестерню."
+      ],
+      [
+        "I tried to turn it by hand. Just splashed myself. The wheel's much heavier than it looks.",
+        "Пробовал крутить вручную. Только сам вымок. Колесо куда тяжелее, чем кажется.",
+        "Пробував крутити вручну. Тільки сам змок. Колесо значно важче, ніж здається."
+      ],
+      [
+        "I can see that. Your boots are still dripping. Where do we start?",
+        "Вижу. С ботинок до сих пор капает. С чего начнём?",
+        "Бачу. З черевиків досі крапає. З чого почнемо?"
+      ],
+      [
+        "With the gear. Then the pipes and the post boat. The whole village uses this mill.",
+        "С шестерни. Потом трубы и почтовая лодка. От этой мельницы вся деревня зависит.",
+        "Із шестерні. Потім труби й поштовий човен. Від цього млина все село залежить."
+      ],
+      [
+        "I'll fetch the tools. When the water runs again, we'll take the boat towards the orchard.",
+        "Принесу инструменты. Когда вернём воду, пойдём на лодке к саду.",
+        "Принесу інструменти. Коли повернемо воду, підемо човном до саду."
+      ]
+    ],
+    [
+      [
+        "Rose's orchard is ahead. Take this water to her; she kept us supplied with fruit after the storm.",
+        "Впереди сад Розы. Отнеси ей воду: после бури она снабжала нас фруктами.",
+        "Попереду сад Рози. Віднеси їй воду: після бурі вона постачала нам фрукти."
+      ],
+      [
+        "I'll deliver it. Does the road to the sky post go through her garden?",
+        "Отнесу. А дорога к воздушной почте идёт через её сад?",
+        "Віднесу. А дорога до повітряної пошти йде через її сад?"
+      ],
+      [
+        "It does. Mind the low branch! I should put a ribbon on it before someone else bumps their head.",
+        "Через мой. Осторожно, низкая ветка! Надо повязать ленту, пока ещё кто-нибудь не стукнулся.",
+        "Через мій. Обережно, низька гілка! Треба пов'язати стрічку, поки ще хтось не вдарився."
+      ],
+      [
+        "Too late for me. I'll duck next time. What's blocking the path?",
+        "Я уже. В следующий раз пригнусь. Что там загородило тропу?",
+        "Я вже. Наступного разу пригнуся. Що там загородило стежку?"
+      ],
+      [
+        "A fallen branch bridge. And the lantern trees are dark. We can't carry fruit through here at night.",
+        "Обвалился мост между деревьями. И фонарные деревья погасли. Ночью урожай не вынести.",
+        "Обвалився міст між деревами. І ліхтарні дерева згасли. Уночі врожай не винести."
+      ],
+      [
+        "We have time before dark. Show me the nearest tree; I'll start there.",
+        "До темноты успеем. Покажите ближайшее дерево, начну с него.",
+        "До темряви встигнемо. Покажіть найближче дерево, почну з нього."
+      ],
+      [
+        "Take these seeds for Ada when you leave. She asked for a tree by her window last spring.",
+        "А на прощание возьми семена для Ады. Ещё весной просила дерево под окно.",
+        "А на прощання візьми насіння для Ади. Ще навесні просила дерево під вікно."
+      ],
+      [
+        "I'll keep them in this pocket. I'd like to help her plant them when I get there.",
+        "Положу в этот карман. Когда доберусь, помогу ей посадить.",
+        "Покладу в цю кишеньку. Коли дістануся, допоможу їй посадити."
+      ]
+    ],
+    [
+      [
+        "The post road is through that gate. Nora left her cart here when the bridge broke.",
+        "Почтовая дорога за воротами. Нора оставила здесь тележку, когда рухнул мост.",
+        "Поштова дорога за воротами. Нора залишила тут візок, коли впав міст."
+      ],
+      [
+        "There's mail in it. I'll take the bag; she may have heard from Gran.",
+        "В ней письма. Отнесу сумку. Может, у Норы есть весточка от бабушки.",
+        "У ньому листи. Віднесу сумку. Може, у Нори є звістка від бабусі."
+      ],
+      [
+        "My missing bag! Thank you. I've been gathering letters from every ledge since the storm.",
+        "Моя пропавшая сумка! Спасибо. После бури собираю письма по всем уступам.",
+        "Моя зникла сумка! Дякую. Після бурі збираю листи по всіх уступах."
+      ],
+      [
+        "Have you seen any from the beacon? My gran lives there.",
+        "А с маяка не попадались? Там живёт моя бабушка.",
+        "А з маяка не траплялися? Там живе моя бабуся."
+      ],
+      [
+        "None yet. But we can send her yours once the bridge and basket lift are working.",
+        "Пока нет. Но отправим твоё, как только починим мост и подъёмник для корзины.",
+        "Поки немає. Але надішлемо твого, щойно полагодимо міст і підйомник для кошика."
+      ],
+      [
+        "I'll write that I'm on my way. And I'll leave room for all the names she needs to thank.",
+        "Напишу, что уже иду. И оставлю место для имён всех, кому надо сказать спасибо.",
+        "Напишу, що вже йду. І залишу місце для імен усіх, кому треба подякувати."
+      ],
+      [
+        "Clara keeps the next landing lit. I've got her replacement lamp here; the old one broke in the storm.",
+        "Клара освещает следующую пристань. Вот новая лампа для неё: старую разбило в бурю.",
+        "Клара освітлює наступну пристань. Ось нова лампа для неї: стару розбило під час бурі."
+      ],
+      [
+        "We'll take it across once the post is running. It needs rather more wrapping than my letter.",
+        "Отнесём, когда запустим почту. Эту посылку придётся укутать получше, чем письмо.",
+        "Віднесемо, коли запустимо пошту. Цю посилку доведеться загорнути краще, ніж листа."
+      ]
+    ],
+    [
+      [
+        "That's Clara's shore. Keep the lamp upright; I promised her it would arrive in one piece.",
+        "Вон берег Клары. Держи лампу ровно: я обещала доставить её целой.",
+        "Он берег Клари. Тримай лампу рівно: я обіцяла доставити її цілою."
+      ],
+      [
+        "You take the handle, I'll support the bottom. It's heavier than it looks.",
+        "Держи за ручку, а я снизу подхвачу. Тяжелее, чем кажется.",
+        "Тримай за ручку, а я знизу підхоплю. Важча, ніж здається."
+      ],
+      [
+        "You brought it! Put it by the door. The pier won't hold both of you until we fix that support.",
+        "Принесли! Ставьте у двери. Причал вас двоих не выдержит, пока не заменим опору.",
+        "Принесли! Ставте біля дверей. Причал вас обох не витримає, поки не замінимо опору."
+      ],
+      [
+        "I'll stay near the bank. Tell me which plank is safe.",
+        "Я останусь у берега. Покажи, на какую доску можно встать.",
+        "Я залишуся біля берега. Покажи, на яку дошку можна стати."
+      ],
+      [
+        "This one. I'll hold the boat alongside. Have you crossed the lagoon before?",
+        "На эту. Я придержу лодку. Ты раньше пересекала лагуну?",
+        "На цю. Я притримаю човен. Ти раніше перетинала лагуну?"
+      ],
+      [
+        "Only from the shore, in my head. The water looked shallower from there.",
+        "Только с берега, мысленно. Оттуда вода казалась помельче.",
+        "Тільки з берега, подумки. Звідти вода здавалася мілкішою."
+      ],
+      [
+        "We'll use the shore lamps. Each one marks a turn. Once they're lit, the boat can reach the archive.",
+        "Пойдём по береговым огням. Каждый отмечает поворот. Зажжём их — доберёмся до архива.",
+        "Підемо за береговими вогнями. Кожен позначає поворот. Запалимо їх — дістанемося архіву."
+      ],
+      [
+        "Then let's mend the pier first. I'll be more useful with both feet on something solid.",
+        "Тогда сперва починим причал. На твёрдой опоре от меня будет больше пользы.",
+        "Тоді спершу полагодимо причал. На твердій опорі від мене буде більше користі."
+      ]
+    ],
+    [
+      [
+        "Oscar keeps the mountain maps. Ask for the snow-road sheet; that's the way to Ada's beacon.",
+        "У Оскара хранятся горные карты. Попроси карту снежной дороги: она ведёт к маяку Ады.",
+        "В Оскара зберігаються гірські карти. Попроси карту снігової дороги: вона веде до маяка Ади."
+      ],
+      [
+        "I'll ask. And I'll tell him where we found the broken lamps, so he can mark them.",
+        "Спрошу. И расскажу, где были разбитые фонари, чтобы он отметил.",
+        "Спитаю. І розповім, де були розбиті ліхтарі, щоб він позначив."
+      ],
+      [
+        "Here it is. Keep that corner away from the drip! The roof's been leaking into the map cabinet.",
+        "Вот она. Только угол убери от капель! Крыша протекла прямо над шкафом с картами.",
+        "Ось вона. Тільки кут прибери від крапель! Дах протік просто над шафою з картами."
+      ],
+      [
+        "Let's move the cabinet. Then I can copy the route without getting the original wet.",
+        "Давай отодвинем шкаф. Потом скопирую маршрут и не намочу оригинал.",
+        "Нумо відсунемо шафу. Потім скопіюю маршрут і не намочу оригінал."
+      ],
+      [
+        "The ridge has changed since this was drawn. This turn needs checking before I put it on a new map.",
+        "На хребте после бури всё изменилось. Этот поворот надо проверить для новой карты.",
+        "На хребті після бурі все змінилося. Цей поворот треба перевірити для нової карти."
+      ],
+      [
+        "Clara said Alice knows the path. I'll ask her to check it with me.",
+        "Клара говорила, Люми знает тропу. Попрошу её проверить со мной.",
+        "Клара казала, Люмі знає стежку. Попрошу її перевірити зі мною."
+      ],
+      [
+        "Good. Bring back your notes. I can't survey it from behind this desk.",
+        "Хорошо. Принеси записи обратно. Из-за этого стола тропу не разглядишь.",
+        "Добре. Принеси записи назад. З-за цього столу стежки не розгледиш."
+      ],
+      [
+        "I'll mark the shelters too. I'd rather know where to stop before it starts snowing.",
+        "И укрытия отмечу. Хочу знать, где остановиться, ещё до снегопада.",
+        "І укриття позначу. Хочу знати, де зупинитися, ще до снігопаду."
+      ]
+    ],
+    [
+      [
+        "Alice is waiting by the first snow lamp. Give her this copy; she helped me draw the old one.",
+        "Люми ждёт у первого снежного фонаря. Отдай ей копию: старую мы рисовали вместе.",
+        "Люмі чекає біля першого снігового ліхтаря. Віддай їй копію: стару ми малювали разом."
+      ],
+      [
+        "It's wrapped and dry. I'll bring back the new turns when the road is open.",
+        "Завернула, не промокнет. Принесу новые повороты, когда откроем дорогу.",
+        "Загорнула, не промокне. Принесу нові повороти, коли відкриємо дорогу."
+      ],
+      [
+        "The upper path has fallen away. We can go below the ridge, but we'll need to relight the steps.",
+        "Верхняя тропа обвалилась. Пойдём ниже хребта, только надо снова осветить ступени.",
+        "Верхня стежка обвалилася. Підемо нижче хребта, тільки треба знову освітити сходи."
+      ],
+      [
+        "I'll mark the change for Oscar. How far is the next shelter?",
+        "Отмечу для Оскара. До следующего укрытия далеко?",
+        "Позначу для Оскара. До наступного укриття далеко?"
+      ],
+      [
+        "Just past the arch. We stop there if the wind rises; the crossing ahead is exposed.",
+        "Сразу за аркой. Усилится ветер — переждём там. Дальше открытый переход.",
+        "Одразу за аркою. Посилиться вітер — перечекаємо там. Далі відкритий перехід."
+      ],
+      [
+        "Ben packed two blankets. At last I know why my bag wouldn't close.",
+        "Бен положил два одеяла. Теперь понятно, почему сумка не закрывалась.",
+        "Бен поклав дві ковдри. Тепер зрозуміло, чому сумка не закривалася."
+      ],
+      [
+        "Keep one near the top. Once the snow lamps are lit, we can find the shelter even in a flurry.",
+        "Одно держи сверху. Когда зажжём фонари, найдём укрытие и в снегопад.",
+        "Одну тримай зверху. Коли запалимо ліхтарі, знайдемо укриття й у снігопад."
+      ],
+      [
+        "Then let's start with the nearest lamp. I can still feel my paws, and I'd like to keep it that way.",
+        "Тогда начнём с ближнего. Лапы пока чувствую и очень хочу, чтобы так и осталось.",
+        "Тоді почнемо з ближнього. Лапи поки відчуваю й дуже хочу, щоб так і лишилося."
+      ]
+    ],
+    [
+      [
+        "Two flashes in that window. Someone at the beacon has seen us.",
+        "Две вспышки в окне. На маяке нас заметили.",
+        "Два спалахи у вікні. На маяку нас помітили."
+      ],
+      [
+        "Gran! It's me! Wait there; the last bridge is still broken.",
+        "Бабушка! Это я! Подожди там, последний мост ещё сломан.",
+        "Бабусю! Це я! Почекай там, останній міст іще зламаний."
+      ],
+      [
+        "Mika! I got your letter yesterday. I was watching for that yellow scarf.",
+        "Мика! Твоё письмо вчера принесли. Всё высматривала жёлтый шарф.",
+        "Міко! Твого листа вчора принесли. Усе виглядала жовтий шарф."
+      ],
+      [
+        "I thought you couldn't see me. Is everything all right? Why is the beacon dark?",
+        "А я думала, меня не видно. У тебя всё хорошо? Почему маяк погас?",
+        "А я думала, мене не видно. У тебе все добре? Чому маяк згас?"
+      ],
+      [
+        "I'm all right. The lift jammed with the lens halfway up. I couldn't move it alone.",
+        "Я в порядке. Подъёмник заклинило с линзой на полпути. Одной мне его не сдвинуть.",
+        "Я в порядку. Підйомник заклинило з лінзою на півдорозі. Самій мені його не зрушити."
+      ],
+      [
+        "I've brought Walter's tools. Once I'm across, we'll have a look together.",
+        "Я принесла инструменты Вальтера. Перейду — посмотрим вместе.",
+        "Я принесла інструменти Вальтера. Перейду — подивимося разом."
+      ],
+      [
+        "Tools, a patched scarf... you've had quite a trip. Tell me about it when you're here.",
+        "Инструменты, заплатка на шарфе... Долгая вышла дорога. Расскажешь, когда придёшь.",
+        "Інструменти, латка на шарфі... Довга вийшла дорога. Розкажеш, коли прийдеш."
+      ],
+      [
+        "I will. And I've got seeds for your window. They're the only thing that hasn't grown heavier on the way.",
+        "Расскажу. И семена тебе под окно везу. Только они за дорогу тяжелее не стали.",
+        "Розповім. І насіння тобі під вікно везу. Тільки воно за дорогу важчим не стало."
+      ]
+    ],
+    [
+      [
+        "The beacon is back. Now Felix can check the upper route from his observatory.",
+        "Маяк снова горит. Теперь Феликс сможет проверить верхний путь из обсерватории.",
+        "Маяк знову світить. Тепер Фелікс зможе перевірити верхній шлях з обсерваторії."
+      ],
+      [
+        "I'll take him the new map. I'd like to see where those night gliders go.",
+        "Отнесу ему новую карту. Хочу посмотреть, куда летают ночные планеры.",
+        "Віднесу йому нову карту. Хочу подивитися, куди літають нічні планери."
+      ],
+      [
+        "They used to follow that line of lamps. The storm moved two towers, so the old chart won't do.",
+        "Раньше шли вдоль этих огней. Буря сдвинула две башни, старая карта уже не годится.",
+        "Раніше йшли вздовж цих вогнів. Буря зрушила дві вежі, стара карта вже не годиться."
+      ],
+      [
+        "Can we check it from the telescope? One of the gliders keeps turning back.",
+        "Проверим с телескопа? Один планер всё время разворачивается.",
+        "Перевіримо з телескопа? Один планер увесь час розвертається."
+      ],
+      [
+        "The bridge to it needs repair. Until I can see the far turn, I've kept that route closed.",
+        "Надо починить мост к нему. Пока не увижу дальний поворот, путь закрыт.",
+        "Треба полагодити міст до нього. Поки не побачу дальнього повороту, шлях закритий."
+      ],
+      [
+        "We can mend the bridge. Nora can check the lamps from the air afterwards.",
+        "Мост мы починим. Потом Нора проверит огни с воздуха.",
+        "Міст ми полагодимо. Потім Нора перевірить вогні з повітря."
+      ],
+      [
+        "I'll compare her notes with the chart. If they agree, we'll signal the waiting pilots.",
+        "Сравню её записи с картой. Всё сойдётся — дадим сигнал пилотам.",
+        "Зіставлю її записи з картою. Усе зійдеться — дамо сигнал пілотам."
+      ],
+      [
+        "I'll take the spare lamp up. This time I'd like to watch the first flight from here.",
+        "Подниму запасной фонарь. На первый рейс в этот раз посмотрю отсюда.",
+        "Підніму запасний ліхтар. На перший рейс цього разу подивлюся звідси."
+      ]
+    ]
+  ],
+  "checkpoint_first": [
+    [
+      [
+        "These joints are sound. I can hear a loose board farther along, though.",
+        "Эти стыки держатся. Но дальше слышно, как хлопает доска.",
+        "Ці стики тримаються. Але далі чути, як грюкає дошка."
+      ],
+      [
+        "I hear it too. I'll bring another fastener before we move on.",
+        "Я тоже слышу. Принесу ещё крепёж, прежде чем пойдём дальше.",
+        "Я теж чую. Принесу ще кріплення, перш ніж підемо далі."
+      ]
+    ],
+    [
+      [
+        "The new gear fits. There's still a knock each time this tooth comes round.",
+        "Шестерня подошла. Только на этом зубце ещё стучит при каждом обороте.",
+        "Шестерня підійшла. Тільки на цьому зубці ще стукає на кожному оберті."
+      ],
+      [
+        "Here? I'll hold the light on it. Tell me when to stop the wheel.",
+        "Здесь? Посвечу на него. Скажи, когда остановить колесо.",
+        "Тут? Посвічу на нього. Скажи, коли зупинити колесо."
+      ]
+    ],
+    [
+      [
+        "These trees used to light the whole path. I could pick apples after supper.",
+        "Эти деревья освещали всю тропу. Я и после ужина могла яблоки собирать.",
+        "Ці дерева освітлювали всю стежку. Я й після вечері могла яблука збирати."
+      ],
+      [
+        "Let's get the nearest one lit. I almost walked into that branch again.",
+        "Зажжём ближайшее. А то я чуть опять в ту ветку не врезалась.",
+        "Запалімо найближче. А то я ледь знову в ту гілку не врізалася."
+      ]
+    ],
+    [
+      [
+        "This address is blurred, but the blue seal belongs to Clara's workshop.",
+        "Адрес расплылся, но синяя печать — из мастерской Клары.",
+        "Адреса розпливлася, але синя печатка — з майстерні Клари."
+      ],
+      [
+        "Keep it aside. We can ask her when we deliver the lamp.",
+        "Отложи. Спросим у неё, когда принесём лампу.",
+        "Відклади. Спитаємо в неї, коли принесемо лампу."
+      ]
+    ],
+    [
+      [
+        "The boat's called Little Leaf. She's small enough to pass under the willow.",
+        "Лодка называется Листочек. Она маленькая, под ивой проходит.",
+        "Човен зветься Листочок. Він маленький, під вербою проходить."
+      ],
+      [
+        "Then I'll keep my ears down. I'd rather not test that with my head.",
+        "Тогда уши прижму. Не хочется проверять высоту головой.",
+        "Тоді вуха притисну. Не хочеться перевіряти висоту головою."
+      ]
+    ],
+    [
+      [
+        "The map drawers are numbered by year. This one is from before the storm.",
+        "Ящики с картами по годам разложены. Этот — ещё до бури.",
+        "Шухляди з картами розкладені за роками. Ця — ще до бурі."
+      ],
+      [
+        "I'll put our copy beside it when I return. You'll be able to compare the routes.",
+        "На обратном пути положу рядом нашу копию. Сравнишь маршруты.",
+        "На зворотному шляху покладу поруч нашу копію. Порівняєш маршрути."
+      ]
+    ],
+    [
+      [
+        "The wind covered our first marks already. We'll need something higher than footprints.",
+        "Ветер уже замёл первые отметки. Нужны вешки повыше следов.",
+        "Вітер уже замів перші позначки. Потрібні віхи, вищі за сліди."
+      ],
+      [
+        "I'll tie this ribbon by the lamp. We should see it from the next turn.",
+        "Повяжу ленту у фонаря. Со следующего поворота будет видно.",
+        "Пов'яжу стрічку біля ліхтаря. З наступного повороту буде видно."
+      ]
+    ],
+    [
+      [
+        "You used to count these steps. Always missed the one beside the window.",
+        "Ты раньше эти ступеньки считала. Всё время пропускала ту, у окна.",
+        "Ти раніше ці сходинки рахувала. Увесь час пропускала ту, біля вікна."
+      ],
+      [
+        "I was looking at the view. I still am. Let me carry the lamp up this time.",
+        "Я на вид засматривалась. И сейчас тоже. Давай в этот раз я понесу фонарь.",
+        "Я на краєвид задивлялася. І зараз теж. Нумо цього разу я понесу ліхтар."
+      ]
+    ],
+    [
+      [
+        "That's no star. A firefly landed on the glass. It keeps spoiling my measurements.",
+        "Это не звезда. Светлячок на стекло сел. Все измерения мне сбивает.",
+        "Це не зірка. Світляк на скло сів. Усі виміри мені збиває."
+      ],
+      [
+        "I'll open the window for it. Then you can measure the stars that stay put.",
+        "Открою ему окно. А ты пока измеряй звёзды, которые не ползают.",
+        "Відчиню йому вікно. А ти поки вимірюй зорі, які не повзають."
+      ]
+    ]
+  ],
+  "asides": [
+    [
+      [
+        "I crossed with the tools this morning. Not a creak. The baker's using the road again.",
+        "Утром с инструментами перешёл. Ни скрипа. Пекарь уже опять по этой дороге ходит.",
+        "Уранці з інструментами перейшов. Жодного рипіння. Пекар уже знову цією дорогою ходить."
+      ],
+      [
+        "Good. I'll tell Gran she can expect visitors once the beacon is working.",
+        "Хорошо. Скажу бабушке: как запустим маяк, пусть гостей ждёт.",
+        "Добре. Скажу бабусі: як запустимо маяк, нехай чекає на гостей."
+      ]
+    ],
+    [
+      [
+        "My brother filled his own bucket. He's been showing it to everyone who passes.",
+        "Брат сам ведёрко наполнил. Теперь каждому встречному показывает.",
+        "Брат сам відерце наповнив. Тепер кожному зустрічному показує."
+      ],
+      [
+        "He showed me twice. I think he's pleased we fixed the handle.",
+        "Мне два раза показал. Кажется, рад, что мы ручку починили.",
+        "Мені двічі показав. Здається, радий, що ми ручку полагодили."
+      ]
+    ],
+    [
+      [
+        "Ada will need a deep pot for those seeds. I'll send one with Nora's next delivery.",
+        "Аде для семян нужен глубокий горшок. Передам с Норой в следующий рейс.",
+        "Аді для насіння потрібен глибокий горщик. Передам із Норою наступним рейсом."
+      ],
+      [
+        "I'll find a place for it by her window. That's where she wanted the tree.",
+        "Подберу место у окна. Она именно там дерево хотела.",
+        "Підберу місце біля вікна. Вона саме там дерево хотіла."
+      ]
+    ],
+    [
+      [
+        "Your letter's in the beacon bag. I've put it on top so it comes out first.",
+        "Твоё письмо в сумке для маяка. Положила сверху, чтобы первым достали.",
+        "Твій лист у сумці для маяка. Поклала зверху, щоб першим дістали."
+      ],
+      [
+        "Thank you. I'll be glad when Gran knows where I am.",
+        "Спасибо. Буду рада, когда бабушка узнает, где я.",
+        "Дякую. Буду рада, коли бабуся дізнається, де я."
+      ]
+    ],
+    [
+      [
+        "That lamp is visible all the way from the gate now. Nora won't miss the landing.",
+        "Теперь лампу видно от самых ворот. Нора пристань не пропустит.",
+        "Тепер лампу видно від самих воріт. Нора пристань не промине."
+      ],
+      [
+        "Neither will I on the way back. I finally know which turn comes after the willow.",
+        "И я на обратном пути. Наконец запомнила, где поворот после ивы.",
+        "І я на зворотному шляху. Нарешті запам'ятала, де поворот після верби."
+      ]
+    ],
+    [
+      [
+        "Your copy has room for the shelter notes. Keep the original folded this way, please.",
+        "На копии осталось место для укрытий. А оригинал вот так сложи, пожалуйста.",
+        "На копії лишилося місце для укриттів. А оригінал ось так склади, будь ласка."
+      ],
+      [
+        "Along the old creases. I've got it. I'll bring the copy back dry too.",
+        "По старым сгибам. Поняла. Копию тоже постараюсь сухой принести.",
+        "По старих згинах. Зрозуміла. Копію теж постараюся сухою принести."
+      ]
+    ],
+    [
+      [
+        "The shelter lamps are working. The next group can wait here if the weather turns.",
+        "В укрытии огни работают. Следующая группа сможет переждать здесь непогоду.",
+        "В укритті вогні працюють. Наступна група зможе перечекати тут негоду."
+      ],
+      [
+        "I've left the spare blanket in the dry box. Ben will be glad it came in useful.",
+        "Запасное одеяло оставила в сухом ящике. Бен обрадуется, что пригодилось.",
+        "Запасну ковдру лишила в сухій скрині. Бен зрадіє, що стала в пригоді."
+      ]
+    ],
+    [
+      [
+        "The mill answered our signal. Walter's workshop too. I'd forgotten how many lights you can see from here.",
+        "Мельница ответила. И мастерская Вальтера. Я забыла, сколько огней отсюда видно.",
+        "Млин відповів. І майстерня Вальтера. Я забула, скільки вогнів звідси видно."
+      ],
+      [
+        "I know who lives by them now. Tomorrow I'll write to everyone who helped us.",
+        "А я теперь знаю, кто возле них живёт. Завтра напишу всем, кто нам помог.",
+        "А я тепер знаю, хто біля них живе. Завтра напишу всім, хто нам допоміг."
+      ]
+    ],
+    [
+      [
+        "Nora's bearings match ours. I'll send the corrected charts with the morning post.",
+        "Норины замеры сошлись с нашими. Утренней почтой отправлю исправленные карты.",
+        "Норині виміри збіглися з нашими. Ранковою поштою надішлю виправлені карти."
+      ],
+      [
+        "Keep one for the beacon. Gran will want to watch the night flights with me.",
+        "Одну оставь для маяка. Бабушка захочет со мной на ночные рейсы посмотреть.",
+        "Одну залиш для маяка. Бабуся захоче зі мною на нічні рейси подивитися."
+      ]
+    ]
+  ],
+  "continuity": {
+    "OpeningLines": {
+      "16": [
+        "The post boat has a cracked seam. Nora needs it for the village mail.",
+        "У почтовой лодки треснул шов. Норе она нужна для деревенской почты.",
+        "У поштового човна тріснув шов. Норі він потрібен для сільської пошти."
+      ],
+      "17": [
+        "Let's bring it ashore. I can hold the boards while you seal the seam.",
+        "Вытащим на берег. Я подержу доски, пока ты заделаешь шов.",
+        "Витягнімо на берег. Я потримаю дошки, поки ти закриєш шов."
+      ],
+      "19": [
+        "I'll carry the water. Let's clear a path wide enough for both cans.",
+        "Я понесу воду. Освободим тропу пошире, чтобы с обеими лейками пройти.",
+        "Я понесу воду. Звільнимо стежку ширше, щоб з обома лійками пройти."
+      ],
+      "20": [
+        "The birds are circling their nests. These lantern trees usually light their way.",
+        "Птицы кружат над гнёздами. Обычно путь им освещают эти фонарные деревья.",
+        "Птахи кружляють над гніздами. Зазвичай шлях їм освітлюють ці ліхтарні дерева."
+      ],
+      "21": [
+        "I'll start with the tree beside that nest. The branch is within reach.",
+        "Начну с дерева у того гнезда. До ветки можно дотянуться.",
+        "Почну з дерева біля того гнізда. До гілки можна дотягнутися."
+      ],
+      "27": [
+        "I'll close the gap under the door. Can you move the trays away from the draught?",
+        "Закрою щель под дверью. Можете убрать лотки со сквозняка?",
+        "Закрию щілину під дверима. Можете прибрати лотки з протягу?"
+      ],
+      "30": [
+        "The wind scattered the mail along these ledges. Some envelopes are still caught in the branches.",
+        "Ветер разнёс почту по уступам. Несколько конвертов до сих пор висят на ветках.",
+        "Вітер розніс пошту по уступах. Кілька конвертів досі висять на гілках."
+      ],
+      "31": [
+        "I'll check the low branches. You can reach the ones above me.",
+        "Проверю нижние ветки. А ты достанешь те, что повыше.",
+        "Перевірю нижні гілки. А ти дістанеш ті, що вище."
+      ],
+      "36": [
+        "The mail basket is stuck halfway up. The beacon bag is in it, with your letter.",
+        "Почтовая корзина застряла на полпути. В ней сумка для маяка, с твоим письмом.",
+        "Поштовий кошик застряг на півдорозі. У ньому сумка для маяка, з твоїм листом."
+      ],
+      "37": [
+        "I'll steady the basket from here. Can you get to the pulley?",
+        "Придержу корзину отсюда. Сможешь добраться до блока?",
+        "Притримаю кошик звідси. Зможеш дістатися блока?"
+      ],
+      "38": [
+        "Clara's replacement lamp is ready. We need to open this last gate to deliver it.",
+        "Новая лампа для Клары готова. Надо открыть последние ворота, чтобы доставить.",
+        "Нова лампа для Клари готова. Треба відчинити останні ворота, щоб доставити."
+      ],
+      "39": [
+        "I'll take the lamp. You show me the way to her shore.",
+        "Я возьму лампу. А ты покажи дорогу к её берегу.",
+        "Я візьму лампу. А ти покажи дорогу до її берега."
+      ],
+      "46": [
+        "This portable lamp will help on the mountain road. The glass needs securing first.",
+        "Этот переносной фонарь пригодится в горах. Только стекло сначала закрепим.",
+        "Цей переносний ліхтар стане в пригоді в горах. Тільки скло спершу закріпімо."
+      ],
+      "47": [
+        "I'll wrap it before we leave. There's room beside Walter's tools.",
+        "Перед выходом заверну. Рядом с инструментами Вальтера есть место.",
+        "Перед виходом загорну. Поруч з інструментами Вальтера є місце."
+      ],
+      "49": [
+        "I'll ask for a copy. He'll need the original to update the other maps.",
+        "Попрошу копию. Оригинал ему нужен, чтобы исправить остальные карты.",
+        "Попрошу копію. Оригінал йому потрібен, щоб виправити інші карти."
+      ],
+      "53": [
+        "Let's secure one shelf at a time. Then you can reach the ladder.",
+        "Закрепим полки по одной. Тогда ты доберёшься до лестницы.",
+        "Закріпімо полиці по одній. Тоді ти дістанешся драбини."
+      ],
+      "54": [
+        "This is the latest snow-road map. We need to copy it before you leave.",
+        "Это последняя карта снежной дороги. Нужно снять копию перед твоим уходом.",
+        "Це остання карта снігової дороги. Треба зробити копію перед твоїм відходом."
+      ],
+      "55": [
+        "I'll trace the route. Mark the parts that need checking, please.",
+        "Перерисую маршрут. Отметь, пожалуйста, что надо проверить.",
+        "Перемалюю маршрут. Познач, будь ласка, що треба перевірити."
+      ],
+      "57": [
+        "I'll cover the page and move it to the dry shelf. Then we can deal with the leak.",
+        "Накрою страницу и уберу на сухую полку. Потом займёмся течью.",
+        "Накрию сторінку й приберу на суху полицю. Потім займемося протіканням."
+      ],
+      "59": [
+        "Then let's stop the leak and get the cabinet open. I don't want to miss her directions.",
+        "Тогда остановим течь и откроем шкаф. Не хочу пропустить её указания.",
+        "Тоді зупинімо протікання й відчинімо шафу. Не хочу пропустити її вказівок."
+      ],
+      "72": [
+        "The lift jammed during the storm. I've kept the loose parts in this tin.",
+        "Подъёмник заклинило в бурю. Отсоединившиеся детали я в эту коробку сложила.",
+        "Підйомник заклинило в бурю. Від'єднані деталі я в цю коробку склала."
+      ],
+      "73": [
+        "Let's lay them out by the frame. Walter showed me how this kind of pulley works.",
+        "Разложим их у рамы. Вальтер показал, как такой блок работает.",
+        "Розкладімо їх біля рами. Вальтер показав, як такий блок працює."
+      ],
+      "76": [
+        "The sky lantern is ready below. We need to lift it without tilting the frame.",
+        "Небесный фонарь готов внизу. Надо поднять его, не перекосив раму.",
+        "Небесний ліхтар готовий унизу. Треба підняти його, не перекосивши раму."
+      ],
+      "77": [
+        "I'll watch this side. Tell me when the other rope is tight.",
+        "Я прослежу за этой стороной. Скажи, когда вторая верёвка натянется.",
+        "Я простежу за цим боком. Скажи, коли друга мотузка натягнеться."
+      ],
+      "80": [
+        "The moon dial is behind the beacon clock. We need the same time at both towers.",
+        "Лунный циферблат отстаёт от часов маяка. На обеих башнях должно быть одно время.",
+        "Місячний циферблат відстає від годинника маяка. На обох вежах має бути один час."
+      ],
+      "81": [
+        "I wrote down Gran's reading before I left. Here, we can compare.",
+        "Я записала время у бабушки перед выходом. Вот, сравним.",
+        "Я записала час у бабусі перед виходом. Ось, порівняймо."
+      ],
+      "84": [
+        "The wind tore the turn off this chart. The pilots need a complete copy.",
+        "Ветер оторвал поворот на карте. Пилотам нужна полная копия.",
+        "Вітер відірвав поворот на карті. Пілотам потрібна повна копія."
+      ],
+      "85": [
+        "Let's collect the pieces. Nora can check the repaired chart from the air.",
+        "Соберём куски. Нора проверит восстановленную карту с воздуха.",
+        "Зберімо шматки. Нора перевірить відновлену карту з повітря."
+      ],
+      "86": [
+        "The night gliders follow those constellation lamps. Several are still out.",
+        "Ночные планеры идут по огням созвездий. Несколько ещё не горят.",
+        "Нічні планери йдуть за вогнями сузір'їв. Кілька ще не світять."
+      ],
+      "87": [
+        "I'll bring the spare lamp. Which tower needs it first?",
+        "Принесу запасной фонарь. На какой башне он нужнее?",
+        "Принесу запасний ліхтар. На якій вежі він потрібніший?"
+      ]
+    },
+    "IslandLines": {
+      "36": [
+        "The basket's moving again. Your letter is on its way to Ada.",
+        "Корзина снова ходит. Твоё письмо отправилось к Аде.",
+        "Кошик знову рухається. Твій лист вирушив до Ади."
+      ],
+      "37": [
+        "At last. Now let's get Clara's lamp to her before dark.",
+        "Наконец-то. Теперь доставим лампу Кларе до темноты.",
+        "Нарешті. Тепер доставімо лампу Кларі до темряви."
+      ],
+      "38": [
+        "The lagoon gate is open. We can carry the replacement lamp straight to the pier.",
+        "Ворота лагуны открыты. Новую лампу можно донести прямо до причала.",
+        "Ворота лагуни відчинені. Нову лампу можна донести просто до причалу."
+      ],
+      "39": [
+        "I'll support the base. Let's take it slowly over that last step.",
+        "Подхвачу снизу. Через последнюю ступеньку давай потише.",
+        "Підхоплю знизу. Через останню сходинку нумо повільніше."
+      ],
+      "40": [
+        "The pier holds. Nora can moor here again, even with the mail aboard.",
+        "Причал держится. Нора снова сможет швартоваться, даже с грузом почты.",
+        "Причал тримається. Нора знову зможе швартуватися, навіть із вантажем пошти."
+      ],
+      "41": [
+        "I'll wave her over. We left the lamp beside your door.",
+        "Помашу ей. Лампу мы у твоей двери оставили.",
+        "Помахаю їй. Лампу ми біля твоїх дверей залишили."
+      ],
+      "44": [
+        "The water gate is clear. The boat can pass without catching its sail.",
+        "Водяные ворота свободны. Лодка пройдёт, парус не зацепится.",
+        "Водяні ворота вільні. Човен пройде, вітрило не зачепиться."
+      ],
+      "45": [
+        "I'll take the front rope for the first trip. I know where to stand now.",
+        "На первый рейс возьму переднюю верёвку. Теперь знаю, где стоять.",
+        "На перший рейс візьму передню мотузку. Тепер знаю, де стояти."
+      ],
+      "47": [
+        "Thank you for the lamp. I'll keep the glass wrapped on the mountain road.",
+        "Спасибо за фонарь. В горах стекло будет укутано.",
+        "Дякую за ліхтар. У горах скло буде загорнуте."
+      ],
+      "49": [
+        "I'll take the lamp and go there next. Can you send Nora word that we arrived?",
+        "Возьму фонарь и пойду туда. Передашь Норе, что мы добрались?",
+        "Візьму ліхтар і піду туди. Передаси Норі, що ми дісталися?"
+      ],
+      "53": [
+        "Now we can get the snow-road map down. I'll hold the ladder.",
+        "Теперь достанем карту снежной дороги. Я подержу лестницу.",
+        "Тепер дістанемо карту снігової дороги. Я потримаю драбину."
+      ],
+      "76": [
+        "The lantern is in place. The ropes stayed level all the way up.",
+        "Фонарь на месте. Верёвки весь подъём шли ровно.",
+        "Ліхтар на місці. Мотузки весь підйом ішли рівно."
+      ],
+      "77": [
+        "I'll secure this end. You can check the beam from the window.",
+        "Закреплю этот конец. А ты проверь луч из окна.",
+        "Закріплю цей кінець. А ти перевір промінь із вікна."
+      ],
+      "81": [
+        "It agrees with Gran's clock now. I'll tell her when I get back.",
+        "Теперь с бабушкиными часами сходится. Скажу ей, когда вернусь.",
+        "Тепер із бабусиним годинником збігається. Скажу їй, коли повернуся."
+      ],
+      "84": [
+        "The missing turn is back on the chart. Nora's checked it from the air.",
+        "Поворот вернулся на карту. Нора проверила его с воздуха.",
+        "Поворот повернувся на карту. Нора перевірила його з повітря."
+      ],
+      "88": [
+        "The sky gate is open. The night service can start again.",
+        "Небесные ворота открыты. Ночные рейсы снова можно запускать.",
+        "Небесні ворота відчинені. Нічні рейси знову можна запускати."
+      ],
+      "89": [
+        "Look, the first glider's coming through. Gran will be watching from the beacon.",
+        "Смотри, первый планер проходит. Бабушка наверняка с маяка смотрит.",
+        "Дивись, перший планер проходить. Бабуся напевно з маяка дивиться."
+      ]
+    },
+    "IslandProgressLines": {
+      "24": [
+        "The crates are ready, but the cart can't get past that fallen branch.",
+        "Ящики готовы, но тележка не проходит под упавшей веткой.",
+        "Ящики готові, але візок не проходить під упалою гілкою."
+      ],
+      "25": [
+        "I'll move the empty cart back. Then we can clear the branch without breaking the jars.",
+        "Откачу пустую тележку. Тогда уберём ветку и не разобьём банки.",
+        "Відкочу порожній візок. Тоді приберемо гілку й не розіб'ємо банки."
+      ],
+      "36": [
+        "The beacon bag is ready. I still need to put a destination tag on Clara's lamp.",
+        "Сумка для маяка готова. Осталось бирку с адресом на лампу Клары повесить.",
+        "Сумка для маяка готова. Лишилося бирку з адресою на лампу Клари повісити."
+      ],
+      "37": [
+        "I'll hold it steady. Then let's load both onto the basket lift.",
+        "Я придержу. Потом загрузим и сумку, и лампу в подъёмную корзину.",
+        "Я притримаю. Потім завантажимо і сумку, і лампу в підйомний кошик."
+      ],
+      "38": [
+        "Clara is waiting for that lamp. Her pier has been dark since the storm.",
+        "Клара ждёт эту лампу. После бури её причал без света.",
+        "Клара чекає на цю лампу. Після бурі її причал без світла."
+      ],
+      "39": [
+        "Let's clear this crossing. We can carry it together as far as her door.",
+        "Освободим переход. Донесём вдвоём до её двери.",
+        "Звільнімо перехід. Донесемо вдвох до її дверей."
+      ],
+      "40": [
+        "The lamp arrived safely. We still need to brace the pier before the post boat returns.",
+        "Лампа добралась целой. Ещё надо укрепить причал до возвращения почтовой лодки.",
+        "Лампа дісталася цілою. Ще треба зміцнити причал до повернення поштового човна."
+      ],
+      "41": [
+        "I'll bring the brace from the bank. Show me which support needs it.",
+        "Принесу распорку с берега. Покажи, какая опора просела.",
+        "Принесу розпірку з берега. Покажи, яка опора просіла."
+      ],
+      "48": [
+        "The next boat is going to the archive. Oscar will have a map of the mountain path.",
+        "Следующая лодка идёт к архиву. У Оскара будет карта горной тропы.",
+        "Наступний човен іде до архіву. В Оскара буде карта гірської стежки."
+      ],
+      "49": [
+        "I'll make sure our lamp is packed before it leaves. Thank you for finding us a boat.",
+        "Упакую фонарь до отправления. Спасибо, что нашла нам лодку.",
+        "Упакую ліхтар до відправлення. Дякую, що знайшла нам човен."
+      ],
+      "54": [
+        "This map predates the storm. The bend by the ridge may no longer be there.",
+        "Эта карта до бури нарисована. Поворота у хребта могло уже не стать.",
+        "Цю карту до бурі намальовано. Повороту біля хребта могло вже не стати."
+      ],
+      "55": [
+        "Circle it on my copy. Alice and I will check it before we cross.",
+        "Обведи на копии. Мы с Люми проверим, прежде чем переходить.",
+        "Обведи на копії. Ми з Люмі перевіримо, перш ніж переходити."
+      ]
+    },
+    "BanterLines": {
+      "6": [
+        "The pipes sound clear. We should check the tap by my brother's house next.",
+        "Трубы шумят ровно. Дальше проверим кран у дома брата.",
+        "Труби шумлять рівно. Далі перевіримо кран біля братового будинку."
+      ],
+      "7": [
+        "I'll go to the tap. Give the wheel one turn when I wave.",
+        "Пойду к крану. Когда помашу, сделай один оборот колеса.",
+        "Піду до крана. Коли помахаю, зроби один оберт колеса."
+      ],
+      "18": [
+        "That little boat takes the long channel. The short one is too shallow for her keel.",
+        "Эта лодочка идёт длинным каналом. В коротком для её киля слишком мелко.",
+        "Цей човник іде довгим каналом. У короткому для його кіля надто мілко."
+      ],
+      "19": [
+        "I'll mark that on my copy. I'd have chosen the short way from the shore.",
+        "Отмечу на копии. С берега я бы короткий путь выбрала.",
+        "Позначу на копії. З берега я б короткий шлях обрала."
+      ],
+      "26": [
+        "The gust is picking up. We'll wait by this lamp until we can see the far landing.",
+        "Ветер усиливается. Подождём у фонаря, пока не увидим дальний край.",
+        "Вітер посилюється. Зачекаймо біля ліхтаря, поки не побачимо дальній край."
+      ],
+      "27": [
+        "I'll tie the bag here. It'll be easier to cross without it swinging.",
+        "Привяжу сумку здесь. Переходить легче, когда она не болтается.",
+        "Прив'яжу сумку тут. Переходити легше, коли вона не бовтається."
+      ],
+      "30": [
+        "You brought Rose's seeds. I'll fetch a pot after we finish with the lens.",
+        "Ты привезла семена Розы. Закончу с линзой и достану горшок.",
+        "Ти привезла насіння Рози. Закінчу з лінзою й дістану горщик."
+      ],
+      "31": [
+        "She promised to send a deep one. We can plant them by your window tomorrow.",
+        "Она обещала глубокий передать. Завтра посадим у твоего окна.",
+        "Вона обіцяла глибокий передати. Завтра посадимо біля твого вікна."
+      ],
+      "34": [
+        "Nora checked the first tower. The lamp is visible from the glider at that height.",
+        "Нора проверила первую башню. С такой высоты фонарь виден с планера.",
+        "Нора перевірила першу вежу. З такої висоти ліхтар видно з планера."
+      ],
+      "35": [
+        "I'll note the height beside it. Shall we check the second tower next?",
+        "Запишу рядом высоту. Дальше проверим вторую башню?",
+        "Запишу поруч висоту. Далі перевіримо другу вежу?"
+      ]
+    }
+  }
+}

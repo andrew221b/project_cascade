@@ -1,0 +1,100 @@
+{
+  "tool": "built-in imagegen",
+  "referenceGroup": "F830DE8D-D0E7-41AE-B84C-43248AA8B69D",
+  "productionPixelsEditedAfterGeneration": false,
+  "assets": {
+    "WelcomeMika": {
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-4a90dada-2193-4db8-af9f-0517e7b8fbd5.png",
+      "savedPath": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/AccountOct15/WelcomeMika.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "alphaBounds32": [
+        36,
+        39,
+        988,
+        1478
+      ],
+      "sha256": "89402b65191702d8996f2eb85c6ebae5c12ae7f6bb52fbf874cd81cc3d7ef20a",
+      "identityCorrectionDate": "2026-10-16",
+      "identityReference": "AccountOct15/HomeMika.png",
+      "promptRecord": "AssetPrompts/WelcomeIdentityOct16/generation.json",
+      "previousGeneration": {
+        "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-39c5dbd1-79f2-49c6-a195-1ebec0d95972.png",
+        "savedPath": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/AccountOct15/WelcomeMika.png",
+        "size": [
+          1024,
+          1536
+        ],
+        "alphaBounds32": [
+          33,
+          41,
+          986,
+          1477
+        ],
+        "sha256": "4b3bc4ec6096f1f3b33f0f0c53d6f3029becb321c9ee7b7a80108d7b5e16e9a6"
+      }
+    },
+    "HomeMika": {
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-c4052920-c3c3-4504-aeb5-920877c18798.png",
+      "savedPath": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/AccountOct15/HomeMika.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "alphaBounds32": [
+        23,
+        18,
+        973,
+        1478
+      ],
+      "sha256": "26739b67f694c63841987434d71cbbe22038c8397b72a27074f32505d445acf7"
+    },
+    "Controls": {
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-0470371a-b82d-4cc3-b8aa-a2e91e6d9b8c.png",
+      "savedPath": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/AccountOct15/Controls.png",
+      "size": [
+        1159,
+        1358
+      ],
+      "alphaBounds32": [
+        14,
+        78,
+        1158,
+        1288
+      ],
+      "sha256": "81c1c6d2c6da256572a9558a65c76db4fa21ec7b783ebd9127c2a597c84fbe26"
+    },
+    "Scene": {
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-08a7399a-b884-4fb1-979a-8d8ee1edd18f.png",
+      "savedPath": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/AccountOct15/Scene.png",
+      "size": [
+        942,
+        1670
+      ],
+      "alphaBounds32": [
+        0,
+        0,
+        942,
+        1670
+      ],
+      "sha256": "21f3969ed1293f3764c4a608c3b14e08ff9bd64c6471195a962f1d59587d479d"
+    },
+    "Airship": {
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-d3104f04-c1ad-4b46-bf53-320b8d6c2408.png",
+      "savedPath": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/AccountOct15/Airship.png",
+      "size": [
+        1374,
+        1145
+      ],
+      "alphaBounds32": [
+        193,
+        66,
+        1241,
+        1025
+      ],
+      "sha256": "60fc97e2e57ccf94432e47b13f24e2238cdbd7a2561f29fceaa2d6e80d73c9a9"
+    }
+  }
+}

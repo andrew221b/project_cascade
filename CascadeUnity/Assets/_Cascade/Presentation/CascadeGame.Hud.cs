@@ -6,16 +6,13 @@ namespace Cascade.Presentation
 {
     public sealed partial class CascadeGame
     {
-        const float InstructionDelay=3.2f;
         readonly HashSet<string> dismissedInstructions=new HashSet<string>();
         CanvasGroup instructionOpacity;
         CanvasGroup chapterOpacity;
-        UnityEngine.UI.Button instructionClose;
         HintMark hintMark;
         Canvas tutorialPointerCanvas;
         Material tutorialOverlayMaterial;
         string instructionKey;
-        float instructionAge;
         string chapterKey;
         float chapterAge;
 
@@ -25,46 +22,40 @@ namespace Cascade.Presentation
             chapterOpacity=header.Find("Carved chapter plaque").gameObject.AddComponent<CanvasGroup>();
             chapterOpacity.alpha=0;chapterOpacity.interactable=chapterOpacity.blocksRaycasts=false;
             HideInstruction();
-            var close=Rect("Dismiss instruction",statusPaper,new Vector2(1,0),Vector2.one);
-            var hit=Background(close,Color.clear,true);
-            instructionClose=close.gameObject.AddComponent<UnityEngine.UI.Button>();
-            instructionClose.targetGraphic=hit;
-            instructionClose.onClick.AddListener(()=>RetireInstruction(instructionKey));
-            var mark=Rect("Close mark",close,Vector2.zero,Vector2.one).gameObject.AddComponent<InstructionCloseMark>();
-            mark.color=MenuPaper;mark.raycastTarget=false;
+
         }
 
         void LayoutInstruction(float unit)
         {
-            if(instructionClose==null)return;
-            var close=(RectTransform)instructionClose.transform;
-            close.offsetMin=new Vector2(-44*unit,0);close.offsetMax=Vector2.zero;
             status.rectTransform.offsetMin=new Vector2(14*unit,4*unit);
-            status.rectTransform.offsetMax=new Vector2(-44*unit,-4*unit);
-            status.enableAutoSizing=true;status.fontSizeMin=13*unit;
-            status.fontSizeMax=16*unit*(Preferences.LargeText?1.12f:1);
+            status.rectTransform.offsetMax=new Vector2(-14*unit,-4*unit);
+            status.enableAutoSizing=true;status.fontSizeMin=16*unit;
+            status.fontSizeMax=(Preferences.LargeText?20:18)*unit;
         }
 
         void LayoutGameplayHeader(float boardWidth)
         {
             float unit=1/Mathf.Min(1,header.GetComponentInParent<Canvas>().scaleFactor);
-            // Controls occupy the safe outer edges; only the transient task stays inside the ropes.
+            // Match the lower action band's horizontal inset, including safe-area adaptation.
             header.anchorMin=header.anchorMax=new Vector2(.5f,0);
-            header.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,safeRoot.rect.width);
-            header.anchoredPosition=new Vector2(0,safeRoot.rect.height-36*unit);
+            header.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,actions.rect.width);
+            header.anchoredPosition=new Vector2(actions.localPosition.x,safeRoot.rect.height-36*unit);
             float control=48*unit,gap=24*unit;
-            var left=(RectTransform)hint.transform;
+            var left=(RectTransform)pause.transform;
             left.anchorMin=Vector2.zero;left.anchorMax=new Vector2(0,1);
             left.offsetMin=Vector2.zero;left.offsetMax=new Vector2(control,0);
-            var right=(RectTransform)pause.transform;
+            var right=(RectTransform)help.transform;
             right.anchorMin=new Vector2(1,0);right.anchorMax=Vector2.one;
             right.offsetMin=new Vector2(-control,0);right.offsetMax=Vector2.zero;
+            bool extraHelp=help.gameObject.activeSelf;
+            float rightInset=extraHelp?control+8*unit:0;
+            var lamp=(RectTransform)hint.transform;lamp.anchorMin=new Vector2(1,0);lamp.anchorMax=Vector2.one;lamp.offsetMin=new Vector2(-control-rightInset,0);lamp.offsetMax=new Vector2(-rightInset,0);
             var plaque=(RectTransform)header.Find("Carved chapter plaque");
             plaque.anchorMin=plaque.anchorMax=new Vector2(.5f,.5f);
-            plaque.anchoredPosition=Vector2.zero;
-            plaque.sizeDelta=new Vector2(Mathf.Min(boardWidth*.95f-24*unit,header.rect.width-2*(control+gap)),40*unit);
+            plaque.anchoredPosition=Vector2.left*rightInset*.5f;
+            plaque.sizeDelta=new Vector2(Mathf.Min(boardWidth*.95f-24*unit,header.rect.width-2*(control+gap)-rightInset),40*unit);
             // Narrow the ceiling tether, not the playing rail or its touch targets.
-            machine.SetUpperRopeHalfWidth(header.TransformVector(Vector3.right*(header.rect.width*.5f-control-34*unit)).magnitude);
+            machine.SetUpperRopeHalfWidth(header.TransformVector(Vector3.right*(safeRoot.rect.width*.5f-control-34*unit)).magnitude);
             levelLabel.rectTransform.offsetMin=new Vector2(4*unit,5*unit);
             levelLabel.rectTransform.offsetMax=new Vector2(-4*unit,-5*unit);
             levelLabel.fontSizeMin=12*unit;
@@ -76,7 +67,7 @@ namespace Cascade.Presentation
 
         void ResetInstruction()
         {
-            if(profile?.SeenCoachPrompts!=null)dismissedInstructions.UnionWith(profile.SeenCoachPrompts);instructionKey=null;instructionAge=0;observedCoachRoute=Interaction.Attempt.RouteLength;HideInstruction();
+            if(profile?.SeenCoachPrompts!=null)dismissedInstructions.UnionWith(profile.SeenCoachPrompts);instructionKey=null;observedCoachRoute=Interaction.Attempt.RouteLength;HideInstruction();
             chapterKey=null;chapterAge=0;if(chapterOpacity!=null)chapterOpacity.alpha=0;
         }
         void RetireInstruction(string key)
@@ -102,14 +93,13 @@ namespace Cascade.Presentation
         {
             UpdateChapter(foreground,seconds);
             if(instructionOpacity==null)return;
-            string key=status.GetComponent<LocalizedCaption>()?.SourceIdentity??status.text??"";
-            if(instructionKey!=key){instructionKey=key;instructionAge=0;HideInstruction();}
-            bool playing=foreground&&CurrentScreen==GameScreen.Playing&&!Interaction.IsPaused&&!zoomOpen;
-            if(playing&&!IsHoldingToken&&!Interaction.IsPresenting)instructionAge+=seconds;
-            bool show=playing&&!IsHoldingToken&&!Interaction.IsPresenting&&reactionBanner?.IsShowing!=true
-                &&key.Length>0&&(!dismissedInstructions.Contains(key)||preparation.HasFailed)&&(instructionAge>=InstructionDelay||preparation.HasFailed);
-            instructionOpacity.alpha=ReducedMotion?(show?1:0):Mathf.MoveTowards(instructionOpacity.alpha,show?1:0,seconds/.18f);
-            instructionOpacity.interactable=instructionOpacity.blocksRaycasts=show&&instructionOpacity.alpha>.9f;
+            // First-use teaching lives in the film and guided finger, never in a timed text strip.
+            // Keep only blocking preparation failures readable beside the existing Retry control.
+            bool show=foreground&&CurrentScreen==GameScreen.Playing&&!Interaction.IsPaused&&!zoomOpen
+                &&(preparation.HasFailed||descentPlanFailed);
+            instructionKey=show?status.GetComponent<LocalizedCaption>()?.SourceIdentity:null;
+            instructionOpacity.alpha=show?1:0;
+            instructionOpacity.interactable=instructionOpacity.blocksRaycasts=false;
         }
         void UpdateChapter(bool foreground,float seconds)
         {

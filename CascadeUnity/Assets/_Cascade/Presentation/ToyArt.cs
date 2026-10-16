@@ -11,7 +11,7 @@ namespace Cascade.Presentation
         public Mesh tile, beam, disk, quad;
         public Material[] colors;
         public Material cream, graphite, gold, paleGold, teal, coral, shadow, backdrop;
-        public TMP_FontAsset bodyFont, titleFont;
+        public TMP_FontAsset bodyFont, titleFont, displayFont;
         public Sprite panel;
         public static ToyArt Load() => Resources.Load<ToyArt>("CascadeArt/ToyArt")
             ?? throw new InvalidOperationException("Build CASCADE toy assets before opening the playable.");

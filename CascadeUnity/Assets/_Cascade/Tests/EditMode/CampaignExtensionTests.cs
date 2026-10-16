@@ -22,17 +22,49 @@ namespace Cascade.Tests
             catalog=ContentImporter.Import(Read("levels.json"),Read("localized_levels.json"),Read("words_en.json"),Read("words_ru.json"),Read("words_uk.json"),Extension);
             balance=JArray.Parse(File.ReadAllText(Path.Combine(ReferenceFixtures.PackageRoot,"Reports/P20/python_campaign_balance.json")));
         }
-        [Test] public void RuntimeExtensionPreservesOriginalPinsAndHasExactly184Nodes()
+        [Test] public void RuntimeExtensionPreservesOriginalPinsAndHasExactly540Nodes()
         {
-            var original=ContentTests.LoadCatalog();Assert.That(catalog.PrimaryLevels.Count,Is.EqualTo(184));Assert.That(catalog.LocalizedLevels.Count,Is.EqualTo(549));
+            var original=ContentTests.LoadCatalog();Assert.That(catalog.PrimaryLevels.Count,Is.EqualTo(540));Assert.That(catalog.LocalizedLevels.Count,Is.EqualTo(1617));
             foreach(var content in original.PrimaryLevels.Concat(original.LocalizedLevels)) {
                 var current=catalog.PrimaryLevels.Concat(catalog.LocalizedLevels).Single(c=>c.Definition.PuzzleId==content.Definition.PuzzleId);
                 Assert.That(current.Definition.ContentHash,Is.EqualTo(content.Definition.ContentHash));
             }
-            Assert.That(catalog.PrimaryLevels.Select(c=>c.Definition.CampaignNodeId),Is.EqualTo(Enumerable.Range(1,184).Select(i=>"C"+i.ToString("00"))));
+            Assert.That(catalog.PrimaryLevels.Select(c=>c.Definition.CampaignNodeId),Is.EqualTo(JourneyStory.NodeIds));
             Assert.That(balance.Select(b=>(string)b["structure_sha256"]).Distinct().Count(),Is.EqualTo(120));
             Assert.That(File.ReadAllText(Path.Combine(UnityEngine.Application.dataPath,"_Cascade/Content/Resources/CascadeContent/campaign_extension.json")),Is.EqualTo(Extension));
             Assert.That(UnityEngine.Resources.Load<UnityEngine.TextAsset>("CascadeContent/campaign_extension").text,Is.EqualTo(Extension));
+        }
+        [Test] public void EveryIslandHasTwelveDistinctPublishedLevelsAndMatchingWordRoutes()
+        {
+            var sources=JObject.Parse(Extension);var route=(JArray)sources["journey_order"];
+            Assert.That(route.Select(x=>(string)x),Is.EqualTo(JourneyStory.NodeIds));
+            Assert.That(Enumerable.Range(0,9).SelectMany(world=>Enumerable.Range(0,5).Select(island=>
+                JourneyStory.IslandLevels(world,island))),Is.All.EqualTo(12));
+            var extras=((JArray)sources["levels"]).Where(s=>int.Parse(((string)s["id"]).Substring(1))>=185).ToArray();
+            Assert.That(extras.Length,Is.EqualTo(356));
+            Assert.That(extras.All(s=>(int)s["teaching_node"]>=1&&(int)s["teaching_node"]<=184),Is.True);
+            foreach(var source in extras){
+                var primary=catalog.GetPrimary((string)source["id"]);
+                Assert.That(primary.Definition.TeachingNode,Is.EqualTo((int)source["teaching_node"]));
+                foreach(string locale in new[]{"en","ru","uk"}){
+                    Assert.That(catalog.TryGetLocalizedBinding(primary.Definition.CampaignNodeId,locale,out var binding),Is.True);
+                    Assert.That(binding.Definition.TeachingNode,Is.EqualTo(primary.Definition.TeachingNode));
+                }
+            }
+        }
+        [Test] public void OneNewLevelInEachWorldMatchesItsIndependentMinimumAndThreeStagePlan()
+        {
+            var authoring=JObject.Parse(File.ReadAllText(Path.Combine(ReferenceFixtures.PackageRoot,"Reports/CampaignPacing/authoring.json")));
+            var rows=(JArray)authoring["levels"];
+            for(int world=0;world<9;world++){
+                var row=rows.First(r=>(int)r["world"]==world);var source=catalog.GetPrimary((string)row["id"]);
+                var proof=PuzzleSolver.FindShortest(new PuzzleResolver(source.Definition),stateBudget:30000);
+                Assert.That(proof.Status,Is.EqualTo(SearchStatus.Solved),source.Definition.PuzzleId);
+                Assert.That(proof.OptimalActions,Is.EqualTo((int)row["minimum"]));
+                var descent=DescentRun.Build(source.Definition,version:5,budget:30000);
+                Assert.That(descent,Is.Not.Null,source.Definition.PuzzleId);
+                descent.Validate(source.Definition,"en");
+            }
         }
         [TestCaseSource(nameof(Cases))] public void EachRouteHasMatchingCompletedGraphAndReplayableOptionalGoal(string id)
         {

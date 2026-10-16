@@ -25,26 +25,26 @@ namespace Cascade.Tests
             foreach(var command in PuzzleSolver.FindShortest(a.Resolver,goal:a.Goal).Path)a.Execute(command);
             Assert.That(a.Goal.IsSatisfied(a.Current),Is.True);return a;
         }
-        [Test] public void ThreeNewLightsEarnOneKnownFragmentAndReplayCannotFarm()
+        [Test] public void FirstParcelPaysCoinsAndItsReceiptCannotBeRerolledOrFarmed()
         {
             var rewards=new JourneyRewards();rewards.SelectGift("sun");rewards.Synchronize(nodes.Take(2));
             Assert.That(rewards.Parcels,Is.Empty);Assert.That(rewards.OrderProgress,Is.EqualTo(2));
             rewards.Synchronize(nodes.Take(2));Assert.That(rewards.OrderProgress,Is.EqualTo(2));
             rewards.Synchronize(nodes.Take(3));Assert.That(rewards.Parcels.Count,Is.EqualTo(1));
-            Assert.That(rewards.Parcels[0].GiftId,Is.EqualTo("sun"));rewards.SelectGift("moon");
-            Assert.That(rewards.Parcels[0].GiftId,Is.EqualTo("sun"),"An earned receipt cannot be rerolled by changing the next order");
-            Assert.That(rewards.ClaimParcel(1),Is.True);Assert.That(rewards.ClaimParcel(1),Is.False);
-            rewards.Synchronize(nodes.Take(3));Assert.That(rewards.Fragments("sun"),Is.EqualTo(1));
+            Assert.That(rewards.Parcels[0].Kind,Is.EqualTo("loot"));Assert.That(rewards.Parcels[0].GiftId,Is.Null);rewards.SelectGift("moon");
+            Assert.That(rewards.Parcels[0].Kind,Is.EqualTo("loot"),"An earned receipt cannot be rerolled by changing the next order");
+            var service=new AdService(new MonetizationLedger(),_=>{});Assert.That(service.TryClaimParcel(1,rewards),Is.True);Assert.That(service.TryClaimParcel(1,rewards),Is.False);
+            rewards.Synchronize(nodes.Take(3));Assert.That(JourneyRewards.ParcelCoins(rewards.Parcels[0]),Is.InRange(12,24));
         }
         [Test] public void PendingParcelsReserveCapacityAndAllFortyClearsCannotGenerateFiller()
         {
             var rewards=new JourneyRewards();rewards.Synchronize(nodes);
-            Assert.That(rewards.Parcels.Count,Is.EqualTo(12));Assert.That(rewards.AllGiftsEarned,Is.True);
-            foreach(string gift in JourneyRewards.Gifts)Assert.That(rewards.EarnedFragments(gift),Is.EqualTo(3));
+            Assert.That(rewards.Parcels.Count,Is.EqualTo(12));Assert.That(rewards.Parcels.All(p=>p.RecipeVersion==6&&p.Loot.Count>=1&&p.Loot.Count<=2),Is.True);
+            Assert.That(rewards.Parcels.SelectMany(p=>p.Loot).Count(d=>d.Kind=="cosmetic"),Is.EqualTo(1));
+            foreach(string gift in JourneyRewards.Gifts)Assert.That(rewards.EarnedFragments(gift),Is.Zero);
             Assert.That(rewards.Equip("leaf"),Is.False);
-            foreach(var parcel in rewards.Parcels)Assert.That(rewards.ClaimParcel(parcel.Order),Is.True);
-            foreach(string gift in JourneyRewards.Gifts){Assert.That(rewards.Owns(gift),Is.True);Assert.That(rewards.Equip(gift),Is.True);}
-            Assert.That(rewards.SelectGift("leaf"),Is.False);rewards.Validate();
+            Assert.That(rewards.Parcels.Where(p=>p.Kind=="tool").All(p=>ShopCatalog.TryTool(p.GiftId,out _)),Is.True);
+            rewards.Validate();
         }
         [Test] public void FortyClearsAndFourChaptersYieldExactlyTwoThousand()
         {
@@ -52,6 +52,17 @@ namespace Cascade.Tests
             Assert.That(rewards.EarnedCoins(nodes),Is.EqualTo(2000));
             Assert.That(2000-5*240-6*120,Is.EqualTo(80));
             foreach(int chapter in Enumerable.Range(0,4))Assert.That(rewards.WorkshopCount(chapter,nodes),Is.EqualTo(10));
+        }
+        [Test] public void ReplayReservePaysFourForTwoStarsAndOnlyTheIncrementUpToSix()
+        {
+            var rewards=new JourneyRewards();rewards.Synchronize(nodes.Take(1));int first=rewards.EarnedCoins(nodes);
+            rewards.RecordReplayCredit(nodes[0],2);Assert.That(rewards.EarnedCoins(nodes)-first,Is.EqualTo(4));
+            rewards.RecordReplayCredit(nodes[0],2);Assert.That(rewards.EarnedCoins(nodes)-first,Is.EqualTo(4));
+            rewards.RecordReplayCredit(nodes[0],3);Assert.That(rewards.EarnedCoins(nodes)-first,Is.EqualTo(6));
+            for(int i=0;i<100;i++)rewards.RecordReplayCredit(nodes[0],3);
+            Assert.Throws<ArgumentException>(()=>rewards.RecordReplayCredit(nodes[0],5));
+            Assert.That(rewards.EarnedCoins(nodes)-first,Is.EqualTo(6));Assert.That(rewards.SeenClearNodes.Count,Is.EqualTo(1));
+            Assert.That(rewards.Parcels,Is.Empty);rewards.Validate();
         }
         [Test] public void SkippingC26DoesNotPretendThatWorkshopIsComplete()
         {
@@ -113,6 +124,42 @@ namespace Cascade.Tests
             var profile=new PlayerProfile();profile.Rewards.Synchronize(nodes.Take(3));Assert.Throws<System.IO.InvalidDataException>(()=>profile.Validate());
             var rewards=new JourneyRewards();rewards.Synchronize(nodes.Take(3));rewards.Parcels[0].GiftId="random";
             Assert.Throws<ArgumentException>(()=>rewards.Validate());
+        }
+        [Test] public void LaterParcelsAreRareFixedPrizesAndReplayCannotRerollThem()
+        {
+            var rewards=new JourneyRewards();var clearIds=Enumerable.Range(1,84).Select(i=>"C"+i).ToArray();
+            rewards.Synchronize(clearIds);rewards.Synchronize(clearIds.Reverse());
+            // Existing published receipts retain version0 rather than being rerolled.
+            rewards.Parcels=rewards.Parcels.Select(p=>p.Order<=12?new ParcelReceipt{Order=p.Order,GiftId=JourneyRewards.Gifts[(p.Order-1)/3]}:JourneyRewards.BonusParcel(p.Order,0)).ToList();
+            Assert.That(rewards.Parcels.Count,Is.EqualTo(16));
+            Assert.That(rewards.Parcels.Where(p=>p.Order<=12).All(p=>p.Kind==null),Is.True);
+            Assert.That(rewards.Parcels.Where(p=>p.Order>12).Select(p=>p.Order),Is.EqualTo(new[]{16,20,24,28}));
+            Assert.That(rewards.Parcels.Where(p=>p.Kind=="coins").Count(),Is.EqualTo(3));
+            var rare=rewards.Parcels.Single(p=>p.Kind=="cosmetic");
+            Assert.That(rare.GiftId,Is.EqualTo("sky_pilot"));Assert.That(rewards.Owns(rare.GiftId),Is.False);
+            foreach(var parcel in rewards.Parcels.Where(p=>p.Order>12))Assert.That(rewards.ClaimParcel(parcel.Order),Is.True);
+            Assert.That(rewards.Owns("sky_pilot"),Is.True);
+            Assert.That(rewards.ClaimParcel(rare.Order),Is.False);
+            Assert.That(rewards.EarnedCoins(clearIds),Is.EqualTo(84*40+800+60));
+            rewards.Validate();
+        }
+        [Test] public void AlreadyBoughtRareLookConvertsOnceToSmallCoinsAndCloudKeepsClaim()
+        {
+            var ids=Enumerable.Range(1,84).Select(i=>"C"+i).ToArray();
+            var local=new PlayerProfile();foreach(var id in ids)local.Clears.Add(new ClearReceipt{
+                CampaignNodeId=id,AttemptId=Guid.NewGuid().ToString("D"),ContentHash=new string('a',64)});
+            local.Rewards.Synchronize(ids);
+            local.Rewards.Parcels=local.Rewards.Parcels.Select(p=>p.Order<=12?new ParcelReceipt{Order=p.Order,GiftId=JourneyRewards.Gifts[(p.Order-1)/3],RecipeVersion=3}:JourneyRewards.BonusParcel(p.Order,3)).ToList();
+            local.Monetization.Cosmetics.Add("sky_pilot");local.Monetization.SpentCoins=ShopCatalog.TrophyPrice("sky_pilot");
+            Assert.That(local.Rewards.ClaimParcel(28,local.Monetization.Cosmetics),Is.True);
+            Assert.That(local.Rewards.Parcels.Single(p=>p.Order==28).DuplicateCoins,Is.True);
+            int earned=local.Rewards.EarnedCoins(ids);Assert.That(earned,Is.EqualTo(84*40+800+40));
+            int spendableBefore=earned-local.Monetization.SpentCoins;
+            local.Validate();
+            var merged=CloudReconciler.Merge(new PlayerProfile(),new PlayerProfile(),local,ids);
+            Assert.That(merged.EconomyConflict,Is.False);
+            Assert.That(merged.Profile.Rewards.Parcels.Single(p=>p.Order==28).DuplicateCoins,Is.True);
+            Assert.That(merged.Profile.Rewards.EarnedCoins(ids)-merged.Profile.Monetization.SpentCoins,Is.EqualTo(spendableBefore),"Price migration preserves the spendable wallet, including the one duplicate reward");
         }
     }
 }

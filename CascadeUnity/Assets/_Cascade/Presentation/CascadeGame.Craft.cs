@@ -13,7 +13,7 @@ namespace Cascade.Presentation
             MenuTitle(title,body);
         }
         void Shelf(float bottom)
-        {Rect("Carved display shelf",menuRoot,new Vector2(.08f,bottom),new Vector2(.92f,bottom+.023f)).gameObject.AddComponent<WoodBoardGraphic>();}
+        {Rect("Carved display shelf",menuRoot,new Vector2(MenuColumnInset,bottom),new Vector2(1-MenuColumnInset,bottom+.023f)).gameObject.AddComponent<WoodBoardGraphic>();}
         Button ShelfChoice(string name,string asset,float left,float bottom,float width,float height,Action action,bool selected=false)
         {
             var b=Button(name,menuRoot,new Vector2(left,bottom),new Vector2(left+width,bottom+height),action);
@@ -29,15 +29,7 @@ namespace Cascade.Presentation
         }
         void DrawCraftBag()
         {
-            CraftTitle("My things",JourneyClearCount<3?"Restore three lights to open your journal.":"Tools and trophies for the journey.");
-            var hero=Picture("Mika at the bench",menuRoot,new Vector2(.13f,.59f),new Vector2(.43f,.80f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
-            hero.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,1.5f),0,.45f);
-            RewardPicture("Parcel",new Vector2(.55f,.62f),new Vector2(.86f,.79f));Shelf(.575f);
-            MenuNavRow("My tools","Hourglass",0,ShowSupplies);
-            MenuNavRow("Trophies","LeafPin",1,ShowCollection);
-            MenuNavRow("My journal","MoonPatch",2,ShowJournal,JourneyClearCount>=3);
-            MenuNavRow("Workshop","BridgeLantern",3,ShowWorkshop);
-            MenuButton("Back",.025f,BackFromBag);
+            DrawReferenceInventory();
         }
         public void ShowPowerupChallenges(){ShowTravelBag();}
         public void ShowReachChallenges(){ShowTravelBag();}

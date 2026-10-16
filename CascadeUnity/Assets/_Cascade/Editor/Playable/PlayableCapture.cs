@@ -32,7 +32,9 @@ namespace Cascade.Editor.Playable
             string before = game.Interaction.Attempt.CurrentStateHash;
             try {
                 scaler.enabled = false; camera.targetTexture = render; scaler.enabled = true;
-                yield return null; game.RefreshLayout(); yield return null; game.RefreshLayout(); yield return new WaitForEndOfFrame();
+                yield return null; game.RefreshLayout(); yield return null; game.RefreshLayout();
+                // The explicit camera render also works when the Game view is not repainting.
+                yield return null; Canvas.ForceUpdateCanvases();
                 game.Interaction.SetSuspended(false); game.RefreshLayout();
                 pose?.Invoke(game);
                 camera.Render(); RenderTexture.active = render; pixels.ReadPixels(new Rect(0, 0, width, height), 0, 0); pixels.Apply();

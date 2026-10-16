@@ -40,8 +40,8 @@ namespace Cascade.Presentation
                         if (version.GetStatic<int>("SDK_INT") >= 26)
                         {
                             bool adjustable = vibrator.Call<bool>("hasAmplitudeControl");
-                            long duration = adjustable ? Mathf.RoundToInt(Mathf.Lerp(10, 25, strength)) : 10;
-                            int amplitude = adjustable ? Mathf.RoundToInt(Mathf.Lerp(40, 110, strength)) : -1;
+                            long duration = adjustable ? Mathf.RoundToInt(Mathf.Lerp(12, 38, strength)) : 12;
+                            int amplitude = adjustable ? Mathf.RoundToInt(Mathf.Lerp(28, 220, strength)) : -1;
                             using (var effects = new AndroidJavaClass("android.os.VibrationEffect"))
                             using (var effect = effects.CallStatic<AndroidJavaObject>("createOneShot", duration, amplitude))
                                 vibrator.Call("vibrate", effect);

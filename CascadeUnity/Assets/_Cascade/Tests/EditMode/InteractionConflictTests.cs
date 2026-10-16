@@ -65,7 +65,7 @@ namespace Cascade.Tests
 
             Assert.That(input.PointerUp(7, 3, true), Is.Null);
             Assert.That(input.Execute(PuzzleCommand.Reach(0, 3)), Is.Null);
-            Assert.That(input.ApplyHint(hint), Is.Null);
+            Assert.That(input.Execute(hint.Result.Command.Value), Is.Null);
             Assert.That(input.SwapFocused(1), Is.Null);
             Assert.That(input.Undo(), Is.False);
             Assert.That(input.Retry(), Is.False);

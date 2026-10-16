@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Sprites;
 using TMPro;
 
 namespace Cascade.Presentation
@@ -27,16 +28,26 @@ namespace Cascade.Presentation
             ledge=root.Find("Mika's outcome ledge");
             group=root.gameObject.AddComponent<CanvasGroup>();group.blocksRaycasts=false;group.interactable=false;
             hopeful=Resources.Load<Sprite>("CascadeArt/Journey/Mika");thinking=Resources.Load<Sprite>("CascadeArt/Journey/MikaThinking");
-            root.gameObject.SetActive(false);
+            root.gameObject.SetActive(false);ribbon.gameObject.SetActive(false);
         }
         public IEnumerator Play(bool success,bool isCheckpoint)
         {
-            Success=success;checkpoint=isCheckpoint;Running=true;Progress=0;
+            Success=success;checkpoint=isCheckpoint;
+            // The receiver has already landed. Final victory goes straight to its star screen.
+            if(success&&!checkpoint){
+                root.gameObject.SetActive(false);ribbon.gameObject.SetActive(false);
+                Running=false;Progress=1;game.Feedback.Haptic();yield break;
+            }
+            Running=true;Progress=0;
             root.gameObject.SetActive(true);hero.gameObject.SetActive(!checkpoint);hero.sprite=success?hopeful:thinking??hopeful;
             if(ledge!=null)ledge.gameObject.SetActive(!checkpoint);
-            title.SetCopy(checkpoint?new UiCopy("Stage {0}/3 complete!",game.Descent.StageIndex+1):success?"Light delivered!":"Let's try another way.");
+            ribbon.gameObject.SetActive(true);PlaceRibbon();AlignLedge();
+            title.SetCopy(checkpoint?new UiCopy("Stage {0}/3",game.Descent.StageIndex+1):"Try again");
             if(success&&!checkpoint)game.Feedback.Haptic();
-            float duration=game.ReducedMotion?.14f:checkpoint?1.05f:success?1.35f:1.05f;
+            // Give a checkpoint landing a readable beat before the stable checkpoint
+            // screen takes over. The ribbon remains visible there until the player
+            // chooses to go lower.
+            float duration=game.ReducedMotion?.14f:checkpoint?1.65f:success?1.35f:1.05f;
             float elapsed=0;int lit=-1;bool seeds=false;
             try {
                 while(elapsed<duration){
@@ -78,14 +89,16 @@ namespace Cascade.Presentation
             for(int i=0;i<game.Machine.TokenCount;i++){game.OffsetPresentedToken(i,Vector3.zero,Vector2.one);game.Machine.SetPiecePose(i,PiecePose.Delivered);}
             game.Machine.SetReceiverLight(Success?.65f:0);
         }
+        public void HideReferenceFailure(){if(root!=null)root.gameObject.SetActive(false);if(ribbon!=null)ribbon.gameObject.SetActive(false);}
         public void ShowResult(GameScreen screen)
         {
             bool terminal=screen==GameScreen.Fail||screen==GameScreen.Checkpoint;
             if(Running&&screen==GameScreen.Playing)return;
-            root.gameObject.SetActive(terminal);if(!terminal){game.Machine.SetReceiverLight(0);return;}
+            root.gameObject.SetActive(terminal);ribbon.gameObject.SetActive(terminal);if(!terminal){game.Machine.SetReceiverLight(0);return;}
             checkpoint=screen==GameScreen.Checkpoint;Success=checkpoint;hero.gameObject.SetActive(!checkpoint);hero.sprite=Success?hopeful:thinking??hopeful;
             if(ledge!=null)ledge.gameObject.SetActive(!checkpoint);
-            title.SetCopy(checkpoint?new UiCopy("Stage {0}/3 complete!",game.Descent.StageIndex+1):"Let's try another way.");Settle();
+            PlaceRibbon();
+            title.SetCopy(checkpoint?new UiCopy("Stage {0}/3",game.Descent.StageIndex+1):"Try again");Settle();
         }
         public void Layout(float unit,RectTransform receiver)
         {
@@ -94,11 +107,33 @@ namespace Cascade.Presentation
             float foot=root.parent.InverseTransformPoint(portraitCorners[0]).y;
             float targetTop=root.parent.InverseTransformPoint(receiverCorners[2]).y;
             root.anchoredPosition=Vector2.up*Mathf.Max(0,targetTop+28*unit-foot);
+            AlignLedge();
             var image=ribbon.GetComponent<Image>();var bounds=ribbon.rect;float aspect=image.sprite.rect.width/image.sprite.rect.height;
             float width=Mathf.Min(bounds.width,bounds.height*aspect),height=Mathf.Min(bounds.height,bounds.width/aspect);
+            if(!image.preserveAspect){width=bounds.width;height=bounds.height;}
             title.rectTransform.anchorMin=title.rectTransform.anchorMax=new Vector2(.5f,.5f);
-            title.rectTransform.sizeDelta=new Vector2(width*.59f,height*.60f);title.rectTransform.anchoredPosition=Vector2.up*height*.025f;
+            title.rectTransform.sizeDelta=new Vector2(width*.72f,height*.60f);title.rectTransform.anchoredPosition=Vector2.up*height*.025f;
             title.margin=new Vector4(3*unit,2*unit,3*unit,2*unit);title.fontSizeMin=17*unit;title.fontSizeMax=24*unit*(game.Preferences.LargeText?1.12f:1);
+        }
+        void PlaceRibbon()
+        {
+            ribbon.anchorMin=new Vector2(.045f,checkpoint?.66f:.79f);
+            ribbon.anchorMax=new Vector2(.955f,checkpoint?.80f:.93f);
+            ribbon.offsetMin=ribbon.offsetMax=Vector2.zero;
+        }
+        void AlignLedge()
+        {
+            if(!(ledge is RectTransform board)||hero.sprite==null)return;
+            var bounds=portrait.rect;var sprite=hero.sprite;float aspect=sprite.rect.width/sprite.rect.height;
+            float height=hero.preserveAspect?Mathf.Min(bounds.height,bounds.width/aspect):bounds.height;
+            // Respect the sprite's transparent bottom padding and Image's aspect-fit letterbox.
+            float foot=portrait.localPosition.y+bounds.yMin+(bounds.height-height)*.5f
+                +DataUtility.GetPadding(sprite).y/sprite.rect.height*height;
+            float thickness=root.rect.height*.017f;
+            board.anchorMin=board.anchorMax=new Vector2(.5f,.5f);
+            board.sizeDelta=new Vector2(root.rect.width*.46f,thickness);
+            // The timber artwork occupies the middle of its thin graphic, rather than its top edge.
+            board.anchoredPosition=new Vector2(0,foot-root.rect.center.y+thickness*.25f);
         }
         void OnDisable(){if(Running)Settle();}
 #if UNITY_EDITOR

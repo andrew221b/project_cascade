@@ -32,6 +32,11 @@ namespace Cascade.Presentation
                 globalCosmeticAmbiance.SetAsFirstSibling();
             }
             CosmeticAmbiance(globalCosmeticAmbiance,EquippedGift,false);
+            CosmeticAmbiance(safeRoot.parent as RectTransform,EquippedScenery,false);
+            bool opaque=CurrentScreen==GameScreen.Home||CurrentScreen==GameScreen.JourneyMap||CurrentScreen==GameScreen.Shop||CurrentScreen==GameScreen.Supplies||CurrentScreen==GameScreen.Collection||CurrentScreen==GameScreen.CoinPacks||CurrentScreen==GameScreen.TravelBag||CurrentScreen==GameScreen.Parcel||CurrentScreen==GameScreen.Pause;
+            globalCosmeticAmbiance.gameObject.SetActive(!opaque);
+            var scenery=canvas.Find("Equipped trophy atmosphere");if(scenery!=null)scenery.gameObject.SetActive(!opaque);
+            UpdateScreenCosmetics();
         }
     }
 }

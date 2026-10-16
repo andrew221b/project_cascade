@@ -54,7 +54,7 @@ namespace Cascade.Presentation
             wantedOffset = startPosition-machine.TokenPosition(slot)+Vector3.up * (ReducedMotion?0:machine.SelectionLiftWorld(slot)*1.6f);
             wantedOffset.z = -.3f;
             holdOffset = ReducedMotion ? wantedOffset : startPosition-machine.TokenPosition(slot)+Vector3.up * machine.SelectionLiftWorld(slot) * .25f;
-            feedback.Sound(ToyCue.Select); feedback.Haptic();
+            feedback.Sound(ToyCue.Select); feedback.Haptic(.08f);
             RestoreTouchPose();
         }
         public void MoveTokenHold(Vector2 screenPoint)

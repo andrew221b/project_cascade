@@ -53,7 +53,9 @@ namespace Cascade.Editor.Playable
             importer.maxTextureSize=2048; importer.textureCompression=TextureImporterCompression.Compressed; importer.SaveAndReimport();
             art.backdrop.SetTexture("_BaseMap",AssetDatabase.LoadAssetAtPath<Texture2D>(Root+"/SkyWorkshop.png"));
             art.backdrop.SetColor("_BaseColor",Color.white);
-            art.bodyFont=FontAsset("BalsamiqSans-Regular","Body"); art.titleFont=FontAsset("BalsamiqSans-Bold","Title");
+            art.bodyFont=Resources.Load<TMP_FontAsset>("CascadeArt/Fonts/InterfaceBody")??FontAsset("BalsamiqSans-Regular","Body");
+            art.titleFont=Resources.Load<TMP_FontAsset>("CascadeArt/Fonts/ShapeManiaInterface")??Resources.Load<TMP_FontAsset>("CascadeArt/Fonts/InterfaceTitle")??FontAsset("BalsamiqSans-Bold","Title");
+            art.displayFont=Resources.Load<TMP_FontAsset>("CascadeArt/Fonts/ShapeManiaInterface")??Resources.Load<TMP_FontAsset>("CascadeArt/Fonts/StorybookDisplay");
             art.panel=PanelSprite();
             EditorUtility.SetDirty(art); EditorUtility.SetDirty(art.shadow); EditorUtility.SetDirty(art.backdrop);
             AssetDatabase.SaveAssets(); AssetDatabase.Refresh();

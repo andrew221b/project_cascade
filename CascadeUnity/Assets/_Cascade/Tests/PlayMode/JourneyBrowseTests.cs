@@ -31,9 +31,12 @@ namespace Cascade.Tests
             UnityEngine.Application.runInBackground=true;
             directory=Path.Combine(Path.GetTempPath(),"CascadeJourneyBrowse",Guid.NewGuid().ToString("N"));
             CascadeGame.EditorProfileDirectory=directory;
+            void PreloadLog(string message,string stack,LogType type){if(type==LogType.Error&&message.StartsWith("OperationException : Failed to initialize localization, could not preload string tables.",StringComparison.Ordinal))LogAssert.Expect(type,new System.Text.RegularExpressions.Regex("^OperationException : Failed to initialize localization, could not preload string tables\\."));}
+            UnityEngine.Application.logMessageReceived+=PreloadLog;
+            try{yield return UnityEngine.Localization.Settings.LocalizationSettings.InitializationOperation;foreach(string locale in new[]{"en","ru","uk"}){var t=UnityEngine.Localization.Settings.LocalizationSettings.StringDatabase.GetTableAsync(UiCopy.Table,UnityEngine.Localization.Settings.LocalizationSettings.AvailableLocales.GetLocale(locale));yield return t;Assert.That(t.Status,Is.EqualTo(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Succeeded));}}finally{UnityEngine.Application.logMessageReceived-=PreloadLog;}
             yield return SceneManager.LoadSceneAsync("Assets/_Cascade/Scenes/CascadePlayable.unity");
             game=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();ConfigureGame();
-            var profile=Read<PlayerProfile>("profile");
+            var profile=Read<PlayerProfile>("profile");profile.Missions.NextAfterClears=20000;
             Read<HashSet<int>>("heardStory").UnionWith(StoryReceipts());
             // Browsing is tested after the stories have been read in each journey.
             foreach(var mode in new[]{PuzzleMode.Words,PuzzleMode.Mixed})profile.ModeJourneys.Add(new ModeJourney{
@@ -51,7 +54,7 @@ namespace Cascade.Tests
             if(Directory.Exists(directory))Directory.Delete(directory,true);
         }
 
-        static IEnumerable<int> StoryReceipts()=>new[]{1000}.Concat(Enumerable.Range(0,JourneyStory.PageCount))
+        static IEnumerable<int> StoryReceipts()=>new[]{1000,9000,9001,9002,9010,9011,9012}.Concat(Enumerable.Range(0,JourneyStory.PageCount))
             .Concat(Enumerable.Range(2000,JourneyStory.WorldCount*10)).Concat(Enumerable.Range(4000,JourneyStory.TotalLevels))
             .Concat(Enumerable.Range(6000,JourneyStory.WorldCount)).Concat(Enumerable.Range(7000,JourneyStory.TotalLevels))
             .Concat(Enumerable.Range(8000,JourneyStory.WorldCount*10));
@@ -89,7 +92,7 @@ namespace Cascade.Tests
             // Navigation fixtures bind valid receipts to actual published content; they do not test delivery or ratings.
             var profile=Read<PlayerProfile>("profile");
             var receipt=new ClearReceipt{CampaignNodeId=content.Definition.CampaignNodeId,AttemptId=Guid.NewGuid().ToString("D"),
-                ContentHash=content.Definition.ContentHash,BestStars=fourStars?4:5,BestScore=fourStars?1300:1400};
+                ContentHash=content.Definition.ContentHash,BestStars=2,BestHalfStar=!fourStars,BestScore=fourStars?1300:1400};
             profile.Clears.Add(receipt);
             Read<HashSet<string>>("sessionClears").Add(receipt.CampaignNodeId);
             profile.ModeRecords.Add(new MasteryRecord{PuzzleId=content.Definition.PuzzleId,ContentHash=content.Definition.ContentHash,
@@ -110,7 +113,7 @@ namespace Cascade.Tests
             Assert.That(solution.Status,Is.EqualTo(SearchStatus.Solved));
             Assert.That(game.Interaction.Execute(solution.Path.First()).Accepted,Is.True);
             yield return Await(()=>!game.Interaction.IsPresenting,"Middle-stage exchange must finish before browsing");
-            Assert.That(game.Interaction.Attempt.Current.Status,Is.EqualTo(PuzzleStatus.Playing));Invoke("PersistProgress");
+            Assert.That(game.Interaction.Attempt.Current.Status,Is.EqualTo(PuzzleStatus.Playing));Invoke("PersistProgress",true);
             Assert.That(game.HasSaveError,Is.False);
         }
         void AssertPinned(PlayerProfile before,AttemptService attempt,PuzzleState row,DescentRun run)
@@ -118,7 +121,7 @@ namespace Cascade.Tests
             Assert.That(game.Interaction.Attempt,Is.SameAs(attempt));Assert.That(attempt.Current,Is.SameAs(row));
             Assert.That(game.Descent,Is.SameAs(run));Assert.That(run.StageIndex,Is.EqualTo(1));
             Assert.That(attempt.RouteLength,Is.EqualTo(before.Attempt.Commands.Length));
-            Invoke("PersistProgress");Assert.That(game.HasSaveError,Is.False);var after=Saved();
+            Invoke("PersistProgress",true);Assert.That(game.HasSaveError,Is.False);var after=Saved();
             Assert.That(after.Attempt.AttemptId,Is.EqualTo(before.Attempt.AttemptId));
             Assert.That(after.Attempt.StateHash,Is.EqualTo(before.Attempt.StateHash));
             Assert.That(after.Descent.ContentHash,Is.EqualTo(before.Descent.ContentHash));
@@ -166,7 +169,7 @@ namespace Cascade.Tests
                 Assert.That(game.Interaction.Attempt,Is.SameAs(attempt));Assert.That(attempt.CurrentStateHash,Is.EqualTo(hash));
                 game.CloseJourneyIsland();game.ReplayJourneyLevel(0);yield return null;
                 Assert.That(game.BrowsedIsland,Is.EqualTo(-1));Assert.That(game.Interaction.Attempt,Is.SameAs(attempt));
-                Invoke("PersistProgress");Assert.That(game.HasSaveError,Is.False);Assert.That(Saved().Clears,Is.Empty);
+                Invoke("PersistProgress",true);Assert.That(game.HasSaveError,Is.False);Assert.That(Saved().Clears,Is.Empty);
             }
         }
 
@@ -188,28 +191,28 @@ namespace Cascade.Tests
         [UnityTest] public IEnumerator BestClearStatsAndMasteryStayWithTheirModeAfterBrowseAndReload()
         {
             foreach(var content in game.Catalog.PrimaryLevels.Take(3))AddPublishedClear(content);
-            Invoke("PersistProgress");var shapes=Saved();Assert.That(shapes.ModeRecords,Is.Not.Empty);
+            Invoke("PersistProgress",true);var shapes=Saved();Assert.That(shapes.ModeRecords,Is.Not.Empty);
             game.ShowJourney();game.OpenJourneyIsland(0);game.CloseJourneyIsland();yield return null;
             Assert.That(ClearStats(Saved()),Is.EqualTo(ClearStats(shapes)));
             game.SelectMode(PuzzleMode.Words);yield return null;
             Assert.That(game.JourneyClearCount,Is.Zero);Assert.That(Saved().Clears,Is.Empty);Assert.That(Saved().ModeRecords,Is.Empty);
             game.OpenJourneyIsland(1);yield return null;Assert.That(game.BrowsedIsland,Is.EqualTo(-1));
             Assert.That(game.Catalog.TryGetLocalizedBinding("C01","en",out var wordsContent),Is.True);
-            var wordsReceipt=AddPublishedClear(wordsContent,fourStars:true);Invoke("PersistProgress");var words=Saved();
+            var wordsReceipt=AddPublishedClear(wordsContent,fourStars:true);Invoke("PersistProgress",true);var words=Saved();
             Assert.That(wordsReceipt.BestStars,Is.GreaterThan(0));Assert.That(wordsReceipt.BestScore,Is.GreaterThan(0));
-            Assert.That(wordsReceipt.BestStars,Is.Not.EqualTo(shapes.Clears.First().BestStars),"Each mode has its own earned rating");
+            Assert.That(wordsReceipt.BestStarHalfUnits,Is.Not.EqualTo(shapes.Clears.First().BestStarHalfUnits),"Each mode has its own earned rating");
             game.ShowJourney();game.OpenJourneyIsland(0);game.CloseJourneyIsland();game.SelectMode(PuzzleMode.Shapes);yield return null;
             Assert.That(ClearStats(Saved()),Is.EqualTo(ClearStats(shapes)));Assert.That(Records(Saved()),Is.EqualTo(Records(shapes)));
-            Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Single(t=>t.name=="Mode stars total").text,
-                Is.EqualTo(shapes.Clears.Sum(c=>c.BestStars).ToString()));
+            Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Single(t=>t.name=="Reference shop map island stars 0").text,
+                Is.EqualTo(LevelCompletion.FormatStars(shapes.Clears.Sum(c=>c.BestStarRating))+" / 36"));
             yield return SceneManager.LoadSceneAsync("Assets/_Cascade/Scenes/CascadePlayable.unity");
             game=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();ConfigureGame();game.ShowJourney();yield return null;
             Assert.That(game.PreferredMode,Is.EqualTo(PuzzleMode.Shapes));Assert.That(ClearStats(Saved()),Is.EqualTo(ClearStats(shapes)));
             Assert.That(Records(Saved()),Is.EqualTo(Records(shapes)));
             game.SelectMode(PuzzleMode.Words);yield return null;
             Assert.That(ClearStats(Saved()),Is.EqualTo(ClearStats(words)));Assert.That(Records(Saved()),Is.EqualTo(Records(words)));
-            Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Single(t=>t.name=="Mode stars total").text,
-                Is.EqualTo(wordsReceipt.BestStars.ToString()));
+            Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Single(t=>t.name=="Reference shop map island stars 0").text,
+                Is.EqualTo(LevelCompletion.FormatStars(wordsReceipt.BestStarRating)+" / 36"));
             game.TurnJourneyMap(1);game.OpenJourneyIsland(1);yield return null;
             Assert.That(game.MapWorld,Is.Zero);Assert.That(game.BrowsedIsland,Is.EqualTo(-1));
         }

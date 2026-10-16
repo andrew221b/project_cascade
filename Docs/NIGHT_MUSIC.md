@@ -1,5 +1,7 @@
 # Star Observatory music
 
+> Historical music revision. Active score now uses [the long-form acoustic arrangements](ACOUSTIC_SCORE_OCT09.md).
+
 7 October 2026: `StarObservatory_ConstellationLullaby.wav` is one original
 48-second stereo score for world index 8. It was composed in the local
 `observatory()` function in `Tools/compose_cascade_score.swift`, using D-major

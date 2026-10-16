@@ -1,0 +1,16 @@
+Cloud account implementation — 7 October 2026
+
+PASS: 28 scoped pure C# NUnit tests for cloud merges, coherent attempts, parcel choices, account economy, journal checksums/backups, AccountLoadPending restart and stale-reply duplicate purchase protection.
+PASS: 11 local reminder planner/consent tests.
+PASS: 31 actual Cloud Code SDK boundary assertions using fake transport; Current Release build, 0 warnings/errors. Prior Linux x64 publish passed before final marker scrubbing; deployment must republish current source. See CascadeUnity/CascadeAccountCCM/validation.txt.
+PASS: 11 receipt verifier Node tests for authenticated context, store catalog and verification contract.
+Packages installed with Unity Editor Client.AddAndRemove, not handwritten manifest changes.
+PASS: actual native Unity Play Mode captures viewed: Reminders 390×844 and Cloud 320×568 in RU. Corrected new Settings tab resizing/selected-tab positioning, window insets and status spacing; no gameplay-state change during capture. Native UI import/capture completed without C# errors.
+Cloud sync/player accounts/purchase verification flags remain disabled.
+Real rewarded offers are hidden under cloud until AdMob SSV; session-only preview ads remain available.
+
+NOT RUN: live Unity deployment/first-write semantics/concurrent real workers, linked phone login, Apple/Google receipts/refunds, AdMob SSV, real OS notification permission/delivery, player builds/phone installation, full suite/load testing.
+Cloud Save has no documented create-if-absent; guarded first creation of both account and global transaction owner is an explicit activation blocker.
+Offline/legacy progression is validated structurally against published content but is not a full server replay anti-cheat proof.
+
+PASS: final Presentation source compiled with real Unity Roslyn/reference assemblies for iOS and Android conditional branches, 0 errors each; this is a scoped source compile, not a player build.

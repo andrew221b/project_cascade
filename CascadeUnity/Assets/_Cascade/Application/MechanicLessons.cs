@@ -11,7 +11,7 @@ namespace Cascade.Application
         Bomb=0, Key=1, Repair=2, Ribbon=3, Stamp=4, BombHourglass=5,
         Bridge=6, LinkedPairs=7, Fragile=8, ClosedPath=9, Rollers=10,
         Mirror=11, LandingWind=12, Gust=13, Wayfinder=14, UndoSpool=15, ReturnHourglass=16, SignalLantern=17, LandingLens=18, LiveGust=19,
-        Swap=20, Descent=21, Undo=22, Hint=23, FarSwap=24, Toolbag=25
+        Swap=20, Descent=21, Undo=22, Hint=23, FarSwap=24, Toolbag=25, RepairKit=26
     }
     public static class MechanicLessons
     {
@@ -39,9 +39,9 @@ namespace Cascade.Application
             }
             return found.Distinct().ToArray();
         }
-        // A first encounter belongs to the board the player can act on now. Entry
-        // transformations are introduced separately before the actual next landing.
-        public static IReadOnlyList<MechanicLesson> DiscoverVisible(LevelDefinition level,PuzzleState state)
+        // Explain an entry transform while the next board is visible, before the
+        // player starts preparing the row. Never teach an already applied entry.
+        public static IReadOnlyList<MechanicLesson> DiscoverVisible(LevelDefinition level,PuzzleState state,bool nextIsWind=false)
         {
             if(level==null)throw new ArgumentNullException(nameof(level));
             if(state==null)throw new ArgumentNullException(nameof(state));
@@ -61,9 +61,15 @@ namespace Cascade.Application
                 &&(f.Key==null||edge!=f.Key.EdgeToOpen)).Any())found.Add(MechanicLesson.ClosedPath);
             if(f.GustAfterSwaps>0&&state.GustTicks>0)found.Add(MechanicLesson.LiveGust);
             if(state.ReachCharges>0)found.Add(MechanicLesson.FarSwap);
+            var next=state.ActiveFloor+1;
+            if(next<level.Floors.Count){
+                var entry=level.Floors[next].EntryTransform;
+                if(entry!=EntryTransform.None)found.Add(entry==EntryTransform.MirrorNext?MechanicLesson.Mirror:
+                    nextIsWind?MechanicLesson.LandingWind:MechanicLesson.Rollers);
+            }
             return found;
         }
-        public static MechanicLesson Tool(TravelTool tool)=>tool==TravelTool.Wayfinder?MechanicLesson.Wayfinder:tool==TravelTool.UndoSpool?MechanicLesson.UndoSpool:tool==TravelTool.ReturnHourglass?MechanicLesson.ReturnHourglass:tool==TravelTool.SignalLantern?MechanicLesson.SignalLantern:MechanicLesson.LandingLens;
+        public static MechanicLesson Tool(TravelTool tool)=>tool==TravelTool.Wayfinder?MechanicLesson.Wayfinder:tool==TravelTool.UndoSpool?MechanicLesson.UndoSpool:tool==TravelTool.ReturnHourglass?MechanicLesson.ReturnHourglass:tool==TravelTool.SignalLantern?MechanicLesson.SignalLantern:tool==TravelTool.RepairKit?MechanicLesson.RepairKit:MechanicLesson.LandingLens;
         public static bool Valid(IEnumerable<MechanicLesson> seen)=>seen!=null&&seen.All(x=>Enum.IsDefined(typeof(MechanicLesson),x))&&seen.Distinct().Count()==seen.Count();
     }
 }

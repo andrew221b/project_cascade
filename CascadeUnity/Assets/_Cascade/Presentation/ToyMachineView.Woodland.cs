@@ -23,7 +23,8 @@ namespace Cascade.Presentation
         public Vector3 TokenVisualScale(int index)=>tokens[index].transform.localScale;
         public Vector3 TokenBaseScale(int index)=>restScales[index];
         public Vector3 TokenBodySize(int index)=>Vector3.Scale(tokens[index].mesh.bounds.size,restScales[index]);
-        public Vector3 TokenBodyCentre(int index)=>Vector3.Scale(tokens[index].mesh.bounds.center,restScales[index]);
+        public Bounds TokenVisualBounds(int index)=>tokens[index].renderer.bounds;
+        public Vector3 TokenBodyCentre(int index)=>tokens[index].transform.TransformVector(tokens[index].mesh.bounds.center);
         public float TokenVisualAngle(int index)=>tokens[index].transform.eulerAngles.z;
         public PiecePose TokenPose(int index)=>piecePoses[index];
         public float LoadedSag=>Frame!=null&&Frame.ActiveFloor<floors.Count?floors[Frame.ActiveFloor].sag:0;
@@ -66,22 +67,25 @@ namespace Cascade.Presentation
         void InitializeWoodMaterials()
         {
             if(woodMaterial!=null)return;
-            var texture=Resources.Load<Texture2D>("CascadeArt/Reactions/TimberStates");
-            woodMaterial=new Material(Shader.Find("Universal Render Pipeline/Lit")){name="Painted honey wood"};
+            var texture=GameplayReferenceArt.Texture("BoardStates");
+            woodMaterial=new Material(Resources.Load<Shader>("CascadeArt/TimberSurface")){name="Painted honey wood"};
             woodMaterial.SetTexture("_BaseMap",texture);
-            var frame=WorkshopSpriteSet.WoodUv(0);woodMaterial.SetTextureScale("_BaseMap",new Vector2(frame.x,frame.y));woodMaterial.SetTextureOffset("_BaseMap",new Vector2(frame.z,frame.w));
+            var frame=GameplayReferenceArt.BoardUv(-1,0);woodMaterial.SetTextureScale("_BaseMap",new Vector2(frame.x,frame.y));woodMaterial.SetTextureOffset("_BaseMap",new Vector2(frame.z,frame.w));
             woodMaterial.SetColor("_BaseColor",texture!=null?Color.white:new Color(.65f,.35f,.13f));
             woodMaterial.SetFloat("_Smoothness",.32f);
             woodMaterial.SetFloat("_AlphaClip",1);woodMaterial.SetFloat("_Cutoff",.12f);woodMaterial.EnableKeyword("_ALPHATEST_ON");woodMaterial.SetOverrideTag("RenderType","TransparentCutout");woodMaterial.renderQueue=2450;
             for(int i=0;i<platformMaterials.Length;i++){
                 var surface=new Material(woodMaterial){name=i==0?"Reflective mirror timber":i==1?"Turquoise roller timber":"Wind-woven timber"};
-                surface.SetTexture("_BaseMap",PlatformSurfaceArt.Texture);surface.SetFloat("_Smoothness",i==0?.68f:.36f);platformMaterials[i]=surface;
+                surface.SetTexture("_BaseMap",texture);surface.SetFloat("_Smoothness",i==0?.68f:.36f);platformMaterials[i]=surface;
             }
             ropeMaterial=new Material(art.gold){name="Warm braided hemp"};ropeMaterial.SetColor("_BaseColor",new Color(.73f,.51f,.26f));
-            branchMaterial=new Material(woodMaterial){name="Natural honey-wood branch stops"};
+            // Runtime Lit alpha-test variants can be stripped in a player. This
+            // illustrated shader clips alpha unconditionally and retains world lighting.
+            branchMaterial=new Material(Resources.Load<Shader>("CascadeArt/IllustratedSurface")){name="Natural honey-wood branch stops"};
             branchMaterial.SetTexture("_BaseMap",Resources.Load<Texture2D>("CascadeArt/Woodland/BranchStops"));
             branchMaterial.SetTextureScale("_BaseMap",Vector2.one);branchMaterial.SetTextureOffset("_BaseMap",Vector2.zero);
-            branchMaterial.SetFloat("_Cutoff",.45f);branchMaterial.SetFloat("_Smoothness",.24f);
+            branchMaterial.SetColor("_BaseColor",Color.white);
+            branchMaterial.SetFloat("_Cutoff",.45f);branchMaterial.SetFloat("_Relief",.24f);
         }
         Mesh BoardMesh()
         {
@@ -124,12 +128,12 @@ namespace Cascade.Presentation
                 if(surface!=rig.surfaceStyle){rig.surfaceStyle=surface;rig.board.renderer.sharedMaterial=rig.top.renderer.sharedMaterial=surface>=0?platformMaterials[surface]:woodMaterial;}
                 float weight=loaded?centreLoad/Mathf.Max(.01f,centreFullLoad):0;
                 float targetSag=(.15f+.21f*rig.wear)*weight+rig.fracture*.19f;float wind=WindAt(f);
-                float tilt=reducedMotion?0:wind*1.2f-(loaded?loadCentre-.5f:0)*4.2f;
+                float tilt=reducedMotion?0:wind*2.2f-(loaded?loadCentre-.5f:0)*4.2f;
                 if(reducedMotion){rig.sag=targetSag;rig.sagVelocity=rig.sway=rig.swayVelocity=rig.roll=rig.rollVelocity=0;}
                 Spring(ref rig.sag,ref rig.sagVelocity,targetSag,120,14,dt);
-                Spring(ref rig.sway,ref rig.swayVelocity,wind*.12f,38,7.2f,dt);
-                Spring(ref rig.roll,ref rig.rollVelocity,tilt,32,5.5f,dt);
-                rig.sway=Mathf.Clamp(rig.sway,-.22f,.22f);rig.roll=Mathf.Clamp(rig.roll,-2.4f,2.4f);
+                Spring(ref rig.sway,ref rig.swayVelocity,wind*.20f,30,5.4f,dt);
+                Spring(ref rig.roll,ref rig.rollVelocity,tilt,24,4.8f,dt);
+                rig.sway=Mathf.Clamp(rig.sway,-.30f,.30f);rig.roll=Mathf.Clamp(rig.roll,-3.5f,3.5f);
                 for(int column=0;column<17;column++){
                     float x=column/16f;
                     rig.deflection[column]=rig.sag*(loaded&&centreLoad>.001f?LoadResponse(x,f)/centreLoad:Mathf.Sin(x*Mathf.PI));
@@ -142,10 +146,15 @@ namespace Cascade.Presentation
                     rig.vertices[i]=new Vector3(pivot+point.x/width,point.y/height,0);
                 }
                 int stage=rig.fracture>.22f?3:rig.wear>=.60f?2:rig.wear>0||interaction.Attempt.Level.Floors[f].FragileEdges.Count>0?1:0;
-                rig.woodProperties.SetVector("_BaseMap_ST",rig.surfaceStyle<0?WorkshopSpriteSet.WoodUv(stage):PlatformSurfaceArt.Uv(rig.surfaceStyle,stage));
+                rig.woodProperties.SetVector("_BaseMap_ST",GameplayReferenceArt.BoardUv(rig.surfaceStyle,stage));
                 rig.woodProperties.SetColor("_BaseColor",new Color(1,1,1,1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(.36f,.82f,rig.fracture))));rig.board.renderer.SetPropertyBlock(rig.woodProperties);
                 rig.bendMesh.vertices=rig.vertices; // Static bounds already enclose the small cosmetic deflection.
-                for(int i=0;i<rig.topVertices.Length;i++){float x=i/2/16f;rig.topVertices[i].y=((i%2==0?-.035f:.035f)-BendAt(f,x))/Mathf.Max(.001f,rig.top.baseScale.y);}
+                for(int i=0;i<rig.topVertices.Length;i++){
+                    float x=i/2/16f;
+                    float front=rig.board.basePosition.y+(GameplayReferenceArt.BoardCrown(x)-.5f-.012f)*rig.board.baseScale.y;
+                    float depthLift=i%2==0?0:rig.board.baseScale.y*.10f;
+                    rig.topVertices[i].y=(front+depthLift-rig.top.basePosition.y-BendAt(f,x))/Mathf.Max(.001f,rig.top.baseScale.y);
+                }
                 rig.topMesh.vertices=rig.topVertices;rig.topMesh.RecalculateNormals();rig.top.renderer.SetPropertyBlock(rig.woodProperties);
                 foreach(var part in rig.parts) {
                     if(rig.rope.Contains(part)) {
@@ -156,16 +165,29 @@ namespace Cascade.Presentation
                         part.transform.rotation=Quaternion.Euler(0,0,rig.roll)*part.baseRotation;
                     }
                 }
+                if(rig.bridgeStop!=null){
+                    if(reducedMotion){rig.bridgeClosure=rig.bridgeClosed?1:0;rig.bridgeVelocity=0;}
+                    else Spring(ref rig.bridgeClosure,ref rig.bridgeVelocity,rig.bridgeClosed?1:0,150,19,dt);
+                    float angle=Mathf.Lerp(-90,0,Mathf.Clamp01(rig.bridgeClosure));
+                    var stop=rig.bridgeStop;
+                    // Rotate around the foot seated in the plate; follow the same bend as the board.
+                    Vector3 foot=stop.basePosition-Vector3.up*(stop.baseScale.y*stop.mesh.bounds.size.y*.5f);
+                    var rotation=Quaternion.Euler(0,0,angle);
+                    Vector3 centre=foot+rotation*(stop.basePosition-foot);
+                    stop.transform.position=foot+FloorPointOffset(f,foot,true)+Quaternion.Euler(0,0,rig.roll)*(centre-foot);
+                    stop.transform.rotation=Quaternion.Euler(0,0,rig.roll)*rotation*stop.baseRotation;
+                }
                 if(rig.bombFlame!=null&&!reducedMotion)rig.bombFlame.transform.localScale=rig.bombFlame.baseScale*(1+Mathf.Sin(windTime*7)*.025f);
             }
+            TickReceiver(dt);
             UpdateRopeRig(dt);
             for(int i=0;i<tokens.Count;i++) {
                 TickSeat(i,dt);
-                float target=reducedMotion?0:WindAt(Mathf.Min(Frame.ActiveFloor,floors.Count-1))*.65f/PieceMass(i);
+                float target=reducedMotion?0:WindAt(Mathf.Min(Frame.ActiveFloor,floors.Count-1))*2.4f/PieceMass(i);
                 if(reducedMotion)rocking[i]=rockVelocity[i]=0;
-                else Spring(ref rocking[i],ref rockVelocity[i],target,58,8,dt);
+                else Spring(ref rocking[i],ref rockVelocity[i],target,58,13.5f,dt);
                 rocking[i]=Mathf.Clamp(rocking[i],-2,2);
-                if(Frame.Status==PuzzleStatus.Playing&&piecePoses[i]!=PiecePose.Falling&&piecePoses[i]!=PiecePose.Exchanging) {
+                if(piecePoses[i]!=PiecePose.Falling&&piecePoses[i]!=PiecePose.Exchanging) {
                     dynamicOffsets[i]=TokenSupportOffset(i);
                 } else dynamicOffsets[i]=Vector3.zero;
                 ApplyPiece(i);
@@ -177,23 +199,37 @@ namespace Cascade.Presentation
             var stretch=visualStretch[index];if(stretch==Vector2.zero)stretch=Vector2.one;
             var token=tokens[index].transform;token.position=restPositions[index]+dynamicOffsets[index]+visualOffsets[index];
             bool supported=Frame.Status==PuzzleStatus.Playing&&!PieceLifted(index)&&piecePoses[index]!=PiecePose.Falling&&piecePoses[index]!=PiecePose.Exchanging;
-            float supportAngle=supported?floors[Frame.ActiveFloor].roll+contactLean[index]:0;
+            float supportAngle=supported?floors[Frame.ActiveFloor].roll+contactLean[index]:Frame.Status!=PuzzleStatus.Playing&&piecePoses[index]!=PiecePose.Falling&&piecePoses[index]!=PiecePose.Exchanging?ReceiverAngle:0;
             float rock=supported&&piecePoses[index]!=PiecePose.Held?rocking[index]:0;
-            token.position+=Vector3.up*(Mathf.Abs(Mathf.Sin(rock*Mathf.Deg2Rad))*tokens[index].mesh.bounds.extents.x*restScales[index].x);
-            token.localScale=Vector3.Scale(restScales[index],new Vector3(stretch.x,stretch.y,1));token.rotation=Quaternion.Euler(0,0,visualAngles[index]+supportAngle+rock);
+            token.localScale=Vector3.Scale(restScales[index],new Vector3(stretch.x,stretch.y,1));
+            var rotation=Quaternion.Euler(0,0,visualAngles[index]+supportAngle+rock);
+            if(supported){
+                // Rock around the seated foot instead of lifting the whole piece on every swing.
+                Vector3 foot=Vector3.Scale(tokens[index].mesh.bounds.center-Vector3.up*tokens[index].mesh.bounds.extents.y,token.localScale);
+                Vector3 plantedFoot=token.position+Quaternion.Euler(0,0,visualAngles[index]+supportAngle)*foot;
+                token.position=plantedFoot-rotation*foot;
+            }
+            token.rotation=rotation;
             UpdateTouchContour(index);
             if(index<tokenShadows.Count) {
                 var shadow=tokenShadows[index];float lift=Mathf.Max(0,visualOffsets[index].y);
                 var shadowPoint=shadow.basePosition+Vector3.right*contactSlide[index];
                 var shadowOffset=Frame.Status==PuzzleStatus.Playing?FloorPointOffset(Frame.ActiveFloor,shadowPoint,true):dynamicOffsets[index];
-                shadow.transform.position=shadowPoint+shadowOffset+Vector3.right*visualOffsets[index].x*.25f;
+                var projection=Illumination.ShadowOffset(lift);
+                shadow.transform.position=shadowPoint+shadowOffset+Vector3.right*(visualOffsets[index].x+projection.x);
                 shadow.transform.rotation=Quaternion.Euler(0,0,supported?floors[Frame.ActiveFloor].roll:0);
                 shadow.transform.localScale=shadow.baseScale*(1+Mathf.Min(lift,.6f)*.45f);
                 shadow.renderer.enabled=piecePoses[index]!=PiecePose.Falling&&lift<.9f;
+                if(shadow.shadowProperties==null)shadow.shadowProperties=new MaterialPropertyBlock();
+                var shadowTint=Color.Lerp(new Color(.10f,.13f,.18f),Illumination.Ground.gamma,.22f);
+                shadowTint.a=.30f*Mathf.Exp(-lift*2.4f);shadow.shadowProperties.SetColor("_BaseColor",shadowTint);
+                shadow.renderer.SetPropertyBlock(shadow.shadowProperties);
             }
         }
         void OnDestroy()
         {
+            DisposeReceiverFrame();
+            worldLight?.Dispose();worldLight=null;
             if(continuousRopeMaterial!=null)Destroy(continuousRopeMaterial);if(woodMaterial!=null)Destroy(woodMaterial);if(ropeMaterial!=null)Destroy(ropeMaterial);if(branchMaterial!=null)Destroy(branchMaterial);
             foreach(var material in platformMaterials)if(material!=null)Destroy(material);
             DisposePieceMaterials();

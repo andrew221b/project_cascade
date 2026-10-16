@@ -78,7 +78,8 @@ namespace Cascade.Presentation
         }
         Vector3 SupportedTokenOffset(int index)
         {
-            if(Frame.Status!=PuzzleStatus.Playing||PieceLifted(index))return Vector3.zero;
+            if(Frame.Status!=PuzzleStatus.Playing)return ReceiverPointOffset(restPositions[index]);
+            if(PieceLifted(index))return Vector3.zero;
             int floor=Frame.ActiveFloor;var foot=ContactVector(index);
             var point=restPositions[index]+foot+Vector3.right*contactSlide[index];
             var rotation=Quaternion.Euler(0,0,floors[floor].roll+contactLean[index]);

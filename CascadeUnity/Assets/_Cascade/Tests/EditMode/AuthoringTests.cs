@@ -103,6 +103,7 @@ namespace Cascade.Tests
         }
         [Test] public void ActualUnityUndoRedoRestoresDraftWithoutTouchingScene()
         {
+            NotificationUndoGuard.Prune();
             int sceneCount = EditorSceneManager.sceneCount; var active = EditorSceneManager.GetActiveScene(); bool dirty = active.isDirty;
             Undo.RecordObject(draft, "Test authoring change"); draft.ResizeRow(8); draft.ResizeFloors(4); Undo.FlushUndoRecordObjects();
             Undo.PerformUndo(); Assert.That(draft.target.Length, Is.EqualTo(3)); Assert.That(draft.floors.Length, Is.EqualTo(1));

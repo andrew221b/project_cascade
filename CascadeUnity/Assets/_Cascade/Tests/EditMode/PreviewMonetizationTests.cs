@@ -8,12 +8,12 @@ namespace Cascade.Tests
 {
     public sealed class PreviewMonetizationTests
     {
-        [Test] public void TestShopItemsRespectStockCapAndDoNotSpendCoins()
+        [Test] public void TestShopItemsCanExceedFiveAndDoNotSpendCoins()
         {
             var s=new AdService(new MonetizationLedger(),_=>{},previewOnly:true);
             foreach(TravelTool tool in Enum.GetValues(typeof(TravelTool))){
-                for(int i=0;i<ShopCatalog.StockLimit;i++)Assert.That(s.TryPreviewItem(tool),Is.True);
-                Assert.That(s.TryPreviewItem(tool),Is.False);Assert.That(s.ToolStock(tool),Is.EqualTo(5));
+                for(int i=0;i<12;i++)Assert.That(s.TryPreviewItem(tool),Is.True);
+                Assert.That(s.ToolStock(tool),Is.EqualTo(12));
             }
             Assert.That(s.TryPreviewItem(TravelTool.Wayfinder,JourneyRewards.Gifts[0]),Is.True);
             Assert.That(s.TryPreviewItem(TravelTool.Wayfinder,JourneyRewards.Gifts[0]),Is.False);

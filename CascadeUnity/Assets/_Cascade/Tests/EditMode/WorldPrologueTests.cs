@@ -8,17 +8,17 @@ namespace Cascade.Tests
 {
     public sealed class WorldPrologueTests
     {
-        [Test] public void EveryWorldHasThreeAuthoredComicPagesAndItsOwnResident()
+        [Test] public void EveryWorldHasFourAuthoredComicPagesAndItsOwnResident()
         {
             var comics=Enumerable.Range(0,JourneyStory.WorldCount).Select(WorldPrologues.ForWorld).ToArray();
             foreach(var comic in comics){
-                Assert.That(comic.Pages.Length,Is.EqualTo(3));Assert.That(comic.Receipt,Is.EqualTo(6000+comic.World));
+                Assert.That(comic.Pages.Length,Is.EqualTo(4));Assert.That(comic.Receipt,Is.EqualTo(6000+comic.World));
                 Assert.That(comic.Pages.SelectMany(p=>p.Lines).Select(l=>l.Speaker),Does.Contain("Mika"));
                 Assert.That(comic.Pages.SelectMany(p=>p.Lines).Select(l=>l.Speaker),Does.Contain(StoryConversations.Resident(comic.World)));
                 foreach(var page in comic.Pages){Assert.That(page.Caption,Is.Not.Empty);Assert.That(page.Lines.Length,Is.EqualTo(2));Assert.That(page.Lines.Select(l=>l.Text),Is.All.Not.Empty);}
             }
-            Assert.That(comics.SelectMany(c=>c.Pages).Select(p=>p.Caption).Distinct().Count(),Is.EqualTo(27));
-            Assert.That(comics.SelectMany(c=>c.Pages).SelectMany(p=>p.Lines).Select(l=>l.Text).Distinct().Count(),Is.EqualTo(54));
+            Assert.That(comics.SelectMany(c=>c.Pages).Select(p=>p.Caption).Distinct().Count(),Is.EqualTo(36));
+            Assert.That(comics.SelectMany(c=>c.Pages).SelectMany(p=>p.Lines).Select(l=>l.Text).Distinct().Count(),Is.EqualTo(72));
             Assert.Throws<ArgumentOutOfRangeException>(()=>WorldPrologues.ForWorld(-1));
             Assert.Throws<ArgumentOutOfRangeException>(()=>WorldPrologues.ForWorld(JourneyStory.WorldCount));
         }
@@ -37,11 +37,11 @@ namespace Cascade.Tests
         [Test] public void OccasionalLevelAsidesAndAllStoryReceiptsFitExistingSaveValidation()
         {
             var stops=Enumerable.Range(0,JourneyStory.TotalLevels).Where(StoryConversations.HasLevelAside).ToArray();
-            Assert.That(stops.Length,Is.EqualTo(9));Assert.That(stops.Select(JourneyStory.Zone),Is.EqualTo(Enumerable.Range(0,9)));
+            Assert.That(stops.Length,Is.EqualTo(54));Assert.That(stops.GroupBy(JourneyStory.Zone).Select(g=>g.Count()),Is.All.EqualTo(6));
             foreach(int stop in stops){
-                Assert.That(stop,Is.EqualTo(JourneyStory.IslandFirst(JourneyStory.Zone(stop),3)+1));
+                Assert.That(StoryConversations.HasIslandProgress(stop)||stop==JourneyStory.IslandFirst(JourneyStory.Zone(stop),3)+1,Is.True);
                 Assert.That(StoryConversations.LevelAside(stop).Lines.Length,Is.EqualTo(2));
-                Assert.That(StoryConversations.LevelAside(stop).Receipt,Is.EqualTo(7000+stop));
+                Assert.That(StoryConversations.LevelAside(stop).Receipt,Is.EqualTo(7000+int.Parse(JourneyStory.NodeIds[stop].Substring(1))-1));
             }
             var receipts=Enumerable.Range(0,JourneyStory.WorldCount).Select(w=>StoryConversations.BeforeLevel(JourneyStory.WorldFirst(w)).Receipt)
                 .Concat(Enumerable.Range(0,JourneyStory.WorldCount).Select(w=>WorldPrologues.ForWorld(w).Receipt))
@@ -49,7 +49,7 @@ namespace Cascade.Tests
                 .Concat(stops.Select(s=>StoryConversations.LevelAside(s).Receipt))
                 .Concat(Enumerable.Range(0,JourneyStory.TotalLevels).Where(s=>StoryConversations.HasCheckpoint(s,1)).Select(s=>StoryConversations.Checkpoint(s).Receipt)).ToArray();
             Assert.That(receipts.Distinct().Count(),Is.EqualTo(receipts.Length));Assert.That(receipts,Is.All.InRange(0,10000));
-            Assert.That(StoryConversations.HasLevelAside(-1),Is.False);Assert.That(StoryConversations.HasLevelAside(184),Is.False);
+            Assert.That(StoryConversations.HasLevelAside(-1),Is.False);Assert.That(StoryConversations.HasLevelAside(JourneyStory.TotalLevels),Is.False);
             Assert.Throws<ArgumentOutOfRangeException>(()=>StoryConversations.LevelAside(0));
         }
         [Test] public void EveryStoryKeyHasAnEnglishRussianAndUkrainianSourceEntry()

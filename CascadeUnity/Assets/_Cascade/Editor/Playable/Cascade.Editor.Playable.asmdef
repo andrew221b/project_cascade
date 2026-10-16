@@ -16,7 +16,8 @@
         "Unity.Addressables.Editor",
         "Unity.ResourceManager",
         "Unity.Newtonsoft.Json",
-        "Cascade.Persistence"
+        "Cascade.Persistence",
+        "Unity.Notifications"
     ],
     "includePlatforms": [
         "Editor"

@@ -1,0 +1,76 @@
+{
+  "BoardStates": {
+    "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-08a9b905-a9ce-44a6-a067-d189d7a68e03.png",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "sha256": "d5f8a64dc6684e26d57f1ba6d47ff789edea69f1e15238cdef87fd000f5d2d47",
+    "revision": "Severely cracked state retains connected fibres; last state split."
+  },
+  "HempRope": {
+    "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-9052a1dd-b628-4e03-a2c3-ab315e63d80f.png",
+    "crop": [
+      314,
+      0,
+      478,
+      1983
+    ],
+    "dimensions": [
+      164,
+      1983
+    ],
+    "sha256": "337a1a705ac46b6f8742e1d478558206ed164b48f7a4e4bdbbf7da14641165d6"
+  },
+  "GameplayFrame": {
+    "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-c310526c-fa0e-4f54-b1ff-788ed0c646fd.png",
+    "crop": null,
+    "dimensions": [
+      941,
+      1672
+    ],
+    "sha256": "3bab1717754ec7a06422f3cf1d8fa9d2e54bfa24b10f37e64c1ca897683d6e45"
+  },
+  "FailureMika": {
+    "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-88cfd036-7b6b-497d-801b-22cd1aa0e93f.png",
+    "crop": [
+      20,
+      64,
+      1166,
+      1240
+    ],
+    "dimensions": [
+      1146,
+      1176
+    ],
+    "sha256": "822102381052ffe5cf9aad2565f497cef6cb764b8cf28a92066ce9aef2c9fd38"
+  },
+  "ReceiverTray": {
+    "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-61130aaf-4870-4632-a7ab-fbcedbc93d6d.png",
+    "crop": [
+      61,
+      146,
+      1923,
+      645
+    ],
+    "dimensions": [
+      1862,
+      499
+    ],
+    "sha256": "8e39676f5649efddc55341676e4a6826e2cf4a011b56d144263d815274cdf4ac"
+  },
+  "HelpPanel": {
+    "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-b591cbb0-eba6-4067-b983-d44a00106c8d.png",
+    "crop": [
+      83,
+      88,
+      1098,
+      1237
+    ],
+    "dimensions": [
+      1023,
+      1157
+    ],
+    "sha256": "4024584b82704d0181010b7cf219f32c4d37f9a4a150d751a10fbc1b5b7806bd"
+  }
+}

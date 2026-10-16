@@ -44,7 +44,7 @@ namespace Cascade.Editor.Playable
             yield return Wait(()=>game.MechanicPopupOpen);Require(game.CurrentMechanic==MechanicLesson.BombHourglass,"new hanging hourglass has its own explanation");
             yield return Shot("hourglass-uk-small",320,693);Ack();yield return Ready();game.Preferences.LargeText=false;
             foreach(string node in new[]{"C08","C09","C10"}){Start(node);yield return Ready();}
-            foreach(var lesson in Enumerable.Range(0,12).Select(i=>(MechanicLesson)i).Where(l=>!game.SeenMechanics.Contains(l))){
+            foreach(var lesson in Enumerable.Range(0,12).Select(i=>(MechanicLesson)i).Where(l=>l!=MechanicLesson.LandingWind&&!game.SeenMechanics.Contains(l))){
                 var fixture=game.Catalog.PrimaryLevels.Concat(game.Catalog.BonusLevels).Select(c=>c.Definition).First(l=>MechanicLessons.Discover(l,0,Array.Empty<int>()).Contains(lesson));
                 game.LoadLevel(fixture);game.ShowGame();yield return Ready();Require(game.SeenMechanics.Contains(lesson),"queued "+lesson);
             }
@@ -52,14 +52,11 @@ namespace Cascade.Editor.Playable
             foreach(var step in PuzzleSolver.FindShortest(game.Interaction.Attempt.Resolver).Path){game.Interaction.Execute(step);yield return Ready();}
             yield return Wait(()=>game.CurrentScreen==GameScreen.Checkpoint);
             Require(game.CurrentScreen==GameScreen.Checkpoint,"first stage reached checkpoint");int stage=game.Descent.StageIndex;hash=game.Interaction.Attempt.CurrentStateHash;
-            game.GoLower();Require(game.MechanicPopupOpen&&game.CurrentMechanic==MechanicLesson.LandingWind&&game.Descent.StageIndex==stage,"landing wind explained before stage advance");
-            yield return Shot("landing-wind-en",390,844);Require(game.Interaction.Attempt.CurrentStateHash==hash,"explanation never advances the checkpoint");Ack();yield return Ready();
-            Require(game.Descent.StageIndex==stage+1&&game.SeenMechanics.Contains(MechanicLesson.LandingWind),"acknowledgement resumes requested descent");
-            game.LoadNode("C01");game.ShowGame();yield return Ready();yield return Wait(()=>game.CurrentMechanic==MechanicLesson.Gust,16);
+            game.GoLower();Require(!game.MechanicPopupOpen&&game.Descent.StageIndex==stage,"landing wind does not interrupt descent with a tutorial");yield return Ready();
+            Require(game.Descent.StageIndex==stage+1&&!game.SeenMechanics.Contains(MechanicLesson.LandingWind),"landing effect stays undisclosed until play");
+            game.LoadNode("C01");game.ShowGame();yield return Ready();
             clock=game.Machine.AmbientPhase;hash=game.Interaction.Attempt.CurrentStateHash;
-            yield return new WaitForSecondsRealtime(.5f);Require(Mathf.Abs(clock-game.Machine.AmbientPhase)<.001f,"first real ambient gust waits at the modal");
-            yield return Shot("gust-en",390,844);Ack();yield return new WaitForSecondsRealtime(1.5f);
-            Require(!game.MechanicPopupOpen&&game.Interaction.Attempt.CurrentStateHash==hash&&game.Machine.AmbientPhase>clock,"gust resumes without changing puzzle order");
+            yield return new WaitForSecondsRealtime(.5f);Require(!game.MechanicPopupOpen&&game.Interaction.Attempt.CurrentStateHash==hash&&game.Machine.AmbientPhase>clock,"ambient gust remains an unannounced visual surprise");
             var source=game.Catalog.GetPrimary("C02").Definition;int n=source.TargetSymbolIds.Count;
             game.LoadLevel(new LevelDefinition("intro-tool-review","intro-tool-review",new string('a',64),source.RulesVersion,"review",source.TargetSymbolIds.Reverse(),source.TargetSymbolIds,source.TargetSegments,
                 new[]{new FloorDefinition(12,Enumerable.Repeat(true,n-1)),new FloorDefinition(12,Enumerable.Repeat(true,n-1))}));game.ShowGame();yield return Ready();
@@ -81,7 +78,7 @@ namespace Cascade.Editor.Playable
             Require(game.Stock(TravelTool.ReturnHourglass)==0&&game.Interaction.Attempt.CurrentStateHash==hash,"hourglass resumes exact return once");
             game.LoadNode("C03");game.ShowGame();yield return Ready();
             string folder=Path.Combine(Directory.GetParent(UnityEngine.Application.dataPath).Parent.FullName,"Reports/Introductions");
-            File.WriteAllText(Path.Combine(folder,"runtime.txt"),"PASS: real modal button, input/row/weather pause, focus-return gate, acknowledgement and durable seen metadata, no repeat, all 12 puzzle effect lessons, hanging hourglass, pre-descent wind gate, first actual ambient gust, all three deferred tool consumptions, interrupted popup, exactly-once resumed Use. Optional hints off; first explanations still required. Five native Editor views, simulated safe insets, EN/RU/UK + small Large Text. Not physical-device input or player build.\n");
+            File.WriteAllText(Path.Combine(folder,"runtime.txt"),"PASS: real modal button, input/row/weather pause, focus-return gate, acknowledgement and durable seen metadata, no repeat, non-wind puzzle effect lessons, hanging hourglass, no pre-descent wind tutorial, surprise gust, all three deferred tool consumptions, interrupted popup, exactly-once resumed Use. Optional hints off; first explanations still required. Five native Editor views, simulated safe insets, EN/RU/UK + small Large Text. Not physical-device input or player build.\n");
             Debug.Log("CASCADE first-mechanic review complete.");
             void Start(string id){game.StartDescentLevel(game.Catalog.GetPrimary(id).Definition);game.ShowGame();}
             void ShowFixture(MechanicLesson lesson){var level=game.Catalog.PrimaryLevels.Concat(game.Catalog.BonusLevels).Select(c=>c.Definition).First(l=>lesson==MechanicLesson.Bomb?l.Floors[0].Bomb!=null:l.Floors[0].Powerup?.Kind==PowerupKind.Hourglass);game.LoadLevel(level);game.ShowGame();}

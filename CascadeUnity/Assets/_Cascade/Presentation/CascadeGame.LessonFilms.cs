@@ -19,13 +19,13 @@ namespace Cascade.Presentation
             public PuzzleCommand command;
             public int deviceKind = -1, blockedEdge = -1;
             public ContactDefinition contact;
-            public bool descent, recovery, tool, preview;
+            public bool descent, recovery, tool, preview, reinforcement;
             public int woodBefore, woodAfter;
         }
 
         // All rule outcomes are computed once from an isolated resolver / attempt.
         // Painting interpolates those outcomes; it cannot execute a live command.
-        FilmPlan LessonFilmPlan(MechanicLesson lesson, bool? right)
+        FilmPlan LessonFilmPlan(MechanicLesson lesson, bool? right,bool reference=false)
         {
             bool words = Interaction.Attempt.Mode == PuzzleMode.Words;
             bool mixed = Interaction.Attempt.Mode == PuzzleMode.Mixed;
@@ -38,6 +38,7 @@ namespace Cascade.Presentation
                 row[2] = SymbolId.Parse("g:" + locale + ":" + alphabet[0]);
                 row[3] = SymbolId.Parse("g:" + locale + ":" + alphabet[1]);
             }
+            if(reference&&(lesson==MechanicLesson.Undo||lesson==MechanicLesson.UndoSpool)){var first=row[0];row[0]=row[1];row[1]=first;}
             var open = new[] { true, true, true };
             var floor = new FloorDefinition(4, open);
             var lower = new FloorDefinition(4, open);
@@ -46,7 +47,7 @@ namespace Cascade.Presentation
             var command = PuzzleCommand.Swap(0);
             bool descentFilm = false, recovery = false, preview = false;
             bool tool = lesson >= MechanicLesson.Wayfinder && lesson <= MechanicLesson.LandingLens
-                || lesson == MechanicLesson.Hint || lesson == MechanicLesson.Undo || lesson == MechanicLesson.Toolbag;
+                || lesson == MechanicLesson.Hint || lesson == MechanicLesson.Undo || lesson == MechanicLesson.Toolbag || lesson == MechanicLesson.RepairKit;
             switch (lesson)
             {
                 case MechanicLesson.Bomb:
@@ -100,6 +101,12 @@ namespace Cascade.Presentation
                 row, target, segments, new[] { floor, lower }, lesson == MechanicLesson.FarSwap ? 1 : 0);
             var resolver = new PuzzleResolver(level);
             var before = resolver.CreateInitialState();
+            if(lesson==MechanicLesson.RepairKit){
+                var sample=new AttemptService(level,locale);
+                if(!sample.TryUseToolAtomically(TravelTool.RepairKit,()=>true))throw new InvalidOperationException("Tutorial repair kit is not legal.");
+                return new FilmPlan{level=level,before=before,after=sample.Current,exchanged=before.Row,command=command,tool=true,reinforcement=true,
+                    woodBefore=before.Durability,woodAfter=sample.Current.Durability};
+            }
             TransitionResult result;
             if (lesson == MechanicLesson.Undo || lesson == MechanicLesson.UndoSpool || recovery)
             {
@@ -147,9 +154,10 @@ namespace Cascade.Presentation
             return plan;
         }
 
-        RectTransform FilmPiece(RectTransform parent, SymbolId symbol, string name)
+        RectTransform FilmPiece(RectTransform parent, SymbolId symbol, string name,bool reference=false)
         {
             var tile = Rect(name, parent, new Vector2(.5f, .5f), new Vector2(.5f, .5f));
+            if(reference&&symbol.Kind!=SymbolKind.Glyph){var sprite=TutorialReferenceArt.Shape(symbol);if(sprite!=null){var image=Background(tile,Color.white,false);image.sprite=sprite;image.preserveAspect=true;return tile;}}
             if (symbol.Kind == SymbolKind.Glyph)
             {
                 var face = Background(tile, new Color(1, .96f, .83f), false); face.sprite = art.panel; face.type = Image.Type.Sliced;
@@ -171,9 +179,20 @@ namespace Cascade.Presentation
             return result;
         }
 
-        void BuildLessonFilm(RectTransform root, MechanicLesson lesson, bool? right = null)
+        void BuildLessonFilm(RectTransform root, MechanicLesson lesson, bool? right = null,bool? tapInput=null,bool reference=false)
         {
-            var plan = LessonFilmPlan(lesson, right);
+            if(lesson==MechanicLesson.Swap&&!tapInput.HasValue){
+                for(int i=0;i<2;i++){
+                    var demonstration=Rect(i==0?"Drag demonstration":"Two taps demonstration",root,new Vector2(0,i==0?.51f:0),new Vector2(1,i==0?1:.49f));
+                    var methodLabel=Text("Control method",demonstration,new Vector2(.025f,.83f),new Vector2(.975f,1),17,i==0?"Drag onto a neighbour":"Tap one, then its neighbour");
+                    methodLabel.color=MenuPaper;methodLabel.fontStyle=FontStyles.Bold;methodLabel.enableAutoSizing=true;methodLabel.fontSizeMin=14*MenuUnit;methodLabel.fontSizeMax=17*MenuUnit;methodLabel.margin=Vector4.zero;
+                    var illustration=Rect("Control example",demonstration,Vector2.zero,new Vector2(1,.81f));
+                    BuildLessonFilm(illustration,lesson,right,i==1);
+                }
+                return;
+            }
+            var plan = LessonFilmPlan(lesson, right,reference);
+            bool largeTool=reference&&plan.tool&&!plan.recovery&&!plan.preview;
             // Single-board lessons centre their one action instead of reserving
             // the lower half for a landing that the demonstration never uses.
             float rowY = plan.contact == null && !plan.tool && !plan.descent && !plan.recovery && !plan.preview
@@ -181,12 +200,24 @@ namespace Cascade.Presentation
             float rowOffset = rowY - .79f;
             var stage = Rect("Lesson film", root, Vector2.zero, Vector2.one);
             var opacity = stage.gameObject.AddComponent<CanvasGroup>(); opacity.blocksRaycasts = false; opacity.interactable = false;
-            var ground = Background(stage, new Color(.20f, .44f, .46f, .45f), false); ground.sprite = art.panel; ground.type = Image.Type.Sliced;
+            var inset=reference?Rect("Film row inset",stage,new Vector2(0,.56f),Vector2.one):stage;
+            var ground = Background(inset, reference?new Color(1,.98f,.89f,.26f):new Color(.20f, .44f, .46f, .45f), false); ground.sprite = art.panel; ground.type = Image.Type.Sliced;
             var upper = Rect("Film upper wood", stage, new Vector2(.03f, .635f + rowOffset), new Vector2(.97f, .70f + rowOffset));
+            if(reference){upper.anchorMin=new Vector2(.05f,.584f+rowOffset);upper.anchorMax=new Vector2(.95f,.67f+rowOffset);}
             var upperWood = upper.gameObject.AddComponent<WoodBoardGraphic>(); upperWood.SetSurface(plan.level.Floors[0]);
             var lower = Rect("Film landing wood", stage, new Vector2(.03f, .22f), new Vector2(.97f, .285f));
+            if(reference){lower.anchorMin=new Vector2(.03f,.20f);lower.anchorMax=new Vector2(.97f,.29f);}
             var lowerWood = lower.gameObject.AddComponent<WoodBoardGraphic>(); lowerWood.SetSurface(plan.level.Floors[1]);
             lower.gameObject.SetActive(plan.descent || plan.recovery || plan.preview || lesson == MechanicLesson.LiveGust);
+            WindWarningGraphic airTrails = null;
+            if (lesson == MechanicLesson.Gust || lesson == MechanicLesson.LiveGust || lesson == MechanicLesson.LandingWind)
+            {
+                var air = Rect("Film gust air, without arrows", stage, new Vector2(.015f, .43f), new Vector2(.985f, .83f));
+                airTrails = air.gameObject.AddComponent<WindWarningGraphic>();
+                airTrails.DrawTips = false;
+                airTrails.Right = right ?? false;
+                airTrails.raycastTarget = false;
+            }
             var pieces = new RectTransform[4]; var glows = new ShapeFaceGraphic[4]; var glowAlpha = new CanvasGroup[4];
             var exchangeDest = FilmDestinations(plan.before.Row, plan.exchanged);
             var finalDest = FilmDestinations(plan.before.Row, plan.after.Row);
@@ -196,14 +227,21 @@ namespace Cascade.Presentation
                 glows[i] = glow.gameObject.AddComponent<ShapeFaceGraphic>();
                 glows[i].SetShape(art.SymbolMesh(plan.before.Row[i]), new Color(1, .87f, .36f, .26f));
                 glowAlpha[i] = glow.gameObject.AddComponent<CanvasGroup>();
-                pieces[i] = FilmPiece(stage, plan.before.Row[i], "Film piece " + i);
+                pieces[i] = FilmPiece(stage, plan.before.Row[i], "Film piece " + i,reference);
             }
             // Inset numeric wood counter, rather than another floating caption.
-            var counter = Picture("Film wood inset", upper, new Vector2(.39f, -.14f), new Vector2(.61f, 1.08f), PlatformProp(3), true);
-            counter.material = ToolSilhouette;
+            var counter = Picture("Film wood inset", upper, new Vector2(.5f, .5f), new Vector2(.5f, .5f), reference?ReferenceShopArt("StockBadge"):PlatformProp(3), true);
+            if(!reference)counter.material = ToolSilhouette;else{counter.preserveAspect=false;counter.type=Image.Type.Sliced;counter.pixelsPerUnitMultiplier=3;}
             var count = Text("Film wood number", counter.transform, Vector2.zero, Vector2.one, 15, UiCopy.Raw(plan.woodBefore.ToString()));
             count.font = art.titleFont; count.fontStyle = FontStyles.Bold; count.color = new Color(.34f, .16f, .05f); count.margin = Vector4.zero;
-            count.raycastTarget = false; count.gameObject.AddComponent<SymbolGlyphCenter>();
+            count.rectTransform.anchorMin=new Vector2(.40f,0);count.rectTransform.anchorMax=new Vector2(.88f,1);
+            count.raycastTarget = false;
+            CenteredContentRow counterFit=null;
+            if(reference){
+                count.font=Resources.Load<TMP_FontAsset>("CascadeArt/Fonts/InterfaceTitle")??art.titleFont;count.fontSizeMin=23;count.fontSizeMax=31;
+                var paw=Rect("Film durability paw",counter.transform,Vector2.one*.5f,Vector2.one*.5f).gameObject.AddComponent<TutorialPawGraphic>();paw.rectTransform.sizeDelta=new Vector2(25,25);paw.raycastTarget=false;
+                counterFit=CentreContent(counter.rectTransform,paw.rectTransform,count.rectTransform);counterFit.Padding=4;
+            }else count.gameObject.AddComponent<SymbolGlyphCenter>();
             var button = Rect("Film action button", stage, new Vector2(.30f, .025f), new Vector2(.70f, .17f));
             var buttonFace = Background(button, Color.white, false); buttonFace.sprite = enamelControls[plan.descent ? 1 : 0]; buttonFace.type = Image.Type.Sliced;
             var caption = Text("Film action label", button, new Vector2(.09f, .12f), new Vector2(.91f, .88f), 17,
@@ -212,6 +250,10 @@ namespace Cascade.Presentation
             caption.enableAutoSizing = true; caption.fontSizeMin = 13; caption.fontSizeMax = 17; caption.textWrappingMode = TextWrappingModes.NoWrap;
             bool buttonShown = plan.descent || plan.tool;
             button.gameObject.SetActive(buttonShown);
+            if(reference){
+                if(plan.descent){buttonFace.sprite=ReferenceShopArt("TealAction");buttonFace.type=Image.Type.Sliced;buttonFace.pixelsPerUnitMultiplier=4;buttonFace.color=new Color(1,1,.76f);caption.color=MenuPaper;caption.fontSizeMin=18;caption.fontSizeMax=25;caption.enableAutoSizing=true;}
+                else{buttonFace.enabled=false;caption.gameObject.SetActive(false);}
+            }
             RectTransform prop = null; Image propFace = null; CanvasGroup propAlpha = null;
             ToolSuspensionRope cord = null; RectTransform cordRect = null;
             if (plan.deviceKind >= 0)
@@ -228,10 +270,18 @@ namespace Cascade.Presentation
             else if (plan.tool)
             {
                 int index = lesson == MechanicLesson.ReturnHourglass ? 2 : lesson == MechanicLesson.UndoSpool || lesson == MechanicLesson.Undo ? 1
-                    : lesson == MechanicLesson.SignalLantern || lesson == MechanicLesson.Hint ? 3 : lesson == MechanicLesson.LandingLens ? 4 : 0;
-                var sprite = lesson == MechanicLesson.Toolbag && navigationIcons != null ? navigationIcons[4] : ToolArt(index);
+                    : lesson == MechanicLesson.SignalLantern || lesson == MechanicLesson.Hint ? 3 : lesson == MechanicLesson.LandingLens ? 4 : lesson == MechanicLesson.RepairKit ? 5 : 0;
+                var sprite = lesson == MechanicLesson.Toolbag && navigationIcons != null ? navigationIcons[4] : reference&&(lesson==MechanicLesson.Undo||lesson==MechanicLesson.UndoSpool)?ItemsToolArt(1):reference?FieldHelpToolArt(index):ToolArt(index);
                 propFace = Picture("Film tool", stage, new Vector2(.395f, .37f), new Vector2(.605f, .575f), sprite, true);
+                if(largeTool){propFace.rectTransform.anchorMin=new Vector2(.325f,.055f);propFace.rectTransform.anchorMax=new Vector2(.687f,.55f);}
+                else DecorateToolIcon(propFace,index);
                 propFace.material = ToolSilhouette; prop = propFace.rectTransform; propAlpha = prop.gameObject.AddComponent<CanvasGroup>();
+            }
+            if(largeTool){
+                var rays=Rect("Film tool warm rays",stage,new Vector2(.19f,.0f),new Vector2(.81f,.59f));rays.SetSiblingIndex(prop.GetSiblingIndex());rays.gameObject.AddComponent<ItemSunlight>().Initialize(this);
+                if(lesson==MechanicLesson.Undo||lesson==MechanicLesson.UndoSpool){
+                    var ribbon=Picture("Film illustrated undo ribbon",stage,new Vector2(.315f,.10f),new Vector2(.695f,.40f),TutorialReferenceArt.UndoRibbon,true);ribbon.raycastTarget=false;
+                }
             }
             RectTransform branch = null, bridge = null;
             if (plan.blockedEdge >= 0 || lesson == MechanicLesson.Bridge)
@@ -242,7 +292,7 @@ namespace Cascade.Presentation
                     var tex = Resources.Load<Texture2D>("CascadeArt/Woodland/BranchStops");
                     introBranch = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(.5f, .5f), 100);
                 }
-                branch = Picture("Film branch stop", stage, new Vector2(x - .06f, .64f), new Vector2(x + .06f, .815f), introBranch, true).rectTransform;
+                branch = Picture("Film branch stop", stage, new Vector2(x - .06f, .64f + rowOffset), new Vector2(x + .06f, .815f + rowOffset), introBranch, true).rectTransform;
                 branch.GetComponent<Image>().material = ToolSilhouette;
                 if (lesson == MechanicLesson.Bridge)
                 {
@@ -253,25 +303,17 @@ namespace Cascade.Presentation
             }
             if (lesson == MechanicLesson.LinkedPairs)
             {
-                void LinkedCord(Vector2 a, Vector2 b)
-                {
-                    a.y += rowOffset; b.y += rowOffset;
-                    var segment = Rect("Film linked pair rope", stage, Vector2.zero, Vector2.zero);
-                    Background(segment, new Color(.77f, .65f, .39f), false);
-                    segment.gameObject.AddComponent<DemoLine>().Initialize(stage, a, b, 3);
-                }
-                LinkedCord(new Vector2(.12f, .69f), new Vector2(.12f, .64f));
-                LinkedCord(new Vector2(.12f, .64f), new Vector2(.38f, .64f));
-                LinkedCord(new Vector2(.38f, .64f), new Vector2(.38f, .69f));
-                LinkedCord(new Vector2(.62f, .69f), new Vector2(.62f, .64f));
-                LinkedCord(new Vector2(.62f, .64f), new Vector2(.88f, .64f));
-                LinkedCord(new Vector2(.88f, .64f), new Vector2(.88f, .69f));
-                LinkedCord(new Vector2(.38f, .64f), new Vector2(.62f, .64f));
+                var belt=Rect("Film hemp pulley mechanism",stage,new Vector2(0,.59f+rowOffset),new Vector2(1,.69f+rowOffset));
+                belt.gameObject.AddComponent<PlatformMechanismGraphic>().InitializeDemo();
             }
             Image wind = null;
             if (lesson == MechanicLesson.Gust || lesson == MechanicLesson.LiveGust || lesson == MechanicLesson.LandingWind)
             {
-                wind = Picture("Film warning windsock", stage, new Vector2(.70f, .38f), new Vector2(.96f, .61f), PlatformProp(0), true);
+                // Landing pieces pass below the upper board. Keep the windsock
+                // above them so its silhouette cannot hide the target shape.
+                var windMin = lesson == MechanicLesson.LandingWind ? new Vector2(.73f, .69f) : new Vector2(.70f, .38f);
+                var windMax = lesson == MechanicLesson.LandingWind ? new Vector2(.94f, .84f) : new Vector2(.96f, .61f);
+                wind = Picture("Film warning windsock", stage, windMin, windMax, PlatformProp(0), true);
                 wind.material = ToolSilhouette;
             }
             Image bomb = null;
@@ -287,13 +329,14 @@ namespace Cascade.Presentation
                 lens.gameObject.AddComponent<CanvasGroup>().alpha = .75f;
                 for (int i = 0; i < 4; i++)
                 {
-                    var ghost = FilmPiece(lens, plan.after.Row[i], "Film predicted landing " + i);
+                    var ghost = FilmPiece(lens, plan.after.Row[i], "Film predicted landing " + i,reference);
                     ghost.anchorMin = new Vector2(i / 4f + .035f, 0); ghost.anchorMax = new Vector2((i + 1) / 4f - .035f, 1);
                 }
             }
             var hand = Picture("Film tutorial hand above pieces", stage, new Vector2(.5f, .5f), new Vector2(.5f, .5f), tutorialHand.sprite, true);
-            hand.material = tutorialOverlayMaterial; hand.raycastTarget = false; hand.rectTransform.pivot = new Vector2(.64f, .88f);
-            hand.rectTransform.sizeDelta = new Vector2(54, 65) * MenuUnit;
+            hand.material = tutorialOverlayMaterial; hand.raycastTarget = false; hand.rectTransform.pivot = new Vector2(.60f, .865f);
+            hand.rectTransform.sizeDelta = reference?(largeTool?new Vector2(170,200):new Vector2(110,130)):new Vector2(54, 65) * MenuUnit;
+            if(reference)hand.rectTransform.localRotation=Quaternion.Euler(0,0,plan.descent?80:plan.tool?(largeTool?32:24):0);
             // The original hand's fingertip, not its palm, indicates the action point.
             hand.rectTransform.SetAsLastSibling();
             int lastWood = -1, lastDamage = -1;
@@ -323,18 +366,22 @@ namespace Cascade.Presentation
             }
             film.Initialize(this, opacity, (time, still) =>
             {
-                // The next loop explains the equally valid tap / tap gesture.
-                // Selection lifts the original; movement starts only after the second tap.
-                bool tapSwap = lesson == MechanicLesson.Swap && film.CycleCount % 2 == 1;
+                // The reference carousel presents each control method on its own page.
+                bool tapSwap = lesson == MechanicLesson.Swap && tapInput==true;
                 float exchange = EaseFilm((time - 2.45f) / .95f);
                 float result = EaseFilm((time - 3.65f) / 1.05f);
                 float action = lesson == MechanicLesson.ClosedPath ? EaseFilm((time - 3.05f) / .95f) : exchange;
                 bool after = time >= 4.7f;
                 float gust = still ? 0 : Mathf.Sin(Mathf.Clamp01((time - 2.4f) / 2.4f) * Mathf.PI);
                 bool windy = lesson == MechanicLesson.Gust || lesson == MechanicLesson.LiveGust || lesson == MechanicLesson.LandingWind;
-                float sway = windy && !still ? Mathf.Sin(time * 9) * gust * (lesson == MechanicLesson.LiveGust ? 5 : 2.2f) : 0;
+                float sway = windy && !still ? Mathf.Sin(time * 8) * gust * (lesson == MechanicLesson.LiveGust ? 9 : 6) : 0;
                 upper.localRotation = Quaternion.Euler(0, 0, sway);
-                lower.localRotation = Quaternion.Euler(0, 0, windy && !still ? Mathf.Sin(time * 7 + 1) * gust * 1.4f : 0);
+                lower.localRotation = Quaternion.Euler(0, 0, windy && !still ? Mathf.Sin(time * 7 + 1) * gust * 3 : 0);
+                if (airTrails != null)
+                {
+                    airTrails.gameObject.SetActive(time >= 2.25f && time <= 5.65f);
+                    if (airTrails.gameObject.activeSelf) airTrails.Paint(time, still);
+                }
                 for (int i = 0; i < 4; i++)
                 {
                     float from = (i + .5f) / 4, via = (exchangeDest[i] + .5f) / 4, to = (finalDest[i] + .5f) / 4;
@@ -345,16 +392,16 @@ namespace Cascade.Presentation
                     else if (lesson == MechanicLesson.LiveGust) x = Mathf.Lerp(x, to, result);
                     else if (lesson == MechanicLesson.Ribbon) x = Mathf.Lerp(x, to, EaseFilm((time - 4.7f) / .9f));
                     else if (plan.preview || lesson == MechanicLesson.Toolbag || lesson == MechanicLesson.Gust) x = from;
-                    if (!still && !plan.descent && !plan.recovery && !plan.preview && lesson != MechanicLesson.Gust && lesson != MechanicLesson.Toolbag)
+                    if (!still && !plan.descent && !plan.recovery && !plan.preview && !plan.reinforcement && lesson != MechanicLesson.Gust && lesson != MechanicLesson.Toolbag)
                         y += Mathf.Sin(action * Mathf.PI) * (via > from ? .095f : -.045f);
                     if (tapSwap && i == plan.command.Edge && time >= 1.45f && time < 2.45f)
                         y += still ? .06f : .06f * EaseFilm((time - 1.45f) / .22f);
-                    if (!still && windy) { x += sway * .0022f; y += Mathf.Abs(Mathf.Sin(time * 6 + i)) * gust * .045f; }
-                    PoseFilmPiece(pieces[i], stage, x, y, 1 + (still ? 0 : Mathf.Sin(action * Mathf.PI) * .07f));
+                    if (!still && windy) { x += sway * .004f; y += Mathf.Abs(Mathf.Sin(time * 6 + i)) * gust * .06f; }
+                    PoseFilmPiece(pieces[i], stage, x, y, 1 + (still || plan.reinforcement ? 0 : Mathf.Sin(action * Mathf.PI) * .07f),reference);
                     pieces[i].localRotation = Quaternion.Euler(0, 0, still ? 0 : sway + (via != from ? Mathf.Sin(action * Mathf.PI) * (via > from ? -7 : 5) : 0));
-                    PoseFilmPiece(glows[i].rectTransform, stage, x, y, 1.20f);
-                    bool selected = time > (tapSwap ? 1.45f : 1) && time < 3.5f && (i == plan.command.Edge || (lesson == MechanicLesson.LinkedPairs && i == 2));
-                    glowAlpha[i].alpha = selected || after && plan.contact != null && finalDest[i] == plan.contact.Slot ? 1 : 0;
+                    PoseFilmPiece(glows[i].rectTransform, stage, x, y, 1.20f,reference);
+                    bool selected = !plan.reinforcement && time > (tapSwap ? 1.45f : 1) && time < 3.5f && (i == plan.command.Edge || (lesson == MechanicLesson.LinkedPairs && i == 2));
+                    glowAlpha[i].alpha = selected || after && plan.contact != null && finalDest[i] == plan.contact.Slot ? (reference?.16f:1) : 0;
                 }
                 bool woodDone = time >= (plan.contact != null ? 4.7f : 3.4f);
                 int wood = woodDone ? plan.woodAfter : plan.woodBefore;
@@ -367,6 +414,11 @@ namespace Cascade.Presentation
                 if (damage != lastDamage) { upperWood.SetDamage(damage); lastDamage = damage; }
                 var counterParent = plan.descent && time >= 3.4f || plan.recovery && time < 4.3f ? lower : upper;
                 if (counter.rectTransform.parent != counterParent) counter.rectTransform.SetParent(counterParent, false);
+                float insetHeight=counterParent.rect.height;
+                counter.rectTransform.anchoredPosition=Vector2.zero;
+                counter.rectTransform.sizeDelta=new Vector2(insetHeight*counter.sprite.rect.width/counter.sprite.rect.height,insetHeight);
+                if(reference){counter.rectTransform.sizeDelta=new Vector2(102,34);counterFit.Refresh();}
+                else count.fontSize=Mathf.Min(21*MenuUnit,insetHeight*1.24f);
                 upper.gameObject.SetActive(!(plan.descent && time >= 3.5f) && !(plan.recovery && time < 4.3f));
                 if (prop != null)
                 {
@@ -388,7 +440,7 @@ namespace Cascade.Presentation
                     else
                     {
                         prop.localScale = Vector3.one * (1 + (still ? 0 : Mathf.Sin(result * Mathf.PI) * .12f));
-                        propAlpha.alpha = time < 2.7f ? 1 : .45f;
+                        propAlpha.alpha = reference?1:time < 2.7f ? 1 : .45f;
                     }
                 }
                 if (bomb != null) bomb.color = after ? new Color(.57f, .90f, 1) : Color.white;
@@ -440,6 +492,10 @@ namespace Cascade.Presentation
                     handPoint = new Vector2(Mathf.Lerp((plan.command.Edge + .5f) / 4, (plan.command.Edge + 1.5f) / 4, approach), rowY);
                     showHand = time >= .8f && time <= 2.75f;
                 }
+                if(largeTool){handPoint=new Vector2(.56f,.35f);showHand=true;}
+                else if(reference&&plan.tool){handPoint=new Vector2(.57f,.48f);showHand=true;}
+                else if(reference&&plan.descent)handPoint=new Vector2(.73f,.115f);
+                if(reference&&!plan.tool)handPoint.x=.035f+.93f*handPoint.x;
                 hand.gameObject.SetActive(showHand || still && lesson != MechanicLesson.Gust);
                 hand.rectTransform.anchorMin = hand.rectTransform.anchorMax = handPoint;
                 hand.rectTransform.anchoredPosition = Vector2.zero;
@@ -450,10 +506,11 @@ namespace Cascade.Presentation
         }
 
         static float EaseFilm(float progress) => Mathf.SmoothStep(0, 1, Mathf.Clamp01(progress));
-        static void PoseFilmPiece(RectTransform piece, RectTransform stage, float x, float y, float scale)
+        static void PoseFilmPiece(RectTransform piece, RectTransform stage, float x, float y, float scale,bool reference=false)
         {
+            if(reference)x=.035f+.93f*x;
             piece.anchorMin = piece.anchorMax = new Vector2(x, y); piece.anchoredPosition = Vector2.zero;
-            float side = Mathf.Min(stage.rect.width * .195f, stage.rect.height * .21f);
+            float side = reference?Mathf.Min(stage.rect.width*.23f,stage.rect.height*.32f):Mathf.Min(stage.rect.width * .195f, stage.rect.height * .21f);
             piece.sizeDelta = Vector2.one * side; piece.localScale = Vector3.one * scale;
         }
     }

@@ -4,7 +4,7 @@
 
 This is an Operate extension of the incumbent Sky Wind Workshop shop. It adds the Coins tab and two optional coin offers within the existing painted world. It records the implemented surface after the scoped `ship` review in [Reports/AdMobStore/impeccable-review.md](../Reports/AdMobStore/impeccable-review.md). It establishes no new visual world, approved comp or design-token source.
 
-[PRODUCT.md](../PRODUCT.md) supplies the product facts: 240/480 coin packs, equal value without a bulk bonus, a displayed-wallet purchase threshold of 960, optional rewarded videos granting 40 coins, and unchanged tool/assistance consequences. [DESIGN.md](../DESIGN.md) remains the visual authority; this document supplements its shop implementation guidance. Publisher activation and release work are recorded separately in [ADMOB_AND_STORE_RELEASE.md](ADMOB_AND_STORE_RELEASE.md).
+[PRODUCT.md](../PRODUCT.md) supplies the product facts: 240/480 coin packs, equal value without a bulk bonus, a displayed-wallet purchase threshold of 2,160, optional rewarded videos granting 40 coins, and rebalanced virtual-shop prices. [DESIGN.md](../DESIGN.md) remains the visual authority; this document supplements its shop implementation guidance. Publisher activation and release work are recorded separately in [ADMOB_AND_STORE_RELEASE.md](ADMOB_AND_STORE_RELEASE.md).
 
 ## Inherited assets and materials
 
@@ -35,12 +35,12 @@ The ordinary shop retains its actual illustrated objects on two shelves, selecte
 | --- | --- | --- |
 | Test shop | Offer actions say `Try +240` / `Try +480`, with localized RU/UK equivalents. The note explicitly says `Test shop · no charge`. The ordinary catalogue heading says `Test shop`. | All six captures are test-mode Editor output. |
 | Available production product | Action uses `Buy · {localized store price}` from Unity IAP metadata. No cash price is authored in this UI. | Source inspected; live store price and purchase flow NOT RUN. |
-| Wallet at or above 960 | New pack actions read `You have enough coins` and become unavailable. This threshold is not a balance cap: already-paid pending orders still deliver. | Source/product fact; this state is not one of the six captures. |
+| Wallet at or above 2,160 | New pack actions read `You have enough coins` and become unavailable. This threshold is not a balance cap: already-paid pending orders still deliver. | Source/product fact; this state is not one of the six captures. |
 | Busy, deferred or retry | Status can say `Checking purchase…`, explain waiting for approval while play remains available, or explain failure/retry. Retry reconnects through the store adapter. | Source inspected; production state transitions NOT RUN in this documentation pass. |
 | Unconfigured/unavailable | Status says `The shop is not open yet`; an unavailable offer says `Coming soon`. Editor production purchases remain unavailable. | Source inspected; current screenshots use preview purchases. |
 | Coin grant | Wallet refreshes, then a localized pouch toast reports the actual added amount. The supplied Russian capture shows 240 in the wallet and `Получено 240 монет`. | Static state inspected; timing and perceived motion NOT RUN. |
 
-The coin note states: `Up to two tools per stage. Help limits this run to two stars.` The ordinary shop additionally states `Tools: up to 2 stars. No clean record.` Buying currency alone does not apply assistance. Existing five-tool prices, eight 240-coin trophies, limited stock and eligibility rules remain product/application facts rather than presentation decisions.
+The coin note states: `Up to two tools per stage. Help limits this run to two stars.` The ordinary shop additionally states `Tools: up to 2 stars. No clean record.` Buying currency alone does not apply assistance. Rebalanced tool and trophy prices, limited stock and eligibility rules remain product/application facts rather than presentation decisions.
 
 The source-defined preview ad uses the same pouch and teal/gold controls inside a full-viewport dimmed backdrop and safe-area sheet. It identifies itself as `Test ad`, offers a Close action, and enables collection after five foreground seconds for a rewarded preview (two seconds for an automatic preview). Its countdown stops while unfocused/paused. No preview-ad screenshot is included in this six-capture evidence set; this paragraph records source behavior only.
 

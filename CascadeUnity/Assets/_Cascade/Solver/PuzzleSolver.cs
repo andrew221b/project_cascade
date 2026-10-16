@@ -32,13 +32,29 @@ namespace Cascade.Solver
             if (resolver == null) throw new ArgumentNullException(nameof(resolver));
             start = start ?? resolver.CreateInitialState(); goal = goal ?? PuzzleGoal.Delivery;
             ValidateStart(resolver, start, stateBudget);
+            return FindOutcome(resolver,start,goal.IsSatisfied,stateBudget,cancellationToken);
+        }
+
+        // A read-only counterexample query; it never changes delivery or transition rules.
+        public static SearchResult FindShortestOutcome(PuzzleResolver resolver,Predicate<PuzzleState> outcome,
+            PuzzleState start=null,int stateBudget=DefaultStateBudget,CancellationToken cancellationToken=default)
+        {
+            if(resolver==null)throw new ArgumentNullException(nameof(resolver));
+            if(outcome==null)throw new ArgumentNullException(nameof(outcome));
+            start=start??resolver.CreateInitialState();ValidateStart(resolver,start,stateBudget);
+            return FindOutcome(resolver,start,outcome,stateBudget,cancellationToken);
+        }
+
+        static SearchResult FindOutcome(PuzzleResolver resolver,PuzzleState start,Predicate<PuzzleState> outcome,
+            int stateBudget,CancellationToken cancellationToken)
+        {
             var queue = new Queue<PuzzleState>(); queue.Enqueue(start);
             var parent = new Dictionary<PuzzleState, Parent> { [start] = new Parent(null, default) };
             while (queue.Count != 0)
             {
                 if (cancellationToken.IsCancellationRequested) return Unknown(parent.Count, "Cancelled");
                 var current = queue.Dequeue();
-                if (goal.IsSatisfied(current))
+                if (outcome(current))
                 {
                     var path = new List<PuzzleCommand>(); var step = current;
                     while (parent[step].State != null) { path.Add(parent[step].Command); step = parent[step].State; }

@@ -39,7 +39,7 @@ Two free undos remain available on the same board. Existing save fields derive
 the aggregate tool limit; no profile schema change. Legacy attempts using more
 than two tools remain loadable but cannot use additional tools.
 
-A 960-coin displayed-wallet threshold stops new coin-pack purchases (not earned
+A displayed-wallet threshold equal to the current maximum trophy price stops new coin-pack purchases (not earned
 rewards/spending). Already-paid/pending transactions are still delivered, even
 if they cross the threshold; never discard purchased value. Preview pack grants
 are session-only and cannot leak into the real profile. No paywall, paid skips,

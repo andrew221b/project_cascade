@@ -70,13 +70,8 @@ namespace Cascade.Presentation
             }
             var handSprite=Resources.Load<Sprite>("CascadeArt/TutorialHand");var hand=handSprite==null?null:Picture("Demo hand",root,new Vector2(.02f,.54f),new Vector2(.18f,.96f),handSprite,true);
             if(kind==6&&floor.LinkedPair.HasValue){
-                foreach(int edge in new[]{floor.LinkedPair.Value.FirstEdge,floor.LinkedPair.Value.SecondEdge}){
-                    float left=(edge+.5f)/row.Length,right=(edge+1.5f)/row.Length;
-                    Line("Tied pair span",new Vector2(left,.48f),new Vector2(right,.48f),new Color(.55f,.36f,.69f),4);
-                    Line("Left tied loop",new Vector2(left,.48f),new Vector2(left,.58f),new Color(.55f,.36f,.69f),4);
-                    Line("Right tied loop",new Vector2(right,.48f),new Vector2(right,.58f),new Color(.55f,.36f,.69f),4);
-                }
-                Line("Both pairs connected",new Vector2(.375f,.48f),new Vector2(.625f,.48f),new Color(.55f,.36f,.69f),2);
+                var belt=Rect("Demo hemp pulley mechanism",root,new Vector2(0,.43f),new Vector2(1,.53f));
+                belt.gameObject.AddComponent<PlatformMechanismGraphic>().InitializeDemo();
             }
             if(kind==5)board.GetComponent<WoodBoardGraphic>().SetDamage(2);
             RectTransform bridge=null;int gateEdge=kind==3?floor.Key.EdgeToOpen:floor.OneUseBridgeEdge??0;float gateX=(gateEdge+1f)/row.Length;

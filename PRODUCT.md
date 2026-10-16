@@ -267,9 +267,10 @@ Rewarded videos are optional and give 40 coins.
 Draft store products are `cascade.no_automatic_ads` (non-consumable),
 `cascade.coins_240` and `cascade.coins_480` (consumables). Prices come from
 store metadata; no cash price is invented. Packs have equal coins per unit,
-no bulk bonus; new pack purchases stop at a displayed wallet of 960 coins.
-Paid pending orders always deliver even above that threshold. The existing
-five tool prices and eight 240-coin trophies remain unchanged. Paid and earned
+no bulk bonus; new pack purchases stop at a displayed wallet of 2,160 coins.
+Paid pending orders always deliver even above that threshold. Virtual shop
+prices are rebalanced: tools cost 120–300 coins, core Mika trophies cost 360,
+and the most expensive cosmetics cost up to 2,160. Paid and earned
 coins buy the same stock; assistance caps the whole delivery at two stars and
 excludes clean records. No paid skips, platform strength or competitive rank.
 

@@ -1,1 +1,1 @@
-Success: StandaloneOSX; duration=5.159032; path=Library/com.unity.addressables/aa/OSX/settings.json
+Success: iOS; duration=7.994914; path=Library/com.unity.addressables/aa/iOS/settings.json

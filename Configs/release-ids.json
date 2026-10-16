@@ -1,0 +1,67 @@
+{
+  "iosBundleId": "",
+  "appleAppId": "",
+  "appleTeamId": "",
+  "appleIssuerId": "",
+  "appleKeyId": "",
+  "androidPackageName": "",
+  "androidKeystoreAlias": "",
+  "admobPublisherId": "",
+  "unityProjectId": "a1b8a760-5a0c-4c2d-8ae7-54c1b411259a",
+  "unityEnvironmentName": "production",
+  "unityEnvironmentId": "",
+  "cloudCodeModuleName": "CascadeAccount",
+  "receiptVerifierUrl": "",
+  "supportUrl": "",
+  "privacyPolicyUrl": "",
+  "storeProducts": [
+    {
+      "productId": "cascade.no_automatic_ads",
+      "type": "NonConsumable"
+    },
+    {
+      "productId": "cascade.no_ads_week",
+      "type": "Subscription",
+      "period": "P1W"
+    },
+    {
+      "productId": "cascade.no_ads_month",
+      "type": "Subscription",
+      "period": "P1M"
+    },
+    {
+      "productId": "cascade.no_ads_year",
+      "type": "Subscription",
+      "period": "P1Y"
+    },
+    {
+      "productId": "cascade.coins_240",
+      "type": "Consumable"
+    },
+    {
+      "productId": "cascade.coins_480",
+      "type": "Consumable"
+    },
+    {
+      "productId": "cascade.coins_720",
+      "type": "Consumable"
+    },
+    {
+      "productId": "cascade.coins_960",
+      "type": "Consumable"
+    },
+    {
+      "productId": "cascade.coins_600",
+      "type": "Consumable"
+    },
+    {
+      "productId": "cascade.coins_1080",
+      "type": "Consumable"
+    }
+  ],
+  "serverSecretNames": [
+    "CASCADE_RECEIPT_VERIFIER_URL",
+    "CASCADE_RECEIPT_VERIFIER_TOKEN"
+  ],
+  "termsOfUseUrl": ""
+}

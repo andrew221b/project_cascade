@@ -9,10 +9,10 @@ namespace Cascade.Presentation
         public OutcomeCeremony Outcome=>outcome;
         void BuildOutcomes()
         {
-            var story=Rect("Lantern delivery story",safeRoot,new Vector2(.10f,.41f),new Vector2(.90f,.80f));
+            var story=Rect("Lantern delivery story",safeRoot,new Vector2(.045f,.41f),new Vector2(.955f,.80f));
             var glow=Rect("Lantern light",story,Vector2.zero,Vector2.one).gameObject.AddComponent<OutcomeLightGraphic>();
-            var ribbon=Picture("Stage celebration ribbon",story,new Vector2(0,.66f),new Vector2(1,1),CompletionArt(1),true);
-            var heading=Text("Outcome heading",ribbon.transform,new Vector2(.165f,.25f),new Vector2(.835f,.80f),24,"");heading.enableAutoSizing=true;heading.fontSizeMax=24;heading.fontSizeMin=17;heading.margin=new Vector4(3,2,3,2);StyleCelebrationType(heading,CelebrationType.PaperTitle);
+            var ribbon=Picture("Stage celebration ribbon",safeRoot,new Vector2(.045f,.79f),new Vector2(.955f,.93f),CompletionArt(1),false);
+            var heading=Text("Outcome heading",ribbon.transform,new Vector2(.10f,.25f),new Vector2(.90f,.80f),21,"");heading.enableAutoSizing=true;heading.fontSizeMax=21;heading.fontSizeMin=16;heading.margin=new Vector4(2,1,2,1);heading.wordSpacing=-1.5f;heading.textWrappingMode=TextWrappingModes.NoWrap;StyleCelebrationType(heading,CelebrationType.PaperTitle);
             var shelf=Rect("Mika's outcome ledge",story,new Vector2(.27f,.155f),new Vector2(.73f,.172f));shelf.gameObject.AddComponent<WoodBoardGraphic>();
             var friend=Picture("Mika's outcome",story,new Vector2(.25f,.10f),new Vector2(.75f,.61f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
             outcome=gameObject.AddComponent<OutcomeCeremony>();outcome.Initialize(this,story,friend,heading,glow);

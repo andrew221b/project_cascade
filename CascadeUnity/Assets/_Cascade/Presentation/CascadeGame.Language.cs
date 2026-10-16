@@ -7,50 +7,71 @@ namespace Cascade.Presentation
 {
     public sealed partial class CascadeGame
     {
-        string proposedPuzzleLocale;
         string languagePreview;
+#if UNITY_EDITOR
+        public static SystemLanguage? EditorSystemLanguage { get; set; }
+#endif
         public string UiLanguage=>LocalizationSettings.SelectedLocale.Identifier.Code;
-        public string ProposedPuzzleLocale=>proposedPuzzleLocale;
+        public string ProposedPuzzleLocale=>null;
         static UiCopy NativeLanguageName(string code)=>UiCopy.Raw(code=="ru"?"Русский":code=="uk"?"Українська":"English");
         static UiCopy LanguageName(string code)=>code=="ru"?"Russian":code=="uk"?"Ukrainian":"English";
         void InitializeUiLanguage()
         {
-            LocalizationSettings.InitializationOperation.WaitForCompletion();
+            // Preserve earlier RU/UK choices. Earlier English defaults adopt the
+            // device language; every subsequent manual choice overrides detection.
+            bool follow=Preferences.FollowSystemLanguage??(Preferences.UiLocale=="en");
+            Preferences.FollowSystemLanguage=follow;
+            if(follow){
+                var system=UnityEngine.Application.systemLanguage;
+#if UNITY_EDITOR
+                system=EditorSystemLanguage??system;
+#endif
+                Preferences.UiLocale=Preferences.PuzzleLocale=SystemUiLocale(system);
+            }
+            // A synchronous Addressables wait can stall the iOS main thread during a cold
+            // launch or when returning to the app. The locale assets are already listed in
+            // AvailableLocales; their tables finish loading through the normal player loop.
             LocalizationSettings.SelectedLocale=LocalizationSettings.AvailableLocales.GetLocale(Preferences.UiLocale);
         }
+        static string SystemUiLocale(SystemLanguage language)=>language==SystemLanguage.Russian?"ru":language==SystemLanguage.Ukrainian?"uk":"en";
         public void SetUiLocale(string code)
         {
             if(code!="en"&&code!="ru"&&code!="uk")throw new ArgumentOutOfRangeException(nameof(code));
             LocalizationSettings.SelectedLocale=LocalizationSettings.AvailableLocales.GetLocale(code);
             Preferences.UiLocale=code; // Persistence preference, never a second active UI locale.
+            Preferences.FollowSystemLanguage=false;
             PersistProgress();
+            if(fieldTrayOpen)RefreshToolTray();
+            if(CurrentScreen==GameScreen.Settings)DrawMenu();
+        }
+        public void SetGameLanguage(string code)
+        {
+            if(code!="en"&&code!="ru"&&code!="uk")throw new ArgumentOutOfRangeException(nameof(code));
+            Preferences.UiLocale=code;
+            Preferences.PuzzleLocale=code;
+            Preferences.FollowSystemLanguage=false;
+            LocalizationSettings.SelectedLocale=LocalizationSettings.AvailableLocales.GetLocale(code);
+            PersistProgress();
+            if(fieldTrayOpen)RefreshToolTray();
             if(CurrentScreen==GameScreen.Settings)DrawMenu();
         }
         public void ProposePuzzleLocale(string code)
         {
-            if(code!="en"&&code!="ru"&&code!="uk")throw new ArgumentOutOfRangeException(nameof(code));
-            proposedPuzzleLocale=code;SetScreen(GameScreen.WordLanguage);
+            // Compatibility entry point: the game now has one language selection.
+            SetGameLanguage(code);PersistProgress(true);
         }
         public void ConfirmPuzzleLocale()
         {
-            if(proposedPuzzleLocale==null)return;
-            Preferences.PuzzleLocale=proposedPuzzleLocale;PersistProgress();proposedPuzzleLocale=null;languagePreview=null;SetScreen(GameScreen.Settings);
-        }
-        void DrawWordLanguageConfirmation()
-        {
-            NavigationHeader("Change word language?",()=>{proposedPuzzleLocale=null;languagePreview=null;SetScreen(GameScreen.Settings);});
-            NavigationNote("Language confirmation",new UiCopy("New puzzles: {0}. This row stays the same.",NativeLanguageName(proposedPuzzleLocale)),.48f,.72f);
-            NavigationButton("Usefornewpuzzles","Use for new puzzles",6,.31f,ConfirmPuzzleLocale,true);
-            NavigationButton("Keepmychoice","Keep my choice",6,.19f,()=>{proposedPuzzleLocale=null;languagePreview=null;SetScreen(GameScreen.Settings);});
+            // Older callers may still confirm; selection has already applied immediately.
         }
         void DrawLanguages()
         {
-            if(languagePreview==null)languagePreview=Preferences.PuzzleLocale;
-            var menuHeading=Text("UI language help",menuRoot,new Vector2(.17f,.66f),new Vector2(.83f,.72f),22,"Menu language");menuHeading.font=art.titleFont;menuHeading.alignment=TextAlignmentOptions.Center;
-            LanguageCarousel("UiLocale",UiLanguage,.65f,SetUiLocale);
-            var wordHeading=Text("Word language help",menuRoot,new Vector2(.17f,.435f),new Vector2(.83f,.535f),22,"Words in new puzzles");wordHeading.font=art.titleFont;wordHeading.alignment=TextAlignmentOptions.Center;wordHeading.enableAutoSizing=true;wordHeading.fontSizeMin=18*MenuUnit;wordHeading.fontSizeMax=22*MenuUnit;
-            LanguageCarousel("PuzzleLocale",languagePreview,.42f,code=>{languagePreview=code;DrawMenu();});
-            var apply=MenuButton("Use for new puzzles",.20f,()=>ProposePuzzleLocale(languagePreview),true);apply.name="PuzzleLocale"+languagePreview;apply.interactable=languagePreview!=Preferences.PuzzleLocale;
+            foreach(var code in new[]{"en","ru","uk"}){
+                string chosen=code;
+                var button=SettingsButton(NativeLanguageName(code),()=>SetGameLanguage(chosen));
+                button.name="GameLanguage"+code;
+                if(code==Preferences.UiLocale)MarkSelection(button,true);
+            }
         }
     }
 }

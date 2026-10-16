@@ -10,6 +10,8 @@ namespace Cascade.Presentation
         Material targetSocketMaterial;
         Texture2D letterGrain;
         MaterialPropertyBlock receiverLight;
+        Mesh[] roundedShapes;
+        Mesh roundedTile;
 
         public void SetReceiverLight(float value)
         {
@@ -21,6 +23,9 @@ namespace Cascade.Presentation
         void InitializePieceMaterials()
         {
             receiverLight=new MaterialPropertyBlock();
+            roundedShapes=new Mesh[art.shapes.Length];
+            for(int i=0;i<roundedShapes.Length;i++)roundedShapes[i]=ToySurfaceGeometry.RoundFace(art.shapes[i]);
+            roundedTile=ToySurfaceGeometry.RoundFace(art.tile);
             var glaze=Resources.Load<Material>("CascadeArt/Materials/CandyGlaze");
             candyMaterials = new Material[art.colors.Length];
             for (int i = 0; i < candyMaterials.Length; i++) {
@@ -29,9 +34,9 @@ namespace Cascade.Presentation
                 Color.RGBToHSV(material.GetColor("_BaseColor"),out float hue,out float saturation,out float value);
                 material.SetColor("_BaseColor",Color.HSVToRGB(hue,Mathf.Min(1,saturation*1.14f+.02f),Mathf.Min(1,value*1.035f)));
                 material.SetFloat("_Metallic", .035f);
-                material.SetFloat("_Smoothness", .81f);
+                material.SetFloat("_Smoothness", .73f);
                 material.SetFloat("_ClearCoatMask", .64f);
-                material.SetFloat("_ClearCoatSmoothness", .87f);
+                material.SetFloat("_ClearCoatSmoothness", .80f);
                 material.EnableKeyword("_CLEARCOAT");
                 material.EnableKeyword("_EMISSION");
                 candyMaterials[i] = material;
@@ -69,6 +74,7 @@ namespace Cascade.Presentation
 
         Material PieceMaterial(SymbolId symbol) => symbol.Kind == SymbolKind.Glyph
             ? letterMaterial : candyMaterials[art.ShapeIndex(symbol)];
+        Mesh PieceMesh(SymbolId symbol) => symbol.Kind==SymbolKind.Glyph?roundedTile:roundedShapes[art.ShapeIndex(symbol)];
         Material TargetSocketMaterial => targetSocketMaterial;
 
         void DisposePieceMaterials()
@@ -77,6 +83,8 @@ namespace Cascade.Presentation
             if (letterMaterial != null) Destroy(letterMaterial);
             if (targetSocketMaterial != null) Destroy(targetSocketMaterial);
             if (letterGrain != null) Destroy(letterGrain);
+            if(roundedShapes!=null)foreach(var mesh in roundedShapes)if(mesh!=null)Destroy(mesh);
+            if(roundedTile!=null)Destroy(roundedTile);
         }
     }
 }

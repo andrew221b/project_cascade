@@ -18,6 +18,7 @@ namespace Cascade.Presentation
             public Vector2 point, size;
             public float depth, z, angle;
             public Vector3 basePosition,baseScale; public Quaternion baseRotation; public Material material; public bool stretch;
+            public MaterialPropertyBlock shadowProperties;
         }
         sealed class FloorRig
         {
@@ -31,7 +32,7 @@ namespace Cascade.Presentation
             public readonly List<Part> stamp = new List<Part>();
             public readonly List<Part> fuse = new List<Part>(), durability = new List<Part>(), rope = new List<Part>();
             public readonly Part[] knots=new Part[2];
-            public Part board,top,bombFlame; public Mesh bendMesh,topMesh;
+            public Part board,top,bombFlame,bridgeStop; public float bridgeClosure,bridgeVelocity; public bool bridgeClosed,bridgePoseReady; public Mesh bendMesh,topMesh;
             public Vector3[] vertices,topVertices; public float sag,sagVelocity,sway,swayVelocity,roll,rollVelocity,wear,fracture;
             public readonly float[] deflection=new float[17];
             public int surfaceStyle=-1;
@@ -43,12 +44,10 @@ namespace Cascade.Presentation
         Transform machine, scenery, windmill;
         LayeredWorld livingWorld;
         public LayeredWorld LivingWorld => livingWorld;
-        int theme;Light worldKey,worldFill;
+        int theme;Light worldKey;
+        WorldLighting.Rig worldLight;
+        public WorldLighting.Sample Illumination => worldLight!=null?worldLight.Current:WorldLighting.Evaluate(theme,false,0,false);
         public void SetZone(int zone) { theme=Mathf.Clamp(zone,0,Cascade.Content.JourneyStory.WorldCount-1); livingWorld?.SetZone(theme);
-            if(worldKey==null||worldFill==null)return;bool night=theme==8;
-            worldKey.color=night?new Color(1,.87f,.66f):new Color(1,.96f,.88f);worldKey.intensity=night?1.08f:1.18f;
-            worldFill.color=night?new Color(.42f,.65f,1):new Color(.64f,.85f,1);worldFill.intensity=night?.64f:.35f;
-            RenderSettings.ambientLight=night?new Color(.38f,.48f,.65f):new Color(.69f,.79f,.80f);
         }
         Part backdrop;
         readonly List<Part> all = new List<Part>();
@@ -98,6 +97,8 @@ namespace Cascade.Presentation
         public Vector3 TokenPosition(int index) => restPositions[index];
         public Vector3 PresentedTokenPosition(int index) => tokens[index].transform.position;
         public float SelectionLiftWorld(int index) { tokens[index].anchor.GetWorldCorners(corners); return (corners[2].y-corners[0].y)*.1f; }
+        public bool HasFloorView(int floor,RectTransform anchor)
+            =>floor>=0&&floor<floors.Count&&floors[floor].parts.Count>0&&anchor!=null&&(floors[floor].parts[0].anchor==anchor||anchor.IsChildOf(floors[floor].parts[0].anchor));
         public float FloorVisualAngle(int floor)=>floors[floor].roll;
         public float FloorBreakProgress(int floor)=>floors[floor].fracture;
         public float FloorSag(int floor)=>floors[floor].sag;
@@ -109,13 +110,15 @@ namespace Cascade.Presentation
         {
             if(reducedMotion)return 0;
             float age=Mathf.Max(0,windTime-gustStarted);
-            float gust=(1-Mathf.Exp(-age*6))*Mathf.Exp(-age*.85f)*gustDirection*1.8f;
+            float gust=(1-Mathf.Exp(-age*3.5f))*Mathf.Exp(-age*.45f)*gustDirection*2f;
             return Mathf.Clamp(WorkshopWind.Sample(windTime-floor*.13f)+gust+windAnticipation,-1,1)*(heldWeight>=0?.72f:1);
         }
         public void CueWind(bool right,float strength=1)
         {
+            wildlifeActivity++;
             windAnticipation=0;if(reducedMotion)return;gustStarted=windTime;gustDirection=(right?1:-1)*Mathf.Clamp01(strength);
             // One pressure impulse, then the existing springs carry the recoil and recovery.
+            receiverMotion.Impulse(gustDirection);
             foreach(var rig in floors){rig.swayVelocity+=gustDirection*1.45f;rig.rollVelocity+=gustDirection*17;}
             for(int side=0;side<2;side++)for(int segment=0;segment<=floors.Count;segment++)ropeSpans[side,segment]?.Impulse(gustDirection*.85f);
         }
@@ -147,18 +150,17 @@ namespace Cascade.Presentation
         public void Initialize(ToyArt artwork, Camera camera)
         {
             art = artwork; viewCamera = camera;cameraRestPosition=camera.transform.position;
+            wildlifeGame=GetComponent<CascadeGame>();
             scenery = new GameObject("Sky workshop scenery").transform; scenery.SetParent(transform, false);
             backdrop = Create("Painted cloud garden", scenery, null, art.quad, art.backdrop, Vector2.zero, Vector2.one, 3, .01f);
             livingWorld = gameObject.AddComponent<LayeredWorld>(); livingWorld.Initialize(art,viewCamera);
             if(livingWorld.Ready)backdrop.transform.gameObject.SetActive(false);
-            var lightObject = new GameObject("Warm workshop key light", typeof(Light)); lightObject.transform.SetParent(transform, false);
+            var lightObject = new GameObject("World sun or moon", typeof(Light)); lightObject.transform.SetParent(transform, false);
             lightObject.transform.rotation = Quaternion.Euler(32, -24, 0);
             var keyLight = worldKey=lightObject.GetComponent<Light>(); keyLight.type = LightType.Directional;
             keyLight.color = new Color(1, .96f, .88f); keyLight.intensity = 1.18f; keyLight.shadows = LightShadows.Soft;
             keyLight.shadowStrength = .42f; keyLight.shadowBias = .035f; keyLight.shadowNormalBias = .15f;
-            var fillObject=new GameObject("Soft sky rim",typeof(Light));fillObject.transform.SetParent(transform,false);fillObject.transform.rotation=Quaternion.Euler(-18,155,0);
-            var fill=worldFill=fillObject.GetComponent<Light>();fill.type=LightType.Directional;fill.color=new Color(.64f,.85f,1);fill.intensity=.35f;fill.shadows=LightShadows.None;
-            RenderSettings.ambientMode = AmbientMode.Flat; RenderSettings.ambientLight = new Color(.69f, .79f, .80f);
+            worldLight=new WorldLighting.Rig(keyLight);livingWorld.BindLighting(worldLight);
             InitializePieceMaterials();
 
         }
@@ -166,6 +168,7 @@ namespace Cascade.Presentation
         public void Bind(PuzzleInteraction model, IReadOnlyList<RectTransform> anchors, IReadOnlyList<TokenSlot> slots,
             IReadOnlyList<TMPro.TextMeshProUGUI> targets, RectTransform receiver)
         {
+            wildlifeRevision++;NotifyWildlifeInput();
             if (machine != null) { machine.gameObject.SetActive(false); Destroy(machine.gameObject); }
             gustStarted=-100;gustDirection=0;windAnticipation=0;
             nextAmbientGust=windTime+9+(ambientGust%3);
@@ -185,8 +188,9 @@ namespace Cascade.Presentation
                 var anchor = targets[i].rectTransform;
                 Add("Target socket", anchor, art.tile, TargetSocketMaterial, new Vector2(.5f, .5f), new Vector2(.92f, .94f), -.06f, .08f);
                 var symbol = model.Attempt.Level.TargetSymbolIds[i];
-                targetBodies.Add(Add("Target " + i, anchor, art.SymbolMesh(symbol), PieceMaterial(symbol), new Vector2(.5f, .5f), new Vector2(.72f, .78f), -.12f, .12f));
+                targetBodies.Add(Add("Target " + i, anchor, PieceMesh(symbol), PieceMaterial(symbol), new Vector2(.5f, .5f), new Vector2(.72f, .78f), -.12f, .16f));
             }
+            BindReceiver(targets);
             for (int i = 0; i < slots.Count; i++) {
                 var anchor = (RectTransform)slots[i].transform;
                 tokenShadows.Add(Add("Token contact " + i, anchor, art.quad, art.shadow, new Vector2(.53f, .22f), new Vector2(1.04f, .35f), .04f, .01f));
@@ -205,8 +209,8 @@ namespace Cascade.Presentation
             rig.surfaceStyle=PlatformSurfaceArt.Style(floor,floors.Count-1==Frame.ActiveFloor);
             var surfaceMaterial=rig.surfaceStyle>=0?platformMaterials[rig.surfaceStyle]:woodMaterial;
             rig.bendMesh=BoardMesh();rig.vertices=rig.bendMesh.vertices;
-            if(rig.surfaceStyle>=0){var uv=rig.bendMesh.uv;for(int i=0;i<uv.Length;i++)uv[i].x=PlatformSurfaceArt.FaceUvX(uv[i].x);rig.bendMesh.uv=uv;}
-            rig.board=P("Wooden suspended board",rig.bendMesh,surfaceMaterial,.5f,.30f,1,.25f,.15f);rig.board.stretch=true;
+
+            rig.board=P("Wooden suspended board",rig.bendMesh,surfaceMaterial,.5f,.275f,1,.30f,.15f);rig.board.stretch=true;
             rig.topMesh=BoardTopMesh();rig.topVertices=rig.topMesh.vertices;
             rig.top=P("Wooden load-bearing top",rig.topMesh,surfaceMaterial,.5f,.365f,1,.08f,-.15f);rig.top.depth=.65f;rig.top.stretch=true;
             for(int end=0;end<2;end++) {
@@ -218,12 +222,17 @@ namespace Cascade.Presentation
 
             for (int i = 0; i < count - 1; i++) {
                 float x = .045f + .91f * (i + 1f) / count;
-                var gate = P("Edge latch " + i, art.quad, branchMaterial, x, .466f, .05f, .27f, -.32f);
+                var gate = P("Edge latch " + i, art.quad, branchMaterial, x, .51f, .05f, .40f, -.32f);
                 var branchUv=new MaterialPropertyBlock();branchUv.SetVector("_BaseMap_ST",new Vector4(.5f,1,((i+floors.Count)%2)*.5f,0));gate.renderer.SetPropertyBlock(branchUv);
                 rig.locks.Add(gate);
                 if (floor.OneUseBridgeEdge == i) {
-                    rig.bridge.Add(P("One use bridge", art.beam, art.gold, x, .46f, .12f, .055f, -.4f));
-                    rig.bridge.Add(P("Bridge hinge", art.disk, art.graphite, x, .46f, .024f, .045f, -.51f));
+                    // A sprung stop is bolted into the timber, not a floating connection between pieces.
+                    rig.bridge.Add(P("Bridge mounting plate", art.beam, art.graphite, x, .32f, .072f, .095f, -.34f));
+                    rig.bridge.Add(P("Bridge brass collar", art.beam, art.gold, x, .335f, .054f, .070f, -.38f));
+                    rig.bridgeStop=P("Bridge hinged timber stop",art.beam,woodMaterial,x,.49f,.040f,.27f,-.40f);
+                    var timberUv=new MaterialPropertyBlock();timberUv.SetVector("_BaseMap_ST",new Vector4(.045f,.12f,.43f,.83f));rig.bridgeStop.renderer.SetPropertyBlock(timberUv);
+                    rig.bridge.Add(rig.bridgeStop);
+                    rig.bridge.Add(P("Bridge pivot pin",art.disk,art.paleGold,x,.355f,.017f,.038f,-.53f));
                 }
             }
         }
@@ -236,9 +245,12 @@ namespace Cascade.Presentation
         {
             var go = new GameObject(name, typeof(MeshFilter), typeof(MeshRenderer)); go.transform.SetParent(parent, false);
             go.GetComponent<MeshFilter>().sharedMesh = mesh; var renderer = go.GetComponent<MeshRenderer>(); renderer.sharedMaterial = material;
-            bool solidPiece = name.StartsWith("Persistent token") || name.StartsWith("Target ") || name.StartsWith("Wooden ") || name=="Rope knot" || name=="Golden receiver rim" || name=="Ivory inset";
-            renderer.shadowCastingMode = solidPiece ? ShadowCastingMode.On : ShadowCastingMode.Off;
-            renderer.receiveShadows = name == "Wooden suspended board" || solidPiece;
+            bool receiverMiniature = name.StartsWith("Target ");
+            bool solidPiece = name.StartsWith("Persistent token") || receiverMiniature || name.StartsWith("Wooden ") || name=="Rope knot" || name=="Bridge hinged timber stop" || name=="Bridge mounting plate" || name=="Golden receiver rim" || name=="Ivory inset";
+            // Tiny goal symbols sit inside shallow sockets; real-time mesh shadows
+            // alias into dark shards at phone scale. Their own lighting keeps depth.
+            renderer.shadowCastingMode = solidPiece && !receiverMiniature ? ShadowCastingMode.On : ShadowCastingMode.Off;
+            renderer.receiveShadows = !receiverMiniature && (name == "Wooden suspended board" || solidPiece);
             return new Part { transform = go.transform, renderer = renderer, material=material, mesh = mesh, anchor = anchor, point = point, size = size, z = z, depth = depth, angle = angle };
         }
         void Place(Part part)
@@ -267,7 +279,7 @@ namespace Cascade.Presentation
             var state = Frame;
             foreach (var target in targetBodies) target.transform.gameObject.SetActive(true);
             for (int i = 0; i < tokens.Count; i++) {
-                var token = tokens[i]; var mesh = art.SymbolMesh(state.Row[i]);
+                var token = tokens[i]; var mesh = PieceMesh(state.Row[i]);
                 token.mesh = mesh; token.transform.GetComponent<MeshFilter>().sharedMesh = mesh;
                 token.renderer.sharedMaterial = PieceMaterial(state.Row[i]);
                 token.point = new Vector2(.5f, state.Status == PuzzleStatus.Won ? .5f : TokenFaceY(false));
@@ -286,9 +298,13 @@ namespace Cascade.Presentation
                 rig.wear=active?Mathf.Clamp01(1-hp/(float)interaction.Attempt.Level.Floors[f].BaseDurability):0;
                 for (int edge = 0; edge < rig.locks.Count; edge++) {
                     bool open = active ? state.EdgeVisibleOpen(interaction.Attempt.Level.Floors[f], edge) : interaction.Attempt.Level.Floors[f].OpenEdges[edge];
-                    rig.locks[edge].transform.gameObject.SetActive(!past && !open);
+                    rig.locks[edge].transform.gameObject.SetActive(!past && !open && interaction.Attempt.Level.Floors[f].OneUseBridgeEdge!=edge);
                 }
-                SetVisible(rig.bridge, !past && !(active && state.BridgeUsed));
+                SetVisible(rig.bridge, !past);
+                var bridgeFloor=interaction.Attempt.Level.Floors[f];
+                if(bridgeFloor.OneUseBridgeEdge is int bridgeEdge)
+                    rig.bridgeClosed=!(active?state.EdgeVisibleOpen(bridgeFloor,bridgeEdge):bridgeFloor.OpenEdges[bridgeEdge]);
+                if(!rig.bridgePoseReady){rig.bridgeClosure=rig.bridgeClosed?1:0;rig.bridgePoseReady=true;}
                 SetVisible(rig.bomb,!past && (!active || state.BombPhase!=BombPhase.Exploded));
                 foreach(var p in rig.bomb)p.renderer.sharedMaterial=active&&state.BombPhase==BombPhase.Defused&&p.transform.name.Contains("mount")?art.teal:p.material;
                 if(rig.bombFlame!=null)rig.bombFlame.transform.gameObject.SetActive(!past&&(!active||state.BombPhase==BombPhase.Armed));
@@ -307,7 +323,8 @@ namespace Cascade.Presentation
                 if(state.Status==PuzzleStatus.Playing) {
                     var p=tokens[i];var rig=floors[state.ActiveFloor];rig.board.anchor.GetWorldCorners(corners);
                     // The painted plank occupies the middle of its padded mesh. Seat pieces on visible wood.
-                    float boardTop=Mathf.Lerp(corners[0].y,corners[2].y,.365f);
+                    float u=Mathf.InverseLerp(corners[0].x,corners[2].x,p.transform.position.x);
+                    float boardTop=rig.board.basePosition.y+(GameplayReferenceArt.BoardCrown(u)-.5f+.010f)*rig.board.baseScale.y;
                     float half=p.mesh.bounds.extents.y*p.transform.localScale.y;
                     p.transform.position=new Vector3(p.transform.position.x,boardTop+half-p.mesh.bounds.center.y*p.transform.localScale.y,p.transform.position.z);
                     var shadow=tokenShadows[i];shadow.basePosition=new Vector3(p.transform.position.x,boardTop-.012f,shadow.basePosition.z);shadow.transform.position=shadow.basePosition;
@@ -331,15 +348,18 @@ namespace Cascade.Presentation
         static void SetVisible(List<Part> parts, bool visible) { foreach (var p in parts) p.transform.gameObject.SetActive(visible); }
         void LateUpdate()
         {
+            PaintReceiverFrame();
             if (!reducedMotion && interaction != null && !ambientPaused && !(interaction.IsPaused&&gameplayView) && !interaction.IsSuspended) windTime += Time.unscaledDeltaTime;
-            if(gameplayView&&interaction?.Attempt.Current.Status==PuzzleStatus.Playing&&!reducedMotion&&interaction!=null&&!interaction.IsPaused&&!interaction.IsSuspended&&!interaction.IsPreparing&&!interaction.IsPresenting&&heldWeight<0&&windTime>=nextAmbientGust){
-                var game=GetComponent<CascadeGame>();
-                if(!game.RequireGustIntroduction()){
-                    CueWind((ambientGust++%2)==0,.55f);nextAmbientGust=windTime+12+(ambientGust%4)*1.7f;
-                    game.CueDeviceWind(gustDirection>0);
-                }
+            TickWildlifeInput();
+            if(gameplayView&&interaction?.Attempt.Current.Status==PuzzleStatus.Playing&&!reducedMotion&&interaction!=null&&!interaction.IsPaused&&!interaction.IsSuspended&&!interaction.IsPreparing&&!interaction.IsPresenting&&heldWeight<0&&windTime>=nextAmbientGust&&Mathf.Abs(WorkshopWind.Sample(windTime))>=.35f){
+                // Let a real weather swell give the suspended props a small recoil.
+                // Do not start a second pressure/tail clock that fills the calm with wind.
+                float breeze=WorkshopWind.Sample(windTime);ambientGust++;nextAmbientGust=windTime+14;
+                receiverMotion.Impulse(breeze*.25f);
+                foreach(var rig in floors){rig.swayVelocity+=breeze*.22f;rig.rollVelocity+=breeze*2.7f;}
+                for(int side=0;side<2;side++)for(int segment=0;segment<=floors.Count;segment++)ropeSpans[side,segment]?.Impulse(breeze*.12f);
             }
-            livingWorld?.Paint(reducedMotion ? 0 : windTime);
+            if(livingWorld!=null){livingWorld.ReducedMotion=reducedMotion;livingWorld.Paint(reducedMotion ? 0 : windTime);}
             if (windmill != null) windmill.localRotation = Quaternion.Euler(0, 0, reducedMotion ? 18 : 18 + windTime * 7);
         }
     }

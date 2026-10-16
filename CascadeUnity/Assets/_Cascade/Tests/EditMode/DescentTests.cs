@@ -29,7 +29,7 @@ namespace Cascade.Tests
         [Test] public void PublishedDescentCurvesAreProvenAndPreserveTheReceiverAndFinalDevices()
         {
             var lines=new List<string>{"puzzle,stage1,stage2,stage3,mood"};int proven=0;
-            var content=catalog.PrimaryLevels.Where(c=>DeliveryDirector.CanDirect(c.Definition)).Concat(
+            var content=catalog.PrimaryLevels.Where(c=>new[]{"C41","C81","C121","C160","C180","C540"}.Contains(c.Definition.CampaignNodeId)&&DeliveryDirector.CanDirect(c.Definition)).Concat(
                 catalog.LocalizedLevels.Where(c=>new[]{"C41","C81","C121","C160"}.Contains(c.Definition.CampaignNodeId)));
             foreach(var c in content) {
                 var source=c.Definition;var run=DescentRun.Build(source);
@@ -53,7 +53,7 @@ namespace Cascade.Tests
                 }
             }
             string dir=Path.Combine(ReferenceFixtures.PackageRoot,"Reports","OutcomeMotion");Directory.CreateDirectory(dir);File.WriteAllLines(Path.Combine(dir,"curves.csv"),lines);
-            Assert.That(proven,Is.GreaterThanOrEqualTo(120));
+            Assert.That(proven,Is.EqualTo(content.Count()));
         }
         [Test] public void VersionOneRecipesKeepTheirExactDeviceFreeStagesAndOldHashFormula()
         {

@@ -1,0 +1,25 @@
+# Player cloud state — 2026-10-07 design note
+
+Unity Authentication identifies the player. Unity Cloud Save stores one protected, versioned account aggregate, updated through Cloud Code with optimistic write locks. The client keeps the existing atomic local save and a durable synchronization journal. No gameplay command depends on an animation, advertisement callback, or network response.
+
+Progress merges monotonically by mode and content identity. Each device retains a complete resumable attempt; concurrent attempts are never spliced together. Currency, consumable inventory and purchase entitlements are reconciled as transactions against one account aggregate, never by adding device balances. Transactions have stable IDs and expected revisions; conflicts reload the account and preserve pending local work. Store grants require server receipt verification. Unconfigured store verification fails closed. Local migration preserves earned progress but cannot manufacture paid grants.
+
+Notifications are local, off by default, enabled by an intentional Settings action and OS permission. Notification preference and OS authorization remain device-specific. At most one gentle reminder is scheduled; opening the game or switching reminders off cancels it. No remote push service, APNs credential, or exact-alarm permission is introduced.
+
+Additive local metadata, protected Cloud Save key `cascade_account_v1`, Cloud Code deployment assets, SDK dependencies and notification IDs are introduced for this request. Existing game prices, product IDs, puzzle rules and content are preserved. Development and production environments must be explicit; never silently switch a live account to another project. Link the verified project only. Cross-device/reinstallation recovery requires an account credential; anonymous sessions alone do not provide it.
+
+Cloud configuration and deployment are validated separately from local compilation. Until deployment and identity setup are confirmed, the game continues to save locally and reports cloud unavailability honestly. Tests cover merge/idempotency/concurrency invariants; they do not prove production receipt or physical-device notification delivery.
+
+## Final synchronization policy
+
+A device first joining an existing account adopts the account's inventory and entitlements; it cannot import another copy of consumable stock. Its progression still merges and its previous local profile is archived. Unsupported or conflicting economy is retained in `cascade-profile.json.before-cloud` for recovery. Server baselines are authoritative; the upload cannot choose its own baseline. The durable journal retains an account-load intention across interruptions and never uploads the previous account into a newly signed-in account.
+
+Each account stores at most eight lean device checkpoints and bounded retry receipts. A sequence high-water mark prevents replay after retry receipt eviction. Profiles are size-limited; oversized requests fail without replacing the local save. The server performs no unlocked fallback if Cloud Save initialization cannot be established safely.
+
+Existing progress is trusted legacy/client progress, not a server-replayed anti-cheat proof of every historical solution. Published-node allowlists and shape/profile validation prevent invalid metadata, while paid grants require independently verified store evidence. Sensitive paid value is never imported from client balance fields. Server receipt ownership also prevents redemption into another player account. AdMob server-side reward verification and refund handling remain release integrations, not client-authoritative grants.
+
+Until AdMob server-side reward verification is integrated, real rewarded offers are hidden while cloud saves are enabled. Preview ads remain available against the session-only test ledger; interstitials keep their existing policy. This prevents a legitimate client ad callback from issuing currency that cloud reconciliation must later reject.
+
+## Atomic reply recovery
+
+The local profile gains an optional `CloudAppliedRequestId` marker and its `CloudAppliedEconomyConflict` flag, saved in the same atomic write as the applied reply. These fields belong to this device and are excluded from canonical server profiles and other-device checkpoints. Before applying a reply, the journal durably records any economy conflict. If a crash or journal backup recovery leaves that request pending but the profile already bears its marker, the client reads the server sequence and acknowledges the accepted request without merging its economy again. The profile flag retains conflict status even if the recovered journal predates that status. The client then schedules the current local profile for synchronization, preserving purchases or consumption made during the original request or after recovery. Account loading clears these fields instead of importing another device's marker. Existing prices, gameplay rules and local save envelope versions remain unchanged.

@@ -12,9 +12,8 @@ namespace Cascade.Presentation
     public sealed partial class CascadeGame
     {
         const int PrologueReceipt=1000;
-        int prologuePage;
         bool storyRoute;
-        Sprite[] navigationIcons,prologuePanels;
+        Sprite[] navigationIcons;
         readonly HashSet<TextMeshProUGUI> navigationLightLabels=new HashSet<TextMeshProUGUI>();
         public bool IsStoryRoute=>storyRoute;
         public int LevelShelfPage=>chapterPage;
@@ -22,12 +21,13 @@ namespace Cascade.Presentation
         struct ShopLocation
         {
             public GameScreen Origin;
-            public int Tab,Item;
+            public int Tab,Item,Category;
+            public bool Detail;
         }
-        ShopLocation CaptureShop()=>new ShopLocation{Origin=shopReturnScreen,Tab=shopTab,Item=shopItem};
+        ShopLocation CaptureShop()=>new ShopLocation{Origin=shopReturnScreen,Tab=shopTab,Item=shopItem,Category=trophyCategory,Detail=shopDetailOpen};
         void RestoreShop(ShopLocation location)
         {
-            shopReturnScreen=location.Origin;shopTab=location.Tab;shopItem=location.Item;
+            shopReturnScreen=location.Origin;shopTab=location.Tab;shopItem=location.Item;trophyCategory=location.Category;shopDetailOpen=location.Detail;
             shopNotice=default;SetScreen(GameScreen.Shop);
         }
         public void ShowShop()
@@ -38,22 +38,34 @@ namespace Cascade.Presentation
             if(CurrentScreen==GameScreen.Supplies&&toolsReturnScreen==GameScreen.Shop){BackFromTools();return;}
             if(CurrentScreen==GameScreen.Workshop&&workshopReturn==GameScreen.Shop){BackFromWorkshop();return;}
             if(CurrentScreen!=GameScreen.Shop&&CurrentScreen!=GameScreen.CoinPacks)shopReturnScreen=CurrentScreen;
-            shopNotice=default;SetScreen(GameScreen.Shop);
+            shopNotice=default;shopDetailOpen=false;SetScreen(GameScreen.Shop);
         }
         public void ShowNoAds(){if(CurrentScreen!=GameScreen.NoAds)noAdsReturnScreen=CurrentScreen;SetScreen(GameScreen.NoAds);}
-        public void ChooseSoloMode(PuzzleMode mode){SelectMode(mode);ShowJourney();}
+        public void ChooseSoloMode(PuzzleMode mode){SelectMode(mode);}
         public void ChooseStory()
         {
             storyRoute=false;
+            if(!RemembersStory(PrologueReceipt)&&!RemembersStory(WorldPrologues.ForWorld(0).Receipt)
+                &&!profile.AllClears.Any()&&!HasResumableJourneyAttempt){
+                OpenWorldComic(0,EnterFirstJourneyPuzzle);return;
+            }
             // Keep an unfinished concrete attempt pinned; the choice affects future levels.
-            ShowJourney();
+            SelectJourneyDestination();SetScreen(GameScreen.JourneyMap);
         }
-        public void ShowPrologue(){worldComic=-1;prologuePage=0;SetScreen(GameScreen.Prologue);}
+        void EnterFirstJourneyPuzzle()
+        {
+            var first=JourneySequence().FirstOrDefault();if(first==null){ShowJourney();return;}
+            selectedJourneyStop=Catalog.PrimaryLevels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==first.Definition.CampaignNodeId);
+            mapPage=JourneyStory.Zone(selectedJourneyStop);islandBrowseIndex=-1;
+            // The opening comic replaces the same introduction on the first island.
+            heardStory.Add(StoryConversations.IslandOpening(mapPage,JourneyStory.IslandFor(selectedJourneyStop)).Receipt);
+            heardStory.Add(JourneyStory.PageFor(JourneyStory.WorldFirst(mapPage)));
+            pendingJourney=first;EnterJourneyPuzzle();PersistProgress(true);
+        }
+        public void ShowPrologue(){OpenWorldComic(0,ShowJourney);}
         public void AdvancePrologue()
         {
-            if(worldComic>=0){AdvanceWorldComic();return;}
-            if(++prologuePage<3){DrawMenu();menuTransition.Arrive();return;}
-            heardStory.Add(PrologueReceipt);PersistProgress();ShowJourney();
+            AdvanceWorldComic();
         }
         public void TurnLevelShelf(int direction)
         {
@@ -63,14 +75,14 @@ namespace Cascade.Presentation
         }
         void DisposeNavigationArt()
         {
+            if(referenceShopCoin!=null)Destroy(referenceShopCoin);
             if(navigationIcons!=null)foreach(var s in navigationIcons)if(s!=null)Destroy(s);
-            if(prologuePanels!=null)foreach(var s in prologuePanels)if(s!=null)Destroy(s);
             foreach(var atlas in worldComicPanels)if(atlas!=null)foreach(var s in atlas)if(s!=null)Destroy(s);
+            if(comicWoodRail!=null)Destroy(comicWoodRail);
         }
         void LoadNavigationArt()
         {
             if(navigationIcons==null)navigationIcons=NavigationIconSlices();
-            if(prologuePanels==null)prologuePanels=NavigationSlices("Navigation/OpeningComic",3,1);
         }
         Sprite[] NavigationIconSlices()
         {
@@ -101,19 +113,31 @@ namespace Cascade.Presentation
             for(int i=0;i<sprites.Length;i++)sprites[i]=Sprite.Create(texture,new Rect(i%columns*w,(rows-1-i/columns)*h,w,h),new Vector2(.5f,.5f),100,0,SpriteMeshType.FullRect);
             return sprites;
         }
-        void NavigationHeader(UiCopy title,Action back)
+        RectTransform NavigationHeader(UiCopy title,Action back)
         {
             var headerPlate=Rect("Navigation heading",menuRoot,new Vector2(.06f,.88f),new Vector2(.94f,.975f));
             var button=DirectionButton("Back",headerPlate,new Vector2(.01f,.12f),new Vector2(.20f,.88f),false,back);
             var backRect=(RectTransform)button.transform;backRect.anchorMin=backRect.anchorMax=new Vector2(0,.5f);backRect.pivot=new Vector2(0,.5f);backRect.sizeDelta=Vector2.one*48*MenuUnit;menuSquares.Add(new KeyValuePair<RectTransform,float>(backRect,48));
-            var heading=Text("Page heading",headerPlate,new Vector2(.22f,.08f),new Vector2(.98f,.92f),29,title);heading.font=art.titleFont;heading.alignment=TextAlignmentOptions.MidlineLeft;
+            var heading=Text("Page heading",headerPlate,new Vector2(.19f,.08f),new Vector2(.94f,.92f),29,title);heading.font=art.titleFont;heading.alignment=TextAlignmentOptions.Midline;
             heading.enableAutoSizing=true;heading.fontSizeMin=21*MenuUnit;heading.fontSizeMax=29*MenuUnit;heading.textWrappingMode=TextWrappingModes.NoWrap;
+            return headerPlate;
+        }
+        void CatalogueHeader(UiCopy title,Action back)
+        {
+            var header=NavigationHeader(title,back);
+            header.anchorMin=new Vector2(MenuColumnInset,.906f);header.anchorMax=new Vector2(1-MenuColumnInset,.985f);
+            menuRows.Add(new MenuRow{rect=header,top=.985f,height=56});FitMenuRows();
+            var heading=header.Find("Page heading").GetComponent<TextMeshProUGUI>();
+            heading.rectTransform.anchorMin=new Vector2(.21f,.05f);heading.rectTransform.anchorMax=new Vector2(.79f,.95f);
+            heading.alignment=TextAlignmentOptions.Midline;heading.margin=Vector4.zero;
+            heading.font=art.titleFont;heading.fontStyle=FontStyles.Bold;
         }
         Button NavigationButton(string name,UiCopy title,int icon,float bottom,Action action,bool primary=false,UiCopy detail=default)
         {
             LoadNavigationArt();bool described=!string.IsNullOrEmpty(detail.Key);
-            var b=Button(title,menuRoot,new Vector2(.08f,bottom),new Vector2(.92f,bottom+(described?.118f:.085f)),()=>{feedback.Sound(ToyCue.Select);action();});b.name=name;
+            var b=Button(title,menuRoot,new Vector2(MenuColumnInset,bottom),new Vector2(1-MenuColumnInset,bottom+(described?.118f:.085f)),()=>{feedback.Sound(ToyCue.Select);action();});b.name=name;
             var face=b.GetComponent<Image>();face.sprite=enamelControls[0];face.type=Image.Type.Sliced;face.color=Color.white;
+            if(primary)StylePrimaryFace(face);
             if(face.sprite==null){face.sprite=art.panel;face.color=new Color(.10f,.37f,.38f);}
             var label=b.GetComponentInChildren<TextMeshProUGUI>();label.rectTransform.anchorMin=new Vector2(.26f,described?.43f:.10f);label.rectTransform.anchorMax=new Vector2(.91f,described?.93f:.90f);
             label.alignment=TextAlignmentOptions.MidlineLeft;label.margin=new Vector4(4,1,7,1);label.fontSizeMin=18*MenuUnit;label.fontSizeMax=24*MenuUnit*(Preferences.LargeText?1.10f:1);label.enableAutoSizing=true;
@@ -124,74 +148,25 @@ namespace Cascade.Presentation
         }
         void NavigationNote(string name,UiCopy text,float bottom,float top)
         {
-            var root=Rect(name+" cloth",menuRoot,new Vector2(.09f,bottom),new Vector2(.91f,top));
-            var copy=Text(name,root,new Vector2(.06f,.08f),new Vector2(.94f,.92f),20,text);copy.enableAutoSizing=true;copy.fontSizeMin=17*MenuUnit;copy.fontSizeMax=21*MenuUnit;copy.margin=new Vector4(5,4,5,4);
+            ReadingStrip(name,new Vector2(MenuColumnInset,bottom),new Vector2(1-MenuColumnInset,top),text,18,true);
         }
         void DrawMainMenu()
         {
-            LoadNavigationArt();machine.SetZone(0);
-            var logo=Text("CASCADE",menuRoot,new Vector2(.08f,.885f),new Vector2(.92f,.97f),43,UiCopy.Raw("CASCADE"));logo.font=art.titleFont;
-            var hero=Picture("Mika welcomes you",menuRoot,new Vector2(.26f,.515f),new Vector2(.74f,.875f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
-            hero.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,2),0,.35f);
-            Rect("Mika's home bench",menuRoot,new Vector2(.24f,.512f),new Vector2(.76f,.529f)).gameObject.AddComponent<WoodBoardGraphic>();
-            NavigationButton("Startgame","Start game",0,.405f,ShowPlayChoice,true);
-            NavigationButton("Shop","Shop",1,.303f,ShowShop);
-            NavigationButton("Settings","Settings",2,.201f,ShowSettings);
-            NavigationButton("Removeads","Remove ads",3,.099f,ShowNoAds);
+            DrawReferenceHome();
         }
         void DrawPlayChoice()
         {
             DrawJourney(); // Legacy screen enum kept for compatibility; no duplicate mode selector.
         }
-        void DrawLessons()
-        {
-            LoadNavigationArt();NavigationHeader(new UiCopy("{0} levels",new UiCopy(PreferredMode.ToString())),ShowPlayChoice);
-            var levels=PreferredLevels();int pages=Math.Max(1,(levels.Count+8)/9);chapterPage=Mathf.Clamp(chapterPage,0,pages-1);
-            bool resume=Interaction.Attempt.Mode==PreferredMode&&Interaction.Attempt.ActiveLocale==(PreferredMode==PuzzleMode.Shapes?"en":Preferences.PuzzleLocale)
-                &&Interaction.Attempt.Current.Status==PuzzleStatus.Playing&&Interaction.Attempt.RouteLength>0;
-            var chosen=levels.FirstOrDefault(c=>!sessionClears.Contains(c.Definition.CampaignNodeId))??levels[levels.Count-1];
-            NavigationNote("Shelf instruction","Open the next level, or replay one you finished. Swipe to look ahead.",.75f,.86f);
-            var shelf=Rect("Swipeable level shelf",menuRoot,new Vector2(.06f,.275f),new Vector2(.94f,.735f));Background(shelf,Color.clear,true);
-            shelf.gameObject.AddComponent<MenuSwipe>().Initialize(TurnLevelShelf);
-            for(int i=0;i<9&&chapterPage*9+i<levels.Count;i++){
-                var content=levels[chapterPage*9+i];string id=content.Definition.CampaignNodeId;int col=i%3,row=i/3;
-                var b=Button(UiCopy.Raw(id.TrimStart('C','0')),shelf,new Vector2(col/3f+.028f,1-(row+1)/3f+.035f),new Vector2((col+1)/3f-.028f,1-row/3f-.035f),()=>StartContent(content));
-                var image=b.GetComponent<Image>();image.sprite=enamelControls[0];image.type=Image.Type.Sliced;image.color=Color.white;navigationLightLabels.Add(b.GetComponentInChildren<TextMeshProUGUI>());
-                b.interactable=IsContentOpen(content);
-                if(!b.interactable)b.gameObject.AddComponent<CanvasGroup>().alpha=.56f;
-                var number=b.GetComponentInChildren<TextMeshProUGUI>();number.fontSizeMax=30*MenuUnit;number.fontSizeMin=23*MenuUnit;number.margin=Vector4.zero;
-                var receipt=profile.Clears.FirstOrDefault(c=>c.CampaignNodeId==id);
-                if(receipt!=null){
-                    if(receipt.BestStars==0)Rect("Completed level",b.transform,new Vector2(.73f,.13f),new Vector2(.89f,.31f)).gameObject.AddComponent<MenuTickGraphic>().color=new Color(.10f,.40f,.34f);
-                    else for(int s=0;s<5;s++){var star=Picture("Best star "+s,b.transform,new Vector2(.12f+s*.152f,.08f),new Vector2(.27f+s*.152f,.27f),CompletionArt(0),true);if(s>=receipt.BestStars)star.color=new Color(.15f,.29f,.30f,.40f);}
-                    number.rectTransform.anchorMin=new Vector2(0,.23f);
-                }
-            }
-            var page=Text("Level shelf page",menuRoot,new Vector2(.16f,.212f),new Vector2(.84f,.26f),18,new UiCopy("Page {0} of {1}",chapterPage+1,pages));page.font=art.titleFont;
-            NavigationButton("Nextlevel",resume?"Continue":new UiCopy("Play level {0}",chosen.Definition.CampaignNodeId.TrimStart('C','0')),0,.08f,()=>{if(resume)ShowGame();else StartContent(chosen);},true);
-        }
         void DrawShop() { DrawTravelCounter(false); }
         void DrawNoAds()
         {
-            LoadNavigationArt();NavigationHeader("Remove ads",()=>SetScreen(noAdsReturnScreen));
-            Picture("No adverts",menuRoot,new Vector2(.32f,.59f),new Vector2(.68f,.80f),navigationIcons[3],true);
-            NavigationNote("Quiet journey benefit","Keep the way home free of advertising breaks. Support Mika's journey.",.49f,.60f);
-            NavigationNote("No adverts explanation",PurchaseExplanation,.315f,.475f);
-            StorePurchaseButton(.223f);
-            if(!TestMonetization){var restore=NavigationButton("Restorepurchases","Restore purchases",1,.112f,()=>purchaseStore?.Restore());restore.interactable=purchaseStore?.CanRestore==true;if(!restore.interactable)restore.gameObject.AddComponent<CanvasGroup>().alpha=.57f;}
-
+            DrawReferenceNoAds();
         }
         void DrawPrologue()
         {
-            if(worldComic>=0){DrawWorldComic();return;}
-            LoadNavigationArt();NavigationHeader(new[]{"Before the storm","The last light","A way home"}[prologuePage],ShowPlayChoice);
-            var frame=Rect("Opening comic frame",menuRoot,new Vector2(.055f,.43f),new Vector2(.945f,.855f));
-            Picture("Opening comic scene",frame,new Vector2(.025f,.035f),new Vector2(.975f,.965f),prologuePanels[prologuePage],true);
-            string[] lines={"Gran kept the Great Beacon burning. Its light showed everyone the way home.","Then the storm broke the bridges and put the beacon out. Mika saved one little light.","Mika: I'll bring it home, Gran. We'll mend the bridges, help our friends and light the beacon again."};
-            NavigationNote("Opening story",lines[prologuePage],.235f,.405f);
-            NavigationButton("Continueopening",prologuePage==2?"To the map":"Continue",0,.11f,AdvancePrologue,true);
-            var skip=Button("Skip story",menuRoot,new Vector2(.24f,.025f),new Vector2(.76f,.083f),()=>{heardStory.Add(PrologueReceipt);PersistProgress();ShowJourney();});skip.GetComponent<Image>().sprite=enamelControls[0];skip.GetComponent<Image>().color=Color.white;((RectTransform)skip.transform).sizeDelta=new Vector2(0,12*MenuUnit);
-            var count=CompletionText("Comic page",menuRoot,new Vector2(.70f,.399f),new Vector2(.90f,.441f),16,UiCopy.Raw((prologuePage+1)+" / 3"));count.textWrappingMode=TextWrappingModes.NoWrap;
+            if(worldComic<0){worldComic=worldComicPage=worldComicLine=0;worldComicDone=ShowJourney;machine.SetZone(0);}
+            DrawWorldComic();
         }
     }
 }

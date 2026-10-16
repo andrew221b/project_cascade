@@ -1,0 +1,277 @@
+{
+  "method": "built-in image_gen, deliberate equal-cell transparent sheets; alpha-bound trims only; no colour filters",
+  "Backdrop": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-284eaadb-8678-462a-a825-baa714a0b346.png",
+  "sprites": {
+    "Cottage": {
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-99599dcb-2424-4750-85ff-14fc08c36bd9.png",
+      "trim": [
+        21,
+        9,
+        1315,
+        1164
+      ],
+      "dimensions": [
+        1294,
+        1155
+      ]
+    },
+    "Garden": {
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-59abac6e-a6a5-49c8-bfc3-cada5aee2cea.png",
+      "sheet_cell": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "trim": [
+        30,
+        17,
+        500,
+        512
+      ],
+      "dimensions": [
+        470,
+        495
+      ]
+    },
+    "Portal": {
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-59abac6e-a6a5-49c8-bfc3-cada5aee2cea.png",
+      "sheet_cell": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "trim": [
+        28,
+        42,
+        478,
+        512
+      ],
+      "dimensions": [
+        450,
+        470
+      ]
+    },
+    "Tower": {
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-59abac6e-a6a5-49c8-bfc3-cada5aee2cea.png",
+      "sheet_cell": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "trim": [
+        51,
+        0,
+        494,
+        499
+      ],
+      "dimensions": [
+        443,
+        499
+      ]
+    },
+    "Chapel": {
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-59abac6e-a6a5-49c8-bfc3-cada5aee2cea.png",
+      "sheet_cell": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "trim": [
+        39,
+        55,
+        497,
+        499
+      ],
+      "dimensions": [
+        458,
+        444
+      ]
+    },
+    "LogoRu": {
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-1299e829-33d0-47c3-bb92-bbac9bd176b5.png",
+      "sheet_cell": [
+        0,
+        0,
+        1024,
+        512
+      ],
+      "trim": [
+        49,
+        70,
+        977,
+        505
+      ],
+      "dimensions": [
+        928,
+        435
+      ]
+    },
+    "LogoEn": {
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-1299e829-33d0-47c3-bb92-bbac9bd176b5.png",
+      "sheet_cell": [
+        0,
+        512,
+        1024,
+        1024
+      ],
+      "trim": [
+        49,
+        38,
+        977,
+        473
+      ],
+      "dimensions": [
+        928,
+        435
+      ]
+    },
+    "LogoUk": {
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-1299e829-33d0-47c3-bb92-bbac9bd176b5.png",
+      "sheet_cell": [
+        0,
+        1024,
+        1024,
+        1536
+      ],
+      "trim": [
+        49,
+        6,
+        977,
+        441
+      ],
+      "dimensions": [
+        928,
+        435
+      ]
+    },
+    "Progress": {
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-c6ca83ff-699f-47fc-bfb9-93d8475c5e0a.png",
+      "sheet_cell": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "trim": [
+        55,
+        225,
+        476,
+        381
+      ],
+      "dimensions": [
+        421,
+        156
+      ]
+    },
+    "Completed": {
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-c6ca83ff-699f-47fc-bfb9-93d8475c5e0a.png",
+      "sheet_cell": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "trim": [
+        10,
+        216,
+        510,
+        391
+      ],
+      "dimensions": [
+        500,
+        175
+      ]
+    },
+    "Lock": {
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-c6ca83ff-699f-47fc-bfb9-93d8475c5e0a.png",
+      "sheet_cell": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "trim": [
+        110,
+        159,
+        388,
+        440
+      ],
+      "dimensions": [
+        278,
+        281
+      ]
+    },
+    "Foliage": {
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-c6ca83ff-699f-47fc-bfb9-93d8475c5e0a.png",
+      "sheet_cell": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "trim": [
+        45,
+        12,
+        490,
+        441
+      ],
+      "dimensions": [
+        445,
+        429
+      ]
+    },
+    "Daisies": {
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-c6ca83ff-699f-47fc-bfb9-93d8475c5e0a.png",
+      "sheet_cell": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "trim": [
+        36,
+        104,
+        473,
+        396
+      ],
+      "dimensions": [
+        437,
+        292
+      ]
+    },
+    "Plank": {
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-c6ca83ff-699f-47fc-bfb9-93d8475c5e0a.png",
+      "sheet_cell": [
+        1024,
+        512,
+        1536,
+        1024
+      ],
+      "trim": [
+        40,
+        208,
+        478,
+        314
+      ],
+      "dimensions": [
+        438,
+        106
+      ]
+    },
+    "Ground": {
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-ee5aa6ce-b897-4e13-95d3-b76cc712283f.png",
+      "purpose": "clean deep perspective stone terrace, uniformly scaled and cropped, no vegetation or slicing",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    }
+  },
+  "installed_assets_directory": "/Volumes/MY DISK/unity_projects/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/MapReferenceOct14",
+  "prompt_file": "/Volumes/MY DISK/unity_projects/PROJECT_CASCADE_Codex_Pack_v2/AssetPrompts/MapReferenceOct14/prompts.md",
+  "generator": "built-in image_gen"
+}

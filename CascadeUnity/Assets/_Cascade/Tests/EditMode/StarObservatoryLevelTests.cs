@@ -31,17 +31,18 @@ namespace Cascade.Tests
             string pins=string.Join("\n",previous.OrderBy(content=>content.Definition.PuzzleId,StringComparer.Ordinal)
                 .Select(content=>content.Definition.PuzzleId+":"+content.Definition.ContentHash));
             Assert.That(ContentImporter.Hash(pins),Is.EqualTo("227d7ca0bc11c4f1ac6deb19df10ff4d7d33f904ccadb2ce874e920b2ccfd33c"));
-            Assert.That(catalog.PrimaryLevels.Count,Is.EqualTo(184));Assert.That(catalog.LocalizedLevels.Count,Is.EqualTo(549));
-            Assert.That(catalog.PrimaryLevels.Skip(160).Select(content=>content.Definition.PuzzleId),Is.EqualTo(Cases));
+            Assert.That(catalog.PrimaryLevels.Count,Is.EqualTo(540));Assert.That(catalog.LocalizedLevels.Count,Is.EqualTo(1617));
+            Assert.That(catalog.PrimaryLevels.Where(c=>int.Parse(c.Definition.CampaignNodeId.Substring(1))>=161&&int.Parse(c.Definition.CampaignNodeId.Substring(1))<=184)
+                .Select(content=>content.Definition.PuzzleId),Is.EqualTo(Cases));
             Assert.That(balance.Select(row=>(string)row["id"]),Is.EqualTo(Cases));
             Assert.That(balance.Select(row=>(string)row["structure_sha256"]).Distinct().Count(),Is.EqualTo(24));
             // All new Shapes rows use the same ordered alphabet, so layout comparison is literal.
             var sources=JArray.Parse(Read("levels.json")).Concat((JArray)JObject.Parse(Read("campaign_extension.json"))["levels"]).ToArray();
             string Layout(JToken source)=>new JObject { ["start"]=source["start"].DeepClone(),["floors"]=source["floors"].DeepClone() }.ToString(Formatting.None);
             var older=new HashSet<string>(sources.Take(160).Select(Layout),StringComparer.Ordinal);
-            var added=sources.Skip(160).Select(Layout).ToArray();
+            var added=sources.Skip(160).Take(24).Select(Layout).ToArray();
             Assert.That(added.Distinct().Count(),Is.EqualTo(24));Assert.That(added.Any(older.Contains),Is.False);
-            Assert.That(sources.Skip(160).All(source=>((JArray)source["floors"]).Count==3),Is.True);
+            Assert.That(sources.Skip(160).Take(24).All(source=>((JArray)source["floors"]).Count==3),Is.True);
         }
         [TestCaseSource(nameof(Cases))] public void EachObservatorySourceAndAllWordBindingsHaveThePublishedMinimum(string node)
         {

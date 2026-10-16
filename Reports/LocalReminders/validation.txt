@@ -1,0 +1,11 @@
+Local reminders — 12 October 2026
+
+PASS: Unity 6.3 Roslyn compiled the current Application and Presentation assemblies for Editor, iOS and Android conditional compilation paths. The iOS and Android variants compile the corresponding Unity Mobile Notifications APIs. No errors; existing warnings remain in ad configuration, language preview and a component member name.
+PASS: 16 targeted actual NUnit cases executed with Unity Mono, covering disabled/denied permission, local 09:00/19:00 scheduling, the 14-day horizon, future-day validation, year/leap boundaries, UTC rejection and default-off new profiles.
+PASS: 9 additive localization keys resolve in EN/RU/UK with matching IDs and nonempty strings; the stat format argument is present in all three locales.
+PASS: Website build and `node Website/scripts/check.mjs`; 6 pages, 153 links/assets/fragments, JSON-LD, offline legal-document parity, draft indexing and 1483 KiB scene budget. Website Legal JSON parses.
+PASS: `git diff --check` on reminder, localization, privacy, docs and task files.
+
+NOT RUN: Unity Editor import, native OS permission prompts, actual scheduled delivery, reboot/time-zone behavior, phone builds/install, Settings visual inspection or the full Unity Test Runner. Conditional C# compilation is not a substitute for device verification.
+
+Release discovery: website/legal source exists but is still a local, unapproved draft. `publisherName`, `publisherCountry`, `publisherAddress`, support/privacy emails and public policy/domain URLs are blank; public URL verification and age-audience/legal approval are false. App Store/Play bundle/package IDs, Player Accounts Client ID, store app IDs, production AdMob IDs, verifier URL and Unity production environment ID are blank; cloud and purchase-verification flags remain disabled. ProjectSettings still contains Unity template identifiers and `DefaultCompany`. The prepared IAP product IDs exist, but store registration/pricing, production signing, account/data deletion and device QA remain release work.

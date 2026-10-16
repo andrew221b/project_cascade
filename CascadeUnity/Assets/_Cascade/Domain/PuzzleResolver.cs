@@ -42,6 +42,14 @@ namespace Cascade.Domain
             return new CommandPreview(RejectionReason.None, SwapCost(floor, edges), edges);
         }
 
+        // Inventory-authorized support; no exchange, contact, timer or floor transition.
+        public PuzzleState Reinforce(PuzzleState state)
+        {
+            if(state==null||state.Status!=PuzzleStatus.Playing||state.ActiveFloor<0||state.ActiveFloor>=Level.Floors.Count
+                ||state.Durability<=0||state.Durability>int.MaxValue-2)throw new ArgumentException("This board cannot receive a repair kit.");
+            return state.With(durability:state.Durability+2);
+        }
+
         public TransitionResult Resolve(PuzzleState state, PuzzleCommand command)
         {
             var preview = Preview(state, command);

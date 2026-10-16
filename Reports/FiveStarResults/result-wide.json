@@ -4,11 +4,11 @@
     "minimumDeviceTextPixels": 0.0,
     "buttons": [
         {
-            "name": "Continuecompletion",
-            "x": 545.75830078125,
-            "y": 17.06158447265625,
-            "width": 348.4833984375,
-            "height": 55.45024871826172
+            "name": "Claim trophy",
+            "x": 554.9288940429688,
+            "y": 25.592378616333009,
+            "width": 330.1422119140625,
+            "height": 66.11376953125
         }
     ]
 }

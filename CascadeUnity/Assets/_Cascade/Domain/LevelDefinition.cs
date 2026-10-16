@@ -135,6 +135,9 @@ namespace Cascade.Domain
         public string RulesVersion { get; }
         public string ContentHash { get; }
         public int ReachCharges { get; }
+        public int TeachingNode { get; }
+        public int CampaignLessonNumber => TeachingNode>0?TeachingNode:
+            CampaignNodeId!=null&&CampaignNodeId.StartsWith("C",StringComparison.Ordinal)&&int.TryParse(CampaignNodeId.Substring(1),out int node)?node:0;
         public ReadOnlyCollection<SymbolId> InitialSymbolIds { get; }
         public ReadOnlyCollection<SymbolId> TargetSymbolIds { get; }
         public ReadOnlyCollection<TargetSegment> TargetSegments { get; }
@@ -143,12 +146,12 @@ namespace Cascade.Domain
         public LevelDefinition(string puzzleId, string campaignNodeId, string schemaVersion,
             string rulesVersion, string contentHash, IEnumerable<SymbolId> initialSymbolIds,
             IEnumerable<SymbolId> targetSymbolIds, IEnumerable<TargetSegment> targetSegments,
-            IEnumerable<FloorDefinition> floors, int reachCharges = 0)
+            IEnumerable<FloorDefinition> floors, int reachCharges = 0, int teachingNode = 0)
         {
             PuzzleId = puzzleId; CampaignNodeId = campaignNodeId; SchemaVersion = schemaVersion;
             RulesVersion = rulesVersion; ContentHash = contentHash;
             InitialSymbolIds = Frozen.Copy(initialSymbolIds); TargetSymbolIds = Frozen.Copy(targetSymbolIds);
-            TargetSegments = Frozen.Copy(targetSegments); Floors = Frozen.Copy(floors); ReachCharges = reachCharges;
+            TargetSegments = Frozen.Copy(targetSegments); Floors = Frozen.Copy(floors); ReachCharges = reachCharges; TeachingNode = teachingNode;
         }
     }
 }

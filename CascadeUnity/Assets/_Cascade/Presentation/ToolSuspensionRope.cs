@@ -3,6 +3,70 @@ using UnityEngine.UI;
 
 namespace Cascade.Presentation
 {
+    // Cosmetic position constraints only. No Physics callbacks or gameplay references.
+    public sealed class HangingPropBody
+    {
+        public Vector2 Position,Velocity,Anchor,Offset,HalfSize;
+        public float Length,InverseMass=1;
+        public float Angle{get;private set;}
+        float sine,cosine=1;
+        public Rect Bounds;
+        public bool Ready;
+        // Icon anchors span .83 widths by 1.24 * 55/88 heights. Its diagonal
+        // bounds every swing angle; reserve the cord and timer before fitting art.
+        public static float FitWidth(float requested,float deckGap,float unit,float timerSpace,float responseScale)
+        {
+            float envelope=Mathf.Sqrt(.83f*.83f+.775f*.775f)*responseScale;
+            float span=Mathf.Max(0,deckGap-12*unit-timerSpace);
+            float cord=Mathf.Min(span*.55f,Mathf.Clamp(span*.40f,18*unit,52*unit));
+            return Mathf.Min(requested,Mathf.Max(0,span-cord)/envelope);
+        }
+        public Vector2 Center=>Position+new Vector2(Offset.x*cosine-Offset.y*sine,Offset.x*sine+Offset.y*cosine);
+        public Vector2 Extent {
+            get {float s=Mathf.Abs(sine),c=Mathf.Abs(cosine);return new Vector2(c*HalfSize.x+s*HalfSize.y,s*HalfSize.x+c*HalfSize.y);}
+        }
+        public void Initialize(int seed)
+        {
+            if(Ready)return;
+            Position=Anchor+new Vector2((WildlifeMotion.Hash(seed)-.5f)*2,-Length);
+            Velocity=Vector2.zero;Ready=true;
+        }
+        public void Integrate(float dt,Vector2 acceleration)
+        {
+            Velocity=(Velocity+acceleration*dt)*Mathf.Exp(-1.2f*dt);
+            Position+=Velocity*dt;
+        }
+        public void Constrain()
+        {
+            var delta=Position-Anchor;float distance=delta.magnitude;
+            if(distance>Length&&distance>.001f){
+                var normal=delta/distance;Position=Anchor+normal*Length;
+                float outward=Vector2.Dot(Velocity,normal);if(outward>0)Velocity-=normal*outward;
+            }
+            Angle=Mathf.Clamp(Mathf.Atan2(Position.x-Anchor.x,Anchor.y-Position.y)*Mathf.Rad2Deg,-55,55);
+            sine=Mathf.Sin(Angle*Mathf.Deg2Rad);cosine=Mathf.Cos(Angle*Mathf.Deg2Rad);
+            var center=Center;var extent=Extent;
+            var fit=new Vector2(Mathf.Clamp(center.x,Bounds.xMin+extent.x,Bounds.xMax-extent.x),
+                Mathf.Clamp(center.y,Bounds.yMin+extent.y,Bounds.yMax-extent.y));
+            var correction=fit-center;Position+=correction;
+            if(correction.x*Velocity.x<0)Velocity.x=0;if(correction.y*Velocity.y<0)Velocity.y=0;
+        }
+        public static bool Contact(HangingPropBody a,HangingPropBody b)
+        {
+            var delta=b.Center-a.Center;var span=a.Extent+b.Extent+Vector2.one*1.5f;
+            float x=span.x-Mathf.Abs(delta.x),y=span.y-Mathf.Abs(delta.y);
+            if(x<=0||y<=0)return false;
+            // Separate along the least penetration axis; a tiny deterministic seed
+            // at initialization breaks a shared-anchor symmetry without assigned docks.
+            var normal=x<y?new Vector2(delta.x<0?-1:1,0):new Vector2(0,delta.y<0?-1:1);
+            float sum=a.InverseMass+b.InverseMass,depth=Mathf.Min(x,y);
+            a.Position-=normal*(depth*a.InverseMass/sum);b.Position+=normal*(depth*b.InverseMass/sum);
+            float approach=Vector2.Dot(b.Velocity-a.Velocity,normal);
+            if(approach<0){float impulse=-approach*1.12f/sum;a.Velocity-=normal*impulse*a.InverseMass;b.Velocity+=normal*impulse*b.InverseMass;}
+            return true;
+        }
+    }
+
     // One tensioned hemp cord, with smooth edges; its endpoints follow the hanging body.
     [RequireComponent(typeof(CanvasRenderer))]
     public sealed class ToolSuspensionRope : MaskableGraphic

@@ -59,6 +59,13 @@ first-12-deliveries, chapter-final and frequency protections. Optional rewarded
 callbacks grant only verified inventory, never puzzle commands. The prepared coins
 reward adapter has no player-facing offer until a useful spending loop is designed.
 
+Manual retries from the fail screen also enter a session-only interstitial cadence:
+one ad after 2 retries, then after 3, alternating thereafter. The interval resets
+only after the ad opens; a failed or blocked show leaves it due. Retry remains
+immediate when consent, ad readiness, the 180-second foreground cooldown, no-ads
+ownership, or the existing two-ad session cap blocks a show. Completion replay,
+recovery, and pause-menu retries do not count.
+
 Official API references checked during integration:
 [Unity IAP receipts](https://docs.unity.com/en-us/iap/receipt-validation),
 [LevelPlay package integration](https://docs.unity.com/en-us/grow/levelplay/sdk/unity/package-integration).
@@ -70,3 +77,6 @@ not exact candy-mesh colliders or gameplay bodies. A brief collision/tumble phas
 is followed by deliberate interpolation into the canonical seats. At rest, wind,
 selection and exchanges remain guided motion. Ropes retain the existing constrained
 point-chain simulation. Sensor thresholds still need an actual iPhone/Android pass.
+
+### 11 October — Undo and catalogue clarification
+Ordinary Undo and the Undo spool may revert commands on the current board, or an early drop that left the previous board intact. Neither restores a board destroyed by its last exchange or a bomb; only the Return hourglass crosses that boundary. This is an explicit user-requested rule correction. Prices, tool budgets, save schemas and IDs stay unchanged. Inventory is a reference catalogue; activation stays in the gameplay bag. Trophies use one catalogue of six larger cards per page, with no nested Mika/Scene/Frames tabs. Remove the redundant cosmetic-benefit/permanence captions and tool rules from the coin-purchase screen; retain actual gameplay tool limits.

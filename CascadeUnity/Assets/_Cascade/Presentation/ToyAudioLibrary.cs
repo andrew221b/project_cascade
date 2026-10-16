@@ -14,9 +14,11 @@ namespace Cascade.Presentation
 
         public AudioClip ScoreFor(GameScreen screen, int zone)
         {
+            // The map introduces the world musically; its level continues that same
+            // performance. Only leaving the journey restores the home composition.
             bool inWorld = screen == GameScreen.Playing || screen == GameScreen.Pause || screen == GameScreen.Win
                 || screen == GameScreen.Fail || screen == GameScreen.Checkpoint || screen == GameScreen.JourneyMap
-                || screen == GameScreen.Dialogue || screen == GameScreen.JourneyEnd;
+                || screen == GameScreen.Dialogue || screen == GameScreen.Prologue || screen == GameScreen.JourneyEnd;
             if (inWorld && worldMusic != null && zone >= 0 && zone < worldMusic.Length && worldMusic[zone] != null)
                 return worldMusic[zone];
             return menuMusic != null ? menuMusic : music;

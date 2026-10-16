@@ -13,7 +13,7 @@ namespace Cascade.Presentation
         {
             if(continuousRopeMaterial==null){
                 continuousRopeMaterial=new Material(Resources.Load<Shader>("CascadeArt/HempRope")){name="Soft braided suspension rope"};
-                continuousRopeMaterial.SetColor("_Color",new Color(.77f,.56f,.31f));
+                continuousRopeMaterial.SetColor("_Color",Color.white);continuousRopeMaterial.SetTexture("_BaseMap",GameplayReferenceArt.Texture("HempRope"));continuousRopeMaterial.SetFloat("_Authored",1);
             }
             for(int side=0;side<2;side++) {
                 var go=new GameObject(side==0?"Left braided rope":"Right braided rope",typeof(LineRenderer));go.transform.SetParent(machine,false);
@@ -27,7 +27,9 @@ namespace Cascade.Presentation
         {
             if(floors.Count==0||suspension[0]==null)return;
             for(int side=0;side<2;side++) {
-                var line=suspension[side];line.enabled=Frame.Status==Cascade.Domain.PuzzleStatus.Playing;
+                // The row's terminal status does not remove its hanging rig.
+                // Screen visibility owns the rig; the ropes keep swaying through delivery.
+                var line=suspension[side];line.enabled=true;
                 float sign=side==0?-1:1;
                 var first=floors[0].board;float x=first.basePosition.x+sign*Mathf.Min(first.baseScale.x*.475f,upperRopeHalfWidth);
                 Vector3 previous=new Vector3(x,viewCamera.transform.position.y+viewCamera.orthographicSize+.2f,.10f);int index=0;
@@ -39,7 +41,7 @@ namespace Cascade.Presentation
                         var rig=floors[segment];var point=rig.knots[side].basePosition;
                         next=point+FloorPointOffset(segment,point,true);next.z=.1f;
                     } else {
-                        lowerAnchor.GetWorldCorners(corners);next=new Vector3(Mathf.Lerp(corners[0].x,corners[2].x,side==0?.035f:.965f),Mathf.Lerp(corners[0].y,corners[2].y,.48f),.10f);
+                        next=receiverKnots[side].transform.position;next.z=.10f;
                     }
                     var chain=ropeSpans[side,segment];
                     bool moving=!interaction.IsPaused&&!interaction.IsSuspended&&!ambientPaused&&gameplayView;

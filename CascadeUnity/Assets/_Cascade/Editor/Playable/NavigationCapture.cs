@@ -14,12 +14,18 @@ namespace Cascade.Editor.Playable
     public static class NavigationCapture
     {
         const string Key="Cascade.NavigationReviewProfile";
-        static NavigationCapture(){var folder=SessionState.GetString(Key,"");if(folder.Length>0)CascadeGame.EditorProfileDirectory=folder;}
+        static NavigationCapture()
+        {
+            if(!EditorApplication.isPlaying&&!EditorApplication.isPlayingOrWillChangePlaymode)Clear();
+            else{var folder=SessionState.GetString(Key,"");if(folder.Length>0)CascadeGame.EditorProfileDirectory=folder;}
+            EditorApplication.playModeStateChanged+=state=>{if(state==PlayModeStateChange.EnteredEditMode)Clear();};
+        }
         public static void Prepare()
         {
             var directory=Path.Combine(Path.GetTempPath(),"CascadeNavigationReview",Guid.NewGuid().ToString("N"));
             SessionState.SetString(Key,directory);CascadeGame.EditorProfileDirectory=directory;
         }
+        [MenuItem("CASCADE/Review/Victory/Clear temporary profile")]
         public static void Clear(){SessionState.EraseString(Key);CascadeGame.EditorProfileDirectory=null;}
         public static void Capture()
         {

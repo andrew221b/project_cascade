@@ -1,0 +1,1268 @@
+{
+  "tool": "image_gen.imagegen",
+  "sheets": [
+    {
+      "world": 0,
+      "name": "WindGarden",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-51a3272a-4782-4f8a-9b5e-2904dbb3ec3e.png",
+      "original": "exec-51a3272a-4782-4f8a-9b5e-2904dbb3ec3e.png",
+      "prompt": "Use case: stylized-concept. Asset type: six isolated Unity floating-island sprites for the WindGarden world. A SINGLE 3-column by 2-row sprite sheet, SIX equal square cells; each cell contains exactly ONE complete uniquely designed island, fully inside its cell with generous empty transparent margins (at least 35 pixels). Reading order landmarks: garden cottage with chimney; fountain courtyard with pond; flowering stone arch; petite garden clock tower; stone garden chapel; windmill orchard hamlet. All SIX islands must be visibly this world's original architecture and geology: lush emerald grass, daisies, honey limestone, terracotta red roofs, warm clear daylight from upper left. A charming richly detailed polished hand-painted 3D children's adventure game illustration, beautiful saturated colors, soft painterly volumes, fine crisp clean silhouette, consistent gentle three-quarter view from slightly above. Each island has a wide oval walkable stone/wood terrace deck around mid-height and an organic pointed hanging rock underside. Compact buildings occupy the rear third of the deck; front paths and two unobstructed edge landing spots near left/right front sides. Keep each island whole, coherent and proportionate, no collage/extracted rectangles. All island sizes approximately similar. Fully TRANSPARENT alpha everywhere outside the island and between objects; no sky, clouds, mist, gradients, colored background, backdrop, shadows outside island, labels, numbers, locks, UI, bridges between islands, cropped edges, detached fragments. Absolutely no generic garden cottage reused in other worlds; create the listed world-specific structures.",
+      "spacing_cleanup": false
+    },
+    {
+      "world": 1,
+      "name": "RainMill",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-b9cd24ce-cf3d-4493-ac0d-96afc362ecd5.png",
+      "original": "exec-cadc4834-cec3-4dde-9f5e-dd949425a101.png",
+      "prompt": "Use case: stylized-concept. Asset type: six isolated Unity floating-island sprites for the RainMill world. A SINGLE 3-column by 2-row sprite sheet, SIX equal square cells; each cell contains exactly ONE complete uniquely designed island, fully inside its cell with generous empty transparent margins (at least 35 pixels). Reading order landmarks: waterwheel mill cottage with chimney; canal lock and round rainwater basin; mossy rain-catcher gateway; blue slate water tower; mill abbey with roof gutters; awning-covered wet riverside hamlet. All SIX islands must be visibly this world's original architecture and geology: rainy teal slate roofs, wet mossy grey cliffs, soft cool overcast daylight and warm amber windows, ferns, no visible rain backdrop. A charming richly detailed polished hand-painted 3D children's adventure game illustration, beautiful saturated colors, soft painterly volumes, fine crisp clean silhouette, consistent gentle three-quarter view from slightly above. Each island has a wide oval walkable stone/wood terrace deck around mid-height and an organic pointed hanging rock underside. Compact buildings occupy the rear third of the deck; front paths and two unobstructed edge landing spots near left/right front sides. Keep each island whole, coherent and proportionate, no collage/extracted rectangles. All island sizes approximately similar. Fully TRANSPARENT alpha everywhere outside the island and between objects; no sky, clouds, mist, gradients, colored background, backdrop, shadows outside island, labels, numbers, locks, UI, bridges between islands, cropped edges, detached fragments. Absolutely no generic garden cottage reused in other worlds; create the listed world-specific structures.",
+      "spacing_cleanup": true
+    },
+    {
+      "world": 2,
+      "name": "CopperOrchard",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-550a58ba-f42a-48f6-a207-8d82a69e553a.png",
+      "original": "exec-e0a6cf21-6c4d-4e51-9497-2d2afe05efa0.png",
+      "prompt": "Use case: stylized-concept. Asset type: six isolated Unity floating-island sprites for the CopperOrchard world. A SINGLE 3-column by 2-row sprite sheet, SIX equal square cells; each cell contains exactly ONE complete uniquely designed island, fully inside its cell with generous empty transparent margins (at least 35 pixels). Reading order landmarks: cider cottage with chimney; apple orchard fountain garden; copper vine orchard arch; copper-roof clock steeple; red-leaf orchard chapel; harvest gazebo hamlet. All SIX islands must be visibly this world's original architecture and geology: rich copper/orange autumn canopy, apples, russet leaf trails, honey/copper rock, warm sunset light from upper left. A charming richly detailed polished hand-painted 3D children's adventure game illustration, beautiful saturated colors, soft painterly volumes, fine crisp clean silhouette, consistent gentle three-quarter view from slightly above. Each island has a wide oval walkable stone/wood terrace deck around mid-height and an organic pointed hanging rock underside. Compact buildings occupy the rear third of the deck; front paths and two unobstructed edge landing spots near left/right front sides. Keep each island whole, coherent and proportionate, no collage/extracted rectangles. All island sizes approximately similar. Fully TRANSPARENT alpha everywhere outside the island and between objects; no sky, clouds, mist, gradients, colored background, backdrop, shadows outside island, labels, numbers, locks, UI, bridges between islands, cropped edges, detached fragments. Absolutely no generic garden cottage reused in other worlds; create the listed world-specific structures.",
+      "spacing_cleanup": true
+    },
+    {
+      "world": 3,
+      "name": "CloudPost",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-758fc4df-4d9b-4f36-a916-a37ca5a24098.png",
+      "original": "exec-758fc4df-4d9b-4f36-a916-a37ca5a24098.png",
+      "prompt": "Use case: stylized-concept. Asset type: six isolated Unity floating-island sprites for the CloudPost world. A SINGLE 3-column by 2-row sprite sheet, SIX equal square cells; each cell contains exactly ONE complete uniquely designed island, fully inside its cell with generous empty transparent margins (at least 35 pixels). Reading order landmarks: airmail depot cottage with chimney; mail-sorting courtyard with postbox and fountain; wing-shaped courier gateway; postal clock tower; pigeon loft chapel; small airship mooring hamlet. All SIX islands must be visibly this world's original architecture and geology: ivory limestone, airy teal/cream roofs, brass mail tubes, tiny red pennants, cool bright high-altitude daylight. A charming richly detailed polished hand-painted 3D children's adventure game illustration, beautiful saturated colors, soft painterly volumes, fine crisp clean silhouette, consistent gentle three-quarter view from slightly above. Each island has a wide oval walkable stone/wood terrace deck around mid-height and an organic pointed hanging rock underside. Compact buildings occupy the rear third of the deck; front paths and two unobstructed edge landing spots near left/right front sides. Keep each island whole, coherent and proportionate, no collage/extracted rectangles. All island sizes approximately similar. Fully TRANSPARENT alpha everywhere outside the island and between objects; no sky, clouds, mist, gradients, colored background, backdrop, shadows outside island, labels, numbers, locks, UI, bridges between islands, cropped edges, detached fragments. Absolutely no generic garden cottage reused in other worlds; create the listed world-specific structures.",
+      "spacing_cleanup": false
+    },
+    {
+      "world": 4,
+      "name": "GlassLagoon",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-881708d1-212d-4127-9961-304694354ec3.png",
+      "original": "exec-e9589a9d-13d0-41cf-9a3f-bf8ba649d48d.png",
+      "prompt": "Use case: stylized-concept. Asset type: six isolated Unity floating-island sprites for the GlassLagoon world. A SINGLE 3-column by 2-row sprite sheet, SIX equal square cells; each cell contains exactly ONE complete uniquely designed island, fully inside its cell with generous empty transparent margins (at least 35 pixels). Reading order landmarks: glassmaker cabin with chimney; circular glass lagoon water garden; translucent aqua glass arch; slender blue glass lighthouse; glass-domed sanctuary; lagoon pier and glass cabins. All SIX islands must be visibly this world's original architecture and geology: turquoise translucent glass domes and panels, aqua pools, coral flowers, light grey mineral cliffs, mint water bounce daylight. A charming richly detailed polished hand-painted 3D children's adventure game illustration, beautiful saturated colors, soft painterly volumes, fine crisp clean silhouette, consistent gentle three-quarter view from slightly above. Each island has a wide oval walkable stone/wood terrace deck around mid-height and an organic pointed hanging rock underside. Compact buildings occupy the rear third of the deck; front paths and two unobstructed edge landing spots near left/right front sides. Keep each island whole, coherent and proportionate, no collage/extracted rectangles. All island sizes approximately similar. Fully TRANSPARENT alpha everywhere outside the island and between objects; no sky, clouds, mist, gradients, colored background, backdrop, shadows outside island, labels, numbers, locks, UI, bridges between islands, cropped edges, detached fragments. Absolutely no generic garden cottage reused in other worlds; create the listed world-specific structures.",
+      "spacing_cleanup": true
+    },
+    {
+      "world": 5,
+      "name": "MossArchive",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-722b1bb6-5ff2-4458-b878-41e9ff6aaa9c.png",
+      "original": "exec-f1f94542-ff4c-4cce-baff-9c0c2a263c40.png",
+      "prompt": "Use case: stylized-concept. Asset type: six isolated Unity floating-island sprites for the MossArchive world. A SINGLE 3-column by 2-row sprite sheet, SIX equal square cells; each cell contains exactly ONE complete uniquely designed island, fully inside its cell with generous empty transparent margins (at least 35 pixels). Reading order landmarks: library treehouse with chimney; mossy reading courtyard with fountain; root-and-book carved gateway; ancient oak archive tower; forest scribe sanctuary; linked small hanging library treehouses. All SIX islands must be visibly this world's original architecture and geology: ancient dark mossy rock, lush fern roots, amber treehouse windows, weathered timber and bookshelves, soft emerald forest canopy daylight. A charming richly detailed polished hand-painted 3D children's adventure game illustration, beautiful saturated colors, soft painterly volumes, fine crisp clean silhouette, consistent gentle three-quarter view from slightly above. Each island has a wide oval walkable stone/wood terrace deck around mid-height and an organic pointed hanging rock underside. Compact buildings occupy the rear third of the deck; front paths and two unobstructed edge landing spots near left/right front sides. Keep each island whole, coherent and proportionate, no collage/extracted rectangles. All island sizes approximately similar. Fully TRANSPARENT alpha everywhere outside the island and between objects; no sky, clouds, mist, gradients, colored background, backdrop, shadows outside island, labels, numbers, locks, UI, bridges between islands, cropped edges, detached fragments. Absolutely no generic garden cottage reused in other worlds; create the listed world-specific structures.",
+      "spacing_cleanup": true
+    },
+    {
+      "world": 6,
+      "name": "SnowSpire",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-0c1cd66b-b0d7-4310-912b-ccab47a6bc5b.png",
+      "original": "exec-0c1cd66b-b0d7-4310-912b-ccab47a6bc5b.png",
+      "prompt": "Use case: stylized-concept. Asset type: six isolated Unity floating-island sprites for the SnowSpire world. A SINGLE 3-column by 2-row sprite sheet, SIX equal square cells; each cell contains exactly ONE complete uniquely designed island, fully inside its cell with generous empty transparent margins (at least 35 pixels). Reading order landmarks: snowbound hearth cottage with chimney; frozen pond and snowy pine courtyard; carved ice crystal gateway; frost spire bell tower; snow-covered ice chapel; snug winter cabins. All SIX islands must be visibly this world's original architecture and geology: thick fresh snow, blue ice crystals, snowy spruce, frosted slate roofs, pale blue-grey cliffs, diffuse cold winter daylight and warm hearth windows. A charming richly detailed polished hand-painted 3D children's adventure game illustration, beautiful saturated colors, soft painterly volumes, fine crisp clean silhouette, consistent gentle three-quarter view from slightly above. Each island has a wide oval walkable stone/wood terrace deck around mid-height and an organic pointed hanging rock underside. Compact buildings occupy the rear third of the deck; front paths and two unobstructed edge landing spots near left/right front sides. Keep each island whole, coherent and proportionate, no collage/extracted rectangles. All island sizes approximately similar. Fully TRANSPARENT alpha everywhere outside the island and between objects; no sky, clouds, mist, gradients, colored background, backdrop, shadows outside island, labels, numbers, locks, UI, bridges between islands, cropped edges, detached fragments. Absolutely no generic garden cottage reused in other worlds; create the listed world-specific structures.",
+      "spacing_cleanup": false
+    },
+    {
+      "world": 7,
+      "name": "GreatBeacon",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-1ee2a819-bca7-449f-94c1-1308a0b15ecc.png",
+      "original": "exec-815cf098-e054-4c19-8646-a708ec7aec45.png",
+      "prompt": "Use case: stylized-concept. Asset type: six isolated Unity floating-island sprites for the GreatBeacon world. A SINGLE 3-column by 2-row sprite sheet, SIX equal square cells; each cell contains exactly ONE complete uniquely designed island, fully inside its cell with generous empty transparent margins (at least 35 pixels). Reading order landmarks: beacon keeper cottage with chimney; tidal garden with glowing signal brazier; torch-bearing basalt gateway; main brass-topped beacon lighthouse; golden watch chapel; signal-house hamlet. All SIX islands must be visibly this world's original architecture and geology: amber sunset light from upper right, rugged dark basalt, dry coastal grasses, brass signal lamps, orange-gold roofs, warm luminous windows. A charming richly detailed polished hand-painted 3D children's adventure game illustration, beautiful saturated colors, soft painterly volumes, fine crisp clean silhouette, consistent gentle three-quarter view from slightly above. Each island has a wide oval walkable stone/wood terrace deck around mid-height and an organic pointed hanging rock underside. Compact buildings occupy the rear third of the deck; front paths and two unobstructed edge landing spots near left/right front sides. Keep each island whole, coherent and proportionate, no collage/extracted rectangles. All island sizes approximately similar. Fully TRANSPARENT alpha everywhere outside the island and between objects; no sky, clouds, mist, gradients, colored background, backdrop, shadows outside island, labels, numbers, locks, UI, bridges between islands, cropped edges, detached fragments. Absolutely no generic garden cottage reused in other worlds; create the listed world-specific structures.",
+      "spacing_cleanup": true
+    },
+    {
+      "world": 8,
+      "name": "StarObservatory",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-f6698326-e7fd-4f52-a6e6-31cb4ee9082d.png",
+      "original": "exec-a83d0c4f-e910-4ca3-ad9a-03d2a548f3af.png",
+      "prompt": "Use case: stylized-concept. Asset type: six isolated Unity floating-island sprites for the StarObservatory world. A SINGLE 3-column by 2-row sprite sheet, SIX equal square cells; each cell contains exactly ONE complete uniquely designed island, fully inside its cell with generous empty transparent margins (at least 35 pixels). Reading order landmarks: astronomer cottage with chimney; telescope terrace with lunar fountain; celestial brass stone gateway; tall observatory telescope tower; domed planetarium sanctuary; little navigator observatory hamlet. All SIX islands must be visibly this world's original architecture and geology: deep blue moonlight from upper left, dark navy-violet mineral cliffs, cyan reflections, midnight-blue roofs, brass telescopes, warm amber windows, no sky/stars outside island. A charming richly detailed polished hand-painted 3D children's adventure game illustration, beautiful saturated colors, soft painterly volumes, fine crisp clean silhouette, consistent gentle three-quarter view from slightly above. Each island has a wide oval walkable stone/wood terrace deck around mid-height and an organic pointed hanging rock underside. Compact buildings occupy the rear third of the deck; front paths and two unobstructed edge landing spots near left/right front sides. Keep each island whole, coherent and proportionate, no collage/extracted rectangles. All island sizes approximately similar. Fully TRANSPARENT alpha everywhere outside the island and between objects; no sky, clouds, mist, gradients, colored background, backdrop, shadows outside island, labels, numbers, locks, UI, bridges between islands, cropped edges, detached fragments. Absolutely no generic garden cottage reused in other worlds; create the listed world-specific structures.",
+      "spacing_cleanup": true
+    }
+  ],
+  "assets": [
+    {
+      "world": 0,
+      "variant": 0,
+      "file": "WindGarden0.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-51a3272a-4782-4f8a-9b5e-2904dbb3ec3e.png",
+      "source_region": [
+        0,
+        0,
+        512,
+        495
+      ],
+      "trim": [
+        14,
+        7,
+        499,
+        495
+      ],
+      "width": 501,
+      "height": 504,
+      "alpha_outer_border": 0,
+      "sha256": "ca5ae441b43a47bdcd5b0f3645168a89f2ffca3b41963f81d96dc5293e73b554"
+    },
+    {
+      "world": 0,
+      "variant": 3,
+      "file": "WindGarden3.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-51a3272a-4782-4f8a-9b5e-2904dbb3ec3e.png",
+      "source_region": [
+        0,
+        495,
+        512,
+        1024
+      ],
+      "trim": [
+        23,
+        0,
+        479,
+        522
+      ],
+      "width": 472,
+      "height": 538,
+      "alpha_outer_border": 0,
+      "sha256": "948397d1ea5307fbe48ecf60dbc09996af299bb60b53cf74c155a16a97953816"
+    },
+    {
+      "world": 0,
+      "variant": 1,
+      "file": "WindGarden1.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-51a3272a-4782-4f8a-9b5e-2904dbb3ec3e.png",
+      "source_region": [
+        512,
+        0,
+        1024,
+        509
+      ],
+      "trim": [
+        18,
+        10,
+        502,
+        494
+      ],
+      "width": 500,
+      "height": 500,
+      "alpha_outer_border": 0,
+      "sha256": "3a470711e1050474c93376859585889c9b28ce24bca8ca1242a2cfab17df182e"
+    },
+    {
+      "world": 0,
+      "variant": 4,
+      "file": "WindGarden4.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-51a3272a-4782-4f8a-9b5e-2904dbb3ec3e.png",
+      "source_region": [
+        512,
+        509,
+        1024,
+        1024
+      ],
+      "trim": [
+        4,
+        0,
+        497,
+        507
+      ],
+      "width": 509,
+      "height": 523,
+      "alpha_outer_border": 0,
+      "sha256": "55d0d451c690c1ad6d3f1350f22444c529f3bbea7a504eae00ab97cebc593580"
+    },
+    {
+      "world": 0,
+      "variant": 2,
+      "file": "WindGarden2.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-51a3272a-4782-4f8a-9b5e-2904dbb3ec3e.png",
+      "source_region": [
+        1024,
+        0,
+        1536,
+        496
+      ],
+      "trim": [
+        22,
+        15,
+        496,
+        496
+      ],
+      "width": 490,
+      "height": 497,
+      "alpha_outer_border": 0,
+      "sha256": "c51defea23c95b36b904a72993d68bf187b9f6549c7cca151ebc7a6022521483"
+    },
+    {
+      "world": 0,
+      "variant": 5,
+      "file": "WindGarden5.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-51a3272a-4782-4f8a-9b5e-2904dbb3ec3e.png",
+      "source_region": [
+        1024,
+        496,
+        1536,
+        1024
+      ],
+      "trim": [
+        24,
+        0,
+        492,
+        520
+      ],
+      "width": 484,
+      "height": 536,
+      "alpha_outer_border": 0,
+      "sha256": "a576c0006d2b807860e697cfe654c7b2fc938d3970b85918b045b7382b8fb613"
+    },
+    {
+      "world": 1,
+      "variant": 0,
+      "file": "RainMill0.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-b9cd24ce-cf3d-4493-ac0d-96afc362ecd5.png",
+      "source_region": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "trim": [
+        48,
+        43,
+        475,
+        486
+      ],
+      "width": 443,
+      "height": 459,
+      "alpha_outer_border": 0,
+      "sha256": "9ca2d85b654478fec2daa54dd2961d0ad3b942ab8f70ff2b8f59f73aaf51c0f2"
+    },
+    {
+      "world": 1,
+      "variant": 3,
+      "file": "RainMill3.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-b9cd24ce-cf3d-4493-ac0d-96afc362ecd5.png",
+      "source_region": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "trim": [
+        46,
+        25,
+        468,
+        466
+      ],
+      "width": 438,
+      "height": 457,
+      "alpha_outer_border": 0,
+      "sha256": "a4a0d75a6ba5989987ac7ae9f4ce87d5bf21ee33ccbec7729fa0663ba2cb5a4f"
+    },
+    {
+      "world": 1,
+      "variant": 1,
+      "file": "RainMill1.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-b9cd24ce-cf3d-4493-ac0d-96afc362ecd5.png",
+      "source_region": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "trim": [
+        56,
+        69,
+        479,
+        494
+      ],
+      "width": 439,
+      "height": 441,
+      "alpha_outer_border": 0,
+      "sha256": "617c784cdb61f248975702e50dbab020b6397b3ce7a25393c7da6617656d2572"
+    },
+    {
+      "world": 1,
+      "variant": 4,
+      "file": "RainMill4.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-b9cd24ce-cf3d-4493-ac0d-96afc362ecd5.png",
+      "source_region": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "trim": [
+        34,
+        9,
+        468,
+        471
+      ],
+      "width": 450,
+      "height": 478,
+      "alpha_outer_border": 0,
+      "sha256": "292b95ae8ed95f5535df5e7972cc612d98e605bf00eba5d05763b705d3af4ac1"
+    },
+    {
+      "world": 1,
+      "variant": 2,
+      "file": "RainMill2.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-b9cd24ce-cf3d-4493-ac0d-96afc362ecd5.png",
+      "source_region": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "trim": [
+        39,
+        52,
+        464,
+        488
+      ],
+      "width": 441,
+      "height": 452,
+      "alpha_outer_border": 0,
+      "sha256": "d3c337aa65943f290a0ac65253121659c2fa0860a65d2a4c3a0a2954016bd2b9"
+    },
+    {
+      "world": 1,
+      "variant": 5,
+      "file": "RainMill5.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-b9cd24ce-cf3d-4493-ac0d-96afc362ecd5.png",
+      "source_region": [
+        1024,
+        512,
+        1536,
+        1024
+      ],
+      "trim": [
+        40,
+        42,
+        472,
+        471
+      ],
+      "width": 448,
+      "height": 445,
+      "alpha_outer_border": 0,
+      "sha256": "efab34fdb74f7c6601009f442bd87f7dd22328b9434fadf7604702ac7b6810d8"
+    },
+    {
+      "world": 2,
+      "variant": 0,
+      "file": "CopperOrchard0.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-550a58ba-f42a-48f6-a207-8d82a69e553a.png",
+      "source_region": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "trim": [
+        38,
+        36,
+        479,
+        490
+      ],
+      "width": 457,
+      "height": 470,
+      "alpha_outer_border": 0,
+      "sha256": "5815e7b3739c5ad909f4366655b726d4841f9399dec56768df3349fdf0835b56"
+    },
+    {
+      "world": 2,
+      "variant": 3,
+      "file": "CopperOrchard3.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-550a58ba-f42a-48f6-a207-8d82a69e553a.png",
+      "source_region": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "trim": [
+        37,
+        0,
+        473,
+        482
+      ],
+      "width": 452,
+      "height": 498,
+      "alpha_outer_border": 0,
+      "sha256": "3f1baed001eee75ced0f940b540f216d5daf76d54d903f024bf2caeb0d2e5c69"
+    },
+    {
+      "world": 2,
+      "variant": 1,
+      "file": "CopperOrchard1.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-550a58ba-f42a-48f6-a207-8d82a69e553a.png",
+      "source_region": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "trim": [
+        26,
+        71,
+        486,
+        491
+      ],
+      "width": 476,
+      "height": 436,
+      "alpha_outer_border": 0,
+      "sha256": "6a53ea086fd36d4e446c901a03666d96345b225c2629a624d255e8ff2d87d7e0"
+    },
+    {
+      "world": 2,
+      "variant": 4,
+      "file": "CopperOrchard4.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-550a58ba-f42a-48f6-a207-8d82a69e553a.png",
+      "source_region": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "trim": [
+        38,
+        25,
+        475,
+        478
+      ],
+      "width": 453,
+      "height": 469,
+      "alpha_outer_border": 0,
+      "sha256": "1f914a46d2ba55ab2723531eed556e0dc9676a4e10a8711b5195ef462ca34b48"
+    },
+    {
+      "world": 2,
+      "variant": 2,
+      "file": "CopperOrchard2.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-550a58ba-f42a-48f6-a207-8d82a69e553a.png",
+      "source_region": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "trim": [
+        36,
+        49,
+        477,
+        485
+      ],
+      "width": 457,
+      "height": 452,
+      "alpha_outer_border": 0,
+      "sha256": "6fe24b7de8251ebde1a79cd03446166001b76d24bcb0373abef2827cdced02db"
+    },
+    {
+      "world": 2,
+      "variant": 5,
+      "file": "CopperOrchard5.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-550a58ba-f42a-48f6-a207-8d82a69e553a.png",
+      "source_region": [
+        1024,
+        512,
+        1536,
+        1024
+      ],
+      "trim": [
+        39,
+        49,
+        478,
+        480
+      ],
+      "width": 455,
+      "height": 447,
+      "alpha_outer_border": 0,
+      "sha256": "b9b4e4f940cdbbdaa05c5b241982f3d10091c00b115b1bad804717b8d90a9b60"
+    },
+    {
+      "world": 3,
+      "variant": 0,
+      "file": "CloudPost0.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-758fc4df-4d9b-4f36-a916-a37ca5a24098.png",
+      "source_region": [
+        0,
+        0,
+        512,
+        496
+      ],
+      "trim": [
+        23,
+        1,
+        484,
+        496
+      ],
+      "width": 477,
+      "height": 511,
+      "alpha_outer_border": 0,
+      "sha256": "e672f3550f54f1d4b23fb422a4bcc8224d40eb924aca531bd6e155ae9564b6d0"
+    },
+    {
+      "world": 3,
+      "variant": 3,
+      "file": "CloudPost3.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-758fc4df-4d9b-4f36-a916-a37ca5a24098.png",
+      "source_region": [
+        0,
+        496,
+        512,
+        1024
+      ],
+      "trim": [
+        24,
+        0,
+        484,
+        522
+      ],
+      "width": 476,
+      "height": 538,
+      "alpha_outer_border": 0,
+      "sha256": "1a8e43a8f6e551a7672287edb27fb0b62e925e4e345e79ba2fe3be89bdde192c"
+    },
+    {
+      "world": 3,
+      "variant": 1,
+      "file": "CloudPost1.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-758fc4df-4d9b-4f36-a916-a37ca5a24098.png",
+      "source_region": [
+        512,
+        0,
+        1024,
+        510
+      ],
+      "trim": [
+        14,
+        12,
+        498,
+        502
+      ],
+      "width": 500,
+      "height": 506,
+      "alpha_outer_border": 0,
+      "sha256": "0370a6cbe8a34e6e0df4178d12fd1497aeb8242cbecf201b6fe7303b3ec196b8"
+    },
+    {
+      "world": 3,
+      "variant": 4,
+      "file": "CloudPost4.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-758fc4df-4d9b-4f36-a916-a37ca5a24098.png",
+      "source_region": [
+        512,
+        510,
+        1024,
+        1024
+      ],
+      "trim": [
+        16,
+        0,
+        495,
+        507
+      ],
+      "width": 495,
+      "height": 523,
+      "alpha_outer_border": 0,
+      "sha256": "7bbf99d82163dcec67b9263f4a8cb320c78f671f11ee4133505c54bf3eafac59"
+    },
+    {
+      "world": 3,
+      "variant": 2,
+      "file": "CloudPost2.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-758fc4df-4d9b-4f36-a916-a37ca5a24098.png",
+      "source_region": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "trim": [
+        27,
+        9,
+        491,
+        509
+      ],
+      "width": 480,
+      "height": 516,
+      "alpha_outer_border": 0,
+      "sha256": "60847edc258aa78a8c3ba9393e1f2e020116e12f6fcf350f265b7ed64687a8fe"
+    },
+    {
+      "world": 3,
+      "variant": 5,
+      "file": "CloudPost5.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-758fc4df-4d9b-4f36-a916-a37ca5a24098.png",
+      "source_region": [
+        1024,
+        512,
+        1536,
+        1024
+      ],
+      "trim": [
+        27,
+        25,
+        489,
+        506
+      ],
+      "width": 478,
+      "height": 497,
+      "alpha_outer_border": 0,
+      "sha256": "6b8fd178fb377922457a55b640bb243eba50528f0eb92c3e978590205b4a2c32"
+    },
+    {
+      "world": 4,
+      "variant": 0,
+      "file": "GlassLagoon0.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-881708d1-212d-4127-9961-304694354ec3.png",
+      "source_region": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "trim": [
+        33,
+        23,
+        475,
+        486
+      ],
+      "width": 458,
+      "height": 479,
+      "alpha_outer_border": 0,
+      "sha256": "c06e0f440d3e33975671a56fa5c4a05814366c740f139fff4f7d59dd4c640d03"
+    },
+    {
+      "world": 4,
+      "variant": 3,
+      "file": "GlassLagoon3.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-881708d1-212d-4127-9961-304694354ec3.png",
+      "source_region": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "trim": [
+        58,
+        14,
+        450,
+        487
+      ],
+      "width": 408,
+      "height": 489,
+      "alpha_outer_border": 0,
+      "sha256": "340323cd5db27d36d64a050c9ed9685a0135fdee6c7ea999c591253c494aa05d"
+    },
+    {
+      "world": 4,
+      "variant": 1,
+      "file": "GlassLagoon1.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-881708d1-212d-4127-9961-304694354ec3.png",
+      "source_region": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "trim": [
+        46,
+        25,
+        466,
+        485
+      ],
+      "width": 436,
+      "height": 476,
+      "alpha_outer_border": 0,
+      "sha256": "d19119c2907798272fbc699a4564f48419022c4ddd4fddcbb482e4738c20d310"
+    },
+    {
+      "world": 4,
+      "variant": 4,
+      "file": "GlassLagoon4.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-881708d1-212d-4127-9961-304694354ec3.png",
+      "source_region": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "trim": [
+        38,
+        23,
+        468,
+        486
+      ],
+      "width": 446,
+      "height": 479,
+      "alpha_outer_border": 0,
+      "sha256": "adf389c8e5464ceeab7ff9b358732da4955d20f65475824870b617af600dc4df"
+    },
+    {
+      "world": 4,
+      "variant": 2,
+      "file": "GlassLagoon2.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-881708d1-212d-4127-9961-304694354ec3.png",
+      "source_region": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "trim": [
+        41,
+        27,
+        479,
+        486
+      ],
+      "width": 454,
+      "height": 475,
+      "alpha_outer_border": 0,
+      "sha256": "21d73fa01f0944ddeb07bc214738205d49943addb664183653bb67f2ee1d423a"
+    },
+    {
+      "world": 4,
+      "variant": 5,
+      "file": "GlassLagoon5.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-881708d1-212d-4127-9961-304694354ec3.png",
+      "source_region": [
+        1024,
+        512,
+        1536,
+        1024
+      ],
+      "trim": [
+        30,
+        35,
+        476,
+        486
+      ],
+      "width": 462,
+      "height": 467,
+      "alpha_outer_border": 0,
+      "sha256": "0c562434c437fc31ee6260debfbfbc05cab77647ca031f0d7ceec2c8502adcf2"
+    },
+    {
+      "world": 5,
+      "variant": 0,
+      "file": "MossArchive0.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-722b1bb6-5ff2-4458-b878-41e9ff6aaa9c.png",
+      "source_region": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "trim": [
+        67,
+        41,
+        473,
+        484
+      ],
+      "width": 422,
+      "height": 459,
+      "alpha_outer_border": 0,
+      "sha256": "2254366cc53a4a0cfc88c27f4357b5fdf77b6dc4a592631920c42e919a191846"
+    },
+    {
+      "world": 5,
+      "variant": 3,
+      "file": "MossArchive3.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-722b1bb6-5ff2-4458-b878-41e9ff6aaa9c.png",
+      "source_region": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "trim": [
+        63,
+        20,
+        471,
+        488
+      ],
+      "width": 424,
+      "height": 484,
+      "alpha_outer_border": 0,
+      "sha256": "92c6de7e7328aeb959c050ec5d67b40e58314ba867872553fd4eff6c8b3b285c"
+    },
+    {
+      "world": 5,
+      "variant": 1,
+      "file": "MossArchive1.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-722b1bb6-5ff2-4458-b878-41e9ff6aaa9c.png",
+      "source_region": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "trim": [
+        42,
+        63,
+        474,
+        487
+      ],
+      "width": 448,
+      "height": 440,
+      "alpha_outer_border": 0,
+      "sha256": "13328d612830f351af17f45150906504e0d351bca4c4a90b6723fd238f8c2fdc"
+    },
+    {
+      "world": 5,
+      "variant": 4,
+      "file": "MossArchive4.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-722b1bb6-5ff2-4458-b878-41e9ff6aaa9c.png",
+      "source_region": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "trim": [
+        49,
+        44,
+        462,
+        487
+      ],
+      "width": 429,
+      "height": 459,
+      "alpha_outer_border": 0,
+      "sha256": "e67acb4463d10bcf4eee0892e1b0a8f42399acd10a845849b55099f6d3986de9"
+    },
+    {
+      "world": 5,
+      "variant": 2,
+      "file": "MossArchive2.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-722b1bb6-5ff2-4458-b878-41e9ff6aaa9c.png",
+      "source_region": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "trim": [
+        41,
+        40,
+        463,
+        487
+      ],
+      "width": 438,
+      "height": 463,
+      "alpha_outer_border": 0,
+      "sha256": "fefd32ba6f18cc962e2c50beee2ba8b662834dbe37f7609238158a0c0ac96efb"
+    },
+    {
+      "world": 5,
+      "variant": 5,
+      "file": "MossArchive5.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-722b1bb6-5ff2-4458-b878-41e9ff6aaa9c.png",
+      "source_region": [
+        1024,
+        512,
+        1536,
+        1024
+      ],
+      "trim": [
+        52,
+        33,
+        453,
+        488
+      ],
+      "width": 417,
+      "height": 471,
+      "alpha_outer_border": 0,
+      "sha256": "2795e949e23a14e405cce4e7a5aca0966908c6d6f91b99de66868e1fccda449c"
+    },
+    {
+      "world": 6,
+      "variant": 0,
+      "file": "SnowSpire0.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-0c1cd66b-b0d7-4310-912b-ccab47a6bc5b.png",
+      "source_region": [
+        0,
+        0,
+        512,
+        491
+      ],
+      "trim": [
+        34,
+        9,
+        496,
+        491
+      ],
+      "width": 478,
+      "height": 498,
+      "alpha_outer_border": 0,
+      "sha256": "a4c897b1d95f3f6f68d0e4ed4182c8fd9978fa7584b90634d7aa49b23de2b85a"
+    },
+    {
+      "world": 6,
+      "variant": 3,
+      "file": "SnowSpire3.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-0c1cd66b-b0d7-4310-912b-ccab47a6bc5b.png",
+      "source_region": [
+        0,
+        491,
+        512,
+        1024
+      ],
+      "trim": [
+        33,
+        0,
+        487,
+        533
+      ],
+      "width": 470,
+      "height": 549,
+      "alpha_outer_border": 0,
+      "sha256": "122b51c695f7491aed024e023744b09a49f43f92bb21de7e1087b7361820ab8e"
+    },
+    {
+      "world": 6,
+      "variant": 1,
+      "file": "SnowSpire1.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-0c1cd66b-b0d7-4310-912b-ccab47a6bc5b.png",
+      "source_region": [
+        512,
+        0,
+        1024,
+        496
+      ],
+      "trim": [
+        36,
+        0,
+        494,
+        496
+      ],
+      "width": 474,
+      "height": 512,
+      "alpha_outer_border": 0,
+      "sha256": "1e496f70532a9f74de25e363b98060ca6206a4b7e02455602b8ce61e92ea7bfd"
+    },
+    {
+      "world": 6,
+      "variant": 4,
+      "file": "SnowSpire4.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-0c1cd66b-b0d7-4310-912b-ccab47a6bc5b.png",
+      "source_region": [
+        512,
+        496,
+        1024,
+        1024
+      ],
+      "trim": [
+        30,
+        0,
+        480,
+        528
+      ],
+      "width": 466,
+      "height": 544,
+      "alpha_outer_border": 0,
+      "sha256": "eb6722b5f728c63418f309ea1ca731bd95295d07153aec2e91d776c00b2b8524"
+    },
+    {
+      "world": 6,
+      "variant": 2,
+      "file": "SnowSpire2.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-0c1cd66b-b0d7-4310-912b-ccab47a6bc5b.png",
+      "source_region": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "trim": [
+        33,
+        0,
+        482,
+        508
+      ],
+      "width": 465,
+      "height": 524,
+      "alpha_outer_border": 0,
+      "sha256": "81c4fdef84e78f888c752473304ff7f0670241ae3f6f6766f7e750f08a7fabff"
+    },
+    {
+      "world": 6,
+      "variant": 5,
+      "file": "SnowSpire5.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-0c1cd66b-b0d7-4310-912b-ccab47a6bc5b.png",
+      "source_region": [
+        1024,
+        512,
+        1536,
+        1024
+      ],
+      "trim": [
+        25,
+        29,
+        497,
+        512
+      ],
+      "width": 488,
+      "height": 499,
+      "alpha_outer_border": 0,
+      "sha256": "9b2923983736d08535b3a6bde23b2c25c97efeccc2321e8af88f686999eb73f3"
+    },
+    {
+      "world": 7,
+      "variant": 0,
+      "file": "GreatBeacon0.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-1ee2a819-bca7-449f-94c1-1308a0b15ecc.png",
+      "source_region": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "trim": [
+        29,
+        12,
+        491,
+        494
+      ],
+      "width": 478,
+      "height": 498,
+      "alpha_outer_border": 0,
+      "sha256": "24dc3d76425938ed13302036e667c4cdcd9e5e6bca264186d1bb09799ced4185"
+    },
+    {
+      "world": 7,
+      "variant": 3,
+      "file": "GreatBeacon3.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-1ee2a819-bca7-449f-94c1-1308a0b15ecc.png",
+      "source_region": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "trim": [
+        30,
+        0,
+        493,
+        505
+      ],
+      "width": 479,
+      "height": 521,
+      "alpha_outer_border": 0,
+      "sha256": "6ba6d068c847635ef2ca072d848f7fdb0a5161faf6ffdf896e3f3189ba958f18"
+    },
+    {
+      "world": 7,
+      "variant": 1,
+      "file": "GreatBeacon1.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-1ee2a819-bca7-449f-94c1-1308a0b15ecc.png",
+      "source_region": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "trim": [
+        31,
+        12,
+        490,
+        504
+      ],
+      "width": 475,
+      "height": 508,
+      "alpha_outer_border": 0,
+      "sha256": "9acb463c4cd08914b2fd67cce35c8c4821d5aa9309a93b0241eba5db8f0b6033"
+    },
+    {
+      "world": 7,
+      "variant": 4,
+      "file": "GreatBeacon4.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-1ee2a819-bca7-449f-94c1-1308a0b15ecc.png",
+      "source_region": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "trim": [
+        38,
+        2,
+        486,
+        505
+      ],
+      "width": 464,
+      "height": 519,
+      "alpha_outer_border": 0,
+      "sha256": "812898225be51bf176194fa7ffa82d644000fe2565305887f1ed347ec11bf531"
+    },
+    {
+      "world": 7,
+      "variant": 2,
+      "file": "GreatBeacon2.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-1ee2a819-bca7-449f-94c1-1308a0b15ecc.png",
+      "source_region": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "trim": [
+        33,
+        16,
+        488,
+        512
+      ],
+      "width": 471,
+      "height": 512,
+      "alpha_outer_border": 0,
+      "sha256": "cc58b6e7c47593768ecc29bbf282dc8af58e057e0af0357b8f01eaf64c18b955"
+    },
+    {
+      "world": 7,
+      "variant": 5,
+      "file": "GreatBeacon5.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-1ee2a819-bca7-449f-94c1-1308a0b15ecc.png",
+      "source_region": [
+        1024,
+        512,
+        1536,
+        1024
+      ],
+      "trim": [
+        20,
+        2,
+        490,
+        503
+      ],
+      "width": 486,
+      "height": 517,
+      "alpha_outer_border": 0,
+      "sha256": "01c1f2598bbcb196726dfabe31a77507568afe22a06e643b150951b8284d884b"
+    },
+    {
+      "world": 8,
+      "variant": 0,
+      "file": "StarObservatory0.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-f6698326-e7fd-4f52-a6e6-31cb4ee9082d.png",
+      "source_region": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "trim": [
+        49,
+        50,
+        469,
+        459
+      ],
+      "width": 436,
+      "height": 425,
+      "alpha_outer_border": 0,
+      "sha256": "d80e58ab72904a0b8041e300dc6fe966eec7848add123735b34c66b097a51c5a"
+    },
+    {
+      "world": 8,
+      "variant": 3,
+      "file": "StarObservatory3.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-f6698326-e7fd-4f52-a6e6-31cb4ee9082d.png",
+      "source_region": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "trim": [
+        50,
+        16,
+        467,
+        481
+      ],
+      "width": 433,
+      "height": 481,
+      "alpha_outer_border": 0,
+      "sha256": "5e0fd684085b906128096cf8d2e6d22da3986ff80ed0afdc547ddd85bd62d0b5"
+    },
+    {
+      "world": 8,
+      "variant": 1,
+      "file": "StarObservatory1.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-f6698326-e7fd-4f52-a6e6-31cb4ee9082d.png",
+      "source_region": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "trim": [
+        41,
+        46,
+        471,
+        464
+      ],
+      "width": 446,
+      "height": 434,
+      "alpha_outer_border": 0,
+      "sha256": "27c5dcdd8a146321455b16a1aaf04e3732ac475a3a976f0f1fd8212daf0e669d"
+    },
+    {
+      "world": 8,
+      "variant": 4,
+      "file": "StarObservatory4.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-f6698326-e7fd-4f52-a6e6-31cb4ee9082d.png",
+      "source_region": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "trim": [
+        31,
+        26,
+        480,
+        486
+      ],
+      "width": 465,
+      "height": 476,
+      "alpha_outer_border": 0,
+      "sha256": "c4673dd81c765f3b1c8b4409e5c5140171bcd2b4ac85c13edb64e85e0089ad7a"
+    },
+    {
+      "world": 8,
+      "variant": 2,
+      "file": "StarObservatory2.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-f6698326-e7fd-4f52-a6e6-31cb4ee9082d.png",
+      "source_region": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "trim": [
+        34,
+        41,
+        460,
+        459
+      ],
+      "width": 442,
+      "height": 434,
+      "alpha_outer_border": 0,
+      "sha256": "c4c2943d9611382d178c2dba11da08feaae214288910de8c6ac771d0c0477811"
+    },
+    {
+      "world": 8,
+      "variant": 5,
+      "file": "StarObservatory5.png",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-f6698326-e7fd-4f52-a6e6-31cb4ee9082d.png",
+      "source_region": [
+        1024,
+        512,
+        1536,
+        1024
+      ],
+      "trim": [
+        33,
+        40,
+        464,
+        484
+      ],
+      "width": 447,
+      "height": 460,
+      "alpha_outer_border": 0,
+      "sha256": "269fa1bcf65a6b67b0f4e20e886053ce3a06db5b61133da3251b7b7ea8d3fd92"
+    }
+  ],
+  "processing": "Find EMPTY alpha gutters before slicing; retain every original RGBA pixel, add transparent sampling padding. No screenshot cutouts, recolors, or old island source pixels."
+}

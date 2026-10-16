@@ -1,0 +1,4 @@
+{
+  "generator": "built-in imagegen",
+  "prompt": "Edit this exact 4 by 4 illustrated wooden platform sprite atlas. Preserve all pixel geometry, cell placement, perspectives, end studs, first and second rows and fourth broken row, colors, lighting, all four columns (plain timber, mirror, rollers, wind). Change ONLY the THIRD ROW: those four boards must be heavily cracked and chipped BUT STILL JOINED across the middle. Replace the large open central gap with a slender continuous bridge of splintering wood/metal or turquoise inset fibers so the board is visibly intact and can still bear a little weight. There must be no open break across the entire width in row three. Add deep diagonal fissures and chips around the center, distinguish from the small hairline cracks in row two. Row four remains the fully split state. Output the same atlas dimensions 1536 by 1024 and genuine alpha transparent background with all margins intact. No new labels or objects; no backdrop."
+}

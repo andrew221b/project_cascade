@@ -17,65 +17,88 @@ namespace Cascade.Presentation
         readonly Dictionary<MechanicLesson,int> rehearsedLessons=new Dictionary<MechanicLesson,int>();
         float lessonTime;
         int? practiceFloorOverride;
-        HintOffer lessonOffer;
-        Task<(HintOffer Guide,PuzzleCommand? Special)> lessonSearch;
+        HintRequest lessonRequest;
+        Task<(HintRequest Request,PuzzleCommand? Command)> lessonSearch;
         PuzzleCommand? lessonSpecial;
         CancellationTokenSource lessonCancellation;
         Image lessonButtonHalo;
         Button lessonHaloTarget;
+        // Discovery waits for active practice; it must not prevent that practice's next input.
+        bool AwaitingMechanicScan=>needsMechanicScan&&!PendingLesson.HasValue&&!MechanicPopupOpen;
 
         void BeginLessonPractice(MechanicLesson lesson)
         {
             ClearLessonPractice();PendingLesson=lesson;lessonFloor=practiceFloorOverride??Interaction.Attempt.Current.ActiveFloor;practiceFloorOverride=null;
             rehearsedLessons[lesson]=lessonFloor;
             lessonGust=machine.AmbientGustCount;lessonTime=0;
+            // Keep the point of the finger on the indicated piece or control.
+            tutorialHand.rectTransform.pivot=new Vector2(.60f,.865f);
             if(lesson==MechanicLesson.Swap){firstGestureShown=true;RetireInstruction("Drag a piece onto its neighbour.");}
-            EnsureLessonRoute();
+            SyncLessonRestriction();EnsureLessonRoute();RenderControls();
         }
         void ClearLessonPractice()
         {
-            PendingLesson=null;CancelLessonRoute();ClearLessonHighlight();
+            PendingLesson=null;Interaction?.ClearPracticeRestriction();CancelLessonRoute();ClearLessonHighlight();
             if(tutorialHand!=null)tutorialHand.gameObject.SetActive(false);
         }
         void CancelLessonRoute()
         {
             lessonCancellation?.Cancel();lessonCancellation?.Dispose();lessonCancellation=null;
             if(lessonSearch!=null)lessonSearch.ContinueWith(t=>{var ignored=t.Exception;},TaskContinuationOptions.OnlyOnFaulted);
-            lessonSearch=null;lessonOffer=null;lessonSpecial=null;
+            lessonSearch=null;lessonRequest=null;lessonSpecial=null;
         }
         void CompleteLessonPractice(MechanicLesson lesson,bool persist=true)
         {
             if(!rehearsedLessons.ContainsKey(lesson))return;
-            bool added=!profile.SeenMechanics.Contains(lesson);if(added)profile.SeenMechanics.Add(lesson);
+            bool added=!LessonWasSeen(lesson);if(added)profile.SeenMechanics.Add(lesson);
+            string coach=lesson==MechanicLesson.Swap?TwoWaysCoach:lesson==MechanicLesson.Undo?UndoCoach:lesson==MechanicLesson.ClosedPath?ClosedPathCoach:null;
+            bool coachAdded=coach!=null&&!profile.SeenCoachPrompts.Contains(coach);if(coachAdded)profile.SeenCoachPrompts.Add(coach);
+            string triadCoach=TriadCoach(lesson);bool triadAdded=triadCoach!=null&&!profile.SeenCoachPrompts.Contains(triadCoach);
+            if(triadAdded)profile.SeenCoachPrompts.Add(triadCoach);
             if(persist)PersistProgress();
-            if(persist&&HasSaveError){if(added)profile.SeenMechanics.Remove(lesson);return;}
+            if(persist&&HasSaveError&&added)profile.SeenMechanics.Remove(lesson);
+            if(persist&&HasSaveError&&coachAdded)profile.SeenCoachPrompts.Remove(coach);
+            if(persist&&HasSaveError&&triadAdded)profile.SeenCoachPrompts.Remove(triadCoach);
             rehearsedLessons.Remove(lesson);if(PendingLesson==lesson)ClearLessonPractice();
             needsMechanicScan=Interaction.Attempt.Current.Status==PuzzleStatus.Playing;
         }
         void ObserveLessonTransition(TransitionResult result)
         {
-            if(PendingLesson==MechanicLesson.Hint&&offeredHint!=null)CompleteLessonPractice(MechanicLesson.Hint);
-            foreach(var taught in new List<KeyValuePair<MechanicLesson,int>>(rehearsedLessons))
-                if(taught.Key!=MechanicLesson.Gust&&LessonPractice.CompletedBy(taught.Key,taught.Value,result,Interaction.LastRequestedCommand??PuzzleCommand.Drop))CompleteLessonPractice(taught.Key);
-                else if((taught.Key==MechanicLesson.Swap||taught.Key==MechanicLesson.FarSwap)&&result.Accepted
-                    &&System.Linq.Enumerable.Any(result.Events,e=>e.Floor==taught.Value&&e.Kind==PuzzleEventKind.FloorExited)){
-                    // Skipping this gesture is not proof that it was learned. Retire
-                    // only the departed cue; another encounter still teaches it.
+            if(result.Accepted&&result.State.Status==PuzzleStatus.Playing
+                &&System.Linq.Enumerable.Any(result.Events,e=>e.Kind==PuzzleEventKind.FloorEntered||e.Kind==PuzzleEventKind.RibbonCollected))needsMechanicScan=true;
+            if(result.Accepted&&PendingLesson==MechanicLesson.Hint&&offeredHint?.Result.Command!=null
+                &&Interaction.Attempt.IsCurrent(offeredHint)==false&&Interaction.LastRequestedCommand.HasValue
+                &&Interaction.LastRequestedCommand.Value.Equals(offeredHint.Result.Command.Value))CompleteLessonPractice(MechanicLesson.Hint,false);
+            foreach(var taught in new List<KeyValuePair<MechanicLesson,int>>(rehearsedLessons)){
+                if(taught.Key!=MechanicLesson.Gust&&LessonPractice.CompletedBy(taught.Key,taught.Value,result,Interaction.LastRequestedCommand??PuzzleCommand.Drop)){
+                    CompleteLessonPractice(taught.Key,false);continue;
+                }
+                if(result.Accepted&&System.Linq.Enumerable.Any(result.Events,e=>e.Floor==taught.Value&&e.Kind==PuzzleEventKind.FloorExited)){
+                    // The board is gone, so its cue cannot be followed. Show this
+                    // lesson again on a future encounter instead of claiming mastery.
                     rehearsedLessons.Remove(taught.Key);if(PendingLesson==taught.Key)ClearLessonPractice();
                     needsMechanicScan=result.State.Status==PuzzleStatus.Playing;
                 }
+            }
             CancelLessonRoute();
+            SyncLessonRestriction();
         }
         bool RequireActionLesson(MechanicLesson lesson,int? onFloor=null)
         {
+            if(!Preferences.Tutorials)return false;
             if(MechanicPopupOpen)return true;
-            if(profile==null||profile.SeenMechanics.Contains(lesson)||rehearsedLessons.ContainsKey(lesson))return false;
+            if(PendingLesson.HasValue){
+                if(PendingLesson.Value!=lesson&&Interaction.PracticeGuidanceOnly)DeferLessonPractice();
+                else return PendingLesson.Value!=lesson;
+            }
+            if(profile==null||!NeedsControlLesson(lesson)||rehearsedLessons.ContainsKey(lesson))return false;
             OpenMechanicPopup(lesson);practiceFloorOverride=onFloor;return true;
         }
         // Called before a real command. It only pauses; the player must repeat the gesture.
         public bool RequireCommandLesson(PuzzleCommand command)
         {
-            if(!Interaction.CanPlay)return false;
+            if(!Interaction.AllowsCommand(command))return true;
+            if(!Interaction.CanPlay||PendingLesson.HasValue)return false;
             var preview=Interaction.Attempt.Resolver.Preview(Interaction.Attempt.Current,command);
             if(!preview.IsLegal){
                 if(preview.Rejection==RejectionReason.ClosedEdge&&RequireActionLesson(Interaction.Attempt.Level.Floors[Interaction.Attempt.Current.ActiveFloor].Key!=null&&!Interaction.Attempt.Current.KeyUsed?MechanicLesson.Key:MechanicLesson.ClosedPath))return true;
@@ -103,9 +126,7 @@ namespace Cascade.Presentation
         }
         void PlayFocusedSwap(int direction)
         {
-            if(!Interaction.SelectedSlot.HasValue)return;
-            int from=Interaction.SelectedSlot.Value,to=from+direction;if(to<0||to>=slots.Count)return;
-            PlayCommand(PuzzleCommand.Swap(Math.Min(from,to)));
+            var command=Interaction.FocusedCommand(direction);if(command.HasValue)PlayCommand(command.Value);
         }
         void PlayCommand(PuzzleCommand command)
         {
@@ -115,28 +136,53 @@ namespace Cascade.Presentation
         void EnsureLessonRoute()
         {
             if(!PendingLesson.HasValue||CurrentScreen!=GameScreen.Playing||Interaction.Attempt.Current.Status!=PuzzleStatus.Playing)return;
-            if(lessonOffer!=null&&Interaction.Attempt.IsCurrent(lessonOffer))return;
+            var lesson=PendingLesson.Value;
+            if(lesson==MechanicLesson.Gust||lesson==MechanicLesson.Hint||lesson==MechanicLesson.Undo||lesson==MechanicLesson.Toolbag
+                ||lesson>=MechanicLesson.Wayfinder&&lesson<=MechanicLesson.LandingLens)return;
+            if(LessonRequestCurrent)return;
             if(lessonSearch!=null)return;
             lessonCancellation=new CancellationTokenSource();var token=lessonCancellation.Token;
             var request=Interaction.Attempt.CaptureHintRequest();
-            var lesson=PendingLesson.Value;var resolver=Interaction.Attempt.Resolver;var goal=Interaction.Attempt.Goal;var state=Interaction.Attempt.Current;
-            lessonSearch=Task.Run(()=>{
-                var guide=AttemptService.CalculateHint(request,cancellationToken:token);PuzzleCommand? special=null;
-                if(lesson==MechanicLesson.FarSwap){
-                    for(int from=0;from<state.Row.Count&&!special.HasValue;from++)for(int span=2;span<=3&&from+span<state.Row.Count;span++){
-                        var step=PuzzleCommand.Reach(from,from+span);var result=resolver.Resolve(state,step);if(!result.Accepted)continue;
-                        if(PuzzleSolver.FindShortest(resolver,result.State,goal:goal,stateBudget:4000,cancellationToken:token).Status==SearchStatus.Solved){special=step;break;}
-                    }
-                }
-                return (guide,special);
-            },token);
+            var resolver=Interaction.Attempt.Resolver;var goal=Interaction.Attempt.Goal;var state=Interaction.Attempt.Current;
+            int practiceFloor=lessonFloor;
+            lessonSearch=Task.Run(()=>(request,LessonRoute.Find(resolver,state,goal,lesson,practiceFloor,cancellationToken:token)),token);
+        }
+        bool LessonRequestCurrent=>lessonRequest!=null&&lessonRequest.AttemptId==Interaction.Attempt.AttemptId
+            &&lessonRequest.StateHash==Interaction.Attempt.CurrentStateHash;
+        bool SyncLessonRestriction()
+        {
+            if(!PendingLesson.HasValue)return Interaction.ClearPracticeRestriction();
+            var lesson=PendingLesson.Value;
+            if(lesson==MechanicLesson.Undo)return Interaction.RestrictPractice(control:PracticeControl.Undo);
+            else if(lesson==MechanicLesson.Hint){
+                if(offeredHint?.Result.Command!=null&&Interaction.Attempt.IsCurrent(offeredHint))return Interaction.RestrictPractice(offeredHint.Result.Command);
+                return Interaction.RestrictPractice(control:PracticeControl.Hint);
+            }
+            else if(lesson==MechanicLesson.Toolbag)return Interaction.RestrictPractice(control:PracticeControl.Toolbag);
+            else if(lesson>=MechanicLesson.Wayfinder&&lesson<=MechanicLesson.LandingLens)
+                return Interaction.RestrictPractice(control:PracticeControl.Tool,tool:(TravelTool)((int)lesson-(int)MechanicLesson.Wayfinder));
+            else if(CurrentScreen==GameScreen.Checkpoint&&(lesson==MechanicLesson.Mirror||lesson==MechanicLesson.Rollers||lesson==MechanicLesson.LandingWind))
+                return Interaction.RestrictPractice(control:PracticeControl.NextStage);
+            // A stamp demonstrates a possible bonus; it must not force the exact
+            // solver command. A wrong symbol is a valid player choice and simply
+            // leaves the stamp uncollected.
+            bool suggestion=lesson<=MechanicLesson.LandingWind||lesson==MechanicLesson.LiveGust||lesson==MechanicLesson.Stamp;
+            return Interaction.RestrictPractice(LessonRequestCurrent?lessonSpecial:null,guidanceOnly:suggestion);
+        }
+        void DeferLessonPractice()
+        {
+            if(PendingLesson.HasValue){
+                deferredLessons.Add((PendingLesson.Value,lessonFloor));
+                rehearsedLessons.Remove(PendingLesson.Value);
+            }
+            ClearLessonPractice();RenderControls();
         }
         bool UpdateLessonPractice(bool foreground)
         {
             if(!PendingLesson.HasValue)return false;
             bool show=IntroductionAnimationAllowed&&!MechanicPopupOpen&&!ConversationOpen&&!zoomOpen
                 &&!Interaction.IsPresenting&&!Interaction.IsPreparing
-                &&(CurrentScreen==GameScreen.Playing&&Interaction.CanPlay||CurrentScreen==GameScreen.Supplies||CurrentScreen==GameScreen.Checkpoint||CurrentScreen==GameScreen.Fail&&PendingLesson==MechanicLesson.Undo);
+                &&(CurrentScreen==GameScreen.Playing&&Interaction.CanPlay||CurrentScreen==GameScreen.Checkpoint||CurrentScreen==GameScreen.Fail&&PendingLesson==MechanicLesson.Undo);
             tutorialHand.gameObject.SetActive(false);
             if(!show){ClearLessonHighlight();return true;}
             var lesson=PendingLesson.Value;lessonTime+=Mathf.Min(Time.unscaledDeltaTime,.1f);
@@ -145,26 +191,32 @@ namespace Cascade.Presentation
             }
             if(lessonSearch!=null&&lessonSearch.IsCompleted){
                 var task=lessonSearch;lessonSearch=null;lessonCancellation.Dispose();lessonCancellation=null;
-                if(task.IsFaulted){var ignored=task.Exception;}else if(!task.IsCanceled&&Interaction.Attempt.IsCurrent(task.Result.Guide)){lessonOffer=task.Result.Guide;lessonSpecial=task.Result.Special;}
+                if(task.IsFaulted){var ignored=task.Exception;DeferLessonPractice();return true;}
+                else if(!task.IsCanceled&&task.Result.Request.AttemptId==Interaction.Attempt.AttemptId
+                    &&task.Result.Request.StateHash==Interaction.Attempt.CurrentStateHash){
+                    lessonRequest=task.Result.Request;lessonSpecial=task.Result.Command;
+                    if(!lessonSpecial.HasValue){DeferLessonPractice();return true;}
+                }
             }
-            EnsureLessonRoute();
+            if(SyncLessonRestriction())RenderControls();EnsureLessonRoute();
             if(IsHoldingToken){ClearLessonHighlight();return true;}
             if(lesson==MechanicLesson.Gust){machine.SetLessonFocus(0,machine.TokenCount-1,.12f);return true;}
             Button control=null;
             if(lesson==MechanicLesson.Undo)control=undo;
             else if(lesson==MechanicLesson.Hint&&offeredHint==null)control=hint;
             else if(lesson==MechanicLesson.Toolbag)control=fieldTools;
-            else if(lesson>=MechanicLesson.Wayfinder&&lesson<=MechanicLesson.LandingLens&&CurrentScreen==GameScreen.Supplies)
-                control=shopItem==(int)lesson-(int)MechanicLesson.Wayfinder?FindLessonUseButton():FindLessonButton("Shop object "+((int)lesson-(int)MechanicLesson.Wayfinder));
+            else if(lesson>=MechanicLesson.Wayfinder&&lesson<=MechanicLesson.LandingLens
+                &&CurrentScreen==GameScreen.Playing)control=fieldTrayOpen?fieldToolButtons[(int)lesson-(int)MechanicLesson.Wayfinder]:fieldTools;
             else if(CurrentScreen==GameScreen.Checkpoint&&(lesson==MechanicLesson.Descent||lesson==MechanicLesson.Mirror||lesson==MechanicLesson.Rollers||lesson==MechanicLesson.LandingWind))
                 control=resultRoot.Find("Nextdelivery")?.GetComponent<Button>();
             float phase=Mathf.Repeat(lessonTime,3.4f),progress=ReducedMotion?0:Mathf.SmoothStep(0,1,Mathf.Clamp01((phase-.75f)/1.0f));
             Vector3 from,to;
             if(control!=null&&control.gameObject.activeInHierarchy){
-                from=to=control.transform.position;SetLessonControlHighlight(control);machine.SetLessonFocus(-1,-1,0);
+                var hit=(RectTransform)control.transform;
+                from=to=hit.TransformPoint(hit.rect.center);SetLessonControlHighlight(control);machine.SetLessonFocus(-1,-1,0);
             }else{
                 ClearLessonControlHighlight();
-                var command=lesson==MechanicLesson.FarSwap?lessonSpecial:lesson==MechanicLesson.Hint&&offeredHint?.Result.Command!=null?offeredHint.Result.Command:lessonOffer?.Result.Command;
+                var command=Interaction.PracticeCommand;
                 if(!command.HasValue){ClearLessonHighlight();return true;}
                 if(command.Value.Kind==CommandKind.EarlyDrop){
                     if(drop.gameObject.activeInHierarchy&&drop.interactable){from=to=drop.transform.position;SetLessonControlHighlight(drop);machine.SetLessonFocus(-1,-1,0);}
@@ -182,12 +234,6 @@ namespace Cascade.Presentation
             tutorialHand.rectTransform.localScale=Vector3.one*(ReducedMotion?1:1-.06f*Mathf.Sin(Mathf.Clamp01(phase/.45f)*Mathf.PI));
             tutorialHand.color=new Color(1,1,1,ReducedMotion?1:phase>2.8f?Mathf.Clamp01((3.4f-phase)/.6f):1);
             return true;
-        }
-        Button FindLessonUseButton()=>FindLessonButton("Use selected tool");
-        Button FindLessonButton(string name)
-        {
-            foreach(var button in menuRoot.GetComponentsInChildren<Button>())if(button.name==name)return button;
-            return null;
         }
         void SetLessonControlHighlight(Button control)
         {

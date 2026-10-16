@@ -1,0 +1,364 @@
+[
+  {
+    "name": "GreenAction",
+    "source": "exec-3ad00b4a-edfd-4279-a609-eb6a67a876a6.png",
+    "cell": [
+      0,
+      0,
+      430,
+      300
+    ],
+    "alpha_bounds": [
+      17,
+      129,
+      421,
+      257
+    ],
+    "sha256": "e29a5b26cda0de16bced2b09f55be32f36654497022aa55908f6d85056b7c5a0"
+  },
+  {
+    "name": "AmberAction",
+    "source": "exec-3ad00b4a-edfd-4279-a609-eb6a67a876a6.png",
+    "cell": [
+      430,
+      0,
+      840,
+      300
+    ],
+    "alpha_bounds": [
+      7,
+      129,
+      388,
+      257
+    ],
+    "sha256": "32d8146fa5fafebba8a91288df2ec02912435db25f2d6cbc2b17ccad52a923b5"
+  },
+  {
+    "name": "RedAction",
+    "source": "exec-3ad00b4a-edfd-4279-a609-eb6a67a876a6.png",
+    "cell": [
+      840,
+      0,
+      1254,
+      300
+    ],
+    "alpha_bounds": [
+      0,
+      129,
+      396,
+      258
+    ],
+    "sha256": "925718cfe9d75e9fe1c1064c7aca092776cb4a0752dd570ba8205ae8eb44cb1b"
+  },
+  {
+    "name": "GrayAction",
+    "source": "exec-3ad00b4a-edfd-4279-a609-eb6a67a876a6.png",
+    "cell": [
+      0,
+      300,
+      450,
+      580
+    ],
+    "alpha_bounds": [
+      18,
+      96,
+      442,
+      221
+    ],
+    "sha256": "abe4b3490d4e7faefe573b7f0eb46a56eac24fb1226c480cb52c33f3b1dec01d"
+  },
+  {
+    "name": "InventoryStatCard",
+    "source": "exec-3ad00b4a-edfd-4279-a609-eb6a67a876a6.png",
+    "cell": [
+      450,
+      300,
+      929,
+      580
+    ],
+    "alpha_bounds": [
+      13,
+      91,
+      451,
+      243
+    ],
+    "sha256": "86adee59be729fe328d4e21004c5e3be046160642a5baf28ee63d4ddba64a3f4"
+  },
+  {
+    "name": "SquareButton",
+    "source": "exec-3ad00b4a-edfd-4279-a609-eb6a67a876a6.png",
+    "cell": [
+      929,
+      300,
+      1254,
+      580
+    ],
+    "alpha_bounds": [
+      36,
+      38,
+      276,
+      267
+    ],
+    "sha256": "2fd7ea6ee9b951ec0800ab5c05bda907f78dd4b7e877ab312d9bcb03f607db01"
+  },
+  {
+    "name": "SelectedCard",
+    "source": "exec-3ad00b4a-edfd-4279-a609-eb6a67a876a6.png",
+    "cell": [
+      0,
+      580,
+      450,
+      925
+    ],
+    "alpha_bounds": [
+      81,
+      46,
+      372,
+      312
+    ],
+    "sha256": "3348865e419c6b88c760c66860d9e095a4ee846dcbdaadf7ec46742e0143eb7a"
+  },
+  {
+    "name": "RewardCard",
+    "source": "exec-3ad00b4a-edfd-4279-a609-eb6a67a876a6.png",
+    "cell": [
+      450,
+      580,
+      763,
+      925
+    ],
+    "alpha_bounds": [
+      62,
+      30,
+      292,
+      317
+    ],
+    "sha256": "64546c1a708d52ebe8e82aa91a555ede299f049d4834c689e4acdcd8fc2e0d47"
+  },
+  {
+    "name": "TabsStrip",
+    "source": "exec-3ad00b4a-edfd-4279-a609-eb6a67a876a6.png",
+    "cell": [
+      763,
+      580,
+      1254,
+      925
+    ],
+    "alpha_bounds": [
+      34,
+      133,
+      470,
+      235
+    ],
+    "sha256": "7d7efd09d112b51f8c27fed4f1338fc9ea4335f88383d9e803ae74067dccce38"
+  },
+  {
+    "name": "PurchasedRibbon",
+    "source": "exec-3ad00b4a-edfd-4279-a609-eb6a67a876a6.png",
+    "cell": [
+      0,
+      925,
+      530,
+      1254
+    ],
+    "alpha_bounds": [
+      25,
+      100,
+      512,
+      208
+    ],
+    "sha256": "ff1eb32368119e4ff9adbe98650a0763c7d20b6966d198deef1bf8ec508ba947"
+  },
+  {
+    "name": "CoinCard",
+    "source": "exec-3ad00b4a-edfd-4279-a609-eb6a67a876a6.png",
+    "cell": [
+      530,
+      925,
+      883,
+      1254
+    ],
+    "alpha_bounds": [
+      34,
+      21,
+      297,
+      272
+    ],
+    "sha256": "1d7ae5c46b32a14286f9a69f1c1cd8a26b399d7285b5c6637ffd9e493e1b5ea2"
+  },
+  {
+    "name": "Card",
+    "source": "exec-3ad00b4a-edfd-4279-a609-eb6a67a876a6.png",
+    "cell": [
+      883,
+      925,
+      1254,
+      1254
+    ],
+    "alpha_bounds": [
+      54,
+      23,
+      316,
+      273
+    ],
+    "sha256": "62c1b8c39cce2291159a11ab2496c1fe2cad16ef6d4dde8bda0dbef113f1f145"
+  },
+  {
+    "name": "WorldTitle0",
+    "source": "exec-dbd6a45c-5759-4840-bdb7-4f2fb364ce85.png",
+    "cell": [
+      0,
+      0,
+      512,
+      355
+    ],
+    "alpha_bounds": [
+      15,
+      114,
+      507,
+      313
+    ],
+    "sha256": "b05055791b7ae382d6344cd75b2be99a615efea7dfc05087c6d09c1121bca2f0"
+  },
+  {
+    "name": "WorldTitle1",
+    "source": "exec-dbd6a45c-5759-4840-bdb7-4f2fb364ce85.png",
+    "cell": [
+      512,
+      0,
+      1024,
+      355
+    ],
+    "alpha_bounds": [
+      10,
+      113,
+      501,
+      313
+    ],
+    "sha256": "e6897bb2693af917f1aabe0a9a4922169e277f5ff7373e365d748ee4da358d21"
+  },
+  {
+    "name": "WorldTitle2",
+    "source": "exec-dbd6a45c-5759-4840-bdb7-4f2fb364ce85.png",
+    "cell": [
+      1024,
+      0,
+      1536,
+      355
+    ],
+    "alpha_bounds": [
+      4,
+      113,
+      497,
+      314
+    ],
+    "sha256": "62f867da2d6f4ebd78396edfcd7f97fedd4edc88181808c394778daa74eb0ce3"
+  },
+  {
+    "name": "WorldTitle3",
+    "source": "exec-dbd6a45c-5759-4840-bdb7-4f2fb364ce85.png",
+    "cell": [
+      0,
+      355,
+      512,
+      665
+    ],
+    "alpha_bounds": [
+      15,
+      62,
+      507,
+      261
+    ],
+    "sha256": "049b69b30935e317738913fd4fe5171b402356775dc0b408103334c8bf846ab4"
+  },
+  {
+    "name": "WorldTitle4",
+    "source": "exec-dbd6a45c-5759-4840-bdb7-4f2fb364ce85.png",
+    "cell": [
+      512,
+      355,
+      1024,
+      665
+    ],
+    "alpha_bounds": [
+      10,
+      61,
+      501,
+      261
+    ],
+    "sha256": "33f90a6405cbe9ef8cac60494e8944943aa9508910de4d06cfaa8f624ef9aefb"
+  },
+  {
+    "name": "WorldTitle5",
+    "source": "exec-dbd6a45c-5759-4840-bdb7-4f2fb364ce85.png",
+    "cell": [
+      1024,
+      355,
+      1536,
+      665
+    ],
+    "alpha_bounds": [
+      4,
+      62,
+      497,
+      261
+    ],
+    "sha256": "fc3cef80e5008aa4bb5af434a1fcbd76f341ec3fee499c9b7d294244f18530d5"
+  },
+  {
+    "name": "WorldTitle6",
+    "source": "exec-dbd6a45c-5759-4840-bdb7-4f2fb364ce85.png",
+    "cell": [
+      0,
+      665,
+      512,
+      1024
+    ],
+    "alpha_bounds": [
+      15,
+      50,
+      507,
+      253
+    ],
+    "sha256": "d4583f4a2ba04d76d79ae0e937556c69e109cf98324e4fcd7253bbee4058cb14"
+  },
+  {
+    "name": "WorldTitle7",
+    "source": "exec-dbd6a45c-5759-4840-bdb7-4f2fb364ce85.png",
+    "cell": [
+      512,
+      665,
+      1024,
+      1024
+    ],
+    "alpha_bounds": [
+      10,
+      51,
+      501,
+      253
+    ],
+    "sha256": "0d131c040574aaf80ade1e87da51fd46db9085fe69dc9adf61356ed3eeeae414"
+  },
+  {
+    "name": "WorldTitle8",
+    "source": "exec-dbd6a45c-5759-4840-bdb7-4f2fb364ce85.png",
+    "cell": [
+      1024,
+      665,
+      1536,
+      1024
+    ],
+    "alpha_bounds": [
+      4,
+      54,
+      497,
+      253
+    ],
+    "sha256": "7c307bc14e553ed988311a41e6ac931e52421aba1c3e3afab85463d96889e764"
+  },
+  {
+    "name": "WindGardenBase",
+    "source": "exec-ffc00fb7-c49d-4745-bbeb-879e8f5f2259.png",
+    "sha256": "f6864d5a90d620089ea13d54a325eb3bda79c34ce065c0460d4d2631fcbc203d"
+  }
+]

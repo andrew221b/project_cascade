@@ -1,5 +1,5 @@
 Shader "Cascade/HempRope" {
- Properties { _BaseMap("Surface",2D)="white"{} _BaseColor("Hemp shadow",Color)=(1,1,1,1) _Color("Hemp",Color)=(0.78,0.59,0.33,1) _Cutoff("Cutout",Float)=0.12 }
+ Properties { _BaseMap("Surface",2D)="white"{} _BaseColor("Hemp shadow",Color)=(1,1,1,1) _Color("Hemp",Color)=(0.78,0.59,0.33,1) _Cutoff("Cutout",Float)=0.12 _Authored("Authored braid",Float)=0 }
  SubShader {
  Tags {"Queue"="Transparent" "RenderType"="Transparent" "RenderPipeline"="UniversalPipeline"}
  Cull Off ZWrite Off Blend SrcAlpha OneMinusSrcAlpha
@@ -14,7 +14,7 @@ Shader "Cascade/HempRope" {
  #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
  struct appdata { float4 vertex:POSITION;float2 uv:TEXCOORD0;float4 color:COLOR;float3 normal:NORMAL;float4 tangent:TANGENT; };
  struct v2f {float4 vertex:SV_POSITION;float2 uv:TEXCOORD0;float4 color:COLOR;float3 world:TEXCOORD1;float3 normal:TEXCOORD2;float3 tangent:TEXCOORD3;};
- half4 _Color;
+ half4 _Color;float _Authored;TEXTURE2D(_BaseMap);SAMPLER(sampler_BaseMap);
  v2f vert(appdata v){v2f o;o.world=TransformObjectToWorld(v.vertex.xyz);o.vertex=TransformWorldToHClip(o.world);o.uv=v.uv;o.color=v.color;o.normal=TransformObjectToWorldNormal(v.normal);o.tangent=TransformObjectToWorldDir(v.tangent.xyz);return o;}
  half4 frag(v2f i):SV_Target {
  float across=i.uv.y*2-1;
@@ -30,7 +30,9 @@ Shader "Cascade/HempRope" {
  half sheen=pow(saturate(dot(n,h)),28)*.09*sun.shadowAttenuation;
  half fiber=.78+(braid-.5)*.16+(strand-.5)*.08;
  float edge=1-smoothstep(.52,1,abs(across));
- return half4(_Color.rgb*diffuse*fiber+sun.color*sheen,i.color.a*edge);
+ half4 painted=SAMPLE_TEXTURE2D(_BaseMap,sampler_BaseMap,float2(i.uv.y,frac(i.uv.x*1.1)));
+ half3 hemp=lerp(_Color.rgb*fiber,painted.rgb,_Authored);float alpha=lerp(edge,painted.a,_Authored);clip(alpha-.06);
+ return half4(hemp*diffuse+sun.color*sheen,i.color.a*alpha);
  }
  ENDHLSL }
  UsePass "Universal Render Pipeline/Lit/ShadowCaster"

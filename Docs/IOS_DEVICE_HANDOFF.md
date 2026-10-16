@@ -27,3 +27,26 @@ CASCADE development profile including In-App Purchase and the paired iPhone;
 no capability, package or source setting was disabled to bypass signing.
 `testMonetization=1`, the real store catalog is unregistered, and native ad
 keys are empty. Deployment does not validate production payments or ads.
+
+## Current export — 8 October 2026
+
+The working tree after the route-record layout revision was exported to
+`CascadeUnity/Builds/CASCADE-iOS-2026-10-08` and built from its
+`Unity-iPhone.xcworkspace` with Xcode 26.6. The signed app retained
+`com.vickand.cascade`, was installed and launched on the paired iPhone 17.
+The previous exports and the app's existing device data were preserved.
+See `Reports/iOS-2026-10-08/README.md` for the exact build and device evidence.
+
+## Current installation — 16 October 2026
+
+At the user's explicit request, built and installed the current source as
+0.1.0 (202610161), com.vickand.cascade, on the same paired physical iPhone 17.
+Unity iOS export and Xcode Release signing succeeded; strict deep signature
+verification passed. CoreDevice confirmed the installed version and process
+launch/liveness. Current music, island/tutorial screens and frame repairs are
+included. Export and signed app are retained under
+`CascadeUnity/Builds/CASCADE-iOS-202610161` and its `-DerivedData` sibling.
+No uninstall/reset/restore; no existing CASCADE app was found before this
+installation. Main unsaved scene and protected backups preserved.
+Evidence and physical visual/audio/performance limits:
+`Reports/iPhoneOct16/README.md`. Any later deployment requires a new user request.

@@ -1,0 +1,13 @@
+# Local reminders — 7 October 2026
+
+Design note before changing preference schema, package dependencies and local IDs.
+
+- `GamePreferences.NotificationsEnabled` defaults to `false`. Missing fields in existing saves remain off. Consent is per device; cloud restoration must not enable reminders on another device. Request OS permission only after the player turns reminders on in Settings; do not show a permission prompt during startup.
+- Use Unity Mobile Notifications `2.4.3` on iOS/Android, with no server, remote token, Unity Push service or APNs registration. Request OS permission only after the player enables reminders in Settings.
+- Add a Reminders settings tab so another switch does not overlap the Back button on shorter screens. The five settings tabs (including Cloud) scroll horizontally on narrower displays with minimum 112 × 52 point buttons and normal readable labels. Brief EN/RU/UK copy explains the cadence and blocked system permissions.
+- Update note — 12 October 2026: schedule one-shot local notifications at 09:00 and 19:00 for each of the next 14 local calendar days. The two-week rolling window refreshes when the player returns and next backgrounds the game, stays below iOS's 64-notification app limit, and keeps copy current without repeating reminders indefinitely. Vary brief EN/RU/UK greetings by local day; the evening copy may include the saved count of cleared paths. No server, remote token, reward, save-schema change or new package is introduced.
+- Opening the game or disabling reminders removes the game's pending and delivered reminders. Repeated pause callbacks do not create more notifications.
+- Stable local identifiers: Android channel `cascade_local_reminders`, rolling notification IDs `170200`–`170227`, iOS slot IDs `cascade.local.reminder.morning.00`–`.13` and `cascade.local.reminder.evening.00`–`.13`. The previous single-reminder IDs are removed during cleanup. Only CASCADE-owned notifications are cancelled.
+- Android uses approximate delivery (no exact-alarm permission), preserving pending reminders over device restart (`RECEIVE_BOOT_COMPLETED`). An Editor initialization/build hook applies these settings and disables iOS startup authorization and remote push support. Permission refusal leaves the preference off; revoked OS permission prevents delivery.
+
+Device delivery depends on OS permission, battery policy and notification settings. Unity Editor/desktop show the setting unavailable. Native permission/delivery need separate Android/iOS device verification; pure scheduling tests cover consent, calendar boundaries and scheduled local times.

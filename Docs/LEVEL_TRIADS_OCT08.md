@@ -1,0 +1,17 @@
+# Campaign triads and visible consequences — 8 October 2026
+
+Fresh campaign starts use a version 6 descent recipe: three different puzzles around one primary mechanic. The first introduces/practises the device; the next two use it without automatic mechanic films. Early order is swap, repair, bomb, key, stamp, ribbon, freezing a bomb, bridge, linked pairs, fragile edge, mirror, rollers, live gust and closed paths. Later levels use their authored mechanic vocabulary, longer rows, more boards and combinations of previously introduced devices.
+
+Each recipe pins the starting slot permutation, complete board definitions, executable witness and shortest action count. Construction works backwards from the exact receiver, then verifies forwards through the production resolver and solver. No tween, bird, tutorial or reaction callback changes puzzle state. A repair provides actual extra board durability; keys enable an edge, ribbons enable a distant exchange, freezing delays bomb ticks, and landing/wind devices actually reorder the row. Stamps remain the existing optional score bonus and are described as such.
+
+The optional recipe fields are an additive saved-application schema change. Versions 1–5 retain their exact hash, rules and restore paths. Existing authored attempts also resume unchanged. No product IDs, prices, currency grants, domain rules or packages change. Next-level/map choice is saved on the committed completion receipt, including across parcel collection, without issuing rewards twice.
+
+Wildlife uses the existing pooled rigs and randomized routes. Visits become more frequent; receiver margins and vacant platforms are available after a short pause, active figures/boards only after a longer pause. Input and moving supports make a perched bird leave. Reduced-motion and low-quality settings remain respected.
+
+Validation must include complete primary/localized recipe replay, meaningful mechanic consequences, old save compatibility, first-stage-only guidance, next/map/parcel routing, and native portrait inspection. Automated solvability does not establish human enjoyment; device performance remains a separate observation.
+
+Repeated-symbol rows do not introduce the ribbon: their short ordinary sorting route can make a distant exchange irrelevant. The first ribbon lesson uses four distinct symbols and separate collection/delivery boards, so the solver must actually use the charge.
+
+Visible level numbers follow the offered sequence of the selected mode (including inserted consolidation puzzles), rather than internal C185-style IDs. IDs, receipts, access rules and save hashes remain unchanged. The first stage requires at least two exchanges, so Undo can be taught before it finishes. Winning remains irreversible; no domain Undo rule changes. Repair feedback names durability, since fragile exchanges can cost two units.
+
+Validation completed: exact replay of 540 primary triads and 1,617 localized bindings (6,471 stage proofs); 12 focused EditMode tests, with the three effect/save cases rerun after final recipe adjustments; six focused PlayMode cases, including corrected Undo and stage independence flows. Ten native portrait images were inspected, including UK Large Text 320×693. A sampled quiet minute showed at most five of the seven pooled actors, safe short-idle perching and input departure without puzzle changes. Historical failed checks and the native helper’s unseen-prologue timeout are preserved in Reports; final affected checks passed. iPhone build/install results are recorded separately.

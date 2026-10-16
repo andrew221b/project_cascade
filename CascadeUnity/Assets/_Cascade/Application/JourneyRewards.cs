@@ -11,6 +11,17 @@ namespace Cascade.Application
         public int Order;
         public string GiftId;
         public bool Claimed;
+        // Empty for the twelve published gift-part receipts. Later receipts
+        // have a fixed prize determined by Order, never by a client RNG roll.
+        public string Kind;
+        public bool DuplicateCoins;
+        // Zero/missing preserves all receipts minted by the original recipe.
+        // Omit zero so existing cloud baseline hashes retain their published JSON.
+        [Newtonsoft.Json.JsonProperty(DefaultValueHandling=Newtonsoft.Json.DefaultValueHandling.Ignore)]
+        public int RecipeVersion;
+        [Newtonsoft.Json.JsonProperty(DefaultValueHandling=Newtonsoft.Json.DefaultValueHandling.Ignore)] public List<ParcelDrop> Loot;
+        [Newtonsoft.Json.JsonProperty(DefaultValueHandling=Newtonsoft.Json.DefaultValueHandling.Ignore)] public List<ParcelDrop> BonusLoot;
+        [Newtonsoft.Json.JsonProperty(DefaultValueHandling=Newtonsoft.Json.DefaultValueHandling.Ignore)] public bool BonusClaimed;
     }
     public sealed class DeliveryFacts
     {
@@ -26,27 +37,56 @@ namespace Cascade.Application
         public int? BestWithoutHint, BestClean;
         public string Key=>string.Join("|",PuzzleId,ContentHash,Mode,Locale,StampGoal.ToString(CultureInfo.InvariantCulture));
     }
+    public sealed class ReplayCredit {
+        public string NodeId;public int Stars;
+        [Newtonsoft.Json.JsonProperty(DefaultValueHandling=Newtonsoft.Json.DefaultValueHandling.Ignore)] public bool HalfStar;
+        [Newtonsoft.Json.JsonIgnore] public int HalfUnits=>Stars*2+(HalfStar?1:0);
+    }
 
     // Durable earned rewards. No calendar loss, random reroll or gameplay mutation.
     public sealed class JourneyRewards
     {
         public static readonly string[] Gifts={"leaf","sun","sky","moon"};
+        static readonly TravelTool[] ParcelTools={TravelTool.LandingLens,TravelTool.UndoSpool,TravelTool.Wayfinder,TravelTool.SignalLantern,TravelTool.ReturnHourglass};
+        static readonly string[] ParcelCosmetics=ShopCatalog.SceneryTrophyIds.Concat(ShopCatalog.FrameTrophyIds).Concat(ShopCatalog.ParcelTrophyIds).ToArray();
         public string SelectedGift="leaf",EquippedGift;
+        [Newtonsoft.Json.JsonProperty(DefaultValueHandling=Newtonsoft.Json.DefaultValueHandling.Ignore)]
+        public string EquippedScenery;
+        [Newtonsoft.Json.JsonProperty(DefaultValueHandling=Newtonsoft.Json.DefaultValueHandling.Ignore)]
+        public string EquippedFrame;
         public List<string> SeenClearNodes=new List<string>();
+        // Revision 0 saves were earned at 40 coins per clear plus 100 per ten clears.
+        // The first wallet read carries that already-earned value into the new schedule.
+        [Newtonsoft.Json.JsonProperty(DefaultValueHandling=Newtonsoft.Json.DefaultValueHandling.Ignore)]
+        public int CoinEconomyRevision;
+        [Newtonsoft.Json.JsonProperty(DefaultValueHandling=Newtonsoft.Json.DefaultValueHandling.Ignore)]
+        public int CoinIncomeCarryover;
+        [Newtonsoft.Json.JsonProperty(NullValueHandling=Newtonsoft.Json.NullValueHandling.Ignore)]
+        public List<ReplayCredit> ReplayCredits;
+        public void RecordReplayCredit(string node,int stars,bool halfStar=false)
+        {
+            if(!SeenClearNodes.Contains(node)||stars<1||stars>3||halfStar&&stars==3)throw new ArgumentException("Replay requires a prior clear and a valid rating.");
+            if(ReplayCredits==null)ReplayCredits=new List<ReplayCredit>();
+            var credit=ReplayCredits.FirstOrDefault(c=>c.NodeId==node);
+            if(credit==null)ReplayCredits.Add(new ReplayCredit{NodeId=node,Stars=stars,HalfStar=halfStar});else if(stars*2+(halfStar?1:0)>credit.HalfUnits){credit.Stars=stars;credit.HalfStar=halfStar;}
+        }
         public List<ParcelReceipt> Parcels=new List<ParcelReceipt>();
         public List<DeliveryFacts> Deliveries=new List<DeliveryFacts>();
         public List<MasteryRecord> Records=new List<MasteryRecord>();
         public List<string> VisitDates=new List<string>();
         public int Fragments(string id)=>Parcels.Count(p=>p.GiftId==id&&p.Claimed);
-        public int EarnedFragments(string id)=>Parcels.Count(p=>p.GiftId==id);
+        public int EarnedFragments(string id)=>Parcels.Count(p=>string.IsNullOrEmpty(p.Kind)&&p.GiftId==id);
         public int CosmeticClearCount=>SeenClearNodes.Where(n=>!string.IsNullOrWhiteSpace(n)).Distinct(StringComparer.Ordinal).Count();
         public bool Owns(string id)
         {
+            if(Parcels.Any(p=>p.Claimed&&p.Loot?.Any(d=>d.Kind=="cosmetic"&&d.Id==id)==true))return true;
+            if(Parcels.Any(p=>p.Claimed&&p.Kind=="cosmetic"&&!p.DuplicateCoins&&p.GiftId==id))return true;
             int milestone=ShopCatalog.EarnedClearMilestone(id);
             return milestone>0 ? CosmeticClearCount>=milestone : Gifts.Contains(id)&&Fragments(id)==3;
         }
-        public bool AllGiftsEarned=>Parcels.Count==12;
-        public int OrderProgress=>AllGiftsEarned?3:SeenClearNodes.Count%3;
+        public bool AllGiftsEarned=>Gifts.All(g=>EarnedFragments(g)==3);
+        public int OrderProgress=>SeenClearNodes.Count>=36?Math.Max(0,SeenClearNodes.Count-36)%12:SeenClearNodes.Count%3;
+        public int NextParcelGoal=>SeenClearNodes.Count>=36?12:3;
         public int CompletedRequests=>(QuestCount(0)>=1?1:0)+(QuestCount(1)>=2?1:0)+(QuestCount(2)>=3?1:0);
         public int KeeperPoints=>SeenClearNodes.Count+CompletedRequests*2;
         public int Rank=>KeeperPoints>=40?4:KeeperPoints>=25?3:KeeperPoints>=10?2:KeeperPoints>=3?1:0;
@@ -56,8 +96,11 @@ namespace Cascade.Application
             foreach(string node in clearNodes) {
                 if(SeenClearNodes.Contains(node))continue;
                 SeenClearNodes.Add(node);
-                if(SeenClearNodes.Count%3==0&&!AllGiftsEarned) {
-                    EnsureSelection();Parcels.Add(new ParcelReceipt{Order=SeenClearNodes.Count/3,GiftId=SelectedGift});EnsureSelection();
+                if(SeenClearNodes.Count%3==0&&SeenClearNodes.Count<=36) {
+                    Parcels.Add(ParcelLoot.Create(SeenClearNodes.Count/3));
+                }
+                else if(SeenClearNodes.Count>36&&SeenClearNodes.Count%12==0){
+                    Parcels.Add(ParcelLoot.Create(SeenClearNodes.Count/3));
                 }
             }
         }
@@ -71,18 +114,25 @@ namespace Cascade.Application
             if(!Gifts.Contains(id)||EarnedFragments(id)>=3)return false;
             SelectedGift=id;return true;
         }
-        public bool ClaimParcel(int order)
+        public bool ClaimParcel(int order,IEnumerable<string> purchased=null)
+            =>ClaimParcelCore(order,purchased,false,false);
+        internal bool ClaimParcelCore(int order,IEnumerable<string> purchased,bool toolClaim,bool toolDuplicate)
         {
             var receipt=Parcels.FirstOrDefault(p=>p.Order==order);
-            if(receipt==null||receipt.Claimed)return false;
+            if(receipt==null||receipt.Claimed||ParcelLoot.IsLoot(receipt)||receipt.Kind=="tool"&&!toolClaim)return false;
+            if(receipt.Kind=="cosmetic"&&(Owns(receipt.GiftId)||purchased?.Contains(receipt.GiftId)==true))receipt.DuplicateCoins=true;
+            if(receipt.Kind=="tool")receipt.DuplicateCoins=toolDuplicate;
             receipt.Claimed=true;
-            if(EquippedGift==null&&Owns(receipt.GiftId))EquippedGift=receipt.GiftId;
             return true;
         }
         public bool Equip(string id,IEnumerable<string> purchased=null)
         {
-            if(!ShopCatalog.TrophyIds.Contains(id)||!Owns(id)&&purchased?.Contains(id)!=true)return false;EquippedGift=id;return true;
+            if(id!=null&&(!ShopCatalog.MikaTrophyIds.Contains(id)||!Owns(id)&&purchased?.Contains(id)!=true))return false;EquippedGift=id;return true;
         }
+        public bool EquipScenery(string id,IEnumerable<string> purchased=null)
+        {if(id!=null&&(!ShopCatalog.IsScenery(id)||!Owns(id)&&purchased?.Contains(id)!=true))return false;EquippedScenery=id;return true;}
+        public bool EquipFrame(string id,IEnumerable<string> purchased=null)
+        {if(id!=null&&(!ShopCatalog.IsFrame(id)||!Owns(id)&&purchased?.Contains(id)!=true))return false;EquippedFrame=id;return true;}
         public bool RegisterVisit(DateTime localDate)
         {
             string date=localDate.ToString("yyyy-MM-dd",CultureInfo.InvariantCulture);
@@ -100,7 +150,41 @@ namespace Cascade.Application
             return orderedNodes.Skip(chapter*10).Take(10).Count(SeenClearNodes.Contains);
         }
         public int EarnedCoins(IReadOnlyList<string> orderedNodes)
-            =>orderedNodes.Count(SeenClearNodes.Contains)*40+Enumerable.Range(0,4).Count(c=>WorkshopCount(c,orderedNodes)==10)*100;
+        {
+            int clears=orderedNodes.Where(SeenClearNodes.Contains).Distinct(StringComparer.Ordinal).Count();
+            // Reading the balance must not mark inventory price migration as complete.
+            int income=CoinEconomyRevision==0?clears*40+(clears/10)*100:clears*20+(clears/10)*50;
+            return income+CoinIncomeCarryover
+                +(ReplayCredits??new List<ReplayCredit>()).Where(c=>orderedNodes.Contains(c.NodeId)).Sum(c=>c.HalfUnits)
+                +Parcels.Where(p=>p.Claimed).Sum(ParcelCoins)+Parcels.Where(p=>p.BonusClaimed).Sum(p=>p.BonusLoot.Where(d=>d.Kind=="coins").Sum(d=>d.Amount)-40);
+        }
+        public static int ParcelCoins(ParcelReceipt receipt)
+        {
+            if(ParcelLoot.IsLoot(receipt))return receipt.Loot.Where(d=>d.Kind=="coins").Sum(d=>d.Amount);
+            if(receipt.RecipeVersion==5)return receipt.Kind=="coins"?12:receipt.DuplicateCoins?20:0;
+            return receipt.RecipeVersion==4 ? (receipt.Kind=="coins"?12+(receipt.Order%4)*2:6+(receipt.Order%3)*2)+(receipt.DuplicateCoins?8:0) : (receipt.RecipeVersion==3?20:0)
+                +(receipt.Kind=="coins"||(receipt.Kind=="cosmetic"||receipt.Kind=="tool")&&receipt.DuplicateCoins?20:0);
+        }
+
+        public static string ParcelToolGrantId(int order)=>"parcel_tool_"+order.ToString(CultureInfo.InvariantCulture);
+        public bool MatchesToolGrant(GrantReceipt grant)=>grant!=null&&grant.Kind=="parcel_tool"&&grant.Amount==1
+            &&Parcels.Any(p=>p.Claimed&&!p.DuplicateCoins&&p.Kind=="tool"&&p.RecipeVersion>=1&&p.RecipeVersion<=5
+                &&p.GiftId==grant.Product&&ParcelToolGrantId(p.Order)==grant.Id
+                ||p.Claimed&&MatchingDrop(p.Loot,p.Order,false,grant)||p.BonusClaimed&&MatchingDrop(p.BonusLoot,p.Order,true,grant));
+        static bool MatchingDrop(List<ParcelDrop> list,int order,bool bonus,GrantReceipt grant)=>list!=null&&list.Select((d,i)=>
+            d.Kind=="tool"&&d.Id==grant.Product&&ParcelLoot.GrantId(order,bonus,i)==grant.Id).Any(v=>v);
+        public bool HasLootTools(ParcelReceipt p,MonetizationLedger ledger,bool bonus)=>
+            !(bonus?p.BonusLoot:p.Loot)?.Select((d,i)=>d.Kind=="tool"&&!ledger.Grants.Any(g=>g.Id==ParcelLoot.GrantId(p.Order,bonus,i)&&MatchesToolGrant(g))).Any(v=>v)??true;
+        public void ValidateToolClaims(MonetizationLedger ledger)
+        {
+            if(Parcels.Any(p=>p.Claimed&&ParcelLoot.IsLoot(p)&&!HasLootTools(p,ledger,false)
+                ||p.BonusClaimed&&(!HasLootTools(p,ledger,true)||!ledger.Grants.Any(g=>g.Kind=="coins"&&g.Product==MonetizationLedger.ParcelSubject(p.Order)))))
+                throw new ArgumentException("Loot claims require their tool and verified bonus receipts.");
+            if(ledger.Grants.Any(g=>g.Kind=="parcel_tool"&&!MatchesToolGrant(g))
+                ||Parcels.Any(p=>p.Claimed&&p.Kind=="tool"&&!p.DuplicateCoins
+                    &&!ledger.Grants.Any(g=>MatchesToolGrant(g)&&g.Id==ParcelToolGrantId(p.Order))))
+                throw new ArgumentException("Tool parcel claims require their matching inventory receipt.");
+        }
 
         public static int ToolFlags(AttemptService attempt)
         {
@@ -133,12 +217,81 @@ namespace Cascade.Application
             if(!hinted)record.BestWithoutHint=Math.Min(record.BestWithoutHint??int.MaxValue,route);
             if(!hinted&&undos==0)record.BestClean=Math.Min(record.BestClean??int.MaxValue,route);
         }
+        public static ParcelReceipt BonusParcel(int order,int recipeVersion)
+        {
+            if(order<16||order%4!=0||recipeVersion<0||recipeVersion>3)throw new ArgumentException("Unknown parcel recipe.");
+            int index=order/4-3;string kind="coins",gift=null;
+            if(index>=4&&(index-4)%9==0){kind="cosmetic";gift=ShopCatalog.BonusTrophyIds[((index-4)/9)%ShopCatalog.BonusTrophyIds.Length];}
+            else if(recipeVersion>=1&&index>=8&&(index-8)%9==0){kind="cosmetic";gift=ShopCatalog.NewTrophyIds[((index-8)/9)%ShopCatalog.NewTrophyIds.Length];}
+            else if(recipeVersion>=2&&index>=2&&(index%9==2||index%9==5)){
+                kind="cosmetic";int expansion=2*((index-2)/9)+(index%9==5?1:0);
+                gift=ShopCatalog.ExpansionTrophyIds[expansion%ShopCatalog.ExpansionTrophyIds.Length];
+            }
+            else if(recipeVersion>=1&&index%4==1){kind="tool";gift=ParcelTools[((index-1)/4)%ParcelTools.Length].ToString();}
+            return new ParcelReceipt{Order=order,RecipeVersion=recipeVersion,Kind=kind,GiftId=gift};
+        }
+        public static ParcelReceipt VarietyParcel(int order)
+        {
+            if(order<1||order>12&&(order<16||order%4!=0))throw new ArgumentException("Invalid variety parcel order.");
+            int sequence=order<=12?order:12+(order-12)/4;
+            if(sequence%20==0){
+                string cosmetic=ParcelCosmetics[(sequence/20-1)%ParcelCosmetics.Length];
+                return new ParcelReceipt{Order=order,RecipeVersion=5,Kind="cosmetic",GiftId=cosmetic};
+            }
+            if(sequence%5==0){
+                string tool=ParcelTools[(sequence/5-1)%ParcelTools.Length].ToString();
+                return new ParcelReceipt{Order=order,RecipeVersion=5,Kind="tool",GiftId=tool};
+            }
+            return new ParcelReceipt{Order=order,RecipeVersion=5,Kind="coins"};
+        }
+        static ParcelReceipt VarietyParcelV4(int order)
+        {
+            if(order<1||order>12&&(order<16||order%4!=0))throw new ArgumentException("Invalid variety parcel order.");
+            string kind,gift=null;
+            if(order<=12){
+                kind=order%3==2?"coins":"cosmetic";
+                if(kind=="cosmetic")gift=ShopCatalog.ParcelTrophyIds[(order-1)-(order+1)/3];
+            }else{
+                int index=order/4-4;
+                kind=index%4==1?"tool":index%4==3?"coins":"cosmetic";
+                if(kind=="tool")gift=ParcelTools[(index/4)%ParcelTools.Length].ToString();
+                if(kind=="cosmetic"){
+                    var pool=ShopCatalog.ParcelTrophyIds.Concat(Gifts).ToArray();
+                    gift=pool[(index/4*2+(index%4==2?1:0))%pool.Length];
+                }
+            }
+            return new ParcelReceipt{Order=order,RecipeVersion=4,Kind=kind,GiftId=gift};
+        }
+        static bool ValidVarietyParcel(ParcelReceipt receipt)
+        {
+            if(receipt.Order<1||receipt.Order>12&&(receipt.Order<16||receipt.Order%4!=0))return false;
+            var recipe=receipt.RecipeVersion==4?VarietyParcelV4(receipt.Order):VarietyParcel(receipt.Order);
+            return receipt.Kind==recipe.Kind&&receipt.GiftId==recipe.GiftId
+                &&(!receipt.DuplicateCoins||receipt.Claimed&&(receipt.Kind=="cosmetic"||receipt.Kind=="tool"));
+        }
+        static bool ValidBonusParcel(ParcelReceipt receipt)
+        {
+            if(receipt.Order<16||receipt.Order%4!=0||receipt.RecipeVersion<0||receipt.RecipeVersion>3)return false;
+            var recipe=BonusParcel(receipt.Order,receipt.RecipeVersion);
+            return receipt.Kind==recipe.Kind&&receipt.GiftId==recipe.GiftId
+                &&(!receipt.DuplicateCoins||receipt.Claimed&&(receipt.Kind=="cosmetic"||receipt.Kind=="tool"));
+        }
+        static bool ValidLootFields(ParcelReceipt p)=>
+            (p.RecipeVersion==6?ParcelLoot.Valid(p.Loot,ParcelLoot.Base(p.Order),p.Claimed):p.Loot==null)
+            &&(p.BonusClaimed?p.Claimed&&ParcelLoot.Valid(p.BonusLoot,ParcelLoot.Bonus(p.Order),true):p.BonusLoot==null);
         public void Validate(IEnumerable<string> purchased=null)
         {
-            if(!Gifts.Contains(SelectedGift)||EquippedGift!=null&&!ShopCatalog.TrophyIds.Contains(EquippedGift)
+            if(ReplayCredits!=null&&(ReplayCredits.Count>540||ReplayCredits.Any(c=>c==null||c.Stars<1||c.Stars>3||c.HalfStar&&c.Stars==3||!SeenClearNodes.Contains(c.NodeId))
+                ||ReplayCredits.Select(c=>c.NodeId).Distinct(StringComparer.Ordinal).Count()!=ReplayCredits.Count))throw new ArgumentException("Invalid replay credits.");
+            if(CoinEconomyRevision<0||CoinEconomyRevision>1||CoinIncomeCarryover<0||CoinIncomeCarryover>1000000
+                ||!Gifts.Contains(SelectedGift)||EquippedGift!=null&&!ShopCatalog.MikaTrophyIds.Contains(EquippedGift)
+                ||EquippedScenery!=null&&(!ShopCatalog.IsScenery(EquippedScenery)||!Owns(EquippedScenery)&&purchased?.Contains(EquippedScenery)!=true)
+                ||EquippedFrame!=null&&(!ShopCatalog.IsFrame(EquippedFrame)||!Owns(EquippedFrame)&&purchased?.Contains(EquippedFrame)!=true)
                 ||SeenClearNodes==null||SeenClearNodes.Count>10000||SeenClearNodes.Any(string.IsNullOrWhiteSpace)
-                ||SeenClearNodes.Distinct().Count()!=SeenClearNodes.Count||Parcels==null||Parcels.Count>12
-                ||Parcels.Any(p=>p==null||p.Order<1||p.Order>SeenClearNodes.Count/3||!Gifts.Contains(p.GiftId))
+                ||SeenClearNodes.Distinct().Count()!=SeenClearNodes.Count||Parcels==null||Parcels.Count>12+SeenClearNodes.Count/12
+                ||Parcels.Any(p=>p==null||p.Order<1||p.Order>SeenClearNodes.Count/3||
+                    (!ValidLootFields(p)||p.RecipeVersion==6?!(p.RecipeVersion==6&&(p.Order<=12||p.Order>=16&&p.Order%4==0)&&p.Kind=="loot"&&p.GiftId==null&&!p.DuplicateCoins&&ValidLootFields(p)):
+                    p.RecipeVersion==4||p.RecipeVersion==5?!ValidVarietyParcel(p):p.Order<=12?(!string.IsNullOrEmpty(p.Kind)||!Gifts.Contains(p.GiftId)||p.DuplicateCoins||(p.RecipeVersion!=0&&p.RecipeVersion!=3)):!ValidBonusParcel(p)))
                 ||Parcels.Select(p=>p.Order).Distinct().Count()!=Parcels.Count||Gifts.Any(g=>EarnedFragments(g)>3)
                 ||EquippedGift!=null&&!Owns(EquippedGift)&&purchased?.Contains(EquippedGift)!=true||Deliveries==null||Deliveries.Count>10000
                 ||Deliveries.Any(d=>d==null||string.IsNullOrWhiteSpace(d.NodeId)||d.Flags<0||d.Flags>7)

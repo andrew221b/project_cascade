@@ -7,13 +7,18 @@ static void CascadePulseOnMainThread(float strength)
     if (@available(iOS 10.0, *)) {
         static UIImpactFeedbackGenerator *light;
         static UIImpactFeedbackGenerator *medium;
+        static UIImpactFeedbackGenerator *heavy;
+        static UIImpactFeedbackGenerator *soft;
         if (light == nil) {
             light = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleLight];
             medium = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
+            heavy = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleHeavy];
+            if (@available(iOS 13.0, *))
+                soft = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleSoft];
         }
-        UIImpactFeedbackGenerator *generator = strength > .55f ? medium : light;
+        UIImpactFeedbackGenerator *generator = strength >= .7f ? heavy : strength >= .38f ? medium : strength < .18f && soft != nil ? soft : light;
         if (@available(iOS 13.0, *))
-            [generator impactOccurredWithIntensity:fminf(strength, .65f)];
+            [generator impactOccurredWithIntensity:strength];
         else {
             generator = light;
             [generator impactOccurred];

@@ -37,6 +37,16 @@ def loop(data, rate):
     result[-n:] = result[-n:] * (1 - weight) + data[:n] * weight
     return result
 
+def smooth_score_seam(data, rate):
+    # Remove a boundary step over five milliseconds without silence, a tempo
+    # change or shortening the bar. The release tail still carries across the loop.
+    n = min(int(rate * .005), len(data) // 4)
+    delta = (data[0] - data[-1]) / 2
+    weight = .5 + .5 * np.cos(np.linspace(0, np.pi, n))
+    data[:n] -= weight[:, None] * delta
+    data[-n:] += weight[::-1, None] * delta
+    return data
+
 parser = argparse.ArgumentParser()
 parser.add_argument('--scores', action='store_true')
 parser.add_argument('--music-only', action='store_true')
@@ -44,6 +54,7 @@ parser.add_argument('--recordings', type=Path)
 parser.add_argument('--folder', type=Path, default=folder)
 parser.add_argument('--only-score')
 parser.add_argument('--report', type=Path)
+parser.add_argument('--smooth-score-seams', action='store_true')
 args = parser.parse_args()
 folder = args.folder
 if args.scores or args.music_only:
@@ -56,10 +67,14 @@ if args.scores or args.music_only:
             continue
         data, rate = read(path)
         if path.stem in bpm:
+            if len(data) > rate * 100:
+                raise SystemExit('Long-form acoustic score detected; use compose_acoustic_score.py. This legacy finisher would truncate it.')
             night = path.stem == 'StarObservatory_ConstellationLullaby'
             length = int((16 if night else 32) * 6 * 30 / bpm[path.stem] * rate)
             body, tail = data[:length].copy(), data[length:]
             body[:len(tail)] += tail
+            if args.smooth_score_seams:
+                body = smooth_score_seam(body, rate)
             data = gain(body, .075 if night else .12, .50 if night else .72)
         else:
             activity = np.flatnonzero(np.max(np.abs(data), axis=1) > .001)

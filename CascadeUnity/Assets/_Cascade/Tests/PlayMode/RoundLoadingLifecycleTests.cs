@@ -22,6 +22,8 @@ namespace Cascade.Tests
         CascadeGame game;
         string profileDirectory;
         bool oldRunInBackground;
+        Camera camera;
+        RenderTexture portraitTarget,oldTarget;
         readonly List<TaskCompletionSource<DescentRun>> heldPlans = new List<TaskCompletionSource<DescentRun>>();
 
         [UnitySetUp] public IEnumerator SetUp()
@@ -39,13 +41,21 @@ namespace Cascade.Tests
             game.ReducedMotion = true;
             game.Feedback.MusicEnabled = game.Feedback.SoundEnabled = false;
             Read<PlayerProfile>("profile").SeenMechanics = Enum.GetValues(typeof(MechanicLesson)).Cast<MechanicLesson>().ToList();
+            // The rotation gate intentionally suspends a landscape Game view.
+            // Keep these lifecycle scenarios in a real portrait render viewport.
+            camera=Camera.main;oldTarget=camera.targetTexture;portraitTarget=new RenderTexture(720,1280,24);
+            var scaler=game.GetComponentInChildren<UnityEngine.UI.CanvasScaler>();scaler.enabled=false;
+            camera.targetTexture=portraitTarget;scaler.enabled=true;yield return null;game.RefreshLayout();
             game.ShowGame();
             yield return Await(() => game.PreparationReady && game.Interaction.CanPlay, "Initial puzzle must become playable");
-            Invoke("PersistProgress");
+            // This fixture reads disk immediately; the current optional API needs a durable flush.
+            Invoke("PersistProgress", true);
         }
 
         [UnityTearDown] public IEnumerator TearDown()
         {
+            if(camera!=null)camera.targetTexture=oldTarget;
+            if(portraitTarget!=null){portraitTarget.Release();UnityEngine.Object.Destroy(portraitTarget);}
             if (game != null) { UnityEngine.Object.Destroy(game.gameObject); yield return null; }
             foreach (var held in heldPlans) held.TrySetCanceled();
             heldPlans.Clear();
@@ -95,7 +105,7 @@ namespace Cascade.Tests
                 game.StartDescentLevel(source);
                 var held = HoldPlan(out var worker);
                 Invoke("SetScreen", screen);
-                Invoke("PersistProgress");
+                Invoke("PersistProgress", true);
                 AssertSavedAttempt(before);
                 var waitingState = game.Interaction.Attempt.Current;
                 Assert.That(game.Interaction.Execute(PuzzleCommand.Drop), Is.Null);
@@ -173,7 +183,7 @@ namespace Cascade.Tests
             }
             Assert.That(completed.Current.Status, Is.EqualTo(PuzzleStatus.Won));
             Invoke("MountAttempt", completed, run);
-            Invoke("PersistProgress");
+            Invoke("PersistProgress", true);
             var saved = Saved();
             var restored = saved.RestoreAttempt(game.Catalog);
             Assert.That(restored.CurrentStateHash, Is.EqualTo(completed.CurrentStateHash));
@@ -242,7 +252,7 @@ namespace Cascade.Tests
             var held = HoldPlan(out _);
             held.SetResult(null);
             yield return Await(() => Read<bool>("descentPlanFailed"), "A failed proof must expose retry");
-            Invoke("PersistProgress");
+            Invoke("PersistProgress", true);
             AssertSavedAttempt(before);
             Assert.That(game.CurrentScreen, Is.EqualTo(GameScreen.Playing));
             var waitingState = game.Interaction.Attempt.Current;
@@ -250,9 +260,12 @@ namespace Cascade.Tests
             Assert.That(game.Interaction.Execute(PuzzleCommand.Drop), Is.Null);
             Assert.That(game.Interaction.Attempt.Current, Is.SameAs(waitingState));
 
+            // This return scenario starts after the opening comic/dialogue was read.
+            Read<HashSet<int>>("heardStory").UnionWith(Enumerable.Range(0,10000));
             game.ShowHome();game.ShowJourney();
+            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.JourneyMap));
             var travel=game.GetComponentsInChildren<UnityEngine.UI.Button>().Single(b=>b.name=="Travel");
-            Assert.That(travel.GetComponentInChildren<TMPro.TextMeshProUGUI>().text,Is.EqualTo("Continue"));
+            Assert.That(travel.GetComponentInChildren<TMPro.TextMeshProUGUI>().text,Does.StartWith("Continue level "));
             travel.onClick.Invoke();
             Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Playing),"A failed request must resume from the map without starting its story again.");
             Assert.That(game.Interaction.Attempt.Current,Is.SameAs(waitingState));
@@ -278,8 +291,8 @@ namespace Cascade.Tests
 
         [UnityTest] public IEnumerator DisablingAnIntroductionNeverPaintsAlreadyDestroyedControls()
         {
-            Read<PlayerProfile>("profile").SeenMechanics.Remove(MechanicLesson.Gust);
-            Assert.That(game.RequireGustIntroduction(),Is.True);
+            Read<PlayerProfile>("profile").SeenMechanics.Remove(MechanicLesson.Swap);
+            typeof(CascadeGame).GetMethod("OpenMechanicPopup",PrivateInstance).Invoke(game,new object[]{MechanicLesson.Swap,null,default(UiCopy),null});
             Assert.That(game.MechanicPopupOpen,Is.True);
             // Unity may destroy canvas children before disabling the owner when leaving Play Mode.
             UnityEngine.Object.DestroyImmediate(Read<UnityEngine.UI.Button>("undo").GetComponentInChildren<TMPro.TextMeshProUGUI>().gameObject);
@@ -296,7 +309,7 @@ namespace Cascade.Tests
             game.StartDescentLevel(source);
             yield return Await(() => !game.IsPlanningDescent && game.Descent != null && game.PreparationReady && game.Interaction.CanPlay,
                 "The reward fixture must first have a real saved descent");
-            Invoke("PersistProgress");
+            Invoke("PersistProgress", true);
             var before = Saved();
             Assert.That(before.Descent, Is.Not.Null);
             var service = Read<AdService>("monetization");

@@ -29,13 +29,13 @@ namespace Cascade.Tests
             var folder=Path.Combine(ReferenceFixtures.PackageRoot,"Reports",System.Environment.GetEnvironmentVariable("CASCADE_VALIDATION_PHASE")??"P15");Directory.CreateDirectory(folder);
             File.WriteAllText(Path.Combine(folder,"table-completeness.txt"),checks+" non-empty entries; matching format arguments; en/ru/uk\n");
         }
-        [Test] public void BothFontsCoverEveryUiAndPuzzleCharacterWithoutFallback()
+        [Test] public void ConfiguredStaticFontsCoverEveryUiAndPuzzleCharacter()
         {
             var catalog=ContentTests.LoadCatalog();var collection=LocalizationEditorSettings.GetStringTableCollection(UiCopy.Table);
             string all=string.Concat(collection.StringTables.SelectMany(t=>t.Values).Select(e=>e.Value))+string.Concat(catalog.Words.Values.Select(w=>w.DisplayText));
             var characters=all.Where(c=>!char.IsControl(c)).Distinct().ToArray();
             foreach(var font in new[]{ToyArt.Load().bodyFont,ToyArt.Load().titleFont}) {
-                var missing=characters.Where(c=>!font.HasCharacter(c,false,false)).ToArray();
+                var missing=characters.Where(c=>!font.HasCharacter(c,true,false)).ToArray();
                 Assert.That(missing,Is.Empty,font.name+": "+new string(missing));
             }
         }

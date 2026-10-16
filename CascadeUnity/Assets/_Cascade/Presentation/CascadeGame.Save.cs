@@ -31,7 +31,7 @@ namespace Cascade.Presentation
             if(!string.IsNullOrEmpty(EditorProfileDirectory))directory=EditorProfileDirectory;
 #endif
             profileStore=new ProfileStore(Path.Combine(directory,"cascade-profile.json"));
-            var loaded=profileStore.Load();profile=loaded.Profile;Recovery=loaded.Recovery;
+            var loaded=profileStore.Load();profile=loaded.Profile;profile.MigrateCoinEconomy();Recovery=loaded.Recovery;
             Preferences=profile.Preferences;PreferredMode=(PuzzleMode)Enum.Parse(typeof(PuzzleMode),profile.PreferredMode);
             sessionClears.UnionWith(profile.Clears.Select(r=>r.CampaignNodeId));
             heardStory.UnionWith(profile.HeardStory);firstGestureShown=profile.FirstGestureShown;
@@ -45,7 +45,6 @@ namespace Cascade.Presentation
                 if(restored!=null) {
                     MountAttempt(restored,profile.Descent);journeyActive=profile.JourneyAttempt;storyRoute=profile.StoryRoute??profile.JourneyAttempt;
                     selectedJourneyStop=Math.Max(0,Catalog.PrimaryLevels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==node));
-                    if(journeyActive&&descent==null){levelLabel.SetCopy(StoryConversations.Task(selectedJourneyStop));levelLabel.fontSize=21;}
                 }
             }
             catch(Exception e) when(e is ArgumentException || e is InvalidDataException) {
@@ -56,9 +55,10 @@ namespace Cascade.Presentation
             if(Recovery==SaveRecovery.None){
                 if(profile.Completion!=null&&!profile.Completion.Acknowledged&&Interaction.Attempt.Current.Status==PuzzleStatus.Won){
                     if(profile.Completion.StatsSeen&&profile.Completion.ParcelOrder>0)OpenParcel(true);else ShowGame();
-                }else ShowHome();PersistProgress();}
+                }else if(NeedsAccountIntro())ShowAccountGate();else ShowHome();PersistProgress();}
             else SetScreen(GameScreen.SaveRecovery);
         }
+        bool NeedsAccountIntro()=>!profile.AccountIntroSeen;
         void EnsureSavedJourneyContent()
         {
             if(profile.Attempt==null)return;
@@ -66,7 +66,7 @@ namespace Cascade.Presentation
             if(!Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).Concat(legacyContent).Any(c=>c.Definition.ContentHash==pinned))
                 legacyContent=ContentImporter.ImportLegacyDurability(Catalog,Source("campaign_extension"),Source("campaign_durability_v1"));
         }
-        void PersistProgress()
+        void PersistProgress(bool durable=false)
         {
             if(!persistenceReady || saveBlocked || Interaction==null)return;
             profile.Preferences=Preferences;profile.PreferredMode=PreferredMode.ToString();
@@ -75,14 +75,22 @@ namespace Cascade.Presentation
                 profile.JourneyAttempt=journeyActive;profile.Attempt=AttemptRecord.Capture(Interaction.Attempt);profile.Descent=descent;
             }
             profile.StoryRoute=storyRoute;
-            try {profileStore.Save(profile);HasSaveError=false;}
+            try {if(durable)profileStore.Save(profile);else profileStore.QueueSave(profile);HasSaveError=false;QueueCloudSave();}
             catch(Exception e) when(e is IOException || e is UnauthorizedAccessException || e is InvalidOperationException) {
                 HasSaveError=true;
                 if(status!=null)status.SetCopy("Could not save. Keep the game open and try again.");
             }
         }
+        void ObserveSaveFailure()
+        {
+            if(profileStore?.WriteError==null||HasSaveError)return;
+            HasSaveError=true;
+            if(status!=null)status.SetCopy("Could not save. Keep the game open and try again.");
+            Debug.LogWarning("CASCADE profile write failed; durable checkpoint retry required.");
+        }
         void RecordCommittedProgress()
         {
+            if(PersonalMissionActive){RecordPersonalMission();return;}
             var attempt=Interaction.Attempt;
             // QA/custom drafts are playable but do not grant campaign receipts.
             bool published=Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).Concat(legacyContent).Any(c=>descent==null?DeliveryDirector.MatchesSource(attempt,c.Definition)
@@ -95,7 +103,7 @@ namespace Cascade.Presentation
                     if(attempt.Current.Status==PuzzleStatus.Won&&profile.Completion?.AttemptId!=attempt.AttemptId.ToString("D")) {
                         int coins=Rewards.EarnedCoins(OrderedNodes);bool accountFirst=!Rewards.SeenClearNodes.Contains(node);var previous=profile.Clears.FirstOrDefault(c=>c.CampaignNodeId==node);
                         var completion=LevelCompletion.From(attempt,MinimumMoves,descent?.Performance(attempt));
-                        completion.NewBest=previous==null||completion.Score>previous.BestScore||completion.Stars>previous.BestStars;
+                        completion.NewBest=previous==null||completion.Score>previous.BestScore||completion.StarRating>previous.BestStarRating;
                         bool first=profile.RecordClear(attempt,completion);if(first)sessionClears.Add(node);
                         InitializeRewards();completion.Coins=Rewards.EarnedCoins(OrderedNodes)-coins;completion.Lights=first&&accountFirst&&OrderedNodes.Contains(node)?1:0;
                         completion.ParcelOrder=WaitingParcel?.Order??0;profile.Completion=completion;
@@ -103,7 +111,7 @@ namespace Cascade.Presentation
                     profile.Rewards.RecordDelivery(attempt,descent?.Performance(attempt),profile.ModeRecords);
                 }
             }
-            PersistProgress();
+            PersistProgress(attempt.Current.Status==PuzzleStatus.Won);
         }
         void InitializeRewards()
         {
@@ -116,12 +124,12 @@ namespace Cascade.Presentation
         {
             if(Recovery==SaveRecovery.NewerVersion)return;
             if(Recovery==SaveRecovery.WriteFailed) {
-                PersistProgress();if(HasSaveError)return;
+                PersistProgress(true);if(HasSaveError)return;
                 Recovery=SaveRecovery.None;ShowGame();return;
             }
             bool restart=Recovery==SaveRecovery.AttemptUnavailable||Recovery==SaveRecovery.Unreadable;
             Recovery=SaveRecovery.None;saveBlocked=false;
-            if(restart){profile.Attempt=null;profile.Descent=null;LoadNode(initialNode);}
+            if(restart){profile.Missions.ClearActive();profile.Attempt=null;profile.Descent=null;LoadNode(initialNode);}
             ShowHome();PersistProgress();
         }
         void DrawSaveRecovery()
@@ -132,10 +140,9 @@ namespace Cascade.Presentation
                 :Recovery==SaveRecovery.NewerVersion?"This path needs a newer game. Update CASCADE to open it."
                 :"We could not read your saved path. You can start a new one.";
             MenuTitle("Your saved path","");
-            MenuReadingSurface("Saved path explanation cloth",new Vector2(.12f,.47f),new Vector2(.88f,.74f));
-            Text("Recovery explanation",menuRoot,new Vector2(.16f,.49f),new Vector2(.84f,.72f),20,body);
+            ReadingStrip("Recovery explanation",new Vector2(.055f,.47f),new Vector2(.945f,.72f),body,18,true);
             if(Recovery!=SaveRecovery.NewerVersion)MenuButton(Recovery==SaveRecovery.WriteFailed?"Try saving again":Recovery==SaveRecovery.Backup?"Continue":Recovery==SaveRecovery.Unreadable?"Start a new path":"Start a new puzzle",.35f,AcknowledgeRecovery,true);
         }
-        void OnApplicationQuit(){PersistProgress();}
+        void OnApplicationQuit(){PersistProgress(true);SetLocalReminderBackground(true);}
     }
 }

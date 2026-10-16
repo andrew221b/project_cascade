@@ -34,3 +34,8 @@ RU390/UK320 LargeText with simulated safe insets; buttons>=44px, no final text
 overflow/aspect failures. Intermediate failures and fixes are retained in
 Reports/MapIslandBrowse. No build/install/fullsuite/device/performance/humanfun
 claim. Test profile and one-shot driver removed; TASKS.md updated.
+
+
+## Visual replacement — 16 October 2026
+
+The old list presentation described above is superseded by the supplied island-level reference in `Docs/ISLAND_LEVEL_REFERENCE_OCT16_RU.md`. The existing browse/replay/resume/category guards remain. Native evidence and the nine-world gallery are in `Reports/IslandLevelsOct16/`.

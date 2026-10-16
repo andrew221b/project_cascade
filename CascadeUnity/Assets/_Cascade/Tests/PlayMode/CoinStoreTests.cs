@@ -16,10 +16,11 @@ namespace Cascade.Tests
                 var ledger=new AdService(new MonetizationLedger(),_=>{},previewOnly:true);
                 var store=owner.AddComponent<NativePurchaseStore>();store.Initialize(ledger,null,()=>ledger.CoinBalance(0));
                 int received=0;store.CoinsGranted+=value=>received+=value;
-                store.Buy(PurchaseCatalog.Coins480);store.Buy(PurchaseCatalog.Coins480);
-                Assert.That(received,Is.EqualTo(960));Assert.That(ledger.Ledger.BonusCoins,Is.EqualTo(960));
+                int packs=(PurchaseCatalog.CoinPurchaseWalletThreshold+479)/480;
+                for(int i=0;i<packs;i++)store.Buy(PurchaseCatalog.Coins480);
+                Assert.That(received,Is.EqualTo(packs*480));Assert.That(ledger.Ledger.BonusCoins,Is.EqualTo(packs*480));
                 Assert.That(store.CanBuyProduct(PurchaseCatalog.Coins240),Is.False);store.Buy(PurchaseCatalog.Coins240);
-                Assert.That(received,Is.EqualTo(960));Assert.That(store.CanBuy,Is.True);
+                Assert.That(received,Is.EqualTo(packs*480));Assert.That(store.CanBuy,Is.True);
                 var ticket=ledger.TryRewarded(new AdContext{Surface=AdSurface.Inventory,CoreAccepted=true,PrivacyReady=true,ProviderEnabled=true},"coins",true);
                 Assert.That(store.CanBuy,Is.False);ledger.Closed(ticket.Id);Assert.That(store.CanBuy,Is.True);
                 store.Buy();Assert.That(store.Owned,Is.True);Assert.That(store.CanBuy,Is.False);

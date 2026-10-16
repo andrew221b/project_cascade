@@ -63,6 +63,8 @@ namespace Cascade.Presentation
                 localize=gameObject.AddComponent<LocalizeStringEvent>();
                 localize.OnUpdateString.AddListener(Apply);
             }
+            // Keep a readable caption during asynchronous table loading on a cold launch.
+            text.text=copy.English;
             localize.enabled=false;
             localize.StringReference=new LocalizedString(UiCopy.Table,copy.Key){Arguments=copy.Arguments};
             localize.enabled=true;localize.RefreshString();

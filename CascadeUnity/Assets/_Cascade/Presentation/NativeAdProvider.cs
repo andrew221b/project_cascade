@@ -14,9 +14,10 @@ namespace Cascade.Presentation
         CascadeGame game;AdService policy;MonetizationSettings settings;
         RewardedAd rewarded,activeRewarded;InterstitialAd interstitial,activeInterstitial;
         AdTicket pending;float deadline,rewardLoadedAt,automaticLoadedAt,retryAt;
+        bool returnedFromAd;float returnDeadline;
         bool privacyReady,initialized,initializing,dead,localPreview,loadingReward,loadingAutomatic;
         int retryCount;
-        public bool RewardReady=>initialized&&(localPreview||rewarded!=null&&rewarded.CanShowAd());
+        public bool RewardReady=>initialized&&game.RewardedOffersAllowed&&(localPreview||rewarded!=null&&rewarded.CanShowAd());
         public bool AutomaticReady=>initialized&&(localPreview||interstitial!=null&&interstitial.CanShowAd());
         public bool PrivacyReady=>privacyReady&&initialized;
         public bool Showing=>pending!=null;
@@ -77,7 +78,7 @@ namespace Cascade.Presentation
         void LoadUnits()
         {
             if(!initialized||!privacyReady||Showing||localPreview)return;
-            if(rewarded==null&&!loadingReward){
+            if(game.RewardedOffersAllowed&&rewarded==null&&!loadingReward){
                 string id=Unit(true);if(!string.IsNullOrWhiteSpace(id)){
                     loadingReward=true;RewardedAd.Load(id,new AdRequest(),(ad,error)=>MobileAdsEventExecutor.ExecuteInUpdate(()=>{
                         loadingReward=false;if(dead){ad?.Destroy();return;}
@@ -86,7 +87,7 @@ namespace Cascade.Presentation
                     }));
                 }
             }
-            if(interstitial==null&&!loadingAutomatic&&!policy.Ledger.NoAutomaticAds){
+            if(interstitial==null&&!loadingAutomatic&&!policy.Ledger.HasNoAutomaticAds){
                 string id=Unit(false);if(!string.IsNullOrWhiteSpace(id)){
                     loadingAutomatic=true;InterstitialAd.Load(id,new AdRequest(),(ad,error)=>MobileAdsEventExecutor.ExecuteInUpdate(()=>{
                         loadingAutomatic=false;if(dead){ad?.Destroy();return;}
@@ -101,16 +102,22 @@ namespace Cascade.Presentation
         {
             var ticket=policy.TryAutomatic(context,AutomaticReady);if(ticket==null)return false;Show(ticket,false);return true;
         }
+        public bool TryAutomaticRetry(AdContext context)
+        {
+            var ticket=policy.TryAutomaticRetry(context,AutomaticReady);if(ticket==null)return false;Show(ticket,false);return true;
+        }
+        public bool OfferHint(AdContext context){var ticket=policy.TryRewarded(context,"hint",RewardReady);if(ticket==null)return false;Show(ticket,true);return true;}
         public void OfferCoins(AdContext context){var ticket=policy.TryRewarded(context,"coins",RewardReady);if(ticket!=null)Show(ticket,true);}
+        public bool OfferParcelBonus(AdContext context){var ticket=policy.TryRewarded(context,"parcel_bonus",RewardReady);if(ticket==null)return false;Show(ticket,true);return true;}
         void Show(AdTicket ticket,bool video)
         {
-            pending=ticket;deadline=Time.realtimeSinceStartup+12;game.SetNativeAdSuspended(true);
+            pending=ticket;returnedFromAd=false;returnDeadline=0;deadline=Time.realtimeSinceStartup+12;game.SetNativeAdSuspended(true);
             if(localPreview){
                 policy.Opened(ticket.Id);deadline=0;
                 game.ShowPreviewAd(video,confirmed=>{
                     if(dead||pending!=ticket)return;
                     bool granted=video&&confirmed&&policy.RewardConfirmed(ticket.Id,"preview_"+ticket.Id,true);
-                    if(!confirmed)policy.Failed(ticket.Id);Close(ticket);if(granted)game.ShowCoinReward();
+                    if(!confirmed)policy.Failed(ticket.Id);Close(ticket);if(granted)game.ShowAdReward(ticket);
                 });return;
             }
             try{
@@ -118,11 +125,11 @@ namespace Cascade.Presentation
                     var ad=rewarded;rewarded=null;activeRewarded=ad;bool granted=false,closed=false;
                     ad.OnAdFullScreenContentOpened+=()=>Main(()=>Opened(ticket));
                     ad.OnAdFullScreenContentFailed+=error=>Main(()=>{Fail(ticket);ad.Destroy();activeRewarded=null;LoadUnits();});
-                    ad.OnAdFullScreenContentClosed+=()=>Main(()=>{closed=true;Close(ticket);ad.Destroy();activeRewarded=null;LoadUnits();if(granted)game.ShowCoinReward();else StartCoroutine(ExpireReward(ticket));});
+                    ad.OnAdFullScreenContentClosed+=()=>Main(()=>{closed=true;Close(ticket);ad.Destroy();activeRewarded=null;LoadUnits();if(granted)game.ShowAdReward(ticket);else StartCoroutine(ExpireReward(ticket));});
                     ad.Show(reward=>Main(()=>{
                         // The original ticket survives close-before-reward callbacks; a new ad cannot receive this reward.
                         policy.Opened(ticket.Id);
-                        granted=policy.RewardConfirmed(ticket.Id,"admob_"+ticket.Id,true);if(granted){game.NotifyStoreChanged();if(closed)game.ShowCoinReward();}
+                        granted=policy.RewardConfirmed(ticket.Id,"admob_"+ticket.Id,true);if(granted){game.NotifyStoreChanged();if(closed)game.ShowAdReward(ticket);}
                     }));
                 }else{
                     var ad=interstitial;interstitial=null;activeInterstitial=ad;
@@ -136,17 +143,35 @@ namespace Cascade.Presentation
         void Opened(AdTicket ticket){if(pending!=ticket)return;policy.Opened(ticket.Id);deadline=0;}
         void Close(AdTicket ticket)
         {
-            policy.Closed(ticket.Id);if(pending!=ticket)return;pending=null;deadline=0;game.SetNativeAdSuspended(false);game.NotifyStoreChanged();
+            policy.Closed(ticket.Id);if(pending!=ticket)return;pending=null;deadline=0;returnedFromAd=false;returnDeadline=0;game.SetNativeAdSuspended(false);game.NotifyStoreChanged();
         }
         void Fail(AdTicket ticket){policy.Failed(ticket.Id);Close(ticket);}
         void DestroyUnits(){rewarded?.Destroy();rewarded=null;interstitial?.Destroy();interstitial=null;}
+        void OnApplicationPause(bool paused)
+        {
+            if(pending==null||localPreview)return;
+            if(paused)returnedFromAd=true;
+            else if(returnedFromAd)returnDeadline=Time.realtimeSinceStartup+3;
+        }
+        void OnApplicationFocus(bool focused)
+        {
+            if(pending==null||localPreview)return;
+            if(!focused)returnedFromAd=true;
+            else if(returnedFromAd)returnDeadline=Time.realtimeSinceStartup+3;
+        }
         void Update()
         {
+            // Recover missing SDK close callbacks only after the OS returns control to the game.
+            if(pending!=null&&returnDeadline>0&&Time.realtimeSinceStartup>=returnDeadline) {
+                var ticket=pending;Close(ticket);StartCoroutine(ExpireReward(ticket));
+                activeRewarded?.Destroy();activeRewarded=null;activeInterstitial?.Destroy();activeInterstitial=null;LoadUnits();
+            }
             if(pending!=null&&deadline>0&&Time.realtimeSinceStartup>=deadline){Fail(pending);LoadUnits();}
             if(!initialized||Showing||localPreview)return;
             float now=Time.realtimeSinceStartup;
             if(rewarded!=null&&now-rewardLoadedAt>3500){rewarded.Destroy();rewarded=null;retryAt=now;}
-            if(interstitial!=null&&(policy.Ledger.NoAutomaticAds||now-automaticLoadedAt>3500)){interstitial.Destroy();interstitial=null;retryAt=now;}
+            if(interstitial!=null&&(policy.Ledger.HasNoAutomaticAds||now-automaticLoadedAt>3500)){interstitial.Destroy();interstitial=null;retryAt=now;}
+            if(interstitial==null&&!policy.Ledger.HasNoAutomaticAds&&!loadingAutomatic&&retryAt<=0)LoadUnits();
             if(retryAt>0&&now>=retryAt){retryAt=0;LoadUnits();}
         }
         void OnDestroy(){dead=true;if(policy!=null&&pending!=null)policy.Failed(pending.Id);DestroyUnits();activeRewarded?.Destroy();activeInterstitial?.Destroy();}

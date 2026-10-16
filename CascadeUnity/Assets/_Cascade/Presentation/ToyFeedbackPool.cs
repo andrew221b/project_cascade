@@ -1,9 +1,12 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 namespace Cascade.Presentation
 {
+    public enum ToyHapticMoment { Swap, Landing, Breeze, Gust, WoodCrack, WoodBreak, Bomb, Star, Parcel }
+
     public sealed partial class ToyFeedbackPool : MonoBehaviour
     {
         sealed class Dust
@@ -21,6 +24,10 @@ namespace Cascade.Presentation
         int nextParticle, nextVoice, variant;
         float duck;
         float lastSelectSound=-1,lastHaptic=-1;
+        float lastBreezeHaptic=-10;
+        ToyHapticMoment lastEventHaptic;
+        float lastEventHapticTime=-1;
+        Coroutine hapticPattern;
         CascadeGame game;
         Scene debrisScene;PhysicsScene debrisPhysics;Transform debrisRoot;
         readonly BoxCollider[] supports=new BoxCollider[12];
@@ -89,8 +96,15 @@ namespace Cascade.Presentation
         }
         public void WoodSnap()
         {
-            if(!SoundEnabled||timberSnap==null||voices==null)return;
+            if(!SoundEnabled||timberSnap==null||voices==null||game?.Interaction?.IsSuspended==true)return;
             var voice=voices[nextVoice++%voices.Length];voice.Stop();voice.clip=timberSnap;voice.volume=.58f;voice.pitch=1;voice.Play();duck=.30f;
+        }
+        public void StarChime(int index)
+        {
+            if(!SoundEnabled||library?.cues==null||voices==null||game?.Interaction?.IsSuspended==true)return;
+            var clip=library.cues[(int)ToyCue.Repair];if(clip==null)return;
+            var voice=voices[nextVoice++%voices.Length];voice.Stop();voice.clip=clip;
+            voice.pitch=Mathf.Clamp(.87f+index*.085f,.87f,1.25f);voice.volume=.32f;voice.Play();duck=.12f;
         }
         public void WoodChips(Vector3 origin,int count,bool reduced,float span=1.4f)
         {
@@ -115,6 +129,54 @@ namespace Cascade.Presentation
             float now=Time.realtimeSinceStartup;if(now-lastHaptic<.12f)return;lastHaptic=now;HapticRequests++;
             NativeHaptics.Pulse(Mathf.Clamp01(strength));
         }
+        public void Haptic(ToyHapticMoment moment)
+        {
+            if(!HapticsEnabled||game==null||!game.enabled||game.Interaction?.IsSuspended==true)return;
+            float now=Time.realtimeSinceStartup;
+            // Debounce duplicate presentation callbacks, while letting a crack or
+            // impact override the tiny tick of the button that caused it.
+            if(moment==lastEventHaptic&&now-lastEventHapticTime<.10f)return;
+            lastEventHaptic=moment;lastEventHapticTime=now;
+            if(moment==ToyHapticMoment.Breeze){
+                if(hapticPattern!=null||now-lastBreezeHaptic<5||now-lastHaptic<.12f)return;
+                lastBreezeHaptic=now;Haptic(.09f);return;
+            }
+            if(moment==ToyHapticMoment.Gust)lastBreezeHaptic=now;
+            if(hapticPattern!=null){StopCoroutine(hapticPattern);hapticPattern=null;}
+            float[] strengths;
+            float[] gaps;
+            switch(moment){
+                case ToyHapticMoment.Swap: strengths=new[]{.09f};gaps=null;break;
+                case ToyHapticMoment.Landing: strengths=new[]{.27f};gaps=null;break;
+                case ToyHapticMoment.Gust: strengths=new[]{.19f,.48f,.27f};gaps=new[]{.13f,.19f};break;
+                case ToyHapticMoment.WoodCrack: strengths=new[]{.24f};gaps=null;break;
+                case ToyHapticMoment.WoodBreak: strengths=new[]{.19f,.78f,.32f};gaps=new[]{.40f,.24f};break;
+                case ToyHapticMoment.Bomb: strengths=new[]{.70f,.36f};gaps=new[]{.16f};break;
+                case ToyHapticMoment.Star: strengths=new[]{.12f};gaps=null;break;
+                case ToyHapticMoment.Parcel: strengths=new[]{.20f,.48f};gaps=new[]{.19f};break;
+                default: return;
+            }
+            // The first pulse is emitted on the same frame as the visible event.
+            if(strengths.Length==1){lastHaptic=now;HapticRequests++;NativeHaptics.Pulse(strengths[0]);return;}
+            hapticPattern=StartCoroutine(PlayHapticPattern(strengths,gaps));
+        }
+        IEnumerator PlayHapticPattern(float[] strengths,float[] gaps)
+        {
+            for(int i=0;i<strengths.Length;i++){
+                if(i>0){
+                    float waited=0;
+                    while(waited<gaps[i-1]){
+                        if(!HapticsEnabled||game==null||!game.enabled){hapticPattern=null;yield break;}
+                        if(game.IntroductionAnimationAllowed&&game.Interaction?.IsSuspended!=true&&game.Interaction?.IsPaused!=true)
+                            waited+=Mathf.Min(.05f,Time.unscaledDeltaTime);
+                        yield return null;
+                    }
+                }
+                if(!HapticsEnabled||game==null||!game.enabled||game.Interaction?.IsSuspended==true){hapticPattern=null;yield break;}
+                lastHaptic=Time.realtimeSinceStartup;HapticRequests++;NativeHaptics.Pulse(strengths[i]);
+            }
+            hapticPattern=null;
+        }
         public void LanternSeeds(Vector3 origin,bool reduced,RectTransform source=null)
         {
             if(Quality<=0||particles==null||particles.Length==0)return;
@@ -133,7 +195,7 @@ namespace Cascade.Presentation
         {
             if (game == null || game.Interaction == null) return;
             bool paused = !game.enabled || game.Interaction.IsPaused || game.Interaction.IsSuspended;
-            bool worldPaused=!game.enabled||game.Interaction.IsSuspended||game.CurrentScreen==GameScreen.Pause||game.CurrentScreen==GameScreen.SaveRecovery||(game.CurrentScreen==GameScreen.Playing&&game.Interaction.IsPaused);
+            bool worldPaused=!game.enabled||game.Interaction.IsSuspended||game.CurrentScreen==GameScreen.Pause||game.CurrentScreen==GameScreen.SaveRecovery;
             TickAtmosphere(Time.unscaledDeltaTime, worldPaused);
             // Pausing puzzle commands for menus must not pause the menu's audio feedback.
             if (!SoundEnabled||!game.enabled||game.Interaction.IsSuspended)foreach(var voice in voices)if(voice.isPlaying)voice.Stop();
@@ -154,6 +216,7 @@ namespace Cascade.Presentation
         }
         public void ClearTails(bool stopAudio=true)
         {
+            if(hapticPattern!=null){StopCoroutine(hapticPattern);hapticPattern=null;}
             physicsRemainder=0;
             RowPhysics?.End();
             // The local scene may unload before the owner during Editor shutdown or scene replacement.

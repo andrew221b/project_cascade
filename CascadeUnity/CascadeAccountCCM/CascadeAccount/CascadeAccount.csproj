@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Configurations>Debug;Release</Configurations>
+    <PublishReadyToRunComposite>true</PublishReadyToRunComposite>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Com.Unity.Services.CloudCode.Apis" Version="0.0.21" />
+    <PackageReference Include="Com.Unity.Services.CloudCode.Core" Version="0.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="../../Assets/_Cascade/Domain/**/*.cs" LinkBase="Shared/Domain" />
+    <Compile Include="../../Assets/_Cascade/Solver/**/*.cs" LinkBase="Shared/Solver" />
+    <Compile Include="../../Assets/_Cascade/Application/**/*.cs" LinkBase="Shared/Application" />
+    <Compile Include="../../Assets/_Cascade/Content/**/*.cs" LinkBase="Shared/Content" />
+    <Compile Include="../../Assets/_Cascade/Persistence/**/*.cs" LinkBase="Shared/Persistence" />
+    <EmbeddedResource Include="../../../Data/production_triad_recipes.json" LogicalName="CascadeAccount.Published.recipes.json" />
+    <EmbeddedResource Include="../../../Data/production_triad_recipes_legacy_oct09.json" LogicalName="CascadeAccount.Published.recipes_legacy.json" />
+    <EmbeddedResource Include="../../../Data/localized_levels.json" LogicalName="CascadeAccount.Published.localized_levels.json" />
+    <EmbeddedResource Include="../../../Data/words_en.json" LogicalName="CascadeAccount.Published.words_en.json" />
+    <EmbeddedResource Include="../../../Data/words_ru.json" LogicalName="CascadeAccount.Published.words_ru.json" />
+    <EmbeddedResource Include="../../../Data/words_uk.json" LogicalName="CascadeAccount.Published.words_uk.json" />
+    <EmbeddedResource Include="../../../Data/levels.json" LogicalName="CascadeAccount.Published.levels.json" />
+    <EmbeddedResource Include="../../../Data/campaign_extension.json" LogicalName="CascadeAccount.Published.campaign_extension.json" />
+  </ItemGroup>
+</Project>

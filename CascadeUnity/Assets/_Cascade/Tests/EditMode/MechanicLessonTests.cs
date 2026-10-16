@@ -76,18 +76,32 @@ namespace Cascade.Tests
             var restored=JsonConvert.DeserializeObject<PlayerProfile>(JsonConvert.SerializeObject(profile));restored.Validate();
             Assert.That(restored.SeenMechanics,Does.Contain(MechanicLesson.FarSwap));
         }
-        [Test] public void VisibleLessonsWaitForTheirBoardAndNeverPromiseAnAlreadyAppliedEntry()
+        [Test] public void VisibleLessonsExplainTheNextEntryBeforeAnyMoveAndNeverRepeatAnAppliedEntry()
         {
             var level=LevelDefinitionTests.Level(floors:new[]{
                 new FloorDefinition(4,new[]{true,true}),
                 new FloorDefinition(4,new[]{true,true},entryTransform:EntryTransform.MirrorNext,bomb:new BombDefinition(0,LevelDefinitionTests.S("B"),2,1))});
             var resolver=new PuzzleResolver(level);var initial=resolver.CreateInitialState();string hash=StateHash.Compute(level,initial);
-            Assert.That(MechanicLessons.DiscoverVisible(level,initial),Is.Empty);
+            Assert.That(MechanicLessons.DiscoverVisible(level,initial),Is.EqualTo(new[]{MechanicLesson.Mirror}));
             Assert.That(StateHash.Compute(level,initial),Is.EqualTo(hash));
             var landing=resolver.Resolve(initial,PuzzleCommand.Drop);
             Assert.That(MechanicLessons.DiscoverVisible(level,landing.State),Is.EqualTo(new[]{MechanicLesson.Bomb}));
             Assert.That(LessonPractice.CompletedBy(MechanicLesson.Mirror,0,landing,PuzzleCommand.Drop),Is.True);
             Assert.That(LessonPractice.CompletedBy(MechanicLesson.Mirror,1,landing,PuzzleCommand.Drop),Is.False);
+        }
+        [TestCase(EntryTransform.ShiftLeftOne,false,MechanicLesson.Rollers)]
+        [TestCase(EntryTransform.ShiftRightOne,true,MechanicLesson.LandingWind)]
+        [TestCase(EntryTransform.MirrorNext,false,MechanicLesson.Mirror)]
+        public void UpcomingEntryIsDiscoveredAtMountWithoutTeachingHiddenBoards(EntryTransform entry,bool wind,MechanicLesson expected)
+        {
+            var level=LevelDefinitionTests.Level(floors:new[]{new FloorDefinition(4,new[]{true,true}),
+                new FloorDefinition(4,new[]{true,true},entryTransform:entry),
+                new FloorDefinition(4,new[]{true,true},fragileEdges:new[]{0})});
+            var resolver=new PuzzleResolver(level);var state=resolver.CreateInitialState();
+            string hash=StateHash.Compute(level,state);
+            Assert.That(MechanicLessons.DiscoverVisible(level,state,wind),Is.EqualTo(new[]{expected}));
+            Assert.That(StateHash.Compute(level,state),Is.EqualTo(hash));
+            Assert.That(LessonPractice.CompletedBy(expected,0,resolver.Resolve(state,PuzzleCommand.Drop),PuzzleCommand.Drop),Is.True);
         }
         [Test] public void ContactsResolvedOnArrivalDoNotAskThePlayerToRepeatThem()
         {
@@ -161,14 +175,15 @@ namespace Cascade.Tests
             var next=resolver.Resolve(descent.State,PuzzleCommand.Swap(0));
             Assert.That(LessonPractice.CompletedBy(MechanicLesson.Swap,0,next,PuzzleCommand.Swap(0)),Is.False,"a later board cannot complete an earlier cue");
         }
-        [Test] public void LeavingTheTeachingBoardRetiresItsCueWithoutInventingAnEntryEffect()
+        [Test] public void LeavingTheTeachingBoardDoesNotCountAsUsingItsMechanic()
         {
             var level=LevelDefinitionTests.Level(floors:new[]{
-                new FloorDefinition(4,new[]{true,true},bomb:new BombDefinition(0,LevelDefinitionTests.S("A"),2,1)),
+                new FloorDefinition(4,new[]{true,true},bomb:new BombDefinition(0,LevelDefinitionTests.S("A"),2,1),
+                    repair:new RepairDefinition(2,LevelDefinitionTests.S("A"),1)),
                 new FloorDefinition(4,new[]{true,true})});
             var resolver=new PuzzleResolver(level);var drop=resolver.Resolve(resolver.CreateInitialState(),PuzzleCommand.Drop);
-            Assert.That(LessonPractice.CompletedBy(MechanicLesson.Bomb,0,drop,PuzzleCommand.Drop),Is.True);
-            Assert.That(LessonPractice.CompletedBy(MechanicLesson.Repair,0,drop,PuzzleCommand.Drop),Is.True,"a vanished board cannot trap an old cue");
+            Assert.That(LessonPractice.CompletedBy(MechanicLesson.Bomb,0,drop,PuzzleCommand.Drop),Is.False,"skipping a bomb does not rehearse defusing it");
+            Assert.That(LessonPractice.CompletedBy(MechanicLesson.Repair,0,drop,PuzzleCommand.Drop),Is.False,"an unused patch must be taught on a later board");
             foreach(var entry in new[]{MechanicLesson.Mirror,MechanicLesson.Rollers,MechanicLesson.LandingWind})
                 Assert.That(LessonPractice.CompletedBy(entry,0,drop,PuzzleCommand.Drop),Is.False,entry.ToString());
             var terminal=resolver.Resolve(drop.State,PuzzleCommand.Drop);

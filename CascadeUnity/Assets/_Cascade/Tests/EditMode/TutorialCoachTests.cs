@@ -25,6 +25,15 @@ namespace Cascade.Tests
             var result = resolver.Resolve(initial, PuzzleCommand.Drop); coach.Observe(result.State, 1);
             Assert.That(coach.LessonCompleted, Is.True); Assert.That(coach.Prompt(result.State), Is.Empty);
         }
+        [Test] public void WindRemainsASurpriseInsteadOfAProactiveMovePrompt()
+        {
+            var level=LevelDefinitionTests.Level(floors:new[]{new FloorDefinition(6,new[]{true,true},gustAfterSwaps:1,
+                gustTransform:EntryTransform.ShiftRightOne),new FloorDefinition(4,new[]{true,true},entryTransform:EntryTransform.ShiftLeftOne)});
+            var resolver=new PuzzleResolver(level);var state=resolver.CreateInitialState();var coach=new TutorialCoach(level,"arrival_wind",1);
+            coach.Observe(state,0);
+            Assert.That(coach.Prompt(state),Does.Not.Contain("wind").IgnoreCase);
+            Assert.That(coach.Prompt(state),Does.Not.Contain("swap").IgnoreCase);
+        }
         [Test] public void RepeatedInvalidIsSpecificToTheSameEdgeAndResetsAfterAcceptedState()
         {
             var level = LevelDefinitionTests.Level(); var resolver = new PuzzleResolver(level);

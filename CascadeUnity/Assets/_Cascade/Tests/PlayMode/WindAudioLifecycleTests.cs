@@ -7,6 +7,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
+using UnityEngine.UI;
 
 namespace Cascade.Tests
 {
@@ -41,17 +42,20 @@ namespace Cascade.Tests
         {
             string directory=Path.Combine(Path.GetTempPath(),"CascadeAudioControls",System.Guid.NewGuid().ToString("N"));
             bool background=UnityEngine.Application.runInBackground;CascadeGame game=null;
+            Camera camera=null;RenderTexture portrait=null,oldTarget=null;
             try {
                 UnityEngine.Application.runInBackground=true;CascadeGame.EditorProfileDirectory=directory;
                 yield return SceneManager.LoadSceneAsync("Assets/_Cascade/Scenes/CascadePlayable.unity");
                 game=Object.FindFirstObjectByType<CascadeGame>();Assert.That(game,Is.Not.Null);
+                camera=Camera.main;oldTarget=camera.targetTexture;portrait=new RenderTexture(390,844,24);
+                var scaler=game.GetComponentInChildren<CanvasScaler>();scaler.enabled=false;camera.targetTexture=portrait;scaler.enabled=true;
                 game.SendMessage("OnApplicationFocus",true);game.SendMessage("OnApplicationPause",false);game.ShowHome();
                 game.Machine.SetZone(1);game.Preferences.Music=true;game.Preferences.Sound=false;game.SendMessage("ApplyPreferences");
                 var feedback=game.Feedback;var sources=feedback.GetComponentsInChildren<AudioSource>();
                 var scores=sources.Where(s=>s.name=="CASCADE score A"||s.name=="CASCADE score B").ToArray();
                 var wind=sources.Single(s=>s.name=="Living island wind");var rain=sources.Single(s=>s.name=="Rain beneath the mill");
                 yield return Await(()=>feedback.MusicCrossfade==1&&scores.Sum(s=>s.volume)>.1f&&wind.volume+rain.volume==0,
-                    "Music on / sound off must settle the score crossfade without enabling ambience");
+                    "Music on / sound off must settle: screen="+game.CurrentScreen+" suspended="+game.Interaction.IsSuspended+" sleeping="+feedback.MusicSleeping+" current="+feedback.CurrentMusicClip?.name);
                 Assert.That(scores.Sum(s=>s.volume),Is.GreaterThan(.1f));Assert.That(wind.volume+rain.volume,Is.Zero);
                 Assert.That(feedback.CurrentMusicClip.name,Is.EqualTo("Menu_HomeAmongCloudsBalanced"));
                 game.Preferences.Music=false;game.Preferences.Sound=false;game.SendMessage("ApplyPreferences");
@@ -81,7 +85,9 @@ namespace Cascade.Tests
                 var incoming=scores.Single(s=>s.clip==feedback.CurrentMusicClip);
                 int index=System.Array.IndexOf(owned,incoming);Assert.That(Mathf.Repeat(incoming.time-positions[index],incoming.clip.length),Is.GreaterThan(.05f));
             } finally {
+                if(camera!=null)camera.targetTexture=oldTarget;
                 if(game!=null)Object.Destroy(game.gameObject);
+                if(portrait!=null){portrait.Release();Object.Destroy(portrait);}
                 CascadeGame.EditorProfileDirectory=null;UnityEngine.Application.runInBackground=background;
             }
             yield return null;

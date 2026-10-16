@@ -17,17 +17,18 @@ Tool descriptions and the visible assistance consequence precede Use:
 
 ## Five tools
 
-The original enum ordinals and prices remain. SignalLantern and LandingLens
+The original enum ordinals and IDs remain. SignalLantern and LandingLens
 append two values. Prices are earned coins, with stock capped at five per kind
 and one use of each kind per stage attempt.
 
 | Tool | Coins | Effect |
 | --- | ---: | --- |
-| Wayfinder scroll | 120 | Points out solver-proved next moves on the current board until it breaks. |
-| Undo spool | 80 | One extra current-board Undo after the two free uses. |
-| Return hourglass | 200 | Restores the exact checkpoint before the latest broken board in the current stage and removes subsequent moves. |
-| Signal lantern (`SignalLantern`) | 160 | Executes one solver-proved non-drop command through the existing resolver, with normal wood, contact and bomb costs. |
-| Landing lens (`LandingLens`) | 100 | Displays the immutable exact prediction of descending now: the next row and outcome, without applying the drop. |
+| Wayfinder scroll | 180 | Points out solver-proved next moves on the current board until it breaks. |
+| Undo spool | 120 | One extra current-board Undo after the two free uses. |
+| Return hourglass | 300 | Restores the exact checkpoint before the latest broken board in the current stage and removes subsequent moves. |
+| Signal lantern (`SignalLantern`) | 240 | Executes one solver-proved non-drop command through the existing resolver, with normal wood, contact and bomb costs. |
+| Landing lens (`LandingLens`) | 150 | Displays the immutable exact prediction of descending now: the next row and outcome, without applying the drop. |
+| Repair kit | 210 | Adds durability to the current stage's platforms. |
 
 Any used tool marks the run assisted, caps it at two stars and excludes a clean
 record. Buying stock alone and cosmetic equipment do not affect performance or
@@ -46,8 +47,8 @@ change the row or grant an item.
 
 ## Eight trophies, four parcel recipients
 
-Shop and collection use the same eight-item catalogue. Every trophy costs 240
-earned coins, is bought once, has no gameplay statistics and can be worn by Mika
+Shop and collection use the same eight-item catalogue. Core Mika trophies cost
+360 earned coins, are bought once, have no gameplay statistics and can be worn by Mika
 on the map. The original IDs `leaf`, `sun`, `sky` and `moon` remain Leaf Pin, Sun
 Button, Sky Ribbon and Moon Patch. They remain earnable through the original
 parcel route. Four shop trophies append `wind_chime` (Wind Chime), `rain_badge`
@@ -66,7 +67,7 @@ Owned trophies offer Take along, and the equipped trophy shows With Mika.
 Inventory, currency and attempt-use metadata commit together through the
 existing transaction; failed persistence rolls tool use back. Schema 1 keeps
 optional zero-default stock/use fields and existing Gift storage names. Original
-prices, IDs, parcel receipts, campaign content, package pins and Domain/Solver
+IDs, parcel receipts, campaign content, package pins and Domain/Solver
 rules are preserved. There is no gameplay physics change.
 
 ## Source and visual comparison
@@ -116,3 +117,13 @@ with the user's instruction. Full-suite, physical-device, live-commerce,
 performance, native-language editorial and human-enjoyment validation remain
 unverified. Earlier `Reports/Shop` evidence and its scoped verdict describe the
 three-tool/four-trophy checkpoint, not final validation of this revision.
+
+## Collection and shop preview
+
+The Trophies collection is an owned-items wardrobe: unowned catalogue entries
+are omitted, and its count still reports owned trophies against the full
+catalogue. Selecting an owned trophy opens its appearance view and keeps the
+existing equip/remove action. The shop keeps its existing catalogue and prices;
+each selected trophy now has a separate Preview action below Buy. Preview opens
+the full-colour appearance view with the item's cosmetic effect active, without
+granting or equipping the item. The view's back arrow returns to the shop shelf.

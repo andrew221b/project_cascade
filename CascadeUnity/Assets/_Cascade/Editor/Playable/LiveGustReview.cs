@@ -31,10 +31,8 @@ namespace Cascade.Editor.Playable
             foreach(MechanicLesson l in Enum.GetValues(typeof(MechanicLesson)))if(l!=MechanicLesson.LiveGust&&!profile.SeenMechanics.Contains(l))profile.SeenMechanics.Add(l);
             var source=g.Catalog.GetPrimary("C06").Definition;var run=DescentRun.Build(source,version:5);var attempt=new AttemptService(run.Level(source,1));
             g.LoadLevel(attempt.Level);g.ShowGame();yield return new WaitForSecondsRealtime(.4f);
-            float introDeadline=Time.realtimeSinceStartup+8;while(!g.MechanicPopupOpen&&Time.realtimeSinceStartup<introDeadline)yield return null;
-            Check(g.CurrentMechanic==MechanicLesson.LiveGust,"first-use live gust popup pauses play");
-            yield return PlayableCapture.CaptureSettled("LiveGust","gust-introduction.png",390,844);
-            while(g.MechanicPopupOpen){g.AcknowledgeMechanic();yield return null;}
+            Check(!g.MechanicPopupOpen,"live gust is discovered during play without a tutorial interruption");
+            yield return PlayableCapture.CaptureSettled("LiveGust","gust-surprise.png",390,844);
             var command=Cascade.Solver.PuzzleSolver.FindShortest(new PuzzleResolver(attempt.Level)).Path.First(c=>c.Kind!=CommandKind.EarlyDrop);
             var before=g.Interaction.Attempt.Current;var result=g.Interaction.Execute(command);g.ReportInput(result);
             Check(result.Events.Any(e=>e.Kind==PuzzleEventKind.WindPermuted&&e.Floor==0),"gust occurs on playable upper board");

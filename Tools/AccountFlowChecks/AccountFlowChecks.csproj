@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net9.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>disable</Nullable></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../CascadeUnity/CascadeAccountCCM/CascadeAccount/CascadeAccount.csproj" />
+    <Compile Include="../../CascadeUnity/Assets/_Cascade/Presentation/CloudSyncClient.cs" Link="Actual/CloudSyncClient.cs" />
+    <Compile Include="../../CascadeUnity/Assets/_Cascade/Presentation/CloudPlayerSettings.cs" Link="Actual/CloudPlayerSettings.cs" />
+    <Compile Include="../../CascadeUnity/Assets/_Cascade/Editor/Release/AuthenticationConfiguration.cs" Link="Actual/AuthenticationConfiguration.cs" />
+  </ItemGroup>
+</Project>

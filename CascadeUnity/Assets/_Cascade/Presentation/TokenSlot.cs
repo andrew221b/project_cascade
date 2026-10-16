@@ -11,17 +11,24 @@ namespace Cascade.Presentation
         public int Slot { get; set; }
         bool accepted, dragged, released;
         int capturedPointer;
+        UnityEngine.Vector2 pressPosition;
+        // Input System can begin a drag after just a few physical pixels. A small
+        // finger wobble must still be a tap, on Retina displays as well as in Editor.
+        float DragDistance => 10 * UnityEngine.Mathf.Max(1, GetComponentInParent<UnityEngine.Canvas>().scaleFactor);
         public void OnPointerDown(PointerEventData eventData)
         {
             if (eventData.button != PointerEventData.InputButton.Left) return;
             if (accepted && !released && Game.Interaction.OwnsPointer(capturedPointer)) return;
+            Game.SettleExchangeForNewTouch();
             accepted = Game.Interaction.PointerDown(eventData.pointerId, Slot); dragged = released = false;
-            if (accepted) { capturedPointer = eventData.pointerId; Game.PreviewSlot(Slot); Game.BeginTokenHold(Slot, eventData.position); }
+            if (accepted) { capturedPointer = eventData.pointerId; pressPosition = eventData.position; Game.PreviewSlot(Slot); Game.BeginTokenHold(Slot, eventData.position); }
         }
-        public void OnBeginDrag(PointerEventData eventData) { if (Owns(eventData)) dragged = true; }
+        public void OnBeginDrag(PointerEventData eventData) { if (Owns(eventData)) dragged = (eventData.position-pressPosition).sqrMagnitude >= DragDistance*DragDistance; }
         public void OnDrag(PointerEventData eventData)
         {
             if (!Owns(eventData)) return;
+            if (!dragged && (eventData.position-pressPosition).sqrMagnitude < DragDistance*DragDistance) return;
+            dragged = true;
             var target = eventData.pointerCurrentRaycast.gameObject?.GetComponentInParent<TokenSlot>();
             Game.PreviewDrag(Slot, Game.TokenAtScreenPoint(eventData.position,target != null && target.Game == Game ? target.Slot : -1,Slot));
             Game.MoveTokenHold(eventData.position);

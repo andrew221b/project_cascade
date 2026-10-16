@@ -24,6 +24,8 @@ namespace Cascade.Tests
         CascadeGame game;
         string directory;
         bool oldRunInBackground;
+        Camera camera;
+        RenderTexture portraitTarget,oldTarget;
 
         [UnitySetUp] public IEnumerator SetUp()
         {
@@ -33,6 +35,10 @@ namespace Cascade.Tests
             CascadeGame.EditorProfileDirectory=directory;
             yield return SceneManager.LoadSceneAsync("Assets/_Cascade/Scenes/CascadePlayable.unity");
             game=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();ConfigureGame();
+            // Gameplay is intentionally suspended in a landscape Editor window.
+            // Give this phone-flow fixture an actual portrait viewport.
+            camera=Camera.main;oldTarget=camera.targetTexture;portraitTarget=new RenderTexture(390,844,24);
+            camera.targetTexture=portraitTarget;game.RefreshLayout();
             var heard=Read<HashSet<int>>("heardStory");heard.Add(1000);
             heard.UnionWith(Enumerable.Range(0,JourneyStory.PageCount));
             heard.UnionWith(Enumerable.Range(4000,JourneyStory.TotalLevels));
@@ -41,6 +47,8 @@ namespace Cascade.Tests
         }
         [UnityTearDown] public IEnumerator TearDown()
         {
+            if(camera!=null)camera.targetTexture=oldTarget;
+            if(portraitTarget!=null){portraitTarget.Release();UnityEngine.Object.Destroy(portraitTarget);}
             if(game!=null){UnityEngine.Object.Destroy(game.gameObject);yield return null;}
             CascadeGame.EditorProfileDirectory=null;
             UnityEngine.Application.runInBackground=oldRunInBackground;
@@ -50,12 +58,27 @@ namespace Cascade.Tests
         {
             game.SendMessage("OnApplicationFocus",true);game.SendMessage("OnApplicationPause",false);
             game.Preferences.ReducedMotion=true;game.ReducedMotion=true;
+            // These tests exercise story navigation, after first-run gesture
+            // coaching. A fresh profile otherwise pauses on that unrelated lesson.
+            game.Preferences.Tutorials=false;game.Coach.Enabled=false;
+            Read<PlayerProfile>("profile").AccountIntroSeen=true;
+            Read<PlayerProfile>("profile").Missions.NextAfterClears=20000;
             game.Feedback.MusicEnabled=game.Feedback.SoundEnabled=false;
             Read<PlayerProfile>("profile").SeenMechanics=Enum.GetValues(typeof(MechanicLesson)).Cast<MechanicLesson>().ToList();
         }
         T Read<T>(string name)=>(T)typeof(CascadeGame).GetField(name,PrivateInstance).GetValue(game);
         void Write(string name,object value)=>typeof(CascadeGame).GetField(name,PrivateInstance).SetValue(game,value);
-        void Invoke(string name,params object[] arguments)=>typeof(CascadeGame).GetMethod(name,PrivateInstance).Invoke(game,arguments);
+        void Invoke(string name,params object[] arguments)
+        {
+            var method=typeof(CascadeGame).GetMethod(name,PrivateInstance);var parameters=method.GetParameters();
+            if(arguments.Length<parameters.Length){
+                var supplied=arguments;arguments=new object[parameters.Length];Array.Copy(supplied,arguments,supplied.Length);
+                for(int i=supplied.Length;i<parameters.Length;i++){
+                    Assert.That(parameters[i].IsOptional,Is.True,name+" missing required parameter");arguments[i]=parameters[i].DefaultValue;
+                }
+            }
+            method.Invoke(game,arguments);
+        }
         PlayerProfile Saved()=>new ProfileStore(game.ProfilePath).Load().Profile;
         static IEnumerator Await(Func<bool> ready,string message)
         {
@@ -104,27 +127,32 @@ namespace Cascade.Tests
         IEnumerator FinishOpening(int expectedReceipt)
         {
             Assert.That(game.ConversationOpen,Is.True);Assert.That(game.ConversationReceipt,Is.EqualTo(expectedReceipt));
+            var footer=Read<RectTransform>("journeyFooter");
+            if(footer!=null)Assert.That(footer.gameObject.activeSelf,Is.False,"Map actions must not show beneath the dialogue strip");
             int selected=Read<int>("selectedJourneyStop"),world=Read<int>("mapPage");
             game.SkipConversation();yield return null;
             Assert.That(game.HasSaveError,Is.False);Assert.That(game.ConversationOpen,Is.False);
+            if(game.CurrentScreen==GameScreen.JourneyMap&&game.BrowsedIsland<0)
+                Assert.That(Read<RectTransform>("journeyFooter").gameObject.activeSelf,Is.True,"Closing a map dialogue must restore map actions");
             Assert.That(Read<int>("selectedJourneyStop"),Is.EqualTo(selected),"Finishing dialogue must retain the browsed level");
             Assert.That(Read<int>("mapPage"),Is.EqualTo(world),"Finishing dialogue must retain the browsed world");
             Assert.That(Saved().HeardStory,Does.Contain(expectedReceipt));
         }
 
-        [UnityTest] public IEnumerator EveryWorldComicHasThreeRealPanelsAndPreservesThePinnedMiddleStage()
+        [UnityTest] public IEnumerator EveryWorldComicHasFourRealPanelsAndPreservesThePinnedMiddleStage()
         {
             yield return MountMiddleStage();
             var attempt=game.Interaction.Attempt;var row=attempt.Current;var run=game.Descent;
             string hash=attempt.CurrentStateHash;int route=attempt.RouteLength;var panels=new HashSet<string>();
             for(int world=0;world<JourneyStory.WorldCount;world++){
                 game.OpenWorldComic(world,game.ShowHome);yield return null;
-                for(int page=0;page<3;page++){
+                for(int page=0;page<WorldPrologues.ForWorld(world).Pages.Length;page++){
                     Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Prologue));Assert.That(game.ComicWorld,Is.EqualTo(world));Assert.That(game.ComicPage,Is.EqualTo(page));
                     var image=game.GetComponentsInChildren<Image>().Single(i=>i.name=="World comic scene");
                     game.RefreshLayout();
                     var frame=(RectTransform)image.transform.parent;
                     Assert.That(frame.rect.width/frame.rect.height,Is.EqualTo(image.sprite.rect.width/image.sprite.rect.height).Within(.001f),"Each new panel must bind its active heading and preserve the illustration aspect");
+                    var scenePosition=frame.anchoredPosition;var sceneSize=frame.sizeDelta;
                     Assert.That(image.sprite,Is.Not.Null);Assert.That(image.sprite.texture,Is.Not.Null);Assert.That(image.sprite.rect.width,Is.GreaterThan(0));
                     panels.Add(image.sprite.texture.GetInstanceID()+":"+image.sprite.rect);
                     Assert.That(game.Interaction.IsPaused,Is.True);Assert.That(game.Interaction.Attempt,Is.SameAs(attempt));
@@ -132,38 +160,47 @@ namespace Cascade.Tests
                     Assert.That(game.Descent,Is.SameAs(run));Assert.That(game.Descent.StageIndex,Is.EqualTo(1));
                     yield return Click("Next comic page");
                     Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Prologue));Assert.That(game.ComicPage,Is.EqualTo(page),"The first click reveals the next speaker on the same illustration");
-                    yield return Click("Next comic page");
+                    game.RefreshLayout();
+                    var nextScene=(RectTransform)game.GetComponentsInChildren<Image>().Single(i=>i.name=="World comic scene").transform.parent;
+                    Assert.That(Vector2.Distance(nextScene.anchoredPosition,scenePosition),Is.LessThan(.01f),"Changing speaker must keep the illustration still");
+                    Assert.That(Vector2.Distance(nextScene.sizeDelta,sceneSize),Is.LessThan(.01f),"Changing speaker must keep the illustration size");
+                    int chunks=0;
+                    while(game.ComicWorld>=0&&game.ComicPage==page){
+                        Assert.That(++chunks,Is.LessThan(32),"The current panel's phone-sized dialogue must finish");
+                        yield return Click("Next comic page");
+                    }
                 }
                 Assert.That(game.ComicWorld,Is.EqualTo(-1));Assert.That(game.HasSaveError,Is.False);
                 Assert.That(Saved().HeardStory,Does.Contain(WorldPrologues.ForWorld(world).Receipt));
                 Assert.That(Saved().Attempt.StateHash,Is.EqualTo(hash));Assert.That(Saved().Descent.StageIndex,Is.EqualTo(1));
             }
-            Assert.That(panels.Count,Is.EqualTo(27),"All worlds must use their own three illustration panels");
+            Assert.That(panels.Count,Is.EqualTo(36),"All worlds must use their own four illustration panels");
         }
 
-        [UnityTest] public IEnumerator ComicReceiptsStayInTheirModeAndSeenComicsDoNotRepeatAfterReload()
+        [UnityTest] public IEnumerator ModeCrossingsRememberTheStoryAndDoNotReplayIntroductionsAfterReload()
         {
             game.OpenWorldComic(0,game.ShowHome);game.FinishWorldComic();yield return null;
-            Assert.That(Saved().HeardStory,Does.Contain(6000));
+            Read<HashSet<int>>("heardStory").Add(StoryConversations.IslandOpening(0,0).Receipt);
             foreach(var mode in new[]{PuzzleMode.Words,PuzzleMode.Mixed}){
-                game.SelectMode(mode);yield return null;
-                Assert.That(game.PreferredMode,Is.EqualTo(mode));Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Prologue));Assert.That(game.ComicWorld,Is.Zero);
-                Assert.That(Read<HashSet<int>>("heardStory").Contains(6000),Is.False);
-                Assert.That(Saved().HeardStory.Contains(6000),Is.False);
-                Assert.That(Saved().ModeJourneys.Single(j=>j.Mode=="Shapes").HeardStory,Does.Contain(6000));
-                game.FinishWorldComic();yield return null;
-                if(game.ConversationOpen){game.SkipConversation();yield return null;}
-                Assert.That(Saved().HeardStory,Does.Contain(6000));
-                yield return Await(()=>game.PreparationReady&&!game.Interaction.IsPresenting,"Mode preparation must finish before switching again");
+                game.ChooseSoloMode(mode);yield return null;
+                Assert.That(game.PreferredMode,Is.EqualTo(mode));Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.JourneyMap));
+                Assert.That(game.ComicWorld,Is.EqualTo(-1));Assert.That(game.ConversationReceipt,Is.EqualTo(9000+(int)mode));
+                Assert.That(Saved().HeardStory.Contains(6000),Is.False,"Do not copy another journey's local records");
+                Assert.That(Saved().RemembersStory(6000),Is.True);
+                string hash=game.Interaction.Attempt.CurrentStateHash;
+                game.SkipConversation();yield return null;
+                Assert.That(Saved().RemembersStory(9000+(int)mode),Is.True);
+                Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+                Assert.That(game.ConversationOpen,Is.False);
+                yield return Await(()=>game.PreparationReady&&!game.Interaction.IsPresenting,"Mode preparation must finish");
             }
             game.SelectMode(PuzzleMode.Shapes);yield return null;
-            Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.JourneyMap));Assert.That(game.ComicWorld,Is.EqualTo(-1));
-            if(game.ConversationOpen){game.SkipConversation();yield return null;}
+            Assert.That(game.ConversationReceipt,Is.EqualTo(9010));game.SkipConversation();yield return null;
             string pinned=game.Interaction.Attempt.CurrentStateHash;
             yield return SceneManager.LoadSceneAsync("Assets/_Cascade/Scenes/CascadePlayable.unity");
             game=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();ConfigureGame();game.ShowJourney();yield return null;
             Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.JourneyMap));Assert.That(game.ComicWorld,Is.EqualTo(-1));Assert.That(game.ConversationOpen,Is.False);
-            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(pinned));Assert.That(Read<HashSet<int>>("heardStory"),Does.Contain(6000));
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(pinned));Assert.That(Saved().RemembersStory(6000),Is.True);
         }
 
         [UnityTest] public IEnumerator IslandButtonsAndWorldBrowsingShowEveryUnseenOpeningOnceWithoutMovingTheRow()
@@ -197,6 +234,27 @@ namespace Cascade.Tests
             Assert.That(Read<HashSet<int>>("heardStory").Where(r=>r>=8000&&r<8100),
                 Is.EquivalentTo(Enumerable.Range(0,JourneyStory.WorldCount).Select(w=>StoryConversations.IslandOpening(w,0).Receipt)),
                 "World navigation reads its first island opening; other island stories wait for Play");
+        }
+
+        [UnityTest] public IEnumerator MidIslandExchangeUsesTheExistingOnceOnlyFlowAndLeavesThePuzzleUntouched()
+        {
+            OpenPublishedRoutesInMemory();Read<HashSet<int>>("heardStory").UnionWith(Enumerable.Range(8000,JourneyStory.WorldCount*10));
+            game.ShowJourney();yield return null;
+            int stop=JourneyStory.IslandFirst(0,0)+5;
+            int receipt=StoryConversations.IslandProgress(stop).Receipt;
+            var attempt=game.Interaction.Attempt;string hash=attempt.CurrentStateHash;
+            yield return Click("Island1");
+            yield return Click("Island level "+(stop+1));
+            Assert.That(game.ConversationReceipt,Is.EqualTo(receipt));
+            Assert.That(game.Interaction.Attempt,Is.SameAs(attempt));Assert.That(attempt.CurrentStateHash,Is.EqualTo(hash));
+            Assert.That(game.Interaction.IsPaused,Is.True);
+            yield return FinishOpening(receipt);
+            yield return Await(()=>game.PreparationReady&&game.Interaction.CanPlay,"Continue must start the selected level");
+            Assert.That(Saved().HeardStory,Does.Contain(receipt));
+            game.ShowJourney();yield return null;
+            Assert.That(game.ConversationOpen,Is.False,"Returning to the map must not repeat a heard exchange");
+            game.ReplayJourneyLevel(stop);yield return null;
+            Assert.That(game.ConversationOpen,Is.False,"Replaying the same level must not repeat a heard exchange");
         }
 
         [UnityTest] public IEnumerator OccasionalExchangeAppearsOnlyOnItsExactLevelAndKeepsTheBrowsedStop()

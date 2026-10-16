@@ -29,7 +29,9 @@ namespace Cascade.Editor.Playable
                 var locale=Locale.CreateLocale(code);AssetDatabase.CreateAsset(locale,Root+"/Locale_"+code+".asset");LocalizationEditorSettings.AddLocale(locale);
             }
             settings.GetStartupLocaleSelectors().Clear();settings.GetStartupLocaleSelectors().Add(new SpecificLocaleSelector{LocaleId=new LocaleIdentifier("en")});
-            LocalizationSettings.InitializeSynchronously=true;EditorUtility.SetDirty(settings);
+            // iOS watchdog reports a main-thread Addressables wait when locale initialization
+            // is forced synchronously during CascadeGame.Awake.
+            LocalizationSettings.InitializeSynchronously=false;EditorUtility.SetDirty(settings);
             var collection=LocalizationEditorSettings.GetStringTableCollection(UiCopy.Table)??LocalizationEditorSettings.CreateStringTableCollection(UiCopy.Table,Root);
             var lines=File.ReadAllLines(Path.GetFullPath(Path.Combine(UnityEngine.Application.dataPath,"../../Data/ui_localization.tsv"))).Skip(1);
             var keys=new System.Collections.Generic.HashSet<string>();int count=0;
@@ -47,13 +49,15 @@ namespace Cascade.Editor.Playable
             // Resources assets are deliberately not entered as Addressable sub-assets.
             if(LocalizationEditorSettings.GetAssetTableCollection("CascadeLocaleArt")==null)LocalizationEditorSettings.CreateAssetTableCollection("CascadeLocaleArt",Root);
             var characters=new string(collection.StringTables.SelectMany(t=>t.Values).SelectMany(e=>e.Value).Where(c=>!char.IsControl(c)).Distinct().ToArray());
-            foreach(var font in new[]{ToyArt.Load().bodyFont,ToyArt.Load().titleFont}) {
-                string needed=new string(characters.Where(c=>!font.HasCharacter(c,false,false)).ToArray());
+            foreach(var font in new[]{ToyArt.Load().bodyFont,ToyArt.Load().titleFont,ToyArt.Load().displayFont}.Where(f=>f!=null).Distinct()) {
+                string needed=new string(characters.Where(c=>!font.HasCharacter(c,true,false)).ToArray());
                 if(needed.Length>0) {
                     font.atlasPopulationMode=TMPro.AtlasPopulationMode.Dynamic;
                     // TMP clears the runtime source reference for static atlases on reload.
                     var serializedFont=new SerializedObject(font);
-                    serializedFont.FindProperty("m_SourceFontFile").objectReferenceValue=AssetDatabase.LoadAssetAtPath<Font>("Assets/_Cascade/Art/Fonts/BalsamiqSans-"+(font.name=="Title"?"Bold":"Regular")+".ttf");
+                    var sourceGuid=serializedFont.FindProperty("m_SourceFontFileGUID")?.stringValue;
+                    string sourcePath=string.IsNullOrEmpty(sourceGuid)?"Assets/_Cascade/Art/Fonts/BalsamiqSans-"+(font.name=="Title"?"Bold":"Regular")+".ttf":AssetDatabase.GUIDToAssetPath(sourceGuid);
+                    serializedFont.FindProperty("m_SourceFontFile").objectReferenceValue=AssetDatabase.LoadAssetAtPath<Font>(sourcePath);
                     serializedFont.ApplyModifiedPropertiesWithoutUndo();
                     try {if(!font.TryAddCharacters(needed,out string missing))throw new InvalidDataException("Missing UI glyphs: "+missing);}
                     finally {font.atlasPopulationMode=TMPro.AtlasPopulationMode.Static;}

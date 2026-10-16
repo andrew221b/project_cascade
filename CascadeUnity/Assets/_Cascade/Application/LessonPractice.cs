@@ -24,15 +24,14 @@ namespace Cascade.Application
             // the player never performed. Presentation retires such unfinished cues.
             if(lesson==MechanicLesson.Swap)return command.Kind==CommandKind.Swap&&Has(PuzzleEventKind.RowPermuted);
             if(lesson==MechanicLesson.FarSwap)return command.Kind==CommandKind.LongReach&&Has(PuzzleEventKind.RowPermuted);
-            // A vanished teaching board cannot keep its cue waiting for an
-            // unreachable contact. Entry lessons above require the actual effect.
-            if(Has(PuzzleEventKind.FloorExited))return true;
+            // Leaving a board retires its on-screen cue, but never marks an
+            // untouched mechanic as learned. The presentation owns that cleanup.
             if(!result.Events.Any(e=>e.Kind==PuzzleEventKind.CommandAccepted))return false;
             switch(lesson){
                 case MechanicLesson.Descent:
                     return command.Kind==CommandKind.EarlyDrop&&Has(PuzzleEventKind.CommandAccepted);
                 case MechanicLesson.Bomb:
-                    return Has(PuzzleEventKind.BombDefused)||Has(PuzzleEventKind.BombExploded)||Has(PuzzleEventKind.BombAbandoned);
+                    return Has(PuzzleEventKind.BombDefused);
                 case MechanicLesson.Key:return Has(PuzzleEventKind.KeyOpened);
                 case MechanicLesson.Repair:return Has(PuzzleEventKind.Repaired);
                 case MechanicLesson.Ribbon:return Has(PuzzleEventKind.RibbonCollected);

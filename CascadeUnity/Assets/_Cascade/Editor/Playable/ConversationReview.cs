@@ -77,7 +77,8 @@ namespace Cascade.Editor.Playable
         {
             g.ShowGame();yield return null;Check(!g.ConversationOpen&&g.CurrentScreen==GameScreen.Win,"stats precede island scene");
             g.ContinueCompletion();yield return null;Check(g.CurrentScreen==GameScreen.Parcel&&!g.ConversationOpen,"trophy precedes island scene");
-            g.GetComponentsInChildren<Button>().Last(b=>b.name=="Unwrapgift").onClick.Invoke();yield return null;Check(!g.ConversationOpen,"trophy reveal has no competing story");
+            g.GetComponentsInChildren<Button>().Last(b=>b.name=="Openparcelgift").onClick.Invoke();yield return null;
+            g.GetComponentsInChildren<Button>().Last(b=>b.name=="Claimgift").onClick.Invoke();yield return null;Check(!g.ConversationOpen,"trophy reveal has no competing story");
             g.GetComponentsInChildren<Button>().Last(b=>b.name=="Keepgift").onClick.Invoke();yield return null;
             Check(g.CurrentScreen==GameScreen.JourneyMap&&g.ConversationReceipt==2000,"first island conversation follows stats and trophy");
             g.AdvanceConversation();yield return PlayableCapture.CaptureSettled("JourneyConversations","island-ru.png",390,844);yield return Finish(g);

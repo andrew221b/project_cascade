@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Cascade.Application;
 using Cascade.Domain;
+using Cascade.Persistence;
 using UnityEngine;
 
 namespace Cascade.Presentation
@@ -12,6 +13,7 @@ namespace Cascade.Presentation
     {
         DescentRun descent;
         Task<DescentRun> descentTask;
+        Task<PublishedTriadStore> publishedTriads;
         CancellationTokenSource descentCancellation;
         LevelDefinition descentSource;
         string descentLocale;
@@ -34,9 +36,28 @@ namespace Cascade.Presentation
         {
             if(!descentLoadPending||descentTask!=null)return;
             descentPlanFailed=false;descentCancellation=new CancellationTokenSource();var token=descentCancellation.Token;
-            var source=descentSource;var mood=descentMood;
-            descentTask=Task.Run(()=>DescentRun.Build(source,mood,token,version:5),token);
+            var source=descentSource;var mood=descentMood;var locale=descentLocale;var catalogHash=Catalog.ContentHash;
+            var certificates=PublishedTriads();
+            descentTask=Task.Run(async()=>{
+                var packaged=await certificates;token.ThrowIfCancellationRequested();
+                DescentRun run=null;
+                try{run=packaged?.Bind(source,locale,catalogHash);}catch(ArgumentException){}
+                token.ThrowIfCancellationRequested();
+                return run??DescentRun.Build(source,mood,token,version:6);
+            },token);
             Interaction.SetPreparing(true);
+        }
+        Task<PublishedTriadStore> PublishedTriads()
+        {
+            if(publishedTriads==null){
+                string recipes=Resources.Load<TextAsset>("CascadeContent/production_triad_recipes")?.text;
+                string manifest=Resources.Load<TextAsset>("CascadeContent/production_triad_manifest")?.text;
+                publishedTriads=Task.Run(()=>{
+                    if(recipes==null||manifest==null)return null;
+                    try{return new PublishedTriadStore(recipes,manifest);}catch(Exception){return null;}
+                });
+            }
+            return publishedTriads;
         }
         void CancelDescentWork(bool preserveRequest=false)
         {
@@ -59,15 +80,15 @@ namespace Cascade.Presentation
                     journeyActive=travel;PersistProgress();SetScreen(screen);
                 }
             }
-            bool gated=descentPlanFailed||IsPlanningDescent||IsPlanningDirection||IsDescending||!preparation.IsReady||needsMechanicScan&&CurrentScreen==GameScreen.Playing;
-            if(Interaction.IsPreparing!=gated)Interaction.SetPreparing(gated);
+            bool gated=descentPlanFailed||IsPlanningDescent||IsPlanningDirection||IsDescending||!preparation.IsReady||AwaitingMechanicScan&&CurrentScreen==GameScreen.Playing;
+            if(Interaction.IsPreparing!=gated){Interaction.SetPreparing(gated);RenderControls();}
             if(descentTask!=null)status.SetCopy("Checking all three stages…");
             PaintDescent();
         }
         void PaintDescent()
         {
             if(descent==null)return;
-            if(paintedDescentStage!=descent.StageIndex){levelLabel.SetCopy(new UiCopy("Level {0}, stage {1}/3",node.TrimStart('C','0'),descent.StageIndex+1));paintedDescentStage=descent.StageIndex;}
+            if(paintedDescentStage!=descent.StageIndex){levelLabel.SetCopy(PersonalMissionActive?new UiCopy("Personal mission, stage {0}/3",descent.StageIndex+1):new UiCopy("Level {0}, stage {1}/3",DisplayLevelNumber(node),descent.StageIndex+1));paintedDescentStage=descent.StageIndex;}
             if(IsDescending)status.SetCopy("Going lower…");
             else if(CurrentScreen==GameScreen.Checkpoint)status.SetCopy("The next stage is below. Take the row down.");
         }
@@ -76,6 +97,7 @@ namespace Cascade.Presentation
             .FirstOrDefault(c=>c.Definition.ContentHash==descent?.SourceHash)?.Definition;
         public void GoLower()
         {
+            if(!Interaction.AllowsControl(PracticeControl.NextStage))return;
             if(!IsCheckpoint||Interaction.Attempt.Current.Status!=PuzzleStatus.Won||!Interaction.CanControl||IsDescending)return;
             if(IntroduceDescentEntry())return;
             if(TryCheckpointConversation())return;
@@ -87,7 +109,7 @@ namespace Cascade.Presentation
                 CompleteLessonPractice(PendingLesson.Value,false);
             // State and persistence precede travel. A tween cannot advance a stage.
             MountAttempt(new AttemptService(run.Level(source,run.StageIndex),locale,direction:run.Direction),run);
-            journeyActive=travel;PersistProgress();ShowGame();
+            journeyActive=travel;PersistProgress(true);if(HasSaveError){Destroy(departed.gameObject);return;}ShowGame();
             if(run.Version<4&&(run.Stages[run.StageIndex].Arrival==EntryTransform.ShiftLeftOne||run.Stages[run.StageIndex].Arrival==EntryTransform.ShiftRightOne))
                 machine.CueWind(run.Stages[run.StageIndex].Arrival==EntryTransform.ShiftRightOne);
             else if(run.Stages[run.StageIndex].PublishedStart)machine.CueWind(run.StageIndex%2==0);

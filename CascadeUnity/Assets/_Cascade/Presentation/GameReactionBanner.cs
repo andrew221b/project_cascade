@@ -37,7 +37,9 @@ namespace Cascade.Presentation
         public bool IsShowing { get; private set; }
         public float Elapsed => age;
         public string Message => title==null?"":title.text;
-        public float BeatDuration => windWarning?1.05f:game.ReducedMotion?.55f:hasTool?1.72f:.60f;
+        // Leave the copy readable after the effect finishes. The banner owns only
+        // presentation time and never changes the committed puzzle result.
+        public float BeatDuration => windWarning?2.35f:game.ReducedMotion?2.60f:hasTool?4.20f:3.00f;
         public void Initialize(CascadeGame owner,RectTransform band,TMP_Text status,TMP_FontAsset font)
         {
             game=owner;paper=band;instruction=status;paperImage=band.GetComponent<Image>();root=(RectTransform)transform;

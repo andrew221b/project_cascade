@@ -27,7 +27,7 @@ namespace Cascade.Editor.Playable
             }
             var library=AssetDatabase.LoadAssetAtPath<ToyAudioLibrary>(Art+"ToyAudio.asset");
             Undo.RecordObject(library,"Configure CASCADE atmosphere and score");
-            library.menuMusic=Clip(scores[0]);library.worldMusic=new AudioClip[9];
+            library.menuMusic=Clip(scores[0]);library.music=library.menuMusic;library.worldMusic=new AudioClip[9];
             for(int i=0;i<9;i++)library.worldMusic[i]=Clip(scores[i+1]);
             library.naturalWind=Clip("LivingWind");
             string[] cues={"Select_Touch","Swap_Slide","Land_Clacks","Fragile_Creak","Unlock_Turn","Repair_Chimes",

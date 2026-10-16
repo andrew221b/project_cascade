@@ -14,11 +14,11 @@ namespace Cascade.Persistence
                 catch{profile.Attempt=old;throw;}
             },profile.Clears.Count,previewOnly:true);
         }
-        public static AdService Create(PlayerProfile profile,ProfileStore store,Func<AttemptService> activeAttempt=null,Func<bool> skipAttemptCapture=null)
+        public static AdService Create(PlayerProfile profile,ProfileStore store,Func<AttemptService> activeAttempt=null,Func<bool> skipAttemptCapture=null,Action onSaved=null)
         {
             return new AdService(profile.Monetization,candidate=>{
                 var oldLedger=profile.Monetization;var oldAttempt=profile.Attempt;
-                try{profile.Monetization=candidate;if(activeAttempt!=null&&skipAttemptCapture?.Invoke()!=true)profile.Attempt=AttemptRecord.Capture(activeAttempt());store.Save(profile);}
+                try{profile.Monetization=candidate;if(activeAttempt!=null&&skipAttemptCapture?.Invoke()!=true)profile.Attempt=AttemptRecord.Capture(activeAttempt());store.Save(profile);onSaved?.Invoke();}
                 catch{profile.Monetization=oldLedger;profile.Attempt=oldAttempt;throw;}
             },profile.Clears.Count);
         }

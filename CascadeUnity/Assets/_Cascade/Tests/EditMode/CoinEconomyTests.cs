@@ -9,6 +9,19 @@ namespace Cascade.Tests
 {
     public sealed class CoinEconomyTests
     {
+        [Test]public void FullReceiptHistoryRejectsNewGrantsWithoutThrowingAndAcknowledgesPaidDuplicates()
+        {
+            var ledger=new MonetizationLedger();
+            ledger.Grants.Add(new GrantReceipt{Id="old_paid",Kind="store_coins",Product=PurchaseCatalog.Coins240,Amount=240});
+            for(int i=1;i<MonetizationLedger.MaxGrantReceipts;i++)ledger.Grants.Add(new GrantReceipt{Id="old_ad_"+i,Kind="coins",Amount=40});
+            ledger.BonusCoins=240+(MonetizationLedger.MaxGrantReceipts-1)*40;
+            int writes=0;var service=new AdService(ledger,_=>writes++);
+            Assert.That(service.CanReceiveGrant,Is.False);
+            Assert.That(service.VerifiedStorePurchase(PurchaseCatalog.Coins240,"old_paid",true),Is.True);
+            Assert.That(service.VerifiedStorePurchase(PurchaseCatalog.NoAutomaticAds,"new_paid",true),Is.False);
+            Assert.That(service.TryRewarded(new AdContext{Surface=AdSurface.Inventory,CoreAccepted=true,PrivacyReady=true,ProviderEnabled=true},"coins",true),Is.Null);
+            Assert.That(writes,Is.Zero);Assert.That(service.Ledger.Grants.Count,Is.EqualTo(MonetizationLedger.MaxGrantReceipts));
+        }
         static AttemptService Board()=>new AttemptService(LevelDefinitionTests.Level(LevelDefinitionTests.Row("DCBA"),LevelDefinitionTests.Row("ABCD"),new[]{new FloorDefinition(12,new[]{true,true,true}),new FloorDefinition(12,new[]{true,true,true})}));
         [Test] public void VerifiedPacksAreExactlyOnceAndCannotChangeProductOnReplay()
         {
@@ -25,22 +38,22 @@ namespace Cascade.Tests
         }
         [Test] public void PaidPendingValueIsDeliveredAboveWalletThresholdAndSaveFailureCanRetry()
         {
-            bool fail=true;var s=new AdService(new MonetizationLedger{BonusCoins=1000},_=>{if(fail)throw new IOException("disk");});
+            bool fail=true;var s=new AdService(new MonetizationLedger{BonusCoins=1600},_=>{if(fail)throw new IOException("disk");});
             Assert.That(s.VerifiedStorePurchase(PurchaseCatalog.Coins480,"paid",true),Is.False);
-            Assert.That(s.Ledger.BonusCoins,Is.EqualTo(1000));Assert.That(s.Ledger.Grants,Is.Empty);
+            Assert.That(s.Ledger.BonusCoins,Is.EqualTo(1600));Assert.That(s.Ledger.Grants,Is.Empty);
             fail=false;Assert.That(s.VerifiedStorePurchase(PurchaseCatalog.Coins480,"paid",true),Is.True);
-            Assert.That(s.Ledger.BonusCoins,Is.EqualTo(1480));
+            Assert.That(s.Ledger.BonusCoins,Is.EqualTo(2080));
         }
-        [Test] public void ThirdToolCannotSpendStockOrMutateAttemptAfterReload()
+        [Test] public void ThirdToolCanBeUsedAfterReload()
         {
             var board=Board();var service=new AdService(new MonetizationLedger{LandingLenses=1,WayfinderScrolls=1,SignalLanterns=1},_=>{});
             Assert.That(service.TryUseTool(TravelTool.LandingLens,board),Is.True);
             Assert.That(service.TryUseTool(TravelTool.Wayfinder,board,AttemptService.CalculateHint(board.CaptureHintRequest())),Is.True);
             var restored=AttemptService.Restore(board.Level,AttemptRecord.Capture(board));string before=restored.CurrentStateHash;
-            Assert.That(restored.ToolUsesRemaining,Is.Zero);
-            Assert.That(service.TryUseTool(TravelTool.SignalLantern,restored,AttemptService.CalculateHint(restored.CaptureHintRequest())),Is.False);
-            Assert.That(service.Ledger.SignalLanterns,Is.EqualTo(1));Assert.That(restored.CurrentStateHash,Is.EqualTo(before));
-            restored.Retry();Assert.That(restored.ToolUsesRemaining,Is.EqualTo(2));
+            Assert.That(restored.ToolUsesRemaining,Is.GreaterThan(0));
+            Assert.That(service.TryUseTool(TravelTool.SignalLantern,restored,AttemptService.CalculateHint(restored.CaptureHintRequest())),Is.True);
+            Assert.That(service.Ledger.SignalLanterns,Is.Zero);Assert.That(restored.CurrentStateHash,Is.Not.EqualTo(before));
+            restored.Retry();Assert.That(restored.ToolUsesRemaining,Is.GreaterThan(0));
         }
         [Test] public void OneStepGuideExpiresOnSwapAndFailedToolSavePreservesItsState()
         {
@@ -57,7 +70,7 @@ namespace Cascade.Tests
             Assert.That(board.TryUseToolAtomically(TravelTool.Wayfinder,()=>true,AttemptService.CalculateHint(board.CaptureHintRequest())),Is.True);
             Assert.That(board.Undo(),Is.True);Assert.That(board.GuideActive,Is.False);
             var record=AttemptRecord.Capture(board);record.LensUsed=true;record.SpoolUsed=true;
-            var restored=AttemptService.Restore(board.Level,record);Assert.That(restored.ToolsUsed,Is.EqualTo(3));Assert.That(restored.ToolUsesRemaining,Is.Zero);
+            var restored=AttemptService.Restore(board.Level,record);Assert.That(restored.ToolsUsed,Is.EqualTo(3));Assert.That(restored.ToolUsesRemaining,Is.GreaterThan(0));
         }
         [Test] public void PreviewCoinPackNeverWritesFakeValueIntoProfile()
         {

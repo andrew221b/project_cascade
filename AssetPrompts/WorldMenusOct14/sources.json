@@ -1,0 +1,26 @@
+{
+  "tool": "image_gen.imagegen",
+  "generated_directory": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1",
+  "assets": {
+    "RainMillBase.png": "exec-85d321b5-97a3-439f-8192-91bae456ea2a.png",
+    "Aircraft0..5.png": "exec-7026d51f-93d7-474a-a121-5d38c1b11a10.png",
+    "ShopFrameMask.png": "exec-f8394d58-9873-4a6c-b54f-8814dcc347c7.png",
+    "PauseFrameMask.png": "exec-dc8c40d5-da7f-498a-be20-54f0acef311e.png",
+    "HomeFrameMask.png": "exec-f152ca9a-5434-4ff3-8f2b-463717d99199.png",
+    "MapFrameMask.png": "exec-1febdc7d-c289-40fc-8721-d86b90a482e8.png"
+  },
+  "aircraft_original_sheet": "exec-13a707cc-b282-4bae-ac3d-698a119a261f.png",
+  "aircraft_processing": "Tool removes background, then equal-cell extraction and alpha-bound trim with 4px margin. RGB/alpha preserved. Uncompressed sRGB sprites with trilinear mip sampling.",
+  "foreground_masks": "Only generated ALPHA is sampled; RGB remains the original existing frame/floor art. No generated UI/text/character pixels are rendered. Normalized UV retains original layout.",
+  "reused_skies": [
+    "WindGardenBase",
+    "CopperOrchardBase",
+    "CloudPostBase",
+    "GlassLagoonBase",
+    "MossArchiveBase",
+    "SnowSpireBase",
+    "GreatBeaconBase",
+    "StarObservatoryBase"
+  ],
+  "reused_night_islands": "Woodland/ObservatoryIslands, transient 2x2 sprite cells disposed with menu owner"
+}

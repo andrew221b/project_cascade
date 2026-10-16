@@ -6,7 +6,7 @@ namespace Cascade.Presentation
 {
     public sealed class ButtonFeel:MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerExitHandler,ISelectHandler,IDeselectHandler
     {
-        CascadeGame game;Button button;bool pressed;float size=1;Outline focus;Tween response;
+        CascadeGame game;Button button;bool pressed;float size=1,entrance=1;Outline focus;Tween response;
         public void Initialize(CascadeGame owner){game=owner;button=GetComponent<Button>();focus=gameObject.AddComponent<Outline>();focus.effectColor=new Color(.20f,.37f,.34f,.75f);focus.effectDistance=new Vector2(1.2f,-1.2f);focus.enabled=false;}
         public void OnPointerDown(PointerEventData e){if(button!=null&&button.IsInteractable()){pressed=true;Animate(true);}}
         public void OnPointerUp(PointerEventData e){if(pressed){pressed=false;Animate(false);}}
@@ -17,9 +17,10 @@ namespace Cascade.Presentation
         {
             response?.Kill();if(game==null||game.ReducedMotion){Settle();return;}
             // Animate only the artwork, keeping the button's hit area and layout fixed.
-            response=DOTween.To(()=>size,Paint,down?.95f:1,down?.09f:.26f).SetEase(down?Ease.OutCubic:Ease.OutBack).SetUpdate(true).SetTarget(this);
+            response=DOTween.To(()=>size,Paint,down?.965f:1,down?.085f:.32f).SetEase(down?Ease.OutCubic:Ease.OutBack).SetUpdate(true).SetTarget(this);
         }
-        void Paint(float value){size=value;foreach(Transform child in transform)child.localScale=Vector3.one*size;}
+        internal void SetEntrance(float value){entrance=value;Paint(size);}
+        void Paint(float value){size=value;foreach(Transform child in transform)child.localScale=Vector3.one*(size*entrance);}
         void Update()
         {
             if(game==null)return;
@@ -27,7 +28,7 @@ namespace Cascade.Presentation
             if(response!=null&&response.IsActive())response.Play();
         }
         void Settle(){response?.Kill();response=null;pressed=false;Paint(1);}
-        void OnDisable(){Settle();if(focus!=null)focus.enabled=false;}
+        void OnDisable(){entrance=1;Settle();if(focus!=null)focus.enabled=false;}
         void OnDestroy(){response?.Kill();}
     }
 }

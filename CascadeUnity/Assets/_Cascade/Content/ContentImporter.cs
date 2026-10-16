@@ -36,12 +36,13 @@ namespace Cascade.Content
 
         public static ContentCatalog Import(string primaryJson, string localizedJson, string enWordsJson, string ruWordsJson, string ukWordsJson, string extensionJson=null)
         {
-            var primarySources=JArray.Parse(primaryJson);var bindingSources=JArray.Parse(localizedJson);
+            var primarySources=JArray.Parse(primaryJson);var bindingSources=JArray.Parse(localizedJson);JArray journeyOrder=null;
             if(extensionJson!=null) {
                 var extension=JObject.Parse(extensionJson);
                 if(!(extension["levels"] is JArray levels)||!(extension["bindings"] is JArray bindings))throw new InvalidDataException("Invalid campaign extension.");
                 foreach(var source in levels)primarySources.Add(source.DeepClone());
                 foreach(var source in bindings)bindingSources.Add(source.DeepClone());
+                if(extension["journey_order"]!=null){journeyOrder=extension["journey_order"] as JArray;if(journeyOrder==null)throw new InvalidDataException("Invalid journey order.");}
             }
             var entries = new Dictionary<string, WordEntry>(StringComparer.Ordinal);
             ImportWords(enWordsJson, "en", entries); ImportWords(ruWordsJson, "ru", entries); ImportWords(ukWordsJson, "uk", entries);
@@ -64,6 +65,7 @@ namespace Cascade.Content
                 string node = Required(source, "node_id"); string locale = Required(source, "locale");
                 if (!puzzleIds.Add(Required(source, "id"))) throw new InvalidDataException("Duplicate PuzzleId.");
                 if (!sourceByNode.TryGetValue(node, out var parent)) throw new InvalidDataException("Unknown binding node: " + node);
+                if(((int?)source["teaching_node"]??0)!=((int?)parent["teaching_node"]??0))throw new InvalidDataException("Binding teaching anchor differs: "+node);
                 if (locale != "en" && locale != "ru" && locale != "uk") throw new InvalidDataException("Unsupported binding locale.");
                 if (!bindingKeys.Add(node + ":" + locale)) throw new InvalidDataException("Duplicate localized binding.");
                 var level = ImportLevel(source, words, Required(parent, "rules_version"));
@@ -73,6 +75,14 @@ namespace Cascade.Content
                 localized.Add(content);
             }
             if (primary.Count == 0) throw new InvalidDataException("Empty primary content.");
+            if(journeyOrder!=null){
+                var order=journeyOrder.Select(t=>t.Type==JTokenType.String?(string)t:null).ToArray();
+                if(order.Length!=primary.Count||order.Any(string.IsNullOrWhiteSpace)||order.Distinct(StringComparer.Ordinal).Count()!=order.Length
+                    ||order.Any(id=>!sourceByNode.ContainsKey(id)))throw new InvalidDataException("Journey order must contain every primary node exactly once.");
+                var positions=order.Select((id,index)=>new{id,index}).ToDictionary(p=>p.id,p=>p.index,StringComparer.Ordinal);
+                primary=primary.OrderBy(c=>positions[c.Definition.CampaignNodeId]).ToList();
+                localized=localized.OrderBy(c=>positions[c.Definition.CampaignNodeId]).ToList();
+            }
             string bundle = string.Join("\n", new[] { primaryJson, localizedJson, enWordsJson, ruWordsJson, ukWordsJson }
                 .Select(text => Canonical(JToken.Parse(text)).ToString(Formatting.None)));
             if(extensionJson!=null)bundle+="\n"+Canonical(JToken.Parse(extensionJson)).ToString(Formatting.None);
@@ -144,7 +154,9 @@ namespace Cascade.Content
             }).ToArray();
             string wordPayload = string.Join("\n", segments.Where(s => s.Kind == SegmentKind.Word).Select(s => s.WordId + ":" + words[s.WordId].DisplayText));
             string hash = Hash(rules + "\n" + Canonical(source).ToString(Formatting.None) + "\n" + wordPayload);
-            var definition = new LevelDefinition(id, node, SchemaVersion, rules, hash, start, target, segments, floors);
+            int teachingNode=(int?)source["teaching_node"]??0;
+            if(teachingNode<0||teachingNode>184)throw new InvalidDataException("Invalid incumbent teaching anchor: "+id);
+            var definition = new LevelDefinition(id, node, SchemaVersion, rules, hash, start, target, segments, floors,teachingNode:teachingNode);
             LevelValidator.ThrowIfInvalid(definition, words);
             return definition;
         }

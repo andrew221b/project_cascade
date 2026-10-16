@@ -13,10 +13,39 @@ namespace Cascade.Tests
 {
     public sealed class AdServiceTests
     {
+        [Test] public void FinalWorldAdGuardUsesJourneyOrderRatherThanDigitsInNodeIds()
+        {
+            for(int index=0;index<JourneyStory.NodeIds.Count;index++)Assert.That(JourneyStory.IsWorldFinal(JourneyStory.NodeIds[index]),Is.EqualTo((index+1)%60==0));
+            Assert.That(JourneyStory.IsWorldFinal("C10"),Is.False);Assert.That(JourneyStory.IsWorldFinal("unknown"),Is.False);
+        }
         static AdContext Context(AdSurface surface=AdSurface.Win,int clears=15,string node="C15")=>new AdContext{Surface=surface,NodeId=node,UniqueClears=clears,CoreAccepted=true,PrivacyReady=true,ProviderEnabled=true,SavedWin=true,BaseRewardGiven=true};
         static AdService Service(MonetizationLedger ledger=null,Action<MonetizationLedger> persist=null)=>new AdService(ledger??new MonetizationLedger(),persist??(_=>{}),12);
         static AttemptService Attempt()=>new AttemptService(ContentTests.LoadCatalog().GetPrimary("C02").Definition);
         static HintOffer Hint(AttemptService a,int budget=PuzzleSolver.DefaultStateBudget)=>AttemptService.CalculateHint(a.CaptureHintRequest(),budget);
+        [Test] public void RetryAdCadenceAlternatesEveryTwoAndThenEveryThreeRetries()
+        {
+            var cadence=new RetryAdCadence();
+            Assert.That(cadence.RecordRetry(),Is.False);Assert.That(cadence.RecordRetry(),Is.True);
+            Assert.That(cadence.RecordRetry(),Is.True,"A due ad stays due until it is shown.");cadence.AdShown();
+            Assert.That(cadence.RecordRetry(),Is.False);Assert.That(cadence.RecordRetry(),Is.False);
+            Assert.That(cadence.RecordRetry(),Is.True);cadence.AdShown();
+            Assert.That(cadence.RecordRetry(),Is.False);Assert.That(cadence.RecordRetry(),Is.True);
+        }
+        [Test] public void RetryingALevelNeverForcesAnInterstitial()
+        {
+            var service=Service();var retry=Context(AdSurface.Retry,clears:2,node:"C02");
+            for(int i=0;i<12;i++)Assert.That(service.TryAutomaticRetry(retry,true),Is.Null);
+            Assert.That(service.AutomaticShows,Is.Zero);
+        }
+        [Test] public void SubscriptionExpiresWithoutBecomingAPermanentPurchase()
+        {
+            var ledger=new MonetizationLedger();ledger.SetSubscriptionExpiry(PurchaseCatalog.NoAdsWeek,DateTimeOffset.UtcNow.AddDays(7).ToUnixTimeSeconds());
+            Assert.That(ledger.HasNoAutomaticAds,Is.True);Assert.That(ledger.NoAutomaticAds,Is.False);
+            var service=Service(ledger);Assert.That(service.TryAutomatic(Context(clears:2,node:"C02"),true),Is.Null);
+            ledger.SetSubscriptionExpiry(PurchaseCatalog.NoAdsWeek,DateTimeOffset.UtcNow.AddSeconds(-1).ToUnixTimeSeconds());
+            Assert.That(ledger.HasNoAutomaticAds,Is.False);Assert.That(ledger.ActiveNoAdsSubscription,Is.Null);
+            Assert.That(service.TryAutomatic(Context(clears:4,node:"C04"),true),Is.Not.Null);
+        }
         [Test] public void NativeEntitlementRejectsUnverifiedOrWrongProductsAndRestoresExactlyOnce()
         {
             int saves=0;var service=Service(persist:_=>saves++);
@@ -40,29 +69,29 @@ namespace Cascade.Tests
                 var s=Service();s.AdvanceForeground(180);Assert.That(s.TryAutomatic(Context(surface),true),Is.Null);
             }
             Action<AdContext>[] gates={c=>c.CoreAccepted=false,c=>c.PrivacyReady=false,c=>c.ProviderEnabled=false,
-                c=>c.UniqueClears=2,c=>c.SavedWin=false,c=>c.BaseRewardGiven=false,c=>c.ContinueVisible=true,c=>c.ChapterFinal=true,c=>c.Replay=true};
-            foreach(var gate in gates){var s=Service();s.AdvanceForeground(180);var c=Context();gate(c);Assert.That(s.TryAutomatic(c,true),Is.Null);}
-            var early=Service();early.AdvanceForeground(179);Assert.That(early.TryAutomatic(Context(),true),Is.Null);
-            var few=Service();few.AdvanceForeground(180);Assert.That(few.TryAutomatic(Context(clears:14),true),Is.Null);
+                c=>c.UniqueClears=1,c=>c.SavedWin=false,c=>c.BaseRewardGiven=false,c=>c.ContinueVisible=true,c=>c.ChapterFinal=true,c=>c.Replay=true};
+            foreach(var gate in gates){var s=Service();var c=Context(clears:16,node:"C16");gate(c);Assert.That(s.TryAutomatic(c,true),Is.Null);}
+            Assert.That(Service().TryAutomatic(Context(clears:1,node:"C01"),true),Is.Null);
+            Assert.That(Service().TryAutomatic(Context(clears:3,node:"C03"),true),Is.Null);
         }
-        [Test] public void FirstSessionCanShowAfterThreeCompleteNewLevelsAndThreeMinutes()
+        [Test] public void FirstSessionAlternatesCompletedLevelsWithoutATimer()
         {
-            var s=new AdService(new MonetizationLedger(),_=>{});var c=Context(clears:3,node:"C03");c.FirstSession=true;
-            s.AdvanceForeground(179);Assert.That(s.TryAutomatic(Context(clears:2,node:"C02"),true),Is.Null);
-            s.AdvanceForeground(1);var ticket=s.TryAutomatic(c,true);Assert.That(ticket,Is.Not.Null);
-            s.Opened(ticket.Id);s.Closed(ticket.Id);s.AdvanceForeground(180);
-            Assert.That(s.TryAutomatic(Context(clears:5,node:"C05"),true),Is.Null);
-            Assert.That(s.TryAutomatic(Context(clears:6,node:"C06"),true),Is.Not.Null);
+            var s=new AdService(new MonetizationLedger(),_=>{});
+            Assert.That(s.TryAutomatic(Context(clears:1,node:"C01"),true),Is.Null);
+            var ticket=s.TryAutomatic(Context(clears:2,node:"C02"),true);Assert.That(ticket,Is.Not.Null);
+            s.Opened(ticket.Id);s.Closed(ticket.Id);
+            Assert.That(s.TryAutomatic(Context(clears:3,node:"C03"),true),Is.Null);
+            Assert.That(s.TryAutomatic(Context(clears:4,node:"C04"),true),Is.Not.Null);
         }
-        [Test] public void NotReadySkipsThatWinAndTwoAutomaticShowsAreTheSessionLimit()
+        [Test] public void NotReadySkipsThatWinAndLaterEvenLevelsRemainEligible()
         {
-            var s=Service();s.AdvanceForeground(180);Assert.That(s.TryAutomatic(Context(),false),Is.Null);
-            Assert.That(s.TryAutomatic(Context(),true),Is.Null);
-            var first=s.TryAutomatic(Context(clears:16,node:"C16"),true);Assert.That(first,Is.Not.Null);
+            var s=Service();Assert.That(s.TryAutomatic(Context(clears:16,node:"C16"),false),Is.Null);
+            Assert.That(s.TryAutomatic(Context(clears:16,node:"C16"),true),Is.Null);
+            Assert.That(s.TryAutomatic(Context(clears:17,node:"C17"),true),Is.Null);
+            var first=s.TryAutomatic(Context(clears:18,node:"C18"),true);Assert.That(first,Is.Not.Null);
             Assert.That(s.Opened(first.Id),Is.True);Assert.That(s.Opened(first.Id),Is.False);s.Closed(first.Id);
-            s.AdvanceForeground(180);Assert.That(s.TryAutomatic(Context(clears:18,node:"C18"),true),Is.Null);
-            var second=s.TryAutomatic(Context(clears:19,node:"C19"),true);Assert.That(second,Is.Not.Null);s.Opened(second.Id);s.Closed(second.Id);
-            s.AdvanceForeground(180);Assert.That(s.TryAutomatic(Context(clears:22,node:"C22"),true),Is.Null);Assert.That(s.AutomaticShows,Is.EqualTo(2));
+            var second=s.TryAutomatic(Context(clears:20,node:"C20"),true);Assert.That(second,Is.Not.Null);s.Opened(second.Id);s.Closed(second.Id);
+            Assert.That(s.TryAutomatic(Context(clears:22,node:"C22"),true),Is.Not.Null);Assert.That(s.AutomaticShows,Is.EqualTo(2));
         }
         [Test] public void RewardIsVerifiedOnceEvenAfterCloseAndCloseAloneNeverGrants()
         {
@@ -87,6 +116,31 @@ namespace Cascade.Tests
             var s=Service();s.AdvanceForeground(180);var t=s.TryRewarded(Context(AdSurface.Inventory,16),"hint",true);
             s.Opened(t.Id);s.AdvanceForeground(300);s.Closed(t.Id);Assert.That(s.TryAutomatic(Context(clears:19,node:"C19"),true),Is.Null);
             s.AdvanceForeground(180);Assert.That(s.TryAutomatic(Context(clears:20,node:"C20"),true),Is.Not.Null);
+        }
+        [Test] public void ParcelVideoBonusIsVerifiedPersistedAndLimitedToOnePerParcel()
+        {
+            var s=Service();var context=Context(AdSurface.Inventory);context.RewardSubject="gift:3";
+            Assert.That(s.TryRewarded(context,"parcel_bonus",true),Is.Null,"parcel-only grants need a parcel identity");
+            context.RewardSubject="parcel:4";var ticket=s.TryRewarded(context,"parcel_bonus",true);Assert.That(ticket,Is.Not.Null);
+            Assert.That(ticket.RewardSubject,Is.EqualTo("parcel:4"));s.Opened(ticket.Id);
+            Assert.That(s.RewardConfirmed(ticket.Id,"parcel-ad-4",false),Is.False);
+            Assert.That(s.RewardConfirmed(ticket.Id,"parcel-ad-4",true),Is.True);
+            Assert.That(s.Ledger.BonusCoins,Is.EqualTo(40));Assert.That(s.Ledger.Grants.Single().Kind,Is.EqualTo("coins"));
+            Assert.That(s.Ledger.Grants.Single().Product,Is.EqualTo("parcel:4"));Assert.That(s.HasParcelBonus("parcel:4"),Is.True);
+            Assert.That(s.TryRewarded(context,"parcel_bonus",true),Is.Null,"a saved parcel cannot earn a second bonus");
+            s.Ledger.Validate();var restored=Service(s.Ledger.Copy());
+            Assert.That(restored.HasParcelBonus("parcel:4"),Is.True);
+            Assert.That(restored.TryRewarded(context,"parcel_bonus",true),Is.Null,"the one-time limit survives reload");
+        }
+        [Test] public void ParcelVideoBonusCannotBeCommittedWhenItsSaveFails()
+        {
+            bool fail=true;var s=Service(persist:_=>{if(fail)throw new IOException("disk");});
+            var context=Context(AdSurface.Inventory);context.RewardSubject="parcel:2";
+            var ticket=s.TryRewarded(context,"parcel_bonus",true);s.Opened(ticket.Id);
+            Assert.That(s.RewardConfirmed(ticket.Id,"parcel-ad-2",true),Is.False);
+            Assert.That(s.Ledger.BonusCoins,Is.Zero);Assert.That(s.HasParcelBonus("parcel:2"),Is.False);
+            fail=false;Assert.That(s.RewardConfirmed(ticket.Id,"parcel-ad-2",true),Is.True);
+            Assert.That(s.Ledger.BonusCoins,Is.EqualTo(40));
         }
         [Test] public void FailedSavePublishesNoRewardAndCanBeRetried()
         {

@@ -1,0 +1,24 @@
+[
+  {
+    "name": "UndoRibbon",
+    "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-49569775-fbe6-4faf-a308-242b9975084e.png",
+    "prompt": "Use case: stylized-concept. Asset type: ONE separate transparent-background UI cutout for a polished 3D storybook puzzle game. The first image is a STYLE AND SHAPE reference: the teal rewind ribbon in front of the blue undo spool in the tutorial. The second image is a MATERIAL reference for existing gold-trimmed teal game objects. Create ONLY that curved left-pointing rewind ribbon arrow, with rich jade/teal enamel/fabric, warm thin gold bevel, soft dimensional shading. Wide arrowhead on the LEFT, ribbon curves gracefully from the middle RIGHT down and around toward the lower right; same gentle almost-horizontal crescent swoosh as the tutorial reference, viewed front-on at a slight three-quarter angle. Fit it in a wide 3:2 composition with 8 percent transparent padding. NO spool, no needle, no hands, no buttons, no text, no background, no UI panel, no ground shadow outside the arrow. Actual transparent alpha. This will be layered over the existing blue spool and under the existing pointing hand; do not recreate those objects.",
+    "tool": "built-in image_gen",
+    "output": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/TutorialReferenceOct16/UndoRibbon.png",
+    "purpose": "Standalone rewind ribbon over the existing blue spool; existing panel, hand and tools reused.",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "6a180ff8f0423f8173e1a2ad017413fb2538264d44a1ef01f42e0a8d79c6ece5"
+  },
+  {
+    "name": "Pieces",
+    "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-3b8238dd-0626-4415-ac90-7ce9cb84f53a.png",
+    "prompt": "Use case: stylized-concept. Asset type: one transparent sprite atlas for the existing game's tutorial, matching the supplied screenshot exactly. Create a SQUARE 2 x 2 sprite sheet with FOUR separate icons centered in four equal square cells with generous transparent gutters, never touching. TOP LEFT: a cyan turquoise circular buttonlike game piece with softly rounded 3D dome, darker teal bevel/rim and upper-left glossy highlight. TOP RIGHT: golden yellow upright equilateral triangle game piece, thick rounded edges and golden bevel, soft glossy surface. BOTTOM LEFT: coral red rounded square game piece, red bevel and small soft white highlight on upper left. BOTTOM RIGHT: violet purple diamond game piece, softly rounded corners, faceted purple bevel and lavender highlight. These are the four pieces in the reference row. Match their bright polished storybook 3D render and proportions, not flat vectors. All four icons equally large (about 75 percent of their cell), fully visible, front view, consistent upper-left lighting, soft subtle contact shadows contained close to each icon. ONLY those four shapes; no row, no wood, no spool, no hands, no letters, no text, no UI frame, no scene, no background. Real transparent alpha. Preserve equal 2x2 cell layout so the game can slice it without further image editing.",
+    "tool": "built-in image_gen",
+    "output": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/TutorialReferenceOct16/Pieces.png",
+    "purpose": "One shared 2x2 atlas matching the four glossy tutorial pieces; replaces only flat illustration meshes, preserves resolver states and animation.",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "30abdbfddd9b3da662fe97cb0090cc55647920a6bd31009f8a042fbb61c77f84"
+  }
+]

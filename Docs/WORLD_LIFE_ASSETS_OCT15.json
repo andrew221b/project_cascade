@@ -1,0 +1,33 @@
+{
+  "tool": "built-in imagegen",
+  "assets": [
+    {
+      "savedPath": "CascadeUnity/Assets/_Cascade/Resources/CascadeArt/Atmosphere/RegionalRigOct15.png",
+      "generatedPath": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-e2c92f11-af37-4dc1-aa33-3980bda4c2e1.png",
+      "size": [
+        1122,
+        1402
+      ],
+      "mode": "RGBA",
+      "sha256": "2cd6dd930640f87a9d694727e4b3951b5e6768bf8645ca18c686168ad5aa297c",
+      "sourceBytesPreserved": true,
+      "prompt": "Create a production 2D cutout animation atlas for Flying Ladders, polished warm storybook game art matching our existing delicate painted birds and magical insects. Genuine transparent background, not a fake gradient/checkerboard. 4 columns by 4 equal rows with generous invisible gutters, no labels, grid lines, numbers, floors, shadows or scenery. Every painted element entirely inside its own cell. All bodies face RIGHT in side/three-quarter view. Columns must be: 1 wingless body with head and feet/legs, 2 detached near wing, 3 detached far wing, 4 detached tail (for birds) or leg/antenna appendage (insects). Bird wing roots at the RIGHT end, long feathers extending left/up, so roots attach at shoulder. Bodies retain a little folded plumage but NO spread wings, no separate tail duplicates. ROW 1: cheerful Eurasian BULLFINCH with red breast, black cap, soft grey back, small dark feet, near and far charcoal feathered wings, short dark tail. ROW 2: friendly little tawny BARN OWL, cream heart facial disk, big natural dark eyes, golden brown chest and mottled feathers, little talons; two broad cream/brown feathered wings; short fanned tail. ROW 3: golden black fuzzy BUMBLEBEE, complete black head/body/gold fuzzy thorax/striped abdomen/six small legs, no wings attached; detached translucent near wing, detached translucent far wing; little pair of antennae. ROW 4: small emerald-and-bronze FIELD CRICKET, anatomically recognizable with six legs and long antennae and large bent jumping hind legs, entire calm standing body in col1; col2 isolated near hind leg; col3 isolated far hind leg; col4 thin pair of curved antennae. Cricket has no butterfly wings! Consistent top-left warm sunlight and delicate painterly outlines, charming believable fauna rather than mascots. Atlas should be portrait 4:5 or square with evenly spaced rows and columns; alpha-only outside silhouettes, including gaps between legs/feathers. High resolution, mobile-game readable silhouettes."
+    },
+    {
+      "savedPath": "CascadeUnity/Assets/_Cascade/Resources/CascadeArt/Atmosphere/SeasonalFlecksOct15.png",
+      "generatedPath": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-6cb2adec-48cb-4a24-a089-cad4d06d82c4.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "38d20ac9f84d744b8a5696d748706e297427411efd1fd46492e5e97009ffdcd3",
+      "sourceBytesPreserved": true,
+      "prompt": "Production transparent VFX sprite atlas for the warm storybook mobile game Flying Ladders. Genuine alpha background, zero scenery, text, border, ground shadow or opaque panels. EXACT evenly spaced 3 columns by 3 rows; one separate small delicate natural object per cell, generously inside cell with invisible transparent margins. High detail but strong mobile silhouettes; soft natural light, painterly materials, no outer neon outlines. Top row left to right: (1) a single white DAISY flower head with golden centre and a tiny green leaf, slightly tilted in the wind, (2) a clear cool-blue rain droplet with crisp white highlight, (3) one curved orange-copper maple leaf with stem. Middle row left to right: (4) one soft white feather with warm cream shaft, (5) a small clear turquoise water glint bubble with white specular highlight, (6) one delicate fresh green moss seed with tiny fuzzy filaments. Bottom row left to right: (7) one intricate icy white pale-blue six-armed snowflake, (8) one warm glowing amber ember with a faint translucent tail, (9) one tiny pale blue luminous night jasmine blossom with five petals. Keep individual shapes natural and light, no jewellery or metal/gold rims, no icons or badges. Objects face varied natural angles; alpha inside feather/seed gaps preserved. The atlas is meant for slowly drifting flowers, rain, autumn leaves, feathers, lagoon glints, moss seeds, snowfall, lighthouse embers and nocturnal flowers across nine worlds. Square composition 3x3 equal cells."
+    }
+  ],
+  "notes": [
+    "No production PNG editing; runtime regions/meshes select source alpha silhouettes.",
+    "New texture metadata generated/configured through Unity; no NPOT resizing/mipmaps."
+  ]
+}

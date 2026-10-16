@@ -5,13 +5,16 @@ namespace Cascade.Presentation
     public sealed partial class ToyFeedbackPool
     {
         readonly AudioSource[] scoreSources = new AudioSource[2];
-        AudioSource windSource, rainSource;
+        AudioSource windSource, rainSource, cricketSource;
+        AudioLowPassFilter windFilter;
         int scoreIncoming;
         float scoreFade = 1, scoreGain, rainBlend;
         bool audioSleeping, scoreSleeping;
         bool audioConfigurationChanged;
         readonly int[] scoreSamples=new int[2];
         int windSamples,rainSamples;
+        float cricketWait=4.5f;
+        int cricketPhrase;
         readonly WindAudioEnvelope windEnvelope = new WindAudioEnvelope();
         public AudioClip CurrentMusicClip => scoreSources[scoreIncoming]?.clip;
         public float MusicPosition => scoreSources[scoreIncoming] == null ? 0 : scoreSources[scoreIncoming].time;
@@ -26,7 +29,10 @@ namespace Cascade.Presentation
             var source = sourceObject.GetComponent<AudioSource>();
             source.playOnAwake = false; source.loop = true; source.spatialBlend = 0; source.volume = 0;
             source.priority = 192; source.clip = clip;
-            if (clip != null) source.Play();
+            if (clip != null) {
+                if(clip.loadState==AudioDataLoadState.Unloaded)clip.LoadAudioData();
+                if(clip.loadState==AudioDataLoadState.Loaded)source.Play();
+            }
             return source;
         }
         void InitializeAtmosphere()
@@ -34,7 +40,15 @@ namespace Cascade.Presentation
             scoreSources[0] = LoopSource("CASCADE score A", library?.menuMusic ?? library?.music);
             scoreSources[1] = LoopSource("CASCADE score B", null);
             windSource = LoopSource("Living island wind", library?.naturalWind ?? Resources.Load<AudioClip>("CascadeArt/Woodland/WindBed"));
+            windFilter=windSource.gameObject.AddComponent<AudioLowPassFilter>();
+            windFilter.cutoffFrequency=900;windFilter.lowpassResonanceQ=1;
+            var windHighPass=windSource.gameObject.AddComponent<AudioHighPassFilter>();
+            windHighPass.cutoffFrequency=170;windHighPass.highpassResonanceQ=1;
             rainSource = LoopSource("Rain beneath the mill", Resources.Load<AudioClip>("CascadeArt/Woodland/RainBed"));
+            cricketSource=LoopSource("Night observatory crickets",null);
+            cricketSource.loop=false;cricketSource.priority=224;
+            cricketSource.clip=Resources.Load<AudioClip>("CascadeArt/Audio/Atmosphere/NightCrickets");
+            InitializeWildlifeAudio();
             AudioSettings.OnAudioConfigurationChanged+=AudioConfigurationChanged;
         }
         void AudioConfigurationChanged(bool deviceChanged){audioConfigurationChanged=true;}
@@ -56,20 +70,59 @@ namespace Cascade.Presentation
             return source.isPlaying;
         }
         void DisposeAtmosphere(){AudioSettings.OnAudioConfigurationChanged-=AudioConfigurationChanged;}
+        void StopNightCrickets()
+        {
+            if(cricketSource!=null){if(cricketSource.isPlaying)cricketSource.Stop();cricketSource.volume=0;}
+            // Returning outdoors begins with quiet, rather than resuming a cut-off insect phrase.
+            cricketWait=4.5f;
+        }
+        void TickNightCrickets(float dt,bool allowed)
+        {
+            if(!allowed){StopNightCrickets();return;}
+            if(cricketSource==null||cricketSource.clip==null)return;
+            cricketSource.volume=Mathf.MoveTowards(cricketSource.volume,duck>0?.025f:.085f,dt*.4f);
+            // One owned reusable source prevents overlapping phrases and never steals a puzzle cue voice.
+            if(cricketSource.isPlaying)return;
+            cricketWait=Mathf.Max(0,cricketWait-dt);
+            if(cricketWait>0||duck>0)return;
+            if(singingCricket!=null&&cricketCalls!=null){
+                int identity=(int)(WildlifeMotion.Hash(singingCricket.GetInstanceID()+197)*997);
+                var phrase=cricketCalls[(identity+singingCricket.PhraseIndex)%cricketCalls.Length];
+                if(phrase!=null)cricketSource.clip=phrase;
+            }
+            if(cricketSource.clip.loadState==AudioDataLoadState.Unloaded)cricketSource.clip.LoadAudioData();
+            if(cricketSource.clip.loadState!=AudioDataLoadState.Loaded)return;
+            cricketSource.pitch=singingCricket!=null?WildlifeAcoustics.VoicePitch(singingCricket.Species,singingCricket.GetInstanceID()):1;
+            cricketSource.panStereo=(cricketPhrase%3-1)*.14f;
+            cricketSource.Play();
+            if(singingCricket!=null)singingCricket.PhraseIndex++;
+            cricketWait=singingCricket==null?9+(cricketPhrase++*5%7):4+WildlifeMotion.Hash(++cricketPhrase*43+211)*5;
+        }
+        void OnApplicationPause(bool paused){if(paused){StopNightCrickets();StopWildlifeAudio();}}
+        void OnApplicationFocus(bool focused){if(!focused){StopNightCrickets();StopWildlifeAudio();}}
         void TickAtmosphere(float seconds, bool paused)
         {
             float dt = Mathf.Clamp(seconds, 0, .1f);
-            if(audioConfigurationChanged){audioConfigurationChanged=false;scoreSleeping=audioSleeping=true;scoreGain=0;}
+            // Score fades are clock envelopes, not a physics simulation. Limiting
+            // them to 0.1 s per frame makes music transitions stall at low FPS.
+            float scoreDt=Mathf.Clamp(seconds,0,2);
+            if(audioConfigurationChanged){audioConfigurationChanged=false;scoreSleeping=audioSleeping=true;scoreGain=0;StopNightCrickets();StopWildlifeAudio();}
             else RememberLoopPositions();
             int zone = game.Machine.LivingWorld.Zone;
-            var wanted = library?.ScoreFor(game.CurrentScreen, zone);
+            bool attempt=game.CurrentScreen==GameScreen.Playing||game.CurrentScreen==GameScreen.Pause
+                ||game.CurrentScreen==GameScreen.Win||game.CurrentScreen==GameScreen.Fail||game.CurrentScreen==GameScreen.Checkpoint;
+            var wanted = library?.ScoreFor(game.CurrentScreen, attempt?zone:game.EnvironmentWorld);
+            // Streaming/background loading can take longer than the screen transition.
+            // Keep the old theme until the new clip can play; never fade to an unloaded clip.
+            if(wanted!=null&&wanted.loadState==AudioDataLoadState.Unloaded)wanted.LoadAudioData();
+            bool wantedReady=wanted!=null&&wanted.loadState==AudioDataLoadState.Loaded;
             // Reversing an existing blend keeps both playback positions and the instantaneous gain.
-            if(wanted!=null&&wanted!=CurrentMusicClip&&wanted==scoreSources[1-scoreIncoming].clip) {
+            if(wantedReady&&wanted!=CurrentMusicClip&&wanted==scoreSources[1-scoreIncoming].clip) {
                 scoreIncoming=1-scoreIncoming;scoreFade=1-scoreFade;
                 if(!scoreSleeping)ResumeLoop(scoreSources[scoreIncoming],scoreSamples[scoreIncoming]);
             }
             // Queue a third theme until the current blend completes. Never cut an audible track halfway through.
-            if (wanted != null && wanted != CurrentMusicClip && scoreFade >= 1) {
+            if (wantedReady && wanted != CurrentMusicClip && scoreFade >= 1) {
                 scoreIncoming = 1 - scoreIncoming;
                 var incoming = scoreSources[scoreIncoming];
                 incoming.Stop(); incoming.volume = 0; incoming.clip = wanted; incoming.Play();
@@ -78,10 +131,19 @@ namespace Cascade.Presentation
                 scoreFade = 0;
             }
             duck = Mathf.Max(0, duck - dt);
-            float target = !MusicEnabled || paused ? 0 : duck > 0 ? .13f : .19f;
-            scoreGain = Mathf.MoveTowards(scoreGain, target, dt * .7f);
-            if (scoreSleeping && target > 0) {bool ready=true;for(int i=0;i<scoreSources.Length;i++)ready&=ResumeLoop(scoreSources[i],scoreSamples[i]);scoreSleeping=!ready;}
-            if (!scoreSleeping) scoreFade = Mathf.Min(1, scoreFade + dt / 1.6f);
+            // An instructional film pauses puzzle commands, not the score's clock.
+            float target = !MusicEnabled || paused ? 0 : duck > 0 || game.MechanicPopupOpen ? .16f : .24f;
+            scoreGain = Mathf.MoveTowards(scoreGain, target, scoreDt * .7f);
+            if (scoreSleeping && target > 0) {
+                bool ready=ResumeLoop(scoreSources[scoreIncoming],scoreSamples[scoreIncoming]);
+                if(scoreFade<1)ResumeLoop(scoreSources[1-scoreIncoming],scoreSamples[1-scoreIncoming]);
+                scoreSleeping=!ready;
+            }
+            // Also covers the initial async menu load and a source stopped independently
+            // of the output reset callback, without restarting a playing theme.
+            if(!scoreSleeping&&target>0&&!scoreSources[scoreIncoming].isPlaying)
+                ResumeLoop(scoreSources[scoreIncoming],scoreSamples[scoreIncoming]);
+            if (!scoreSleeping&&scoreSources[scoreIncoming].isPlaying) scoreFade = Mathf.Min(1, scoreFade + scoreDt / 1.6f);
             float blend = Mathf.SmoothStep(0, 1, scoreFade);
             scoreSources[scoreIncoming].volume = scoreGain * Mathf.Sqrt(blend);
             scoreSources[1 - scoreIncoming].volume = scoreGain * Mathf.Sqrt(1 - blend);
@@ -89,7 +151,7 @@ namespace Cascade.Presentation
             if (!scoreSleeping && scoreGain == 0) { foreach (var source in scoreSources) source.Pause(); scoreSleeping = true; }
 
             // Both beds keep their place. Region changes blend them rather than restarting the wind.
-            bool soundsAllowed = SoundEnabled && !paused;
+            bool soundsAllowed = SoundEnabled && !paused && !game.MechanicPopupOpen;
             if (audioSleeping && soundsAllowed) {audioSleeping=!(ResumeLoop(windSource,windSamples)&ResumeLoop(rainSource,rainSamples));}
             rainBlend = Mathf.MoveTowards(rainBlend, zone == 1 || zone == 4 ? 1 : 0, dt * .45f);
             bool atRig = game.CurrentScreen == GameScreen.Playing || game.CurrentScreen == GameScreen.Win
@@ -98,8 +160,17 @@ namespace Cascade.Presentation
             float pressure = game.Machine.WindAt(floor);
             bool indoors = !atRig && game.CurrentScreen != GameScreen.JourneyMap
                 && game.CurrentScreen != GameScreen.Dialogue && game.CurrentScreen != GameScreen.JourneyEnd;
+            TickWildlifeAudio(dt,soundsAllowed);
             // The same pressure drives the visible rig and this loop; no independent audio gust clock.
             windSource.volume = windEnvelope.Tick(pressure, indoors ? .35f : 1 - rainBlend * .55f, soundsAllowed, dt);
+            windSource.pitch = Mathf.Lerp(.96f,1.04f,Mathf.Clamp01(Mathf.Abs(pressure)));
+            windFilter.cutoffFrequency=Mathf.Lerp(2000,7800,Mathf.Pow(Mathf.Clamp01(Mathf.Abs(pressure)),1.4f));
+            float windStrength=Mathf.Abs(pressure);
+            // A quiet button tick can occupy the first threshold-crossing frame.
+            // Retry while the breeze persists, then let the five-second haptic cooldown rest.
+            if(game.CurrentScreen==GameScreen.Playing&&!paused&&!game.Interaction.IsPresenting
+                &&windStrength>=.24f&&Time.realtimeSinceStartup-lastBreezeHaptic>5f)
+                Haptic(ToyHapticMoment.Breeze);
             rainSource.volume = Mathf.MoveTowards(rainSource.volume, soundsAllowed ? rainBlend * .08f : 0, dt * (soundsAllowed?.16f:.7f));
             if (!audioSleeping && windSource.volume == 0 && rainSource.volume == 0) {
                 windSource.Pause(); rainSource.Pause(); audioSleeping = true;
@@ -107,6 +178,7 @@ namespace Cascade.Presentation
         }
         void OnDisable()
         {
+            if(hapticPattern!=null){StopCoroutine(hapticPattern);hapticPattern=null;}
             RememberLoopPositions();
             // This component owns these loops; stopping Update must not leave its audio audible.
             // Pause rather than Stop so re-enabling keeps every theme/ambience playback position.
@@ -117,6 +189,8 @@ namespace Cascade.Presentation
             windEnvelope.Reset();
             if (windSource != null) { windSource.volume = 0; windSource.Pause(); }
             if (rainSource != null) { rainSource.volume = 0; rainSource.Pause(); }
+            StopNightCrickets();
+            StopWildlifeAudio();
             audioSleeping = true;
         }
     }

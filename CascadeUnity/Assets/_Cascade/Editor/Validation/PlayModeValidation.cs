@@ -29,6 +29,19 @@ namespace Cascade.Editor.Validation
             =>RunTests(phase,new[]{testName});
         public static void RunSelected(string phase,string[] testNames)
             =>RunTests(phase,testNames);
+        [MenuItem("CASCADE/QA/Run night ambience test")]
+        public static void RunNightAmbience()
+            =>RunFocused("WorldAtmosphere-Oct07","Cascade.Tests.NightCricketLifecycleTests.CricketsBeginAfterQuietNeverOverlapAndStopWithTheirOwner");
+        [MenuItem("CASCADE/QA/Run audio and haptic tests")]
+        public static void RunAudioHaptic()
+            =>RunSelected("AudioHaptic-Oct07",new[]{
+                "Cascade.Tests.AudioFeedbackTests.MenuClickFinishesAcrossNavigationAndReducedEffectsWithoutDuplicateVoices",
+                "Cascade.Tests.AudioFeedbackTests.SoundMuteStopsCuesWhileMusicContinuesAndNewClicksResume",
+                "Cascade.Tests.AudioFeedbackTests.OutputResetAndForegroundReturnRecoverTheEnabledThemeNearItsOldPosition",
+                "Cascade.Tests.AudioFeedbackTests.HapticsAreThrottledAndRespectPreferenceAndSuspension",
+                "Cascade.Tests.PlayableTests.WorldScoresCrossfadeAndMutePreservesPlaybackPosition",
+                "Cascade.Tests.PlayableTests.WindKeepsItsPositionAcrossRegionsAndFadesBeforeSleeping"
+            });
         static void RunTests(string phase,string[] tests)
         {
             if (EditorUtility.scriptCompilationFailed || EditorApplication.isCompiling || EditorApplication.isPlaying)
@@ -45,7 +58,7 @@ namespace Cascade.Editor.Validation
             readonly string report;
             public Results(string report) { this.report = report; }
             public void RunStarted(ITestAdaptor tests) { }
-            public void TestStarted(ITestAdaptor test) { }
+            public void TestStarted(ITestAdaptor test) { File.AppendAllText(report+".progress",DateTime.UtcNow.ToString("O")+" "+test.FullName+"\n"); }
             public void TestFinished(ITestResultAdaptor result) { }
             public void RunFinished(ITestResultAdaptor result)
             {
