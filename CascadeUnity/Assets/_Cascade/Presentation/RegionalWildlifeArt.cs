@@ -15,6 +15,24 @@ namespace Cascade.Presentation
             Cell(42,777,321,270,205,880),Cell(392,793,263,209,645,946),Cell(664,803,268,215,921,952),Cell(948,853,154,113,1007,944),
             Cell(27,1060,402,262,220,1200),Cell(422,1089,218,245,551,1103),Cell(660,1080,174,246,783,1100),Cell(929,1058,180,212,939,1250)
         };
+        // Measured opaque toe tips in the existing body atlases, relative to each anatomy pivot.
+        // Transparent cell padding and tail tips are not the supporting foot.
+        internal static Vector2 PerchFeet(WildlifeSpecies species)
+        {
+            switch(species){
+                case WildlifeSpecies.Swallow:return new Vector2(-0.133724f,-0.379497f);
+                case WildlifeSpecies.Robin:return new Vector2(-0.106688f,-0.421576f);
+                case WildlifeSpecies.Gull:return new Vector2(-0.183012f,-0.424670f);
+                case WildlifeSpecies.SnowBunting:return new Vector2(-0.134653f,-0.419010f);
+                case WildlifeSpecies.Goldfinch:return new Vector2(-0.096037f,-0.483299f);
+                case WildlifeSpecies.Tern:return new Vector2(-0.192775f,-0.346608f);
+                case WildlifeSpecies.Kingfisher:return new Vector2(-0.163816f,-0.408114f);
+                case WildlifeSpecies.WinterWren:return new Vector2(-0.069498f,-0.430918f);
+                case WildlifeSpecies.Bullfinch:return new Vector2(-0.046988f,-0.557229f);
+                case WildlifeSpecies.BarnOwl:return new Vector2(-0.053968f,-0.650794f);
+                default:return Vector2.zero;
+            }
+        }
         static readonly Dictionary<int,Sprite> sprites=new Dictionary<int,Sprite>();
         internal static WildlifeRigAtlas.Cell CellFor(WildlifeSpecies species,int part)
         {

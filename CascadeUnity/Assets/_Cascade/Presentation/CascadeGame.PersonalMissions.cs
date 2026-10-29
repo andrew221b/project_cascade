@@ -15,15 +15,15 @@ namespace Cascade.Presentation
     {
         static readonly string[] MissionResidents={"Bram","Pip","Rue","Sora","Neri","Toma","Lumi","Gran","Aster"};
         static readonly string[] MissionInvitations={
-            "A delivery cart broke the footbridge rail. I need parts before it returns. {0} Three harder stages.",
-            "My brother's new well has a leaking valve. Help me get a replacement to him. {0} Three harder stages.",
-            "A nest is stranded beyond the orchard path. I need a lamp for its tree. {0} Three harder stages.",
-            "A mail basket missed its landing. Help me recover it before the envelopes get wet. {0} Three harder stages.",
-            "A boat is waiting at the unlit pier. Will you bring a lamp down to it? {0} Three harder stages.",
-            "The roof needs another patch. Help me deliver the tiles before the next rain. {0} Three harder stages.",
-            "Travellers used the shelter's last fuel. Let's refill it before nightfall. {0} Three harder stages.",
-            "The spare wick has arrived below the beacon. Will you bring it up with me? {0} Three harder stages.",
-            "A cracked lens hides the eastern route. Help me deliver a new one intact. {0} Three harder stages."};
+            "The lower repair landing is dark. Light it so I can replace that loose rail. {0} It's a harder, three-stage descent.",
+            "There's another leak below the mill. I have the valve, but I need the work lamp lit to fit it. {0} It's a harder, three-stage descent.",
+            "The lamp above the outer steps is out. Help me light it so I can bring in the last seedling trays. {0} It's a harder, three-stage descent.",
+            "The mail lift has stopped with a basket below the landing. Help me restart its relay. {0} It's a harder, three-stage descent.",
+            "A boat is waiting beyond the channel. Light the far landing so I can guide it in. {0} It's a harder, three-stage descent.",
+            "Walter can patch the archive roof. He needs a light over the gutter to find the leak. {0} It's a harder, three-stage descent.",
+            "There's fuel on the supply landing, but the steps are dark. Light them and I'll restock the shelter. {0} It's a harder, three-stage descent.",
+            "The maintenance lamp below the beacon is out. Light it so Walter can check the lower joints. {0} It's a harder, three-stage descent.",
+            "Walter found a crack in the north lens bracket. Light the service landing so we can replace it. {0} It's a harder, three-stage descent."};
         Task<DescentRun> missionPlan;
         CancellationTokenSource missionCancellation;
         PersonalMissionMemory missionPlanningMemory;
@@ -37,10 +37,10 @@ namespace Cascade.Presentation
             if(missionPlan!=null)missionPlan.ContinueWith(t=>{var ignored=t.Exception;},TaskContinuationOptions.OnlyOnFaulted);
             missionPlan=null;missionPlanningMemory=null;missionSource=null;
         }
-        LevelContent MissionContent(string hash)=>Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(legacyContent).FirstOrDefault(c=>c.Definition.ContentHash==hash);
+        LevelContent MissionContent(string hash)=>Catalog.AllLevels.Concat(legacyContent).FirstOrDefault(c=>c.Definition.ContentHash==hash);
         void TickPersonalMissions()
         {
-            bool safe=CurrentScreen==GameScreen.JourneyMap&&BrowsedIsland<0&&!ConversationOpen&&!PersonalMissionActive
+            bool safe=stageVariety!=null&&CurrentScreen==GameScreen.JourneyMap&&BrowsedIsland<0&&!ConversationOpen&&!PersonalMissionActive
                 &&IntroductionAnimationAllowed&&!saveBlocked&&!HasSaveError&&!IsPlanningDescent&&!IsPlanningDirection
                 &&(profile.Completion==null||profile.Completion.Acknowledged);
             if(!safe){if(missionPlan!=null)CancelMissionPlan();return;}
@@ -55,6 +55,9 @@ namespace Cascade.Presentation
                 DescentRun run=null;
                 if(task.IsFaulted){var ignored=task.Exception;}else if(!task.IsCanceled)run=task.Result;
                 if(run==null){memory.NextAfterClears=JourneyClearCount+1;PersistProgress();return;}
+                if(profile.Variety==null)profile.Variety=new StageVarietyMemory();
+                var selected=profile.Variety.Reserve(source.Definition,PreferredMode.ToString(),source.Locale,stageVariety.Words);
+                run=stageVariety.Personalize(source.Definition,selected,run.Stages);
                 int world=JourneyStory.Zone(Catalog.PrimaryLevels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==source.Definition.CampaignNodeId));
                 memory.Present(new PersonalMissionOffer{Serial=memory.Serial+1,Hero=memory.Serial%(Mathf.Clamp(world,0,8)+1),
                     SourceHash=source.Definition.ContentHash,Locale=source.Locale,Run=run},JourneyClearCount);
@@ -71,13 +74,12 @@ namespace Cascade.Presentation
             missionSource=content;missionPlanningMemory=memory;
             missionCancellation=new CancellationTokenSource();missionCancellation.CancelAfter(TimeSpan.FromSeconds(8));
             var token=missionCancellation.Token;int serial=memory.Serial+1;string previous=memory.LastFingerprint;
-            var certificates=PublishedTriads();string catalogHash=Catalog.ContentHash;
+            var certificates=PublishedTriads();string catalogHash=Catalog.ContentHash;string mode=PreferredMode.ToString();
             missionPlan=Task.Run(async()=>{
                 var store=await certificates;token.ThrowIfCancellationRequested();
-                var reference=store?.Bind(content.Definition,content.Locale,catalogHash);
-                // A missing published baseline must not offer an easier regenerated substitute.
-                if(reference==null)return null;
-                return CampaignTriads.BuildPersonalMission(content.Definition,serial,previous,token,reference:reference,challenge:challenge);
+                if(store==null)return null;
+                var basis=StageContentBasis.Canonical(content.Definition,mode);var reference=stageVariety.CanonicalReference(content.Definition,mode);
+                return CampaignTriads.BuildPersonalMission(basis,serial,previous,token,reference:reference,challenge:challenge);
             },token);
         }
         static string MissionGoal(MechanicLesson lesson)
@@ -133,7 +135,7 @@ namespace Cascade.Presentation
             if(!PersonalMissionActive)return;
             var memory=profile.Missions;
             var saved=new PlayerProfile{Attempt=memory.CampaignAttempt,Descent=memory.CampaignDescent};
-            var restored=saved.RestoreAttempt(Catalog,legacyContent);
+            var restored=saved.RestoreAttempt(Catalog,legacyContent,stageVariety);
             var run=memory.CampaignDescent;var completion=memory.CampaignCompletion;
             bool journey=memory.CampaignJourney;bool? story=memory.CampaignStory;
             memory.ClearActive();profile.Completion=completion;

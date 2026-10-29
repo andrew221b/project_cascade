@@ -61,7 +61,7 @@ namespace Cascade.Editor.Playable
     yield return DescentReady(g);g.ReducedMotion=true;
     if(!travelOnly){
      yield return PlayableCapture.CaptureSettled("Descent","stage-devices-words-ru.png",320,693);
-     yield return DescentSolve(g);g.ShowRecords();Field(g,"recordPage",g.Rewards.Records.FindIndex(r=>r.ContentHash==g.Descent.ContentHash));Redraw(g);
+     yield return DescentSolve(g);g.ShowRecords();Redraw(g);
      yield return PlayableCapture.CaptureSettled("Descent","stage-routes-ru.png",320,693);
     }
     Debug.Log("CASCADE descent: warm-up, checkpoint, travel, wind and word finale captured");

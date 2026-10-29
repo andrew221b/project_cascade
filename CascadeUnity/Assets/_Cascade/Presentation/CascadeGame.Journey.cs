@@ -23,9 +23,14 @@ namespace Cascade.Presentation
         System.Collections.Generic.IReadOnlyList<LevelContent> JourneySequence()=>PreferredLevels();
         int NextJourneyStop()
         {
-            var sequence=JourneySequence();string next=CampaignProgress.Next(sequence.Select(c=>c.Definition.CampaignNodeId).ToArray(),sessionClears,sequence.Where(c=>c.Definition.TeachingNode>0).Select(c=>c.Definition.CampaignNodeId));
+            var sequence=PreferredLevels();string next=CampaignProgress.Next(preferredNodeIds,sessionClears,preferredTeachingNodes);
             var content=sequence.FirstOrDefault(c=>c.Definition.CampaignNodeId==next)??sequence.LastOrDefault();
-            return content==null?0:Math.Max(0,Catalog.PrimaryLevels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==content.Definition.CampaignNodeId));
+            return content==null?0:Math.Max(0,PrimaryLevelIndex(content.Definition.CampaignNodeId));
+        }
+        int PrimaryLevelIndex(string nodeId)
+        {
+            for(int i=0;i<Catalog.PrimaryLevels.Count;i++)if(Catalog.PrimaryLevels[i].Definition.CampaignNodeId==nodeId)return i;
+            return -1;
         }
         public void ShowJourney()
         {
@@ -38,6 +43,7 @@ namespace Cascade.Presentation
         }
         void ShowSelectedJourney()
         {
+            if(TryWorldCompletion())return;
             if(TryParallelArrival())return;
             if(TryWorldComic(mapPage,ShowSelectedJourney))return;
             SetScreen(GameScreen.JourneyMap);TryIslandConversation();if(!ConversationOpen)TryJourneyOpening();
@@ -76,9 +82,9 @@ namespace Cascade.Presentation
             Picture("Journey end Mika landing",menuRoot,new Vector2(.14f,.375f),new Vector2(.86f,.425f),ReferenceShopArt("PreviewPlatform"),true);
             Picture("Mika at home",menuRoot,new Vector2(.24f,.35f),new Vector2(.76f,.75f),Resources.Load<Sprite>("CascadeArt/Journey/Mika"),true);
             ReadingStrip("Journey ending",new Vector2(.055f,.19f),new Vector2(.945f,.37f),ReferenceCopy(
-                "Mika brought the light home. Her friends lit a new path.",
-                "Мика вернула свет домой. Друзья осветили новый путь.",
-                "Міка повернула світло додому. Друзі освітили новий шлях."),16,true);
+                "Rin takes the first watch. Ada keeps the log; Felix joins the repair crew. The north has lamps at last.",
+                "Первая вахта Рин. Ада ведёт журнал, Феликс чинит огни под присмотром Вальтера. На севере больше не темно.",
+                "Перша варта Рін. Ада веде журнал, Фелікс лагодить вогні під наглядом Вальтера. На півночі більше не темно."),16,true);
             MenuButton("Look at our journey",.13f,ShowJourney,true);MenuButton("My things",.025f,ShowTravelBag);
         }
         void BeginJourney(int index)
@@ -92,7 +98,8 @@ namespace Cascade.Presentation
             if(!RemembersStory(opener.Receipt)){OpenConversation(opener,"Continue",()=>BeginJourney(index));return;}
             var aside=StoryConversations.HasLevelAside(index)?StoryConversations.LevelAside(index):null;
             if(aside!=null&&!RemembersStory(aside.Receipt)){OpenConversation(aside,"Continue",()=>BeginJourney(index));return;}
-            if(!RemembersStory(JourneyStory.PageFor(JourneyStory.WorldFirst(JourneyStory.Zone(index)))))OpenJourneyStory(index,true);else EnterJourneyPuzzle();
+            // The island opening already supplies this scene; the legacy page would repeat it.
+            EnterJourneyPuzzle();
         }
         void OpenJourneyStory(int index,bool enterAfter)
         {
@@ -116,7 +123,7 @@ namespace Cascade.Presentation
         {
             if(PersonalMissionActive){RestorePersonalCampaign(false);if(HasSaveError)return;}
             if(!DescentRun.CanDescend(source))throw new ArgumentException("A campaign puzzle is required.",nameof(source));
-            StartDescentLevel(source,locale);
+            StartDescentLevel(source,locale,stageMode:PreferredMode);
             descentTravel=true;
             journeyActive=true;PersistProgress();
         }

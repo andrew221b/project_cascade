@@ -119,14 +119,18 @@ namespace Cascade.Tests
             Position(.8f);Pulse(.5f);Assert.That(source.panStereo,Is.GreaterThan(.3f));float near=source.volume;
             Position(.8f,10);picture.color=new Color(1,1,1,.4f);Pulse(.25f);Assert.That(source.volume,Is.LessThan(near*.6f));
             picture.enabled=false;Pulse(.3f);Assert.That(Voices.All(s=>!s.isPlaying&&s.volume==0),Is.True);
-            picture.enabled=true;Position(1.2f);Pulse(4);Assert.That(Feedback.ActiveWildlifeVoices,Is.Zero);Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));yield return null;
+            picture.enabled=true;Position(1.2f);Pulse(4);
+            Assert.That(source.volume==0||source.clip.name.StartsWith("Songbird"),Is.True);
+            Assert.That(Voices.Where(v=>v.isPlaying).All(v=>!v.loop&&v.clip.name.StartsWith("Songbird")),Is.True,"Only the quiet distant birds remain outside the viewport");
+            Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));yield return null;
         }
         [UnityTest] public IEnumerator InsectsUseTheirActualFlightOrRestStateWithoutInventedButterflySounds()
         {
             actor.SetSpecies(WildlifeSpecies.Bumblebee);Pulse(1.5f);Assert.That(Voices.Count(s=>s.isPlaying&&s.loop&&s.clip.name=="Bumblebee"),Is.EqualTo(1));
             actor.Resting=true;Pulse(.4f);Assert.That(Feedback.ActiveWildlifeVoices,Is.Zero);
             foreach(var species in new[]{WildlifeSpecies.Butterfly,WildlifeSpecies.LunaMoth,WildlifeSpecies.Dragonfly}){
-                actor.SetSpecies(species);Pulse(8);Assert.That(Feedback.ActiveWildlifeVoices,Is.Zero,species.ToString());
+                actor.SetSpecies(species);Pulse(8);
+                Assert.That(Voices.Where(v=>v.isPlaying).All(v=>!v.loop&&v.clip.name.StartsWith("Songbird")),Is.True,"Silent insect adds no voice of its own: "+species);
             }
             actor.SetSpecies(WildlifeSpecies.FieldCricket);actor.Resting=false;Pulse(6);Assert.That(Cricket.isPlaying,Is.False);
             actor.Resting=true;Pulse(4.7f);Assert.That(Cricket.isPlaying,Is.True);Assert.That(Cricket.panStereo,Is.LessThan(-.3f));
@@ -142,6 +146,58 @@ namespace Cascade.Tests
             Pulse(14);game.Interaction.SetSuspended(true);yield return null;Assert.That(Feedback.ActiveWildlifeVoices,Is.Zero,"Native ad suspension silences live fauna");
             game.Interaction.SetSuspended(false);Pulse(14);Invoke("AudioConfigurationChanged",true);yield return null;Assert.That(Feedback.ActiveWildlifeVoices,Is.Zero,"Device reset has a quiet re-entry");
             Pulse(14);Feedback.enabled=false;Assert.That(Feedback.ActiveWildlifeVoices,Is.Zero);Feedback.enabled=true;yield return null;Assert.That(Feedback.ActiveWildlifeVoices,Is.Zero);
+        }
+        [UnityTest] public IEnumerator SongbirdPhrasesComeInReadableBurstsWithNaturalBreathingRoom()
+        {
+            actor.Resting=true;var clips=new HashSet<AudioClip>();int calls=0;float last=-100,maxGap=0;
+            int owned=Feedback.GetComponentsInChildren<AudioSource>().Length;
+            for(int step=0;step<1200;step++){
+                Pulse(.05f);
+                foreach(var voice in Voices)if(voice.isPlaying){
+                    calls++;clips.Add(voice.clip);float at=step*.05f;if(last>=0)maxGap=Mathf.Max(maxGap,at-last);last=at;
+                    // Advance the scheduler with a completed recording, not wall-clock waiting.
+                    voice.Stop();
+                }
+            }
+            Assert.That(calls,Is.InRange(10,24));Assert.That(clips.Count,Is.GreaterThanOrEqualTo(4));
+            Assert.That(maxGap,Is.LessThan(10));Assert.That(Feedback.GetComponentsInChildren<AudioSource>().Length,Is.EqualTo(owned));
+            Assert.That(Voices.Length,Is.EqualTo(2));yield return null;
+        }
+        [UnityTest] public IEnumerator EmptySkyKeepsQuietDistantAnswersAndSuspensionStopsThem()
+        {
+            actor.enabled=false;Invoke("StopWildlifeAudio");
+            int owned=Feedback.GetComponentsInChildren<AudioSource>().Length;var clips=new HashSet<AudioClip>();
+            bool left=false,right=false;int calls=0;float last=-100,maxGap=0;
+            for(int step=0;step<1200;step++){
+                Pulse(.05f);
+                foreach(var voice in Voices)if(voice.isPlaying){
+                    calls++;clips.Add(voice.clip);left|=voice.panStereo<-.2f;right|=voice.panStereo>.2f;
+                    float at=step*.05f;if(last>=0)maxGap=Mathf.Max(maxGap,at-last);last=at;voice.Stop();
+                }
+            }
+            Assert.That(calls,Is.InRange(9,22));Assert.That(clips.Count,Is.GreaterThanOrEqualTo(4));
+            Assert.That(left&&right,Is.True);Assert.That(maxGap,Is.LessThan(10));
+            Assert.That(Feedback.AmbientBirdCallsStarted,Is.GreaterThanOrEqualTo(calls));
+            Assert.That(Feedback.GetComponentsInChildren<AudioSource>().Length,Is.EqualTo(owned));
+            Pulse(10);Pulse(.05f,false);Assert.That(Feedback.ActiveWildlifeVoices,Is.Zero);
+            Pulse(.5f);Assert.That(Feedback.ActiveWildlifeVoices,Is.Zero,"Quiet re-entry after suspension");
+            game.OpenWorldComic(0);Pulse(15);Assert.That(Feedback.ActiveWildlifeVoices,Is.Zero,"Reading remains quiet");
+            yield return null;
+        }
+        [UnityTest] public IEnumerator NewRobinAndWrenRecordingsAreDistinctSmallMonoPhrases()
+        {
+            int samples=0;var hashes=new HashSet<int>();
+            foreach(string name in new[]{"SongbirdRobinC","SongbirdRobinD","SongbirdWrenC","SongbirdWrenD"}){
+                var clip=Resources.Load<AudioClip>("CascadeArt/Audio/Wildlife/"+name);Assert.That(clip,Is.Not.Null);
+                yield return Await(()=>clip.loadState==AudioDataLoadState.Loaded,name);
+                Assert.That(clip.channels,Is.EqualTo(1));Assert.That(clip.frequency,Is.EqualTo(32000));
+                Assert.That(clip.loadType,Is.EqualTo(AudioClipLoadType.DecompressOnLoad));Assert.That(clip.length,Is.InRange(2,3));
+                var pcm=new float[clip.samples];Assert.That(clip.GetData(pcm,0),Is.True);
+                Assert.That(pcm.All(v=>!float.IsNaN(v)&&!float.IsInfinity(v)&&Math.Abs(v)<.99f),Is.True);
+                int hash=17;for(int i=0;i<pcm.Length;i+=37)unchecked{hash=hash*31+(int)(pcm[i]*32767);}
+                Assert.That(hashes.Add(hash),Is.True);samples+=clip.samples;
+            }
+            Assert.That(samples*4,Is.LessThan(1300*1024));
         }
         [UnityTest] public IEnumerator LiveMenuAndGameplayActorsRegisterWithoutGrowingAudioVoices()
         {

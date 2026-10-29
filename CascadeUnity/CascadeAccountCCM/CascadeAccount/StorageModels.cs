@@ -14,6 +14,7 @@ public sealed class CloudSyncReply
     public string PackedAccount { get; set; }
     public bool EconomyConflict { get; set; }
     public string Error { get; set; }
+    public string RewardId { get; set; }
     public long LastSequence { get; set; }
 }
 

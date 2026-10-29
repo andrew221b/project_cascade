@@ -17,7 +17,7 @@ namespace Cascade.Persistence
         public long Sequence,Revision;
         public string RequestId,PendingJson,BaseJson,LastSyncUtc;
         public string AuthenticationProfile="default",AccountCandidateProfile;
-        public bool EconomyConflict,AccountLoadPending,SignedOut;
+        public bool EconomyConflict,AccountLoadPending,SignedOut,DeletionPending,LocalDeletionRequired;
         public bool RetireRejectedProgress(string error)
         {
             if(error!="UnverifiedProgress"||PendingJson==null)return false;

@@ -45,10 +45,16 @@ namespace Cascade.Tests
             game.SendMessage("OnApplicationFocus",true);game.SendMessage("OnApplicationPause",false);game.Feedback.MusicEnabled=game.Feedback.SoundEnabled=false;game.Preferences.Tutorials=false;
             foreach(var content in game.Catalog.PrimaryLevels.GroupBy(c=>c.Definition.CampaignNodeId).Select(g=>g.First()).Take(9))
                 Profile.Clears.Add(new ClearReceipt{CampaignNodeId=content.Definition.CampaignNodeId,AttemptId=Guid.NewGuid().ToString("D"),ContentHash=content.Definition.ContentHash});
-            Profile.Rewards.Synchronize(Profile.Clears.Select(c=>c.CampaignNodeId));game.AdProvider.UseLocalPreviewForReview(true);yield return null;
+            Profile.Rewards.Synchronize(Profile.Clears.Select(c=>c.CampaignNodeId));game.AdProvider.UseLocalPreviewForReview(true);
+            foreach(var parcel in Profile.Rewards.Parcels){
+                var context=new AdContext{Surface=AdSurface.Inventory,CoreAccepted=true,PrivacyReady=true,ProviderEnabled=true,RewardSubject=MonetizationLedger.ParcelSubject(parcel.Order)};
+                var ticket=game.Monetization.TryRewarded(context,"parcel_open",true);game.Monetization.Opened(ticket.Id);
+                Assert.That(game.Monetization.RewardConfirmed(ticket.Id,"fixture_open_"+parcel.Order,true),Is.True);game.Monetization.Closed(ticket.Id);
+            }
+            yield return null;
         }
         [UnityTearDown] public IEnumerator Teardown(){if(game!=null){UnityEngine.Object.Destroy(game.gameObject);yield return null;}CascadeGame.EditorProfileDirectory=null;UnityEngine.Application.runInBackground=background;if(Directory.Exists(directory))Directory.Delete(directory,true);}
-        [UnityTest] public IEnumerator EntryAutomaticallyOpensButOnlyClaimCommitsInventory()
+        [UnityTest] public IEnumerator VerifiedVideoEntryOpensButOnlyClaimCommitsInventory()
         {
             game.ShowTravelBag();game.ShowParcel();Assert.That(Claim.interactable,Is.False);Assert.That(Profile.Rewards.Parcels[0].Claimed,Is.False);
             View.SetReviewPose(ParcelRevealView.RevealDuration);yield return null;Assert.That(Claim.interactable,Is.True);Assert.That(Profile.Rewards.Parcels[0].Claimed,Is.False);

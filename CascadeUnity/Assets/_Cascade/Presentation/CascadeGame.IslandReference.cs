@@ -32,8 +32,8 @@ namespace Cascade.Presentation
             var scrollRoot=ReferenceRect("Island level scroll",stage,73,390,572,stage.rect.height-396);
             var scroll=scrollRoot.gameObject.AddComponent<ScrollRect>();scroll.horizontal=false;scroll.vertical=true;scroll.inertia=true;scroll.decelerationRate=.12f;scroll.elasticity=.1f;scroll.movementType=ScrollRect.MovementType.Elastic;scroll.scrollSensitivity=30;
             var viewport=Rect("Island level viewport",scrollRoot,Vector2.zero,Vector2.one);Background(viewport,Color.white,true);viewport.gameObject.AddComponent<Mask>().showMaskGraphic=false;
-            var list=Rect("Island levels",viewport,new Vector2(0,1),Vector2.one);list.pivot=new Vector2(.5f,1);list.sizeDelta=new Vector2(0,stops.Length*123+7);
-            var layout=list.gameObject.AddComponent<VerticalLayoutGroup>();layout.padding=new RectOffset(12,12,0,12);layout.spacing=5;layout.childControlWidth=layout.childControlHeight=layout.childForceExpandWidth=true;layout.childForceExpandHeight=false;
+            var list=Rect("Island levels",viewport,new Vector2(0,1),Vector2.one);list.pivot=new Vector2(.5f,1);list.sizeDelta=new Vector2(0,stops.Length*123-5+IslandLevelLayout.EndOfListGap);
+            var layout=list.gameObject.AddComponent<VerticalLayoutGroup>();layout.padding=new RectOffset(12,12,0,IslandLevelLayout.EndOfListGap);layout.spacing=5;layout.childControlWidth=layout.childControlHeight=layout.childForceExpandWidth=true;layout.childForceExpandHeight=false;
             foreach(int stop in stops)DrawReferenceIslandLevel(stop,list,fit);
             scroll.viewport=viewport;scroll.content=list;
             var track=ReferenceRect("Island scroll track",stage,642,429,44,655);track.pivot=Vector2.one*.5f;track.anchoredPosition=new Vector2(664,-756.5f);
@@ -74,7 +74,7 @@ namespace Cascade.Presentation
             var action=ReferenceButton("Island action "+(stop+1),body,414,13,113,88,()=>ReplayJourneyLevel(stop));action.interactable=row.interactable;
             var actionBody=ReferenceButtonBody(action);var face=ReferencePicture("Island compact shared action skin",actionBody,ReferenceShopArt(cleared?"AmberAction":open?"GreenAction":"GrayAction"),0,0,113,88,false);face.type=Image.Type.Sliced;face.pixelsPerUnitMultiplier=2.8f;
             action.targetGraphic=face;action.transition=Selectable.Transition.ColorTint;var colors=action.colors;colors.normalColor=colors.highlightedColor=Color.white;colors.pressedColor=new Color(.93f,.97f,.90f);colors.disabledColor=Color.white;action.colors=colors;
-            var surface=ReferenceRect("Island action centred contents",actionBody,14,10,85,68);RectTransform glyph;
+            var surface=ReferenceRect("Island action centred contents",actionBody,8,8,97,72);RectTransform glyph;
             if(open){
                 glyph=ReferenceRect("Island action glyph",surface,38,8,37,37);glyph.gameObject.AddComponent<PauseGlyphGraphic>().Configure(cleared?2:3);
             }else glyph=ReferencePicture("Island action lock",surface,MapReferenceArt("Lock"),39,6,35,37).rectTransform;

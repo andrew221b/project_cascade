@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from = "https://flyingladders.netlify.app/*"
+  to = "https://flyingladders.vickand.com/:splat"
+  status = 301
+  force = true

@@ -21,7 +21,7 @@ namespace Cascade.Presentation
                 ReferencePicture("Trophy Mika preview",stage,HomeArt("Mika"),164,263,394,542);
                 ReferenceText("empty collection",stage,"No trophies yet",117,860,484,70,34);
                 var open=ReferenceButton("Find trophies in shop",stage,127,976,466,112,()=>{ShowShop();SelectShopTab(1);},"GreenAction");
-                ReferenceText("empty collection action",ReferenceButtonBody(open),"Find in shop",25,18,416,75,38,true);
+                ReferenceText("empty collection action",ReferenceButtonBody(open),"Shop",25,18,416,75,38,true);
                 return;
             }
             int selected=Array.IndexOf(owned,ShopCatalog.TrophyIds[Mathf.Clamp(shopItem,0,ShopCatalog.TrophyIds.Length-1)]);
@@ -81,7 +81,7 @@ namespace Cascade.Presentation
                 var tile=ReferencePicture("Reference shop collection tile "+id,stage,ReferenceShopArt(current?"SelectedCard":"Card"),x-(current?9:0),1105-(current?9:0),112+(current?18:0),112+(current?18:0),false);
                 tile.type=Image.Type.Sliced;tile.pixelsPerUnitMultiplier=current?9:7;
                 var button=ReferenceButton("Shop object "+index,stage,x,1105,112,112,()=>SelectShopItem(index));
-                ReferencePicture("Catalogue object",ReferenceButtonBody(button),TrophyArt(index),13,13,86,86);
+                CataloguePicture(ReferenceButtonBody(button),TrophyArt(index),13,13,86,86,id);
                 if(TrophyEquipped(id)){
                     var tag=ReferenceRect("Reference shop applied ribbon",ReferenceButtonBody(button),5,76,102,31);tag.pivot=new Vector2(.5f,.5f);tag.anchoredPosition=new Vector2(56,-91.5f);tag.localRotation=Quaternion.Euler(0,0,13);
                     var label=ReferencePicture("Reference shop applied ribbon face",tag,ReferenceShopArt("PurchasedRibbon"),0,0,102,31,false);label.type=Image.Type.Sliced;label.pixelsPerUnitMultiplier=8;

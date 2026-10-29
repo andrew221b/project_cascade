@@ -7,10 +7,9 @@ namespace Cascade.Presentation
     {
         struct Island {public RectTransform Rect;public Vector2 Rest;public int Index;}
         struct Stem {public RectTransform Rect;public float Angle;public bool Flower;public int Corner;public Vector2 Rest;}
-        readonly List<Island> islands=new List<Island>();readonly List<Stem> stems=new List<Stem>();readonly List<MapRopeBridge> bridges=new List<MapRopeBridge>();
-        CascadeGame game;RectTransform backdrop,header;readonly Vector3[] frameCorners=new Vector3[4];MapIslandLight light;Material grayscale,bridgeMaterial,contourMaterial;float clock;
+        readonly List<Island> islands=new List<Island>();readonly List<Stem> stems=new List<Stem>();
+        CascadeGame game;RectTransform backdrop,header;readonly Vector3[] frameCorners=new Vector3[4];MapIslandLight light;Material grayscale,contourMaterial;float clock;
         public float AnimationAge=>clock;
-        public IReadOnlyList<MapRopeBridge> Bridges=>bridges;
 #if UNITY_EDITOR
         bool review;public void SetReviewAge(float age){review=true;clock=age;PaintNow();}public void EndReview(){review=false;}
 #endif
@@ -18,11 +17,10 @@ namespace Cascade.Presentation
         public void BindHeader(RectTransform row){header=row;}
         public void BindIsland(RectTransform root,int index)=>islands.Add(new Island{Rect=root,Rest=root.anchoredPosition,Index=index});
         public void BindStem(RectTransform root,float rest,bool flower,int corner=-1)=>stems.Add(new Stem{Rect=root,Angle=rest,Flower=flower,Corner=corner,Rest=root.anchoredPosition});
-        public void BindBridge(MapRopeBridge bridge){bridges.Add(bridge);if(bridgeMaterial==null){bridgeMaterial=new Material(Resources.Load<Shader>("CascadeArt/MapReferenceOct14/IslandGrayscale")){name="Natural pale wood bridge"};bridgeMaterial.SetFloat("_Saturation",.72f);}bridge.material=bridgeMaterial;bridge.color=new Color(.87f,.80f,.70f,1);}
         public void BindLight(MapIslandLight glow){light=glow;glow.raycastTarget=false;}
-        public void BindContour(Image image){contourMaterial=new Material(Resources.Load<Shader>("CascadeArt/MapMikaHalo")){name="Active island living green contour"};contourMaterial.SetVector("_GlowStep",new Vector4(.019f,.019f,0,0));contourMaterial.SetColor("_Color",new Color(.58f,1,.18f,.40f));image.material=contourMaterial;}
+        public void BindContour(Image image){contourMaterial=new Material(Resources.Load<Shader>("CascadeArt/MapMikaHalo")){name="Active island living green contour"};contourMaterial.SetVector("_GlowStep",new Vector4(.032f,.032f,0,0));contourMaterial.SetColor("_Color",new Color(.20f,1,.23f,.76f));image.material=contourMaterial;}
         public void Desaturate(Image image){if(grayscale==null)grayscale=new Material(Resources.Load<Shader>("CascadeArt/MapReferenceOct14/IslandGrayscale")){name="Locked island grayscale"};image.material=grayscale;}
-        void OnDestroy(){if(grayscale!=null)Destroy(grayscale);if(bridgeMaterial!=null)Destroy(bridgeMaterial);if(contourMaterial!=null)Destroy(contourMaterial);}
+        void OnDestroy(){if(grayscale!=null)Destroy(grayscale);if(contourMaterial!=null)Destroy(contourMaterial);}
         void LateUpdate(){
 #if UNITY_EDITOR
             if(review)return;
@@ -46,35 +44,10 @@ namespace Cascade.Presentation
                 header.anchoredPosition=new Vector2(0,safeTop-Mathf.Min(48,Mathf.Max(0,safeTop)*.5f));
             }
             for(int i=0;i<stems.Count;i++){var stem=stems[i];if(stem.Rect!=null)stem.Rect.anchoredPosition=stem.Rest+(stem.Corner==0?topLeft:stem.Corner==1?topRight:stem.Corner==2?bottomLeft:stem.Corner==3?bottomRight:Vector2.zero);if(stem.Rect!=null)stem.Rect.localRotation=Quaternion.Euler(0,0,stem.Angle+(quiet?0:(Mathf.Sin(t*.77f+i*1.4f)+.34f*Mathf.Sin(t*1.63f+i))*(stem.Flower?1.8f:2.3f)));}
-            if(contourMaterial!=null)contourMaterial.SetColor("_Color",new Color(.58f,1,.18f,.40f*(quiet?1:1+.12f*Mathf.Sin(t*1.6f))));light?.Pose(t,quiet);foreach(var bridge in bridges)bridge.RefreshEndpoints();
+            if(contourMaterial!=null)contourMaterial.SetColor("_Color",new Color(.20f,1,.23f,.76f*(quiet?1:1+.24f*Mathf.Sin(t*1.6f))));light?.Pose(t,quiet);
         }
     }
     public sealed partial class CascadeGame {internal bool MapMotionStill=>ReducedMotion||Preferences.EffectQuality==0;}
-    public readonly struct MapBridgeRoute
-    {
-        public readonly int From,To;public readonly Vector2 FromPoint,ToPoint;public readonly float Sag;
-        public MapBridgeRoute(int from,Vector2 fromPoint,int to,Vector2 toPoint,float sag){From=from;To=to;FromPoint=fromPoint;ToPoint=toPoint;Sag=sag;}
-    }
-    [RequireComponent(typeof(CanvasRenderer))]
-    public sealed class MapRopeBridge:MaskableGraphic
-    {
-        RectTransform from,to;Vector2 fromPoint,toPoint,sourceStart,sourceEnd;Sprite artwork;Vector2 a,b;float deckWidth;
-        public Vector2 StartPoint=>a;public Vector2 EndPoint=>b;
-        public float AttachmentError=>Mathf.Max(Vector2.Distance(a,Endpoint(from,fromPoint)),Vector2.Distance(b,Endpoint(to,toPoint)));
-        public override Texture mainTexture=>artwork==null?base.mainTexture:artwork.texture;
-        public void Initialize(RectTransform[] islands,MapBridgeRoute route,Sprite drawing,int index){from=islands[route.From];to=islands[route.To];fromPoint=route.FromPoint;toPoint=route.ToPoint;artwork=drawing;sourceStart=WorldFrameArt.BridgeStart[index];sourceEnd=WorldFrameArt.BridgeEnd[index];deckWidth=index==3?.68f:1.3f;raycastTarget=false;RefreshEndpoints();}
-        Vector2 Endpoint(RectTransform island,Vector2 offset)=>rectTransform.InverseTransformPoint(island.TransformPoint(new Vector2(island.rect.xMin+offset.x,island.rect.yMax-offset.y)));
-        public void RefreshEndpoints(){if(from==null||to==null)return;var x=Endpoint(from,fromPoint);var y=Endpoint(to,toPoint);if((a-x).sqrMagnitude+(b-y).sqrMagnitude>1e-10f)SetVerticesDirty();a=x;b=y;}
-        // One uniform rotation/scale preserves the authored deck, rope and perspective.
-        // Its two measured landings follow the same live island anchors every frame.
-        protected override void OnPopulateMesh(VertexHelper vh){
-            vh.Clear();if(artwork==null||from==null||to==null)return;
-            var size=artwork.rect.size;var sourceDelta=Vector2.Scale(sourceEnd-sourceStart,size);float length=sourceDelta.magnitude;if(length<1)return;
-            var along=sourceDelta/length;var across=new Vector2(-along.y,along.x);var target=b-a;float scale=target.magnitude/length;var direction=target.normalized;var normal=new Vector2(-direction.y,direction.x);var sr=artwork.textureRect;var tex=artwork.texture;
-            void Vertex(float u,float v){var delta=Vector2.Scale(new Vector2(u,v)-sourceStart,size);var p=a+(direction*Vector2.Dot(delta,along)+normal*Vector2.Dot(delta,across)*deckWidth)*scale;vh.AddVert(p,color,new Vector2((sr.x+u*sr.width)/tex.width,(sr.y+v*sr.height)/tex.height));}
-            Vertex(0,0);Vertex(0,1);Vertex(1,1);Vertex(1,0);vh.AddTriangle(0,1,2);vh.AddTriangle(0,2,3);
-        }
-    }
     [RequireComponent(typeof(CanvasRenderer))]
     public sealed class MapIslandLight:MaskableGraphic
     {
@@ -98,8 +71,24 @@ namespace Cascade.Presentation
     [RequireComponent(typeof(CanvasRenderer))]
     public sealed class MapModeGlyphs:MaskableGraphic
     {
+        bool mixed;
+        public void Configure(bool mixedSymbols){mixed=mixedSymbols;raycastTarget=false;SetVerticesDirty();}
         protected override void OnPopulateMesh(VertexHelper vh){vh.Clear();var r=rectTransform.rect;
             void Polygon(params Vector2[] points){int n=vh.currentVertCount;foreach(var p in points)vh.AddVert(r.min+Vector2.Scale(r.size,p),color,Vector2.zero);for(int i=1;i<points.Length-1;i++)vh.AddTriangle(n,n+i,n+i+1);}
-            var circle=new Vector2[25];for(int i=0;i<25;i++){float a=i*Mathf.PI*2/24;circle[i]=new Vector2(.13f+Mathf.Cos(a)*.105f,.5f+Mathf.Sin(a)*.43f);}Polygon(circle);Polygon(new Vector2(.365f,.07f),new Vector2(.5f,.94f),new Vector2(.635f,.07f));Polygon(new Vector2(.765f,.07f),new Vector2(.98f,.07f),new Vector2(.98f,.93f),new Vector2(.765f,.93f));}
+            var circle=new Vector2[25];for(int i=0;i<25;i++){float a=i*Mathf.PI*2/24;circle[i]=new Vector2(.13f+Mathf.Cos(a)*.43f*r.height/r.width,.5f+Mathf.Sin(a)*.43f);}Polygon(circle);
+            if(mixed){
+                // Match the circle and heart to the painted height of the Shapes row.
+                var heart=new Vector2[49];
+                for(int i=0;i<heart.Length;i++){
+                    float t=Mathf.PI+i*Mathf.PI*2/(heart.Length-1),x=16*Mathf.Pow(Mathf.Sin(t),3);
+                    float y=13*Mathf.Cos(t)-5*Mathf.Cos(2*t)-2*Mathf.Cos(3*t)-Mathf.Cos(4*t);
+                    heart[i]=new Vector2(.8725f+x/32*.86f*r.height/r.width,.07f+(y+17)/29*.86f);
+                }
+                Polygon(heart);
+            }else{
+                Polygon(new Vector2(.365f,.07f),new Vector2(.5f,.94f),new Vector2(.635f,.07f));
+                Polygon(new Vector2(.765f,.07f),new Vector2(.98f,.07f),new Vector2(.98f,.93f),new Vector2(.765f,.93f));
+            }
+        }
     }
 }

@@ -33,7 +33,7 @@ namespace Cascade.Presentation
         {
             if(descent!=null)return DescentPublishedSource();
             var attempt=Interaction.Attempt;string hash=attempt.Direction?.SourceHash??attempt.PinnedContentHash;
-            return Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(legacyContent)
+            return Catalog.AllLevels.Concat(legacyContent)
                 .FirstOrDefault(c=>c.Definition.PuzzleId==attempt.Level.PuzzleId&&c.Definition.ContentHash==hash)?.Definition;
         }
         public void LoadDirectedLevel(LevelDefinition source,string locale,DeliveryMood mood)

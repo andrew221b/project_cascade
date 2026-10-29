@@ -35,6 +35,11 @@ namespace Cascade.Presentation
             receiverSkin.transform.position+=ReceiverPointOffset(receiverSkin.transform.position);
             receiverSkin.transform.rotation=Quaternion.Euler(0,0,ReceiverAngle);receiverSkin.transform.localScale=new Vector3(scale,scale,1);
             var sliceSize=new Vector2(size.x*1.10f/scale,height/scale);if(receiverSkin.size!=sliceSize)receiverSkin.size=sliceSize;
+            if(receiverSkin.sprite==GameplayReferenceArt.Sprite("ReceiverTray"))for(int side=0;side<2;side++){
+                var knot=receiverKnots[side];if(knot==null)continue;float sign=side==0?-1:1;
+                var point=new Vector3(skinCorners[0].x+size.x*.5f+sign*(size.x*.55f-57f/499f*height),skinCorners[0].y+size.y*.53f+(.5f-244f/499f)*height,knot.basePosition.z);
+                knot.basePosition=point;knot.transform.position=point+ReceiverPointOffset(point);
+            }
         }
         void DisposeReceiverFrame(){if(receiverSkinMaterial!=null)Destroy(receiverSkinMaterial);}
     }

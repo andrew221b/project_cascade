@@ -229,8 +229,9 @@ namespace Cascade.Presentation
                 float envelope=Mathf.Sin(q*Mathf.PI);envelope*=envelope;
                 float angle=q*Mathf.PI*2+(seed>.68f?Mathf.Sin(q*Mathf.PI*2)*.35f:0);
                 bool mapGutter=Mathf.Abs(d.x-a.x)<.12f&&Mathf.Abs(b.x)>.32f;
-                float radius=crossing?Mathf.Lerp(.29f,.37f,seed):mapGutter?.013f:Mathf.Lerp(.11f,.19f,seed);
-                float rise=style==WildlifeFlightStyle.SoaringBird?.12f:.085f;
+                bool bird=style==WildlifeFlightStyle.SmallBird||style==WildlifeFlightStyle.SoaringBird||style==WildlifeFlightStyle.Owl;
+                float radius=bird?0:crossing?Mathf.Lerp(.035f,.060f,seed):mapGutter?.008f:Mathf.Lerp(.025f,.045f,seed);
+                float rise=bird?.025f:.035f;
                 float direction=d.x<a.x?-1:1;
                 point+=new Vector3(direction*radius*Mathf.Sin(angle)*envelope,
                     (seed<.55f?1:-1)*rise*(1-Mathf.Cos(angle))*envelope,0);

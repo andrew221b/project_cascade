@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Cascade.Application;
 using Cascade.Content;
 using Cascade.Domain;
+using Cascade.Persistence;
 using Cascade.Solver;
 using TMPro;
 using UnityEngine;
@@ -68,9 +69,13 @@ namespace Cascade.Presentation
             ?? throw new InvalidOperationException("Missing CASCADE content: " + name);
         void Awake()
         {
+            AndroidBackBridge.Register();
             ReadProfile();
+            InitializeAudiencePolicy();
             InitializeUiLanguage();
             Catalog = ContentImporter.Import(Source("levels"), Source("localized_levels"), Source("words_en"), Source("words_ru"), Source("words_uk"),Source("campaign_extension"));
+            string stageWords=Source("stage_words_v1"),stageTemplates=Source("stage_variety_templates_v1"),stageRecipes=Source("production_triad_recipes");
+            stageVarietyReady=System.Threading.Tasks.Task.Run(()=>new StageVarietyStore(stageWords,stageTemplates,stageRecipes));
             art = ToyArt.Load(); font = art.bodyFont;
             if (uiCamera == null) uiCamera = Camera.main;
             machine = gameObject.AddComponent<ToyMachineView>(); machine.Initialize(art, uiCamera);
@@ -78,7 +83,8 @@ namespace Cascade.Presentation
             feedback = gameObject.AddComponent<ToyFeedbackPool>(); feedback.Initialize(this, art, motion);
             eventPlayer = gameObject.AddComponent<PuzzleEventPlayer>(); eventPlayer.Initialize(this, motion, feedback);
             gameObject.AddComponent<PhoneShakeFeedback>().Initialize(this);
-            BuildScreen();BuildControlArt();BuildFieldTools(); LoadNode(initialNode); BuildFlow(); RestoreProfile();InitializeLocalReminders();InitializeCloudSave();InitializeMonetization();
+            BuildScreen();BuildControlArt();BuildFieldTools(); LoadNode(initialNode); BuildFlow(); RestoreProfile();InitializeLocalReminders();InitializeAudienceServices();
+            StartCoroutine(WarmJourneyResources());
         }
         void OnEnable() { disabling=false;if (Interaction != null) { ResumeDirectionWork();ResumeDescentWork();if(!preparation.IsReady&&!preparation.IsPending)BeginPreparation(); Interaction.SetSuspended(nativeAdSuspended||applicationPaused || !applicationFocused||landscapeLayoutBlocked); RenderState(); } }
         void OnDisable()
@@ -86,26 +92,26 @@ namespace Cascade.Presentation
             if (Interaction == null) { disabling = true; feedback?.ClearTails(); return; }
             disabling=true;CloseLegalDocument();CancelConversation();
             CloseLandingPreview();ResetMechanicDiscovery();
-            PersistProgress(true);
+            PersistLifecycleProgress();
             SettleDescent();CancelDescentWork(true);CancelDirectionWork(true);
             EndTokenHold(); CancelHint(); CancelDeadEnd(); preparation.Cancel(); StopPresentation(); Interaction?.SetSuspended(true); feedback?.ClearTails();
         }
-        void OnDestroy() { CancelMissionPlan(); DisposeCloudSave(); DisposeMikaCosmetics();DisposeScreenCosmetics();DisposeConversationArt(); mechanicArrival?.Kill();previewArrival?.Kill();coinArrival?.Kill();if(introBranch!=null)Destroy(introBranch);if(purchaseStore!=null)purchaseStore.Changed-=NotifyStoreChanged;DisposeNavigationArt();if(treasureArt!=null)foreach(var sprite in treasureArt)if(sprite!=null)Destroy(sprite);if(travelArt!=null)foreach(var sprite in travelArt)if(sprite!=null)Destroy(sprite);DisposeCompletionArt();DisposePlatformProps(); preparation.Dispose(); if (Interaction != null) Interaction.Committed -= OnCommitted; if(glyphMaterial!=null)Destroy(glyphMaterial);if(tutorialOverlayMaterial!=null)Destroy(tutorialOverlayMaterial);if(toolSilhouette!=null)Destroy(toolSilhouette);foreach(var sprite in toolBodySprites.Values)if(sprite!=null)Destroy(sprite);foreach(var sprite in enamelControls)if(sprite!=null)Destroy(sprite); }
+        void OnDestroy() { AndroidBackBridge.Shutdown();CancelMissionPlan(); DisposeCloudSave(); DisposeMikaCosmetics();DisposeScreenCosmetics();DisposeConversationArt(); mechanicArrival?.Kill();previewArrival?.Kill();coinArrival?.Kill();if(introBranch!=null)Destroy(introBranch);if(purchaseStore!=null){purchaseStore.Changed-=NotifyStoreChanged;purchaseStore.CoinsGranted-=QueuePurchasedCoins;}DisposeNavigationArt();if(treasureArt!=null)foreach(var sprite in treasureArt)if(sprite!=null)Destroy(sprite);if(travelArt!=null)foreach(var sprite in travelArt)if(sprite!=null)Destroy(sprite);DisposeCompletionArt();DisposePlatformProps(); preparation.Dispose(); if (Interaction != null) Interaction.Committed -= OnCommitted; if(glyphMaterial!=null)Destroy(glyphMaterial);if(tutorialOverlayMaterial!=null)Destroy(tutorialOverlayMaterial);if(toolSilhouette!=null)Destroy(toolSilhouette);foreach(var sprite in toolBodySprites.Values)if(sprite!=null)Destroy(sprite);foreach(var sprite in enamelControls)if(sprite!=null)Destroy(sprite); }
         void OnApplicationFocus(bool focused)
         {
             if(!focused){CancelMissionPlan();SettleDescent();}
-            if(!focused)PersistProgress(true);
+            if(!focused){AndroidBackBridge.Clear();PersistLifecycleProgress();}else AndroidBackBridge.Register();
             if(!focused)absentSince=Time.realtimeSinceStartup;
             else if(absentSince>0 && Time.realtimeSinceStartup-absentSince>60 && CurrentScreen==GameScreen.Playing)Coach?.Advance(15,true);
-            applicationFocused = focused; Interaction?.SetSuspended(nativeAdSuspended||applicationPaused || !applicationFocused||landscapeLayoutBlocked); if (!focused) { EndTokenHold(); StopPresentation(); }
-            if (Interaction != null) RenderState();
+            applicationFocused = focused;ObserveSessionPresence(DateTime.UtcNow); Interaction?.SetSuspended(nativeAdSuspended||applicationPaused || !applicationFocused||landscapeLayoutBlocked); if (!focused) { EndTokenHold(); StopPresentation(); }
+            if (Interaction != null&&focused&&!applicationPaused) RenderState();
         }
         void OnApplicationPause(bool paused)
         {
             if(paused){CancelMissionPlan();SettleDescent();}
-            if(paused)PersistProgress(true);
-            applicationPaused = paused; SetLocalReminderBackground(paused); Interaction?.SetSuspended(nativeAdSuspended||applicationPaused || !applicationFocused||landscapeLayoutBlocked); if (paused) { EndTokenHold(); StopPresentation(); }
-            if (Interaction != null) RenderState();
+            if(paused){AndroidBackBridge.Clear();PersistLifecycleProgress();}
+            applicationPaused = paused;ObserveSessionPresence(DateTime.UtcNow); SetLocalReminderBackground(paused); Interaction?.SetSuspended(nativeAdSuspended||applicationPaused || !applicationFocused||landscapeLayoutBlocked); if (paused) { EndTokenHold(); StopPresentation(); }
+            if (Interaction != null&&!paused&&applicationFocused) RenderState();
         }
         void Update()
         {
@@ -113,17 +119,21 @@ namespace Cascade.Presentation
             // its runtime-only attempt. Wait for a fresh Play session instead of flooding
             // the Console or advancing an incomplete presentation.
             if (Interaction == null || machine == null) return;
+            PollSystemBack();
             illustratedNumberScan-=Time.unscaledDeltaTime;
             if(illustratedNumberScan<=0){illustratedNumberScan=.35f;ApplyMenuSpriteCounters();}
             machine.LivingWorld.CosmeticStage=Mathf.Max(0,selectedJourneyStop*3+(descent?.StageIndex??0));
-            ObserveSaveFailure();TickPreviewAd();TickConversation();cloudSave?.Tick();
+            ObserveSaveFailure();TryResetInactiveSession();TickPreviewAd();TickConversation();cloudSave?.Tick();FlushStoreFeedback();
             if (safeArea != Screen.safeArea || screenWidth != Screen.width || screenHeight != Screen.height) {
                 SettleDescent();
                 StopPresentation(); ApplySafeArea(); if (Interaction != null) RenderState();RefreshConversationLayout();
             }
             if(CurrentScreen==GameScreen.Playing&&Interaction.CanPlay&&!zoomOpen&&!MechanicPopupOpen&&landingPreview==null&&previewAd==null&&!fieldTrayOpen&&applicationFocused&&!applicationPaused&&!nativeAdSuspended)
-                Interaction.Attempt.AdvanceActiveTime(Mathf.Min(Time.unscaledDeltaTime,.5f));
-            UpdateFlow();
+            {
+                float seconds=Mathf.Min(Time.unscaledDeltaTime,.5f);
+                Interaction.Attempt.AdvanceActiveTime(seconds);unavailableHints.Advance(Interaction.Attempt,seconds);
+            }
+            TickUnavailableHintWait();UpdateFlow();
             TickToolGuide();
             if(applicationFocused&&!applicationPaused&&monetization!=null)monetization.AdvanceForeground(Mathf.Min(Time.unscaledDeltaTime,.5f));
             UpdatePreparation();
@@ -132,6 +142,8 @@ namespace Cascade.Presentation
             TickPersonalMissions();
             if (hintTask == null || !hintTask.IsCompleted || !Interaction.CanPlay) return;
             var completed = hintTask; hintTask = null; hintCancellation?.Dispose(); hintCancellation = null;
+            var fallbackAttempt=unavailableHintAttempt;string fallbackState=unavailableHintState;
+            unavailableHintAttempt=System.Guid.Empty;unavailableHintState=null;
             if (completed.IsFaulted) { var ignored = completed.Exception; if(PendingLesson==MechanicLesson.Hint)DeferLessonPractice(); status.SetCopy("Hint unavailable. You can keep playing."); RenderControls(); return; }
             if (completed.IsCanceled) return;
             var offer = completed.Result;
@@ -143,7 +155,9 @@ namespace Cascade.Presentation
             }
             bool revealed;
             bool rewardedDue=!attempt.GuideActive&&RewardedHintDue(attempt);
-            if(offer.Result.Status==HintStatus.Step&&rewardedDue&&GameEconomy.Ledger.HintTokens>0)
+            if(offer.Result.Status==HintStatus.Step&&fallbackAttempt==attempt.AttemptId&&fallbackState==offer.StateHash)
+                revealed=unavailableHints.TryReveal(attempt,offer,()=>{PersistProgress(true);return !HasSaveError;});
+            else if(offer.Result.Status==HintStatus.Step&&rewardedDue&&GameEconomy.Ledger.HintTokens>0)
                 revealed=GameEconomy.TrySpendHint(attempt,offer);
             else if(offer.Result.Status==HintStatus.Step&&!attempt.GuideActive&&!rewardedDue&&attempt.CanShowFreeHint)
                 revealed=attempt.TryRevealFreeHint(offer,()=>{PersistProgress(true);return !HasSaveError;});
@@ -151,6 +165,8 @@ namespace Cascade.Presentation
                 revealed=GameEconomy.TrySpendHint(attempt,offer);
             else {revealed=attempt.RevealHint(offer);if(revealed)PersistProgress();}
             if(!revealed){RenderControls();return;}
+            if(offer.Result.Status==HintStatus.Step&&fallbackAttempt==attempt.AttemptId&&fallbackState==offer.StateHash)
+                reactionBanner.Show(ReferenceCopy("No video. This hint is free.","Нет видео. Подсказка бесплатно.","Немає відео. Підказка безкоштовна."),"");
             offeredHint = offer;hintVisible=offer.Result.Status==HintStatus.Step;
             if(PendingLesson==MechanicLesson.Hint&&offer.Result.Status!=HintStatus.Step)DeferLessonPractice();
             else if(PendingLesson==MechanicLesson.Hint)SyncLessonRestriction();
@@ -284,10 +300,11 @@ namespace Cascade.Presentation
             if(descentPlanFailed){
                 var source=descentSource;string locale=descentLocale;var mood=descentMood;
                 bool travel=descentTravel,journey=journeyActive;var screen=CurrentScreen;
-                StartDescentLevel(source,locale,mood);descentTravel=travel;journeyActive=journey;
+                StartDescentLevel(source,locale,mood,descentMode);descentTravel=travel;journeyActive=journey;
                 if(flowReady)SetScreen(screen);RenderControls();return;
             }
             if(Interaction.IsPreparing){if(!preparation.IsPending)BeginPreparation();RenderControls();return;}
+            if(descent?.Version==7&&RetryVariedStage())return;
             var attemptId=Interaction.Attempt.AttemptId;
             bool hadMoves=Interaction.Attempt.Current.Status==PuzzleStatus.Playing&&Interaction.Attempt.RouteLength>0;
             if (!Interaction.Retry()) return;
@@ -303,16 +320,19 @@ namespace Cascade.Presentation
                 hintVisible=!hintVisible;RenderControls();return;
             }
             if(knownDeadEnd){status.SetCopy(DeadEndCopy);RenderControls();return;}
+            bool unavailableHint=false;
             if(!Interaction.Attempt.GuideActive&&RewardedHintDue(Interaction.Attempt)&&GameEconomy.Ledger.HintTokens<=0){
-                if(PendingLesson==MechanicLesson.Hint)DeferLessonPractice();OfferStageHintVideo();return;
+                if(HintVideoUnavailable){if(!TryUnavailableHint(Interaction.Attempt))return;unavailableHint=true;}
+                else {if(adProvider?.RewardLoading==true)unavailableHints.WaitForVideo(Interaction.Attempt);if(PendingLesson==MechanicLesson.Hint)DeferLessonPractice();OfferStageHintVideo();return;}
             }
-            if(!Interaction.Attempt.GuideActive&&!Interaction.Attempt.CanShowFreeHint
+            if(!unavailableHint&&!Interaction.Attempt.GuideActive&&!Interaction.Attempt.CanShowFreeHint
                 &&!(Interaction.Attempt.CanShowBonusHint&&(HasHintForCurrentState(Interaction.Attempt)||GameEconomy.Ledger.HintTokens>0))){
                 if(PendingLesson==MechanicLesson.Hint)DeferLessonPractice();
                 OfferStageHintVideo();return;
             }
             if(!Interaction.Attempt.GuideActive&&RequireActionLesson(Cascade.Application.MechanicLesson.Hint))return;
             CancelHint(); var request = Interaction.Attempt.CaptureHintRequest();
+            if(unavailableHint){pendingHintVideoState=null;unavailableHintAttempt=Interaction.Attempt.AttemptId;unavailableHintState=Interaction.Attempt.CurrentStateHash;}
             hintCancellation = new CancellationTokenSource(); var token = hintCancellation.Token;
             hintTask = Task.Run(() => AttemptService.CalculateHint(request, cancellationToken: token)); status.SetCopy("Looking for one step…"); RenderControls();
         }
@@ -329,10 +349,12 @@ namespace Cascade.Presentation
             feedback?.RefreshAnchors();reactionBanner?.RefreshLayout();
             RestoreTouchPose();
             PaintGameplayTextContrast();
+            safeRoot.GetComponentsInChildren(false,buttonDesigns);foreach(var design in buttonDesigns)design.Refresh();
             if(worldComic>=0&&CurrentScreen==GameScreen.Prologue)menuRoot.GetComponentInChildren<WorldComicLayout>()?.RefreshLayout();
         }
         void CancelHint()
         {
+            unavailableHintAttempt=System.Guid.Empty;unavailableHintState=null;
             hintCancellation?.Cancel(); hintCancellation?.Dispose(); hintCancellation = null;
             if (hintTask != null) hintTask.ContinueWith(t => { var ignored = t.Exception; }, TaskContinuationOptions.OnlyOnFaulted);
             hintTask = null; offeredHint = null;hintVisible=false;
@@ -433,7 +455,7 @@ namespace Cascade.Presentation
             receiver = Rect("Receiver", safeRoot, new Vector2(.5f, .245f), new Vector2(.5f, .365f)); receiver.sizeDelta = new Vector2(350, 0); Background(receiver, Color.clear, true);
             receiver.gameObject.AddComponent<UnityEngine.UI.Button>().onClick.AddListener(ToggleTargetZoom);
             receiverLabel = Text("ReceiverLabel", receiver, new Vector2(0, .94f), new Vector2(1, 1.22f), 16, "Make this row"); StyleCelebrationType(receiverLabel,CelebrationType.SkyCopy);receiverLabel.alignment=TextAlignmentOptions.Center;
-            targetRow = Rect("TargetRow", receiver, new Vector2(.5f, .20f), new Vector2(.5f, .82f));
+            targetRow = Rect("TargetRow", receiver, new Vector2(.5f, .236f), new Vector2(.5f, .856f));
             precise = Rect("PreciseInput", safeRoot, new Vector2(.05f, .09f), new Vector2(.95f, .225f));
             DirectionButton("Focus previous", precise, new Vector2(0, 56f/104), new Vector2(.2f, 1), false, () => MoveFocus(-1));
             focusLabel = Text("Focus", precise, new Vector2(.22f, 56f/104), new Vector2(.78f, 1), 20, "Choose a symbol");
@@ -546,7 +568,7 @@ namespace Cascade.Presentation
                 LayoutPlatformLegends(unit);
                 foreach(var dock in deviceDocks)if(dock.countdown!=null)dock.countdown.fontSize=13*unit;
                 float lowerClearance=GameplaySillClearance(unit);
-                FixedBand(actions, lowerClearance, 52 * unit); FixedBand(precise, lowerClearance+56*unit, 104 * unit);
+                FixedBand(actions, lowerClearance, 64 * unit); FixedBand(precise, lowerClearance+68*unit, 104 * unit);
                 foreach(var button in actions.GetComponentsInChildren<UnityEngine.UI.Button>()){
                     var label=button.GetComponentInChildren<TextMeshProUGUI>();if(label==null)continue;
                     ApplyControlCaption(label,unit);
@@ -559,7 +581,10 @@ namespace Cascade.Presentation
                     if (child.name == "DeviceGlyph") child.GetComponent<TextMeshProUGUI>().fontSize = 14 * unit;
             }
             if (floorViews.Count != 0 && Interaction != null) {
-                float boardWidth = Mathf.Min(safeRoot.rect.width * .91f, Mathf.Max(Interaction.Attempt.Current.Row.Count * 76 + 24,safeRoot.rect.width*.70f));
+                float boardWidth = GameplayBoardWidth(Interaction.Attempt.Current.Row.Count);
+                // Match the ordinary three-shape row, even when letters share the plank.
+                float referenceCellWidth=(GameplayBoardWidth(3)*.91f-6)/3;
+                machine.MixedShapeReferenceWidth=floorViews[0].TransformVector(Vector3.right*(referenceCellWidth*.78f)).magnitude;
                 foreach (var floor in floorViews) floor.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, boardWidth);
                 LayoutGameplayHeader(boardWidth);
                 receiver.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Mathf.Min(safeRoot.rect.width * .9f, Interaction.Attempt.Current.Row.Count * 68 + 40));
@@ -568,6 +593,8 @@ namespace Cascade.Presentation
                 targetRow.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,targetWidth);
             }
         }
+        float GameplayBoardWidth(int count)
+            =>Mathf.Min(safeRoot.rect.width*.91f,Mathf.Max(count*76+24,safeRoot.rect.width*.70f));
         void LayoutLowerGameArea(float unit)
         {
             if(Interaction==null)return;
@@ -646,6 +673,7 @@ namespace Cascade.Presentation
             tokenRow.anchorMax = new Vector2(state.Status == PuzzleStatus.Playing ? .955f : .93f, state.Status == PuzzleStatus.Playing ? 1.03f : .78f); tokenRow.offsetMin = tokenRow.offsetMax = Vector2.zero;
             tokenRow.gameObject.SetActive(state.Status == PuzzleStatus.Playing || arriving);
             PaintGameplayTextContrast();
+            safeRoot.GetComponentsInChildren(false,buttonDesigns);foreach(var design in buttonDesigns)design.Refresh();
             foreach (var label in targetLabels) label.color = Ink;
             for (int i = 0; i < tokenLabels.Count; i++) {
                 tokenLabels[i].text = FaceText(state.Row[i]); tokenLabels[i].fontSize = state.Status == PuzzleStatus.Won ? 24 : state.Row.Count==3&&state.Row[i].Kind==SymbolKind.Glyph?44:28;
@@ -766,16 +794,18 @@ namespace Cascade.Presentation
             text.fontSize = size*(Preferences.LargeText&&!IsSymbolFace(name)?1.12f:1); text.enableAutoSizing = false;
             text.color = Preferences.HighContrast?new Color(.06f,.17f,.18f):menuRoot!=null&&rect.IsChildOf(menuRoot)?MenuInk:Ink;
             text.SetCopy(IsSymbolFace(name)||name=="Mini glyph"?UiCopy.Raw(content.English):content); text.alignment = TextAlignmentOptions.Center; text.raycastTarget = false;
-            text.textWrappingMode = TextWrappingModes.Normal; return text;
+            text.textWrappingMode = TextWrappingModes.Normal;
+            if(!IsSymbolFace(name)&&name!="Mini glyph")text.margin=Vector4.one*(CenteredContentRow.MinimumInset*CenteredContentRow.Unit(rect));
+            return text;
         }
-        UnityEngine.UI.Button Button(UiCopy label, Transform parent, Vector2 min, Vector2 max, Action clicked)
+        UnityEngine.UI.Button Button(UiCopy label, Transform parent, Vector2 min, Vector2 max, Action clicked, bool sharedDesign=true)
         {
             var rect = Rect(label.English.Replace(" ", ""), parent, min, max); var image = Background(rect, Paper, true); image.sprite = art.panel; image.type = UnityEngine.UI.Image.Type.Sliced;
             var button = rect.gameObject.AddComponent<UnityEngine.UI.Button>();button.onClick.AddListener(()=>{feedback?.Sound(ToyCue.Select);feedback?.Haptic(.07f);clicked();});
             var colors = button.colors; colors.highlightedColor = new Color(1, .94f, .78f); colors.pressedColor = new Color(.82f, .88f, .81f); colors.disabledColor = new Color(.88f, .90f, .84f, .7f); button.colors = colors;
             rect.gameObject.AddComponent<ButtonFeel>().Initialize(this);
             var text = Text("Label", rect, Vector2.zero, Vector2.one, 14, label); text.font = art.titleFont;
-            ApplyControlCaption(text);return button;
+            ApplyControlCaption(text);if(sharedDesign)RegisterButtonDesign(button);return button;
         }
         UnityEngine.UI.Button DirectionButton(string name, Transform parent, Vector2 min, Vector2 max, bool right, Action clicked)
         {

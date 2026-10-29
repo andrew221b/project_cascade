@@ -8,16 +8,27 @@ namespace Cascade.Presentation
         static readonly System.Collections.Generic.Dictionary<string,Texture2D> textures=new System.Collections.Generic.Dictionary<string,Texture2D>();
         public static Sprite Sprite(string name){if(!sprites.TryGetValue(name,out var s)||s==null)sprites[name]=s=Resources.Load<Sprite>(Path+name);return s;}
         public static Texture2D Texture(string name){if(!textures.TryGetValue(name,out var t)||t==null)textures[name]=t=Resources.Load<Texture2D>(Path+name);return t;}
+        // Painted suspension pin centres in each authored board cell (UV, bottom origin).
+        public static Vector2 BoardTie(int side)=>new Vector2(side==0?.067f:.93f,.5f);
         static Sprite boardSprite;
         public static Sprite BoardSprite(){if(boardSprite==null)boardSprite=UnityEngine.Sprite.Create(Texture("BoardStates"),new Rect(8,808,372,124),new Vector2(.5f,.5f),100,0,SpriteMeshType.FullRect);return boardSprite;}
         public static Vector4 BoardUv(int style,int damage)
         {
-            int row=Mathf.Clamp(damage,0,3),column=Mathf.Clamp(style+1,0,3);int[] tops={92,348,586,808};
+            int row=Mathf.Clamp(damage,0,3),column=Mathf.Clamp(style+1,0,3);int[] tops={92,341,584,799};
             return new Vector4(372f/1536f,124f/1024f,(8+column*384)/1536f,(1024-tops[row]-124)/1024f);
         }
         // Opaque crown of the intact authored timber, sampled at the strip's 17 columns.
         // Top geometry meets this painted silhouette rather than an unrelated fixed height.
         static readonly float[] crown={.84f,.831f,.847f,.782f,.774f,.758f,.758f,.75f,.75f,.75f,.758f,.766f,.774f,.782f,.855f,.815f,.84f};
+        // Lower painted silhouette, sampled from each generated state after bolt alignment.
+        static readonly float[][] soles={
+            new[]{0.3387f,0.2258f,0.2016f,0.1855f,0.1694f,0.1532f,0.1452f,0.1452f,0.1452f,0.1452f,0.1532f,0.1613f,0.1694f,0.1855f,0.2016f,0.2339f,0.3468f},
+            new[]{0.3387f,0.2258f,0.2016f,0.1774f,0.1613f,0.1452f,0.1371f,0.1371f,0.1290f,0.1290f,0.1371f,0.1452f,0.1613f,0.1774f,0.2016f,0.2339f,0.3548f},
+            new[]{0.3387f,0.2339f,0.2016f,0.1774f,0.1613f,0.1371f,0.1290f,0.1210f,0.1129f,0.1210f,0.1290f,0.1371f,0.1532f,0.1774f,0.2016f,0.2419f,0.3548f},
+            new[]{0.3387f,0.2339f,0.2016f,0.1694f,0.1371f,0.1210f,0.1048f,0.0968f,0.1800f,0.0968f,0.1048f,0.1210f,0.1452f,0.1694f,0.2016f,0.2500f,0.3548f}
+        };
+        public static float BoardSole(float u,int damage)
+        {float x=Mathf.Clamp01(u)*16;int i=Mathf.Min(15,(int)x);var row=soles[Mathf.Clamp(damage,0,3)];return Mathf.Lerp(row[i],row[i+1],x-i);}
         public static float BoardCrown(float u){float column=Mathf.Clamp01(u)*16;int i=Mathf.Min(15,Mathf.FloorToInt(column));return Mathf.Lerp(crown[i],crown[i+1],column-i);}
     }
     // Slightly different paths through each world, with exactly the same island sizes.

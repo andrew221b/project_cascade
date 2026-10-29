@@ -41,13 +41,14 @@ namespace Cascade.Editor.Release
                 id.stringValue=config.unityPlayerAccountsClientId;
                 // Use the SDK's project-bound redirects; avoid stale overrides from another app.
                 data.FindProperty("useCustomDeepLinkUri").boolValue=false;
-                data.FindProperty("scopeMask").intValue=1|4; // openid + offline_access; no email needed by the game.
+                data.FindProperty("scopeMask").intValue=1; // openid only: this client rejects offline_access with invalid_scope.
                 data.ApplyModifiedProperties();EditorUtility.SetDirty(account);
             }
             Undo.RecordObject(cloud,"Configure CASCADE cloud save");
             cloud.projectId=config.unityProjectId;cloud.environment=config.unityEnvironmentName;cloud.moduleName=config.cloudCodeModuleName;
             cloud.playerAccountsConfigured=config.HasClient;cloud.enabledForPlayers=config.cloudCodeDeployedAndVerified;
             cloud.purchaseVerificationConfigured=config.purchaseVerificationConfigured;
+            cloud.serverRewardsConfigured=config.serverRewardsConfigured;cloud.accountDeletionUrl=config.accountDeletionUrl;
             EditorUtility.SetDirty(cloud);AssetDatabase.SaveAssets();
             Debug.Log("CASCADE: account configuration applied; cloud active="+cloud.enabledForPlayers+". No credentials logged.");
         }

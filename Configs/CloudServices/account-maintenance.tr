@@ -1,0 +1,101 @@
+{
+  "$schema": "https://ugs-config-schemas.unity3d.com/v1/triggers.schema.json",
+  "Configs": [
+    {
+      "Name": "cascade-account-maintenance",
+      "EventType": "com.unity.services.scheduler.cascade-account-maintenance.v1",
+      "ActionUrn": "urn:ugs:cloud-code:CascadeAccount/Maintenance",
+      "ActionType": "cloud-code"
+    },
+    {
+      "Name": "cascade-account-maintenance-01",
+      "EventType": "com.unity.services.scheduler.cascade-account-maintenance-01.v1",
+      "ActionUrn": "urn:ugs:cloud-code:CascadeAccount/Maintenance01",
+      "ActionType": "cloud-code"
+    },
+    {
+      "Name": "cascade-account-maintenance-02",
+      "EventType": "com.unity.services.scheduler.cascade-account-maintenance-02.v1",
+      "ActionUrn": "urn:ugs:cloud-code:CascadeAccount/Maintenance02",
+      "ActionType": "cloud-code"
+    },
+    {
+      "Name": "cascade-account-maintenance-03",
+      "EventType": "com.unity.services.scheduler.cascade-account-maintenance-03.v1",
+      "ActionUrn": "urn:ugs:cloud-code:CascadeAccount/Maintenance03",
+      "ActionType": "cloud-code"
+    },
+    {
+      "Name": "cascade-account-maintenance-04",
+      "EventType": "com.unity.services.scheduler.cascade-account-maintenance-04.v1",
+      "ActionUrn": "urn:ugs:cloud-code:CascadeAccount/Maintenance04",
+      "ActionType": "cloud-code"
+    },
+    {
+      "Name": "cascade-account-maintenance-05",
+      "EventType": "com.unity.services.scheduler.cascade-account-maintenance-05.v1",
+      "ActionUrn": "urn:ugs:cloud-code:CascadeAccount/Maintenance05",
+      "ActionType": "cloud-code"
+    },
+    {
+      "Name": "cascade-account-maintenance-06",
+      "EventType": "com.unity.services.scheduler.cascade-account-maintenance-06.v1",
+      "ActionUrn": "urn:ugs:cloud-code:CascadeAccount/Maintenance06",
+      "ActionType": "cloud-code"
+    },
+    {
+      "Name": "cascade-account-maintenance-07",
+      "EventType": "com.unity.services.scheduler.cascade-account-maintenance-07.v1",
+      "ActionUrn": "urn:ugs:cloud-code:CascadeAccount/Maintenance07",
+      "ActionType": "cloud-code"
+    },
+    {
+      "Name": "cascade-account-maintenance-08",
+      "EventType": "com.unity.services.scheduler.cascade-account-maintenance-08.v1",
+      "ActionUrn": "urn:ugs:cloud-code:CascadeAccount/Maintenance08",
+      "ActionType": "cloud-code"
+    },
+    {
+      "Name": "cascade-account-maintenance-09",
+      "EventType": "com.unity.services.scheduler.cascade-account-maintenance-09.v1",
+      "ActionUrn": "urn:ugs:cloud-code:CascadeAccount/Maintenance09",
+      "ActionType": "cloud-code"
+    },
+    {
+      "Name": "cascade-account-maintenance-10",
+      "EventType": "com.unity.services.scheduler.cascade-account-maintenance-10.v1",
+      "ActionUrn": "urn:ugs:cloud-code:CascadeAccount/Maintenance10",
+      "ActionType": "cloud-code"
+    },
+    {
+      "Name": "cascade-account-maintenance-11",
+      "EventType": "com.unity.services.scheduler.cascade-account-maintenance-11.v1",
+      "ActionUrn": "urn:ugs:cloud-code:CascadeAccount/Maintenance11",
+      "ActionType": "cloud-code"
+    },
+    {
+      "Name": "cascade-account-maintenance-12",
+      "EventType": "com.unity.services.scheduler.cascade-account-maintenance-12.v1",
+      "ActionUrn": "urn:ugs:cloud-code:CascadeAccount/Maintenance12",
+      "ActionType": "cloud-code"
+    },
+    {
+      "Name": "cascade-account-maintenance-13",
+      "EventType": "com.unity.services.scheduler.cascade-account-maintenance-13.v1",
+      "ActionUrn": "urn:ugs:cloud-code:CascadeAccount/Maintenance13",
+      "ActionType": "cloud-code"
+    },
+    {
+      "Name": "cascade-account-maintenance-14",
+      "EventType": "com.unity.services.scheduler.cascade-account-maintenance-14.v1",
+      "ActionUrn": "urn:ugs:cloud-code:CascadeAccount/Maintenance14",
+      "ActionType": "cloud-code"
+    },
+    {
+      "Name": "cascade-account-maintenance-15",
+      "EventType": "com.unity.services.scheduler.cascade-account-maintenance-15.v1",
+      "ActionUrn": "urn:ugs:cloud-code:CascadeAccount/Maintenance15",
+      "ActionType": "cloud-code"
+    }
+  ]
+}

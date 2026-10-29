@@ -139,6 +139,12 @@ namespace Cascade.Tests
             Assert.That(Saved().HeardStory,Does.Contain(expectedReceipt));
         }
 
+        void AssertComicReadingProgress(int position,int total)
+        {
+            var progress=game.GetComponentsInChildren<TMPro.TextMeshProUGUI>().Single(label=>label.name=="World comic progress");
+            Assert.That(progress.text,Is.EqualTo(position+" / "+total),"Progress counts every Next press, including speaker changes on the same illustration");
+        }
+
         [UnityTest] public IEnumerator EveryWorldComicHasFourRealPanelsAndPreservesThePinnedMiddleStage()
         {
             yield return MountMiddleStage();
@@ -146,7 +152,9 @@ namespace Cascade.Tests
             string hash=attempt.CurrentStateHash;int route=attempt.RouteLength;var panels=new HashSet<string>();
             for(int world=0;world<JourneyStory.WorldCount;world++){
                 game.OpenWorldComic(world,game.ShowHome);yield return null;
+                int readingPage=1,totalReadingPages=WorldPrologues.ForWorld(world).Pages.Sum(p=>p.Lines.Length);
                 for(int page=0;page<WorldPrologues.ForWorld(world).Pages.Length;page++){
+                    AssertComicReadingProgress(readingPage,totalReadingPages);
                     Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Prologue));Assert.That(game.ComicWorld,Is.EqualTo(world));Assert.That(game.ComicPage,Is.EqualTo(page));
                     var image=game.GetComponentsInChildren<Image>().Single(i=>i.name=="World comic scene");
                     game.RefreshLayout();
@@ -158,7 +166,7 @@ namespace Cascade.Tests
                     Assert.That(game.Interaction.IsPaused,Is.True);Assert.That(game.Interaction.Attempt,Is.SameAs(attempt));
                     Assert.That(attempt.Current,Is.SameAs(row));Assert.That(attempt.CurrentStateHash,Is.EqualTo(hash));Assert.That(attempt.RouteLength,Is.EqualTo(route));
                     Assert.That(game.Descent,Is.SameAs(run));Assert.That(game.Descent.StageIndex,Is.EqualTo(1));
-                    yield return Click("Next comic page");
+                    yield return Click("Next comic page");readingPage++;
                     Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Prologue));Assert.That(game.ComicPage,Is.EqualTo(page),"The first click reveals the next speaker on the same illustration");
                     game.RefreshLayout();
                     var nextScene=(RectTransform)game.GetComponentsInChildren<Image>().Single(i=>i.name=="World comic scene").transform.parent;
@@ -167,9 +175,11 @@ namespace Cascade.Tests
                     int chunks=0;
                     while(game.ComicWorld>=0&&game.ComicPage==page){
                         Assert.That(++chunks,Is.LessThan(32),"The current panel's phone-sized dialogue must finish");
-                        yield return Click("Next comic page");
+                        AssertComicReadingProgress(readingPage,totalReadingPages);
+                        yield return Click("Next comic page");readingPage++;
                     }
                 }
+                Assert.That(readingPage,Is.EqualTo(totalReadingPages+1),"One reading page per advance, including the final one");
                 Assert.That(game.ComicWorld,Is.EqualTo(-1));Assert.That(game.HasSaveError,Is.False);
                 Assert.That(Saved().HeardStory,Does.Contain(WorldPrologues.ForWorld(world).Receipt));
                 Assert.That(Saved().Attempt.StateHash,Is.EqualTo(hash));Assert.That(Saved().Descent.StageIndex,Is.EqualTo(1));
@@ -283,6 +293,22 @@ namespace Cascade.Tests
                 game.ShowJourney();yield return null;
             }
             Assert.That(Read<HashSet<int>>("heardStory").Count(r=>r>=7000&&r<7200),Is.EqualTo(9));
+        }
+        [UnityTest] public IEnumerator ReadingAnIslandOpeningDoesNotRepeatItAsALegacyWorldIntroduction()
+        {
+            OpenPublishedRoutesInMemory();
+            int stop=JourneyStory.WorldFirst(1),legacy=JourneyStory.PageFor(stop);
+            Read<HashSet<int>>("heardStory").Remove(legacy);
+            var opening=StoryConversations.IslandOpening(1,0);
+            Read<HashSet<int>>("heardStory").Remove(opening.Receipt);
+            Assert.That(game.IsContentOpen(game.Catalog.PrimaryLevels[stop]),Is.True,"Fixture route is available");
+            Invoke("BeginJourney",stop);yield return null;
+            Assert.That(game.ConversationOpen,Is.True);Assert.That(game.ConversationReceipt,Is.EqualTo(opening.Receipt));
+            game.SkipConversation();yield return null;
+            Assert.That(game.ConversationOpen,Is.False,"The same two turns must not return with an older world receipt");
+            yield return Await(()=>game.PreparationReady&&game.Interaction.CanPlay,"One opening should lead straight to the selected level");
+            Assert.That(game.Interaction.Attempt.Level.CampaignNodeId,Is.EqualTo(game.Catalog.PrimaryLevels[stop].Definition.CampaignNodeId));
+            Assert.That(Saved().RemembersStory(opening.Receipt),Is.True);
         }
     }
 }

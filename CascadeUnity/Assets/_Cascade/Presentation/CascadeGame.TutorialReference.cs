@@ -39,10 +39,6 @@ namespace Cascade.Presentation
             var titleArea=ReferenceRect("Tutorial title readable inset",title.transform,61,44,330,64);
             var heading=ReferenceText("tutorial title",titleArea,ReferenceCopy("How to play?","Как играть?","Як грати?"),0,0,330,64,44);heading.name="New mechanic title";
             var headingFit=CentreContent(titleArea,heading.rectTransform);headingFit.Padding=0;headingFit.Refresh();title.gameObject.AddComponent<AttachedPlants>().Initialize(this,EnvironmentWorld,true);
-            var close=ReferenceButton("Close lesson film",stage,578,205,92,92,DismissMechanic);
-            TutorialActionSkin(close,"RedAction",92,92);var closeBody=(RectTransform)ReferenceButtonBody(close);
-            var mark=ReferenceRect("Tutorial close icon area",closeBody,14,14,64,64);var cross=Rect("Close lesson mark",mark,Vector2.one*.5f,Vector2.one*.5f).gameObject.AddComponent<InstructionCloseMark>();cross.rectTransform.sizeDelta=Vector2.one*160;cross.color=MenuPaper;cross.raycastTarget=false;CentreContent(closeBody,mark);
-            tutorialReferenceLayout.BindTouch((RectTransform)close.transform,new Vector2(92,92));
             UiCopy copy=lesson==MechanicLesson.Undo?ReferenceCopy(
                 "Undo restores the pieces and board to the state before your last move. You have one free undo per level.",
                 "Отмена хода возвращает фигуры и поле в состояние перед твоим последним ходом. У тебя есть одна бесплатная отмена на уровень.",
@@ -56,11 +52,11 @@ namespace Cascade.Presentation
                 var moving=Rect("Tutorial page contents",swipe,Vector2.zero,Vector2.one);explanation.rectTransform.SetParent(moving,true);example.SetParent(moving,true);
                 swipe.gameObject.AddComponent<MenuSwipe>().Initialize(this,direction=>SelectTutorialPage(TutorialPageIndex+direction),moving,direction=>TutorialPageIndex+direction>=0&&TutorialPageIndex+direction<TutorialPageCount);
                 var dots=ReferenceRect("Tutorial page control",stage,260,852,200,44);dots.pivot=Vector2.one*.5f;dots.anchoredPosition=new Vector2(360,-874);
-                dots.gameObject.AddComponent<TutorialPageControl>().Initialize(pages,TutorialPageIndex,index=>{if(index!=TutorialPageIndex){feedback.Sound(ToyCue.Select);feedback.Haptic(.045f);SelectTutorialPage(index);}});tutorialReferenceLayout.BindTouch(dots,new Vector2(200,44));
+                dots.gameObject.AddComponent<TutorialPageControl>().Initialize(pages,TutorialPageIndex,null);tutorialReferenceLayout.BindTouch(dots,new Vector2(200,44));
             }
             float buttonY=pages>1?909:872;
             var apply=ReferenceButton("Acknowledge mechanic",stage,181,buttonY,359,88,AcknowledgeMechanic);TutorialActionSkin(apply,"TealAction",359,88);
-            var label=ReferenceText("tutorial action",ReferenceButtonBody(apply),requestedAction!=null?(UiCopy)"Use this tool":"Try it",20,12,319,64,36,true);CentreContent((RectTransform)ReferenceButtonBody(apply),label.rectTransform);
+            var label=ReferenceText("tutorial action",ReferenceButtonBody(apply),(UiCopy)"Try it",20,12,319,64,36,true);CentreContent((RectTransform)ReferenceButtonBody(apply),label.rectTransform);
             tutorialReferenceLayout.BindTouch((RectTransform)apply.transform,new Vector2(359,88));
             if(!ReducedMotion){
                 mechanicOpacity.alpha=0;tutorialReferenceLayout.Entrance=.97f;tutorialReferenceLayout.Fit();

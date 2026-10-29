@@ -36,11 +36,12 @@ namespace Cascade.Presentation
         void LayoutGameplayHeader(float boardWidth)
         {
             float unit=1/Mathf.Min(1,header.GetComponentInParent<Canvas>().scaleFactor);
-            // Match the lower action band's horizontal inset, including safe-area adaptation.
+            // Top controls keep their own inset; the square footer cards sit further inside the posts.
             header.anchorMin=header.anchorMax=new Vector2(.5f,0);
-            header.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,actions.rect.width);
-            header.anchoredPosition=new Vector2(actions.localPosition.x,safeRoot.rect.height-36*unit);
-            float control=48*unit,gap=24*unit;
+            header.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,safeRoot.rect.width*.90f);
+            header.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,54*unit);
+            header.anchoredPosition=new Vector2(0,safeRoot.rect.height-36*unit);
+            float control=54*unit,gap=4*unit;
             var left=(RectTransform)pause.transform;
             left.anchorMin=Vector2.zero;left.anchorMax=new Vector2(0,1);
             left.offsetMin=Vector2.zero;left.offsetMax=new Vector2(control,0);
@@ -53,16 +54,15 @@ namespace Cascade.Presentation
             var plaque=(RectTransform)header.Find("Carved chapter plaque");
             plaque.anchorMin=plaque.anchorMax=new Vector2(.5f,.5f);
             plaque.anchoredPosition=Vector2.left*rightInset*.5f;
-            plaque.sizeDelta=new Vector2(Mathf.Min(boardWidth*.95f-24*unit,header.rect.width-2*(control+gap)-rightInset),40*unit);
+            plaque.sizeDelta=new Vector2(Mathf.Min(boardWidth*.95f-24*unit,header.rect.width-2*(control+gap)-rightInset),44*unit);
             // Narrow the ceiling tether, not the playing rail or its touch targets.
-            machine.SetUpperRopeHalfWidth(header.TransformVector(Vector3.right*(safeRoot.rect.width*.5f-control-34*unit)).magnitude);
+            machine.SetUpperRopeHalfWidth(header.TransformVector(Vector3.right*(safeRoot.rect.width*.5f-82*unit)).magnitude);
             levelLabel.rectTransform.offsetMin=new Vector2(4*unit,5*unit);
             levelLabel.rectTransform.offsetMax=new Vector2(-4*unit,-5*unit);
             levelLabel.fontSizeMin=12*unit;
             levelLabel.fontSizeMax=17*unit*(Preferences.LargeText?1.12f:1);
-            levelLabel.alignment=TextAlignmentOptions.Center;
-            levelLabel.textWrappingMode=levelLabel.GetComponent<LocalizedCaption>().SourceIdentity.StartsWith("Level ",System.StringComparison.Ordinal)
-                ?TextWrappingModes.NoWrap:TextWrappingModes.Normal;
+            levelLabel.alignment=TextAlignmentOptions.Midline;
+            levelLabel.textWrappingMode=TextWrappingModes.Normal;
         }
 
         void ResetInstruction()

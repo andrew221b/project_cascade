@@ -8,6 +8,8 @@ namespace Cascade.Presentation
     // the stage, controls and Mika's contact with the planks keep their source geometry.
     public sealed class HomeReferenceLayout:MonoBehaviour
     {
+        public const float ShortcutTop=60f;
+        public const float ShortcutInset=2f;
         RectTransform parent,rect,bleed,canvas,logo,noAds,account,welcomeSign,welcomeLogo;
         RectTransform[] welcomeCords;
         RawImage top,bottom,left,right,ground;
@@ -51,17 +53,18 @@ namespace Cascade.Presentation
             rect.sizeDelta=new Vector2(width,height);
             float extra=Mathf.Max(0,height-1280);
             bool compact=width<715;
+            float shortcutInset=ShortcutInset/Mathf.Max(.001f,scale);
             if(logo!=null){
                 logo.sizeDelta=compact?new Vector2(430,256*430/455f):new Vector2(455,256);
                 logo.anchoredPosition=new Vector2(0,-118-extra);
             }
             if(noAds!=null){
                 noAds.anchorMin=noAds.anchorMax=Vector2.one;noAds.pivot=Vector2.one;
-                // The shortcut shares the reference logo band, below the upper timber.
+                // Utility controls sit above the logo, clear of the upper timber.
                 noAds.sizeDelta=new Vector2(92,94);
-                noAds.anchoredPosition=new Vector2(compact?-42:-49,-150-extra);
+                noAds.anchoredPosition=new Vector2((compact?-42:-49)-shortcutInset,-ShortcutTop-extra);
             }
-            if(account!=null){account.anchorMin=account.anchorMax=new Vector2(0,1);account.pivot=new Vector2(0,1);account.sizeDelta=new Vector2(94,94);account.anchoredPosition=new Vector2(compact?42:66,-150-extra);}
+            if(account!=null){account.anchorMin=account.anchorMax=new Vector2(0,1);account.pivot=new Vector2(0,1);account.sizeDelta=new Vector2(94,94);account.anchoredPosition=new Vector2((compact?42:66)+shortcutInset,-ShortcutTop-extra);}
             if(welcomeSign!=null)welcomeSign.anchoredPosition=new Vector2(0,-146-extra);
             if(welcomeLogo!=null)welcomeLogo.anchoredPosition=new Vector2(0,-280-extra);
             var physicalTop=rect.InverseTransformPoint(canvas.TransformPoint(new Vector3(0,canvas.rect.yMax,0)));
@@ -70,7 +73,7 @@ namespace Cascade.Presentation
                 welcomeCords[i].sizeDelta=new Vector2(15,126+extra+safeTopExtension);welcomeCords[i].anchoredPosition=new Vector2((i==0?188f:536f)-360,safeTopExtension-40);
             }
             float pixels=scale*canvas.GetComponent<Canvas>().scaleFactor;
-            foreach(var touch in touches)if(touch.Rect!=null)touch.Rect.sizeDelta=Vector2.Max(touch.Size,Vector2.one*(44/Mathf.Max(.001f,pixels)));
+            foreach(var touch in touches)if(touch.Rect!=null)touch.Rect.sizeDelta=Vector2.Max(GameButtonSize(touch.Rect,touch.Size),Vector2.one*(44/Mathf.Max(.001f,pixels)));
             bleed.anchorMin=bleed.anchorMax=new Vector2(.5f,.5f);bleed.sizeDelta=canvas.rect.size;bleed.position=canvas.position;
             if(ground!=null&&ground.texture!=null){
                 var groundLow=rect.InverseTransformPoint(canvas.TransformPoint(canvas.rect.min));
@@ -95,6 +98,7 @@ namespace Cascade.Presentation
         {
             var area=image.rectTransform;area.anchorMin=new Vector2(x0,y0);area.anchorMax=new Vector2(x1,y1);area.offsetMin=area.offsetMax=Vector2.zero;
         }
+        static Vector2 GameButtonSize(RectTransform target,Vector2 authored){var design=target.GetComponent<GameButtonDesign>();return design==null?authored:design.DesiredSize(authored);}
         void LateUpdate()=>Fit();
         void OnDestroy(){foreach(var material in materials)if(material!=null)Destroy(material);}
     }

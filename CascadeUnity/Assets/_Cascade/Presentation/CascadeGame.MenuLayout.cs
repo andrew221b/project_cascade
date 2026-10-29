@@ -65,8 +65,9 @@ namespace Cascade.Presentation
                 var r=item.rect;r.anchorMin=new Vector2(r.anchorMin.x,0);r.anchorMax=new Vector2(r.anchorMax.x,0);
                 r.pivot=new Vector2(.5f,0);r.anchoredPosition=new Vector2(0,item.bottom*unit);r.sizeDelta=new Vector2(0,item.height*unit);
             }
+            FitCompletionActions();
             foreach(var item in menuSquares)if(item.Key!=null)item.Key.sizeDelta=Vector2.one*item.Value*unit;
-            FitMetaPanels();FitSettingsLayout();ApplyMenuTypography();FitCatalogueStack();
+            FitSettingsLayout();ApplyMenuTypography();FitCatalogueStack();
         }
         (Button Previous,Button Next) MenuPager(string name,UiCopy count,float top,Action previousAction,Action nextAction)
         {

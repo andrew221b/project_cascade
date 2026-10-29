@@ -41,7 +41,7 @@ namespace Cascade.Application
         }
         // Explain an entry transform while the next board is visible, before the
         // player starts preparing the row. Never teach an already applied entry.
-        public static IReadOnlyList<MechanicLesson> DiscoverVisible(LevelDefinition level,PuzzleState state,bool nextIsWind=false)
+        public static IReadOnlyList<MechanicLesson> DiscoverVisible(LevelDefinition level,PuzzleState state,bool nextIsWind=false,bool includeNextMechanics=false)
         {
             if(level==null)throw new ArgumentNullException(nameof(level));
             if(state==null)throw new ArgumentNullException(nameof(state));
@@ -63,11 +63,24 @@ namespace Cascade.Application
             if(state.ReachCharges>0)found.Add(MechanicLesson.FarSwap);
             var next=state.ActiveFloor+1;
             if(next<level.Floors.Count){
+                if(includeNextMechanics){
+                    var upcoming=level.Floors[next];
+                    if(upcoming.Bomb!=null)found.Add(MechanicLesson.Bomb);
+                    if(upcoming.Key!=null)found.Add(MechanicLesson.Key);
+                    if(upcoming.Repair!=null)found.Add(MechanicLesson.Repair);
+                    if(upcoming.Powerup!=null)found.Add(upcoming.Powerup.Kind==PowerupKind.Ribbon?MechanicLesson.Ribbon:MechanicLesson.BombHourglass);
+                    if(upcoming.OptionalStamp!=null)found.Add(MechanicLesson.Stamp);
+                    if(upcoming.OneUseBridgeEdge.HasValue)found.Add(MechanicLesson.Bridge);
+                    if(upcoming.LinkedPair.HasValue)found.Add(MechanicLesson.LinkedPairs);
+                    if(upcoming.FragileEdges.Count>0)found.Add(MechanicLesson.Fragile);
+                    if(upcoming.OpenEdges.Where((open,edge)=>!open&&edge!=upcoming.OneUseBridgeEdge&&(upcoming.Key==null||edge!=upcoming.Key.EdgeToOpen)).Any())found.Add(MechanicLesson.ClosedPath);
+                    if(upcoming.GustAfterSwaps>0)found.Add(MechanicLesson.LiveGust);
+                }
                 var entry=level.Floors[next].EntryTransform;
                 if(entry!=EntryTransform.None)found.Add(entry==EntryTransform.MirrorNext?MechanicLesson.Mirror:
                     nextIsWind?MechanicLesson.LandingWind:MechanicLesson.Rollers);
             }
-            return found;
+            return found.Distinct().ToArray();
         }
         public static MechanicLesson Tool(TravelTool tool)=>tool==TravelTool.Wayfinder?MechanicLesson.Wayfinder:tool==TravelTool.UndoSpool?MechanicLesson.UndoSpool:tool==TravelTool.ReturnHourglass?MechanicLesson.ReturnHourglass:tool==TravelTool.SignalLantern?MechanicLesson.SignalLantern:tool==TravelTool.RepairKit?MechanicLesson.RepairKit:MechanicLesson.LandingLens;
         public static bool Valid(IEnumerable<MechanicLesson> seen)=>seen!=null&&seen.All(x=>Enum.IsDefined(typeof(MechanicLesson),x))&&seen.Distinct().Count()==seen.Count();

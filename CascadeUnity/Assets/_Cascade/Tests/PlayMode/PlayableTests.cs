@@ -1191,19 +1191,20 @@ namespace Cascade.Tests
         }
         [UnityTest] public IEnumerator WorldScoresCrossfadeAndMutePreservesPlaybackPosition()
         {
+            yield return PortraitAtmosphere();yield return FinishDeviceTeaching();
             var library=Resources.Load<ToyAudioLibrary>("CascadeArt/ToyAudio");
             Assert.That(library.worldMusic.Length,Is.EqualTo(JourneyStory.WorldCount));
             Assert.That(library.worldMusic.Distinct().Count(),Is.EqualTo(JourneyStory.WorldCount));
             Assert.That(library.worldMusic.Select((c,i)=>c!=null&&c.channels==2&&c.length>(i==8?40:50)).All(valid=>valid),Is.True);
             Assert.That(library.ScoreFor(GameScreen.Home,7),Is.SameAs(library.menuMusic));
             for(int i=0;i<JourneyStory.WorldCount;i++){
-                Assert.That(library.ScoreFor(GameScreen.JourneyMap,i),Is.SameAs(library.menuMusic));
+                Assert.That(library.ScoreFor(GameScreen.JourneyMap,i),Is.SameAs(library.worldMusic[i]));
                 Assert.That(library.ScoreFor(GameScreen.Playing,i),Is.SameAs(library.worldMusic[i]));
             }
             game.ShowHome();game.Feedback.MusicEnabled=true;
             yield return new WaitForSecondsRealtime(1.8f);
             Assert.That(game.Feedback.CurrentMusicClip,Is.SameAs(library.menuMusic));
-            game.ShowGame();game.Machine.SetZone(2);
+            game.ShowGame();yield return AwaitPreparation();yield return FinishDeviceTeaching();game.Machine.SetZone(2);
             float scoreDeadline=Time.realtimeSinceStartup+6;
             while(game.Feedback.CurrentMusicClip!=library.worldMusic[2]&&Time.realtimeSinceStartup<scoreDeadline)yield return null;
             Assert.That(game.Feedback.CurrentMusicClip,Is.SameAs(library.worldMusic[2]));
@@ -1389,14 +1390,17 @@ namespace Cascade.Tests
         }
         [UnityTest] public IEnumerator OutcomeCeremoniesKeepControlsBackAndInterruptionSettlesBothResults()
         {
+            yield return PortraitAtmosphere();
             foreach(bool success in new[]{true,false})foreach(bool reduced in new[]{false,true}){
-                game.LoadNode("C01");game.ShowGame();game.ReducedMotion=reduced;yield return AwaitPreparation();
-                game.Interaction.Execute(success?PuzzleCommand.Swap(0):PuzzleCommand.Drop);
+                game.LoadNode("C01");game.ShowGame();game.ReducedMotion=reduced;yield return AwaitPreparation();yield return FinishDeviceTeaching();
+                Assert.That(game.Interaction.Execute(success?PuzzleCommand.Swap(0):PuzzleCommand.Drop).Accepted,Is.True);
                 string hash=game.Interaction.Attempt.CurrentStateHash;int moves=game.Interaction.Attempt.RouteLength;
                 double started=Time.realtimeSinceStartupAsDouble;
-                while(!game.Outcome.Running&&game.Interaction.IsPresenting&&PresentationBudget(started))yield return null;
-                // Final delivery now enters the star screen directly; only failure
-                // retains the short receiver ceremony. Both paths must settle safely.
+                while(!game.Outcome.Running&&game.Interaction.IsPresenting&&PresentationBudget(started)){
+                    if(!success)Assert.That(game.GetComponentsInChildren<Transform>().Any(t=>t.name=="Lantern delivery story"||t.name=="Stage celebration ribbon"),Is.False,"No Try again frame may appear during a failed delivery");
+                    yield return null;
+                }
+                // Success may rehearse its receiver; failure must go straight to its stable screen.
                 Assert.That(game.Outcome.Success,Is.EqualTo(success));
                 if(success){
                     yield return AwaitPresentation();
@@ -1404,13 +1408,23 @@ namespace Cascade.Tests
                     Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Win));
                     Assert.That(game.LastCompletion,Is.Not.Null);
                     Assert.That(game.GetComponentsInChildren<RewardCelebration>().Length,Is.EqualTo(1));
-                }else Assert.That(game.Outcome.Running,Is.True);
-                Assert.That(game.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b=>b.name=="Retry"),Is.False);
+                }else {
+                    Assert.That(game.Outcome.Running,Is.False);
+                    var hierarchy=game.GetComponentsInChildren<Transform>(true);
+                    Assert.That(hierarchy.Single(t=>t.name=="Lantern delivery story").gameObject.activeInHierarchy,Is.False);
+                    Assert.That(hierarchy.Single(t=>t.name=="Stage celebration ribbon").gameObject.activeInHierarchy,Is.False);
+                }
+                Assert.That(game.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b=>b.name=="Retry"),Is.EqualTo(!success));
                 game.SendMessage("OnApplicationFocus",false);yield return null;
                 Assert.That(game.Outcome.Running,Is.False);Assert.That(game.Interaction.IsPresenting,Is.False);
                 Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));Assert.That(game.Interaction.Attempt.RouteLength,Is.EqualTo(moves));
                 game.SendMessage("OnApplicationFocus",true);yield return null;
                 Assert.That(game.CurrentScreen,Is.EqualTo(success?GameScreen.Win:GameScreen.Fail));AssertResultControlsClearReceiver();
+                if(!success){
+                    Assert.That(game.GetComponentsInChildren<Transform>(true).Any(t=>t.name=="Reference failure result"),Is.True);
+                    Assert.That(game.GetComponentsInChildren<Transform>(true).Any(t=>t.name.StartsWith("Failure thematic decoration ")),Is.False);
+                    Assert.That(game.GetComponentsInChildren<Transform>(true).Any(t=>t.name=="Landed level dissolve"&&t.gameObject.activeInHierarchy),Is.False);
+                }
                 game.ShowHowToPlay();yield return null;
                 Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Devices));
                 Assert.That(game.GetComponentsInChildren<LessonFilm>().Length,Is.GreaterThan(0));
@@ -1437,10 +1451,11 @@ namespace Cascade.Tests
         }
         [UnityTest] public IEnumerator FailureOffersFreeRetryWithoutAnUndoButton()
         {
-            game.Interaction.Execute(PuzzleCommand.Drop);yield return AwaitPresentation();
+            yield return PortraitAtmosphere();
+            yield return AwaitPreparation();yield return FinishDeviceTeaching();Assert.That(game.Interaction.Execute(PuzzleCommand.Drop).Accepted,Is.True);yield return AwaitPresentation();yield return null;
             Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Fail));AssertResultControlsClearReceiver();yield return ClickButton("Retry");
             Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Playing));Assert.That(game.Interaction.Attempt.RouteLength,Is.Zero);
-            game.Interaction.Execute(PuzzleCommand.Drop);yield return AwaitPresentation();
+            yield return AwaitPreparation();yield return FinishDeviceTeaching();Assert.That(game.Interaction.Execute(PuzzleCommand.Drop).Accepted,Is.True);yield return AwaitPresentation();yield return null;
             Assert.That(game.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b=>b.name=="Undo"),Is.False);
             yield return ClickButton("Retry");
             Assert.That(game.Interaction.Attempt.Current.Status,Is.EqualTo(PuzzleStatus.Playing));Assert.That(game.Interaction.Attempt.RouteLength,Is.Zero);

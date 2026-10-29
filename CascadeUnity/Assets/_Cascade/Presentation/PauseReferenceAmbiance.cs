@@ -26,7 +26,7 @@ namespace Cascade.Presentation
             float t=quiet?0:clock;
             float light=quiet?1:1+.055f*Mathf.Sin(t*2.3f)+.028f*Mathf.Sin(t*5.1f+.7f)+.014f*Mathf.Sin(t*8.3f);
             halo.Pose(t,light);flame.Pose(t,light);
-            for(int i=0;i<flowers.Length;i++)if(flowers[i]!=null)flowers[i].localRotation=Quaternion.Euler(0,0,quiet?0:Mathf.Sin(t*.8f+i*1.4f)*1.8f+Mathf.Sin(t*1.55f+i)*.6f);
+            for(int i=0;i<flowers.Length;i++)if(flowers[i]!=null)flowers[i].localRotation=Quaternion.Euler(0,0,quiet?0:WorldSeasonalArt.PlantSway(t+16,i)*.38f);
         }
     }
     [RequireComponent(typeof(CanvasRenderer))]
@@ -52,9 +52,22 @@ namespace Cascade.Presentation
     [RequireComponent(typeof(CanvasRenderer))]
     public sealed class PauseGlyphGraphic:MaskableGraphic
     {
-        int kind;
+        int kind,measuredKind=-1;Rect measuredRect;Bounds paintedBounds;
+        public Bounds PaintedBounds
+        {
+            get{
+                if(measuredKind!=kind||measuredRect!=rectTransform.rect)using(var helper=new VertexHelper())OnPopulateMesh(helper);
+                return paintedBounds;
+            }
+        }
         public void Configure(int value){kind=value;color=value==3?new Color(1,.98f,.88f):new Color(.19f,.055f,.014f);raycastTarget=false;SetVerticesDirty();}
         protected override void OnPopulateMesh(VertexHelper vh)
+        {
+            PopulateGlyph(vh);measuredRect=rectTransform.rect;measuredKind=kind;
+            var vertex=UIVertex.simpleVert;paintedBounds=new Bounds(measuredRect.center,Vector3.zero);
+            for(int i=0;i<vh.currentVertCount;i++){vh.PopulateUIVertex(ref vertex,i);if(i==0)paintedBounds=new Bounds(vertex.position,Vector3.zero);else paintedBounds.Encapsulate(vertex.position);}
+        }
+        void PopulateGlyph(VertexHelper vh)
         {
             vh.Clear();var r=rectTransform.rect;float size=Mathf.Min(r.width,r.height);var c=r.center;
             Vector2 P(float x,float y)=>c+(new Vector2(x,y)-Vector2.one*.5f)*size;

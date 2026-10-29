@@ -49,7 +49,7 @@ namespace Cascade.Editor.Playable
             var hits=new List<RaycastResult>();int total=0,ok=0;
             foreach(var b in game.GetComponentsInChildren<Button>().Where(b=>b.interactable)){total++;var r=(RectTransform)b.transform;EventSystem.current.RaycastAll(new PointerEventData(EventSystem.current){position=RectTransformUtility.WorldToScreenPoint(Camera.main,r.TransformPoint(r.rect.center))},hits);if(hits.FirstOrDefault().gameObject?.GetComponentInParent<Button>()==b)ok++;hits.Clear();}
             checks.Add("Buttons "+name+": "+ok+"/"+total);
-            checks.Add("Bridges attached "+name+": "+game.GetComponentsInChildren<MapRopeBridge>().All(b=>b.AttachmentError<.001f));
+            checks.Add("Decorative map bridges retired "+name);
             checks.Add("Proportional island art "+name+": "+game.GetComponentsInChildren<Image>().Where(i=>i.name.StartsWith("Reference map island artwork")).All(i=>i.preserveAspect&&i.color==Color.white));
         }
     }
@@ -62,7 +62,7 @@ namespace Cascade.Editor.Playable
             string folder=Path.Combine(Path.GetTempPath(),"cascade-map-frames");Directory.CreateDirectory(folder);var target=new RenderTexture(360,640,24);var pixels=new Texture2D(360,640,TextureFormat.RGB24,false);string hash=game.Interaction.Attempt.CurrentStateHash;float error=0;
             try{
                 UnityEngine.Application.targetFrameRate=60;Time.captureDeltaTime=1f/60;scaler.enabled=false;camera.targetTexture=target;scaler.enabled=true;yield return null;game.RefreshLayout();
-                for(int i=0;i<360;i++){yield return null;view.SetReviewAge(start+i/60f);leaves.AdvanceReview(1f/60);Canvas.ForceUpdateCanvases();foreach(var b in view.Bridges)error=Mathf.Max(error,b.AttachmentError);camera.Render();RenderTexture.active=target;pixels.ReadPixels(new Rect(0,0,360,640),0,0);pixels.Apply();File.WriteAllBytes(Path.Combine(folder,i.ToString("D4")+".png"),pixels.EncodeToPNG());}
+                for(int i=0;i<360;i++){yield return null;view.SetReviewAge(start+i/60f);leaves.AdvanceReview(1f/60);Canvas.ForceUpdateCanvases();camera.Render();RenderTexture.active=target;pixels.ReadPixels(new Rect(0,0,360,640),0,0);pixels.Apply();File.WriteAllBytes(Path.Combine(folder,i.ToString("D4")+".png"),pixels.EncodeToPNG());}
                 if(hash!=game.Interaction.Attempt.CurrentStateHash||error>.001f)throw new InvalidOperationException("Map motion changed puzzle or detached bridge");
                 File.WriteAllText(Path.Combine(Directory.GetParent(UnityEngine.Application.dataPath).Parent.FullName,"Reports","MapReferenceOct14","motion-native.json"),"{\"frames\":360,\"fps\":60,\"duration_seconds\":6,\"bridge_error\":"+error.ToString(System.Globalization.CultureInfo.InvariantCulture)+",\"puzzle_unchanged\":true}");
             }finally{view.EndReview();leaves.SetReviewMode(false);Time.captureDeltaTime=oldTime;UnityEngine.Application.targetFrameRate=oldRate;scaler.enabled=false;camera.targetTexture=old;scaler.enabled=true;RenderTexture.active=active;game.RefreshLayout();UnityEngine.Object.DestroyImmediate(pixels);target.Release();UnityEngine.Object.DestroyImmediate(target);}

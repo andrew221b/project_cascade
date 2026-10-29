@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
@@ -8,6 +9,8 @@ namespace Cascade.Presentation
     public sealed partial class CascadeGame
     {
         string languagePreview;
+        string queuedUiLanguage;
+        bool applyingUiLanguage;
 #if UNITY_EDITOR
         public static SystemLanguage? EditorSystemLanguage { get; set; }
 #endif
@@ -28,21 +31,15 @@ namespace Cascade.Presentation
 #endif
                 Preferences.UiLocale=Preferences.PuzzleLocale=SystemUiLocale(system);
             }
-            // A synchronous Addressables wait can stall the iOS main thread during a cold
-            // launch or when returning to the app. The locale assets are already listed in
-            // AvailableLocales; their tables finish loading through the normal player loop.
-            LocalizationSettings.SelectedLocale=LocalizationSettings.AvailableLocales.GetLocale(Preferences.UiLocale);
+            QueueUiLanguage(Preferences.UiLocale);
         }
         static string SystemUiLocale(SystemLanguage language)=>language==SystemLanguage.Russian?"ru":language==SystemLanguage.Ukrainian?"uk":"en";
         public void SetUiLocale(string code)
         {
             if(code!="en"&&code!="ru"&&code!="uk")throw new ArgumentOutOfRangeException(nameof(code));
-            LocalizationSettings.SelectedLocale=LocalizationSettings.AvailableLocales.GetLocale(code);
             Preferences.UiLocale=code; // Persistence preference, never a second active UI locale.
             Preferences.FollowSystemLanguage=false;
-            PersistProgress();
-            if(fieldTrayOpen)RefreshToolTray();
-            if(CurrentScreen==GameScreen.Settings)DrawMenu();
+            QueueUiLanguage(code);PersistProgress();
         }
         public void SetGameLanguage(string code)
         {
@@ -50,10 +47,36 @@ namespace Cascade.Presentation
             Preferences.UiLocale=code;
             Preferences.PuzzleLocale=code;
             Preferences.FollowSystemLanguage=false;
-            LocalizationSettings.SelectedLocale=LocalizationSettings.AvailableLocales.GetLocale(code);
-            PersistProgress();
-            if(fieldTrayOpen)RefreshToolTray();
-            if(CurrentScreen==GameScreen.Settings)DrawMenu();
+            QueueUiLanguage(code);PersistProgress();
+        }
+        void QueueUiLanguage(string code)
+        {
+            queuedUiLanguage=code;
+            if(!applyingUiLanguage)StartCoroutine(ApplyQueuedUiLanguage());
+        }
+        IEnumerator ApplyQueuedUiLanguage()
+        {
+            applyingUiLanguage=true;
+            try{
+                while(queuedUiLanguage!=null){
+                    // Changing SelectedLocale discards the database's current preload handle.
+                    // Let initialization finish before changing it; never block the iOS frame.
+                    var initialization=LocalizationSettings.InitializationOperation;
+                    if(!initialization.IsDone)yield return initialization;
+                    if(initialization.Status!=UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Succeeded)yield break;
+                    string code=queuedUiLanguage;queuedUiLanguage=null;
+                    LocalizationSettings.SelectedLocale=LocalizationSettings.AvailableLocales.GetLocale(code);
+                    var selected=LocalizationSettings.InitializationOperation;
+                    if(!selected.IsDone)yield return selected;
+                    if(selected.Status!=UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Succeeded)yield break;
+                    // Requests received while loading replace the pending choice. Rebuild raw
+                    // reference captions only for the final locale, alongside localized bindings.
+                    if(queuedUiLanguage==null){
+                        if(fieldTrayOpen)RefreshToolTray();
+                        if(flowReady&&menuRoot!=null&&menuRoot.gameObject.activeInHierarchy)DrawMenu();
+                    }
+                }
+            }finally{applyingUiLanguage=false;}
         }
         public void ProposePuzzleLocale(string code)
         {

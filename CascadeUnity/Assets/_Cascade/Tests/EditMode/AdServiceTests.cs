@@ -5,6 +5,7 @@ using Cascade.Application;
 using Cascade.Content;
 using Cascade.Domain;
 using Cascade.Persistence;
+using Cascade.Presentation;
 using Cascade.Solver;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
@@ -13,6 +14,19 @@ namespace Cascade.Tests
 {
     public sealed class AdServiceTests
     {
+        [Test] public void AuthenticatedPurchaseContextMatchesServerWithoutTrustingAnotherPlayer()
+        {
+            const string project="test-project",player="test-player",environment="c4c6a4c9-180a-4a8e-8422-34de96a5ab21";
+            var claims=new JObject{["project_id"]=project,["sub"]=player,["exp"]=DateTimeOffset.UtcNow.ToUnixTimeSeconds()+3600,["aud"]=new JArray("urn:unity:playerapp","envId:"+environment)};
+            string Token(JObject value)=>"header."+Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(value.ToString())).TrimEnd('=').Replace('+','-').Replace('/','_')+".sdk-authenticated";
+            var actual=PurchaseIdentity.FromAuthenticatedSession(project,player,Token(claims));var expected=PurchaseIdentity.For(project,environment,player);
+            Assert.That(actual.AppleToken,Is.EqualTo(expected.AppleToken));Assert.That(actual.GoogleAccountId,Is.EqualTo(expected.GoogleAccountId));
+            foreach(var mutation in new Action<JObject>[]{v=>v["project_id"]="another-project",v=>v["sub"]="another-player",v=>v["exp"]=0,v=>v["aud"]=new JArray("envId:not-an-id"),v=>v["aud"]=new JArray("envId:"+environment,"envId:"+environment)}){
+                var changed=(JObject)claims.DeepClone();mutation(changed);Assert.That(PurchaseIdentity.FromAuthenticatedSession(project,player,Token(changed)),Is.Null,"Unknown or mismatched context must use server fallback");
+            }
+            foreach(string token in new[]{null,"","opaque-sdk-token","a.bad-base64.c",new string('x',17000)})Assert.That(PurchaseIdentity.FromAuthenticatedSession(project,player,token),Is.Null);
+        }
+
         [Test] public void FinalWorldAdGuardUsesJourneyOrderRatherThanDigitsInNodeIds()
         {
             for(int index=0;index<JourneyStory.NodeIds.Count;index++)Assert.That(JourneyStory.IsWorldFinal(JourneyStory.NodeIds[index]),Is.EqualTo((index+1)%60==0));
@@ -63,13 +77,35 @@ namespace Cascade.Tests
             Assert.That(service.Ledger.NoAutomaticAds,Is.False);Assert.That(service.Ledger.Grants,Is.Empty);
             fail=false;Assert.That(service.VerifiedStorePurchase(PurchaseCatalog.NoAutomaticAds,"store_b",true),Is.True);
         }
+	        [Test] public void VerifiedSubscriptionPersistsExpiryAndUpdatesIdempotently()
+	        {
+	            int saves=0;var service=Service(persist:_=>saves++);long first=DateTimeOffset.UtcNow.AddDays(7).ToUnixTimeSeconds(),renewed=first+86400;
+	            Assert.That(service.VerifiedStoreSubscription(PurchaseCatalog.NoAdsWeek,"subscription_a",first,false),Is.False);
+	            Assert.That(service.VerifiedStoreSubscription("unknown","subscription_a",first,true),Is.False);
+	            Assert.That(service.VerifiedStoreSubscription(PurchaseCatalog.NoAdsWeek,"subscription_a",first,true),Is.True);
+	            Assert.That(service.Ledger.SubscriptionExpiry(PurchaseCatalog.NoAdsWeek),Is.EqualTo(first));
+	            Assert.That(service.Ledger.Grants.Single().Kind,Is.EqualTo("subscription"));Assert.That(saves,Is.EqualTo(1));
+	            Assert.That(service.VerifiedStoreSubscription(PurchaseCatalog.NoAdsWeek,"subscription_a",first,true),Is.True);Assert.That(saves,Is.EqualTo(1));
+	            Assert.That(service.VerifiedStoreSubscription(PurchaseCatalog.NoAdsWeek,"subscription_a",renewed,true),Is.True);Assert.That(saves,Is.EqualTo(2));
+	            Assert.That(service.VerifiedStoreSubscription(PurchaseCatalog.NoAdsWeek,"subscription_a",0,true),Is.True);Assert.That(saves,Is.EqualTo(3));
+	            Assert.That(service.Ledger.HasNoAutomaticAds,Is.False);
+	            Assert.That(service.VerifiedStoreSubscription(PurchaseCatalog.NoAdsMonth,"subscription_a",renewed,true),Is.False,"one receipt cannot be replayed for another product");
+	        }
+	        [Test] public void PublicReceiptEndpointMustBeExactHttpsPath()
+	        {
+	            Assert.That(PublicReceiptVerifier.ValidEndpoint("https://cascade-sky-gardens.active-seed-4233.chatgpt.site/api/purchase/local-verify"),Is.True);
+	            Assert.That(PublicReceiptVerifier.ValidEndpoint("https://vickand.com/api/flying-ladders/purchase/local-verify"),Is.True);
+	            Assert.That(PublicReceiptVerifier.ValidEndpoint("https://foreign.example/api/flying-ladders/purchase/local-verify"),Is.False);
+	            foreach(var value in new[]{"http://cascade-sky-gardens.active-seed-4233.chatgpt.site/api/purchase/local-verify","https://cascade-sky-gardens.active-seed-4233.chatgpt.site/api/verify","https://user@cascade-sky-gardens.active-seed-4233.chatgpt.site/api/purchase/local-verify","https://cascade-sky-gardens.active-seed-4233.chatgpt.site/api/purchase/local-verify?player=x"})
+	                Assert.That(PublicReceiptVerifier.ValidEndpoint(value),Is.False,value);
+	        }
         [Test] public void AutomaticAdsRespectEveryGateAndNeverAppearDuringPuzzleFlows()
         {
             foreach(var surface in Enum.GetValues(typeof(AdSurface)).Cast<AdSurface>().Where(s=>s!=AdSurface.Win)) {
                 var s=Service();s.AdvanceForeground(180);Assert.That(s.TryAutomatic(Context(surface),true),Is.Null);
             }
             Action<AdContext>[] gates={c=>c.CoreAccepted=false,c=>c.PrivacyReady=false,c=>c.ProviderEnabled=false,
-                c=>c.UniqueClears=1,c=>c.SavedWin=false,c=>c.BaseRewardGiven=false,c=>c.ContinueVisible=true,c=>c.ChapterFinal=true,c=>c.Replay=true};
+                c=>c.UniqueClears=1,c=>c.SavedWin=false,c=>c.BaseRewardGiven=false,c=>c.ContinueVisible=true,c=>c.Replay=true};
             foreach(var gate in gates){var s=Service();var c=Context(clears:16,node:"C16");gate(c);Assert.That(s.TryAutomatic(c,true),Is.Null);}
             Assert.That(Service().TryAutomatic(Context(clears:1,node:"C01"),true),Is.Null);
             Assert.That(Service().TryAutomatic(Context(clears:3,node:"C03"),true),Is.Null);

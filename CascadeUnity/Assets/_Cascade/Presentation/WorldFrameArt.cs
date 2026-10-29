@@ -21,9 +21,6 @@ namespace Cascade.Presentation
         public static Sprite MapFrame()=>Resources.Load<Sprite>("CascadeArt/WorldMenusOct14/MapFrameMask");
         public static Texture2D Texture(int world)=>GameplayReferenceArt.Texture("GameplayFrame");
         public static Texture2D Accents()=>Resources.Load<Texture2D>(Path+"ReskinAccents");
-        public static Sprite Bridge(int index)=>Resources.Load<Sprite>(Path+"Bridge"+index);
-        public static readonly Vector2[] BridgeStart={new Vector2(.11218837f,.19688109f),new Vector2(.21696801f,.18164436f),new Vector2(.12460568f,.24168514f),new Vector2(.08265583f,.68196721f)};
-        public static readonly Vector2[] BridgeEnd={new Vector2(.88781163f,.80116959f),new Vector2(.89151599f,.81644359f),new Vector2(.86593060f,.78270510f),new Vector2(.90108401f,.64590164f)};
     }
     [RequireComponent(typeof(UnityEngine.UI.Image))]
     public sealed class WorldFrameFit:UnityEngine.UI.BaseMeshEffect

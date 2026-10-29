@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4af7abd550c649cb9a7ce10d282109e, type: 3}
   m_Name: LegalSettings
   m_EditorClassIdentifier: Cascade.Presentation::Cascade.Presentation.LegalSettings
-  privacyPolicyUrl: https://cascade-sky-gardens.active-seed-4233.chatgpt.site/privacy/
-  termsOfUseUrl: https://cascade-sky-gardens.active-seed-4233.chatgpt.site/terms/
-  supportUrl: https://cascade-sky-gardens.active-seed-4233.chatgpt.site/support/
-  publisherName: 
-  publisherCountry: 
-  supportEmail: 
-  privacyEmail: 
-  documentsApproved: 0
-  publicUrlsVerified: 0
+  privacyPolicyUrl: https://flyingladders.vickand.com/privacy/
+  termsOfUseUrl: https://flyingladders.vickand.com/terms/
+  supportUrl: https://flyingladders.vickand.com/support/
+  publisherName: Andrii Plashevskyi
+  publisherCountry: Bulgaria
+  supportEmail: support@vickand.com
+  privacyEmail: support@vickand.com
+  documentsApproved: 1
+  publicUrlsVerified: 1

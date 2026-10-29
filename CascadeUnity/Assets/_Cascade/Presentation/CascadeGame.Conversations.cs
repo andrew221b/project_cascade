@@ -12,7 +12,8 @@ namespace Cascade.Presentation
     public sealed partial class CascadeGame
     {
         StoryConversation conversation;
-        RectTransform conversationRoot,conversationSafe,conversationPlate,conversationName,conversationBust;
+        RectTransform conversationRoot,conversationSafe,conversationPlate,conversationName,conversationBust,conversationStage;
+        ConversationReferenceLayout conversationLayout;bool storyMenuVisible;int conversationWorld;string conversationReadingLocale;
         TextMeshProUGUI conversationBody,conversationSpeaker,conversationCount;
         LocalizeStringEvent conversationLocalization;
         Button conversationNext,conversationSkip;
@@ -37,7 +38,7 @@ namespace Cascade.Presentation
         void OpenConversation(StoryConversation scene,UiCopy final,Action done,Action dismiss=null)
         {
             if(ConversationOpen||scene==null)return;
-            conversation=scene;conversationLine=conversationPage=0;conversationPages.Clear();conversationFinal=final;conversationDone=done;conversationDismiss=dismiss??done;
+            conversation=scene;conversationLine=conversationPage=0;conversationPages.Clear();conversationFinal=GameButtonDesign.CanonicalCaption(final);conversationDone=done;conversationDismiss=dismiss??done;
             conversationWasPaused=Interaction.IsPaused;Interaction.SetPaused(true);EndTokenHold();HideInstruction();
             conversationRoot=Rect("Story conversation",safeRoot.parent,Vector2.zero,Vector2.one);
             conversationSafe=Rect("Story safe content",conversationRoot,Vector2.zero,Vector2.one);
@@ -47,32 +48,12 @@ namespace Cascade.Presentation
                 journeyFooter.gameObject.SetActive(false);
             }
             if(CurrentScreen==GameScreen.Checkpoint){status.gameObject.SetActive(false);statusPaper.gameObject.SetActive(false);receiver.gameObject.SetActive(false);resultRoot.gameObject.SetActive(false);}
-            Background(conversationRoot,new Color(.025f,.09f,.12f,.12f),true);
-            conversationPlate=Rect("Speech ribbon",conversationSafe,new Vector2(.015f,.018f),new Vector2(.985f,.018f));
-            conversationPlate.pivot=new Vector2(.5f,0);
-            PaintStoryPaper(conversationPlate,true);
-            conversationBust=Rect("Speaker portrait",conversationPlate,new Vector2(.025f,.88f),new Vector2(.27f,1.75f));
-            conversationPortrait=conversationBust.gameObject.AddComponent<Image>();conversationPortrait.preserveAspect=true;conversationPortrait.raycastTarget=false;
-            conversationName=Rect("Speaker name",conversationPlate,new Vector2(.035f,1),new Vector2(.035f,1));
-            conversationName.pivot=new Vector2(0,.5f);conversationName.sizeDelta=new Vector2(120,32)*MenuUnit;
-            conversationName.anchoredPosition=new Vector2(2,2)*MenuUnit;
-            var nameFrame=Background(conversationName,Color.white,false);nameFrame.sprite=enamelControls[2];nameFrame.type=Image.Type.Sliced;
-            conversationSpeaker=Text("Speaker",conversationName,Vector2.zero,Vector2.one,17,"");
-            conversationSpeaker.font=art.titleFont;conversationSpeaker.color=MenuInk;conversationSpeaker.alignment=TextAlignmentOptions.Center;
-            conversationSpeaker.margin=new Vector4(9,2,9,2)*MenuUnit;conversationSpeaker.textWrappingMode=TextWrappingModes.NoWrap;
-            conversationSpeaker.enableAutoSizing=true;conversationSpeaker.fontSizeMin=14*MenuUnit;conversationSpeaker.fontSizeMax=17*MenuUnit;
-            conversationBody=Text("Conversation line",conversationPlate,Vector2.zero,Vector2.one,17,"");
-            conversationBody.alignment=TextAlignmentOptions.TopLeft;conversationBody.color=MenuInk;conversationBody.textWrappingMode=TextWrappingModes.Normal;conversationBody.overflowMode=TextOverflowModes.Overflow;conversationBody.margin=Vector4.zero;
-            conversationCount=Text("Conversation progress",conversationPlate,new Vector2(.78f,.80f),new Vector2(.94f,.96f),12,"");conversationCount.color=new Color(.39f,.35f,.27f);
-            conversationNext=Button("Next line",conversationPlate,new Vector2(.75f,0),new Vector2(.95f,0),AdvanceConversation);
-            StyleConversationButton(conversationNext,enamelControls[0],MenuPaper);
-            conversationSkip=Button("Not now",conversationPlate,new Vector2(.05f,0),new Vector2(.32f,0),SkipConversation);
-            StyleConversationButton(conversationSkip,enamelControls[0],MenuPaper);StandardAction(conversationSkip,true);
+            BuildConversationReference();
             RefreshConversationLayout();PaintConversationLine();conversationRoot.SetAsLastSibling();
+            storyMenuVisible=menuRoot.gameObject.activeSelf;if(storyMenuVisible)menuRoot.gameObject.SetActive(false);
             if(!ReducedMotion){
                 var group=conversationRoot.gameObject.AddComponent<CanvasGroup>();group.alpha=.91f;
-                conversationPlate.anchoredPosition=new Vector2(0,-24*MenuUnit);
-                conversationArrival=DOTween.Sequence().Append(conversationPlate.DOAnchorPos(Vector2.zero,.34f).SetEase(Ease.OutQuint)).Join(group.DOFade(1,.30f)).SetUpdate(true);
+                conversationArrival=group.DOFade(1,.30f).SetUpdate(true).SetLink(conversationRoot.gameObject);
             }
         }
         void StyleConversationButton(Button button,Sprite surface,Color ink)
@@ -81,69 +62,53 @@ namespace Cascade.Presentation
             var label=button.GetComponentInChildren<TextMeshProUGUI>();label.font=art.titleFont;label.color=ink;label.textWrappingMode=TextWrappingModes.NoWrap;
             label.margin=new Vector4(16,7,16,7)*MenuUnit;
         }
-        void RefreshConversationLayout()
+        internal void RefreshConversationLayout()
         {
             if(conversationPlate==null||conversation==null)return;
             conversationSafe.anchorMin=safeRoot.anchorMin;conversationSafe.anchorMax=safeRoot.anchorMax;
             conversationSafe.offsetMin=safeRoot.offsetMin;conversationSafe.offsetMax=safeRoot.offsetMax;
-            float width=Mathf.Min(safeRoot.rect.width*.97f,700*MenuUnit);
-            conversationPlate.GetComponent<Image>().pixelsPerUnitMultiplier=8/MenuUnit;
-            conversationPlate.anchorMin=new Vector2(.5f,.018f);conversationPlate.anchorMax=conversationPlate.anchorMin;
-            float textSize=(Preferences.LargeText?18:17)*MenuUnit;
-            conversationBody.fontSize=textSize;conversationBody.enableAutoSizing=false;
-            conversationBody.fontSizeMin=textSize;conversationBody.fontSizeMax=textSize;
-            float textWidth=width-44*MenuUnit;
-            float maximum=Mathf.Max(122*MenuUnit,Mathf.Min((Preferences.LargeText?196:180)*MenuUnit,conversationSafe.rect.height*.31f));
-            float room=Mathf.Max(48*MenuUnit,maximum-68*MenuUnit);
-            if(conversationPages.Count==0||conversationReadingWidth!=textWidth||conversationReadingRoom!=room||conversationReadingFont!=textSize){
-                // Reflow after the actual Canvas changes size, not just at menu construction.
-                int source=conversationPages.Count==0?0:conversationPages[conversationPage].Source;
-                conversationPages.Clear();
+            // Leave room for TMP glyph overhang at the wrapped paragraph edges.
+            conversationBody.margin=new Vector4(4,4,4,4);
+            const float textWidth=560;float textSize=Preferences.LargeText?36.72f:34;
+            bool reflow=conversationPages.Count==0||conversationReadingWidth!=textWidth||conversationReadingFont!=textSize||conversationReadingLocale!=UiLanguage;
+            if(reflow){
+                int source=conversationPages.Count==0?0:conversationPages[conversationPage].Source;conversationPages.Clear();
                 for(int i=0;i<conversation.Lines.Length;i++){
                     var line=conversation.Lines[i];string copy=(line.Goal==null?new UiCopy(line.Text):new UiCopy(line.Text,new UiCopy(line.Goal))).ToString();
                     conversationPages.Add((i,copy));
                 }
                 conversationPage=Mathf.Max(0,conversationPages.FindIndex(p=>p.Source==source));
-                conversationReadingWidth=textWidth;conversationReadingRoom=room;conversationReadingFont=textSize;
+                conversationReadingWidth=textWidth;conversationReadingFont=textSize;conversationReadingLocale=UiLanguage;
             }
             conversationLine=conversationPages[conversationPage].Source;
-            string visibleCopy=conversationPages[conversationPage].Text;
-            if(conversationBody.text!=visibleCopy)conversationBody.SetCopy(UiCopy.Raw(visibleCopy));
-            string pageCount=(conversationPage+1)+" / "+conversationPages.Count;
-            if(conversationCount.text!=pageCount)conversationCount.SetCopy(UiCopy.Raw(pageCount));
-            var nextLabel=conversationNext.GetComponentInChildren<TextMeshProUGUI>();
-            UiCopy nextCopy=conversationPage==conversationPages.Count-1?conversationFinal:new UiCopy("Next line");
+            conversationBody.fontSize=conversationBody.fontSizeMin=conversationBody.fontSizeMax=textSize;conversationBody.enableAutoSizing=false;
+            if(reflow){
+                float longest=0;foreach(var line in conversationPages)longest=Mathf.Max(longest,conversationBody.GetPreferredValues(line.Text,textWidth-conversationBody.margin.x-conversationBody.margin.z,Mathf.Infinity).y);
+                // Include font ascenders and rounding even when the minimum paper height applies.
+                conversationReadingRoom=Mathf.Max(214,Mathf.Ceil(longest))+16;
+            }
+            float shift=conversationLayout!=null?conversationLayout.BottomShift:0;
+            float paperHeight=conversationReadingRoom+128,paperTop=1042-paperHeight+shift;
+            ConversationReferenceLayout.PlaceActionPair(conversationNext,conversationSkip,1090+shift);
+            ConversationReferenceLayout.Place(conversationPlate,28,paperTop,664,paperHeight);
+            conversationPlate.GetComponent<Image>().pixelsPerUnitMultiplier=5;
+            bool mika=conversation.Lines[conversationLine].Speaker=="Mika";
+            ConversationReferenceLayout.Place(conversationBust,mika?10:130,paperTop-390,mika?700:460,420);
+            float pictureWidth=mika&&conversationPortrait.sprite!=null?800*conversationPortrait.sprite.rect.width/conversationPortrait.sprite.rect.height:460;
+            ConversationReferenceLayout.Place(conversationPortrait.rectTransform,mika?(700-pictureWidth)*.5f:0,0,pictureWidth,mika?800:420);
+            ConversationReferenceLayout.Place(conversationName,36,paperTop-48,330,104);
+            ConversationReferenceLayout.Place(conversationBody.rectTransform,52,64,textWidth,conversationReadingRoom);
+            ConversationReferenceLayout.Place(conversationCount.rectTransform,548,20,80,44);
+            string copyNow=conversationPages[conversationPage].Text;if(conversationBody.text!=copyNow)conversationBody.SetCopy(UiCopy.Raw(copyNow));
+            CenteredContentRow.CenterWrappedText(conversationBody,conversationPlate);
+            string pageCount=(conversationPage+1)+" / "+conversationPages.Count;if(conversationCount.text!=pageCount)conversationCount.SetCopy(UiCopy.Raw(pageCount));
+            var nextLabel=conversationNext.GetComponentInChildren<TextMeshProUGUI>();UiCopy nextCopy=conversationPage==conversationPages.Count-1?conversationFinal:ReferenceCopy("Continue","Далее","Далі");
             if(nextLabel.text!=nextCopy.ToString())nextLabel.SetCopy(nextCopy);
-            float preferred=conversationBody.GetPreferredValues(visibleCopy,textWidth,Mathf.Infinity).y;
-            // A single long authored sentence may grow the strip; it must never be clipped mid-thought.
-            conversationPlate.sizeDelta=new Vector2(width,Mathf.Max(138*MenuUnit,preferred+86*MenuUnit));
-            conversationBody.rectTransform.anchorMin=Vector2.zero;conversationBody.rectTransform.anchorMax=Vector2.one;
-            conversationBody.rectTransform.offsetMin=new Vector2(24*MenuUnit,54*MenuUnit);conversationBody.rectTransform.offsetMax=new Vector2(-20*MenuUnit,-32*MenuUnit);
-            conversationBody.lineSpacing=0;conversationBody.paragraphSpacing=0;
-            var map=menuRoot.Find("Parallax island world/Map view") as RectTransform;
-            if(CurrentScreen==GameScreen.JourneyMap&&map!=null){
-                float lower=(conversationPlate.sizeDelta.y+24*MenuUnit)/Mathf.Max(1,menuRoot.rect.height)+.025f;
-                map.anchorMin=new Vector2(map.anchorMin.x,lower);
-            }
-            string localizedName=new UiCopy(conversation.Lines[conversationLine].Speaker).ToString();
-            float nameFont=(Preferences.LargeText?17:16)*MenuUnit;
-            float nameWidth=conversationSpeaker.GetPreferredValues(localizedName,Mathf.Infinity,Mathf.Infinity).x+26*MenuUnit;
-            conversationName.sizeDelta=new Vector2(Mathf.Clamp(nameWidth,120*MenuUnit,width-88*MenuUnit),36*MenuUnit);
-            conversationName.anchoredPosition=new Vector2(2,2)*MenuUnit;
-            conversationSpeaker.fontSize=nameFont;conversationSpeaker.fontSizeMin=14*MenuUnit;conversationSpeaker.fontSizeMax=nameFont;
-            conversationSpeaker.overflowMode=TextOverflowModes.Truncate;conversationCount.fontSize=12*MenuUnit;
-            foreach(var button in new[]{conversationNext,conversationSkip}){
-                var label=button.GetComponentInChildren<TextMeshProUGUI>();
-                label.textWrappingMode=TextWrappingModes.NoWrap;label.alignment=TextAlignmentOptions.Midline;
-                label.margin=new Vector4(16,7,16,7)*MenuUnit;label.enableAutoSizing=true;
-                label.fontSizeMin=13*MenuUnit;label.fontSizeMax=15*MenuUnit;label.fontSize=15*MenuUnit;
-                float desired=label.GetPreferredValues(label.text,Mathf.Infinity,Mathf.Infinity).x+32*MenuUnit;
-                float actionWidth=Mathf.Clamp(desired,100*MenuUnit,(width*.90f-12*MenuUnit)*.5f);
-                bool advance=button==conversationNext;var rect=(RectTransform)button.transform;
-                rect.anchorMin=rect.anchorMax=new Vector2(advance?.95f:.05f,0);
-                rect.pivot=new Vector2(advance?1:0,0);rect.sizeDelta=new Vector2(actionWidth,44*MenuUnit);rect.anchoredPosition=new Vector2(0,5*MenuUnit);button.GetComponent<CenteredContentRow>()?.Refresh();
-            }
+            conversationNext.GetComponent<GameButtonDesign>()?.Refresh();
+            conversationSpeaker.GetComponentInParent<CenteredContentRow>()?.Refresh();nextLabel.GetComponentInParent<CenteredContentRow>()?.Refresh();
+            conversationSkip.GetComponentInChildren<TextMeshProUGUI>().GetComponentInParent<CenteredContentRow>()?.Refresh();
         }
+
         Sprite StoryPaper()
         {
             if(storyPaper!=null)return storyPaper;
@@ -186,17 +151,18 @@ namespace Cascade.Presentation
         {
             RefreshConversationLayout();
             conversationLine=conversationPages[conversationPage].Source;
-            var line=conversation.Lines[conversationLine];conversationPortrait.sprite=ConversationPortrait(line.Speaker);conversationSpeaker.SetCopy(line.Speaker);
-            if(line.Speaker=="Mika")AttachMikaCosmetic(conversationPortrait,null,true);
+            var line=conversation.Lines[conversationLine];conversationPortrait.sprite=line.Speaker=="Pip"||line.Speaker=="Rue"||line.Speaker=="Mika"?Resources.Load<Sprite>("CascadeArt/Journey/"+line.Speaker):ConversationPortrait(line.Speaker);conversationSpeaker.SetCopy(line.Speaker);
+            if(line.Speaker=="Mika")AttachMikaCosmetic(conversationPortrait,null,false);
             else conversationPortrait.GetComponent<MikaCosmeticView>()?.HideForOtherSpeaker();
             conversationBody.SetCopy(UiCopy.Raw(conversationPages[conversationPage].Text));
+            CharacterPoseView.Attach(this,conversationPortrait).SetSpeechSource(conversationBody);
             if(conversationLocalization==null){
                 conversationLocalization=conversationBody.GetComponent<LocalizeStringEvent>();
                 if(conversationLocalization!=null)conversationLocalization.OnUpdateString.AddListener(RefreshConversationCopy);
             }
             RefreshConversationLayout();
             conversationCount.SetCopy(UiCopy.Raw((conversationPage+1)+" / "+conversationPages.Count));
-            conversationNext.GetComponentInChildren<TextMeshProUGUI>().SetCopy(conversationPage==conversationPages.Count-1?conversationFinal:new UiCopy("Next line"));
+            conversationNext.GetComponentInChildren<TextMeshProUGUI>().SetCopy(conversationPage==conversationPages.Count-1?conversationFinal:ReferenceCopy("Continue","Далее","Далі"));
             conversationAge=0;conversationBody.maxVisibleCharacters=ReducedMotion?int.MaxValue:0;
             portraitArrival?.Kill();conversationBust.localScale=ReducedMotion?Vector3.one:Vector3.one*.97f;
             if(!ReducedMotion)portraitArrival=conversationBust.DOScale(1,.28f).SetEase(Ease.OutQuint).SetUpdate(true);
@@ -234,8 +200,8 @@ namespace Cascade.Presentation
             conversationDone=conversationDismiss=null;Interaction?.SetPaused(conversationWasPaused);
             if(CurrentScreen==GameScreen.Checkpoint){status.gameObject.SetActive(storyStatusVisible);statusPaper.gameObject.SetActive(storyPaperVisible);receiver.gameObject.SetActive(storyReceiverVisible);resultRoot.gameObject.SetActive(true);}
             if(storyMapFooter!=null)storyMapFooter.gameObject.SetActive(storyMapFooterVisible);storyMapFooter=null;
-            var map=menuRoot.Find("Parallax island world/Map view") as RectTransform;if(map!=null)map.anchorMin=new Vector2(map.anchorMin.x,.18f);
-            if(conversationRoot!=null){conversationRoot.gameObject.SetActive(false);Destroy(conversationRoot.gameObject);}conversationRoot=conversationSafe=conversationPlate=null;
+            if(storyMenuVisible&&menuRoot!=null)menuRoot.gameObject.SetActive(true);storyMenuVisible=false;
+            if(conversationRoot!=null){conversationRoot.gameObject.SetActive(false);Destroy(conversationRoot.gameObject);}conversationRoot=conversationSafe=conversationPlate=conversationStage=null;conversationLayout=null;
         }
 #if UNITY_EDITOR
         public void ReviewConversation(StoryConversation scene)

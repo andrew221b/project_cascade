@@ -14,8 +14,9 @@ namespace Cascade.Presentation
     {
         readonly Queue<MechanicLesson> firstMechanics=new Queue<MechanicLesson>();
         readonly HashSet<(MechanicLesson Lesson,int Floor)> deferredLessons=new HashSet<(MechanicLesson,int)>();
-        bool needsMechanicScan,mechanicWasPaused;
+        bool needsMechanicScan,mechanicWasPaused,mechanicPreviewOnly;
         int mechanicMountFrame;
+        Guid discoveredAttempt;int discoveredFloor=-1;bool discoveredReach;
         RectTransform mechanicOverlay,mechanicSafe;
         CanvasGroup mechanicOpacity;
         Sequence mechanicArrival;
@@ -29,9 +30,19 @@ namespace Cascade.Presentation
         // An upgraded save can lack the newer gesture-coach marker. A cleared
         // opening level proves basic control; do not interrupt a later puzzle
         // with the opening rehearsal. Replaying C01 can still teach both ways.
-        static bool IsSurpriseWindLesson(MechanicLesson lesson)
-            =>lesson==MechanicLesson.Gust||lesson==MechanicLesson.LiveGust||lesson==MechanicLesson.LandingWind;
-        bool NeedsControlLesson(MechanicLesson lesson)=>!IsSurpriseWindLesson(lesson)&&!LessonWasSeen(lesson)
+        // The preference controls optional input coaching. A new visible world
+        // mechanic is always introduced once, including on the lower board.
+        static bool OptionalControlLesson(MechanicLesson lesson)=>lesson==MechanicLesson.Swap||lesson==MechanicLesson.Descent||lesson==MechanicLesson.Undo||lesson==MechanicLesson.Hint||lesson==MechanicLesson.Toolbag;
+        static string MechanicFilmMarker(MechanicLesson lesson)=>"mechanic-film-v1-"+(int)lesson;
+        void RememberMechanicFilm(MechanicLesson lesson)
+        {
+            string marker=MechanicFilmMarker(lesson);
+            if(profile.SeenCoachPrompts.Contains(marker))return;
+            profile.SeenCoachPrompts.Add(marker);PersistProgress(true);
+            if(HasSaveError)profile.SeenCoachPrompts.Remove(marker);
+        }
+        bool NeedsControlLesson(MechanicLesson lesson)=>(Preferences.Tutorials||!OptionalControlLesson(lesson))&&!LessonWasSeen(lesson)
+            &&!profile.SeenCoachPrompts.Contains(MechanicFilmMarker(lesson))
             &&!(lesson==MechanicLesson.Swap&&node!="C01"&&profile.Clears.Any(c=>c.CampaignNodeId=="C01"&&c.BestStars>0));
         public bool MechanicPopupOpen=>mechanicOverlay!=null;
         public MechanicLesson? CurrentMechanic { get; private set; }
@@ -45,44 +56,52 @@ namespace Cascade.Presentation
         void TryFirstMechanic()
         {
             if(!Preferences.Tutorials){
-                needsMechanicScan=false;firstMechanics.Clear();
-                if(MechanicPopupOpen)CloseMechanicPopup();
+                if(MechanicPopupOpen&&OptionalControlLesson(CurrentMechanic.Value)&&!lessonReplay)CloseMechanicPopup();
                 if(PendingLesson.HasValue)ClearLessonPractice();
                 bool preparing=descentPlanFailed||!PreparationReady||IsDescending||IsPlanningDescent||IsPlanningDirection;
                 if(Interaction!=null&&Interaction.IsPreparing!=preparing)Interaction.SetPreparing(preparing);
-                return;
             }
             if(!flowReady||profile==null||CurrentScreen!=GameScreen.Playing||MechanicPopupOpen||!IntroductionAnimationAllowed
-                ||PendingLesson.HasValue||IsHoldingToken||!PreparationReady||Interaction.IsPresenting||IsDescending||IsPlanningDescent||IsPlanningDirection||Time.frameCount<=mechanicMountFrame||saveBlocked||HasSaveError)return;
+                ||fieldTrayOpen||PendingLesson.HasValue||IsHoldingToken||!PreparationReady||Interaction.IsPresenting||IsDescending||IsPlanningDescent||IsPlanningDirection||Time.frameCount<=mechanicMountFrame||saveBlocked||HasSaveError)return;
+            // Restores and round mounts can change the visible puzzle without a
+            // committed FloorEntered event. Discover once for that new context too.
+            var attempt=Interaction.Attempt;bool reach=attempt.Current.ReachCharges>0;
+            if(discoveredAttempt!=attempt.AttemptId||discoveredFloor!=attempt.Current.ActiveFloor||discoveredReach!=reach){
+                discoveredAttempt=attempt.AttemptId;discoveredFloor=attempt.Current.ActiveFloor;discoveredReach=reach;needsMechanicScan=true;
+            }
             if(Interaction.Attempt.CanUndo&&NeedsControlLesson(MechanicLesson.Undo))needsMechanicScan=true;
             if(needsMechanicScan){
                 firstMechanics.Clear();
-                var visible=MechanicLessons.DiscoverVisible(Interaction.Attempt.Level,Interaction.Attempt.Current,IsWindFloor(Interaction.Attempt.Current.ActiveFloor+1));
+                var visible=MechanicLessons.DiscoverVisible(Interaction.Attempt.Level,Interaction.Attempt.Current,IsWindFloor(Interaction.Attempt.Current.ActiveFloor+1),true);
                 if(CurrentScreen==GameScreen.Playing&&NeedsControlLesson(MechanicLesson.Swap))firstMechanics.Enqueue(MechanicLesson.Swap);
                 if(Interaction.Attempt.CanUndo&&NeedsControlLesson(MechanicLesson.Undo))firstMechanics.Enqueue(MechanicLesson.Undo);
                 foreach(var lesson in visible)
-                    if(!IsSurpriseWindLesson(lesson)&&NeedsControlLesson(lesson)
+                    if(NeedsControlLesson(lesson)
                         &&!deferredLessons.Contains((lesson,Interaction.Attempt.Current.ActiveFloor)))firstMechanics.Enqueue(lesson);
                 needsMechanicScan=false;
                 Interaction.SetPreparing(descentPlanFailed||!PreparationReady||IsDescending||IsPlanningDescent);RenderControls();
             }
-            while(firstMechanics.Count>0){var next=firstMechanics.Dequeue();if(NeedsControlLesson(next)){OpenMechanicPopup(next);break;}}
+            while(firstMechanics.Count>0){var next=firstMechanics.Dequeue();if(NeedsControlLesson(next)){
+                var active=MechanicLessons.DiscoverVisible(Interaction.Attempt.Level,Interaction.Attempt.Current,IsWindFloor(Interaction.Attempt.Current.ActiveFloor+1));
+                OpenMechanicPopup(next);mechanicPreviewOnly=!OptionalControlLesson(next)&&!active.Contains(next);break;
+            }}
         }
         // Retained for older QA callers. Ambient scenery never owns a lesson.
         public bool RequireGustIntroduction()=>false;
         bool IntroduceTool(TravelTool tool,Action use)
         {
-            if(!Preferences.Tutorials)return false;
-            var lesson=MechanicLessons.Tool(tool);if(LessonWasSeen(lesson)||rehearsedLessons.ContainsKey(lesson))return false;
+            var lesson=MechanicLessons.Tool(tool);if(!NeedsControlLesson(lesson)||rehearsedLessons.ContainsKey(lesson))return false;
+            // A first-use film replaces the inventory, never sits behind its canvas.
+            if(fieldTrayOpen)SetToolTray(false,true);
+            if(CurrentScreen==GameScreen.Supplies)SetScreen(GameScreen.Playing);
             OpenMechanicPopup(lesson,use);return true;
         }
         bool IntroduceDescentEntry()
         {
-            if(!Preferences.Tutorials)return false;
             var upcoming=descent.Level(DescentPublishedSource(),descent.StageIndex+1);
             var arrival=upcoming.Floors[0].EntryTransform;if(arrival==EntryTransform.None)return false;
             var lesson=arrival==EntryTransform.MirrorNext?MechanicLesson.Mirror:MechanicLesson.Rollers;
-            if(LessonWasSeen(lesson)||rehearsedLessons.ContainsKey(lesson))return false;
+            if(!NeedsControlLesson(lesson)||rehearsedLessons.ContainsKey(lesson))return false;
             OpenMechanicPopup(lesson,windRight:arrival==EntryTransform.ShiftRightOne);return true;
         }
         void OpenMechanicPopup(MechanicLesson lesson,Action requestedAction=null,UiCopy acknowledgement=default,bool? windRight=null)
@@ -128,9 +147,11 @@ namespace Cascade.Presentation
         public void AcknowledgeMechanic()
         {
             if(!MechanicPopupOpen||!IntroductionAnimationAllowed||saveBlocked)return;
-            var lesson=CurrentMechanic.Value;var action=afterMechanic;bool replay=lessonReplay;CloseMechanicPopup();
+            var lesson=CurrentMechanic.Value;var action=afterMechanic;bool replay=lessonReplay,preview=mechanicPreviewOnly;CloseMechanicPopup();
             if(replay){MarkLessonSeen(lesson);return;}
             if(action!=null){MarkLessonSeen(lesson);if(!HasSaveError)action();return;}
+            if(preview||!Preferences.Tutorials){MarkLessonSeen(lesson);needsMechanicScan=true;return;}
+            RememberMechanicFilm(lesson);if(HasSaveError)return;
             BeginLessonPractice(lesson);
             if(lesson==MechanicLesson.Gust)machine.DelayAmbientGust(.8f);
             feedback.Sound(ToyCue.Select);
@@ -139,7 +160,7 @@ namespace Cascade.Presentation
         {
             if(!MechanicPopupOpen)return;
             mechanicArrival?.Kill();mechanicArrival=null;mechanicOverlay.gameObject.SetActive(false);Destroy(mechanicOverlay.gameObject);mechanicOverlay=null;mechanicSafe=null;tutorialReferenceLayout=null;CurrentMechanic=null;afterMechanic=null;lessonReplay=false;
-            Interaction?.SetPaused(mechanicWasPaused);machine.SetAmbientPaused(CurrentScreen==GameScreen.Pause||CurrentScreen==GameScreen.SaveRecovery);if(CanPresent)RenderControls();
+            mechanicPreviewOnly=false;Interaction?.SetPaused(mechanicWasPaused);machine.SetAmbientPaused(CurrentScreen==GameScreen.Pause||CurrentScreen==GameScreen.SaveRecovery);if(CanPresent)RenderControls();
         }
         void FitMechanicSafeArea(){if(mechanicSafe==null)return;mechanicSafe.anchorMin=safeRoot.anchorMin;mechanicSafe.anchorMax=safeRoot.anchorMax;mechanicSafe.offsetMin=mechanicSafe.offsetMax=Vector2.zero;tutorialReferenceLayout?.Fit();}
         void TickMechanicIntroduction()

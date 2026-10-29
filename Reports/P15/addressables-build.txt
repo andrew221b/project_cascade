@@ -1,1 +1,1 @@
-Success: iOS; duration=7.994914; path=Library/com.unity.addressables/aa/iOS/settings.json
+Success: Android; duration=21.716739; path=Library/com.unity.addressables/aa/Android/settings.json

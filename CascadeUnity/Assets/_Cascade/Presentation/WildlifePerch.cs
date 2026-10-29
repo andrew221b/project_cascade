@@ -7,7 +7,7 @@ namespace Cascade.Presentation
     {
         public const float EmptyIdle=3.2f,OccupiedIdle=9,ApproachTime=1.7f,DepartureTime=1.1f;
         public static float LandingProgress(float elapsed)
-        {float t=Mathf.Clamp01(elapsed/ApproachTime);return 1-Mathf.Pow(1-t,3);}
+        {float t=Mathf.Clamp01(elapsed/ApproachTime);return t*(4-t*t*t)/3;}
         public static float LeavingProgress(float elapsed)
         {float t=Mathf.Clamp01(elapsed/DepartureTime);return t*t*(2-t);}
         public static float Fold(float elapsed)=>Mathf.SmoothStep(0,1,Mathf.Clamp01(elapsed/.38f));
@@ -29,7 +29,7 @@ namespace Cascade.Presentation
         WildlifePerchTarget target;
         WildlifePose touchdown;
         Vector3 origin,contact,lastContact;
-        float started,nextVisit,lastPhase=-1,size,facing,seed,restTime,lastAngle;
+        float started,wingStarted,nextVisit,lastPhase=-1,size,facing,seed,restTime,lastAngle;
         float approachTime=WildlifePerchMotion.ApproachTime,departureTime=WildlifePerchMotion.DepartureTime;
         bool crawling,clinging;
         float paintedAngle,departureAngle;
@@ -44,7 +44,7 @@ namespace Cascade.Presentation
             if(State==WildlifePerchState.None){
                 if(!source.WildlifeCanLand||phase<nextVisit||source.WildlifeIdleSeconds<WildlifePerchMotion.EmptyIdle)return false;
                 seed=WildlifeMotion.Hash(sessionSalt+zone*71+visit*173+revision*43);
-                int preferred=visit%3!=1?4:Mathf.FloorToInt(WildlifeMotion.Hash(sessionSalt+visit*317+zone*89+29)*4);
+                int preferred=visit%2==0?0:3;
                 if(!source.TryChooseWildlifePerch(preferred,seed,source.WildlifeIdleSeconds>=WildlifePerchMotion.OccupiedIdle,out target,lastTarget))return false;
                 if(!source.TryWildlifeSupport(target,out contact,out lastAngle))return false;
                 float h=camera.orthographicSize*2,w=h*camera.aspect;
@@ -57,7 +57,7 @@ namespace Cascade.Presentation
                 if(!WildlifeMotion.IsBird(species))size*=species==WildlifeSpecies.Bumblebee?.28f:.38f;
                 float side=WildlifeMotion.Hash(sessionSalt+visit*71+41)<.5f?-1:1;facing=-side;
                 origin=camera.ViewportToWorldPoint(new Vector3(side<0?-.07f:1.07f,Mathf.Clamp(camera.WorldToViewportPoint(contact).y+.15f,.2f,.83f),camera.WorldToViewportPoint(contact).z));
-                origin.z=contact.z;lastContact=contact;started=phase;restTime=4.5f+WildlifeMotion.Hash(sessionSalt+visit*101+59)*4.5f;lastTarget=target;
+                origin.z=contact.z;lastContact=contact;wingStarted=started=phase;restTime=4.5f+WildlifeMotion.Hash(sessionSalt+visit*101+59)*4.5f;lastTarget=target;
                 if(target.Kind==WildlifePerchKind.Frame){
                     facing=target.Index==0?1:-1;
                     if(clinging){facing=-facing;lastAngle=WildlifePerchMotion.FrameAngle(target.Index!=0);origin=camera.ViewportToWorldPoint(new Vector3(target.Index==0?.28f:.72f,-.12f,camera.WorldToViewportPoint(contact).z));origin.z=contact.z;}
@@ -74,7 +74,8 @@ namespace Cascade.Presentation
             }
             float age=phase-started;
             var tint=zone==8?new Color(.84f,.90f,1):zone==2||zone==7?new Color(1,.94f,.83f):Color.white;
-            float wingAge=State==WildlifePerchState.Approaching?WildlifePerchMotion.LandingWingClock(age):age;
+            float flightAge=phase-wingStarted;
+            float wingAge=State==WildlifePerchState.Approaching?WildlifePerchMotion.LandingWingClock(flightAge):flightAge+.35f;
             float rate=bird.Species==WildlifeSpecies.BarnOwl?1.8f:bird.Species==WildlifeSpecies.Bumblebee?11.2f:5.1f;
             var pose=WildlifeMotion.Pose(WildlifeMotion.Style(bird.Species),wingAge,rate,seed,effort:1);
             Vector3 feet;float fold=0,tilt=0;

@@ -11,7 +11,8 @@
         "Unity.Localization.Editor",
         "Cascade.Presentation",
         "Unity.TextMeshPro",
-        "Cascade.Persistence"
+        "Cascade.Persistence",
+        "AdManagerPro"
     ],
     "overrideReferences": true,
     "precompiledReferences": [

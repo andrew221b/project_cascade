@@ -17,7 +17,7 @@ namespace Cascade.Presentation
         readonly MeshRenderer[] islandRenderers=new MeshRenderer[6];readonly float[] islandRatios=new float[6];int islandWorld=-1;
         public int IslandSetWorld=>islandWorld;public int IslandVariantCount=>islands.Length;
         Transform landscape, plantsLeft, plantsRight, glider, lagoonSkiff,climateFrame;
-        Texture2D panorama,workshopTexture,workshopPortrait,mapSkyTexture;bool workshop;
+        Texture2D workshopTexture,workshopPortrait,mapSkyTexture;bool workshop;
         WorldSeasonalWeather weather;
         Camera cameraView;
         Material landscapeMaterial, gliderMaterial,climateFrameMaterial;
@@ -37,6 +37,7 @@ namespace Cascade.Presentation
         public float Phase { get; private set; }
         public int Zone => zone;
         public float DescentDepth {get;set;}
+        public bool DescentTravelling {get;set;}
         public string CosmeticScenery {get;set;}
         public int CosmeticIsland {get;set;}
         public int CosmeticStage {get;set;}
@@ -47,6 +48,7 @@ namespace Cascade.Presentation
         public Bounds GliderBounds => glider==null?default:glider.GetComponent<MeshRenderer>().bounds;
         public Vector2 FlightBand => new Vector2(flightBottom,flightTop);
         public bool Ready => landscape!=null;
+        public float FoliageWind{get;set;}=float.NaN;
         public void SetMapSky(Texture2D texture){mapSkyTexture=texture;SetZone(zone);}
         public void SetWorkshop(bool value){workshop=value;SetZone(zone);}
         public void SetFlightBand(float bottom,float top) { flightBottom=bottom;flightTop=top; }
@@ -71,18 +73,17 @@ namespace Cascade.Presentation
         public void Initialize(ToyArt art,Camera camera)
         {
             cameraView=camera;
-            string[] names={"WindGardenBase","RainMillBase","CopperOrchardBase","CloudPostBase","GlassLagoonBase","MossArchiveBase","SnowSpireBase","GreatBeaconBase","StarObservatoryBase"};
-            for(int i=0;i<names.Length;i++)backgrounds[i]=MenuWorldArt.Sky(i);
+            // Load the visible sky only; other worlds keep their full artwork on demand.
+            backgrounds[0]=MenuWorldArt.Sky(0);
             if(backgrounds[0]==null)return;
-            landscape=Plate("Far island sky",backgrounds[0],art.quad,false);
+            landscape=RequiredPlate("Far island sky",backgrounds[0],art.quad,false);
             landscapeMaterial=landscape.GetComponent<MeshRenderer>().sharedMaterial;
             var sceneryTemplate=Resources.Load<Material>("CascadeArt/Craft/IslandScenery");
             landscapeMaterial.shader=sceneryTemplate!=null?sceneryTemplate.shader:Shader.Find("CASCADE/IslandScenery");
-            climateFrame=Plate("Thematic level framing",GameplayReferenceArt.Texture("GameplayFrame"),art.quad,true);climateFrameMaterial=climateFrame.GetComponent<MeshRenderer>().sharedMaterial;climateFrameMaterial.shader=Resources.Load<Shader>(WorldFrameArt.Path+"FrameScene");frameMesh=new Mesh{name="Proportional nine-slice world frame"};climateFrame.GetComponent<MeshFilter>().sharedMesh=frameMesh;
-            panorama=Resources.Load<Texture2D>("CascadeArt/Craft/WindGardenSky") ?? Resources.Load<Texture2D>("CascadeArt/Craft/WindGardenPanorama");
-            for(int i=0;i<islands.Length;i++){islands[i]=Plate("Floating world island "+i,WorldIslandArt.Texture(0,i),art.quad,true);islandRenderers[i]=islands[i].GetComponent<MeshRenderer>();islandRenderers[i].sharedMaterial.shader=Resources.Load<Shader>(WorldIslandArt.Path+"IslandSurface");}
-            workshopTexture=Resources.Load<Texture2D>("CascadeArt/Craft/WorkshopRoomQuiet")??Resources.Load<Texture2D>("CascadeArt/Craft/WorkshopRoom");
-            workshopPortrait=Resources.Load<Texture2D>("CascadeArt/Craft/WorkshopPortraitQuiet")??Resources.Load<Texture2D>("CascadeArt/Craft/WorkshopPortrait");
+            climateFrame=RequiredPlate("Thematic level framing",GameplayReferenceArt.Texture("GameplayFrame"),art.quad,true);climateFrameMaterial=climateFrame.GetComponent<MeshRenderer>().sharedMaterial;climateFrameMaterial.shader=Resources.Load<Shader>(WorldFrameArt.Path+"FrameScene");frameMesh=new Mesh{name="Proportional nine-slice world frame"};climateFrame.GetComponent<MeshFilter>().sharedMesh=frameMesh;
+            for(int i=0;i<islands.Length;i++){islands[i]=RequiredPlate("Floating world island "+i,WorldIslandArt.Texture(0,i),art.quad,true);islandRenderers[i]=islands[i].GetComponent<MeshRenderer>();islandRenderers[i].sharedMaterial.shader=Resources.Load<Shader>(WorldIslandArt.Path+"IslandSurface");}
+            workshopTexture=Resources.Load<Texture2D>("CascadeArt/Craft/WorkshopRoomQuiet");
+            workshopPortrait=Resources.Load<Texture2D>("CascadeArt/Craft/WorkshopPortraitQuiet");
             var weatherObject=new GameObject("Batched regional flowers and weather",typeof(WorldSeasonalWeather));weatherObject.transform.SetParent(transform,false);
             weather=weatherObject.GetComponent<WorldSeasonalWeather>();weather.Initialize();
             var cloud=Resources.Load<Texture2D>("CascadeArt/Journey/Cloud");
@@ -104,12 +105,21 @@ namespace Cascade.Presentation
             if(craft==null)return;var material=craft.GetComponent<MeshRenderer>().sharedMaterial;
             material.shader=Resources.Load<Shader>(WorldIslandArt.Path+"IslandSurface");aircraftMaterials.Add(material);
         }
+        Transform RequiredPlate(string name,Texture texture,Mesh quad,bool transparent)
+        {
+            if(texture==null)throw new System.InvalidOperationException("Missing required world texture: "+name);
+            return Plate(name,texture,quad,transparent);
+        }
         Transform Plate(string name,Texture texture,Mesh quad,bool transparent)
         {
             if(texture==null)return null;
             var go=new GameObject(name,typeof(MeshFilter),typeof(MeshRenderer));go.transform.SetParent(transform,false);
             go.GetComponent<MeshFilter>().sharedMesh=quad;
-            var shader=transparent?Resources.Load<Shader>("CascadeArt/IllustratedSurface"):Shader.Find("Universal Render Pipeline/Unlit");
+            // Use the retained final sky shader directly: a temporary Shader.Find-only
+            // URP material can lose its shader during player stripping.
+            var template=transparent?null:Resources.Load<Material>("CascadeArt/Craft/IslandScenery");
+            var shader=transparent?Resources.Load<Shader>("CascadeArt/IllustratedSurface"):template?.shader;
+            if(shader==null)throw new System.InvalidOperationException("Missing retained world shader: "+name);
             var mat=new Material(shader){name=name+" material"};owned.Add(mat);
             mat.SetTexture("_BaseMap",texture);mat.SetColor("_BaseColor",Color.white);
             if(transparent) {
@@ -123,8 +133,9 @@ namespace Cascade.Presentation
         public void SetZone(int value)
         {
             zone=Mathf.Clamp(value,0,JourneyStory.WorldCount-1);
+            if(backgrounds[zone]==null)backgrounds[zone]=MenuWorldArt.Sky(zone);
             if(climateFrame!=null){var frameMaterial=climateFrame.GetComponent<MeshRenderer>().sharedMaterial;frameMaterial.SetTexture("_BaseMap",WorldFrameArt.Texture(zone));frameMaterial.SetTexture("_ThemeAccentTex",WorldFrameArt.Accents());frameMaterial.SetFloat("_World",zone);frameAspect=-1;}
-            if(islandWorld!=zone){for(int i=0;i<islands.Length;i++){var tex=WorldIslandArt.Texture(zone,i);islandRenderers[i].sharedMaterial.SetTexture("_BaseMap",tex);islandRatios[i]=tex.width/(float)tex.height;}islandWorld=zone;}
+            if(islandWorld!=zone){for(int i=0;i<islands.Length;i++){var tex=WorldIslandArt.Texture(zone,i);if(tex==null)throw new System.InvalidOperationException("Missing world island texture: "+WorldIslandArt.Theme(zone)+i);islandRenderers[i].sharedMaterial.SetTexture("_BaseMap",tex);islandRatios[i]=tex.width/(float)tex.height;}islandWorld=zone;}
             for(int i=0;i<islands.Length;i++){var mat=islandRenderers[i].sharedMaterial;mat.SetTexture("_SkyTex",backgrounds[zone]);mat.SetFloat("_Haze",zone==1?.25f:.17f);mat.SetColor("_BaseColor",Color.white);}
             foreach(var mat in aircraftMaterials){mat.SetTexture("_SkyTex",backgrounds[zone]);mat.SetFloat("_Haze",zone==1?.25f:.17f);}
 
@@ -167,22 +178,24 @@ namespace Cascade.Presentation
             landscapeMaterial.SetVector("_ImageRect",imageRect);
             wildlife?.Paint(phase,zone,gameplayVisible&&!workshop&&!quietFlight,ReducedMotion,EffectQuality,mapSkyTexture!=null,CosmeticIsland,CosmeticStage,CosmeticScenery);
             nightSky?.Paint(phase,gameplayVisible&&zone==8&&mapSkyTexture==null&&!workshop,ReducedMotion,EffectQuality);
-            ActiveWeatherCount=weather==null?0:weather.Paint(ReducedMotion?0:phase,zone,gameplayVisible&&mapSkyTexture==null&&!workshop?EffectQuality:0,w,h,new Vector3(cx,cy,2.35f));
+            float foliageWind=ReducedMotion||EffectQuality==0?0:float.IsNaN(FoliageWind)?Cascade.Application.WorkshopWind.Sample(phase):FoliageWind;
+            bool plantSupportVisible=climateFrame!=null&&gameplayVisible&&!workshop&&!quietFlight&&mapSkyTexture==null;
+            ActiveWeatherCount=weather==null?0:weather.Paint(ReducedMotion?0:phase,zone,gameplayVisible&&mapSkyTexture==null&&!workshop?EffectQuality:0,w,h,new Vector3(cx,cy,2.35f),foliageWind,plantSupportVisible);
             for(int i=0;i<clouds.Length;i++) {
                 var cloud=clouds[i];if(cloud==null)continue;cloud.gameObject.SetActive(gameplayVisible&&mapSkyTexture==null&&!(workshop&&quietFlight));
                 float cw=workshop?w*(i==0?.24f:i==1?.20f:.28f):Mathf.Min(w,h)*(i==0?.35f:i==1?.28f:.42f);
                 float x=Mathf.Repeat(phase*(.004f+i*.0025f)+i*.42f,1.7f)-.85f;
                 if(workshop)x=Mathf.Sin(phase*.035f+i*2)*.18f;
-                cloud.position=new Vector3(cx+x*w,cy+h*(workshop?(i==0?.12f:i==1?.24f:-.10f):(i==0?.29f:i==1?.43f:-.27f)),2.9f-i*.05f);
+                cloud.position=new Vector3(cx+x*w,cy+h*(workshop?(i==0?.12f:i==1?.24f:-.10f):(i==0?.29f:i==1?.43f:-.27f)+(!workshop?DescentDepth*.032f:0)),2.9f-i*.05f);
                 cloud.localScale=new Vector3(cw,cw*.5f,1);
             }
-            if(climateFrame!=null){climateFrame.gameObject.SetActive(gameplayVisible&&!workshop&&!quietFlight&&mapSkyTexture==null);climateFrame.position=new Vector3(cx,cy,2.75f);climateFrame.localScale=new Vector3(w,h,1);FitFrame(w/h);climateFrameMaterial.SetFloat("_Age",ReducedMotion||EffectQuality==0?0:phase);climateFrameMaterial.SetColor("_LightTint",MenuWorldArt.Light(zone,phase,!ReducedMotion&&EffectQuality>0));}
+            if(climateFrame!=null){climateFrame.gameObject.SetActive(plantSupportVisible);climateFrame.position=new Vector3(cx,cy,DescentTravelling?-4.5f:2.75f);climateFrame.localScale=new Vector3(w,h,1);FitFrame(w/h);climateFrameMaterial.SetFloat("_Age",ReducedMotion||EffectQuality==0?0:phase);climateFrameMaterial.SetFloat("_Wind",foliageWind);climateFrameMaterial.SetColor("_LightTint",MenuWorldArt.Light(zone,phase,!ReducedMotion&&EffectQuality>0));}
             Plants(plantsLeft,false);Plants(plantsRight,true);
             for(int i=0;i<islands.Length;i++){
                 var island=islands[i];if(island==null)continue;island.gameObject.SetActive(gameplayVisible&&(i==2||i==3)&&mapSkyTexture==null&&!workshop&&!quietFlight);
                 float seed=i*1.83f,x=i%2==0?-.36f:.36f,y=i<2?.25f:i<4?-.06f:-.30f;
                 float size=Mathf.Min(w,h)*(i<2?.23f:i<4?.15f:.17f);
-                island.position=new Vector3(cx+w*x+Mathf.Sin(phase*.22f+seed)*w*.012f,cy+h*y+Mathf.Sin(phase*(.36f+i*.027f)+seed)*h*.012f,3.02f-i*.012f);
+                island.position=new Vector3(cx+w*x+Mathf.Sin(phase*.22f+seed)*w*.012f,cy+h*(y+DescentDepth*.065f)+Mathf.Sin(phase*(.36f+i*.027f)+seed)*h*.012f,3.02f-i*.012f);
                 island.localScale=new Vector3(size*islandRatios[i],size,1);island.rotation=Quaternion.Euler(0,0,Mathf.Sin(phase*.24f+seed)*.7f);
                 islandRenderers[i].sharedMaterial.SetVector("_ImageRect",imageRect);
             }

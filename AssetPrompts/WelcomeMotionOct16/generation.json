@@ -1,0 +1,27 @@
+{
+  "tool": "built-in imagegen",
+  "transparent_background": true,
+  "productionBitmapPostprocessing": false,
+  "baseIllustration": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/AccountOct15/WelcomeMika.png",
+  "checkpoint": {
+    "branch": "codex/welcome-motion-oct16",
+    "commit": "0bd731f60f3d7d9d9f484850b2fe9c9c9c293238",
+    "remoteConfirmedBeforeAnimation": true
+  },
+  "assets": [
+    {
+      "name": "HalfBlink",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-df6a5476-2939-4a6c-a6aa-a44a5d116555.png",
+      "savedPath": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/WelcomeMotionOct16/HalfBlink.png",
+      "prompt": "Edit ONLY the two eyes of this existing transparent 1024x1536 waving Mika game sprite, making the halfway phase of an ordinary blink. The upper eyelids have descended about 55 percent, covering the upper half of each brown iris; the lower half of the brown irises, dark pupils and a little eye white remain visible. Soft natural upper eyelid/eyelash contours at mid-eye; do not squint the lower lids or change the smile. This is a short transitional blink frame, not a sleepy or sly expression.\nStrictly preserve the exact canvas, size, position and head tilt; keep the SAME character, muzzle, two central upper front teeth, mouth, nose, cheeks, eyebrows, ears, hair, whiskers, raised hand, scarf, clothing, bag, tail and boots. No new design, body/face repositioning or changes outside the eye areas. No scenery, text, platform, glow, shadow or UI. Output a true transparent PNG at the same 1024x1536 dimensions and registration as the input. Only the upper eyelids move halfway down.",
+      "usage": "Only the eye regions are sampled by the face shader; all other body/face pixels come from the original illustration."
+    },
+    {
+      "name": "ClosedBlink",
+      "source": "/Users/andrew/.codex/generated_images/01a1089e-7eaf-75a1-8066-dbfc48df27a1/exec-21d94eba-fb12-48ab-9489-d52b59cd4d62.png",
+      "savedPath": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/WelcomeMotionOct16/ClosedBlink.png",
+      "prompt": "Animation texture edit of the supplied 1024x1536 transparent Mika sprite. Change ONLY the two eyes to the fully closed phase of a gentle natural blink. Both upper eyelids are down over the eyes, with soft curved dark eyelash lines and the SAME cream/brown fur and eyebrow shape. This is a 0.05-second blink frame, not sleeping, laughing or an emotional redesign.\nSTRICT REGISTRATION: retain the exact 1024x1536 canvas, subject scale, pixel positions, head tilt and every other feature. Keep the two central front teeth, smile, mouth, nose, cheeks, ears, hair, waving hand, whiskers, scarf, clothes, bag, fluffy tail and boots unchanged. Do not move, resize or redraw the face or body; no added details. No scene, glow, ground, shadows or UI. Genuinely transparent PNG, matching the original soft fur/whisker alpha. Only the eyelids change.",
+      "usage": "Closed blink phase, using registered eye masks only."
+    }
+  ]
+}

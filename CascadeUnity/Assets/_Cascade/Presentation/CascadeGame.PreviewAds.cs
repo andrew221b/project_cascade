@@ -25,9 +25,9 @@ namespace Cascade.Presentation
             previewAdSafe=Rect("Advertisement safe area",previewAd,safeRoot.anchorMin,safeRoot.anchorMax);FitPreviewSafeArea();
             var sheet=Rect("Advertisement cloth",previewAdSafe,new Vector2(.06f,.18f),new Vector2(.94f,.82f));
             var face=Background(sheet,Color.white,false);face.sprite=enamelControls[0];face.type=Image.Type.Sliced;
-            var heading=Text("Test advertisement heading",sheet,new Vector2(.08f,.82f),new Vector2(.92f,.96f),26,"Test ad");heading.font=art.titleFont;heading.color=MenuPaper;
-            Picture("Video reward pouch",sheet,new Vector2(.27f,.47f),new Vector2(.73f,.78f),RewardEmblem(0),true);
-            var promise=Text("Advertisement promise",sheet,new Vector2(.08f,.31f),new Vector2(.92f,.48f),30,rewarded?(CurrentScreen==GameScreen.Parcel?ReferenceCopy("Extra parcel rewards","Дополнительные награды","Додаткові нагороди"):UiCopy.Raw("× 40")):(UiCopy)"A short break between levels.");promise.color=MenuPaper;
+            var heading=Text("Test advertisement heading",sheet,new Vector2(.08f,.82f),new Vector2(.92f,.96f),26,rewarded?ReferenceCopy("Test rewarded video","Тестовое видео за награду","Тестове відео за нагороду"):ReferenceCopy("Test interstitial","Тестовая реклама между уровнями","Тестова реклама між рівнями"));heading.font=art.titleFont;heading.color=MenuPaper;
+            if(rewarded)Picture("Video reward pouch",sheet,new Vector2(.27f,.47f),new Vector2(.73f,.78f),CurrentScreen==GameScreen.Parcel?ReferenceShopArt("InventoryReward"):RewardEmblem(0),true);
+            var promise=Text("Advertisement promise",sheet,new Vector2(.08f,.31f),new Vector2(.92f,.48f),30,rewarded?(CurrentScreen==GameScreen.Parcel?ParcelAwaitingVideo?ReferenceCopy("Open your parcel","Открытие посылки","Відкриття посилки"):ReferenceCopy("Extra parcel rewards","Дополнительные награды","Додаткові нагороди"):UiCopy.Raw("× 40")):(UiCopy)"A short break between levels.");promise.color=MenuPaper;
             previewClock=Text("Test advertisement countdown",sheet,new Vector2(.08f,.21f),new Vector2(.92f,.31f),19,"");
             previewClock.color=MenuPaper;
             previewFinish=Button(rewarded?(CurrentScreen==GameScreen.Parcel?(UiCopy)"Open parcel":"Collect coins"):"Continue",sheet,new Vector2(.10f,.08f),new Vector2(.90f,.21f),()=>FinishPreviewAd(true));
@@ -59,15 +59,21 @@ namespace Cascade.Presentation
             previewAd.gameObject.SetActive(false);Destroy(previewAd.gameObject);previewAd=null;previewAdSafe=null;
             callback?.Invoke(confirmed);
         }
-        public void ShowCoinReward(int amount=40)
+        public void ShowCoinReward(int amount=40,bool purchased=false)
         {
-            if(!CanPresent||CurrentScreen!=GameScreen.Shop&&CurrentScreen!=GameScreen.CoinPacks&&CurrentScreen!=GameScreen.Parcel)return;
+            if(!CanPresent||!purchased&&CurrentScreen!=GameScreen.Shop&&CurrentScreen!=GameScreen.CoinPacks&&CurrentScreen!=GameScreen.Parcel)return;
             coinArrival?.Kill();if(coinToast!=null)Destroy(coinToast.gameObject);
             coinToast=Rect("Video coins received",menuRoot,new Vector2(.09f,.34f),new Vector2(.91f,.45f));
-            var face=Background(coinToast,new Color(.04f,.28f,.28f),false);face.sprite=art.panel;face.type=Image.Type.Sliced;
-            Picture("Received coin pouch",coinToast,new Vector2(.04f,.05f),new Vector2(.24f,.95f),TravelArt(3),true);
-            var caption=Text("Coins received",coinToast,new Vector2(.25f,.12f),new Vector2(.94f,.88f),22,new UiCopy("{0} coins added",amount));caption.color=MenuPaper;caption.font=art.titleFont;
-            caption.textWrappingMode=TextWrappingModes.NoWrap;caption.enableAutoSizing=true;caption.fontSizeMin=18*MenuUnit;caption.fontSizeMax=22*MenuUnit;
+            var face=Background(coinToast,Color.white,false);face.sprite=SettingsReferenceArt.Get("Row");face.type=Image.Type.Sliced;
+            var pouch=Picture("Received coin pouch",coinToast,new Vector2(.04f,.14f),new Vector2(.20f,.86f),TravelArt(3),true);
+            // Reference captions own their font/material together. Generic menu restyling
+            // and illustrated-digit overlays must not rewrite this transient receipt.
+            var caption=Text("Reference shop coins received",coinToast,new Vector2(.24f,.12f),new Vector2(.94f,.88f),22,new UiCopy("{0} coins added",amount));
+            caption.font=Resources.Load<TMP_FontAsset>("CascadeArt/Fonts/InterfaceBody")??art.bodyFont;
+            caption.fontSharedMaterial=caption.font.material;caption.color=new Color(.15f,.055f,.02f);
+            caption.enableVertexGradient=false;caption.fontStyle=FontStyles.Bold;
+            caption.textWrappingMode=TextWrappingModes.NoWrap;caption.enableAutoSizing=true;caption.fontSizeMin=15*MenuUnit;caption.fontSizeMax=22*MenuUnit;
+            CentreContent(coinToast,pouch.rectTransform,caption.rectTransform);
             var group=coinToast.gameObject.AddComponent<CanvasGroup>();group.blocksRaycasts=false;
             var body=coinToast;var arrival=DOTween.Sequence().SetUpdate(true).SetTarget(body).SetLink(body.gameObject,LinkBehaviour.KillOnDisable);
             if(!ReducedMotion){body.localScale=Vector3.one*.94f;arrival.Append(body.DOScale(1,.30f).SetEase(Ease.OutBack));}

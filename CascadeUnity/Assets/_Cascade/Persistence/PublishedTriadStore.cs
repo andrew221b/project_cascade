@@ -19,7 +19,7 @@ namespace Cascade.Persistence
         {
             var manifest=CloudJson.Decode<Manifest>(manifestJson);
             var stages=CloudJson.Decode<Dictionary<string,DescentStage[]>>(recipeJson);
-            if(manifest?.CatalogHash?.Length!=64||manifest.SourceHashes==null||manifest.SourceHashes.Length>3000
+            if(manifest?.CatalogHash?.Length!=64||manifest.SourceHashes==null||manifest.SourceHashes.Length>5000
                 ||manifest.SourceHashes.Any(h=>h?.Length!=64)||manifest.RecipesHash!=Hash(recipeJson)||stages==null||stages.Count!=540)
                 throw new ArgumentException("Invalid published campaign certificates.");
             catalogHash=manifest.CatalogHash;sources=new HashSet<string>(manifest.SourceHashes);

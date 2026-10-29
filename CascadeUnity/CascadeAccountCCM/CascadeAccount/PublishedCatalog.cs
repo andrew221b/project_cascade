@@ -18,8 +18,9 @@ public static class PublishedCatalog
     static readonly ContentCatalog catalog=ContentImporter.Import(Resource("levels"),Resource("localized_levels"),Resource("words_en"),Resource("words_ru"),Resource("words_uk"),Resource("campaign_extension"));
     static readonly IReadOnlyDictionary<string,DescentStage[]> recipes=AccountJson.Decode<Dictionary<string,DescentStage[]>>(Resource("recipes"));
     static readonly IReadOnlyDictionary<string,DescentStage[]> legacyRecipes=AccountJson.Decode<Dictionary<string,DescentStage[]>>(Resource("recipes_legacy"));
+    static readonly StageVarietyStore variety=new(Resource("stage_words_v1"),Resource("stage_variety_templates_v1"),Resource("recipes"));
     public static LevelContent Primary(string node)=>catalog.GetPrimary(node);
-    public static LevelContent Source(string hash)=>catalog.PrimaryLevels.Concat(catalog.LocalizedLevels).FirstOrDefault(c=>c.Definition.ContentHash==hash);
+    public static LevelContent Source(string hash)=>catalog.AllLevels.FirstOrDefault(c=>c.Definition.ContentHash==hash);
     public static DescentRun Run(LevelDefinition source)=>new(){Version=6,SourceHash=source.ContentHash,Stages=recipes[source.CampaignNodeId]};
     public static bool ValidClear(ClearReceipt receipt,string mode,double knownStars=0,int knownScore=0)
     {
@@ -33,10 +34,12 @@ public static class PublishedCatalog
     {
         run=null;final=null;result=null;if(proof==null||!proof.IsBounded())return false;
         var source=Source(proof.SourceHash);
-        if(source==null||source.Definition.CampaignNodeId!=node||new AttemptService(source.Definition,source.Locale).Mode.ToString()!=mode)return false;
+        // Mix includes pure short rows and historical alternating rows; all still need a published replay.
+        if(source==null||source.Definition.CampaignNodeId!=node||(proof.Version==7?proof.Variation?.Mode!=mode:(mode!="Mixed"&&new AttemptService(source.Definition,source.Locale).Mode.ToString()!=mode)))return false;
         run=Run(source.Definition);
         try {
-            if(proof.Stages[0].ContentHash!=run.Level(source.Definition,0).ContentHash){
+            if(proof.Version==7)run=variety.Create(source.Definition,proof.Variation,run);
+            if(proof.Version==6&&proof.Stages[0].ContentHash!=run.Level(source.Definition,0).ContentHash){
                 run=legacyRecipes.Where(pair=>pair.Key==node||pair.Key.StartsWith(node+"@",StringComparison.Ordinal))
                     .Take(32).Select(pair=>new DescentRun{Version=6,SourceHash=source.Definition.ContentHash,Stages=AccountJson.Decode<DescentStage[]>(AccountJson.Encode(pair.Value))})
                     .FirstOrDefault(candidate=>candidate.Level(source.Definition,0).ContentHash==proof.Stages[0].ContentHash);
@@ -44,7 +47,7 @@ public static class PublishedCatalog
             }
             for(int stage=0;stage<3;stage++) {
                 var record=proof.Stages[stage];
-                if(record.Locale!=source.Locale||record.Direction!=null||record.RequiredStampBits!=0)return false;
+                if(record.Locale!=(proof.Version==7?proof.Variation.Locale:source.Locale)||record.Direction!=null||record.RequiredStampBits!=0)return false;
                 final=AttemptService.Restore(run.Level(source.Definition,stage),record);
                 if(final.Current.Status!=PuzzleStatus.Won)return false;
                 if(stage<2)run.AcceptCheckpoint(source.Definition,final);
@@ -54,6 +57,7 @@ public static class PublishedCatalog
     }
     public static bool ValidProgress(PlayerProfile uploaded,PlayerProfile trusted)
     {
+        try{uploaded.Variety?.ValidatePool(variety.Words);}catch(Exception e)when(e is ArgumentException or InvalidDataException or FormatException){return false;}
         foreach(string mode in new[]{"Shapes","Words","Mixed"}) {
             var incoming=mode==uploaded.PreferredMode?uploaded.Clears:uploaded.ModeJourneys.FirstOrDefault(j=>j.Mode==mode)?.Clears;
             var existing=mode==trusted.PreferredMode?trusted.Clears:trusted.ModeJourneys.FirstOrDefault(j=>j.Mode==mode)?.Clears;

@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using DG.Tweening;
 using Cascade.Content;
 using TMPro;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace Cascade.Presentation
         string comicReadingSource;
         Action worldComicDone;
         readonly Sprite[][] worldComicPanels=new Sprite[5][];
-        Sprite comicWoodRail;
+        Sprite comicTimberFrame;
         public int ComicWorld=>worldComic;
         public int ComicPage=>worldComicPage;
         bool TryWorldComic(int world,Action done)
@@ -58,44 +59,57 @@ namespace Cascade.Presentation
             if(worldComicPage>=3&&worldComicPanels[3]==null)worldComicPanels[3]=NavigationSlices("Navigation/WorldComicDepartureIdentity",3,3);
             bool correctedResident=(worldComic==1||worldComic==2)&&worldComicPage>=1&&worldComicPage<3;
             if(correctedResident&&worldComicPanels[4]==null)worldComicPanels[4]=NavigationSlices("Navigation/WorldComic0Identity",3,3);
-            NavigationHeader(JourneyStory.ZoneName(worldComic),FinishWorldComic);
-            var title=menuRoot.GetComponentsInChildren<TextMeshProUGUI>().Single(t=>t.name=="Page heading");
-            title.name="Comic title";title.alignment=TextAlignmentOptions.Center;title.rectTransform.anchorMin=new Vector2(.19f,.03f);title.rectTransform.anchorMax=new Vector2(.98f,.97f);
-            title.fontSizeMin=14*MenuUnit;title.fontSizeMax=22*MenuUnit;title.margin=new Vector4(0,0,4*MenuUnit,0);
-            var frame=Rect("World comic illustration",menuRoot,Vector2.zero,Vector2.one);
+            LoadNavigationArt();
+            var backdrop=Rect("Reference shop environment",menuRoot,Vector2.one*.5f,Vector2.one*.5f);
+            var sky=backdrop.gameObject.AddComponent<Image>();sky.sprite=ReferenceShopArt("Backdrop");sky.raycastTarget=false;
+            var stage=Rect("Comic reference composition",menuRoot,Vector2.one*.5f,Vector2.one*.5f);stage.sizeDelta=new Vector2(720,1280);
+            var fit=stage.gameObject.AddComponent<ReferenceShopLayout>();fit.Initialize(menuRoot,backdrop);
+            var titleBoard=ReferencePicture("Comic title board",stage,ReferenceShopArt("HeaderBoard"),128,34,464,139,false);titleBoard.type=Image.Type.Sliced;titleBoard.pixelsPerUnitMultiplier=3;
+            var titleArea=ReferenceRect("Comic title reading inset",titleBoard.transform,52,37.5f,360,64);
+            var title=ReferenceText("comic title",titleArea,JourneyStory.ZoneName(worldComic),0,0,360,64,43);title.name="Comic title";title.fontSizeMin=25;title.fontStyle=FontStyles.Bold;
+            var titleFit=CentreContent(titleArea,title.rectTransform);titleFit.Padding=4;titleFit.Refresh();titleBoard.gameObject.AddComponent<AttachedPlants>().Initialize(this,worldComic,true);
+            var frame=ReferenceRect("World comic illustration",stage,44,214,632,421);
             var scene=worldComicPage<3?worldComicPanels[correctedResident?4:sheet][worldComic%3*3+worldComicPage]:worldComicPanels[3][worldComic];
             var illustration=Picture("World comic scene",frame,Vector2.zero,Vector2.one,scene,true);
-            if(comicWoodRail==null){
-                var timber=Resources.Load<Texture2D>("CascadeArt/Woodland/WoodBoard");
-                // Use the published plank crop, rather than squashing its transparent canvas into the rail.
-                comicWoodRail=Sprite.Create(timber,new Rect(timber.width*.023020258f,timber.height*.382596672f,
-                    timber.width*.953959465f,timber.height*.255524874f),new Vector2(.5f,.5f),100,0,SpriteMeshType.FullRect);
+            if(comicTimberFrame==null){
+                var texture=Resources.Load<Texture2D>("CascadeArt/ComicReferenceOct16/TimberFrame");
+                comicTimberFrame=Sprite.Create(texture,new Rect(0,0,texture.width,texture.height),Vector2.one*.5f,100,0,SpriteMeshType.FullRect,
+                    new Vector4(180,200,180,180)*texture.width/1536f);
             }
-            var rails=new RectTransform[4];
-            for(int i=0;i<rails.Length;i++){
-                var rail=Picture("Comic wooden rail "+i,frame,Vector2.zero,Vector2.one,comicWoodRail,false);
-                rail.raycastTarget=false;rail.preserveAspect=false;rails[i]=rail.rectTransform;
-            }
-            var speech=Rect("World comic speech ribbon",menuRoot,Vector2.zero,Vector2.one);
-            PaintStoryPaper(speech,false);
-            var portrait=Rect("World comic speaker portrait",speech,Vector2.zero,Vector2.one).gameObject.AddComponent<UnityEngine.UI.Image>();
-            portrait.sprite=ConversationPortrait(line.Speaker);portrait.preserveAspect=true;portrait.raycastTarget=false;
+            var timber=ReferencePicture("World comic carved timber",stage,comicTimberFrame,14,184,692,484,false);timber.type=Image.Type.Sliced;timber.pixelsPerUnitMultiplier=6;
+            var speech=ReferenceRect("World comic speech ribbon",stage,36,848,648,240);PaintStoryPaper(speech,false);
+            var portrait=ReferencePicture("World comic speaker portrait",stage,ConversationPortrait(line.Speaker),46,684,162,152);
             if(line.Speaker=="Mika")AttachMikaCosmetic(portrait,null,true);
-            var nameRibbon=Rect("World comic speaker name",speech,Vector2.zero,Vector2.one);
-            var speaker=Text("World comic speaker",nameRibbon,Vector2.zero,Vector2.one,18,line.Speaker);speaker.font=art.titleFont;speaker.color=MenuInk;speaker.alignment=TextAlignmentOptions.MidlineLeft;
-            var reading=Rect("World comic reading area",speech,Vector2.zero,Vector2.one);
-            var viewport=Rect("World comic reading viewport",reading,Vector2.zero,Vector2.one);Background(viewport,Color.white,true);
-            var mask=viewport.gameObject.AddComponent<UnityEngine.UI.Mask>();mask.showMaskGraphic=false;
-            var body=Text("World comic spoken line",viewport,new Vector2(0,1),Vector2.one,18,UiCopy.Raw(new UiCopy(line.Text).ToString()));
-            body.alignment=TextAlignmentOptions.TopLeft;body.textWrappingMode=TextWrappingModes.Normal;body.overflowMode=TextOverflowModes.Overflow;
-            body.color=MenuInk;
-            body.rectTransform.pivot=new Vector2(.5f,1);body.gameObject.AddComponent<UnityEngine.UI.ContentSizeFitter>().verticalFit=UnityEngine.UI.ContentSizeFitter.FitMode.PreferredSize;
-            var scroll=reading.gameObject.AddComponent<UnityEngine.UI.ScrollRect>();scroll.viewport=viewport;scroll.content=body.rectTransform;scroll.horizontal=false;scroll.inertia=false;scroll.movementType=UnityEngine.UI.ScrollRect.MovementType.Clamped;
-            var next=Button(ComicAdvanceCaption,speech,Vector2.zero,Vector2.one,AdvanceWorldComic);
-            next.name="Next comic page";StyleConversationButton(next,enamelControls[0],MenuPaper);
-            var number=Text("World comic progress",speech,Vector2.zero,Vector2.one,15,UiCopy.Raw((worldComicPage+1)+" / "+story.Pages.Length));number.color=MenuInk;
-            speech.gameObject.AddComponent<WorldComicLayout>().Initialize(this,menuRoot,(RectTransform)title.transform.parent,illustration,rails,portrait,nameRibbon,speaker,body,scroll,next,number,page.Lines.Select(l=>new UiCopy(l.Text).ToString()).ToArray());
+            var nameRibbon=ReferencePicture("World comic speaker name",stage,ReferenceShopArt("HeaderBoard"),28,807,300,81,false);nameRibbon.type=Image.Type.Sliced;nameRibbon.pixelsPerUnitMultiplier=4;
+            nameRibbon.gameObject.AddComponent<AttachedPlants>().Initialize(this,worldComic,true);
+            var nameArea=ReferenceRect("Comic name reading inset",nameRibbon.transform,29,20,242,41);
+            var speaker=ReferenceText("comic speaker",nameArea,line.Speaker,0,0,242,41,29);speaker.name="World comic speaker";speaker.fontSizeMin=18;
+            var nameFit=CentreContent(nameArea,speaker.rectTransform);nameFit.Padding=4;nameFit.Refresh();
+            var reading=ReferenceRect("World comic reading area",speech,42,66,564,154);
+            var viewport=Rect("World comic reading viewport",reading,Vector2.zero,Vector2.one);Background(viewport,Color.white,true);viewport.gameObject.AddComponent<Mask>().showMaskGraphic=false;
+            var body=ReferenceText("comic spoken line",viewport,UiCopy.Raw(new UiCopy(line.Text).ToString()),0,0,564,154,34,false,true);body.name="World comic spoken line";
+            body.font=Resources.Load<TMP_FontAsset>("CascadeArt/Fonts/InterfaceBody")??art.titleFont;body.fontStyle=FontStyles.Bold;body.alignment=TextAlignmentOptions.TopLeft;body.overflowMode=TextOverflowModes.Overflow;
+            body.rectTransform.anchorMin=new Vector2(0,1);body.rectTransform.anchorMax=Vector2.one;body.rectTransform.pivot=new Vector2(.5f,1);body.rectTransform.anchoredPosition=Vector2.zero;
+            var scroll=reading.gameObject.AddComponent<ScrollRect>();scroll.viewport=viewport;scroll.content=body.rectTransform;scroll.horizontal=false;scroll.inertia=false;scroll.movementType=ScrollRect.MovementType.Clamped;
+            CharacterPoseView.Attach(this,portrait).SetSpeechSource(body);
+            var next=ReferenceButton("Next comic page",stage,377,1120,299,102,AdvanceWorldComic,"GreenAction");
+            ReferenceButtonBody(next).gameObject.AddComponent<AttachedPlants>().Initialize(this,worldComic,true);
+            var nextLabel=ReferenceText("comic next",ReferenceButtonBody(next),ComicAdvanceCaption,20,13,259,76,42,true);CentreContent((RectTransform)ReferenceButtonBody(next),nextLabel.rectTransform);fit.BindTouch((RectTransform)next.transform,new Vector2(299,102));
+            var skip=ReferenceButton("Skip comic",stage,66,1134,211,74,FinishWorldComic);
+            RegisterButtonDesign(skip,GameButtonRole.TertiaryLabel).PreserveSlot=true;
+            var skipLabel=ReferenceText("comic skip",ReferenceButtonBody(skip),ReferenceCopy("Skip","Пропустить","Пропустити"),8,10,195,54,31,true);skipLabel.fontStyle=FontStyles.Underline;
+            skipLabel.outlineColor=new Color(.012f,.035f,.06f,1);skipLabel.outlineWidth=.18f;
+            var skipInk=skipLabel.fontMaterial;skipInk.EnableKeyword("UNDERLAY_ON");skipInk.SetColor(ShaderUtilities.ID_UnderlayColor,new Color(.012f,.035f,.06f,1));
+            skipInk.SetFloat(ShaderUtilities.ID_UnderlayOffsetY,-.6f);skipInk.SetFloat(ShaderUtilities.ID_UnderlayDilate,.25f);skipInk.SetFloat(ShaderUtilities.ID_UnderlaySoftness,.10f);skipLabel.UpdateMeshPadding();CentreContent((RectTransform)ReferenceButtonBody(skip),skipLabel.rectTransform);fit.BindTouch((RectTransform)skip.transform,new Vector2(211,74));
+            // Every speaker turn is a visible reading page, even when the illustration stays.
+            int readingPage=story.Pages.Take(worldComicPage).Sum(p=>p.Lines.Length)+worldComicLine+1;
+            int readingPages=story.Pages.Sum(p=>p.Lines.Length);
+            var number=ReferenceText("comic progress",speech,UiCopy.Raw(readingPage+" / "+readingPages),534,12,84,46,23);number.name="World comic progress";
+            foreach(var label in new[]{title,speaker,body,number})themedLabels.Add(label);
+            stage.gameObject.AddComponent<WorldComicLayout>().Initialize(this,stage,illustration,timber,portrait,nameRibbon.rectTransform,title,speaker,body,scroll,next,nextLabel,number,page.Lines.Select(l=>new UiCopy(l.Text).ToString()).ToArray());
+            if(!ReducedMotion){portrait.rectTransform.localScale=Vector3.one*.98f;portrait.rectTransform.DOScale(1,.28f).SetEase(Ease.OutCubic).SetUpdate(true).SetLink(portrait.gameObject);}
         }
+
         internal string FitComicCopy(float width,float room,TextMeshProUGUI measure)
         {
             var story=WorldPrologues.ForWorld(worldComic);var page=story.Pages[worldComicPage];
@@ -111,7 +125,7 @@ namespace Cascade.Presentation
         }
         internal UiCopy ComicAdvanceCaption=>worldComicPage==WorldPrologues.ForWorld(worldComic).Pages.Length-1
             &&worldComicLine==WorldPrologues.ForWorld(worldComic).Pages[worldComicPage].Lines.Length-1&&worldComicChunk==worldComicChunks.Length-1
-                ?(worldComicDone==(Action)EnterFirstJourneyPuzzle?(UiCopy)"Play":"To the map"):"Continue";
+                ?(worldComicDone==(Action)EnterFirstJourneyPuzzle?(UiCopy)"Play":"Map"):ReferenceCopy("Continue","Далее","Далі");
         void TryJourneyOpening()
         {
             if(ConversationOpen||!IsJourneyStopOpen(selectedJourneyStop)||profile.Completion!=null&&!profile.Completion.Acknowledged)return;

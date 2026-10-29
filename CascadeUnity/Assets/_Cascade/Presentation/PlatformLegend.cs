@@ -75,13 +75,15 @@ namespace Cascade.Presentation
         {
             if(game.Machine==null)return;
             var band=(RectTransform)transform;
-            var center=game.Machine.SurfacePoint(floor,labelX,.30f);center.z=band.position.z;
-            band.position=center;band.rotation=Quaternion.Euler(0,0,game.Machine.FloorVisualAngle(floor));
-            float height=game.Machine.FloorFaceHeight(floor)/Mathf.Max(.0001f,band.lossyScale.y);
-            // Tight painted bounds: preserve the plaque aspect while filling the timber face.
+            var rotation=Quaternion.Euler(0,0,game.Machine.FloorVisualAngle(floor));
+            float worldHeight=game.Machine.FloorFaceHeight(floor)*.62f;
+            var center=game.Machine.TimberLowerEdgePoint(floor,labelX)+rotation*Vector3.up*(worldHeight*.5f);center.z=band.position.z;
+            band.position=center;band.rotation=rotation;
+            float height=worldHeight/Mathf.Max(.0001f,band.lossyScale.y);
+            // Keep the complete painted rim inside the timber face, including during sag/roll.
             float aspect=game.PlatformProp(3).rect.width/game.PlatformProp(3).rect.height;
             band.sizeDelta=new Vector2(height*aspect,height);
-            number.fontSizeMax=rim.fontSizeMax=Mathf.Min(21*unit,height*1.24f);
+            number.fontSizeMax=rim.fontSizeMax=Mathf.Min(18*unit,height*.90f);
             number.fontSizeMin=rim.fontSizeMin=Mathf.Min(number.fontSizeMax,height*.70f);
             if(Remaining==1){number.fontSizeMax*=.88f;number.fontSizeMin*=.88f;}
             rim.rectTransform.anchoredPosition=Vector2.down*Mathf.Min(.65f*unit,height*.04f);

@@ -32,8 +32,8 @@ namespace Cascade.Presentation
             Picture("Coin pouch",row,new Vector2(.04f,.27f),new Vector2(.29f,.84f),TravelArt(3),true);
             var title=Text("Pack quantity",row,new Vector2(.34f,.56f),new Vector2(.94f,.88f),26,UiCopy.Raw("× "+amount));title.alignment=TextAlignmentOptions.MidlineLeft;title.margin=Vector4.zero;StyleCelebrationType(title,CelebrationType.SkyNumber);
             bool enough=ShopCoins>=PurchaseCatalog.CoinPurchaseWalletThreshold;
-            UiCopy caption=enough?"You have enough coins":TestMonetization?(UiCopy)"Test shop":purchaseStore?.CanBuyProduct(product)==true?new UiCopy("Buy {0}",UiCopy.Raw(purchaseStore.ProductPrice(product))):purchaseStore?.State==PurchaseState.Retry?"Try again":"Coming soon";
-            var buy=Button(caption,row,new Vector2(.33f,.06f),new Vector2(.94f,.43f),()=>{if(purchaseStore.State==PurchaseState.Retry)purchaseStore.RetryConnection();else purchaseStore.Buy(product);});buy.name="Purchase "+product;
+            UiCopy caption=CoinPurchaseCaption(product,enough);
+            var buy=Button(caption,row,new Vector2(.33f,.06f),new Vector2(.94f,.43f),()=>RequestStorePurchase(product));buy.name="Purchase "+product;
             var rect=(RectTransform)buy.transform;rect.anchorMax=new Vector2(.94f,.06f);rect.pivot=new Vector2(.5f,0);rect.sizeDelta=new Vector2(0,48*MenuUnit);
             var face=buy.GetComponent<Image>();face.sprite=enamelControls[0];face.type=Image.Type.Sliced;face.color=Color.white;
             navigationLightLabels.Add(buy.GetComponentInChildren<TextMeshProUGUI>());

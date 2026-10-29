@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using Cascade.Domain;
 using UnityEngine;
 
@@ -170,7 +171,15 @@ namespace Cascade.Presentation
                             case PuzzleEventKind.BridgeConsumed:
                                 game.SetPresentationFeedback("One-use bridge closed");game.AnnounceReaction("One-use bridge closed","");feedback.Sound(ToyCue.Bridge);yield return Hold(profile.contact);break;
                             case PuzzleEventKind.DurabilityResolved:
-                                if (result.DurabilityCost > 1) { feedback.Sound(ToyCue.Fragile);feedback.Haptic(ToyHapticMoment.WoodCrack); yield return Recoil(e.Floor, profile.fracture); }
+                                if (result.DurabilityCost > 1) {
+                                    foreach(var rowEvent in result.Events)if(rowEvent.Kind==PuzzleEventKind.RowPermuted)
+                                        foreach(int edge in rowEvent.AffectedEdges)if(level.Floors[e.Floor].FragileEdges.Contains(edge)){
+                                            game.Machine.CrackFloor(e.Floor,edge);
+                                            float u=.045f+.91f*(edge+1f)/game.Machine.TokenCount;
+                                            feedback.WoodChips(game.Machine.TimberSurfacePoint(e.Floor,u),3,game.ReducedMotion,game.Machine.FloorSpan(e.Floor)*.12f);
+                                        }
+                                    feedback.Sound(ToyCue.Fragile);feedback.Haptic(ToyHapticMoment.WoodCrack);yield return Recoil(e.Floor,Mathf.Max(.28f,profile.fracture));
+                                }
                                 break;
                         }
                     }
@@ -312,17 +321,17 @@ namespace Cascade.Presentation
             game.AnnounceReaction("Wood gives way!","");
             if(game.ReducedMotion){feedback.WoodSnap();feedback.Haptic(.65f);feedback.WoodChips(game.Machine.FloorPosition(floor),2,true,game.Machine.FloorSpan(floor));yield return Hold(profile.reducedStep);yield break;}
             feedback.Haptic(ToyHapticMoment.WoodBreak);
-            float time=0;const float duration=1.02f;bool splintered=false,tail=false;
-            while(time<duration){
+            float time=0;const float duration=.58f;bool splintered=false,tail=false;
+            while(true){
                 if(PresentationPaused){yield return null;continue;}
                 float t=Mathf.Clamp01(time/duration);
                 float fracture=t<.32f?.24f*Mathf.SmoothStep(0,1,t/.32f):Mathf.Lerp(.24f,1,Mathf.SmoothStep(0,1,(t-.32f)/.68f));
                 game.Machine.FractureFloor(floor,fracture);
                 if(!splintered&&t>=.40f){splintered=true;feedback.WoodSnap();game.Machine.ContactImpulse(floor,game.Machine.TokenCount/2,.65f,0);feedback.WoodChips(game.Machine.FloorPosition(floor),14,false,game.Machine.FloorSpan(floor)*.96f);}
                 if(!tail&&t>=.64f){tail=true;feedback.WoodChips(game.Machine.FloorPosition(floor),8,false,game.Machine.FloorSpan(floor)*.92f);}
+                if(t>=.76f){game.Machine.ReleaseFloorTimber(floor);yield break;}
                 time+=Time.unscaledDeltaTime;yield return null;
             }
-            while(PresentationPaused)yield return null;
         }
         IEnumerator Recoil(int floor, float duration)
         {

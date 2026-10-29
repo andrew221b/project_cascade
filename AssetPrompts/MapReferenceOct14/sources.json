@@ -271,7 +271,7 @@
       ]
     }
   },
-  "installed_assets_directory": "/Volumes/MY DISK/unity_projects/PROJECT_CASCADE_Codex_Pack_v2/CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/MapReferenceOct14",
-  "prompt_file": "/Volumes/MY DISK/unity_projects/PROJECT_CASCADE_Codex_Pack_v2/AssetPrompts/MapReferenceOct14/prompts.md",
+  "installed_assets_directory": "/Volumes/MY DISK/FlyingLadders/Project/CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/MapReferenceOct14",
+  "prompt_file": "/Volumes/MY DISK/FlyingLadders/Project/AssetPrompts/MapReferenceOct14/prompts.md",
   "generator": "built-in image_gen"
 }

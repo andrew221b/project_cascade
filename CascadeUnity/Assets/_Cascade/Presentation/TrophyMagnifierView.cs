@@ -8,10 +8,11 @@ namespace Cascade.Presentation
     public sealed class TrophyMagnifierView:MonoBehaviour
     {
         Image source,detail,pin;MikaCosmeticView worn;RectTransform stage,line,marker,window;
+        CharacterPoseView pose;
         readonly Vector3[] corners=new Vector3[4];
         public const float Zoom=3.6f;
         public void Initialize(Image hero,MikaCosmeticView costume,Image image,Image badge,RectTransform parent,RectTransform connector,RectTransform halo)
-        {source=hero;worn=costume;detail=image;pin=badge;stage=parent;line=connector;marker=halo;window=(RectTransform)transform;Refresh();}
+        {source=hero;worn=costume;detail=image;pin=badge;stage=parent;line=connector;marker=halo;window=(RectTransform)transform;pose=hero.GetComponent<CharacterPoseView>();if(pose!=null)detail.gameObject.AddComponent<CharacterPoseMesh>().Initialize(pose);Refresh();}
         void LateUpdate()=>Refresh();
         void Refresh()
         {
@@ -20,8 +21,10 @@ namespace Cascade.Presentation
             Vector2 offset=(Vector2)source.rectTransform.InverseTransformPoint(badge.rectTransform.position)-source.rectTransform.rect.center;
             detail.sprite=source.sprite;detail.color=source.color;detail.material=source.material;
             detail.rectTransform.sizeDelta=source.rectTransform.rect.size*Zoom;detail.rectTransform.anchoredPosition=-offset*Zoom;
+            if(pose!=null){if(pose.MotionActive)detail.SetVerticesDirty();pose.PaintMagnifiedMaterial(detail.materialForRendering);}
             pin.sprite=badge.sprite;pin.color=badge.color;pin.material=badge.material;pin.preserveAspect=badge.preserveAspect;
             pin.rectTransform.sizeDelta=badge.rectTransform.rect.size*Zoom;pin.rectTransform.anchoredPosition=offset*Zoom;
+            pin.rectTransform.localRotation=badge.rectTransform.localRotation;
             badge.rectTransform.GetWorldCorners(corners);
             float diameter=Vector2.Distance(stage.InverseTransformPoint(corners[0]),stage.InverseTransformPoint(corners[1]))+8;
             marker.position=badge.rectTransform.position;marker.sizeDelta=Vector2.one*diameter;

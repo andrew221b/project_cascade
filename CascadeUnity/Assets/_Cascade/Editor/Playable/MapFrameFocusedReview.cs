@@ -48,14 +48,10 @@ namespace Cascade.Editor.Playable
                         if(size.x==390){if(world==0)firstMapSize=frame.rectTransform.rect.size;else if(Vector2.Distance(firstMapSize,frame.rectTransform.rect.size)>.01f)throw new InvalidOperationException("World map dimensions differ");}
                         if(frame.material.GetTexture("_ThemeAccentTex")!=WorldFrameArt.Accents()||WorldFrameArt.Accents()==null)throw new InvalidOperationException("Missing reskin accents");
                         var stage=g.GetComponentsInChildren<ReferenceShopLayout>().Single();
-                        var bridges=g.GetComponentsInChildren<MapRopeBridge>();
                         var islands=g.GetComponentsInChildren<RectTransform>().Where(x=>x.name.StartsWith("Floating island ")).ToArray();
-                        if(bridges.Length!=4||islands.Length!=5)throw new InvalidOperationException("Map island composition incomplete");
-                        if(bridges.Any(x=>x.AttachmentError>.001f))throw new InvalidOperationException("Bridge detached from moving island");
-                        var horizontal=bridges.Single(x=>x.name.EndsWith(" 3"));
-                        if(horizontal.transform.GetSiblingIndex()>=islands[0].GetSiblingIndex()||bridges.Where(x=>x!=horizontal).Any(x=>x.transform.GetSiblingIndex()<=islands[4].GetSiblingIndex()))throw new InvalidOperationException("Bridge layering incorrect");
+                        if(islands.Length!=5)throw new InvalidOperationException("Map island composition incomplete");
                         if(stage.transform.parent!=frame.transform.parent)throw new InvalidOperationException("Map frame still scales with islands");
-                        checks.Add("PASS world "+world+" map "+size+": first-world silhouette, equal geometry, four attached bridges");
+                        checks.Add("PASS world "+world+" map "+size+": first-world silhouette, equal geometry, five spaced islands without decorative bridges");
                     });
                 }
                 if(world==0||world==1||world==4||world==6||world==8)

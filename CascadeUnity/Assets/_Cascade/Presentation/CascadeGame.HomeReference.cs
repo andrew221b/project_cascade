@@ -27,6 +27,7 @@ namespace Cascade.Presentation
         void DrawReferenceHome()
         {
             var stage=HomeReferenceSurface(false,out var layout);
+            float shortcutInset=HomeReferenceLayout.ShortcutInset/Mathf.Max(.001f,stage.localScale.x);
             var logo=HomePicture("Flying Ladders illustrated logo",stage,"Logo",136,118,455,256);
             layout.BindTopArt(logo.rectTransform,null);
             var hero=HomeBounds("Mika welcomes you",stage,159,367,383,546).gameObject.AddComponent<Image>();
@@ -36,15 +37,18 @@ namespace Cascade.Presentation
             HomeReferenceButton(stage,layout,"Shop","Shop","ShopButton",277.5f,908,165,157,ShowShop);
             HomeReferenceButton(stage,layout,"Settings","Settings","SettingsButton",445.5f,908,165,157,ShowSettings);
             HomeReferenceButton(stage,layout,"Startgame","Play","PlayButton",113.5f,1082,493,128,ShowPlayChoice,true);
-            homeAccountShortcut=Button(UiCopy.Raw(""),stage,Vector2.zero,Vector2.one,HomeAccountAction);
-            SetHomeButtonBounds(homeAccountShortcut,66,150,94,94);
-            homeAccountShortcut.GetComponent<Image>().color=Color.white;homeAccountShortcut.GetComponent<Image>().preserveAspect=true;
-            homeAccountShortcut.GetComponentInChildren<TextMeshProUGUI>().gameObject.SetActive(false);
-            layout.BindAccountShortcut((RectTransform)homeAccountShortcut.transform);RefreshHomeAccountShortcut();
-            layout.BindTouch((RectTransform)homeAccountShortcut.transform,new Vector2(94,94));
+            homeAccountShortcut=null;
+            if(AudienceCanUseLinkedAccount){
+                homeAccountShortcut=Button(UiCopy.Raw(""),stage,Vector2.zero,Vector2.one,HomeAccountAction,sharedDesign:false);
+                SetHomeButtonBounds(homeAccountShortcut,66+shortcutInset,HomeReferenceLayout.ShortcutTop,94,94);
+                homeAccountShortcut.GetComponent<Image>().color=Color.white;homeAccountShortcut.GetComponent<Image>().preserveAspect=true;
+                homeAccountShortcut.GetComponentInChildren<TextMeshProUGUI>().gameObject.SetActive(false);
+                layout.BindAccountShortcut((RectTransform)homeAccountShortcut.transform);RefreshHomeAccountShortcut();
+                layout.BindTouch((RectTransform)homeAccountShortcut.transform,new Vector2(94,94));
+            }
             if(purchaseStore?.Owned!=true){
-                var noAds=Button(UiCopy.Raw(""),stage,Vector2.zero,Vector2.one,ShowNoAds);noAds.name="Remove ads shortcut";
-                SetHomeButtonBounds(noAds,579,150,92,94);
+                var noAds=Button(UiCopy.Raw(""),stage,Vector2.zero,Vector2.one,ShowNoAds,sharedDesign:false);noAds.name="Remove ads shortcut";
+                SetHomeButtonBounds(noAds,579-shortcutInset,HomeReferenceLayout.ShortcutTop,92,94);
                 layout.BindTopArt(logo.rectTransform,(RectTransform)noAds.transform);
                 layout.BindTouch((RectTransform)noAds.transform,new Vector2(92,94));
                 noAds.GetComponent<Image>().sprite=HomeArt("NoAds");noAds.GetComponent<Image>().type=Image.Type.Simple;
@@ -78,18 +82,10 @@ namespace Cascade.Presentation
             frame.type=Image.Type.Sliced;frame.color=Color.white;
             return stage;
         }
-        void HomeIsland(Transform parent,string asset,float x,float y,float width,float height,int index)
-        {
-            var island=ReferencePicture("Drifting home island "+index,parent,WorldIslandArt.Get(EnvironmentWorld,index),x,y,width,height);
-            island.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(index%2==0?3:-3,2+index%3),index*.83f,0);
-        }
         void DrawHomeSky(RectTransform stage)
         {
             var sky=Rect("Living home sky",stage,new Vector2(53/720f,0),new Vector2(680/720f,1));
             sky.offsetMin=new Vector2(0,382);sky.offsetMax=new Vector2(0,-139);sky.gameObject.AddComponent<RectMask2D>();
-            var clouds=Picture("Slow existing clouds",sky,Vector2.zero,Vector2.one,HomeArt("CloudField"),false);
-            clouds.rectTransform.offsetMin=new Vector2(-10,-10);clouds.rectTransform.offsetMax=new Vector2(10,10);clouds.color=Color.clear;
-            clouds.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(6,.4f));
             var foliage=Rect("Natural menu foliage",sky,Vector2.zero,Vector2.one);foliage.gameObject.AddComponent<MenuLeafDrift>().Initialize(this,ReferenceShopArt("MenuGreenLeaf"));
             var life=Rect("Home birds and insects",sky,Vector2.zero,Vector2.one);life.gameObject.AddComponent<HomeSkyLife>().Initialize(this);
             var worn=Rect("Home worn trophy atmosphere",sky,Vector2.zero,Vector2.one);CosmeticAmbiance(worn,EquippedGift,false);
@@ -109,7 +105,7 @@ namespace Cascade.Presentation
         }
         void HomeReferenceButton(Transform parent,HomeReferenceLayout layout,string name,UiCopy copy,string asset,float x,float y,float width,float height,Action action,bool play=false)
         {
-            var button=Button(copy,parent,Vector2.zero,Vector2.one,action);button.name=name;
+            var button=Button(copy,parent,Vector2.zero,Vector2.one,action,sharedDesign:play);button.name=name;
             SetHomeButtonBounds(button,x,y,width,height);
             layout.BindTouch((RectTransform)button.transform,new Vector2(width,height));
             var image=button.GetComponent<Image>();image.sprite=HomeArt(play?asset:"NavButtonFrame");image.type=Image.Type.Simple;image.color=Color.white;
@@ -137,6 +133,7 @@ namespace Cascade.Presentation
             else CentreContent((RectTransform)button.transform,label.rectTransform);
             var visual=Rect("Home button illustrated surface",button.transform,Vector2.zero,Vector2.one);visual.SetAsFirstSibling();var painted=visual.gameObject.AddComponent<Image>();painted.sprite=image.sprite;painted.type=image.type;painted.preserveAspect=image.preserveAspect;painted.raycastTarget=false;
             if(play)painted.gameObject.AddComponent<PrimaryButtonSkin>().Configure(painted.sprite);image.color=Color.clear;button.targetGraphic=painted;
+            if(play)RegisterButtonDesign(button,GameButtonRole.PrimaryGreen);
         }
     }
 }

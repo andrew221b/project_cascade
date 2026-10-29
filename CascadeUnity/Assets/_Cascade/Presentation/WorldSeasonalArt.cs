@@ -19,7 +19,14 @@ namespace Cascade.Presentation
         public static Vector2 Stem(int world)=>world==0?new Vector2(.41f,.10f):world==5?new Vector2(.24f,.154f):new Vector2(.5f,.45f);
         public static int Count(int world)=>Rooted(world)?Procedural(world)+4:world==1?46:world==4?34:world==6?34:world==7?18:world==3?8:12;
         public static int Procedural(int world)=>world==1?40:world==4?28:world==6?18:world==5?10:world==8||world==7?12:0;
-        public static float PlantSway(float age,int plant)=>Mathf.Sin(age*.81f+plant*1.8f)*10.5f+Mathf.Sin(age*1.43f+plant*.7f)*2.6f;
+        public static float PlantSway(float age,int plant,float wind=float.NaN)
+        {
+            if(float.IsNaN(wind))wind=Cascade.Application.WorkshopWind.Sample(age-plant*.11f);
+            float flexibility=.88f+.22f*WildlifeMotion.Hash(plant*173+51);
+            float breeze=Mathf.Sin(age*1.03f+plant*1.7f)*5.8f+Mathf.Sin(age*.57f+plant*.8f)*2.2f;
+            float flutter=Mathf.Sin(age*3.6f+plant*.9f)*Mathf.Abs(wind)*1.5f;
+            return Mathf.Clamp((-wind*23+breeze+flutter)*flexibility,-24,24);
+        }
         public static Vector2 Drift(float age,int index,int world)
         {
             float seed=WildlifeMotion.Hash(index*197+world*31+17);
@@ -36,12 +43,12 @@ namespace Cascade.Presentation
     public sealed class MenuSeasonalFlecks:MonoBehaviour
     {
         readonly Image[] flecks=new Image[8];readonly RectTransform[] poses=new RectTransform[8];
-        RectTransform root;WorldFrameFit support;int world;bool mapSupport;
+        RectTransform root;WorldFrameFit support;Image supportImage;int world;bool mapSupport;
         public int VisibleCount{get;private set;}
         public void BindSupport(WorldFrameFit frame)
         {
-            support=frame;root=(RectTransform)transform;
-            mapSupport=support!=null&&support.GetComponent<Image>().sprite==WorldFrameArt.MapFrame();
+            support=frame;supportImage=support==null?null:support.GetComponent<Image>();root=(RectTransform)transform;
+            mapSupport=supportImage!=null&&supportImage.sprite==WorldFrameArt.MapFrame();
             if(WorldSeasonalArt.Rooted(world)&&support!=null){root.SetParent(support.transform,false);root.anchorMin=Vector2.zero;root.anchorMax=Vector2.one;root.offsetMin=root.offsetMax=Vector2.zero;}
         }
         public void Initialize(int biome)
@@ -54,14 +61,15 @@ namespace Cascade.Presentation
                 if(child==null){var go=new GameObject(name,typeof(RectTransform),typeof(Image));go.transform.SetParent(root,false);child=go.transform;}
                 poses[i]=(RectTransform)child;poses[i].anchorMin=poses[i].anchorMax=Vector2.one*.5f;
                 poses[i].pivot=WorldSeasonalArt.Rooted(world)?WorldSeasonalArt.Stem(world):Vector2.one*.5f;
-                flecks[i]=child.GetComponent<Image>();flecks[i].sprite=WorldSeasonalArt.Get(world);flecks[i].preserveAspect=true;flecks[i].raycastTarget=false;
+                flecks[i]=child.GetComponent<Image>();flecks[i].sprite=WorldSeasonalArt.Get(world);flecks[i].preserveAspect=true;flecks[i].raycastTarget=false;flecks[i].enabled=false;
             }
         }
         public void Pose(float age,int quality)
         {
             if(!isActiveAndEnabled)return;
             if(root==null||flecks[0]==null)Initialize(world);bool rooted=WorldSeasonalArt.Rooted(world);
-            VisibleCount=quality<=0?0:rooted?(quality==1?2:4):quality==1?3:world==6?8:6;
+            bool hasSupport=support!=null&&support.isActiveAndEnabled&&supportImage!=null&&supportImage.isActiveAndEnabled&&supportImage.color.a>.001f;
+            VisibleCount=quality<=0||rooted&&!hasSupport?0:rooted?(quality==1?2:4):quality==1?3:world==6?8:6;
             var light=MenuWorldArt.Light(world,age,true);
             for(int i=0;i<flecks.Length;i++){
                 var picture=flecks[i];picture.enabled=i<VisibleCount;if(!picture.enabled)continue;

@@ -1,3 +1,5 @@
+> Production account APIs and deployment now live in [AccountCloud](../AccountCloud/README.md). This directory retains the publisher verification boundary and its original Node harness; it is not the complete deployed account service.
+
 # CASCADE purchase verifier
 
 Prepared service, not deployed. Store credentials and hosting remain publisher setup.

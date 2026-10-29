@@ -18,11 +18,12 @@ namespace Cascade.Presentation
             =>ReceiverVisualOffset+Quaternion.Euler(0,0,ReceiverAngle)*(point-receiverPivot)-(point-receiverPivot);
         public Vector3 ReceiverLandingPosition(int index)
         {
-            var point=targetBodies[index].basePosition;
+            var target=targetBodies[index];
+            var point=target.basePosition+target.baseRotation*Vector3.Scale(target.mesh.bounds.center,target.baseScale);
             point.z=restPositions[index].z;
-            return point+ReceiverPointOffset(point);
+            return point+ReceiverPointOffset(point)-Quaternion.Euler(0,0,ReceiverAngle)*Vector3.Scale(tokens[index].mesh.bounds.center,restScales[index]);
         }
-        public Vector3 ReceiverTargetPosition(int index)=>targetBodies[index].transform.position;
+        public Vector3 ReceiverTargetPosition(int index)=>targetBodies[index].renderer.bounds.center;
         void BindReceiver(IReadOnlyList<TextMeshProUGUI> targets)
         {
             receiverMotion.Reset();receiverParts.Clear();receiverFaces.Clear();
@@ -30,7 +31,7 @@ namespace Cascade.Presentation
             for(int side=0;side<2;side++){
                 float x=side==0?0f:1f;
                 receiverParts.Add(Add("Receiver brass rope eye",lowerAnchor,art.disk,art.gold,new Vector2(x,.56f),new Vector2(.055f,.17f),-.05f,.09f));
-                receiverKnots[side]=Add("Receiver tied hemp knot",lowerAnchor,art.disk,ropeMaterial,new Vector2(x,.57f),new Vector2(.029f,.11f),-.13f,.09f);
+                receiverKnots[side]=Add("Receiver tied hemp knot",lowerAnchor,art.disk,ropeMaterial,new Vector2(x,.54f),new Vector2(.029f,.11f),-.13f,.09f);
                 receiverParts.Add(receiverKnots[side]);
             }
             // Keep the layout anchors canonical. Only a child glyph face follows the body.

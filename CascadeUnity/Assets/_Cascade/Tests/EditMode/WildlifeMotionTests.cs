@@ -38,7 +38,7 @@ namespace Cascade.Tests
         [TestCase(WildlifeFlightStyle.Beetle)]
         [TestCase(WildlifeFlightStyle.Bee)]
         [TestCase(WildlifeFlightStyle.Owl)]
-        public void OpenSkyFlightsReturnAlongABroadArcWithoutTeleporting(WildlifeFlightStyle style)
+        public void OpenSkyFlightsRemainContinuousWithoutMandatoryReversals(WildlifeFlightStyle style)
         {
             WildlifeMotion.Route(-1,.62f,true,false,out var a,out var b,out var c,out var d);
             bool forward=false,returned=false;float lastX=0;
@@ -52,7 +52,9 @@ namespace Cascade.Tests
                 Assert.That(heading.magnitude,Is.EqualTo(1).Within(.00001f));
                 lastX=p.x;
             }
-            Assert.That(forward&&returned,Is.True,"The visitor must turn back, not simply follow an S-shaped crossing.");
+            Assert.That(forward,Is.True,"Crossing wildlife must make progress through the sky.");
+            if(style==WildlifeFlightStyle.SmallBird||style==WildlifeFlightStyle.SoaringBird||style==WildlifeFlightStyle.Owl)
+                Assert.That(returned,Is.False,"Birds must not reverse their facing for an artificial loop midway through a crossing.");
         }
         [TestCase(WildlifeFlightStyle.SmallBird)]
         [TestCase(WildlifeFlightStyle.Butterfly)]

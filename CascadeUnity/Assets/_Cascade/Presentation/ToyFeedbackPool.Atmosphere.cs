@@ -11,6 +11,7 @@ namespace Cascade.Presentation
         float scoreFade = 1, scoreGain, rainBlend;
         bool audioSleeping, scoreSleeping;
         bool audioConfigurationChanged;
+        bool mobilePlaybackConfigured;
         readonly int[] scoreSamples=new int[2];
         int windSamples,rainSamples;
         float cricketWait=4.5f;
@@ -51,7 +52,7 @@ namespace Cascade.Presentation
             InitializeWildlifeAudio();
             AudioSettings.OnAudioConfigurationChanged+=AudioConfigurationChanged;
         }
-        void AudioConfigurationChanged(bool deviceChanged){audioConfigurationChanged=true;}
+        void AudioConfigurationChanged(bool deviceChanged){audioConfigurationChanged=true;mobilePlaybackConfigured=false;}
         void RememberLoopPositions()
         {
             for(int i=0;i<scoreSources.Length;i++)if(scoreSources[i]!=null&&scoreSources[i].isPlaying)scoreSamples[i]=scoreSources[i].timeSamples;
@@ -98,10 +99,12 @@ namespace Cascade.Presentation
             if(singingCricket!=null)singingCricket.PhraseIndex++;
             cricketWait=singingCricket==null?9+(cricketPhrase++*5%7):4+WildlifeMotion.Hash(++cricketPhrase*43+211)*5;
         }
-        void OnApplicationPause(bool paused){if(paused){StopNightCrickets();StopWildlifeAudio();}}
-        void OnApplicationFocus(bool focused){if(!focused){StopNightCrickets();StopWildlifeAudio();}}
+        void OnApplicationPause(bool paused){if(paused){mobilePlaybackConfigured=false;StopNightCrickets();StopWildlifeAudio();}}
+        void OnApplicationFocus(bool focused){if(!focused){mobilePlaybackConfigured=false;StopNightCrickets();StopWildlifeAudio();}}
         void TickAtmosphere(float seconds, bool paused)
         {
+            if(!game.enabled||game.Interaction.IsSuspended||(!MusicEnabled&&!SoundEnabled))mobilePlaybackConfigured=false;
+            else if(!mobilePlaybackConfigured){mobilePlaybackConfigured=true;NativeAudioSession.ConfigurePlayback();}
             float dt = Mathf.Clamp(seconds, 0, .1f);
             // Score fades are clock envelopes, not a physics simulation. Limiting
             // them to 0.1 s per frame makes music transitions stall at low FPS.
@@ -119,15 +122,14 @@ namespace Cascade.Presentation
             // Reversing an existing blend keeps both playback positions and the instantaneous gain.
             if(wantedReady&&wanted!=CurrentMusicClip&&wanted==scoreSources[1-scoreIncoming].clip) {
                 scoreIncoming=1-scoreIncoming;scoreFade=1-scoreFade;
-                if(!scoreSleeping)ResumeLoop(scoreSources[scoreIncoming],scoreSamples[scoreIncoming]);
+                if(!scoreSleeping&&scoreFade>=.5f)ResumeLoop(scoreSources[scoreIncoming],scoreSamples[scoreIncoming]);
             }
             // Queue a third theme until the current blend completes. Never cut an audible track halfway through.
             if (wantedReady && wanted != CurrentMusicClip && scoreFade >= 1) {
                 scoreIncoming = 1 - scoreIncoming;
                 var incoming = scoreSources[scoreIncoming];
-                incoming.Stop(); incoming.volume = 0; incoming.clip = wanted; incoming.Play();
+                incoming.Stop(); incoming.volume = 0; incoming.clip = wanted; incoming.Play(); incoming.Pause();
                 scoreSamples[scoreIncoming]=0;
-                if (scoreSleeping) incoming.Pause();
                 scoreFade = 0;
             }
             duck = Mathf.Max(0, duck - dt);
@@ -135,19 +137,22 @@ namespace Cascade.Presentation
             float target = !MusicEnabled || paused ? 0 : duck > 0 || game.MechanicPopupOpen ? .16f : .24f;
             scoreGain = Mathf.MoveTowards(scoreGain, target, scoreDt * .7f);
             if (scoreSleeping && target > 0) {
-                bool ready=ResumeLoop(scoreSources[scoreIncoming],scoreSamples[scoreIncoming]);
-                if(scoreFade<1)ResumeLoop(scoreSources[1-scoreIncoming],scoreSamples[1-scoreIncoming]);
+                // The new motif starts at the quiet midpoint, so its first note is
+                // heard rather than running silently under the outgoing melody.
+                bool ready=scoreFade<.5f||ResumeLoop(scoreSources[scoreIncoming],scoreSamples[scoreIncoming]);
+                if(scoreFade<.5f)ResumeLoop(scoreSources[1-scoreIncoming],scoreSamples[1-scoreIncoming]);
                 scoreSleeping=!ready;
             }
-            // Also covers the initial async menu load and a source stopped independently
-            // of the output reset callback, without restarting a playing theme.
-            if(!scoreSleeping&&target>0&&!scoreSources[scoreIncoming].isPlaying)
+            if (!scoreSleeping && target > 0) scoreFade = Mathf.Min(1, scoreFade + scoreDt / .85f);
+            float incomingGain = Mathf.SmoothStep(0, 1, Mathf.Clamp01((scoreFade-.5f)*2));
+            float outgoingGain = Mathf.SmoothStep(0, 1, Mathf.Clamp01((.5f-scoreFade)*2));
+            if(!scoreSleeping&&target>0&&scoreFade>=.5f&&!scoreSources[scoreIncoming].isPlaying)
                 ResumeLoop(scoreSources[scoreIncoming],scoreSamples[scoreIncoming]);
-            if (!scoreSleeping&&scoreSources[scoreIncoming].isPlaying) scoreFade = Mathf.Min(1, scoreFade + scoreDt / 1.6f);
-            float blend = Mathf.SmoothStep(0, 1, scoreFade);
-            scoreSources[scoreIncoming].volume = scoreGain * Mathf.Sqrt(blend);
-            scoreSources[1 - scoreIncoming].volume = scoreGain * Mathf.Sqrt(1 - blend);
-            if(scoreFade==1&&scoreSources[1-scoreIncoming].isPlaying)scoreSources[1-scoreIncoming].Pause();
+            scoreSources[scoreIncoming].volume = scoreGain * incomingGain;
+            scoreSources[1-scoreIncoming].volume = scoreGain * outgoingGain;
+            // Fade through quiet instead of superimposing unrelated keys/tempos.
+            // The mirrored envelopes also reverse without a gain/position jump.
+            if(outgoingGain==0&&scoreSources[1-scoreIncoming].isPlaying)scoreSources[1-scoreIncoming].Pause();
             if (!scoreSleeping && scoreGain == 0) { foreach (var source in scoreSources) source.Pause(); scoreSleeping = true; }
 
             // Both beds keep their place. Region changes blend them rather than restarting the wind.

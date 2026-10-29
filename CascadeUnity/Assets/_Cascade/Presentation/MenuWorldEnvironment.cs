@@ -16,7 +16,7 @@ namespace Cascade.Presentation
         readonly List<MenuWorldParticles> weather=new List<MenuWorldParticles>();
         MenuSeasonalFlecks seasonalFlecks;WorldFrameResident frameResident;WorldFrameFit frameFit;
         readonly List<(Image Image,RectTransform Rect,float Seed,bool Balloon)> flights=new List<(Image,RectTransform,float,bool)>();
-        float clock=16;int world,leadKindOffset;Vector3[] corners=new Vector3[4];
+        float clock=16;int world,leadKindOffset;bool conversationView;Vector3[] corners=new Vector3[4];
         public int World=>world;public Texture2D SkyTexture=>sky;public float AnimationAge=>clock;
         public int VisibleAircraft=>flights.Count(f=>f.Image.enabled&&f.Image.color.a>.05f);
         public int ChimneyCount=>chimneys.Count;
@@ -24,6 +24,7 @@ namespace Cascade.Presentation
         bool review;public void SetReviewAge(float age){review=true;clock=age;Paint();}public void EndReview(){review=false;}
 #endif
         Material Make(string shaderName,string label){var shader=Resources.Load<Shader>(MenuWorldArt.Path+shaderName);if(shader==null)throw new InvalidOperationException("Missing world UI shader: "+shaderName);var m=new Material(shader){name=label};owned.Add(m);m.SetFloat("_World",world);return m;}
+        public void InitializeConversation(CascadeGame owner,RectTransform root,int selectedWorld){conversationView=true;Initialize(owner,root,selectedWorld);}
         public void Initialize(CascadeGame owner,RectTransform root,int selectedWorld)
         {
             game=owner;surface=root;world=selectedWorld;sky=MenuWorldArt.Sky(world);cameraView=Camera.main;
@@ -47,7 +48,7 @@ namespace Cascade.Presentation
             seasonalFrame.SetTexture("_MenuPostTex",posts);seasonalFrame.SetFloat("_HaveMenuPosts",posts==null?0:1);
             headerMaterial=new Material(shader){name="Original wood heading reskin"};headerMaterial.SetFloat("_World",world);headerMaterial.SetFloat("_Header",1);owned.Add(headerMaterial);
             skyMaterials=new[]{skyOnly,farIsland,aircraftAtmosphere,aircraftDepth[0],aircraftDepth[1],aircraftDepth[2]};
-            if(game.CurrentScreen==GameScreen.Settings){
+            if(!conversationView&&game.CurrentScreen==GameScreen.Settings){
                 seasonalFrame.SetFloat("_CleanCutout",0);seasonalFrame.SetFloat("_HaveMenuPosts",0);
                 var settingsSky=surface.GetComponentsInChildren<Image>().Single(i=>i.name=="Settings landscape");if(world!=0)settingsSky.material=skyOnly;
                 var settingsFrame=surface.GetComponentsInChildren<Image>().Single(i=>i.name=="Settings outer wooden frame");settingsFrame.material=seasonalFrame;
@@ -55,18 +56,22 @@ namespace Cascade.Presentation
                 settingsWeather.SetSiblingIndex(settingsSky.transform.GetSiblingIndex()+1);
                 var particles=settingsWeather.gameObject.AddComponent<MenuWorldParticles>();particles.Initialize(world);weather.Add(particles);Paint();return;
             }
-            BindArt();BuildFrame();BuildLife();Paint();
+            BindArt();if(!conversationView)BuildFrame();BuildLife();Paint();
         }
         void BindArt()
         {
             foreach(var image in surface.GetComponentsInChildren<Image>().Where(i=>i.gameObject.activeInHierarchy)){
                 string n=image.name;
-                if(image.sprite==Resources.Load<Sprite>("CascadeArt/ShopReferenceOct13/HeaderBoard"))image.material=headerMaterial;
+                if(image.sprite==Resources.Load<Sprite>("CascadeArt/ShopReferenceOct13/HeaderBoard")||n=="World comic carved timber"||n=="Conversation rooted bough")image.material=headerMaterial;
                 else if(n=="Account and home castle landscape"&&world!=0)image.material=skyOnly;
                 else if(n=="Reference home umbrella airship"){image.material=aircraftAtmosphere;image.enabled=false;var motion=image.GetComponent<WorldMotion>();if(motion!=null)motion.enabled=false;}
                 else if(n=="Reference shop environment")image.material=skyOnly;
                 else if(n=="Reference wooden frame and platform"||n=="Slow existing clouds")image.material=skyOnly;
-                else if(n.StartsWith("Reference map island artwork",StringComparison.Ordinal))image.material=image.material!=null&&image.material.shader.name=="Cascade/UI/IslandGrayscale"?locked:island;
+                else if(n.StartsWith("Reference map island artwork",StringComparison.Ordinal)){
+                    bool isLocked=image.material!=null&&image.material.shader.name=="Cascade/UI/IslandGrayscale";
+                    // Selection belongs to the outside contour; keep the painted island colours intact.
+                    image.material=isLocked?locked:island;
+                }
                 else if(n.StartsWith("Drifting home island",StringComparison.Ordinal)||n.StartsWith("Inventory distant island",StringComparison.Ordinal)){
                     int index=0;int.TryParse(n.Split(' ').Last(),out index);image.sprite=WorldIslandArt.Get(world,index);image.material=farIsland;image.preserveAspect=true;image.color=Color.white;
                 }
@@ -107,7 +112,7 @@ namespace Cascade.Presentation
             var visitor=NewRect("Wildlife on the world frame",rect,Vector2.zero,Vector2.one);
             frameResident=visitor.gameObject.AddComponent<WorldFrameResident>();frameResident.Initialize(world);
         }
-        static bool IsScene(string name)=>name=="Mika welcomes you"||name=="Inventory Mika"||name=="Trophy Mika preview"
+        static bool IsScene(string name)=>name=="Speaker portrait"||name=="Mika welcomes you"||name=="Inventory Mika"||name=="Trophy Mika preview"
             ||name=="Magnified actual Mika sprite"||name=="Items pale stone pedestal"||name=="Items selected object"
             ||name=="Mika victory lantern"||name=="Mika reads"
             ||name=="Pause resting Mika and bag"||name=="Pause brass lantern"||name=="Timber and foliage in front of distant islands"
@@ -134,8 +139,10 @@ namespace Cascade.Presentation
                 for(int i=0;i<count;i++){var rect=NewRect("Themed distant island "+i,band,new Vector2(.5f,.5f),new Vector2(.5f,.5f));rect.pivot=new Vector2(.5f,.5f);var picture=rect.gameObject.AddComponent<Image>();picture.sprite=WorldIslandArt.Get(world,i);picture.preserveAspect=true;picture.raycastTarget=false;picture.material=farIsland;distantIslands.Add((picture,rect,poses[i],i*1.83f));}
             }
             var particles=NewRect("World weather and lights",band,Vector2.zero,Vector2.one).gameObject.AddComponent<MenuWorldParticles>();particles.Initialize(world);weather.Add(particles);
-            var seasonal=NewRect("Authored seasonal flowers and weather",band,Vector2.zero,Vector2.one);seasonalFlecks=seasonal.gameObject.AddComponent<MenuSeasonalFlecks>();seasonalFlecks.Initialize(world);
-            seasonalFlecks.BindSupport(frameFit);
+            if(!conversationView||!WorldSeasonalArt.Rooted(world)){
+                var seasonal=NewRect("Authored seasonal flowers and weather",band,Vector2.zero,Vector2.one);seasonalFlecks=seasonal.gameObject.AddComponent<MenuSeasonalFlecks>();seasonalFlecks.Initialize(world);
+                seasonalFlecks.BindSupport(frameFit);
+            }
             for(int i=0;i<6;i++){
                 var s=Resources.Load<Sprite>(MenuWorldArt.Path+"Aircraft"+i)??Resources.Load<Sprite>("CascadeArt/Journey/Glider");
                 if(world==0&&i==3){var reference=surface.GetComponentsInChildren<Image>().FirstOrDefault(p=>p.name=="Reference home umbrella airship");if(reference!=null)s=reference.sprite;}
@@ -160,6 +167,8 @@ namespace Cascade.Presentation
             if(game==null||surface==null)return;bool moving=!game.ReducedMotion&&game.Preferences.EffectQuality>0;float t=moving?clock:0;
             Color light=MenuWorldArt.Light(world,t,moving);foreach(var m in owned){m.SetColor("_LightTint",light);m.SetFloat("_Age",t);}
             seasonalFrame.SetFloat("_CornerMotionAllowed",moving?1:0);
+            float wind=moving?Cascade.Application.WorkshopWind.Sample(t):0;
+            seasonalFrame.SetFloat("_Wind",wind);headerMaterial.SetFloat("_Wind",wind);
             surface.GetWorldCorners(corners);var low=RectTransformUtility.WorldToScreenPoint(cameraView,corners[0]);var high=RectTransformUtility.WorldToScreenPoint(cameraView,corners[2]);
             float aspect=(high.x-low.x)/Mathf.Max(1,high.y-low.y),textureAspect=sky==null?aspect:sky.width/(float)sky.height;
             var cover=aspect>textureAspect?new Vector4(1,textureAspect/aspect,0,0):new Vector4(aspect/textureAspect,1,0,0);

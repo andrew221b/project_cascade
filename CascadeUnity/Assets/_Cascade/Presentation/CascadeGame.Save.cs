@@ -30,7 +30,7 @@ namespace Cascade.Presentation
 #if UNITY_EDITOR
             if(!string.IsNullOrEmpty(EditorProfileDirectory))directory=EditorProfileDirectory;
 #endif
-            profileStore=new ProfileStore(Path.Combine(directory,"cascade-profile.json"));
+            profileStore=new ProfileStore(Path.Combine(directory,"cascade-profile.json"),persistSessionAttempts:false);
             var loaded=profileStore.Load();profile=loaded.Profile;profile.MigrateCoinEconomy();Recovery=loaded.Recovery;
             Preferences=profile.Preferences;PreferredMode=(PuzzleMode)Enum.Parse(typeof(PuzzleMode),profile.PreferredMode);
             sessionClears.UnionWith(profile.Clears.Select(r=>r.CampaignNodeId));
@@ -39,31 +39,19 @@ namespace Cascade.Presentation
         }
         void RestoreProfile()
         {
-            try {
-                EnsureSavedJourneyContent();
-                var restored=profile.RestoreAttempt(Catalog,legacyContent);
-                if(restored!=null) {
-                    MountAttempt(restored,profile.Descent);journeyActive=profile.JourneyAttempt;storyRoute=profile.StoryRoute??profile.JourneyAttempt;
-                    selectedJourneyStop=Math.Max(0,Catalog.PrimaryLevels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==node));
-                }
-            }
-            catch(Exception e) when(e is ArgumentException || e is InvalidDataException) {
-                Recovery=SaveRecovery.AttemptUnavailable;saveBlocked=true;
-            }
+            // A new process always begins at Home; old unfinished rounds are not replayed.
             persistenceReady=true;
             InitializeRewards();
             if(Recovery==SaveRecovery.None){
-                if(profile.Completion!=null&&!profile.Completion.Acknowledged&&Interaction.Attempt.Current.Status==PuzzleStatus.Won){
-                    if(profile.Completion.StatsSeen&&profile.Completion.ParcelOrder>0)OpenParcel(true);else ShowGame();
-                }else if(NeedsAccountIntro())ShowAccountGate();else ShowHome();PersistProgress();}
+                if(NeedsAccountIntro())ShowAccountGate();else ShowHome();PersistProgress();}
             else SetScreen(GameScreen.SaveRecovery);
         }
-        bool NeedsAccountIntro()=>!profile.AccountIntroSeen;
+        bool NeedsAccountIntro()=>AudienceAgeNeedsChoice||!profile.AccountIntroSeen;
         void EnsureSavedJourneyContent()
         {
             if(profile.Attempt==null)return;
             string pinned=profile.Descent?.SourceHash??profile.Attempt.Direction?.SourceHash??profile.Attempt.ContentHash;
-            if(!Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).Concat(legacyContent).Any(c=>c.Definition.ContentHash==pinned))
+            if(!Catalog.AllLevels.Concat(Catalog.BonusLevels).Concat(legacyContent).Any(c=>c.Definition.ContentHash==pinned))
                 legacyContent=ContentImporter.ImportLegacyDurability(Catalog,Source("campaign_extension"),Source("campaign_durability_v1"));
         }
         void PersistProgress(bool durable=false)
@@ -93,7 +81,7 @@ namespace Cascade.Presentation
             if(PersonalMissionActive){RecordPersonalMission();return;}
             var attempt=Interaction.Attempt;
             // QA/custom drafts are playable but do not grant campaign receipts.
-            bool published=Catalog.PrimaryLevels.Concat(Catalog.LocalizedLevels).Concat(Catalog.BonusLevels).Concat(legacyContent).Any(c=>descent==null?DeliveryDirector.MatchesSource(attempt,c.Definition)
+            bool published=Catalog.AllLevels.Concat(Catalog.BonusLevels).Concat(legacyContent).Any(c=>descent==null?DeliveryDirector.MatchesSource(attempt,c.Definition)
                 :c.Definition.ContentHash==descent.SourceHash&&attempt.PinnedContentHash==descent.Level(c.Definition,descent.StageIndex).ContentHash);
             if(published) {
                 bool full=descent==null||descent.IsFinal;
@@ -130,7 +118,7 @@ namespace Cascade.Presentation
             bool restart=Recovery==SaveRecovery.AttemptUnavailable||Recovery==SaveRecovery.Unreadable;
             Recovery=SaveRecovery.None;saveBlocked=false;
             if(restart){profile.Missions.ClearActive();profile.Attempt=null;profile.Descent=null;LoadNode(initialNode);}
-            ShowHome();PersistProgress();
+            InitializeAudienceServices();ShowHome();PersistProgress();
         }
         void DrawSaveRecovery()
         {

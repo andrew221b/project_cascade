@@ -14,11 +14,15 @@ namespace Cascade.Editor.Playable
         public void OnPreprocessBuild(BuildReport report)
         {
             if(report.summary.platform!=BuildTarget.iOS&&report.summary.platform!=BuildTarget.Android)return;
+            if(Cascade.Editor.Playable.StoreCaptureBuildScope.Active){Cascade.Editor.Playable.StoreCaptureBuildScope.Validate(report);return;}
             var s=Resources.Load<MonetizationSettings>("CascadeArt/MonetizationSettings");
             if(s==null)throw new BuildFailedException("Missing CASCADE monetization settings.");
+            if(AndroidInternalPreviewScope.Active){AndroidInternalPreviewScope.Validate(report);return;}
             if(!RequiresReleaseChecks(s.productionRelease,report.summary.options))return;
             if(s.testMonetization||s.admobTestAds||!s.adsReleaseReady||!s.storeCatalogRegistered)
                 throw new BuildFailedException("Store submission requires live ads, a registered store catalog and the test shop disabled.");
+            if(!PublicReceiptVerifier.ValidEndpoint(s.receiptValidationUrl))
+                throw new BuildFailedException("Store submission requires the exact HTTPS local receipt verification endpoint for under-16 profiles.");
             var cloud=Resources.Load<CloudPlayerSettings>("CascadeArt/CloudPlayerSettings");
             if(cloud==null||!cloud.enabledForPlayers||!cloud.purchaseVerificationConfigured||!cloud.playerAccountsConfigured||cloud.environment!="production"||cloud.projectId!=UnityEngine.Application.cloudProjectId)
                 throw new BuildFailedException("Store submission requires verified production cloud saves, linked accounts and server receipt verification.");

@@ -1,0 +1,14 @@
+{
+  "name": "Cascade.PlatformAccounts.Apple",
+  "references": [
+    "Cascade.Presentation",
+    "Apple.GameKit",
+    "Unity.Services.Authentication",
+    "Apple.Core"
+  ],
+  "includePlatforms": [
+    "Editor",
+    "iOS"
+  ],
+  "autoReferenced": true
+}

@@ -20,7 +20,7 @@ using UnityEngine.TestTools;
 using UnityEngine.UI;
 namespace Cascade.Tests
 {
-    public sealed class UiPolishReviewTests
+    public sealed partial class UiPolishReviewTests
     {
         const BindingFlags Private=BindingFlags.Instance|BindingFlags.NonPublic;
         CascadeGame game;Camera camera;RenderTexture portrait,oldTarget;string directory;bool background,audio;
@@ -69,7 +69,9 @@ namespace Cascade.Tests
         Rect Ink(RectTransform target,RectTransform space)
         {
             var label=target.GetComponent<TextMeshProUGUI>();Bounds bounds;
-            if(label!=null){label.ForceMeshUpdate();Assert.That(label.textInfo.lineCount,Is.LessThanOrEqualTo(1),label.name+" stays on one line after layout and render");bounds=label.textBounds;}else bounds=new Bounds(target.rect.center,target.rect.size);
+            if(label!=null){label.ForceMeshUpdate();Assert.That(label.textInfo.lineCount,Is.LessThanOrEqualTo(1),label.name+" stays on one line after layout and render");bounds=CenteredContentRow.GlyphBounds(label);}
+            else if(target.GetComponent<PauseGlyphGraphic>() is PauseGlyphGraphic glyph&&glyph.canvasRenderer.GetMesh() is Mesh mesh&&mesh.vertexCount>0)bounds=mesh.bounds;
+            else bounds=new Bounds(target.rect.center,target.rect.size);
             Assert.That(bounds.size.x,Is.GreaterThanOrEqualTo(0),target.name+" has a real painted bound");
             var a=(Vector2)space.InverseTransformPoint(target.TransformPoint(bounds.min));var b=(Vector2)space.InverseTransformPoint(target.TransformPoint(bounds.max));
             return Rect.MinMaxRect(Mathf.Min(a.x,b.x),Mathf.Min(a.y,b.y),Mathf.Max(a.x,b.x),Mathf.Max(a.y,b.y));
@@ -79,8 +81,8 @@ namespace Cascade.Tests
             foreach(var row in game.GetComponentsInChildren<CenteredContentRow>()){
                 var bounds=row.Elements.Select(r=>Ink(r,row.Surface)).ToArray();if(bounds.Length==0)continue;
                 float left=bounds.Min(r=>r.xMin),right=bounds.Max(r=>r.xMax),low=bounds.Min(r=>r.yMin),high=bounds.Max(r=>r.yMax),unit=row.LocalUnit;
-                Assert.That((left+right)*.5f,Is.EqualTo(row.Surface.rect.center.x).Within(.8f*unit),screen+" / "+row.Surface.name+" horizontal centre");
-                Assert.That((low+high)*.5f,Is.EqualTo(row.Surface.rect.center.y).Within(.8f*unit),screen+" / "+row.Surface.name+" vertical centre");
+                Assert.That((left+right)*.5f,Is.EqualTo(CenteredContentRow.ReadingRect(row.Surface).center.x).Within(.8f*unit),screen+" / "+row.Surface.name+" horizontal centre");
+                Assert.That((low+high)*.5f,Is.EqualTo(CenteredContentRow.ReadingRect(row.Surface).center.y).Within(.8f*unit),screen+" / "+row.Surface.name+" vertical centre");
                 Assert.That(left,Is.GreaterThanOrEqualTo(row.Surface.rect.xMin-1*unit),screen+" / "+row.Surface.name+" left fit");
                 Assert.That(right,Is.LessThanOrEqualTo(row.Surface.rect.xMax+1*unit),screen+" / "+row.Surface.name+" right fit");
                 for(int i=1;i<bounds.Length;i++){
@@ -195,21 +197,29 @@ namespace Cascade.Tests
         }
         [UnityTest,Timeout(300000)] public IEnumerator CompactFootersAndTabsHaveSeparateTouchAreasAcrossPhoneLocales()
         {
-            foreach(int width in new[]{320,390,430,720})foreach(string locale in new[]{"en","ru","uk"})foreach(bool large in new[]{false,true}){
-                Resize(width,width==720?1280:width==320?693:width==430?932:844);game.SetUiLocale(locale);game.Preferences.LargeText=large;
-                string prefix=locale+"-"+width+(large?"-large":"");
-                foreach(var screen in new[]{GameScreen.NoAds,GameScreen.Shop}){
-                    Route(screen);yield return Shot(prefix+"-"+screen);var buttons=game.GetComponentsInChildren<Button>();
-                    if(screen==GameScreen.NoAds){var safe=(RectTransform)Field("safeRoot");foreach(var control in buttons){var box=Ink((RectTransform)control.transform,safe);Assert.That(box.yMin,Is.GreaterThanOrEqualTo(safe.rect.yMin-.5f),control.name+" clears the safe bottom");}}
-                    for(int i=0;i<buttons.Length;i++)for(int j=i+1;j<buttons.Length;j++){
-                        var a=Ink((RectTransform)buttons[i].transform,(RectTransform)game.GetComponentInChildren<Canvas>().transform);
-                        var b=Ink((RectTransform)buttons[j].transform,(RectTransform)game.GetComponentInChildren<Canvas>().transform);
-                        float x=Mathf.Min(a.xMax,b.xMax)-Mathf.Max(a.xMin,b.xMin),y=Mathf.Min(a.yMax,b.yMax)-Mathf.Max(a.yMin,b.yMin);
-                        Assert.That(x>.2f&&y>.2f,Is.False,screen+" touch overlap: "+buttons[i].name+" / "+buttons[j].name);
+            var grants=typeof(NativePurchaseStore).GetField("grants",Private);var original=grants.GetValue(game.PurchaseStore);
+            try{
+                foreach(int width in new[]{320,390,430,720})foreach(string locale in new[]{"en","ru","uk"})foreach(bool large in new[]{false,true}){
+                    Resize(width,width==720?1280:width==320?693:width==430?932:844);game.SetUiLocale(locale);game.Preferences.LargeText=large;
+                    string prefix=locale+"-"+width+(large?"-large":"");
+                    foreach(var screen in new[]{GameScreen.NoAds,GameScreen.Shop})foreach(bool owned in screen==GameScreen.NoAds?new[]{false,true}:new[]{false}){
+                        grants.SetValue(game.PurchaseStore,screen==GameScreen.NoAds?new AdService(new MonetizationLedger{NoAdsYearExpiresUnix=owned?DateTimeOffset.UtcNow.AddDays(30).ToUnixTimeSeconds():0},_=>{},previewOnly:true):original);
+                        Route(screen);yield return Shot(prefix+"-"+screen+(owned?"-owned":""));var buttons=game.GetComponentsInChildren<Button>();
+                        if(screen==GameScreen.NoAds){var safe=(RectTransform)Field("safeRoot");foreach(var control in buttons){
+                            var rect=(RectTransform)control.transform;var box=Ink(rect,safe);Assert.That(box.yMin,Is.GreaterThanOrEqualTo(safe.rect.yMin-.5f),control.name+" clears the safe bottom");
+                            var corners=new Vector3[4];rect.GetWorldCorners(corners);var low=camera.WorldToScreenPoint(corners[0]);var high=camera.WorldToScreenPoint(corners[2]);
+                            Assert.That(high.x-low.x,Is.GreaterThanOrEqualTo(43.8f),control.name+" keeps a44px touch width");Assert.That(high.y-low.y,Is.GreaterThanOrEqualTo(43.8f),control.name+" keeps a44px touch height");
+                        }}
+                        for(int i=0;i<buttons.Length;i++)for(int j=i+1;j<buttons.Length;j++){
+                            var a=Ink((RectTransform)buttons[i].transform,(RectTransform)game.GetComponentInChildren<Canvas>().transform);
+                            var b=Ink((RectTransform)buttons[j].transform,(RectTransform)game.GetComponentInChildren<Canvas>().transform);
+                            float x=Mathf.Min(a.xMax,b.xMax)-Mathf.Max(a.xMin,b.xMin),y=Mathf.Min(a.yMax,b.yMax)-Mathf.Max(a.yMin,b.yMin);
+                            Assert.That(x>.2f&&y>.2f,Is.False,screen+" touch overlap: "+buttons[i].name+" / "+buttons[j].name);
+                        }
                     }
+                    game.SelectShopTab(1);yield return Shot(prefix+"-Trophies");
                 }
-                game.SelectShopTab(1);yield return Shot(prefix+"-Trophies");
-            }
+            }finally{grants.SetValue(game.PurchaseStore,original);}
         }
         [UnityTest,Timeout(900000)] public IEnumerator MarkedScreensStayCentredOnPhonesInAllLocales()
         {

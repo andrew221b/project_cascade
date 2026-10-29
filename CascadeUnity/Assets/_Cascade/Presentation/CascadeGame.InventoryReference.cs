@@ -17,8 +17,8 @@ namespace Cascade.Presentation
             var far=farRect.gameObject.AddComponent<RawImage>();far.texture=ReferenceShopArt("Backdrop").texture;far.uvRect=new Rect(53/720f,190/1280f,627/720f,355/1280f);far.raycastTarget=false;
             farRect.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(1.2f,2.8f),1.1f);
             stage.GetComponent<ReferenceShopLayout>().BindContinuousGround();
-            InventoryIsland(stage,"InventoryIslandLeft",33,415,105,135,0);
-            InventoryIsland(stage,"InventoryIslandRight",572,357,109,155,1);
+            InventoryIsland(stage,33,415,105,135,0);
+            InventoryIsland(stage,572,357,109,155,1);
             stage.Find("Natural menu foliage").SetAsLastSibling();
             ReferencePicture("Inventory Mika platform",stage,ReferenceShopArt("PreviewPlatform"),111,689,505,62);
             var hero=ReferencePicture("Inventory Mika",stage,ReferenceShopArt("InventoryMika")??HomeArt("Mika"),134,188,416,536);
@@ -39,7 +39,7 @@ namespace Cascade.Presentation
             var rewardCaption=ReferenceText("inventory reward caption",ReferenceButtonBody(reward),ReferenceCopy("Claim reward","Забрать награду","Забрати нагороду"),178,26,306,94,34,true);CentreContent((RectTransform)ReferenceButtonBody(reward),rewardIcon.rectTransform,rewardCaption.rectTransform);
             reward.interactable=rewardAvailable;
         }
-        void InventoryIsland(RectTransform stage,string asset,float x,float y,float width,float height,int index)
+        void InventoryIsland(RectTransform stage,float x,float y,float width,float height,int index)
         {
             var island=ReferencePicture("Drifting home island "+index,stage,WorldIslandArt.Get(EnvironmentWorld,index),x,y,width,height);
             island.color=Color.white;

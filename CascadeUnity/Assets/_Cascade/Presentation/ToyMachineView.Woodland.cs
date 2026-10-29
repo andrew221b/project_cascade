@@ -41,12 +41,47 @@ namespace Cascade.Presentation
             for(int side=0;side<2;side++)for(int span=floor;span<=floor+1;span++)
                 ropeSpans[side,span]?.Impulse(new Vector2(lateral*.07f+(side==0?-1:1)*impulse*.04f,-impulse*.12f)*(side==0?.5f-point:.5f+point));
         }
+        public float TokenMass(int slot)=>PieceMass(slot);
         float PieceMass(int slot)=>Frame.Row[slot].Kind==SymbolKind.Glyph?1.2f:1+(art.ShapeIndex(Frame.Row[slot])%3)*.12f;
         public bool DebrisSupport(int floor,float x,out Vector3 position,out float width,out float angle)
         {
             position=Vector3.zero;width=angle=0;
-            if(Frame==null||floor>=floors.Count||!Frame.FloorVisible(floor)||floors[floor].fracture>.20f)return false;
-            position=SurfacePoint(floor,x,.365f);position.z=-.7f;width=floors[floor].board.baseScale.x*.95f/3;angle=floors[floor].roll;return true;
+            if(Frame==null||floor>=floors.Count||!Frame.FloorVisible(floor)||floors[floor].fracture>.20f||floors[floor].timberReleased)return false;
+            position=TimberSurfacePoint(floor,x);position.z=-.7f;width=floors[floor].board.baseScale.x*.95f/3;angle=SurfaceAngle(floor,x);return true;
+        }
+        public Vector3 TimberSurfacePoint(int floor,float x)
+        {
+            var board=floors[floor].board;
+            var point=board.basePosition+new Vector3((x-.5f)*board.baseScale.x,(GameplayReferenceArt.BoardCrown(x)-.5f-.012f)*board.baseScale.y,0);
+            return point+FloorPointOffset(floor,point,true);
+        }
+        public Vector3 TimberLowerEdgePoint(int floor,float x)
+        {
+            var rig=floors[floor];var board=rig.board;
+            var point=board.basePosition+new Vector3((x-.5f)*board.baseScale.x,(GameplayReferenceArt.BoardSole(x,rig.damageStage)-.5f)*board.baseScale.y,0);
+            return point+FloorPointOffset(floor,point,true);
+        }
+        public void ReleaseFloorTimber(int floor)
+        {
+            if(floor<0||floor>=floors.Count||floors[floor].timberReleased)return;
+            var rig=floors[floor];
+            var velocity=new Vector3(rig.swayVelocity,-Mathf.Max(0,rig.sagVelocity),0);
+            GetComponent<CascadeGame>().Feedback.ReleaseTimber(rig.board.transform.GetComponent<MeshFilter>(),velocity,rig.rollVelocity*Mathf.Deg2Rad);
+            rig.timberReleased=true;rig.board.transform.gameObject.SetActive(false);rig.top.transform.gameObject.SetActive(false);
+        }
+        public void CrackFloor(int floor,int edge)
+        {
+            if(floor<0||floor>=floors.Count)return;
+            floors[floor].crackPulse=1;ContactImpulse(floor,Mathf.Clamp(edge,0,tokens.Count-1),.65f,edge%2==0?-.12f:.12f);
+        }
+        internal static Vector3 FracturedPoint(Vector3 point,float progress,float width,float height)
+        {
+            if(progress<=.23f)return point;
+            var tie=GameplayReferenceArt.BoardTie(point.x<0?0:1);float side=point.x<0?-1:1,pivot=tie.x-.5f,heightPivot=tie.y-.5f;
+            float angle=side*Mathf.SmoothStep(0,1,Mathf.InverseLerp(.23f,.92f,progress))*24;
+            var local=new Vector3((point.x-pivot)*width,(point.y-heightPivot)*height,0);
+            local=Quaternion.Euler(0,0,angle)*local;
+            return new Vector3(pivot+local.x/width,heightPivot+local.y/height,point.z);
         }
         public void SetPiecePose(int index,PiecePose pose,float angle=0)
         {piecePoses[index]=pose;dynamicOffsets[index]=(pose==PiecePose.Falling||pose==PiecePose.Exchanging)?Vector3.zero:TokenSupportOffset(index);visualAngles[index]=reducedMotion?0:angle;ApplyPiece(index);}
@@ -54,7 +89,7 @@ namespace Cascade.Presentation
         public void ResetWoodPoses()
         {
             heldWeight=-1;forecastHp=null;
-            foreach(var rig in floors)rig.fracture=0;
+            foreach(var rig in floors){rig.fracture=0;rig.timberReleased=false;}
             for(int i=0;i<tokens.Count;i++){dynamicOffsets[i]=Vector3.zero;visualAngles[i]=rocking[i]=rockVelocity[i]=0;piecePoses[i]=Frame.Status==PuzzleStatus.Playing?PiecePose.Resting:PiecePose.Delivered;}
         }
         public void PreviewForecast(TransitionResult prediction)
@@ -103,9 +138,9 @@ namespace Cascade.Presentation
         }
         Mesh BoardTopMesh()
         {
-            const int columns=17;var vertices=new Vector3[columns*2];var uv=new Vector2[vertices.Length];var triangles=new int[(columns-1)*6];
-            for(int x=0;x<columns;x++)for(int d=0;d<2;d++){int i=x*2+d;vertices[i]=new Vector3(x/16f-.5f,0,d-.5f);uv[i]=new Vector2(x/16f,.46f+d*.10f);}
-            for(int x=0;x<columns-1;x++){int v=x*2,t=x*6;triangles[t]=v;triangles[t+1]=v+1;triangles[t+2]=v+2;triangles[t+3]=v+1;triangles[t+4]=v+3;triangles[t+5]=v+2;}
+            const int columns=18;var vertices=new Vector3[columns*2];var uv=new Vector2[vertices.Length];var triangles=new int[16*6];int triangle=0;
+            for(int x=0;x<columns;x++)for(int d=0;d<2;d++){int i=x*2+d;float u=(x<9?x:x-1)/16f;vertices[i]=new Vector3(u-.5f,0,d-.5f);uv[i]=new Vector2(u,.46f+d*.10f);}
+            for(int x=0;x<columns-1;x++){if(x==8)continue;int v=x*2;triangles[triangle++]=v;triangles[triangle++]=v+1;triangles[triangle++]=v+2;triangles[triangle++]=v+1;triangles[triangle++]=v+3;triangles[triangle++]=v+2;}
             var mesh=new Mesh{name="Depth and shadow receiving timber top"};mesh.vertices=vertices;mesh.uv=uv;mesh.triangles=triangles;mesh.RecalculateNormals();mesh.bounds=new Bounds(Vector3.zero,new Vector3(1.1f,22,1.1f));woodMeshes.Add(mesh);return mesh;
         }
         Vector3 FloorPointOffset(int floor,Vector3 point,bool bend)
@@ -114,26 +149,32 @@ namespace Cascade.Presentation
             var rotation=Quaternion.Euler(0,0,rig.roll);
             float x=Mathf.Clamp01(local.x/Mathf.Max(.01f,rig.board.baseScale.x)+.5f);
             var bowed=local+(bend?Vector3.down*BendAt(floor,x):Vector3.zero);
+            if(bend&&rig.fracture>0){
+                var broken=FracturedPoint(new Vector3(bowed.x/rig.board.baseScale.x,bowed.y/rig.board.baseScale.y,bowed.z),rig.fracture,rig.board.baseScale.x,rig.board.baseScale.y);
+                bowed=new Vector3(broken.x*rig.board.baseScale.x,broken.y*rig.board.baseScale.y,broken.z);
+            }
             return rotation*bowed-local+new Vector3(rig.sway,floorOffsets[floor],0);
         }
         public void TickWoodDynamics(float seconds)
         {
             if(interaction==null||Frame==null||!gameplayView)return;
-            if(seconds>0&&(interaction.IsPaused||interaction.IsSuspended||ambientPaused))return;
+            if(seconds>0&&(interaction.IsPaused||interaction.IsSuspended||ambientPaused||descentHeld))return;
             float dt=Mathf.Clamp(seconds,0,.05f);
             TickContactLoads(dt);
             for(int f=0;f<floors.Count;f++) {
                 var rig=floors[f];bool loaded=Frame.Status==PuzzleStatus.Playing&&Frame.ActiveFloor==f;
                 int surface=PlatformSurfaceArt.Style(interaction.Attempt.Level.Floors[f],f<=Frame.ActiveFloor);
                 if(surface!=rig.surfaceStyle){rig.surfaceStyle=surface;rig.board.renderer.sharedMaterial=rig.top.renderer.sharedMaterial=surface>=0?platformMaterials[surface]:woodMaterial;}
-                float weight=loaded?centreLoad/Mathf.Max(.01f,centreFullLoad):0;
+                float weight=loaded?centreLoad/3f:0;
+                float inertia=1+(loaded?contactMass:0)*.28f;
                 float targetSag=(.15f+.21f*rig.wear)*weight+rig.fracture*.19f;float wind=WindAt(f);
-                float tilt=reducedMotion?0:wind*2.2f-(loaded?loadCentre-.5f:0)*4.2f;
+                float tilt=reducedMotion?0:wind*2.2f/inertia-(loaded?(loadCentre-.5f)*contactMass/3f:0)*4.2f;
                 if(reducedMotion){rig.sag=targetSag;rig.sagVelocity=rig.sway=rig.swayVelocity=rig.roll=rig.rollVelocity=0;}
-                Spring(ref rig.sag,ref rig.sagVelocity,targetSag,120,14,dt);
-                Spring(ref rig.sway,ref rig.swayVelocity,wind*.20f,30,5.4f,dt);
-                Spring(ref rig.roll,ref rig.rollVelocity,tilt,24,4.8f,dt);
-                rig.sway=Mathf.Clamp(rig.sway,-.30f,.30f);rig.roll=Mathf.Clamp(rig.roll,-3.5f,3.5f);
+                Spring(ref rig.sag,ref rig.sagVelocity,targetSag,120/inertia,14/Mathf.Sqrt(inertia),dt);
+                Spring(ref rig.sway,ref rig.swayVelocity,wind*.20f/inertia,30/inertia,5.4f/Mathf.Sqrt(inertia),dt);
+                Spring(ref rig.roll,ref rig.rollVelocity,tilt,24/inertia,4.8f/Mathf.Sqrt(inertia),dt);
+                rig.sag=Mathf.Clamp(rig.sag,-.025f,rig.board.baseScale.y*.62f);
+                rig.sway=Mathf.Clamp(rig.sway,-.24f,.24f);rig.roll=Mathf.Clamp(rig.roll,-3.0f,3.0f);
                 for(int column=0;column<17;column++){
                     float x=column/16f;
                     rig.deflection[column]=rig.sag*(loaded&&centreLoad>.001f?LoadResponse(x,f)/centreLoad:Mathf.Sin(x*Mathf.PI));
@@ -141,19 +182,27 @@ namespace Cascade.Presentation
                 for(int i=0;i<rig.vertices.Length;i++){
                     int column=i/2;float x=(column<9?column:column-1)/16f;
                     float width=rig.board.baseScale.x,height=Mathf.Max(.01f,rig.board.baseScale.y);
-                    float side=column<9?-1:1,pivot=side*.475f;
-                    var point=new Vector3((x-.5f-pivot)*width,((i%2)-.5f)*height-BendAt(f,x),0);
-                    rig.vertices[i]=new Vector3(pivot+point.x/width,point.y/height,0);
+                    var point=new Vector3(x-.5f,(i%2)-.5f-BendAt(f,x)/height,0);
+                    // The duplicated centre vertices separate into two rope-hinged halves.
+                    if(column==8)point.x=-.00001f;
+                    rig.vertices[i]=FracturedPoint(point,rig.fracture,width,height);
                 }
-                int stage=rig.fracture>.22f?3:rig.wear>=.60f?2:rig.wear>0||interaction.Attempt.Level.Floors[f].FragileEdges.Count>0?1:0;
-                rig.woodProperties.SetVector("_BaseMap_ST",GameplayReferenceArt.BoardUv(rig.surfaceStyle,stage));
-                rig.woodProperties.SetColor("_BaseColor",new Color(1,1,1,1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(.36f,.82f,rig.fracture))));rig.board.renderer.SetPropertyBlock(rig.woodProperties);
+                bool fragile=interaction.Attempt.Level.Floors[f].FragileEdges.Count>0;
+                // Whole authored states: fine cracks, deeper distributed splits, then final break.
+                rig.damageStage=rig.fracture>.28f?3:rig.fracture>.14f||rig.wear>=.60f||fragile&&rig.wear>0?2:rig.fracture>0||rig.wear>0||fragile?1:0;
+                rig.crackPulse=Mathf.Max(0,rig.crackPulse-dt/.65f);
+                rig.woodProperties.SetVector("_BaseMap_ST",GameplayReferenceArt.BoardUv(rig.surfaceStyle,rig.damageStage));
+                float stress=1+Mathf.Sin(rig.crackPulse*Mathf.PI)*.035f;
+                rig.woodProperties.SetColor("_BaseColor",new Color(stress,stress,1,1));rig.board.renderer.SetPropertyBlock(rig.woodProperties);
                 rig.bendMesh.vertices=rig.vertices; // Static bounds already enclose the small cosmetic deflection.
                 for(int i=0;i<rig.topVertices.Length;i++){
-                    float x=i/2/16f;
+                    int column=i/2;float x=(column<9?column:column-1)/16f;
                     float front=rig.board.basePosition.y+(GameplayReferenceArt.BoardCrown(x)-.5f-.012f)*rig.board.baseScale.y;
                     float depthLift=i%2==0?0:rig.board.baseScale.y*.10f;
-                    rig.topVertices[i].y=(front+depthLift-rig.top.basePosition.y-BendAt(f,x))/Mathf.Max(.001f,rig.top.baseScale.y);
+                    float height=rig.board.baseScale.y;
+                    var point=FracturedPoint(new Vector3(column==8?-.00001f:x-.5f,(front+depthLift-rig.board.basePosition.y-BendAt(f,x))/height,0),rig.fracture,rig.board.baseScale.x,height);
+                    rig.topVertices[i].x=point.x;
+                    rig.topVertices[i].y=(rig.board.basePosition.y+point.y*height-rig.top.basePosition.y)/Mathf.Max(.001f,rig.top.baseScale.y);
                 }
                 rig.topMesh.vertices=rig.topVertices;rig.topMesh.RecalculateNormals();rig.top.renderer.SetPropertyBlock(rig.woodProperties);
                 foreach(var part in rig.parts) {
@@ -183,9 +232,10 @@ namespace Cascade.Presentation
             UpdateRopeRig(dt);
             for(int i=0;i<tokens.Count;i++) {
                 TickSeat(i,dt);
-                float target=reducedMotion?0:WindAt(Mathf.Min(Frame.ActiveFloor,floors.Count-1))*2.4f/PieceMass(i);
+                var support=floors[Mathf.Min(Frame.ActiveFloor,floors.Count-1)];
+                float target=reducedMotion?0:(WindAt(Mathf.Min(Frame.ActiveFloor,floors.Count-1))*1.6f-support.swayVelocity*.65f+support.rollVelocity*.025f)/PieceMass(i);
                 if(reducedMotion)rocking[i]=rockVelocity[i]=0;
-                else Spring(ref rocking[i],ref rockVelocity[i],target,58,13.5f,dt);
+                else Spring(ref rocking[i],ref rockVelocity[i],target,58/PieceMass(i),13.5f/Mathf.Sqrt(PieceMass(i)),dt);
                 rocking[i]=Mathf.Clamp(rocking[i],-2,2);
                 if(piecePoses[i]!=PiecePose.Falling&&piecePoses[i]!=PiecePose.Exchanging) {
                     dynamicOffsets[i]=TokenSupportOffset(i);

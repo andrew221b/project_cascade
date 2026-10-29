@@ -77,7 +77,7 @@ namespace Cascade.Presentation
                 var button=ReferenceButton("Shop object "+index,stage,x,837,95,98,()=>SelectShopItem(index));
                 button.interactable=!toolSearchPending&&(!PendingLesson.HasValue||PendingLesson<MechanicLesson.Wayfinder||PendingLesson>MechanicLesson.LandingLens||index==(int)PendingLesson.Value-(int)MechanicLesson.Wayfinder);
                 var body=ReferenceButtonBody(button);
-                var picture=ReferencePicture("Catalogue object",body,ItemsToolArt(index),12.5f,13,70,72);DecorateToolIcon(picture,index);
+                var picture=CataloguePicture(body,ItemsToolArt(index),12.5f,13,70,72,"tool/"+index);DecorateToolIcon(picture,index);
                 if(empty)picture.material=OwnedTrophyMaterial();
                 DrawItemsStock(body,"card "+index,47,66,46,30,Stock((TravelTool)index),21);
             }

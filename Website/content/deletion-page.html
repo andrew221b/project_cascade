@@ -1,0 +1,26 @@
+<main id="main" class="reading-page support-page deletion-page">
+  <div class="reading-title"><h1 data-deletion-copy="title">Delete your<br>game account.</h1><p data-deletion-copy="intro">Use the one-time code from Flying Ladders to delete your linked game account.</p></div>
+  <article>
+    <label class="deletion-language"><span data-deletion-copy="language">Language</span><select id="deletion-language" aria-label="Language"><option value="en">English</option><option value="ru">Русский</option><option value="uk">Українська</option></select></label>
+    <h2 data-deletion-copy="before">Before you delete</h2>
+    <p data-deletion-copy="scope">Deletion removes your game profile, cloud progress, inventory and associated game-account data. This action cannot be undone.</p>
+    <p data-deletion-copy="subscriptions">It does not delete your Apple, Google or global Unity account, cancel a subscription or refund purchases. Cancel renewal separately in your store settings.</p>
+    <ol class="deletion-steps"><li data-deletion-copy="step1">In the game, open Settings → Account → Get deletion code.</li><li data-deletion-copy="step2">Paste the code below within 10 minutes.</li><li data-deletion-copy="step3">Read the confirmation and select Delete my game account.</li></ol>
+    <form id="account-deletion-form" class="deletion-form" action="/api/account-deletion" method="post" autocomplete="off">
+      <fieldset id="deletion-fields">
+        <label for="deletion-code" data-deletion-copy="code">Deletion code</label>
+        <input id="deletion-code" name="code" type="text" required minlength="32" maxlength="32" pattern="[A-Za-z0-9_\-]{32}" autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="deletion-code-help">
+        <p id="deletion-code-help" class="deletion-help" data-deletion-copy="help">The code has 32 characters. It expires after 10 minutes. Do not share it.</p>
+        <label class="deletion-confirm"><input id="deletion-confirm" type="checkbox" required><span data-deletion-copy="consent">I understand that my game account and progress will be permanently deleted.</span></label>
+        <button id="deletion-submit" type="submit" class="button" disabled data-deletion-copy="submit">Delete my game account</button>
+      </fieldset>
+      <p id="deletion-status" class="deletion-status" role="status" aria-live="polite" tabindex="-1"></p>
+    </form>
+    <noscript><p>This secure form requires JavaScript. Enable it, or request verified assistance at <a href="mailto:support@vickand.com?subject=Flying%20Ladders%20account%20deletion">support@vickand.com</a>.</p></noscript>
+    <h2 data-deletion-copy="noAccess">No access to the game?</h2>
+    <p data-deletion-copy="support">Email support@vickand.com with the subject “Flying Ladders account deletion”. Include your sign-in provider and game identifier if available. We will verify ownership before deleting data. Never send passwords or full payment details.</p>
+    <p><a href="mailto:support@vickand.com?subject=Flying%20Ladders%20account%20deletion" data-deletion-copy="email">Request deletion assistance</a></p>
+    <p data-deletion-copy="retention">Minimal nonreversible security fingerprints and necessary transaction or legal records may remain to prevent purchase replay, meet legal obligations or resolve disputes. Your store's purchase history is separate.</p>
+    <p><a href="/privacy/#rights" data-deletion-copy="privacy">Read about privacy rights</a> · <a href="/support/" data-deletion-copy="gameSupport">Game support</a></p>
+  </article>
+</main>

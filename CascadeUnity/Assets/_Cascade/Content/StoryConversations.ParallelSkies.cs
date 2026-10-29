@@ -14,23 +14,23 @@ namespace Cascade.Content
                 new StoryConversation(receipt,new StoryLine("Mika",lines[at]),new StoryLine(Resident(world),lines[at+1]),new StoryLine("Mika",lines[at+2]));
         }
         static readonly string[] ParallelFirst={
-            "Walter left a triangle mark on the crate. That must be the timber he promised.",
-            "He sends the straightest boards away and keeps the crooked ones for his own door.",
-            "Let's save him one straight board. Gran says his door only opens in dry weather.",
-            "There's a letter on each parcel. This one spells HOME. Is it for the beacon?",
-            "For a family at the mill. They've been sleeping in the storehouse since the storm.",
-            "Then their parcel goes first. I'll put Gran's letter somewhere dry while we carry it.",
-            "A crate with a square, and a parcel with a letter. Who packed this lot?",
-            "The whole village. Someone even tied a biscuit to the handle. For the journey, they said.",
-            "I'll deliver everything. Except perhaps the biscuit. It might not survive the journey."
+            "Shapes on this receiver. Ada taught me those before I could read her notes.",
+            "This route is still dark. I'll check the anchors while you check the receiver.",
+            "A different order here. Let's start with the nearest lamp.",
+            "Letters on the light pieces. Same row to carry, another way to read the receiver.",
+            "There's a separate chain of lamps here. We still need to light it.",
+            "I'll read the whole order before moving. Ada would ask me to do that twice.",
+            "Letters and shapes together. I'll need to watch the order, not just the familiar colours.",
+            "The far rope is secured. Look at the receiver while I check this anchor.",
+            "I see it. I'll start with the lower lamp, then we'll check the whole chain."
         };
         static readonly string[] ParallelReturn={
-            "There's Walter's triangle again. We left this crate by the bridge.",
-            "And it's still dry. I covered it when the rain came. Shall we carry on?",
-            "The lettered parcels! We left the last one here. Did anyone collect it?",
-            "Not yet. They asked me to thank you. I'll tell them when the next load arrives.",
-            "Our mixed delivery is still waiting. I hope nobody ate the biscuit.",
-            "I put it in the tin. The crumbs were tempting the birds. Here, take it before they return."
+            "Our shape route. I'll check the last receiver before continuing.",
+            "The rope is where you left it. We kept the notes too.",
+            "Back to the lettered pieces. Our notes show where we stopped.",
+            "The rope is ready. We'll start at that anchor. I'll show you.",
+            "Here's the mixed receiver again. I'll read every mark before lowering the row.",
+            "I kept the far anchor clear. Your notes are beside the rope."
         };
     }
 }

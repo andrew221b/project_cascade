@@ -1,8 +1,14 @@
 {
-  "iosAdmobAppId": "",
-  "iosRewardedUnitId": "",
-  "iosInterstitialUnitId": "",
-  "androidAdmobAppId": "",
-  "androidRewardedUnitId": "",
-  "androidInterstitialUnitId": ""
+  "iosAdmobAppId": "ca-app-pub-2724223438862289~7300939270",
+  "iosRewardedUnitId": "ca-app-pub-2724223438862289/1665469215",
+  "iosInterstitialUnitId": "ca-app-pub-2724223438862289/3241615625",
+  "androidAdmobAppId": "ca-app-pub-2724223438862289~3999988514",
+  "androidRewardedUnitId": "ca-app-pub-2724223438862289/8065944779",
+  "androidInterstitialUnitId": "ca-app-pub-2724223438862289/8493942302",
+  "privacyPolicyUrl": "https://flyingladders.vickand.com/privacy/",
+  "privacyPolicyConfiguredForPlatforms": [
+    "Android",
+    "iOS"
+  ],
+  "privacyPolicyVerifiedUtc": "2026-10-21T16:11:13.783831+00:00"
 }

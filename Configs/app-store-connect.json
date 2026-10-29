@@ -1,0 +1,97 @@
+{
+  "appId": "6824290826",
+  "bundleId": "com.vickand.flyingladders",
+  "version": "1.0",
+  "primaryLocale": "en-US",
+  "locales": [
+    "en-US",
+    "ru",
+    "uk"
+  ],
+  "managementKeyId": "372BM7VQLX",
+  "issuerId": "751c70ed-677e-403e-94f0-eeb0e9b7cbc9",
+  "subscriptionGroupId": "22491379",
+  "downloadPriceUSD": "0.00",
+  "baseTerritory": "USA",
+  "excludedTerritories": [
+    "CHN",
+    "VNM"
+  ],
+  "availableInNewTerritories": false,
+  "releaseType": "MANUAL",
+  "reviewSubmissionAuthorized": false,
+  "screenshotsDeferredByOwner": true,
+  "products": [
+    {
+      "id": "6824295287",
+      "productId": "cascade.coins_240",
+      "amount": 240,
+      "usd": "0.99"
+    },
+    {
+      "id": "6824295426",
+      "productId": "cascade.coins_480",
+      "amount": 480,
+      "usd": "1.79"
+    },
+    {
+      "id": "6824295346",
+      "productId": "cascade.coins_600",
+      "amount": 600,
+      "usd": "1.99"
+    },
+    {
+      "id": "6824295317",
+      "productId": "cascade.coins_720",
+      "amount": 720,
+      "usd": "2.29"
+    },
+    {
+      "id": "6824295318",
+      "productId": "cascade.coins_960",
+      "amount": 960,
+      "usd": "2.99"
+    },
+    {
+      "id": "6824295319",
+      "productId": "cascade.coins_1080",
+      "amount": 1080,
+      "usd": "3.29"
+    },
+    {
+      "id": "6824295353",
+      "productId": "cascade.no_ads_week",
+      "period": "ONE_WEEK",
+      "usd": "1.49"
+    },
+    {
+      "id": "6824295355",
+      "productId": "cascade.no_ads_month",
+      "period": "ONE_MONTH",
+      "usd": "3.99"
+    },
+    {
+      "id": "6824295415",
+      "productId": "cascade.no_ads_year",
+      "period": "ONE_YEAR",
+      "usd": "19.99"
+    }
+  ],
+  "lastVerifiedUtc": "2026-10-21T09:55:45.761Z",
+  "appStoreState": "PREPARE_FOR_SUBMISSION",
+  "linkedBuildId": null,
+  "subscriptionStatusUrl": "https://cascade-sky-gardens.active-seed-4233.chatgpt.site/api/notifications/apple",
+  "subscriptionStatusUrlVersion": "V2",
+  "subscriptionStatusUrlForSandbox": "https://cascade-sky-gardens.active-seed-4233.chatgpt.site/api/notifications/apple",
+  "subscriptionStatusUrlVersionForSandbox": "V2",
+  "sandboxNotificationDeliveryVerified": true,
+  "purchaseReviewScreenshotsPresent": 0,
+  "purchaseReviewScreenshotsRequired": 9,
+  "ageRating": "NINE_PLUS",
+  "publicSupportUrl": "https://flyingladders.vickand.com/support/",
+  "privacyPolicyUrl": "https://flyingladders.vickand.com/privacy/",
+  "marketingUrl": "https://flyingladders.vickand.com/",
+  "privacyChoicesUrl": "https://flyingladders.vickand.com/data-request/",
+  "accessibilityUrl": "https://flyingladders.vickand.com/support/#accessibility",
+  "publicLinksVerifiedUtc": "2026-10-21T16:00:12.044934+00:00"
+}

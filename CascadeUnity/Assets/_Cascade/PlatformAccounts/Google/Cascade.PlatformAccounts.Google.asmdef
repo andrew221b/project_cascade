@@ -1,0 +1,13 @@
+{
+  "name": "Cascade.PlatformAccounts.Google",
+  "references": [
+    "Cascade.Presentation",
+    "Google.Play.Games",
+    "Unity.Services.Authentication"
+  ],
+  "includePlatforms": [
+    "Editor",
+    "Android"
+  ],
+  "autoReferenced": true
+}

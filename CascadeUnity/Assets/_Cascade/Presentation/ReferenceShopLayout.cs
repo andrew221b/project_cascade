@@ -69,8 +69,9 @@ namespace Cascade.Presentation
                     landingControls.anchoredPosition=new Vector2(0,bottom+landingControls.rect.height-content.rect.yMax);
                 }
             }
-            foreach(var touch in touches)if(touch.Key!=null)touch.Key.sizeDelta=new Vector2(Mathf.Max(touch.Value.x,minimum),Mathf.Max(touch.Value.y,minimum));
+            foreach(var touch in touches)if(touch.Key!=null)touch.Key.sizeDelta=new Vector2(Mathf.Max(GameButtonSize(touch.Key,touch.Value).x,minimum),Mathf.Max(GameButtonSize(touch.Key,touch.Value).y,minimum));
         }
+        static Vector2 GameButtonSize(RectTransform target,Vector2 authored){var design=target.GetComponent<GameButtonDesign>();return design==null?authored:design.DesiredSize(authored);}
         void LateUpdate()=>Fit();
     }
 }

@@ -31,7 +31,7 @@ namespace Cascade.Presentation
                 // Screen visibility owns the rig; the ropes keep swaying through delivery.
                 var line=suspension[side];line.enabled=true;
                 float sign=side==0?-1:1;
-                var first=floors[0].board;float x=first.basePosition.x+sign*Mathf.Min(first.baseScale.x*.475f,upperRopeHalfWidth);
+                var first=floors[0].board;float x=first.basePosition.x+sign*Mathf.Min(Mathf.Abs(floors[0].knots[side].basePosition.x-first.basePosition.x),upperRopeHalfWidth);
                 Vector3 previous=new Vector3(x,viewCamera.transform.position.y+viewCamera.orthographicSize+.2f,.10f);int index=0;
                 ropePoints[index++]=previous;
                 for(int segment=0;segment<=floors.Count;segment++) {

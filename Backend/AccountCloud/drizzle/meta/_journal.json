@@ -1,0 +1,34 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1792323645786,
+      "tag": "0000_rare_stryfe",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1792324330674,
+      "tag": "0001_spicy_forge",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1792324577354,
+      "tag": "0002_third_ezekiel",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1792569013040,
+      "tag": "0003_military_nick_fury",
+      "breakpoints": true
+    }
+  ]
+}

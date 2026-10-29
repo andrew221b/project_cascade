@@ -18,11 +18,11 @@ namespace Cascade.Presentation
             var stage=Rect("Settings reference composition",menuRoot,new Vector2(.5f,1),new Vector2(.5f,1));
             var layout=stage.gameObject.AddComponent<SettingsReferenceLayout>();layout.Initialize(menuRoot,environment,sky,frameImage);
             for(int i=0;i<2;i++)layout.BindCord(i,ReferencePicture("Settings suspension extension "+i,stage,SettingsReferenceArt.Get("Cord"),i==0?178:525,0,16,1,false).rectTransform);
-            ReferencePicture("Settings hanging title sign",stage,SettingsReferenceArt.Get("Header"),104,-32,519,305);
+            var titleBoard=ReferencePicture("Settings hanging title sign",stage,SettingsReferenceArt.Get("Header"),104,-32,519,305);
             var title=ReferenceText("settings heading",stage,SettingsReferenceTitle(),188,127,351,76,settingsPage<0||settingsPage==2?44:36);
-            title.fontSizeMin=settingsPage<0?38:28;title.color=new Color(.17f,.055f,.018f);
+            title.fontSizeMin=settingsPage<0?38:28;title.color=new Color(.17f,.055f,.018f);CentreContent(titleBoard.rectTransform,title.rectTransform);
             ReferenceButton("Back",stage,33,129,98,98,BackFromReferenceSettings,"BackButton");
-            int rows=settingsPage==1?2:3;
+            int rows=3;
             var panel=ReferencePicture("Settings wooden panel",stage,SettingsReferenceArt.Get("Panel"),88,240,545,settingsPage<0?871:rows==2?262:370,false);
             panel.type=UnityEngine.UI.Image.Type.Sliced;panel.pixelsPerUnitMultiplier=2;
             if(settingsPage<0)DrawReferenceSettingsRoot(stage);
@@ -33,6 +33,8 @@ namespace Cascade.Presentation
             }else if(settingsPage==1){
                 SettingsReferenceToggle(stage,"Largertext",10,276,()=>Preferences.LargeText,()=>Preferences.LargeText=!Preferences.LargeText);
                 SettingsReferenceToggle(stage,"Tutorialhelp",11,380,()=>Preferences.Tutorials,()=>Preferences.Tutorials=!Preferences.Tutorials);
+                var age=SettingsReferenceRow(stage,"Agegroup",AudienceAgeLabel(),484,98,ResetAudienceAge);
+                SettingsReferenceIcon(age,5);SettingsReferenceCaption(age,new UiCopy("Age group: {0}",AudienceAgeLabel()),140,0,310,98,25);
             }else{
                 var codes=new[]{"en","ru","uk"};
                 for(int i=0;i<codes.Length;i++){
@@ -68,8 +70,9 @@ namespace Cascade.Presentation
             var restore=ReferenceButton("Restore purchases",stage,138,988,448,89,RestorePurchasesFromSettings);
             var face=ReferencePicture("Settings restore gold face",ReferenceButtonBody(restore),SettingsReferenceArt.Get("Restore"),0,0,448,89,false);
             face.type=UnityEngine.UI.Image.Type.Sliced;face.pixelsPerUnitMultiplier=2;
-            ReferencePicture("Settings restore arrows",ReferenceButtonBody(restore),SettingsReferenceArt.Icon(7),44,18,54,52);
-            SettingsReferenceCaption(restore,ReferenceCopy("Restore purchases","Восстановить покупки","Відновити покупки"),123,0,307,89,27);
+            var restoreIcon=ReferencePicture("Settings restore arrows",ReferenceButtonBody(restore),SettingsReferenceArt.Icon(7),44,18,54,52);
+            var restoreCaption=SettingsReferenceCaption(restore,ReferenceCopy("Restore purchases","Восстановить покупки","Відновити покупки"),123,0,307,89,27);
+            CentreContent((RectTransform)ReferenceButtonBody(restore),restoreIcon.rectTransform,restoreCaption.rectTransform);
             restore.interactable=purchaseStore?.CanRestore==true;
             stage.GetComponent<SettingsReferenceLayout>().BindTouch((RectTransform)restore.transform,new Vector2(448,89));
         }
@@ -80,14 +83,14 @@ namespace Cascade.Presentation
             face.type=UnityEngine.UI.Image.Type.Sliced;face.pixelsPerUnitMultiplier=(selected?172:171)/height;
             stage.GetComponent<SettingsReferenceLayout>().BindTouch((RectTransform)button.transform,new Vector2(507,height));return button;
         }
-        void SettingsReferenceCaption(UnityEngine.UI.Button button,UiCopy caption,float x=140,float y=0,float width=311,float height=90,float size=24)
+        TextMeshProUGUI SettingsReferenceCaption(UnityEngine.UI.Button button,UiCopy caption,float x=140,float y=0,float width=311,float height=90,float size=24)
         {
             var text=ReferenceText("settings caption "+button.name,ReferenceButtonBody(button),caption,x,y,width,height,size,false,false);
             text.font=Resources.Load<TMP_FontAsset>("CascadeArt/Fonts/InterfaceBody")??art.titleFont;
             text.fontStyle=FontStyles.Bold;
             text.fontSizeMax=size*(Preferences.LargeText?1.10f:1);text.fontSizeMin=size*.9f;
             text.characterSpacing=-1;
-            text.alignment=TextAlignmentOptions.MidlineLeft;text.color=new Color(.15f,.055f,.02f);
+            text.alignment=TextAlignmentOptions.MidlineLeft;text.color=new Color(.15f,.055f,.02f);return text;
         }
         void SettingsReferenceIcon(UnityEngine.UI.Button button,int icon)=>ReferencePicture("Settings icon "+icon,ReferenceButtonBody(button),SettingsReferenceArt.Icon(icon),32,12,73,68);
         void SettingsReferenceLink(RectTransform stage,string name,UiCopy caption,int icon,float y,Action click,float height=90)

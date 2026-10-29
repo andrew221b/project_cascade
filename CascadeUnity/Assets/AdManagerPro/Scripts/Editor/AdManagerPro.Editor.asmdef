@@ -1,0 +1,9 @@
+{
+  "name": "AdManagerPro.Editor",
+  "references": [
+    "AdManagerPro"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ]
+}

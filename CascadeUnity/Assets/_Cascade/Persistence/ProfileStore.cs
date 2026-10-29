@@ -23,6 +23,7 @@ namespace Cascade.Persistence
         public const int Schema=2;
         const int MaxBytes=8*1024*1024;
         readonly string path;
+        readonly bool persistSessionAttempts;
         bool futureVersion;
         readonly object writes=new object(),disk=new object();
         string pending;
@@ -55,26 +56,27 @@ namespace Cascade.Persistence
             Drain();
             lock(writes)if(writeError!=null)throw new IOException("Profile write failed.",writeError);
         }
-        static string Prepare(PlayerProfile profile)
+        string Prepare(PlayerProfile profile)
         {
-            profile.Validate();string text=Encode(profile);
+            profile.Validate();string text=Encode(persistSessionAttempts?profile:profile.ProgressSnapshot());
             if(Encoding.UTF8.GetByteCount(text)>MaxBytes)throw new InvalidDataException("Profile exceeds supported size.");
             return text;
         }
         public string Path=>path;
         public string BackupPath=>path+".bak";
-        public ProfileStore(string path){this.path=System.IO.Path.GetFullPath(path);}
+        public ProfileStore(string path,bool persistSessionAttempts=true){this.path=System.IO.Path.GetFullPath(path);this.persistSessionAttempts=persistSessionAttempts;}
+        PlayerProfile LoadedProfile(PlayerProfile profile){if(!persistSessionAttempts)profile.DiscardSessionAttempts();return profile;}
         public ProfileLoad Load()
         {
             Flush();
             var main=TryRead(path,out bool future);
             futureVersion=future;
             if(future)return new ProfileLoad(new PlayerProfile(),SaveRecovery.NewerVersion);
-            if(main!=null)return new ProfileLoad(main,SaveRecovery.None);
+            if(main!=null)return new ProfileLoad(LoadedProfile(main),SaveRecovery.None);
             var backup=TryRead(BackupPath,out future);
             futureVersion=future;
             if(future)return new ProfileLoad(new PlayerProfile(),SaveRecovery.NewerVersion);
-            if(backup!=null)return new ProfileLoad(backup,SaveRecovery.Backup);
+            if(backup!=null)return new ProfileLoad(LoadedProfile(backup),SaveRecovery.Backup);
             return new ProfileLoad(new PlayerProfile(),File.Exists(path)||File.Exists(BackupPath)?SaveRecovery.Unreadable:SaveRecovery.None);
         }
         public void Save(PlayerProfile profile)

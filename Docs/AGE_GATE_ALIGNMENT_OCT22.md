@@ -1,0 +1,7 @@
+# Age question layout — October 22
+
+User screenshot showed the question underneath Yes and an uneven board/action alignment. The old board and question used top-left reference coordinates, while both buttons used HomeReferenceLayout bottom-relative coordinates as independent stage children. Their separation therefore changed with the stage aspect ratio. A new screen-level regression failed against the original layout (panel centre).
+
+The existing wooden board now anchors at the stage centre. The question and both buttons belong to that board, with one local layout owner. The content stack centres vertically; the question has its own wrapped area above the actions. Actions share width and height; No retains the existing yellow skin. The inter-button gap is sixteen logical Canvas pixels and recalculates when scale or resolution changes. Existing choice routing and age policy are untouched.
+
+Verification: both AudienceAgeGateTests PlayMode tests passed; EN/RU/UK at 320×693, 390×844, 430×932 and 768×1024. Checks include no overlap, containment, centring, caption clipping, exact logical button gap, yellow No and direct Home routing. Rendered UI frames were visually inspected in all three locales and phone/tablet layouts. Reports/AgeGateAlignmentOct22 contains XML, images and result.json. These are UI validation renders, not replacements for the native store screenshot set. No physical-device install was performed for this layout-only request.

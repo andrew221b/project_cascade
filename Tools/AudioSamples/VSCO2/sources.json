@@ -166,5 +166,125 @@
     "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/master/Strings/Harp/KSHarp_G3_mf.wav",
     "file": "KSHarp_G3_mf.wav",
     "sha256": "62600eb1b37bc2829ca65351f7ca7e506c9ae472abd5bea0765a8b8fa7df2772"
+  },
+  {
+    "path": "Woodwinds/Flute/susNV/LDFlute_susNV_A3_v1_1.wav",
+    "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/master/Woodwinds/Flute/susNV/LDFlute_susNV_A3_v1_1.wav",
+    "file": "LDFlute_susNV_A3_v1_1.wav",
+    "sha256": "6fc8d707afddfaaf3003551b95a83b52f514adbe488bfea1c8c5250080a07278"
+  },
+  {
+    "path": "Woodwinds/Flute/susNV/LDFlute_susNV_C4_v1_1.wav",
+    "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/master/Woodwinds/Flute/susNV/LDFlute_susNV_C4_v1_1.wav",
+    "file": "LDFlute_susNV_C4_v1_1.wav",
+    "sha256": "105a6dbced98de7ae04a317bdd3ba1a5c6b90dc94034439b68cce6635e2781df"
+  },
+  {
+    "path": "Woodwinds/Flute/susNV/LDFlute_susNV_E4_v1_1.wav",
+    "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/master/Woodwinds/Flute/susNV/LDFlute_susNV_E4_v1_1.wav",
+    "file": "LDFlute_susNV_E4_v1_1.wav",
+    "sha256": "b609d37fb577e2a0f64f20800fba4bed067151375349bf713c0d4e803f862580"
+  },
+  {
+    "path": "Woodwinds/Flute/susNV/LDFlute_susNV_A4_v1_1.wav",
+    "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/master/Woodwinds/Flute/susNV/LDFlute_susNV_A4_v1_1.wav",
+    "file": "LDFlute_susNV_A4_v1_1.wav",
+    "sha256": "c8fd15bb561dbdac6d35ffd9c5e49413131d96f8948d5bdf03d4a03fa344c5c0"
+  },
+  {
+    "path": "Woodwinds/Flute/susNV/LDFlute_susNV_C5_v1_1.wav",
+    "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/master/Woodwinds/Flute/susNV/LDFlute_susNV_C5_v1_1.wav",
+    "file": "LDFlute_susNV_C5_v1_1.wav",
+    "sha256": "46a335b804c9b2f081efa8e6c695f155d05b3700c69bf73950cc9cb40ed53d41"
+  },
+  {
+    "path": "Woodwinds/Clarinet/susLong/DCClar_susLong_A#2_v1_rr1_sum.wav",
+    "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/master/Woodwinds/Clarinet/susLong/DCClar_susLong_A%232_v1_rr1_sum.wav",
+    "file": "DCClar_susLong_A#2_v1_rr1_sum.wav",
+    "sha256": "f4e51e4addda4e87e84b0a57b1de21cb447adff0a2c1aa5c71b5d3ef5618a93e"
+  },
+  {
+    "path": "Woodwinds/Clarinet/susLong/DCClar_susLong_D3_v1_rr1_sum.wav",
+    "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/master/Woodwinds/Clarinet/susLong/DCClar_susLong_D3_v1_rr1_sum.wav",
+    "file": "DCClar_susLong_D3_v1_rr1_sum.wav",
+    "sha256": "74ba0ec6cb0698f314b07cee2f63cd309d5fd30db262d10d1f69e6aec9cd5896"
+  },
+  {
+    "path": "Woodwinds/Clarinet/susLong/DCClar_susLong_F3_v1_rr1_sum.wav",
+    "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/master/Woodwinds/Clarinet/susLong/DCClar_susLong_F3_v1_rr1_sum.wav",
+    "file": "DCClar_susLong_F3_v1_rr1_sum.wav",
+    "sha256": "0677787afa8d1fdc99e267a1518a49dacf3f1899dc27239c1fbe93568fda2222"
+  },
+  {
+    "path": "Woodwinds/Clarinet/susLong/DCClar_susLong_A#3_v1_rr1_sum.wav",
+    "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/master/Woodwinds/Clarinet/susLong/DCClar_susLong_A%233_v1_rr1_sum.wav",
+    "file": "DCClar_susLong_A#3_v1_rr1_sum.wav",
+    "sha256": "c314aa26ec148ffa30afe988d7f4f178941a38ca401f487ea2633ce635e78d3f"
+  },
+  {
+    "path": "Strings/Solo Violin/Arco Vib/LLVln_ArcoVib_A3_p.wav",
+    "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/master/Strings/Solo%20Violin/Arco%20Vib/LLVln_ArcoVib_A3_p.wav",
+    "file": "LLVln_ArcoVib_A3_p.wav",
+    "sha256": "8daa4ca0eba8a834814435047e36b47826e730a7796c325966323f53debc9e46"
+  },
+  {
+    "path": "Strings/Solo Violin/Arco Vib/LLVln_ArcoVib_C4_p.wav",
+    "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/master/Strings/Solo%20Violin/Arco%20Vib/LLVln_ArcoVib_C4_p.wav",
+    "file": "LLVln_ArcoVib_C4_p.wav",
+    "sha256": "592ebf4404ccafc7164c13cc543911ba9a2fe5f5e70dbb200807e2ae37b25035"
+  },
+  {
+    "path": "Strings/Solo Violin/Arco Vib/LLVln_ArcoVib_E4_p.wav",
+    "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/master/Strings/Solo%20Violin/Arco%20Vib/LLVln_ArcoVib_E4_p.wav",
+    "file": "LLVln_ArcoVib_E4_p.wav",
+    "sha256": "57c5aec0678a5d582d87ab33cd2f8954fea26ffd04c932eb6753d6a78e08736b"
+  },
+  {
+    "path": "Strings/Solo Violin/Arco Vib/LLVln_ArcoVib_G4_p.wav",
+    "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/master/Strings/Solo%20Violin/Arco%20Vib/LLVln_ArcoVib_G4_p.wav",
+    "file": "LLVln_ArcoVib_G4_p.wav",
+    "sha256": "ad1ba8442a6b40919093c9c831a8171c7030f7e651fbe075ab87764665deef88"
+  },
+  {
+    "path": "Strings/Viola Section/pizz/ViolaEns_pizz_A3_v1_rr1.wav",
+    "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/master/Strings/Viola%20Section/pizz/ViolaEns_pizz_A3_v1_rr1.wav",
+    "file": "ViolaEns_pizz_A3_v1_rr1.wav",
+    "sha256": "b90bbeee2427b90f8a9bd91e755d4b0265f6ef33d9dda8dacc696c72effc50cc"
+  },
+  {
+    "path": "Woodwinds/Flute/susNV/LDFlute_susNV_C3_v1_1.wav",
+    "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/master/Woodwinds/Flute/susNV/LDFlute_susNV_C3_v1_1.wav",
+    "file": "LDFlute_susNV_C3_v1_1.wav",
+    "sha256": "4f221909317e257e4d0bc49f10479643c80cb213a0486455c1bdc1d6ed13a450"
+  },
+  {
+    "path": "Woodwinds/Flute/susNV/LDFlute_susNV_E3_v1_1.wav",
+    "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/master/Woodwinds/Flute/susNV/LDFlute_susNV_E3_v1_1.wav",
+    "file": "LDFlute_susNV_E3_v1_1.wav",
+    "sha256": "87c667c2af888ed86dff87f2452248de3e3d958fc93848a4426b7c16f85f09da"
+  },
+  {
+    "path": "Strings/Viola Section/pizz/ViolaEns_pizz_C2_v1_rr1.wav",
+    "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/master/Strings/Viola%20Section/pizz/ViolaEns_pizz_C2_v1_rr1.wav",
+    "file": "ViolaEns_pizz_C2_v1_rr1.wav",
+    "sha256": "7c1486574972c944e0fd795869eb3dc5cc2678abc260a40fbeaa62a6759b07ba"
+  },
+  {
+    "path": "Strings/Viola Section/pizz/ViolaEns_pizz_G2_v1_rr1.wav",
+    "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/master/Strings/Viola%20Section/pizz/ViolaEns_pizz_G2_v1_rr1.wav",
+    "file": "ViolaEns_pizz_G2_v1_rr1.wav",
+    "sha256": "ca80be7af88078d7f241020bb31a4cb0da4856e9bdd7d0b9d3a61f7549024855"
+  },
+  {
+    "path": "Strings/Viola Section/pizz/ViolaEns_pizz_F3_v1_rr1.wav",
+    "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/master/Strings/Viola%20Section/pizz/ViolaEns_pizz_F3_v1_rr1.wav",
+    "file": "ViolaEns_pizz_F3_v1_rr1.wav",
+    "sha256": "7ff4e7d2c5d311577ec4ee301248dc25464a5f971b3c31436134ebe8e8134c38"
+  },
+  {
+    "path": "Strings/Viola Section/pizz/ViolaEns_pizz_C4_v1_rr1.wav",
+    "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/master/Strings/Viola%20Section/pizz/ViolaEns_pizz_C4_v1_rr1.wav",
+    "file": "ViolaEns_pizz_C4_v1_rr1.wav",
+    "sha256": "ae794a92443243816ff91a9a2ed0f9010ea3a6ffcbf011c6c6cb91b8c8597d1b"
   }
 ]

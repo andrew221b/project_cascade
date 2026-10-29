@@ -50,7 +50,7 @@ namespace Cascade.Presentation
                 int island=i;var root=islands[i];var labelRoot=overlays[i];var p=places[i];
                 var stops=IslandJourneyStops(mapPage,i);bool open=stops.Any(IsJourneyStopOpen);
                 bool complete=stops.Length>0&&stops.All(n=>sessionClears.Contains(Catalog.PrimaryLevels[n].Definition.CampaignNodeId));
-                if(i==focused){var light=ReferenceRect("Reference map active island light",root,-26,-30,p.z+52,p.w+40).gameObject.AddComponent<MapIslandLight>();view.BindLight(light);var contour=ReferencePicture("Reference map active green contour",root,WorldIslandArt.Get(mapPage,i),-7,-7,p.z+14,p.w+14);view.BindContour(contour);}
+                if(i==focused){var light=ReferenceRect("Reference map active island light",root,-26,-30,p.z+52,p.w+40).gameObject.AddComponent<MapIslandLight>();view.BindLight(light);var contour=ReferencePicture("Reference map active green contour",root,WorldIslandArt.Get(mapPage,i),0,0,p.z,p.w);view.BindContour(contour);}
                 var drawing=ReferencePicture("Reference map island artwork "+i,root,WorldIslandArt.Get(mapPage,i),0,0,p.z,p.w);
                 if(!open)view.Desaturate(drawing);
                 var button=ReferenceButton("Island"+(i+1),root,10,10,p.z-20,p.w-20,()=>OpenJourneyIsland(island));button.interactable=open;
@@ -90,12 +90,12 @@ namespace Cascade.Presentation
             journeyFooter=landing;
             DrawReferenceMapModes(landing);
             var go=ReferenceButton("Travel",landing,81,130,558,112,TravelSelectedJourney);
-            MapIllustratedControl("Reference map continue wooden frame",ReferenceButtonBody(go),0,0,558,112);
-            var play=ReferenceRect("Reference map continue icon",ReferenceButtonBody(go),52,32,44,48).gameObject.AddComponent<PauseGlyphGraphic>();play.Configure(3);
+            go.targetGraphic=MapIllustratedControl("Reference map continue wooden frame",ReferenceButtonBody(go),0,0,558,112);
+            RegisterButtonDesign(go,GameButtonRole.PrimaryGreen);
             string number=DisplayLevelNumber(Catalog.PrimaryLevels[selectedJourneyStop].Definition.CampaignNodeId).ToString();
             var caption=PersonalMissionActive?ReferenceCopy("Continue mission","Продолжить задание","Продовжити завдання"):
                 ReferenceCopy("Continue level "+number,"Продолжить "+number+" уровень","Продовжити "+number+" рівень");
-            var continueCaption=ReferenceText("map continue",ReferenceButtonBody(go),caption,112,27,391,58,35,true);CentreContent((RectTransform)ReferenceButtonBody(go),play.rectTransform,continueCaption.rectTransform);
+            var continueCaption=ReferenceText("map continue",ReferenceButtonBody(go),caption,112,27,391,58,35,true);CentreContent((RectTransform)ReferenceButtonBody(go),continueCaption.rectTransform);
             go.interactable=!saveBlocked&&!HasSaveError;
             if(CanTurnJourneyMap(-1))ReferenceButton("Previous world",landing,45,23,48,58,()=>TurnJourneyMap(-1),"BackButton");
             if(CanTurnJourneyMap(1)){
@@ -111,7 +111,8 @@ namespace Cascade.Presentation
         void MapReferenceSquare(RectTransform stage,string name,float x,float y,Action action,int glyph)
         {
             var button=ReferenceButton(name,stage,x,y,88,86,action);
-            ReferencePicture("Reference map square face",ReferenceButtonBody(button),CleanMenuArt.Get("SquareButton"),0,0,88,86);
+            button.targetGraphic=ReferencePicture("Reference map square face",ReferenceButtonBody(button),CleanMenuArt.Get("SquareButton"),0,0,88,86);
+            RegisterButtonDesign(button,GameButtonRole.IconSecondary);
             var icon=ReferenceRect("Reference map square glyph",ReferenceButtonBody(button),22,19,45,48).gameObject.AddComponent<PauseGlyphGraphic>();icon.Configure(glyph);icon.color=new Color(.24f,.055f,.008f);CentreContent((RectTransform)ReferenceButtonBody(button),icon.rectTransform);
         }
         void DrawReferenceMapModes(RectTransform stage)
@@ -123,17 +124,25 @@ namespace Cascade.Presentation
                 int tab=i;bool active=PreferredMode==modes[i];float x=114+i*164;
                 if(active)ReferenceRect("Reference map selected mode",stage,x,12,164,83).gameObject.AddComponent<MapModeSurface>().Configure(true);
                 var b=ReferenceButton("Mapmode"+modes[i],stage,x,12,164,83,()=>SelectMode(modes[tab]));b.interactable=active||CanSwitchJourneyMode;
-                RectTransform symbols;
-                if(i==0){var shapes=ReferenceRect("Reference map shapes glyphs",ReferenceButtonBody(b),0,0,92,26).gameObject.AddComponent<MapModeGlyphs>();shapes.raycastTarget=false;shapes.color=active?MenuPaper:new Color(.24f,.055f,.008f);symbols=shapes.rectTransform;}
-                else symbols=ReferenceText("map mode symbols "+i,ReferenceButtonBody(b),UiCopy.Raw(i==1?(UiLanguage=="en"?"ABC":"АБВ"):"● A ♥"),0,0,140,44,32,active).rectTransform;
+                // Every mode uses the same symbol-row height and caption gap.
+                var symbols=ReferenceRect("Reference map mode symbol row "+i,ReferenceButtonBody(b),0,0,140,32);
+                if(i!=1){
+                    var shapes=ReferenceRect(i==0?"Reference map shapes glyphs":"Reference map mixed glyphs",symbols,24,3,92,26).gameObject.AddComponent<MapModeGlyphs>();
+                    shapes.Configure(i==2);shapes.raycastTarget=false;shapes.color=active?MenuPaper:new Color(.24f,.055f,.008f);
+                }
+                if(i>0){
+                    var letters=ReferenceText(i==1?"map mode symbols 1":"map mode mixed letter",symbols,UiCopy.Raw(i==1?(UiLanguage=="en"?"ABC":"АБВ"):"A"),0,0,140,44,32,active);
+                    var letterRow=CentreContent(symbols,letters.rectTransform);letterRow.Padding=0;letterRow.Refresh();
+                }
                 var caption=ReferenceText("map mode "+i,ReferenceButtonBody(b),i==0?ReferenceCopy("Shapes","Фигуры","Фігури"):i==1?ReferenceCopy("Words","Слова","Слова"):ReferenceCopy("Mix","Микс","Мікс"),10,35,144,42,26,active);
                 CentreStack((RectTransform)ReferenceButtonBody(b),symbols,caption.rectTransform);
+                var stack=ReferenceButtonBody(b).GetComponent<CenteredContentRow>();stack.Padding=CenteredContentRow.MinimumInset;stack.Refresh();
             }
         }
-        void MapIllustratedControl(string name,Transform parent,float x,float y,float width,float height)
+        Image MapIllustratedControl(string name,Transform parent,float x,float y,float width,float height)
         {
             var face=ReferencePicture(name,parent,Resources.Load<Sprite>(HomeArtPath+"PlayButton"),x,y,width,height,false);
-            face.gameObject.AddComponent<PrimaryButtonSkin>().Configure(face.sprite);
+            face.gameObject.AddComponent<PrimaryButtonSkin>().Configure(face.sprite);return face;
         }
         void MapSprig(RectTransform stage,MapReferenceAmbiance view,string name,float x,float y,float width,float height,float angle,bool flip)
         {

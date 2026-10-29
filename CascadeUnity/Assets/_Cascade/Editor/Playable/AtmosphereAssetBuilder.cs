@@ -17,7 +17,7 @@ namespace Cascade.Editor.Playable
                 "CloudPost_LettersOnTheBreeze","GlassLagoon_ReflectedMoon","MossArchive_StoriesInTheLeaves","SnowSpire_WarmLightInSnow","GreatBeacon_TheWayHome","StarObservatory_ConstellationLullaby"};
             foreach(var file in Directory.GetFiles(Audio,"*.wav")) {
                 var importer=(AudioImporter)AssetImporter.GetAtPath(file);
-                bool score=Array.IndexOf(scores,Path.GetFileNameWithoutExtension(file))>=0||Path.GetFileNameWithoutExtension(file)=="Menu_HomeAmongClouds";
+                bool score=Array.IndexOf(scores,Path.GetFileNameWithoutExtension(file))>=0||Path.GetFileNameWithoutExtension(file)=="Menu_HomeAmongClouds"||Path.GetFileNameWithoutExtension(file).EndsWith("_Menu");
                 var samples=importer.defaultSampleSettings;
                 samples.loadType=score?AudioClipLoadType.Streaming:AudioClipLoadType.DecompressOnLoad;
                 samples.compressionFormat=score?AudioCompressionFormat.Vorbis:AudioCompressionFormat.PCM;
@@ -37,16 +37,22 @@ namespace Cascade.Editor.Playable
             // Share the material-based samples; tiny pitch variation provides alternate contacts without duplicated audio memory.
             for(int i=0;i<4;i++)library.alternates[i]=library.cues[i];
             EditorUtility.SetDirty(library);
-            foreach(string name in new[]{"WindGardenSky","FloatingGardenIslands"}) {
-                string path=Art+"Craft/"+name+".png";AssetDatabase.ImportAsset(path,ImportAssetOptions.ForceUpdate);
-                var texture=(TextureImporter)AssetImporter.GetAtPath(path);
-                texture.alphaIsTransparency=name=="FloatingGardenIslands";texture.wrapMode=TextureWrapMode.Clamp;
-                texture.filterMode=FilterMode.Trilinear;texture.mipmapEnabled=true;texture.maxTextureSize=2048;
-                texture.textureCompression=TextureImporterCompression.CompressedHQ;texture.SaveAndReimport();
-            }
             var glider=(TextureImporter)AssetImporter.GetAtPath(Art+"Journey/Glider.png");
             glider.filterMode=FilterMode.Trilinear;glider.mipmapEnabled=true;glider.alphaIsTransparency=true;glider.SaveAndReimport();
             AssetDatabase.SaveAssets();
+        }
+        public static void ConfigureSharedWorldScore()
+        {
+            if(EditorApplication.isPlaying)throw new InvalidOperationException("Configure music outside Play Mode.");
+            var library=AssetDatabase.LoadAssetAtPath<ToyAudioLibrary>(Art+"ToyAudio.asset");
+            Undo.RecordObject(library,"Use one score for each world");
+            library.menuMusic=Clip("Menu_HomeAmongCloudsBalanced");library.music=library.menuMusic;
+            string[] worlds={"WindGarden_PaperWings","RainMill_RainOnCedar","CopperOrchard_GoldenAfternoon",
+                "CloudPost_LettersOnTheBreeze","GlassLagoon_ReflectedMoon","MossArchive_StoriesInTheLeaves",
+                "SnowSpire_WarmLightInSnow","GreatBeacon_TheWayHome","StarObservatory_ConstellationLullaby"};
+            library.worldMusic=new AudioClip[worlds.Length];
+            for(int i=0;i<worlds.Length;i++)library.worldMusic[i]=Clip(worlds[i]);
+            EditorUtility.SetDirty(library);AssetDatabase.SaveAssetIfDirty(library);
         }
         static AudioClip Clip(string name)
         {

@@ -1,0 +1,37 @@
+{
+  "accountId": "72fb0d8ce7794d10dfe6e53e26abc153",
+  "zoneId": "a1cf77a3e0ad6737b317f018b304a21a",
+  "scriptName": "flying-ladders-admob-ingress",
+  "compatibilityDate": "2026-10-27",
+  "routePattern": "https://vickand.com/api/flying-ladders/*",
+  "callbackUrl": "https://vickand.com/api/flying-ladders/admob/ssv",
+  "healthUrl": "https://vickand.com/api/flying-ladders/health",
+  "databaseBindings": [],
+  "secretBindingNames": [
+    "UNITY_SERVICE_KEY_ID",
+    "UNITY_SERVICE_SECRET",
+    "LEGACY_RELAY_TOKEN"
+  ],
+  "routeId": "bee38f3977a14ed3b69b83775d6afcde",
+  "deploymentId": "03f0cd77aade48c9a3ddf32b09c66ecd",
+  "scriptSha256": "f11d36ddf43ec1d792054f7a63d9027b3d84bf48ec16c196b7eebe35bbced038",
+  "verifiedAt": "2026-10-29",
+  "upstreamTimeoutMilliseconds": {
+    "unityAuthentication": 6000,
+    "unityModule": 20000
+  },
+  "notificationUrls": {
+    "apple": "https://vickand.com/api/flying-ladders/notifications/apple",
+    "google": "https://vickand.com/api/flying-ladders/notifications/google"
+  },
+  "localVerifierUrl": "https://vickand.com/api/flying-ladders/purchase/local-verify",
+  "externalScheduledTriggers": [],
+  "maintenanceAuthority": "Unity Scheduler hourly; owner choice",
+  "rateLimits": {
+    "publicInteractivePerIpPerMinute": 100,
+    "perProofPerMinute": 10,
+    "scope": "Approximate per Cloudflare location; signed publisher callbacks excluded"
+  },
+  "alertPolicyId": "fcb91209a7744418bf7db36ee096da08",
+  "deletionFormOrigin": "https://flyingladders.vickand.com"
+}

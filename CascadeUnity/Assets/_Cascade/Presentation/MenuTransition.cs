@@ -69,7 +69,7 @@ namespace Cascade.Presentation
         }
         void OnApplicationFocus(bool focused){if(!focused)Settle();}
         void OnApplicationPause(bool paused){if(paused)Settle();}
-        void Settle()
+        public void Settle()
         {
             arrival?.Kill();arrival=null;progress=1;if(group!=null)group.alpha=1;if(move&&page!=null)page.anchoredPosition=rest;
             foreach(var layer in layers){if(layer.Rect==null)continue;if(layer.Group!=null)layer.Group.alpha=layer.Alpha;if(layer.Button!=null)layer.Button.SetEntrance(1);else layer.Rect.localRotation=layer.Rotation;}

@@ -69,6 +69,14 @@ namespace Cascade.Presentation
             localize.StringReference=new LocalizedString(UiCopy.Table,copy.Key){Arguments=copy.Arguments};
             localize.enabled=true;localize.RefreshString();
         }
+        internal void RefreshForSnapshot()
+        {
+            if(localize==null||!localize.enabled)return;
+            // Already-loaded tables can resolve immediately. Never block a frame
+            // waiting for a locale, or freeze its English loading fallback in a snapshot.
+            var operation=localize.StringReference.GetLocalizedStringAsync();
+            if(operation.IsDone&&operation.Status==UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Succeeded)Apply(operation.Result);
+        }
         void Apply(string value){if(text!=null)text.text=value;}
     }
 }

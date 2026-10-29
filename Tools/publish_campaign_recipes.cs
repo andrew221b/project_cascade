@@ -16,9 +16,9 @@ class PublishCampaignRecipes
         string recipeJson,manifestJson,legacyJson=null;
         if(check){recipeJson=Read("production_triad_recipes");manifestJson=Read("production_triad_manifest");}
         else {
-            bool opening=args.Contains("--refresh-opening"),deduplicate=args.Contains("--deduplicate"),pacing=args.Contains("--refresh-pacing"),distinctStages=args.Contains("--deduplicate-stages");
-            var recipes=opening||deduplicate||pacing||distinctStages?CloudJson.Decode<Dictionary<string,DescentStage[]>>(Read("production_triad_recipes")):new Dictionary<string,DescentStage[]>();
-            foreach(var content in deduplicate||pacing||distinctStages?Enumerable.Empty<LevelContent>():opening?catalog.PrimaryLevels.Take(14):catalog.PrimaryLevels){
+            bool repin=args.Contains("--repin-sources"),opening=args.Contains("--refresh-opening"),deduplicate=args.Contains("--deduplicate"),pacing=args.Contains("--refresh-pacing"),distinctStages=args.Contains("--deduplicate-stages");
+            var recipes=repin||opening||deduplicate||pacing||distinctStages?CloudJson.Decode<Dictionary<string,DescentStage[]>>(Read("production_triad_recipes")):new Dictionary<string,DescentStage[]>();
+            foreach(var content in repin||deduplicate||pacing||distinctStages?Enumerable.Empty<LevelContent>():opening?catalog.PrimaryLevels.Take(14):catalog.PrimaryLevels){
                 var run=DescentRun.Build(content.Definition,version:6);
                 if(run==null)throw new InvalidDataException("Missing recipe for "+content.Definition.CampaignNodeId);
                 run.Validate(content.Definition,content.Locale);recipes[content.Definition.CampaignNodeId]=run.Stages;
@@ -60,7 +60,7 @@ class PublishCampaignRecipes
             }
             if(deduplicate){
                 var legacy=CloudJson.Decode<Dictionary<string,DescentStage[]>>(Read("production_triad_recipes_legacy_oct09"));
-                string[] Keys(LevelContent content,DescentStage[] stages)=>catalog.PrimaryLevels.Concat(catalog.LocalizedLevels)
+                string[] Keys(LevelContent content,DescentStage[] stages)=>catalog.AllLevels
                     .Where(c=>c.Definition.CampaignNodeId==content.Definition.CampaignNodeId)
                     .Select(c=>CampaignUniqueness.Run(CampaignUniqueness.Keys(c.Definition,stages),true)).Distinct(StringComparer.Ordinal).ToArray();
                 // Reserve every old layout, even later ones: repairing a duplicate must
@@ -95,13 +95,13 @@ class PublishCampaignRecipes
             if(distinctStages)legacyJson=RepairCampaignStages.Apply(catalog,recipes,root);
             recipeJson=CloudJson.Encode(recipes);
             manifestJson=CloudJson.Encode(new PublishedTriadStore.Manifest{CatalogHash=catalog.ContentHash,RecipesHash=PublishedTriadStore.Hash(recipeJson),
-                SourceHashes=catalog.PrimaryLevels.Concat(catalog.LocalizedLevels).Select(c=>c.Definition.ContentHash).Distinct().ToArray()});
+                SourceHashes=catalog.AllLevels.Select(c=>c.Definition.ContentHash).Distinct().ToArray()});
         }
         var store=new PublishedTriadStore(recipeJson,manifestJson);int stages=0;
         var published=CloudJson.Decode<Dictionary<string,DescentStage[]>>(recipeJson);
         if(published.Values.Select(s=>string.Join("|",s.Select(v=>v.Triad.Fingerprint))).Distinct().Count()!=catalog.PrimaryLevels.Count)
             throw new InvalidDataException("The published campaign still contains identical three-stage recipes.");
-        foreach(var content in catalog.PrimaryLevels.Concat(catalog.LocalizedLevels)){
+        foreach(var content in catalog.AllLevels){
             var run=store.Bind(content.Definition,content.Locale,catalog.ContentHash);
             if(run==null)throw new InvalidDataException("Unbound recipe for "+content.Definition.PuzzleId);stages+=run.Stages.Length;
         }

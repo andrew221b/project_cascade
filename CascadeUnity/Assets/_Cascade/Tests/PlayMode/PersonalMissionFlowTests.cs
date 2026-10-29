@@ -21,7 +21,7 @@ namespace Cascade.Tests
     public sealed class PersonalMissionFlowTests
     {
         const BindingFlags Hidden=BindingFlags.Instance|BindingFlags.NonPublic;
-        CascadeGame game;string directory;bool oldBackground;
+        CascadeGame game;string directory;bool oldBackground;Camera camera;RenderTexture portrait,oldTarget;
         T Read<T>(string name)=>(T)typeof(CascadeGame).GetField(name,Hidden).GetValue(game);
         [UnitySetUp] public IEnumerator SetUp(){
             oldBackground=UnityEngine.Application.runInBackground;UnityEngine.Application.runInBackground=true;
@@ -36,11 +36,13 @@ namespace Cascade.Tests
             game.SetEditorSafeInsets(new Vector4(.018f,.04f,.018f,.066f));game.SetUiLocale("en");
         }
         void Configure(){
+            camera=Camera.main;oldTarget=camera.targetTexture;if(portrait==null)portrait=new RenderTexture(390,844,24);camera.targetTexture=portrait;game.RefreshLayout();
             game.SendMessage("OnApplicationFocus",true);game.SendMessage("OnApplicationPause",false);
             game.Preferences.Tutorials=false;game.Preferences.ReducedMotion=true;game.ReducedMotion=true;
             game.Feedback.SoundEnabled=game.Feedback.MusicEnabled=false;
         }
         [UnityTearDown] public IEnumerator TearDown(){
+            if(camera!=null)camera.targetTexture=oldTarget;if(portrait!=null){portrait.Release();UnityEngine.Object.Destroy(portrait);}
             if(game!=null){UnityEngine.Object.Destroy(game.gameObject);yield return null;}
             CascadeGame.EditorProfileDirectory=null;UnityEngine.Application.runInBackground=oldBackground;
             if(Directory.Exists(directory))Directory.Delete(directory,true);
@@ -69,9 +71,9 @@ namespace Cascade.Tests
             Assert.That(memory.Offer,Is.Null);Assert.That(memory.NextAfterClears,Is.InRange(6,8));
             game.SetUiLocale("uk");game.Preferences.LargeText=true;yield return new WaitForSecondsRealtime(.35f);game.ShowJourney();
             yield return Shot("map-uk.png",320,693);
-            Assert.That(game.GetComponentsInChildren<Button>().Single(b=>b.name=="MapmodeMixed").GetComponentInChildren<TextMeshProUGUI>().text,Is.EqualTo("Мікс"));
+            Assert.That(game.GetComponentsInChildren<Button>().Single(b=>b.name=="MapmodeMixed").GetComponentsInChildren<TextMeshProUGUI>().Select(t=>t.text),Does.Contain("Мікс"));
             game.ShowJournal();yield return null;
-            Assert.That(game.GetComponentsInChildren<Button>().Any(b=>b.GetComponentInChildren<TextMeshProUGUI>().text=="Просьбы друзей"||b.GetComponentInChildren<TextMeshProUGUI>().text=="Прохання друзів"),Is.False);
+            Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Any(t=>t.text=="Просьбы друзей"||t.text=="Прохання друзів"),Is.False);
             game.ShowJourney();game.Preferences.LargeText=false;game.SetUiLocale("en");
             for(int n=4;n<=7;n++)Clear("C"+n.ToString("00"));
             yield return Ready(()=>game.ConversationOpen&&game.PersonalMissionAvailable,"offer");

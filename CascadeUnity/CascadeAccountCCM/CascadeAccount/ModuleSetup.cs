@@ -10,5 +10,6 @@ public sealed class ModuleSetup : ICloudCodeSetup
     {
         config.Dependencies.AddSingleton<IGameApiClient>(GameApiClient.Create());
         config.Dependencies.AddSingleton(new PurchaseVerifier());
+        config.Dependencies.AddSingleton<IAccountBackend>(new UnityBackendRouter());
     }
 }

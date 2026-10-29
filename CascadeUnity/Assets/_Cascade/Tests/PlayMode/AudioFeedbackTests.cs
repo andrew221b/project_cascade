@@ -71,12 +71,14 @@ namespace Cascade.Tests
             yield return new WaitForSecondsRealtime(.12f);game.SendMessage("OnApplicationFocus",true);
             yield return Await(()=>incoming.isPlaying&&incoming.volume>.1f,"Foreground must restore the existing enabled theme");Assert.That(incoming.time,Is.GreaterThanOrEqualTo(held));
         }
-        [UnityTest] public IEnumerator MapEntryChangesFromMenuToTheAudibleWorldScoreAndReturns()
+        [UnityTest] public IEnumerator MapAndGameplayContinueOnePerformanceInEveryWorld()
         {
             var library=Resources.Load<ToyAudioLibrary>("CascadeArt/ToyAudio");
             game.ShowJourney();if(game.ComicWorld>=0)game.FinishWorldComic();
             for(int page=0;page<8&&game.ConversationOpen;page++)game.SkipConversation();yield return null;
-            yield return Await(()=>game.Feedback.CurrentMusicClip==library.worldMusic[game.EnvironmentWorld]&&game.Feedback.MusicCrossfade==1,"Map must play its selected world's theme");
+            yield return Await(()=>game.Feedback.CurrentMusicClip==library.worldMusic[game.EnvironmentWorld]&&game.Feedback.MusicCrossfade==1,"Map starts the same selected world performance used by gameplay");
+            var mapSource=Scores.Single(s=>s.clip==library.worldMusic[0]);
+            yield return new WaitForSecondsRealtime(.4f);float mapPosition=mapSource.time;
             game.GetComponentsInChildren<Button>().Single(b=>b.name=="Travel").onClick.Invoke();
             float deadline=Time.realtimeSinceStartup+30;
             while(game.CurrentScreen!=GameScreen.Playing&&Time.realtimeSinceStartup<deadline){
@@ -84,25 +86,45 @@ namespace Cascade.Tests
             }
             Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Playing),"The real map action enters a level");
             yield return Await(()=>game.Feedback.CurrentMusicClip==library.worldMusic[0]&&game.Feedback.MusicCrossfade==1,
-                "Starting a level must replace the menu theme: zone="+game.Machine.LivingWorld.Zone+" screen="+game.CurrentScreen+" current="+game.Feedback.CurrentMusicClip?.name+" desired="+library.worldMusic[0].name+" fade="+game.Feedback.MusicCrossfade+" suspended="+game.Interaction.IsSuspended+" sleeping="+game.Feedback.MusicSleeping+" sources="+string.Join(";",Scores.Select(s=>s.name+":"+s.clip?.name+":"+s.clip?.loadState+":"+s.isPlaying+":"+s.volume)));
+                "Starting a level must retain the world theme: zone="+game.Machine.LivingWorld.Zone+" screen="+game.CurrentScreen+" current="+game.Feedback.CurrentMusicClip?.name+" desired="+library.worldMusic[0].name+" fade="+game.Feedback.MusicCrossfade+" suspended="+game.Interaction.IsSuspended+" sleeping="+game.Feedback.MusicSleeping+" sources="+string.Join(";",Scores.Select(s=>s.name+":"+s.clip?.name+":"+s.clip?.loadState+":"+s.isPlaying+":"+s.volume)));
             var active=Scores.Single(s=>s.clip==library.worldMusic[0]);
+            Assert.That(active,Is.SameAs(mapSource),"Map and gameplay retain the same source");
+            Assert.That(active.time,Is.GreaterThanOrEqualTo(mapPosition),"Travel never restarts the world performance");
             Assert.That(active.isPlaying&&active.volume>.1f,Is.True,"The selected world score must actually be audible");
             Assert.That(Scores.Where(s=>s!=active).All(s=>s.volume==0),Is.True,"Menu score finishes fading out");
+            var mapPageField=typeof(CascadeGame).GetField("mapPage",BindingFlags.Instance|BindingFlags.NonPublic);
+            var navigate=typeof(CascadeGame).GetMethod("SetScreen",BindingFlags.Instance|BindingFlags.NonPublic);
+            var gameplayObservations=new System.Collections.Generic.List<MusicObservation>();var gameplayPcm=new float[1024];
             // Every world has its own score; a stopped source recovers without a settings toggle.
             for(int zone=1;zone<library.worldMusic.Length;zone++){
+                mapPageField.SetValue(game,zone);navigate.Invoke(game,new object[]{GameScreen.JourneyMap});
+                yield return Await(()=>game.Feedback.CurrentMusicClip==library.worldMusic[zone]&&game.Feedback.MusicCrossfade==1,"Map world arrives");
+                var mapPerformance=Scores.Single(s=>s.clip==library.worldMusic[zone]);
+                yield return new WaitForSecondsRealtime(.2f);float mapSeconds=mapPerformance.time;
                 game.StartCampaignLevel(game.Catalog.GetPrimary(Cascade.Content.JourneyStory.NodeIds[zone*60]).Definition);game.ShowGame();
                 float readyUntil=Time.realtimeSinceStartup+30;while(!game.PreparationReady&&Time.realtimeSinceStartup<readyUntil)yield return null;
                 Assert.That(game.PreparationReady,Is.True,"World entry finishes preparation");
                 yield return Await(()=>game.Feedback.CurrentMusicClip==library.worldMusic[zone]&&game.Feedback.MusicCrossfade==1,
                     "World "+zone+" score arrives: zone="+game.Machine.LivingWorld.Zone+" current="+game.Feedback.CurrentMusicClip?.name+" desired="+library.worldMusic[zone].name+" fade="+game.Feedback.MusicCrossfade+" suspended="+game.Interaction.IsSuspended);
-                Assert.That(Scores.Single(s=>s.clip==library.worldMusic[zone]).isPlaying,Is.True);
+                var audible=Scores.Single(s=>s.clip==library.worldMusic[zone]);Assert.That(audible.isPlaying,Is.True);
+                Assert.That(audible,Is.SameAs(mapPerformance));
+                Assert.That(audible.time,Is.GreaterThanOrEqualTo(mapSeconds),"World "+zone+" continues across map/level");
+                double energy=0;for(int n=0;n<8;n++){AudioListener.GetOutputData(gameplayPcm,0);energy+=gameplayPcm.Sum(v=>(double)v*v);yield return new WaitForSecondsRealtime(.025f);}
+                Assert.That(energy,Is.GreaterThan(.00001),"Actual listener output in gameplay world "+zone);
+                gameplayObservations.Add(new MusicObservation{zone=zone,clip=audible.clip.name,seconds=audible.time,gain=audible.volume,listenerEnergy=energy});
             }
+            File.WriteAllText(Path.GetFullPath(Path.Combine(UnityEngine.Application.dataPath,"../../audio-gameplay-listener.json")),JsonUtility.ToJson(new MusicEvidence{worlds=gameplayObservations.ToArray()},true));
             active=Scores.Single(s=>s.clip==game.Feedback.CurrentMusicClip);float position=active.time;active.Stop();
             yield return Await(()=>active.isPlaying&&active.volume>.1f,"Stopped score resumes without a reset callback");
             Assert.That(active.time,Is.GreaterThanOrEqualTo(position-.1f));
             game.ShowJourney();yield return Await(()=>game.Feedback.CurrentMusicClip==library.worldMusic[game.EnvironmentWorld]&&game.Feedback.MusicCrossfade==1,
-                "Returning to the map plays the displayed world's theme");
-            game.ShowHome();yield return Await(()=>game.Feedback.CurrentMusicClip==library.menuMusic&&game.Feedback.MusicCrossfade==1,"Home restores the menu theme");
+                "Returning to the map retains the displayed world's performance");
+            game.ShowHome();yield return null;
+            float handoffDeadline=Time.realtimeSinceStartup+6;
+            while(game.Feedback.MusicCrossfade<1&&Time.realtimeSinceStartup<handoffDeadline){
+                Assert.That(Scores.Count(s=>s.isPlaying&&s.volume>.001f),Is.LessThanOrEqualTo(1),"Unrelated melodies never overlap");yield return null;
+            }
+            yield return Await(()=>game.Feedback.CurrentMusicClip==library.menuMusic&&game.Feedback.MusicCrossfade==1,"Home restores the menu theme");
             Assert.That(Scores.Single(s=>s.clip==library.menuMusic).isPlaying,Is.True);
         }
         [UnityTest] public IEnumerator HapticsAreThrottledAndRespectPreferenceAndSuspension()
@@ -119,7 +141,7 @@ namespace Cascade.Tests
             game.Feedback.Haptic(ToyHapticMoment.Breeze);
             Assert.That(game.Feedback.HapticRequests,Is.EqualTo(before+4),"A small breeze pulses once, then rests.");
         }
-        [UnityTest] public IEnumerator EveryMapWorldIsAudibleAndRapidReturnReversesTheExistingFade()
+        [UnityTest] public IEnumerator EveryMapWorldIsAudibleAndRapidReturnPreservesTheExistingPerformance()
         {
             var library=Resources.Load<ToyAudioLibrary>("CascadeArt/ToyAudio");
             var page=typeof(CascadeGame).GetField("mapPage",BindingFlags.Instance|BindingFlags.NonPublic);
@@ -127,8 +149,9 @@ namespace Cascade.Tests
             game.Preferences.Sound=false;game.SendMessage("ApplyPreferences");AudioListener.pause=false;
             page.SetValue(game,0);navigate.Invoke(game,new object[]{GameScreen.JourneyMap});
             yield return Await(()=>game.Feedback.CurrentMusicClip==library.worldMusic[0],"Map starts its world score");
-            yield return new WaitForSecondsRealtime(.35f);
-            Assert.That(Scores.Count(s=>s.isPlaying&&s.volume>.015f),Is.EqualTo(2),"Both compositions take part in the fade");
+            yield return new WaitForSecondsRealtime(.15f);
+            Assert.That(Scores.Count(s=>s.isPlaying&&s.volume>.015f),Is.EqualTo(1),"Different motifs must not clash during the handoff");
+            Assert.That(Scores.Single(s=>s.clip==library.worldMusic[0]).time,Is.LessThan(.06f),"The incoming first note waits for its audible handoff");
             var outgoing=Scores.Single(s=>s.clip==library.menuMusic);float held=outgoing.time,gain=outgoing.volume;
             game.ShowHome();yield return null;
             Assert.That(game.Feedback.CurrentMusicClip,Is.SameAs(library.menuMusic));

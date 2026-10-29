@@ -56,7 +56,7 @@ namespace Cascade.Tests
         [UnityTest] public IEnumerator SpacedIslandsMoveWithoutMapBridgesOrChangingAttemptAndReceipts()
         {
             EarnFirstEighteen();yield return null;var view=game.GetComponentsInChildren<MapReferenceAmbiance>().Single();string hash=game.Interaction.Attempt.CurrentStateHash;var id=game.Interaction.Attempt.AttemptId;int clears=game.JourneyClearCount;
-            view.SetReviewAge(0);Assert.That(view.Bridges,Is.Empty);Assert.That(game.GetComponentsInChildren<MapRopeBridge>(),Is.Empty);
+            view.SetReviewAge(0);Assert.That(game.GetComponentsInChildren<Component>().Any(c=>c.GetType().Name=="MapRopeBridge"),Is.False);
             var roots=game.GetComponentsInChildren<RectTransform>().Where(r=>r.name.StartsWith("Floating island ")).ToArray();var initial=roots.Select(r=>r.anchoredPosition).ToArray();
             var sizes=new[]{new Vector2(302,260),new Vector2(264,271),new Vector2(234,220),new Vector2(216,270),new Vector2(220,211)};
             for(int i=0;i<5;i++)Assert.That(roots.Single(r=>r.name=="Floating island "+i).sizeDelta,Is.EqualTo(sizes[i]),"Island size changed");
@@ -80,7 +80,7 @@ namespace Cascade.Tests
             game.Preferences.LargeText=true;
             foreach(string locale in new[]{"en","ru","uk"}){game.SetUiLocale(locale);for(int world=0;world<JourneyStory.WorldCount;world++){
                 typeof(CascadeGame).GetField("mapPage",Private).SetValue(game,world);Invoke("DrawMenu");yield return null;Canvas.ForceUpdateCanvases();foreach(var t in game.GetComponentsInChildren<TextMeshProUGUI>().Where(t=>t.name.StartsWith("Reference shop"))){t.ForceMeshUpdate();Assert.That(t.isTextOverflowing||t.isTextTruncated,Is.False,locale+" world "+world+" "+t.name);}
-                foreach(var image in game.GetComponentsInChildren<Image>().Where(i=>i.name.StartsWith("Reference map island artwork"))){Assert.That(image.preserveAspect,Is.True);Assert.That(image.color,Is.EqualTo(Color.white));Assert.That(image.sprite,Is.Not.Null);}Assert.That(game.GetComponentsInChildren<MapRopeBridge>(),Is.Empty);
+                foreach(var image in game.GetComponentsInChildren<Image>().Where(i=>i.name.StartsWith("Reference map island artwork"))){Assert.That(image.preserveAspect,Is.True);Assert.That(image.color,Is.EqualTo(Color.white));Assert.That(image.sprite,Is.Not.Null);}Assert.That(game.GetComponentsInChildren<Component>().Any(c=>c.GetType().Name=="MapRopeBridge"),Is.False);
             }}
         }
         [UnityTest] public IEnumerator SharedArtAndLegacyJournalEntryUseCurrentScreensWithoutChangingProgress()

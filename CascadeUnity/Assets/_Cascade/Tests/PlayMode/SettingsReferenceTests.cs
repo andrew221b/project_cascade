@@ -77,8 +77,21 @@ namespace Cascade.Tests
             }
             string[] expected=Page<0?new[]{"Back","Soundeffects","Comfort","Languages","Notifications","Remove ads","Privacy Policy","Terms of Use","Restore purchases"}:
                 Page==0?new[]{"Back","Music","Soundeffects","Haptics"}:
-                Page==1?new[]{"Back","Largertext","Tutorialhelp"}:new[]{"Back","GameLanguageen","GameLanguageru","GameLanguageuk"};
+                Page==1?new[]{"Back","Largertext","Tutorialhelp","Agegroup"}:new[]{"Back","GameLanguageen","GameLanguageru","GameLanguageuk"};
             Assert.That(current.GetComponentsInChildren<Button>().Select(b=>b.name),Is.EquivalentTo(expected));
+            foreach(var row in current.GetComponentsInChildren<Button>().Where(b=>b.name!="Back"&&b.name!="Restore purchases")){
+                var body=(RectTransform)row.transform.Find("Reference shop button body");var label=row.GetComponentInChildren<TextMeshProUGUI>();
+                Assert.That(label.horizontalAlignment,Is.EqualTo(HorizontalAlignmentOptions.Left),row.name+" is a settings/list row, not a centred action");
+                Assert.That(label.GetComponentInParent<CenteredContentRow>(),Is.Null,row.name+" retains its authored leading-label/trailing-control layout");
+                var left=body.InverseTransformPoint(label.transform.TransformPoint(label.rectTransform.rect.min)).x;
+                Assert.That(left-body.rect.xMin,Is.LessThan(body.rect.width*.3f),row.name+" label starts in the leading column");
+                // Age is an inline status/action row; the other choices have a trailing widget.
+                if(row.name=="Agegroup"){Assert.That(label.text,Is.Not.Empty);Assert.That(label.text,Does.Not.Contain("No translation"));continue;}
+                var trailing=row.GetComponentsInChildren<RectTransform>().Single(r=>r.GetComponent<SettingsChevronGraphic>()!=null||r.name.StartsWith("Settings switch ")||r.name=="Settings notification switch"||r.name.StartsWith("Settings language radio "));
+                var right=body.InverseTransformPoint(trailing.TransformPoint(trailing.rect.center)).x;
+                Assert.That(right-body.rect.xMin,Is.GreaterThan(body.rect.width*.8f),row.name+" disclosure/switch/radio stays at the trailing edge");
+            }
+
             var regions=current.GetComponentsInChildren<Button>().Select(b=>{
                 var corners=new Vector3[4];((RectTransform)b.transform).GetWorldCorners(corners);
                 var low=camera.WorldToScreenPoint(corners[0]);var high=camera.WorldToScreenPoint(corners[2]);
@@ -107,6 +120,27 @@ namespace Cascade.Tests
             yield return new WaitForSecondsRealtime(.4f);
             var type=AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("Cascade.Editor.Playable.PlayableCapture")).First(t=>t!=null);
             yield return (IEnumerator)type.GetMethod("CaptureSettled").Invoke(null,new object[]{"SettingsReferenceOct15",name+".png",width,height,(Action<CascadeGame>)CheckLayout});
+        }
+        [UnityTest] public IEnumerator AgeGroupCaptionResolvesInEveryLocaleAndAgeState()
+        {
+            var ageField=typeof(CascadeGame).GetField("audienceAgeBand",Private);
+            var ages=new[]{AudienceAgeBand.Unknown,AudienceAgeBand.NineToTwelve,AudienceAgeBand.SixteenPlus};
+            foreach(string locale in new[]{"en","ru","uk"}){
+                game.SetGameLanguage(locale);
+                for(int frame=0;frame<120&&(game.UiLanguage!=locale||(bool)typeof(CascadeGame).GetField("applyingUiLanguage",Private).GetValue(game));frame++)yield return null;
+                Assert.That(game.UiLanguage,Is.EqualTo(locale));
+                string[] expected=locale=="ru"?new[]{"Возраст: Не выбрано","Возраст: Младше 16","Возраст: 16 или старше"}:
+                    locale=="uk"?new[]{"Вік: Не вибрано","Вік: Молодше 16","Вік: 16 або старше"}:
+                    new[]{"Age group: Not selected","Age group: Under 16","Age group: 16 or older"};
+                for(int i=0;i<ages.Length;i++){
+                    ageField.SetValue(game,ages[i]);game.ShowSettings();yield return Click("Comfort");
+                    for(int frame=0;frame<5;frame++)yield return null;
+                    var caption=Control("Agegroup").GetComponentInChildren<TextMeshProUGUI>();
+                    caption.ForceMeshUpdate();
+                    Assert.That(caption.text,Is.EqualTo(expected[i]),locale+" / "+ages[i]);
+                    Assert.That(caption.isTextOverflowing||caption.isTextTruncated,Is.False,caption.text);
+                }
+            }
         }
         [UnityTest] public IEnumerator FourReferencePagesFitPhoneTabletAndAllThreeLanguages()
         {

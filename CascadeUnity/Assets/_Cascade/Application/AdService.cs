@@ -50,9 +50,11 @@ namespace Cascade.Application
                 ||SignalLanterns<0||SignalLanterns>ShopCatalog.StockLimit||LandingLenses<0||LandingLenses>ShopCatalog.StockLimit||RepairKits<0||RepairKits>ShopCatalog.StockLimit
                 ||ReturnHourglasses<0||ReturnHourglasses>ShopCatalog.StockLimit||Grants==null||Grants.Count>MaxGrantReceipts||Grants.Any(g=>g==null||string.IsNullOrWhiteSpace(g.Id)||g.Id.Length>256
                 ||!(g.Kind=="coins"&&g.Amount==40||g.Kind=="store_coins"&&PurchaseCatalog.Coins(g.Product)>0&&g.Amount==PurchaseCatalog.Coins(g.Product)||g.Kind=="hint"&&g.Amount==1||g.Kind=="no_auto"&&g.Amount==0&&g.Product==PurchaseCatalog.NoAutomaticAds||g.Kind=="subscription"&&g.Amount==0&&PurchaseCatalog.IsNoAdsSubscription(g.Product)||g.Kind=="cosmetic"&&g.Amount==0&&ShopCatalog.MikaTrophyIds.Contains(g.Product)&&!ShopCatalog.ExpansionTrophyIds.Contains(g.Product)&&!ShopCatalog.IsParcelExclusive(g.Product)
+                    ||g.Kind=="parcel_open"&&g.Amount==0&&IsParcelSubject(g.Product)
                     ||g.Kind=="parcel_tool"&&g.Amount==1&&ShopCatalog.TryTool(g.Product,out _)&&g.Id.StartsWith("parcel_tool_",StringComparison.Ordinal)))
                 ||Grants.Select(g=>g.Id).Distinct().Count()!=Grants.Count||Cosmetics==null||Cosmetics.Distinct().Count()!=Cosmetics.Count
                 ||Grants.Where(g=>g.Kind=="coins"&&IsParcelSubject(g.Product)).Select(g=>g.Product).Distinct().Count()!=Grants.Count(g=>g.Kind=="coins"&&IsParcelSubject(g.Product))
+                ||Grants.Where(g=>g.Kind=="parcel_open").Select(g=>g.Product).Distinct().Count()!=Grants.Count(g=>g.Kind=="parcel_open")
                 ||Cosmetics.Any(g=>!ShopCatalog.TrophyIds.Contains(g)||ShopCatalog.IsParcelExclusive(g))||PaidHintStates==null||PaidHintStates.Count>MaxPaidHintStates
                 ||PaidHintStates.Distinct().Count()!=PaidHintStates.Count||PaidHintStates.Any(k=>k==null||k.Length!=101||!Guid.TryParse(k.Substring(0,36),out _)||k[36]!='|'
                     ||!k.Substring(37).All(c=>c>='0'&&c<='9'||c>='a'&&c<='f')))
@@ -97,6 +99,7 @@ namespace Cascade.Application
         public int AutomaticShows=>automaticShows;
         public bool PreviewOnly {get;}
         public bool CanReceiveGrant=>Ledger.Grants.Count+pendingRewards.Count<MonetizationLedger.MaxGrantReceipts;
+        public bool HasParcelOpen(string subject)=>MonetizationLedger.IsParcelSubject(subject)&&Ledger.Grants.Any(g=>g.Kind=="parcel_open"&&g.Product==subject);
         public bool HasParcelBonus(string subject)=>MonetizationLedger.IsParcelSubject(subject)&&Ledger.Grants.Any(g=>g.Kind=="coins"&&g.Product==subject);
         public void ReloadLedger(MonetizationLedger authoritative){if(PreviewOnly)return;authoritative.Validate();Ledger=authoritative;}
         public AdService(MonetizationLedger ledger,Action<MonetizationLedger> persist,int uniqueAtSessionStart=0,bool previewOnly=false)
@@ -108,7 +111,7 @@ namespace Cascade.Application
         {
             if(c==null||c.Surface!=AdSurface.Win||string.IsNullOrWhiteSpace(c.NodeId)||!observedWins.Add(c.NodeId))return null;
             if(!Ready(c)||active!=null||Ledger.HasNoAutomaticAds||c.UniqueClears<2||c.UniqueClears%2!=0||!c.SavedWin||!c.BaseRewardGiven||c.Replay
-                ||c.ContinueVisible||c.ChapterFinal||!adReady)return null;
+                ||c.ContinueVisible||!adReady)return null;
             return active=new AdTicket{Id=Guid.NewGuid().ToString("D"),UniqueClears=c.UniqueClears};
         }
         public AdTicket TryAutomaticRetry(AdContext c,bool adReady)
@@ -119,10 +122,11 @@ namespace Cascade.Application
         public AdTicket TryRewarded(AdContext c,string rewardKind,bool adReady)
         {
             if(!Ready(c)||c.Surface!=AdSurface.Inventory||active!=null||Ledger.HideVideoOffers||!adReady
-                ||!new[]{"coins","hint","parcel_bonus"}.Contains(rewardKind)
+                ||!new[]{"coins","hint","parcel_bonus","parcel_open"}.Contains(rewardKind)
                 ||rewardKind=="parcel_bonus"&&(!MonetizationLedger.IsParcelSubject(c.RewardSubject)||HasParcelBonus(c.RewardSubject))
+                ||rewardKind=="parcel_open"&&(!MonetizationLedger.IsParcelSubject(c.RewardSubject)||HasParcelOpen(c.RewardSubject))
                 ||pendingRewards.Count>=32||!CanReceiveGrant)return null;
-            active=new AdTicket{Id=Guid.NewGuid().ToString("D"),Rewarded=true,RewardKind=rewardKind,RewardSubject=rewardKind=="parcel_bonus"?c.RewardSubject:null,UniqueClears=c.UniqueClears};
+            active=new AdTicket{Id=Guid.NewGuid().ToString("D"),Rewarded=true,RewardKind=rewardKind,RewardSubject=rewardKind=="parcel_bonus"||rewardKind=="parcel_open"?c.RewardSubject:null,UniqueClears=c.UniqueClears};
             pendingRewards.Add(active.Id,active);return active;
         }
         public bool Opened(string ticket)
@@ -144,12 +148,13 @@ namespace Cascade.Application
         {
             if(!providerVerified||ticket==null||string.IsNullOrWhiteSpace(receipt)||receipt.Length>256||!pendingRewards.TryGetValue(ticket,out var request)
                 ||!request.Opened||Ledger.Grants.Count>=MonetizationLedger.MaxGrantReceipts||Ledger.Grants.Any(g=>g.Id==receipt))return false;
-            var next=Ledger.Copy();int amount=request.RewardKind=="coins"||request.RewardKind=="parcel_bonus"?40:1;
+            var next=Ledger.Copy();int amount=request.RewardKind=="parcel_open"?0:request.RewardKind=="coins"||request.RewardKind=="parcel_bonus"?40:1;
             if(request.RewardKind=="parcel_bonus"&&HasParcelBonus(request.RewardSubject))return false;
+            if(request.RewardKind=="parcel_open"&&HasParcelOpen(request.RewardSubject))return false;
             string grantKind=request.RewardKind=="parcel_bonus"?"coins":request.RewardKind;
-            string product=request.RewardKind=="parcel_bonus"?request.RewardSubject:null;
+            string product=request.RewardKind=="parcel_bonus"||request.RewardKind=="parcel_open"?request.RewardSubject:null;
             next.Grants.Add(new GrantReceipt{Id=receipt,Kind=grantKind,Product=product,Amount=amount});
-            if(request.RewardKind=="coins"||request.RewardKind=="parcel_bonus")next.BonusCoins=checked(next.BonusCoins+amount);else next.HintTokens=checked(next.HintTokens+amount);
+            if(request.RewardKind=="coins"||request.RewardKind=="parcel_bonus")next.BonusCoins=checked(next.BonusCoins+amount);else if(request.RewardKind=="hint")next.HintTokens=checked(next.HintTokens+amount);
             if(!Commit(next))return false;pendingRewards.Remove(ticket);return true;
         }
         public bool VerifiedMockPurchase(string product,string receipt,bool providerVerified,bool restoring=false)
@@ -171,6 +176,18 @@ namespace Cascade.Application
             if(!CanReceiveGrant)return false;
             var next=Ledger.Copy();if(amount>0)next.BonusCoins=checked(next.BonusCoins+amount);else next.NoAutomaticAds=true;
             next.Grants.Add(new GrantReceipt{Id=receipt,Kind=kind,Product=product,Amount=amount});
+            return Commit(next);
+        }
+        public bool VerifiedStoreSubscription(string product,string receipt,long expiry,bool providerVerified)
+        {
+            if(!providerVerified||!PurchaseCatalog.IsNoAdsSubscription(product)||string.IsNullOrWhiteSpace(receipt)||receipt.Length>256||expiry<0||expiry>253402300799L)return false;
+            var existing=Ledger.Grants.FirstOrDefault(g=>g.Id==receipt);
+            if(existing!=null&&(existing.Kind!="subscription"||existing.Product!=product||existing.Amount!=0))return false;
+            if(existing!=null&&Ledger.SubscriptionExpiry(product)==expiry)return true;
+            if(existing==null&&!CanReceiveGrant)return false;
+            var next=Ledger.Copy();
+            if(existing==null)next.Grants.Add(new GrantReceipt{Id=receipt,Kind="subscription",Product=product,Amount=0});
+            next.SetSubscriptionExpiry(product,expiry);
             return Commit(next);
         }
         public bool TrySpendHint(AttemptService attempt,HintOffer offer)

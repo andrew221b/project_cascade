@@ -1,0 +1,18 @@
+
+/* The one-time deletion code remains on this page; never put it in a URL. */
+.deletion-language{display:flex;align-items:center;justify-content:flex-end;gap:12px;margin-bottom:32px}
+.deletion-language select{font:inherit;min-height:44px;padding:8px 12px;border:1px solid #54877d;border-radius:12px;background:#fff;color:var(--ink)}
+.deletion-steps{font-size:18px;line-height:1.7;padding-left:24px;margin:24px 0}
+.deletion-steps li+li{margin-top:8px}
+.deletion-form{margin:30px 0 40px;padding:clamp(18px,4vw,32px);background:#f6faf3;border:1px solid #b4d0bf;border-radius:20px}
+.deletion-form fieldset{border:0;padding:0;margin:0;min-width:0}
+.deletion-form label{font-size:18px;line-height:1.6}
+.deletion-form input[type=text]{display:block;width:100%;min-height:52px;padding:12px;margin:8px 0;border:1px solid #54877d;border-radius:10px;font:inherit;font-size:16px;color:var(--ink);background:#fff}
+.deletion-form input:focus-visible,.deletion-language select:focus-visible{outline:3px solid #8e4f0e;outline-offset:3px}
+.deletion-form .deletion-help{font-size:14px;margin:8px 0 24px}
+.deletion-confirm{display:flex;align-items:flex-start;gap:12px;margin:20px 0 26px}
+.deletion-confirm input{flex:none;width:22px;height:22px;margin:4px 0 0;accent-color:var(--ink)}
+.deletion-confirm span{min-width:0}
+.deletion-form .button{max-width:100%;white-space:normal;text-align:center;line-height:1.4;padding:16px 24px}
+.deletion-status:not(:empty){margin-top:24px;padding:16px;border-left:4px solid #24716a;background:#e5f2e8;overflow-wrap:anywhere}
+@media(max-width:480px){.deletion-form .button{width:100%}.deletion-language{justify-content:flex-start}.deletion-page .reading-title h1{font-size:clamp(42px,12vw,64px)}}

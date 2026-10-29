@@ -22,6 +22,7 @@ namespace Cascade.Presentation
             if (image == null) return;
             var view = image.GetComponent<MikaCosmeticView>() ?? image.gameObject.AddComponent<MikaCosmeticView>();
             view.Initialize(this, image, id, portrait);
+            CharacterPoseView.Attach(this,image);
         }
 
         internal Sprite MikaBadge(string id)

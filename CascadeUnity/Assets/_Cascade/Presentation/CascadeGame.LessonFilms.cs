@@ -248,7 +248,7 @@ namespace Cascade.Presentation
                 plan.descent ? "Descend" : lesson == MechanicLesson.Undo ? "Undo" : lesson == MechanicLesson.Hint ? "Hint" : lesson == MechanicLesson.Toolbag ? "Tool bag" : "Use one");
             caption.font = art.titleFont; caption.fontStyle = FontStyles.Bold; caption.color = plan.descent ? MenuInk : MenuPaper;
             caption.enableAutoSizing = true; caption.fontSizeMin = 13; caption.fontSizeMax = 17; caption.textWrappingMode = TextWrappingModes.NoWrap;
-            bool buttonShown = plan.descent || plan.tool;
+            bool buttonShown = !reference && (plan.descent || plan.tool);
             button.gameObject.SetActive(buttonShown);
             if(reference){
                 if(plan.descent){buttonFace.sprite=ReferenceShopArt("TealAction");buttonFace.type=Image.Type.Sliced;buttonFace.pixelsPerUnitMultiplier=4;buttonFace.color=new Color(1,1,.76f);caption.color=MenuPaper;caption.fontSizeMin=18;caption.fontSizeMax=25;caption.enableAutoSizing=true;}
@@ -481,7 +481,7 @@ namespace Cascade.Presentation
                     float fromX = (start + .5f) / 4, toX = (end + .5f) / 4;
                     float move = lesson == MechanicLesson.ClosedPath ? action : exchange;
                     handPoint = plan.descent || plan.recovery || lesson == MechanicLesson.Undo || lesson == MechanicLesson.UndoSpool
-                        ? new Vector2(.5f, .115f) : new Vector2(Mathf.Lerp(fromX, toX, move), rowY + (still ? 0 : Mathf.Sin(move * Mathf.PI) * .085f));
+                        ? new Vector2(.5f, reference?(largeTool?.28f:.40f):.115f) : new Vector2(Mathf.Lerp(fromX, toX, move), rowY + (still ? 0 : Mathf.Sin(move * Mathf.PI) * .085f));
                 }
                 if (lesson == MechanicLesson.Ribbon && time >= 4.5f)
                     handPoint = new Vector2(Mathf.Lerp(.125f, .875f, EaseFilm((time - 4.7f) / .9f)), rowY);

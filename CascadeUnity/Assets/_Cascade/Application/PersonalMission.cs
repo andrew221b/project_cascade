@@ -36,7 +36,7 @@ namespace Cascade.Application
             &&(!Active||Offer!=null&&CampaignAttempt!=null)&&(!Won||Active)
             &&(Active||CampaignAttempt==null&&CampaignDescent==null&&CampaignCompletion==null)
             &&(Offer==null||Offer.Serial==Serial&&Offer.Hero>=0&&Offer.Hero<9&&Offer.SourceHash!=null&&Offer.SourceHash.Length==64
-                &&(Offer.Locale=="en"||Offer.Locale=="ru"||Offer.Locale=="uk")&&Offer.Run!=null&&Offer.Run.Version==6&&Offer.Run.SourceHash==Offer.SourceHash&&Offer.Run.Stages?.Length==3
+                &&(Offer.Locale=="en"||Offer.Locale=="ru"||Offer.Locale=="uk")&&Offer.Run!=null&&(Offer.Run.Version==6||Offer.Run.Version==7&&Offer.Run.Variation?.IsBounded()==true)&&Offer.Run.SourceHash==Offer.SourceHash&&Offer.Run.Stages?.Length==3
                 &&Offer.Run.Stages.All(s=>s!=null&&s.Triad!=null&&s.Witness!=null&&s.Minimum>0));
     }
 }

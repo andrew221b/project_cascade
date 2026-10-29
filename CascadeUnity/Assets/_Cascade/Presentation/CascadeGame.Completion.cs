@@ -14,11 +14,10 @@ namespace Cascade.Presentation
         Sprite[] completionArt,rewardEmblems,celebrationPaper,victoryStars,victoryDigits,victorySymbols;
         Sprite victoryMika;
         bool parcelReturnsToMap;
+        string completionAdAttempt;
         public bool CelebrationMotionAllowed=>applicationFocused&&!applicationPaused&&!nativeAdSuspended&&isActiveAndEnabled;
         public LevelCompletion LastCompletion=>profile.Completion;
-        bool FirstCompletionReturnsToMap=>!PersonalMissionActive&&profile.Completion!=null
-            &&JourneySequence().FirstOrDefault()?.Definition.CampaignNodeId==profile.Completion.NodeId
-            &&profile.AllClears.Select(c=>c.CampaignNodeId).Distinct().Take(2).Count()==1;
+        UiCopy CompletionNextLabel=>menuRoot.rect.width/MenuUnit<360?(UiCopy)"Next":(UiCopy)"Next level";
         bool IsPinnedJourneyStop(int index)=>index>=0&&index<Catalog.PrimaryLevels.Count&&HasResumableJourneyAttempt
             &&Catalog.PrimaryLevels[index].Definition.CampaignNodeId==node;
         bool IsJourneyStopOpen(int index)=>IsPinnedJourneyStop(index)||index>=0&&index<Catalog.PrimaryLevels.Count
@@ -27,9 +26,8 @@ namespace Cascade.Presentation
         {
             if(content==null)return false;
             if(!DescentRun.CanDescend(content.Definition))return false;
-            var sequence=JourneySequence();
-            return CampaignProgress.IsOpen(sequence.Select(c=>c.Definition.CampaignNodeId).ToArray(),sessionClears,content.Definition.CampaignNodeId,
-                sequence.Where(c=>c.Definition.TeachingNode>0).Select(c=>c.Definition.CampaignNodeId));
+            PreferredLevels();
+            return CampaignProgress.IsOpen(preferredNodeIds,sessionClears,content.Definition.CampaignNodeId,preferredTeachingNodes);
         }
         Sprite CompletionArt(int index)
         {
@@ -95,7 +93,7 @@ namespace Cascade.Presentation
             };
             return victorySymbols;
         }
-        void DisposeCompletionArt(){foreach(var sprites in new[]{completionArt,rewardEmblems,celebrationPaper,resultMedals,victoryStars,victoryDigits,victorySymbols})if(sprites!=null)foreach(var sprite in sprites)if(sprite!=null)Destroy(sprite);if(victoryMika!=null)Destroy(victoryMika);DisposeCelebrationTypeStyles();}
+        void DisposeCompletionArt(){foreach(var sprites in new[]{completionArt,rewardEmblems,celebrationPaper,resultMedals,victoryStars,victoryDigits,victorySymbols,worldCompletionIcons})if(sprites!=null)foreach(var sprite in sprites)if(sprite!=null)Destroy(sprite);if(victoryMika!=null)Destroy(victoryMika);DisposeCelebrationTypeStyles();}
         public Sprite CelebrationPaper(int index)
         {
             if(celebrationPaper==null)celebrationPaper=NavigationSlices("Workshop/CelebrationPaper",3,2);
@@ -185,16 +183,16 @@ namespace Cascade.Presentation
             }
             var hero=Picture("Mika victory lantern",menuRoot,new Vector2(.31f,.045f),new Vector2(.69f,.315f),VictoryMika(),true);
             hero.color=Color.white;
-            // Keep the authored proportions. Raise the compact cutout as one
-            // rigid image; changing only its position cannot stretch Mika.
+            // Keep the authored proportions and reserve clearance below the
+            // statistic captions, including the top of the victory hop.
             hero.rectTransform.localScale=Vector3.one*.72f;
-            hero.rectTransform.anchoredPosition=Vector2.up*(10*MenuUnit);
+            hero.rectTransform.anchoredPosition=Vector2.up*(150*Mathf.Min(safeRoot.rect.width/720f,safeRoot.rect.height/1280f));
             // Render above the warm screen wash, while reward and statistic UI
             // stays in front of her.
             hero.transform.SetSiblingIndex(scoreMedal.transform.GetSiblingIndex());
-            hero.gameObject.AddComponent<WorldMotion>().Initialize(this,new Vector2(0,.45f),0,.26f);
-            bool hasParcel=WaitingParcel!=null,hasNext=!FirstCompletionReturnsToMap&&NextCompletionContent()!=null;
-            UiCopy primaryLabel=hasParcel?(UiCopy)"Claim trophy":hasNext?(UiCopy)"Next level":(UiCopy)"Back to map";
+            CharacterPoseView.Attach(this,hero);
+            bool hasParcel=WaitingParcel!=null,hasNext=NextCompletionContent()!=null;
+            UiCopy primaryLabel=hasParcel?(UiCopy)"Claim trophy":hasNext?CompletionNextLabel:(UiCopy)"Map";
             Action primaryAction=hasParcel?ContinueCompletion:hasNext?ContinueToNextLevel:ContinueToMap;
             var primary=MenuButton(primaryLabel,.018f,primaryAction,true,hasParcel?.14f:.21f,hasParcel?.86f:.79f);primary.name=hasParcel?"Claim trophy":"Continue completion";
             SetCompletionButtonBottom((RectTransform)primary.transform,24f,62f);
@@ -214,13 +212,31 @@ namespace Cascade.Presentation
             var faceObject=new GameObject("Icon button enamel",typeof(RectTransform),typeof(CanvasRenderer),typeof(Image));faceObject.transform.SetParent(button.transform,false);
             var faceRect=(RectTransform)faceObject.transform;faceRect.anchorMin=new Vector2(.04f,.04f);faceRect.anchorMax=new Vector2(.96f,.96f);faceRect.offsetMin=faceRect.offsetMax=Vector2.zero;
             var faceImage=faceObject.GetComponent<Image>();faceImage.sprite=enamelControls[0];faceImage.type=Image.Type.Sliced;faceImage.color=Color.white;faceImage.raycastTarget=false;
+            var square=faceObject.AddComponent<AspectRatioFitter>();square.aspectMode=AspectRatioFitter.AspectMode.FitInParent;square.aspectRatio=1;
             faceObject.AddComponent<PrimaryButtonSkin>().Configure(ParcelArt("AmberAction"));button.targetGraphic=faceImage;button.transition=Selectable.Transition.ColorTint;
             if(retryIcon){
-                var glyph=new GameObject("Retry arrow icon",typeof(RectTransform),typeof(CanvasRenderer),typeof(RetryArrowGraphic));glyph.transform.SetParent(button.transform,false);
-                var iconRect=(RectTransform)glyph.transform;iconRect.anchorMin=iconRect.anchorMax=new Vector2(.5f,.5f);iconRect.sizeDelta=Vector2.one*36*MenuUnit;
+                var glyph=new GameObject("Retry arrow icon",typeof(RectTransform),typeof(CanvasRenderer),typeof(RetryArrowGraphic));glyph.transform.SetParent(faceObject.transform,false);
+                var iconRect=(RectTransform)glyph.transform;iconRect.anchorMin=Vector2.one*.21f;iconRect.anchorMax=Vector2.one*.79f;iconRect.offsetMin=iconRect.offsetMax=Vector2.zero;
                 glyph.GetComponent<RetryArrowGraphic>().color=new Color(.24f,.075f,.012f,1);
-            }else Picture("Map pictogram",button.transform,new Vector2(.16f,.16f),new Vector2(.84f,.84f),navigationIcons[4],true);
+            }else Picture("Map pictogram",faceObject.transform,new Vector2(.16f,.16f),new Vector2(.84f,.84f),navigationIcons[4],true);
+            if(!retryIcon)RegisterButtonDesign(button,GameButtonRole.SecondaryYellow).MapAction();else RegisterButtonDesign(button,GameButtonRole.IconPrimary);
             return button;
+        }
+        void FitCompletionActions()
+        {
+            if(CurrentScreen!=GameScreen.Win||menuRoot==null)return;
+            RectTransform ActiveAction(string name){foreach(Transform child in menuRoot)if(child.name==name&&child.gameObject.activeSelf)return child as RectTransform;return null;}
+            var primary=ActiveAction("Continue completion")??ActiveAction("Claim trophy");if(primary==null)return;
+            var retry=ActiveAction("Retry completed level");var map=ActiveAction("Completion map");
+            float design=Mathf.Min(safeRoot.rect.width/720f,safeRoot.rect.height/1280f),bottom=24*MenuUnit;
+            void Place(RectTransform rect,float x,float y,Vector2 size){if(rect==null)return;rect.anchorMin=rect.anchorMax=new Vector2(.5f,0);rect.pivot=Vector2.one*.5f;rect.sizeDelta=size*design;rect.anchoredPosition=new Vector2(x*design,bottom+y*design);}
+            var primarySize=primary.GetComponent<GameButtonDesign>().DesiredSize(new Vector2(480,104)*design);
+            float actionWidth=primarySize.x,actionHeight=primarySize.y,square=retry!=null?retry.GetComponent<GameButtonDesign>().DesiredSize(Vector2.one*96*design).x:96*design,gap=16*design;
+            float sideGap=Mathf.Max(8*design,4*CenteredContentRow.Unit(menuRoot)/Mathf.Min(1,menuRoot.GetComponentInParent<Canvas>().rootCanvas.scaleFactor));
+            float row=map!=null?actionHeight*1.5f+gap:actionHeight*.5f;
+            Place(primary,retry!=null?(square+sideGap)*.5f/design:0,row/design,new Vector2(480,actionHeight/design));
+            Place(retry,-(actionWidth+sideGap)*.5f/design,row/design,Vector2.one*(square/design));Place(map,0,actionHeight*.5f/design,new Vector2(480,actionHeight/design));
+            var caption=primary.GetComponentInChildren<TextMeshProUGUI>();if(caption!=null){string key=caption.GetComponent<LocalizedCaption>()?.SourceIdentity;if(key=="Next"||key=="Next level")caption.SetCopy(CompletionNextLabel);}
         }
         void SetCompletionButtonBottom(RectTransform rect,float bottom,float height=48)
         {
@@ -228,12 +244,27 @@ namespace Cascade.Presentation
         }
         public void ContinueCompletion()
         {
-            if(CurrentScreen!=GameScreen.Win||profile.Completion==null)return;
+            if(CurrentScreen!=GameScreen.Win||profile.Completion==null||completionAdAttempt!=null||adProvider?.Showing==true)return;
             if(PersonalMissionActive){RestorePersonalCampaign(true);return;}
-            if(FirstCompletionReturnsToMap)profile.Completion.NextNode=null;
             profile.Completion.StatsSeen=true;PersistProgress(true);if(HasSaveError)return;
+            // Every completion destination shares this natural break, including
+            // Next and a newly earned parcel. The policy still owns eligibility.
+            if(TryAutomaticAd()){completionAdAttempt=profile.Completion.AttemptId;return;}
+            ContinueAfterCompletionAd();
+        }
+        void ContinueAfterCompletionAd()
+        {
             if(WaitingParcel!=null)OpenParcel(true);
             else FinishCompletion();
+        }
+        void TickCompletionAd()
+        {
+            if(completionAdAttempt==null||adProvider?.Showing==true||!IntroductionAnimationAllowed)return;
+            string attempt=completionAdAttempt;completionAdAttempt=null;
+            // Resume from the foreground game loop, never inside an SDK callback.
+            // Navigation, replacement attempts and failed saves cancel the continuation.
+            if(CurrentScreen==GameScreen.Win&&profile.Completion?.AttemptId==attempt&&!saveBlocked&&!HasSaveError)
+                ContinueAfterCompletionAd();
         }
         public void RetryCompletedLevel()
         {
@@ -254,7 +285,6 @@ namespace Cascade.Presentation
         public void ContinueToNextLevel()
         {
             if(CurrentScreen!=GameScreen.Win||profile.Completion==null)return;
-            if(FirstCompletionReturnsToMap){ContinueToMap();return;}
             var next=NextCompletionContent();if(next==null)return;
             profile.Completion.NextNode=next.Definition.CampaignNodeId;ContinueCompletion();
         }
@@ -266,10 +296,11 @@ namespace Cascade.Presentation
         }
         void FinishCompletion()
         {
-            string next=FirstCompletionReturnsToMap?null:profile.Completion?.NextNode;
+            string next=profile.Completion?.NextNode;
             if(profile.Completion!=null)profile.Completion.Acknowledged=true;
             PersistProgress(true);if(HasSaveError)return;
             parcelReturnsToMap=false;
+            if(TryWorldCompletion())return;
             var content=next==null?null:JourneySequence().FirstOrDefault(c=>c.Definition.CampaignNodeId==next&&IsContentOpen(c));
             if(content!=null){
                 int index=Catalog.PrimaryLevels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==next);
@@ -279,7 +310,7 @@ namespace Cascade.Presentation
                     return;
                 }
             }
-            ShowJourney();if(!ConversationOpen)TryAutomaticAd();
+            ShowJourney();
         }
     }
 }

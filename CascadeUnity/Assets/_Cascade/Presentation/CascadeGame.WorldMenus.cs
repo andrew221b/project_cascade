@@ -9,18 +9,19 @@ namespace Cascade.Presentation
     {
         public int EnvironmentWorld {
             get {
+                if(CurrentScreen==GameScreen.WorldComplete&&completedWorld>=0)return completedWorld;
                 if((CurrentScreen==GameScreen.Pause||CurrentScreen==GameScreen.Win||CurrentScreen==GameScreen.Fail)&&machine?.LivingWorld!=null)return machine.LivingWorld.Zone;
                 if(CurrentScreen==GameScreen.Prologue&&worldComic>=0)return worldComic;
                 if(CurrentScreen==GameScreen.JourneyMap||CurrentScreen==GameScreen.Dialogue)return Mathf.Clamp(mapPage,0,8);
                 if(Catalog==null||profile==null||Catalog.PrimaryLevels.Count==0)return 0;
-                int index=Catalog.PrimaryLevels.ToList().FindIndex(c=>c.Definition.CampaignNodeId==node);
+                int index=PrimaryLevelIndex(node);
                 bool outcome=journeyActive&&(CurrentScreen==GameScreen.Win||CurrentScreen==GameScreen.Parcel||CurrentScreen==GameScreen.Pause);
                 return JourneyStory.Zone((HasResumableJourneyAttempt||outcome)&&index>=0?index:NextJourneyStop());
             }
         }
         void BindMenuWorldEnvironment()
         {
-            if(CurrentScreen==GameScreen.Playing||CurrentScreen==GameScreen.Fail||CurrentScreen==GameScreen.Checkpoint||menuRoot==null||ReferenceIslandScreen)return;
+            if(CurrentScreen==GameScreen.Playing||CurrentScreen==GameScreen.Fail||CurrentScreen==GameScreen.Checkpoint||CurrentScreen==GameScreen.NoAds||menuRoot==null||ReferenceIslandScreen)return;
             int world=EnvironmentWorld;machine.SetZone(world);
             var owner=Rect("Themed world menu owner",menuRoot,Vector2.zero,Vector2.one);
             owner.gameObject.AddComponent<MenuWorldEnvironment>().Initialize(this,menuRoot,world);
@@ -30,7 +31,7 @@ namespace Cascade.Presentation
     {
         public const string Path="CascadeArt/WorldMenusOct14/";
         static readonly string[] names={"WindGardenBase","RainMillBase","CopperOrchardBase","CloudPostBase","GlassLagoonBase","MossArchiveBase","SnowSpireBase","GreatBeaconBase","StarObservatoryBase"};
-        public static Texture2D Sky(int world){world=Mathf.Clamp(world,0,8);var revised=(world==0?GameplayReferenceArt.Texture("ReferenceDaySky")??Resources.Load<Texture2D>(CleanMenuArt.Path+names[world]):null)??Resources.Load<Texture2D>(Path+names[world]);return revised??Resources.Load<Texture2D>("CascadeArt/"+(world<3?"Journey/":"Woodland/")+names[world]);}
+        public static Texture2D Sky(int world){world=Mathf.Clamp(world,0,8);var revised=(world==0?GameplayReferenceArt.Texture("ReferenceDaySky"):null)??Resources.Load<Texture2D>(Path+names[world]);return revised??Resources.Load<Texture2D>("CascadeArt/"+(world<3?"Journey/":"Woodland/")+names[world]);}
         public static Color Light(int world,float age,bool moving)
         {
             var p=WorldLighting.Evaluate(world,false,age,moving);var r=WorldLighting.Evaluate(0,false,0,false);

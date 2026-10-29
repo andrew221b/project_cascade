@@ -6,6 +6,7 @@ namespace Cascade.Presentation
     // One uniform reference scale; taller phones reveal more rows, not stretched cards.
     public sealed class IslandLevelLayout:MonoBehaviour
     {
+        public const int EndOfListGap=96;
         RectTransform surface,stage,backdrop,canvas,viewport,bar;
         readonly Vector3[] corners=new Vector3[4];
         readonly List<KeyValuePair<RectTransform,Vector2>> touches=new List<KeyValuePair<RectTransform,Vector2>>();
@@ -31,13 +32,14 @@ namespace Cascade.Presentation
             if(viewport!=null){
                 viewport.sizeDelta=new Vector2(572,h);var scroll=viewport.GetComponent<ScrollRect>();
                 if(scroll!=null&&scroll.content!=null){
-                    var layout=scroll.content.GetComponent<VerticalLayoutGroup>();int padding=Mathf.CeilToInt(extension+12);
+                    var layout=scroll.content.GetComponent<VerticalLayoutGroup>();int padding=Mathf.CeilToInt(extension+EndOfListGap);
                     if(layout.padding.bottom!=padding){layout.padding.bottom=padding;scroll.content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,scroll.content.childCount*123-5+padding);LayoutRebuilder.MarkLayoutForRebuild(scroll.content);}
                 }
             }
             if(bar!=null){if(viewport!=null){var scroll=viewport.GetComponent<ScrollRect>();bar.gameObject.SetActive(scroll!=null&&scroll.content.rect.height>h+.5f);}var position=bar.anchoredPosition;bar.sizeDelta=new Vector2(Mathf.Max(44,minimum),Mathf.Min(655,h-60));bar.anchoredPosition=new Vector2(position.x,-429-bar.rect.height*.5f);}
-            foreach(var item in touches)if(item.Key!=null)item.Key.sizeDelta=new Vector2(Mathf.Max(item.Value.x,minimum),Mathf.Max(item.Value.y,minimum));
+            foreach(var item in touches)if(item.Key!=null)item.Key.sizeDelta=new Vector2(Mathf.Max(GameButtonSize(item.Key,item.Value).x,minimum),Mathf.Max(GameButtonSize(item.Key,item.Value).y,minimum));
         }
+        static Vector2 GameButtonSize(RectTransform target,Vector2 authored){var design=target.GetComponent<GameButtonDesign>();return design==null?authored:design.DesiredSize(authored);}
         void LateUpdate()=>Fit();
     }
 }

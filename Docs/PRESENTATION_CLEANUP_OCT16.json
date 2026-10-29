@@ -1,0 +1,298 @@
+{
+  "png_count": 26,
+  "code_files": 4,
+  "bytes": 37915736,
+  "assets": [
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Navigation/OpeningComic.png",
+      "bytes": 2773930,
+      "sha256": "58cf5d690a290c2d683be21919c471e9f45e54c247011d7f05a39895cc03a65d",
+      "meta_sha256": "aa7bbd51433f9bcf0fcb520ce1d1b3090873c3fba3034de90fd490bc45ae95e1",
+      "guid": "9d370bca674eb44f488c1088b1dc7039",
+      "reason": "Retired comic sheets: the active world prologues use WorldComic0/1/2, WorldComic0Identity and WorldComicDepartureIdentity.",
+      "replacement": null
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Navigation/WorldComicDeparture.png",
+      "bytes": 3601436,
+      "sha256": "916ad3dc23e048034eb926e3682166c619d8a7dad37e5a8d20f1ef4a94509f6d",
+      "meta_sha256": "c651aeab5c28cf431ca58172e2fac7c73562507234fb87cc805e07a150f563e9",
+      "guid": "c3de05d0a57c46ffb45d17cbc5e53ef4",
+      "reason": "Retired comic sheets: the active world prologues use WorldComic0/1/2, WorldComic0Identity and WorldComicDepartureIdentity.",
+      "replacement": null
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Reactions/ToolBodies.png",
+      "bytes": 2208639,
+      "sha256": "2b3dc0420534e334e106a42ece378e1a8cd16558e1990eeb3a135e1d839dc7ca",
+      "meta_sha256": "bbb5206690ecd65e577865d4728344938af2ef244e480757a27e00ede6c4bfbe",
+      "guid": "b745b295142c641aea77ed8d82a377b9",
+      "reason": "Superseded by the existing Clean atlases; no exact runtime path or serialized consumer.",
+      "replacement": "Reactions/ToolBodiesClean + Reactions/ToolMotifsClean"
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Reactions/ToolMotifs.png",
+      "bytes": 1731442,
+      "sha256": "68281c15905d0c5ece623e89fb5077c42e9e2ae099513d13e79ac5a72a145f13",
+      "meta_sha256": "5078da6ca22ebe48a46ce97696c80c33ab9a95614ec38224288441ec4ee302c6",
+      "guid": "ae55d4d931fb946c5937cce11355b9d5",
+      "reason": "Superseded by the existing Clean atlases; no exact runtime path or serialized consumer.",
+      "replacement": "Reactions/ToolBodiesClean + Reactions/ToolMotifsClean"
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Atmosphere/Birds.png",
+      "bytes": 1076696,
+      "sha256": "b8d01ffa9be0abf831686d6b84f56ea32992bd6c31532cba477b51c697083c7f",
+      "meta_sha256": "2b1cb18a0f136c4206b43309e4efc2dd2465b436eec6191e8172979501b57f44",
+      "guid": "4314baa0cc9b4167890252b5dc6a72b6",
+      "reason": "Old flat fauna sheets; active layered rig loads BirdRigOct08/InsectRigOct08 and regional/rear/body atlases.",
+      "replacement": null
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Atmosphere/Insects.png",
+      "bytes": 1459711,
+      "sha256": "f0fe2f8d695830a58b346066ba157ebaabcd6eee62e1a9013e7307201bc6df84",
+      "meta_sha256": "8aeee12a216b43e2db3b7bbcc1ff5b33cd6d947a1c7cd457dba19f7ce194e7a0",
+      "guid": "1e9da65c554c4dddb35caba6f6fc9988",
+      "reason": "Old flat fauna sheets; active layered rig loads BirdRigOct08/InsectRigOct08 and regional/rear/body atlases.",
+      "replacement": null
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Navigation/MapSky.png",
+      "bytes": 1371475,
+      "sha256": "2eb50a07fc4ca53685a7a31763e52e4bb03bccce25ec629845749983d995cfe1",
+      "meta_sha256": "895351e13644455403a895d445e06cddef3e2a9cbe0394e81950fce5ab801919",
+      "guid": "19c8bbf1264db477c8a6ea66c6bb03cc",
+      "reason": "Unreferenced flattened old map sky. Active map uses MenuWorldArt.Sky.",
+      "replacement": null
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Craft/FloatingGardenIslands.png",
+      "bytes": 1176192,
+      "sha256": "defd4a7f72728b51ccc6e5627ada44b4330e7483ffbd599852131b7b6ed00162",
+      "meta_sha256": "559f789dd185cea8df3afdfc5a2408b5b71fe83f868a493d5b4ada9247929e9e",
+      "guid": "c4d4d85a034b04b6895e94f804ca3cf9",
+      "reason": "Unused first-generation panorama/island paintings. The unused panorama field is removed; active background uses nine world skies and 54 separate islands.",
+      "replacement": null
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Craft/WindGardenPanorama.png",
+      "bytes": 1740085,
+      "sha256": "200e5f5eacd57396c6ce1dd823766052e957e14830e463faf2398c5748786b65",
+      "meta_sha256": "c9ce1398bd7046904ae09fb97a9610e0ac6145554af3abba945cf17921e96328",
+      "guid": "284e2575f302444a0860bb92679d1525",
+      "reason": "Unused first-generation panorama/island paintings. The unused panorama field is removed; active background uses nine world skies and 54 separate islands.",
+      "replacement": null
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Craft/WindGardenSky.png",
+      "bytes": 1649955,
+      "sha256": "82dd211fd37a88355514dc3ed7a9a4b635fcfcfd507a8fc2c0b4dd5edf748975",
+      "meta_sha256": "8d7ad1d3d975cacb54f4f9f336ed59f5d4cd7eb33bef3b4ae9960b639c5309cc",
+      "guid": "857c3bcf551c04d15a96ba19ecb31c64",
+      "reason": "Unused first-generation panorama/island paintings. The unused panorama field is removed; active background uses nine world skies and 54 separate islands.",
+      "replacement": null
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Craft/WorkshopRoom.png",
+      "bytes": 1865308,
+      "sha256": "e991d166c33b8df9a6ad7c17ab2a7c4e8fb5d136b37d0c7fd009ace349d9edd4",
+      "meta_sha256": "be2831b9af45a45359668ce5f0579131770bca2809db943f73097ad2bc145d1f",
+      "guid": "35377c166b79c4befbfebef8f9a4101c",
+      "reason": "Old busy workshop backgrounds replaced by existing Quiet paintings; remove obsolete fallback loads.",
+      "replacement": "Craft/WorkshopRoomQuiet + Craft/WorkshopPortraitQuiet"
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Craft/WorkshopPortrait.png",
+      "bytes": 1810284,
+      "sha256": "37f72346f61b381140e8689c28d985dea0273467aff069f79ea491215371bf8d",
+      "meta_sha256": "dd6e118e37678df11439ee0f781a34847870de70ef4c1ad235fff3030d4ccf69",
+      "guid": "d348858761cf4a17be4b6d9261329d23",
+      "reason": "Old busy workshop backgrounds replaced by existing Quiet paintings; remove obsolete fallback loads.",
+      "replacement": "Craft/WorkshopRoomQuiet + Craft/WorkshopPortraitQuiet"
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/PauseReferenceOct14/SquareButton.png",
+      "bytes": 1076147,
+      "sha256": "c41690ba7aec731e6d558b8034bbb6a0dc1cf59b466fc47a26367a2e10ae9b4e",
+      "meta_sha256": "4b4f7b661a9fedc8d7e95dc8236e0fe366307ac6de9bdd015d8f09ec92c99b4c",
+      "guid": "f66ea43e8e20640ac9502397e3bac90e",
+      "reason": "PauseArt prefers shared CleanMenuArt.SquareButton; obsolete duplicate style.",
+      "replacement": "CleanMenuOct14/SquareButton"
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/CleanMenuOct14/WindGardenBase.png",
+      "bytes": 1728953,
+      "sha256": "f6864d5a90d620089ea13d54a325eb3bda79c34ce065c0460d4d2631fcbc203d",
+      "meta_sha256": "90df7191af5b7d885918bd920fe82617688d6aa6af15e1e4343ae22beda56828",
+      "guid": "37575ae0b75694c2f8e1a9f0b34b728f",
+      "reason": "Old first-world sky replaced by GameplayReferenceOct14/ReferenceDaySky; remove obsolete fallback.",
+      "replacement": "GameplayReferenceOct14/ReferenceDaySky"
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/HomeOct13/CloudField.png",
+      "bytes": 558845,
+      "sha256": "b64268c2e107affd6cae8759baad41a5a3b48d2824caf4bc5540b7638785f93a",
+      "meta_sha256": "50a2e97316300a979cc308b7e0e43b6a7fed66e0179e7725d20121b8d49cb6a9",
+      "guid": "a4c9d47a04fa54de9896fba30a01e6af",
+      "reason": "Only remaining image was explicitly Color.clear; remove invisible legacy cloud object. Visible sky/cloud systems remain.",
+      "replacement": null
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/WorldFramesOct14/Bridge0.png",
+      "bytes": 499154,
+      "sha256": "e0c7161ca2ce12653a7f5fa9cefef81f29a6bfb153bb88610b80bfc7ae9c3735",
+      "meta_sha256": "548225748d22db347751214e2bb72aa61384a55361da259f8a2ed52c35ba8e63",
+      "guid": "91b84ee8ff2704f3dbefbff8e35846de",
+      "reason": "Decorative bridges were removed from the approved map; no renderer creates them.",
+      "replacement": null
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/WorldFramesOct14/Bridge1.png",
+      "bytes": 477491,
+      "sha256": "bec1812fe7a4699c089594416ac937370b738d7dc73c13f08f8a0305b48deb23",
+      "meta_sha256": "951cffbb4bd59a347c6754bb5fe50f17b7a5c6ecef0f6edccdc03173efdd69c7",
+      "guid": "37e5e832d68f84b4b8625404d016b79f",
+      "reason": "Decorative bridges were removed from the approved map; no renderer creates them.",
+      "replacement": null
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/WorldFramesOct14/Bridge2.png",
+      "bytes": 393209,
+      "sha256": "b172ef1f1668adaaec6378452d199d33b150e7675168d885e4158060d13fddef",
+      "meta_sha256": "252dd5d6af8705f60f9229f263166ed00b58bae6c0d772c5634ae40d243fe452",
+      "guid": "d7aaeda0bd33e42c7accd17341dd90e2",
+      "reason": "Decorative bridges were removed from the approved map; no renderer creates them.",
+      "replacement": null
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/WorldFramesOct14/Bridge3.png",
+      "bytes": 366267,
+      "sha256": "904d998a1bff70af7050368e5dd62a948c7746513d27d1e2a1fddb7f29f78102",
+      "meta_sha256": "9f7b4355a6fadcd32d1d84128d0ea44942db9bfb0f6240bd067b99b2aa0da52a",
+      "guid": "bd373bae452e04b618a87d2a5bfdf774",
+      "reason": "Decorative bridges were removed from the approved map; no renderer creates them.",
+      "replacement": null
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Workshop/BridgeLantern.png",
+      "bytes": 1468919,
+      "sha256": "2a12e9072bc09823f5cf03a3ee2190c8624513098a99d5d1b12abb0090d029f8",
+      "meta_sha256": "fcf8dc08324969292f07bac1cc8df722441a8a6acef372ed2363795b26f65f50",
+      "guid": "d14f952c4c18b49f38703481d7faf1cc",
+      "reason": "Retired workshop collectible illustrations. Only unused WorkshopAssets array remained; current trophy/shop catalogues do not load these paintings.",
+      "replacement": null
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Workshop/RainPump.png",
+      "bytes": 2078906,
+      "sha256": "b5d91e0be8c6fe65dbd87efae6b05d13a7da0d4e3096eed96c6a5e3d807f018d",
+      "meta_sha256": "00470949bd77f5d118cc9fdaaf1c6549ae74cae956da634122e4668003fe2d1a",
+      "guid": "57ea90a2ceb4a448bae4540bd0f439c0",
+      "reason": "Retired workshop collectible illustrations. Only unused WorkshopAssets array remained; current trophy/shop catalogues do not load these paintings.",
+      "replacement": null
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Workshop/PostGlider.png",
+      "bytes": 1447043,
+      "sha256": "a08b7e15c4f90fd01ddd91bc7517fee02f0dbeb7b6de593d1c019bb61ade5dd7",
+      "meta_sha256": "b46e341c8f74c94c60d80d488ba9fde43a66e0b54b8050c27a63cc4872b99e88",
+      "guid": "f6ccec31d25bf42d5839ff4c473c877e",
+      "reason": "Retired workshop collectible illustrations. Only unused WorkshopAssets array remained; current trophy/shop catalogues do not load these paintings.",
+      "replacement": null
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Workshop/BeaconModel.png",
+      "bytes": 1391894,
+      "sha256": "bc171429d20217cdf13714839a4f82786aa5eb5ad073d3e1dded53d356543c43",
+      "meta_sha256": "845afa72d735459cfb8d83bb3b6f4ea271f397ae8ec7aaddc76c1104159991c9",
+      "guid": "8118ef4030e534f3b82aeb8aa1b74338",
+      "reason": "Retired workshop collectible illustrations. Only unused WorkshopAssets array remained; current trophy/shop catalogues do not load these paintings.",
+      "replacement": null
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/Workshop/Parcel.png",
+      "bytes": 1630985,
+      "sha256": "0e3928e2f9f79c298a00d5381f7bc9029edd8bdc8526c2775e1ae12277b13d40",
+      "meta_sha256": "4b6ef4760bac10eb72142286aa4117526096945b2f32c6e0a4eaf91e05b6e6ac",
+      "guid": "f8348c10b3e5348629a8a1bb013c6eab",
+      "reason": "Only the obsolete, uncalled GiftArrival presentation loaded this old parcel; active parcel flow uses ParcelReferenceOct13.",
+      "replacement": null
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Presentation/CascadeGame.Craft.cs",
+      "bytes": 2004,
+      "sha256": "57f034d3ab6e5a98d879b2b4e318148c8ed0381b4920b4a75dee1b31433ac1b1",
+      "meta_sha256": "a9bd30c10b3546b1dce7cd8f3aa6788b7bba31c2287e101e2d5fc83172bbcedd",
+      "guid": "015522f966c094113bbae68ddf57f687",
+      "reason": "Unused layout helpers for retired workshop/journal/records/contract screens. Compatibility routes remain in current presentation."
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Presentation/CascadeGame.JournalLayout.cs",
+      "bytes": 2196,
+      "sha256": "e86c195781454860b071c089a37e1a57aff7e38cd67767548e8cfd4b4e9788b4",
+      "meta_sha256": "7f730b76e94d5f0f5e0780ab07f0736cddde6601f99860f679d3682cdd938499",
+      "guid": "6103da07eae94118b51ef30391b41218",
+      "reason": "Unused layout helpers for retired workshop/journal/records/contract screens. Compatibility routes remain in current presentation."
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Presentation/CascadeGame.Guide.cs",
+      "bytes": 1585,
+      "sha256": "c64b3f5c0d5716e898c1aff7cee8564ba67114f8d9b79d6342177e14cd30e0d1",
+      "meta_sha256": "bf100b7f2c328dc36b70a419642a81069239816be64536f43d42305af884b938",
+      "guid": "8d27513094e6347d8b82982a4fe1fb92",
+      "reason": "Retired screen renderer / historical bridge-only review; public contextual help entry retained."
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Editor/Playable/BridgeFramesReview.cs",
+      "bytes": 8540,
+      "sha256": "1be80f62275ae68e39b8143d2571090c5e2c16fecf0fb0dcbb518b3b7bc36925",
+      "meta_sha256": "cd3e0583de93bc23823d34ff22a7dfcc7646bdf6915442b0aa844a91f2969f3d",
+      "guid": "6d4d79bd53c944b5aaaf80ab42b675c8",
+      "reason": "Retired screen renderer / historical bridge-only review; public contextual help entry retained."
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/ShopReferenceOct13/InventoryIslandLeft.png",
+      "bytes": 1029718,
+      "sha256": "67832be6c222de4b1f77f6cbb3675a577e36396de3e9cea7b0e0ab137733b450",
+      "meta_sha256": "b21851e541bc191f58e5939fb2282205e94c7be5036738f6b4f737390b8a434a",
+      "guid": "ec991ff1e0e446268244be2b074aa00f",
+      "reason": "InventoryIsland ignores the legacy asset-name argument and always uses WorldIslandArt.Get. Remove the unused argument and old paintings."
+    },
+    {
+      "path": "CascadeUnity/Assets/_Cascade/Content/Resources/CascadeArt/ShopReferenceOct13/InventoryIslandRight.png",
+      "bytes": 1288727,
+      "sha256": "4ea6a49713fe570baa170e50fbc2991292c7b039aa2fe0b502498babaf0607e8",
+      "meta_sha256": "713cc21e3669e89d05afbe9a7a790c03cc21de20b3aac515e61521d107efee58",
+      "guid": "2e326d680380407cb8515f00ad8332ae",
+      "reason": "InventoryIsland ignores the legacy asset-name argument and always uses WorldIslandArt.Get. Remove the unused argument and old paintings."
+    }
+  ],
+  "applied": true,
+  "recovery_archive": "/private/tmp/cascade-presentation-cleanup-oct16-backup.zip",
+  "modified_sources": [
+    "CascadeUnity/Assets/_Cascade/Presentation/CascadeGame.MenuLayout.cs",
+    "CascadeUnity/Assets/_Cascade/Presentation/CascadeGame.Rewards.cs",
+    "CascadeUnity/Assets/_Cascade/Presentation/CascadeGame.Navigation.cs",
+    "CascadeUnity/Assets/_Cascade/Presentation/CascadeGame.Flow.cs",
+    "CascadeUnity/Assets/_Cascade/Presentation/LayeredWorld.cs",
+    "CascadeUnity/Assets/_Cascade/Editor/Playable/AtmosphereAssetBuilder.cs",
+    "CascadeUnity/Assets/_Cascade/Presentation/CascadeGame.WorldMenus.cs",
+    "CascadeUnity/Assets/_Cascade/Presentation/CascadeGame.HomeReference.cs",
+    "CascadeUnity/Assets/_Cascade/Presentation/CascadeGame.PauseReference.cs",
+    "CascadeUnity/Assets/_Cascade/Presentation/MapReferenceAmbiance.cs",
+    "CascadeUnity/Assets/_Cascade/Presentation/WorldFrameArt.cs",
+    "CascadeUnity/Assets/_Cascade/Editor/Playable/MapReferenceReview.cs",
+    "CascadeUnity/Assets/_Cascade/Editor/Playable/CleanCompositionReview.cs",
+    "CascadeUnity/Assets/_Cascade/Editor/Playable/WorldMenuMotionCapture.cs",
+    "CascadeUnity/Assets/_Cascade/Editor/Playable/UniqueIslandReview.cs",
+    "CascadeUnity/Assets/_Cascade/Editor/Playable/MapPolishReview.cs",
+    "CascadeUnity/Assets/_Cascade/Editor/Playable/MapFrameFocusedReview.cs",
+    "CascadeUnity/Assets/_Cascade/Tests/PlayMode/MapScreenFlowTests.cs",
+    "CascadeUnity/Assets/_Cascade/Tests/PlayMode/ReferenceScreensAuditTests.cs",
+    "CascadeUnity/Assets/_Cascade/Editor/Playable/MetaCapture.cs",
+    "CascadeUnity/Assets/_Cascade/Editor/Playable/PolishCapture.cs",
+    "CascadeUnity/Assets/_Cascade/Presentation/CascadeGame.InventoryReference.cs",
+    "CascadeUnity/Assets/_Cascade/Presentation/CascadeGame.ParcelReference.cs"
+  ]
+}

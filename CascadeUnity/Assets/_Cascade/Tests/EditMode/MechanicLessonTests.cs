@@ -89,6 +89,15 @@ namespace Cascade.Tests
             Assert.That(LessonPractice.CompletedBy(MechanicLesson.Mirror,0,landing,PuzzleCommand.Drop),Is.True);
             Assert.That(LessonPractice.CompletedBy(MechanicLesson.Mirror,1,landing,PuzzleCommand.Drop),Is.False);
         }
+        [Test] public void FirstSightDiscoveryIncludesTheLowerVisibleBoardButNotHiddenFloors()
+        {
+            var level=LevelDefinitionTests.Level(floors:new[]{new FloorDefinition(4,new[]{true,true}),
+                new FloorDefinition(4,new[]{false,true},bomb:new BombDefinition(0,LevelDefinitionTests.S("B"),2,1)),
+                new FloorDefinition(4,new[]{true,true},fragileEdges:new[]{0})});
+            var state=new PuzzleResolver(level).CreateInitialState();string hash=StateHash.Compute(level,state);
+            Assert.That(MechanicLessons.DiscoverVisible(level,state,false,true),Is.EquivalentTo(new[]{MechanicLesson.Bomb,MechanicLesson.ClosedPath}));
+            Assert.That(StateHash.Compute(level,state),Is.EqualTo(hash));
+        }
         [TestCase(EntryTransform.ShiftLeftOne,false,MechanicLesson.Rollers)]
         [TestCase(EntryTransform.ShiftRightOne,true,MechanicLesson.LandingWind)]
         [TestCase(EntryTransform.MirrorNext,false,MechanicLesson.Mirror)]

@@ -10,12 +10,12 @@ namespace Cascade.Presentation
     public sealed partial class CascadeGame
     {
         AdService monetization,virtualEconomy;NativePurchaseStore purchaseStore;NativeAdProvider adProvider;
-        bool nativeAdSuspended,firstMonetizationSession;
+        bool nativeAdSuspended,firstMonetizationSession,storeRefreshPending;int purchasedCoinNotice;
         CanvasGroup nativeAdGate;
         RectTransform coinVideoButton;
         public bool TestMonetization=>monetization?.PreviewOnly==true;
         // Cloud grants are server-owned; client rewarded callbacks stay session-only until SSV integration.
-        public bool RewardedOffersAllowed=>TestMonetization||cloudSave?.EnabledForPlayer!=true;
+        public bool RewardedOffersAllowed=>TestMonetization||cloudSave?.EnabledForPlayer!=true||cloudSave.CanVerifyRewards;
         public NativeAdProvider AdProvider=>adProvider;
         public NativePurchaseStore PurchaseStore=>purchaseStore;
         public AdService Monetization=>monetization;
@@ -25,13 +25,35 @@ namespace Cascade.Presentation
         {
             firstMonetizationSession=profile.Clears.Count==0;
             var settings=Resources.Load<MonetizationSettings>("CascadeArt/MonetizationSettings");
+#if CASCADE_STORE_CAPTURE
+            settings=null; // Dedicated offline capture build: no native stores, consent requests or ads.
+#endif
             monetization=settings?.testMonetization==true&&!saveBlocked?
                 MonetizationTransaction.CreatePreview(profile,profileStore,()=>Interaction.Attempt,()=>IsPlanningDescent||IsPlanningDirection||descentPlanFailed):MonetizationTransaction.Create(profile,profileStore,()=>Interaction.Attempt,()=>IsPlanningDescent||IsPlanningDirection||descentPlanFailed,QueueCloudSave);
             virtualEconomy=TestMonetization?MonetizationTransaction.Create(profile,profileStore,()=>Interaction.Attempt,()=>IsPlanningDescent||IsPlanningDirection||descentPlanFailed,QueueCloudSave):monetization;
-            purchaseStore=gameObject.AddComponent<NativePurchaseStore>();purchaseStore.Initialize(monetization,saveBlocked?null:settings,()=>ShopCoins,cloudSave?.CanVerifyPurchases!=true?null:(System.Func<NativePurchaseStore.Proof,System.Threading.Tasks.Task<bool>>)(proof=>cloudSave.VerifyPurchaseAsync(proof.productId,proof.transactionId,proof.store,proof.receipt,proof.jws,proof.bundleId)),cloudSave==null?null:(System.Func<System.Threading.Tasks.Task>)cloudSave.InitializeServicesAsync,cloudSave==null?null:(System.Func<System.Threading.Tasks.Task<Cascade.Persistence.PurchaseIdentity>>)cloudSave.PreparePurchaseIdentityAsync);purchaseStore.Changed+=NotifyStoreChanged;purchaseStore.CoinsGranted+=amount=>{NotifyStoreChanged();ShowCoinReward(amount);};
+            var receiptVerifier=AudienceUnderAgeOfConsent?new PublicReceiptVerifier(settings?.receiptValidationUrl):null;
+            purchaseStore=gameObject.AddComponent<NativePurchaseStore>();purchaseStore.Initialize(monetization,saveBlocked?null:settings,()=>ShopCoins,cloudSave?.CanVerifyPurchases!=true?null:(System.Func<NativePurchaseStore.Proof,System.Threading.Tasks.Task<bool>>)(proof=>cloudSave.VerifyPurchaseAsync(proof.productId,proof.transactionId,proof.store,proof.receipt,proof.jws,proof.bundleId)),cloudSave==null?null:(System.Func<System.Threading.Tasks.Task>)cloudSave.InitializeServicesAsync,cloudSave==null?null:(System.Func<System.Threading.Tasks.Task<Cascade.Persistence.PurchaseIdentity>>)cloudSave.PreparePurchaseIdentityAsync,receiptVerifier?.Configured==true?receiptVerifier.VerifyAsync:null,()=>CurrentScreen!=GameScreen.AccountGate&&cloudSave?.SignedOut!=true&&cloudSave?.AccountOperationPending!=true);purchaseStore.Changed+=NotifyStoreChanged;purchaseStore.CoinsGranted+=QueuePurchasedCoins;
             adProvider=gameObject.AddComponent<NativeAdProvider>();adProvider.Initialize(this,monetization,saveBlocked?null:settings);
         }
-        public void NotifyStoreChanged(){if(CurrentScreen==GameScreen.Parcel){RefreshParcelAdAvailability();return;}if(CurrentScreen==GameScreen.Playing&&Interaction!=null&&hint!=null){RenderControls();return;}if(CurrentScreen==GameScreen.TravelBag||CurrentScreen==GameScreen.NoAds||CurrentScreen==GameScreen.Shop||CurrentScreen==GameScreen.Supplies||CurrentScreen==GameScreen.CoinPacks||CurrentScreen==GameScreen.Settings)DrawMenu();}
+        UiCopy CoinPurchaseCaption(string product,bool enough)
+        {
+            if(purchaseStore?.State==PurchaseState.Busy)return "Checking purchase…";
+            if(purchaseStore?.State==PurchaseState.Connecting)return ReferenceCopy("Loading store…","Загружаем магазин…","Завантажуємо магазин…");
+            if(purchaseStore?.State==PurchaseState.Deferred)return ReferenceCopy("Awaiting approval","Ожидает одобрения","Очікує схвалення");
+            if(enough)return "You have enough coins";
+            if(TestMonetization)return "Test shop";
+            if(purchaseStore?.CanBuyProduct(product)==true)return new UiCopy("Buy {0}",UiCopy.Raw(purchaseStore.ProductPrice(product)));
+            return purchaseStore?.State==PurchaseState.Retry?(UiCopy)"Try again":"Unavailable";
+        }
+        void QueuePurchasedCoins(int amount){purchasedCoinNotice+=amount;storeRefreshPending=true;}
+        void FlushStoreFeedback()
+        {
+            if(!CanPresent||!applicationFocused||applicationPaused||nativeAdSuspended)return;
+            if(storeRefreshPending){storeRefreshPending=false;NotifyStoreChanged();ApplyMenuSpriteCounters();}
+            if(purchasedCoinNotice<=0||menuRoot==null||!menuRoot.gameObject.activeInHierarchy||CurrentScreen==GameScreen.AccountGate)return;
+            int amount=purchasedCoinNotice;purchasedCoinNotice=0;ShowCoinReward(amount,true);
+        }
+        public void NotifyStoreChanged(){if(!applicationFocused||applicationPaused||!CanPresent){storeRefreshPending=true;return;}if(CurrentScreen==GameScreen.Parcel){RefreshParcelAdAvailability();return;}if(CurrentScreen==GameScreen.Playing&&Interaction!=null&&hint!=null){RenderControls();return;}if(CurrentScreen==GameScreen.TravelBag||CurrentScreen==GameScreen.NoAds||CurrentScreen==GameScreen.Shop||CurrentScreen==GameScreen.Supplies||CurrentScreen==GameScreen.CoinPacks||CurrentScreen==GameScreen.Settings)DrawMenu();}
         public void SetNativeAdSuspended(bool value)
         {
             nativeAdSuspended=value;if(value){EndTokenHold();Interaction.CancelPointer();}
@@ -46,10 +68,15 @@ namespace Cascade.Presentation
         bool TryAutomaticAd()=>adProvider!=null&&adProvider.TryAutomatic(AdRequest(AdSurface.Win));
         bool TryAutomaticRetryAd()=>adProvider!=null&&adProvider.TryAutomaticRetry(AdRequest(AdSurface.Retry));
         public void WatchCoinVideo(){if((CurrentScreen==GameScreen.Shop||CurrentScreen==GameScreen.TravelBag)&&RewardedOffersAllowed&&!MechanicPopupOpen&&!saveBlocked&&!HasSaveError)adProvider?.OfferCoins(AdRequest(AdSurface.Inventory));}
+        void WatchParcelOpen(int order)
+        {
+            if(CurrentScreen!=GameScreen.Parcel||order!=parcelOrder||!ParcelAwaitingVideo||!InventoryRewardAvailable)return;
+            var context=AdRequest(AdSurface.Inventory);context.RewardSubject=MonetizationLedger.ParcelSubject(order);adProvider?.OfferParcelOpen(context);
+        }
         public void WatchParcelBonus(int order)
         {
             var receipt=Rewards?.Parcels.FirstOrDefault(p=>p.Order==order);
-            if(CurrentScreen!=GameScreen.Parcel||receipt==null||!parcelOpened&&!receipt.Claimed||saveBlocked||HasSaveError||monetization==null||!RewardedOffersAllowed
+            if(CurrentScreen!=GameScreen.Parcel||receipt==null||ParcelAwaitingVideo||!parcelOpened&&!receipt.Claimed||saveBlocked||HasSaveError||monetization==null||!RewardedOffersAllowed
                 ||monetization.Ledger.HideVideoOffers||monetization.HasParcelBonus(MonetizationLedger.ParcelSubject(order)))return;
             var context=AdRequest(AdSurface.Inventory);context.RewardSubject=MonetizationLedger.ParcelSubject(order);adProvider?.OfferParcelBonus(context);
         }
@@ -67,7 +94,7 @@ namespace Cascade.Presentation
         {
             UiCopy caption=purchaseStore?.Owned==true?"Ads removed":purchaseStore?.CanBuy==true?TestMonetization?(UiCopy)"Try removing ads":new UiCopy("Buy {0}",UiCopy.Raw(purchaseStore.Price)):
                 purchaseStore?.State==PurchaseState.Retry?"Try again":purchaseStore?.State==PurchaseState.Busy?"Checking purchase…":"Coming soon";
-            var b=NavigationButton("Purchasequiet",caption,3,bottom,()=>{if(purchaseStore.State==PurchaseState.Retry)purchaseStore.RetryConnection();else purchaseStore.Buy();},true);
+            var b=NavigationButton("Purchasequiet",caption,3,bottom,()=>RequestStorePurchase(PurchaseCatalog.NoAdsYear),true);
             b.interactable=purchaseStore!=null&&(purchaseStore.CanBuy||purchaseStore.State==PurchaseState.Retry);
             if(!b.interactable)b.gameObject.AddComponent<CanvasGroup>().alpha=.57f;
         }

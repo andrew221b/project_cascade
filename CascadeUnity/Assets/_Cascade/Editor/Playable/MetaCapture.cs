@@ -41,8 +41,8 @@ namespace Cascade.Editor.Playable
             var game=UnityEngine.Object.FindFirstObjectByType<CascadeGame>();Field(game,"persistenceReady",false);
             var profile=(PlayerProfile)typeof(CascadeGame).GetField("profile",Private).GetValue(game);Seed(game,profile);
             var findings=new List<string>();game.SetUiLocale("en");game.SendMessage("OnApplicationFocus",true);
-            game.ShowWorkshop();Field(game,"workshopPage",1);Invoke(game,"DrawMenu");yield return Shot("rain-pump","en",game,findings);
-            Field(game,"workshopPage",2);Invoke(game,"DrawMenu");yield return Shot("post-glider","en",game,findings);
+            game.ShowWorkshop();Invoke(game,"DrawMenu");yield return Shot("rain-pump","en",game,findings);
+            Invoke(game,"DrawMenu");yield return Shot("post-glider","en",game,findings);
             game.ShowCollection();Field(game,"giftPage",2);Invoke(game,"DrawMenu");yield return Shot("sky-ribbon","en",game,findings);
             game.ShowJourney();Field(game,"persistenceReady",true);
             File.WriteAllLines(Path.GetFullPath(Path.Combine(UnityEngine.Application.dataPath,"../../Reports/P17/extra-fit-findings.txt")),findings);
@@ -81,8 +81,8 @@ namespace Cascade.Editor.Playable
                     game.ShowJournal();yield return Shot("journal",locale,game,findings);
                     game.ShowCollection();Field(game,"giftPage",0);Invoke(game,"DrawMenu");yield return Shot("owned-gift",locale,game,findings);
                     Field(game,"giftPage",3);Invoke(game,"DrawMenu");yield return Shot("missing-gift",locale,game,findings);
-                    game.ShowWorkshop();Field(game,"workshopPage",0);Invoke(game,"DrawMenu");yield return Shot("built-workshop",locale,game,findings);
-                    Field(game,"workshopPage",3);Invoke(game,"DrawMenu");yield return Shot("future-workshop",locale,game,findings);
+                    game.ShowWorkshop();Invoke(game,"DrawMenu");yield return Shot("built-workshop",locale,game,findings);
+                    Invoke(game,"DrawMenu");yield return Shot("future-workshop",locale,game,findings);
                     game.ShowRequests();Field(game,"requestPage",0);Invoke(game,"DrawMenu");yield return Shot("request-done",locale,game,findings);
                     Field(game,"requestPage",2);Invoke(game,"DrawMenu");yield return Shot("request-pending",locale,game,findings);
                     game.ShowParcel();yield return Shot("parcel",locale,game,findings);
@@ -93,7 +93,7 @@ namespace Cascade.Editor.Playable
                     game.ShowRecords();yield return Shot("route",locale,game,findings);
                 }
                 game.SetUiLocale("en");game.ShowJournal();yield return Shot("journal-phone","en",game,findings,390,844);
-                game.ShowWorkshop();Field(game,"workshopPage",3);Invoke(game,"DrawMenu");yield return Shot("workshop-wide","en",game,findings,1440,900);
+                game.ShowWorkshop();Invoke(game,"DrawMenu");yield return Shot("workshop-wide","en",game,findings,1440,900);
                 game.ShowJourney();yield return Shot("equipped-map","en",game,findings,390,844);
             }
             finally {game.SetUiLocale("en");game.ShowJourney();Field(game,"persistenceReady",true);UnityEngine.Application.runInBackground=background;}

@@ -90,7 +90,7 @@ namespace Cascade.Presentation
             }else if(pending){
                 caption="Open parcel";action=()=>OpenSelectedTrophyParcel(id);enabled=!saveBlocked;
             }else if(collection){
-                caption=ShopCatalog.IsParcelExclusive(id)?(UiCopy)"Only from parcels":"Find in shop";
+                caption=ShopCatalog.IsParcelExclusive(id)?(UiCopy)"Only from parcels":"Shop";
                 action=()=>{ShowShop();shopTab=1;shopItem=Array.IndexOf(ShopCatalog.TrophyIds,id);DrawMenu();};
                 enabled=!ShopCatalog.IsParcelExclusive(id)&&!saveBlocked;
             }else if(ShopCatalog.IsParcelExclusive(id)){caption="Only from parcels";action=()=>{};enabled=false;
@@ -118,7 +118,7 @@ namespace Cascade.Presentation
         void OpenSelectedTrophyParcel(string id)
         {
             var receipt=Rewards.Parcels.FirstOrDefault(p=>p.GiftId==id&&!p.Claimed);if(receipt==null)return;
-            parcelReturnsToMap=false;parcelReturnScreen=CurrentScreen;parcelOrder=receipt.Order;parcelOpened=false;SetScreen(GameScreen.Parcel);
+            parcelReturnsToMap=false;parcelReturnScreen=CurrentScreen;parcelOrder=receipt.Order;parcelOpened=false;parcelAnimationShown=false;parcelBonusRound=false;parcelPreviewBonusClaimed=false;SetScreen(GameScreen.Parcel);
         }
     }
 }

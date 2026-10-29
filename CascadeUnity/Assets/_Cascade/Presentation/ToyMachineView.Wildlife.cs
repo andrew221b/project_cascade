@@ -73,15 +73,13 @@ namespace Cascade.Presentation
             for(int i=0;i<5;i++){
                 var kind=(WildlifePerchKind)((preferred+i)%5);
                 if(!occupied&&kind!=WildlifePerchKind.EmptyPlatform&&kind!=WildlifePerchKind.Receiver&&kind!=WildlifePerchKind.Frame)continue;
-                if(kind==WildlifePerchKind.Frame){
-                    target=new WildlifePerchTarget(kind,seed<.5f?0:1,seed,wildlifeRevision);
-                    if(Available(target))return true;
-                }else if(kind==WildlifePerchKind.EmptyPlatform){
+                if(kind==WildlifePerchKind.Frame||kind==WildlifePerchKind.Shape)continue;
+                if(kind==WildlifePerchKind.EmptyPlatform){
                     int count=floors.Count-Frame.ActiveFloor-1;
                     int offset=Mathf.FloorToInt(seed*count);
                     for(int n=0;n<count;n++){
                         int f=Frame.ActiveFloor+1+(offset+n)%count;
-                        target=new WildlifePerchTarget(kind,f,Mathf.Lerp(.12f,.88f,WildlifeMotion.Hash(salt+n*47+13)),wildlifeRevision);
+                        target=new WildlifePerchTarget(kind,f,Mathf.Lerp(.18f,.82f,WildlifeMotion.Hash(salt+n*47+13)),wildlifeRevision);
                         if(Available(target))return true;
                     }
                 }else if(kind==WildlifePerchKind.Receiver){
@@ -101,8 +99,8 @@ namespace Cascade.Presentation
                     }
                 }else{
                     for(int spot=0;spot<26;spot++){
-                        float x=spot<24?Mathf.Lerp(.025f,.975f,WildlifeMotion.Hash(salt+spot*97+163))
-                            :spot==24?Mathf.Lerp(.025f,.04f,seed):Mathf.Lerp(.96f,.975f,seed);
+                        float x=spot<24?Mathf.Lerp(.14f,.86f,WildlifeMotion.Hash(salt+spot*97+163))
+                            :spot==24?Mathf.Lerp(.14f,.18f,seed):Mathf.Lerp(.82f,.86f,seed);
                         target=new WildlifePerchTarget(kind,Frame.ActiveFloor,x,wildlifeRevision);
                         if(Available(target))return true;
                     }
@@ -120,13 +118,19 @@ namespace Cascade.Presentation
             point=Vector3.zero;angle=0;
             if(!WildlifeSceneVisible||target.Revision!=wildlifeRevision)return false;
             if(target.Kind==WildlifePerchKind.Frame){
-                var uv=WorldFrameArt.FrameContact(target.Index!=0,target.X,viewCamera.aspect);
-                point=viewCamera.ViewportToWorldPoint(new Vector3(uv.x,uv.y,viewCamera.WorldToViewportPoint(new Vector3(0,0,-.76f)).z));
-                point.z=-.76f;
+                return false;
             }else if(target.Kind==WildlifePerchKind.Receiver){
                 if(lowerAnchor==null||!lowerAnchor.gameObject.activeInHierarchy)return false;
                 lowerAnchor.GetWorldCorners(corners);
-                point=new Vector3(Mathf.Lerp(corners[0].x,corners[2].x,target.X),Mathf.Lerp(corners[0].y,corners[2].y,.86f),-.76f);
+                if(receiverSkin!=null&&receiverSkin.enabled){
+                    // The supporting wood is twelve pixels below the 499-pixel tray top.
+                    // Follow its actual sliced transform, including sway, heave and roll.
+                    point=receiverSkin.transform.TransformPoint(new Vector3((target.X-.5f)*receiverSkin.size.x/1.10f,(.5f-12f/499f)*receiverSkin.size.y,0));
+                }else{
+                    point=new Vector3(Mathf.Lerp(corners[0].x,corners[2].x,target.X),Mathf.Lerp(corners[0].y,corners[2].y,.94f),-.76f);
+                    point+=ReceiverPointOffset(point);
+                }
+                angle=ReceiverAngle;point.z=-.76f;
             }else if(target.Kind==WildlifePerchKind.Shape){
                 if(target.Index<0||target.Index>=tokens.Count||heldWeight==target.Index||!tokens[target.Index].transform.gameObject.activeInHierarchy)return false;
                 var piece=tokens[target.Index];
@@ -138,7 +142,7 @@ namespace Cascade.Presentation
                 if(f<0||f>=floors.Count||!Frame.FloorVisible(f)||floors[f].fracture>.03f)return false;
                 if(target.Kind==WildlifePerchKind.EmptyPlatform&&f<=Frame.ActiveFloor)return false;
                 if(target.Kind==WildlifePerchKind.Board&&f!=Frame.ActiveFloor)return false;
-                point=SurfacePoint(f,target.X,.405f);point.z=-.76f;angle=SurfaceAngle(f,target.X);
+                point=TimberSurfacePoint(f,target.X);point.z=-.76f;angle=SurfaceAngle(f,target.X);
                 if(target.Kind==WildlifePerchKind.Board){
                     float clearance=FloorSpan(f)*.032f;
                     foreach(var piece in tokens){

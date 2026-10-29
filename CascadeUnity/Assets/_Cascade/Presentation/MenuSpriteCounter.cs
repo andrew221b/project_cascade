@@ -25,7 +25,7 @@ namespace Cascade.Presentation
             Refresh();
         }
         void LateUpdate(){Refresh();}
-        void Refresh()
+        internal void Refresh()
         {
             if(source==null||digits==null)return;
             // Localized labels can arrive after the initial numeric copy. If a

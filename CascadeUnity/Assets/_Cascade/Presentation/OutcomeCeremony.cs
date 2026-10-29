@@ -22,6 +22,7 @@ namespace Cascade.Presentation
         public bool Success {get;private set;}
         public float Progress {get;private set;}=1;
         bool checkpoint;
+        internal RectTransform DescentRibbon=>checkpoint&&ribbon!=null&&ribbon.gameObject.activeInHierarchy?ribbon:null;
         public void Initialize(CascadeGame owner,RectTransform story,Image friend,TextMeshProUGUI heading,OutcomeLightGraphic glow)
         {
             game=owner;root=story;ribbon=heading.transform.parent as RectTransform;hero=friend;portrait=friend.rectTransform;heroRest=portrait.anchoredPosition;title=heading;light=glow;
@@ -33,10 +34,25 @@ namespace Cascade.Presentation
         public IEnumerator Play(bool success,bool isCheckpoint)
         {
             Success=success;checkpoint=isCheckpoint;
+            // Failure goes directly to its stable result screen; never expose the old "Try again" ceremony.
+            if(!success){Running=false;Progress=1;root.gameObject.SetActive(false);ribbon.gameObject.SetActive(false);yield break;}
+            game.BeginOutcomeReceiver();
             // The receiver has already landed. Final victory goes straight to its star screen.
             if(success&&!checkpoint){
                 root.gameObject.SetActive(false);ribbon.gameObject.SetActive(false);
-                Running=false;Progress=1;game.Feedback.Haptic();yield break;
+                Running=true;Progress=0;game.Feedback.Haptic();
+                // Let the exact row read as landed before the result dissolves in.
+                // Do not relocate the receiver or restart its landing spring here.
+                float hold=0,holdDuration=game.ReducedMotion?0:.24f;
+                try{
+                    while(hold<holdDuration){
+                        if(!game.IntroductionAnimationAllowed){yield return null;continue;}
+                        Progress=Mathf.Clamp01(hold/holdDuration);
+                        game.Machine.SetReceiverLight(Mathf.SmoothStep(0,.65f,Progress));
+                        hold+=Mathf.Min(.05f,Time.unscaledDeltaTime);yield return null;
+                    }
+                }finally{Running=false;Progress=1;}
+                yield break;
             }
             Running=true;Progress=0;
             root.gameObject.SetActive(true);hero.gameObject.SetActive(!checkpoint);hero.sprite=success?hopeful:thinking??hopeful;
@@ -83,7 +99,9 @@ namespace Cascade.Presentation
         }
         public void Settle()
         {
-            if(game==null)return;Running=false;Progress=1;if(ribbon!=null)ribbon.localScale=Vector3.one;
+            if(game==null)return;
+            if(Running&&(checkpoint||!Success))game.PlaceOutcomeReceiver(1,Success);
+            Running=false;Progress=1;if(ribbon!=null)ribbon.localScale=Vector3.one;
             portrait.anchoredPosition=heroRest;portrait.localScale=Vector3.one;portrait.localRotation=Quaternion.identity;group.alpha=1;
             light.SetLight(Success&&!checkpoint?.75f:0,1);
             for(int i=0;i<game.Machine.TokenCount;i++){game.OffsetPresentedToken(i,Vector3.zero,Vector2.one);game.Machine.SetPiecePose(i,PiecePose.Delivered);}
@@ -92,7 +110,7 @@ namespace Cascade.Presentation
         public void HideReferenceFailure(){if(root!=null)root.gameObject.SetActive(false);if(ribbon!=null)ribbon.gameObject.SetActive(false);}
         public void ShowResult(GameScreen screen)
         {
-            bool terminal=screen==GameScreen.Fail||screen==GameScreen.Checkpoint;
+            bool terminal=screen==GameScreen.Checkpoint;
             if(Running&&screen==GameScreen.Playing)return;
             root.gameObject.SetActive(terminal);ribbon.gameObject.SetActive(terminal);if(!terminal){game.Machine.SetReceiverLight(0);return;}
             checkpoint=screen==GameScreen.Checkpoint;Success=checkpoint;hero.gameObject.SetActive(!checkpoint);hero.sprite=Success?hopeful:thinking??hopeful;

@@ -78,7 +78,9 @@ namespace Cascade.Tests
         Rect Ink(RectTransform target,RectTransform space)
         {
             var label=target.GetComponent<TextMeshProUGUI>();Bounds bounds;
-            if(label!=null){label.ForceMeshUpdate();Assert.That(label.textInfo.lineCount,Is.LessThanOrEqualTo(1),label.name+" stays on one line after layout and render");bounds=label.textBounds;}else bounds=new Bounds(target.rect.center,target.rect.size);
+            if(label!=null){label.ForceMeshUpdate();Assert.That(label.textInfo.lineCount,Is.LessThanOrEqualTo(1),label.name+" stays on one line after layout and render");bounds=CenteredContentRow.GlyphBounds(label);}
+            else if(target.GetComponent<PauseGlyphGraphic>() is PauseGlyphGraphic glyph&&glyph.canvasRenderer.GetMesh() is Mesh mesh&&mesh.vertexCount>0)bounds=mesh.bounds;
+            else bounds=new Bounds(target.rect.center,target.rect.size);
             Assert.That(bounds.size.x,Is.GreaterThanOrEqualTo(0),target.name+" has a real painted bound");
             var a=(Vector2)space.InverseTransformPoint(target.TransformPoint(bounds.min));var b=(Vector2)space.InverseTransformPoint(target.TransformPoint(bounds.max));
             return Rect.MinMaxRect(Mathf.Min(a.x,b.x),Mathf.Min(a.y,b.y),Mathf.Max(a.x,b.x),Mathf.Max(a.y,b.y));
@@ -88,8 +90,8 @@ namespace Cascade.Tests
             foreach(var row in game.GetComponentsInChildren<CenteredContentRow>()){
                 var bounds=row.Elements.Select(r=>Ink(r,row.Surface)).ToArray();if(bounds.Length==0)continue;
                 float left=bounds.Min(r=>r.xMin),right=bounds.Max(r=>r.xMax),low=bounds.Min(r=>r.yMin),high=bounds.Max(r=>r.yMax),unit=row.LocalUnit;
-                Assert.That((left+right)*.5f,Is.EqualTo(row.Surface.rect.center.x).Within(.8f*unit),screen+" / "+row.Surface.name+" horizontal centre");
-                Assert.That((low+high)*.5f,Is.EqualTo(row.Surface.rect.center.y).Within(.8f*unit),screen+" / "+row.Surface.name+" vertical centre");
+                Assert.That((left+right)*.5f,Is.EqualTo(CenteredContentRow.ReadingRect(row.Surface).center.x).Within(.8f*unit),screen+" / "+row.Surface.name+" horizontal centre");
+                Assert.That((low+high)*.5f,Is.EqualTo(CenteredContentRow.ReadingRect(row.Surface).center.y).Within(.8f*unit),screen+" / "+row.Surface.name+" vertical centre");
                 Assert.That(left,Is.GreaterThanOrEqualTo(row.Surface.rect.xMin-1*unit),screen+" / "+row.Surface.name+" left fit");
                 Assert.That(right,Is.LessThanOrEqualTo(row.Surface.rect.xMax+1*unit),screen+" / "+row.Surface.name+" right fit");
                 for(int i=1;i<bounds.Length;i++){
@@ -103,6 +105,36 @@ namespace Cascade.Tests
         {
             game.SetEditorSafeInsets(Vector4.zero);game.SetUiLocale("ru");Configure(0);yield return Shot("reference-wind-ru-720");
             Configure(8);yield return Shot("reference-night-ru-720");
+        }
+        [UnityTest] public IEnumerator HalfRatingsKeepTheirPaintedHalfAndExactIslandTotal()
+        {
+            Resize(390,844);game.SetUiLocale("ru");Configure(0);var p=(PlayerProfile)Field("profile");
+            var receipt=p.Clears.Single(c=>c.CampaignNodeId==game.Catalog.PrimaryLevels[0].Definition.CampaignNodeId);
+            foreach(int units in new[]{2,3,4,5,6}){
+                receipt.BestStars=units/2;receipt.BestHalfStar=units%2==1;Call("SetScreen",GameScreen.JourneyMap);yield return new WaitForSecondsRealtime(.1f);Canvas.ForceUpdateCanvases();
+                var row=game.GetComponentsInChildren<Button>().Single(b=>b.name=="Island level 1");
+                for(int s=0;s<3;s++){
+                    var gold=row.GetComponentsInChildren<Image>().SingleOrDefault(i=>i.name=="Island gold star "+s);float fill=Mathf.Clamp01(units*.5f-s);
+                    if(fill==0)Assert.That(gold,Is.Null);else{
+                        Assert.That(gold,Is.Not.Null);Assert.That(gold.type,Is.EqualTo(Image.Type.Filled));Assert.That(gold.fillMethod,Is.EqualTo(Image.FillMethod.Horizontal));Assert.That(gold.fillOrigin,Is.Zero);Assert.That(gold.fillAmount,Is.EqualTo(fill));
+                        var vertices=gold.canvasRenderer.GetMesh().vertices;Assert.That(vertices.Max(v=>v.x),Is.EqualTo(gold.rectTransform.rect.xMin+gold.rectTransform.rect.width*fill).Within(.01f),"The rendered gold mesh stops exactly at the half-star boundary");
+                    }
+                }
+                Assert.That(game.GetComponentsInChildren<TextMeshProUGUI>().Single(t=>t.name=="Reference shop island progress").text,Is.EqualTo(LevelCompletion.FormatStars(units*.5+4)+" / 36"));
+            }
+            receipt.BestStars=2;receipt.BestHalfStar=true;Call("SetScreen",GameScreen.JourneyMap);yield return Shot("half-stars-2-5-ru-390");
+        }
+        [UnityTest] public IEnumerator CompactActionsCentrePaintedIconsWithFourLogicalPixelGaps()
+        {
+            foreach(string locale in new[]{"en","ru","uk"})foreach(int width in new[]{320,390,430})foreach(bool large in new[]{false,true}){
+                Resize(width,width==320?693:width==430?932:844);game.SetEditorSafeInsets(new Vector4(.01f,.04f,.01f,.035f));game.SetUiLocale(locale);game.Preferences.LargeText=large;Configure(0);
+                yield return new WaitForSecondsRealtime(.12f);Canvas.ForceUpdateCanvases();VerifyRows(locale+"-"+width+"-"+large);
+                foreach(var group in game.GetComponentsInChildren<CenteredContentRow>().Where(g=>g.Surface.name=="Island action centred contents")){
+                    var bounds=group.Elements.Select(r=>Ink(r,group.Surface)).ToArray();float unit=group.LocalUnit;
+                    Assert.That(bounds.Min(b=>b.yMin),Is.GreaterThanOrEqualTo(group.Surface.rect.yMin-unit));Assert.That(bounds.Max(b=>b.yMax),Is.LessThanOrEqualTo(group.Surface.rect.yMax+unit));
+                }
+                if(large&&width==390)yield return Shot("compact-actions-"+locale+"-390");
+            }
         }
         [UnityTest,Timeout(600000)] public IEnumerator NineWorldsHaveUniqueArtAndCentredLocalizedRowsOnPhones()
         {
@@ -137,7 +169,16 @@ namespace Cascade.Tests
             ExecuteEvents.Execute(handler,pointer,ExecuteEvents.endDragHandler);yield return null;Assert.That(scroll.content.anchoredPosition.y,Is.GreaterThan(50));
             Assert.That(bar.value,Is.LessThan(.95f));Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.JourneyMap));Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));Assert.That(game.ShopCoins,Is.EqualTo(coins));
             scroll.StopMovement();bar.value=0;Canvas.ForceUpdateCanvases();yield return Shot("scrolled-bottom-390");Assert.That(scroll.verticalNormalizedPosition,Is.EqualTo(0).Within(.001f));
-            var last=game.GetComponentsInChildren<Button>().Single(b=>b.name=="Island level 12");var bounds=Ink((RectTransform)last.transform,scroll.viewport);Assert.That(bounds.yMin,Is.GreaterThanOrEqualTo(scroll.viewport.rect.yMin-.5f));
+            var last=game.GetComponentsInChildren<Button>().Single(b=>b.name=="Island level 12");var bounds=Ink((RectTransform)last.transform,scroll.viewport);Assert.That(bounds.yMin-scroll.viewport.rect.yMin,Is.GreaterThanOrEqualTo(IslandLevelLayout.EndOfListGap-.5f),"The final card has persistent room below it at the settled scroll limit");
+            foreach(var size in new[]{new Vector2Int(320,568),new Vector2Int(390,844),new Vector2Int(768,1024)})foreach(string locale in new[]{"en","ru","uk"}){
+                Resize(size.x,size.y);game.SetEditorSafeInsets(new Vector4(0,.04f,0,.035f));game.SetUiLocale(locale);Configure(0);yield return null;yield return null;
+                scroll=game.GetComponentsInChildren<ScrollRect>().Single();bar=game.GetComponentsInChildren<Scrollbar>().Single();scroll.StopMovement();bar.value=0;
+                yield return Shot("bottom-gap-"+locale+"-"+size.x);
+                last=game.GetComponentsInChildren<Button>().Single(b=>b.name=="Island level 12");bounds=Ink((RectTransform)last.transform,scroll.viewport);
+                Assert.That(bounds.yMin-scroll.viewport.rect.yMin,Is.GreaterThanOrEqualTo(IslandLevelLayout.EndOfListGap-.5f),locale+size.x+" settled bottom padding");
+                Assert.That(bounds.yMax,Is.LessThanOrEqualTo(scroll.viewport.rect.yMax+.5f),"The whole last card remains reachable");
+                Assert.That(scroll.verticalNormalizedPosition,Is.EqualTo(0).Within(.001f));
+            }
             var locked=game.GetComponentsInChildren<Button>().Single(b=>b.name=="Island action 12");Assert.That(locked.interactable,Is.False);locked.onClick.Invoke();Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.JourneyMap));
             game.CloseJourneyIsland();yield return null;Assert.That(game.BrowsedIsland,Is.EqualTo(-1));Assert.That(game.MapWorld,Is.Zero);Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
         }

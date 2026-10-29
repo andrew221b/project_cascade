@@ -1,0 +1,12 @@
+# CASCADE
+
+CASCADE is a single-player shape-and-word puzzle adventure for iOS and Android, currently being prepared for release. One persistent row is reordered across destructible platforms to an exact receiver target. No matching or clearing is involved.
+
+## Official pages
+- [Game](https://cascade-sky-gardens.active-seed-4233.chatgpt.site/)
+- [privacy](https://cascade-sky-gardens.active-seed-4233.chatgpt.site/privacy/)
+- [terms](https://cascade-sky-gardens.active-seed-4233.chatgpt.site/terms/)
+- [support](https://cascade-sky-gardens.active-seed-4233.chatgpt.site/support/)
+- [data-request](https://cascade-sky-gardens.active-seed-4233.chatgpt.site/data-request/)
+
+Do not infer a public launch date, live sign-in, ratings or store price from this preview.

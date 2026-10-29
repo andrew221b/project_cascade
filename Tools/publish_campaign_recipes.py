@@ -10,8 +10,8 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[1]
 EDITOR = Path(os.environ.get('CASCADE_UNITY_EDITOR', '/Applications/Unity/Hub/Editor/6000.3.8f1/Unity.app/Contents'))
 RUNTIME = EDITOR / 'Resources/Scripting'
-if any(arg not in ('--check', '--refresh-opening', '--deduplicate', '--refresh-pacing', '--deduplicate-stages') for arg in sys.argv[1:]):
-    raise SystemExit('Usage: publish_campaign_recipes.py [--check | --refresh-opening | --deduplicate | --refresh-pacing | --deduplicate-stages]')
+if any(arg not in ('--check', '--repin-sources', '--refresh-opening', '--deduplicate', '--refresh-pacing', '--deduplicate-stages') for arg in sys.argv[1:]):
+    raise SystemExit('Usage: publish_campaign_recipes.py [--check | --repin-sources | --refresh-opening | --deduplicate | --refresh-pacing | --deduplicate-stages]')
 with tempfile.TemporaryDirectory(prefix='cascade-publish-recipes-') as directory:
     work = Path(directory)
     libraries = RUNTIME / 'MonoBleedingEdge/lib/mono/4.5'

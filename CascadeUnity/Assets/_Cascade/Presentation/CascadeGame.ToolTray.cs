@@ -28,7 +28,7 @@ namespace Cascade.Presentation
             fieldHeadingArt.gameObject.AddComponent<ReferenceHeaderTheme>().Initialize(this);
             fieldHeading=ReferenceText("field tools heading",fieldTrayStage,ReferenceCopy("My things","Мои вещи","Мої речі"),210,263,300,60,46);
             fieldHeading.fontStyle=FontStyles.Bold;
-            var close=ReferenceButton("Close field tools",fieldTrayStage,566,251,78,82,()=>SetToolTray(false),"RedAction");ReferenceText("field tools close",ReferenceButtonBody(close),UiCopy.Raw("×"),13,9,52,64,57,true);
+            var close=ReferenceButton("Close field tools",fieldTrayStage,566,251,78,82,()=>SetToolTray(false),"RedAction");RegisterButtonDesign(close,GameButtonRole.IconSecondary);ReferenceText("field tools close",ReferenceButtonBody(close),UiCopy.Raw("×"),13,9,52,64,57,true);
             for(int display=0;display<ShopCatalog.ToolCount;display++){
                 int item=ItemsDisplayOrder[display],column=display%3,row=display/3;float x=120+column*165,y=361+row*158;
                 var button=ReferenceButton("Field tool "+item,fieldTrayStage,x,y,149,149,()=>SelectFieldTool(item));fieldToolButtons[item]=button;
@@ -42,8 +42,8 @@ namespace Cascade.Presentation
             fieldTrayLimit=ReferenceText("field selected title",fieldTrayPaper,UiCopy.Raw(""),57,46,425,35,26);
             fieldTrayDescription=ReferenceText("field selected description",fieldTrayPaper,UiCopy.Raw(""),58,82,423,50,21,false,true);
             fieldTrayDescription.alignment=TextAlignmentOptions.Center;
-            fieldApplyButton=ReferenceButton("Apply field tool",fieldTrayStage,114,801,284,91,ApplySelectedFieldTool,"GrayAction");fieldApplyCaption=ReferenceText("field apply caption",ReferenceButtonBody(fieldApplyButton),ReferenceCopy("Choose help","Выбери помощь","Обери допомогу"),18,16,248,58,30,true);
-            var shop=ReferenceButton("Field tools shop",fieldTrayStage,400,801,218,91,OpenFieldToolsShop,"GreenAction");ReferencePicture("Field tools storefront",ReferenceButtonBody(shop),ItemsArt("Storefront"),23,13,68,65);fieldShopCaption=ReferenceText("field shop caption",ReferenceButtonBody(shop),ReferenceCopy("Shop","Магазин","Магазин"),96,17,108,55,28,true);
+            fieldApplyButton=ReferenceButton("Apply field tool",fieldTrayStage,64,801,480,104,ApplySelectedFieldTool,"GrayAction");fieldApplyCaption=ReferenceText("field apply caption",ReferenceButtonBody(fieldApplyButton),ReferenceCopy("Choose help","Выбери помощь","Обери допомогу"),18,16,248,58,30,true);
+            var shop=ReferenceButton("Field tools shop",fieldTrayStage,560,805,96,96,OpenFieldToolsShop,"GreenAction");ReferencePicture("Field tools storefront",ReferenceButtonBody(shop),ItemsArt("Storefront"),23,13,68,65);RegisterButtonDesign(shop,GameButtonRole.IconPrimary);fieldShopCaption=ReferenceText("field shop caption",ReferenceButtonBody(shop),ReferenceCopy("Shop","Магазин","Магазин"),96,17,108,55,28,true);
             SetToolTray(false,true);
         }
         public void ToggleFieldToolTray()

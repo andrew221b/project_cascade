@@ -98,7 +98,7 @@ namespace Cascade.Tests
             yield return Await(()=>game.CurrentScreen==GameScreen.Checkpoint||game.CurrentScreen==GameScreen.Win,"Stage must reach its result");
         }
 
-        [UnityTest] public IEnumerator FirstPlayReadsComicStartsLevelOneAndItsVictoryOpensMapBeforeLevelTwo()
+        [UnityTest] public IEnumerator FirstPlayReadsComicStartsLevelOneAndItsVictoryOffersNextAndMap()
         {
             Assert.That(Profile.AllClears,Is.Empty);yield return Click("Startgame");yield return ReadFirstComic();
             for(int stage=0;stage<3;stage++){
@@ -106,8 +106,8 @@ namespace Cascade.Tests
                 if(stage<2){game.GoLower();yield return Await(()=>game.CurrentScreen==GameScreen.Playing&&game.Interaction.CanPlay,"Next stage must start");}
             }
             Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Win));Assert.That(Profile.AllClears.Count(),Is.EqualTo(1));
-            Assert.That(Control("Continue completion").GetComponentInChildren<TMP_Text>().text,Is.EqualTo("Back to map"));
-            yield return Click("Continue completion");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.JourneyMap));Assert.That(game.ConversationOpen,Is.False);
+            Assert.That(Control("Continue completion").GetComponentInChildren<TMP_Text>().text,Is.EqualTo("Next level"));
+            yield return Click("Completion map");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.JourneyMap));Assert.That(game.ConversationOpen,Is.False);
             Assert.That(game.LastCompletion.Acknowledged,Is.True);Assert.That(game.LastCompletion.NextNode,Is.Null);
             string delivered=game.Interaction.Attempt.CurrentStateHash;
             game.ShowHome();yield return Click("Startgame");Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.JourneyMap));

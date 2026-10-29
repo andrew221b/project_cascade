@@ -1,0 +1,11 @@
+import { sql } from 'drizzle-orm';
+import { sqliteTable, text, integer, index, uniqueIndex } from 'drizzle-orm/sqlite-core';
+export const accounts=sqliteTable('accounts',{player:text('player').primaryKey(),version:integer('version').notNull(),payload:text('payload').notNull()});
+export const owners=sqliteTable('owners',{key:text('key').primaryKey(),owner:text('owner').notNull(),product:text('product').notNull(),bundle:text('bundle').notNull()});
+export const tombstones=sqliteTable('tombstones',{owner:text('owner').primaryKey(),created:integer('created').notNull()});
+export const rewards=sqliteTable('rewards',{id:text('id').primaryKey(),player:text('player').notNull(),kind:text('kind').notNull(),subject:text('subject').notNull(),unit:text('unit').notNull(),created:integer('created').notNull(),expires:integer('expires').notNull(),transaction:text('transaction').unique(),confirmed:integer('confirmed').notNull().default(0)},t=>[index('rewards_player').on(t.player),uniqueIndex('one_confirmed_parcel_reward').on(t.player,t.kind,t.subject).where(sql`${t.confirmed}=1 AND ${t.kind} IN ('parcel_open','parcel_bonus')`)]);
+export const subscriptions=sqliteTable('subscriptions',{chain:text('chain').primaryKey(),player:text('player').notNull(),store:text('store').notNull(),product:text('product').notNull(),proof:text('proof').notNull(),expires:integer('expires').notNull(),observed:integer('observed').notNull(),generation:integer('generation').notNull().default(0),supersededBy:text('superseded_by')},t=>[index('subscriptions_player').on(t.player)]);
+export const inbox=sqliteTable('inbox',{id:text('id').primaryKey(),store:text('store').notNull(),payload:text('payload').notNull(),created:integer('created').notNull(),done:integer('done').notNull().default(0)});
+export const deletions=sqliteTable('deletions',{owner:text('owner').primaryKey(),player:text('player').notNull(),created:integer('created').notNull(),done:integer('done').notNull().default(0),legacyIds:text('legacy_ids').notNull().default('[]')});
+export const deleteCodes=sqliteTable('delete_codes',{hash:text('hash').primaryKey(),player:text('player').notNull(),expires:integer('expires').notNull()});
+export const serverCredentials=sqliteTable('server_credentials',{id:text('id').primaryKey(),sealed:text('sealed').notNull(),signer:text('signer').notNull(),created:integer('created').notNull()});

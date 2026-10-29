@@ -1,0 +1,29 @@
+{
+  "projectId": "prj_CgWFXQjQsExiOufw8Ma5dgx21ez4",
+  "teamId": "team_Q3l5q2jEfXkaNjMmRJt51o6b",
+  "requestBody": {
+    "overwrite": false,
+    "routes": [
+      {
+        "id": "cebb5388-e4b0-4d6f-a5f4-4df272dab499",
+        "name": "Flying Ladders AdMob SSV",
+        "description": "Forward the public AdMob callback to the stateless Unity gateway; no website or game data changes.",
+        "enabled": true,
+        "route": {
+          "src": "^/api/admob/ssv/?$",
+          "dest": "https://cascade-sky-gardens.active-seed-4233.chatgpt.site/api/admob/ssv",
+          "has": [
+            {
+              "type": "host",
+              "value": "flyingladders.vickand.com"
+            }
+          ],
+          "caseSensitive": true,
+          "headers": {
+            "Cache-Control": "no-store"
+          }
+        }
+      }
+    ]
+  }
+}

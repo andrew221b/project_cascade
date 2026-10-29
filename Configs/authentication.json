@@ -1,8 +1,13 @@
 {
   "unityProjectId": "a1b8a760-5a0c-4c2d-8ae7-54c1b411259a",
-  "unityPlayerAccountsClientId": "",
+  "unityPlayerAccountsClientId": "7739ad6c-68cc-421f-9673-6eef1b436b68",
   "unityEnvironmentName": "production",
   "cloudCodeModuleName": "CascadeAccount",
-  "cloudCodeDeployedAndVerified": false,
-  "purchaseVerificationConfigured": false
+  "cloudCodeDeployedAndVerified": true,
+  "purchaseVerificationConfigured": true,
+  "serverRewardsConfigured": true,
+  "accountDeletionUrl": "https://flyingladders.vickand.com/delete-account/",
+  "unityPlayerAccountsDisplayName": "Flying Ladders",
+  "privacyPolicyUrl": "https://flyingladders.vickand.com/privacy/",
+  "termsOfUseUrl": "https://flyingladders.vickand.com/terms/"
 }

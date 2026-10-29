@@ -85,7 +85,7 @@ namespace Cascade.Presentation
         }
         bool RequireActionLesson(MechanicLesson lesson,int? onFloor=null)
         {
-            if(!Preferences.Tutorials)return false;
+            if(!Preferences.Tutorials&&OptionalControlLesson(lesson))return false;
             if(MechanicPopupOpen)return true;
             if(PendingLesson.HasValue){
                 if(PendingLesson.Value!=lesson&&Interaction.PracticeGuidanceOnly)DeferLessonPractice();
@@ -166,7 +166,7 @@ namespace Cascade.Presentation
             // A stamp demonstrates a possible bonus; it must not force the exact
             // solver command. A wrong symbol is a valid player choice and simply
             // leaves the stamp uncollected.
-            bool suggestion=lesson<=MechanicLesson.LandingWind||lesson==MechanicLesson.LiveGust||lesson==MechanicLesson.Stamp;
+            bool suggestion=lesson==MechanicLesson.Swap||lesson<=MechanicLesson.LandingWind||lesson==MechanicLesson.LiveGust||lesson==MechanicLesson.Stamp;
             return Interaction.RestrictPractice(LessonRequestCurrent?lessonSpecial:null,guidanceOnly:suggestion);
         }
         void DeferLessonPractice()

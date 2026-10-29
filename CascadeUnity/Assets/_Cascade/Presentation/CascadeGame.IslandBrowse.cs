@@ -18,7 +18,7 @@ namespace Cascade.Presentation
         int[] IslandJourneyStops(int world,int island)
         {
             if(world<0||world>=JourneyStory.WorldCount||island<0||island>=5)return Array.Empty<int>();
-            var offered=JourneySequence().Select(c=>c.Definition.CampaignNodeId).ToHashSet();
+            PreferredLevels();var offered=preferredOfferedNodes;
             return Enumerable.Range(JourneyStory.IslandFirst(world,island),JourneyStory.IslandLevels(world,island))
                 .Where(n=>n<Catalog.PrimaryLevels.Count&&offered.Contains(Catalog.PrimaryLevels[n].Definition.CampaignNodeId)).ToArray();
         }

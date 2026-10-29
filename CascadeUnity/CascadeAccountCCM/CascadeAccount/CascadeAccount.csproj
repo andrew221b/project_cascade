@@ -24,6 +24,8 @@
     <EmbeddedResource Include="../../../Data/words_en.json" LogicalName="CascadeAccount.Published.words_en.json" />
     <EmbeddedResource Include="../../../Data/words_ru.json" LogicalName="CascadeAccount.Published.words_ru.json" />
     <EmbeddedResource Include="../../../Data/words_uk.json" LogicalName="CascadeAccount.Published.words_uk.json" />
+    <EmbeddedResource Include="../../../Data/stage_words_v1.json" LogicalName="CascadeAccount.Published.stage_words_v1.json" />
+    <EmbeddedResource Include="../../../Data/stage_variety_templates_v1.json" LogicalName="CascadeAccount.Published.stage_variety_templates_v1.json" />
     <EmbeddedResource Include="../../../Data/levels.json" LogicalName="CascadeAccount.Published.levels.json" />
     <EmbeddedResource Include="../../../Data/campaign_extension.json" LogicalName="CascadeAccount.Published.campaign_extension.json" />
   </ItemGroup>

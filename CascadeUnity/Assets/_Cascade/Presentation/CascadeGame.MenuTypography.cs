@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 namespace Cascade.Presentation
@@ -20,8 +21,9 @@ namespace Cascade.Presentation
             float unit=MenuUnit;
             foreach(var label in menuRoot.GetComponentsInChildren<TextMeshProUGUI>()){
                 if(label.name=="Illustrated numeral copy"||label.name.StartsWith("Reference shop",System.StringComparison.Ordinal))continue;
-                if(IsSymbolFace(label.name)||label.name=="Mini glyph")continue;
+                if(IsSymbolFace(label.name)||label.name=="Mini glyph"||CurrentScreen==GameScreen.Prologue&&themedLabels.Contains(label))continue;
                 var button=label.GetComponentInParent<UnityEngine.UI.Button>();
+                if(button?.GetComponent<GameButtonDesign>()?.Bound==true&&label.GetComponentInParent<RoundHudBadge>()==null)continue;
                 if(label.name=="Label"&&button!=null){
                     label.font=Preferences.LargeText?Resources.Load<TMP_FontAsset>("CascadeArt/Fonts/InterfaceTitle")??art.titleFont:art.titleFont;
                     if(CurrentScreen==GameScreen.Settings){
@@ -43,7 +45,7 @@ namespace Cascade.Presentation
                         // action on one line and shrink the caption within its button.
                         label.enableAutoSizing=true;label.fontSizeMin=14*unit;
                         label.fontSizeMax=(Preferences.LargeText?19:18)*unit;
-                        label.margin=new Vector4(1,3,1,3)*unit;
+                        label.margin=new Vector4(2,3,2,3)*unit;
                         label.textWrappingMode=TextWrappingModes.NoWrap;label.lineSpacing=0;
                         label.rectTransform.anchorMin=new Vector2(.23f,0);label.rectTransform.anchorMax=new Vector2(.87f,1);
                     }else ApplyControlCaption(label,unit);
@@ -64,13 +66,15 @@ namespace Cascade.Presentation
             }
             ApplyMenuSpriteCounters();
         }
+        readonly List<TextMeshProUGUI> illustratedNumberLabels=new List<TextMeshProUGUI>(128);
         void ApplyMenuSpriteCounters()
         {
             if(safeRoot==null)return;
-            foreach(var label in safeRoot.GetComponentsInChildren<TextMeshProUGUI>()){
+            safeRoot.GetComponentsInChildren(false,illustratedNumberLabels);
+            foreach(var label in illustratedNumberLabels){
                 if(label==null||label.name=="World comic progress"||label.name.StartsWith("Reference shop",System.StringComparison.Ordinal)||label.name=="Illustrated numeral copy"||label.GetComponent<InlineIllustratedDigits>()!=null
                     ||label.GetComponentInParent<InlineIllustratedDigits>()!=null||label.GetComponent<MenuSpriteCounter>()!=null
-                    ||IsSymbolFace(label.name)||label.name=="Mini glyph")continue;
+                    ||label.GetComponentInParent<RoundHudBadge>()!=null||IsSymbolFace(label.name)||label.name=="Mini glyph")continue;
                 // Preserve the island's compact completed/available level badge as requested.
                 if(label.name.StartsWith("Island completed levels ",System.StringComparison.Ordinal))continue;
                 string value=label.text;

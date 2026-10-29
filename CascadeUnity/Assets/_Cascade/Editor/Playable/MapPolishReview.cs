@@ -131,7 +131,7 @@ namespace Cascade.Editor.Playable
                 var home=Bounds((RectTransform)buttons.Single(b=>b.name=="Back").transform);var settings=Bounds((RectTransform)buttons.Single(b=>b.name=="Map settings").transform);
                 var heading=Bounds(title.rectTransform);
                 if(Mathf.Abs(home.center.y-settings.center.y)>.05f||home.center.y>=heading.center.y)throw new InvalidOperationException(name+": corner controls must align below the title");
-                if(game.GetComponentsInChildren<MapRopeBridge>().Length!=0)throw new InvalidOperationException(name+": unwanted decorative bridges");
+                if(game.GetComponentsInChildren<Component>().Any(c=>c.GetType().Name=="MapRopeBridge"))throw new InvalidOperationException(name+": unwanted decorative bridges");
                 foreach(var button in buttons.Where(b=>b.interactable&&new[]{"Back","Map settings","Travel","MapmodeShapes","MapmodeWords","MapmodeMixed"}.Contains(b.name))){
                     var p=RectTransformUtility.WorldToScreenPoint(Camera.main,button.transform.position);var hits=new List<RaycastResult>();EventSystem.current.RaycastAll(new PointerEventData(EventSystem.current){position=p},hits);
                     if(hits.Count==0||hits[0].gameObject.GetComponentInParent<Button>()!=button)throw new InvalidOperationException(name+": button covered: "+button.name);

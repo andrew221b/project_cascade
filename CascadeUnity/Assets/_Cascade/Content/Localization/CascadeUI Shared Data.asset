@@ -782,15 +782,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 472899737
-    m_Key: Light the first bridge
+    m_Key: Light the first lower lamp
     m_Metadata:
       m_Items: []
   - m_Id: 472899738
-    m_Key: Open the wind gate
+    m_Key: Restore the wind-gate lamp
     m_Metadata:
       m_Items: []
   - m_Id: 472899739
-    m_Key: Mend the sky lift
+    m_Key: Restore the sky-lift relay
     m_Metadata:
       m_Items: []
   - m_Id: 472899740
@@ -798,11 +798,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 472899741
-    m_Key: Bring water to the village
+    m_Key: Restore water to the far tap
     m_Metadata:
       m_Items: []
   - m_Id: 472899742
-    m_Key: Repair the post boat
+    m_Key: Light the boat repair landing
     m_Metadata:
       m_Items: []
   - m_Id: 472899743
@@ -1224,15 +1224,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 49797242281986
-    m_Key: Lift the mail basket
+    m_Key: Send Nora's letter to Clara
     m_Metadata:
       m_Items: []
   - m_Id: 49797242281987
-    m_Key: Send Gran's letter
+    m_Key: Light the sorting room and check the order
     m_Metadata:
       m_Items: []
   - m_Id: 49797242281988
-    m_Key: Mend the little pier
+    m_Key: Light the pier below the tide
     m_Metadata:
       m_Items: []
   - m_Id: 49797242281989
@@ -1244,7 +1244,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 49797242281991
-    m_Key: Carry the pond light
+    m_Key: Prepare the spare travelling lamp
     m_Metadata:
       m_Items: []
   - m_Id: 49797242281992
@@ -1252,63 +1252,63 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 49797242281993
-    m_Key: Open the leaf door
+    m_Key: Free the trapped key-register page
     m_Metadata:
       m_Items: []
   - m_Id: 49797242281994
-    m_Key: Untie the old shelves
+    m_Key: Restore the archive shelf lift
     m_Metadata:
       m_Items: []
   - m_Id: 49797242281995
-    m_Key: Find the storm map
+    m_Key: Recover the service permit record
     m_Metadata:
       m_Items: []
   - m_Id: 49797242281996
-    m_Key: Keep the page dry
+    m_Key: Save the north-route petitions
     m_Metadata:
       m_Items: []
   - m_Id: 49797242281997
-    m_Key: Read Gran's note
+    m_Key: Prepare the snow-route copy
     m_Metadata:
       m_Items: []
   - m_Id: 49797242281998
-    m_Key: Light the snow steps
+    m_Key: Light the safe snow fork
     m_Metadata:
       m_Items: []
   - m_Id: 49797242281999
-    m_Key: Fix the warm shelter
+    m_Key: Light the shelter and take a rest
     m_Metadata:
       m_Items: []
   - m_Id: 49797242282000
-    m_Key: Cross the frozen arch
+    m_Key: Check the frozen arch's far anchor
     m_Metadata:
       m_Items: []
   - m_Id: 49797242282001
-    m_Key: Carry Pip's blanket
+    m_Key: Light the shelter supply path
     m_Metadata:
       m_Items: []
   - m_Id: 49797246476288
-    m_Key: Find the beacon road
+    m_Key: Signal Ada from the beacon road
     m_Metadata:
       m_Items: []
   - m_Id: 49797246476289
-    m_Key: Open the last bridge
+    m_Key: Restore Ada's last bridge lamp
     m_Metadata:
       m_Items: []
   - m_Id: 49797246476290
-    m_Key: Mend the lantern lift
+    m_Key: Find the receipt for Felix's permit
     m_Metadata:
       m_Items: []
   - m_Id: 49797246476291
-    m_Key: Light the beacon stairs
+    m_Key: Check the delivery order with Ada
     m_Metadata:
       m_Items: []
   - m_Id: 49797246476292
-    m_Key: Lift the sky lantern
+    m_Key: Trace the observatory beam
     m_Metadata:
       m_Items: []
   - m_Id: 49797246476293
-    m_Key: Bring the light home
+    m_Key: Prepare the beacon to receive its light
     m_Metadata:
       m_Items: []
   - m_Id: 49797246476294
@@ -2874,71 +2874,72 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 592057927196696
-    m_Key: Light the cloud market
+    m_Key: Light the market landings
     m_Metadata:
       m_Items: []
   - m_Id: 592057927196697
-    m_Key: Reach Pip's mill
+    m_Key: Open the lit route to Ben
     m_Metadata:
       m_Items: []
   - m_Id: 592057927196698
-    m_Key: Start the mill wheel
+    m_Key: Restore the mill's lower lamp
     m_Metadata:
       m_Items: []
   - m_Id: 592057927196699
-    m_Key: Fill the little wells
+    m_Key: Light the wells; record the time
     m_Metadata:
       m_Items: []
   - m_Id: 592057927196700
-    m_Key: Reach Rue's orchard
+    m_Key: Take the crate evidence to Rose
     m_Metadata:
       m_Items: []
   - m_Id: 592057927196701
-    m_Key: Light the lantern trees
+    m_Key: Light the lamp by the old tree
     m_Metadata:
       m_Items: []
   - m_Id: 592057927196702
-    m_Key: Mend the branch bridge
+    m_Key: Light and check the orchard bridge
     m_Metadata:
       m_Items: []
   - m_Id: 592057927196703
-    m_Key: Open the orchard path
+    m_Key: Open the harvest-cart path
     m_Metadata:
       m_Items: []
   - m_Id: 592057927196704
-    m_Key: Light the seed house
+    m_Key: Warm the seed house; copy the loan
     m_Metadata:
       m_Items: []
   - m_Id: 592057927196705
-    m_Key: Reach the sky post
+    m_Key: Open the route to Nora
     m_Metadata:
       m_Items: []
   - m_Id: 592057927196706
-    m_Key: Find the lost letters
+    m_Key: Recover the mail at a lit landing
     m_Metadata:
       m_Items: []
   - m_Id: 592057927196707
-    m_Key: Mend the mail bridge
+    m_Key: Make the mail-cart route safe
     m_Metadata:
       m_Items: []
   - m_Id: 592057927196708
-    m_Key: Reach the glass lagoon
+    m_Key: Take the receipt to the lagoon
     m_Metadata:
       m_Items: []
   - m_Id: 592057927196709
-    m_Key: Wake the pond lamps
+    m_Key: Light the lagoon; check the log
     m_Metadata:
       m_Items: []
   - m_Id: 592057927196710
-    m_Key: Open the water gate
+    m_Key: Light the landing and clear the low beam
     m_Metadata:
       m_Items: []
   - m_Id: 592057927196711
-    m_Key: Find Toma's archive
+    m_Key: Take the tide record to Oscar
     m_Metadata:
       m_Items: []
   - m_Id: 592057927196712
-    m_Key: The first bridge is lit. I can see my workshop again!
+    m_Key: First lamp lit. I'll sign the anchor. I've checked it often enough to
+      know it.
     m_Metadata:
       m_Items: []
   - m_Id: 592057927196713
@@ -2946,27 +2947,29 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 592057927196714
-    m_Key: The wind gate is open. Hold your scarf, Mika.
+    m_Key: The gate holds against the wind. You checked the far latch before I asked.
     m_Metadata:
       m_Items: []
   - m_Id: 592057927196715
-    m_Key: I am holding it! Now we can reach the sky lift.
+    m_Key: I'm still scared. But now I know what to look at.
     m_Metadata:
       m_Items: []
   - m_Id: 592057927196716
-    m_Key: That lift has not moved since the storm. You did it.
+    m_Key: The lift works. Ben's wheel stopped at the same time as this relay. He
+      may have seen more than I did.
     m_Metadata:
       m_Items: []
   - m_Id: 592057931390976
-    m_Key: We did it. Your new boards held me up.
+    m_Key: We'll ask him when we get the market route open.
     m_Metadata:
       m_Items: []
   - m_Id: 592057931390977
-    m_Key: The market lamps are back. I missed the smell of warm bread.
+    m_Key: The market lamp is steady. The baker sent bread. He says I'm to eat it
+      warm, without measuring it first.
     m_Metadata:
       m_Items: []
   - m_Id: 592057931390978
-    m_Key: Let us save a loaf for Pip. He has been waiting.
+    m_Key: Save Ben a piece. You eat yours now. I'll hold the rope.
     m_Metadata:
       m_Items: []
   - m_Id: 592057931390979
@@ -2974,11 +2977,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 592057931390980
-    m_Key: Thank you, Bram. When the beacon shines, you will see it from here.
+    m_Key: That clears your chisel. Ben heard the crate at the mill; let's ask him
+      about that night.
     m_Metadata:
       m_Items: []
   - m_Id: 592057931390981
-    m_Key: Listen! The wheel is turning again.
+    m_Key: The wheel turns without a knock. My brother asked who broke the pipe.
+      I told him.
     m_Metadata:
       m_Items: []
   - m_Id: 592057931390982
@@ -2986,7 +2991,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 592057931390983
-    m_Key: Water is on its way to every little house.
+    m_Key: His tap runs. He made me wait there while he filled the bucket himself.
     m_Metadata:
       m_Items: []
   - m_Id: 592057931390984
@@ -2994,7 +2999,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 592057931390985
-    m_Key: The wells are full. Even my smallest bucket can reach.
+    m_Key: The wells are lit. This slip fell off the crate. Its time matches the
+      clock; my brother saw it before the rain.
     m_Metadata:
       m_Items: []
   - m_Id: 592057931390986
@@ -3010,15 +3016,18 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 592057931390989
-    m_Key: Rue is waiting beyond the orchard gate. Tell her the mill is all right.
+    m_Key: The orchard gate is open. Here are the dust and Rose's seal, wrapped as
+      you asked.
     m_Metadata:
       m_Items: []
   - m_Id: 592057931390990
-    m_Key: I will. Keep a cup of tea for our way back!
+    m_Key: Thanks. I'll take the loading slip too. Nora can check it against her
+      flight book.
     m_Metadata:
       m_Items: []
   - m_Id: 592057931390991
-    m_Key: The lantern trees are glowing. Look, the birds found their nests.
+    m_Key: The old tree has light. We missed the roots. Tomorrow I'll check the soil
+      beside the rope hasn't slipped.
     m_Metadata:
       m_Items: []
   - m_Id: 592057931390992
@@ -3026,23 +3035,28 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 592057931390993
-    m_Key: The branch bridge is steady now. No more wobbling baskets.
+    m_Key: The bridge is lit. I'll return Walter's chisel myself; he shouldn't have
+      to come looking for it.
     m_Metadata:
       m_Items: []
   - m_Id: 592057931390994
-    m_Key: Good. I nearly dropped Gran's letter!
+    m_Key: Ask him to check the bridge while he's here. He knows which joint the
+      storm damaged.
     m_Metadata:
       m_Items: []
   - m_Id: 592057931390995
-    m_Key: The path is open. I can send jam to the village again.
+    m_Key: Walter checked the track. Ben sent his cart for the jars, with water for
+      the seedlings on the return trip.
     m_Metadata:
       m_Items: []
   - m_Id: 592057931390996
-    m_Key: Gran will ask for the recipe. She always does.
+    m_Key: Then leave room for the water cans. I'll help load the jars before we
+      go.
     m_Metadata:
       m_Items: []
   - m_Id: 592057931390997
-    m_Key: The seeds are safe and warm. Soon there will be new trees.
+    m_Key: 'Here: felt for Felix''s new lens. Nora took the empty crate to Ada first,
+      then collected a sealed load there.'
     m_Metadata:
       m_Items: []
   - m_Id: 592057931390998
@@ -3050,7 +3064,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 592057931390999
-    m_Key: Follow that red scarf. Sora will take you to the sky post.
+    m_Key: The post gate is open. Three seeds for Ada, and a signed copy of the crate
+      loan for you.
     m_Metadata:
       m_Items: []
   - m_Id: 592057931391000
@@ -3058,7 +3073,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 592057931391001
-    m_Key: The letters are all together. Not one left in a cloud!
+    m_Key: Every letter recovered. One had no address; its owner came to ask before
+      we could guess.
     m_Metadata:
       m_Items: []
   - m_Id: 592057931391002
@@ -3070,15 +3086,16 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 592057931391004
-    m_Key: Now she will know I am coming.
+    m_Key: Keep your copy. I'll take a tracing to Ada; she can tell us what she approved.
     m_Metadata:
       m_Items: []
   - m_Id: 592057931391005
-    m_Key: This bridge connects the whole post route again.
+    m_Key: The cart crossed. I walked beside it. It's a much longer bridge when you
+      can't flap over the gap.
     m_Metadata:
       m_Items: []
   - m_Id: 592057931391006
-    m_Key: So everyone can hear from their friends.
+    m_Key: Will you try it once more with the mail aboard? I'll watch the far wheel.
     m_Metadata:
       m_Items: []
   - m_Id: 592057931391007
@@ -3107,7 +3124,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 592057943973889
-    m_Key: Our lamps have little twins in the water. See?
+    m_Key: The channel lamps are steady. I've copied the sighting for Ada; the original
+      stays in my log.
     m_Metadata:
       m_Items: []
   - m_Id: 592057943973890
@@ -3123,7 +3141,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 592057948168194
-    m_Key: Your pond light is steady. Even the fish have come to look.
+    m_Key: Full tank, clean lens. And take these surveys for Ada. Felix measured
+      the north channel from my boat.
     m_Metadata:
       m_Items: []
   - m_Id: 592057948168195
@@ -3131,7 +3150,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 592057948168196
-    m_Key: Toma keeps a map of the snow road. His archive is just ahead.
+    m_Key: The archive path is lit. Tell Oscar to look under the north petitions.
+      He'll know the shelf.
     m_Metadata:
       m_Items: []
   - m_Id: 592057948168197
@@ -3139,15 +3159,18 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 592057948168198
-    m_Key: The leaf door is open. Please wipe your paws. The maps are old.
+    m_Key: The page is safe. Felix signed for the key before the storm. There's no
+      return entry yet.
     m_Metadata:
       m_Items: []
   - m_Id: 592057948168199
-    m_Key: I will be careful. We need just one road.
+    m_Key: Thank you. The original can stay here. I'll take the copy and Nora's order
+      to Ada.
     m_Metadata:
       m_Items: []
   - m_Id: 592057948168200
-    m_Key: The shelves are free. I can reach my favourite book again.
+    m_Key: The shelves move again. Spare key tied to the register. No exceptionally
+      safe hiding places.
     m_Metadata:
       m_Items: []
   - m_Id: 592057948168201
@@ -3163,11 +3186,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 592057948168204
-    m_Key: The page is dry. Your scarf saved the ink.
+    m_Key: The petitions are dry. Clara asked first. Felix drew the route. Both replies
+      say Deferred.
     m_Metadata:
       m_Items: []
   - m_Id: 592057948168205
-    m_Key: Gran knitted it. I think she knew I would need it.
+    m_Key: Ada needs to read these again. Clara's boats are still taking that route.
     m_Metadata:
       m_Items: []
   - m_Id: 592057948168206
@@ -3179,11 +3203,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 592057948168208
-    m_Key: The snow steps are bright. Stay close to me.
+    m_Key: The new path is lit. I've crossed the old one out and marked the way round
+      for Oscar.
     m_Metadata:
       m_Items: []
   - m_Id: 592057952362496
-    m_Key: I can follow them now, even in all this white.
+    m_Key: Sign the correction. I'll bring it back to Oscar with the map.
     m_Metadata:
       m_Items: []
   - m_Id: 592057952362497
@@ -3195,19 +3220,21 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 592057952362499
-    m_Key: The frozen arch is behind us. You crossed it without looking down.
+    m_Key: The arch holds. You planned the turned landing without asking me to name
+      the order.
     m_Metadata:
       m_Items: []
   - m_Id: 592057952362500
-    m_Key: I looked at your scarf instead. It helped.
+    m_Key: I still need you on that far anchor. Ready for the next one?
     m_Metadata:
       m_Items: []
   - m_Id: 592057952362501
-    m_Key: Pip's blanket is still dry. He told me to make sure you stayed warm.
+    m_Key: The spare blanket is dry in the shelter. Its lamp can be seen from the
+      lower path.
     m_Metadata:
       m_Items: []
   - m_Id: 592057952362502
-    m_Key: He remembered. I will bring it back with a thank-you note.
+    m_Key: I'll write Ben where it is. And that we're using his first blanket.
     m_Metadata:
       m_Items: []
   - m_Id: 592057952362503
@@ -3219,23 +3246,28 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 592057952362505
-    m_Key: The last bridge is lit. Come here, let me see you.
+    m_Key: The bridge is safe. Come here. You waited for both anchors, just as I
+      taught you.
     m_Metadata:
       m_Items: []
   - m_Id: 592057952362506
-    m_Key: I brought stories, Gran. More than I can fit in one letter.
+    m_Key: Your hands are still on the rail. Good. Now I can come and put this bag
+      down.
     m_Metadata:
       m_Items: []
   - m_Id: 592057952362507
-    m_Key: The lantern lift is ready. Who helped you get this far?
+    m_Key: Yes. Felix collected both; he signed here. He should still have them at
+      the observatory.
     m_Metadata:
       m_Items: []
   - m_Id: 592057952362508
-    m_Key: Bram, Pip, Rue... so many friends. I wish they could see us.
+    m_Key: Then we'll compare his copy with Nora's delivery order. Someone changed
+      the instructions between them.
     m_Metadata:
       m_Items: []
   - m_Id: 592057952362509
-    m_Key: These stairs used to look so tall to you.
+    m_Key: Yes, a lens sleeve could leave that mark. It tells us where the load passed,
+      not who wrote the order.
     m_Metadata:
       m_Items: []
   - m_Id: 592057952362510
@@ -3251,7 +3283,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 592057956556800
-    m_Key: Look, Mika. The beacon is shining. Every island can see us now.
+    m_Key: The beacon receivers are ready. Take my keeper's cord, Rin. I will keep
+      watch here, not climb.
     m_Metadata:
       m_Items: []
   - m_Id: 592057956556801
@@ -3275,11 +3308,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 592057956556806
-    m_Key: I used to rush the wheel. It only splashed me.
+    m_Key: I'm reaching for the fast lever again. Red thread. Right. Hands off.
     m_Metadata:
       m_Items: []
   - m_Id: 592057956556807
-    m_Key: Let us look before we move this time.
+    m_Key: Keep one paw on the brake. We can afford another minute; not another broken
+      pipe.
     m_Metadata:
       m_Items: []
   - m_Id: 592057960751104
@@ -3307,11 +3341,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 592057960751110
-    m_Key: I can fly fast. Landing neatly is the hard part.
+    m_Key: I could fly to the next desk and be back before this basket lands.
     m_Metadata:
       m_Items: []
   - m_Id: 592057960751111
-    m_Key: Then we both have something to practise.
+    m_Key: I can't see your signal from there. Stay until the basket lands.
     m_Metadata:
       m_Items: []
   - m_Id: 592057960751112
@@ -3355,11 +3389,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 592057964945414
-    m_Key: The snow is deep, but this board is clear.
+    m_Key: I can do this descent with my eyes closed. That's what I tell nervous
+      travellers.
     m_Metadata:
       m_Items: []
   - m_Id: 592057964945415
-    m_Key: One dry place for my paws. Thank you.
+    m_Key: Keep them open for me. I want to know what the far anchor's doing.
     m_Metadata:
       m_Items: []
   - m_Id: 592057964945416
@@ -3371,11 +3406,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 592057964945418
-    m_Key: I used to count these steps with you.
+    m_Key: I used to mend that knot for you before you'd finished trying.
     m_Metadata:
       m_Items: []
   - m_Id: 592057964945419
-    m_Key: Now we can count the lights instead.
+    m_Key: Let me finish this one. Then check it. I do want you to check.
     m_Metadata:
       m_Items: []
   - m_Id: 592057964945420
@@ -3552,7 +3587,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607473647616
-    m_Key: A light to carry
+    m_Key: A note from the dark beacon
     m_Metadata:
       m_Items: []
   - m_Id: 730607473647617
@@ -3564,7 +3599,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607473647619
-    m_Key: The broken way
+    m_Key: Below the islands
     m_Metadata:
       m_Items: []
   - m_Id: 730607473647620
@@ -3576,7 +3611,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607473647622
-    m_Key: A builder's promise
+    m_Key: The receiver's order
     m_Metadata:
       m_Items: []
   - m_Id: 730607473647623
@@ -3588,7 +3623,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607473647625
-    m_Key: The quiet wheel
+    m_Key: A witness at the mill
     m_Metadata:
       m_Items: []
   - m_Id: 730607473647626
@@ -3600,7 +3635,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607473647628
-    m_Key: Too fast to listen
+    m_Key: The fast lever
     m_Metadata:
       m_Items: []
   - m_Id: 730607473647629
@@ -3613,7 +3648,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607473647631
-    m_Key: Water for everyone
+    m_Key: A fault beyond the mill
     m_Metadata:
       m_Items: []
   - m_Id: 730607473647632
@@ -3625,7 +3660,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607473647634
-    m_Key: An orchard without lanterns
+    m_Key: A seal on a crate
     m_Metadata:
       m_Items: []
   - m_Id: 730607473647635
@@ -3637,7 +3672,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607473647637
-    m_Key: Seeds for tomorrow
+    m_Key: Whose seal is on the crate?
     m_Metadata:
       m_Items: []
   - m_Id: 730607473647638
@@ -3649,7 +3684,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607473647640
-    m_Key: The first branch
+    m_Key: Felt for a lens
     m_Metadata:
       m_Items: []
   - m_Id: 730607473647641
@@ -3661,7 +3696,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607473647643
-    m_Key: Letters in the clouds
+    m_Key: Tea at the post office
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841920
@@ -3673,7 +3708,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841922
-    m_Key: The letter not sent
+    m_Key: Ada's alleged order
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841923
@@ -3685,7 +3720,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841925
-    m_Key: A route between friends
+    m_Key: The unattended desk
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841926
@@ -3697,7 +3732,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841928
-    m_Key: No light on the shore
+    m_Key: Clara at the dock
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841929
@@ -3709,7 +3744,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841931
-    m_Key: The first little boat
+    m_Key: The letter beneath the cup
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841932
@@ -3721,7 +3756,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841934
-    m_Key: A safe place to land
+    m_Key: Her mother's boat
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841935
@@ -3733,7 +3768,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841937
-    m_Key: Rain between the shelves
+    m_Key: The archive door
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841938
@@ -3746,7 +3781,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841940
-    m_Key: A map kept safe
+    m_Key: The service key
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841941
@@ -3758,7 +3793,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841943
-    m_Key: A map put to use
+    m_Key: The equipment list
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841944
@@ -3770,7 +3805,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841946
-    m_Key: The road disappears
+    m_Key: A question on the map
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841947
@@ -3782,7 +3817,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841949
-    m_Key: A guide needs company
+    m_Key: The guide's cold paws
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841950
@@ -3794,7 +3829,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841952
-    m_Key: One warm footprint
+    m_Key: The shelter first
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841953
@@ -3806,7 +3841,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841955
-    m_Key: A window still glowing
+    m_Key: Two answering flashes
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841956
@@ -3818,7 +3853,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841958
-    m_Key: Stories at the door
+    m_Key: The question at the door
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841959
@@ -3830,7 +3865,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841961
-    m_Key: Two keepers, one light
+    m_Key: Ada's own delay
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841962
@@ -3842,7 +3877,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841964
-    m_Key: Above the beacon
+    m_Key: The light behind the lens
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841965
@@ -3854,7 +3889,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841967
-    m_Key: An imperfect chart
+    m_Key: Three flashes
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841968
@@ -3867,7 +3902,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841970
-    m_Key: A path for night travellers
+    m_Key: A gap in the chart
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841971
@@ -3879,35 +3914,39 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841973
-    m_Key: My first bridge has lost its boards. I kept the good timber.
+    m_Key: First anchor. I'll hold the line until you tell me to lower it. Not a
+      moment sooner.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841974
-    m_Key: You bring the boards, Bram. I will bring the light.
+    m_Key: Wait. Let me check the receiver once more. You can see the knot from there,
+      can't you?
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841975
-    m_Key: The wind gate creaks like my old knees. It needs a careful hand.
+    m_Key: The wind gate feeds a lamp below its hinges. Mind the changing row when
+      you descend.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841976
-    m_Key: I will keep my scarf clear of the hinges this time.
+    m_Key: Then I'll check the order after the gust. Is the far anchor secure?
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841977
-    m_Key: I checked the sky lift twice. I still worry when someone climbs aboard.
+    m_Key: The lift relay has burnt out. Here's the workshop diagram; it shows where
+      the spare contact goes.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841978
-    m_Key: Let us mend it, then check it together.
+    m_Key: Can you replace it while I light the service landing?
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841979
-    m_Key: The market baker saved us a loaf. Her lamps need saving too.
+    m_Key: The market lamp won't catch until all its lower receivers are ready.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841980
-    m_Key: Warm bread and a bright doorway. That sounds like a good job.
+    m_Key: Does the baker have a hand lamp? We might be a while down here.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841981
@@ -3915,7 +3954,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841982
-    m_Key: When it is safe, you could walk the first part with me.
+    m_Key: Could it be from a tool? Let's keep the mark clear until we find yours.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841983
@@ -3923,64 +3962,72 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841984
-    m_Key: We can go slowly enough to hear it catch.
+    m_Key: I'll take the lower receiver. Tell me if the wheel starts knocking again.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841985
-    m_Key: The village pipe is blocked. My brother put his bucket at the far end.
+    m_Key: The pipe reaches the houses, but its lamp is dark. My brother's tap is
+      at the far end.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841986
-    m_Key: Let us bring the water all the way to him.
+    m_Key: Then that's where we test the repair. Not just here, where it's easy to
+      see.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841987
-    m_Key: These wells serve the smallest houses. They should not have to wait.
+    m_Key: The well clock stopped when the crate hit. I haven't touched its hands.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841988
-    m_Key: Small houses need full buckets too.
+    m_Key: Leave them. We'll light the well and compare that time with Nora's book.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841989
-    m_Key: I promised Sora a post boat. A promise is heavier than a bucket.
+    m_Key: The mail boat has a split seam. I can reach it from the lower landing,
+      but its lamp is out.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841990
-    m_Key: Good thing we have two pairs of paws to carry it.
+    m_Key: I'll light the landing. Bring your tools; the letters can wait somewhere
+      dry.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841991
-    m_Key: Rue is waiting beyond this gate. She traded us seeds for a cup of water.
+    m_Key: Copper dust in the wheel. Rose's seal on the lid. I nearly threw both
+      away as rubbish.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841992
-    m_Key: Then this path is our way of saying thank you.
+    m_Key: Wrap them separately. Once this lamp is lit, we can ask Rose about the
+      crate.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841993
-    m_Key: The birds keep circling this tree. They remember its light.
+    m_Key: The oldest tree gets the first lamp. Its roots hold the whole terrace.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841994
-    m_Key: We will help the tree remember too.
+    m_Key: There's room by the outer rope. More lowering, less arguing with roots.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841995
-    m_Key: I made the branch bridge narrow to spare the roots. Now it needs mending.
+    m_Key: Walter's missing chisel is here. I borrowed it for a graft and forgot
+      to tell him.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841996
-    m_Key: We can look after the roots and the travellers.
+    m_Key: He can collect it when he checks the bridge. Which joint needs lighting
+      first?
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841997
-    m_Key: The village needs this jam. I would rather share it than keep it safe
-      here.
+    m_Key: Ben's jars are ready. The big ones are still on the top shelf. Couldn't
+      find room for them down here.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841998
-    m_Key: First the path, then a jar for every table.
+    m_Key: We can open the cart path today. Let Ben's brother choose the first jar.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477841999
@@ -3988,40 +4035,45 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842000
-    m_Key: Let us make a warm place for things we cannot see yet.
+    m_Key: Then the book can wait. Show me where to lower the pieces.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842001
-    m_Key: Sora used to bring letters through this gate. I miss her noisy landings.
+    m_Key: I know Nora well enough to lend her a crate. I didn't think to ask what
+      Ada was sending.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842002
-    m_Key: We will open it. You can put the kettle on.
+    m_Key: She may have thought you knew. Let's take the packing entry so we can
+      check it together.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842003
-    m_Key: Every scattered letter belongs to someone waiting. I keep thinking of
-      them.
+    m_Key: I can catch the envelopes. The heavy bag needs a lit landing below.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842004
-    m_Key: Let us gather them one safe landing at a time.
+    m_Key: I'll take the lower rope. Anything that falls, I'll catch from here.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842005
-    m_Key: Gran's letter is small, but you have carried it such a long way.
+    m_Key: The delivery order is in the sorting room. Its lamp went out; I nearly
+      fell over a parcel going in.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842006
-    m_Key: I want her to know I am coming. Can we send it from here?
+    m_Key: I'll light it from below. Wait by the door; we can look for the order
+      together.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842007
-    m_Key: Without this bridge, I can reach the clouds but not the post house.
+    m_Key: I flew over the broken mail bridge. It took me a week to notice the carts
+      couldn't follow.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842008
-    m_Key: Even a flyer needs somewhere steady to land.
+    m_Key: You can watch the far anchor from the air. I'll test the lower relay with
+      the load.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842009
@@ -4033,19 +4085,22 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842011
-    m_Key: Neri's shore is below this last gate. I owe her a visit, not just a letter.
+    m_Key: The northbound receipt has a tide mark. Clara keeps those times better
+      than any clock.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842012
-    m_Key: Come with me after we open it. She might have tea.
+    m_Key: We'll open the lagoon gate, then take both records to her.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842013
-    m_Key: The pier is cracked. I promised you a dry place to stand.
+    m_Key: The tide is rising towards the lower landing. I can hold the boat here
+      while you light the pier lamp.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842014
-    m_Key: We can make one. I will start close to the shore.
+    m_Key: Read the tide to me. I'll read the receiver to you. We stop if either
+      changes.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842015
@@ -4053,49 +4108,56 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842016
-    m_Key: Tell me the turns as we bring their lights back.
+    m_Key: We'll follow the ledges, not the reflections. Keep Nora's receipt dry
+      for me.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842017
-    m_Key: The water gate holds my smallest boats outside. I hear their sails tapping.
+    m_Key: The storm knocked that beam down. Boats can't pass with their sails up.
+      I'll lift it once the landing is lit.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842018
-    m_Key: We will open their way home, carefully.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 730607477842019
-    m_Key: This pond light has travelled for years. Now it needs someone to carry
+    m_Key: I'll light both ends. Ask Nora to keep the boats back until you've secured
       it.
     m_Metadata:
       m_Items: []
+  - m_Id: 730607477842019
+    m_Key: Your hand lamp is almost empty. I've a spare upstairs. Light the stair
+      lamp and I'll fetch it.
+    m_Metadata:
+      m_Items: []
   - m_Id: 730607477842020
-    m_Key: I can carry it beside mine. They will keep each other company.
+    m_Key: Thanks. I'll keep Ada's to return to her. Is there enough oil in the spare
+      for the pass?
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842021
-    m_Key: Toma keeps the snow map beyond this path. He dislikes lending precious
-      things.
+    m_Key: Oscar keeps the maintenance records. Tell him the tide and the clock agree.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842022
-    m_Key: I will tell him what a careful boat maker taught me.
+    m_Key: I'll bring him the copies. The originals stay with you and Nora.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842023
-    m_Key: The leaf door jammed in the rain. Please mind the oldest maps inside.
+    m_Key: The storm jammed the lift with the register inside. Light its relay; I'll
+      free the door.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842024
-    m_Key: I will wipe my paws before I touch a page.
+    m_Key: Is the page caught in the hinge? Don't start the lift until you've freed
+      it.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842025
-    m_Key: These shelves move together. I tied them to keep the books from falling.
+    m_Key: The shelf lift has its own little key. I put it somewhere exceptionally
+      safe.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842026
-    m_Key: We can untie the road without losing a book.
+    m_Key: Your waistcoat pocket, perhaps? That's where you kept checking when we
+      came in.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842027
@@ -4107,11 +4169,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842029
-    m_Key: Rain is reaching the ink. I cannot hold the roof and the page together.
+    m_Key: Water is reaching the north-route petitions. I shelved them under Unfinished
+      Matters.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842030
-    m_Key: You hold the roof. My scarf will look after the page.
+    m_Key: Let's dry them. Then put them where Ada will have to read them again.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842031
@@ -4119,15 +4182,16 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842032
-    m_Key: Let us open the way to it. I think I am ready now.
+    m_Key: Does Lumi know that turn? We'll check it with her and bring you the correction.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842033
-    m_Key: The snow steps are hidden. I remember where their lamps belong.
+    m_Key: Count the buried lamps, not my footprints. Snow can fill a footprint in
+      a breath.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842034
-    m_Key: You remember the places. I will bring the light.
+    m_Key: You count. I'll relight them. Snow won't cover that signal so easily.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842035
@@ -4135,39 +4199,44 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842036
-    m_Key: Then we mend it for both of us, and have a rest.
+    m_Key: Today we'll stop. You need warm paws to secure my rope.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842037
-    m_Key: The frozen arch hides its far side. I do not like that either.
+    m_Key: The arch turns the row before the landing. I used to know its order by
+      heart.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842038
-    m_Key: We can plan the landing together before we cross.
+    m_Key: The ice has moved it. We'll read this receiver as it is now.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842039
-    m_Key: Pip sent a blanket for you. He asked me to carry it carefully.
+    m_Key: Ben's second blanket is on the supply landing. Its lamp is buried in snow;
+      no one can see the steps.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842040
-    m_Key: There is room for your paws under it too.
+    m_Key: Clear the lamp while I reach its receiver. Then we can carry the blanket
+      in without falling down the steps.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842041
-    m_Key: The beacon road starts here. I can see one window through the snow.
+    m_Key: The beacon is on the left fork. The right one follows the beam to the
+      observatory.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842042
-    m_Key: That is Gran's lamp. Let us give her a whole road of lights.
+    m_Key: Ada first. We have her permit number, but we still haven't heard her side.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842043
-    m_Key: This last bridge used to feel enormous to you. I left its lamp burning.
+    m_Key: My last bridge lamp. I used to check this rope every dawn. Now I can't
+      reach the first rung.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842044
-    m_Key: It still feels enormous. But I know how to mend a bridge now.
+    m_Key: Tell me what to look for. I can reach the lower anchor from here.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842045
@@ -4179,43 +4248,53 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842047
-    m_Key: I used to carry you up these stairs. Today we will climb side by side.
+    m_Key: Put Nora's order here. The number and seal are mine. I never saw this
+      delivery copy.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842048
-    m_Key: I can hold the lantern so you can hold the rail.
+    m_Key: It says to move a source with the relays connected. Is that part of your
+      trial?
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842049
-    m_Key: The sky lantern needs both our lights. Mine is small, but I kept it safe.
+    m_Key: We can test the north beam with these relays. But we cannot light the
+      empty beacon yet.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842050
-    m_Key: Mine came through every island. Let us lift them together.
+    m_Key: Then ready every receiver. Returning the lantern won't help if its route
+      is broken.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842051
-    m_Key: The beacon lens is ready. Would you like to light it, keeper Mika?
+    m_Key: I kept saying the north route was too risky. Clara kept sending boats.
+      I knew that.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842052
-    m_Key: Yes. So everyone who helped us can find the way home.
+    m_Key: We'll show her the new plan before using it. She knows that water better
+      than either of us.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842053
-    m_Key: The moon dial lost its rhythm. I counted alone until sunrise.
+    m_Key: The timing wheel stopped when the High Lantern was moved. The lamps below
+      can't hold a steady signal until I reset it.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842054
-    m_Key: We can count together. You can close one tired eye.
+    m_Key: I'll light the service landing. Reset the wheel, then we'll test the next
+      relay.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842055
-    m_Key: My telescope bridge is missing a board. I kept observing from the doorstep.
+    m_Key: The far lens is across this bridge. I measured the beam from my desk and
+      missed the dead patch.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842056
-    m_Key: Let us mend it. The stars deserve a closer look.
+    m_Key: We need Nora above that turn. I'll ask her to signal when she can see
+      the landing.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842057
@@ -4223,24 +4302,28 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842058
-    m_Key: We can start with the pieces we have, Aster.
+    m_Key: You left that connection out of Ben's copy. He couldn't have found the
+      cause from what you sent.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842059
-    m_Key: These constellation lamps once guided the night gliders. I miss their
-      wings.
+    m_Key: I did. I took it. Used Ada's permit number and changed the load. I meant
+      to light the north for one night, then bring it back.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842060
-    m_Key: Let us give the first glider a pattern to follow.
+    m_Key: And kept quiet when the lamps failed. We'll come back to that. Hold the
+      source; Nora's bringing the pilot through.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842061
-    m_Key: The last sky gate is ahead. I would like someone else to check my chart.
+    m_Key: The north chain is holding. I was afraid Ada would shut the trial down
+      if I told her. So I let Ben blame himself.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842062
-    m_Key: I will check it with you. Then we can wave to the travellers.
+    m_Key: Tell him yourself. Send the full chart, then take Walter through every
+      damaged relay. Ada's waiting for the Lantern.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842063
@@ -4262,35 +4345,38 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842067
-    m_Key: Wake the moon dial
+    m_Key: Restore a steady relay signal
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842068
-    m_Key: Mend the telescope bridge
+    m_Key: Light the blind turn below the lens
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842069
-    m_Key: Gather the scattered star charts
+    m_Key: Restore the complete chart's relays
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842070
-    m_Key: Relight the constellations
+    m_Key: Guide the glider through the dark turn
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842071
-    m_Key: Open the night travellers' route
+    m_Key: Return the High Lantern; open the north route
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842072
-    m_Key: The moon dial is keeping time again. I can hear its quiet tick.
+    m_Key: The first relays are steady. Nora says the pilot can see the landing now,
+      but the turn is still dark.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842073
-    m_Key: It sounds like Pip's mill, but sleepy.
+    m_Key: Keep the beam on the landing. We'll open the rest of the route before
+      they try to cross.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842074
-    m_Key: The telescope bridge is steady. There is room for two observers now.
+    m_Key: Nora sees the new lamp. The pilot can move to the next landing; the final
+      turn still needs the lower chain.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842075
@@ -4306,27 +4392,31 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842078
-    m_Key: The constellations are bright. That glider knows where to turn.
+    m_Key: The glider cleared the turn. Nora signalled; Clara saw it from the water.
+      The lower chain holds.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842079
-    m_Key: Look, Aster. Someone is waving from its window!
+    m_Key: Now we can lower the High Lantern. Nora, stay with the pilot. Felix, on
+      my count.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842080
-    m_Key: The sky gate is open. Tonight I will leave a second stool by the telescope.
+    m_Key: Ada has the High Lantern home. And my key. Walter's waiting at the first
+      anchor. We start the repairs at dawn.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842081
-    m_Key: Save it for me. I will bring Gran and a flask of warm tea.
+    m_Key: I'll give Gran her hand lamp back. I'll keep Clara's. I'll need it on
+      the morning rounds.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842082
-    m_Key: I mistook a firefly for a star once. I wrote it down very carefully.
+    m_Key: My drawing shows this ledge lit. I never came down to check it from below.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842083
-    m_Key: Maybe it was your nearest star that night.
+    m_Key: Nora, can you see the far turn? Tell him where the light stops.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842084
@@ -4386,20 +4476,21 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842098
-    m_Key: My brother filled his bucket himself. He asked when you are coming for
-      tea.
+    m_Key: My brother put red thread on his bucket handle. Says he's checking before
+      he pulls too.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842099
-    m_Key: After the post boat is ready. We have a promise to carry.
+    m_Key: Has he put the bucket down yet? I wanted to ask him to help with the boat.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842100
-    m_Key: You still have those seeds. I thought you might have forgotten them.
+    m_Key: Those three seeds are still in your pocket. Ada used to plant something
+      after every hard winter.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842101
-    m_Key: They are warm beside the letter. I want to show Gran tomorrow's orchard.
+    m_Key: I'll find her three pots. There's bound to be room on that windowsill.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842102
@@ -4412,12 +4503,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842104
-    m_Key: The little boat reached its lamp. My mother would have liked your careful
-      landing.
+    m_Key: Nora asked what time supper is. Not which delivery could fit before it.
+      Just what time.
     m_Metadata:
       m_Items: []
   - m_Id: 730607477842105
-    m_Key: I was still scared. You made room for that too.
+    m_Key: I'll check the bench lamp before we leave. You'll want it when supper
+      runs late.
     m_Metadata:
       m_Items: []
   - m_Id: 730607482036224
@@ -4429,11 +4521,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730607482036226
-    m_Key: I usually tell travellers to stay close. Today I am glad you told me too.
+    m_Key: Put a sign to the shelter beside the path. You can't see the door from
+      that side in the snow.
     m_Metadata:
       m_Items: []
   - m_Id: 730607482036227
-    m_Key: Guides can share blankets. Pip sent a very big one.
+    m_Key: Hang it inside, away from the snow. I'll clear the bottom step so the
+      door opens all the way.
     m_Metadata:
       m_Items: []
   - m_Id: 730607482036228
@@ -4925,7 +5019,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318602
-    m_Key: The first crossing
+    m_Key: Lights before the storm
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318603
@@ -4937,7 +5031,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318605
-    m_Key: One gear, one bucket
+    m_Key: What happened first?
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318606
@@ -4949,7 +5043,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318608
-    m_Key: A pocket of seeds
+    m_Key: The seedlings can't wait
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318609
@@ -4961,7 +5055,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318611
-    m_Key: The first honest sentence
+    m_Key: A letter without weather
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318612
@@ -4973,7 +5067,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318614
-    m_Key: The nearest lamp
+    m_Key: The north channel
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318615
@@ -4985,7 +5079,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318617
-    m_Key: A map for the road
+    m_Key: Two deferred petitions
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318618
@@ -4997,7 +5091,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318620
-    m_Key: Half a scarf each
+    m_Key: A beam above the pass
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318621
@@ -5009,7 +5103,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318623
-    m_Key: The keeper's lamp
+    m_Key: The service file
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318624
@@ -5021,7 +5115,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318626
-    m_Key: A second reading
+    m_Key: Keep the beam steady
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318627
@@ -5049,33 +5143,36 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318633
-    m_Key: I crossed the whole bridge. First time since the storm. The bread got
-      here warm.
+    m_Key: The gate mark is measured. A thin brass edge made it, not my broad steel
+      chisel.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318634
-    m_Key: Your brother put his bucket down. He can use both paws to wave now.
+    m_Key: Is it full? Good. I've been listening to that bucket scrape the bottom
+      all morning.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318635
-    m_Key: My three seeds are still dry. One day their fruit will light this road
-      too.
+    m_Key: So you supplied the packing, not the load. I'll ask Nora what the delivery
+      order said.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318636
-    m_Key: My letter went with the basket. I wrote the apology, not the weather.
+    m_Key: It's gone. I wrote that I was scared to visit after her mother's boat
+      vanished. Not another page about the weather.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318637
-    m_Key: You sent it. Now she gets to choose her first sentence.
+    m_Key: I'll go with you. We can help with the boats while Clara reads it.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318638
-    m_Key: The water gate is open. Mother's boat can follow its old lamps again.
+    m_Key: The little sail went straight through. I kept waiting for it to catch
+      where Mother's always did.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318639
-    m_Key: I stayed for the whole launch. Next time I'll help with the sail.
+    m_Key: Mark that clearance on your chart. The next boat may have a taller sail.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318640
@@ -5083,86 +5180,92 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318641
-    m_Key: I'll add a mark when we stop there. You'll know we found it.
+    m_Key: Take the date too. Then she can check the right permit, not rely on her
+      memory.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318642
-    m_Key: The shelter is warm. I kept saying I was fine; my paws say otherwise.
+    m_Key: Warm paws. I can fasten that buckle now. We'll stop here on the next trip
+      too.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318643
-    m_Key: Sit with me. I'll mark this stop on Toma's map.
+    m_Key: How long to the beacon from here? Including a stop on the way.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318644
-    m_Key: The sky lantern is up. I held the rail this time, and you held the light.
+    m_Key: The signal catches the observatory beam. The High Lantern is still burning
+      up there.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318645
-    m_Key: I nearly turned back at Bram's bridge. I'm glad I told him.
+    m_Key: Signal the others before I go. Nora needs to know where that crate ended
+      up.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318646
-    m_Key: I marked the gap instead of hiding it. The gliders can use the route we
-      checked.
+    m_Key: The next relay is ready. Here's the permit. Both sheets, as you asked.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318647
-    m_Key: Sora can carry the corrected chart. She'll want a copy for the post.
+    m_Key: Ada allowed a spare lens. It says the High Lantern must stay at the beacon.
+      Who wrote Nora's order?
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318648
-    m_Key: This bridge leads to Pip. I left my lunch on this side every day since
-      the storm.
+    m_Key: There's a score on the gate, like a chisel slipped. One of mine is missing.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318649
-    m_Key: One gear first. Last time I spun the wheel before my brother moved his
-      bucket.
+    m_Key: Slow lever this time. I put a red thread on the fast one so I can't pretend
+      I forgot.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318650
-    m_Key: The seed house is cold. I planted my first tree from a tray just like
-      this.
+    m_Key: The seed-house lamp warms the young roots. These won't last another cold
+      night.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318651
-    m_Key: The mail basket is heavy. My apology is on top; I promised not to hide
-      it.
+    m_Key: My letter to Clara is on top of this basket. If I leave it here, I'll
+      take it home again.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318652
-    m_Key: I'll hold the basket. You can check the address one last time.
+    m_Key: I'll stay with you. Light the basket landing first, then we'll send it
+      together.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318653
-    m_Key: Each lamp marks a turn. Mother taught me the route; I still count them
-      aloud.
+    m_Key: The reflected lamps look close. Their real receivers are on separate ledges.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318654
-    m_Key: This is my teacher's last map. I won't risk it under an open sky.
+    m_Key: The permit number is on this shelf. Its lamp is out; I won't take a candle
+      near the papers.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318655
-    m_Key: Then let me trace the route. Your map can stay dry here.
+    m_Key: I'll reach the lamp from below. Find the entry for the day Nora collected
+      the crate.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318656
-    m_Key: I built this shelter after guiding Pip home. I'd forgotten how low its
-      door is.
+    m_Key: The shelter is below us. I usually take travellers straight past it.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318657
-    m_Key: The lantern lift jammed in the storm. I kept its parts in my soup pot.
+    m_Key: The service file is in the lift, beside the oil bills. Pull the green
+      ribbon; the other bundle is a year's worth of accounts.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318658
-    m_Key: Let's put them back. Then you can use the pot for supper.
+    m_Key: The green one. I'll steady the lift before you reach in.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318659
-    m_Key: The wind took one corner of this chart. I stopped sharing the rest.
+    m_Key: The full chart shows a direct feed from the beacon to this lens. That's
+      why the lower chain failed when the source moved.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318660
@@ -5175,19 +5278,22 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318662
-    m_Key: Mother called this boat Leaf. I called every boat Leaf for years.
+    m_Key: The reflection is shaking. The real lamp isn't. Look at the bracket, not
+      the water.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318663
-    m_Key: Then this one is Little Leaf. It deserves a lamp of its own.
+    m_Key: Like Walter's joint. I know what to watch now.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318664
-    m_Key: There are biscuit crumbs in this map. My teacher used it as a tray.
+    m_Key: That shelf holds last winter's maps. The pass changed in the storm; go
+      with Lumi, our guide.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318665
-    m_Key: Then a little rain won't be its strangest journey.
+    m_Key: Mark the uncertain turn now. I'll ask her to check it before we set foot
+      there.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318666
@@ -5215,44 +5321,52 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318672
-    m_Key: I checked that joint again. No creak. I might walk over for lunch tomorrow.
+    m_Key: I'll hold this end. You tell me if the rope starts rubbing against the
+      frame.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318673
-    m_Key: I'll wait on the far side. With bread, if the baker has any left.
+    m_Key: And you tell me if I start going too fast. I'm watching the receiver so
+      hard I forget to look up.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318674
-    m_Key: 'I wrote: I was wrong to leave without listening. Now the page can dry.'
+    m_Key: I left the weather out of Clara's letter. Now there's rather a lot of
+      blank paper.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318675
-    m_Key: I'll keep the bag open for it. No hiding it underneath this time.
+    m_Key: What did you want to tell her before you started writing about the weather?
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318676
-    m_Key: The original is back on its shelf. Your copy already has a new shelter.
+    m_Key: Two north petitions, two postponements. I filed them so neatly I forgot
+      they were unanswered.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318677
-    m_Key: I'll pencil in each place we stop. The next traveller can use it.
+    m_Key: I'll take copies with her replies. I want to ask what she was waiting
+      for all that time.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318678
-    m_Key: I burnt the soup twice watching that bridge. You can stir while I watch
-      the wick.
+    m_Key: Clara's requests are on my table. This time I'll answer with a route and
+      a date for checking it.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318679
-    m_Key: Gladly. And I've brought enough stories to last until it's ready.
+    m_Key: Leave room for Clara's notes. There's a turn on that plan you can't see
+      from the beacon.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318680
-    m_Key: I put two pencils by the chart. Someone sharpened the spare while we worked.
+    m_Key: Clara sent her channel marks. I drew the trial beam above them, but never
+      checked the turn from a boat.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318681
-    m_Key: Leave the second stool there. They may want to finish their drawing.
+    m_Key: Ask her to check with Nora now. They need the same turn lit, one from
+      the water, one from the air.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318682
@@ -6694,11 +6808,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362886
-    m_Key: The loaded boat stays dry. Sora can collect mail from the village again.
+    m_Key: The loaded post boat stays dry. Nora can take the records, and my letter
+      to my brother.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362887
-    m_Key: Then I'll take my letter to her at the sky post.
+    m_Key: Across the yard? I think you can manage that delivery. I'll watch the
+      boat.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362888
@@ -6706,490 +6822,515 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362889
-    m_Key: Mine is still in my pocket. Now we can send it with the recovered mail.
+    m_Key: Then it can go in the right bag. Let's get the next load ready before
+      the wind picks up.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362890
-    m_Key: Your letter has left for the beacon. The next keeper will carry it up.
+    m_Key: My delivery copy. The signed work permit stayed with the load. I checked
+      Ada's seal and never asked why the relays had to stay on.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362891
-    m_Key: Neri's pier is beyond the lagoon gate. I sent the apology; now I need
-      to listen.
+    m_Key: The lagoon gate is ready. My receipt records the northbound crate before
+      the storm.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362892
-    m_Key: I'll go with you. She can tell us if she wants company.
+    m_Key: Keep the flight book with you. We'll ask Clara to check that entry at
+      the pier.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362893
-    m_Key: The pier is safe. Tell Sora she may come ashore. We have things to talk
-      about.
+    m_Key: The pier holds. I asked Nora to stay. She put the bag down before I finished
+      asking.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362894
-    m_Key: I'll tell her. And I'll stay by the lamp while you talk.
+    m_Key: Then I'll light the bench lamp too. You can read Nora's letter without
+      holding mine.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362895
-    m_Key: Gran's note marks the sheltered approach to the beacon. Lumi knows that
-      ridge.
+    m_Key: The snow map is ready. I signed beside the blank turn. Lumi can replace
+      my question with a survey.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362896
-    m_Key: Let's find Lumi. We'll take your copy and bring back the missing turns.
+    m_Key: I'll wrap the copies to keep them dry. Lumi will check the turn, and we'll
+      bring you the map with her correction.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362897
-    m_Key: The copy marks the known turns and the gap. Lumi will check that part
-      on the ridge.
+    m_Key: No equipment list here. Ada has the receipt for the permit; it will tell
+      us where to find the conditions.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362898
-    m_Key: The beacon road is clear. Gran answered your signal; she knows we're coming.
+    m_Key: Ada's answering. The bridge lights reach her window now; she can guide
+      us across.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362899
-    m_Key: She saw us! Let's keep the lamp raised until we reach the bridge.
+    m_Key: Come with me. You know the pass; she'll want to hear which paths need
+      closing.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362900
-    m_Key: Bram's bridge, Pip's mill... they're answering. Our way home is their
-      road, too.
+    m_Key: Keep the other end. If I stop halfway, wait for my signal. I'll start
+      again.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362901
-    m_Key: Now we can check the part of the route the tower was hiding.
+    m_Key: Tell them to wait there. I'll connect the last relays and check that permit.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362902
-    m_Key: A delivery cart broke the footbridge rail. I need parts before it returns.
-      {0} Three harder stages.
+    m_Key: The lower repair landing is dark. Light it so I can replace that loose
+      rail. {0} It's a harder, three-stage descent.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362903
-    m_Key: My brother's new well has a leaking valve. Help me get a replacement to
-      him. {0} Three harder stages.
+    m_Key: There's another leak below the mill. I have the valve, but I need the
+      work lamp lit to fit it. {0} It's a harder, three-stage descent.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362904
-    m_Key: A nest is stranded beyond the orchard path. I need a lamp for its tree.
-      {0} Three harder stages.
+    m_Key: The lamp above the outer steps is out. Help me light it so I can bring
+      in the last seedling trays. {0} It's a harder, three-stage descent.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362905
-    m_Key: A mail basket missed its landing. Help me recover it before the envelopes
-      get wet. {0} Three harder stages.
+    m_Key: The mail lift has stopped with a basket below the landing. Help me restart
+      its relay. {0} It's a harder, three-stage descent.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362906
-    m_Key: A boat is waiting at the unlit pier. Will you bring a lamp down to it?
-      {0} Three harder stages.
+    m_Key: A boat is waiting beyond the channel. Light the far landing so I can guide
+      it in. {0} It's a harder, three-stage descent.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362907
-    m_Key: The roof needs another patch. Help me deliver the tiles before the next
-      rain. {0} Three harder stages.
+    m_Key: Walter can patch the archive roof. He needs a light over the gutter to
+      find the leak. {0} It's a harder, three-stage descent.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362908
-    m_Key: Travellers used the shelter's last fuel. Let's refill it before nightfall.
-      {0} Three harder stages.
+    m_Key: There's fuel on the supply landing, but the steps are dark. Light them
+      and I'll restock the shelter. {0} It's a harder, three-stage descent.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362909
-    m_Key: The spare wick has arrived below the beacon. Will you bring it up with
-      me? {0} Three harder stages.
+    m_Key: The maintenance lamp below the beacon is out. Light it so Walter can check
+      the lower joints. {0} It's a harder, three-stage descent.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362910
-    m_Key: A cracked lens hides the eastern route. Help me deliver a new one intact.
-      {0} Three harder stages.
+    m_Key: Walter found a crack in the north lens bracket. Light the service landing
+      so we can replace it. {0} It's a harder, three-stage descent.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362911
-    m_Key: The far anchor pulled loose, not the boards. My first repair missed it.
+    m_Key: This anchor holds. I can see the far one from here; the rope has slipped
+      out of its guide.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362912
-    m_Key: Then we secure that end before anyone crosses. I'll hold the load here.
+    m_Key: Keep watching it. I'll stop above the guide so you can put the rope back.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362913
-    m_Key: The gate opens, but the latch won't hold. One gust could slam it shut.
+    m_Key: A gust changes the row on this landing. The receiver stays where it was.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362914
-    m_Key: Let's test the latch before we send the lift through.
+    m_Key: Right. Turn first, then descend. Give me a moment to work it out.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362915
-    m_Key: The empty lift runs. I haven't trusted it with a passenger since the storm.
+    m_Key: The new contact fits. But this old one burnt out before any rain could
+      reach it.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362916
-    m_Key: Send the tools first. If they arrive safely, I'll take the next trip.
+    m_Key: So the storm broke the bridge, but something else stopped the lift?
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362917
-    m_Key: The baker won't open after dark. She can't see the gap by her door.
+    m_Key: The baker won't cross until I test the loaded cart. An empty one proves
+      little.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362918
-    m_Key: The next lamp goes there, then. Bread can wait; a safe doorway can't.
+    m_Key: With the flour on it? I'll stay where I can see both anchors.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362919
-    m_Key: Pip asked for my tools. I've packed them every morning, then stayed home.
+    m_Key: The gate mark is narrow. My missing chisel is twice that width.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362920
-    m_Key: Bring them with us today. You can tell him yourself what needs fixing.
+    m_Key: Yours is steel, too. Where did the brass on the gate come from?
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362921
-    m_Key: The wheel turns, but that knock means a tooth is still out of place.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1626984202362922
-    m_Key: Stop it while we fit the last pieces. Faster won't make them fit.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1626984202362923
-    m_Key: Water reaches this joint, then leaks away. The village still gets nothing.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1626984202362924
-    m_Key: I'll follow the pipe to the last house. We finish when their tap runs.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1626984202362925
-    m_Key: My brother can lower the bucket. The handle slips when he pulls it back.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1626984202362926
-    m_Key: Let's fix the handle for his paws, not yours. Then let him test it.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1626984202362927
-    m_Key: The boat floats empty. With the mail aboard, water comes through this
-      seam.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1626984202362928
-    m_Key: Keep the letters ashore. We'll test it with the toolboxes first.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1626984202362929
-    m_Key: Rue sent seeds when our mill failed. I still haven't taken her any water.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1626984202362930
-    m_Key: Fill a can. Once this crossing is ready, we'll carry it to her together.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1626984202362931
-    m_Key: That nest has chicks. Their parents won't leave while the branches are
-      dark.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1626984202362932
-    m_Key: We'll light their tree first. The harvest can wait until they can feed.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1626984202362933
-    m_Key: The broken support rests on a living root. Pull it out and both may fall.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1626984202362934
-    m_Key: We'll brace the bridge, then free the root. We don't have to cut it.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1626984202362935
-    m_Key: These jars were promised to the mill. I've been rationing them here instead.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1626984202362936
-    m_Key: Once the cart can pass, send the promised crate first. I'll help load
+    m_Key: That knock is the last bad tooth. I'm stopping the wheel. Yes, stopping
       it.
     m_Metadata:
       m_Items: []
+  - m_Id: 1626984202362922
+    m_Key: No hurry. I've got the row. Find the tooth before it starts turning again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1626984202362923
+    m_Key: Water reaches us, then leaks away. My brother still has a dry tap.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1626984202362924
+    m_Key: We'll follow the pipe. He can come and show us where it stops working.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1626984202362925
+    m_Key: My brother remembers that knock too. It drove him indoors before the rain.
+      So the crate hit first.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1626984202362926
+    m_Key: And you pulled the lever afterwards. The pipe was your accident; the stopped
+      wheel wasn't.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1626984202362927
+    m_Key: The boat floats empty. The mail makes this seam dip under the water.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1626984202362928
+    m_Key: Unload the mail. I'll keep the landing lit while you patch the seam.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1626984202362929
+    m_Key: My brother tied red thread round the tap. Says he'll take it off after
+      a whole day without a leak.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1626984202362930
+    m_Key: Fair enough. Tell him where the new valve is, in case it needs tightening.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1626984202362931
+    m_Key: The roots block the short descent. I won't cut a living root just to save
+      a few minutes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1626984202362932
+    m_Key: Outer rope it is. Can you watch the branch above my head?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1626984202362933
+    m_Key: Walter's agreed to come. The chisel is wrapped and waiting for him beside
+      the bridge.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1626984202362934
+    m_Key: Then we'll light the last joint before he gets here. He'll need to see
+      the crack from both sides.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1626984202362935
+    m_Key: Ben's jars are packed. Too heavy to carry across that broken section;
+      we'll need the cart.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1626984202362936
+    m_Key: I'll light the rest of the track. Keep the jars here until Walter has
+      checked the joint.
+    m_Metadata:
+      m_Items: []
   - m_Id: 1626984202362937
-    m_Key: The seed trays are dry, but the night air gets in beneath the door.
+    m_Key: The packing entry says Lens padding. Deliver empty crate to beacon. It
+      doesn't list what went inside.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362938
-    m_Key: Let's seal the gap. I want these seeds to survive more than this one storm.
+    m_Key: Nora should have the list for the loaded crate. I'll copy this entry for
+      her.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362939
-    m_Key: Sora used this path every week. The unopened mail is still on my table.
+    m_Key: The birds found the lit tree. I was about to harvest every fruit for the
+      market.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362940
-    m_Key: Keep it for her. We'll reopen the path so she can collect it herself.
+    m_Key: That branch has enough for the nest and us. Leave the high ones.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362941
-    m_Key: Two envelopes lost their addresses. I can't just choose a house for them.
+    m_Key: An envelope with no address. I could guess; I recognise the paper.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362942
-    m_Key: Bring them to the post desk. Someone may recognise the handwriting.
+    m_Key: Put it on the collection shelf. We can ask at the next landing.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362943
-    m_Key: Your letter can leave with the next bag. Are you sure it's finished?
+    m_Key: Move the source. Leave the relays connected. Odd wording for Ada.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362944
-    m_Key: I added everyone's names. Gran should know who is helping me reach her.
+    m_Key: Ada taught me to disconnect them before moving a source. Is this the original,
+      or your copy?
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362945
-    m_Key: I can fly over the gap. The full mail cart can't. I forgot who uses this
-      bridge.
+    m_Key: The cart catches at the far end. I never saw that part from the air.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362946
-    m_Key: Then test it with the cart. We'll leave a route everyone can use.
+    m_Key: Stand beside the cart. I'll light that edge so you can see where the wheel
+      catches.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362947
-    m_Key: I keep checking the stamp on my apology. It's easier than sending it.
+    m_Key: I keep checking the stamp. It's easier than letting Clara read the letter.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362948
-    m_Key: Put it in the basket yourself. I'll stay until it leaves.
+    m_Key: The stamp's straight. Shall I keep you company until they collect the
+      basket?
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362949
-    m_Key: Neri is the friend I wrote to. I don't know if she'll want to see me.
+    m_Key: The receipt time and Ben's clock agree. The crate flew before the storm
+      arrived.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362950
-    m_Key: We can ask. Opening the path doesn't mean she owes us an answer.
+    m_Key: Clara keeps a record of boats. Let's ask if she saw that flight beside
+      the north channel.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362951
-    m_Key: Sora's letter arrived. I haven't answered. We still need this pier repaired.
+    m_Key: Nora offered to hold the boat. I said yes. That's enough talking for now.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362952
-    m_Key: We'll repair it. You can decide about the letter when you're ready.
+    m_Key: I'll help with the boat. You can both stay on the pier.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362953
-    m_Key: From shore, those lamps look alike. From a boat, one marks a dangerous
-      turn.
+    m_Key: 'My log: the lamps went out, then a glowing crate passed. The source was
+      still lit.'
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362954
-    m_Key: Show me from the boat, then. Hold it steady while I step in.
+    m_Key: Mark that entry for Ada. If it was the High Lantern, the flame survived
+      the move.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362955
-    m_Key: The gate catches the smallest sail. Mother always lowered it before passing.
+    m_Key: The smallest sail catches here. My mother always ducked it under the beam.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362956
-    m_Key: We'll leave enough room for the sail. The next sailor may not know that
-      trick.
+    m_Key: Where did she lower it? We can leave enough clearance for the next boat.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362957
-    m_Key: This lamp was Mother's. I'd rather it lit your road than stayed on my
-      shelf.
+    m_Key: Felix asked about the last north lamp every spring. I thought he'd given
+      up.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362958
-    m_Key: I'll bring it back. And I'll tell you where its light took us.
+    m_Key: Did he leave his measurements here? I'd like to see where he meant to
+      put the lamps.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362959
-    m_Key: Tell Sora there's a place at my table. I still want to hear her say it
-      aloud.
+    m_Key: Nora can come for supper. I asked her to leave the mailbag at home.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362960
-    m_Key: I'll tell her before we leave for the archive. This message shouldn't
-      wait.
+    m_Key: Shall I tell her now? She's still on the pier.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362961
-    m_Key: The door swelled in the rain. Forcing it will tear the map caught underneath.
+    m_Key: There's the trapped page. Lift the door, don't pull the paper.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362962
-    m_Key: Lift this corner with me. We can free the paper before opening the door.
+    m_Key: The edge is free now. Is the writing legible?
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362963
-    m_Key: I tied the shelves together during the storm. Now I can't reach the roof
-      ladder.
+    m_Key: The key was in my pocket. Exceptionally safe. Especially from me.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362964
-    m_Key: Brace one before moving the other. Your books can stay where they are.
+    m_Key: Tie it to the register? That's where you looked first.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362965
-    m_Key: My teacher left this turn blank. I've been afraid to admit the map is
-      incomplete.
+    m_Key: 'Here it is: north lens trial. Ada''s permit number, Felix''s name. The
+      work itself was approved.'
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362966
-    m_Key: Mark the gap on my copy. Lumi can check it; a guess could send us off
-      the ridge.
+    m_Key: But Nora carried a burning source. Does it say he could move that too?
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362967
-    m_Key: The leak is above the map cabinet. Saving one page won't keep the rest
-      dry.
+    m_Key: Clara asked for lamps. Felix supplied the lens plan. Ada wrote Deferred
+      on both.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362968
-    m_Key: I'll move the cabinet. You mend the roof before we uncover the maps.
+    m_Key: Take the dates down too. I want to ask Ada what happened between the two
+      petitions.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362969
-    m_Key: Gran left this note before the storm. It tells us how to approach the
-      beacon.
+    m_Key: I haven't surveyed the pass since the storm. That blank marks a turn I
+      can't vouch for.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362970
-    m_Key: Then it's directions, not news. We'll still need to find out if she's
-      safe.
+    m_Key: We'll check the turn with Lumi. If the old path has gone, that's what
+      we'll put on the map.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362971
-    m_Key: Your map leaves this fork blank. The old path ends at a fallen ledge now.
+    m_Key: The old fork ends at a fallen ledge. My memory would have taken us straight
+      over it.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362972
-    m_Key: Let's mark the safe fork for Toma. Nobody should follow the old line blindly.
+    m_Key: Mark it closed on Oscar's map. We'll use the new fork.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362973
-    m_Key: I said we could reach the beacon tonight. I can't feel my paws now.
+    m_Key: I can't feel this buckle. I should have said so before touching your rope.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362974
-    m_Key: Then we stop here. I'll light the shelter; you take Pip's blanket.
+    m_Key: Give me the rope and get the blanket. We're secure here. We'll wait.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362975
-    m_Key: The near edge is sound. I can't see where the far one lands through this
-      snow.
+    m_Key: The far anchor is sound. I checked it from below this time, not from the
+      ridge.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362976
-    m_Key: Let's secure the far landing before we cross. I can wait for a clear view.
+    m_Key: Keep watching it. I'll allow for the turn and bring the row down.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362977
-    m_Key: Pip packed two blankets. I thought he'd miscounted. One is for the next
-      traveller.
+    m_Key: Spare blanket above the fuel. Dry up here. It's snowing outside, but the
+      stove's warm now.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362978
-    m_Key: We'll leave it in the shelter, wrapped dry. He thought further ahead than
-      us.
+    m_Key: I'll mark the shelter. Ben will want to know where his parcel ended up.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362979
-    m_Key: 'That window flashed twice. That''s a keeper''s signal: someone is there.'
+    m_Key: A two-flash reply. Ada saw you. She's staying beside the window.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362980
-    m_Key: Gran taught me the reply. Hold my lantern high enough for her to see.
+    m_Key: Hold the hand lamp higher. One more connection, then we cross.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362981
-    m_Key: I saw your reply from the window. I nearly came out onto the broken bridge.
+    m_Key: I nearly stepped onto the broken bridge when I saw your light. Old habit.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362982
-    m_Key: Stay by the rail. I'll come to you as soon as this side holds.
+    m_Key: Stay by the rail, Gran. I'll give the signal when both ends are safe.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362983
-    m_Key: The lift jammed with the lens aboard. I couldn't bring it down alone.
+    m_Key: 'North lens trial, key issued to Felix. He signed for two sheets: the
+      permit and its conditions.'
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362984
-    m_Key: We won't pull against the jam. I'll unload it in the order you show me.
+    m_Key: Nora only saw the delivery copy. Did those two sheets go with the equipment?
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362985
-    m_Key: I left the upper lamps dark to save oil. I was waiting for you to come
-      home.
+    m_Key: No. Disconnecting the relays is the first safety check. Whoever wrote
+      this bypassed it.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984202362986
-    m_Key: I'm here now. Let's light the stairs for both of us.
+    m_Key: Walter found brass at the gate. Could it have come from the lens equipment?
     m_Metadata:
       m_Items: []
   - m_Id: 1626984206557184
-    m_Key: Two small flames won't make the beacon brighter unless the lens is aligned.
+    m_Key: A thin beam from the observatory. The signal lens can catch it if we align
+      this row.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984206557185
-    m_Key: You watch the beam. I'll adjust the frame until it reaches Bram's island.
+    m_Key: Set the lens there. I'll bring the row to that receiver.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984206557186
-    m_Key: A light answered from the mill. They're waiting to see if we'll stay lit.
+    m_Key: I feared opening the route. Clara sailed it unlit anyway. I should have
+      asked what she needed.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984206557187
-    m_Key: Then I'll learn to tend it, too. You shouldn't have to keep watch alone.
+    m_Key: Ask her about the channel too. There's a low beam her mother's sail used
+      to catch.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984206557188
-    m_Key: The dial agrees with the beacon. My chart was using the old starting mark.
+    m_Key: The signal's steady. Ben described the same failure at the mill. His lever
+      didn't cause it.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984206557189
-    m_Key: Let's correct that before checking the stars. The same error could shift
-      every route.
+    m_Key: Write that on his chart. He still thinks he broke the whole chain.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984206557190
-    m_Key: I watched from the doorway after the bridge broke. It hid half the sky.
+    m_Key: Nora sees the dead patch. My north beam stops one turn too soon.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984206557191
-    m_Key: We'll reach the telescope. No wonder you couldn't check those bearings.
+    m_Key: Lower relay there. Nora checks it again before we move the source.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984206557192
-    m_Key: This torn corner holds the turn after the ridge. Without it, a pilot must
-      guess.
+    m_Key: I knew after his letter. I sent enough to fix the wheel. I should have
+      sent this too.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984206557193
-    m_Key: We'll mark that route closed until it's checked. The others can still
-      open.
+    m_Key: We'll need an explanation. Lay the permit beside the chart; I can read
+      it while you hold the source.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984206557194
-    m_Key: That glider follows the first lamps, then circles back. Our next turn
-      is still dark.
+    m_Key: The pilot's at the turn. I kept the relays on for the north beam. It burnt
+      out the other branches.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984206557195
-    m_Key: Light the turn before signalling him through. He needs a route, not a
-      promise.
+    m_Key: Then we check every branch before moving it again. This receiver first.
+      Watch Nora for the signal.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984206557196
-    m_Key: Sora checked our route from the air. She found a lamp hidden behind the
-      tower.
+    m_Key: Nora reports a clear route. Clara confirms the water lamps. We can lower
+      the lantern.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984206557197
-    m_Key: We'll move it, then ask her to fly once more. This time we check together.
+    m_Key: On my signal. Ada's at the receiver. Nora, check the far light once more.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984206557198
@@ -7201,8 +7342,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1626984206557200
-    m_Key: Gran's old route note is in that cabinet. We need to stop the leak to
-      reach it.
+    m_Key: Lumi's route note is behind the last cabinet. I'll copy the blank turn
+      as blank.
     m_Metadata:
       m_Items: []
   - m_Id: 1626984206557201
@@ -7582,456 +7723,473 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2323307738161152
-    m_Key: If you see my window light, I'm still here. Don't try the broken bridges
-      alone.
+    m_Key: Rin, the High Lantern is missing. Take my hand lamp. The lower lights
+      can still be lit, but I can't reach them now.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132672
-    m_Key: She wrote that before the storm. The beacon is dark, but I can't see her
-      window from home.
+    m_Key: I know the knots. It's easier to remember them with solid ground under
+      both paws.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132673
-    m_Key: I built that bridge. Twenty winters it stood. Now I can't even put my
-      name on it.
+    m_Key: The lamps hang under the islands; no bridge reaches them. If you doubt
+      a knot, stop and tie it again. I'll wait.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132674
-    m_Key: Don't scrape it off yet. How will I know whom to thank when I get across?
+    m_Key: All right. Walter first. I'll ask him to check my knots before I go over
+      the edge.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132675
-    m_Key: You think an old builder can mend this? I've spent three days sorting
-      nails.
+    m_Key: The same row goes all the way down. Match the receiver to light a lamp.
+      Its relay powers the nearby machinery too.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132676
-    m_Key: Then you know where every nail is. That's a start. I'll hold the lantern
-      for you.
+    m_Key: The same row all the way down? Then I can change the order on the way.
+      Keep hold until I say.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132677
-    m_Key: All right. Pass me the long ones. And tell your gran her bridge builder
-      hasn't retired.
+    m_Key: One thing about that storm. I was measuring this bridge when the lights
+      failed. The sky was still clear.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132678
-    m_Key: Tell her yourself when the road is open. She always sets one extra cup.
+    m_Key: Before the storm? Then someone may have seen what happened. We can ask
+      once the path is lit.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132679
-    m_Key: Hear that? No mill wheel. I used to complain it woke me before breakfast.
+    m_Key: Ben heard a crate strike the mill that night. The lights went out about
+      then. Ask him what he saw.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132680
-    m_Key: There are buckets at every door. Even the little houses have big ones.
+    m_Key: We'll ask where the crate went. If the marks are still there, we'll compare
+      them with the scratch on the gates.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132681
-    m_Key: My brother asked if rain could fill them. I said I'd have the mill running
-      by lunch.
+    m_Key: The crate hit the wheel. I pulled the fast lever. A crack, then water
+      everywhere. My brother's tap is still dry.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132682
-    m_Key: Which lunch? Today's or yesterday's?
+    m_Key: Is that him with the bucket? Let's tell him before he makes another trip.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132683
-    m_Key: Yesterday's. I turned the wheel too fast and snapped another tooth. He
-      saw everything.
+    m_Key: The repair drawing arrived after I sent word about the wheel. It shows
+      a burnt relay. I thought my lever had ruined that too.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132684
-    m_Key: Then let him see you fix it too. My gran says hiding a broken cup never
-      mends it.
+    m_Key: Walter found the same damage at the lift. Your lever couldn't have reached
+      that. What happened first?
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132685
-    m_Key: I'll ask him to bring the spare gear. And I'll tell him why we need it.
+    m_Key: A crate hit the wheel. The clock stopped with it. Then I pulled the lever.
+      My brother was still outside; the rain hadn't started.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132686
-    m_Key: I'll wait by his bucket. This time let's promise water, not a lunchtime.
+    m_Key: So the wheel had already stopped. We'll keep the clock as it is and check
+      its time against Nora's flight book.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132687
-    m_Key: Rue sent us fruit through the storm. I haven't taken her water in weeks.
+    m_Key: Copper dust on the broken lid. And Rose's stamp. Whatever was in that
+      crate, it didn't smell of apples.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132688
-    m_Key: Bring a watering can. A thank-you might be thirsty.
+    m_Key: Let's take her the lid. Easier to ask about something she can see.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132689
-    m_Key: Mind that crooked tree. I planted it the year I learnt to tie my apron.
+    m_Key: My stamp, yes. I lend the empty crates out. They come back smelling of
+      all sorts. That one's overdue.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132690
-    m_Key: It's taller than your house now. Did you plant it crooked on purpose?
+    m_Key: Was it lined with felt when it left? Some caught in the hinge.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132691
-    m_Key: No. I nearly pulled it out. Now the birds nest in the bend I wanted to
-      straighten.
+    m_Key: Felix ordered the felt for a lens. The crate went to Ada's for loading;
+      Nora collected it there.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132692
-    m_Key: Then let's leave their bend alone. Gran has room for a crooked tree too.
+    m_Key: Please. Nora carried the crate, didn't she? I want to know where it went
+      after the mill.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132693
-    m_Key: Take these three seeds. Plant one by her window, and keep two in case
-      the first sleeps in.
+    m_Key: Nora collected it for the lens workshop. I'll show you the entry. We can
+      read it while the seedling beds warm up.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132694
-    m_Key: I'll write to you when it wakes up. Even if it grows sideways.
+    m_Key: Good. And show me which lamps need lighting; Ada asked me to check the
+      beds too.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132695
-    m_Key: Sora can find a house from one bent chimney. But the storm has mixed up
-      all her letters.
+    m_Key: Nora'll perch on a chimney while it's smoking. Getting her to stay for
+      tea is harder.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132696
-    m_Key: Perhaps there's a reply from Gran. I'll help look.
+    m_Key: I'll ask for her flight book first. Tea can come with it.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132697
-    m_Key: That's mine. Please leave it. It hasn't got a stamp yet.
+    m_Key: Northbound crate? Delivered. Ada's seal, fee paid. If there's damage,
+      I need to see the receipt.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132698
-    m_Key: It's worn thin at the folds. Have you been waiting for a stamp for long?
+    m_Key: It may have held the High Lantern. Who gave you the order? Ada herself?
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132699
-    m_Key: Months. Clara asked me to stay when her mother was ill. I said I had deliveries.
+    m_Key: The night desk. I didn't see the sender. I was late for Clara... Let me
+      get the book.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132700
-    m_Key: Is that what you wrote in the letter?
+    m_Key: And the order, please. We have the crate loan. Something on your copy
+      might explain the rest.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132701
-    m_Key: No. Three pages about the weather. Not one word about leaving her alone.
+    m_Key: Clara's letter is in there too. I've rewritten it three times. Somehow
+      the weather gets a whole page every time.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132702
-    m_Key: Start with that word. I'll find you a stamp while you write.
+    m_Key: Are you coming with us? You could give it to her at the lagoon.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132703
-    m_Key: Clara lives across the lagoon. Will you take this? I've finally written
-      the first sentence.
+    m_Key: Clara notes every tide and passing boat. She'll know whether my flight
+      time fits. If she'll see me.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132704
-    m_Key: Come and give it to her. I'll walk beside you.
+    m_Key: There's a second rope on the quay. Let's tie up the boat first. We can
+      ask about the journal once she's free.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132705
-    m_Key: I saw the post bag on the pier. Is Sora waiting outside?
+    m_Key: Nora's letter is under the cup. I'll answer it. That boat's drifting;
+      pass me the line.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132706
-    m_Key: Yes. She wants to talk. I can wait here if you'd rather be alone.
+    m_Key: Here. Once she's secure, could you show me the north channel in your log?
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132707
-    m_Key: After we mend the pier. Mother built it so visitors could step ashore
-      with dry paws.
+    m_Key: Light came through the felt. I thought Ada had finally sent a lamp north.
+      My mother's boat vanished beyond the last channel light.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132708
-    m_Key: I'm glad she thought of that. Mine shake when I look at deep water.
+    m_Key: Did Ada tell you she was opening that route? Nora's order says the load
+      was authorised.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132709
-    m_Key: Keep them on this board. I'll hold the boat. You needn't prove anything
-      to the pond.
+    m_Key: No. Every reply was another delay. Felix surveyed the route for me, but
+      Ada never gave us a date.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132710
-    m_Key: Good. I was afraid it might ask me to swim.
+    m_Key: Then we need to ask her. First let's open the channel; the archive path
+      is on the other bank.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132711
-    m_Key: Oscar has the snow-road map. Tell him you'll bring it back. He'll ask
-      twice.
+    m_Key: Oscar keeps the key register. He'll ask you to wipe your paws. There's
+      a mat behind the door as well.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307759132712
-    m_Key: I'll answer twice. I need that road to reach Gran.
+    m_Key: I'll use both. Will you keep Nora here? She keeps checking the time.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326976
-    m_Key: My teacher drew this map. It's the last one. If it gets wet, I can't ask
-      him for another.
+    m_Key: The beacon key log. Ada keeps one key; Felix signs for the service key
+      when he repairs lenses. Ada keeps the permit receipts too.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326977
-    m_Key: Then leave it here. May I copy the road onto the back of my letter?
+    m_Key: Then his key alone proves nothing. We need to see what Ada allowed him
+      to take.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326978
-    m_Key: There's a blank turn by the ridge. I always meant to ask him about it.
+    m_Key: The key log records access, not what was carried out. For that we need
+      the equipment list on the permit.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326979
-    m_Key: Let's leave it blank on mine too. Alice can show us when we get there.
+    m_Key: Will you help me find its number? I don't want Ada searching every file
+      at the beacon.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326980
-    m_Key: Bring back what you find. He left room for notes. I thought I wasn't allowed
-      to add any.
+    m_Key: 'Ada has it. Here are the north-route petitions. Clara''s first, then
+      Felix''s plan. Same reply: Deferred. For years.'
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326981
-    m_Key: He left you a pencil too, didn't he? Keep it sharp for us.
+    m_Key: Copy those too. Ada's waiting for us, and I have more questions than will
+      fit on her note.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326982
-    m_Key: Alice knows the ridge. Follow her, but don't make her hurry. She never
-      asks for a rest.
+    m_Key: Oscar left this turn blank. Good. The old ledge fell away in the storm.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326983
-    m_Key: I'll keep the blanket where I can reach it.
+    m_Key: Show me the new route. We'll mark it before anyone else comes this way.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326984
-    m_Key: The old turn has fallen away. Your map is wrong here. I've led travellers
-      along it for years.
+    m_Key: I know the ridge. Keep close. We can reach the beacon without a stop.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326985
-    m_Key: Then I'm glad we have you, not just the map.
+    m_Key: Lumi, that buckle's still open. This is the third time you've tried to
+      fasten it.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326986
-    m_Key: We'll go around. I said we'd reach the beacon tonight. I shouldn't have
-      said tonight.
+    m_Key: Can't feel the clasp. There's a shelter below. I keep meaning to stop
+      there on the way back.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326987
-    m_Key: Gran would rather open her door tomorrow than have us freeze outside it
-      today.
+    m_Key: We'll stop now. Nora left blankets from Ben in the shelter. Show me where
+      to lower the light.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326988
-    m_Key: There's a shelter below. Just until the gust passes. And perhaps a little
-      longer.
+    m_Key: The observatory beam came on before the snow. Nora's crate went that way.
+      I thought Ada had opened the north route.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326989
-    m_Key: Long enough for tea. I'll pour it while you unfold Ben's blanket.
+    m_Key: Clara thought so too, but nobody told her. We'll ask Ada why that delivery
+      never reached her.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326990
-    m_Key: Two flashes in the window. Someone saw our light.
+    m_Key: Two flashes. Ada's window. She sees us. I'll hold the bridge; answer her.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326991
-    m_Key: That's her signal! Gran, don't come onto the bridge. We're nearly there!
+    m_Key: Two back. Gran, stay there! Let me finish this crossing.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326992
-    m_Key: Your scarf has a new patch. And my letter has more folds than a concertina.
+    m_Key: "Rin\u2026 let me look at you. I've watched for your light all the way.
+      I wanted to come and meet you, but this bridge\u2026"
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326993
-    m_Key: I kept opening it. I knew the words, but I wanted to hear your voice.
+    m_Key: I'm here, Grandma. Look at Nora's order. It has your seal. Did you tell
+      her to take the High Lantern north?
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326994
-    m_Key: Here I am. Come closer. You can put that bag down for a minute.
+    m_Key: I allowed a lens trial, not the High Lantern. After Clara's mother vanished,
+      I was afraid to open that route.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326995
-    m_Key: Carefully! There are seeds in it. Rose sent you a tree that hasn't happened
-      yet.
+    m_Key: But the boats kept going. Clara needs lights, not another delay. Can we
+      check that permit number?
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326996
-    m_Key: We'll find it a pot. Then help me with the beacon. My knees won't carry
-      the lamp up anymore.
+    m_Key: The receipt is in my service file. The lift's jammed. Help me get it down,
+      then we can check what Felix collected.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326997
-    m_Key: I'll carry it. You tell me where to shine. Everyone down there is waiting.
+    m_Key: I'll light the lift relay. Stay at the rail and watch the far end for
+      me.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326998
-    m_Key: The mill answered our beacon. But those gliders keep turning back above
-      the clouds.
+    m_Key: The High Lantern's behind your lens. Ada says she never authorised moving
+      it. Show me the permit that came with the crate.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763326999
-    m_Key: Felix's route lamps are dark. Take him breakfast. He forgets to eat when
-      he worries.
+    m_Key: "The seal was hers. I was testing the north beam. Wait\u2014the pilot's
+      signal. Three flashes."
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763327000
-    m_Key: That glider followed my chart into a cloud bank. I closed the route before
-      anyone else tried.
+    m_Key: What does that mean? Can they reach the next landing?
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763327001
-    m_Key: Did the pilot get home?
+    m_Key: No. The glider's circling beyond the lens. My chart shows a lamp at the
+      turn, but Nora says it's dark.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763327002
-    m_Key: Yes. He came back to show me the wrong turn. I was too ashamed to open
-      the door.
+    m_Key: Then leave the High Lantern where it is. Which relays can light that turn?
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763327003
-    m_Key: Could we ask him again? We could have breakfast at the telescope while
-      we wait.
+    m_Key: The lower chain. I have its full chart. The copy I sent Ben doesn't show
+      it.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763327004
-    m_Key: I'll send a signal. But we'll check the route from his glider, not just
-      from my desk.
+    m_Key: I'll bring it. And the permit. Just don't move the source while the pilot's
+      following its beam.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763327005
-    m_Key: And leave the door open. He's bringing the bit of sky we couldn't see.
+    m_Key: Put both beside the receiver. You watch the source; I'll light the lower
+      chain. Nora, stay with the pilot.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763327006
-    m_Key: You left your name on it! I'll tell Gran her bridge builder is coming
-      for tea.
+    m_Key: The first lamp... Could we stay a moment? I want to see who notices.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763327007
-    m_Key: Your brother heard it first. He's run off with his bucket. Let's see if
-      the water reaches him.
+    m_Key: And? Is he coming to test it with us?
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763327008
-    m_Key: He filled it without asking you. Look at him trying not to spill a drop!
+    m_Key: So the crate came through while the sky was clear. The storm came after.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763327009
-    m_Key: That chick has stopped calling. Its mother found the crooked branch after
-      all.
+    m_Key: Look, something's moving by the nest. The birds noticed before we did.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763327010
-    m_Key: I'll take her the waiting letters. Yours can go on top, so she sees your
-      handwriting first.
+    m_Key: Seeds in this pocket, papers in the other. I'll give Ada your planting
+      instructions with them.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763327011
-    m_Key: I'll draw them for Gran. The real lamp and the one that won't sit still
-      in the water.
+    m_Key: You saw light through the felt. If that was the High Lantern, someone
+      moved it while it was burning.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763327012
-    m_Key: I'll bring you a drawing of the beacon. Perhaps the fish would like a
-      taller lamp.
+    m_Key: I'll pack them with Nora's order. I'd like to hear why Ada kept postponing
+      this route.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763327013
-    m_Key: Keep a place for Sora at supper. I'll take the snow road after you two
-      have talked.
+    m_Key: I'll ask him for those too. Nora knows about supper. She's still here.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763327014
-    m_Key: Did your teacher write in its margins too? You could show me while my
-      scarf dries.
+    m_Key: I'll borrow that second pencil for the map. This one has nearly had it.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763327015
-    m_Key: Then let's stop halfway. You can tell me which stair squeaks, like you
-      used to.
+    m_Key: The crate went to the observatory. Let's check whether its beam is really
+      our missing light.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307763327016
-    m_Key: I used to whistle on these bridges. Today I can't remember a single tune.
+    m_Key: Don't watch the drop. Watch the joint. If I tap twice, stop lowering.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307767521280
-    m_Key: Gran whistles when her soup boils over. I know that one. Shall I start?
+    m_Key: Two taps. I can remember that. Will you keep talking until I reach the
+      lamp?
     m_Metadata:
       m_Items: []
   - m_Id: 2323307767521281
-    m_Key: I tried tying this branch straight. The tree broke every ribbon I used.
+    m_Key: You haven't asked why I keep the crooked tree. Most people ask that first.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307767521282
-    m_Key: Perhaps it wants a bow instead. That's what I ask for when Gran brushes
-      my fur.
+    m_Key: You showed me the roots holding up the terrace. We can take the rope around
+      that bent branch.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307767521283
-    m_Key: Walter left a triangle mark on the crate. That must be the timber he promised.
+    m_Key: Shapes on this receiver. Ada taught me those before I could read her notes.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307767521284
-    m_Key: He sends the straightest boards away and keeps the crooked ones for his
-      own door.
+    m_Key: This route is still dark. I'll check the anchors while you check the receiver.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307767521285
-    m_Key: Let's save him one straight board. Gran says his door only opens in dry
-      weather.
+    m_Key: A different order here. Let's start with the nearest lamp.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307767521286
-    m_Key: There's a letter on each parcel. This one spells HOME. Is it for the beacon?
+    m_Key: Letters on the light pieces. Same row to carry, another way to read the
+      receiver.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307767521287
-    m_Key: For a family at the mill. They've been sleeping in the storehouse since
-      the storm.
+    m_Key: There's a separate chain of lamps here. We still need to light it.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307767521288
-    m_Key: Then their parcel goes first. I'll put Gran's letter somewhere dry while
-      we carry it.
+    m_Key: I'll read the whole order before moving. Ada would ask me to do that twice.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307767521289
-    m_Key: A crate with a square, and a parcel with a letter. Who packed this lot?
+    m_Key: Letters and shapes together. I'll need to watch the order, not just the
+      familiar colours.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307767521290
-    m_Key: The whole village. Someone even tied a biscuit to the handle. For the
-      journey, they said.
+    m_Key: The far rope is secured. Look at the receiver while I check this anchor.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307767521291
-    m_Key: I'll deliver everything. Except perhaps the biscuit. It might not survive
-      the journey.
+    m_Key: I see it. I'll start with the lower lamp, then we'll check the whole chain.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307767521292
-    m_Key: There's Walter's triangle again. We left this crate by the bridge.
+    m_Key: Our shape route. I'll check the last receiver before continuing.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307767521293
-    m_Key: And it's still dry. I covered it when the rain came. Shall we carry on?
+    m_Key: The rope is where you left it. We kept the notes too.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307767521294
-    m_Key: The lettered parcels! We left the last one here. Did anyone collect it?
+    m_Key: Back to the lettered pieces. Our notes show where we stopped.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307767521295
-    m_Key: Not yet. They asked me to thank you. I'll tell them when the next load
-      arrives.
+    m_Key: The rope is ready. We'll start at that anchor. I'll show you.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307767521296
-    m_Key: Our mixed delivery is still waiting. I hope nobody ate the biscuit.
+    m_Key: Here's the mixed receiver again. I'll read every mark before lowering
+      the row.
     m_Metadata:
       m_Items: []
   - m_Id: 2323307767521297
-    m_Key: I put it in the tin. The crumbs were tempting the birds. Here, take it
-      before they return.
+    m_Key: I kept the far anchor clear. Your notes are beside the rope.
     m_Metadata:
       m_Items: []
   - m_Id: 797900375318702
@@ -8076,6 +8234,69 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 3745925842329600
     m_Key: One reminder tomorrow evening.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3745925842329601
+    m_Key: Tap the bag to open or fold the tray. Use any available tool whenever
+      it helps.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3745925842329602
+    m_Key: Undo returns the pieces and board to before your last move. You have one
+      free return.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3745925842329603
+    m_Key: After your free undo, use a spool to undo one more move on this board.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4775959273136128
+    m_Key: Delete account
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4775959281524736
+    m_Key: Get deletion code
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4775959281524737
+    m_Key: Delete game account
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4775959281524738
+    m_Key: Confirm permanent deletion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4775959281524739
+    m_Key: Could not connect. Try again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4775959281524740
+    m_Key: Deletion code copied. It is valid for 10 minutes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4775959281524741
+    m_Key: Deletion is pending. Retry to finish; cloud uploads are stopped.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4775959281524742
+    m_Key: This permanently deletes game data. Cancel subscriptions separately in
+      the store.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4780499972120576
+    m_Key: Could not clear local data. Retry to finish deletion.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4780499976314880
+    m_Key: Finish deleting local data
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4780499976314881
+    m_Key: "Age group: {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4780499976314882
+    m_Key: "Video unavailable. Try again later."
     m_Metadata:
       m_Items: []
   m_Metadata:

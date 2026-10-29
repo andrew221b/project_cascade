@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Cascade.Presentation
 {
-    public enum GameScreen { Home, Playing, Pause, Win, Fail, Settings, Devices, Lessons, Dialogue, WordLanguage, SaveRecovery, TravelBag, Journal, Collection, Workshop, Requests, Records, Contracts, Parcel, JourneyEnd, ReachChallenges, PowerupChallenges, Checkpoint, PlayChoice, JourneyMap, Prologue, Shop, NoAds, Supplies, CoinPacks, AccountGate }
+    public enum GameScreen { Home, Playing, Pause, Win, Fail, Settings, Devices, Lessons, Dialogue, WordLanguage, SaveRecovery, TravelBag, Journal, Collection, Workshop, Requests, Records, Contracts, Parcel, JourneyEnd, ReachChallenges, PowerupChallenges, Checkpoint, PlayChoice, JourneyMap, Prologue, Shop, NoAds, Supplies, CoinPacks, AccountGate, WorldComplete }
     public sealed partial class CascadeGame
     {
         public GameScreen CurrentScreen { get; private set; } = GameScreen.Playing;
@@ -80,7 +80,7 @@ namespace Cascade.Presentation
             reachBadge=Picture("Ribbon charge",receiver,new Vector2(.88f,.95f),new Vector2(.96f,1.23f),Resources.Load<Sprite>("CascadeArt/Devices/RibbonSpool"),true);
             flowReady=true; ApplyPreferences();
         }
-        public void ShowHome() { SetScreen(GameScreen.Home); }
+        public void ShowHome() { EnsureAudienceMonetization();SetScreen(GameScreen.Home); }
         public void ShowAccountGate() {accountGateFromHome=CurrentScreen==GameScreen.Home&&profile.AccountIntroSeen;accountNotice=default;accountProvider=null;accountErrorAcknowledged=false;SetScreen(GameScreen.AccountGate);}
         public void ShowGame()
         {
@@ -105,6 +105,11 @@ namespace Cascade.Presentation
         {
             returnScreen=CurrentScreen; deviceIndex=DeviceForCurrentFloor(); SetScreen(GameScreen.Devices);
         }
+        public void ShowHowToPlay()
+        {
+            if(CurrentScreen!=GameScreen.Devices)returnScreen=CurrentScreen;
+            deviceIndex=-1;SetScreen(GameScreen.Devices);
+        }
         public void CloseMenu() { SetScreen(returnScreen); }
         public void SelectMode(PuzzleMode mode) { SwitchJourneyMode(mode); }
         void SetScreen(GameScreen screen)
@@ -115,6 +120,14 @@ namespace Cascade.Presentation
             if(screen==GameScreen.Journal||screen==GameScreen.Records)screen=GameScreen.TravelBag;
             if(screen==GameScreen.Workshop)screen=GameScreen.Shop;
             if(screen==GameScreen.WordLanguage){screen=GameScreen.Settings;settingsPage=2;}
+            if(screen!=GameScreen.Win)completionAdAttempt=null;
+            resultTransition?.Settle();
+            bool resultHandoff=CurrentScreen==GameScreen.Playing&&screen==GameScreen.Win
+                &&!ReducedMotion&&IntroductionAnimationAllowed;
+            if(resultHandoff){
+                if(resultTransition==null)resultTransition=gameObject.AddComponent<LevelResultTransition>();
+                resultHandoff=resultTransition.Capture(this,uiCamera,(RectTransform)safeRoot.parent);
+            }
             CloseLegalDocument();CancelConversation();CloseLandingPreview();CloseHintVideoOffer();
             if(screen!=GameScreen.Playing&&MechanicPopupOpen)ResetMechanicDiscovery();
             if(screen!=GameScreen.Playing)SettleDescent();
@@ -134,8 +147,9 @@ namespace Cascade.Presentation
             coachRoot.gameObject.SetActive(false); tutorialHand.gameObject.SetActive(false);
             if(screen!=GameScreen.Playing)HideInstruction();
             menuRoot.gameObject.SetActive(!machineVisible); resultRoot.gameObject.SetActive(screen==GameScreen.Fail||screen==GameScreen.Checkpoint);
-            if(machineVisible) { RenderState(); ArrangeResultControls();if(changed)gameTransition.Arrive(); } else {DrawMenu();if(changed&&!changingJourneyMode)menuTransition.Arrive(screen==GameScreen.Home||screen==GameScreen.PlayChoice||screen==GameScreen.JourneyMap);}
+            if(machineVisible) { RenderState(); ArrangeResultControls();if(changed)gameTransition.Arrive(); } else {DrawMenu();if(changed&&!changingJourneyMode&&!resultHandoff)menuTransition.Arrive(screen==GameScreen.Home||screen==GameScreen.PlayChoice||screen==GameScreen.JourneyMap);}
             outcome?.ShowResult(screen);RefreshFailureReference();
+            if(resultHandoff)resultTransition.Reveal();
             Canvas.ForceUpdateCanvases();
         }
         void StartCoach()
@@ -153,6 +167,7 @@ namespace Cascade.Presentation
         void UpdateFlow()
         {
             if(!flowReady || Interaction==null) return;
+            TickCompletionAd();
             TickMechanicIntroduction();
             bool foreground=applicationFocused&&!applicationPaused&&!Interaction.IsSuspended;
             reachBadge.gameObject.SetActive(Interaction.Attempt.Level.ReachCharges>0||Interaction.Attempt.Current.ReachCharges>0);reachBadge.color=Interaction.Attempt.Current.ReachCharges>0?Color.white:new Color(.5f,.5f,.5f,.5f);
@@ -213,7 +228,7 @@ namespace Cascade.Presentation
                 resultRoot.Find("Nextdelivery").gameObject.SetActive(CurrentScreen==GameScreen.Win||CurrentScreen==GameScreen.Checkpoint||CanOfferStrongerWood);
                 LoadNavigationArt();
                 void DressResult(Button button,bool primary){StandardAction(button,!primary);button.GetComponentInChildren<TextMeshProUGUI>().color=primary?MenuPaper:new Color(.24f,.075f,.012f);}
-                DressResult(undo,false);
+                // The checkpoint hides Undo; keep its gameplay icon skin intact.
                 var undoColors=undo.colors;undoColors.disabledColor=new Color(.64f,.73f,.71f,1);undo.colors=undoColors;
                 DressResult(resultRoot.Find("Nextdelivery").GetComponent<Button>(),true);
                 DressResult(retry,CurrentScreen==GameScreen.Fail&&!CanOfferStrongerWood);
@@ -237,6 +252,16 @@ namespace Cascade.Presentation
             FixedBand(resultRoot,8*unit,140*unit);
             var map=resultRoot.Find("Resulthome").GetComponent<Button>();
             var descend=resultRoot.Find("Nextdelivery").GetComponent<Button>();
+            if(CurrentScreen==GameScreen.Checkpoint){
+                FixedBand(resultRoot,GameplaySillClearance(unit),172*unit);
+                float design=Mathf.Min(safeRoot.rect.width/720f,safeRoot.rect.height/1280f);float width=480*design,height=104*design,gap=16*design;
+                float bottom=(resultRoot.rect.height-height*2-gap)*.5f;
+                foreach(var button in new[]{map,descend}){
+                    var rect=(RectTransform)button.transform;rect.anchorMin=rect.anchorMax=new Vector2(.5f,0);rect.pivot=Vector2.one*.5f;rect.sizeDelta=new Vector2(width,height);rect.anchoredPosition=new Vector2(0,bottom+height*.5f+(button==map?0:height+gap));rect.localScale=Vector3.one;rect.localRotation=Quaternion.identity;
+                }
+                RegisterButtonDesign(map,GameButtonRole.SecondaryYellow).MapAction();RegisterButtonDesign(descend,GameButtonRole.PrimaryGreen);
+                return;
+            }
             foreach(var button in new[]{undo,map,retry,descend}){
                 var rect=(RectTransform)button.transform;rect.localScale=Vector3.one;rect.localRotation=Quaternion.identity;
                 FixedBand(rect,button==undo||button==map?0:54*unit,48*unit);
@@ -251,7 +276,7 @@ namespace Cascade.Presentation
             menuActions.Clear();menuRows.Clear();menuBottoms.Clear();menuColumns.Clear();menuSquares.Clear();navigationLightLabels.Clear();
             settingsContent=null;settingsContentScroll=null;
             foreach(var key in baseTextSizes.Keys.Where(k=>k==null||k.transform.IsChildOf(menuRoot)).ToArray())baseTextSizes.Remove(key);
-            foreach(Transform child in menuRoot){ child.gameObject.SetActive(false); Destroy(child.gameObject); }
+            foreach(Transform child in menuRoot){ if(child==coinToast)continue;child.gameObject.SetActive(false); Destroy(child.gameObject); }
             // The illustrated scene is the menu surface; ink sits on its quiet sky window.
             var wash=Rect("Menu hit surface",menuRoot,Vector2.zero,Vector2.one);menuWash=Background(wash,Color.clear,false);
             if(CurrentScreen!=GameScreen.JourneyMap&&CurrentScreen!=GameScreen.Dialogue){
@@ -280,6 +305,7 @@ namespace Cascade.Presentation
             else if(CurrentScreen==GameScreen.Collection) DrawCollection();
             else if(CurrentScreen==GameScreen.Parcel) DrawParcel();
             else if(CurrentScreen==GameScreen.JourneyEnd)DrawJourneyEnd();
+            else if(CurrentScreen==GameScreen.WorldComplete)DrawWorldCompletion();
             else if(CurrentScreen==GameScreen.Devices) DrawDevices();
             else if(CurrentScreen==GameScreen.Pause) DrawReferencePause();
             if(CurrentScreen!=GameScreen.Home&&!ReferenceShopScreen&&CurrentScreen!=GameScreen.JourneyMap
@@ -288,7 +314,7 @@ namespace Cascade.Presentation
             }
             BindMenuWorldEnvironment();
             FinishMenuContrast();
-            FitMenuRows();ApplyMenuTypography();StandardMenuActions();
+            FitMenuRows();ApplyMenuTypography();StandardMenuActions();if(coinToast!=null)coinToast.SetAsLastSibling();
         }
         static readonly Color MenuInk=new Color(.055f,.16f,.17f);
         static readonly Color MenuPaper=new Color(.99f,.98f,.92f);
@@ -313,7 +339,7 @@ namespace Cascade.Presentation
             foreach(var button in menuRoot.GetComponentsInChildren<Button>())if(!button.interactable){
                 var image=button.GetComponent<Image>();if(image!=null&&image.color.a>0)image.color=new Color(.86f,.91f,.87f);
                 var colors=button.colors;colors.disabledColor=Color.white;button.colors=colors;
-                foreach(var label in button.GetComponentsInChildren<TextMeshProUGUI>())if(!IsSymbolFace(label.name)&&!(ReferenceIslandScreen&&label.name.StartsWith("Reference shop island ",StringComparison.Ordinal)))label.color=image?.sprite==enamelControls[0]||navigationLightLabels.Contains(label)?MenuPaper:MenuInk;
+                foreach(var label in button.GetComponentsInChildren<TextMeshProUGUI>())if(!IsSymbolFace(label.name)&&!(CurrentScreen==GameScreen.NoAds&&label.name.StartsWith("Reference shop",StringComparison.Ordinal))&&!(ReferenceIslandScreen&&label.name.StartsWith("Reference shop island ",StringComparison.Ordinal)))label.color=image?.sprite==enamelControls[0]||navigationLightLabels.Contains(label)?MenuPaper:MenuInk;
             }
             foreach(var button in menuRoot.GetComponentsInChildren<Button>())if(button.name=="Buy selected item")
                 foreach(var label in button.GetComponentsInChildren<TextMeshProUGUI>())if(!IsSymbolFace(label.name))label.color=Color.white;
@@ -334,15 +360,27 @@ namespace Cascade.Presentation
             caption.enableAutoSizing=true;caption.fontSizeMin=16*unit;caption.fontSizeMax=(right-left<.51f?20:22)*unit*(Preferences.LargeText?1.10f:1);
             var face=button.GetComponent<Image>();face.sprite=enamelControls[0];face.type=Image.Type.Sliced;face.color=Color.white;
             if(primary){StylePrimaryFace(face);navigationLightLabels.Add(caption);caption.margin=new Vector4(18,3,18,3)*unit;}
+            RegisterButtonDesign(button,primary?GameButtonRole.PrimaryGreen:GameButtonRole.SecondaryYellow);
             return button;
         }
+        ContentCatalog preferredCatalog;
+        PuzzleMode preferredMode;
+        string preferredLocale;
+        LevelContent[] preferredSequence;
+        string[] preferredNodeIds;
+        HashSet<string> preferredOfferedNodes;
+        string[] preferredTeachingNodes;
         IReadOnlyList<LevelContent> PreferredLevels()
         {
-            if(PreferredMode==PuzzleMode.Shapes) return Catalog.PrimaryLevels.Where(c=>c.Mode==PuzzleMode.Shapes).ToArray();
-            if(PreferredMode==PuzzleMode.Mixed)return Catalog.PrimaryLevels.Select((primary,i)=>
-                Catalog.TryGetLocalizedBinding(primary.Definition.CampaignNodeId,Preferences.PuzzleLocale,out var localized)
-                &&(localized.Mode==PuzzleMode.Mixed||i%2==1)?localized:primary).ToArray();
-            return Catalog.LocalizedLevels.Where(c=>c.Locale==Preferences.PuzzleLocale&&c.Mode==PreferredMode).ToArray();
+            // These lists depend on immutable content and the selected mode/language,
+            // never on clears. Map eligibility still reads the current progress.
+            if(preferredSequence!=null&&preferredCatalog==Catalog&&preferredMode==PreferredMode&&preferredLocale==Preferences.PuzzleLocale)return preferredSequence;
+            preferredCatalog=Catalog;preferredMode=PreferredMode;preferredLocale=Preferences.PuzzleLocale;
+            preferredSequence=StageJourney.Sequence(Catalog,PreferredMode,Preferences.PuzzleLocale);
+            preferredNodeIds=preferredSequence.Select(c=>c.Definition.CampaignNodeId).ToArray();
+            preferredOfferedNodes=new HashSet<string>(preferredNodeIds);
+            preferredTeachingNodes=preferredSequence.Where(c=>c.Definition.TeachingNode>0).Select(c=>c.Definition.CampaignNodeId).ToArray();
+            return preferredSequence;
         }
         void StartContent(LevelContent content)
         {

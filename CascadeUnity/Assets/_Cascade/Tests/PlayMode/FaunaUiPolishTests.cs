@@ -73,11 +73,29 @@ namespace Cascade.Tests
                 foreach(var c in ink){var p=body.InverseTransformPoint(copy.transform.TransformPoint(c.bottomLeft));Assert.That(p.y,Is.GreaterThan(body.rect.yMin+6));Assert.That(p.x,Is.GreaterThanOrEqualTo(iconBounds.xMax+3.4f*CenteredContentRow.Unit(body)));}
             }
         }
+        static readonly Dictionary<string,Rect> sourceIconInk=new Dictionary<string,Rect>();
+        internal static Rect PaintedIconBounds(Image icon,RectTransform space)
+        {
+            var sprite=icon.sprite;var source=UnityEditor.AssetDatabase.GetAssetPath(sprite.texture);string key=source+sprite.rect+sprite.texture.width+"/"+sprite.texture.height;
+            if(!sourceIconInk.TryGetValue(key,out var ink)){
+                var texture=new Texture2D(2,2,TextureFormat.RGBA32,false);texture.LoadImage(File.ReadAllBytes(source));var pixels=texture.GetPixels32();
+                var cell=sprite.rect;float sx=texture.width/(float)sprite.texture.width,sy=texture.height/(float)sprite.texture.height;
+                int left=Mathf.RoundToInt(cell.xMin*sx),bottom=Mathf.RoundToInt(cell.yMin*sy),right=Mathf.RoundToInt(cell.xMax*sx),top=Mathf.RoundToInt(cell.yMax*sy),lowX=right,highX=left,lowY=top,highY=bottom;
+                for(int y=bottom;y<top;y++)for(int x=left;x<right;x++)if(pixels[y*texture.width+x].a>24){lowX=Mathf.Min(lowX,x);highX=Mathf.Max(highX,x+1);lowY=Mathf.Min(lowY,y);highY=Mathf.Max(highY,y+1);}
+                UnityEngine.Object.DestroyImmediate(texture);Assert.That(highX,Is.GreaterThan(lowX),source+" visible source art");
+                ink=Rect.MinMaxRect((lowX-left)/(float)(right-left),(lowY-bottom)/(float)(top-bottom),(highX-left)/(float)(right-left),(highY-bottom)/(float)(top-bottom));sourceIconInk[key]=ink;
+            }
+            var rect=icon.GetPixelAdjustedRect();float ratio=sprite.rect.width/sprite.rect.height;
+            if(ratio>rect.width/rect.height){float height=rect.width/ratio;rect.y+=(rect.height-height)*icon.rectTransform.pivot.y;rect.height=height;}
+            else{float width=rect.height*ratio;rect.x+=(rect.width-width)*icon.rectTransform.pivot.x;rect.width=width;}
+            var a=(Vector2)space.InverseTransformPoint(icon.transform.TransformPoint(rect.min+Vector2.Scale(ink.min,rect.size)));
+            var b=(Vector2)space.InverseTransformPoint(icon.transform.TransformPoint(rect.min+Vector2.Scale(ink.max,rect.size)));return Rect.MinMaxRect(a.x,a.y,b.x,b.y);
+        }
         void IconsFit()
         {
             var icons=game.GetComponentsInChildren<Image>().Where(i=>i.name=="Catalogue object"&&i.GetComponentInParent<Button>()?.name.StartsWith("Shop object ",StringComparison.Ordinal)==true).ToArray();Assert.That(icons.Length,Is.GreaterThan(0));
             foreach(var icon in icons){var card=(RectTransform)icon.GetComponentInParent<Button>().transform;var box=BoundsIn(icon.rectTransform,card);
-                Assert.That(Vector2.Distance(box.center,card.rect.center),Is.LessThan(.1f));Assert.That(box.xMin,Is.GreaterThan(card.rect.xMin+24));Assert.That(box.xMax,Is.LessThan(card.rect.xMax-24));Assert.That(box.yMin,Is.GreaterThan(card.rect.yMin+20));Assert.That(box.yMax,Is.LessThan(card.rect.yMax-20));}
+                Assert.That(Vector2.Distance(PaintedIconBounds(icon,card).center,card.rect.center),Is.LessThan(1f),icon.sprite.name+" painted art centre");Assert.That(box.xMin,Is.GreaterThan(card.rect.xMin+24));Assert.That(box.xMax,Is.LessThan(card.rect.xMax-24));Assert.That(box.yMin,Is.GreaterThan(card.rect.yMin+20));Assert.That(box.yMax,Is.LessThan(card.rect.yMax-20));}
         }
         [UnityTest] public IEnumerator LoginGroupsAndShopIconsFitCentredOnPhoneLocales()
         {
@@ -93,6 +111,33 @@ namespace Cascade.Tests
                 if(large&&locale=="ru"){game.ShowCoinPacks();yield return Shot("ru-shop-coins-"+width);}
             }
             Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));
+        }
+        [UnityTest] public IEnumerator AllCataloguePagesCentreThePaintedArtNotItsTransparentCanvas()
+        {
+            game.ShowShop();game.SelectShopTab(1);var ids=ShopCatalog.TrophyIds.Where(id=>!ShopCatalog.IsParcelExclusive(id)).ToArray();
+            foreach(string locale in new[]{"en","ru","uk"})foreach(int width in new[]{320,390}){
+                Resize(width,width==320?693:844);game.SetUiLocale(locale);
+                for(int first=0;first<ids.Length;first+=6){game.SelectShopItem(Array.IndexOf(ShopCatalog.TrophyIds,ids[first]));yield return null;yield return null;Canvas.ForceUpdateCanvases();IconsFit();}
+                game.SelectShopTab(0);yield return null;yield return null;IconsFit();game.SelectShopTab(1);
+            }
+            foreach(string id in ShopCatalog.TrophyIds.Where(id=>!ShopCatalog.IsParcelExclusive(id)))if(!game.Monetization.Ledger.Cosmetics.Contains(id))game.Monetization.Ledger.Cosmetics.Add(id);
+            game.ShowCollection();Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Collection));
+            for(int index=0;index<ShopCatalog.TrophyIds.Length;index+=4){
+                game.SelectShopItem(index);yield return null;yield return null;Canvas.ForceUpdateCanvases();
+                Assert.That(game.GetComponentsInChildren<Image>().Any(i=>i.name=="Catalogue object"),Is.True);
+                foreach(var icon in game.GetComponentsInChildren<Image>().Where(i=>i.name=="Catalogue object")){
+                    var card=(RectTransform)icon.GetComponentInParent<Button>().transform;
+                    Assert.That(Vector2.Distance(PaintedIconBounds(icon,card).center,card.rect.center),Is.LessThan(1f),"Collection "+icon.sprite.name);
+                }
+            }
+            game.ShowSupplies();Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Supplies));
+            foreach(int tool in new[]{0,5}){game.SelectShopItem(tool);yield return null;yield return null;Canvas.ForceUpdateCanvases();
+                Assert.That(game.GetComponentsInChildren<Image>().Any(i=>i.name=="Catalogue object"),Is.True);
+                foreach(var icon in game.GetComponentsInChildren<Image>().Where(i=>i.name=="Catalogue object")){
+                    var card=(RectTransform)icon.GetComponentInParent<Button>().transform;
+                    Assert.That(Vector2.Distance(PaintedIconBounds(icon,card).center,card.rect.center),Is.LessThan(1f),"Inventory "+icon.sprite.name);
+                }
+            }
         }
         [UnityTest] public IEnumerator ClingingFeetStayOnTheFrameAndTakeoffCannotSnap()
         {

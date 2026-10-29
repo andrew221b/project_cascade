@@ -42,7 +42,7 @@ namespace Cascade.Tests
             Assert.That(JourneyStory.WorldCount,Is.EqualTo(9));Assert.That(JourneyStory.WorldFirst(8),Is.EqualTo(480));
             Assert.That(JourneyStory.WorldLevels(8),Is.EqualTo(60));Assert.That(JourneyStory.Zone(480),Is.EqualTo(8));
             Assert.That(JourneyStory.MapAsset(8),Is.EqualTo("StarObservatoryMap"));Assert.That(JourneyStory.Portrait(8),Is.EqualTo("Aster"));
-            Assert.That(JourneyStory.Zone(539),Is.EqualTo(8));Assert.That(JourneyStory.Task(37),Is.EqualTo("Open the night travellers' route"));
+            Assert.That(JourneyStory.Zone(539),Is.EqualTo(8));Assert.That(JourneyStory.Task(37),Is.EqualTo("Return the High Lantern; open the north route"));
         }
     }
 }

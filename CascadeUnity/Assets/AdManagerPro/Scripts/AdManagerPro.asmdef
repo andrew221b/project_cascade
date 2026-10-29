@@ -1,0 +1,8 @@
+{
+  "name": "AdManagerPro",
+  "rootNamespace": "AdManagerPro",
+  "references": [
+    "Unity.ugui",
+    "Unity.TextMeshPro"
+  ]
+}

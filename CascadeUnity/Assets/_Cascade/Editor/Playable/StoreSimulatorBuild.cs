@@ -16,19 +16,20 @@ namespace Cascade.Editor.Playable
             if(EditorUserBuildSettings.activeBuildTarget!=BuildTarget.iOS)
                 throw new InvalidOperationException("Switch to the installed iOS target first.");
             string root=Path.GetFullPath(Path.Combine(UnityEngine.Application.dataPath,"../.."));
-            string report=Path.Combine(root,"Reports/StoreAssets-Oct09/SimulatorBuild");Directory.CreateDirectory(report);
-            string output=Path.Combine(root,"CascadeUnity/Builds/StoreSimulator-Oct09-final");
+            string report=Path.Combine(root,Environment.GetEnvironmentVariable("CASCADE_CAPTURE_REPORT")??"Reports/StoreScreensOct22/SimulatorBuild");Directory.CreateDirectory(report);
+            string output=Path.Combine(root,Environment.GetEnvironmentVariable("CASCADE_CAPTURE_OUTPUT")??"CascadeUnity/Builds/StoreSimulator-Oct22");
             if(Directory.Exists(output))throw new InvalidOperationException("Existing Simulator export preserved; use a new folder.");
             var sdk=PlayerSettings.iOS.sdkVersion;var architecture=PlayerSettings.iOS.simulatorSdkArchitecture;
             string identifier=PlayerSettings.GetApplicationIdentifier(BuildTargetGroup.iOS),product=PlayerSettings.productName;
             try{
                 PlayerSettings.iOS.sdkVersion=iOSSdkVersion.SimulatorSDK;
                 PlayerSettings.iOS.simulatorSdkArchitecture=(AppleMobileArchitectureSimulator)Enum.Parse(typeof(AppleMobileArchitectureSimulator),"ARM64",true);
-                PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.iOS,"com.vickand.cascade.capture");PlayerSettings.productName="CASCADE";
+                PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.iOS,"com.vickand.flyingladders.capture");PlayerSettings.productName="Flying Ladders";
                 LocalizationAssets.BuildPlayerTables();
                 File.WriteAllText(Path.Combine(report,"status.txt"),"Building");
+                using var captureScope=new StoreCaptureBuildScope();
                 var build=BuildPipeline.BuildPlayer(new BuildPlayerOptions{scenes=new[]{"Assets/_Cascade/Scenes/CascadePlayable.unity"},
-                    locationPathName=output,target=BuildTarget.iOS,options=BuildOptions.Development,
+                    locationPathName=output,target=BuildTarget.iOS,options=BuildOptions.None,
                     extraScriptingDefines=new[]{"CASCADE_STORE_CAPTURE"}});
                 var s=build.summary;
                 File.WriteAllText(Path.Combine(report,"unity-build.txt"),"Result "+s.result+"\nErrors "+s.totalErrors+"\nWarnings "+s.totalWarnings+"\nDuration "+s.totalTime+"\nOutput "+s.outputPath+"\n"+

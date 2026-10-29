@@ -36,7 +36,6 @@ namespace Cascade.Presentation
             if(CurrentScreen==GameScreen.TravelBag&&bagReturnScreen==GameScreen.Shop){BackFromBag();return;}
             if(CurrentScreen==GameScreen.Collection&&collectionReturn==GameScreen.Shop){BackFromCollection();return;}
             if(CurrentScreen==GameScreen.Supplies&&toolsReturnScreen==GameScreen.Shop){BackFromTools();return;}
-            if(CurrentScreen==GameScreen.Workshop&&workshopReturn==GameScreen.Shop){BackFromWorkshop();return;}
             if(CurrentScreen!=GameScreen.Shop&&CurrentScreen!=GameScreen.CoinPacks)shopReturnScreen=CurrentScreen;
             shopNotice=default;shopDetailOpen=false;SetScreen(GameScreen.Shop);
         }
@@ -78,7 +77,7 @@ namespace Cascade.Presentation
             if(referenceShopCoin!=null)Destroy(referenceShopCoin);
             if(navigationIcons!=null)foreach(var s in navigationIcons)if(s!=null)Destroy(s);
             foreach(var atlas in worldComicPanels)if(atlas!=null)foreach(var s in atlas)if(s!=null)Destroy(s);
-            if(comicWoodRail!=null)Destroy(comicWoodRail);
+            if(comicTimberFrame!=null)Destroy(comicTimberFrame);
         }
         void LoadNavigationArt()
         {
@@ -140,10 +139,10 @@ namespace Cascade.Presentation
             if(primary)StylePrimaryFace(face);
             if(face.sprite==null){face.sprite=art.panel;face.color=new Color(.10f,.37f,.38f);}
             var label=b.GetComponentInChildren<TextMeshProUGUI>();label.rectTransform.anchorMin=new Vector2(.26f,described?.43f:.10f);label.rectTransform.anchorMax=new Vector2(.91f,described?.93f:.90f);
-            label.alignment=TextAlignmentOptions.MidlineLeft;label.margin=new Vector4(4,1,7,1);label.fontSizeMin=18*MenuUnit;label.fontSizeMax=24*MenuUnit*(Preferences.LargeText?1.10f:1);label.enableAutoSizing=true;
+            label.alignment=TextAlignmentOptions.MidlineLeft;label.margin=new Vector4(4,2,7,2)*MenuUnit;label.fontSizeMin=18*MenuUnit;label.fontSizeMax=24*MenuUnit*(Preferences.LargeText?1.10f:1);label.enableAutoSizing=true;
             navigationLightLabels.Add(label);
             if(icon>=0)MenuIcon("Action illustration",b.transform,new Vector2(.14f,.5f),navigationIcons[icon]);
-            if(described){var sub=Text("Action explanation",b.transform,new Vector2(.27f,.12f),new Vector2(.90f,.43f),16,detail);sub.alignment=TextAlignmentOptions.MidlineLeft;sub.enableAutoSizing=true;sub.fontSizeMin=14*MenuUnit;sub.fontSizeMax=17*MenuUnit;sub.margin=Vector4.zero;navigationLightLabels.Add(sub);}
+            if(described){var sub=Text("Action explanation",b.transform,new Vector2(.27f,.12f),new Vector2(.90f,.43f),16,detail);sub.alignment=TextAlignmentOptions.MidlineLeft;sub.enableAutoSizing=true;sub.fontSizeMin=14*MenuUnit;sub.fontSizeMax=17*MenuUnit;sub.margin=Vector4.one*(2*MenuUnit);navigationLightLabels.Add(sub);}
             return b;
         }
         void NavigationNote(string name,UiCopy text,float bottom,float top)

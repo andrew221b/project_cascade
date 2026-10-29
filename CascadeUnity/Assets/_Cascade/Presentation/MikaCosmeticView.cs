@@ -61,9 +61,8 @@ namespace Cascade.Presentation
             var costume = game.MikaCostume(id, thoughtful, portrait);
             hero.sprite = costume != null ? costume : original;
             if(preview!=null){
-                float ambient=game.ReducedMotion?0:Mathf.Sin(game.Machine.AmbientPhase*.86f)*.012f;
                 float hop=game.ReducedMotion?0:Mathf.Sin((1-pokeTime/.62f)*Mathf.PI)*.085f*(pokeTime>0?1:0);
-                hero.rectTransform.localScale=Vector3.one*(1+ambient+hop);
+                hero.rectTransform.localScale=Vector3.one*(1+hop);
                 if(pokeTime>0)pokeTime=Mathf.Max(0,pokeTime-Time.unscaledDeltaTime);
             }
             DisplayedTrophy = id; WearsCostume = costume != null;

@@ -20,9 +20,11 @@ namespace Cascade.Presentation
             material=new Material(Resources.Load<Shader>("CascadeArt/SoftWeather")){name="Authored seasonal art and soft weather"};material.SetTexture("_MainTex",WorldSeasonalArt.Texture);
             face=GetComponent<MeshRenderer>();face.sharedMaterial=material;face.shadowCastingMode=ShadowCastingMode.Off;face.receiveShadows=false;face.lightProbeUsage=LightProbeUsage.Off;face.reflectionProbeUsage=ReflectionProbeUsage.Off;
         }
-        public int Paint(float age,int world,int quality,float width,float height,Vector3 center)
+        public int Paint(float age,int world,int quality,float width,float height,Vector3 center,float wind=float.NaN,bool plantSupportVisible=true)
         {
-            ActiveCount=quality<=0?0:WorldSeasonalArt.Count(world)/(quality==1?2:1);
+            // Rooted artwork belongs to the architectural frame, even when weather stays visible.
+            int count=WorldSeasonalArt.Rooted(world)&&!plantSupportVisible?WorldSeasonalArt.Procedural(world):WorldSeasonalArt.Count(world);
+            ActiveCount=quality<=0?0:count/(quality==1?2:1);
             if(face==null)return 0;face.enabled=ActiveCount>0;if(ActiveCount==0)return 0;
             transform.position=center;transform.rotation=Quaternion.identity;transform.localScale=Vector3.one;
             var region=WorldSeasonalArt.Uv(world);int procedural=WorldSeasonalArt.Procedural(world)/(quality==1?2:1);
@@ -35,7 +37,7 @@ namespace Cascade.Presentation
                 var extent=art?new Vector2(size,size):rain?new Vector2(width*.0042f,height*.032f):Vector2.one*size;
                 bool rooted=art&&WorldSeasonalArt.Rooted(world);int plant=i-procedural;bool right=plant%2==1;
                 if(rooted){p=WorldFrameArt.FrameContact(right,plant<2?0:.75f,width/height);fade=visible?1:0;}
-                float turn=rooted?WorldSeasonalArt.PlantSway(age,plant):rain?-12:art?age*(seed-.5f)*21+Mathf.Sin(age*.6f+seed*8)*16:0;
+                float turn=rooted?WorldSeasonalArt.PlantSway(age,plant,wind):rain?-12:art?age*(seed-.5f)*21+Mathf.Sin(age*.6f+seed*8)*16:0;
                 var rotation=Quaternion.Euler(0,0,turn);var point=new Vector3((p.x-.5f)*width,(p.y-.5f)*height,0);
                 var pivot=rooted?WorldSeasonalArt.Stem(world):Vector2.one*.5f;
                 var tint=art?Color.white:rain?new Color(.77f,.89f,1):snow?new Color(.96f,.99f,1):world==5?new Color(.73f,1,.45f):world==8?new Color(.68f,.85f,1):new Color(1,.77f,.31f);

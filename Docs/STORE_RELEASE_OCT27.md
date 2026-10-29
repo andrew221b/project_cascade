@@ -1,0 +1,16 @@
+# Store candidate, 27 October 2026
+
+The owner requested a normal TestFlight/App Store build and a Google Play AAB/closed-testing release. Publisher approval for the existing Privacy/Terms was explicitly received in chat on 27 October; remove the draft label through the ordinary website generator, preserve noindex and existing account-service routes, and use support@vickand.com.
+
+Native advertising now waits for both UMP and the iOS ATT decision for eligible adults before initializing the ad SDK. Child/under-age handling stays restricted. Denial does not block play or purchases, and the ad SDK receives the actual OS authorization status. Device ID is declared as tracking in Apple privacy because the resolved GMA privacy manifest declares that use. No reward or paywall is attached to ATT.
+
+Use StoreReleaseBuild with BuildOptions.None and all existing release guards active. It sets version 1.0/build 1 on iOS and versionCode 2/API 36/ARM64/IL2CPP on Android, uses the existing signing identity, exports to a fresh external build path and restores transient PlayerSettings. No changes to product IDs, prices, game economy or store publication settings. Native permission response, real purchase fulfillment, ad serving and full device smoke tests still need TestFlight/closed-test execution; do not represent build success as those tests.
+
+
+Validation and delivery: 31/31 targeted EditMode checks passed; Unity iOS/Android builds succeeded with zero errors. iOS 1.0 (1) is VALID/APP_STORE_ELIGIBLE, attached to version 1.0 with manual release, and IN_BETA_TESTING for the Account Holder in Owner testing. Distribution uses a newly created local Apple distribution certificate/profile; Android retains the existing upload key. Xcode archive required IPHONEOS_DEPLOYMENT_TARGET=15.6 for old Pod targets under Xcode 27; the exported app minimum is 15.6. Binary paths and hashes are recorded in the shared store-release status artifact.
+
+Google accepted AAB 1.0/code 2; the existing closed track is draft. Signing, bundletool validation and six native ELF alignment checks passed. The first rollout cannot be committed through the Publisher API while the application is Draft; Console completion remains. No production release was submitted.
+
+Publisher-approved App Privacy was published in Chrome; Content Rights was separately confirmed and persisted through the official API. Final storefront asset readback is 54 Apple screenshots COMPLETE and 36 Google screenshots, 3 icons and 3 feature graphics. The feature graphic is an ImageGen reference adaptation, not an unchanged designer export; provenance and the untouched source are preserved.
+
+Open work: responsive Console session, final Google Data safety save and policy/account readback, first closed-test countries/testers/review; Vercel team grant and approved legal publication (live draft still present); owner physical-device tests and deferred Apple IAP review screenshots/metadata. Do not claim store-release readiness from accepted uploads alone. Unity Player Accounts email/ID sharing is explicitly documented by Unity: https://docs.unity.com/en-us/authentication/privacy-and-consent/google-data-unity-player-accounts . The old downloadable Google CSV sample was not posted over current responses because its account/deletion questions are incomplete.

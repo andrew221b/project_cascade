@@ -39,7 +39,7 @@ namespace Cascade.Presentation
         public string Message => title==null?"":title.text;
         // Leave the copy readable after the effect finishes. The banner owns only
         // presentation time and never changes the committed puzzle result.
-        public float BeatDuration => windWarning?2.35f:game.ReducedMotion?2.60f:hasTool?4.20f:3.00f;
+        public float BeatDuration => windWarning?2.35f:hasTool?(game.ReducedMotion?2.10f:2.80f):game.ReducedMotion?2.60f:3.00f;
         public void Initialize(CascadeGame owner,RectTransform band,TMP_Text status,TMP_FontAsset font)
         {
             game=owner;paper=band;instruction=status;paperImage=band.GetComponent<Image>();root=(RectTransform)transform;
@@ -57,7 +57,7 @@ namespace Cascade.Presentation
             cloth.sprite=Sprite.Create(texture,new Rect(0,texture.height*.18f,texture.width,texture.height*.64f),new Vector2(.5f,.5f),100);cloth.raycastTarget=false;
             title=Child("Reaction title",clothRect,new Vector2(.13f,.12f),new Vector2(.87f,.88f)).gameObject.AddComponent<TextMeshProUGUI>();
             title.font=font;title.color=new Color(1,.97f,.83f);title.fontStyle=FontStyles.Bold;title.alignment=TextAlignmentOptions.Center;
-            title.textWrappingMode=TextWrappingModes.NoWrap;title.overflowMode=TextOverflowModes.Overflow;title.margin=Vector4.zero;title.raycastTarget=false;
+            title.textWrappingMode=TextWrappingModes.Normal;title.overflowMode=TextOverflowModes.Ellipsis;title.margin=Vector4.one*CenteredContentRow.MinimumInset;title.raycastTarget=false;
             title.gameObject.AddComponent<SymbolGlyphCenter>();gameObject.SetActive(false);
         }
         static RectTransform Child(string name,Transform parent,Vector2 min,Vector2 max)
@@ -135,9 +135,10 @@ namespace Cascade.Presentation
             root.localScale=Vector3.one;
             if(windWarning){root.anchorMin=root.anchorMax=new Vector2(.5f,.53f);root.anchoredPosition=Vector2.zero;root.sizeDelta=new Vector2(((RectTransform)root.parent).rect.width*.9f,44*unit);clothRect.anchorMin=Vector2.zero;clothRect.anchorMax=Vector2.one;}
             else if(hasTool){root.anchorMin=root.anchorMax=new Vector2(.5f,.46f);root.anchoredPosition=Vector2.zero;root.sizeDelta=new Vector2(((RectTransform)root.parent).rect.width*.90f,220*unit);clothRect.anchorMin=new Vector2(0,.08f);clothRect.anchorMax=new Vector2(1,.30f);}
-            else{root.anchorMin=paper.anchorMin;root.anchorMax=paper.anchorMax;root.anchoredPosition=paper.anchoredPosition;root.sizeDelta=paper.sizeDelta;clothRect.anchorMin=Vector2.zero;clothRect.anchorMax=Vector2.one;}
+            else{root.anchorMin=paper.anchorMin;root.anchorMax=paper.anchorMax;root.anchoredPosition=paper.anchoredPosition;root.sizeDelta=new Vector2(paper.sizeDelta.x,Mathf.Max(paper.sizeDelta.y,60*unit));clothRect.anchorMin=Vector2.zero;clothRect.anchorMax=Vector2.one;}
             heroMount.sizeDelta=Vector2.one*132*unit;
-            title.enableAutoSizing=true;title.fontSizeMin=16*unit;title.fontSizeMax=(game.Preferences.LargeText?23:21)*unit;
+            title.margin=Vector4.one*(CenteredContentRow.MinimumInset*unit);
+            title.enableAutoSizing=true;title.fontSizeMin=13*unit;title.fontSizeMax=(game.Preferences.LargeText?23:21)*unit;
         }
         public void Clear()
         {

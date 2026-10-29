@@ -32,6 +32,7 @@ namespace Cascade.Persistence
             remote.MigrateCoinEconomy();baseProfile.MigrateCoinEconomy();local.MigrateCoinEconomy();
             CheckNodes(allowedNodes);remote.Validate();baseProfile.Validate();local.Validate();ValidateAuthoritativeEconomy(remote,allowedNodes);
             var allowed=new HashSet<string>(allowedNodes,StringComparer.Ordinal);var result=Clone(local);
+            result.Variety=StageVarietyMemory.Merge(remote.Variety,local.Variety);
             foreach(string mode in new[]{"Shapes","Words","Mixed"}){
                 var destination=Journey(result,mode,true);
                 var sources=new[]{Journey(remote,mode,false),Journey(baseProfile,mode,false),Journey(local,mode,false)}.Where(j=>j!=null).ToArray();

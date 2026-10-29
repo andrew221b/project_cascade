@@ -29,12 +29,13 @@ namespace Cascade.Presentation
             sky.sizeDelta=sprite.rect.size*cover;
             frame.sizeDelta=canvas.rect.size;frameImage.pixelsPerUnitMultiplier=frameImage.sprite.texture.width/Mathf.Max(1,canvas.rect.width);
             float pixelScale=scale*canvas.GetComponent<Canvas>().scaleFactor;
-            foreach(var touch in touches)if(touch.Rect!=null)touch.Rect.sizeDelta=Vector2.Max(touch.Size,Vector2.one*(44/Mathf.Max(.001f,pixelScale)));
+            foreach(var touch in touches)if(touch.Rect!=null)touch.Rect.sizeDelta=Vector2.Max(GameButtonSize(touch.Rect,touch.Size),Vector2.one*(44/Mathf.Max(.001f,pixelScale)));
             // Continue the two rope shafts through a phone's safe top inset, never leaving cut ends in mid-air.
             Vector3 top=content.InverseTransformPoint(canvas.TransformPoint(new Vector3(0,canvas.rect.yMax,0)));
             float extra=Mathf.Max(0,top.y-content.rect.yMax+32);
             for(int i=0;i<2;i++)if(cords[i]!=null){cords[i].anchoredPosition=new Vector2(i==0?178:525,extra);cords[i].sizeDelta=new Vector2(16,extra+1);}
         }
+        static Vector2 GameButtonSize(RectTransform target,Vector2 authored){var design=target.GetComponent<GameButtonDesign>();return design==null?authored:design.DesiredSize(authored);}
         void LateUpdate()=>Fit();
     }
 }

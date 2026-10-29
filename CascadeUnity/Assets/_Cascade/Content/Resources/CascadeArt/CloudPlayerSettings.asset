@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be368478774414a55bb7283e3de71680, type: 3}
   m_Name: CloudPlayerSettings
   m_EditorClassIdentifier: 
-  enabledForPlayers: 0
+  enabledForPlayers: 1
   projectId: a1b8a760-5a0c-4c2d-8ae7-54c1b411259a
   environment: production
   moduleName: CascadeAccount
-  playerAccountsConfigured: 0
-  purchaseVerificationConfigured: 0
+  playerAccountsConfigured: 1
+  purchaseVerificationConfigured: 1
+  serverRewardsConfigured: 1
+  accountDeletionUrl: https://flyingladders.vickand.com/delete-account/

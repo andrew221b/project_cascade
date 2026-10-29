@@ -1,0 +1,52 @@
+{
+  "accountId": "72fb0d8ce7794d10dfe6e53e26abc153",
+  "zoneId": "a1cf77a3e0ad6737b317f018b304a21a",
+  "scriptName": "flying-ladders-web",
+  "deploymentId": "b727f915d3e6435f97e2dfe03cf2063a",
+  "sha256": "a09acec20d28e3bb6856e810fde96a898399fba86ce7f10d709a4b647200ec56",
+  "compatibilityDate": "2026-10-29",
+  "canonicalDeletionUrl": "https://flyingladders.vickand.com/delete-account/",
+  "dnsRecordId": "94eaa97e404f8d7a1ae88e5a5d8a27da",
+  "retainedDnsTarget": "cname.vercel-dns.com",
+  "proxied": true,
+  "serviceBinding": {
+    "name": "ACCOUNT_GATEWAY",
+    "service": "flying-ladders-admob-ingress"
+  },
+  "workersDevEnabled": false,
+  "routes": [
+    {
+      "id": "79f16fdd1ccd42b9b784420a286f28f6",
+      "pattern": "https://flyingladders.vickand.com/delete-account*"
+    },
+    {
+      "id": "d22b04e51e364057a1de99891582a2e6",
+      "pattern": "https://flyingladders.vickand.com/api/account-deletion*"
+    },
+    {
+      "id": "3efbd198a3e24be5aae680731287cd58",
+      "pattern": "https://flyingladders.vickand.com/assets/deletion*"
+    },
+    {
+      "id": "11ea6c6e564e47ce954a528b3fc3ecd6",
+      "pattern": "https://flyingladders.vickand.com/privacy*"
+    },
+    {
+      "id": "6302a4fd2a724f69904999cd06d58587",
+      "pattern": "https://flyingladders.vickand.com/terms*"
+    },
+    {
+      "id": "a0ad4e548b8644d9bc20cf99be48360e",
+      "pattern": "https://flyingladders.vickand.com/data-request*"
+    }
+  ],
+  "rootAndExistingAssetsAuthority": "Vercel",
+  "gameDataAuthority": "Unity Cloud Code / Cloud Save Private Custom Data",
+  "legacySite": {
+    "projectId": "appgprj_6ac91521499c8191ac413a2e3694998e",
+    "version": 18,
+    "commit": "d9e3dd5fbe540fd960f90dd91046b76b3961bda8",
+    "deploymentId": "appgdep_6ae3026d7d0c8191a9627f9b6dda8b8e"
+  },
+  "publisherAddressUpdatedAt": "2026-10-29"
+}

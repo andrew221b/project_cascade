@@ -1,3 +1,95 @@
+## Text frame padding — Oct 27
+
+- [x] Shared action/card layout reserves at least 2 logical pixels on all four sides of the inner writing field, fits painted content on both axes and preserves the 4-pixel icon/caption gap. Larger authored horizontal insets remain.
+- [x] Both text factories, notification banners and remaining one-pixel action captions use the minimum inset; the short-phone subscription footer remains visible. Existing AGENTS.md records the rule.
+- [x] Unity compilation: 0 C# errors. UiCenteringRegressionTests 7/7 PASS, including a demonstrated failing-before/passing-after fixed-size caption, EN/RU/UK, 320×568/390×844/430×932, long subscription prices and 81 menu combinations. Final native screenshots reviewed.
+- [ ] New phone binary and physical-device installation not performed; changes are in source for the next build. No store pricing, app release or website changes.
+- Evidence: PROJECT_CASCADE_Codex_Pack_v2/Exports/UI-Padding-2026-10-27/status.txt, validation.json, final.xml, changes.patch and 18 captures.
+
+## Final store release-readiness audit — Oct 27
+
+- [x] Fresh App Store and Google Play API audit completed; EN/RU/UK text matches the saved ASO/Human Writing versions and respects field limits.
+- [x] Replaced all 18 medium-iPhone screenshots with lossless RGB copies; all 54 Apple screenshots report COMPLETE, with six files per locale/device set and original order preserved.
+- [ ] Release BLOCKED: App Store has no uploaded/linked build; all six coin packs and three subscriptions lack review screenshots and remain MISSING_METADATA. Google Play has only the versionCode 1 QA draft and lacks the 1024×500 feature graphic in all locales.
+- [ ] Legal/public privacy and terms are still drafts; documentsApproved and productionRelease remain false. No legal approval, website change, pricing change, review submission or release was performed.
+- [ ] Fresh App Privacy/Data safety and Console warnings require Mac unlock. Final target-device, purchase/restore, account/cloud/deletion and ad/consent tests remain unverified; the connected Unity session is another project (DrillGame).
+- Evidence: PROJECT_CASCADE_Codex_Pack_v2/Exports/Release-Readiness-2026-10-27/status.txt and JSON snapshots. No compilation or new binary build claimed.
+
+## Store graphic assets — Oct 27
+
+- [x] Replaced the existing CascadeStoreIcon.png with the designer’s 1024×1024 iOS store icon, preserving its GUID/meta and all existing iPhone/iPad references. Backup in PROJECT_CASCADE_Codex_Pack_v2/Exports/Store-Upload-2026-10-27.
+- [x] Store screenshots and Google Play icon uploaded and verified through APIs; Apple creative assets uploaded separately.
+- [ ] iOS icon is prepared in source; no binary build/upload or app release was performed in this asset task. Unity import/build validation remains to be run.
+
+## Final website/support migration verification — Oct 22
+
+- [x] SMTP SAVED and verified in fresh tabs for both DayDraft/Uskeep: support@vickand.com with distinct sender names, Resend host/465, stored keys hidden. Earlier stale-form handoff inference corrected; no further save is pending. Real delivery is not yet tested.
+- [x] Google Play DayDraft/Uskeep privacy/deletion metadata is now published (Console last published Oct 22, no pending changes). Flying Ladders privacy URL remains saved in its draft; working AccountCloud deletion URL preserved.
+- [x] Flying Ladders TestFlight EN/RU/UK links/feedback + Beta Review email, App Store Accessibility URL, Unity Player Accounts Privacy/Terms, and Android/iOS AdMob privacy URLs updated and verified. No consent message or game release published.
+- [x] Both legacy Netlify redirects are live: Flying Ladders wildcard 301, Uskeep marketing-only 301 with legacy join/deletion/association endpoints retained (200). Uskeep changes pushed to its GitHub website source; auto-deploy successful.
+- [x] Final HTTP smoke: three product roots 200, main Vickand root remains auth 302, root app-ads.txt 200. Detailed evidence: Reports/WebsiteMigrationVickandOct22/MIGRATION_VICKAND_2026-10-22.md.
+- [ ] Remaining: real mail/auth/device checks, Flying Ladders legal approval/normal store release and AdMob crawl after listing, next normal DayDraft App Store update for locked live metadata, review/commit local application source edits for their next releases.
+
+## Support mailbox and store migration — Oct 22
+
+- [x] Published all three product sites with support@vickand.com; DayDraft live support function recipient updated with JWT preserved.
+- [x] Google Play contact website/email saved and verified for all three apps; tracks unchanged. App Store URLs/contact email saved for Flying Ladders, Uskeep and draft DayDraft 1.0.1.
+- [x] Uskeep live Supabase Site URL and exact deletion callbacks saved; old native callback preserved. Public root app-ads.txt configured while main Vickand site remains private.
+- [x] Chrome follow-up: Google Play Uskeep/DayDraft privacy and deletion URLs saved and submitted (Changes in review), Flying Ladders privacy URL saved in draft and functional AccountCloud deletion URL preserved; DayDraft live Auth Site URL saved/reloaded with native callback retained.
+- [ ] SMTP forms prepared in separate Chrome tabs; owner must enter vickand.com sending key and save both. AdMob/Unity console checks, legacy Netlify redirects and end-to-end mail/device verification remain.
+- [x] After explicit owner approval, deployed the dedicated signed webhook ingress with server-side Vercel bypass; invalid signatures are rejected and main site remains private. Published AccountCloud version 11 from exact live source with five pages of contact/marketing link changes; build and live privacy redirect verified.
+- Full status and evidence: Reports/WebsiteMigrationVickandOct22/MIGRATION_VICKAND_2026-10-22.md.
+
+## Website Vickand subdomain migration — Oct 22
+
+- [x] Published https://flyingladders.vickand.com on Vercel with Cloudflare DNS; HTTPS, legal/support routes, account-request redirect and app-ads.txt verified.
+- [x] Updated source website metadata, provider disclosure, Configs exports, Unity legal settings/offline documents and local backend marketing redirects; preserved account APIs and draft/noindex approval flags.
+- [x] Website checker passed 6 pages and 153 internal references; existing support mailbox preserved.
+- [ ] Remaining Google Play privacy/deletion fields, AdMob/Unity-console URLs and old Netlify redirects need unlocked browser/account access. Store contact metadata and AccountCloud marketing redirects are already live. No game/store release or real deletion/email roundtrip claimed.
+- Details: Website/MIGRATION_VICKAND_2026-10-22.md.
+
+## Unity deletion credential connected — Oct 20
+
+- [x] Saved owner-provided pair separately at MY DISK root; no credential values/Authorization header in source or reports.
+- [x] Real Unity API validation: temporary development profile, read/write/readback/delete all four Cloud Save classes, read-only production access, admin player DELETE 200 followed by GET 404. Test data/profile removed.
+- [x] Added two masked server secrets; preserved existing secrets; redeployed unchanged saved source version with runtime revision 4. Public health: deletionConfigured=true, publishersConfigured=false.
+- [ ] Complete Cloud Code shared-secret connection, corrected backend publication/publisher configuration, full deletion flow and scheduled retries; AdMob IDs still pending. No replacement Unity pair needed.
+- Evidence: `Reports/UnityServerKeyOct20/`. No Unity/runtime source change, store upload, screenshot or device install; no source-publication boundary bypassed.
+
+## Unity server-key search and owner steps — Oct 20
+
+- [x] Expanded MY DISK search: 15,522 small text/config files inspected; no complete exported Unity service-account key pair found. Archives, protected/system paths, installers/media and generated dependencies excluded; absence from the entire disk is not claimed.
+- [x] Verified current official Unity instructions and project-scoped Cloud Save Editor / Authentication Editor roles; documented adding a new key to the existing service account, preserving old keys and saving locally.
+- [ ] Owner provides path to an existing pair or saves a newly generated Key ID / Secret Key; no key created or cloud permissions changed in this task.
+- Evidence: `Reports/OwnerSetupOct20/unity-key-search-expanded.json`, updated owner guide. Read-only search/documentation; no runtime tests or deployment.
+
+## Google RTDN Pub/Sub configuration — Oct 20
+
+- [x] Owner IAM changes applied: dedicated topic IAM get/set and attachSubscription access now pass.
+- [x] Granted Google Play Publisher only on flying-ladders-rtdn; created authenticated flying-ladders-rtdn-push with exact identity/audience, retries, 7-day retention and no idle expiration. Read-back HTTP 200/ACTIVE; existing RevenueCat subscription and other topic unchanged.
+- [x] Direct backend preflight with a freshly Google-signed ID token: HTTP 503; no real receipt, reward or Pub/Sub message created. Do not mark delivery operational. IAM inspection API remains disabled; signing-agent delivery not independently verified.
+- [ ] Publish prepared backend through an approved route, provision server/Unity secrets, verify real Pub/Sub delivery and store notifications. AdMob IDs and Unity server-pair file still outstanding.
+- Evidence: `Reports/GoogleRtdnOct20/`, updated owner guide. No Unity/runtime changes, build, screenshot, store upload or new publication attempt.
+
+## Remaining live-service inputs — Oct 20
+
+- [x] Rechecked existing Google credential and topic/catalog access without mutations: topic and catalog HTTP 200, topic IAM management unavailable, named authenticated push subscription HTTP 404.
+- [x] Rechecked public backend health: HTTP 200/storage available, publisher and deletion credentials still unconfigured. Six AdMob fields remain empty; bounded local search found no exported Unity server key pair.
+- [x] Replaced duplicate owner guide; removed completed agreements/payment/test-account setup actions, clarified internal publishing token versus receipt-service secret and browser-based Google/Apple login.
+- [ ] Remaining: six AdMob app/unit IDs and cabinet settings; Unity server-pair file; secure secret provisioning and approved server publication; real sign-in/purchase/SSV/refund/deletion validation.
+- Evidence: `Reports/OwnerSetupOct20/`, `Docs/LIVE_SERVICES_ACCESS_OCT19_RU.md`. Documentation only; no build, screenshot, runtime test, store upload or production mutation.
+
+## Account backend security — Oct 18 (activation blocked)
+
+- [x] Atomic SQL first-account create/CAS and immutable transaction/subscription-chain ownership; legacy protected-save import.
+- [x] Server-issued AdMob SSV intents, signature verification, durable deduplicated receipts and actual client SDK integration; late rewards reconcile on sync.
+- [x] Apple V2 and authenticated Google RTDN handlers, current-state reconciliation, grace/expiry/refund and token-replacement handling.
+- [x] Tombstoned account deletion, retryable provider cleanup, single-use external code page, local deletion recovery and EN/RU/UK actions.
+- [x] Worker version 1 deployed; 157 Cloud Code + 68 client + 28 Node checks passed; real Unity runtime compiled, localization built. Module prepared locally.
+- [ ] UGS deployment/activation: local service account returns project HTTP 403; Player Accounts client ID and publisher/ad/deletion credentials missing.
+- [ ] Live SSV, renewals/refunds, all-environment erasure and maintenance scheduler verification; external production HTTP probes currently return Cloudflare 403/1010.
+- Evidence: `Reports/BackendReleaseOct18/`, `Docs/ACCOUNT_CLOUD_RELEASE_OCT18.md`; deployed source: `Backend/AccountCloud`.
+
 ## Clean menu composition — Oct 14
 
 - [x] Remove foliage from controls, inventory panels and reward/item cards; preserve bright colors and rounded borders.
@@ -2138,3 +2230,1169 @@ Follow-up — 8 October: lower map actions now hide while a conversation is open
 
 - User requests a GitHub checkpoint before animation changes, then a welcome-only layered animation trial: breathing, irregular blinking/gaze, ears/whiskers, planted weight shifts, tail/bag inertia, flowing scarf and an occasional greeting wave. No touch reactions, gameplay changes, new packages, player build or phone install.
 - Local review captures/exported documents stay outside new Git additions; production code/assets, provenance and docs form the checkpoint. Preserve earlier tracked reports and original metadata.
+- [x] Published and remotely verified checkpoint `0bd731f60f3d7d9d9f484850b2fe9c9c9c293238` on `codex/welcome-motion-oct16` before animation edits; main untouched. Reused the existing project deploy key through repository-local SSH configuration. The independent unborn Website repository remains on disk.
+- [x] Added a welcome-only continuous skin of the corrected base Mika illustration: irregular blinking/gaze, planted breathing/weight shift, head/ear/whisker motion, greeting wave, damped bag/tail and wind-driven anchored scarf. No pointer interactions. Eye textures are the only new bitmaps; original sprite preserved. Costume variants retain their existing static art pending their own weights; sewn badges follow the base rig.
+- [x] PASS: final 8/8 native PlayMode checks, including actual pixel isolation, fixed soles/muzzle, 30/120 Hz stability, triangle orientation, lifecycle/accessibility, badge/costume fallback, birds/ships, phone/locale matrix and account/progress regression. Fixed wave weights reaching the far ear; an intermediate cloth hypothesis was reverted. Final tested source matches main workspace. Evidence, 192-frame native preview and seven Welcome matrix captures: `Reports/WelcomeMotionOct16/`; implementation/provenance: `Docs/WELCOME_CHARACTER_MOTION_OCT16_RU.md` and `AssetPrompts/WelcomeMotionOct16/generation.json`.
+- [x] Trial remains local above the published checkpoint. No player export/build, signing, installation, physical iPhone profiling or main-scene changes.
+
+## Welcome Mika gesture refinement — 16 October 2026
+
+- [x] Refined the existing welcome-only rig: shoulder anticipation, visible hand arcs with delayed wrist, C2 gesture envelopes, damped return, session-specific tempo/amplitude, planted counterweight, moving-visitor gaze, occasional double blink and independently timed ear twitches. Scarf gust smoothing, neighbour motion transfer and calm settling; existing artwork/eye textures reused. No touch reactions or other screens added.
+- [x] Measured the prior implementation before editing; retained the intermediate motion-only result. Cached mesh topology and used uGUI's native bulk vertex path; cached chain rest lengths, moved bone matrices out of spring substeps, skipped static feet and unchanged shader values. Eyelid textures sampled only during visible blinking. Full-quality CPU simulation+mesh median 0.557655 → 0.400162 ms (28.2% less), low-quality 0.149323 → 0.109637 ms (26.6% less), 0 managed bytes in each 600-frame warmed-up loop. These are native Editor CPU measurements, not physical-device FPS or GPU metrics.
+- [x] PASS: final 11/11 native PlayMode checks. All 480 preview frames audited for skin folds; 42-second simulations for three seeds × two qualities check later waves, visible arcs and continuity. Feet/muzzle, 30/120 Hz stability, eye-only blink pixels, focus/accessibility/lifecycle, live quality changes, costume/badge, birds/ships, phone/locale matrix and account/progress regressions passed. New 60 fps native preview and evidence: `Reports/WelcomeMotionPolishOct16/`; documentation updated. No player build, signing/install or main-scene changes.
+
+## Welcome secondary physics — 16 October 2026
+
+- [x] Replaced clock-driven secondary target offsets with source-space particle masses, gravity/air drag and XPBD bend/length constraints. Two pinned root sections move with the body; constrained velocities are reconstructed after solving. Tail/cloth differ in mass, compliance and damping. Bound artwork to closest chain sections and cached section transforms to preserve width; excluded scarf from head/whisker weights.
+- [x] Added a rigid bag pendulum driven by attachment acceleration, body angular acceleration and gravity, with rest preload, damping and soft torso contact. Lower strap follows the same hinge; pouch excluded from breathing deformation. Body remains controlled planted breathing/balance animation, now smoothed with a subtle hip lean; no ragdoll, touch input, new art/packages or gameplay changes.
+- [x] PASS: final 13/13 native PlayMode tests, including calm settling and impulse decay, moving anchors, rigid pouch geometry, section width, all previous 11 regressions and 480 native mesh frame audits. Impulse link stretch <=0.0923%, moving-root stretch <=0.0594%, anchor error 0 source pixels. No per-frame managed allocation in the warmed component loop. Cached CPU simulation+mesh median: full 0.420987 ms, low 0.132426 ms (before affine/solver caching 0.564748/0.167839 ms; earlier simpler model 0.400162/0.109637 ms). These are Mac Editor component measurements, not device FPS/GPU results.
+- [x] Evidence and 60 fps native preview: `Reports/WelcomePhysicsOct16/`; current design/limits and XPBD source in `Docs/WELCOME_CHARACTER_MOTION_OCT16_RU.md`. Initial core check 4/4, first full 13/13, final cached full 13/13. Fixed diagnostic JSON numeric formatting on Mono before final export. No build, signing/install, physical-phone profiling or main-scene/save changes. Changes remain local above the published checkpoint.
+
+## Welcome secondary motion visibility — 16 October 2026
+
+- [x] Corrected the user's observed lack of visible secondary motion. Earlier amplitudes became subpixel after the original illustration was reduced to a phone screen; spring stability checks did not establish visual readability. Increased planted breathing/balance, added a muscle-driven tail gesture with physical overlap, softened the scarf and its wind-loaded torsional root, and let the rigid bag hinge follow chest movement. Smoothed cloth/tail weight boundaries to preserve the painted silhouette under strong gusts and later gestures.
+- [x] Added six tapered, anchored whisker curves with short irregular sniffing gestures. Reuse the unchanged corrected illustration and eyelid assets; no new bitmap, package, input reaction, other-screen animation or gameplay change. Whiskers use one small non-interactive UI mesh. Retain static alternate costumes, focus/ad pause, quality controls and Reduced Motion.
+- [x] PASS: final 14/14 native PlayMode checks (67.59 s), including actual rendered 390×844 and 320×693 meshes, opaque artwork samples and visible whisker pixels. At 390 width, measured relative motion ranges: tail 4.33 px, scarf 4.20 px, bag 3.03 px, chest 2.53 px, whiskers 3.67 px. These are upper-quartile sample ranges after subtracting hip/muzzle movement, not physical-device FPS. Existing 480-frame and 42-second skin checks, feet/muzzle/pouch rigidity, physics, badge attachment, EN/RU/UK layouts, account/progress and sky life regressions passed.
+- [x] Simulation + both UI mesh builders: full 0.518743 ms, low 0.228274 ms median native Mac Editor CPU, 0 managed bytes in each warmed 600-frame loop. Final source/meta match isolated tested project. Evidence: `Reports/WelcomeReadableOct16/`. New embedded mobile preview uses the same native frames, with optional character close-up. No player build, signing, install, physical-device profiling or main-scene/save changes.
+
+## Welcome scarf contact and gust cycle — 16 October 2026
+
+- [x] Reproduced the raised scarf in calm with a failing targeted test: after 10 s without wind its tip still sat at source y519.25. The original illustration depicts a flying scarf; the previous rest pose retained it. Reused the exact original texture through a separate cloth mesh and shared shader mask, preserving the body, face and tied collar. No new bitmap or package. The loose end starts down the shoulder, air pressure lifts it, and torsion/damping return it to shoulder support when wind stops. Existing free-link inertia/constraints remain.
+- [x] PASS: full 15/15 native PlayMode checks (71.87 s), followed by 1/1 enhanced 30/120 Hz check of the separate cloth against identical wind inputs; runtime unchanged between runs. In calm the tip rests at (298.73,830.41), a gust reaches the original streaming region, and the cloth returns within 3 source pixels after calm resumes. All 540 native frames in the 18 s actual wind cycle audit both body and cloth triangles. Phone/locale, feet/face/bag, zero-wind settling, focus/quality/Reduced Motion, badge/costumes, account/progress and wildlife regressions pass.
+- [x] Simulation + body/whisker/scarf mesh median native Mac Editor CPU: full 0.675794 ms, low 0.281343 ms, 0 managed bytes per warmed 600-frame loop. Cloth adds 561/153 vertices and one owned material/draw layer, sharing the same PNG. Evidence: `Reports/WelcomeScarfDrapeOct16/`; source/meta match tested project. Native full-frame captures and a compact close-up preview retain the entire calm → gust → calm sequence. No player build, signing/install, physical-device profiling or main-scene/save changes.
+
+## First visible mechanics, grounded artwork and Mika pose bank — 16 October 2026
+
+- [x] First unseen mechanics auto-open their existing animated film even with optional coaching disabled, including the next visible board's branch/bomb. Preview acknowledgement leaves the active board unrestricted; seen lessons remain retired and replay through `?`. Hidden boards are excluded. IDs and puzzle rules unchanged.
+- [x] Checkpoint Next/Map reuse shared green/amber skins with responsive 4.6:1 proportions. Welcome Mika lowered onto the platform. Corrected half-height plank mesh scaling and seated both branch variants into the moving board's crown. Existing artwork reused; no new game graphics.
+- [x] Native pose bank: 10 main representations and 34 costume poses, with source manifest; no extra animation added to other screens. Phone-friendly inline gallery verified at 320 px, including first/last/previous selection and image decoding.
+- [x] PASS final 12/12 native PlayMode + 23/23 EditMode checks. Native phone captures in EN/RU/UK; four-size checkpoint/frame regression. Broader 23/28 run includes every tutorial/phone/locale combination. The other five failures reproduce with all changed lesson/board/result systems restored to prior code in the isolated copy; preserved as pre-existing findings, not reported as passing. Reports, comparison and tested hashes: `Reports/GameplayPolishOct16/`; policy/limits: `Docs/GAMEPLAY_POLISH_OCT16_RU.md`.
+- [x] Final source files match tested copy. No player build, signing/install, physical-phone run, primary-scene change or user-save mutation.
+
+## Wind-reactive flowers and quieter welcome idle — 16 October 2026
+
+- [x] Replaced wind-independent plant loops with shared wind-driven leaning plus smaller individual motion. Rooted menu/gameplay batches, attached frame/header sprigs, pause daisies and both foliage shaders respond to the existing weather signal; gameplay includes actual machine gusts. Welcome scarf and menu flowers share the environment clock. Existing art/pools reused, with stems/supports, accessibility and effect-quality behavior retained.
+- [x] Reduced welcome torso inflation/vertical breathing; bag attachment follows the quieter chest. Added restrained knee flexion below the pelvis with planted soles. Tail now sways continuously with smooth changes in effort/amplitude instead of short gestures separated by stillness. Limited the first oversized experiment after skin-fold checks; no new animation on other mouse screens.
+- [x] PASS: final 25/25 native PlayMode checks (112.93 s), including 60 s calm behavior, 30/120 Hz stability, geometry across seeds/qualities/later waves, 540 rendered body/cloth frames, phone pixels, eye/feet, lifecycle, scarf/bag/whiskers, badge/costumes, EN/RU/UK, rooted flowers across worlds and pause regressions. Belly relative-body range 13.66 → 2.16 source px; knees 12 source px with fixed soles; tail five-second ranges 10.26–37.92 source px, max 30 Hz step 0.64 source px. Torso/balance excursion <=1.50 rendered px on 390×844 and 320×693 captures.
+- [x] Native Mac component CPU: 0.739792 / 0.300517 ms for full/low, zero managed bytes in warmed 600-frame loops. Mesh counts unchanged. This is Editor CPU, not physical-device FPS/GPU performance. Reports, before/after source/evidence and 18 s native preview: `Reports/WelcomeWindIdleOct16/`; notes: `Docs/WELCOME_WIND_IDLE_OCT16_RU.md`. Final source/shaders match validation copy; no build/signing/install, original-scene changes or user-save mutation.
+
+## Remaining screen compositions — refreshed capture, 16 October 2026
+
+- [x] Rechecked the earlier inventory against current routes. Island selection and tutorials have since received their reference redesign; retired mechanics catalogue and language confirmation are excluded. Journey ending, recovery, story dialogue and comic compositions still await a dedicated full redesign. Legal readers retain their plain layout with updated shared Close actions.
+- [x] Captured/reviewed 12 fresh native 390×844 RU screenshots: ending, three actual dialogue contexts (map/gameplay/separate), intro comic, all five staged recovery reasons, Privacy and Terms. Two isolated capture cases passed; no runtime/presentation changes. Originals, per-screen metadata and temporary capture source: `Reports/RemainingScreensReviewOct16/`. Phone-friendly gallery verified separately. Temporary case removed from the validation copy; no build, install, primary scene or real-save changes.
+
+## More visible welcome tail — 16 October 2026
+
+- [x] Increased the welcome tail's continuous arc and broadened its skin falloff at the fixed body. Preserved smooth varying amplitude, tail physics, rigid bag, quiet breathing and planted soles; reused the same illustration/topology.
+- [x] Actual rendered tail motion increased from 3.98 / 3.74 to 7.61 / 7.19 px on 390×844 / 320×693. Added a minimum 6 px phone-readability assertion. Calm five-second ranges 25.84–76.31 source px; maximum 30 Hz step 1.25 source px.
+- [x] PASS: targeted 4/4, final 15/15 native welcome checks (69.03 s) including 540 audited capture frames, geometry across seeds/qualities, frame-rate stability, face/feet, secondary attachments and lifecycle. Full/low component CPU 0.677878 / 0.273373 ms with zero warmed managed allocations; no extra vertices. Evidence and 18 s native preview: `Reports/WelcomeTailRangeOct16/`. No build, install, main-scene or real-save changes.
+
+## Distinct character poses and dialogue animation — 16 October 2026
+
+- [x] Added pose-specific motion to all existing main Mika representations, 17 costumes in both poses, and all ten dialogue portraits. Apple reaches the mouth, opens/chews and retains two bite marks; sad Mika sighs/looks around; victory has two anticipatory hops and a separately rigid lantern pinned to the paw. Standing/thinking poses keep planted soles, slower breathing, knees, variable tail arcs, delayed bag/lantern motion and outfit-specific fabric/accessories reacting to wind.
+- [x] Dialogue/world-comic articulation follows text cadence, punctuation and completion. Eye/face identity and glasses retained. Reused existing welcome eyelids/mouth for Mika and original props; only three compact bitmap fragments added (fabric, resident eyelids, resident mouths). Costume face/lantern landmarks measured for all 34 variants. Magnifier shares the real pose's motion. No new touch reactions.
+- [x] Preserved app suspension, reduced motion/quality, existing preview touch actions and game state; cached topology and substepped springs. Fixed actual pause-picture arm origin and long victory-lantern skin pinching found during native review. Nested canvas raycaster preserves the existing preview button.
+- [x] PASS: final 37/37 native PlayMode checks (130.66 s), including 6192 continuously rendered/audited frames across 52 variants, 156 pose/face/gesture stills, 22 actual phone-screen/dialogue captures at 390×844 / 320×693, 42 s skin checks, 30/120 Hz behavior, rigid glass/paw contact, apple contact, idle support, lifecycle and welcome/pause/comic/collection regressions. Warmed simulation/mesh loops allocate zero managed bytes; CPU figures are Mac Editor components, not phone FPS. Final source matches validation copy.
+- Evidence, 52 native review clips and staged screenshots: `Reports/CharacterPosesOct16/`. Notes and remaining ambiguous balls/burning wording: `Docs/CHARACTER_POSES_MOTION_OCT16_RU.md`; imagegen provenance: `AssetPrompts/CharacterMotionOct16/PROVENANCE.md`. No build, signing, install, original-scene or real-save changes.
+- [x] Final material follow-up: 3/3 (38.51 s). Matched original WorldSurface grading/warm lantern protection in worlds 0/1/5/8 against actual rendered pixels; repeated native phone screens and locale/control hit checks. Animation/mesh code and white-light pose appearance unchanged. Updated final source hashes and staged captures.
+
+## Retired presentation cleanup — 16 October 2026
+
+- [x] Removed 26 confirmed retired PNGs (36.16 MiB with obsolete source) and four old source files plus paired metadata; removed uncalled workshop/journal/guide/parcel layout helpers and decorative map bridge renderer. Kept public compatibility routes, GameScreen values, current context help and all persisted progression/economy.
+- [x] Audited dynamic Resource loaders and serialized GUID consumers; consolidated obsolete fallbacks and importer expectations. Both Resources roots, 288 remaining first-party PNGs and publishing icons checked: no identical RGBA images or colliding resource keys. Previous 62-file cleanup verification still passes. Recovery archive outside Unity; exact hashes/reasons in `Reports/AssetCleanupOct16/retired-assets.json`.
+- [x] Native final regression PASS 20/20 (64.84 s), source matched. Expanded run 59/61; both failing ribbon/aircraft assertions reproduce identically with pre-cleanup sources/assets restored in the disposable copy. Baseline and failures retained in evidence; no new cleanup regressions. Notes: `Docs/PRESENTATION_CLEANUP_OCT16_RU.md`. No player build, signing, installation, primary scene or real-save changes.
+
+## Detailed motion across the pose bank — 16 October 2026
+
+- [x] Extended all 52 existing actor variants plus welcome with independent ears, sniff/muzzle/painted-whisker motion, pose-specific cheek/brow expressions and small nods. Added delayed tail/cloth tips, bag flap and visible outfit/resident accents; preserved rigid glasses/masks, teeth, props, planted supports and existing welcome scarf physics. No new interactions, textures, render layers, topology or packages.
+- [x] Final native PASS 27/27 (107.20 s): full 52-pose skin sweeps, 6192 rendered frames, 30/120 Hz, rigid glasses/lantern/teeth, apple contact, phone screens, lifecycle, quality and zero warmed managed allocations. Widened/reduced only problem tail/cloth falloffs detected during testing. Source matched disposable validation copy; component timings remain below 0.74 ms on Mac Editor, not a device-FPS claim.
+- Evidence: `Reports/CharacterDetailsOct16/`; notes: `Docs/CHARACTER_DETAILS_OCT16_RU.md`. Compact native video staged for inline review. No player build, signing, install, primary scene or real-save changes.
+
+
+## Authored apple animation and character recheck — 16 October 2026
+
+- [x] Reproduced the visibly detached apple arm; acknowledged that earlier passing point/skin checks missed the anatomy. Discarded the repaired puppet version after native closeup review.
+- [x] Generated 12 complete, registered character states; replaced the separate arm/IK/masks with authored frames and offline bidirectional transitions. Calibrated known +8/-8 pixel displacement exactly; one global ease, retained bite, own authored eyelids, preserved tail/cloth idle. Removed obsolete hidden-sleeve PNG + .meta.
+- [x] Native PASS 29/29 across 52 variants and Welcome; final Apple-only eyelid refinement PASS 3/3 with full/low 480x640 motion and actual 390x844/320x693 RU/UK screens/dialogues. Visually inspected all four pose pages at three ages, core screens and Welcome. Warmed simulation/mesh loop still allocates 0 bytes; not an iPhone GPU/FPS claim.
+- Evidence and exact generation prompts: `Reports/CharacterArmAttachmentOct16/`; correction note: `Docs/CHARACTER_APPLE_ANIMATION_OCT16_RU.md`. Final native MP4 provided for review. No player build, signing, install, primary scene or real-save changes.
+
+
+## Complete authored speech expressions — 16 October 2026
+
+- [x] Reproduced the small-mouth-over-closed-smile bug. Native whole-jaw comparison failed on all 46 variants before the fix; preserved original screenshots/metrics and source.
+- [x] Replaced borrowed generic mouth stamps with closed/half/full face expressions edited from each exact source: 10 speakers, 2 additional Mika sources and both poses of 17 costumes. Six shared atlases, 92 edited states; original upper faces, poses and other graphics reused. Exact-source texture identity prevents two Mika sources colliding.
+- [x] Removed the old ResidentMouths PNG/meta, procedural jaw deformation and unused experimental speech flow textures. One opaque drawn expression per speech phase, no doubled mouths/tongues; vowels reach full opening, punctuation rests. No runtime optical-flow or new packages.
+- [x] Native PASS 31/31 for character/Welcome regression; final phase-policy refinement PASS 3/3 including full/half/transition pixel checks for 46 faces, 180 natural-speech frames and actual mobile/dialogue captures. Visually inspected four pages of intermediate faces plus main speaker motion. Runtime snapshots exactly match the tested copy.
+- Evidence/video/prompts: `Reports/CharacterSpeechOct16/`; notes: `Docs/CHARACTER_SPEECH_OCT16_RU.md`. No player build, signing, install, primary scene or real-save changes; no iPhone GPU/FPS claim.
+
+
+## Level-list half ratings and shared action alignment — 16 October 2026
+
+- [x] Confirmed existing fractional ratings in native rendering: 1/1.5/2/2.5/3, exact gold half-star mesh and island total; persisted/restored/merged 2.5 remains exact. No rating rules or save-schema changes.
+- [x] Reproduced the excessive visible icon/caption gap. Shared CenteredContentRow now measures actual glyph geometry, centres the whole horizontal/vertical group, and invalidates its cache when padding changes. Wider inner caption area in existing Play/Replay buttons; shared skins and navigation retained.
+- [x] Native PASS 9/9 list suite (nine worlds, EN/RU/UK, 320/390/430, normal/large action text, scrolling and published level routing). Final first-layout refinement PASS 4/4 including action/rating rechecks, core-screen EN phone smoke and RU tutorial; rating persistence/rules PASS 13/13 EditMode. Selected native screenshots visually inspected.
+- Evidence: `Reports/LevelListAlignmentOct16/`. No player build, signing, install, primary scene or real-save changes.
+
+
+## Illustrated world completion and canonical Mika gesture — 16 October 2026
+
+- [x] Added the reference-style completion screen after results/rewards and before the next world's unseen comic/map. Requires all offered world levels in the active category; existing HeardStory receipts 9600–9640 record explicit acknowledgement, without save-schema/rating/economy/backend changes. Home and next-world actions preserve progress; ninth world offers the journey map. Enum appended to preserve older screen values.
+- [x] Reused nine skies/island sets, seasonal frame, tutorial paper and shared green/amber buttons. Tight island Sprite regions remove export gutters without new PNGs or importer changes. Shared centred 4-logical-pixel icon/caption groups.
+- [x] Generated one canonical-Mika 12-state transparent atlas; whole connected sleeve/arm/face gesture, warm smile and authored blink, additional rooted ear motion. Offline bidirectional vectors reused from the existing native tool; same registered resting paw contacts the board. Focus/pause/reduced-motion/quality policies respected.
+- [x] Native final PASS 11/11 (6 new-screen + 5 world-comic scenarios): 81 world/locale/phone captures, compact phone/tablet, actual disk reload, routing/one-time acknowledgement and 300 motion frames. Sources/graphics match the tested copy; relevant screenshots visually inspected. Two older GuidedLessonFlow button expectations fail identically in a control without the new hooks; evidence retained, no full-project-green claim.
+- Art, generation prompt, XML/logs, screenshots and video: `Reports/WorldCompletionOct16/`; design/receipt note: `Docs/WORLD_COMPLETION_OCT16_RU.md`. No player build, signing, installation, primary-scene or real-save changes.
+
+
+## Reference-style world comics and animated speakers — 16 October 2026
+
+- [x] Reskinned the existing Prologue route to the supplied comic reference: seasonal frame/sky, large heading, whole framed illustration, raised speaker portrait, separate name plaque, complete paper turn and bottom Skip/Continue actions. Reused all 36 existing panels and shared art/skins; generated one transparent timber-frame PNG only, with exact prompts retained.
+- [x] Localized paper height uses both speakers on the active panel, preserving its position and 3:2 aspect across turns. Fixed legacy heading-font override, page-counter room, deliberate title/name padding and Skip contrast on clouds. Shared centring/touch targets; original receipts, failed-save handling and destinations preserved.
+- [x] Existing full-face expressions animate the speaking portrait, including blink/ears and mouth opening; background/focus/reduced-motion policies retained. No detached limb or borrowed mouth overlay.
+- [x] Native final PASS 16/16: 648 complete localized-turn layouts, 85 phone/reference/compact/tablet captures, actual raycast hits, first-play/reload/save-failure/world routing, unchanged puzzle state and 240 speech frames. Relevant native shots and nine-world sheet visually inspected; 11 tested files match, 3 new GUIDs unique.
+- Evidence, prompts and video: `Reports/ComicReferenceOct16/`; notes: `Docs/COMIC_REFERENCE_OCT16_RU.md`. No player build/sign/install, primary Editor or real-save changes; full project suite and iPhone FPS not claimed.
+
+
+## Full-screen character requests and conversations — 16 October 2026
+
+- [x] Replaced the compact OpenConversation ribbon with the supplied reference composition: themed sky/islands, large animated character, name board, complete parchment turn/count, bottom actions and continuous stone ground. Applied to personal offers, island exchanges and checkpoint dialogue; underlying menu and pause state restore on close.
+- [x] Reused all existing skies/island sets, portraits/full busts, costumes, paper, foliage and shared button skins. One small generated Lumi ear repair fixes the source atlas’s clipped ear tips; original eyes/mouth and authored expressions retained. Other art reused without duplicate character assets; exact prompts saved. Existing full-face animation and focus/reduced-motion policies retained. Whole Mika/costume sprites masked behind the paper avoid the old portrait's cut scarf.
+- [x] Measured whole localized turns and names, stable scene height, safe-bottom placement on tall phones, actual 44-pixel-or-larger hit regions on short phones with Canvas scaling, shared centred content and grounded wind-driven plants. Callback/receipt/mission/save/rating/economy behavior retained.
+- [x] Native main PASS 13/13; final ear-contour refinement PASS 2/2 (including exact half/full/transition jaw pixels for 46 face variants): 81 phone/world/locale combinations, 459 authored-scene locale passes, compact phone/tablet, real pointer hits, complete personal-mission decline/accept/reload/three-stage/campaign-restore flow and five existing comic/navigation scenarios. 88 new-screen PNGs, 27 authored-dialogue PNGs and 240 native motion frames; representative shots and nine-world overview visually inspected. Thirteen tested files match; four new GUIDs unique.
+- Evidence/video: `Reports/ConversationReferenceOct16/`; notes: `Docs/CONVERSATION_REFERENCE_OCT16_RU.md`. No player build/sign/install or primary Editor/real-save changes; full project suite and device FPS not claimed.
+
+
+## The High Lantern mystery, Rin and nine-world character arcs — 16 October 2026
+
+- [x] Replaced the storm-only premise with a complete fairy-tale mystery: missing High Lantern, pre-storm timing, crate/seal/forged-order/tide/key evidence, Felix's motive and deliberate concealment, Ada's deferred north route, a late glider rescue, lantern return and supervised restitution. Lower-island lamps explain ropes and exact-row delivery without changing puzzle rules.
+- [x] Renamed the displayed protagonist Rin / Рин / Рін while preserving internal Mika sprite/animation identity. Added distinct voices, flaws and development for all nine residents, concrete callbacks to earlier events, relationships and a gradual progression from asking for reassurance to coordinating the final delivery. Notification and costume copy also use the current name.
+- [x] Authored and connected 501 story positions / 1503 EN-RU-UK values across comics, island openings/progress/payoffs, checkpoints/asides, mode return memory, goals, missions and world endings. Preserved existing event IDs, save progress and 483 numeric table IDs via Unity's rename API. Removed obsolete page monologues; the beacon stays unlit until the actual finale.
+- [x] Fixed a real duplicate pre-level exchange: an island opening could repeat through the legacy world-introduction branch. Corrected baseline reproduced it; new actual-launch regression passes after the fix. Shortened tight completion headings, narrowed and centered their inset and required eight logical pixels of painted-text padding. Existing art/animations reused; no new bitmap assets.
+- [x] Native final evidence: 24/24 EditMode, 18/18 PlayMode, then 14/14 final flow/heading checks (43 unique tests). Covered 432 comic-turn and 918 dialogue-turn layouts, EN/RU/UK, Large Text, 81 phone/world/locale combinations, compact touch targets, actual mission flow, first-play/comic/save navigation and padded endings. Selected final captures visually reviewed; 22 tested source/data/table files match the main project. No compiler or runtime exception regressions in final logs.
+- Script and character bible: `Docs/LANTERN_STORY_BIBLE_OCT16_RU.md`; complete Russian reading script: `Docs/LANTERN_STORY_FULL_RU_OCT16.md`; canonical authoring/translations: `Data/story_lantern_oct16.json`; evidence: `Reports/LanternStoryOct16/`.
+- No player build, signing/install, primary Editor/real-save changes or new generated art. Full unrelated suite and physical iPhone validation not claimed; independent literary/native-reader review not claimed.
+
+
+## Continuous stage descent — 16 October 2026
+
+- [x] Reworked the between-stage descent into 1.18-second minimum-jerk camera travel with a soft start and stop. Both rigs retain fixed separation, two complete braided suspension ropes and connecting spans; the outgoing checkpoint cloth travels with its stage. Clouds and distant islands follow the same depth with slower parallax, while the timber frame masks travel and controls return with a gentle fade.
+- [x] Corrected missing sliced receiver artwork, illustrated counters and TMP sprite submeshes in the snapshots. Preserved renderer visibility, independent materials/property blocks, original uGUI paint order and inherited/local opacity. Flushed counter layout and already-loaded translations before capturing new-stage UI. No new production bitmap assets or packages.
+- [x] Held the live wood/rope spring pose under the moving copy and removed the competing entrance tween so arrival matches the live rig. Existing stage acceptance/persistence precedes animation; completion never grants progress or rewards. Focus, pause, reduced motion and navigation release temporary rigs and restore controls.
+- [x] Native final PASS 13/13: seven focused descent scenarios plus six existing story/comic navigation scenarios. Both actual GoLower transitions, monotonic continuity, exact live pose, visible rope/receiver/counter snapshots, material ownership, persisted stage/hash, repeat-click gate, interruptions and EN/RU/UK covered. 110 native motion frames, compact 320-pixel phone/themed captures and a pixel comparison of the strength number at the live handoff (mean RGB error 2.23/255). Representative transition frames visually inspected; eleven source/meta files match the tested copy and the new GUID is unique.
+- Evidence and short native-frame video: `Reports/DescentMotionOct16/`. No player build/sign/install, primary Editor or real-save changes. Full unrelated suite and physical iPhone FPS not claimed.
+
+
+## Centred controls and new story screens — 16 October 2026
+
+- [x] Reproduced two real failures before editing: a comic paragraph was 19.44 reference units off the paper's horizontal centre, and a plain reference action lacked any shared centring owner. Kept native before evidence.
+- [x] Centred the visible multi-line comic/NPC paragraph as one readable block, with symmetric horizontal/vertical paper insets and room reserved for the page counter/name. Kept whole authored turns and stable same-panel geometry; adjusted paper height where necessary. Centred comic name/title reading insets on their boards.
+- [x] Added a one-time pre-paint fallback through the existing CenteredContentRow for unbound simple reference buttons. Explicit icon/label groups, vertical stacks, subscription calendars and other composite cards retain their layout. No incomplete rows on icon-only controls; combined icon/label contents keep the four-logical-pixel gap. Existing artwork reused.
+- [x] Native main PASS 18/18, additional controls PASS 5/5 (20 unique scenarios). Three new regressions include all page/phone/locale changes and both a plain action and an icon action. Existing nine-world comics/conversations, all authored turns, short phone/tablet, EN/RU/UK, Large Text, touch areas, callbacks/save routing and portrait animation passed. Main-menu sweep, subscription/shop footers, all settings pages and welcome/home/header layouts checked. Representative fresh comic/dialogue and compact late-world captures visually inspected; seven source/meta files match the tested copy; new GUID unique.
+- Evidence and fresh screenshots: `Reports/UiCenteringOct16/`. No production bitmap assets, packages, story/progress changes, player build/sign/install or primary Editor/real-save changes. Physical iPhone and full unrelated suite not claimed.
+
+
+## Writing-field and glyph centring correction — 16 October 2026
+
+- [x] Reproduced the user's remaining visible comic defect independently by rendered pixels: title +4 px, speaker +3 px above the parchment centre. Previous rectangle-only centring claims did not cover this; retained before evidence.
+- [x] Replaced empty font line metrics with actual glyph bearings in shared rows, vertical stacks and wrapped story text. Measured reading fields for the existing foliage board, nine map title skins, welcome and settings signs; mapped through real nine-slice/aspect geometry. Bound parcel/settings headings to the shared layout. Existing assets and four-logical-pixel icon/caption gap retained.
+- [x] Native verification: 21 unique scenarios PASS after targeted reruns; 324 independent pixel comparisons across nine actual world skins × EN/RU/UK × three phone sizes, including Large Text. Maximum residual 1.0 device px. All comic panels, conversation turns, related control layouts and touch/save/route checks passed. Corrected obsolete inset and snow colour classification checks; explicit world/localized-name assertions prevent previewing world zero repeatedly.
+- [x] Visually inspected fresh comic/NPC, tutorial, pause, shop, no-ads, welcome and settings captures. Eleven source/test files match the isolated tested copy.
+- Evidence: `Reports/PlaqueCenteringOct16/`. Build and iPhone installation remain stopped at the user's request; no production PNG, rule, economy, real-save or primary Editor changes. Physical iPhone rendering not claimed.
+
+
+## Portraits attached to their name boards — 16 October 2026
+
+- [x] Reproduced Ada's actual-alpha silhouette gap: 2.62 logical px on a compact phone. Transparent bottom margins differ between residents; preserveAspect and entrance scale also affect contact.
+- [x] Docked the painted bust base behind the nameplate rim in WorldComicLayout, retaining sprite/animation UVs and existing art. No runtime texture scans or new assets.
+- [x] Native 9/9 scenarios PASS. Independent texture-alpha/rendered-board-mesh check covered 216 turns, ten speakers, nine worlds and three phone sizes; minimum support overlap 5.33 logical px. Complete localized comics, compact/tablet, speaking/focus, callbacks/save routing and dialogue/text centring passed. Fresh Ada/Rin and animated captures visually inspected.
+- Evidence: `Reports/PortraitContactOct16/`; two source/test files match the isolated copy. Build/install remain stopped; no primary Editor, real-save or production bitmap changes.
+
+
+## Respect settings row alignment — 16 October 2026
+
+- [x] Applied the user's scope clarification: action buttons, information boards and item cards use centred content; navigation/settings/form/list rows retain authored leading labels and trailing controls. Updated AGENTS.md explicitly.
+- [x] Reproduced the regression natively: the shared fallback changed a settings navigation caption from Left to Center. It now respects explicit directional alignment; settings icon/label columns, switches, radios and chevrons remain in place. Restore purchases explicitly retains the shared centred icon/caption action layout and four-logical-pixel gap.
+- [x] Native 5/5 PASS: four pages, EN/RU/UK, phones/tablet, Large Text/safe areas, semantic row alignment, trailing controls, parameter persistence/reload, legal/store/back routes and normal action centring. Fresh settings pages visually inspected; three source/test files match the isolated copy.
+- Evidence: `Reports/SettingsAlignmentOct16/`. No new assets, gameplay/economy/save changes, build/install or primary Editor changes.
+
+
+## Requested iPhone installation — 16 October 2026, build 202610162
+
+- [x] User explicitly authorized this deployment. Synchronized all 2,568 current Assets/Packages/ProjectSettings/Data inputs into the isolated build copy; main inputs unchanged during export. Preserved main Editor state, old exports and backups.
+- [x] Unity iOS IL2CPP export succeeded (0 errors/360 warnings); Xcode Release build and existing Apple automatic signing succeeded. Strict deep signature check passed. Latest settings, board/glyph and portrait corrections included.
+- [x] Installed 0.1.0 (202610162), com.vickand.cascade, on the paired iPhone 17 over Wi-Fi. CoreDevice verified the exact installed build, launch and a subsequent live game process. No uninstall/reset/restore or production configuration changes.
+- Evidence: `Reports/iPhoneInstall-202610162/`; export and signed app retained under Builds/CASCADE-iOS-202610162 and its -Device sibling. Physical visual/audio/FPS validation not claimed; further build/install requires a new user request.
+
+
+## Reported Descend/tutorial and character motion repairs — 17 October 2026
+
+- [x] Reproduced repeat films, blocked Descend during swap coaching, non-looping speech and non-finite secondary motion at uneven frame durations. Preserved before evidence; strengthened the numeric regression to explicitly reject NaN/infinity.
+- [x] Accumulated genuine fixed 120 Hz decoration ticks; softened/bounded scarf lift while retaining visible tail motion and resting cloth contact. Acknowledged films persist a viewing marker before optional practice; swap guidance no longer locks unrelated controls. Fresh mechanic introductions, effect replay and mastery semantics retained; no save schema/enum/rule change.
+- [x] Reduced durability plaque and type to sit inside the timber. Reused intact authored apple-bite drawings without optical-flow deformation/overlaid idle eyes; retired unused runtime deformation bytes. Slower dialogue jaw cadence now loops with phrase pauses. No new PNG art.
+- [x] Native latest PASS 24/24 distinct targeted scenarios, including disk persistence, retry/interruption, real Descend, fresh mechanics/replay, touch/pause, multi-stage flow, EN/RU/UK phone layouts, 7,200 uneven updates, 30/120 Hz physical constraints, feet/cloth contact and independent intact-drawing pixel comparisons. Thirteen source/meta files match the tested copy; GUID unique; no C#/shader compile errors. Fresh welcome, plaque and bite frames visually reviewed.
+- Evidence: `Reports/ReportedMotionOct17/`. Four unrelated broad-suite failures reproduced on the previous implementation and recorded separately; full unrelated suite not claimed green. Main Editor and real saves preserved. No player build/install; iPhone remains on 202610162 pending a new deployment request.
+
+
+## Completion actions inside the timber frame — 17 October 2026
+
+- [x] Reproduced missing Next after the first clear and Retry/Map extending behind foreground frame art. Removed the first-result-only map redirect at the user's request; first and later ordinary results offer the same available Retry/Next/Map actions. Updated the first-play flow note; kept explicit Map, pending parcels and campaign-end handling.
+- [x] Added a Win-only shared footer fit inside the side reserve, minimum 44-logical-pixel touch widths, existing square amber faces/pictograms, centred primary action and four-pixel gaps. Reused compact Next/Дальше/Далі on narrow views instead of crowding long translations. No new production art.
+- [x] Native final PASS 5/5. Actual opening comic/three-stage first victory, map and next-node paths, retry without duplicate reward, nine phone/locale combinations (320/390/430 widths × EN/RU/UK), Large Text, real translated captions, full frame/control bounds, touch size and visible glyph padding. Fresh screenshots visually inspected; seven source/meta files match the test copy, GUID unique, no new C#/shader compilation errors.
+- Evidence: `Reports/CompletionFooterOct17/`. Extended only the test fixture's existing precise cold-localization diagnostic expectation through teardown while independently requiring actual tables/translations. Main Editor and real saves preserved; no player build/install. Full unrelated suite not claimed.
+
+
+## Inventory translation, level-finish continuity and fixed upper timber — 17 October 2026
+
+- [x] Reproduced missing first-use Toolbag text in all locales and identified two stale undo source keys. Added three matching EN/RU/UK TSV/StringTable entries; actual first-use help, tray and all tool captions now resolve.
+- [x] Restricted both existing frame shaders' upper-corner wind deformation to vegetation sampled from the fixed original artwork. Independent comparisons preserve all 60,530 menu / 10,600 gameplay timber pixels; foliage still moves. Corrected baseline moved 40,905 menu timber pixels.
+- [x] Added a short landed-row beat and finite 0.64-second dissolve to the already committed result; removed competing result-menu entrance and early scenery hiding. Temporary image never blocks controls and is released on navigation, focus/pause, disable and Reduced Motion. No new PNG assets, reward callbacks or gameplay mutations.
+- [x] Reproduced a 148.593-unit checkpoint start jump. Receiver animation now starts at its actual geometry and meets the stable checkpoint position/height including sill clearance; endpoint/skip settlement is exact.
+- [x] Native final PASS 9/9 with first-play and real-time stage descent, reward/retry invariants, interruption/cleanup, EN/RU/UK help and all mechanics, pixel checks and fresh phone-size captures. Fourteen affected source/data/meta files match the disposable validation copy; new GUIDs unique; final log has no C#/shader compile errors.
+- Evidence: `Reports/InventoryFinishFrameOct17/`. Main Editor and real saves preserved. No new player build/install; iPhone remains on 202610162. Full unrelated suite and physical-phone smoothness were not revalidated.
+
+
+## Brighter green current-island highlight — 17 October 2026
+
+- [x] Strengthened the existing silhouette glow and gently brightened only the current island with mint light. Preserved current/pinned-island logic, geometry, text, interaction and progression; reused existing artwork/shaders with one owned map material and no new PNGs or particles.
+- [x] Existing native map-flow checks PASS 2/2, temporary capture PASS 1/1. Visually reviewed first/ninth worlds at 390×844 RU and 320×693 UK with Reduced Motion; three production files match validation copy, no C#/shader compile errors.
+- Evidence: `Reports/CurrentIslandLightOct17/`. No player build or phone installation; physical iPhone still has 202610162.
+
+
+## Parcel interstitial routing and missing extra-video offer — 17 October 2026
+
+- [x] Reproduced three failures: due automatic ad skipped before a parcel, Next bypassing that check, and the bonus offer disappearing when no video is ready. Preserved before source/XML.
+- [x] Moved the existing single automatic eligibility check to the shared saved-completion continuation. Close/failure resumes that same completion from the foreground loop; duplicate presses and stale navigation cannot bypass/reopen it. Unready ads never block earned parcels. Existing alternating-level cadence, replay/final/no-ads/privacy guards, reward amounts and save schema retained.
+- [x] Separated bonus eligibility from availability. Shared button stays visible with translated loading/unavailable status, enables on video readiness without replaying the reveal, and respects hidden offers/verified bonuses. No provider consent/retry/configuration change or new art.
+- [x] Native PlayMode PASS 13/13; EditMode PASS 36/36; repeated the readiness case for six full EN/RU/UK phone renders at 320×693. Forty-nine distinct checks passed, no C#/shader compile errors; six affected files match validation copy, regression GUID unique.
+- Evidence: `Reports/ParcelAdsOct17/`. Native SDK video delivery on the physical iPhone remains unverified; tests use controlled preview/readiness. Main Editor, real saves and phone app preserved. No new player build/install; phone remains on 202610162.
+
+
+## Mixed-mode shape size — 17 October 2026
+
+- [x] Matched mixed-row shape bodies to the shared ordinary three-shape footprint. Reused board sizing and existing meshes; kept letter tiles and target receiver sizes. Dense rows retain adaptive containment inside the existing row spacing; gameplay and save state unchanged.
+- [x] Native temporary visual review PASS for 18 phone cases (390×844 / 320×693, EN/RU/UK, 5/7/8 pieces), with exact reference-width assertions in the ordinary 390px mixed row; selected-letter motion check PASS. Visually reviewed ordinary and dense phone renders. No permanent sizing test added.
+- [x] Two additional old PlayableTests checks fail identically on the saved before sources (target magnifier pause; loaded sag), so the broader selection is 2/4 and is not claimed green. Source hashes and before/after XML preserved in `Reports/MixedShapeSizeOct17/`; no C# compile errors.
+- No player build or iPhone installation; physical phone remains on 202610162.
+
+
+## Localization preload error — 17 October 2026
+
+- [x] Reproduced the screenshot exception on rapid language changes: baseline strict regression 2/3 PASS, 1/3 FAIL with the exact `Failed to initialize localization, could not preload string tables` error. Identified overlapping locale initialization resetting the database preload handle.
+- [x] Serialized all runtime locale assignments in the player loop, coalesced queued choices and refreshed reference captions once the final language loads. Existing preference persistence and system-language detection preserved; no synchronous wait, error masking, package/asset/schema/rule changes.
+- [x] Added strict cold RU/UK and rapid-choice/reload regressions; removed the old preload-error allowance from AccountReferenceTests. Native validation PASS 7/7 including prior system/legacy language, settings and inventory cases; zero localization and C# compile errors. Four affected source/meta files match the validation clone; new GUID unique.
+- Evidence: `Reports/LocalizationStartupOct17/`. No player build or iPhone installation; physical phone remains on 202610162, so this fix is not yet installed there.
+
+
+## Shorter hanging-effect action beat — 17 October 2026
+
+- [x] Reduced tool effect display from 4.2s to 2.8s (Reduced Motion: 2.6s to 2.1s), trimming only the final hold. Arrival/pulse/caption reveal/fades, wind and non-tool timing preserved; no rules or state changes.
+- [x] Temporary clone-only native actual-contact review PASS in both motion modes: readable caption, pause/resume, returned input, consumed prop hidden and unchanged committed state/move count. Measured normal reaction 2.800s / full command 3.125s; Reduced reaction 2.101s / command 2.160s, excluding explicit pause. Phone screenshot visually reviewed; source matches tested copy. No permanent sizing/timing test added.
+- Two older PlayableTests failed before the intended timing checks (first-use teaching; reaction not observed); baseline was not rerun and the broader selection is not claimed green. Evidence: `Reports/HangingEffectTimingOct17/`. No build/install or physical-phone timing review.
+
+
+## Explicit ad scenario and device test screen — 17 October 2026
+
+- [x] Recorded user-approved override in `Docs/ADS_FLOW_OCT17.md` and marked C16 cadence superseded. Interstitial every second new whole level, including world finals; retries/stages/replays do not count. No-ads removes interstitial only.
+- [x] Added verified, parcel-scoped zero-value opening receipt. Closed parcel waits for Open with video; cancellation/unavailability leaves it pending with Later. Separate More with video remains after base rewards. Initial proof awards no currency/hints; existing base/bonus claims and sandbox isolation preserved. Reset all entry state, including trophy collection entry.
+- [x] Enabled clearly labelled local ad screens by default in existing test monetization, including device runtime. Two-second interstitial and five-second foreground rewarded simulation; early close/confirmation gives no reward. Real SDK consent/callback path preserved with local testing off. Reused existing skins/art with shared button layout.
+- [x] Native EditMode PASS 42/42; PlayMode PASS 18/18; final five scenario cases repeated PASS after the test artwork and collection-entry refinement. Sixty distinct checks, 11 final phone captures, EN/RU/UK and small-phone fit, cancellation/late callback, no-ads, serialization and save-failure checks; no C# compile errors. Sixteen affected source/meta files match the clone, two new GUIDs unique.
+- Evidence: `Reports/AdScenarioOct17/`. No player build/install; iPhone still has 202610162. Local simulation validates the flow; real AdMob delivery and physical-phone callbacks were not tested.
+
+
+## Authored platform damage, physics and clean iPhone handoff — 17 October 2026
+
+- [x] Replaced rejected procedural crack overlay with image_gen-authored intact/fine/deep/broken states for all four platform styles. Cracks span the full board; the heavily damaged state stays connected until final break. Preserved asset GUID/import settings and archived the old atlas; removed overlay-only code/shader/metas.
+- [x] Weak-edge crossing strengthens the whole authored board state with a restrained recoil/chip cue. Aligned state crops by attachment bolts. Seated bridge stop and debris collision surfaces on the current crown; rope-hinged break carries supported pieces. Solid pooled splinters tumble/fall, respect pause/Reduced Motion, fade in-camera and retire outside camera. Receiver figures use their visible centres.
+- [x] Moved durability plaque to the sampled painted lower edge, with its complete bottom inside the board during sag/roll; existing size/art retained.
+- [x] Native targeted validation PASS 6/6, phone visuals/47-frame actual break sequence reviewed; EN/RU/UK at 320/390px, cosmetic state invariants and cleanup verified. Earlier three legacy first-use fixture failures retained and full-suite green not claimed. Evidence: Reports/PlatformStatesOct17/.
+- [x] Unity iOS IL2CPP export 202610171 succeeded: 0 errors/355 warnings; 2,583 authoritative build inputs unchanged during export. Signing/clean-device install is recorded in the deployment report once completed.
+
+- [x] Signed and installed 0.1.0 (202610171) on the physical iPhone 17; exact version and clean container verified before first launch, no saved profile or backup restored. Preserved older exports/apps and primary Editor; evidence: Reports/iPhoneInstall-202610171/.
+- First foreground launch is blocked by iOS device lock (error 7); requested unlock. Physical launch/liveness, visuals/audio/FPS not yet claimed.
+
+
+## Shop papyrus/footer spacing — 17 October 2026
+
+- [x] Lowered the paginated trophy paper, copy and buy action together; balanced arrow/paper and paper/action gaps using painted-edge padding. Extended the existing swipe viewport to the moved paper. Reused skins and icon/caption centring; no other layout or gameplay changes.
+- [x] Native temporary phone review PASS for nine combinations (588/390/320px × EN/RU/UK, large text at 320). Gaps equal within 0.001px; body/title untruncated, button clear of the physical bottom. Final renders visually reviewed; source matches clone. No permanent low-impact layout test.
+- Evidence: Reports/ShopPapyrusOct17/. No new build/install; iPhone 202610171 does not include this follow-up.
+
+
+## Pause idle without apple bites — 17 October 2026
+
+- [x] Disabled authored apple-bite frames and scripted chewing only in pause. Retained the original whole apple/arm cutout, ordinary blinking, gaze, ears, head, breathing, scarf, tail and whisker idle. Other callers keep the previous default.
+- [x] Native targeted PlayMode PASS 2/2; 20-second simulated pause review confirms zero bite/frame/mouth and unchanged other idle motion. Original authored-bite regression still passes; final screenshot reviewed, three source hashes match validation clone. No permanent preference test added.
+- Evidence: Reports/PauseAppleIdleOct17/. No build/install; iPhone 202610171 does not include this follow-up.
+
+
+## Gameplay control reference proportions — 17 October 2026
+
+- [x] Enlarged top controls and bulb/help glyphs. Reused cream/green square card skin for spool and bag, larger centred illustrations, white stock/plus badges and existing floral trim. Disabled cream remains opaque; no new PNGs/import/GUID changes.
+- [x] Made the central action taller/shorter with a centred caption, inset the footer inside the posts and lifted precision controls above the taller footer. Kept rope attachment width, rules, commands and state unchanged.
+- [x] Native targeted baseline/final PlayMode PASS 1/1 each. Final nine phone/language combinations (588/390/320 × EN/RU/UK, Large Text at 320), visible non-overlapping controls, exact square proportions, caption centring, EventSystem hits, actual help/bag callbacks and precision clearance PASS. Final RU/UK screenshots reviewed; six source hashes match clone. No permanent low-impact layout test added.
+- Evidence: Reports/GameplayControlsOct17/. No build/install; iPhone 202610171 does not include the latest HUD, pause or shop spacing follow-ups.
+
+
+## Victory hero clearance and accurate comic progress — 17 October 2026
+
+- [x] Lowered the existing victory mouse by 28 logical units, retaining size, hop and all other pose motion. Native nine phone/language cases (588/390/320 × EN/RU/UK, Large Text at 320) sample 20 seconds/two hop cycles: conservative clearance from the Moves caption is 9.661–22.058px, with the original 0.035 maximum hop.
+- [x] Replaced artwork-panel progress with actual readable-turn progress. Every Next now increments; final count matches the full comic. Extended the existing all-nine-worlds regression without changing panel indices, story receipts or saves. Baseline reproduced 1/4 instead of 1/8.
+- [x] Native targeted PlayMode PASS 3/3: all worlds/panels and pinned stage, nine victory cases, nine comic phone/language cases with actual button navigation and unchanged puzzle state. Final selected renders reviewed; three source hashes match clone. No permanent positioning test or new assets.
+- Evidence: Reports/CompletionComicOct17/. No build/install; physical iPhone 202610171 does not include these follow-ups.
+
+
+## Gameplay padding, receiver centres and one tutorial action — 17 October 2026
+
+- [x] Reduced side controls to 64×64 and central action height to 56; kept the whole row inside the frame. Fitted spool/bag illustrations into the actual cream field with ≥2 logical pixels on every side. Reused skins/art; preserved badge ownership after checkpoints and shared caption centring.
+- [x] Removed the goal-shape vertical bias and centred the entire socket row in the painted cream receiver. Knots/continuous ropes and fracture pivots now follow the painted suspension pins; receiver ends meet the painted eyes.
+- [x] Tutorial has only Try it: removed close and secondary film button graphics, passive page indicators with swipe retained, hand targets updated. All 27 mechanics × EN/RU/UK checked.
+- [x] Native targeted 8/8 then final HUD/platform 7/7 PASS (12 distinct checks): nine HUD phone/language cases, exact receiver/shape alignment at stages, actual input, tutorials/swipe/cleanup, pin/rope alignment during motion/fracture, all platform styles, splinters and weight/state invariants. Final renders reviewed; 15 source hashes match clone. The obsolete corner-based fracture assertion was replaced with actual-pin coverage; its intermediate failure is retained.
+- Evidence: Reports/HudAlignmentOct17/. No build/install; iPhone 202610171 does not include these follow-ups. No full-suite or physical-device validation claimed.
+
+
+## Distinct melodic music for menus and all worlds — 17 October 2026
+
+- [x] Replaced home/nine gameplay scores and added nine separately arranged world-menu themes. Home 78 BPM; maps 70–86; levels 100–126. Original tonal/pentatonic chamber material with articulated rhythmic motion, different acoustic voices and developing periods. Calibrated seven instrument banks; replaced layered ornaments with sequential melody and shortened reverb. Existing music GUID/imports retained; sources stay outside Assets.
+- [x] Separate map/comic/dialogue and gameplay routing; smooth 0.85-second handoff through quiet, preserving the incoming first note and reversible playback. Updated the existing library/builder; no new audio manager, sampler, packages or save/rule changes.
+- [x] Objective 19-track harmony/PCM/tuning/loop/source/import validation and 352 C# routing cases PASS. Native first 9/10, final 2/2 (10 distinct passing tests): every world/menu, real map entry, reversal/first note, mute, focus/reset/owner lifecycle and related audio regressions. Existing broad fixture preparation corrected; intermediate failure retained. Final 44 tested file hashes match clone.
+- Evidence and listening previews: Reports/MusicOct17/. Artistic quality needs human listening; no full-suite, iOS build, installation or physical-device audio check claimed. Current iPhone build 202610171 does not contain this music revision.
+
+
+## Normal checkpoint action proportions — 17 October 2026
+
+- [x] Shortened only Checkpoint Next/Map controls, kept equal sizes and centred stack inside the existing safe band; minimum 48px-high target at supported phone sizes. Reused the shared green/amber skins and switched old light captions to the common InterfaceTitle font with optical centring. No new art or other screen changes.
+- [x] Native baseline/final 1/1 PASS each; nine phone/language cases (588/390/320 × EN/RU/UK, Large Text at 320), art/fonts, frame/receiver clearance, no overlap/truncation, EventSystem hits, unchanged puzzle state and actual Next/Map navigation. Final RU390/UK320 renders reviewed; runtime source hash matches validation clone. Intermediate target-size/fixture failures retained transparently.
+- Evidence: Reports/CheckpointButtonsOct17/. No permanent visual test, full suite, iOS build or install; iPhone 202610171 remains unchanged.
+
+
+## Rooted flowers on spool and bag — 17 October 2026
+
+- [x] Attached reused bouquets by their opaque leaf bases to the actual painted upper rim corners, clear of icons and stock/plus badges. Preserve contact while ButtonFeel scales on press/release and while the controls resize. Two runtime files; no new assets/components or other control changes.
+- [x] Native baseline 1/1 and final 2/2 PASS: nine phone/language HUD cases plus both controls pressed/released at three sizes, source-rim alpha >0.94, no icon/badge overlap, max base/frame error 0.0000px, original input/padding/state checks retained. First geometric placement refined after texture inspection; final renders reviewed and source hashes match clone.
+- Evidence: Reports/ToolFlowerMountsOct17/. No permanent visual test, full suite, build/install or physical-device check; iPhone 202610171 remains unchanged.
+
+
+## Install current iPhone build 202610172 — 17 October 2026
+
+- [x] Exact authoritative 2,601-input snapshot; Unity iOS IL2CPP export 0 errors/355 warnings; Xcode Release success; original/retained strict signatures pass. Latest music/checkpoint/flower validation hashes match. Main Editor and prior artifacts untouched.
+- [x] Installed on paired physical iPhone 17; exact 0.1.0 (202610172), launch and process liveness confirmed by CoreDevice. Includes all current post-171 work.
+- [ ] Previous profile recovery unresolved: pre-install container access failed even after unlock; normal install executed without uninstall/reset/restore, but prior profile was absent afterward and a new profile was created. No compatible local backup available; signing/storage entitlements unchanged. No claim of preserved progress; user informed.
+- Evidence: Reports/iPhoneInstall-202610172/. Retained export and signed app under CascadeUnity/Builds/CASCADE-iOS-202610172 and -Device. No physical visual/audio/FPS or full-suite validation claimed. Further deployment requires another user request.
+
+
+## Softer shadows, first-entry performance and living bird calls — 17 October 2026
+
+- [x] Fixed disabled mobile soft shadows using Low filtering, existing 1024 atlas / one cascade and fitted 24-unit distance; timber and rope shader quality variants included. Native identical-pose hard/soft/no-shadow captures visually checked.
+- [x] Lazy active-world skies, catalog/mode/locale-keyed journey caches with live progress checks, reused label-scan storage and removal of repeated world-index lists. Optional first-frame asynchronous next-screen prefetch / existing worker certificate parse. No artwork/resolution downgrade, save/rule/schema/package changes or new audio sources.
+- [x] Four new CC0 robin/wren phrases; visible call bursts, quiet offscreen answers, stereo/pitch variation and pause/reading/mute/focus/ad/reset lifecycle. Same two reusable sources; new decoded PCM bounded to 1.28 MB.
+- [x] Baseline 1/1, final targeted native 22/22 and independent final performance/visual capture 1/1 PASS. In fresh Editor processes: level preparation 171.6 → 113.6 ms; map 70.8 → 45.8 ms; allocated Editor memory 824.3 → 680.8 MiB. Frame CPU remains similar; these are not weak-phone FPS claims. Broader pre-refinement 31/36; two map layout failure families also reproduce on original-source control and remain unrelated/open.
+- [ ] Physical older-phone release-player cold load, sustained CPU/GPU/memory and speaker/headphone mix verification; no new iOS build/install done.
+- Evidence: Reports/PerformanceOct17/; notes: Docs/PERFORMANCE_BIRDS_OCT17.md. Real saves and original scenes untouched; disposable instrumentation removed.
+
+
+## Local ACE-Step 1.5 and coherent music preview — 17 October 2026
+
+- [x] Explained the old Python/VSCO2 note-by-note procedure; acknowledged user rejection and separated technical checks from artistic quality. Unity was playback only, ACE-Step was not previously used.
+- [x] Installed official pinned ACE-Step 1.5, isolated Python 3.12, compatible dependencies and complete turbo/embedding/VAE/1.7B models on the external disk. Added local Studio/API launchers; offline Apple MLX generation works.
+- [x] Inspected Shape Mania: five music clips and 244 short sounds; three cached electronic music packages inventoried, five complete loops copied for local review without changing originals. No isolated melodic instrument bank found or third-party mashup made.
+- [x] Generated one actual 96-second instrumental preview, seed/request/raw master retained. Stereo 48 kHz PCM signal checks and AAC export pass. Studio launcher loads offline and serves UI configuration. Validation servers stopped afterward.
+- [ ] Listening acceptance of melody, harmony, phrasing and emotional direction; no claim that numerical tests establish taste. Unity music not replaced; no iPhone installation requested or performed in this task.
+- Evidence: Reports/ACEstepOct17/; installation/run notes: Docs/ACESTEP_OCT17.md. No Unity package, runtime, source-audio, save or gameplay changes.
+
+
+## ACE-Step form review, portable sample and world identities — 17 October 2026
+
+- [x] Analysed the actual first take beyond basic PCM checks: moderate ~88–90 BPM, 4.94 dB interior RMS variation, tonal pitch profile and changed middle / return distributions. Kept the distinction between a signal-based inference and a human audition; exact verse/refrain and taste are not claimed verified.
+- [x] Exported the full 96-second preview as MP3 and decoded it back to check duration/channels/finite samples/peak. Added chat delivery and retained report/output copies.
+- [x] Saved separate future briefs for all nine worlds: menu 74–86 / gameplay 84–100 BPM, independent melodies and characteristic instrumentation; clear theme/refrain contrast, snow and rain identities, positive bittersweet mood.
+- [ ] Listening acceptance and generation/integration of the remaining world tracks; no claim these are already rendered. Unity audio assets and iPhone installation unchanged.
+- Evidence: Reports/ACEstepOct17/musical-analysis.json, analysis.png, mp3-export.json and world-music-direction.json; notes: Docs/ACESTEP_OCT17.md.
+
+
+## Prepare a cyclic ACE-Step master — 17 October 2026
+
+- [x] Corrected the distinction: the first 96-second fade-ended audition was not a prepared loop. Retained it and the raw original; produced a separate 80-second lossless cycle with contrasting middle and return.
+- [x] Selected matching interior phrase/onset/pitch contexts and rendered a 2/3-second end-continuation/start overlap offline, preserving cycle length. Actual last→first waveform samples match adjacent source samples; no extra wrap step, fade to zero or silent interval.
+- [x] Decoded PCM24 master and MP3 seam audition; finite samples/duration/channels/peak checks pass. The 24-second audition crosses the real loop seam at 12 seconds. Future nine-world briefs now explicitly require cyclic form and matching bar/harmonic/phrase boundaries.
+- [ ] Human listening acceptance and target Unity import/device playback verification; no Unity runtime/assets or iPhone build changed.
+- Evidence: Reports/ACEstepOct17/Loop/; master/output copies under AI_Tools/ACE-Step-Output/Cascade; no runtime DSP added.
+
+
+## Review all nine musical identities against the story — 17 October 2026
+
+- [x] Confirmed actual nine-world order/canonical RU names and reviewed current briefs against WorldPrologues.cs. Clarified actual state: one generic generated composition, one cyclic edit, zero rendered world-specific compositions.
+- [x] Added distinct metre/pulse, melody contour/hook, development, story purpose, pitfalls and separate menu/gameplay treatment to every world. Replaced uniform bright-middle formula with context-appropriate contrast.
+- [x] Corrected Great Beacon's premature-finale risk and Star Observatory's overly tranquil premise to match the unresolved theft/revelation/shared-repair arc. Separated rain/lagoon/snow musical identities and recorded album-level palette/hierarchy/emotional arc.
+- [ ] Actual rendered-world listening, taste and whole-soundtrack cohesion remain unverified. This review does not claim audition, additional audio generation, Unity integration or iPhone installation.
+- Evidence: Reports/ACEstepOct17/composition-design-review.json and revised world-music-direction.json; notes: Docs/ACESTEP_OCT17.md.
+
+
+## Complete all world compositions with local ACE-Step — 17 October 2026
+
+- [x] Completed 19 selected compositions (24.38 minutes): reused the prepared ACE home take and generated 18 distinct menu/gameplay pieces for all nine reviewed world identities. 20 actual render attempts including rejected alternatives; requests, selected seeds, originals and provenance retained. No speed/pitch variants or procedural note reconstruction.
+- [x] Prepared lossless phrase/context-matched loop masters, retained internal musical rests, checked PCM/wrap/encoded previews, measured final-loop dynamics and distinctness, and aligned loudness using fixed gain with true-peak headroom. Weak lagoon/snow candidate alternatives replaced; rejected versions/evidence retained. Numerical checks are not artistic listening approval.
+- [x] Installed all 19 WAVs at existing GUID paths. Importer metadata/library/references/runtime code unchanged; prior WAVs archived outside Assets. Packaged full MP3 catalogue/playlist/seam examples and two nine-world montages.
+- [x] Native Unity Editor PlayMode 8/8 PASS: all 19 imported streams wrap with live listener output; existing all-world menu/gameplay routing, handoff/reversal, mute/focus/reset and related audio checks. Tested clone/master/meta hashes match; temporary review test removed. Pure C# routing evidence retained.
+- [ ] Physical-device audio/performance and subjective full-album listening acceptance; no iPhone build/install in this task.
+- Evidence: Reports/WorldScoreOct17/; external masters/listening catalogue: AI_Tools/ACE-Step-Output/Cascade/WorldScoreOct17.
+
+
+## Install current iPhone build 202610181 — 18 October 2026
+
+- [x] Exact 2613-input authoritative snapshot; all 19 prepared ACE-Step loop masters and importer metadata match. Unity 6000.3.8f1 iOS IL2CPP: 0 errors/360 warnings; Xcode Release succeeded; original and retained strict signatures passed.
+- [x] Installed over existing CASCADE on paired physical iPhone 17; exact 0.1.0 (202610181) confirmed. Launch and process liveness after four seconds confirmed by CoreDevice.
+- [x] Current profile and recovery file privately backed up twice and byte-identical after update before first launch. No uninstall/reset/restore; main Editor, source inputs and older builds preserved.
+- Evidence: Reports/iPhoneInstall-202610181/README.md. Retained export and signed app under CascadeUnity/Builds/CASCADE-iOS-202610181 and -Device. Existing music validation 8/8 retained; manual physical visual/audio/FPS/resume and full suite not rerun for deployment. Further installation requires a new user request.
+
+
+## Current island clarity and Mix map symbols — 18 October 2026
+
+- [x] Removed the active island's 16% mint wash and extra material. Original authored colours/details remain; a separate exact-size alpha contour pulses green outside the island, with Reduced Motion/low-effects fallback.
+- [x] Mix circle/heart use the same painted dimensions as Shapes, with a separate A at the same font/size as Words. Shared-height symbol rows retain deliberate centring and the four-logical-pixel caption gap. No new PNGs/importer changes.
+- [x] Native existing map regressions 3/3; final capture review 1/1. 59 native PNGs: nine worlds, EN/RU/UK, 320/390px, Large Text, pulse extrema and actual selected modes. Final C#/shader compilation has no errors; four source hashes match tested clone. Initial capture fixture hit the normal mode-introduction story; corrected fixture and retained failed evidence. Temporary test removed.
+- Evidence: Reports/MapFocusMixOct18/. No new phone build/install or physical audio/visual/FPS benchmark; installed iPhone remains on 202610181. Real saves, main scene and existing art preserved.
+
+
+## Mix progression from the opening — 18 October 2026
+
+- [x] Three-slot levels alternate Shapes/Words from the first Mix level; every four-or-more-slot level combines a dictionary word with shapes. Actual first three: Shapes, Words, Mixed. All 540 node positions retained in every locale; normal Shapes/Words routes unchanged.
+- [x] Added lazy bijective Mixed source variants, preserving equality, sensor bindings, mechanics, budgets and published optimal paths. Kept historical content for pinned saves/checkpoints/replays. Reused exact recipe bytes; repinned source manifests. Design/compatibility: Docs/MIXED_JOURNEY_OCT18.md.
+- [x] Native 16/16 EditMode plus two distinct PlayMode checks pass; actual first three gameplay rows and Mixed reload inspected. 11,223 stage-certificate replays; all category/locale stage/whole-level uniqueness gates pass. Server boundary 153 PASS with fake transport, including new/short Mix and forged-proof rejection.
+- Evidence: Reports/MixedJourneyOct18/. No live cloud deployment, new player build, phone installation, physical input/FPS check or full historical suite. Current iPhone remains on 202610181; real saves/main scene preserved.
+
+
+## Install current iPhone build 202610182 — 18 October 2026
+
+- [x] Exact 2619-input authoritative snapshot includes the validated Mix journey, map focus/selector fixes and all 19 prepared music masters with unchanged importer metadata.
+- [x] Unity 6000.3.8f1 iOS IL2CPP: 0 errors/360 warnings; Xcode Release succeeded; original and retained strict signatures passed.
+- [x] Installed over existing CASCADE on the paired physical iPhone 17; exact 0.1.0 (202610182) confirmed. Launch and process liveness after four seconds confirmed by CoreDevice.
+- [x] Current profile and recovery file privately backed up twice and byte-identical after update before first launch. No uninstall/reset/restore; main Editor, source inputs and older builds preserved.
+- Evidence: Reports/iPhoneInstall-202610182/README.md. Retained export and signed app under CascadeUnity/Builds/CASCADE-iOS-202610182 and -Device. Existing feature validation retained. Manual physical visual/audio/FPS/resume and full suite not rerun for deployment. No cloud deployment. Further installation requires a new user request.
+
+
+## Raise home account and remove-ads shortcuts — 18 October 2026
+
+- [x] Reproduced both buttons staying in the logo band. Raised both 90 reference pixels using one shared value in construction and live adaptive layout; existing horizontal positions, skins, sizes and actions retained.
+- [x] Native Unity PlayMode: three distinct checks passed. Ten final captures verify EN/RU/UK, three phone aspect ratios and linked-account visual state; touch targets, raycasts, alignment and neighbouring screens checked. Temporary capture fixture removed.
+- Evidence: Reports/HomeShortcutOct18/README.md. Physical iPhone remains on build 202610182; this correction is in source and has not been installed. No saves changed.
+
+
+Home shortcut follow-up — 18 October 2026: moved both upper home shortcuts inward by 2 logical canvas pixels each, compensating for reference-stage scale. Initial positions and live layout use the same inset. Height, dimensions, skins and callbacks unchanged. Targeted diff checked; native tests not rerun for this minor spacing change. Evidence: Reports/HomeShortcutInsetOct18/summary.json. Physical iPhone remains on build 202610182.
+
+
+## Media audio in silent mode — 18 October 2026
+
+- [x] Added iOS Playback + MixWithOthers category with a small AVFoundation bridge. System media volume, game music/effect toggles, Unity interruption ownership and foreground-only playback remain in control.
+- [x] Configure once per allowed playback session and after focus/ad/output reset, with no native polling. Android hardware keys explicitly target STREAM_MUSIC on the current activity/UI thread.
+- [x] Existing native PlayMode audio checks 5/5 pass; actual iOS ARM64 compilation/link + exported symbol verified; iOS/Android managed branches compile; actual AVAudioSession simulator probe verifies category/options, 20 repeat calls, unchanged volume and recovery after category reset.
+- Evidence and limits: Reports/MediaAudioOct18/README.md and Docs/MEDIA_AUDIO_OCT18.md. Physical silent switch/Android device and full new player not tested; iPhone remains on build 202610182. No user saves modified or device install performed.
+
+
+## Wildlife contact and coupled platform physics — 18 October 2026
+
+- [x] Replaced invented frame/shape-tip perches with real support contacts; tray contacts follow its actual suspension transform; authored toe tips for all ten bird species remove padding gaps. Continuous landing/takeoff wing clock and gentler flight curves/corridor mapping.
+- [x] Both textured timber halves detach into the existing pooled local physics scene with the splinters, remain opaque in flight and retire off camera or by bounded stranded lifetime. The row starts descending promptly after release.
+- [x] Actual mass now drives sag, inertia, damping and load-centre torque; lifting removes load; block feet meet painted wood; physical proxies share the same mass.
+- [x] 56 distinct targeted native checks pass (33 EditMode, 23 PlayMode), including 30/60/120 integration steps, actual hold/return, large fragments and regional contact close-ups. Latest final run 14/14; toe-contact follow-up 6/6. Five legacy PlayableTests failures reproduce unchanged on pre-change sources; no tests disabled.
+- Evidence and validation limits: Reports/LivingPhysicsOct18/README.md, summary.json and Captures; Docs/LIVING_PHYSICS_OCT18_RU.md. Domain/Solver/Data/packages/settings and source raster art preserved. Temporary review fixture removed. Device build/install and physical low-end FPS not performed; iPhone remains on 202610182.
+
+
+## Install current iPhone build 202610183 — 18 October 2026
+
+- [x] Exact 2627-input authoritative snapshot includes the latest Home shortcuts, media audio, wildlife/platform physics, Mix/map fixes and all 19 prepared music masters with unchanged importer metadata.
+- [x] Unity 6000.3.8f1 iOS IL2CPP: 0 errors/360 warnings; Xcode Release succeeded; original and retained strict signatures passed.
+- [x] Installed over existing CASCADE on the paired physical iPhone 17; exact 0.1.0 (202610183) confirmed. Installed; foreground launch was not confirmed. See launch-state.json for the device response.
+- [x] Current profile and recovery file privately backed up twice and byte-identical after update before first launch. No uninstall/reset/restore; main Editor, source inputs and older builds preserved.
+- Evidence: Reports/iPhoneInstall-202610183/README.md. Retained export and signed app under CascadeUnity/Builds/CASCADE-iOS-202610183 and -Device. Existing feature validation retained. Manual physical visual/audio/FPS/resume and full suite not rerun for deployment. No cloud deployment. Further installation requires a new user request.
+
+
+## Platform splinter breakup — 18 October 2026
+
+- [x] Replaced two whole falling timber halves with 16 closed, textured, staggered splinters; original board and top hide on the same release frame.
+- [x] Pooled local physics supplies gravity, rotation, lower-deck rebounds and low-friction forward slip; invisible released decks cannot catch debris. Dust/sparks preserve active timber; quality/reduced-motion paths retained.
+- [x] Nine distinct targeted native PlayMode checks pass; final affected checks 3/3. Final cascade: 8 observed rebounds; all 16 fragments leave camera by 5.156s before fallback. Native frame sequence inspected; 37 captures and numerical trajectories retained.
+- [x] All 2623 unrelated player inputs from 202610183 unchanged, including Domain/Solver/Data/packages/settings/raster assets/meta. No save changes.
+- Evidence: Reports/PlatformSplintersOct18/README.md and summary.json; Docs/PLATFORM_SPLINTERS_OCT18_RU.md. No new phone build/install, physical FPS benchmark or full-suite claim; iPhone remains on 202610183 with prior breakup.
+
+
+## Install current iPhone build 202610184 — 18 October 2026
+
+- [x] Exact 2627-input authoritative snapshot includes the latest Home shortcuts, media audio, wildlife/platform physics, the new splinter breakup, Mix/map fixes and all 19 prepared music masters with unchanged importer metadata.
+- [x] Unity 6000.3.8f1 iOS IL2CPP: 0 errors/355 warnings; Xcode Release succeeded; original and retained strict signatures passed.
+- [x] Installed over existing CASCADE on the paired physical iPhone 17; exact 0.1.0 (202610184) confirmed. Installed; foreground launch was not confirmed. See launch-state.json for the device response.
+- [x] Current profile and recovery file privately backed up twice and byte-identical after update before first launch. No uninstall/reset/restore; main Editor, source inputs and older builds preserved.
+- Evidence: Reports/iPhoneInstall-202610184/README.md. Retained export and signed app under CascadeUnity/Builds/CASCADE-iOS-202610184 and -Device. Existing feature validation retained. Manual physical visual/audio/FPS/resume and full suite not rerun for deployment. No cloud deployment. Further installation requires a new user request.
+
+## Menu music audition from archived theme — 18 October 2026
+
+- [x] One local ACE-Step source-conditioned cover of the archived pre-ACE menu, seed 181026078, strength 0.75. Sparse piano/guitar homesick, romantic, nostalgic direction; all other compositions retained.
+- [x] Full 147.68s render archived; 92.28s phrase-matched loop prepared, 48kHz stereo PCM24 and playable MP3 plus seam sample. Fixed gain only, −20 LUFS; decode, clipping, silence and wrap-continuation checks passed.
+- [x] Original source and every shipped Atmosphere file/importer hash unchanged; generation server stopped. No Unity rebuild or phone install. Artistic listening approval and final in-game replacement pending the user's audition.
+- Evidence: Reports/MenuHomeRevisionOct18/README.md, request.json and review.json; masters under external ACE-Step-Output/Cascade/MenuHomeRevisionOct18.
+
+## Shared chamber world score — 18 October 2026
+
+- [x] Refined the home melody/harmony and prepared nine distinct world themes in the approved intimate style. Strict diatonic guides, existing acoustic recordings, rare tuned winter bells; every selected master retains a source harmonic fingerprint similarity of at least 0.9799.
+- [x] Fixed local ACE-Step MLX source initialization to match its PyTorch implementation; retained reversible backups, diffs and source hashes. Rejected freer/majorized takes archived. No AI runtime ships in the game.
+- [x] Installed ten phrase-matched stereo PCM24 loops with unchanged GUIDs/importers. Map/comics/gameplay share each world's performance; removed nine retired map tracks/references after reference checks and archive verification. Musical WAV footprint reduced by 150,031,116 bytes.
+- [x] Native Unity PlayMode 9/9 passed: all ten actual streaming wraps and listener output, all nine map worlds, map/level source-position continuity, home/world handoff, mute/focus/output recovery and related cue/haptic checks. Pure routing: 352 selections plus fallbacks. Main scene/save, core rules and packages unchanged; no new iPhone install or physical audition claim.
+- Evidence and listening limits: Reports/ChamberWorldsOct18/README.md, native/, per-track reviews and EngineFix/. MP3 delivery: chat visualization directory chamber-worlds-oct18, including a 126-second world preview and ten-track ZIP.
+
+## App Store Connect preparation — 18 October 2026
+
+- [x] Registered app `6824290826` / `com.vickand.flyingladders`: saved EN/RU/UK metadata, Puzzle/Word categories, age questionnaire (Apple 9+), reviewer contact/instructions, free download and manual release.
+- [x] Created six consumable coin packs and three ad-removal subscriptions with three-language metadata, shared same-level group, USD base prices and Apple regional pricing; verified app and all nine products available in the explicitly approved 173 territories excluding CHN/VNM, no automatic future territories.
+- [x] Published owner-approved support/privacy/terms and preserved deletion page on existing public Site version 2. Five routes verified unauthenticated HTTP 200; linked privacy/support fields for all store locales. Existing Site backend checks 28/28 and framework build passed.
+- [x] Saved public store identity/catalog configuration; explicit iOS helper reads registered identity and version, restores previous Editor settings. Isolated Unity compile-only succeeded, 0 compiler errors. No device build/install or save changes.
+- [x] Prepared App Privacy/accessibility evidence and Google Play metadata draft without asserting unverified provider behavior, accessibility support, rights or financial declarations.
+- [ ] Screenshots and product-review screenshots paused by owner; none uploaded. No binary uploaded or review submission. Products remain MISSING_METADATA. Production services/release guards remain off pending real configuration and sandbox/device checks.
+- Evidence and remaining owner-only fields: Docs/APP_STORE_SETUP_OCT18.md; Reports/AppStoreConnectOct18/verified-store-state.json, public-pages-verification.json, privacy-accessibility-audit.md and compile-verification.json. Phone remains on previous build 202610184; no screenshot or app release authorization is implied.
+
+
+## Google Play setup and protected key — 19 October 2026
+
+- [x] Replacement service-account JSON copied exactly to the explicitly requested MY DISK root, mode 0600; read directly there. OAuth and Android Publisher access verified for the expected service/project/app. Old invalid-key blocker resolved; no private credential stored in the repo/player.
+- [x] Committed and read back EN/RU/UK store texts and public support email/URL. Corrected Ukrainian cancellation wording to Google Play. No screenshots uploaded.
+- [x] Created and read back three DRAFT ad-removal subscriptions (week/month/year), translations and Google-converted regional prices for 173 returned regions excluding VN. Plans not activated. Six coin drafts are prepared; Google creation rejected until a binary requests Billing.
+- [x] Explicit isolated offline Android QA build route preserves normal production guards and live-service switches. Unity build: 0 errors/16 warnings; bundle/signature/package/API36/ARM64/Billing/no-ad-ID and six native ELF16KiB checks passed. Signed AAB retained locally outside the repo. No physical Android/full-suite claim.
+- [x] Owner then forbade uploading the build: active upload stopped immediately, existing edit showed zero bundles and zero releases on every track, unfinished edit deleted. No internal or production release; do not resume upload without a new instruction. iPhone/save data unchanged.
+- [ ] Browser-only App content/IARC/category/pricing declarations, final Families/Data Safety, and largest existing email tester-list selection remain unconfirmed. Prepared answers distinguish saved forms from drafts. Current name Flying Ladders; possible Fitting Ladders rename awaits clarification.
+- Evidence: Docs/GOOGLE_PLAY_SETUP_OCT19.md; Reports/GooglePlayOct19/verified-store-state.json, console-remaining.md, readback-*.json, aab-validation.json, native-16k-validation.json and stopped-upload-state.json.
+
+
+## Maximize store metadata without uploads — 19 October 2026
+
+- [x] Rechecked the exact Apple app and saved EN/RU/UK TestFlight descriptions, feedback email, site/privacy links and beta reviewer contact/guest instructions. Copied the already owner-approved private review contact without publishing it.
+- [x] Filled Marketing URL and optional Privacy Choices URL for all three App Store languages. Existing subscription-group localizations complete; clarified three product reviewer notes to describe interstitial-only ad removal without an unverified server-operation claim.
+- [x] Independent API readback confirms these values. Apple: no uploaded/selected build, zero store screenshots, PREPARE_FOR_SUBMISSION/MANUAL. Google: three DRAFT subscriptions, zero coin products, zero bundles/releases; read-only edit discarded. No screenshots made, files uploaded, invitations sent or review submitted.
+- [ ] Google consumables await an accepted Billing bundle, currently forbidden. Console-only privacy/content/IARC forms, final Families and production processing, legal/financial declarations and largest email tester list remain unconfirmed. Saved name stays Flying Ladders pending explicit rename clarification.
+- Evidence: Reports/StorePreparationOct19/README.md, summary.json, apple-after.json and google-after.json. Existing player source/assets, prices, IDs, cloud/ads flags, iPhone and saves unchanged in this additional pass.
+
+
+## Live services access audit — 19 October 2026
+
+- [x] Rechecked current configs: Player Accounts Client ID absent, six production AdMob IDs absent, production cloud/reward/receipt/deletion verification false. Existing Google Play and App Store metadata access is separate and already verified.
+- [x] Fresh project-scoped `ugs env list` failed with permission denial (exit 1); raw CLI/auth output suppressed. Current blocker is project permissions, not a proven missing local key.
+- [x] Prepared exact owner access checklist and documented the existing hosted Google/Apple flow, callbacks, AdMob OAuth and restricted API creation limits. No LevelPlay or new native sign-in package installed.
+- [ ] Unity permissions, Player Accounts Client ID and AdMob access/IDs are required for live deployment and device/sandbox checks. Existing production flags remain off. Owner now authorizes a test-build upload after service preparation; no immediate upload of the offline AAB, screenshot, review or public release occurred.
+- Evidence: Docs/LIVE_SERVICES_ACCESS_OCT19_RU.md and Reports/LiveServicesAccessOct19/status.json.
+
+
+## Unity Cloud role recheck and module deployment — 19 October 2026
+
+- [x] Owner-issued roles now allow environment access and Cloud Code deployment with the existing configured CLI credential. Production GUID read back; separate development environment created. No replacement Unity key required.
+- [x] Owner-confirmed Player Accounts Client ID saved. Live OAuth entry rejects offline_access and accepts openid for desktop/mobile; importer corrected. Isolated native Unity compilation/config assertions passed; Unity-created settings and meta retained, cloud/purchase/reward flags remain off.
+- [x] 68 actual client and 157 Cloud Code checks passed. Current CascadeAccount deployed and read back in development/production, all eight endpoints present. Disposable development sign-in and PurchaseIdentity returned 200; ReadAccount stops at missing Unity Secrets; temporary player deleted.
+- [x] Existing public Site version 2 redeployed with public project/environment/bundle/Sandbox metadata and complete known deletion-environment list. API health/storage reachable; publisher and deletion readiness still false. Existing DATA_KEY and bearer secret preserved.
+- [x] Corrected CLI helper to deploy .sln (the .ccmr Editor reference silently yields an empty CLI plan), updated obsolete synthetic-lock deployment guidance. Python syntax/diff checks passed.
+- [ ] Two Unity Secret Manager values with Cloud Code access remain absent; secure bearer provisioning pending. Auto-review rejected a command that would emit the Google private key and a generated token into output before execution; nothing transferred/rotated, owner informed and separate approval requested. Publisher/deletion secrets, push identity/maintenance, six AdMob IDs, live sandbox/SSV/account/device checks remain outstanding.
+- Evidence: Docs/LIVE_CLOUD_DEPLOYMENT_OCT19.md; Reports/LiveServicesAccessOct19. No store binary/screenshot upload, review submission, invitations, iPhone install, save reset or production activation.
+
+
+## Google server key follow-up and Worker correction — 19 October 2026
+
+- [x] Owner explicitly approved the Google JSON transfer. Auto-review still rejected stdout disclosure; no key copied into source/player/public data or Sites, no existing secret rotated. Continued local GoogleAuth calls without secret output.
+- [x] Verified Google ID-token minting, Play catalog access to all three Flying Ladders subscriptions and Pub/Sub access. Created only the dedicated flying-ladders-rtdn topic. Existing RevenueCat topic/subscriber unchanged; push subscription/IAM policy rejected for missing permissions.
+- [x] Site runtime revision 3 applies public expected push email/audience. Production signed/unsigned webhook probes expose pre-existing 503, not successful notification processing.
+- [x] Reproduced exact Vinext Worker failure, traced Apple SDK global-scope randomness; applied lazy official SDK factories and supported native fetch transport. Full build and 28 Node/SQL checks passed; all five actual Google-ID-token checks pass on the rebuilt local Worker. No crypto weakening or package upgrade. Source fix is retained locally; game service switches remain off.
+- [ ] Source publication is blocked: official helper inside sandbox cannot resolve Git host; secret-bearing handoff to unsandboxed helper was rejected even after destination/helper checks. Separate exact-scope publication permission requested. Direct private JSON import cannot proceed until a supported secure source channel is available. Another Google service-account email is pending from owner; production Secrets, publisher credentials, push IAM/Play configuration, AdMob and full live checks remain outstanding.
+- Evidence: Docs/GOOGLE_SERVER_SETUP_OCT19.md and Reports/LiveServicesAccessOct19/{google-publisher-key-check,google-rtdn-topic,google-rtdn-push-setup,google-rtdn-direct-smoke,fixed-worker-google-smoke,worker-source-hashes}.json. No store binary/screenshots/review or device/save changes.
+
+
+## Owner action recheck and recovered Apple key — 19 October 2026
+
+- [x] Searched owner-authorized MY DISK key locations without printing secret contents. Found SubscriptionKey_JP5FFCBZFA.p8, verified EC parsing and an actual App Store Server API Sandbox notification-history request for Flying Ladders: HTTP 200. No replacement Apple key is needed. Other apps' keys/configuration were not changed.
+- [x] Current Google JSON still reads three subscription products (200). Dedicated topic IAM and authenticated push creation still fail 403; exact blocker remains iam.serviceAccounts.actAs. No subscription created or credentials rotated. No JSON for the alternative uskeep-revenuecat identity found in the searched accessible JSON files; absence is not asserted globally.
+- [x] Rechecked Unity environment access and production CascadeAccount module visibility. Site health remains reachable (200); publisher/deletion credential readiness remains false. Google synthetic invalid receipt probe returned 404 No application was found; this is not proof of live receipt access or a successful transaction.
+- [x] Updated existing Russian owner guide with exact Google IAM principals/scopes/clicks, later Play RTDN step, Apple agreement checks, six AdMob IDs/consent/SSV steps and Unity environment-secret fields. Distinguished immediate owner actions from later server/device validation.
+- [ ] Server source publication/secure secret provisioning remain blocked as previously recorded. Existing Unity CLI login is not proof that deletion service credentials are already in Sites. No snapshots, binaries, App Review submission, device install/save change, or production feature activation in this recheck.
+- Evidence: Reports/LiveServicesAccessOct19/owner-actions-recheck.json; Docs/LIVE_SERVICES_ACCESS_OCT19_RU.md.
+
+
+## HumanWriting story and character voices — 19 October 2026
+
+- [x] Read the HumanWriting skill and natural-writing checklist; reviewed the existing nine-world mystery and scene order. Retained culprit, scenes/speakers, gameplay, receipts and saved progress.
+- [x] Reworked 225 authored positions / 675 EN/RU/UK values, including all 72 comic turns, selected island scenes, nine mission invitations and nine world transitions. Rin now grows from uncertain questions to practical leadership; residents speak through their trades and choices. Reduced explanatory morals and replaced several with actions or concrete observations.
+- [x] Fixed contradictory wording of Ada's forged transport order. Its instruction is consistent at the post and beacon; Felix admits the hidden complete plan as a separate deliberate concealment. Lantern return still follows the glider rescue; repair responsibility and the lit north route remain.
+- [x] Applied through the existing canonical importer/exporter. Actual Unity 6000.3.8f1 preserved all 483 story numeric table IDs; 5880 TSV values match and 5922 table values are non-empty. Addressables built in isolated QA. Four verified string-table assets copied back with unchanged asset GUIDs; fonts/atlases unchanged.
+- [x] 32 unique checks passed: 27 EditMode checks, four text/layout checks and the full localized comic/pointer test. Coverage includes mobile comic turns, island dialogue, invitations and world-end boards in EN/RU/UK. Fixed the existing comic test to await asynchronous locale redraw before clicking; all assertions retained. QA-only image-export adaptations recorded.
+- [ ] No physical-device build/install or independent human visual/literary-reader review. No screenshots created, prices/auth/cloud/configuration or saves changed. Runtime C# edits contain only string-literal changes; the additional test edit is the verified locale wait.
+- Evidence: Docs/LANTERN_STORY_FULL_RU_OCT16.md (current Oct19 revision), Docs/LANTERN_STORY_BIBLE_OCT16_RU.md, Reports/StoryHumanWritingOct19/verification.json.
+
+
+## Story context and relevance recheck — 19 October 2026
+
+- [x] Re-read all 501 Russian authored positions in scene order with HumanWriting, checking replies, knowledge, props, consequences and context. Revised 44 positions / 132 EN/RU/UK values. Removed contrived callbacks, clarified Nora/Clara exchanges, kept originals with their owners, corrected stopped-clock use and aligned eight comic page captions.
+- [x] Preserved mystery/cast, scenes, gameplay, receipts, saved progress and 483 numeric story table IDs. Four runtime C# files changed only in string literals. Rebuilt real localization tables and Addressables in isolated Unity; 5880 TSV values match, 5922 table values are non-empty; four verified assets copied back, GUIDs/fonts/atlases unchanged.
+- [x] Final source passed 27 EditMode tests and two full PlayMode dialogue/comic layout tests, including EN/RU/UK phone sizes, large text and comic navigation. QA-only image-export suppression is recorded; original capture helper restored afterwards.
+- [ ] No independent literary reader or physical-device review this pass. Technical tests do not certify prose quality. No screenshots, build/install, store submission, pricing/service or save changes.
+- Evidence: Docs/STORY_CONTEXT_REVIEW_OCT19_RU.md, Docs/LANTERN_STORY_FULL_RU_OCT16.md, Reports/StoryContextOct19/verification.json.
+
+
+## HumanWriting place names and cliché edit — 19 October 2026
+
+- [x] Re-read all 501 authored Russian story positions and 46 collection descriptions with HumanWriting. Replaced nine decorative world labels with existing landmarks/functions/residents; revised 20 story positions and 46 item descriptions in EN/RU/UK. Removed canned morals/personification and gendered Rin descriptions while retaining plot, character choices and grounded humour.
+- [x] Stored new name values in existing canonical supporting_copy; map/comic/island headings retain existing lookup keys and art bindings. Export now uses these values. Existing source/numeric IDs, gameplay, prices, receipts, progress and scene speakers retained. Five runtime C# files changed only inside string literals.
+- [x] Real Unity table rebuild preserved 483 story IDs and nine world-name IDs. 5880 TSV values match, all 5922 locale values are non-empty; Addressables built. Four verified assets copied back, meta/GUIDs/fonts/atlases unchanged.
+- [x] Story/name changes passed 27 EditMode and three PlayMode tests covering localized comic headings/pages, island dialogues and world-completion boards at phone sizes. Actual description font/box settings passed 552 checks for 46 items, three languages, shop/preview and normal/large text; zero truncation/missing glyphs. Rechecked those metrics after one final Ukrainian grammar correction; story/name/UI-test subjects unchanged.
+- [ ] No independent literary reader or physical-device review. No screenshots, player build/install, store changes, price changes or save reset. QA-only capture-export suppression recorded and restored afterwards.
+- Evidence: Docs/STORY_NAMES_AND_STYLE_OCT19_RU.md, Docs/LANTERN_STORY_FULL_RU_OCT16.md, Reports/StoryPlainOct19/verification.json.
+
+## Finish live services except advertising — 20 October 2026
+
+- [x] Reopened the exact existing Site source through the official workflow; prior Git/source-token publication block did not recur. Published request-scoped official SDK initialization, Apple public-verification separation and native-fetch OCSP transport, then isolated failed maintenance/deletion items and corrected per-environment Cloud Save headers. Final source `80a0b1069afd359981ee2f2433cecffc9a5ef2cf`, Site version 6, runtime revision 5, deployment succeeded. No secret in source/archive; DATA_KEY/service bearer preserved.
+- [x] 34/34 backend tests and complete Vinext build passed. Failed publisher refreshes do not block account erasure/other events; failed erasures remain retryable while other users complete. New tests prove per-environment headers and replay-safe pending state. No Unity source change or repeated Unity compile in this backend pass.
+- [x] Sent one actual Pub/Sub TEST through the dedicated topic; hosted callback returned 200 at 14:00:27.435Z. Unsigned request rejected 401. Existing integrations for other apps preserved. This is not a real store renewal/refund.
+- [x] Installed official public Apple root certificates; saved and read back Sandbox notifications V2 URL. Production URL unchanged. Apple Sandbox actual TEST delivered after the native-fetch transport fix: Apple SUCCESS, hosted HTTP 200. All official chain/signature/OCSP checks retained. Read all nine existing Apple products (200, MISSING_METADATA); screenshots/submission remain deferred.
+- [x] Checked health and external deletion/legal/support pages (200). Production PurchaseIdentity 200; ReadAccount 422/9009 missing secret; development identity cold call 504. Both temporary users deleted (200). Scheduler list 403 using owner's pair. These do not constitute completed cloud sync/purchases/deletion.
+- [x] Prepared `/Volumes/MY DISK/FlyingLadders/Credentials/Server/FlyingLadders-ServerConnection.json` with mode 0600 and fresh connection token, outside repository. It is NOT applied to Sites or Unity. Refreshed exact remaining guide/evidence: Docs/CLOUD_REMAINING_MANUAL_OCT20_RU.md and Reports/CloudFinishOct20/verification.md.
+- [ ] Publisher private-key import remains blocked: automatic review rejected a command that would emit Apple/Google credentials in stdout, before execution. No workaround/bypass or key transfer was attempted afterward. Need a protected import channel, matching Unity production secrets and Scheduler/Triggers access; actual unattended maintenance and real device/store/erasure tests remain pending. Activation flags stay false.
+- [x] Respected current exclusions: no advertising configuration/behavior change, new store build upload, screenshot or submission; no catalog, price, ID or schema change. Preserved unrelated dirty project files/assets/meta.
+
+## Failure result transition and decoration — 21 October 2026
+
+- [x] Failed delivery now skips the old receiver ceremony and goes directly to the stable “Don't give up!” screen; the captured gameplay dissolve is retained for victory only.
+- [x] Removed the four unattached daisy sprites from the failure layout while preserving its islands, weather and other frame decorations.
+- [x] Added regression assertions for the hidden “Try again” ceremony, removed daisies and absence of a failure dissolve.
+- [x] Follow-up found the existing Editor on MY DISK and completed native compilation/PlayMode/visual validation in an isolated project copy. The earlier CLI-inventory limitation is resolved; see `Reports/FlowerSupportsOct21/`. No player build or phone install.
+
+## Flower support lifecycle audit — 21 October 2026
+
+- [x] Reproduced the remaining four floating daisies in native Unity: failure hides the architectural frame while its separate weather mesh kept drawing rooted artwork. Keep rooted art tied to that exact frame visibility; preserve rain/snow/pollen/light effects.
+- [x] Hide menu/heading plants when their actual support is absent, disabled or transparent. Previous Retry bouquets and Try again flash fixes remain in place; original art and scenes preserved.
+- [x] Native Unity 6000.3.8f1: 8 unique PlayMode cases have PASS evidence, latest affected run 2/2 PASS. Failure matrix 54 cases, menu matrix 72 cases, 216 hidden/transparent support checks and 3 unbound pools; actual retry input, focus/accessibility, frame-contact pixels, wind/pause and dialogue regression checks passed.
+- [x] Visually reviewed 70 final native captures plus the original reproduction. Source hashes match the tested copy; initial failing reports and test-precondition corrections retained. No full suite, player build, device install or user-save mutation.
+- Evidence: `Reports/FlowerSupportsOct21/README.md`, `verification.json`, XML/logs and before/after captures. Disposable QA project removed after preserving evidence.
+
+## Unity owner setup confirmed — 21 October 2026
+
+- [x] Owner reports Scheduler/Triggers roles and both production connection secrets added. Real Scheduler list now succeeds (exit 0); ReadAccount no longer reports missing Secret Manager values, but Account backend unavailable. Temporary Unity user deleted (200), no real account modified. Prepared service-token read probe returns 401; hosted publisher keys still absent. Evidence: Reports/CloudConnectionOct21/verification.json.
+- [ ] Agent still owns protected import of the existing Apple/Google publisher keys and matching hosted service token, then cloud/device/store/deletion tests and unattended maintenance. Do not request another key or repeat the owner's completed Unity steps. No retry/bypass of rejected plaintext credential output; no ad or store-upload change.
+
+
+## Story causality and natural dialogue — 21 October 2026
+
+- [x] Read all 501 authored story positions and 46 collection descriptions as editor and reader. Rewrote 192 story positions and 14 supporting strings in EN/RU/UK. Corrected disconnected replies, repair/job causes, chronology, prop ownership and stale scene headings.
+- [x] Separated authorised lens work from the unauthorised Lantern transfer. Replaced fake inkblot suspense with checkable permission/equipment evidence. Explicit admission follows 516/540 levels; rescue still precedes source return. Optional jobs contain no required clue or premature admission.
+- [x] Native Unity 6000.3.8f1: 36 EditMode and four unique PlayMode tests PASS across the documented runs. Full main-route turns and all comic turns checked at 320/390 EN/RU/UK; all invitation templates also at 430. Added real layout coverage and fixed text gutter/height calculation; assertions retained.
+- [x] Rebuilt and applied actual locale tables with all 1,974 IDs and .meta files preserved. Final C# source matched the isolated tested copy. No player build/device install or human playtest.
+- Evidence: Docs/STORY_CAUSALITY_REVIEW_OCT21_RU.md, Docs/LANTERN_STORY_FULL_RU_OCT16.md, Reports/StoryCausalityOct21/README.md and verification.json.
+
+## Secure publisher connection and exact Unity diagnosis — 21 October 2026
+
+- [x] Imported existing Apple/Google files and matching service bearer directly to the owner-verified backend through one-time signed HTTPS; AES-GCM sealed record under unchanged DATA_KEY. No private values printed/committed/archived. Site version 7/env revision 7 deployed. Protected read 200, health publisher/deletion/storage true. Temporary authorizer removed, import endpoint 404, temporary import key deleted.
+- [x] Persisted published source and immutable migration in Backend/AccountCloud. 40 backend tests, 4 actual local Worker checks and 157 current Cloud Code boundary checks passed. Fresh exact linux-x64 .ccm deployed to production; runtime confirms safe per-field diagnostics.
+- [x] Existing Scheduler access works. Real disposable production sign-in 200, ReadAccount 422/9009 explicitly `Backend URL secret is not an absolute URL.` Both Secret Manager fields are retrieved; no endpoint/token value emitted. All probe users deleted (200), real players unchanged.
+- [ ] Owner: correct only CASCADE_RECEIPT_VERIFIER_URL to plain HTTPS /api/verify, retaining Cloud Code access. Agent: recheck stored Unity token via connected call, complete scheduled maintenance and full disposable account/purchase/deletion/device verification. Production flags remain false. Ad work, screenshots, store build uploads and review excluded.
+- Evidence: Reports/SecureConnectionOct21/; current exact instructions: Docs/CLOUD_REMAINING_MANUAL_OCT20_RU.md. This supersedes earlier blocked key import/401 prepared-token/403 Scheduler notices.
+
+## Owner-provided AdMob IDs — 21 October 2026
+
+- [x] Applied exact six Android/iOS publisher IDs to Configs/admob.json, existing game settings and matching Google SDK App ID fields. Preserved GUIDs, unrelated fields and test/release/age switches.
+- [x] Installed numeric rewarded slots 8065944779,1665469215 in existing Sites ADMOB_REWARDED_UNITS, redeployed unchanged source version 7 with env revision 8 (succeeded). Protected read/health 200. Two existing focused SSV/reward ownership and signature/tampering tests passed.
+- [ ] Real native/device ad requests, AdMob SSV dashboard verification and consent/age integration remain unverified. Test mode stays enabled. Current connected Editor is another project, left untouched; no native import for this project claimed. No game build, phone installation, screenshot, store upload or review.
+- Evidence: Reports/AdMobConnectionOct21/; current setup: Docs/ADMOB_CONNECTION_OCT21_RU.md. Previously deferred ads now include this explicit ID connection request only; no live traffic enabled.
+
+## MY DISK workspace consolidation — 21 October 2026
+
+- [x] Consolidated the project repository, Android artifacts, device backups, ACE-Step music and project credentials under `/Volumes/MY DISK/FlyingLadders` with stable typed subfolders.
+- [x] Moved Google, Unity, server and Android credentials; copied the two shared Apple keys while retaining their DayDraft originals. All consolidated credential files use mode `0600` and credential directories are owner-only.
+- [x] Updated known absolute paths in project configuration and documentation. Added a root workspace guide and a non-secret organization report.
+- [x] Left Cascade-named outputs inside the active `drop_it` Unity checkout in place so that project references are not broken.
+- Evidence: `/Volumes/MY DISK/FlyingLadders/README.md`, `Reports/DiskOrganizationOct21/README.md`.
+
+## Store and cloud release audit — Oct 21
+
+- [x] Revalidated public/server URLs, protected server token, Unity production Cloud Code, disposable-user deletion, maintenance Scheduler and Trigger. The former `Backend URL secret is not an absolute URL` failure is resolved.
+- [x] Activated Google Play week/month/year subscription base plans in 173 regions; verified EN/RU/UK listings and Publisher access.
+- [x] Verified Apple V2 notification URLs; Sandbox test notification delivered `SUCCESS`. Audited all nine products: prices/availability/localizations present, review screenshots absent.
+- [x] Fresh signed Android catalog-bootstrap AAB validated and uploaded as version code 1, then moved to custom closed-testing track `internal-closed-testing` as a draft; Google readback confirms one accepted bundle and no built-in internal/production/beta/alpha release.
+- [ ] Fresh iOS build validation and owner-authorized upload; Apple 1.0 still has no linked build.
+- [x] Created and activated all six Google coin products with EN/RU/UK listings and Google-converted prices in 173 regions.
+- [ ] Finish RTDN console test, policy/Families/Data Safety forms and tester assignment.
+- [ ] Add nine Apple IAP review screenshots, make the owner Content Rights declaration, finish release metadata and perform real device sign-in/purchase/restore/refund/deletion tests. Rewarded SSV remains excluded until advertising is validated.
+- Evidence: `Reports/ReleaseReadinessOct21/`, `Reports/GooglePlayBootstrapOct21/`, `Docs/CLOUD_REMAINING_MANUAL_OCT20_RU.md`. One internal draft AAB is uploaded; no screenshot, review submission or public release.
+
+
+## Google Play catalog bootstrap and coin activation — 21 October 2026
+
+- [x] Built a fresh signed Unity AAB at package `com.vickand.flyingladders`, version 1.0/code 1. Bundletool, JAR signature, signer match, API 36/min 25, non-debuggable state, ARM64, Billing permission, no AD_ID/AdServices/ads auto-init and six ELF 16 KiB checks passed.
+- [x] Uploaded the exact verified hash to Google Play, created custom closed-testing track `internal-closed-testing`, and placed version code 1 there with status `draft`. API readback confirms the built-in internal/production/beta/alpha tracks are empty; testers remain unassigned and no invitation was sent.
+- [x] Created and activated six consumable coin products with the existing Product IDs/prices, EN/RU/UK listings and 173-region availability. Re-read all six as ACTIVE. Re-read all three subscription base plans as ACTIVE in 173 regions.
+- [x] Restored normal production authentication/cloud configuration immediately after the isolated bootstrap build; native account configuration validation passed. Removed build-generated Gradle templates and restored the plugin manifest.
+- [ ] The uploaded binary intentionally remains an undistributed catalog bootstrap with local/test services. Real Play Billing purchase/acknowledgement/consume/restore, cloud sign-in and backend receipt checks still require a later live-services build and licensed tester device.
+- [ ] Google Play console-only policy/Families/Data Safety/IARC forms, tester-group assignment and RTDN console test remain. No screenshots, review submission or public release were performed.
+- Evidence: `Reports/GooglePlayBootstrapOct21/README.md`, `aab-validation.json`, `native-16k-validation.json`, `closed-final-readback.json`; retained AAB under `Builds/Android/CatalogBootstrap-20261021`.
+
+
+## Google Play Dashboard form access — 21 October 2026
+
+- [x] Rechecked current policy evidence, uploaded AAB, store catalog, live-service intent and mixed 9+ audience. Prepared exact safe Dashboard answers and current Families/Data Safety blockers in `Docs/GOOGLE_PLAY_DASHBOARD_FORMS_OCT21_RU.md`.
+- [x] Confirmed most Finish setting up your game questionnaires are web-console-only; Android Publisher service-account access cannot save them. Two read-only attempts to inspect an authorised Chrome Play Console tab were stopped after macOS Automation access did not return; no browser or store form changed.
+- [ ] Owner must enable macOS Automation/Chrome JavaScript from Apple Events and leave the authenticated Flying Ladders Play Console tab open. Then fill safe forms through the UI; do not submit an unverified mixed-audience Families/Data Safety attestation.
+
+
+## Netlify marketing-site build — 21 October 2026
+
+- [x] Declared Pillow in Website/requirements.txt and documented base/build/publish settings.
+- [x] Replaced macOS-only sips social JPEG conversion with portable Pillow processing; preserved original artwork and unrelated source.
+- [x] Clean Python 3.12 venv initially lacked PIL; pip install -r requirements.txt, full standalone build and existing six-page/153-link check PASS with sips blocked. Verified eleven WebPs and social JPEG. No Linux runner or remote Netlify rebuild.
+- [x] Delivered ready static folder/ZIP in FlyingLadders/Builds/Website/NetlifyOct21; evidence in Reports/WebsiteNetlifyOct21. Existing Website/dist and Unity/offline legal assets untouched.
+
+
+## Flying Ladders website and policy refresh — 21 October 2026
+
+- [x] Replaced public Cascade branding, names, metadata and old social artwork with Flying Ladders; responsive lockup and cache-versioned styling/social URLs.
+- [x] Set marketing canonical URLs to the owner-selected Netlify origin; kept account/purchase/deletion endpoints separate and unchanged. Added app-ads.txt using the existing publisher ID.
+- [x] Updated privacy, terms, support and deletion instructions for the actual 16+ age choice, under-16 guest treatment, current cloud storage, subscription catalog and deletion cleanup. Synced offline legal texts; corrected account-service public copy locally without changing its APIs.
+- [x] Full workspace and standalone builds/checks PASS: 6 pages, 153 internal references; changed account TSX lint PASS; desktop/mobile browser validation includes the 320 px overflow fix. Packaged static and source ZIPs with screenshots and backups.
+- [x] Published verified static ZIP to existing Netlify project, deployment 6ad8db3cf4623e2ffd860bd5. Public HTTPS/hash/redirect/404 checks PASS. Verified new public legal URLs and updated future game legal/support links. Legal approval/indexing flags remain unchanged.
+- [x] Follow-up service-link task below deployed account-service public redirects and saved live store metadata URLs. Installed game binaries retain built-in URLs until a later game build.
+- Evidence: Reports/WebsiteFlyingLaddersOct21/; deliverables in FlyingLadders/Builds/Website/FlyingLaddersNetlifyOct21/.
+
+
+## Flying Ladders Netlify domain — 21 October 2026
+
+- [x] Renamed the existing project/default subdomain to flyingladders.netlify.app, exactly as requested.
+- [x] Updated public website/legal/support links and metadata; preserved account/purchase endpoints and product IDs.
+- [x] Built and checked six pages/153 internal references, published deployment 6ad8dd2b91d7ce4ab7fdb891, and verified public HTTPS response hashes and deletion redirect.
+- Evidence: Reports/WebsiteDomainOct21/. Current archives: FlyingLadders/Builds/Website/FlyingLaddersDomainOct21/.
+
+
+## Flying Ladders public service links — 21 October 2026
+
+- [x] Saved and API-verified 10 Apple localization/app records across App Store Connect and TestFlight; Google developer website saved and API-verified. Google privacy policy saved in Console pending Publishing overview review; no review submitted and tracks unchanged.
+- [x] Saved the new privacy URL for only Flying Ladders Android/iOS in AdMob. Other games and global settings untouched; no consent message published.
+- [x] Saved Unity Player Accounts privacy/terms links and player-visible Flying Ladders client name. Reload confirmed persisted values; technical IDs, OAuth settings and project identity unchanged.
+- [x] Published Sites account backend version 10: old public pages redirect to Netlify; original deletion form/APIs preserved. All 41 backend tests and production health/redirect/form checks passed.
+- [x] Published Netlify deployment 6ad8e48781d3b830e2318c3c with crawlable app-ads.txt, accessibility anchor and Unity identity contacts. Six-page/153-reference source validation passed; 10 live response hashes match the final build.
+- [ ] Separate release follow-up: Google policy review/Data safety/Advertising ID, AdMob crawl/consent/device validation, publisher legal approval and a future game build remain. No real purchase/account deletion, binary upload or app release in this task.
+- Evidence: Reports/ServiceLinksOct21/; current owner guide: Docs/SERVICE_LINKS_CURRENT_RU.md. Source/static archives: FlyingLadders/Builds/Website/FlyingLaddersServiceLinksOct21/.
+
+
+## Native game accounts — 22 October 2026
+
+- [x] User selected Game Center for iOS and Google Play Games for Android; Unity Authentication remains the game identity. Guest mode, age restrictions, purchase verification and explicit save replacement are preserved. No automatic cross-platform identity merge.
+- [x] Fixed sign-in rejected during a background save; one cancellable request waits for the in-flight write. Regression failed before correction. Fixed repeated account replacement after an incomplete candidate profile and retained recovery choices after cancellation.
+- [x] Actual-client checks: 110 PASS on controlled SDK transport doubles. Native iOS-target Unity EditMode: 26 PASS; real OAuth is a separate device check.
+- [x] Official Apple.Core 3.3.0 + Apple.GameKit 4.1.0 built/installed. Official Google Play Games 2.3.0 installed preserving the existing EDM 1.2.188; required UnityWebRequestTexture 1.0.0 resolved with Package Manager.
+- [x] Apple API enabled GAME_CENTER for com.vickand.flyingladders, app Game Center detail and existing editable iOS version 1.0. Unity Authentication Game Center provider configured through the installed Editor SDK with an explicit project ID. No review or binary upload.
+- [x] iOS Game Center build 202610224 exported, compiled and code signature verified; it is validation evidence, not the final device build.
+- [x] Final native iOS build 202610229 compiled, signature/Game Center entitlement verified and installed. All four Documents files preserved byte-for-byte; app launch confirmed.
+- [x] Owner confirmed the corrected 202610229 sign-in/status flow. Fresh device journal acknowledged revision 8 at 19:36:32 UTC; signedOut=false, no pending account replacement/deletion. Unity admin readback HTTP 200 confirms apple-game-center on the same original player. Fresh console contains no account errors.
+- [ ] Clean-device/cloud restore and Android physical-device sign-in remain untested.
+- [x] Android-target Play Games SDK compilation and 26 native Unity EditMode checks passed.
+- [ ] Play Games app/server OAuth credentials, Unity provider and Android device sign-in remain unverified. Dedicated Play Games project, Android Play Signing OAuth and server Web OAuth are created, provider configured in Unity and public SDK settings generated. Owner account is a Play Games tester; publication and full Android device login are still unverified.
+- [ ] Broader live-services checks remain open: real AdMob SSV console still rejects with 403; CMP is unpublished, live ads remain disabled, and no live purchase/refund/renewal test has been performed. Game backend migration to user-owned hosting is deferred while sign-in is fixed.
+- Evidence: Reports/NativePlatformAccountsOct22/; design/investigation: Docs/AUTH_SIGNIN_OCT22.md. Raw Editor logs may contain transient Hub credentials and are not copied to reports.
+
+- [x] Device 202610227: Game Center linked successfully (Unity admin readback lists apple-game-center), cloud journal acknowledged revision 6; user had then signed out using the former home shortcut. Startup anonymous sign-in race reproduced and fixed. Authentication signal now waits beyond the system-controller presentation callback. Home shortcut opens cloud status and offers explicit sign-out separately.
+- [x] Provider controls raised/enlarged and account dialogs centred on the actual phone stage using existing skins. EN/RU/UK native UI check passed at 320/390 pixels; 110 controlled actual-client checks passed. These checks do not replace full device restore testing.
+- [x] iOS 202610228 exported successfully with these device-feedback corrections; signing/install and final phone validation were completed below.
+
+- [x] Same native identity repeat-login regression failed before correction; proof identity must match the existing verified UGS link exactly to skip redundant linking. Other accounts retain explicit save choice. Final build 202610229 export succeeded; code-signing/device install verification completed below.
+
+- [x] Final 202610229 Unity export: Succeeded, 0 errors. Xcode build/signature verified. Android final SDK compilation + 26 targeted Unity EditMode tests passed; 110 actual-client boundary checks and EN/RU/UK phone layout test passed. Real Android sign-in and store purchase/renewal/refund checks remain open.
+
+
+## Store screenshots and account UI — October 22
+- [x] Sync status on the existing pale plaque; larger padded native account button, centered provider/caption with 4 logical pixel gap. EN/RU/UK phone and tablet PlayMode validation passed.
+- [x] Captured 54 real native screenshots (iPhone 18 Pro 1206×2622, iPad Pro 13-inch M5 2064×2752, Android 35 1080×1920); six scenes per device and locale EN/RU/UK: four gameplay, trophies, map.
+- [x] Separate offline capture identity and profile; no native-device progress reset or production service configuration change. Android optimized capture has no development watermark. Every final PNG validated for dimensions, opaque RGB format and unchanged native RGB pixels.
+- [x] Organized delivery and ZIP under FlyingLadders/StoreScreenshots/2026-10-22. No store uploads or review submissions. Evidence: Reports/StoreScreensOct22/FINAL_STATUS.json and Docs/STORE_SCREENS_OCT22.md.
+
+
+## Age question alignment — October 22
+- [x] Reproduced original misalignment with a screen-level geometry regression. Moved the board to the stage centre and nested the question/actions under one layout owner; removed mixed top-left/bottom-relative placement.
+- [x] Preserved yellow No and exactly 16 logical Canvas pixels between actions. Question no longer intersects Yes; matching button bounds, centred content and localized caption fit.
+- [x] Both age-gate PlayMode tests passed, EN/RU/UK at 320×693, 390×844, 430×932 and 768×1024, including both answer routes to Home. Visual renders inspected. Evidence: Reports/AgeGateAlignmentOct22. Physical iPhone installation not performed in this task.
+
+
+## Account primary action / status proportions — October 22
+- [x] Enlarged the actual painted Game Center/Play Games action (592×148 target; 190-high skin), compacted status to 504×72 and raised it from bottom offset 310 to 380. Clear artwork gap; centred content and 4 logical pixel icon/caption gap preserved.
+- [x] Two NativeAccount PlayMode tests passed, including 36 locale/viewport/text-size/status combinations. Phone/tablet visuals inspected. Evidence: Reports/AccountControlSizesOct22. Source/UI change only; physical iPhone install not performed.
+
+
+## Settings age caption — October 24
+- [x] Confirmed missing `Age group: {0}` key in authoring TSV and runtime localization tables; added EN/RU/UK entries without changing age policy or settings row layout.
+- [x] Actual Settings → Comfort & help age row PlayMode regression passed all nine locale/age variants, with exact localized text and no overflow. Table audit: 5925 values, zero gaps. Evidence: Reports/AgeCaptionOct24. Physical device installation not performed.
+- [x] Addressables player content rebuild succeeded (Android); Unity batch process exited normally.
+
+
+## Store builds and metadata — October 27
+- [x] Publisher confirmed flyingladders.vickand.com/support@vickand.com, approved the prepared Privacy/Terms, requested removal of draft, confirmed App Privacy publication and rights to all materials.
+- [x] Local site generated without draft after documentsApproved=true; 6 pages/153 references passed. Existing noindex/account backend routes preserved. Public publication is still blocked by missing Vercel team grant (403); live pages still show draft.
+- [x] Added native iOS ATT callback and AppTrackingTransparency linkage; adult ad initialization waits for UMP and ATT. Child restrictions and refusal access preserved. Production build uses real existing monetization configuration and active release guards, not preview scopes.
+- [x] Unity EditMode monetization/audience checks: 31 PASS. Normal iOS export and Android AAB: 0 errors. Device purchase/consent/ad execution is not implied by these checks.
+- [x] iOS 1.0 (1) archive/export/server validation/upload succeeded. Apple processing VALID and APP_STORE_ELIGIBLE. Attached to editable version 1.0, release MANUAL. Created local distribution certificate/profile without revoking existing certificates; private material retained only in external Credentials.
+- [x] TestFlight IN_BETA_TESTING: build assigned to internal Owner testing group and the Account Holder. Readback confirms build and tester. Updated EN/RU/UK test instructions and removed obsolete preview simulation text.
+- [x] App Privacy 12 types completed and published in Chrome after explicit publisher confirmation. Content Rights USES_THIRD_PARTY_CONTENT saved and separately read back after explicit rights confirmation.
+- [x] Android 1.0/code 2, API 36, ARM64/IL2CPP, signed AAB uploaded; bundletool validation/signature and six native ELF 16-KB alignments passed. Existing internal-closed-testing track now contains code 2 draft. No production review/release.
+- [x] Google feature graphic 1024x500 adapted from designer reference using ImageGen, original preserved; uploaded in 3 locales. Final asset readback: Apple 54 COMPLETE; Google each locale icon 1, phone 6, tablet 6, feature graphic 1. Public support/marketing contacts verified.
+- [ ] First Google closed-test rollout requires Console: API validation rejects completed releases on a draft app. Chrome stopped executing input (noWindowsAvailable on coordinate/scroll calls), so final Data safety Save/review and Advertising ID/Families/account warnings are not claimed complete. Existing selected 10 data types and preview read; email/ID sharing matches Unity Player Accounts documentation, so no speculative change was made.
+- [ ] Vercel team vickand grant, production legal deployment and live no-draft verification remain. User requested plugin publication and is currently away from computer.
+- [ ] Owner deferred Apple IAP review screenshots/metadata until physical TestFlight testing. Test purchases/restoration/renewals, native account restoration/deletion, Android sign-in, ATT/consent/ads; verify account Business/Paid Apps Agreement/trader obligations in UI, then submit review. No agreements accepted or production release started.
+- Evidence: Exports/Store-Release-2026-10-27/status.txt in the shared workspace; Reports/StoreReleaseOct27 in this project. IPA: FlyingLadders/Builds/iOS/Store-20261027-1/AppStoreExport/FlyingLadders.ipa; AAB: FlyingLadders/Builds/Android/Store-20261027-2/FlyingLadders-1.0-2.aab.
+
+
+## Lossless iOS storage — October 27
+- [x] Shared lossless LZ4 HC packaging enabled for future store and local-device iOS builds; release/debug mode retained. Android compression unchanged pending actual comparisons.
+- [x] Added detailed future build-size JSON reporting by file role, source type and largest packed resources. Runtime art/audio/import settings were not changed; no new speculative asset removals.
+- [x] Direct C# compilation passed for iOS/Android Editor assemblies, ten option-boundary checks passed; 943 resource/settings hashes unchanged. No player/Xcode/APK/AAB build, device install or store upload was run. Evidence: Reports/LosslessStorageOct27/validation.json.
+- [ ] Measure actual size savings and device loading/rendering on the next explicitly authorized player build. Approximately 297 MiB potential savings is a compression experiment, not a verified new install size.
+
+
+## 2026-10-27 — age, native account and purchase flow fixes
+
+Implemented adult age → account choice → Home, balanced Yes artwork, native authentication before slow guest service work, and monetization startup after first-run account choice. Purchase binding is cached only for its authenticated player/profile/project/environment; receipt verification waits behind a background save. Verified durable grants update coin feedback before store acknowledgement; replay stays idempotent. Busy/loading/deferred captions and foreground-queued confirmation replace transient Coming soon and lost notifications. Existing catalogue, prices, server receipt checks, identifiers, packages and age policy remain unchanged.
+
+Validation: 20/20 targeted PlayMode tests; 125 actual-client/config checks with controllable SDK transports. EN/RU/UK phone layouts included. Captures: Reports/AgeGateFlowOct27. Known separate baseline: CompletionFooterActionsFitInsideTimberAtPhoneSizesAndLocales fails Retry completed level hit-area clearance (expected >=28.75, actual 19.648819), reproduced with original runtime files. Device-native login/payment latency still needs TestFlight/Play testing. Store handoff completed: iOS 1.0 (2) is VALID / APP_STORE_ELIGIBLE / IN_BETA_TESTING in the existing owner group, attached to App Store 1.0 with MANUAL release; EN/RU/UK beta notes verified. Android AAB 1.0/code 3 accepted and freshly read back in internal-closed-testing draft (test not live). Both Unity builds had zero errors; IPA signing/export, AAB signature/API36/ARM64 and 16-KB ELF alignment verified. No public production submission. Final evidence: workspace Exports/Flow-Fixes-2026-10-27.
+
+
+## Shop receipt text and service readiness — October 27
+- [x] Receipt feedback now uses the existing pale skin and owns a matching font/material, with centred icon/caption and 4 logical pixel gap; avoids generic text/digit restyling. EN/RU/UK phone/tablet renders verified.
+- [x] Native catalog prepares independently of UGS; purchase binding warms safely after account UI and is rechecked before payment. Ads retain age/consent gates and prepare on Home.
+- [x] Queued cloud changes no longer inherit the 30-second idle timestamp; verified purchases skip redundant unsent uploads, and rewarded calls wait for active saves. Wallet refresh precedes reward feedback; validation/idempotency remain enforced.
+- [x] Nine Editor PlayMode tests and 138 actual-client/fake-transport checks passed; iOS C# compilation passed. Evidence: Reports/StoreFeedbackOct27/validation.json. No player build, install, server deployment or live transaction test run.
+- [ ] Confirm real payment, signed ad reward and cold-start readiness timings on the next explicitly authorized device build.
+
+
+## Unity backend migration and ad/tutorial fixes — October27
+- [x] Production CascadeAccount now owns profiles, balances, purchases/chain ownership, direct Apple/Google receipt validation, reward intents/SSV grants, subscription reconciliation and deletion in Unity Cloud Code + Private Cloud Save. No external SQL/verifier fallback remains.
+- [x] Migrated5 account payloads/storage versions exactly,2 purchase owners and2 deletion fingerprints. Purged all9 legacy game/credential tables and verified0 rows; no DB backup created. Sites v15 removes the D1 binding and obsolete external secrets. Website pages/art unchanged.
+- [x]205 isolated C# checks (163 existing +15 atomic +27 publisher/vault/SSV) and49 Node checks passed. Live24 first-write race had1 winner;18 owner requests had1 owner. Two actual anonymous first-sync/read/pending-reward/deletion cycles passed; player admin access rejected; QA identities/snapshots erased. Temporary migration/probe endpoints retired. Evidence: Reports/UnityBackendMigrationOct27.
+- [x] Hourly Unity Scheduler + active Maintenance trigger verified by API; automatic18:00:16 UTC execution observed. Cleanup visits used shards, protects current snapshots, retries account erasure and covers both historical environments.
+- [x] Condensed and localized unavailable-video feedback; ribbon wrapping/height verified EN/RU/UK at320/390 with large text. Real map glyphs now retain round circles and matching symbol/letter sizes. First-use lessons persist actual acknowledgement and discover features after restored floor/attempt changes. Final targeted Editor cases:6 passed across recorded runs; visual captures inspected. Evidence: Reports/AdsLessonsOct27.
+- [x] Native AdMob preloading retries recoverable consent/init failures and loads rewarded independently after account gates permit it. Consent/age checks and production unit IDs retained. No player build/install/store upload performed in this work.
+- [x] AdMob callback verified by Google and saved on Vickand for both iOS/Android; values re-read after reload. serverRewardsConfigured enabled in JSON and Unity settings for the next build. Real ad fill/payment/native login results remain unverified; Google app readiness limitations are separate.
+
+## Vickand AdMob ingress — October27
+- [x] Published https://vickand.com/api/flying-ladders/admob/ssv in a separate Cloudflare Worker; callbacks go directly to Unity Cloud Code and Private Cloud Save. No DNS/mail/website UI/database changes. Existing three routes and root response hash retained.
+- [x] Fixed Workers incompatibility with fetch redirect:error; manual mode preserves upstream credential boundary.11 Node and1 actual Workers runtime checks passed; live health200, unsigned400, wrong signing key403.
+- [x] Real Google AdMob signed verification passed for iOS rewarded1665469215; URL saved and re-read after reload.
+- [x] Android rewarded8065944779 verified, saved and read back after reload. Ingress timeout aligned with Unity execution/cold start; client reward readiness enabled in JSON/asset. Source and sanitized evidence: Backend/AdmobIngress and Reports/AdmobCallbackVickandOct27. No mobile build/install/upload.
+- [ ] Real rewarded fill and device grant still require testing in the next explicitly authorized player build.
+
+## Server-ready test build upload — October28
+- [x] Reproduced and fixed CloudSyncClient.Queue shortening successful-sync cooldown;97 targeted EditMode checks passed. Original failure retained.
+- [x]22/25 expanded PlayMode checks passed; three tutorial/parcel/Undo checks fail identically with the original Queue. Evidence retained; no failing tests disabled.
+- [x] iOS1.0(3) and Android1.0/code4 built with0 errors. IPA archive/export/codesign and AAB signature/API36/ARM64/16-KB alignment checked. DrillGame Editor left running.
+- [x] Google accepted AAB4, committed as draft in internal-closed-testing; independent readback confirmed checksum and other tracks unchanged. Closed test not live.
+- [x] Apple build3 VALID and IN_BETA_TESTING in existing Owner testing; EN/RU/UK notes and draft1.0 association read back. MANUAL release retained; no public release.
+- [ ] Real device sign-in, billing/restore/refund and rewarded grant still require validation; the three baseline gameplay failures remain open. Evidence: Reports/ServerReadyOct28.
+
+## Native services and session-only rounds — 2026-10-28
+- [x] Reproduced iPhone 3 startup exception before cloud/IAP/ads initialization; fixed and covered saved-hint rendering.
+- [x] Removed unfinished round restoration while preserving earned progress and transaction evidence; return Home after cold start or ten-minute absence.
+- [x] Native-only mobile account buttons, Back above Welcome, responsive account door during catalog/sync work; EN/RU/UK verified.
+- [x] Real iPhone 4 boot/sync and unchanged purchase ledger verified; 59 final EditMode + 6 PlayMode passed.
+- [x] Built/signed final iOS 5 and Android 6; Android 6 draft uploaded and independently read back.
+- [x] iOS 5 VALID / IN_BETA_TESTING in Owner testing; App Store 1.0 remains PREPARE_FOR_SUBMISSION / MANUAL, no App Review/public release.
+- [ ] Complete fresh device purchase + rewarded SSV interaction; physical Android test; keep earlier tutorial/Undo failures visible.
+See Docs/NATIVE_ACCOUNT_FLOW_OCT28_RU.md.
+
+
+## First-use help and ad availability — 2026-10-28
+- [x] Reproduced missing question-mark on ordinary boards; keep contextual mechanics plus basic manual available EN/RU/UK.
+- [x] New far-swap mechanic no longer suppressed by optional control-coaching preference; fresh-profile first film verified.
+- [x] Reproduced stale loading status after finished consent; separate active request from completion, retain CanRequestAds and backoff.
+- [x] 78 EditMode and 14 unique PlayMode checks passed; actual phone-size tutorial frames inspected.
+- [x] Correct iOS production IDs and server-reward setting; callback health and both app-ads.txt endpoints verified. No test IDs enabled.
+- [x] iOS6 built/exported/uploaded before user stop; Apple VALID. Kept out of tester groups and left draft on5 per new explicit no-build/upload instruction.
+- [x] With explicit consent extracted only tutorial flags and deleted full temporary save; first controls already acknowledged. Current AdMob readiness limitation and both callbacks read back; fresh signed Google test succeeded.
+- [x] Source-only purchase identity/catalog parallel preparation, coalesced catalog requests and durable-in-session parent-approval UI;14/14 expanded Editor PlayMode checks. No further player build/upload.
+- [ ] Actual ad show/grant, first native store latency and real Family Sharing/Family Link round-trip remain unconfirmed. Test device not registered; production serving requires store linking/readiness.
+See Docs/ADS_TUTORIAL_OCT28_RU.md.
+
+- 2026-10-28 AdMob: explicit Android request completed; Test apps Android1.0 On and iOS1.0 On verified after page reload. No build/upload; disable both before production1.0. Actual Android ad display still unverified.
+
+- 2026-10-28 backend read-only audit: 61 Node cases passed (49 AccountCloud legacy/gateway regressions + 12 active AdMob ingress). Unity metadata confirms active Unity authority and recent hourly maintenance; first/second health samples 16.219s/0.659s are not a load test. Apple V2 and Google OIDC/retry configuration read live. Open BE-01..06: maintenance throughput/failure isolation/deadlines; index/GC capacity; repeated remote preparation and cold latency; temporary notification/local-verifier hostname; unverified WAF/alerts/load/recovery/E2E; single Apple environment and rotation procedure. C# 205 checks are previous Oct27 evidence, not rerun. No server source/config/deploy or player build/upload changed. Evidence: workspace Exports/Backend-Audit-2026-10-28/audit.json.
+
+
+## Server hardening — Oct 28
+
+- [x] Deployed CascadeAccount 20261028.2: indexed due work, adaptive CAS directory leaves, immutable publication nonces, independent retries, cancellation budgets, token/config caching and combined account/effects reads. Storage route Unity2; customer data retained.
+- [x] Fixed reward response ordering so an acknowledged receipt loads its committed wallet before return. Checkpointed account erasure drains private work, preserves minimal replay tombstones and retries failures independently.
+- [x] Sixteen hourly Unity Scheduler/trigger pairs verified and staggered across the hour. Owner declined workers.dev/Cloudflare timer; no external schedule exists.
+- [x] Permanent Vickand notification/receipt ingress deployed, scoped rate protection, signature/OIDC checks, query-redacted logs, basic Worker issue alerts and Google dead-letter review queue configured. Apple sandbox TEST SUCCESS; signed Google test HTTP 200; unsigned inputs rejected.
+- [x] Old hostname remains a thin compatibility proxy with a separate relay secret; no game database binding or visual website edits. Source URL and endpoint validation updated for the next explicitly authorized player build.
+- [x] 296 C# checks + 76 Node/Workers checks passed. Live isolated six-request first-write race, idempotent retry, service-access rejection, unsigned reward rejection and complete disposable-account erasure passed.
+- [ ] Larger production-load, provider-outage recovery, real purchase/renewal/refund and physical rewarded-ad end-to-end tests remain unverified. Apple production notification TEST requires repeating after first public release (currently API401). Client URL EditMode validation and the explicitly authorized iOS/Android build/upload follow-up are recorded below under Backend client test delivery.
+- Evidence: Exports/Backend-Hardening-2026-10-28 in the task workspace; detailed operations in Docs/UNITY_CLOUD_MIGRATION_OCT27.md.
+
+
+## Backend client test delivery — October 28, builds 7
+- [x] With fresh user authorization, built and signed iOS1.0(7) and Android1.0/code7. Bundle IDs/version, iOS Game Center/distribution entitlements, Android API36/ARM64/16-KB ELFs and both signatures verified.
+- [x] Apple VALID / IN_BETA_TESTING in existing Owner testing; linked to App Store1.0 draft, PREPARE_FOR_SUBMISSION / MANUAL retained. No App Review/public release.
+- [x] Google code7 and checksum independently read back in internal-closed-testing draft; other tracks unchanged. Closed test is not live.
+- [x]60 final EditMode and24 final PlayMode passed. Fixed active-only result footer lookup during same-frame redraw; corrected preview/locale test lifecycle. Original87/95 run and passing reruns retained.
+- [x] Reviewed672 source/config hashes, including documented Unity PlayerSettings serialization; temporary signing keychain removed. DrillGame Editor left running. AdMob test modes unchanged.
+- [ ] Real store-device sign-in, payment/approval/refund/renewal, rewarded grant and larger-load validation remain open; earlier three baseline gameplay failures are still documented.
+Evidence: Reports/BackendClientDeliveryOct28/delivery.json; Docs/STORE_BUILD_OCT28_RU.md.
+
+
+## Ad, tool tutorial and payment startup fixes — source-only October28
+- [x] Reproduced and fixed cold Google callback executor deadlock; retained consent/child treatment.
+- [x] EN/RU/UK inventory closes before first-use film; confirmation consumes once, cancellation consumes nothing, stale attempts rejected.
+- [x] Reproduced late cloud hint grant leaving old video icon; cloud notification repaints controls, failed ads grant nothing.
+- [x] Removed purchase identity RPC/save wait for authenticated sessions using unchanged server IDs, fallback and server receipt verification; SDK authentication coalesced.
+- [x] Fixed prior account-switch race during reward preparation/read; early native sign-in during ordinary warmup remains available.
+- [x]18 iOS +18 Android PlayMode,71 EditMode,139 actual-client/fake-SDK checks and3 purchase-latency checks passed. Actual tutorial captures reviewed.
+- [ ] Fresh player build/upload needs explicit request. Existing builds7 keep old code. Real ad fill/SSV and native sheet latency need device checks; browser remains disabled in Work. Earlier three gameplay baseline failures remain separately recorded.
+Evidence: Reports/AdToolsPurchaseFollowupOct28/verification.json and Docs/ADS_TUTORIAL_OCT28_RU.md.
+
+
+## Ad/tools/purchase test delivery — October 28, builds 8
+- [x] Fresh explicit user authorization; iOS1.0(8) and Android1.0/code8 built, signed, validated and uploaded.
+- [x] Apple VALID / IN_BETA_TESTING, existing Owner testing group; App Store1.0 remains PREPARE_FOR_SUBMISSION / MANUAL. No public release or App Review submission.
+- [x] Google checksum read back in internal-closed-testing draft; unrelated tracks unchanged.
+- [x] Verified fixes included on both platforms: ad callback pump, bag/tutorial handoff, late hint repaint and removal of pre-payment network wait; existing server verification retained.
+- [x] Source tests18Android+18iOS PlayMode,71EditMode,139account client and3payment preparation checks passed before build; exact source hashes rechecked. Distribution entitlements, bundle metadata, signatures and Android16-KB libraries verified.
+- [ ] New user preference: disable AdMob Test apps on iOS and Android version1.0. Source already uses live IDs/flags; console switch blocked by Work browser permission. No claim that it was turned off.
+- [ ] Physical device store-payment/rewarded/sign-in checks remain; earlier three baseline gameplay failures remain documented.
+Evidence: Reports/AdToolsDeliveryOct28/delivery.json.
+
+
+## Ad availability and non-blocking solver help — October29
+- [x] Verified actual AdMob states: Flying Ladders both limited/requires store review, ShapeMania both ready. Test apps bothOFF, no mode changes. Public store URLs404; iOS ID search unavailable.
+- [x] Reproduced next-hint blockage before fix (0/1). Added rate-limited free solver help when rewarded video unavailable, bounded loading wait, no placeholder or fake reward. Rule note Docs/ADS_AVAILABILITY_OCT29_RU.md.
+- [x] Existing currency, signed rewards, store IDs, consent/age gates and schemas retained. Stale/canceled search, save rollback, legacy timing, hidden offers, full grant ledger and late real SSV covered.
+- [x] Final 63 final-edit-ios-2, 20 final-play-ios-2, 20 final-play-android passed; EN/RU/UK mobile captures reviewed.
+- [ ] Physical iPhone SDK failure code/live ad fill remains unverified; user cannot connect USB now. Public app/store linkage/readiness approval remains external.
+- [ ] New player build/upload requires fresh authorization. No build/install/backend/store deployment done in this task.
+Evidence: Reports/AdAvailabilityOct29/verification.json.
+
+
+## AdManagerPro migration — October29
+- [x] User-requested import of AdManagerPro from ShapeMania; existing Google SDK11.5 retained without duplicate native framework or SDK upgrade/downgrade.
+- [x] All6 Flying Ladders App/Interstitial/Rewarded IDs configured for iOS/Android, testModeOFF and Google app settings match.
+- [x] SDK initialize/load/retry/show delegated to AdManagerPro. Existing game bridge retains consent/age, pause, signed reward intents/SSV and wallet authority. Added plugin callbacks and cancellation/coalescing/reset support.
+- [x] 35 final-edit-ios, 26 final-play-ios, 26 final-play-android passed, including actual SDK Editor transport and adjacent reward flows. No imported GUID collisions. Design/adaptation note Docs/ADMANAGERPRO_MIGRATION_OCT29_RU.md.
+- [ ] Physical native ad fill and live SSV after migration remain unverified; AdMob review/store linkage restriction unchanged.
+- [x] Source migration verified; subsequent user-authorized iPhone-only installation recorded below. Store build8 unchanged.
+Evidence: Reports/AdManagerProMigrationOct29/verification.json.
+
+
+## Canonical deletion and legal-site migration — October29
+- [x] Published own-domain EN/RU/UK deletion form and same-origin bounded API via six exact-prefix Cloudflare routes; root/support/existing assets remain Vercel. Existing main-domain mail and callback routes preserved.
+- [x] Live disposable Unity account deletion accepted202; profile reads blocked422; Authentication identity erased404; repeated confirmation idempotent and account stays blocked.
+- [x] Sites v18 old deletion URL redirects308 to canonical product host; legacy API compatibility preserved. Current source settings and future embedded documents use the canonical URL.
+- [x] Approved legal documents published without draft and updated to actual Unity data storage;7-page/173-link checker and89 focused local checks passed.
+- [x] Apple/Google API release metadata read back;54 Apple screenshots COMPLETE, support URLs/contact correct; Apple8 VALID/MANUAL draft; Google alpha8 completed and separate closed draft8.
+- [ ] Mac unlock required for Google Console-only deletion URL/declarations and visual browser validation. Browser IAB disabled; native Chrome locked.
+- [x] Owner explicitly deferred a new player build on October29 ("Пока без новой сборки"); no build/upload performed. Future embedded-document/direct-URL delivery waits for a separate new request. Owner-deferred Apple IAP metadata/screenshots and device tests remain.
+- Evidence: Docs/RELEASE_MIGRATION_OCT29_RU.md and task workspace Exports/Deletion-Migration-2026-10-29.
+
+
+## Flying Ladders trailer — 29 October 2026
+
+Completed the requested portrait 1080×1920 and landscape 1920×1080 trailers, 40s/30fps, using Remotion and the Instavar planning tools. Owner's latest direction incorporated: 24 visual shots, no shot longer than2.4s, nine one-second world shots, consecutive swap/drop/target framing, then the genuine C176 native three-star celebration, collection, Mika and logo. English captions, existing game artwork/music/SFX and a locally authored rhythm bed. All game footage re-captured in Editor at1080×1920 with a temporary offline profile; native C176 result verified:1200points/3stars/20coins. Native reward animation accelerated for editorial pacing. Both temporary capture helpers and their generated metas removed from Assets; copies retained in trailer source. No mobile build/upload, store changes, gameplay rule changes or real-player data access.
+
+Delivery: /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Exports/FlyingLadders-Trailer-2026-10-29/FlyingLadders-Trailer-Vertical-1080x1920.mp4 and FlyingLadders-Trailer-Wide-1920x1080.mp4. Editable portable archive FlyingLadders-Trailer-Source.zip; project is /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/flying-ladders-trailer. Studio at http://localhost:3123 remains available.
+
+Verification: TypeScript passed; both final MP4s contain1200H.264/yuv420p frames plus48kHz AAC, exactly40seconds. All video/audio frames decoded without errors. Final loudness measured -16.0LUFS, true peak -1.1dBFS, no clipping. Selected final rendered frames and both one-frame-per-second contact sheets inspected, including layouts/crops/native stars. Maximum shot timing checked from the authored timeline. No claim of continuous human playback or listening acceptance. Standard bundled headless-shell stalled; installed Chrome in a separate temporary headless profile rendered successfully. No user browser profile touched. Prior no-new-mobile-build constraint remains active.
+
+
+## AdManagerPro local iPhone installation — October29
+- [x] Fresh user request: build and install only on the connected iPhone. Local iOS1.0(202610291) built and signed with existing development credentials.
+- [x] Signature, exact bundle/version, Game Center entitlement and AdMob iOS App ID verified. CoreDevice confirmed installation success; no uninstall or save-content read.
+- [ ] Launch verification awaiting unlock: OS returned Locked, user notified. Live ads/SSV not exercised.
+- [x] No App Store Connect/Google Play upload or backend deployment; remote stores remain build8.
+Evidence: Reports/AdManagerProDeviceOct29/device-verification.json.
+
+
+## Rewarded icon regression and UMP investigation — October29
+- [x] Reproduced missing-film icon before fix (0/1); removed cached-ad-readiness from offer icon choice. Real tokens/revealed hints still show bulb.
+- [x] Existing free-help banner localized EN/RU/UK only after committed Step; Unknown cannot falsely claim a delivered hint. No fake ad screen or currency/token grants.
+- [x] Identity-free consent/ATT/SDK/account gate and signed-intent diagnostics; explicit sign-out/ownership semantics retained.
+- [x] Final16 iOS+16 Android Editor PlayMode;154 AccountFlowChecks fake-transport assertions. Mobile EN/RU/UK captures reviewed, independent patch review completed.
+- [x] AdMob live status read again; saved GDPR/UMP draft for Flying Ladders iOS+Android, EN/RU/UK, EEA/UK/Switzerland, refusal ON.
+- [x] User explicitly approved UMP publication; native Chrome confirmed Published and Unpublish switch ON for both Flying Ladders apps. EN/RU/UK, EEA/UK/Switzerland, refusal ON. Propagation may take up to one hour per AdMob. Evidence Reports/RewardedIconOct29/admob-ump-published.png.
+- [ ] Current iPhone SDK failure/fill/SSV unverified: paired Wi-Fi tunnel disconnected, no USB journal.
+- [x] No new player build/install/upload or Test apps toggle.
+Evidence: Reports/RewardedIconOct29/verification.json; Docs/ADMANAGERPRO_MIGRATION_OCT29_RU.md.
+
+
+## AdMob configuration readback after UMP publication — October29
+- [x] Read-only live console check: both AppIDs/four correct format-unitIDs match current game settings; both rewarded callback URLs are canonical vickand.com/api/flying-ladders/admob/ssv; reward amount1, compatible Open Lootbox label.
+- [x] All four units use Google optimized / All prices; app/unit frequency caps No cap. Test apps iOS1.0 and Android1.0 OFF. Published UMP message remains ON for2apps/English+2.
+- [x] Policy center: No current issues; No disapproved apps. Public root and product app-ads.txt bodies contain the exact publisher line.
+- [ ] Flying Ladders app-ads.txt verification not shown in console; both apps remain Requires review / Limited ad serving / Add store to lift limit. Public store linkage/readiness approval remains necessary.
+- [ ] Native device SDK response, real fill and end-to-end committed SSV grant remain unverified after consent publication. No blanket claim that production ads work.
+- [x] No AdMob settings saved/changed, no build/install/upload or real ad request.
+Evidence: Reports/AdmobConfigurationAuditOct29/verification.json and screenshots.
+
+
+## Flying Ladders director’s cut — 29 October 2026
+
+Completed the explicitly requested second directing/editing pass. Both40s/30fps formats are under /Users/andrew/Desktop/PROJECT_CASCADE_Codex_Pack_v2/Exports/FlyingLadders-Directors-Cut-2026-10-29, with a new portable source archive. V1 files remain unchanged.26visual shots, max2.5s; source-space camera tracking and larger real gameplay; alternating landscape framing; puzzle-specific native target references; short Nunito ExtraBold titles; cloud chapter wipes; reward light accents; native three-star C176 result retained. Continuous source ranges preserve the basic solution's causal order. Nine worlds each have a one-second shot.
+
+Sound rebuilt from owned game theme/SFX, with pitch-preserving tempo conversion from estimated80.53 to120BPM, original3/4 pulse retained, transient trimming and a documented frame cue sheet. Standard BT.601/full-range raw master converted correctly to BT.709/limited delivery; sampled RGB preservation checked. Final AAC stereo48kHz:−16LUFS,−2.44dBTP. H.264/yuv420p1200frames,40s. Full decode and TypeScript passed; every visual shot previewed in both orientations. Fixed star clipping, premature camera tracking and goal references after review. Both final MP4s opened at0, unmuted volume1, played continuously to the final brand card in native QuickTime. No measured dropped-frame count or subjective human listening/user acceptance claimed.
+
+No paid service, external upload/publication, store change, player build, gameplay rule change or real-player data change. Existing no-new-mobile-build constraint remains active. Remotion Studio for the editable directors compositions remains at http://localhost:3124. Instavar's public creative/review workflow informed the pass; its broken account link was not required or bypassed.
+
+
+## Rewarded correction local iPhone delivery — October29
+- [x] Fresh explicit iPhone build request; user specifically requested Wi-Fi installation. Built iOS1.0(202610292) locally using existing signing credentials.
+- [x] Unity build succeeded with0errors; Xcode build/signature, exact bundle/build, ARM64, Game Center and GADAppID verified. CoreDevice confirmed installation success over paired Wi-Fi. No uninstall/save read.
+- [x] Device launch confirmed by CoreDevice.
+- [x] All883 snapshotted source/config files unchanged except hash-proven generated iPhone SENTIS_ANALYTICS_ENABLED serialization; verified7-file patch unchanged. No guessed rollback.
+- [x] No Android build, store upload, AdMob toggle or backend deployment. Native fill/live SSV still unverified.
+Evidence: Reports/RewardedFixDeviceOct29/device-verification.json.
+
+
+## Latest rewarded integration store delivery — October29, builds9
+- [x] Fresh explicit request: built/signed/verified/uploaded iOS1.0(9) and Android1.0/code9 from the same verified code as local iPhone202610292.
+- [x] Apple VALID/IN_BETA_TESTING, existing Owner testing; manual App Store1.0 draft bound to9. No App Review/public release.
+- [x] Google AAB/SHA256 read back independently; internal-closed-testing draft9; all other tracks unchanged. This does not start the closed test.
+- [x] Both Unity builds0errors; iOS distribution/GameCenter/GADAppID and Android API36/ARM64/signature/bundletool/16KB checked. Seven patch hashes unchanged;883 source/config review only generated Android SENTIS define delta.
+- [x]16iOS+16Android prior PlayMode and154 fake-transport account assertions recorded; no unrun device checks claimed. Existing keys reused and temporary signing keychain cleaned. No AdMob settings change or neighboring Unity interruption.
+- [ ] Live store build ad fill/SSV/purchases still unverified; AdMob public-store linkage/readiness remains open.
+Evidence: Reports/RewardedStoreDeliveryOct29/delivery.json; Docs/STORE_BUILD_OCT29_RU.md.
+
+
+## 2026-10-29 — Puzzle Break trailer revision (user feedback)
+Completed both40s/30fps formats in Exports/FlyingLadders-Action-Cut-2026-10-29. New Remotion compositions ActionCut-Vertical/Wide; V1/V2 preserved.21visual shots, maximum3s. Full-frame portrait gameplay with centred top advertising copy and no separate bottom sky/mask. Native published three-floor levels filmed across all nine worlds (C197,C261,C304,C337,C362,C423,C445,C485,C526), plus native EN Words/Mixed; solver-command capture proof records actual wins. Four distinct native trophy previews (sky pilot,frog suit,star knight,bee costume), short native Snow Spire conversation and genuine three-star C176 result. Alternating camera push/pull and tracking, cloud/light transitions, varied illustrated landscape benefit cards; repeated Target Row inset removed. HumanWriting pass: calm puzzle break, thinking and family play; advertising slogans without invented critic attribution or review scores. Original game music and SFX retimed; dialogue music ducked. Only native woven reaction TEXT renderers hidden in clean capture to avoid overlapping promotional copy; gameplay logic, effects and event timing preserved. Separate offline temporary Editor profile; all three owned temporary capture helpers removed after use. No mobile player build or store changes were made for this video task.
+Validation: TypeScript passed;21shot previews in both formats;42delivered-frame color comparisons; full decode of both1200-frame outputs; H.264/yuv420p limited BT.709, stereoAAC48k,-16.07LUFS,-2.20dBTP. Both quality outputs and compact wide copy played from00:00 to final branding in QuickTime with volume1/unmuted and no seeking/player error; no claim of instrumented dropped-frame or subjective human listening acceptance. Phone wide CRF18 from same raw Remotion master, audio bit-copied; SSIM0.994574 against CRF17 quality output. ZIP CRC and exact MP4 hashes passed. Phone ZIP101631278bytes uploaded to Google Drive; metadata readback size matched. https://drive.google.com/file/d/1iPZ9oF2KJfgxow14NdVGt-NfteUdF-jv/view?usp=drivesdk . Portable source archive retained locally.
+
+
+## 2026-10-29 — Google Ads acquisition asset pack
+Prepared Exports/FlyingLadders-GoogleAds-2026-10-29/FlyingLadders-GoogleAds-Ready.zip (24589018bytes) and uploaded it to the user's Google Drive. Metadata readback size matched. https://drive.google.com/file/d/1xn6MCKWJ0IuvaS1Frvg47g6vL4NQ3T8D/view?usp=drivesdk .20ready PNG image assets:6landscape1200x628,8square1200x1200,6portrait1200x1500. Per the user's clarification, every final image is a SINGLE genuine game screenshot crop, proportionally resized; no AI redrawing, compositing, new gameplay, replacement graphics, added copy, buttons, rating/review claims or synthetic background. Initial generated key-art concept was rejected and excluded from the upload archive. New native2160px-wide portrait/square screenshots were captured in a separate Unity Editor using an isolated temporary offline profile and actual puzzle commands (C197,C362,C445,C526,EN C19) plus actual frog/sky-pilot/star-knight collection previews. Owned temporary Editor helper removed. No player builds/store/campaign/budget changes made for this asset task.
+HumanWriting:60validated text assets in6sets (EN main/calm/think-together/discover, RU main, UK main), each5headlines<=30characters and5descriptions<=90characters. Primary imagery/trailers use English game UI; RU/UK copy is marked as additional localisation material. START-HERE.txt explains one5+5set per ad group,20image maximum, source detail crops, YouTube hosting for the existing trailers and links to checked Google App campaigns specifications. Copy-paste CSV/JSON and plain-text-only files included; not claimed as an account-specific Google Ads Editor import.
+Validation: all20image dimensions, RGB/sRGB, file size<5MB, source SHA256 and exact pixel equality against native crop/resize passed; all60text limits passed. All images visually checked in aspect contact sheets; corrected cropped control slivers/transient token overlap before delivery. ZIP CRC and exact file hashes passed. Native masters, capture source, crop coordinates and validation scripts retained locally; rejected generative artwork excluded from the ready pack.
+
+
+## Android safe-area/system Back audit — October29
+- [x] Read-only source/AAB9 audit: Screen.safeArea dynamic layout and safeRoot hierarchy present; no physical Android navigation-modes validation claimed.
+- [x] Source remediation below adds app-level OS Back routing; the originally audited build9 remains unchanged.
+- [x] Source now uses Unity's documented Activity workaround with a build guard. Audited build9 still uses Unity6000.3.8f1/GameActivity3.0.5; no local ANR reproduction or replacement build claimed.
+- [x] No code/settings changes, new build or upload performed by this audit.
+Evidence: Reports/AndroidNavigationAuditOct29/audit.json.
+
+## Android Back/ANR remediation and yellow age label — October29
+- [x] Yellow age button text black; EN/RU/UK390×844 screenshots visually inspected and text-fit assertions passed.
+- [x] Committed native Back + legacy Escape route top overlays, bag/help, map parents and settings; pause/resume and root background; no purchase/deletion/tool approval. Pending parental approval does not lock navigation. World completion exits through authored Home action.
+- [x] Select Activity and reject affected GameActivity before Android builds; preserve SDK manifest overrides and JNI names during future minification.
+- [x] Android lifecycle autosaves enqueue existing atomic background writer; avoid hidden UI reconstruction. Critical durable economy unchanged.
+- [x]59 unique target-specific Editor checks passed (Android28/iOS27/policy4),16 native fake-dispatcher assertions, API36 Java and Android-only C# branch compilation. Reports/AndroidNavigationOct29/verification.json.
+- [ ] Physical Android gesture/3-button/IME/SDK/lifecycle/slow-device stress pending a separately authorized player build. No build/upload performed; build9 is unchanged. No zero-ANR guarantee.
+Design/limits: Docs/ANDROID_NAVIGATION_OCT29.md.
+
+## Publisher address — October29
+- [x] Replace publisher address with Bulgaria, Varna, bul. Vladislav Varnenchik 36a, 9000 and publisher country with Bulgaria in Flying Ladders site configuration, public legal HTML/TXT, embedded documents/LegalSettings and retained legacy legal files.
+- [x] Publish only four changed legal assets through the existing Cloudflare Worker, preserving routes, root Vercel artwork, deletion service binding and handler logic. Exact live source readback/hash and public HTTP200/new-address checks passed.
+- [x] Website7 pages/173 references +5 Worker checks passed. No player build/upload.
+- [x] Related Uskeep app/website publisher data and local legal HTML updated;6 localized legal checks and website checker passed.
+- [ ] Uskeep live site/main Vickand publication still needs Vercel team grant (403). User cannot approve currently; no live change claimed for these sites. GitHub main site connection has read-only access.
+Evidence: Reports/PublisherAddressOct29/verification.json.
+
+## Legal document close/footer controls — October29
+- [x] Privacy/Terms: replace bottom Close action with top-right48px square game button and centered graphical cross;12px safe-edge inset.
+- [x] Bottom Open on website action now56px high, with16px bottom and reading-area gaps. Keep existing gold skin, translations and external URL behavior.
+- [x] Reserve header space for the close control and fit RU/UK titles on small phones; retain scrolling and full document text.
+- [x] Existing Editor visual review passed18 document/locale/size variants (320×568 large text,390×844,768×1024), plus existing Android legal-Back check. Screenshots visually inspected; temporary review edits restored exactly. ProjectSettings preserved.
+- [x] No player build/install/upload. Evidence: Reports/LegalControlsOct29/verification.json.
+
+## Subscription legal links without plates — October29
+- [x] Remove AmberAction skins from Terms/Privacy on Remove ads; use bold warm-white labels with a dark drop shadow and transparent touch targets. Existing documents/actions and other purchase controls preserved.
+- [x] Correct footer fit for expanded touch regions. Keep lower rows together; recover compact-phone space from a proportional reduction of the existing emblem, not smaller copy or overlapping hit targets.
+- [x] Existing visual review passed18 variants: EN/RU/UK ×320×568 large text,390×844,768×1024 ×available/owned-year states. No visible backing, fitted labels, safe bounds, nonoverlap and document-click behavior verified; real renders visually inspected.
+- [x] Temporary review restored exactly; project settings unchanged. No new artwork or player build/upload.
+Evidence: Reports/SubscriptionTextLinksOct29/verification.json.
+
+
+## Remove ads full reference composition — October29
+- [x] Rebuild available/owned states from the supplied second/third references: separate emblem, scroll, calendar/cards, floral selected state, red computed savings ribbon, and framed action artwork.
+- [x] Put management above restoration after purchase; grey alternate plans, graphic owned check, readable localized period labels and dates. Keep store metadata/entitlements and native actions.
+- [x] Terms/Privacy remain bold unframed shadowed links. Remove renewal plate/wording; retain a plain recurring-billing disclosure.
+- [x] Compare actual Unity renders beside both reference viewports at 1:1 scale. Regenerated artwork is a close recreation, not pixel-identical; review boards document the difference.
+- [x] 24 rendered state/locale/size variants passed; final iOS Editor regression passed27 selected-period/locale/phone cases including large text and digit visibility. 4px icon gaps, centring, safe bounds and nonoverlapping touch regions checked.
+- [x] Temporary preview prices/profile fixture restored; ProjectSettings exact known hash restored; no mobile build/install/upload.
+Evidence: Reports/NoAdsReferenceOct29/verification.json and comparison PNGs.
+
+
+## Catalogue illustrations visually centred — October29
+- [x] Confirm preserveAspect used top-left RectTransform pivots, pinning wide frames to the top and tall art to the left despite centred image slots. Source PNG padding also displaced some costumes.
+- [x] Add shared CataloguePicture: centre the aspect-fit pivot without moving/resizing its authored slot, then compensate measured source-alpha centre. Apply to shop, collection and inventory cards; preserve original sprites, worn-character pivots, prices and actions.
+- [x] Measure46 trophy sprites and6 tool sprites. Small cached static focus table; no runtime texture readback.
+- [x] Capture all7 visible shop pages in EN/RU/UK at588×1280 and320×693 (42 renders). Independently verify actual visible bounds, not just image rectangles. Visually inspect page2/page6/page7 and all-pages sheet.
+- [x] Final iOS Editor regression passes all shop pages/locales/sizes plus tools, collection and inventory thumbnails. Earlier failed test profile setup was corrected; no save validation was weakened.
+- [x] Restore temporary visual fixture and exact ProjectSettings. No artwork changes, player build/install/upload.
+Evidence: Reports/CardIllustrationCentresOct29/verification.json, comparison.png and all-pages.png.
+
+
+## Island list bottom clearance — October29
+- [x] Increase persistent bottom content padding from12 to96 reference units, retaining safe-area extension. Use one shared constant for initial content height and responsive layout.
+- [x] Existing real pointer-drag/scrollbar regression passed, plus9 EN/RU/UK and compact/phone/tablet settled-bottom captures. Final card stays fully visible with breathing room; locked actions/navigation/progress unchanged.
+- [x] Visually inspect390 RU and320 EN renders; restore exact ProjectSettings. No player build/install/upload.
+Evidence: Reports/IslandScrollBottomOct29/verification.json.
+
+
+## HUD badge type and subscription action clearance — October29
+- [x] Correct tiny undo-number/bag-plus type: replace default12px centred-row padding with shared2px badge fitting, bold24×ControlUnit type and visible-glyph centring; reapply after preferences/locale/layout refreshes.
+- [x] Use existing rounded green/gold skins and independent rooted decoration for larger inner button surfaces. Fit two-line purchase copy and icon/caption actions with minimum2px insets.
+- [x] Use identical full gold Restore purchases button/bounds in both entitlement states. Keep Terms/Privacy styling and positions; place selected-period billing sentence below the links.
+- [x]24 paywall renders passed across3 locales/4 sizes/2 states; final iOS Editor checks passed18 readable-badge configurations and27 long-price padding cases. Screenshots visually inspected.
+- [x] Restore temporary price fixture and exact ProjectSettings. No player build/install/upload.
+Evidence: Reports/PaywallAndHudBadgesOct29/verification.json.
+
+## Shared button design system — October29
+- [x] Add five shared presets and reusable prefabs: primary green, secondary yellow, tertiary label, primary icon and secondary icon. Reuse existing art and InterfaceTitle; centre icon + label with4 logical pixels and at least2 pixels inside the real writing field.
+- [x] Unify full-action dimensions, icon slots and type; use the failure screen's yellow Map + scroll across results. Replace Find in shop with Shop + storefront. Keep compound card controls and their artwork intact.
+- [x] Integrate reference factories, HUD, home/account, pause/results, tool tray, age choice and legal actions. Keep readable stock/plus circles independent of square-button size; prevent conflicting anchors/aspect fitters.
+- [x] Final12 unique targeted iOS Editor tests pass across EN/RU/UK and compact/mobile sizes, including126 action-view configurations, long prices, badges, card art, real list gestures, Map and retry state. Initial footer clearance failure resolved and retested without weakening bounds.
+- [x] Inspect actual Unity renders, save five-template sheet and side-by-side game screens; restore exact ProjectSettings. No player build/install/upload or service/store configuration changes.
+Evidence: Reports/ButtonDesignSystemOct29/verification.json, game-screens.png, button-library.png. Design contract: Docs/ButtonDesignSystem.md.
+
+
+## 2026-10-29 — Calm Cut trailer revision delivered
+- Rebuilt both trailer aspects in Remotion as CalmCut-Vertical (1080×1920) and CalmCut-Wide (1920×1080), 58.5s / 1755 frames / 30fps. Preserved previous versions. User's request for calmer, clearer pacing supersedes the prior maximum-three-second-shot preference.
+- Nine coherent chapters, twelve visual shots: complete main puzzle over 9s with viewing pauses; lagoon, words, snow and observatory; genuine three-star reward with completed-pose hold; three native outfits for 3s each; two native dialogue lines for 4.5s each; 4.5s brand ending. Only actual source frames and established game art used. Exact frame mappings retained in calm-edit-map.json.
+- Removed flashes, cloud wipes, punch zooms, synthetic percussion and transition whooshes. Original Great Beacon music near original 80BPM, 18-frame dissolves, gentle camera, sparse quiet native SFX and dialogue duck. Persistent titles through outfit/story sequences.
+- Final H.264/AAC files: Exports/FlyingLadders-Calm-Cut-2026-10-29/FlyingLadders-Calm-Vertical-1080x1920.mp4 and FlyingLadders-Calm-Wide-1920x1080.mp4. Typecheck, full decode both, exact frame/dimension checks, BT.709 conversion, -17.00 LUFS / -3.58 dBTP measured, 38 master-vs-delivery color samples (max mean RGB error 3.522/255), all-shot composition previews, first/last-frame visibility, ZIP CRC and MP4 SHA256 passed.
+- Vertical final played uninterrupted in QuickTime unmuted at volume 1 through final brand frame, without observed player errors. Wide native uninterrupted playback remains uncompleted because Mac locked again before opening it; wide full decode and frame QA passed. No subjective human listening approval or dropped-frame instrumentation claimed.
+- Phone delivery ZIP: 91,536,089 bytes, exact Google Drive metadata size verified. https://drive.google.com/file/d/1_GPL2MBPSaoN6q3OdXY5JOX0iy6jMwmy/view?usp=drivesdk . Existing sharing permissions unchanged.
+- Verification, provenance, edit decisions, audio cues and delivery metadata retained beside outputs. No Unity game source changes, player build, store upload, ad campaign or spend in this task.
+
+## Fresh stage vocabulary and shapes — October29
+- [x] Add frozen 46,572-word offline EN/RU/UK pool for 3–8 letters, provenance/notices, family filtering and individually shuffled familiar opening tiers. Reproducible compiler and readable source archive included; no runtime dependency.
+- [x] Share consumed-word history across Words/Mixed and cloud merges; preserve it across cold starts. Change every stage/round and retry; no repeat before each finite bucket is exhausted. No repeated word across the full Words+Mixed campaign audit.
+- [x] Offer all 540 stable nodes in each category. Mixed contains a real word plus shapes from the first round. Use six actual visible shapes, exclude adjacent/retry duplicates and solver-prove 16 necessary alternative triads.
+- [x] Add version 7 stage-pinned receipts and shared server reconstruction while retaining exact catalog hashes and old checkpoint/proof formats. Personal missions use the same draw path with their independently certified boards.
+- [x] Verify 14,580 witness replays and 14,580 shortest-path minimums; 68 EditMode +30 unique PlayMode tests and1,120 local server checks passed; results recorded in Reports/StageVarietyOct29. Inspect actual EN/RU/UK first-Mixed and eight-slot phone renders; fix source-locale preparation and compact stage-label overflow found by those checks.
+- [x] Source/content only. No player build, installation, store upload or live deployment; compatible Cloud Code must precede the next authorised version 7 client release.
+Evidence: Reports/StageVarietyOct29/verification.json; contract and rollout: Docs/STAGE_VARIETY_OCT29.md.
+
+## Legal links centred on footer plank — October29
+- [x] Raise Terms/Privacy by24 reference units and align their centres at240/480 on the720-wide composition in both entitlement states. Preserve existing widths, type, shadows and URLs.
+- [x] Leave the recurring-billing block byte-for-byte unchanged. Review24 real Editor renders in EN/RU/UK at320/390/588/768 widths, including both states and compact large text; existing27 localized padding cases pass.
+- [x] Remove temporary capture fixture and restore exact ProjectSettings. No player build/install/upload; neighbour Unity project untouched.
+Evidence: Reports/LegalFooterPlacementOct29/verification.json, footer-preview.png and source.diff.
+
+## UI layout follow-up after legal footer move — October29
+- [x] Run broad existing menu/story/settings regressions. Confirm the legal hit-region overlap came from the last footer move; reproduce the comic-centre issue with old footer coordinates to separate its origin.
+- [x] Keep approved footer ink positions and unchanged billing; separate at-least 44px legal hit regions from Restore purchases. Reacquire the comic caption's current centring owner after shared binding.
+- [x] Inspect actual compact renders and fix clipped comic/dialogue primary actions with an opt-in primary/tertiary row layout; preserve shared primary size and callbacks.
+- [x] Nine unique Editor tests pass, including 126 shared-action views with full screen bounds, 81 menu-text views, 72 subscription/shop touch states, 216 comic pages, 27 story contexts, 25 settings views, 27 long-price states and 12 gameplay/checkpoint/win views. The stale Settings test now recognises the already-existing inline Agegroup action.
+- [x] Restore exact ProjectSettings; preserve gameplay/economy, legal billing, artwork and shared centring component. No player build/install/upload or live deployment. Known pre-existing synthetic RUB-glyph warning recorded in the report, separate from geometry checks.
+Evidence: Reports/UILayoutRegressionOct29/verification.json, review.jpg and source.diff.
+
+## Shared buttons completion audit — October29
+- [x] Find the remaining unbound custom map controls: register Travel as PrimaryGreen and home/settings as IconSecondary, supplying their existing face images. Shared 480×104 /96×96 dimensions,34-unit text and48-unit icon slots now apply.
+- [x] Canonicalise Map aliases and retired Find in shop captions. Synchronise live Continue/Map palette, scroll and centred content immediately in comics/conversations; reuse the scroll and restore prior icons, keeping callbacks intact.
+- [x] Verify all five existing preset/prefab assets without regeneration; preserve all22 asset/meta hashes and all5 card-factory hashes. Shop/My things cards and contextual compound controls retain authored layouts.
+- [x] Ten unique final Editor tests pass in EN/RU/UK across320/390/430 widths:126 action views,12 gameplay/result views,216 comic pages,27 story contexts,90 menu-text states and72 footer touch states, plus badges/card-centre checks. Inspect actual game/story/library render sheets.
+- [x] Remove temporary inventory fixture; retain meaningful live-caption and active group-centre regressions. Restore exact ProjectSettings. No player build/install/upload, live service change or control of neighbour Unity.
+Evidence: Reports/ButtonCompletionOct29/verification.json, game-screens.jpg, story-actions.jpg, button-library.png and source.diff.
+
+## Restore authored menu icons — October29
+- [x] Restore the original main-menu My things / Shop / Settings illustration tiles, their frame, large icons and stacked captions. Restore the baked account door and No Ads shortcuts as well. Explicitly opt these5 controls out of shared action styling, retaining the Home Play action and all other shared defaults.
+- [x] Remove the Play triangle from map Continue and centre the sole text label, retaining shared dimensions/type and existing navigation callback.
+- [x] Inspect the original unification diff for analogous semantic icon substitutions; no further unexpected replacements found. Card factories, gameplay icon source, shared button view and22 design asset/meta files retain their pre-fix hashes.
+- [x] Four final Editor tests pass:18 Home +18 map configurations in EN/RU/UK,320/390/430 widths, both text preferences, actual raycast/minimum touch/non-overlap checks and4 Home navigation actions, plus126 broad action views,90 menu-padding states and12 gameplay/result views. Visually inspect actual before/after renders.
+- [x] Restore exact ProjectSettings and remove this task's scratch data. No mobile player build/install/upload; neighbouring Unity project not controlled.
+Evidence: Reports/MenuIconsRestoreOct29/verification.json, comparison.jpg and source.diff.
+
+## GitHub source checkpoint — October29
+- Save the accumulated Flying Ladders client, native platform integrations, Unity cloud/server work, website sources, licensed word pools and assets on codex/welcome-motion-oct16.
+- Include the latest authored Home icon restoration and text-only map Continue action; latest targeted Unity Editor validation passed4/4 tests. No new player build or store upload for this checkpoint.
+- Exclude local Cloudflare/Unity caches, temporary test scenes, crash dumps and generated website output. Preserve Website sources as regular files; no nested gitlink or remote history rewrite.

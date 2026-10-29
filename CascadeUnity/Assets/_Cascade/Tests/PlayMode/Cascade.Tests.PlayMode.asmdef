@@ -12,7 +12,9 @@
         "Unity.InputSystem",
         "Unity.Localization",
         "Unity.ResourceManager",
-        "Cascade.Persistence"
+        "Cascade.Persistence",
+        "Unity.Purchasing",
+        "AdManagerPro"
     ],
     "optionalUnityReferences": [
         "TestAssemblies"

@@ -24,7 +24,7 @@ namespace Cascade.Presentation
             SetScreen(GameScreen.JourneyMap);OpenConversation(scene,"To the map",ShowSelectedJourney);return true;
         }
         internal Vector2 MapAmbientOffset;
-        public bool CanSwitchJourneyMode=>!ConversationOpen&&!saveBlocked&&!nativeAdSuspended&&previewAd==null&&!IsDescending&&!IsPlanningDescent
+        public bool CanSwitchJourneyMode=>CurrentScreen!=GameScreen.WorldComplete&&!ConversationOpen&&!saveBlocked&&!nativeAdSuspended&&previewAd==null&&!IsDescending&&!IsPlanningDescent
             &&Interaction!=null&&!Interaction.IsPresenting&&(profile.Completion==null||profile.Completion.Acknowledged);
         void SwitchJourneyMode(PuzzleMode mode)
         {
@@ -38,8 +38,8 @@ namespace Cascade.Presentation
             try {
                 profile.SelectJourney(mode.ToString());PreferredMode=mode;
                 EnsureSavedJourneyContent();
-                restored=profile.RestoreAttempt(Catalog,legacyContent);
-                if(restored==null){var first=PreferredLevels().First();restored=new AttemptService(first.Definition,first.Locale);profile.Attempt=AttemptRecord.Capture(restored);profile.JourneyAttempt=true;}
+                restored=profile.RestoreAttempt(Catalog,legacyContent,stageVariety);
+                if(restored==null){var first=PreferredLevels().First();restored=new AttemptService(first.Definition,first.Locale);profile.Attempt=AttemptRecord.Capture(restored);profile.JourneyAttempt=false;}
                 // Persist the entire switch before changing the displayed puzzle. A write failure keeps the old tab.
                 profileStore.Save(profile);HasSaveError=false;
             }

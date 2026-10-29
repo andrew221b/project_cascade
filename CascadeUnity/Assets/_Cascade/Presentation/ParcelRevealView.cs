@@ -11,6 +11,8 @@ namespace Cascade.Presentation
         RectTransform[] cards;Vector2[] rests;CanvasGroup[] groups;
         ParcelFabricMotion cloth,rope;float age,collectAge,idle;bool settled,collecting,bonus,collected,sound,review;
         Action revealed,picked;
+        bool waitingForVideo;
+        public void HoldClosedForVideo(){waitingForVideo=true;age=0;settled=false;ApplyReveal();}
         public bool Busy=>!settled||collecting;
         public float RevealAge=>age;
         public void Initialize(CascadeGame owner,Image closed,Image fabric,Image adornments,Image open,Image inner,Image empty,ParcelSunlight glow,RectTransform[] rewards,bool claimed,bool skip,bool second,Action ready)
@@ -26,6 +28,7 @@ namespace Cascade.Presentation
         {
             if(game==null||review||!game.CelebrationMotionAllowed)return;
             float dt=Mathf.Min(.05f,Time.unscaledDeltaTime);idle+=dt;
+            if(waitingForVideo){ApplyIdle();light.Pose(idle,0,!game.ReducedMotion&&game.Preferences.EffectQuality>0);return;}
             if(collecting){collectAge+=dt;ApplyCollection();if(collectAge>=CollectionDuration){collecting=false;collected=true;var action=picked;picked=null;action?.Invoke();}return;}
             if(!settled){age=Mathf.Min(RevealDuration,age+dt*(game.ReducedMotion?6:1));ApplyReveal();
                 if(age>=2.15f&&!sound){sound=true;game.Feedback.Sound(ToyCue.Success);game.Feedback.Haptic(ToyHapticMoment.Parcel);}

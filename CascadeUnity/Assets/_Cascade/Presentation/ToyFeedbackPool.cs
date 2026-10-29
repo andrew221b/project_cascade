@@ -12,15 +12,15 @@ namespace Cascade.Presentation
         sealed class Dust
         {
             public RectTransform source;public Vector3 sourceOffset;
-            public Transform transform; public MeshRenderer renderer; public MaterialPropertyBlock properties;
-            public Rigidbody body;public BoxCollider collider;
+            public Transform transform;public MeshFilter filter; public MeshRenderer renderer; public MaterialPropertyBlock properties;
+            public Rigidbody body;public BoxCollider collider;public Mesh fragmentMesh;public bool timberFragment;
             public Vector3 origin, velocity; public Color color; public float age, life, size,spin; public bool reduced,wood,seed;
         }
         Dust[] particles;
         AudioSource[] voices;
         ToyAudioLibrary library;
         AudioClip timberSnap;
-        Material dustMaterial,chipMaterial;
+        Material dustMaterial,chipMaterial;Mesh dustMesh,chipMesh;PhysicsMaterial woodContact,splinterContact;
         int nextParticle, nextVoice, variant;
         float duck;
         float lastSelectSound=-1,lastHaptic=-1;
@@ -50,7 +50,10 @@ namespace Cascade.Presentation
                 var rail=new GameObject("Cosmetic plank contact "+i,typeof(BoxCollider),typeof(Rigidbody));SceneManager.MoveGameObjectToScene(rail,debrisScene);rail.transform.SetParent(debrisRoot,false);
                 var body=rail.GetComponent<Rigidbody>();body.isKinematic=true;body.useGravity=false;supports[i]=rail.GetComponent<BoxCollider>();supports[i].enabled=false;
             }
-            dustMaterial=art.shadow;
+            dustMaterial=art.shadow;dustMesh=art.quad;chipMesh=CreateChipMesh();
+            woodContact=new PhysicsMaterial("Dry timber contact"){dynamicFriction=.52f,staticFriction=.62f,bounciness=.13f,frictionCombine=PhysicsMaterialCombine.Average,bounceCombine=PhysicsMaterialCombine.Minimum};
+            foreach(var support in supports)support.sharedMaterial=woodContact;
+            splinterContact=new PhysicsMaterial("Loose timber sliding contact"){dynamicFriction=.006f,staticFriction=.012f,bounciness=.29f,frictionCombine=PhysicsMaterialCombine.Minimum,bounceCombine=PhysicsMaterialCombine.Maximum};
             chipMaterial=new Material(Shader.Find("Universal Render Pipeline/Lit")){name="Carved wood splinters"};
             chipMaterial.SetTexture("_BaseMap",Resources.Load<Texture2D>("CascadeArt/Reactions/TimberStates"));
             chipMaterial.SetFloat("_Smoothness",.24f);chipMaterial.SetFloat("_Cull",(float)CullMode.Off);
@@ -63,8 +66,10 @@ namespace Cascade.Presentation
                 renderer.sharedMaterial = art.shadow; renderer.shadowCastingMode = ShadowCastingMode.Off; renderer.receiveShadows = false;
                 var body=go.GetComponent<Rigidbody>();body.isKinematic=true;body.useGravity=false;body.constraints=RigidbodyConstraints.FreezePositionZ;body.interpolation=RigidbodyInterpolation.None;
                 var collider=go.GetComponent<BoxCollider>();collider.size=new Vector3(.65f,.8f,.12f);collider.enabled=false;
-                particles[i] = new Dust { transform = go.transform, renderer = renderer, properties = new MaterialPropertyBlock(),body=body,collider=collider }; go.SetActive(false);
+                particles[i] = new Dust { transform = go.transform, renderer = renderer, properties = new MaterialPropertyBlock(),filter=go.GetComponent<MeshFilter>(),body=body,collider=collider }; go.SetActive(false);
             }
+            // A burst starts with adjacent slivers; self-collisions would explode their padded bounds.
+            for(int i=0;i<particles.Length;i++)for(int j=0;j<i;j++)Physics.IgnoreCollision(particles[i].collider,particles[j].collider);
             voices = new AudioSource[Mathf.Clamp(profile.voiceCapacity, 1, 16)];
             for (int i = 0; i < voices.Length; i++) { var go = new GameObject("Pooled toy voice " + i, typeof(AudioSource)); go.transform.SetParent(transform, false); voices[i] = go.GetComponent<AudioSource>(); voices[i].playOnAwake = false; voices[i].spatialBlend = 0; }
             InitializeAtmosphere();
@@ -85,10 +90,10 @@ namespace Cascade.Presentation
             if (particles == null || particles.Length == 0 || Quality<=0) return;
             count = Mathf.Min(count, Quality==1?4:particles.Length); if (reduced) count = Mathf.Min(2, count);
             for (int i = 0; i < count; i++) {
-                var p = particles[nextParticle++ % particles.Length]; float angle = i * 2.399963f;
+                var p = AcquireParticle(); float angle = i * 2.399963f;
                 p.source=source;p.sourceOffset=source==null?Vector3.zero:origin-game.UIFeedbackPoint(source);
                 p.origin = origin; p.origin.z = -.7f; p.color = color; p.age = 0; p.life = .38f + (i % 3) * .10f; p.size = .08f + (i % 4) * .02f; p.reduced = reduced;
-                p.wood=p.seed=false;p.spin=0;p.renderer.sharedMaterial=dustMaterial;p.transform.rotation=Quaternion.identity;
+                p.timberFragment=false;p.properties.Clear();p.filter.sharedMesh=dustMesh;p.wood=p.seed=false;p.spin=0;p.renderer.sharedMaterial=dustMaterial;p.transform.rotation=Quaternion.identity;
                 p.body.isKinematic=true;p.collider.enabled=false;p.renderer.shadowCastingMode=ShadowCastingMode.Off;p.renderer.receiveShadows=false;
                 p.velocity = new Vector3(Mathf.Cos(angle) * .45f, Mathf.Sin(angle) * .28f + .12f, 0);
                 p.transform.position = p.origin; p.transform.localScale = Vector3.one * p.size; p.transform.gameObject.SetActive(true);
@@ -111,16 +116,18 @@ namespace Cascade.Presentation
             if(particles==null||particles.Length==0||Quality<=0)return;
             count=Mathf.Min(count,Quality==1?4:particles.Length);if(reduced)count=Mathf.Min(2,count);
             for(int i=0;i<count;i++){
-                var p=particles[nextParticle++%particles.Length];p.source=null;p.origin=origin+Vector3.right*((i/(float)Mathf.Max(1,count-1)-.5f)*span);p.origin.z=-.7f;
-                p.renderer.sharedMaterial=chipMaterial;p.color=i%2==0?new Color(.84f,.71f,.52f):Color.white;p.age=0;p.life=reduced?.60f:4.3f+(i%3)*.2f;p.size=i<6?span/6*.92f:.24f+(i%4)*.06f;
-                p.reduced=reduced;p.wood=true;p.seed=false;p.spin=(i%2==0?1:-1)*(150+i*19);
-                p.velocity=new Vector3(Mathf.Sin(i*2.399f)*.55f+game.Machine.WindAt(game.VisibleFrame.ActiveFloor)*.25f,.18f+(i%3)*.18f,0);
+                var p=AcquireParticle();p.source=null;p.origin=origin+Vector3.right*((i/(float)Mathf.Max(1,count-1)-.5f)*span);p.origin.z=-.7f;
+                p.timberFragment=false;p.properties.Clear();p.filter.sharedMesh=chipMesh;p.renderer.sharedMaterial=chipMaterial;p.color=i%2==0?new Color(.84f,.71f,.52f):Color.white;p.age=0;p.life=reduced?.60f:2.4f+(i%5)*.23f;p.size=Mathf.Clamp(span/(count<=3?5f:11f),.09f,.62f)*(.72f+(i%5)*.16f);
+                p.reduced=reduced;p.wood=true;p.seed=false;p.spin=(i%2==0?1:-1)*(100+(i*67)%380);
+                p.velocity=new Vector3(Mathf.Sin(i*2.399f)*(.65f+(i%4)*.25f)+game.Machine.WindAt(game.VisibleFrame.ActiveFloor)*.24f,.24f+(i%5)*.16f,0);
                 p.properties.SetVector("_BaseMap_ST",WorkshopSpriteSet.ChipUv(i));p.properties.SetColor("_BaseColor",p.color);p.renderer.SetPropertyBlock(p.properties);
-                p.transform.position=p.origin;p.transform.localScale=new Vector3(p.size,p.size*.40f,1);p.transform.rotation=Quaternion.Euler(0,0,i*31);p.transform.gameObject.SetActive(true);
+                p.transform.position=p.origin;p.transform.localScale=new Vector3(p.size,p.size*(.24f+(i%3)*.08f),.045f+(i%3)*.016f);p.transform.rotation=Quaternion.Euler(0,0,i*31);p.transform.gameObject.SetActive(true);
                 p.body.isKinematic=reduced;p.body.useGravity=!reduced;p.collider.enabled=!reduced;
-                p.body.mass=i<6?.075f:.018f+(i%4)*.006f;p.body.linearDamping=.18f;p.body.angularDamping=.32f;
+                p.collider.sharedMaterial=woodContact;p.collider.center=Vector3.zero;p.collider.size=new Vector3(.9f,.85f,1);p.body.constraints=RigidbodyConstraints.FreezePositionZ;
+                p.body.mass=.018f+p.size*.07f;p.body.linearDamping=.14f;p.body.angularDamping=.42f;p.body.maxAngularVelocity=12;
+                p.body.collisionDetectionMode=CollisionDetectionMode.ContinuousSpeculative;
                 p.renderer.shadowCastingMode=ShadowCastingMode.On;p.renderer.receiveShadows=true;
-                if(!reduced){p.body.position=p.origin;p.body.rotation=p.transform.rotation;p.body.linearVelocity=p.velocity;p.body.angularVelocity=new Vector3(.35f*(i%3-1),.22f*(i%2==0?1:-1),p.spin*Mathf.Deg2Rad);p.body.WakeUp();}
+                if(!reduced){p.body.position=p.origin;p.body.rotation=p.transform.rotation;p.body.linearVelocity=p.velocity;p.body.angularVelocity=new Vector3((i%3-1)*1.7f,(i%2==0?1:-1)*1.25f,p.spin*Mathf.Deg2Rad);p.body.WakeUp();}
             }
         }
         public void Haptic(float strength=.35f)
@@ -182,9 +189,9 @@ namespace Cascade.Presentation
             if(Quality<=0||particles==null||particles.Length==0)return;
             int count=reduced?2:Quality==1?6:18;
             for(int i=0;i<count;i++){
-                var p=particles[nextParticle++%particles.Length];float angle=i*2.399963f;
+                var p=AcquireParticle();float angle=i*2.399963f;
                 p.source=source;p.origin=origin+Vector3.right*Mathf.Sin(angle)*.22f;p.origin.z=-.7f;p.sourceOffset=source==null?Vector3.zero:p.origin-game.UIFeedbackPoint(source);
-                p.age=0;p.life=1.10f+(i%3)*.12f;p.size=.045f+(i%3)*.018f;p.reduced=reduced;p.wood=false;p.seed=true;p.spin=angle;
+                p.timberFragment=false;p.properties.Clear();p.filter.sharedMesh=dustMesh;p.age=0;p.life=1.10f+(i%3)*.12f;p.size=.045f+(i%3)*.018f;p.reduced=reduced;p.wood=false;p.seed=true;p.spin=angle;
                 p.color=i%3==0?new Color(.51f,.89f,.77f):i%3==1?new Color(1,.78f,.31f):new Color(.68f,.74f,1);
                 p.velocity=new Vector3(Mathf.Cos(angle)*.65f,1.55f+(i%4)*.16f,0);p.renderer.sharedMaterial=dustMaterial;
                 p.body.isKinematic=true;p.collider.enabled=false;p.renderer.shadowCastingMode=ShadowCastingMode.Off;p.renderer.receiveShadows=false;
@@ -201,16 +208,17 @@ namespace Cascade.Presentation
             if (!SoundEnabled||!game.enabled||game.Interaction.IsSuspended)foreach(var voice in voices)if(voice.isPlaying)voice.Stop();
             if (paused) return;
             StepDebris(Mathf.Clamp(Time.unscaledDeltaTime,0,.2f));
-            ActiveParticleCount = 0;
+            ActiveParticleCount = 0;var debrisCamera=Camera.main;
             foreach (var p in particles) {
                 if (!p.transform.gameObject.activeSelf) continue;
                 if(p.source!=null)p.origin=game.UIFeedbackPoint(p.source)+p.sourceOffset;
                 p.age += Time.unscaledDeltaTime; float t = p.age / p.life;
-                if (t >= 1) { p.transform.gameObject.SetActive(false); continue; }
+                var viewport=p.wood&&debrisCamera!=null?debrisCamera.WorldToViewportPoint(p.timberFragment?p.renderer.bounds.max:p.transform.position):Vector3.one*.5f;
+                if (t>=1||p.wood&&p.age>.20f&&(viewport.y<-.10f||viewport.x<-.22f||viewport.x>1.22f)) { RetireParticle(p);continue; }
                 ActiveParticleCount++;
                 if(!p.wood||p.reduced)p.transform.position = p.reduced ? p.origin : p.origin + p.velocity * p.age + (p.seed?Vector3.right*Mathf.Sin(p.age*5+p.spin)*p.age*.12f:Vector3.down*(.38f*p.age*p.age));
-                p.transform.localScale=p.wood?new Vector3(p.size,p.size*.40f,1):Vector3.one*(p.size*(1+t));
-                var color = p.color; color.a *= p.wood?1-Mathf.SmoothStep(0,1,Mathf.Clamp01((t-.76f)/.24f)):(1-t)*(1-t);
+                if(!p.wood)p.transform.localScale=Vector3.one*(p.size*(1+t));
+                var color = p.color; color.a *= p.wood?1-Mathf.SmoothStep(0,1,Mathf.Clamp01((t-(p.timberFragment?.95f:.63f))/(p.timberFragment?.05f:.37f))):(1-t)*(1-t);
                 p.properties.SetColor("_BaseColor", color); p.renderer.SetPropertyBlock(p.properties);
             }
         }
@@ -244,11 +252,40 @@ namespace Cascade.Presentation
             while(physicsRemainder>=dt){
                 foreach(var p in particles)if(p.wood&&!p.reduced&&p.transform.gameObject.activeSelf){
                     float wind=game.Machine.WindAt(Mathf.Min(game.VisibleFrame.ActiveFloor,game.Interaction.Attempt.Level.Floors.Count-1));
-                    p.body.AddForce(Vector3.right*(wind*.016f),ForceMode.Force);
+                    // Air drag affects lighter splinters more; the fixed local scene supplies gravity and contacts.
+                    var drift=Vector3.right*(wind*.24f/Mathf.Max(.35f,p.size*2));
+                    if(p.timberFragment)drift.z=-.45f;
+                    p.body.AddForce(drift,ForceMode.Acceleration);
                 }
                 RowPhysics?.Step(dt);debrisPhysics.Simulate(dt);physicsRemainder-=dt;
             }
         }
-        void OnDestroy(){DisposeAtmosphere();RowPhysics?.Dispose();if(chipMaterial!=null)Destroy(chipMaterial);if(debrisScene.IsValid()&&debrisScene.isLoaded)SceneManager.UnloadSceneAsync(debrisScene);}
+        Dust AcquireParticle()
+        {
+            Dust fallback=null;int chosen=-1;
+            for(int offset=0;offset<particles.Length;offset++){
+                int index=(nextParticle+offset)%particles.Length;var p=particles[index];
+                if(!p.transform.gameObject.activeSelf){nextParticle=(index+1)%particles.Length;return p;}
+                if(!p.timberFragment&&(fallback==null||p.age>fallback.age)){fallback=p;chosen=index;}
+            }
+            // Keep falling timber visible when incidental dust or landing sparks reuse the pool.
+            if(fallback==null)for(int i=0;i<particles.Length;i++)if(fallback==null||particles[i].age>fallback.age){fallback=particles[i];chosen=i;}
+            nextParticle=(chosen+1)%particles.Length;return fallback;
+        }
+        static void RetireParticle(Dust p){p.body.isKinematic=true;p.collider.enabled=false;p.transform.gameObject.SetActive(false);}
+        static Mesh CreateChipMesh()
+        {
+            // A shallow solid sliver remains visible while tumbling edge-on.
+            var mesh=new Mesh{name="Solid pooled timber sliver"};
+            var v=new Vector3[24];var uv=new Vector2[24];var triangles=new int[36];
+            var corners=new[]{new Vector3(-.5f,-.5f,-.5f),new Vector3(.5f,-.5f,-.5f),new Vector3(.5f,.5f,-.5f),new Vector3(-.5f,.5f,-.5f),new Vector3(-.5f,-.5f,.5f),new Vector3(.5f,-.5f,.5f),new Vector3(.5f,.5f,.5f),new Vector3(-.5f,.5f,.5f)};
+            int[] faces={0,3,2,1,5,6,7,4,4,7,3,0,1,2,6,5,3,7,6,2,4,0,1,5};
+            for(int face=0;face<6;face++){
+                int a=face*4,t=face*6;for(int i=0;i<4;i++){v[a+i]=corners[faces[a+i]];uv[a+i]=new Vector2(i==0||i==1?0:1,i==0||i==3?0:1);}
+                triangles[t]=a;triangles[t+1]=a+1;triangles[t+2]=a+2;triangles[t+3]=a;triangles[t+4]=a+2;triangles[t+5]=a+3;
+            }
+            mesh.vertices=v;mesh.uv=uv;mesh.triangles=triangles;mesh.RecalculateNormals();mesh.RecalculateBounds();return mesh;
+        }
+        void OnDestroy(){if(particles!=null)foreach(var p in particles)if(p.fragmentMesh!=null)Destroy(p.fragmentMesh);if(chipMesh!=null)Destroy(chipMesh);if(woodContact!=null)Destroy(woodContact);if(splinterContact!=null)Destroy(splinterContact);DisposeAtmosphere();RowPhysics?.Dispose();if(chipMaterial!=null)Destroy(chipMaterial);if(debrisScene.IsValid()&&debrisScene.isLoaded)SceneManager.UnloadSceneAsync(debrisScene);}
     }
 }

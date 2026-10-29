@@ -29,9 +29,7 @@ internal static class CampaignUniqueness
             yield return new Category { Mode="Words", Locale=locale,
                 Levels=catalog.LocalizedLevels.Where(c=>c.Locale==locale&&c.Mode==PuzzleMode.Words).ToArray() };
             yield return new Category { Mode="Mixed", Locale=locale,
-                Levels=catalog.PrimaryLevels.Select((primary,i)=>
-                    catalog.TryGetLocalizedBinding(primary.Definition.CampaignNodeId,locale,out var localized)
-                    &&(localized.Mode==PuzzleMode.Mixed||i%2==1)?localized:primary).ToArray() };
+                Levels=MixedJourney.Sequence(catalog,locale) };
         }
     }
 
@@ -98,7 +96,7 @@ internal static class CampaignUniqueness
     internal static JObject Verify(ContentCatalog catalog,PublishedTriadStore store,out JArray entries)
     {
         var stageKeys=new Dictionary<string,string[]>(StringComparer.Ordinal);
-        foreach(var content in catalog.PrimaryLevels.Concat(catalog.LocalizedLevels)) {
+        foreach(var content in catalog.AllLevels) {
             var run=store.Bind(content.Definition,content.Locale,catalog.ContentHash);
             if(run==null)throw new InvalidDataException("Unbound campaign level: "+content.Definition.PuzzleId);
             stageKeys.Add(content.Definition.PuzzleId,Keys(content.Definition,run.Stages));

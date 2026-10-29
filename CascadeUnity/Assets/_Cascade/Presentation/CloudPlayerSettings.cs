@@ -11,5 +11,7 @@ namespace Cascade.Presentation
         [Tooltip("Enable after Unity Player Accounts client/provider/deep links are configured.")]
         public bool playerAccountsConfigured;
         public bool purchaseVerificationConfigured;
+        public bool serverRewardsConfigured;
+        public string accountDeletionUrl="";
     }
 }

@@ -25,12 +25,12 @@ namespace Cascade.Content
         public string Lesson { get; }
         public bool IsPrimary { get; }
         public ReadOnlyCollection<string> WordIds { get; }
-        internal LevelContent(LevelDefinition definition, string locale, string title, string lesson, bool isPrimary)
+        internal LevelContent(LevelDefinition definition, string locale, string title, string lesson, bool isPrimary,PuzzleMode? journeyMode=null)
         {
             Definition = definition; Locale = locale; Title = title; Lesson = lesson; IsPrimary = isPrimary;
             bool shapes = definition.TargetSymbolIds.Any(s => s.Kind == SymbolKind.Shape);
             bool glyphs = definition.TargetSymbolIds.Any(s => s.Kind == SymbolKind.Glyph);
-            Mode = shapes && glyphs ? PuzzleMode.Mixed : glyphs ? PuzzleMode.Words : PuzzleMode.Shapes;
+            Mode = journeyMode ?? (shapes && glyphs ? PuzzleMode.Mixed : glyphs ? PuzzleMode.Words : PuzzleMode.Shapes);
             WordIds = Array.AsReadOnly(definition.TargetSegments.Where(s => s.Kind == SegmentKind.Word).Select(s => s.WordId).ToArray());
         }
     }
@@ -44,11 +44,20 @@ namespace Cascade.Content
         public ReadOnlyDictionary<string, WordEntry> WordEntries { get; }
         public ReadOnlyDictionary<string, WordDefinition> Words { get; }
         public string ContentHash { get; }
+        readonly Lazy<ReadOnlyCollection<LevelContent>> mixedLevels;
+        public ReadOnlyCollection<LevelContent> MixedLevels=>mixedLevels.Value;
+        public IEnumerable<LevelContent> AllLevels {
+            get {
+                foreach(var level in PrimaryLevels)yield return level;
+                foreach(var level in LocalizedLevels)yield return level;
+                foreach(var level in MixedLevels)yield return level;
+            }
+        }
         readonly Dictionary<string, LevelContent> primary;
         readonly Dictionary<string, LevelContent> localized;
 
         internal ContentCatalog(IEnumerable<LevelContent> primaryLevels, IEnumerable<LevelContent> localizedLevels,
-            IDictionary<string, WordEntry> words, string contentHash)
+            IDictionary<string, WordEntry> words, string contentHash, bool mixedJourney=false)
         {
             PrimaryLevels = Array.AsReadOnly(primaryLevels.ToArray()); LocalizedLevels = Array.AsReadOnly(localizedLevels.ToArray());
             WordEntries = new ReadOnlyDictionary<string, WordEntry>(new Dictionary<string, WordEntry>(words));
@@ -56,6 +65,7 @@ namespace Cascade.Content
             primary = PrimaryLevels.ToDictionary(l => l.Definition.CampaignNodeId, StringComparer.Ordinal);
             localized = LocalizedLevels.ToDictionary(l => l.Definition.CampaignNodeId + ":" + l.Locale, StringComparer.Ordinal);
             ContentHash = contentHash;
+            mixedLevels=new Lazy<ReadOnlyCollection<LevelContent>>(()=>Array.AsReadOnly(mixedJourney?MixedJourney.CreateBindings(this):Array.Empty<LevelContent>()));
         }
         public LevelContent GetPrimary(string nodeId) => primary.TryGetValue(nodeId, out var level) ? level
             : throw new KeyNotFoundException("Unknown campaign node: " + nodeId);

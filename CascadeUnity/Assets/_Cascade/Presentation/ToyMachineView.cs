@@ -17,7 +17,7 @@ namespace Cascade.Presentation
             public RectTransform anchor;
             public Vector2 point, size;
             public float depth, z, angle;
-            public Vector3 basePosition,baseScale; public Quaternion baseRotation; public Material material; public bool stretch;
+            public Vector3 basePosition,baseScale; public Quaternion baseRotation; public Material material; public bool stretch,unitHeight;
             public MaterialPropertyBlock shadowProperties;
         }
         sealed class FloorRig
@@ -32,6 +32,7 @@ namespace Cascade.Presentation
             public readonly List<Part> stamp = new List<Part>();
             public readonly List<Part> fuse = new List<Part>(), durability = new List<Part>(), rope = new List<Part>();
             public readonly Part[] knots=new Part[2];
+            public float crackPulse;public int damageStage;public bool timberReleased;
             public Part board,top,bombFlame,bridgeStop; public float bridgeClosure,bridgeVelocity; public bool bridgeClosed,bridgePoseReady; public Mesh bendMesh,topMesh;
             public Vector3[] vertices,topVertices; public float sag,sagVelocity,sway,swayVelocity,roll,rollVelocity,wear,fracture;
             public readonly float[] deflection=new float[17];
@@ -60,7 +61,8 @@ namespace Cascade.Presentation
         RectTransform upperAnchor, lowerAnchor;
         readonly Vector3[] corners = new Vector3[4];
         PuzzleInteraction interaction;
-        bool reducedMotion,ambientPaused;
+        bool reducedMotion,ambientPaused,descentHeld;
+        public void HoldDescentPose(bool value){descentHeld=value;}
         public void SetAmbientPaused(bool value){ambientPaused=value;}
         public void DelayAmbientGust(float seconds){nextAmbientGust=Mathf.Max(nextAmbientGust,windTime+seconds);}
         float windTime;
@@ -74,20 +76,14 @@ namespace Cascade.Presentation
         public bool ReducedMotion { get => reducedMotion; set => reducedMotion = value; }
         public float AmbientPhase => windTime;
         public int TokenCount => tokens.Count;
+        public float MixedShapeReferenceWidth { get; set; }
         bool gameplayView;
         public void SetGameplayVisible(bool visible) { gameplayView=visible;if(machine!=null)machine.gameObject.SetActive(visible);livingWorld?.SetGameplayVisible(visible); }
         public void SetRigVisible(bool visible){if(machine!=null)machine.gameObject.SetActive(visible);}
         public DescentGhost CreateDescentGhost(string name)
         {
             var ghost=new GameObject(name).AddComponent<DescentGhost>();
-            foreach(var renderer in machine.GetComponentsInChildren<MeshRenderer>()) {
-                var filter=renderer.GetComponent<MeshFilter>();if(filter==null||filter.sharedMesh==null)continue;
-                var part=new GameObject(renderer.name,typeof(MeshFilter),typeof(MeshRenderer));part.transform.SetParent(ghost.transform,false);
-                part.transform.SetPositionAndRotation(renderer.transform.position,renderer.transform.rotation);part.transform.localScale=renderer.transform.lossyScale;
-                var mesh=Instantiate(filter.sharedMesh);ghost.OwnedMeshes.Add(mesh);part.GetComponent<MeshFilter>().sharedMesh=mesh;
-                var copy=part.GetComponent<MeshRenderer>();copy.sharedMaterials=renderer.sharedMaterials;
-                copy.shadowCastingMode=renderer.shadowCastingMode;copy.receiveShadows=renderer.receiveShadows;
-            }
+            foreach(var renderer in machine.GetComponentsInChildren<Renderer>())ghost.Capture(renderer,viewCamera);
             GetComponent<CascadeGame>().AppendDescentGraphics(ghost);return ghost;
         }
         public static float TokenFaceY(bool selected) => selected ? .48f : .38f;
@@ -210,13 +206,13 @@ namespace Cascade.Presentation
             var surfaceMaterial=rig.surfaceStyle>=0?platformMaterials[rig.surfaceStyle]:woodMaterial;
             rig.bendMesh=BoardMesh();rig.vertices=rig.bendMesh.vertices;
 
-            rig.board=P("Wooden suspended board",rig.bendMesh,surfaceMaterial,.5f,.275f,1,.30f,.15f);rig.board.stretch=true;
+            rig.board=P("Wooden suspended board",rig.bendMesh,surfaceMaterial,.5f,.275f,1,.30f,.15f);rig.board.stretch=true;rig.board.unitHeight=true;
             rig.topMesh=BoardTopMesh();rig.topVertices=rig.topMesh.vertices;
             rig.top=P("Wooden load-bearing top",rig.topMesh,surfaceMaterial,.5f,.365f,1,.08f,-.15f);rig.top.depth=.65f;rig.top.stretch=true;
             for(int end=0;end<2;end++) {
-                float x=end==0?.025f:.975f;
-                // Continuous ropes are shared by the whole hanging machine.
-                rig.knots[end]=P("Rope knot",art.disk,ropeMaterial,x,.38f,.05f,.09f,-.14f);
+                var tie=GameplayReferenceArt.BoardTie(end);
+                // The knot and continuous rope meet the same painted brass socket.
+                rig.knots[end]=P("Rope knot",art.disk,ropeMaterial,tie.x,.275f+(tie.y-.5f)*.30f,.05f,.09f,-.14f);
 
             }
 
@@ -230,7 +226,7 @@ namespace Cascade.Presentation
                     rig.bridge.Add(P("Bridge mounting plate", art.beam, art.graphite, x, .32f, .072f, .095f, -.34f));
                     rig.bridge.Add(P("Bridge brass collar", art.beam, art.gold, x, .335f, .054f, .070f, -.38f));
                     rig.bridgeStop=P("Bridge hinged timber stop",art.beam,woodMaterial,x,.49f,.040f,.27f,-.40f);
-                    var timberUv=new MaterialPropertyBlock();timberUv.SetVector("_BaseMap_ST",new Vector4(.045f,.12f,.43f,.83f));rig.bridgeStop.renderer.SetPropertyBlock(timberUv);
+                    var timberUv=new MaterialPropertyBlock();timberUv.SetVector("_BaseMap_ST",new Vector4(60f/1536f,31f/1024f,90f/1536f,849f/1024f));rig.bridgeStop.renderer.SetPropertyBlock(timberUv);
                     rig.bridge.Add(rig.bridgeStop);
                     rig.bridge.Add(P("Bridge pivot pin",art.disk,art.paleGold,x,.355f,.017f,.038f,-.53f));
                 }
@@ -258,11 +254,13 @@ namespace Cascade.Presentation
             part.anchor.GetWorldCorners(corners); var size = corners[2] - corners[0];
             part.transform.position = new Vector3(corners[0].x + size.x * part.point.x, corners[0].y + size.y * part.point.y, part.z);
             part.transform.rotation = Quaternion.Euler(0, 0, part.angle);
-            var bounds = part.stretch?new Vector3(1,2,1):part.mesh.bounds.size;
+            var bounds = part.stretch?new Vector3(1,part.unitHeight?1:2,1):part.mesh.bounds.size;
             float width = size.x * part.size.x, height = size.y * part.size.y;
             if(part.material==branchMaterial)width=height*.5f; // Two portrait illustrations, each half of the square atlas.
             if (!part.stretch && part.mesh != art.beam && part.mesh != art.quad) { float fit = Mathf.Min(width / bounds.x, height / bounds.y); width = fit * bounds.x; height = fit * bounds.y; }
             part.transform.localScale = new Vector3(width / bounds.x, height / bounds.y, part.depth / Mathf.Max(.01f, bounds.z));
+            // Centre the visible silhouette, including meshes whose authored pivot is below its bounds.
+            if(targetBodies.Contains(part))part.transform.position-=part.transform.rotation*Vector3.Scale(part.mesh.bounds.center,part.transform.localScale);
             part.basePosition=part.transform.position;part.baseRotation=part.transform.rotation;part.baseScale=part.transform.localScale;
         }
         public void Sync()
@@ -285,6 +283,11 @@ namespace Cascade.Presentation
                 token.point = new Vector2(.5f, state.Status == PuzzleStatus.Won ? .5f : TokenFaceY(false));
                 token.size = state.Status == PuzzleStatus.Won ? new Vector2(.66f, .72f)
                     : new Vector2(.78f, .88f);
+                if(state.Status==PuzzleStatus.Playing&&interaction.Attempt.Mode==PuzzleMode.Mixed&&state.Row[i].Kind==SymbolKind.Shape){
+                    token.anchor.GetWorldCorners(corners);float cellWidth=corners[2].x-corners[0].x;
+                    // Reuse the row spacing for the ordinary shape width; dense rows still fit.
+                    if(cellWidth>0)token.size.x=Mathf.Clamp(MixedShapeReferenceWidth/cellWidth,.78f,1.02f);
+                }
                 selections[i].mesh=mesh;selections[i].transform.GetComponent<MeshFilter>().sharedMesh=mesh;
                 selections[i].transform.gameObject.SetActive(false);
                 token.transform.gameObject.SetActive(token.anchor.gameObject.activeInHierarchy);
@@ -293,7 +296,7 @@ namespace Cascade.Presentation
             for (int f = 0; f < floors.Count; f++) {
                 var rig = floors[f]; bool past = !state.FloorVisible(f);
                 bool active = f == state.ActiveFloor && state.Status == PuzzleStatus.Playing;
-                foreach (var p in rig.parts) p.transform.gameObject.SetActive(!past);
+                foreach (var p in rig.parts) p.transform.gameObject.SetActive(!past&&(!rig.timberReleased||p!=rig.board&&p!=rig.top));
                 int hp = active ? state.Durability : interaction.Attempt.Level.Floors[f].BaseDurability;
                 rig.wear=active?Mathf.Clamp01(1-hp/(float)interaction.Attempt.Level.Floors[f].BaseDurability):0;
                 for (int edge = 0; edge < rig.locks.Count; edge++) {
@@ -318,6 +321,18 @@ namespace Cascade.Presentation
                 SetVisible(rig.stamp, !past && (state.StampBits & (1 << f)) == 0);
             }
             foreach (var part in all) if (part.transform.gameObject.activeSelf) Place(part);
+            foreach(var rig in floors)for(int edge=0;edge<rig.locks.Count;edge++){
+                var branch=rig.locks[edge];if(!branch.transform.gameObject.activeSelf)continue;
+                float u=branch.point.x,foot=((edge+floors.IndexOf(rig))%2)==0?.111643f:.112440f;
+                float boardSurface=rig.board.basePosition.y+(GameplayReferenceArt.BoardCrown(u)-.5f-.025f)*rig.board.baseScale.y;
+                branch.basePosition=branch.transform.position=new Vector3(branch.basePosition.x,boardSurface+(.5f-foot)*branch.baseScale.y,branch.basePosition.z);
+            }
+            foreach(var rig in floors)foreach(var part in rig.bridge){
+                float crown=rig.board.basePosition.y+(GameplayReferenceArt.BoardCrown(part.point.x)-.5f-.025f)*rig.board.baseScale.y;
+                float lift=part==rig.bridgeStop?part.baseScale.y*part.mesh.bounds.size.y*.5f:
+                    part.transform.name=="Bridge pivot pin"?.015f:part.transform.name=="Bridge brass collar"?0:-.035f;
+                part.basePosition=part.transform.position=new Vector3(part.basePosition.x,crown+lift,part.basePosition.z);
+            }
             for (int i = 0; i < floorOffsets.Length; i++) floorOffsets[i] = 0;
             for (int i = 0; i < tokens.Count; i++) {
                 if(state.Status==PuzzleStatus.Playing) {
@@ -359,7 +374,7 @@ namespace Cascade.Presentation
                 foreach(var rig in floors){rig.swayVelocity+=breeze*.22f;rig.rollVelocity+=breeze*2.7f;}
                 for(int side=0;side<2;side++)for(int segment=0;segment<=floors.Count;segment++)ropeSpans[side,segment]?.Impulse(breeze*.12f);
             }
-            if(livingWorld!=null){livingWorld.ReducedMotion=reducedMotion;livingWorld.Paint(reducedMotion ? 0 : windTime);}
+            if(livingWorld!=null){livingWorld.ReducedMotion=reducedMotion;livingWorld.FoliageWind=WindAt(Mathf.Clamp(Frame?.ActiveFloor??0,0,3));livingWorld.Paint(reducedMotion ? 0 : windTime);}
             if (windmill != null) windmill.localRotation = Quaternion.Euler(0, 0, reducedMotion ? 18 : 18 + windTime * 7);
         }
     }

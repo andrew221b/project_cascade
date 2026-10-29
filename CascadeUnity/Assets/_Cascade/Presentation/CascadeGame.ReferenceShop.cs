@@ -11,7 +11,7 @@ namespace Cascade.Presentation
     {
         const string ReferenceShopArtPath="CascadeArt/ShopReferenceOct13/";
         bool ReferenceIslandScreen=>CurrentScreen==GameScreen.JourneyMap&&islandBrowseIndex>=0;
-        bool ReferenceShopScreen=>ReferenceMapScreen||ReferenceIslandScreen||CurrentScreen==GameScreen.AccountGate||CurrentScreen==GameScreen.Settings||CurrentScreen==GameScreen.Shop||CurrentScreen==GameScreen.CoinPacks||CurrentScreen==GameScreen.NoAds||CurrentScreen==GameScreen.Collection||CurrentScreen==GameScreen.TravelBag||CurrentScreen==GameScreen.Parcel||CurrentScreen==GameScreen.Supplies||CurrentScreen==GameScreen.Pause;
+        bool ReferenceShopScreen=>CurrentScreen==GameScreen.Prologue||ReferenceMapScreen||ReferenceIslandScreen||CurrentScreen==GameScreen.WorldComplete||CurrentScreen==GameScreen.AccountGate||CurrentScreen==GameScreen.Settings||CurrentScreen==GameScreen.Shop||CurrentScreen==GameScreen.CoinPacks||CurrentScreen==GameScreen.NoAds||CurrentScreen==GameScreen.Collection||CurrentScreen==GameScreen.TravelBag||CurrentScreen==GameScreen.Parcel||CurrentScreen==GameScreen.Supplies||CurrentScreen==GameScreen.Pause;
         Sprite referenceShopCoin;
         Sprite ReferenceShopCoin(){if(referenceShopCoin==null){var texture=Resources.Load<Texture2D>("CascadeArt/Workshop/RewardEmblems");if(texture!=null)referenceShopCoin=AuthoredIconRegion(texture,new Rect(100,138,679,603),1774,887);}return referenceShopCoin;}
         Sprite ReferenceShopArt(string name)=>name=="HeaderBoard"?Resources.Load<Sprite>(ReferenceShopArtPath+name):CleanMenuArt.Get(name)??Resources.Load<Sprite>(ReferenceShopArtPath+name);
@@ -36,7 +36,7 @@ namespace Cascade.Presentation
             label.fontStyle=FontStyles.Normal;label.alignment=TextAlignmentOptions.Midline;
             label.fontSize=label.fontSizeMax=max*(Preferences.LargeText?1.08f:1);label.fontSizeMin=max*(name.StartsWith("store price",StringComparison.Ordinal)?.5f:.66f);
             label.enableAutoSizing=true;label.textWrappingMode=wrap?TextWrappingModes.Normal:TextWrappingModes.NoWrap;
-            label.overflowMode=TextOverflowModes.Truncate;label.margin=Vector4.zero;label.raycastTarget=false;
+            label.overflowMode=TextOverflowModes.Truncate;label.margin=Vector4.one*(CenteredContentRow.MinimumInset*CenteredContentRow.Unit(r));label.raycastTarget=false;
             label.color=light?MenuPaper:new Color(.24f,.095f,.045f);if(light)navigationLightLabels.Add(label);return label;
         }
         Button ReferenceButton(string name,Transform parent,float x,float y,float width,float height,Action action,string sprite=null)
@@ -45,6 +45,7 @@ namespace Cascade.Presentation
             var button=r.gameObject.AddComponent<Button>();r.gameObject.AddComponent<ButtonFeel>().Initialize(this);button.targetGraphic=face;button.transition=Selectable.Transition.None;
             button.onClick.AddListener(()=>{feedback.Sound(ToyCue.Select);feedback.Haptic(.045f);action();});
             var body=Rect("Reference shop button body",r,new Vector2(.5f,.5f),new Vector2(.5f,.5f));body.sizeDelta=new Vector2(width,height);
+            body.gameObject.AddComponent<ReferenceButtonCentering>();
             if(sprite!=null){
                 var drawing=ReferencePicture("Reference shop action artwork",body,ReferenceShopArt(sprite),0,0,width,height);
                 button.targetGraphic=drawing;button.transition=Selectable.Transition.ColorTint;var tint=button.colors;tint.highlightedColor=Color.white;tint.pressedColor=new Color(.93f,.97f,.90f);tint.disabledColor=new Color(.70f,.74f,.70f);button.colors=tint;
@@ -52,16 +53,17 @@ namespace Cascade.Presentation
                 else if(sprite=="GrayAction"||sprite=="RedAction"||sprite=="AmberAction")drawing.gameObject.AddComponent<PrimaryButtonSkin>().Configure(ReferenceShopArt(sprite));
             }
             parent.GetComponentInParent<ReferenceShopLayout>()?.BindTouch(r,new Vector2(width,height));
-            return button;
+            RegisterButtonDesign(button);return button;
         }
         Transform ReferenceButtonBody(Button button)=>button.transform.Find("Reference shop button body");
-        RectTransform ReferenceShopSurface(Sprite backdrop=null)
+        RectTransform ReferenceShopSurface(Sprite backdrop=null,RectTransform surfaceRoot=null)
         {
             LoadNavigationArt();catalogueInfo=null;catalogueStack.Clear();displayedShopObject=null;
-            var frame=Rect("Reference shop environment",menuRoot,new Vector2(.5f,.5f),new Vector2(.5f,.5f));
+            var root=surfaceRoot??menuRoot;
+            var frame=Rect("Reference shop environment",root,new Vector2(.5f,.5f),new Vector2(.5f,.5f));
             var image=frame.gameObject.AddComponent<Image>();image.sprite=backdrop??ReferenceShopArt("Backdrop");image.type=Image.Type.Sliced;image.color=Color.white;image.raycastTarget=false;
-            var stage=Rect("Reference shop composition",menuRoot,new Vector2(.5f,.5f),new Vector2(.5f,.5f));
-            stage.sizeDelta=new Vector2(720,1280);stage.gameObject.AddComponent<ReferenceShopLayout>().Initialize(menuRoot,frame);
+            var stage=Rect("Reference shop composition",root,new Vector2(.5f,.5f),new Vector2(.5f,.5f));
+            stage.sizeDelta=new Vector2(720,1280);stage.gameObject.AddComponent<ReferenceShopLayout>().Initialize(root,frame);
             stage.GetComponent<ReferenceShopLayout>().BindContinuousGround();
             var worn=Rect("Reference worn trophy atmosphere",stage,Vector2.zero,Vector2.one);CosmeticAmbiance(worn,EquippedGift,false);
             var scenery=Rect("Reference scenery trophy atmosphere",stage,Vector2.zero,Vector2.one);CosmeticAmbiance(scenery,EquippedScenery,false);
@@ -108,7 +110,7 @@ namespace Cascade.Presentation
                 ReferencePicture("Reference shop empty collection paper",stage,ReferenceShopArt("DescriptionPaper"),71,883,578,175);
                 ReferenceText("empty collection",stage,"No trophies yet",121,925,478,75,38);
                 var open=ReferenceButton("Find trophies in shop",stage,93,1079,532,112,()=>{ShowShop();shopTab=1;shopItem=0;DrawMenu();},"TealAction");
-                ReferenceText("empty collection action",ReferenceButtonBody(open),"Find in shop",35,19,462,77,44,true);return;
+                ReferenceText("empty collection action",ReferenceButtonBody(open),"Shop",35,19,462,77,44,true);return;
             }
             int selected=shopTab==1?Array.IndexOf(group,ShopCatalog.TrophyIds[Mathf.Clamp(shopItem,0,ShopCatalog.TrophyIds.Length-1)]):Mathf.Clamp(shopItem,0,count-1);
             if(selected<0){selected=0;shopItem=Array.IndexOf(ShopCatalog.TrophyIds,group[0]);if(collection)giftPage=shopItem;}
@@ -126,7 +128,7 @@ namespace Cascade.Presentation
                     if(collection){shopItem=giftPage=chosen;shopDetailOpen=true;shopNotice=default;DrawMenu();}
                     else SelectShopItem(chosen);
                 });
-                var picture=ReferencePicture("Catalogue object",ReferenceButtonBody(button),shopTab==0?ItemsToolArt(index):TrophyArt(index),39.5f,(cardHeight-128)*.5f,128,128);
+                var picture=CataloguePicture(ReferenceButtonBody(button),shopTab==0?ItemsToolArt(index):TrophyArt(index),39.5f,(cardHeight-128)*.5f,128,128,shopTab==0?"tool/"+index:ShopCatalog.TrophyIds[index]);
                 if(shopTab==0)DecorateToolIcon(picture,index);
                 card.rectTransform.SetParent(ReferenceButtonBody(button),true);card.rectTransform.SetAsFirstSibling();
                 if(index==shopItem)displayedShopObject=picture;
@@ -158,14 +160,20 @@ namespace Cascade.Presentation
                 }
             }
             bool trophy=shopTab==1;
-            var paper=ReferencePicture("Reference shop description paper",stage,ReferenceShopArt("DescriptionPaper"),70,trophy?871:880,582,trophy?186:177);
+            float paperTop=trophy?871:880,paperHeight=trophy?186:177;
+            const float actionTop=1078,pagerArtworkBottom=838+11+40;
+            float paperActionGap=actionTop-paperTop-paperHeight;
+            // Balance painted edges too: the primary skin has more transparent top padding than the arrow has below it.
+            const float primaryTopPadding=113*10f/140,pagerBottomPadding=40*5f/58;
+            float footerDrop=trophy&&count>6?pagerArtworkBottom+paperActionGap-paperTop+primaryTopPadding-pagerBottomPadding:0;
+            var paper=ReferencePicture("Reference shop description paper",stage,ReferenceShopArt("DescriptionPaper"),70,paperTop+footerDrop,582,paperHeight);
             if(trophy){paper.type=Image.Type.Sliced;paper.preserveAspect=false;paper.pixelsPerUnitMultiplier=1.5f;}
             string id=trophy?ShopCatalog.TrophyIds[shopItem]:null;
-            ReferenceText("selected title",stage,trophy?ReferenceTrophyTitle(id):ToolTitle(shopItem),117,trophy?891:906,484,trophy?55:62,trophy?30:40);
+            ReferenceText("selected title",stage,trophy?ReferenceTrophyTitle(id):ToolTitle(shopItem),117,(trophy?891:906)+footerDrop,484,trophy?55:62,trophy?30:40);
             UiCopy benefit=!string.IsNullOrEmpty(shopNotice.Key)?shopNotice:!trophy?ToolDescription(shopItem):ReferenceTrophyDescription(id);
-            ReferenceText("selected benefit",stage,benefit,120,trophy?957:979,480,trophy?88:59,trophy?27:28,false,true);
+            ReferenceText("selected benefit",stage,benefit,120,(trophy?957:979)+footerDrop,480,trophy?88:59,trophy?27:28,false,true);
             bool ownedSelection=trophy&&OwnsGift(id);
-            var buy=ReferenceButton(collection?"Preview":"Buy selected item",stage,80,1078,560,113,()=>{
+            var buy=ReferenceButton(collection?"Preview":"Buy selected item",stage,80,actionTop+footerDrop,560,113,()=>{
                 if(collection)OpenSelectedShopItem();else BuySelectedShopItem();
             },ownedSelection&&!collection?"GrayAction":"GreenAction");
             buy.interactable=!saveBlocked&&!HasSaveError&&GameEconomy!=null&&monetization?.FullscreenActive!=true
@@ -175,7 +183,7 @@ namespace Cascade.Presentation
             else ReferenceCoinPrice(buy,trophy?ShopCatalog.TrophyPrice(id):ShopCatalog.Price((TravelTool)shopItem));
             bool Content(Transform t)=>t.name.StartsWith("Shop object ",StringComparison.Ordinal)||t.name.StartsWith("Reference shop description",StringComparison.Ordinal)||t.name=="Reference shop selected title"||t.name=="Reference shop selected benefit"||t.name=="Reference shop page count";
             int current=selected;
-            SwipeReferencePage(stage,383,679,Content,direction=>{
+            SwipeReferencePage(stage,383,679+footerDrop,Content,direction=>{
                 int next=trophy?Mathf.Clamp(first+direction*6,0,count-1):Mathf.Clamp(current+direction,0,count-1);
                 SelectShopItem(trophy?Array.IndexOf(ShopCatalog.TrophyIds,group[next]):next);
             },direction=>trophy?(direction<0?first>0:first+6<count):current+direction>=0&&current+direction<count);
@@ -212,9 +220,9 @@ namespace Cascade.Presentation
                 ReferencePicture("Reference shop pack quantity coin",stage,ReferenceShopCoin(),x+59,y+140,43,43);
                 ReferenceText("pack quantity "+amount,stage,UiCopy.Raw("× "+amount),x+103,y+138,156,47,42);
                 bool enough=ShopCoins>=PurchaseCatalog.CoinPurchaseWalletThreshold;
-                UiCopy caption=enough?"You have enough coins":TestMonetization?(UiCopy)"Test shop":purchaseStore?.CanBuyProduct(product)==true?new UiCopy("Buy {0}",UiCopy.Raw(purchaseStore.ProductPrice(product))):purchaseStore?.State==PurchaseState.Retry?"Try again":"Coming soon";
+                UiCopy caption=CoinPurchaseCaption(product,enough);
                 var buy=ReferenceButton("Purchase "+product,stage,x+16,y+183,267,63,()=>{
-                    if(purchaseStore?.State==PurchaseState.Retry)purchaseStore.RetryConnection();else purchaseStore?.Buy(product);
+                    RequestStorePurchase(product);
                 },"TealAction");
                 ReferenceText("store price "+amount,ReferenceButtonBody(buy),caption,29,7,209,48,29,true);
                 buy.interactable=!enough&&purchaseStore!=null&&(purchaseStore.CanBuyProduct(product)||purchaseStore.State==PurchaseState.Retry);

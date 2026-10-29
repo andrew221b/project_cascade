@@ -53,3 +53,12 @@ Tools/AccountFlowChecks/obj/
 /Reports/
 /Outputs/
 /output/
+
+# Machine-local Cloudflare and Unity test/build residue.
+**/.wrangler/
+CascadeUnity/.utmp/
+CascadeUnity/Assets/InitTestScene*.unity
+CascadeUnity/Assets/InitTestScene*.unity.meta
+CascadeUnity/mono_crash.*
+CascadeUnity/Review/
+/Website/dist/

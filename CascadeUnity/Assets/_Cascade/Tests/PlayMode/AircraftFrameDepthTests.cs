@@ -208,6 +208,95 @@ namespace Cascade.Tests
                 }
             }
         }
+        IEnumerator FlowerLocale(string locale)
+        {
+            game.SetUiLocale(locale);double began=Time.realtimeSinceStartupAsDouble;
+            while(Field<bool>("applyingUiLanguage")&&Time.realtimeSinceStartupAsDouble-began<15)yield return null;
+            Assert.That(Field<bool>("applyingUiLanguage"),Is.False);
+            Assert.That(UnityEngine.Localization.Settings.LocalizationSettings.SelectedLocale.Identifier.Code,Is.EqualTo(locale));
+            yield return null;
+        }
+        void FlowerResize(int width,int height)
+        {
+            var scaler=game.GetComponentInChildren<CanvasScaler>();scaler.enabled=false;
+            if(target!=null){target.Release();UnityEngine.Object.Destroy(target);}
+            target=new RenderTexture(width,height,24,RenderTextureFormat.ARGB32);camera.targetTexture=target;scaler.enabled=true;game.RefreshLayout();
+        }
+        void FlowerCapture(string name)
+        {
+            Directory.CreateDirectory(Folder);var image=new Texture2D(target.width,target.height,TextureFormat.RGBA32,false);
+            try{image.SetPixels32(Pixels());image.Apply();File.WriteAllBytes(Path.Combine(Folder,name+".png"),image.EncodeToPNG());}
+            finally{UnityEngine.Object.DestroyImmediate(image);}
+        }
+        [UnityTest] public IEnumerator FailureFlowersDisappearWithTheirGameplayFrameAcrossWorldsAndPhones()
+        {
+            int cases=0;
+            foreach(var size in new[]{new Vector2Int(390,844),new Vector2Int(320,693)})foreach(string locale in new[]{"en","ru","uk"}){
+                FlowerResize(size.x,size.y);yield return FlowerLocale(locale);game.Preferences.LargeText=locale!="en";
+                for(int world=0;world<9;world++){
+                    World(world);game.Preferences.EffectQuality=locale=="ru"?1:2;game.Feedback.Quality=game.Machine.LivingWorld.EffectQuality=game.Preferences.EffectQuality;game.ReducedMotion=locale=="uk";
+                    Route(GameScreen.Playing);game.Machine.SetZone(world);Route(GameScreen.Fail);yield return new WaitForSecondsRealtime(.65f);
+                    var layer=game.Machine.LivingWorld;layer.Paint(16);
+                    Assert.That(game.EnvironmentWorld,Is.EqualTo(world));
+                    Assert.That(UnityEngine.Localization.Settings.LocalizationSettings.SelectedLocale.Identifier.Code,Is.EqualTo(locale));
+                    if(size.x==390&&locale!="ru"||size.x==320&&locale=="ru")FlowerCapture("flower-fail-w"+world+"-"+locale+"-"+size.x);
+                    Assert.That(game.CurrentScreen,Is.EqualTo(GameScreen.Fail));
+                    var result=game.GetComponentsInChildren<RectTransform>().Single(r=>r.name=="Reference failure result");
+                    var retry=result.GetComponentsInChildren<Button>().Single(b=>b.name=="Retry");
+                    Assert.That(retry.GetComponentsInChildren<Image>().Any(i=>i.sprite==FailureReferenceArt.Sprig(world)),Is.False,"No bouquet may float above the retry button");
+                    Assert.That(result.GetComponentsInChildren<Transform>().Any(t=>t.name.StartsWith("Failure thematic decoration ",StringComparison.Ordinal)),Is.False);
+                    Assert.That(game.GetComponentsInChildren<Transform>().Any(t=>t.name=="Lantern delivery story"||t.name=="Stage celebration ribbon"||t.name=="Landed level dissolve"||t.name=="Game frame attached plants"),Is.False);
+                    var frame=layer.GetComponentsInChildren<Transform>(true).Single(t=>t.name=="Thematic level framing");
+                    Assert.That(frame.gameObject.activeInHierarchy,Is.False,"The failure background has no plant support");
+                    var weather=layer.GetComponentInChildren<WorldSeasonalWeather>(true);
+                    int count=WorldSeasonalArt.Rooted(world)?WorldSeasonalArt.Procedural(world):WorldSeasonalArt.Count(world);
+                    Assert.That(weather.ActiveCount,Is.EqualTo(count/(game.Preferences.EffectQuality==1?2:1)),"Unsupported frame flowers remain in world "+world);
+                    if(world==0){
+                        var with=Pixels();var face=weather.GetComponent<MeshRenderer>();bool visible=face.enabled;face.enabled=false;var without=Pixels();face.enabled=visible;
+                        Assert.That(with,Is.EqualTo(without),"The hidden frame's daisies must contribute zero failure-screen pixels");
+                    }
+                    cases++;
+                }
+            }
+            Directory.CreateDirectory(Folder);File.WriteAllText(Path.Combine(Folder,"failure-flower-matrix.txt"),cases+" cases: 9 worlds x EN/RU/UK x 390/320 phones; normal/reduced motion and full/low quality.\n");
+        }
+        [UnityTest] public IEnumerator MenuFlowersRequireVisibleSupportsAcrossWorldsAndScreens()
+        {
+            FlowerResize(390,844);yield return FlowerLocale("ru");game.Preferences.EffectQuality=2;game.ReducedMotion=false;int cases=0,checks=0;
+            foreach(int world in new[]{0,5,8}){
+                var host=new GameObject("Unsupported flower regression probe",typeof(RectTransform));host.transform.SetParent(game.transform,false);
+                var pool=host.AddComponent<MenuSeasonalFlecks>();pool.Initialize(world);pool.BindSupport(null);pool.Pose(16,2);
+                Assert.That(pool.VisibleCount,Is.Zero,"Flowers without a frame must stay hidden");
+                Assert.That(pool.GetComponentsInChildren<Image>().All(i=>!i.enabled),Is.True);host.SetActive(false);UnityEngine.Object.Destroy(host);
+            }
+            for(int world=0;world<9;world++){
+                World(world);
+                foreach(var screen in new[]{GameScreen.Home,GameScreen.JourneyMap,GameScreen.Shop,GameScreen.TravelBag,GameScreen.Collection,GameScreen.Settings,GameScreen.Devices,GameScreen.Pause}){
+                    Route(screen);yield return null;yield return null;Assert.That(game.EnvironmentWorld,Is.EqualTo(world),screen.ToString());
+                    var environment=game.GetComponentInChildren<MenuWorldEnvironment>();environment?.SetReviewAge(16);
+                    foreach(var pool in game.GetComponentsInChildren<MenuSeasonalFlecks>()){
+                        if(!WorldSeasonalArt.Rooted(world))continue;
+                        var support=pool.GetComponentInParent<WorldFrameFit>();Assert.That(support,Is.Not.Null,screen+" world "+world);
+                        var face=support.GetComponent<Image>();Assert.That(face.isActiveAndEnabled,Is.True);Assert.That(pool.VisibleCount,Is.GreaterThan(0));
+                        face.enabled=false;pool.Pose(17,2);Assert.That(pool.VisibleCount,Is.Zero);Assert.That(pool.GetComponentsInChildren<Image>().All(i=>!i.enabled),Is.True);
+                        face.enabled=true;var color=face.color;face.color=new Color(color.r,color.g,color.b,0);pool.Pose(18,2);Assert.That(pool.VisibleCount,Is.Zero);
+                        face.color=color;pool.Pose(19,2);Assert.That(pool.VisibleCount,Is.GreaterThan(0));checks+=2;
+                    }
+                    foreach(var plants in game.GetComponentsInChildren<AttachedPlants>()){
+                        var face=plants.GetComponentsInChildren<Image>().FirstOrDefault(i=>!i.name.StartsWith("Rooted decorative sprig ",StringComparison.Ordinal));
+                        Assert.That(face,Is.Not.Null,screen+" world "+world+": no real support");
+                        var flowers=plants.GetComponentsInChildren<Image>().Where(i=>i.name.StartsWith("Rooted decorative sprig ",StringComparison.Ordinal)).ToArray();
+                        face.enabled=false;plants.AdvanceReview(0,0);Assert.That(flowers.All(i=>!i.enabled),Is.True,"Flowers cannot remain when their board is hidden");
+                        face.enabled=true;var color=face.color;face.color=new Color(color.r,color.g,color.b,0);plants.AdvanceReview(0,0);Assert.That(flowers.All(i=>!i.enabled),Is.True);
+                        face.color=color;plants.AdvanceReview(0,0);plants.EndReview();checks+=2;
+                    }
+                    environment?.SetReviewAge(16);
+                    if(world==0||world==5||world==8||screen==GameScreen.Pause){yield return new WaitForSecondsRealtime(.4f);FlowerCapture("flower-menu-w"+world+"-"+screen);}
+                    cases++;
+                }
+            }
+            Directory.CreateDirectory(Folder);File.WriteAllText(Path.Combine(Folder,"menu-flower-matrix.txt"),cases+" cases: 9 worlds x 8 screens; "+checks+" disabled/transparent support checks; 3 unbound flower pools.\n");
+        }
         [Test] public void AllAircraftStylesTravelSmoothlyAndFaceTheirDirection()
         {
             float largestStep=0,largestTurn=0,largestScaleStep=0;int visibleSamples=0;

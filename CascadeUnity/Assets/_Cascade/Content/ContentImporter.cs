@@ -86,7 +86,11 @@ namespace Cascade.Content
             string bundle = string.Join("\n", new[] { primaryJson, localizedJson, enWordsJson, ruWordsJson, ukWordsJson }
                 .Select(text => Canonical(JToken.Parse(text)).ToString(Formatting.None)));
             if(extensionJson!=null)bundle+="\n"+Canonical(JToken.Parse(extensionJson)).ToString(Formatting.None);
-            return new ContentCatalog(primary, localized, entries, Hash(bundle));
+            if(extensionJson!=null){
+                MixedJourney.AddPronouns(entries);
+                bundle+="\n"+MixedJourney.Revision;
+            }
+            return new ContentCatalog(primary, localized, entries, Hash(bundle),extensionJson!=null);
         }
 
         // Only HP changed in this revision. Exact pins guard reconstruction against future edits.

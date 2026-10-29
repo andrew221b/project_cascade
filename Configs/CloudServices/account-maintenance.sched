@@ -1,0 +1,117 @@
+{
+  "$schema": "https://ugs-config-schemas.unity3d.com/v1/schedules.schema.json",
+  "Configs": {
+    "cascade-account-maintenance": {
+      "EventName": "cascade-account-maintenance",
+      "Type": "recurring",
+      "Schedule": "0 * * * *",
+      "PayloadVersion": 1,
+      "Payload": "{}"
+    },
+    "cascade-account-maintenance-01": {
+      "EventName": "cascade-account-maintenance-01",
+      "Type": "recurring",
+      "Schedule": "3 * * * *",
+      "PayloadVersion": 1,
+      "Payload": "{}"
+    },
+    "cascade-account-maintenance-02": {
+      "EventName": "cascade-account-maintenance-02",
+      "Type": "recurring",
+      "Schedule": "7 * * * *",
+      "PayloadVersion": 1,
+      "Payload": "{}"
+    },
+    "cascade-account-maintenance-03": {
+      "EventName": "cascade-account-maintenance-03",
+      "Type": "recurring",
+      "Schedule": "11 * * * *",
+      "PayloadVersion": 1,
+      "Payload": "{}"
+    },
+    "cascade-account-maintenance-04": {
+      "EventName": "cascade-account-maintenance-04",
+      "Type": "recurring",
+      "Schedule": "15 * * * *",
+      "PayloadVersion": 1,
+      "Payload": "{}"
+    },
+    "cascade-account-maintenance-05": {
+      "EventName": "cascade-account-maintenance-05",
+      "Type": "recurring",
+      "Schedule": "18 * * * *",
+      "PayloadVersion": 1,
+      "Payload": "{}"
+    },
+    "cascade-account-maintenance-06": {
+      "EventName": "cascade-account-maintenance-06",
+      "Type": "recurring",
+      "Schedule": "22 * * * *",
+      "PayloadVersion": 1,
+      "Payload": "{}"
+    },
+    "cascade-account-maintenance-07": {
+      "EventName": "cascade-account-maintenance-07",
+      "Type": "recurring",
+      "Schedule": "26 * * * *",
+      "PayloadVersion": 1,
+      "Payload": "{}"
+    },
+    "cascade-account-maintenance-08": {
+      "EventName": "cascade-account-maintenance-08",
+      "Type": "recurring",
+      "Schedule": "30 * * * *",
+      "PayloadVersion": 1,
+      "Payload": "{}"
+    },
+    "cascade-account-maintenance-09": {
+      "EventName": "cascade-account-maintenance-09",
+      "Type": "recurring",
+      "Schedule": "33 * * * *",
+      "PayloadVersion": 1,
+      "Payload": "{}"
+    },
+    "cascade-account-maintenance-10": {
+      "EventName": "cascade-account-maintenance-10",
+      "Type": "recurring",
+      "Schedule": "37 * * * *",
+      "PayloadVersion": 1,
+      "Payload": "{}"
+    },
+    "cascade-account-maintenance-11": {
+      "EventName": "cascade-account-maintenance-11",
+      "Type": "recurring",
+      "Schedule": "41 * * * *",
+      "PayloadVersion": 1,
+      "Payload": "{}"
+    },
+    "cascade-account-maintenance-12": {
+      "EventName": "cascade-account-maintenance-12",
+      "Type": "recurring",
+      "Schedule": "45 * * * *",
+      "PayloadVersion": 1,
+      "Payload": "{}"
+    },
+    "cascade-account-maintenance-13": {
+      "EventName": "cascade-account-maintenance-13",
+      "Type": "recurring",
+      "Schedule": "48 * * * *",
+      "PayloadVersion": 1,
+      "Payload": "{}"
+    },
+    "cascade-account-maintenance-14": {
+      "EventName": "cascade-account-maintenance-14",
+      "Type": "recurring",
+      "Schedule": "52 * * * *",
+      "PayloadVersion": 1,
+      "Payload": "{}"
+    },
+    "cascade-account-maintenance-15": {
+      "EventName": "cascade-account-maintenance-15",
+      "Type": "recurring",
+      "Schedule": "56 * * * *",
+      "PayloadVersion": 1,
+      "Payload": "{}"
+    }
+  }
+}

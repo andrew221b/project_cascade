@@ -10,13 +10,14 @@ import subprocess
 import sys
 import tempfile
 import uuid
+from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "Configs/authentication.json"
 PROJECT = "a1b8a760-5a0c-4c2d-8ae7-54c1b411259a"
 REPORT = ROOT / "Reports/AccountActivation-Oct10"
 MODULE = ROOT / "CascadeUnity/CascadeAccountCCM/CascadeAccount/CascadeAccount.csproj"
-ASSET = ROOT / "CascadeUnity/Assets/_Cascade/Cloud/CascadeAccount.ccmr"
+CLI_ASSET = ROOT / "CascadeUnity/CascadeAccountCCM/CascadeAccount.sln"
 
 def configuration():
     def unique(pairs):
@@ -31,7 +32,8 @@ def configuration():
     config = json.loads(CONFIG.read_text(), object_pairs_hook=unique)
     strings = ("unityProjectId", "unityPlayerAccountsClientId", "unityEnvironmentName", "cloudCodeModuleName")
     flags = ("cloudCodeDeployedAndVerified", "purchaseVerificationConfigured")
-    if set(config) != set(strings + flags) or any(type(config[k]) is not str for k in strings) or any(type(config[k]) is not bool for k in flags):
+    optional = {"serverRewardsConfigured", "accountDeletionUrl"}
+    if not set(strings + flags).issubset(config) or set(config) - set(strings + flags) - optional or any(type(config[k]) is not str for k in strings) or any(type(config[k]) is not bool for k in flags):
         raise ValueError("authentication.json has missing, unknown or incorrectly typed fields.")
     if str(uuid.UUID(config["unityProjectId"])) != PROJECT or config["unityProjectId"] != PROJECT:
         raise ValueError("Cloud Project ID does not match this project.")
@@ -45,6 +47,14 @@ def configuration():
         raise ValueError("A client ID is required before cloud activation.")
     if config["purchaseVerificationConfigured"] and not config["cloudCodeDeployedAndVerified"]:
         raise ValueError("Purchase verification requires a verified cloud deployment.")
+    if type(config.get("serverRewardsConfigured", False)) is not bool or type(config.get("accountDeletionUrl", "")) is not str:
+        raise ValueError("Invalid optional account field types.")
+    if config.get("serverRewardsConfigured") and not config["cloudCodeDeployedAndVerified"]:
+        raise ValueError("Server rewards require verified cloud deployment.")
+    if config.get("accountDeletionUrl"):
+        url = urlparse(config["accountDeletionUrl"])
+        if url.scheme != "https" or not url.netloc or url.username or url.query or url.fragment:
+            raise ValueError("Invalid public deletion URL.")
     return config
 
 def executable(variable, name, fallback=None):
@@ -99,7 +109,7 @@ def main():
         print("Account checks passed; deployable module prepared in Reports/AccountActivation-Oct10/module.")
     if args.deploy or args.dry_run:
         ugs = executable("CASCADE_UGS", "ugs")
-        command = [ugs, "deploy", str(ASSET), "--project-id", config["unityProjectId"], "--environment-name", config["unityEnvironmentName"]]
+        command = [ugs, "deploy", str(CLI_ASSET), "--project-id", config["unityProjectId"], "--environment-name", config["unityEnvironmentName"]]
         if args.dry_run:
             command.append("--dry-run")
         execute(command, env)

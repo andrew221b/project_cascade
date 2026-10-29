@@ -8,7 +8,7 @@ namespace Cascade.Presentation
         readonly float[] contactLoads=new float[8],contactLoadVelocity=new float[8],contactTargets=new float[8];
         readonly float[] contactSlide=new float[8],contactSlideVelocity=new float[8],contactLean=new float[8],contactLeanVelocity=new float[8];
         int contactFloor=-1;
-        float centreLoad,centreFullLoad,loadCentre=.5f;
+        float centreLoad,contactMass,loadCentre=.5f;
         bool PieceLifted(int index)=>heldWeight==index||!interaction.IsPresenting&&interaction.SelectedSlot==index;
         Vector3 ContactVector(int index)=>Vector3.Scale(tokens[index].mesh.bounds.center-Vector3.up*tokens[index].mesh.bounds.extents.y,restScales[index]);
         float ContactX(int index,int floor)
@@ -46,9 +46,8 @@ namespace Cascade.Presentation
                 contactLoads[i]=Mathf.Clamp01(contactLoads[i]);
                 if(floor>=0){float weight=PieceMass(i)*contactLoads[i];mass+=weight;moment+=weight*ContactX(i,floor);}
             }
-            loadCentre=mass>.001f?moment/mass:.5f;
+            contactMass=mass;loadCentre=mass>.001f?moment/mass:.5f;
             centreLoad=floor>=0?LoadResponse(.5f,floor):0;
-            centreFullLoad=floor>=0?LoadResponse(.5f,floor,true):1;
         }
         float BendAt(int floor,float x)
         {
@@ -81,7 +80,8 @@ namespace Cascade.Presentation
             if(Frame.Status!=PuzzleStatus.Playing)return ReceiverPointOffset(restPositions[index]);
             if(PieceLifted(index))return Vector3.zero;
             int floor=Frame.ActiveFloor;var foot=ContactVector(index);
-            var point=restPositions[index]+foot+Vector3.right*contactSlide[index];
+            var board=floors[floor].board;float x=ContactX(index,floor);
+            var point=new Vector3(restPositions[index].x+foot.x+contactSlide[index],board.basePosition.y+(GameplayReferenceArt.BoardCrown(x)-.5f-.012f)*board.baseScale.y,restPositions[index].z+foot.z);
             var rotation=Quaternion.Euler(0,0,floors[floor].roll+contactLean[index]);
             return point+FloorPointOffset(floor,point,true)-rotation*foot-restPositions[index];
         }

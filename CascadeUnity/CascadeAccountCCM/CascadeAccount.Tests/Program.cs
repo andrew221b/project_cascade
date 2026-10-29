@@ -12,6 +12,14 @@ using Module = CascadeAccountModule.CascadeAccount;
 var suite = new ModuleChecks();
 if(args.Length==2&&args[0]=="--scale-only"){ModuleChecks.Scale(args[1]);return;}
 await suite.Run();
+StageVarietyChecks.Run();
+await UnityStorageChecks.Run();
+await UnityPublisherChecks.Run();
+await PublisherReliabilityChecks.Run();
+await DirectoryWorkChecks.Run();
+await WorkSdkChecks.Run();
+await ErasureReliabilityChecks.Run();
+await OperationalHealthChecks.Run();
 if(args.Length==2&&args[0]=="--scale")ModuleChecks.Scale(args[1]);
 Console.WriteLine("Cloud Code boundary checks: " + suite.Count + " PASS; fake SDK transport, no live Cloud Save claim.");
 
@@ -20,16 +28,16 @@ public sealed class ModuleChecks
     public int Count;
     readonly FakeTransport transport = new();
     readonly IExecutionContext alice = Context("alice"), bob = Context("bob");
-    Module Module => new(transport.Client, new PurchaseVerifier());
+    Module Module => new(transport.Client, new PurchaseVerifier(),transport);
     static IExecutionContext Context(string player) => (IExecutionContext)Proxy.Make(typeof(IExecutionContext), (m, _) => m.Name switch {
         "get_PlayerId" => player, "get_ProjectId" => "project", "get_EnvironmentId" => "development", "get_ServiceToken" => "trusted", _ => ""
     });
     void Check(bool condition, string name) { if (!condition) throw new Exception(name); Count++; }
     static string Request(int sequence) => sequence + ":" + Guid.NewGuid().ToString("D");
     static readonly Dictionary<string,ClearReceipt> earned=new();
-    static (DescentRun Run,AttemptService Final,LevelCompletion Result) Delivered(string node,bool hint=false,int undos=0,DescentStage[] historical=null,int repairs=0)
+    static (DescentRun Run,AttemptService Final,LevelCompletion Result) Delivered(string node,bool hint=false,int undos=0,DescentStage[] historical=null,int repairs=0,Cascade.Content.LevelContent boundSource=null)
     {
-        var source=PublishedCatalog.Primary(node);var run=historical==null?PublishedCatalog.Run(source.Definition):new DescentRun{Version=6,SourceHash=source.Definition.ContentHash,Stages=historical};
+        var source=boundSource??PublishedCatalog.Primary(node);var run=historical==null?PublishedCatalog.Run(source.Definition):new DescentRun{Version=6,SourceHash=source.Definition.ContentHash,Stages=historical};
         AttemptService final=null;
         static Cascade.Domain.PuzzleCommand Parse(string c)=>c=="D"?Cascade.Domain.PuzzleCommand.Drop:c.StartsWith("R")?Cascade.Domain.PuzzleCommand.Reach(int.Parse(c.Substring(1).Split(':')[0]),int.Parse(c.Split(':')[1])):Cascade.Domain.PuzzleCommand.Swap(int.Parse(c));
         for(int stage=0;stage<3;stage++){
@@ -105,10 +113,35 @@ public sealed class ModuleChecks
     }
     public async Task Run()
     {
+        try { await Module.Maintenance(alice);throw new Exception("Player entered service maintenance"); }
+        catch(UnauthorizedAccessException) { Check(transport.MaintenanceCalls==0,"player cannot enter global maintenance"); }
+        Check((await Module.Maintenance(Context(null))).Status=="Complete"&&transport.MaintenanceCalls==1,"trusted service can run maintenance");
+        foreach(string missing in new[]{"get_ProjectId","get_EnvironmentId","get_ServiceToken"}) {
+            var invalid=(IExecutionContext)Proxy.Make(typeof(IExecutionContext),(m,_)=>m.Name==missing?"":m.Name switch {
+                "get_ProjectId"=>"project","get_EnvironmentId"=>"development","get_ServiceToken"=>"trusted",_=>""});
+            try {await Module.Maintenance(invalid);throw new Exception("Incomplete service context entered maintenance");}
+            catch(UnauthorizedAccessException){Check(transport.MaintenanceCalls==1,"incomplete service context is rejected: "+missing);}
+        }
+        transport.FailMaintenance=true;
+        try {await Module.Maintenance(Context(null));throw new Exception("Maintenance failure swallowed");}
+        catch(IOException){Check(transport.MaintenanceCalls==2,"maintenance failure propagates for trigger retry");}
+        transport.FailMaintenance=false;
         Check(PublishedCatalog.AllowedNodes.Count == 540 && PublishedCatalog.AllowedNodes.Contains("C540"), "actual embedded published catalog");
         Check((await Read(alice, "phone_a")).Status == "Empty", "absent account read");
         Check(!PublishedCatalog.ValidClear(new ClearReceipt{CampaignNodeId="C01",AttemptId=Guid.NewGuid().ToString("D"),ContentHash=new string('a',64)},"Shapes"),"fabricated progress has no valid replay");
         Check(PublishedCatalog.ValidClear(Cleared("C01").Clears.Single(),"Shapes"),"three actual campaign stages verify against published recipes");
+        Check(PublishedCatalog.ValidClear(Cleared("C01").Clears.Single(),"Mixed"),"Mix accepts its genuine short Shapes opening");
+        var mixedCatalog=(Cascade.Content.ContentCatalog)typeof(PublishedCatalog).GetField("catalog",BindingFlags.NonPublic|BindingFlags.Static).GetValue(null);
+        foreach(string locale in new[]{"en","ru","uk"}){
+            mixedCatalog.TryGetLocalizedBinding("C02",locale,out var openingWord);
+            foreach(var source in new[]{openingWord,mixedCatalog.MixedLevels.First(c=>c.Locale==locale&&c.Definition.CampaignNodeId=="C03")}){
+                var delivered=Delivered(source.Definition.CampaignNodeId,boundSource:source);
+                var profile=new PlayerProfile{PreferredMode="Mixed",Descent=delivered.Run};profile.RecordClear(delivered.Final,delivered.Result);
+                Check(PublishedCatalog.ValidClear(profile.Clears.Single(),"Mixed"),"Mix verifies actual word/mixed replay: "+source.Definition.PuzzleId);
+                var mixedForgery=AccountJson.Clone(profile.Clears.Single());mixedForgery.Replay.Stages[0].ContentHash=new string('f',64);
+                Check(!PublishedCatalog.ValidClear(mixedForgery,"Mixed"),"Mixed sources still reject forged stage hashes");
+            }
+        }
         var original=Delivered("C01",undos:1);var repeated=Delivered("C01",hint:true,undos:4);
         Check(original.Result.Stars==2&&repeated.Result.Stars==1,"one-free-undo first run and lower-rated repeated-undo replay");
         var replayPlayer=new PlayerProfile{Descent=original.Run};replayPlayer.RecordClear(original.Final,original.Result);replayPlayer.Rewards.Synchronize(new[]{"C01"});
@@ -410,6 +443,21 @@ public sealed class ModuleChecks
         var sceneJoining = await Sync(earnedSceneContext, "scene_c", Request(1), earnedSceneB.Account.Revision, "", Upload(new PlayerProfile()));
         Check(sceneJoining.Status == "Ok" && !sceneJoining.EconomyConflict && sceneJoining.Account.Profile.Rewards.EquippedScenery == "ribbon_kites",
             "a joining installation adopts account scenery earned from a chest");
+        var rewardContext=Context("server_reward");
+        await Sync(rewardContext,"reward_phone",Request(1),0,"",Upload(new PlayerProfile()));
+        transport.Effects["server_reward"]=new AccountEffects{Rewards=new(){new RewardEffect{Id=new string('a',64),Kind="coins",Subject=""}},Subscriptions=new(){new SubscriptionEffect{Product=PurchaseCatalog.NoAdsWeek,Expires=4100000000}}};
+        var rewarded=await Module.ReadAccount(rewardContext,"reward_phone");
+        Check(rewarded.Account.Profile.Monetization.BonusCoins==40&&rewarded.Account.Profile.Monetization.Grants.Count(g=>g.Id=="ssv_"+new string('a',64))==1,"server SSV receipt grants exactly once");
+        var rewardedAgain=await Module.ReadAccount(rewardContext,"reward_phone");
+        Check(rewardedAgain.Account.Revision==rewarded.Account.Revision&&rewardedAgain.Account.Profile.Monetization.BonusCoins==40,"read retry cannot repeat a signed reward");
+        transport.RewardReceiptOnStatus="ssv_"+new string('b',64);
+        transport.RewardEffectsOnStatus=new AccountEffects{Rewards=new(){new RewardEffect{Id=new string('b',64),Kind="coins",Subject=""}},Subscriptions=transport.Effects["server_reward"].Subscriptions};
+        var justConfirmed=await Module.ReadReward(rewardContext,new string('c',32),"reward_phone");
+        Check(justConfirmed.RewardId==transport.RewardReceiptOnStatus&&justConfirmed.Account.Profile.Monetization.BonusCoins==80,"ReadReward returns the wallet committed after the callback that confirmed its receipt");
+        transport.Effects["server_reward"].Subscriptions[0].Expires=0;
+        var revoked=await Module.ReadAccount(rewardContext,"reward_phone");
+        Check(revoked.Account.Profile.Monetization.NoAdsWeekExpiresUnix==0&&!revoked.Account.Profile.Monetization.HasNoAutomaticAds,"authoritative subscription revocation removes access without another purchase");
+        try{await Module.DeleteAccount(rewardContext,"yes");throw new Exception("confirmation missing");}catch(ArgumentException){Count++;}
         var forgedExpansion = AccountJson.Clone(sceneA);forgedExpansion.Monetization.Grants.Add(new GrantReceipt{
             Id = "mock_new_outfit", Kind = "cosmetic", Product = "mushroom_cap" });
         Check((await Sync(earnedSceneContext, "scene_a", Request(3), sceneJoining.Account.Revision, "", Upload(forgedExpansion))).Error == "InvalidProfile",
@@ -424,13 +472,16 @@ public class Proxy : DispatchProxy
     public static object Make(Type type, Func<MethodInfo, object[], object> handler)
     { var result = Create(type, typeof(Proxy));((Proxy)result).Handler = handler;return result; }
 }
-public sealed class FakeTransport
+public sealed class FakeTransport:IAccountBackend
 {
     readonly Dictionary<string, (object Value, string Lock)> items = new();
     public IGameApiClient Client;
-    public int Writes;
-    public string LastPlayerId;
+    public int Writes,MaintenanceCalls;
+    public bool FailMaintenance;
+    public string LastPlayerId,RewardReceiptOnStatus;
+    public AccountEffects RewardEffectsOnStatus;
     public bool ConflictOnNextWrite, CreateRaceOnNextWrite, RejectMissingGuard;
+    public readonly Dictionary<string,AccountEffects> Effects=new();
     public FakeTransport()
     {
         var data = Proxy.Make(typeof(IGameApiClient).GetProperty("CloudSaveData")!.PropertyType, Invoke);
@@ -456,6 +507,33 @@ public sealed class FakeTransport
         if (string.IsNullOrEmpty(body.WriteLock)) throw new Exception("Production attempted an unlocked write.");
         string next = Guid.NewGuid().ToString("N");items[key] = (body.Value, next);Writes++;
         return Task.FromResult(Response(new SetItemResponse(next)));
+    }
+    readonly Dictionary<string,string> owners=new();
+    public Task<T> Send<T>(IGameApiClient api,IExecutionContext context,string path,object data=null){
+        var body=Newtonsoft.Json.Linq.JObject.FromObject(data??new{});string key="player:"+context.PlayerId;object result;
+        if(path=="maintenance"){
+            MaintenanceCalls++;
+            if(FailMaintenance)throw new IOException("Temporary maintenance failure");
+            result=new MaintenanceResult{Status="Complete"};
+        }else if(path=="reward/status"){
+            Effects[context.PlayerId]=RewardEffectsOnStatus;result=new RewardStatus{ReceiptId=RewardReceiptOnStatus};
+        }else if(path=="account/read"){
+            LastPlayerId=context.PlayerId;
+            result=items.TryGetValue(key,out var record)?new AccountRecord{Version=long.Parse(record.Lock),Payload=record.Value is string p?p:AccountJson.Encode(record.Value)}:new AccountRecord();
+        }else if(path=="account/effects")result=Effects.GetValueOrDefault(context.PlayerId)??new AccountEffects();
+        else if(path=="purchase/claim"){
+            string id=(string)body["platform"]+"|"+(string)body["transactionId"];
+            if(!owners.ContainsKey(id))owners[id]=context.PlayerId;
+            result=new ClaimResult{Claimed=owners[id]==context.PlayerId};
+        }else if(path=="account/write"){
+            long version=(long)body["version"];bool exists=items.TryGetValue(key,out var current);
+            if(CreateRaceOnNextWrite&&!exists){CreateRaceOnNextWrite=false;items[key]=(new StoredAccount(),"1");exists=true;current=items[key];}
+            bool written=!RejectMissingGuard&&(exists?current.Lock==version.ToString():version==0)&&!ConflictOnNextWrite;
+            ConflictOnNextWrite=false;
+            if(written){items[key]=(Newtonsoft.Json.Linq.JObject.Parse(CloudProfilePayload.Unpack((string)body["payload"])),(version+1).ToString());Writes++;}
+            result=new WriteResult{Written=written,Version=version+1};
+        }else throw new InvalidOperationException("Unconfigured test backend: "+path);
+        return Task.FromResult((T)result);
     }
     public void ForgetReceipts(string player)
     {

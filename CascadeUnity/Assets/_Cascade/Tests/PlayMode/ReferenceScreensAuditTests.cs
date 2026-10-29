@@ -83,7 +83,7 @@ namespace Cascade.Tests
                     Assert.That(frame.material.GetFloat("_HaveMenuPosts"),Is.EqualTo(1),name+": missing continuous post art");
                 }
                 if(g.CurrentScreen==GameScreen.JourneyMap){
-                    var bridges=g.GetComponentsInChildren<MapRopeBridge>();
+                    var bridges=g.GetComponentsInChildren<Component>().Where(c=>c.GetType().Name=="MapRopeBridge").ToArray();
                     Assert.That(bridges,Is.Empty,name+": decorative map bridges were removed at the user's request");
                 }
                 if(g.CurrentScreen==GameScreen.Home){

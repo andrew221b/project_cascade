@@ -36,6 +36,7 @@ namespace Cascade.Persistence
     public sealed class PlayerProfile
     {
         public GamePreferences Preferences=new GamePreferences();
+        public StageVarietyMemory Variety=new StageVarietyMemory();
         public string PreferredMode="Shapes";
         // Revision 1 maps the retired five-star presentation scale to the three-star scale.
         [JsonProperty(DefaultValueHandling=DefaultValueHandling.Ignore)] public int RatingRevision;
@@ -105,6 +106,19 @@ namespace Cascade.Persistence
             completion.Stars=ThreeStarValue(completion.Stars);completion.RatingVersion=2;
         }
         static int ThreeStarValue(int stars)=>stars<=0?0:stars<=2?1:stars<=4?2:3;
+        public PlayerProfile ProgressSnapshot()
+        {
+            var snapshot=CloudJson.Clone(this);snapshot.DiscardSessionAttempts();return snapshot;
+        }
+        public void DiscardSessionAttempts()
+        {
+            Attempt=null;Descent=null;Completion=null;JourneyAttempt=false;StoryRoute=null;
+            if(Missions.Active)Missions.ClearActive();
+            foreach(var journey in ModeJourneys){
+                journey.Attempt=null;journey.Descent=null;journey.Completion=null;journey.JourneyAttempt=false;journey.StoryRoute=null;
+                if(journey.Missions.Active)journey.Missions.ClearActive();
+            }
+        }
         public void SelectJourney(string mode)
         {
             if(!new[]{"Shapes","Words","Mixed"}.Contains(mode))throw new ArgumentException("Unknown journey mode.");
@@ -142,19 +156,24 @@ namespace Cascade.Persistence
             if(!first)return false;
             return true;
         }
-        public AttemptService RestoreAttempt(ContentCatalog catalog, IEnumerable<LevelContent> legacy = null)
+        public AttemptService RestoreAttempt(ContentCatalog catalog, IEnumerable<LevelContent> legacy = null,StageVarietyStore variety=null)
         {
             if(Attempt==null)return null;
-            var content=catalog.PrimaryLevels.Concat(catalog.LocalizedLevels).Concat(catalog.BonusLevels).Concat(legacy??Enumerable.Empty<LevelContent>()).FirstOrDefault(c=>
+            var content=catalog.AllLevels.Concat(catalog.BonusLevels).Concat(legacy??Enumerable.Empty<LevelContent>()).FirstOrDefault(c=>
                 c.Definition.PuzzleId==Attempt.PuzzleId && c.Definition.ContentHash==(Descent?.SourceHash??Attempt.Direction?.SourceHash??Attempt.ContentHash)
-                && c.Definition.RulesVersion==Attempt.RulesVersion && c.Locale==Attempt.Locale);
+                && c.Definition.RulesVersion==Attempt.RulesVersion && (Descent?.Version==7||c.Locale==Attempt.Locale));
             if(content==null)throw new InvalidDataException("Pinned puzzle content is unavailable.");
-            if(Descent!=null)Descent.Validate(content.Definition,Attempt.Locale);
+            if(Descent?.Version==7){
+                if(variety==null)throw new InvalidDataException("Stage vocabulary is required to restore this attempt.");
+                if(Missions.Active&&Missions.Offer?.Run?.Version==7&&Missions.Offer.Run.ContentHash==Descent.ContentHash){var expected=variety.Expand(content.Definition,Descent.Variation);if(expected.Fingerprint!=Descent.Variation.Fingerprint)throw new InvalidDataException("Invalid personal stage vocabulary.");Descent.Validate(content.Definition,Attempt.Locale);}
+                else variety.ValidateSaved(Descent,content.Definition,variety.Published(content.Definition));
+            }else if(Descent!=null)Descent.Validate(content.Definition,Attempt.Locale);
             var level=Descent!=null?Descent.Level(content.Definition,Descent.StageIndex):Attempt.Direction==null?content.Definition:Attempt.Direction.Apply(content.Definition);
             return AttemptService.Restore(level,Attempt);
         }
         public void Validate()
         {
+            Variety?.Validate();
             if(Preferences==null || !Locale(Preferences.UiLocale) || !Locale(Preferences.PuzzleLocale)
                 || Preferences.EffectQuality<0 || Preferences.EffectQuality>2
                 || !new[]{"Shapes","Words","Mixed"}.Contains(PreferredMode)

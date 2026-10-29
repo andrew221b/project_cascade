@@ -50,6 +50,82 @@ namespace Cascade.Tests
             if (directory != null && Directory.Exists(directory)) Directory.Delete(directory, true);
         }
         PlayerProfile Profile => Read<PlayerProfile>("profile");
+        [UnityTest] public IEnumerator ReportedAcknowledgedSwapCannotBlockDescentOrRepeatAfterRetry()
+        {
+            var level=new LevelDefinition("reported-swap","reported-swap","1","2.0","reported-swap",Row("CBA"),Row("ABC"),new[]{new TargetSegment(SegmentKind.Shapes,0,3)},new[]{new FloorDefinition(8,new[]{true,true}),new FloorDefinition(8,new[]{true,true}),new FloorDefinition(8,new[]{true,true})});
+            Profile.SeenMechanics.Remove(MechanicLesson.Swap);game.Preferences.Tutorials=true;game.LoadLevel(level);game.ShowGame();
+            yield return Await(()=>game.CurrentMechanic==MechanicLesson.Swap,"First controls introduction");game.AcknowledgeMechanic();
+            yield return Await(()=>game.PendingLesson==MechanicLesson.Swap&&!game.Interaction.IsPreparing,"First optional rehearsal starts");
+            var drop=game.GetComponentsInChildren<Button>().Single(b=>b.name=="Drop");Assert.That(drop.interactable,Is.True,"A seen controls film cannot lock the Descend button until a forced swap");
+            drop.onClick.Invoke();yield return Await(()=>game.Interaction.Attempt.Current.ActiveFloor==1&&!game.Interaction.IsPresenting,"Descend must carry the row down");
+            game.LoadLevel(level);game.ShowGame();yield return Await(()=>game.PreparationReady&&game.Interaction.CanPlay,"Retry after acknowledgement must remain playable");
+            yield return null;Assert.That(game.CurrentMechanic,Is.Not.EqualTo(MechanicLesson.Swap));
+        }
+        [UnityTest] public IEnumerator ReportedDescentFilmIsRememberedWhenPracticeIsInterrupted()
+        {
+            var level=new LevelDefinition("reported-descent","reported-descent","1","2.0","reported-descent",Row("CBA"),Row("ABC"),new[]{new TargetSegment(SegmentKind.Shapes,0,3)},new[]{new FloorDefinition(8,new[]{true,true}),new FloorDefinition(8,new[]{true,true}),new FloorDefinition(8,new[]{true,true})});
+            Profile.SeenMechanics.Remove(MechanicLesson.Descent);game.Preferences.Tutorials=true;yield return Mount(level);Invoke("PlayCommand",PuzzleCommand.Drop);
+            yield return Await(()=>game.CurrentMechanic==MechanicLesson.Descent,"The new descent film opens once");game.AcknowledgeMechanic();
+            Assert.That(new ProfileStore(game.ProfilePath).Load().Profile.SeenCoachPrompts,Does.Contain("mechanic-film-v1-"+(int)MechanicLesson.Descent),"The viewed introduction must be remembered on disk before practising");
+            game.LoadLevel(level);game.ShowGame();yield return Await(()=>game.Interaction.CanPlay,"Interrupted practice can be retried");Invoke("PlayCommand",PuzzleCommand.Drop);
+            yield return Await(()=>game.Interaction.Attempt.Current.ActiveFloor==1&&!game.Interaction.IsPresenting,"Acknowledged descent must execute, rather than opening the film again");
+            Assert.That(game.MechanicPopupOpen,Is.False);yield return Await(()=>Read<Button>("drop").interactable,"The next descent touch is ready");Read<Button>("drop").onClick.Invoke();
+            yield return Await(()=>game.Interaction.Attempt.Current.ActiveFloor==2&&!game.Interaction.IsPresenting,"The following descent remains usable");
+        }
+        [UnityTest] public IEnumerator BranchAndCheckpointUseGroundedArtAndNormalButtonsAtMobileSizes()
+        {
+            game.Preferences.Tutorials=false;
+            var level=new LevelDefinition("branch-contact","branch-contact","1","2.0","branch-contact",Row("CBA"),Row("ABC"),
+                new[]{new TargetSegment(SegmentKind.Shapes,0,3)},new[]{new FloorDefinition(8,new[]{true,true}),new FloorDefinition(8,new[]{false,true})});
+            yield return Mount(level);yield return Capture("polish-branch-en.png");
+            game.StartCampaignLevel(game.Catalog.GetPrimary("C02").Definition);game.ShowGame();
+            yield return Await(()=>game.Interaction.CanPlay,"The campaign fixture starts");
+            foreach(var command in Cascade.Solver.PuzzleSolver.FindShortest(game.Interaction.Attempt.Resolver).Path){
+                game.Interaction.Execute(command);yield return Await(()=>!game.Interaction.IsPresenting,"Stage exchange settles");
+            }
+            yield return Await(()=>game.CurrentScreen==GameScreen.Checkpoint,"The stage result opens");
+            foreach(var locale in new[]{"en","ru","uk"})foreach(var size in new[]{new Vector2Int(390,844),new Vector2Int(320,568)}){
+                game.SetUiLocale(locale);
+                yield return UnityEngine.Localization.Settings.LocalizationSettings.StringDatabase.GetTableAsync(UiCopy.Table,UnityEngine.Localization.Settings.LocalizationSettings.AvailableLocales.GetLocale(locale));
+                var mapLabel=Read<RectTransform>("resultRoot").Find("Resulthome").GetComponentInChildren<TMPro.TextMeshProUGUI>();
+                yield return Await(()=>mapLabel.text==new UiCopy("Map").ToString(),"The capture must show the selected language");
+                yield return Capture("polish-checkpoint-"+locale+"-"+size.x+".png",size.x,size.y);
+                foreach(var field in new[]{"Resulthome","Nextdelivery"}){
+                    var button=Read<RectTransform>("resultRoot").Find(field).GetComponent<Button>();var rect=(RectTransform)button.transform;
+                    Assert.That(rect.rect.width/rect.rect.height,Is.InRange(3.8f,5.1f),field+": normal button proportions");
+                    foreach(var text in button.GetComponentsInChildren<TMPro.TextMeshProUGUI>()){
+                        text.ForceMeshUpdate();Assert.That(text.isTextOverflowing||text.isTextTruncated,Is.False,locale+" "+text.text);
+                    }
+                }
+            }
+        }
+        [UnityTest] public IEnumerator NewVisibleMechanicsOpenOnceEvenWithOptionalCoachingOffAndCanBeReplayed()
+        {
+            game.Preferences.Tutorials=false;game.Preferences.ReducedMotion=false;game.ReducedMotion=false;
+            foreach(var lesson in new[]{MechanicLesson.ClosedPath,MechanicLesson.Bomb}){
+                Profile.SeenMechanics.Remove(lesson);
+                var lower=lesson==MechanicLesson.ClosedPath?new FloorDefinition(8,new[]{false,true}):
+                    new FloorDefinition(8,new[]{true,true},bomb:new BombDefinition(0,SymbolId.Parse("s:A"),4,1));
+                var level=new LevelDefinition("first-visible-"+lesson,"first-visible-"+lesson,"1","2.0","first-visible-"+lesson,
+                    Row("CBA"),Row("ABC"),new[]{new TargetSegment(SegmentKind.Shapes,0,3)},
+                    new[]{new FloorDefinition(8,new[]{true,true}),lower});
+                game.LoadLevel(level);game.ShowGame();
+                yield return Await(()=>game.CurrentMechanic==lesson,"The first visible lower-board effect must automatically explain itself even with optional coaching off");
+                string hash=game.Interaction.Attempt.CurrentStateHash;int moves=game.Interaction.Attempt.MovesMade;
+                yield return null;Assert.That(game.MechanicPopupOpen,Is.True,"The next update must not close a mandatory introduction");
+                var film=game.GetComponentsInChildren<LessonFilm>().Single();float elapsed=film.Elapsed;
+                yield return new WaitForSecondsRealtime(.2f);Assert.That(film.Elapsed,Is.GreaterThan(elapsed),"The automatically opened lesson must play its demonstration");
+                game.AcknowledgeMechanic();yield return Await(()=>game.Interaction.CanPlay&&!game.MechanicPopupOpen,"Acknowledgement releases the current board without rehearsing the lower one");
+                Assert.That(Profile.SeenMechanics,Does.Contain(lesson));Assert.That(game.PendingLesson,Is.Null);
+                Assert.That(Profile.SeenCoachPrompts,Does.Contain("mechanic-film-v1-"+(int)lesson),"Only acknowledgement records the actual first-encounter film");
+                Assert.That(game.Interaction.Attempt.CurrentStateHash,Is.EqualTo(hash));Assert.That(game.Interaction.Attempt.MovesMade,Is.EqualTo(moves));
+                game.LoadLevel(level);game.ShowGame();yield return Await(()=>game.Interaction.CanPlay,"A known effect must not interrupt a retry");
+                yield return null;Assert.That(game.MechanicPopupOpen,Is.False);
+                game.ReplayStageLessons();yield return Await(()=>game.CurrentMechanic==lesson,"The question-mark action must replay the lesson");
+                yield return null;Assert.That(game.MechanicPopupOpen,Is.True);game.DismissMechanic();
+                yield return Await(()=>game.Interaction.CanPlay,"Replay dismissal must release input");
+            }
+        }
         [UnityTest] public IEnumerator FirstStageTeachesUndoBeforeIndependentStages()
         {
             Profile.SeenMechanics.Remove(MechanicLesson.Undo);Profile.SeenCoachPrompts.Remove("controls-undo-v1");
@@ -97,10 +173,11 @@ namespace Cascade.Tests
             }
             yield return Await(()=>game.CurrentScreen==GameScreen.Win,"Result must open");
             var buttons=game.GetComponentsInChildren<Button>();
-            Assert.That(buttons.Any(b=>b.name=="Next completed level"&&b.interactable),Is.True);
+            Assert.That(buttons.Any(b=>b.name=="Continue completion"&&b.interactable),Is.True);
             Assert.That(buttons.Any(b=>b.name=="Completion map"&&b.interactable),Is.True);
             game.ContinueToNextLevel();string destination=game.LastCompletion.NextNode;
             Assert.That(destination,Is.Not.Null.And.Not.EqualTo("C01"));
+            if(game.CurrentScreen==GameScreen.Prologue)game.FinishWorldComic();
             for(int step=0;step<8&&game.ConversationOpen;step++){game.SkipConversation();yield return null;}
             yield return Await(()=>game.PreparationReady&&game.Descent?.Version==6&&game.Interaction.Attempt.Level.CampaignNodeId==destination,"Next enters the saved destination");
             var heading=game.GetComponentsInChildren<TMPro.TextMeshProUGUI>().Single(t=>t.name=="Level");
@@ -371,7 +448,7 @@ namespace Cascade.Tests
         IEnumerator Begin(MechanicLesson lesson)
         {
             Profile.SeenMechanics.Remove(lesson); Invoke("BeginLessonPractice", lesson);
-            Assert.That(game.Interaction.PracticeRestricted, Is.True, "Searching must already deny unrelated actions");
+            Assert.That(game.Interaction.PracticeRestricted, Is.True, "The guide owns its indicated action while a route is being found");
             if(!game.Interaction.PracticeGuidanceOnly)Assert.That(game.Interaction.Execute(PuzzleCommand.Drop), Is.Null);
             yield return Await(() => game.Interaction.PracticeCommand.HasValue && game.IsTutorialHandVisible,
                 "A proved practice command and its hand must become available");
@@ -401,22 +478,16 @@ namespace Cascade.Tests
                     "Only the indicated pair must have a lesson contour");
             }
         }
-        void AssertWrongCommandsPreserveState(PuzzleCommand allowed)
+        void AssertSwapGuideKeepsControlsAvailable(PuzzleCommand allowed)
         {
-            var attempt = game.Interaction.Attempt; var state = attempt.Current; string hash = attempt.CurrentStateHash;
-            int route = attempt.RouteLength; var id = attempt.AttemptId;
-            int wrongSlot = Enumerable.Range(0, state.Row.Count).First(i => !game.Interaction.AllowsSlot(i));
-            Assert.That(game.Interaction.PointerDown(91, wrongSlot), Is.False);
-            game.Interaction.FocusSlot(wrongSlot); Assert.That(game.Interaction.SelectedSlot, Is.Null);
-            Assert.That(game.Interaction.TapSlot(wrongSlot), Is.Null);
-            var wrongMove = PuzzleCommand.Swap(allowed.Edge == 0 ? 1 : 0);
-            Assert.That(game.Interaction.Execute(wrongMove), Is.Null);
-            Invoke("PlayCommand", wrongMove); Invoke("PlayCommand", PuzzleCommand.Drop);
-            Assert.That(game.Interaction.Undo(), Is.False); game.Undo(); game.Retry(); game.RequestHint();
-            Assert.That(Read<object>("hintTask"), Is.Null, "A denied hint must not start a search");
-            Assert.That(game.Interaction.Attempt, Is.SameAs(attempt)); Assert.That(attempt.Current, Is.SameAs(state));
-            Assert.That(attempt.CurrentStateHash, Is.EqualTo(hash)); Assert.That(attempt.RouteLength, Is.EqualTo(route));
-            Assert.That(attempt.AttemptId, Is.EqualTo(id)); Assert.That(game.Interaction.PracticeCommand, Is.EqualTo(allowed));
+            var attempt=game.Interaction.Attempt;string hash=attempt.CurrentStateHash;int route=attempt.RouteLength;
+            Assert.That(game.Interaction.PracticeGuidanceOnly,Is.True);
+            foreach(int slot in Enumerable.Range(0,attempt.Current.Row.Count))Assert.That(game.Interaction.AllowsSlot(slot),Is.True);
+            foreach(var command in new[]{PuzzleCommand.Swap(0),PuzzleCommand.Swap(1),PuzzleCommand.Drop})Assert.That(game.Interaction.AllowsCommand(command),Is.True);
+            Assert.That(game.Interaction.AllowsControl(PracticeControl.Hint),Is.True);Assert.That(game.Interaction.AllowsControl(PracticeControl.Undo),Is.True);
+            Assert.That(game.Interaction.AllowsTool(TravelTool.SignalLantern),Is.True);Assert.That(game.Interaction.AllowsRetry,Is.True);
+            Assert.That(Read<Button>("drop").interactable,Is.True,"The suggested exchange cannot block descending");
+            Assert.That(attempt.CurrentStateHash,Is.EqualTo(hash));Assert.That(attempt.RouteLength,Is.EqualTo(route));Assert.That(game.Interaction.PracticeCommand,Is.EqualTo(allowed));
         }
         void AssertUnlocked(MechanicLesson lesson)
         {
@@ -441,7 +512,7 @@ namespace Cascade.Tests
                 game.RefreshLayout(); Invoke("UpdateLessonPractice", true);
                 camera.Render(); RenderTexture.active = render;
                 pixels.ReadPixels(new Rect(0, 0, width, height), 0, 0); pixels.Apply();
-                string folder = Path.Combine(Directory.GetParent(UnityEngine.Application.dataPath).Parent.FullName, "Reports", "GuidedLessons-Oct08");
+                string folder = Path.Combine(Directory.GetParent(UnityEngine.Application.dataPath).Parent.FullName, "Reports", filename.StartsWith("polish-",StringComparison.Ordinal)?"GameplayPolishOct16":"GuidedLessons-Oct08");
                 Directory.CreateDirectory(folder); File.WriteAllBytes(Path.Combine(folder, filename), pixels.EncodeToPNG());
                 Assert.That(game.Interaction.Attempt.CurrentStateHash, Is.EqualTo(hash), "A native capture must not change the puzzle");
             }
@@ -451,7 +522,7 @@ namespace Cascade.Tests
             }
         }
 
-        [UnityTest] public IEnumerator SwapRejectsOtherInputsToolsAndHintsAndShowsTheExactPair()
+        [UnityTest] public IEnumerator SwapGuideKeepsOtherInputsToolsAndHintsAvailableAndShowsTheExactPair()
         {
             yield return Mount(Fixture()); game.SetUiLocale("ru");
             Assert.That(game.Interaction.Execute(PuzzleCommand.Swap(0)).Accepted, Is.True);
@@ -461,24 +532,15 @@ namespace Cascade.Tests
             economy.Ledger.SignalLanterns = 1; Write("toolsReturnScreen", GameScreen.Playing);
             yield return Begin(MechanicLesson.Swap);
             var allowed = game.Interaction.PracticeCommand.Value; AssertHandAndContours(allowed);
-            AssertWrongCommandsPreserveState(allowed);
-            var state = game.Interaction.Attempt.Current;
-            var offer = AttemptService.CalculateHint(game.Interaction.Attempt.CaptureHintRequest());
-            Assert.That(offer.Result.Status, Is.EqualTo(Cascade.Solver.HintStatus.Step));
-            Assert.That(game.Interaction.Execute(offer.Result.Command.Value), Is.Null);
-            Write("offeredHint", offer); Read<Button>("hint").onClick.Invoke();
-            Assert.That(game.Interaction.Attempt.HintUsed, Is.False);
-            game.ShowSupplies(); Assert.That(game.CurrentScreen, Is.EqualTo(GameScreen.Playing));
-            Assert.That((bool)typeof(CascadeGame).GetMethod("ToolEligible", PrivateInstance).Invoke(game, new object[] { TravelTool.SignalLantern }), Is.True);
-            game.UseShopTool(TravelTool.SignalLantern);
-            Assert.That(Read<bool>("toolSearchPending"), Is.False); Assert.That(game.Stock(TravelTool.SignalLantern), Is.EqualTo(1));
-            Assert.That(game.Interaction.Attempt.LanternUsed, Is.False); Assert.That(game.Interaction.Attempt.Current, Is.SameAs(state));
+            AssertSwapGuideKeepsControlsAvailable(allowed);
+            Assert.That((bool)typeof(CascadeGame).GetMethod("ToolEligible",PrivateInstance).Invoke(game,new object[]{TravelTool.SignalLantern}),Is.True);
+            Assert.That(game.Stock(TravelTool.SignalLantern),Is.EqualTo(1),"Displaying a guide never spends inventory");
             yield return Capture("swap-start-ru.png");
             yield return Perform(allowed); AssertUnlocked(MechanicLesson.Swap);
             yield return Capture("swap-finish-ru.png");
         }
 
-        [UnityTest] public IEnumerator PauseResumeKeepsTheRestrictionAndOnlyTheNextLessonLocksAgain()
+        [UnityTest] public IEnumerator PauseResumeKeepsTheSwapGuideAndNormalControlsAvailable()
         {
             yield return Mount(Fixture(repair: new RepairDefinition(2, SymbolId.Parse("s:B"), 1)));
             Assert.That(game.Interaction.Execute(PuzzleCommand.Swap(0)).Accepted, Is.True);
@@ -490,7 +552,7 @@ namespace Cascade.Tests
             Assert.That(game.Interaction.Execute(allowed), Is.Null); Assert.That(game.Interaction.Attempt.Current, Is.SameAs(state));
             game.ShowGame();
             yield return Await(() => game.Interaction.CanPlay && game.IsTutorialHandVisible, "Resuming must restore the same practice");
-            Assert.That(game.Interaction.PracticeCommand, Is.EqualTo(allowed)); AssertWrongCommandsPreserveState(allowed);
+            Assert.That(game.Interaction.PracticeCommand, Is.EqualTo(allowed)); AssertSwapGuideKeepsControlsAvailable(allowed);
             yield return Perform(allowed); AssertUnlocked(MechanicLesson.Swap);
             yield return null; Assert.That(game.Interaction.PracticeRestricted, Is.False, "Normal play stays available between lessons");
             yield return Begin(MechanicLesson.Repair);

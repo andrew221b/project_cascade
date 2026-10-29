@@ -10,6 +10,7 @@ namespace Cascade.Presentation
             provider.sizeDelta=new Vector2(width,height);
             var row=surface.GetComponent<CenteredContentRow>()??surface.gameObject.AddComponent<CenteredContentRow>();
             row.Initialize(surface,provider,caption.rectTransform);
+            row.Padding=18;row.Refresh();
         }
     }
 }

@@ -224,6 +224,9 @@ namespace Cascade.Presentation
             var body=parts[0];
             float bottom=body.Art.localPosition.y+body.Art.localScale.y*body.Mesh.bounds.min.y;
             float footX=Species==WildlifeSpecies.Bullfinch?-.037f:Species==WildlifeSpecies.BarnOwl?.048f:Species==WildlifeSpecies.Bumblebee?.016f:Species==WildlifeSpecies.FieldCricket?-.05f:-.08f;
+            if(WildlifeMotion.IsBird(Species)){
+                var toes=RegionalWildlifeArt.PerchFeet(Species);footX=toes.x;bottom=toes.y+.014f;
+            }
             var feet=new Vector3(footX*facing,bottom,0)*size;
             Paint(contact-rotation*feet,rotation,size,facing,pose,tint);
             folded=Mathf.Clamp01(folded);
@@ -262,7 +265,7 @@ namespace Cascade.Presentation
             bodySize*=fit;boxWidth*=fit;boxHeight*=fit;
             var body=camera.ViewportToWorldPoint(new Vector3(point.x+.5f,point.y+.5f,distance));
             body+=camera.transform.up*(pose.Lift*bodySize);
-            if(upper)body.y=Mathf.Clamp(Mathf.Lerp(flightBand.x,flightBand.y,.5f+point.y*2),flightBand.x+boxHeight*.5f,flightBand.y-boxHeight*.5f);
+            if(upper){float half=Mathf.Max(0,(flightBand.y-flightBand.x-boxHeight)*.5f);body.y=(flightBand.x+flightBand.y)*.5f+half*(float)System.Math.Tanh(point.y*3.2f);}
             // Non-crossing routes already travel inside a generated side corridor.
             // Re-clamping every sample to one edge erased their curves; let the
             // authored path carry the animal fully in and back out of frame.

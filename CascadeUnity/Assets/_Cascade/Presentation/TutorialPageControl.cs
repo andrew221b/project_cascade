@@ -9,7 +9,7 @@ namespace Cascade.Presentation
     {
         Action<int> select;public int Count{get;private set;}public int Selected{get;private set;}
         int Visible=>Mathf.Min(7,Count);int First=>Mathf.Clamp(Selected-3,0,Mathf.Max(0,Count-Visible));
-        public void Initialize(int count,int selected,Action<int> callback){Count=count;Selected=selected;select=callback;raycastTarget=true;SetVerticesDirty();}
+        public void Initialize(int count,int selected,Action<int> callback){Count=count;Selected=selected;select=callback;raycastTarget=callback!=null;SetVerticesDirty();}
         public void OnPointerClick(PointerEventData e)
         {
             if(e.button!=PointerEventData.InputButton.Left||Count<2)return;

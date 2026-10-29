@@ -14,7 +14,7 @@ namespace Cascade.Presentation
     public sealed partial class CascadeGame
     {
         Sprite[] travelArt,treasureArt;
-        UnityEngine.UI.Button fieldTools;
+        UnityEngine.UI.Button fieldTools;Image fieldToolsMeaning;
         RectTransform landingPreview;
         int shopTab,shopItem;
         bool shopDetailOpen;
@@ -86,11 +86,11 @@ namespace Cascade.Presentation
         {
             LoadNavigationArt();
             fieldTools=Button("My tools",actions,new Vector2(.40f,0),new Vector2(.60f,1),ToggleFieldToolTray);fieldTools.name="Field tools";
-            var face=fieldTools.GetComponent<Image>();face.sprite=CleanMenuArt.Get("SquareButton");face.type=Image.Type.Sliced;face.color=Color.white;
+            StyleGameplayControl(fieldTools,true);
             var label=fieldTools.GetComponentInChildren<TextMeshProUGUI>();label.SetCopy("");
-            Picture("Tools bag icon",fieldTools.transform,new Vector2(.17f,.13f),new Vector2(.83f,.87f),HomeArt("BagIcon")??navigationIcons[1],true);
-            var plus=Rect("Field bag plus badge",fieldTools.transform,new Vector2(.66f,-.05f),new Vector2(1.05f,.34f));plus.gameObject.AddComponent<RoundHudBadge>().raycastTarget=false;Text("Bag plus",plus,Vector2.zero,Vector2.one,22,UiCopy.Raw("+")).color=Color.white;
-            fieldTools.gameObject.SetActive(false);
+            fieldToolsMeaning=Picture("Tools bag icon",fieldTools.transform,new Vector2(.12f,.12f),new Vector2(.88f,.88f),HomeArt("BagIcon")??navigationIcons[1],true);
+            var plus=Rect("Field bag plus badge",fieldTools.transform,new Vector2(.68f,-.03f),new Vector2(1.04f,.33f));plus.gameObject.AddComponent<RoundHudBadge>().raycastTarget=false;var plusLabel=Text("Bag plus",plus,Vector2.zero,Vector2.one,22,UiCopy.Raw("+"));plusLabel.color=Color.white;plusLabel.fontSizeMin=plusLabel.fontSizeMax=22;FitRoundHudBadge(plus,plusLabel);
+            RegisterButtonDesign(fieldTools,GameButtonRole.IconPrimary);fieldTools.gameObject.SetActive(false);
             BuildToolTray();
         }
         void LayoutFieldTools(float unit)
@@ -185,10 +185,10 @@ namespace Cascade.Presentation
         {
             var caption=button.GetComponentInChildren<TextMeshProUGUI>();caption.SetCopy("Buy");
             caption.rectTransform.anchorMin=new Vector2(.07f,0);caption.rectTransform.anchorMax=new Vector2(.42f,1);
-            caption.margin=Vector4.zero;caption.alignment=TextAlignmentOptions.Midline;
+            caption.margin=Vector4.one*(2*MenuUnit);caption.alignment=TextAlignmentOptions.Midline;
             Picture("Coin price icon",button.transform,new Vector2(.45f,.15f),new Vector2(.55f,.85f),RewardEmblem(0),true);
             var price=Text("Coin price",button.transform,new Vector2(.57f,.08f),new Vector2(.93f,.92f),18,UiCopy.Raw("× "+amount.ToString("N0")));
-            price.fontSize=18*MenuUnit;price.textWrappingMode=TextWrappingModes.NoWrap;price.margin=Vector4.zero;price.alignment=TextAlignmentOptions.MidlineLeft;
+            price.fontSize=18*MenuUnit;price.textWrappingMode=TextWrappingModes.NoWrap;price.margin=Vector4.one*(2*MenuUnit);price.alignment=TextAlignmentOptions.MidlineLeft;
             StyleCelebrationType(price,CelebrationType.EnamelLabel);navigationLightLabels.Add(price);
         }
         public bool BuySelectedShopItem()
@@ -233,11 +233,15 @@ namespace Cascade.Presentation
             if(tool==TravelTool.Wayfinder&&a.Current.Row.SequenceEqual(a.Level.TargetSymbolIds))return "The row is ready. Keep your scroll.";
             return default;
         }
-        public async void UseShopTool(TravelTool tool,RectTransform fieldSource=null)
+        public void UseShopTool(TravelTool tool,RectTransform fieldSource=null)=>UseShopToolCore(tool,fieldSource,false);
+        async void UseShopToolCore(TravelTool tool,RectTransform fieldSource,bool afterIntroduction)
         {
-            if(CurrentScreen!=GameScreen.Supplies&&(CurrentScreen!=GameScreen.Playing||!fieldTrayOpen))return;
+            if(CurrentScreen!=GameScreen.Supplies&&(CurrentScreen!=GameScreen.Playing||!fieldTrayOpen&&!afterIntroduction))return;
             if(MechanicPopupOpen||toolSearchPending||!ToolsInLevel||!ToolEligible(tool)||Stock(tool)==0||!Interaction.AllowsTool(tool))return;
-            if(IntroduceTool(tool,()=>UseShopTool(tool,fieldSource)))return;
+            var requestedAttempt=Interaction.Attempt;
+            if(!afterIntroduction&&IntroduceTool(tool,()=>{
+                if(CurrentScreen==GameScreen.Playing&&ReferenceEquals(Interaction.Attempt,requestedAttempt))UseShopToolCore(tool,fieldSource,true);
+            }))return;
             var attempt=Interaction.Attempt;HintOffer guide=null;var screen=CurrentScreen;
             if(tool==TravelTool.Wayfinder||tool==TravelTool.SignalLantern){
                 toolSearchPending=true;if(screen==GameScreen.Supplies)DrawMenu();else RefreshToolTray();var request=attempt.CaptureHintRequest();

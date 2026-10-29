@@ -34,7 +34,7 @@ namespace Cascade.Presentation
         CascadeGame game;Camera cameraView;WildlifeRig rig;Image picture,alternatePicture;WildlifeSpecies species;
         ToyFeedbackPool registered;
         internal float VisibleSince=-1,NextCallAt;
-        internal int PhraseIndex;
+        internal int PhraseIndex,BurstRemaining;
         internal AudioClip LastPhrase;
         Vector2 lastPosition;bool hasPosition;
         public float FlightSpeed{get;private set;}

@@ -42,7 +42,7 @@ namespace Cascade.Presentation
             for(int i=0;i<count;i++){
                 centres[i]=game.Machine.TokenBodyCentre(i);seats[i]=targets[i];landed[i]=false;
                 boxes[i].size=game.Machine.TokenBodySize(i)*.91f;boxes[i].size=new Vector3(boxes[i].size.x,boxes[i].size.y,.5f);
-                var b=bodies[i];b.gameObject.SetActive(true);b.isKinematic=false;b.useGravity=true;b.mass=game.VisibleFrame.Row[i].Kind==Cascade.Domain.SymbolKind.Glyph?1.2f:1;
+                var b=bodies[i];b.gameObject.SetActive(true);b.isKinematic=false;b.useGravity=true;b.mass=game.Machine.TokenMass(i);
                 b.linearDamping=.12f;b.angularDamping=.6f;b.position=starts[i]+centres[i];b.rotation=Quaternion.identity;
                 // Small opposed release impulses let neighbours collide rather than slide as a rigid row.
                 b.linearVelocity=new Vector3((i%2==0?1:-1)*(.24f+i%3*.065f),-.04f*(i%3),0);

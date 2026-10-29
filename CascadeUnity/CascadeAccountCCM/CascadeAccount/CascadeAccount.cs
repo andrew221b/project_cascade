@@ -1,4 +1,5 @@
 using Cascade.Application;
+using Microsoft.Extensions.Logging;
 using Cascade.Persistence;
 using Newtonsoft.Json;
 using System.Globalization;
@@ -15,26 +16,43 @@ public sealed class CascadeAccount
 {
     public const string AccountKey = "cascade_account_v1";
     public const int MaxRequestBytes = 1536 * 1024, MaxAccountBytes = 4 * 1024 * 1024, MaxReplyBytes = 1536 * 1024;
-    // A nonmatching lock must never be replaced by an unlocked write during first-account races.
-    const string AbsentAccountLock = "c45c9c40f7734ae8885b8d2ecb01297f";
+    readonly IAccountBackend backend;
     readonly IGameApiClient api;
     readonly PurchaseVerifier verifier;
-    public CascadeAccount(IGameApiClient gameApiClient, PurchaseVerifier purchaseVerifier)
-    { api = gameApiClient; verifier = purchaseVerifier; }
+    readonly ILogger logger;
+    public CascadeAccount(IGameApiClient gameApiClient, PurchaseVerifier purchaseVerifier, IAccountBackend accountBackend, ILogger<CascadeAccount> logger = null)
+    { api = gameApiClient; verifier = purchaseVerifier; backend = accountBackend; this.logger=logger; }
+
+    // Called only by trusted service accounts/Triggers; authenticated players cannot run global maintenance.
+    [CloudCodeFunction("Maintenance")]
+    public Task<MaintenanceResult> Maintenance(IExecutionContext context)
+    {
+        return ServerExecution.Run<MaintenanceResult>("Maintenance",logger,()=>{
+        if(context==null||!string.IsNullOrEmpty(context.PlayerId)||string.IsNullOrEmpty(context.ProjectId)
+            ||string.IsNullOrEmpty(context.EnvironmentId)||string.IsNullOrEmpty(context.ServiceToken))
+            throw new UnauthorizedAccessException("Trusted service context required.");
+        return backend.Send<MaintenanceResult>(api,context,"maintenance");
+    
+        });
+    }
 
     [CloudCodeFunction("ReadAccount")]
     public async Task<CloudSyncReply> ReadAccount(IExecutionContext context, string deviceId = "")
     {
+        return await ServerExecution.Run<CloudSyncReply>("ReadAccount",logger,async ()=>{
         RequirePlayer(context);
         if (!string.IsNullOrEmpty(deviceId)) ValidateDevice(deviceId);
         var read = await Load(context);
         return Reply(read.State, read.Exists ? "Ok" : "Empty", deviceId);
+    
+        });
     }
 
     [CloudCodeFunction("SyncAccount")]
     public async Task<CloudSyncReply> SyncAccount(IExecutionContext context, string deviceId, string requestId,
         long expectedRevision, string baseProfileJson, string localProfileJson)
     {
+        return await ServerExecution.Run<CloudSyncReply>("SyncAccount",logger,async ()=>{
         RequirePlayer(context); ValidateDevice(deviceId);
         long sequence = ParseSequence(requestId);
         if (expectedRevision < 0 || Utf8Bytes(baseProfileJson) + Utf8Bytes(localProfileJson) + Utf8Bytes(deviceId) + Utf8Bytes(requestId) > MaxRequestBytes)
@@ -90,6 +108,8 @@ public sealed class CascadeAccount
             Digest = digest, Revision = state.Account.Revision, EconomyConflict = economyConflict });
         if (state.Receipts.Count > 256) state.Receipts.RemoveRange(0, state.Receipts.Count - 256);
         return await Commit(context, read, state, deviceId, economyConflict);
+    
+        });
     }
 
     [CloudCodeFunction("PurchaseIdentity")]
@@ -100,6 +120,7 @@ public sealed class CascadeAccount
     public async Task<CloudSyncReply> VerifyPurchase(IExecutionContext context, string productId, string transactionId,
         string platform, string receipt, string jws, string bundleId, string deviceId = "")
     {
+        return await ServerExecution.Run<CloudSyncReply>("VerifyPurchase",logger,async ()=>{
         RequirePlayer(context);
         if (!string.IsNullOrEmpty(deviceId)) ValidateDevice(deviceId);
         if (!PurchaseCatalog.IsKnown(productId) || string.IsNullOrWhiteSpace(transactionId) || transactionId.Length > 180
@@ -121,6 +142,13 @@ public sealed class CascadeAccount
         // Global ownership survives a later wallet write failure; only its owner can retry.
         if (existing == null && !await ClaimTransaction(context, productId, transactionId, platform, bundleId))
             return Reply(read.State, "Rejected", deviceId, error: "TransactionOwnership");
+        if(subscription&&await UnityBackendRouter.Mode(api,context)=="Unity"){
+            await new UnityOwnedAccountBackend(api,context).RememberSubscription(context.PlayerId,platform,productId,verified);
+            // Remembering a subscription advances the same atomic snapshot. Reload
+            // the latest version before committing the wallet, keeping CAS honest.
+            read=await Load(context);
+            existing=read.State.Account.Profile.Monetization.Grants.FirstOrDefault(g=>g.Id==grantId);
+        }
         var candidate = AccountJson.Clone(read.State);
         var ledger = candidate.Account.Profile.Monetization;
         int amount = PurchaseCatalog.Coins(productId);
@@ -132,48 +160,82 @@ public sealed class CascadeAccount
         var device = candidate.DeviceStates.FirstOrDefault(d => d.DeviceId == deviceId);
         if (device != null) SaveBaseline(device, candidate.Account.Profile);
         return await Commit(context, read, candidate, deviceId, false);
+    
+        });
     }
 
-    async Task<bool> ClaimTransaction(IExecutionContext context, string productId, string transactionId, string platform, string bundleId)
-    {
-        string digest = AccountJson.Digest(platform + "|" + transactionId);
-        string customId = "iap_" + digest.Substring(0, 46); // Cloud Save custom IDs are limited to 50 characters.
-        async Task<PurchaseOwner> ReadOwner()
-        {
-            var loaded = await api.CloudSaveData.GetPrivateCustomItemsAsync(context, context.ServiceToken, context.ProjectId, customId);
-            var item = loaded.Data.Results.FirstOrDefault(i => i.Key == "owner");
-            return item == null ? null : AccountJson.Decode<PurchaseOwner>(item.Value.ToString());
-        }
-        bool IsOwner(PurchaseOwner owner) => owner != null && owner.Digest == digest && owner.PlayerId == context.PlayerId
-            && owner.ProductId == productId && owner.Platform == platform && owner.BundleId == bundleId;
-        var existing = await ReadOwner();
-        if (existing != null) return IsOwner(existing);
-        var claim = new PurchaseOwner { Digest = digest, PlayerId = context.PlayerId, ProductId = productId,
-            Platform = platform, BundleId = bundleId, ClaimedUnixSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds() };
-        try {
-            await api.CloudSaveData.SetPrivateCustomItemAsync(context, context.ServiceToken, context.ProjectId, customId,
-                new SetItemBody("owner", claim, AbsentAccountLock));
-            return true;
-        } catch (ApiException ex) when (ex.Response.StatusCode == HttpStatusCode.Conflict) {
-            return IsOwner(await ReadOwner());
-        } catch (ApiException ex) when (ex.Response.StatusCode == HttpStatusCode.BadRequest) {
-            return false; // Never retry without a create guard.
-        }
+    async Task<bool> ClaimTransaction(IExecutionContext context,string productId,string transactionId,string platform,string bundleId)
+        => (await backend.Send<ClaimResult>(api,context,"purchase/claim",new{productId,transactionId,platform,bundleId})).Claimed;
+
+    [CloudCodeFunction("CreateRewardIntent")]
+    public async Task<RewardIntent> CreateRewardIntent(IExecutionContext context,string kind,string subject,string unit){
+        return await ServerExecution.Run<RewardIntent>("CreateRewardIntent",logger,async ()=>{
+        RequirePlayer(context);var loaded=await Load(context);if(!loaded.Exists)throw new InvalidOperationException("Sync before requesting an ad.");
+        if(kind is not ("coins" or "hint" or "parcel_open" or "parcel_bonus"))throw new ArgumentException("Unknown reward.");
+        if(kind is "parcel_open" or "parcel_bonus"){
+            if(subject==null||!subject.StartsWith("parcel:")||!int.TryParse(subject.Substring(7),out int order))throw new ArgumentException("Unknown parcel.");
+            var parcel=loaded.State.Account.Profile.Rewards.Parcels.FirstOrDefault(p=>p.Order==order&&p.Kind=="loot");
+            var grants=loaded.State.Account.Profile.Monetization.Grants;
+            if(parcel==null||kind=="parcel_open"&&grants.Any(g=>g.Kind=="parcel_open"&&g.Product==subject)||kind=="parcel_bonus"&&(!parcel.Claimed||grants.Any(g=>g.Kind=="coins"&&g.Product==subject)))throw new InvalidOperationException("Reward unavailable.");
+        }else subject="";
+        return await backend.Send<RewardIntent>(api,context,"reward/intent",new{kind,subject,unit});
+    
+        });
+    }
+    [CloudCodeFunction("ReadReward")]
+    public async Task<CloudSyncReply> ReadReward(IExecutionContext context,string intentId,string deviceId=""){
+        return await ServerExecution.Run<CloudSyncReply>("ReadReward",logger,async ()=>{
+        RequirePlayer(context);if(!string.IsNullOrEmpty(deviceId))ValidateDevice(deviceId);
+        if(intentId==null||intentId.Length!=32)throw new ArgumentException("Invalid reward intent.");
+        var confirmed=(await backend.Send<RewardStatus>(api,context,"reward/status",new{id=intentId})).ReceiptId;
+        // Once a confirmed receipt is returned, load its committed effects before
+        // returning the wallet. A callback arriving between reads cannot expose
+        // an acknowledged reward with an older balance.
+        var read=await Load(context);var result=Reply(read.State,"Ok",deviceId);
+        result.RewardId=confirmed;return result;
+    
+        });
+    }
+    [CloudCodeFunction("GetDeletionCode")]
+    public async Task<DeletionResult> GetDeletionCode(IExecutionContext context){
+        return await ServerExecution.Run<DeletionResult>("GetDeletionCode",logger,async ()=>{RequirePlayer(context);return await backend.Send<DeletionResult>(api,context,"account/deletion-code");
+        });
+    }
+    [CloudCodeFunction("DeleteAccount")]
+    public async Task<DeletionResult> DeleteAccount(IExecutionContext context,string confirmation){
+        return await ServerExecution.Run<DeletionResult>("DeleteAccount",logger,async ()=>{RequirePlayer(context);if(confirmation!="DELETE")throw new ArgumentException("Confirmation required.");return await backend.Send<DeletionResult>(api,context,"account/delete");
+        });
     }
 
     async Task<LoadedAccount> Load(IExecutionContext context)
     {
-        var response = await api.CloudSaveData.GetProtectedItemsAsync(context, context.ServiceToken, context.ProjectId,
-            context.PlayerId, new List<string> { AccountKey });
-        var item = response.Data.Results.FirstOrDefault(i => i.Key == AccountKey);
-        if (item == null) return new LoadedAccount { State = new StoredAccount() };
-        string json = item.Value?.ToString() ?? throw new InvalidDataException("Account missing.");
-        if (Utf8Bytes(json) > MaxAccountBytes) throw new InvalidDataException("Stored account exceeds supported budget.");
-        var state = AccountJson.Decode<StoredAccount>(CloudProfilePayload.Unpack(json,MaxAccountBytes)) ?? throw new InvalidDataException("Account missing.");
-        state.Validate();
-        Canonicalize(state);
-        if (string.IsNullOrEmpty(item.WriteLock)) throw new InvalidDataException("Account has no concurrency token.");
-        return new LoadedAccount { State = state, WriteLock = item.WriteLock, Exists = true };
+        for(int retry=0;retry<5;retry++){
+            var record=await backend.Send<AccountRecord>(api,context,"account/read");
+            string json=record.Payload;bool exists=json!=null;
+            if(!exists){
+                // Import a legacy protected save once. SQL's atomic insert chooses the winner.
+                var response=await api.CloudSaveData.GetProtectedItemsAsync(context,context.ServiceToken,context.ProjectId,context.PlayerId,new List<string>{AccountKey});
+                var item=response.Data.Results.FirstOrDefault(i=>i.Key==AccountKey);json=item?.Value?.ToString();exists=json!=null;
+            }
+            var state=json==null?new StoredAccount():AccountJson.Decode<StoredAccount>(CloudProfilePayload.Unpack(json,MaxAccountBytes));
+            if(state==null)throw new InvalidDataException("Account missing.");state.Validate();Canonicalize(state);
+            var effects=record.Effects??await backend.Send<AccountEffects>(api,context,"account/effects");bool changed=false;var ledger=state.Account.Profile.Monetization;
+            foreach(var reward in effects.Rewards){
+                string id="ssv_"+reward.Id;if(ledger.Grants.Any(g=>g.Id==id))continue;
+                string kind=reward.Kind=="parcel_bonus"?"coins":reward.Kind;int amount=kind=="parcel_open"?0:kind=="coins"?40:1;
+                if(kind is not ("coins" or "hint" or "parcel_open")||reward.Id?.Length!=64)throw new InvalidDataException("Invalid server reward.");
+                ledger.Grants.Add(new Cascade.Application.GrantReceipt{Id=id,Kind=kind,Amount=amount,Product=reward.Subject==""?null:reward.Subject});
+                if(kind=="coins")ledger.BonusCoins=checked(ledger.BonusCoins+amount);else if(kind=="hint")ledger.HintTokens=checked(ledger.HintTokens+amount);changed=true;
+            }
+            foreach(var sub in effects.Subscriptions){if(!PurchaseCatalog.IsNoAdsSubscription(sub.Product)||sub.Expires<0)throw new InvalidDataException("Invalid subscription.");
+                long prior=sub.Product==PurchaseCatalog.NoAdsWeek?ledger.NoAdsWeekExpiresUnix:sub.Product==PurchaseCatalog.NoAdsMonth?ledger.NoAdsMonthExpiresUnix:ledger.NoAdsYearExpiresUnix;
+                if(prior!=sub.Expires){ledger.SetSubscriptionExpiry(sub.Product,sub.Expires);changed=true;}
+            }
+            if(changed){state.Account.Revision=checked(state.Account.Revision+1);state.Validate();Canonicalize(state);
+                var write=await backend.Send<WriteResult>(api,context,"account/write",new{version=record.Version,payload=CloudProfilePayload.Pack(AccountJson.Encode(state))});if(!write.Written)continue;record.Version=write.Version;exists=true;}
+            return new LoadedAccount{State=state,WriteLock=record.Version.ToString(CultureInfo.InvariantCulture),Exists=exists};
+        }
+        throw new InvalidOperationException("Account is busy; retry safely.");
     }
     async Task<CloudSyncReply> Commit(IExecutionContext context, LoadedAccount loaded, StoredAccount state, string deviceId, bool conflict)
     {
@@ -186,19 +248,11 @@ public sealed class CascadeAccount
         catch(InvalidDataException){return Reply(loaded.State,"Rejected",deviceId,error:"AccountBudget");}
         if (Utf8Bytes(packed) > MaxAccountBytes || Utf8Bytes(JsonConvert.SerializeObject(Reply(state, "Ok", deviceId, conflict))) > MaxReplyBytes)
             return Reply(loaded.State, "Rejected", deviceId, error: "AccountBudget");
-        try {
-            await api.CloudSaveData.SetProtectedItemAsync(context, context.ServiceToken, context.ProjectId, context.PlayerId,
-                new SetItemBody(AccountKey, packed==json?JsonConvert.DeserializeObject<object>(json):packed, loaded.Exists ? loaded.WriteLock : AbsentAccountLock));
-            return Reply(state, "Ok", deviceId, conflict);
-        } catch (ApiException ex) when (ex.Response.StatusCode == HttpStatusCode.Conflict) {
-            var latest = await Load(context);
-            if (!loaded.Exists && !latest.Exists)
-                return Reply(latest.State, "Rejected", deviceId, error: "SafeInitializationUnavailable");
-            return Reply(latest.State, "Conflict", deviceId);
-        } catch (ApiException ex) when (!loaded.Exists && ex.Response.StatusCode == HttpStatusCode.BadRequest) {
-            // Some Cloud Save versions may reject write locks for new keys. Never drop the lock.
-            return Reply(new StoredAccount(), "Rejected", deviceId, error: "SafeInitializationUnavailable");
-        }
+        if(Utf8Bytes(packed)>1536*1024)return Reply(loaded.State,"Rejected",deviceId,error:"AccountBudget");
+        var written=await backend.Send<WriteResult>(api,context,"account/write",new{version=long.Parse(loaded.WriteLock??"0",CultureInfo.InvariantCulture),payload=packed});
+        if(written.Written)return Reply(state,"Ok",deviceId,conflict);
+        var latest=await Load(context);
+        return !loaded.Exists&&!latest.Exists?Reply(latest.State,"Rejected",deviceId,error:"SafeInitializationUnavailable"):Reply(latest.State,"Conflict",deviceId);
     }
     static void SaveBaseline(DeviceSyncState device, PlayerProfile profile)
     { var baseline = AccountJson.Clone(profile); ScrubDeviceOnly(baseline); device.StoreBaseline(baseline,profile.Monetization); }

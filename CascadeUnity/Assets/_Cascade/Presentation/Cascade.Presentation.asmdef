@@ -22,6 +22,7 @@
         "Unity.Notifications.Android",
         "Unity.Notifications.iOS",
         "Unity.Newtonsoft.Json",
-        "Unity.Services.Core.Environments"
+        "Unity.Services.Core.Environments",
+        "AdManagerPro"
     ]
 }

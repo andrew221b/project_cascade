@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459fa68b1bae64a4499cea25dfb42392, type: 3}
   m_Name: MonetizationSettings
   m_EditorClassIdentifier: Cascade.Presentation::Cascade.Presentation.MonetizationSettings
-  storeCatalogRegistered: 0
-  receiptValidationUrl: 
-  iosAdmobAppId:
-  androidAdmobAppId:
-  iosRewardedUnitId:
-  iosInterstitialUnitId:
-  adsReleaseReady: 0
-  testMonetization: 1
-  productionRelease: 0
-  androidRewardedUnitId:
-  androidInterstitialUnitId:
-  admobTestAds: 1
+  storeCatalogRegistered: 1
+  receiptValidationUrl: https://vickand.com/api/flying-ladders/purchase/local-verify
+  iosAdmobAppId: ca-app-pub-2724223438862289~7300939270
+  androidAdmobAppId: ca-app-pub-2724223438862289~3999988514
+  iosRewardedUnitId: ca-app-pub-2724223438862289/1665469215
+  iosInterstitialUnitId: ca-app-pub-2724223438862289/3241615625
+  adsReleaseReady: 1
+  testMonetization: 0
+  localAdTestScreen: 0
+  productionRelease: 1
+  androidRewardedUnitId: ca-app-pub-2724223438862289/8065944779
+  androidInterstitialUnitId: ca-app-pub-2724223438862289/8493942302
+  admobTestAds: 0
   childDirected: 0
   underAgeOfConsent: 0
